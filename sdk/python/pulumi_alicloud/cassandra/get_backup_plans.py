@@ -47,6 +47,9 @@ class GetBackupPlansResult:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> _builtins.str:
+        """
+        The ID of the cluster for the backup.
+        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
@@ -60,6 +63,9 @@ class GetBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Backup Plan IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -70,6 +76,9 @@ class GetBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetBackupPlansPlanResult']:
+        """
+        A list of Cassandra Backup Plans. Each element contains the following attributes:
+        """
         return pulumi.get(self, "plans")
 
 
@@ -92,7 +101,7 @@ def get_backup_plans(cluster_id: Optional[_builtins.str] = None,
     """
     This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.128.0+.
+    > **NOTE:** Available since v1.128.0.
 
     > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 
@@ -130,7 +139,7 @@ def get_backup_plans_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = 
     """
     This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.128.0+.
+    > **NOTE:** Available since v1.128.0.
 
     > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 

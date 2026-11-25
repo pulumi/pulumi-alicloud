@@ -84,6 +84,9 @@ class GetSchedulesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Schedule names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +97,9 @@ class GetSchedulesResult:
     @_builtins.property
     @pulumi.getter
     def schedules(self) -> Sequence['outputs.GetSchedulesScheduleResult']:
+        """
+        A list of Fnf Schedules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "schedules")
 
 
@@ -122,7 +128,7 @@ def get_schedules(flow_name: Optional[_builtins.str] = None,
     """
     This data source provides the Fnf Schedules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.105.0+.
+    > **NOTE:** Available since v1.105.0.
 
     ## Example Usage
 
@@ -172,7 +178,7 @@ def get_schedules_output(flow_name: pulumi.Input[Optional[_builtins.str]] = None
     """
     This data source provides the Fnf Schedules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.105.0+.
+    > **NOTE:** Available since v1.105.0.
 
     ## Example Usage
 

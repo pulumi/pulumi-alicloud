@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -96,17 +96,29 @@ export interface GetMetricRuleTemplatesResult {
     readonly id: string;
     readonly ids: string[];
     readonly keyword?: string;
+    /**
+     * The name of the alert template.
+     */
     readonly metricRuleTemplateName?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Metric Rule Template names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the alert template.
+     */
     readonly templateId?: string;
+    /**
+     * A list of Cms Metric Rule Templates. Each element contains the following attributes:
+     */
     readonly templates: outputs.cms.GetMetricRuleTemplatesTemplate[];
 }
 /**
  * This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *

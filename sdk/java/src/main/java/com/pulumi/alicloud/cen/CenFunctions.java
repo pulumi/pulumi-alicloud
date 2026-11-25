@@ -404,6 +404,8 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.18.0+
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -445,6 +447,8 @@ public final class CenFunctions {
     }
     /**
      * This data source provides CEN Bandwidth Packages available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.18.0+
      * 
      * ## Example Usage
      * 
@@ -488,6 +492,8 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.18.0+
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -529,6 +535,8 @@ public final class CenFunctions {
     }
     /**
      * This data source provides CEN Bandwidth Packages available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.18.0+
      * 
      * ## Example Usage
      * 
@@ -572,6 +580,8 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.18.0+
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -614,6 +624,8 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.18.0+
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -655,6 +667,8 @@ public final class CenFunctions {
     }
     /**
      * This data source provides CEN Bandwidth Packages available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.18.0+
      * 
      * ## Example Usage
      * 
@@ -2113,7 +2127,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -2167,7 +2181,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -2221,7 +2235,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -2275,7 +2289,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -2329,7 +2343,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -2383,7 +2397,7 @@ public final class CenFunctions {
     /**
      * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0+
      * 
      * ## Example Usage
      * 
@@ -2428,7 +2442,7 @@ public final class CenFunctions {
     /**
      * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0+
      * 
      * ## Example Usage
      * 
@@ -2473,7 +2487,7 @@ public final class CenFunctions {
     /**
      * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0+
      * 
      * ## Example Usage
      * 
@@ -2518,7 +2532,7 @@ public final class CenFunctions {
     /**
      * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0+
      * 
      * ## Example Usage
      * 
@@ -2563,7 +2577,7 @@ public final class CenFunctions {
     /**
      * This data source provides Cen Inter Region Traffic Qos Queue available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0+
      * 
      * ## Example Usage
      * 
@@ -2608,7 +2622,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Private Zones available to the user.
      * 
-     * &gt; **NOTE:** Available in v1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0+.
      * 
      * ## Example Usage
      * 
@@ -2653,7 +2667,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Private Zones available to the user.
      * 
-     * &gt; **NOTE:** Available in v1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0+.
      * 
      * ## Example Usage
      * 
@@ -2698,7 +2712,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Private Zones available to the user.
      * 
-     * &gt; **NOTE:** Available in v1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0+.
      * 
      * ## Example Usage
      * 
@@ -2743,7 +2757,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Private Zones available to the user.
      * 
-     * &gt; **NOTE:** Available in v1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0+.
      * 
      * ## Example Usage
      * 
@@ -2788,7 +2802,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Private Zones available to the user.
      * 
-     * &gt; **NOTE:** Available in v1.88.0+.
+     * &gt; **NOTE:** Available since v1.88.0+.
      * 
      * ## Example Usage
      * 
@@ -2833,6 +2847,8 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Regional Route Entries available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.22.0+
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2874,6 +2890,8 @@ public final class CenFunctions {
     }
     /**
      * This data source provides CEN Regional Route Entries available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0+
      * 
      * ## Example Usage
      * 
@@ -2917,6 +2935,8 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Regional Route Entries available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.22.0+
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2958,6 +2978,8 @@ public final class CenFunctions {
     }
     /**
      * This data source provides CEN Regional Route Entries available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0+
      * 
      * ## Example Usage
      * 
@@ -3001,6 +3023,8 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Regional Route Entries available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.22.0+
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3042,6 +3066,8 @@ public final class CenFunctions {
     }
     /**
      * This data source provides CEN Route Entries available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.20.0+
      * 
      * ## Example Usage
      * 
@@ -3085,6 +3111,8 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Route Entries available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.20.0+
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3126,6 +3154,8 @@ public final class CenFunctions {
     }
     /**
      * This data source provides CEN Route Entries available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.20.0+
      * 
      * ## Example Usage
      * 
@@ -3169,6 +3199,8 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Route Entries available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.20.0+
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3210,6 +3242,8 @@ public final class CenFunctions {
     }
     /**
      * This data source provides CEN Route Entries available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.20.0+
      * 
      * ## Example Usage
      * 
@@ -3718,7 +3752,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0+.
      * 
      * ## Example Usage
      * 
@@ -3772,7 +3806,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0+.
      * 
      * ## Example Usage
      * 
@@ -3826,7 +3860,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0+.
      * 
      * ## Example Usage
      * 
@@ -3880,7 +3914,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0+.
      * 
      * ## Example Usage
      * 
@@ -3934,7 +3968,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0+.
      * 
      * ## Example Usage
      * 
@@ -4563,7 +4597,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -4615,7 +4649,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -4667,7 +4701,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -4719,7 +4753,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -4771,7 +4805,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -4823,7 +4857,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -4869,7 +4903,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -4915,7 +4949,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -4961,7 +4995,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -5007,7 +5041,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -5718,7 +5752,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -5770,7 +5804,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -5822,7 +5856,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -5874,7 +5908,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -5926,7 +5960,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0+.
      * 
      * ## Example Usage
      * 
@@ -5978,7 +6012,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Transit Router peer attachments available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0+
      * 
      * ## Example Usage
      * 
@@ -6021,7 +6055,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Transit Router peer attachments available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0+
      * 
      * ## Example Usage
      * 
@@ -6064,7 +6098,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Transit Router peer attachments available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0+
      * 
      * ## Example Usage
      * 
@@ -6107,7 +6141,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Transit Router peer attachments available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0+
      * 
      * ## Example Usage
      * 
@@ -6150,7 +6184,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN Transit Router peer attachments available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.128.0+
+     * &gt; **NOTE:** Available since v1.128.0+
      * 
      * ## Example Usage
      * 
@@ -6193,7 +6227,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.188.0+.
+     * &gt; **NOTE:** Available since v1.188.0+.
      * 
      * ## Example Usage
      * 
@@ -6239,7 +6273,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.188.0+.
+     * &gt; **NOTE:** Available since v1.188.0+.
      * 
      * ## Example Usage
      * 
@@ -6285,7 +6319,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.188.0+.
+     * &gt; **NOTE:** Available since v1.188.0+.
      * 
      * ## Example Usage
      * 
@@ -6331,7 +6365,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.188.0+.
+     * &gt; **NOTE:** Available since v1.188.0+.
      * 
      * ## Example Usage
      * 
@@ -6377,7 +6411,7 @@ public final class CenFunctions {
     /**
      * This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.188.0+.
+     * &gt; **NOTE:** Available since v1.188.0+.
      * 
      * ## Example Usage
      * 
@@ -6421,54 +6455,224 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", TypeShape.of(GetTransitRouterPrefixListAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteEntriesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getTransitRouterRouteEntries(GetTransitRouterRouteEntriesArgs.builder()
+     *             .transitRouterRouteTableId("vtb-*********")
+     *             .build());
+     * 
+     *         ctx.export("transitRouterRouteEntryDestinationCidrBlock", transitRouterRouteEntries[0].get("transitRouterRouteEntryDestinationCidrBlock"));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntries(GetTransitRouterRouteEntriesArgs args) {
         return getTransitRouterRouteEntries(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteEntriesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getTransitRouterRouteEntries(GetTransitRouterRouteEntriesArgs.builder()
+     *             .transitRouterRouteTableId("vtb-*********")
+     *             .build());
+     * 
+     *         ctx.export("transitRouterRouteEntryDestinationCidrBlock", transitRouterRouteEntries[0].get("transitRouterRouteEntryDestinationCidrBlock"));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntriesPlain(GetTransitRouterRouteEntriesPlainArgs args) {
         return getTransitRouterRouteEntriesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteEntriesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getTransitRouterRouteEntries(GetTransitRouterRouteEntriesArgs.builder()
+     *             .transitRouterRouteTableId("vtb-*********")
+     *             .build());
+     * 
+     *         ctx.export("transitRouterRouteEntryDestinationCidrBlock", transitRouterRouteEntries[0].get("transitRouterRouteEntryDestinationCidrBlock"));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntries(GetTransitRouterRouteEntriesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", TypeShape.of(GetTransitRouterRouteEntriesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteEntriesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getTransitRouterRouteEntries(GetTransitRouterRouteEntriesArgs.builder()
+     *             .transitRouterRouteTableId("vtb-*********")
+     *             .build());
+     * 
+     *         ctx.export("transitRouterRouteEntryDestinationCidrBlock", transitRouterRouteEntries[0].get("transitRouterRouteEntryDestinationCidrBlock"));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntries(GetTransitRouterRouteEntriesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", TypeShape.of(GetTransitRouterRouteEntriesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+     * This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteEntriesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entry = CenFunctions.getTransitRouterRouteEntries(GetTransitRouterRouteEntriesArgs.builder()
+     *             .transitRouterRouteTableId("vtb-*********")
+     *             .build());
+     * 
+     *         ctx.export("transitRouterRouteEntryDestinationCidrBlock", transitRouterRouteEntries[0].get("transitRouterRouteEntryDestinationCidrBlock"));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteEntriesResult> getTransitRouterRouteEntriesPlain(GetTransitRouterRouteEntriesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", TypeShape.of(GetTransitRouterRouteEntriesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -6509,9 +6713,9 @@ public final class CenFunctions {
         return getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -6552,9 +6756,9 @@ public final class CenFunctions {
         return getTransitRouterRouteTableAssociationsPlain(GetTransitRouterRouteTableAssociationsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -6595,9 +6799,9 @@ public final class CenFunctions {
         return getTransitRouterRouteTableAssociations(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -6638,9 +6842,9 @@ public final class CenFunctions {
         return getTransitRouterRouteTableAssociationsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -6681,9 +6885,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", TypeShape.of(GetTransitRouterRouteTableAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -6724,9 +6928,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", TypeShape.of(GetTransitRouterRouteTableAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -7990,9 +8194,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterService:getTransitRouterService", TypeShape.of(GetTransitRouterServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://www.alibabacloud.com/help/doc-detail/261226.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -8033,9 +8237,9 @@ public final class CenFunctions {
         return getTransitRouterVbrAttachments(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://www.alibabacloud.com/help/doc-detail/261226.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -8076,9 +8280,9 @@ public final class CenFunctions {
         return getTransitRouterVbrAttachmentsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://www.alibabacloud.com/help/doc-detail/261226.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -8119,9 +8323,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", TypeShape.of(GetTransitRouterVbrAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://www.alibabacloud.com/help/doc-detail/261226.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -8162,9 +8366,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", TypeShape.of(GetTransitRouterVbrAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
+     * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://www.alibabacloud.com/help/doc-detail/261226.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -9819,9 +10023,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", TypeShape.of(GetTransitRouterVpnAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://www.alibabacloud.com/help/doc-detail/261219.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -9862,9 +10066,9 @@ public final class CenFunctions {
         return getTransitRouters(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://www.alibabacloud.com/help/doc-detail/261219.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -9905,9 +10109,9 @@ public final class CenFunctions {
         return getTransitRoutersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://www.alibabacloud.com/help/doc-detail/261219.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -9948,9 +10152,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouters:getTransitRouters", TypeShape.of(GetTransitRoutersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://www.alibabacloud.com/help/doc-detail/261219.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 
@@ -9991,9 +10195,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouters:getTransitRouters", TypeShape.of(GetTransitRoutersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+     * This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://www.alibabacloud.com/help/doc-detail/261219.html)
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0+
      * 
      * ## Example Usage
      * 

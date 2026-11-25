@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the available zones with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.158.0+.
+ * > **NOTE:** Available since v1.158.0.
  *
  * ## Example Usage
  *
@@ -50,12 +50,15 @@ export interface GetZonesResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * A list of availability zone information collection.
+     */
     readonly zones: outputs.ecp.GetZonesZone[];
 }
 /**
  * This data source provides the available zones with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.158.0+.
+ * > **NOTE:** Available since v1.158.0.
  *
  * ## Example Usage
  *

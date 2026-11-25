@@ -10,29 +10,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetStorageBundlesBundle {
+    /**
+     * @return Storage Bundle created time.
+     * 
+     */
     private String createTime;
+    /**
+     * @return Storage Bundle description.
+     * 
+     */
     private String description;
+    /**
+     * @return The ID of the Storage Bundle.
+     * 
+     */
     private String id;
+    /**
+     * @return Storage Bundle location.
+     * 
+     */
     private String location;
+    /**
+     * @return The ID of the Storage Bundle.
+     * 
+     */
     private String storageBundleId;
+    /**
+     * @return The name of the Storage Bundle.
+     * 
+     */
     private String storageBundleName;
 
     private GetStorageBundlesBundle() {}
+    /**
+     * @return Storage Bundle created time.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return Storage Bundle description.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The ID of the Storage Bundle.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Storage Bundle location.
+     * 
+     */
     public String location() {
         return this.location;
     }
+    /**
+     * @return The ID of the Storage Bundle.
+     * 
+     */
     public String storageBundleId() {
         return this.storageBundleId;
     }
+    /**
+     * @return The name of the Storage Bundle.
+     * 
+     */
     public String storageBundleName() {
         return this.storageBundleName;
     }

@@ -59,11 +59,17 @@ class GetDedicatedHostAccountsResult:
     @_builtins.property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetDedicatedHostAccountsAccountResult']:
+        """
+        A list of Cddc Dedicated Host Accounts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "accounts")
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostId")
     def dedicated_host_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the Dedicated host.
+        """
         return pulumi.get(self, "dedicated_host_id")
 
     @_builtins.property
@@ -87,6 +93,9 @@ class GetDedicatedHostAccountsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Account names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -132,7 +141,7 @@ def get_dedicated_host_accounts(dedicated_host_id: Optional[_builtins.str] = Non
     """
     This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.148.0+.
+    > **NOTE:** Available since v1.148.0.
 
     ## Example Usage
 
@@ -182,7 +191,7 @@ def get_dedicated_host_accounts_output(dedicated_host_id: pulumi.Input[Optional[
     """
     This data source provides the Cddc Dedicated Host Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.148.0+.
+    > **NOTE:** Available since v1.148.0.
 
     ## Example Usage
 

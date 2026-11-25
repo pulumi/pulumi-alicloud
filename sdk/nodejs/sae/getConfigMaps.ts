@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Sae Config Maps of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -82,16 +82,25 @@ export interface GetConfigMapsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Sae Config Maps. Each element contains the following attributes:
+     */
     readonly maps: outputs.sae.GetConfigMapsMap[];
     readonly nameRegex?: string;
+    /**
+     * A list of Config Map names.
+     */
     readonly names: string[];
+    /**
+     * The NamespaceId of Config Maps.
+     */
     readonly namespaceId: string;
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Sae Config Maps of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *

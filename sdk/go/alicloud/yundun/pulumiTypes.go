@@ -14,17 +14,29 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type BastionHostInstanceAdAuthServer struct {
-	Account       string  `pulumi:"account"`
-	BaseDn        string  `pulumi:"baseDn"`
-	Domain        string  `pulumi:"domain"`
-	EmailMapping  *string `pulumi:"emailMapping"`
-	Filter        *string `pulumi:"filter"`
-	IsSsl         bool    `pulumi:"isSsl"`
+	// The username of the account that is used for the AD server.
+	Account string `pulumi:"account"`
+	// The Base distinguished name (DN).
+	BaseDn string `pulumi:"baseDn"`
+	// The domain on the AD server.
+	Domain string `pulumi:"domain"`
+	// The field that is used to indicate the email address of a user on the AD server.
+	EmailMapping *string `pulumi:"emailMapping"`
+	// The condition that is used to filter users.
+	Filter *string `pulumi:"filter"`
+	// Specifies whether to support SSL.
+	IsSsl bool `pulumi:"isSsl"`
+	// The field that is used to indicate the mobile phone number of a user on the AD server.
 	MobileMapping *string `pulumi:"mobileMapping"`
-	NameMapping   *string `pulumi:"nameMapping"`
-	Password      *string `pulumi:"password"`
-	Port          int     `pulumi:"port"`
-	Server        string  `pulumi:"server"`
+	// The field that is used to indicate the name of a user on the AD server.
+	NameMapping *string `pulumi:"nameMapping"`
+	// The password of the account that is used for the AD server.
+	Password *string `pulumi:"password"`
+	// The port that is used to access the AD server.
+	Port int `pulumi:"port"`
+	// The address of the AD server.
+	Server string `pulumi:"server"`
+	// The address of the secondary AD server.
 	StandbyServer *string `pulumi:"standbyServer"`
 }
 
@@ -40,17 +52,29 @@ type BastionHostInstanceAdAuthServerInput interface {
 }
 
 type BastionHostInstanceAdAuthServerArgs struct {
-	Account       pulumi.StringInput    `pulumi:"account"`
-	BaseDn        pulumi.StringInput    `pulumi:"baseDn"`
-	Domain        pulumi.StringInput    `pulumi:"domain"`
-	EmailMapping  pulumi.StringPtrInput `pulumi:"emailMapping"`
-	Filter        pulumi.StringPtrInput `pulumi:"filter"`
-	IsSsl         pulumi.BoolInput      `pulumi:"isSsl"`
+	// The username of the account that is used for the AD server.
+	Account pulumi.StringInput `pulumi:"account"`
+	// The Base distinguished name (DN).
+	BaseDn pulumi.StringInput `pulumi:"baseDn"`
+	// The domain on the AD server.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The field that is used to indicate the email address of a user on the AD server.
+	EmailMapping pulumi.StringPtrInput `pulumi:"emailMapping"`
+	// The condition that is used to filter users.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Specifies whether to support SSL.
+	IsSsl pulumi.BoolInput `pulumi:"isSsl"`
+	// The field that is used to indicate the mobile phone number of a user on the AD server.
 	MobileMapping pulumi.StringPtrInput `pulumi:"mobileMapping"`
-	NameMapping   pulumi.StringPtrInput `pulumi:"nameMapping"`
-	Password      pulumi.StringPtrInput `pulumi:"password"`
-	Port          pulumi.IntInput       `pulumi:"port"`
-	Server        pulumi.StringInput    `pulumi:"server"`
+	// The field that is used to indicate the name of a user on the AD server.
+	NameMapping pulumi.StringPtrInput `pulumi:"nameMapping"`
+	// The password of the account that is used for the AD server.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port that is used to access the AD server.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The address of the AD server.
+	Server pulumi.StringInput `pulumi:"server"`
+	// The address of the secondary AD server.
 	StandbyServer pulumi.StringPtrInput `pulumi:"standbyServer"`
 }
 
@@ -105,50 +129,62 @@ func (o BastionHostInstanceAdAuthServerOutput) ToBastionHostInstanceAdAuthServer
 	return o
 }
 
+// The username of the account that is used for the AD server.
 func (o BastionHostInstanceAdAuthServerOutput) Account() pulumi.StringOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) string { return v.Account }).(pulumi.StringOutput)
 }
 
+// The Base distinguished name (DN).
 func (o BastionHostInstanceAdAuthServerOutput) BaseDn() pulumi.StringOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) string { return v.BaseDn }).(pulumi.StringOutput)
 }
 
+// The domain on the AD server.
 func (o BastionHostInstanceAdAuthServerOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) string { return v.Domain }).(pulumi.StringOutput)
 }
 
+// The field that is used to indicate the email address of a user on the AD server.
 func (o BastionHostInstanceAdAuthServerOutput) EmailMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.EmailMapping }).(pulumi.StringPtrOutput)
 }
 
+// The condition that is used to filter users.
 func (o BastionHostInstanceAdAuthServerOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to support SSL.
 func (o BastionHostInstanceAdAuthServerOutput) IsSsl() pulumi.BoolOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) bool { return v.IsSsl }).(pulumi.BoolOutput)
 }
 
+// The field that is used to indicate the mobile phone number of a user on the AD server.
 func (o BastionHostInstanceAdAuthServerOutput) MobileMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.MobileMapping }).(pulumi.StringPtrOutput)
 }
 
+// The field that is used to indicate the name of a user on the AD server.
 func (o BastionHostInstanceAdAuthServerOutput) NameMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.NameMapping }).(pulumi.StringPtrOutput)
 }
 
+// The password of the account that is used for the AD server.
 func (o BastionHostInstanceAdAuthServerOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The port that is used to access the AD server.
 func (o BastionHostInstanceAdAuthServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The address of the AD server.
 func (o BastionHostInstanceAdAuthServerOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) string { return v.Server }).(pulumi.StringOutput)
 }
 
+// The address of the secondary AD server.
 func (o BastionHostInstanceAdAuthServerOutput) StandbyServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceAdAuthServer) *string { return v.StandbyServer }).(pulumi.StringPtrOutput)
 }
@@ -174,18 +210,30 @@ func (o BastionHostInstanceAdAuthServerArrayOutput) Index(i pulumi.IntInput) Bas
 }
 
 type BastionHostInstanceLdapAuthServer struct {
-	Account          string  `pulumi:"account"`
-	BaseDn           string  `pulumi:"baseDn"`
-	EmailMapping     *string `pulumi:"emailMapping"`
-	Filter           *string `pulumi:"filter"`
-	IsSsl            *bool   `pulumi:"isSsl"`
+	// The username of the account that is used for the LDAP server.
+	Account string `pulumi:"account"`
+	// The Base distinguished name (DN).
+	BaseDn string `pulumi:"baseDn"`
+	// The field that is used to indicate the email address of a user on the LDAP server.
+	EmailMapping *string `pulumi:"emailMapping"`
+	// The condition that is used to filter users.
+	Filter *string `pulumi:"filter"`
+	// Specifies whether to support SSL.
+	IsSsl *bool `pulumi:"isSsl"`
+	// The field that is used to indicate the logon name of a user on the LDAP server.
 	LoginNameMapping *string `pulumi:"loginNameMapping"`
-	MobileMapping    *string `pulumi:"mobileMapping"`
-	NameMapping      *string `pulumi:"nameMapping"`
-	Password         *string `pulumi:"password"`
-	Port             int     `pulumi:"port"`
-	Server           string  `pulumi:"server"`
-	StandbyServer    *string `pulumi:"standbyServer"`
+	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	MobileMapping *string `pulumi:"mobileMapping"`
+	// The field that are used to indicate the name of a user on the LDAP server.
+	NameMapping *string `pulumi:"nameMapping"`
+	// The password of the account that is used for the LDAP server.
+	Password *string `pulumi:"password"`
+	// The port that is used to access the LDAP server.
+	Port int `pulumi:"port"`
+	// The address of the LDAP server.
+	Server string `pulumi:"server"`
+	// The address of the secondary LDAP server.
+	StandbyServer *string `pulumi:"standbyServer"`
 }
 
 // BastionHostInstanceLdapAuthServerInput is an input type that accepts BastionHostInstanceLdapAuthServerArgs and BastionHostInstanceLdapAuthServerOutput values.
@@ -200,18 +248,30 @@ type BastionHostInstanceLdapAuthServerInput interface {
 }
 
 type BastionHostInstanceLdapAuthServerArgs struct {
-	Account          pulumi.StringInput    `pulumi:"account"`
-	BaseDn           pulumi.StringInput    `pulumi:"baseDn"`
-	EmailMapping     pulumi.StringPtrInput `pulumi:"emailMapping"`
-	Filter           pulumi.StringPtrInput `pulumi:"filter"`
-	IsSsl            pulumi.BoolPtrInput   `pulumi:"isSsl"`
+	// The username of the account that is used for the LDAP server.
+	Account pulumi.StringInput `pulumi:"account"`
+	// The Base distinguished name (DN).
+	BaseDn pulumi.StringInput `pulumi:"baseDn"`
+	// The field that is used to indicate the email address of a user on the LDAP server.
+	EmailMapping pulumi.StringPtrInput `pulumi:"emailMapping"`
+	// The condition that is used to filter users.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Specifies whether to support SSL.
+	IsSsl pulumi.BoolPtrInput `pulumi:"isSsl"`
+	// The field that is used to indicate the logon name of a user on the LDAP server.
 	LoginNameMapping pulumi.StringPtrInput `pulumi:"loginNameMapping"`
-	MobileMapping    pulumi.StringPtrInput `pulumi:"mobileMapping"`
-	NameMapping      pulumi.StringPtrInput `pulumi:"nameMapping"`
-	Password         pulumi.StringPtrInput `pulumi:"password"`
-	Port             pulumi.IntInput       `pulumi:"port"`
-	Server           pulumi.StringInput    `pulumi:"server"`
-	StandbyServer    pulumi.StringPtrInput `pulumi:"standbyServer"`
+	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	MobileMapping pulumi.StringPtrInput `pulumi:"mobileMapping"`
+	// The field that are used to indicate the name of a user on the LDAP server.
+	NameMapping pulumi.StringPtrInput `pulumi:"nameMapping"`
+	// The password of the account that is used for the LDAP server.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port that is used to access the LDAP server.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The address of the LDAP server.
+	Server pulumi.StringInput `pulumi:"server"`
+	// The address of the secondary LDAP server.
+	StandbyServer pulumi.StringPtrInput `pulumi:"standbyServer"`
 }
 
 func (BastionHostInstanceLdapAuthServerArgs) ElementType() reflect.Type {
@@ -265,50 +325,62 @@ func (o BastionHostInstanceLdapAuthServerOutput) ToBastionHostInstanceLdapAuthSe
 	return o
 }
 
+// The username of the account that is used for the LDAP server.
 func (o BastionHostInstanceLdapAuthServerOutput) Account() pulumi.StringOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) string { return v.Account }).(pulumi.StringOutput)
 }
 
+// The Base distinguished name (DN).
 func (o BastionHostInstanceLdapAuthServerOutput) BaseDn() pulumi.StringOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) string { return v.BaseDn }).(pulumi.StringOutput)
 }
 
+// The field that is used to indicate the email address of a user on the LDAP server.
 func (o BastionHostInstanceLdapAuthServerOutput) EmailMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.EmailMapping }).(pulumi.StringPtrOutput)
 }
 
+// The condition that is used to filter users.
 func (o BastionHostInstanceLdapAuthServerOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to support SSL.
 func (o BastionHostInstanceLdapAuthServerOutput) IsSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *bool { return v.IsSsl }).(pulumi.BoolPtrOutput)
 }
 
+// The field that is used to indicate the logon name of a user on the LDAP server.
 func (o BastionHostInstanceLdapAuthServerOutput) LoginNameMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.LoginNameMapping }).(pulumi.StringPtrOutput)
 }
 
+// The field that is used to indicate the mobile phone number of a user on the LDAP server.
 func (o BastionHostInstanceLdapAuthServerOutput) MobileMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.MobileMapping }).(pulumi.StringPtrOutput)
 }
 
+// The field that are used to indicate the name of a user on the LDAP server.
 func (o BastionHostInstanceLdapAuthServerOutput) NameMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.NameMapping }).(pulumi.StringPtrOutput)
 }
 
+// The password of the account that is used for the LDAP server.
 func (o BastionHostInstanceLdapAuthServerOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The port that is used to access the LDAP server.
 func (o BastionHostInstanceLdapAuthServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The address of the LDAP server.
 func (o BastionHostInstanceLdapAuthServerOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) string { return v.Server }).(pulumi.StringOutput)
 }
 
+// The address of the secondary LDAP server.
 func (o BastionHostInstanceLdapAuthServerOutput) StandbyServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BastionHostInstanceLdapAuthServer) *string { return v.StandbyServer }).(pulumi.StringPtrOutput)
 }

@@ -43,6 +43,9 @@ export interface GetWafPoliciesArgs {
      * A list of Waf Policy IDs.
      */
     ids?: string[];
+    /**
+     * A regex string to filter results by the name of the Waf Policy.
+     */
     nameRegex?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -66,8 +69,14 @@ export interface GetWafPoliciesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Waf Policy IDs.
+     */
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Waf Policy names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     /**
@@ -117,6 +126,9 @@ export interface GetWafPoliciesOutputArgs {
      * A list of Waf Policy IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * A regex string to filter results by the name of the Waf Policy.
+     */
     nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

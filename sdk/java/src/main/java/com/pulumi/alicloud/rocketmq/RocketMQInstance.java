@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.212.0.
  * 
- * &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v1.294.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+ * &gt; **NOTE:** From `v2.3.0`, destroying a `Subscription` (prepaid) instance automatically unsubscribes it through the BssOpenApi `RefundInstance` API with `ImmediatelyRelease` enabled and waits for the instance to be released before clearing the Terraform state. If the refund cannot be confirmed (for example the commodity is not supported for self-service refund), the Terraform state is retained so the destroy can be retried. In versions prior to `v2.3.0` (including v1.294.0), prepaid instances are not unsubscribed on destroy; you must manually unsubscribe them in the console. A `PayAsYouGo` (postpaid) instance keeps using the RocketMQ `DeleteInstance` API.
  * 
  * ## Example Usage
  * 
@@ -53,7 +53,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.rocketmq.RocketMQInstance;
  * import com.pulumi.alicloud.rocketmq.RocketMQInstanceArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceProductInfoArgs;
- * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceSoftwareArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoVpcInfoArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs;
@@ -111,9 +110,6 @@ import javax.annotation.Nullable;
  *                 "192.168.0.0/16",
  *                 "10.10.0.0/16",
  *                 "172.168.0.0/16")
- *             .software(RocketMQInstanceSoftwareArgs.builder()
- *                 .maintainTime("02:00-06:00")
- *                 .build())
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "example")
@@ -221,11 +217,21 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
     /**
      * Commodity code
      * 
+     * Domestic station (China) values:
+     * 
      * ons_rmqsub_public_cn: Package year and month instance
      * 
      * ons_rmqpost_public_cn: Pay-As-You-Go instance
      * 
-     * Next: Serverless instances
+     * ons_rmqsrvlesspost_public_cn: Serverless instance
+     * 
+     * International station values:
+     * 
+     * ons_rmqsub_public_intl: Package year and month instance
+     * 
+     * ons_rmqpost_public_intl: Pay-As-You-Go instance
+     * 
+     * ons_rmqsrvlesspost_public_intl: Serverless instance
      * 
      */
     @Export(name="commodityCode", refs={String.class}, tree="[0]")
@@ -234,11 +240,21 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return Commodity code
      * 
+     * Domestic station (China) values:
+     * 
      * ons_rmqsub_public_cn: Package year and month instance
      * 
      * ons_rmqpost_public_cn: Pay-As-You-Go instance
      * 
-     * Next: Serverless instances
+     * ons_rmqsrvlesspost_public_cn: Serverless instance
+     * 
+     * International station values:
+     * 
+     * ons_rmqsub_public_intl: Package year and month instance
+     * 
+     * ons_rmqpost_public_intl: Pay-As-You-Go instance
+     * 
+     * ons_rmqsrvlesspost_public_intl: Serverless instance
      * 
      */
     public Output<String> commodityCode() {

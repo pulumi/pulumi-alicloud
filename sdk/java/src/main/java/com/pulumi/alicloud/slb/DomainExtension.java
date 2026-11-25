@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
  * Please refer to the [documentation](https://www.alibabacloud.com/help/doc-detail/85956.htm?spm=a2c63.p38356.b99.40.1c881563Co8p6w) for details.
  * 
- * &gt; **NOTE:** Available in 1.60.0+
+ * &gt; **NOTE:** Available since v1.60.0
  * 
  * &gt; **NOTE:** The instance with shared loadBalancerSpec doesn&#39;t support domainExtension.
  * 
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var domainExtensionServerCertificate = new ServerCertificate("domainExtensionServerCertificate", ServerCertificateArgs.builder()
- *             .name("tf-testAccSlbServerCertificate")
+ *             .name("terraform-example-slb-domain-extension")
  *             .serverCertificate("""
  * -----BEGIN CERTIFICATE-----
  * MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  * 
  *         var example1 = new DomainExtension("example1", DomainExtensionArgs.builder()
  *             .loadBalancerId(instance.id())
- *             .frontendPort(https.frontendPort())
+ *             .listenerPort(https.frontendPort())
  *             .domain("www.test.com")
  *             .serverCertificateId(domainExtensionServerCertificate.id())
  *             .build());
@@ -213,18 +213,35 @@ public class DomainExtension extends com.pulumi.resources.CustomResource {
         return this.domain;
     }
     /**
-     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+     * 
+     * @deprecated Field &#39;frontend_port&#39; has been deprecated from provider version 2.3.0. New field &#39;listener_port&#39; instead.
      * 
      */
+    @Deprecated
     @Export(name="frontendPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> frontendPort;
 
     /**
-     * @return The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+     * @return The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
      * 
      */
     public Output<Integer> frontendPort() {
         return this.frontendPort;
+    }
+    /**
+     * The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+     * 
+     */
+    @Export(name="listenerPort", refs={Integer.class}, tree="[0]")
+    private Output<Integer> listenerPort;
+
+    /**
+     * @return The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+     * 
+     */
+    public Output<Integer> listenerPort() {
+        return this.listenerPort;
     }
     /**
      * The ID of the SLB instance.

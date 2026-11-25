@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem.Outputs
         /// </summary>
         public readonly int Size;
         /// <summary>
-        /// The status of the Database file system.
+        /// Database file system state. Valid values: `Attached`, `Attaching`, `Creating`, `Deleted`, `Deleting`, `Detaching`, `Resizing`, `Snapshotting`, `Unattached`, `Upgrading`.
         /// </summary>
         public readonly string Status;
         /// <summary>

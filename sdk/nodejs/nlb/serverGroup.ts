@@ -153,7 +153,7 @@ export class ServerGroup extends pulumi.CustomResource {
      *
      * - `TCP` (default)
      * - `UDP`
-     * - `TCPSSL`
+     * - `TCP_UDP`
      */
     declare public readonly protocol: pulumi.Output<string>;
     /**
@@ -313,7 +313,7 @@ export interface ServerGroupState {
      *
      * - `TCP` (default)
      * - `UDP`
-     * - `TCPSSL`
+     * - `TCP_UDP`
      */
     protocol?: pulumi.Input<string | undefined>;
     /**
@@ -413,7 +413,7 @@ export interface ServerGroupArgs {
      *
      * - `TCP` (default)
      * - `UDP`
-     * - `TCPSSL`
+     * - `TCP_UDP`
      */
     protocol?: pulumi.Input<string | undefined>;
     /**

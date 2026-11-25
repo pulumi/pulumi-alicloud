@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a collection of DCDN Domains to the specified filters.
  *
- * > **NOTE:** Available since 1.94.0.
+ * > **NOTE:** Available since v1.94.0.
  *
  * ## Example Usage
  *
@@ -81,6 +81,9 @@ export interface GetDomainsArgs {
      * The ID of the resource group.
      */
     resourceGroupId?: string;
+    /**
+     * The security token.
+     */
     securityToken?: string;
     /**
      * The status of DCDN Domain.
@@ -128,7 +131,7 @@ export interface GetDomainsResult {
 /**
  * Provides a collection of DCDN Domains to the specified filters.
  *
- * > **NOTE:** Available since 1.94.0.
+ * > **NOTE:** Available since v1.94.0.
  *
  * ## Example Usage
  *
@@ -200,6 +203,9 @@ export interface GetDomainsOutputArgs {
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The security token.
+     */
     securityToken?: pulumi.Input<string | undefined>;
     /**
      * The status of DCDN Domain.

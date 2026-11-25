@@ -64,6 +64,9 @@ class GetWafPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Waf Policy IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -74,6 +77,9 @@ class GetWafPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Waf Policy names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -144,6 +150,7 @@ def get_waf_policies(ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] ids: A list of Waf Policy IDs.
+    :param _builtins.str name_regex: A regex string to filter results by the name of the Waf Policy.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str query_args: The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"waf_group","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
     :param _builtins.str status: The status of the resource. Valid values: `on`, `off`.
@@ -191,6 +198,7 @@ def get_waf_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
 
 
     :param Sequence[_builtins.str] ids: A list of Waf Policy IDs.
+    :param _builtins.str name_regex: A regex string to filter results by the name of the Waf Policy.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str query_args: The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"waf_group","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
     :param _builtins.str status: The status of the resource. Valid values: `on`, `off`.

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     public sealed class GetRulesRuleResult
     {
         /// <summary>
-        /// The List of the VPC. See the following `Block BindVpcs`. **NOTE:** Available in v1.158.0+.
+        /// The List of the VPC. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleBindVpcResult> BindVpcs;
         /// <summary>
@@ -29,6 +29,9 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
         /// The Name of the Endpoint.
         /// </summary>
         public readonly string EndpointName;
+        /// <summary>
+        /// Forwarding targets. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleForwardIpResult> ForwardIps;
         /// <summary>
         /// The ID of the Rule.

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -168,6 +168,9 @@ namespace Pulumi.AliCloud.Dts
     [OutputType]
     public sealed class GetConsumerChannelsResult
     {
+        /// <summary>
+        /// A list of Dts Consumer Channels. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConsumerChannelsChannelResult> Channels;
         public readonly string DtsInstanceId;
         /// <summary>

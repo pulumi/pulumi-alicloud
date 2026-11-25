@@ -31,7 +31,7 @@ public final class GetInstancesInstance {
      */
     private String instanceId;
     /**
-     * @return The payment type of the resource. Valid values: `Subscription`.
+     * @return The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
      * 
      */
     private String paymentType;
@@ -81,7 +81,7 @@ public final class GetInstancesInstance {
         return this.instanceId;
     }
     /**
-     * @return The payment type of the resource. Valid values: `Subscription`.
+     * @return The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
      * 
      */
     public String paymentType() {

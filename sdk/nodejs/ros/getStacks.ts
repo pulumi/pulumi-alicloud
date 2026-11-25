@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ros Stacks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.106.0+.
+ * > **NOTE:** Available since v1.106.0.
  *
  * ## Example Usage
  *
@@ -95,19 +95,37 @@ export interface GetStacksResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Stack names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Parent Stack Id.
+     */
     readonly parentStackId?: string;
     readonly showNestedStack?: boolean;
+    /**
+     * Stack Name.
+     */
     readonly stackName?: string;
+    /**
+     * A list of Ros Stacks. Each element contains the following attributes:
+     */
     readonly stacks: outputs.ros.GetStacksStack[];
+    /**
+     * The status of Stack.
+     */
     readonly status?: string;
+    /**
+     * Tags of the Stack.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Ros Stacks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.106.0+.
+ * > **NOTE:** Available since v1.106.0.
  *
  * ## Example Usage
  *

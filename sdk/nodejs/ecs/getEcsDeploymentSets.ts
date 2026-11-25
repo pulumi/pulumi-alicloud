@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *
@@ -71,6 +71,9 @@ export interface GetEcsDeploymentSetsArgs {
  * A collection of values returned by getEcsDeploymentSets.
  */
 export interface GetEcsDeploymentSetsResult {
+    /**
+     * The name of the deployment set.
+     */
     readonly deploymentSetName?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -78,15 +81,24 @@ export interface GetEcsDeploymentSetsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Deployment Set names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ecs Deployment Sets. Each element contains the following attributes:
+     */
     readonly sets: outputs.ecs.GetEcsDeploymentSetsSet[];
+    /**
+     * The deployment strategy.
+     */
     readonly strategy?: string;
 }
 /**
  * This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *

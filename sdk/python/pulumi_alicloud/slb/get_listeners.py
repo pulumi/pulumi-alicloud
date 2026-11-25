@@ -122,13 +122,19 @@ def get_listeners(description_regex: Optional[_builtins.str] = None,
     """
     This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
 
+    > **NOTE:** Available since v1.15.0
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.slb.ApplicationLoadBalancer("default", load_balancer_name="tf-testAccSlbListenertcp")
+    default = alicloud.slb.ApplicationLoadBalancer("default",
+        load_balancer_name="terraform-exampleSlbListenerAclDs",
+        internet_charge_type="PayByTraffic",
+        address_type="internet",
+        load_balancer_spec="slb.s1.small")
     tcp = alicloud.slb.Listener("tcp",
         load_balancer_id=default.id,
         backend_port=22,
@@ -145,8 +151,9 @@ def get_listeners(description_regex: Optional[_builtins.str] = None,
         health_check_connect_port=20,
         health_check_uri="/console",
         established_timeout=600)
-    sample_ds = alicloud.slb.get_listeners_output(load_balancer_id=default.id)
+    sample_ds = alicloud.slb.get_listeners_output(load_balancer_id=tcp.load_balancer_id)
     pulumi.export("firstSlbListenerProtocol", sample_ds.slb_listeners[0].protocol)
+    pulumi.export("firstSlbListenerId", sample_ds.slb_listeners[0].id)
     ```
 
 
@@ -182,13 +189,19 @@ def get_listeners_output(description_regex: pulumi.Input[Optional[Optional[_buil
     """
     This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
 
+    > **NOTE:** Available since v1.15.0
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.slb.ApplicationLoadBalancer("default", load_balancer_name="tf-testAccSlbListenertcp")
+    default = alicloud.slb.ApplicationLoadBalancer("default",
+        load_balancer_name="terraform-exampleSlbListenerAclDs",
+        internet_charge_type="PayByTraffic",
+        address_type="internet",
+        load_balancer_spec="slb.s1.small")
     tcp = alicloud.slb.Listener("tcp",
         load_balancer_id=default.id,
         backend_port=22,
@@ -205,8 +218,9 @@ def get_listeners_output(description_regex: pulumi.Input[Optional[Optional[_buil
         health_check_connect_port=20,
         health_check_uri="/console",
         established_timeout=600)
-    sample_ds = alicloud.slb.get_listeners_output(load_balancer_id=default.id)
+    sample_ds = alicloud.slb.get_listeners_output(load_balancer_id=tcp.load_balancer_id)
     pulumi.export("firstSlbListenerProtocol", sample_ds.slb_listeners[0].protocol)
+    pulumi.export("firstSlbListenerId", sample_ds.slb_listeners[0].id)
     ```
 
 

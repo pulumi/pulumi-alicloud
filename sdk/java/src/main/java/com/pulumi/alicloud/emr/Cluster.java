@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
- *             .name("terraform-create-cluster-test")
+ *             .name("terraform-create-cluster")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .hostGroups(            
@@ -206,6 +206,7 @@ import javax.annotation.Nullable;
  * </pre>
  * 
  * ### 2. Scale Up
+ * 
  * The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
  * 
  * In the case of scaling up cluster, we should add the nodeCount of some host group.
@@ -333,7 +334,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
- *             .name("terraform-resize-cluster-test")
+ *             .name("terraform-resize-cluster")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .hostGroups(            
@@ -512,7 +513,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
- *             .name("terraform-resize-cluster-test")
+ *             .name("terraform-resize-cluster")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .hostGroups(            
@@ -682,7 +683,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var gateway = new Cluster("gateway", ClusterArgs.builder()
- *             .name("terraform-gateway-cluster-test")
+ *             .name("terraform-gateway-cluster")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType("GATEWAY")
  *             .hostGroups(ClusterHostGroupArgs.builder()
@@ -727,14 +728,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:emr/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
-     * Boot action parameters.
+     * Boot action parameters. See `bootstrapAction` below.
      * 
      */
     @Export(name="bootstrapActions", refs={List.class,ClusterBootstrapAction.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterBootstrapAction>> bootstrapActions;
 
     /**
-     * @return Boot action parameters.
+     * @return Boot action parameters. See `bootstrapAction` below.
      * 
      */
     public Output<Optional<List<ClusterBootstrapAction>>> bootstrapActions() {
@@ -769,14 +770,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterType;
     }
     /**
-     * The custom configurations of emr-cluster service.
+     * The custom configurations of emr-cluster service. See `configs` below.
      * 
      */
     @Export(name="configs", refs={List.class,ClusterConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterConfig>> configs;
 
     /**
-     * @return The custom configurations of emr-cluster service.
+     * @return The custom configurations of emr-cluster service. See `configs` below.
      * 
      */
     public Output<Optional<List<ClusterConfig>>> configs() {
@@ -839,14 +840,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.highAvailabilityEnable);
     }
     /**
-     * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
      * 
      */
     @Export(name="hostGroups", refs={List.class,ClusterHostGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterHostGroup>> hostGroups;
 
     /**
-     * @return Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+     * @return Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
      * 
      */
     public Output<Optional<List<ClusterHostGroup>>> hostGroups() {
@@ -895,14 +896,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.masterPwd);
     }
     /**
-     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
      * 
      */
     @Export(name="metaStoreConf", refs={ClusterMetaStoreConf.class}, tree="[0]")
     private Output</* @Nullable */ ClusterMetaStoreConf> metaStoreConf;
 
     /**
-     * @return The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+     * @return The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
      * 
      */
     public Output<Optional<ClusterMetaStoreConf>> metaStoreConf() {
@@ -923,14 +924,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.metaStoreType;
     }
     /**
-     * The configurations of emr-cluster service modification after cluster created.
+     * The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
      * 
      */
     @Export(name="modifyClusterServiceConfig", refs={ClusterModifyClusterServiceConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterModifyClusterServiceConfig> modifyClusterServiceConfig;
 
     /**
-     * @return The configurations of emr-cluster service modification after cluster created.
+     * @return The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
      * 
      */
     public Output<Optional<ClusterModifyClusterServiceConfig>> modifyClusterServiceConfig() {

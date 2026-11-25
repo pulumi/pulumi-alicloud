@@ -18,9 +18,17 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetHoneypotPresetsArgs Empty = new GetHoneypotPresetsArgs();
 
+    /**
+     * The current page number.
+     * 
+     */
     @Import(name="currentPage")
     private @Nullable Output<Integer> currentPage;
 
+    /**
+     * @return The current page number.
+     * 
+     */
     public Optional<Output<Integer>> currentPage() {
         return Optional.ofNullable(this.currentPage);
     }
@@ -70,9 +78,17 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The language.
+     * 
+     */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
+    /**
+     * @return The language.
+     * 
+     */
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -92,9 +108,17 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.nodeId);
     }
 
+    /**
+     * The name of the management node.
+     * 
+     */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
+    /**
+     * @return The name of the management node.
+     * 
+     */
     public Optional<Output<String>> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
@@ -177,11 +201,23 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
             $ = new GetHoneypotPresetsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param currentPage The current page number.
+         * 
+         * @return builder
+         * 
+         */
         public Builder currentPage(@Nullable Output<Integer> currentPage) {
             $.currentPage = currentPage;
             return this;
         }
 
+        /**
+         * @param currentPage The current page number.
+         * 
+         * @return builder
+         * 
+         */
         public Builder currentPage(Integer currentPage) {
             return currentPage(Output.of(currentPage));
         }
@@ -259,11 +295,23 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
             return ids(List.of(ids));
         }
 
+        /**
+         * @param lang The language.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lang(@Nullable Output<String> lang) {
             $.lang = lang;
             return this;
         }
 
+        /**
+         * @param lang The language.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lang(String lang) {
             return lang(Output.of(lang));
         }
@@ -289,11 +337,23 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
             return nodeId(Output.of(nodeId));
         }
 
+        /**
+         * @param nodeName The name of the management node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(@Nullable Output<String> nodeName) {
             $.nodeName = nodeName;
             return this;
         }
 
+        /**
+         * @param nodeName The name of the management node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
         }

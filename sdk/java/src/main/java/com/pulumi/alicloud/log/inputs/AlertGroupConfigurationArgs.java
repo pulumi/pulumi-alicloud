@@ -17,9 +17,17 @@ public final class AlertGroupConfigurationArgs extends com.pulumi.resources.Reso
 
     public static final AlertGroupConfigurationArgs Empty = new AlertGroupConfigurationArgs();
 
+    /**
+     * Group configuration&#39;s fields list when type is custom.
+     * 
+     */
     @Import(name="fields")
     private @Nullable Output<List<String>> fields;
 
+    /**
+     * @return Group configuration&#39;s fields list when type is custom.
+     * 
+     */
     public Optional<Output<List<String>>> fields() {
         return Optional.ofNullable(this.fields);
     }
@@ -64,15 +72,33 @@ public final class AlertGroupConfigurationArgs extends com.pulumi.resources.Reso
             $ = new AlertGroupConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fields Group configuration&#39;s fields list when type is custom.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fields(@Nullable Output<List<String>> fields) {
             $.fields = fields;
             return this;
         }
 
+        /**
+         * @param fields Group configuration&#39;s fields list when type is custom.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fields(List<String> fields) {
             return fields(Output.of(fields));
         }
 
+        /**
+         * @param fields Group configuration&#39;s fields list when type is custom.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fields(String... fields) {
             return fields(List.of(fields));
         }

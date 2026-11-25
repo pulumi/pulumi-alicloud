@@ -22,9 +22,17 @@ public final class GetSynchronizationJobsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Dts Synchronization Jobs. Each element contains the following attributes:
+     * 
+     */
     private List<GetSynchronizationJobsJob> jobs;
     private @Nullable String nameRegex;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+     * 
+     */
     private @Nullable String status;
 
     private GetSynchronizationJobsResult() {}
@@ -41,6 +49,10 @@ public final class GetSynchronizationJobsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Dts Synchronization Jobs. Each element contains the following attributes:
+     * 
+     */
     public List<GetSynchronizationJobsJob> jobs() {
         return this.jobs;
     }
@@ -50,6 +62,10 @@ public final class GetSynchronizationJobsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

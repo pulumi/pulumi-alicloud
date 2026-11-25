@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Architect Design Tools Application resource.
  *
- * For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/428263.html).
+ * For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/cadt/developer-reference/api-bpstudio-2021-09-31-createapplication).
  *
  * > **NOTE:** Available since v1.192.0.
  *
@@ -33,8 +33,8 @@ import * as utilities from "../utilities";
  *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  *     areaId: "cn-hangzhou",
  *     instances: [{
- *         id: "data.alicloud_instances.default.instances.0.id",
- *         nodeName: "data.alicloud_instances.default.instances.0.name",
+ *         id: defaultGetInstances.then(defaultGetInstances => defaultGetInstances.instances?.[0]?.id),
+ *         nodeName: defaultGetInstances.then(defaultGetInstances => defaultGetInstances.instances?.[0]?.name),
  *         nodeType: "ecs",
  *     }],
  *     configuration: {
@@ -108,7 +108,7 @@ export class StudioApplication extends pulumi.CustomResource {
      */
     declare public readonly configuration: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+     * The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
      */
     declare public readonly instances: pulumi.Output<outputs.bp.StudioApplicationInstance[] | undefined>;
     /**
@@ -188,7 +188,7 @@ export interface StudioApplicationState {
      */
     configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+     * The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
      */
     instances?: pulumi.Input<pulumi.Input<inputs.bp.StudioApplicationInstance>[] | undefined>;
     /**
@@ -226,7 +226,7 @@ export interface StudioApplicationArgs {
      */
     configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+     * The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
      */
     instances?: pulumi.Input<pulumi.Input<inputs.bp.StudioApplicationInstance>[] | undefined>;
     /**

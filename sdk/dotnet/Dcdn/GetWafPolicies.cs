@@ -114,6 +114,9 @@ namespace Pulumi.AliCloud.Dcdn
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by the name of the Waf Policy.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
@@ -155,6 +158,9 @@ namespace Pulumi.AliCloud.Dcdn
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by the name of the Waf Policy.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
@@ -190,8 +196,14 @@ namespace Pulumi.AliCloud.Dcdn
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Waf Policy IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Waf Policy names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>

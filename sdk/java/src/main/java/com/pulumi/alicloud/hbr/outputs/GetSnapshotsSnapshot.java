@@ -26,7 +26,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String backupType;
     /**
-     * @return The name of OSS bucket.
+     * @return The bucket name of OSS. While sourceType equals `OSS`, this parameter must be set.
      * 
      */
     private String bucket;
@@ -41,17 +41,17 @@ public final class GetSnapshotsSnapshot {
      */
     private String bytesTotal;
     /**
-     * @return The ID of ECS backup client.
+     * @return (ECS_FILE) The ID of ECS backup client.
      * 
      */
     private String clientId;
     /**
-     * @return The time when the snapshot completed. UNIX time in seconds.
+     * @return Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `completeTimeChecker` equals `BETWEEN`, this field should be formatted such as `&#34;2021-08-20T14:17:15CST,2021-08-26T14:17:15CST&#34;`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
      * 
      */
     private String completeTime;
     /**
-     * @return File System Creation Time of Nas. Unix Time Seconds.
+     * @return File system creation timestamp of Nas. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
      */
     private String createTime;
@@ -60,9 +60,13 @@ public final class GetSnapshotsSnapshot {
      * 
      */
     private String createdTime;
+    /**
+     * @return The error file of the snapshot.
+     * 
+     */
     private String errorFile;
     /**
-     * @return The ID of NAS File system.
+     * @return The File System ID of Nas. While sourceType equals `NAS`, this parameter must be set.
      * 
      */
     private String fileSystemId;
@@ -72,7 +76,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String id;
     /**
-     * @return The ID of ECS instance.
+     * @return The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
      * 
      */
     private String instanceId;
@@ -97,12 +101,12 @@ public final class GetSnapshotsSnapshot {
      */
     private String parentSnapshotHash;
     /**
-     * @return Backup Path.
+     * @return (ECS_FILE, NAS) Backup Path.
      * 
      */
     private String path;
     /**
-     * @return Backup file prefix.
+     * @return (OSS) Backup file prefix.
      * 
      */
     private String prefix;
@@ -122,7 +126,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String snapshotId;
     /**
-     * @return Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+     * @return Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
      * 
      */
     private String sourceType;
@@ -132,7 +136,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String startTime;
     /**
-     * @return The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+     * @return The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
      * 
      */
     private String status;
@@ -165,7 +169,7 @@ public final class GetSnapshotsSnapshot {
         return this.backupType;
     }
     /**
-     * @return The name of OSS bucket.
+     * @return The bucket name of OSS. While sourceType equals `OSS`, this parameter must be set.
      * 
      */
     public String bucket() {
@@ -186,21 +190,21 @@ public final class GetSnapshotsSnapshot {
         return this.bytesTotal;
     }
     /**
-     * @return The ID of ECS backup client.
+     * @return (ECS_FILE) The ID of ECS backup client.
      * 
      */
     public String clientId() {
         return this.clientId;
     }
     /**
-     * @return The time when the snapshot completed. UNIX time in seconds.
+     * @return Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `completeTimeChecker` equals `BETWEEN`, this field should be formatted such as `&#34;2021-08-20T14:17:15CST,2021-08-26T14:17:15CST&#34;`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
      * 
      */
     public String completeTime() {
         return this.completeTime;
     }
     /**
-     * @return File System Creation Time of Nas. Unix Time Seconds.
+     * @return File system creation timestamp of Nas. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
      */
     public String createTime() {
@@ -213,11 +217,15 @@ public final class GetSnapshotsSnapshot {
     public String createdTime() {
         return this.createdTime;
     }
+    /**
+     * @return The error file of the snapshot.
+     * 
+     */
     public String errorFile() {
         return this.errorFile;
     }
     /**
-     * @return The ID of NAS File system.
+     * @return The File System ID of Nas. While sourceType equals `NAS`, this parameter must be set.
      * 
      */
     public String fileSystemId() {
@@ -231,7 +239,7 @@ public final class GetSnapshotsSnapshot {
         return this.id;
     }
     /**
-     * @return The ID of ECS instance.
+     * @return The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
      * 
      */
     public String instanceId() {
@@ -266,14 +274,14 @@ public final class GetSnapshotsSnapshot {
         return this.parentSnapshotHash;
     }
     /**
-     * @return Backup Path.
+     * @return (ECS_FILE, NAS) Backup Path.
      * 
      */
     public String path() {
         return this.path;
     }
     /**
-     * @return Backup file prefix.
+     * @return (OSS) Backup file prefix.
      * 
      */
     public String prefix() {
@@ -301,7 +309,7 @@ public final class GetSnapshotsSnapshot {
         return this.snapshotId;
     }
     /**
-     * @return Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+     * @return Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
      * 
      */
     public String sourceType() {
@@ -315,7 +323,7 @@ public final class GetSnapshotsSnapshot {
         return this.startTime;
     }
     /**
-     * @return The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+     * @return The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
      * 
      */
     public String status() {

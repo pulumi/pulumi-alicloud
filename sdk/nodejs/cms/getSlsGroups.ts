@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.171.0+.
+ * > **NOTE:** Available since v1.171.0.
  *
  * ## Example Usage
  *
@@ -70,6 +70,9 @@ export interface GetSlsGroupsArgs {
  * A collection of values returned by getSlsGroups.
  */
 export interface GetSlsGroupsResult {
+    /**
+     * A list of Cms Sls Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.cms.GetSlsGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -78,6 +81,9 @@ export interface GetSlsGroupsResult {
     readonly ids: string[];
     readonly keyword?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Sls Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
@@ -86,7 +92,7 @@ export interface GetSlsGroupsResult {
 /**
  * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.171.0+.
+ * > **NOTE:** Available since v1.171.0.
  *
  * ## Example Usage
  *

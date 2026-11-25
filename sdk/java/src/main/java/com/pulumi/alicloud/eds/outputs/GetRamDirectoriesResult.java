@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRamDirectoriesResult {
+    /**
+     * @return A list of Ecd Ram Directories. Each element contains the following attributes:
+     * 
+     */
     private List<GetRamDirectoriesDirectory> directories;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,23 @@ public final class GetRamDirectoriesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Ram Directory names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of directory.
+     * 
+     */
     private @Nullable String status;
 
     private GetRamDirectoriesResult() {}
+    /**
+     * @return A list of Ecd Ram Directories. Each element contains the following attributes:
+     * 
+     */
     public List<GetRamDirectoriesDirectory> directories() {
         return this.directories;
     }
@@ -43,12 +59,20 @@ public final class GetRamDirectoriesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Ram Directory names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of directory.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

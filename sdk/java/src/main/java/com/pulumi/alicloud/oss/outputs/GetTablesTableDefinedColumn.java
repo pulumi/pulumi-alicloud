@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTablesTableDefinedColumn {
+    /**
+     * @return Name for defined column.
+     * 
+     */
     private String name;
+    /**
+     * @return Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
+     * 
+     */
     private String type;
 
     private GetTablesTableDefinedColumn() {}
+    /**
+     * @return Name for defined column.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
+     * 
+     */
     public String type() {
         return this.type;
     }

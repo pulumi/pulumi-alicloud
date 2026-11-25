@@ -250,6 +250,11 @@ export type SiteDeliveryTask = import("./siteDeliveryTask").SiteDeliveryTask;
 export const SiteDeliveryTask: typeof import("./siteDeliveryTask").SiteDeliveryTask = null as any;
 utilities.lazyLoad(exports, ["SiteDeliveryTask"], () => require("./siteDeliveryTask"));
 
+export { SiteEnvironmentArgs, SiteEnvironmentState } from "./siteEnvironment";
+export type SiteEnvironment = import("./siteEnvironment").SiteEnvironment;
+export const SiteEnvironment: typeof import("./siteEnvironment").SiteEnvironment = null as any;
+utilities.lazyLoad(exports, ["SiteEnvironment"], () => require("./siteEnvironment"));
+
 export { SiteOriginClientCertificateArgs, SiteOriginClientCertificateState } from "./siteOriginClientCertificate";
 export type SiteOriginClientCertificate = import("./siteOriginClientCertificate").SiteOriginClientCertificate;
 export const SiteOriginClientCertificate: typeof import("./siteOriginClientCertificate").SiteOriginClientCertificate = null as any;
@@ -387,6 +392,8 @@ const _module = {
                 return new Site(name, <any>undefined, { urn })
             case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
                 return new SiteDeliveryTask(name, <any>undefined, { urn })
+            case "alicloud:esa/siteEnvironment:SiteEnvironment":
+                return new SiteEnvironment(name, <any>undefined, { urn })
             case "alicloud:esa/siteOriginClientCertificate:SiteOriginClientCertificate":
                 return new SiteOriginClientCertificate(name, <any>undefined, { urn })
             case "alicloud:esa/transportLayerApplication:TransportLayerApplication":
@@ -453,6 +460,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadExecution
 pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/site", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/siteDeliveryTask", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/siteEnvironment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/siteOriginClientCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/transportLayerApplication", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/urlObservation", _module)

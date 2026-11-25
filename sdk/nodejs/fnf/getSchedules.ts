@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Fnf Schedules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.105.0+.
+ * > **NOTE:** Available since v1.105.0.
  *
  * ## Example Usage
  *
@@ -76,14 +76,20 @@ export interface GetSchedulesResult {
     readonly ids: string[];
     readonly limit?: number;
     readonly nameRegex?: string;
+    /**
+     * A list of Schedule names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Fnf Schedules. Each element contains the following attributes:
+     */
     readonly schedules: outputs.fnf.GetSchedulesSchedule[];
 }
 /**
  * This data source provides the Fnf Schedules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.105.0+.
+ * > **NOTE:** Available since v1.105.0.
  *
  * ## Example Usage
  *

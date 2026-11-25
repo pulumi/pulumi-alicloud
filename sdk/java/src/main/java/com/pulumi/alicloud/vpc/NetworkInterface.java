@@ -108,9 +108,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:vpc/networkInterface:NetworkInterface")
 public class NetworkInterface extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether to delete the ENI when it is released.
+     * 
+     */
     @Export(name="deleteOnRelease", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleteOnRelease;
 
+    /**
+     * @return Whether to delete the ENI when it is released.
+     * 
+     */
     public Output<Boolean> deleteOnRelease() {
         return this.deleteOnRelease;
     }
@@ -128,52 +136,92 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * The instance type of the ENI.
+     * 
+     */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
+    /**
+     * @return The instance type of the ENI.
+     * 
+     */
     public Output<String> instanceType() {
         return this.instanceType;
     }
+    /**
+     * The number of IPv4 prefixes to assign to the ENI.
+     * 
+     */
     @Export(name="ipv4PrefixCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv4PrefixCount;
 
+    /**
+     * @return The number of IPv4 prefixes to assign to the ENI.
+     * 
+     */
     public Output<Integer> ipv4PrefixCount() {
         return this.ipv4PrefixCount;
     }
+    /**
+     * A list of IPv4 prefixes to assign to the ENI.
+     * 
+     */
     @Export(name="ipv4Prefixes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv4Prefixes;
 
+    /**
+     * @return A list of IPv4 prefixes to assign to the ENI.
+     * 
+     */
     public Output<List<String>> ipv4Prefixes() {
         return this.ipv4Prefixes;
     }
+    /**
+     * The number of IPv6 addresses to assign to the ENI.
+     * 
+     */
     @Export(name="ipv6AddressCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv6AddressCount;
 
+    /**
+     * @return The number of IPv6 addresses to assign to the ENI.
+     * 
+     */
     public Output<Integer> ipv6AddressCount() {
         return this.ipv6AddressCount;
     }
+    /**
+     * A list of IPv6 addresses to assign to the ENI.
+     * 
+     */
     @Export(name="ipv6Addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv6Addresses;
 
+    /**
+     * @return A list of IPv6 addresses to assign to the ENI.
+     * 
+     */
     public Output<List<String>> ipv6Addresses() {
         return this.ipv6Addresses;
     }
     /**
-     * (Available in 1.54.0+) The MAC address of an ENI.
+     * (Available since v1.54.0) The MAC address of an ENI.
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
-     * @return (Available in 1.54.0+) The MAC address of an ENI.
+     * @return (Available since v1.54.0) The MAC address of an ENI.
      * 
      */
     public Output<String> mac() {
         return this.mac;
     }
     /**
-     * Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;.&#34;, &#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     * Deprecated, use `networkInterfaceName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
@@ -183,32 +231,56 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;.&#34;, &#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     * @return Deprecated, use `networkInterfaceName` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Name of the ENI.
+     * 
+     */
     @Export(name="networkInterfaceName", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceName;
 
+    /**
+     * @return Name of the ENI.
+     * 
+     */
     public Output<String> networkInterfaceName() {
         return this.networkInterfaceName;
     }
+    /**
+     * The traffic mode of the ENI.
+     * 
+     */
     @Export(name="networkInterfaceTrafficMode", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceTrafficMode;
 
+    /**
+     * @return The traffic mode of the ENI.
+     * 
+     */
     public Output<String> networkInterfaceTrafficMode() {
         return this.networkInterfaceTrafficMode;
     }
+    /**
+     * The primary private IP of the ENI.
+     * 
+     */
     @Export(name="primaryIpAddress", refs={String.class}, tree="[0]")
     private Output<String> primaryIpAddress;
 
+    /**
+     * @return The primary private IP of the ENI.
+     * 
+     */
     public Output<String> primaryIpAddress() {
         return this.primaryIpAddress;
     }
     /**
-     * The primary private IP of the ENI.
+     * Deprecated, use `primaryIpAddress` instead.
      * 
      * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
@@ -218,20 +290,28 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     private Output<String> privateIp;
 
     /**
-     * @return The primary private IP of the ENI.
+     * @return Deprecated, use `primaryIpAddress` instead.
      * 
      */
     public Output<String> privateIp() {
         return this.privateIp;
     }
+    /**
+     * List of secondary private IPs to assign to the ENI.
+     * 
+     */
     @Export(name="privateIpAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privateIpAddresses;
 
+    /**
+     * @return List of secondary private IPs to assign to the ENI.
+     * 
+     */
     public Output<List<String>> privateIpAddresses() {
         return this.privateIpAddresses;
     }
     /**
-     * List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+     * Deprecated, use `privateIpAddresses` instead.
      * 
      * @deprecated Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
      * 
@@ -241,14 +321,14 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     private Output<List<String>> privateIps;
 
     /**
-     * @return List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+     * @return Deprecated, use `privateIpAddresses` instead.
      * 
      */
     public Output<List<String>> privateIps() {
         return this.privateIps;
     }
     /**
-     * Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+     * Deprecated, use `secondaryPrivateIpAddressCount` instead.
      * 
      * @deprecated Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
      * 
@@ -258,15 +338,23 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     private Output<Integer> privateIpsCount;
 
     /**
-     * @return Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+     * @return Deprecated, use `secondaryPrivateIpAddressCount` instead.
      * 
      */
     public Output<Integer> privateIpsCount() {
         return this.privateIpsCount;
     }
+    /**
+     * The queue number of the ENI.
+     * 
+     */
     @Export(name="queueNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> queueNumber;
 
+    /**
+     * @return The queue number of the ENI.
+     * 
+     */
     public Output<Integer> queueNumber() {
         return this.queueNumber;
     }
@@ -284,20 +372,36 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
+    /**
+     * Number of secondary private IPs to assign to the ENI.
+     * 
+     */
     @Export(name="secondaryPrivateIpAddressCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> secondaryPrivateIpAddressCount;
 
+    /**
+     * @return Number of secondary private IPs to assign to the ENI.
+     * 
+     */
     public Output<Integer> secondaryPrivateIpAddressCount() {
         return this.secondaryPrivateIpAddressCount;
     }
+    /**
+     * A list of security group ids to associate with.
+     * 
+     */
     @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
+    /**
+     * @return A list of security group ids to associate with.
+     * 
+     */
     public Output<List<String>> securityGroupIds() {
         return this.securityGroupIds;
     }
     /**
-     * A list of security group ids to associate with.
+     * Deprecated, use `securityGroupIds` instead.
      * 
      * @deprecated Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
      * 
@@ -307,21 +411,37 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     private Output<List<String>> securityGroups;
 
     /**
-     * @return A list of security group ids to associate with.
+     * @return Deprecated, use `securityGroupIds` instead.
      * 
      */
     public Output<List<String>> securityGroups() {
         return this.securityGroups;
     }
+    /**
+     * Whether to enable SourceDestCheck of the ENI.
+     * 
+     */
     @Export(name="sourceDestCheck", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sourceDestCheck;
 
+    /**
+     * @return Whether to enable SourceDestCheck of the ENI.
+     * 
+     */
     public Output<Optional<Boolean>> sourceDestCheck() {
         return Codegen.optional(this.sourceDestCheck);
     }
+    /**
+     * The status of the ENI.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return The status of the ENI.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }

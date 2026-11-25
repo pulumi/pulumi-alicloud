@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTlsCipherPoliciesPolicyRelateListenerResult> RelateListeners;
         /// <summary>
-        /// TLS policy instance state.
+        /// TLS policy instance state. Valid values: `Configuring`, `Normal`.
         /// </summary>
         public readonly string Status;
         /// <summary>

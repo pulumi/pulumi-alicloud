@@ -23,9 +23,21 @@ public final class GetReceiversResult {
     private List<String> ids;
     private @Nullable String keyWord;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Receivers names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Direct Mail Receiverses. Each element contains the following attributes:
+     * 
+     */
     private List<GetReceiversReceiverse> receiverses;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable Integer status;
 
     private GetReceiversResult() {}
@@ -45,15 +57,27 @@ public final class GetReceiversResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Receivers names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Direct Mail Receiverses. Each element contains the following attributes:
+     * 
+     */
     public List<GetReceiversReceiverse> receiverses() {
         return this.receiverses;
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<Integer> status() {
         return Optional.ofNullable(this.status);
     }

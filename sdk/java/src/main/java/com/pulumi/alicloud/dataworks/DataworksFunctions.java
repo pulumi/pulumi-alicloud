@@ -21,7 +21,7 @@ public final class DataworksFunctions {
     /**
      * This data source provides the Data Works Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 
@@ -75,7 +75,7 @@ public final class DataworksFunctions {
     /**
      * This data source provides the Data Works Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 
@@ -129,7 +129,7 @@ public final class DataworksFunctions {
     /**
      * This data source provides the Data Works Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 
@@ -183,7 +183,7 @@ public final class DataworksFunctions {
     /**
      * This data source provides the Data Works Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 
@@ -237,7 +237,7 @@ public final class DataworksFunctions {
     /**
      * This data source provides the Data Works Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 

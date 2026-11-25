@@ -14,6 +14,12 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ContainerGroupAcrRegistryInfo struct {
+	// The ARN of a RAM role in the account that owns the container group. ECI assumes this role to obtain the image pull credential. On its own, it restricts which role ECI uses to pull images from an ACR Personal Edition instance, or from an ACR Enterprise Edition instance through its default domain, in the same account. To pull from an ACR Enterprise Edition instance in another account, set it together with `arnUser`. The role must trust `eci.aliyuncs.com` and be granted `AliyunSTSAssumeRoleAccess`. The value can be built with the provider-defined function `arnBuild`, for example `provider::alicloud::arn_build("ram", "", "<account-id>", "role/<role-name>")`.
+	ArnService *string `pulumi:"arnService"`
+	// The ARN of a RAM role in the account that owns the ACR Enterprise Edition instance, used for cross-account image pulling. It must be set together with `arnService`. The role must trust the role specified by `arnService` and be granted image pull permissions on the instance, for example `cr:GetAuthorizationToken` and `cr:PullRepository` (the official example grants `AliyunContainerRegistryFullAccess`). When the instance is accessed through a custom domain, `instanceId` is required.
+	//
+	// > **NOTE:** `arnService` and `arnUser` are create-time inputs. They are retained in Terraform state after creation, but cannot be retrieved from an existing container group during import. Configuring them after import requires replacement of the container group. Review the plan before applying configuration to an imported group.
+	ArnUser *string `pulumi:"arnUser"`
 	// The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
 	Domains []string `pulumi:"domains"`
 	// The ACR enterprise edition example ID.
@@ -36,6 +42,12 @@ type ContainerGroupAcrRegistryInfoInput interface {
 }
 
 type ContainerGroupAcrRegistryInfoArgs struct {
+	// The ARN of a RAM role in the account that owns the container group. ECI assumes this role to obtain the image pull credential. On its own, it restricts which role ECI uses to pull images from an ACR Personal Edition instance, or from an ACR Enterprise Edition instance through its default domain, in the same account. To pull from an ACR Enterprise Edition instance in another account, set it together with `arnUser`. The role must trust `eci.aliyuncs.com` and be granted `AliyunSTSAssumeRoleAccess`. The value can be built with the provider-defined function `arnBuild`, for example `provider::alicloud::arn_build("ram", "", "<account-id>", "role/<role-name>")`.
+	ArnService pulumi.StringPtrInput `pulumi:"arnService"`
+	// The ARN of a RAM role in the account that owns the ACR Enterprise Edition instance, used for cross-account image pulling. It must be set together with `arnService`. The role must trust the role specified by `arnService` and be granted image pull permissions on the instance, for example `cr:GetAuthorizationToken` and `cr:PullRepository` (the official example grants `AliyunContainerRegistryFullAccess`). When the instance is accessed through a custom domain, `instanceId` is required.
+	//
+	// > **NOTE:** `arnService` and `arnUser` are create-time inputs. They are retained in Terraform state after creation, but cannot be retrieved from an existing container group during import. Configuring them after import requires replacement of the container group. Review the plan before applying configuration to an imported group.
+	ArnUser pulumi.StringPtrInput `pulumi:"arnUser"`
 	// The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// The ACR enterprise edition example ID.
@@ -95,6 +107,18 @@ func (o ContainerGroupAcrRegistryInfoOutput) ToContainerGroupAcrRegistryInfoOutp
 
 func (o ContainerGroupAcrRegistryInfoOutput) ToContainerGroupAcrRegistryInfoOutputWithContext(ctx context.Context) ContainerGroupAcrRegistryInfoOutput {
 	return o
+}
+
+// The ARN of a RAM role in the account that owns the container group. ECI assumes this role to obtain the image pull credential. On its own, it restricts which role ECI uses to pull images from an ACR Personal Edition instance, or from an ACR Enterprise Edition instance through its default domain, in the same account. To pull from an ACR Enterprise Edition instance in another account, set it together with `arnUser`. The role must trust `eci.aliyuncs.com` and be granted `AliyunSTSAssumeRoleAccess`. The value can be built with the provider-defined function `arnBuild`, for example `provider::alicloud::arn_build("ram", "", "<account-id>", "role/<role-name>")`.
+func (o ContainerGroupAcrRegistryInfoOutput) ArnService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerGroupAcrRegistryInfo) *string { return v.ArnService }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of a RAM role in the account that owns the ACR Enterprise Edition instance, used for cross-account image pulling. It must be set together with `arnService`. The role must trust the role specified by `arnService` and be granted image pull permissions on the instance, for example `cr:GetAuthorizationToken` and `cr:PullRepository` (the official example grants `AliyunContainerRegistryFullAccess`). When the instance is accessed through a custom domain, `instanceId` is required.
+//
+// > **NOTE:** `arnService` and `arnUser` are create-time inputs. They are retained in Terraform state after creation, but cannot be retrieved from an existing container group during import. Configuring them after import requires replacement of the container group. Review the plan before applying configuration to an imported group.
+func (o ContainerGroupAcrRegistryInfoOutput) ArnUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerGroupAcrRegistryInfo) *string { return v.ArnUser }).(pulumi.StringPtrOutput)
 }
 
 // The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
@@ -3504,6 +3528,7 @@ func (o ContainerGroupSecurityContextSysctlArrayOutput) Index(i pulumi.IntInput)
 
 type ContainerGroupVolume struct {
 	// The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+	//
 	// > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
 	ConfigFileVolumeConfigFileToPaths []ContainerGroupVolumeConfigFileVolumeConfigFileToPath `pulumi:"configFileVolumeConfigFileToPaths"`
 	// The ID of DiskVolume.
@@ -3541,6 +3566,7 @@ type ContainerGroupVolumeInput interface {
 
 type ContainerGroupVolumeArgs struct {
 	// The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+	//
 	// > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
 	ConfigFileVolumeConfigFileToPaths ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayInput `pulumi:"configFileVolumeConfigFileToPaths"`
 	// The ID of DiskVolume.
@@ -3617,6 +3643,7 @@ func (o ContainerGroupVolumeOutput) ToContainerGroupVolumeOutputWithContext(ctx 
 }
 
 // The paths of the ConfigFile volume. See `configFileVolumeConfigFileToPaths` below.
+//
 // > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
 func (o ContainerGroupVolumeOutput) ConfigFileVolumeConfigFileToPaths() ContainerGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput {
 	return o.ApplyT(func(v ContainerGroupVolume) []ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
@@ -3913,8 +3940,11 @@ func (o ImageCacheImageRegistryCredentialArrayOutput) Index(i pulumi.IntInput) I
 }
 
 type OpenApiImageCacheImageRegistryCredential struct {
+	// The password of the Image Registry.
 	Password *string `pulumi:"password"`
-	Server   *string `pulumi:"server"`
+	// The address of Image Registry without `http://` or `https://`.
+	Server *string `pulumi:"server"`
+	// The user name of Image Registry.
 	UserName *string `pulumi:"userName"`
 }
 
@@ -3930,8 +3960,11 @@ type OpenApiImageCacheImageRegistryCredentialInput interface {
 }
 
 type OpenApiImageCacheImageRegistryCredentialArgs struct {
+	// The password of the Image Registry.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	Server   pulumi.StringPtrInput `pulumi:"server"`
+	// The address of Image Registry without `http://` or `https://`.
+	Server pulumi.StringPtrInput `pulumi:"server"`
+	// The user name of Image Registry.
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 
@@ -3986,14 +4019,17 @@ func (o OpenApiImageCacheImageRegistryCredentialOutput) ToOpenApiImageCacheImage
 	return o
 }
 
+// The password of the Image Registry.
 func (o OpenApiImageCacheImageRegistryCredentialOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenApiImageCacheImageRegistryCredential) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The address of Image Registry without `http://` or `https://`.
 func (o OpenApiImageCacheImageRegistryCredentialOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenApiImageCacheImageRegistryCredential) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
+// The user name of Image Registry.
 func (o OpenApiImageCacheImageRegistryCredentialOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenApiImageCacheImageRegistryCredential) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -4140,7 +4176,7 @@ type GetContainerGroupsGroup struct {
 	ContainerGroupName string `pulumi:"containerGroupName"`
 	// A list of containers. Each element contains the following attributes:
 	Containers []GetContainerGroupsGroupContainer `pulumi:"containers"`
-	// The amount of CPU resources allocated to the container group.
+	// The amount of CPU resources allocated to the container.
 	Cpu      float64 `pulumi:"cpu"`
 	Discount int     `pulumi:"discount"`
 	// The DNS settings.
@@ -4179,19 +4215,19 @@ type GetContainerGroupsGroup struct {
 	RestartPolicy string `pulumi:"restartPolicy"`
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The status of container.
+	// The status list. For more information, see the description of ContainerGroup arrays.
 	Status string `pulumi:"status"`
 	// The time when all containers in the container group completed running the specified tasks. The timestamp follows the UTC and RFC 3339 formats. For example, 2018-08-02T15:00:00Z.
 	SucceededTime string `pulumi:"succeededTime"`
-	// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The information about the mounted volume. You can mount up to 20 volumes.
 	Volumes []GetContainerGroupsGroupVolume `pulumi:"volumes"`
 	// The if of vpc.
 	VpcId string `pulumi:"vpcId"`
-	// The vswitch id.
+	// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
 	VswitchId string `pulumi:"vswitchId"`
-	// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -4213,7 +4249,7 @@ type GetContainerGroupsGroupArgs struct {
 	ContainerGroupName pulumi.StringInput `pulumi:"containerGroupName"`
 	// A list of containers. Each element contains the following attributes:
 	Containers GetContainerGroupsGroupContainerArrayInput `pulumi:"containers"`
-	// The amount of CPU resources allocated to the container group.
+	// The amount of CPU resources allocated to the container.
 	Cpu      pulumi.Float64Input `pulumi:"cpu"`
 	Discount pulumi.IntInput     `pulumi:"discount"`
 	// The DNS settings.
@@ -4252,19 +4288,19 @@ type GetContainerGroupsGroupArgs struct {
 	RestartPolicy pulumi.StringInput `pulumi:"restartPolicy"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// The status of container.
+	// The status list. For more information, see the description of ContainerGroup arrays.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The time when all containers in the container group completed running the specified tasks. The timestamp follows the UTC and RFC 3339 formats. For example, 2018-08-02T15:00:00Z.
 	SucceededTime pulumi.StringInput `pulumi:"succeededTime"`
-	// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The information about the mounted volume. You can mount up to 20 volumes.
 	Volumes GetContainerGroupsGroupVolumeArrayInput `pulumi:"volumes"`
 	// The if of vpc.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The vswitch id.
+	// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -4334,7 +4370,7 @@ func (o GetContainerGroupsGroupOutput) Containers() GetContainerGroupsGroupConta
 	return o.ApplyT(func(v GetContainerGroupsGroup) []GetContainerGroupsGroupContainer { return v.Containers }).(GetContainerGroupsGroupContainerArrayOutput)
 }
 
-// The amount of CPU resources allocated to the container group.
+// The amount of CPU resources allocated to the container.
 func (o GetContainerGroupsGroupOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v GetContainerGroupsGroup) float64 { return v.Cpu }).(pulumi.Float64Output)
 }
@@ -4435,7 +4471,7 @@ func (o GetContainerGroupsGroupOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroup) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The status of container.
+// The status list. For more information, see the description of ContainerGroup arrays.
 func (o GetContainerGroupsGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4445,7 +4481,7 @@ func (o GetContainerGroupsGroupOutput) SucceededTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroup) string { return v.SucceededTime }).(pulumi.StringOutput)
 }
 
-// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+// A mapping of tags to assign to the resource.
 func (o GetContainerGroupsGroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -4460,12 +4496,12 @@ func (o GetContainerGroupsGroupOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroup) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The vswitch id.
+// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
 func (o GetContainerGroupsGroupOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroup) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 func (o GetContainerGroupsGroupOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroup) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -4491,9 +4527,9 @@ func (o GetContainerGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetContaine
 }
 
 type GetContainerGroupsGroupContainer struct {
-	// The arguments passed to the commands. Maximum: `10`.
+	// The arguments passed to the commands.
 	Args []string `pulumi:"args"`
-	// The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
+	// The commands run by the container.
 	Commands []string `pulumi:"commands"`
 	// The amount of CPU resources allocated to the container.
 	Cpu float64 `pulumi:"cpu"`
@@ -4505,11 +4541,11 @@ type GetContainerGroupsGroupContainer struct {
 	Image string `pulumi:"image"`
 	// The policy for pulling an image.
 	ImagePullPolicy string `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory float64 `pulumi:"memory"`
-	// The name of the container.
+	// The name of the volume.
 	Name string `pulumi:"name"`
-	// The list of exposed ports and protocols. Maximum: 100.
+	// The exposed ports and protocols. Maximum: `100`.
 	Ports []GetContainerGroupsGroupContainerPort `pulumi:"ports"`
 	// Indicates whether the container is ready.
 	Ready bool `pulumi:"ready"`
@@ -4533,9 +4569,9 @@ type GetContainerGroupsGroupContainerInput interface {
 }
 
 type GetContainerGroupsGroupContainerArgs struct {
-	// The arguments passed to the commands. Maximum: `10`.
+	// The arguments passed to the commands.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
+	// The commands run by the container.
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
 	// The amount of CPU resources allocated to the container.
 	Cpu pulumi.Float64Input `pulumi:"cpu"`
@@ -4547,11 +4583,11 @@ type GetContainerGroupsGroupContainerArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// The policy for pulling an image.
 	ImagePullPolicy pulumi.StringInput `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64Input `pulumi:"memory"`
-	// The name of the container.
+	// The name of the volume.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The list of exposed ports and protocols. Maximum: 100.
+	// The exposed ports and protocols. Maximum: `100`.
 	Ports GetContainerGroupsGroupContainerPortArrayInput `pulumi:"ports"`
 	// Indicates whether the container is ready.
 	Ready pulumi.BoolInput `pulumi:"ready"`
@@ -4614,12 +4650,12 @@ func (o GetContainerGroupsGroupContainerOutput) ToGetContainerGroupsGroupContain
 	return o
 }
 
-// The arguments passed to the commands. Maximum: `10`.
+// The arguments passed to the commands.
 func (o GetContainerGroupsGroupContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
+// The commands run by the container.
 func (o GetContainerGroupsGroupContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
@@ -4651,17 +4687,17 @@ func (o GetContainerGroupsGroupContainerOutput) ImagePullPolicy() pulumi.StringO
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
 }
 
-// The amount of memory resources allocated to the container.
+// The amount of memory resources allocated to the container group.
 func (o GetContainerGroupsGroupContainerOutput) Memory() pulumi.Float64Output {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) float64 { return v.Memory }).(pulumi.Float64Output)
 }
 
-// The name of the container.
+// The name of the volume.
 func (o GetContainerGroupsGroupContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of exposed ports and protocols. Maximum: 100.
+// The exposed ports and protocols. Maximum: `100`.
 func (o GetContainerGroupsGroupContainerOutput) Ports() GetContainerGroupsGroupContainerPortArrayOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) []GetContainerGroupsGroupContainerPort { return v.Ports }).(GetContainerGroupsGroupContainerPortArrayOutput)
 }
@@ -4923,7 +4959,7 @@ func (o GetContainerGroupsGroupContainerPortArrayOutput) Index(i pulumi.IntInput
 type GetContainerGroupsGroupContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath string `pulumi:"mountPath"`
-	// The name of the volume. The name is the same as the volume you selected when you purchased the container.
+	// The name of the volume.
 	Name string `pulumi:"name"`
 	// Default value: `false`.
 	ReadOnly bool `pulumi:"readOnly"`
@@ -4943,7 +4979,7 @@ type GetContainerGroupsGroupContainerVolumeMountInput interface {
 type GetContainerGroupsGroupContainerVolumeMountArgs struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// The name of the volume. The name is the same as the volume you selected when you purchased the container.
+	// The name of the volume.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Default value: `false`.
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
@@ -5005,7 +5041,7 @@ func (o GetContainerGroupsGroupContainerVolumeMountOutput) MountPath() pulumi.St
 	return o.ApplyT(func(v GetContainerGroupsGroupContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// The name of the volume. The name is the same as the volume you selected when you purchased the container.
+// The name of the volume.
 func (o GetContainerGroupsGroupContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5151,9 +5187,9 @@ func (o GetContainerGroupsGroupDnsConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetContainerGroupsGroupDnsConfigOption struct {
-	// The name of the object variable.
+	// The name of the volume.
 	Name string `pulumi:"name"`
-	// The value of the object variable.
+	// The value of the variable.
 	Value string `pulumi:"value"`
 }
 
@@ -5169,9 +5205,9 @@ type GetContainerGroupsGroupDnsConfigOptionInput interface {
 }
 
 type GetContainerGroupsGroupDnsConfigOptionArgs struct {
-	// The name of the object variable.
+	// The name of the volume.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the object variable.
+	// The value of the variable.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -5226,12 +5262,12 @@ func (o GetContainerGroupsGroupDnsConfigOptionOutput) ToGetContainerGroupsGroupD
 	return o
 }
 
-// The name of the object variable.
+// The name of the volume.
 func (o GetContainerGroupsGroupDnsConfigOptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupDnsConfigOption) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the object variable.
+// The value of the variable.
 func (o GetContainerGroupsGroupDnsConfigOptionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupDnsConfigOption) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5356,7 +5392,7 @@ func (o GetContainerGroupsGroupEciSecurityContextArrayOutput) Index(i pulumi.Int
 }
 
 type GetContainerGroupsGroupEciSecurityContextSysctl struct {
-	// The name of the variable.
+	// The name of the volume.
 	Name string `pulumi:"name"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
@@ -5374,7 +5410,7 @@ type GetContainerGroupsGroupEciSecurityContextSysctlInput interface {
 }
 
 type GetContainerGroupsGroupEciSecurityContextSysctlArgs struct {
-	// The name of the variable.
+	// The name of the volume.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the variable.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -5431,7 +5467,7 @@ func (o GetContainerGroupsGroupEciSecurityContextSysctlOutput) ToGetContainerGro
 	return o
 }
 
-// The name of the variable.
+// The name of the volume.
 func (o GetContainerGroupsGroupEciSecurityContextSysctlOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEciSecurityContextSysctl) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5470,11 +5506,11 @@ type GetContainerGroupsGroupEvent struct {
 	LastTimestamp string `pulumi:"lastTimestamp"`
 	// The content of the event.
 	Message string `pulumi:"message"`
-	// The name of the object to which the event belongs.
+	// The name of the volume.
 	Name string `pulumi:"name"`
 	// The name of the event.
 	Reason string `pulumi:"reason"`
-	// The type of the event. Valid values: Normal and Warning.
+	// The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
 	Type string `pulumi:"type"`
 }
 
@@ -5498,11 +5534,11 @@ type GetContainerGroupsGroupEventArgs struct {
 	LastTimestamp pulumi.StringInput `pulumi:"lastTimestamp"`
 	// The content of the event.
 	Message pulumi.StringInput `pulumi:"message"`
-	// The name of the object to which the event belongs.
+	// The name of the volume.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the event.
 	Reason pulumi.StringInput `pulumi:"reason"`
-	// The type of the event. Valid values: Normal and Warning.
+	// The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -5577,7 +5613,7 @@ func (o GetContainerGroupsGroupEventOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// The name of the object to which the event belongs.
+// The name of the volume.
 func (o GetContainerGroupsGroupEventOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5587,7 +5623,7 @@ func (o GetContainerGroupsGroupEventOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Reason }).(pulumi.StringOutput)
 }
 
-// The type of the event. Valid values: Normal and Warning.
+// The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
 func (o GetContainerGroupsGroupEventOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5733,9 +5769,9 @@ type GetContainerGroupsGroupInitContainer struct {
 	Image string `pulumi:"image"`
 	// The policy for pulling an image.
 	ImagePullPolicy string `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory float64 `pulumi:"memory"`
-	// The name of the init container.
+	// The name of the volume.
 	Name string `pulumi:"name"`
 	// The exposed ports and protocols. Maximum: `100`.
 	Ports []GetContainerGroupsGroupInitContainerPort `pulumi:"ports"`
@@ -5775,9 +5811,9 @@ type GetContainerGroupsGroupInitContainerArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// The policy for pulling an image.
 	ImagePullPolicy pulumi.StringInput `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container.
+	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64Input `pulumi:"memory"`
-	// The name of the init container.
+	// The name of the volume.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The exposed ports and protocols. Maximum: `100`.
 	Ports GetContainerGroupsGroupInitContainerPortArrayInput `pulumi:"ports"`
@@ -5879,12 +5915,12 @@ func (o GetContainerGroupsGroupInitContainerOutput) ImagePullPolicy() pulumi.Str
 	return o.ApplyT(func(v GetContainerGroupsGroupInitContainer) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
 }
 
-// The amount of memory resources allocated to the container.
+// The amount of memory resources allocated to the container group.
 func (o GetContainerGroupsGroupInitContainerOutput) Memory() pulumi.Float64Output {
 	return o.ApplyT(func(v GetContainerGroupsGroupInitContainer) float64 { return v.Memory }).(pulumi.Float64Output)
 }
 
-// The name of the init container.
+// The name of the volume.
 func (o GetContainerGroupsGroupInitContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupInitContainer) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -6153,7 +6189,7 @@ func (o GetContainerGroupsGroupInitContainerPortArrayOutput) Index(i pulumi.IntI
 type GetContainerGroupsGroupInitContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath string `pulumi:"mountPath"`
-	// The name of the volume. The name is the same as the volume you selected when you purchased the container.
+	// The name of the volume.
 	Name string `pulumi:"name"`
 	// Default value: `false`.
 	ReadOnly bool `pulumi:"readOnly"`
@@ -6173,7 +6209,7 @@ type GetContainerGroupsGroupInitContainerVolumeMountInput interface {
 type GetContainerGroupsGroupInitContainerVolumeMountArgs struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// The name of the volume. The name is the same as the volume you selected when you purchased the container.
+	// The name of the volume.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Default value: `false`.
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
@@ -6235,7 +6271,7 @@ func (o GetContainerGroupsGroupInitContainerVolumeMountOutput) MountPath() pulum
 	return o.ApplyT(func(v GetContainerGroupsGroupInitContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// The name of the volume. The name is the same as the volume you selected when you purchased the container.
+// The name of the volume.
 func (o GetContainerGroupsGroupInitContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupInitContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -6745,7 +6781,8 @@ type GetImageCachesCacheEvent struct {
 	FirstTimestamp string `pulumi:"firstTimestamp"`
 	// End time.
 	LastTimestamp string `pulumi:"lastTimestamp"`
-	Message       string `pulumi:"message"`
+	// The content of the event.
+	Message string `pulumi:"message"`
 	// The name of event.
 	Name string `pulumi:"name"`
 	// The type of event.
@@ -6770,7 +6807,8 @@ type GetImageCachesCacheEventArgs struct {
 	FirstTimestamp pulumi.StringInput `pulumi:"firstTimestamp"`
 	// End time.
 	LastTimestamp pulumi.StringInput `pulumi:"lastTimestamp"`
-	Message       pulumi.StringInput `pulumi:"message"`
+	// The content of the event.
+	Message pulumi.StringInput `pulumi:"message"`
 	// The name of event.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The type of event.
@@ -6843,6 +6881,7 @@ func (o GetImageCachesCacheEventOutput) LastTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageCachesCacheEvent) string { return v.LastTimestamp }).(pulumi.StringOutput)
 }
 
+// The content of the event.
 func (o GetImageCachesCacheEventOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageCachesCacheEvent) string { return v.Message }).(pulumi.StringOutput)
 }
@@ -6896,11 +6935,11 @@ type GetVirtualNodesNode struct {
 	Memory int `pulumi:"memory"`
 	// The ram role.
 	RamRoleName string `pulumi:"ramRoleName"`
-	// The resource group ID.
+	// The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// The security group ID.
+	// VNode itself and by VNode created (ECI) the security group used by.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The Status of the virtual node.
+	// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -6908,8 +6947,9 @@ type GetVirtualNodesNode struct {
 	VirtualNodeId string `pulumi:"virtualNodeId"`
 	// The name of the virtual node.
 	VirtualNodeName string `pulumi:"virtualNodeName"`
-	VpcId           string `pulumi:"vpcId"`
-	// The vswitch id.
+	// The ID of the VPC.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
 	// The Zone.
 	ZoneId string `pulumi:"zoneId"`
@@ -6945,11 +6985,11 @@ type GetVirtualNodesNodeArgs struct {
 	Memory pulumi.IntInput `pulumi:"memory"`
 	// The ram role.
 	RamRoleName pulumi.StringInput `pulumi:"ramRoleName"`
-	// The resource group ID.
+	// The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// The security group ID.
+	// VNode itself and by VNode created (ECI) the security group used by.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// The Status of the virtual node.
+	// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -6957,8 +6997,9 @@ type GetVirtualNodesNodeArgs struct {
 	VirtualNodeId pulumi.StringInput `pulumi:"virtualNodeId"`
 	// The name of the virtual node.
 	VirtualNodeName pulumi.StringInput `pulumi:"virtualNodeName"`
-	VpcId           pulumi.StringInput `pulumi:"vpcId"`
-	// The vswitch id.
+	// The ID of the VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the vSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// The Zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -7060,17 +7101,17 @@ func (o GetVirtualNodesNodeOutput) RamRoleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.RamRoleName }).(pulumi.StringOutput)
 }
 
-// The resource group ID.
+// The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
 func (o GetVirtualNodesNodeOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The security group ID.
+// VNode itself and by VNode created (ECI) the security group used by.
 func (o GetVirtualNodesNodeOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The Status of the virtual node.
+// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
 func (o GetVirtualNodesNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -7090,11 +7131,12 @@ func (o GetVirtualNodesNodeOutput) VirtualNodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.VirtualNodeName }).(pulumi.StringOutput)
 }
 
+// The ID of the VPC.
 func (o GetVirtualNodesNodeOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The vswitch id.
+// The ID of the vSwitch.
 func (o GetVirtualNodesNodeOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualNodesNode) string { return v.VswitchId }).(pulumi.StringOutput)
 }

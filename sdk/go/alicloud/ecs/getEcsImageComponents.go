@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Image Components of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.159.0+.
+// > **NOTE:** Available since v1.159.0.
 //
 // ## Example Usage
 //
@@ -84,17 +84,23 @@ type GetEcsImageComponentsArgs struct {
 
 // A collection of values returned by getEcsImageComponents.
 type GetEcsImageComponentsResult struct {
+	// A list of Ecs Image Components. Each element contains the following attributes:
 	Components []GetEcsImageComponentsComponent `pulumi:"components"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string            `pulumi:"id"`
-	Ids                []string          `pulumi:"ids"`
-	ImageComponentName *string           `pulumi:"imageComponentName"`
-	NameRegex          *string           `pulumi:"nameRegex"`
-	Names              []string          `pulumi:"names"`
-	OutputFile         *string           `pulumi:"outputFile"`
-	Owner              *string           `pulumi:"owner"`
-	ResourceGroupId    *string           `pulumi:"resourceGroupId"`
-	Tags               map[string]string `pulumi:"tags"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The name of the image component.
+	ImageComponentName *string `pulumi:"imageComponentName"`
+	NameRegex          *string `pulumi:"nameRegex"`
+	// A list of Image Component names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The type of the image component.
+	Owner *string `pulumi:"owner"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// List of label key-value pairs.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetEcsImageComponentsOutput(ctx *pulumi.Context, args GetEcsImageComponentsOutputArgs, opts ...pulumi.InvokeOption) GetEcsImageComponentsResultOutput {
@@ -141,6 +147,7 @@ func (o GetEcsImageComponentsResultOutput) ToGetEcsImageComponentsResultOutputWi
 	return o
 }
 
+// A list of Ecs Image Components. Each element contains the following attributes:
 func (o GetEcsImageComponentsResultOutput) Components() GetEcsImageComponentsComponentArrayOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsResult) []GetEcsImageComponentsComponent { return v.Components }).(GetEcsImageComponentsComponentArrayOutput)
 }
@@ -154,6 +161,7 @@ func (o GetEcsImageComponentsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The name of the image component.
 func (o GetEcsImageComponentsResultOutput) ImageComponentName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsResult) *string { return v.ImageComponentName }).(pulumi.StringPtrOutput)
 }
@@ -162,6 +170,7 @@ func (o GetEcsImageComponentsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Image Component names.
 func (o GetEcsImageComponentsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -170,14 +179,17 @@ func (o GetEcsImageComponentsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The type of the image component.
 func (o GetEcsImageComponentsResultOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsResult) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group.
 func (o GetEcsImageComponentsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// List of label key-value pairs.
 func (o GetEcsImageComponentsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

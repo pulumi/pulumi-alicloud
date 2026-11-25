@@ -49,7 +49,7 @@ class GetSystemGroupsGroupResult(dict):
         :param _builtins.str group_id: The ID of Group.
         :param _builtins.str group_name: The name of Group.
         :param _builtins.str id: The ID of the Group.
-        :param _builtins.str in_protocol: The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+        :param _builtins.str in_protocol: The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
         :param _builtins.str out_protocol: The use of space play Protocol multi-valued separate them with commas (,). Valid values: `flv`,`hls`, `rtmp`(Real Time Messaging Protocol).
         :param _builtins.str play_domain: The domain name of plan streaming used by the group.
         :param _builtins.str push_domain: The domain name of push streaming used by the group.
@@ -155,7 +155,7 @@ class GetSystemGroupsGroupResult(dict):
     @pulumi.getter(name="inProtocol")
     def in_protocol(self) -> _builtins.str:
         """
-        The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+        The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
         """
         return pulumi.get(self, "in_protocol")
 

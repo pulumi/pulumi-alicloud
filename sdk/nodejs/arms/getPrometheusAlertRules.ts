@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -59,6 +59,9 @@ export interface GetPrometheusAlertRulesArgs {
      * A list of Prometheus Alert Rule IDs.
      */
     ids?: string[];
+    /**
+     * Match expressions used to filter Prometheus alert rules.
+     */
     matchExpressions?: string;
     /**
      * A regex string to filter results by Prometheus Alert Rule name.
@@ -82,6 +85,9 @@ export interface GetPrometheusAlertRulesArgs {
  * A collection of values returned by getPrometheusAlertRules.
  */
 export interface GetPrometheusAlertRulesResult {
+    /**
+     * The ID of the cluster.
+     */
     readonly clusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -90,16 +96,28 @@ export interface GetPrometheusAlertRulesResult {
     readonly ids: string[];
     readonly matchExpressions?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Prometheus Alert Rule names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Arms Prometheus Alert Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.arms.GetPrometheusAlertRulesRule[];
+    /**
+     * The status of the resource. Valid values: `0`, `1` (0=off,1=open).
+     */
     readonly status?: number;
+    /**
+     * The type of the alert rule.
+     */
     readonly type?: string;
 }
 /**
  * This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -149,6 +167,9 @@ export interface GetPrometheusAlertRulesOutputArgs {
      * A list of Prometheus Alert Rule IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Match expressions used to filter Prometheus alert rules.
+     */
     matchExpressions?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Prometheus Alert Rule name.

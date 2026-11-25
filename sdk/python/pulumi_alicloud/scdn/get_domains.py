@@ -59,6 +59,9 @@ class GetDomainsResult:
     @_builtins.property
     @pulumi.getter
     def domains(self) -> Sequence['outputs.GetDomainsDomainResult']:
+        """
+        A list of Scdn Domains. Each element contains the following attributes:
+        """
         return pulumi.get(self, "domains")
 
     @_builtins.property
@@ -87,6 +90,9 @@ class GetDomainsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Domain names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -97,11 +103,17 @@ class GetDomainsResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The Resource Group ID.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -132,7 +144,7 @@ def get_domains(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Scdn Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.131.0+.
+    > **NOTE:** Available since v1.131.0.
 
     ## Example Usage
 
@@ -184,7 +196,7 @@ def get_domains_output(enable_details: pulumi.Input[Optional[Optional[_builtins.
     """
     This data source provides the Scdn Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.131.0+.
+    > **NOTE:** Available since v1.131.0.
 
     ## Example Usage
 

@@ -61,6 +61,9 @@ class GetStackGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetStackGroupsGroupResult']:
+        """
+        A list of Ros Stack Groups. Each element contains the following attributes. See `groups` below.
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -84,6 +87,9 @@ class GetStackGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Stack Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +100,9 @@ class GetStackGroupsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of Stack Group.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +131,7 @@ def get_stack_groups(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.107.0+.
+    > **NOTE:** Available since v1.107.0.
 
     ## Example Usage
 
@@ -171,7 +180,7 @@ def get_stack_groups_output(enable_details: pulumi.Input[Optional[Optional[_buil
     """
     This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.107.0+.
+    > **NOTE:** Available since v1.107.0.
 
     ## Example Usage
 

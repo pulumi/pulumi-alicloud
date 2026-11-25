@@ -14,9 +14,9 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// For information about MongoDB Serverless Instance and how to use it, see [What is Serverless Instance](https://www.alibabacloud.com/help/doc-detail/26558.html).
     /// 
-    /// &gt; **NOTE:** Deprecated since v1.214.0.
+    /// &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
     /// 
-    /// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.214.0`.
+    /// &gt; **DEPRECATED:** This resource has been deprecated from v1.214.0.
     /// 
     /// ## Example Usage
     /// 
@@ -167,7 +167,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// An array that consists of the information of IP whitelists.
+        /// An array that consists of the information of IP whitelists. See `SecurityIpGroups` below.
         /// </summary>
         [Output("securityIpGroups")]
         public Output<ImmutableArray<Outputs.ServerlessInstanceSecurityIpGroup>> SecurityIpGroups { get; private set; } = null!;
@@ -346,7 +346,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ServerlessInstanceSecurityIpGroupArgs>? _securityIpGroups;
 
         /// <summary>
-        /// An array that consists of the information of IP whitelists.
+        /// An array that consists of the information of IP whitelists. See `SecurityIpGroups` below.
         /// </summary>
         public InputList<Inputs.ServerlessInstanceSecurityIpGroupArgs> SecurityIpGroups
         {
@@ -486,7 +486,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ServerlessInstanceSecurityIpGroupGetArgs>? _securityIpGroups;
 
         /// <summary>
-        /// An array that consists of the information of IP whitelists.
+        /// An array that consists of the information of IP whitelists. See `SecurityIpGroups` below.
         /// </summary>
         public InputList<Inputs.ServerlessInstanceSecurityIpGroupGetArgs> SecurityIpGroups
         {

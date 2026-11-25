@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.RocketMQ.Inputs
     public sealed class RocketMQInstanceSoftwareArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Upgrade time period.
+        /// The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
         /// </summary>
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }

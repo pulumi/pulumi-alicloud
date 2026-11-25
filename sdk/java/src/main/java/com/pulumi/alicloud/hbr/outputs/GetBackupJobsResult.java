@@ -22,10 +22,22 @@ public final class GetBackupJobsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Hbr Backup Jobs. Each element contains the following attributes:
+     * 
+     */
     private List<GetBackupJobsJob> jobs;
     private @Nullable String outputFile;
     private @Nullable String sortDirection;
+    /**
+     * @return The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     * 
+     */
     private String sourceType;
+    /**
+     * @return The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     * 
+     */
     private @Nullable String status;
 
     private GetBackupJobsResult() {}
@@ -42,6 +54,10 @@ public final class GetBackupJobsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Hbr Backup Jobs. Each element contains the following attributes:
+     * 
+     */
     public List<GetBackupJobsJob> jobs() {
         return this.jobs;
     }
@@ -51,9 +67,17 @@ public final class GetBackupJobsResult {
     public Optional<String> sortDirection() {
         return Optional.ofNullable(this.sortDirection);
     }
+    /**
+     * @return The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     * 
+     */
     public String sourceType() {
         return this.sourceType;
     }
+    /**
+     * @return The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

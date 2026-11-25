@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMailAddressesResult {
+    /**
+     * @return A list of Direct Mail Mail Addresses. Each element contains the following attributes:
+     * 
+     */
     private List<GetMailAddressesAddress> addresses;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,10 +27,22 @@ public final class GetMailAddressesResult {
     private List<String> ids;
     private @Nullable String keyWord;
     private @Nullable String outputFile;
+    /**
+     * @return Account type.
+     * 
+     */
     private @Nullable String sendtype;
+    /**
+     * @return Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
+     * 
+     */
     private @Nullable String status;
 
     private GetMailAddressesResult() {}
+    /**
+     * @return A list of Direct Mail Mail Addresses. Each element contains the following attributes:
+     * 
+     */
     public List<GetMailAddressesAddress> addresses() {
         return this.addresses;
     }
@@ -46,9 +62,17 @@ public final class GetMailAddressesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Account type.
+     * 
+     */
     public Optional<String> sendtype() {
         return Optional.ofNullable(this.sendtype);
     }
+    /**
+     * @return Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

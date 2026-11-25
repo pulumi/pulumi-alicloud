@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetSnapshotsSnapshotResult
     {
+        /// <summary>
+        /// The category of the snapshot. Valid values: `Flash`, `Standard`.
+        /// </summary>
         public readonly string Category;
         /// <summary>
         /// Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
@@ -22,16 +25,25 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Description of the snapshot.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The source disk ID.
+        /// </summary>
         public readonly string DiskId;
         /// <summary>
-        /// Whether the snapshot is encrypted or not.
+        /// Queries the encrypted snapshots. Optional values: `True`: Encrypted snapshots. `False`: No encryption attribute limit. Default value: `False`.
         /// </summary>
         public readonly bool Encrypted;
         /// <summary>
         /// ID of the snapshot.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Whether instant access is enabled.
+        /// </summary>
         public readonly bool InstantAccess;
+        /// <summary>
+        /// The retention days of instant access.
+        /// </summary>
         public readonly int InstantAccessRetentionDays;
         /// <summary>
         /// Name of the snapshot.
@@ -49,14 +61,29 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The remaining time of a snapshot creation task, in seconds.
         /// </summary>
         public readonly int RemainTime;
+        /// <summary>
+        /// The resource group ID.
+        /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
         /// The number of days that an automatic snapshot retains in the console for your instance.
         /// </summary>
         public readonly int RetentionDays;
+        /// <summary>
+        /// The ID of the snapshot.
+        /// </summary>
         public readonly string SnapshotId;
+        /// <summary>
+        /// The name of the snapshot.
+        /// </summary>
         public readonly string SnapshotName;
+        /// <summary>
+        /// The SN of the snapshot.
+        /// </summary>
         public readonly string SnapshotSn;
+        /// <summary>
+        /// The type of the snapshot. Valid values: `Auto`, `User`, `All`.
+        /// </summary>
         public readonly string SnapshotType;
         /// <summary>
         /// Source disk ID, which is retained after the source disk of the snapshot is deleted.
@@ -67,21 +94,40 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string SourceDiskSize;
         /// <summary>
-        /// Source disk attribute. Value range: `System`,`Data`.
+        /// The type of source disk:
+        /// * System: The snapshots are created for system disks.
+        /// * Data: The snapshots are created for data disks.
         /// </summary>
         public readonly string SourceDiskType;
+        /// <summary>
+        /// The source storage type.
+        /// </summary>
         public readonly string SourceStorageType;
         /// <summary>
-        /// The snapshot status. Value range: `Progressing`, `Accomplished` and `Failed`.
+        /// The specified snapshot status. Default value: `All`. Optional values:
+        /// * progressing: The snapshots are being created.
+        /// * accomplished: The snapshots are ready to use.
+        /// * failed: The snapshot creation failed.
+        /// * all: All status.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// A map of tags assigned to the snapshot.
+        /// A map of tags assigned to snapshots.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// The snapshot category. Default value: `All`. Optional values:
+        /// * auto: Auto snapshots.
+        /// * user: Manual snapshots.
+        /// * all: Auto and manual snapshots.
+        /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Whether the snapshots are used to create resources or not. Value range: `Image`, `Disk`, `ImageDisk` and `None`.
+        /// The usage of the snapshot:
+        /// * image: The snapshots are used to create custom images.
+        /// * disk: The snapshots are used to CreateDisk.
+        /// * mage_disk: The snapshots are used to create custom images and data disks.
+        /// * none: The snapshots are not used yet.
         /// </summary>
         public readonly string Usage;
 

@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBgpGroupsResult {
+    /**
+     * @return A list of Vpc Bgp Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetBgpGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,12 +26,28 @@ public final class GetBgpGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Bgp Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the VBR.
+     * 
+     */
     private @Nullable String routerId;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetBgpGroupsResult() {}
+    /**
+     * @return A list of Vpc Bgp Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetBgpGroupsGroup> groups() {
         return this.groups;
     }
@@ -44,15 +64,27 @@ public final class GetBgpGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Bgp Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the VBR.
+     * 
+     */
     public Optional<String> routerId() {
         return Optional.ofNullable(this.routerId);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

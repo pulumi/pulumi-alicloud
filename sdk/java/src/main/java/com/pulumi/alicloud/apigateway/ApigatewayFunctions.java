@@ -942,7 +942,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -986,7 +986,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1030,7 +1030,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1074,7 +1074,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1118,7 +1118,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1162,7 +1162,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1206,7 +1206,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1537,7 +1537,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1587,7 +1587,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1637,7 +1637,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1687,7 +1687,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1737,7 +1737,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1787,7 +1787,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1837,7 +1837,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.185.0+.
+     * &gt; **NOTE:** Available since v1.185.0.
      * 
      * ## Example Usage
      * 
@@ -1887,7 +1887,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -1938,7 +1938,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -1989,7 +1989,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -2040,7 +2040,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -2091,7 +2091,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Models of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -2142,7 +2142,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -2191,7 +2191,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -2240,7 +2240,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -2289,7 +2289,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -2338,7 +2338,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -2387,7 +2387,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -2436,7 +2436,7 @@ public final class ApigatewayFunctions {
     /**
      * This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 

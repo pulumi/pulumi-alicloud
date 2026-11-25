@@ -13,7 +13,7 @@ import (
 
 // This data source provides ASM available versions in the specified region.
 //
-// > **NOTE:** Available in v1.161.0+.
+// > **NOTE:** Available since v1.161.0.
 //
 // ## Example Usage
 //
@@ -59,7 +59,7 @@ type GetVersionsArgs struct {
 	// - Default: Standard Edition
 	// - Pro: Professional Edition
 	Edition *string `pulumi:"edition"`
-	// A list of ASM versions. Its element formats as `<edition>:<version>`.
+	// The ASM versions available for the ASM instance of the current edition. Its element formats as `<edition>:<version>`.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -67,12 +67,15 @@ type GetVersionsArgs struct {
 
 // A collection of values returned by getVersions.
 type GetVersionsResult struct {
+	// The edition of the ASM instance.
 	Edition *string `pulumi:"edition"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string               `pulumi:"id"`
-	Ids        []string             `pulumi:"ids"`
-	OutputFile *string              `pulumi:"outputFile"`
-	Versions   []GetVersionsVersion `pulumi:"versions"`
+	Id string `pulumi:"id"`
+	// A list of ASM versions. Its element formats as `<edition>:<version>`.
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Service Mesh Service Meshes. Each element contains the following attributes:
+	Versions []GetVersionsVersion `pulumi:"versions"`
 }
 
 func GetVersionsOutput(ctx *pulumi.Context, args GetVersionsOutputArgs, opts ...pulumi.InvokeOption) GetVersionsResultOutput {
@@ -86,7 +89,7 @@ type GetVersionsOutputArgs struct {
 	// - Default: Standard Edition
 	// - Pro: Professional Edition
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
-	// A list of ASM versions. Its element formats as `<edition>:<version>`.
+	// The ASM versions available for the ASM instance of the current edition. Its element formats as `<edition>:<version>`.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -111,6 +114,7 @@ func (o GetVersionsResultOutput) ToGetVersionsResultOutputWithContext(ctx contex
 	return o
 }
 
+// The edition of the ASM instance.
 func (o GetVersionsResultOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVersionsResult) *string { return v.Edition }).(pulumi.StringPtrOutput)
 }
@@ -120,6 +124,7 @@ func (o GetVersionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVersionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of ASM versions. Its element formats as `<edition>:<version>`.
 func (o GetVersionsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVersionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -128,6 +133,7 @@ func (o GetVersionsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVersionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Service Mesh Service Meshes. Each element contains the following attributes:
 func (o GetVersionsResultOutput) Versions() GetVersionsVersionArrayOutput {
 	return o.ApplyT(func(v GetVersionsResult) []GetVersionsVersion { return v.Versions }).(GetVersionsVersionArrayOutput)
 }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides Threat Detection Honeypot Preset available to the user.
 //
-// > **NOTE:** Available in 1.195.0+
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -35,7 +35,7 @@ import (
 //				},
 //				HoneypotImageName: pulumi.StringRef("shiro"),
 //				NodeId:            pulumi.StringRef("example_value"),
-//				PresetName:        pulumi.StringRef("apiapec_test"),
+//				PresetName:        pulumi.StringRef("apiapec_example"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,16 +58,19 @@ func GetHoneypotPresets(ctx *pulumi.Context, args *GetHoneypotPresetsArgs, opts 
 
 // A collection of arguments for invoking getHoneypotPresets.
 type GetHoneypotPresetsArgs struct {
+	// The current page number.
 	CurrentPage *int `pulumi:"currentPage"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// Honeypot mirror name
 	HoneypotImageName *string `pulumi:"honeypotImageName"`
 	// A list of Honeypot Preset IDs.
-	Ids  []string `pulumi:"ids"`
-	Lang *string  `pulumi:"lang"`
+	Ids []string `pulumi:"ids"`
+	// The language.
+	Lang *string `pulumi:"lang"`
 	// Unique id of management node
-	NodeId   *string `pulumi:"nodeId"`
+	NodeId *string `pulumi:"nodeId"`
+	// The name of the management node.
 	NodeName *string `pulumi:"nodeName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -107,16 +110,19 @@ func GetHoneypotPresetsOutput(ctx *pulumi.Context, args GetHoneypotPresetsOutput
 
 // A collection of arguments for invoking getHoneypotPresets.
 type GetHoneypotPresetsOutputArgs struct {
+	// The current page number.
 	CurrentPage pulumi.IntPtrInput `pulumi:"currentPage"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Honeypot mirror name
 	HoneypotImageName pulumi.StringPtrInput `pulumi:"honeypotImageName"`
 	// A list of Honeypot Preset IDs.
-	Ids  pulumi.StringArrayInput `pulumi:"ids"`
-	Lang pulumi.StringPtrInput   `pulumi:"lang"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The language.
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// Unique id of management node
-	NodeId   pulumi.StringPtrInput `pulumi:"nodeId"`
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// The name of the management node.
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

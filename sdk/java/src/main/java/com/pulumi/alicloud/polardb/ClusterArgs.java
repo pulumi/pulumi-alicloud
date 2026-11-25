@@ -69,6 +69,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
+     * 
      * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
      * 
      */
@@ -77,6 +78,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
+     * 
      * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
      * 
      */
@@ -131,6 +133,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+     * 
      * &gt; **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
      * 
      */
@@ -139,6 +142,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+     * 
      * &gt; **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
      * 
      */
@@ -148,6 +152,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
+     * 
      * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
      * 
      */
@@ -156,6 +161,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
+     * 
      * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
      * 
      */
@@ -212,6 +218,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The dbNodeClass of cluster node. Required for non-distributed clusters.
+     * 
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
      * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
@@ -222,6 +229,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The dbNodeClass of cluster node. Required for non-distributed clusters.
+     * 
      * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
      * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
@@ -233,6 +241,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
+     * 
      * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      * 
      */
@@ -241,6 +250,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
+     * 
      * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      * 
      */
@@ -265,6 +275,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+     * 
      * &gt; **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
      * 
      */
@@ -273,6 +284,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+     * 
      * &gt; **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
      * 
      */
@@ -312,6 +324,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+     * 
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
@@ -320,6 +333,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+     * 
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
@@ -329,6 +343,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+     * 
      * &gt; **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
      * 
      */
@@ -337,6 +352,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+     * 
      * &gt; **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
      * 
      */
@@ -392,12 +408,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
      * 
+     * &gt; **NOTE:** Only PostgreSQL-compatible and Oracle syntax-compatible clusters support automatic key rotation; a custom KMS key (`encryptionKey`) must be specified and TDE must be already enabled.
+     * 
      */
     @Import(name="enableAutomaticRotation")
     private @Nullable Output<Boolean> enableAutomaticRotation;
 
     /**
      * @return Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
+     * 
+     * &gt; **NOTE:** Only PostgreSQL-compatible and Oracle syntax-compatible clusters support automatic key rotation; a custom KMS key (`encryptionKey`) must be specified and TDE must be already enabled.
      * 
      */
     public Optional<Output<Boolean>> enableAutomaticRotation() {
@@ -406,6 +426,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+     * 
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
      * 
      */
@@ -414,6 +435,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+     * 
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
      * 
      */
@@ -423,6 +445,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+     * 
      * &gt; **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      * 
      */
@@ -431,6 +454,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+     * 
      * &gt; **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      * 
      */
@@ -470,6 +494,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the global database network (GDN).
+     * 
      * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
      * 
      */
@@ -478,6 +503,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the global database network (GDN).
+     * 
      * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
      * 
      */
@@ -517,7 +543,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+     * 
      * &gt; **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+     * 
+     * &gt; **NOTE:** Available since v2.3.0, switching `hotStandbyCluster` from `OFF` to `ON` is performed in place via `ModifyDBClusterArch` and keeps the cluster ID unchanged. The in-place upgrade applies only to PolarDB MySQL clusters (`DBType=MySQL` and `DeployUnit=Advanced`), and clusters that already have the hot standby enabled cannot switch via this API. Before the call, the provider verifies the live `DBType` and rejects any cluster that is not MySQL; for `DeployUnit`, only a returned value other than `Advanced` is rejected — the attribute is not documented in the cluster attribute response, so a missing, empty, or non-string `DeployUnit` is not verified client-side and is left to the server-side validation of `ModifyDBClusterArch`. Any other transition — turning the hot standby `OFF`, any change involving `EQUAL` (the `equal` mode has been retired by `ModifyDBClusterArch`), or a non-MySQL cluster — is not supported in place and forces cluster recreation. On provider versions earlier than v2.3.0, every `hotStandbyCluster` change forces cluster recreation.
      * 
      */
     @Import(name="hotStandbyCluster")
@@ -525,7 +554,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+     * 
      * &gt; **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+     * 
+     * &gt; **NOTE:** Available since v2.3.0, switching `hotStandbyCluster` from `OFF` to `ON` is performed in place via `ModifyDBClusterArch` and keeps the cluster ID unchanged. The in-place upgrade applies only to PolarDB MySQL clusters (`DBType=MySQL` and `DeployUnit=Advanced`), and clusters that already have the hot standby enabled cannot switch via this API. Before the call, the provider verifies the live `DBType` and rejects any cluster that is not MySQL; for `DeployUnit`, only a returned value other than `Advanced` is rejected — the attribute is not documented in the cluster attribute response, so a missing, empty, or non-string `DeployUnit` is not verified client-side and is left to the server-side validation of `ModifyDBClusterArch`. Any other transition — turning the hot standby `OFF`, any change involving `EQUAL` (the `equal` mode has been retired by `ModifyDBClusterArch`), or a non-MySQL cluster — is not supported in place and forces cluster recreation. On provider versions earlier than v2.3.0, every `hotStandbyCluster` change forces cluster recreation.
      * 
      */
     public Optional<Output<String>> hotStandbyCluster() {
@@ -534,8 +566,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+     * 
      * &gt; **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
-     * **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+     * 
+     * &gt; **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
      * 
      */
     @Import(name="imciSwitch")
@@ -543,8 +577,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+     * 
      * &gt; **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
-     * **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+     * 
+     * &gt; **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
      * 
      */
     public Optional<Output<String>> imciSwitch() {
@@ -553,6 +589,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
+     * 
      * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
      * 
      */
@@ -561,6 +598,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
+     * 
      * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
      * 
      */
@@ -570,6 +608,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+     * 
      * &gt; **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
      * 
      */
@@ -578,6 +617,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+     * 
      * &gt; **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
      * 
      */
@@ -587,6 +627,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+     * 
      * &gt; **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
      * 
      */
@@ -595,6 +636,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+     * 
      * &gt; **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
      * 
      */
@@ -604,6 +646,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
+     * 
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
@@ -612,6 +655,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
+     * 
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
@@ -651,6 +695,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the parameter template
+     * 
      * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
      * 
      */
@@ -659,6 +704,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the parameter template
+     * 
      * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
      * 
      */
@@ -698,6 +744,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -706,6 +753,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -715,6 +763,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+     * 
      * &gt; **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
      * 
      */
@@ -723,6 +772,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+     * 
      * &gt; **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
      * 
      */
@@ -732,6 +782,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+     * 
      * &gt; **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
      * 
      */
@@ -740,6 +791,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+     * 
      * &gt; **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
      * 
      */
@@ -749,6 +801,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+     * 
      * &gt; **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
      * 
      */
@@ -757,6 +810,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+     * 
      * &gt; **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
      * 
      */
@@ -766,6 +820,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * 
      * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
      * 
      */
@@ -774,6 +829,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * 
      * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
      * 
      */
@@ -783,6 +839,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+     * 
      * &gt; **NOTE:** This parameter is valid for both standard and enterprise clusters.
      * 
      */
@@ -791,6 +848,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+     * 
      * &gt; **NOTE:** This parameter is valid for both standard and enterprise clusters.
      * 
      */
@@ -815,6 +873,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+     * 
      * &gt; **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
      * 
      */
@@ -823,6 +882,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+     * 
      * &gt; **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
      * 
      */
@@ -952,6 +1012,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+     * 
      * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      * 
      */
@@ -960,6 +1021,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+     * 
      * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      * 
      */
@@ -986,6 +1048,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+     * 
      * &gt; **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
      * 
      */
@@ -994,6 +1057,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+     * 
      * &gt; **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
      * 
      */
@@ -1033,6 +1097,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+     * 
      * &gt; **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
      * 
      */
@@ -1041,6 +1106,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+     * 
      * &gt; **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
      * 
      */
@@ -1080,6 +1146,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+     * 
      * &gt; **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
      * 
      */
@@ -1088,6 +1155,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+     * 
      * &gt; **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
      * 
      */
@@ -1112,8 +1180,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Storage space charged by space (monthly package). Unit: GB.
+     * 
      * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
-     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
+     * 
+     * &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
      * 
      */
     @Import(name="storageSpace")
@@ -1121,8 +1191,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Storage space charged by space (monthly package). Unit: GB.
+     * 
      * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
-     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
+     * 
+     * &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
      * 
      */
     public Optional<Output<Integer>> storageSpace() {
@@ -1225,6 +1297,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+     * 
      * &gt; **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
      * 
      */
@@ -1233,6 +1306,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+     * 
      * &gt; **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
      * 
      */
@@ -1272,6 +1346,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The virtual switch ID to launch DB instances in one VPC.
+     * 
      * &gt; **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      * 
      */
@@ -1280,6 +1355,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The virtual switch ID to launch DB instances in one VPC.
+     * 
      * &gt; **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
      * 
      */
@@ -1470,6 +1546,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cloneDataPoint The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
+         * 
          * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
          * 
          * @return builder
@@ -1482,6 +1559,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cloneDataPoint The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
+         * 
          * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
          * 
          * @return builder
@@ -1556,6 +1634,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param compressStorage Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+         * 
          * &gt; **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
          * 
          * @return builder
@@ -1568,6 +1647,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param compressStorage Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+         * 
          * &gt; **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
          * 
          * @return builder
@@ -1579,6 +1659,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
+         * 
          * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
          * 
          * @return builder
@@ -1591,6 +1672,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
+         * 
          * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
          * 
          * @return builder
@@ -1677,6 +1759,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbNodeClass The dbNodeClass of cluster node. Required for non-distributed clusters.
+         * 
          * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
          * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
          * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
@@ -1691,6 +1774,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbNodeClass The dbNodeClass of cluster node. Required for non-distributed clusters.
+         * 
          * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
          * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small` for enterprise edition, and `polar.mysql.sl.small.c` for standard edition.
          * From version 1.229.1, If you need to create a Serverless cluster with PostgreSQL, `dbNodeClass` can be set to `polar.pg.sl.small` for enterprise edition, and `polar.pg.sl.small.c` for standard edition. Region can refer to the latest docs(&lt;https://help.aliyun.com/zh/polardb/polardb-for-postgresql/the-public-preview-of-polardb-for-postgresql-serverless-ends?spm=a2c4g.11186623.0.0.2e9f6cf0B4rIfC&gt;).
@@ -1704,6 +1788,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbNodeCount Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
+         * 
          * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
          * 
          * @return builder
@@ -1716,6 +1801,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbNodeCount Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16]. This argument does not apply to distributed clusters and conflicts with `cnNodeNum` and `dnNodeNum`.
+         * 
          * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
          * 
          * @return builder
@@ -1748,6 +1834,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbNodeNum The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+         * 
          * &gt; **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
          * 
          * @return builder
@@ -1760,6 +1847,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbNodeNum The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
+         * 
          * &gt; **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `dbNodeCount`.
          * 
          * @return builder
@@ -1813,6 +1901,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param defaultTimeZone The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+         * 
          * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
          * 
          * @return builder
@@ -1825,6 +1914,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param defaultTimeZone The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
+         * 
          * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
          * 
          * @return builder
@@ -1836,6 +1926,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionLock turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+         * 
          * &gt; **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
          * 
          * @return builder
@@ -1848,6 +1939,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionLock turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
+         * 
          * &gt; **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
          * 
          * @return builder
@@ -1923,6 +2015,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param enableAutomaticRotation Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
          * 
+         * &gt; **NOTE:** Only PostgreSQL-compatible and Oracle syntax-compatible clusters support automatic key rotation; a custom KMS key (`encryptionKey`) must be specified and TDE must be already enabled.
+         * 
          * @return builder
          * 
          */
@@ -1934,6 +2028,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param enableAutomaticRotation Specifies whether to enable automatic rotation of the TDE encryption key. Default to `false`. Valid values are `true`, `false`. This parameter takes effect only after TDE is enabled.
          * 
+         * &gt; **NOTE:** Only PostgreSQL-compatible and Oracle syntax-compatible clusters support automatic key rotation; a custom KMS key (`encryptionKey`) must be specified and TDE must be already enabled.
+         * 
          * @return builder
          * 
          */
@@ -1943,6 +2039,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableDynamodb Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+         * 
          * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
          * 
          * @return builder
@@ -1955,6 +2052,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableDynamodb Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
+         * 
          * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
          * 
          * @return builder
@@ -1966,6 +2064,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptNewTables turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+         * 
          * &gt; **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
          * 
          * @return builder
@@ -1978,6 +2077,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptNewTables turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
+         * 
          * &gt; **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
          * 
          * @return builder
@@ -2031,6 +2131,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gdnId The ID of the global database network (GDN).
+         * 
          * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
          * 
          * @return builder
@@ -2043,6 +2144,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gdnId The ID of the global database network (GDN).
+         * 
          * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
          * 
          * @return builder
@@ -2106,7 +2208,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+         * 
          * &gt; **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+         * 
+         * &gt; **NOTE:** Available since v2.3.0, switching `hotStandbyCluster` from `OFF` to `ON` is performed in place via `ModifyDBClusterArch` and keeps the cluster ID unchanged. The in-place upgrade applies only to PolarDB MySQL clusters (`DBType=MySQL` and `DeployUnit=Advanced`), and clusters that already have the hot standby enabled cannot switch via this API. Before the call, the provider verifies the live `DBType` and rejects any cluster that is not MySQL; for `DeployUnit`, only a returned value other than `Advanced` is rejected — the attribute is not documented in the cluster attribute response, so a missing, empty, or non-string `DeployUnit` is not verified client-side and is left to the server-side validation of `ModifyDBClusterArch`. Any other transition — turning the hot standby `OFF`, any change involving `EQUAL` (the `equal` mode has been retired by `ModifyDBClusterArch`), or a non-MySQL cluster — is not supported in place and forces cluster recreation. On provider versions earlier than v2.3.0, every `hotStandbyCluster` change forces cluster recreation.
          * 
          * @return builder
          * 
@@ -2118,7 +2223,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
+         * 
          * &gt; **NOTE:** From version 1.249.0, `hotStandbyCluster` can be set to `EQUAL`, and this value is only valid for MySQL.
+         * 
+         * &gt; **NOTE:** Available since v2.3.0, switching `hotStandbyCluster` from `OFF` to `ON` is performed in place via `ModifyDBClusterArch` and keeps the cluster ID unchanged. The in-place upgrade applies only to PolarDB MySQL clusters (`DBType=MySQL` and `DeployUnit=Advanced`), and clusters that already have the hot standby enabled cannot switch via this API. Before the call, the provider verifies the live `DBType` and rejects any cluster that is not MySQL; for `DeployUnit`, only a returned value other than `Advanced` is rejected — the attribute is not documented in the cluster attribute response, so a missing, empty, or non-string `DeployUnit` is not verified client-side and is left to the server-side validation of `ModifyDBClusterArch`. Any other transition — turning the hot standby `OFF`, any change involving `EQUAL` (the `equal` mode has been retired by `ModifyDBClusterArch`), or a non-MySQL cluster — is not supported in place and forces cluster recreation. On provider versions earlier than v2.3.0, every `hotStandbyCluster` change forces cluster recreation.
          * 
          * @return builder
          * 
@@ -2129,8 +2237,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imciSwitch Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+         * 
          * &gt; **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
-         * **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+         * 
+         * &gt; **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
          * 
          * @return builder
          * 
@@ -2142,8 +2252,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imciSwitch Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
+         * 
          * &gt; **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
-         * **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+         * 
+         * &gt; **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
          * 
          * @return builder
          * 
@@ -2154,6 +2266,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param loosePolarLogBin Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
+         * 
          * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
          * 
          * @return builder
@@ -2166,6 +2279,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param loosePolarLogBin Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
+         * 
          * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
          * 
          * @return builder
@@ -2177,6 +2291,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param looseXengine Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+         * 
          * &gt; **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
          * 
          * @return builder
@@ -2189,6 +2304,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param looseXengine Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+         * 
          * &gt; **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
          * 
          * @return builder
@@ -2200,6 +2316,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param looseXengineUseMemoryPct Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+         * 
          * &gt; **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
          * 
          * @return builder
@@ -2212,6 +2329,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param looseXengineUseMemoryPct Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+         * 
          * &gt; **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
          * 
          * @return builder
@@ -2223,6 +2341,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param lowerCaseTableNames Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
+         * 
          * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
          * 
          * @return builder
@@ -2235,6 +2354,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param lowerCaseTableNames Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
+         * 
          * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
          * 
          * @return builder
@@ -2288,6 +2408,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parameterGroupId The ID of the parameter template
+         * 
          * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
          * 
          * @return builder
@@ -2300,6 +2421,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parameterGroupId The ID of the parameter template
+         * 
          * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
          * 
          * @return builder
@@ -2363,6 +2485,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+         * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -2375,6 +2498,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param period The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+         * 
          * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
@@ -2386,6 +2510,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param plannedEndTime The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+         * 
          * &gt; **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
          * 
          * @return builder
@@ -2398,6 +2523,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param plannedEndTime The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+         * 
          * &gt; **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
          * 
          * @return builder
@@ -2409,6 +2535,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param plannedStartTime The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+         * 
          * &gt; **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
          * 
          * @return builder
@@ -2421,6 +2548,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param plannedStartTime The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
+         * 
          * &gt; **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
          * 
          * @return builder
@@ -2432,6 +2560,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param provisionedIops The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+         * 
          * &gt; **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
          * 
          * @return builder
@@ -2444,6 +2573,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param provisionedIops The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+         * 
          * &gt; **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
          * 
          * @return builder
@@ -2455,6 +2585,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param proxyClass The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+         * 
          * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
          * 
          * @return builder
@@ -2467,6 +2598,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param proxyClass The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+         * 
          * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
          * 
          * @return builder
@@ -2478,6 +2610,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param proxyType The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+         * 
          * &gt; **NOTE:** This parameter is valid for both standard and enterprise clusters.
          * 
          * @return builder
@@ -2490,6 +2623,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param proxyType The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+         * 
          * &gt; **NOTE:** This parameter is valid for both standard and enterprise clusters.
          * 
          * @return builder
@@ -2522,6 +2656,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+         * 
          * &gt; **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
          * 
          * @return builder
@@ -2534,6 +2669,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
+         * 
          * &gt; **NOTE:** From version 1.250.0, `resourceGroupId` can be modified.
          * 
          * @return builder
@@ -2713,6 +2849,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param securityGroupIds The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+         * 
          * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
          * 
          * @return builder
@@ -2725,6 +2862,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param securityGroupIds The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+         * 
          * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
          * 
          * @return builder
@@ -2736,6 +2874,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param securityGroupIds The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
+         * 
          * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
          * 
          * @return builder
@@ -2781,6 +2920,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverlessRuleCpuEnlargeThreshold CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+         * 
          * &gt; **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
          * 
          * @return builder
@@ -2793,6 +2933,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverlessRuleCpuEnlargeThreshold CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
+         * 
          * &gt; **NOTE:** `serverlessRuleCpuEnlargeThreshold` should be at least 30 greater than `serverlessRuleCpuShrinkThreshold`.
          * 
          * @return builder
@@ -2846,6 +2987,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverlessSteadySwitch Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+         * 
          * &gt; **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
          * 
          * @return builder
@@ -2858,6 +3000,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverlessSteadySwitch Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+         * 
          * &gt; **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
          * 
          * @return builder
@@ -2911,6 +3054,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param standbyAz The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+         * 
          * &gt; **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
          * 
          * @return builder
@@ -2923,6 +3067,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param standbyAz The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
+         * 
          * &gt; **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
          * 
          * @return builder
@@ -2955,8 +3100,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageSpace Storage space charged by space (monthly package). Unit: GB.
+         * 
          * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
-         * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
+         * 
+         * &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
          * 
          * @return builder
          * 
@@ -2968,8 +3115,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageSpace Storage space charged by space (monthly package). Unit: GB.
+         * 
          * &gt; **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
-         * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
+         * 
+         * &gt; **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
          * 
          * @return builder
          * 
@@ -3110,6 +3259,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tdeStatus Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+         * 
          * &gt; **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
          * 
          * @return builder
@@ -3122,6 +3272,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tdeStatus Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+         * 
          * &gt; **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
          * 
          * @return builder
@@ -3175,6 +3326,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchId The virtual switch ID to launch DB instances in one VPC.
+         * 
          * &gt; **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
          * 
          * @return builder
@@ -3187,6 +3339,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchId The virtual switch ID to launch DB instances in one VPC.
+         * 
          * &gt; **NOTE:** If vswitchId is not specified, system will get a vswitch belongs to the user automatically.
          * 
          * @return builder

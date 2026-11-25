@@ -20,14 +20,14 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
     public static final PrefixListArgs Empty = new PrefixListArgs();
 
     /**
-     * The CIDR address block list of the prefix list.See the following `Block Entrys`.
+     * The CIDR address block list of the prefix list. See `entrys` below.
      * 
      */
     @Import(name="entrys")
     private @Nullable Output<List<PrefixListEntryArgs>> entrys;
 
     /**
-     * @return The CIDR address block list of the prefix list.See the following `Block Entrys`.
+     * @return The CIDR address block list of the prefix list. See `entrys` below.
      * 
      */
     public Optional<Output<List<PrefixListEntryArgs>>> entrys() {
@@ -155,7 +155,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entrys The CIDR address block list of the prefix list.See the following `Block Entrys`.
+         * @param entrys The CIDR address block list of the prefix list. See `entrys` below.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entrys The CIDR address block list of the prefix list.See the following `Block Entrys`.
+         * @param entrys The CIDR address block list of the prefix list. See `entrys` below.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entrys The CIDR address block list of the prefix list.See the following `Block Entrys`.
+         * @param entrys The CIDR address block list of the prefix list. See `entrys` below.
          * 
          * @return builder
          * 

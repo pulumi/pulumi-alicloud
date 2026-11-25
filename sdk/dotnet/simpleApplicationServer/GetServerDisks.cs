@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -294,17 +294,32 @@ namespace Pulumi.AliCloud.simpleApplicationServer
     [OutputType]
     public sealed class GetServerDisksResult
     {
+        /// <summary>
+        /// The type of the disk. Possible values: `System`, `Data`.
+        /// </summary>
         public readonly string? DiskType;
+        /// <summary>
+        /// A list of Simple Application Server Disks. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServerDisksDiskResult> Disks;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// Alibaba Cloud simple application server instance ID.
+        /// </summary>
         public readonly string? InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Disk names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

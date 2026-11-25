@@ -31,7 +31,7 @@ public final class GetUsersUser {
      */
     private String phone;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Unlocked`, `Locked`.
      * 
      */
     private String status;
@@ -66,7 +66,7 @@ public final class GetUsersUser {
         return this.phone;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Unlocked`, `Locked`.
      * 
      */
     public String status() {

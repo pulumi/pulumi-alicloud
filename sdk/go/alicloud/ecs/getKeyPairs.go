@@ -77,18 +77,19 @@ type GetKeyPairsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
-	// A list of key pairs. Each element contains the following attributes:
+	// (Deprecated) A list of key pairs. Each element contains the following attributes:
 	//
 	// Deprecated: Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
 	KeyPairs  []GetKeyPairsKeyPair `pulumi:"keyPairs"`
 	NameRegex *string              `pulumi:"nameRegex"`
 	// A list of key pair names.
-	Names      []string          `pulumi:"names"`
-	OutputFile *string           `pulumi:"outputFile"`
-	Pairs      []GetKeyPairsPair `pulumi:"pairs"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of key pairs. Each element contains the following attributes:
+	Pairs []GetKeyPairsPair `pulumi:"pairs"`
 	// The Id of resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
+	// A map of tags assigned to the key pair.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -146,7 +147,7 @@ func (o GetKeyPairsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// A list of key pairs. Each element contains the following attributes:
+// (Deprecated) A list of key pairs. Each element contains the following attributes:
 //
 // Deprecated: Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
 func (o GetKeyPairsResultOutput) KeyPairs() GetKeyPairsKeyPairArrayOutput {
@@ -166,6 +167,7 @@ func (o GetKeyPairsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of key pairs. Each element contains the following attributes:
 func (o GetKeyPairsResultOutput) Pairs() GetKeyPairsPairArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) []GetKeyPairsPair { return v.Pairs }).(GetKeyPairsPairArrayOutput)
 }
@@ -175,7 +177,7 @@ func (o GetKeyPairsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
+// A map of tags assigned to the key pair.
 func (o GetKeyPairsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

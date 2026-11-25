@@ -69,17 +69,17 @@ public final class GetAnycastEipAddressesAddress {
      */
     private String ipAddress;
     /**
-     * @return The payment model of Anycast EIP instance. &#34;PostPaid&#34;: Refers to the post-paid mode.
+     * @return The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
      * 
      */
     private String paymentType;
     /**
-     * @return Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
+     * @return Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
      * 
      */
     private String serviceLocation;
     /**
-     * @return IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+     * @return IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
      * 
      */
     private String status;
@@ -163,21 +163,21 @@ public final class GetAnycastEipAddressesAddress {
         return this.ipAddress;
     }
     /**
-     * @return The payment model of Anycast EIP instance. &#34;PostPaid&#34;: Refers to the post-paid mode.
+     * @return The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
      * 
      */
     public String paymentType() {
         return this.paymentType;
     }
     /**
-     * @return Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
+     * @return Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
      * 
      */
     public String serviceLocation() {
         return this.serviceLocation;
     }
     /**
-     * @return IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+     * @return IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
      * 
      */
     public String status() {

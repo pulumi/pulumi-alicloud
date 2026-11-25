@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Eip Addresses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.126.0+.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *
@@ -80,7 +80,7 @@ export interface GetEipAddressesArgs {
      */
     ids?: string[];
     /**
-     * The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+     * The include reservation data.
      */
     includeReservationData?: boolean;
     /**
@@ -88,6 +88,8 @@ export interface GetEipAddressesArgs {
      */
     ipAddress?: string;
     /**
+     * Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
+     *
      * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
     ipAddresses?: string[];
@@ -125,6 +127,8 @@ export interface GetEipAddressesArgs {
     status?: string;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     tags?: {[key: string]: string};
 }
@@ -133,12 +137,20 @@ export interface GetEipAddressesArgs {
  * A collection of values returned by getEipAddresses.
  */
 export interface GetEipAddressesResult {
+    /**
+     * The name of the EIP.
+     */
     readonly addressName?: string;
+    /**
+     * A list of Eip Addresses. Each element contains the following attributes:
+     */
     readonly addresses: outputs.ecs.GetEipAddressesAddress[];
     readonly associatedInstanceId?: string;
     readonly associatedInstanceType?: string;
     readonly dryRun?: boolean;
     /**
+     * (Deprecated since v1.126.0) A list of EIPs. This field has been deprecated. Please use `addresses` instead. Each element contains the following attributes:
+     *
      * @deprecated Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.
      */
     readonly eips: outputs.ecs.GetEipAddressesEip[];
@@ -149,26 +161,50 @@ export interface GetEipAddressesResult {
     readonly id: string;
     readonly ids: string[];
     readonly includeReservationData?: boolean;
+    /**
+     * The IP address of the EIP.
+     */
     readonly ipAddress?: string;
     /**
      * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
     readonly ipAddresses?: string[];
+    /**
+     * The Internet service provider (ISP).
+     */
     readonly isp?: string;
     readonly lockReason?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Address names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The billing method of the EIP.
+     */
     readonly paymentType?: string;
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The IDs of the contiguous EIPs.
+     */
     readonly segmentInstanceId?: string;
+    /**
+     * The status of the EIP.
+     */
     readonly status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Eip Addresses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.126.0+.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *
@@ -239,7 +275,7 @@ export interface GetEipAddressesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+     * The include reservation data.
      */
     includeReservationData?: pulumi.Input<boolean | undefined>;
     /**
@@ -247,6 +283,8 @@ export interface GetEipAddressesOutputArgs {
      */
     ipAddress?: pulumi.Input<string | undefined>;
     /**
+     * Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
+     *
      * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
     ipAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -284,6 +322,8 @@ export interface GetEipAddressesOutputArgs {
     status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

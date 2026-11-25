@@ -71,6 +71,9 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[_builtins.str]:
+        """
+        Specify the New Created the User's Display Name. Supports up to 128 Characters.
+        """
         return pulumi.get(self, "display_name")
 
     @_builtins.property
@@ -89,11 +92,17 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        You Want to Query the User the Bastion Host ID of.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def mobile(self) -> Optional[_builtins.str]:
+        """
+        Specify the New of the User That Created a Different Mobile Phone Number from Your.
+        """
         return pulumi.get(self, "mobile")
 
     @_builtins.property
@@ -104,6 +113,9 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of User names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -114,26 +126,41 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[_builtins.str]:
+        """
+        Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+        """
         return pulumi.get(self, "source")
 
     @_builtins.property
     @pulumi.getter(name="sourceUserId")
     def source_user_id(self) -> Optional[_builtins.str]:
+        """
+        Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+        """
         return pulumi.get(self, "source_user_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[_builtins.str]:
+        """
+        Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+        """
         return pulumi.get(self, "user_name")
 
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
+        """
+        A list of Bastionhost Users. Each element contains the following attributes:
+        """
         return pulumi.get(self, "users")
 
 
@@ -172,7 +199,7 @@ def get_users(display_name: Optional[_builtins.str] = None,
     """
     This data source provides the Bastionhost Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -247,7 +274,7 @@ def get_users_output(display_name: pulumi.Input[Optional[Optional[_builtins.str]
     """
     This data source provides the Bastionhost Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 

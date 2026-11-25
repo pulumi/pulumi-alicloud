@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Prefix List and how to use it, see [What is Prefix List.](https://www.alibabacloud.com/help/en/doc-detail/207969.html).
 //
-// > **NOTE:** Available in v1.152.0+.
+// > **NOTE:** Available since v1.152.0.
 //
 // ## Example Usage
 //
@@ -37,7 +37,7 @@ import (
 //			_, err := ecs.NewEcsPrefixList(ctx, "default", &ecs.EcsPrefixListArgs{
 //				AddressFamily:  pulumi.String("IPv4"),
 //				MaxEntries:     pulumi.Int(2),
-//				PrefixListName: pulumi.String("tftest"),
+//				PrefixListName: pulumi.String("tfexample"),
 //				Description:    pulumi.String("description"),
 //				Entries: ecs.EcsPrefixListEntryArray{
 //					&ecs.EcsPrefixListEntryArgs{
@@ -71,7 +71,7 @@ type EcsPrefixList struct {
 	AddressFamily pulumi.StringOutput `pulumi:"addressFamily"`
 	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The Entry. The details see Block `entry`.
+	// The Entry. See `entry` below.
 	Entries EcsPrefixListEntryArrayOutput `pulumi:"entries"`
 	// The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
 	MaxEntries pulumi.IntOutput `pulumi:"maxEntries"`
@@ -125,7 +125,7 @@ type ecsPrefixListState struct {
 	AddressFamily *string `pulumi:"addressFamily"`
 	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The Entry. The details see Block `entry`.
+	// The Entry. See `entry` below.
 	Entries []EcsPrefixListEntry `pulumi:"entries"`
 	// The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
 	MaxEntries *int `pulumi:"maxEntries"`
@@ -138,7 +138,7 @@ type EcsPrefixListState struct {
 	AddressFamily pulumi.StringPtrInput
 	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The Entry. The details see Block `entry`.
+	// The Entry. See `entry` below.
 	Entries EcsPrefixListEntryArrayInput
 	// The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
 	MaxEntries pulumi.IntPtrInput
@@ -161,7 +161,7 @@ type ecsPrefixListArgs struct {
 	AddressFamily string `pulumi:"addressFamily"`
 	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The Entry. The details see Block `entry`.
+	// The Entry. See `entry` below.
 	Entries []EcsPrefixListEntry `pulumi:"entries"`
 	// The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
 	MaxEntries int `pulumi:"maxEntries"`
@@ -175,7 +175,7 @@ type EcsPrefixListArgs struct {
 	AddressFamily pulumi.StringInput
 	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The Entry. The details see Block `entry`.
+	// The Entry. See `entry` below.
 	Entries EcsPrefixListEntryArrayInput
 	// The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
 	MaxEntries pulumi.IntInput
@@ -280,7 +280,7 @@ func (o EcsPrefixListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsPrefixList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The Entry. The details see Block `entry`.
+// The Entry. See `entry` below.
 func (o EcsPrefixListOutput) Entries() EcsPrefixListEntryArrayOutput {
 	return o.ApplyT(func(v *EcsPrefixList) EcsPrefixListEntryArrayOutput { return v.Entries }).(EcsPrefixListEntryArrayOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.56.0+
+        /// &gt; **NOTE:** Available since v1.56.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.56.0+
+        /// &gt; **NOTE:** Available since v1.56.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.56.0+
+        /// &gt; **NOTE:** Available since v1.56.0.
         /// 
         /// ## Example Usage
         /// 
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public readonly string? Topic;
         /// <summary>
-        /// A list of topics. Each element contains the following attributes:
+        /// A list of topics. Each element contains the following attributes. See `Topics` for the optional argument block.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTopicsTopicResult> Topics;
         public readonly int TotalCount;

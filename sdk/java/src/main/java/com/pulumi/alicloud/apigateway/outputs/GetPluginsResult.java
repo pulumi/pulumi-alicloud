@@ -23,13 +23,33 @@ public final class GetPluginsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Plugin names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The name of the plug-in that you want to create.
+     * 
+     */
     private @Nullable String pluginName;
+    /**
+     * @return The type of the plug-in.
+     * 
+     */
     private @Nullable String pluginType;
+    /**
+     * @return A list of Api Gateway Plugins. Each element contains the following attributes:
+     * 
+     */
     private List<GetPluginsPlugin> plugins;
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetPluginsResult() {}
@@ -46,6 +66,10 @@ public final class GetPluginsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Plugin names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -58,15 +82,31 @@ public final class GetPluginsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The name of the plug-in that you want to create.
+     * 
+     */
     public Optional<String> pluginName() {
         return Optional.ofNullable(this.pluginName);
     }
+    /**
+     * @return The type of the plug-in.
+     * 
+     */
     public Optional<String> pluginType() {
         return Optional.ofNullable(this.pluginType);
     }
+    /**
+     * @return A list of Api Gateway Plugins. Each element contains the following attributes:
+     * 
+     */
     public List<GetPluginsPlugin> plugins() {
         return this.plugins;
     }
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

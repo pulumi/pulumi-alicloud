@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetQuotaAlarmsResult {
+    /**
+     * @return A list of Quotas Quota Alarms. Each element contains the following attributes:
+     * 
+     */
     private List<GetQuotaAlarmsAlarm> alarms;
     private @Nullable Boolean enableDetails;
     /**
@@ -25,14 +29,38 @@ public final class GetQuotaAlarmsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Quota Alarm names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The Product Code.
+     * 
+     */
     private @Nullable String productCode;
+    /**
+     * @return The Quota Action Code.
+     * 
+     */
     private @Nullable String quotaActionCode;
+    /**
+     * @return The name of Quota Alarm.
+     * 
+     */
     private @Nullable String quotaAlarmName;
+    /**
+     * @return The Quota Dimensions. See `quotaDimensions` below.
+     * 
+     */
     private @Nullable List<GetQuotaAlarmsQuotaDimension> quotaDimensions;
 
     private GetQuotaAlarmsResult() {}
+    /**
+     * @return A list of Quotas Quota Alarms. Each element contains the following attributes:
+     * 
+     */
     public List<GetQuotaAlarmsAlarm> alarms() {
         return this.alarms;
     }
@@ -52,21 +80,41 @@ public final class GetQuotaAlarmsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Quota Alarm names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The Product Code.
+     * 
+     */
     public Optional<String> productCode() {
         return Optional.ofNullable(this.productCode);
     }
+    /**
+     * @return The Quota Action Code.
+     * 
+     */
     public Optional<String> quotaActionCode() {
         return Optional.ofNullable(this.quotaActionCode);
     }
+    /**
+     * @return The name of Quota Alarm.
+     * 
+     */
     public Optional<String> quotaAlarmName() {
         return Optional.ofNullable(this.quotaAlarmName);
     }
+    /**
+     * @return The Quota Dimensions. See `quotaDimensions` below.
+     * 
+     */
     public List<GetQuotaAlarmsQuotaDimension> quotaDimensions() {
         return this.quotaDimensions == null ? List.of() : this.quotaDimensions;
     }

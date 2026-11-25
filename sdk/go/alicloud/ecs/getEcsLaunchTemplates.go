@@ -198,7 +198,6 @@ type GetEcsLaunchTemplatesResult struct {
 	OutputFile              *string  `pulumi:"outputFile"`
 	TemplateResourceGroupId *string  `pulumi:"templateResourceGroupId"`
 	// The tags of the launch template.
-	// > **NOTE:** Except for the fields `id`, `launchTemplateId`, `launchTemplateName`, `defaultVersionNumber`, `latestVersionNumber`, `createdBy`, `modifiedTime`, `resourceGroupId`, `templateTags`, all other fields take effect only if `enableDetails` is set to `true`.
 	TemplateTags map[string]string `pulumi:"templateTags"`
 	// A list of Ecs Launch Templates. Each element contains the following attributes:
 	Templates []GetEcsLaunchTemplatesTemplate `pulumi:"templates"`
@@ -282,7 +281,6 @@ func (o GetEcsLaunchTemplatesResultOutput) TemplateResourceGroupId() pulumi.Stri
 }
 
 // The tags of the launch template.
-// > **NOTE:** Except for the fields `id`, `launchTemplateId`, `launchTemplateName`, `defaultVersionNumber`, `latestVersionNumber`, `createdBy`, `modifiedTime`, `resourceGroupId`, `templateTags`, all other fields take effect only if `enableDetails` is set to `true`.
 func (o GetEcsLaunchTemplatesResultOutput) TemplateTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) map[string]string { return v.TemplateTags }).(pulumi.StringMapOutput)
 }

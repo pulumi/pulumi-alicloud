@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
     [OutputType]
     public sealed class GetRouterInterfacesFilterResult
     {
+        /// <summary>
+        /// The key of the field to filter by.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Set of values that are accepted for the given field.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

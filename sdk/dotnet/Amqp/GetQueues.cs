@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Queues of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.127.0+.
+        /// &gt; **NOTE:** Available since v1.127.0.
         /// 
         /// ## Example Usage
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Queues of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.127.0+.
+        /// &gt; **NOTE:** Available since v1.127.0.
         /// 
         /// ## Example Usage
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Queues of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.127.0+.
+        /// &gt; **NOTE:** Available since v1.127.0.
         /// 
         /// ## Example Usage
         /// 
@@ -248,11 +248,23 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Queue names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Amqp Queues. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetQueuesQueueResult> Queues;
+        /// <summary>
+        /// The name of the virtual host.
+        /// </summary>
         public readonly string VirtualHostName;
 
         [OutputConstructor]

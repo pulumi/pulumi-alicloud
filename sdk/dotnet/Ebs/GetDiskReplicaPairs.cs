@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides Ebs Disk Replica Pair available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides Ebs Disk Replica Pair available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// This data source provides Ebs Disk Replica Pair available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// ## Example Usage
         /// 

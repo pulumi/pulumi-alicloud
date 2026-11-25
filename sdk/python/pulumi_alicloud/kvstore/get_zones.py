@@ -142,10 +142,10 @@ def get_zones(engine: Optional[_builtins.str] = None,
 
 
     :param _builtins.str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-           * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
     :param _builtins.str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param _builtins.bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str product_type: The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
     """
     __args__ = dict()
     __args__['engine'] = engine
@@ -188,10 +188,10 @@ def get_zones_output(engine: pulumi.Input[Optional[Optional[_builtins.str]]] = N
 
 
     :param _builtins.str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-           * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
     :param _builtins.str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param _builtins.bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str product_type: The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
     """
     __args__ = dict()
     __args__['engine'] = engine

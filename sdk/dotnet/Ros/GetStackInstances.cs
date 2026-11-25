@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -331,11 +331,26 @@ namespace Pulumi.AliCloud.Ros
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Ros Stack Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetStackInstancesInstanceResult> Instances;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of the stack group.
+        /// </summary>
         public readonly string StackGroupName;
+        /// <summary>
+        /// The account to which the stack instance belongs.
+        /// </summary>
         public readonly string? StackInstanceAccountId;
+        /// <summary>
+        /// The region of the stack instance.
+        /// </summary>
         public readonly string? StackInstanceRegionId;
+        /// <summary>
+        /// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

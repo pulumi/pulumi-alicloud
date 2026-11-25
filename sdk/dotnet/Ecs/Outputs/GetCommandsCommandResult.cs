@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the command
+        /// The name of the command.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly int Timeout;
         /// <summary>
-        /// The command type.
+        /// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
         /// </summary>
         public readonly string Type;
         /// <summary>

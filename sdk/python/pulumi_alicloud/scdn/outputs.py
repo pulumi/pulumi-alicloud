@@ -58,14 +58,11 @@ class DomainCertInfo(dict):
                  ssl_protocol: Optional[_builtins.str] = None,
                  ssl_pub: Optional[_builtins.str] = None):
         """
-        :param _builtins.str cert_name: If You Enable HTTPS Here Certificate Name.
-        :param _builtins.str cert_type: Certificate Type. Value Range:
-               * upload: Certificate
-               * cas: Certificate Authority Certificate.
-               * free: Free Certificate.
-        :param _builtins.str ssl_pri: Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-        :param _builtins.str ssl_protocol: Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-        :param _builtins.str ssl_pub: If You Enable HTTPS Here Key.
+        :param _builtins.str cert_name: The certificate name when HTTPS is enabled.
+        :param _builtins.str cert_type: Certificate Type. Valid values:
+        :param _builtins.str ssl_pri: Private Key. Required when uploading a certificate.
+        :param _builtins.str ssl_protocol: Whether to enable SSL certificate. Valid values: `on`, `off`.
+        :param _builtins.str ssl_pub: The public key when HTTPS is enabled.
         """
         if cert_name is not None:
             pulumi.set(__self__, "cert_name", cert_name)
@@ -82,7 +79,7 @@ class DomainCertInfo(dict):
     @pulumi.getter(name="certName")
     def cert_name(self) -> Optional[_builtins.str]:
         """
-        If You Enable HTTPS Here Certificate Name.
+        The certificate name when HTTPS is enabled.
         """
         return pulumi.get(self, "cert_name")
 
@@ -90,10 +87,7 @@ class DomainCertInfo(dict):
     @pulumi.getter(name="certType")
     def cert_type(self) -> Optional[_builtins.str]:
         """
-        Certificate Type. Value Range:
-        * upload: Certificate
-        * cas: Certificate Authority Certificate.
-        * free: Free Certificate.
+        Certificate Type. Valid values:
         """
         return pulumi.get(self, "cert_type")
 
@@ -101,7 +95,7 @@ class DomainCertInfo(dict):
     @pulumi.getter(name="sslPri")
     def ssl_pri(self) -> Optional[_builtins.str]:
         """
-        Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+        Private Key. Required when uploading a certificate.
         """
         return pulumi.get(self, "ssl_pri")
 
@@ -109,7 +103,7 @@ class DomainCertInfo(dict):
     @pulumi.getter(name="sslProtocol")
     def ssl_protocol(self) -> Optional[_builtins.str]:
         """
-        Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+        Whether to enable SSL certificate. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "ssl_protocol")
 
@@ -117,7 +111,7 @@ class DomainCertInfo(dict):
     @pulumi.getter(name="sslPub")
     def ssl_pub(self) -> Optional[_builtins.str]:
         """
-        If You Enable HTTPS Here Key.
+        The public key when HTTPS is enabled.
         """
         return pulumi.get(self, "ssl_pub")
 
@@ -182,11 +176,8 @@ class DomainSource(dict):
         :param _builtins.str content: The Back-to-Source Address.
         :param _builtins.int port: Port.
         :param _builtins.str priority: Priority.
-        :param _builtins.str type: The Origin Server Type. Valid Values:
-               * ipaddr: IP Source Station
-               * domain: the Domain Name
-               * oss: OSS Bucket as a Source Station.
-        :param _builtins.str enabled: The source status. Valid values: online, offline.
+        :param _builtins.str type: The Origin Server Type. Valid values:
+        :param _builtins.str enabled: The source status. Valid values: `online`, `offline`.
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "port", port)
@@ -223,10 +214,7 @@ class DomainSource(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The Origin Server Type. Valid Values:
-        * ipaddr: IP Source Station
-        * domain: the Domain Name
-        * oss: OSS Bucket as a Source Station.
+        The Origin Server Type. Valid values:
         """
         return pulumi.get(self, "type")
 
@@ -234,7 +222,7 @@ class DomainSource(dict):
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.str]:
         """
-        The source status. Valid values: online, offline.
+        The source status. Valid values: `online`, `offline`.
         """
         return pulumi.get(self, "enabled")
 
@@ -262,7 +250,7 @@ class GetDomainsDomainResult(dict):
         :param _builtins.str id: The ID of the Domain. Its value is same as Queue Name.
         :param _builtins.str resource_group_id: The Resource Group ID.
         :param Sequence['GetDomainsDomainSourceArgs'] sources: the Origin Server Information.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: "check_failed", "checking", "configure_failed", "configuring", "offline", "online".
         """
         pulumi.set(__self__, "cert_infos", cert_infos)
         pulumi.set(__self__, "cname", cname)
@@ -351,7 +339,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: "check_failed", "checking", "configure_failed", "configuring", "offline", "online".
         """
         return pulumi.get(self, "status")
 

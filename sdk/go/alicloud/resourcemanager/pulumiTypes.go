@@ -2753,7 +2753,7 @@ type GetControlPoliciesPolicy struct {
 	PolicyDocument string `pulumi:"policyDocument"`
 	// The ID of policy.
 	PolicyId string `pulumi:"policyId"`
-	// The type of policy.
+	// The policy type of control policy. Valid values `System` and `Custom`.
 	PolicyType string `pulumi:"policyType"`
 }
 
@@ -2783,7 +2783,7 @@ type GetControlPoliciesPolicyArgs struct {
 	PolicyDocument pulumi.StringInput `pulumi:"policyDocument"`
 	// The ID of policy.
 	PolicyId pulumi.StringInput `pulumi:"policyId"`
-	// The type of policy.
+	// The policy type of control policy. Valid values `System` and `Custom`.
 	PolicyType pulumi.StringInput `pulumi:"policyType"`
 }
 
@@ -2873,7 +2873,7 @@ func (o GetControlPoliciesPolicyOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.PolicyId }).(pulumi.StringOutput)
 }
 
-// The type of policy.
+// The policy type of control policy. Valid values `System` and `Custom`.
 func (o GetControlPoliciesPolicyOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPoliciesPolicy) string { return v.PolicyType }).(pulumi.StringOutput)
 }
@@ -2909,7 +2909,7 @@ type GetControlPolicyAttachmentsAttachment struct {
 	PolicyId string `pulumi:"policyId"`
 	// The name of policy.
 	PolicyName string `pulumi:"policyName"`
-	// The type of policy.
+	// The policy type of control policy. Valid values: `Custom` and `System`.
 	PolicyType string `pulumi:"policyType"`
 }
 
@@ -2935,7 +2935,7 @@ type GetControlPolicyAttachmentsAttachmentArgs struct {
 	PolicyId pulumi.StringInput `pulumi:"policyId"`
 	// The name of policy.
 	PolicyName pulumi.StringInput `pulumi:"policyName"`
-	// The type of policy.
+	// The policy type of control policy. Valid values: `Custom` and `System`.
 	PolicyType pulumi.StringInput `pulumi:"policyType"`
 }
 
@@ -3015,7 +3015,7 @@ func (o GetControlPolicyAttachmentsAttachmentOutput) PolicyName() pulumi.StringO
 	return o.ApplyT(func(v GetControlPolicyAttachmentsAttachment) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
-// The type of policy.
+// The policy type of control policy. Valid values: `Custom` and `System`.
 func (o GetControlPolicyAttachmentsAttachmentOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPolicyAttachmentsAttachment) string { return v.PolicyType }).(pulumi.StringOutput)
 }
@@ -3047,7 +3047,7 @@ type GetDelegatedAdministratorsAdministrator struct {
 	DelegationEnabledTime string `pulumi:"delegationEnabledTime"`
 	// The ID of the Delegated Administrator.
 	Id string `pulumi:"id"`
-	// The identity of the trusted service.
+	// The identification of the trusted service.
 	ServicePrincipal string `pulumi:"servicePrincipal"`
 }
 
@@ -3069,7 +3069,7 @@ type GetDelegatedAdministratorsAdministratorArgs struct {
 	DelegationEnabledTime pulumi.StringInput `pulumi:"delegationEnabledTime"`
 	// The ID of the Delegated Administrator.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The identity of the trusted service.
+	// The identification of the trusted service.
 	ServicePrincipal pulumi.StringInput `pulumi:"servicePrincipal"`
 }
 
@@ -3139,7 +3139,7 @@ func (o GetDelegatedAdministratorsAdministratorOutput) Id() pulumi.StringOutput 
 	return o.ApplyT(func(v GetDelegatedAdministratorsAdministrator) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The identity of the trusted service.
+// The identification of the trusted service.
 func (o GetDelegatedAdministratorsAdministratorOutput) ServicePrincipal() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDelegatedAdministratorsAdministrator) string { return v.ServicePrincipal }).(pulumi.StringOutput)
 }
@@ -4334,9 +4334,9 @@ type GetResourceSharesShare struct {
 	ResourceShareId string `pulumi:"resourceShareId"`
 	// The name of resource share.
 	ResourceShareName string `pulumi:"resourceShareName"`
-	// The owner of resource share.
+	// The owner of resource share, Valid values: `Self` and `OtherAccounts`.
 	ResourceShareOwner string `pulumi:"resourceShareOwner"`
-	// The status of resource share.
+	// The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
 	Status string `pulumi:"status"`
 }
 
@@ -4358,9 +4358,9 @@ type GetResourceSharesShareArgs struct {
 	ResourceShareId pulumi.StringInput `pulumi:"resourceShareId"`
 	// The name of resource share.
 	ResourceShareName pulumi.StringInput `pulumi:"resourceShareName"`
-	// The owner of resource share.
+	// The owner of resource share, Valid values: `Self` and `OtherAccounts`.
 	ResourceShareOwner pulumi.StringInput `pulumi:"resourceShareOwner"`
-	// The status of resource share.
+	// The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -4430,12 +4430,12 @@ func (o GetResourceSharesShareOutput) ResourceShareName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceSharesShare) string { return v.ResourceShareName }).(pulumi.StringOutput)
 }
 
-// The owner of resource share.
+// The owner of resource share, Valid values: `Self` and `OtherAccounts`.
 func (o GetResourceSharesShareOutput) ResourceShareOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceSharesShare) string { return v.ResourceShareOwner }).(pulumi.StringOutput)
 }
 
-// The status of resource share.
+// The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
 func (o GetResourceSharesShareOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceSharesShare) string { return v.Status }).(pulumi.StringOutput)
 }

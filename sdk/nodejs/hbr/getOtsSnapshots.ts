@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.164.0+.
+ * > **NOTE:** Available since v1.164.0.
  *
  * ## Example Usage
  *
@@ -41,6 +41,9 @@ export interface GetOtsSnapshotsArgs {
      * The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
      */
     endTime?: string;
+    /**
+     * A list of Ots Snapshot IDs.
+     */
     ids?: string[];
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -63,13 +66,19 @@ export interface GetOtsSnapshotsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Hbr Ots Snapshots. Each element contains the following attributes:
+     */
     readonly snapshots: outputs.hbr.GetOtsSnapshotsSnapshot[];
+    /**
+     * The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+     */
     readonly startTime?: string;
 }
 /**
  * This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.164.0+.
+ * > **NOTE:** Available since v1.164.0.
  *
  * ## Example Usage
  *
@@ -101,6 +110,9 @@ export interface GetOtsSnapshotsOutputArgs {
      * The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
      */
     endTime?: pulumi.Input<string | undefined>;
+    /**
+     * A list of Ots Snapshot IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

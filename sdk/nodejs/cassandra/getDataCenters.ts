@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
  * Filters support regular expression for the cluster name or ids.
  *
- * > **NOTE:**  Available in 1.88.0+.
+ * > **NOTE:** Available since v1.88.0.
  *
  * > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
  *
@@ -89,7 +89,7 @@ export interface GetDataCentersResult {
  * The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
  * Filters support regular expression for the cluster name or ids.
  *
- * > **NOTE:**  Available in 1.88.0+.
+ * > **NOTE:** Available since v1.88.0.
  *
  * > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
  *

@@ -31,6 +31,21 @@ public final class InstancePostPayModuleSwitchObjArgs extends com.pulumi.resourc
     }
 
     /**
+     * The AI digital human module. Valid values:
+     * 
+     */
+    @Import(name="aiDigital")
+    private @Nullable Output<Integer> aiDigital;
+
+    /**
+     * @return The AI digital human module. Valid values:
+     * 
+     */
+    public Optional<Output<Integer>> aiDigital() {
+        return Optional.ofNullable(this.aiDigital);
+    }
+
+    /**
      * Anti-Ransomware Module. Valid values:
      * 
      */
@@ -76,6 +91,21 @@ public final class InstancePostPayModuleSwitchObjArgs extends com.pulumi.resourc
     }
 
     /**
+     * The Agentic cloud security configuration check module. Valid values:
+     * 
+     */
+    @Import(name="cspmInstance")
+    private @Nullable Output<Integer> cspmInstance;
+
+    /**
+     * @return The Agentic cloud security configuration check module. Valid values:
+     * 
+     */
+    public Optional<Output<Integer>> cspmInstance() {
+        return Optional.ofNullable(this.cspmInstance);
+    }
+
+    /**
      * Threat Analysis and Response Module. Valid values:
      * 
      */
@@ -103,6 +133,21 @@ public final class InstancePostPayModuleSwitchObjArgs extends com.pulumi.resourc
      */
     public Optional<Output<Integer>> ctdrStorage() {
         return Optional.ofNullable(this.ctdrStorage);
+    }
+
+    /**
+     * The image scan module. Valid values:
+     * 
+     */
+    @Import(name="imageScan")
+    private @Nullable Output<Integer> imageScan;
+
+    /**
+     * @return The image scan module. Valid values:
+     * 
+     */
+    public Optional<Output<Integer>> imageScan() {
+        return Optional.ofNullable(this.imageScan);
     }
 
     /**
@@ -199,11 +244,14 @@ public final class InstancePostPayModuleSwitchObjArgs extends com.pulumi.resourc
 
     private InstancePostPayModuleSwitchObjArgs(InstancePostPayModuleSwitchObjArgs $) {
         this.agentless = $.agentless;
+        this.aiDigital = $.aiDigital;
         this.antiRansomware = $.antiRansomware;
         this.basicService = $.basicService;
         this.cspm = $.cspm;
+        this.cspmInstance = $.cspmInstance;
         this.ctdr = $.ctdr;
         this.ctdrStorage = $.ctdrStorage;
+        this.imageScan = $.imageScan;
         this.postHost = $.postHost;
         this.rasp = $.rasp;
         this.sdk = $.sdk;
@@ -249,6 +297,27 @@ public final class InstancePostPayModuleSwitchObjArgs extends com.pulumi.resourc
          */
         public Builder agentless(Integer agentless) {
             return agentless(Output.of(agentless));
+        }
+
+        /**
+         * @param aiDigital The AI digital human module. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiDigital(@Nullable Output<Integer> aiDigital) {
+            $.aiDigital = aiDigital;
+            return this;
+        }
+
+        /**
+         * @param aiDigital The AI digital human module. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiDigital(Integer aiDigital) {
+            return aiDigital(Output.of(aiDigital));
         }
 
         /**
@@ -315,6 +384,27 @@ public final class InstancePostPayModuleSwitchObjArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param cspmInstance The Agentic cloud security configuration check module. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cspmInstance(@Nullable Output<Integer> cspmInstance) {
+            $.cspmInstance = cspmInstance;
+            return this;
+        }
+
+        /**
+         * @param cspmInstance The Agentic cloud security configuration check module. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cspmInstance(Integer cspmInstance) {
+            return cspmInstance(Output.of(cspmInstance));
+        }
+
+        /**
          * @param ctdr Threat Analysis and Response Module. Valid values:
          * 
          * @return builder
@@ -354,6 +444,27 @@ public final class InstancePostPayModuleSwitchObjArgs extends com.pulumi.resourc
          */
         public Builder ctdrStorage(Integer ctdrStorage) {
             return ctdrStorage(Output.of(ctdrStorage));
+        }
+
+        /**
+         * @param imageScan The image scan module. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageScan(@Nullable Output<Integer> imageScan) {
+            $.imageScan = imageScan;
+            return this;
+        }
+
+        /**
+         * @param imageScan The image scan module. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageScan(Integer imageScan) {
+            return imageScan(Output.of(imageScan));
         }
 
         /**

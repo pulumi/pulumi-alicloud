@@ -172,6 +172,7 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// The type of server group N. Valid values: ALB, NLB, GWLB.
+        /// 
         /// &gt; **NOTE:** From version 1.279.0, `Type` can be set to `GWLB`.
         /// </summary>
         [Output("type")]
@@ -256,6 +257,7 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// The type of server group N. Valid values: ALB, NLB, GWLB.
+        /// 
         /// &gt; **NOTE:** From version 1.279.0, `Type` can be set to `GWLB`.
         /// </summary>
         [Input("type", required: true)]
@@ -302,6 +304,7 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// The type of server group N. Valid values: ALB, NLB, GWLB.
+        /// 
         /// &gt; **NOTE:** From version 1.279.0, `Type` can be set to `GWLB`.
         /// </summary>
         [Input("type")]

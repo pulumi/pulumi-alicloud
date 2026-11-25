@@ -65,7 +65,9 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string CrossBackupId;
         /// <summary>
-        /// The ID of the destination region where the cross-region data backup file of the instance is stored.
+        /// The ID of the destination region where the cross-region data backup file is stored.
+        /// 
+        /// &gt; **NOTE:** Note You must specify the `CrossBackupId` parameter. Alternatively, you must specify the `StartTime` and `EndTime` parameters.
         /// </summary>
         public readonly string CrossBackupRegion;
         /// <summary>

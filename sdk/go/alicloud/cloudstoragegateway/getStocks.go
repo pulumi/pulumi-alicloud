@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.144.0+.
+// > **NOTE:** Available since v1.144.0.
 //
 // ## Example Usage
 //
@@ -65,9 +65,10 @@ type GetStocksArgs struct {
 type GetStocksResult struct {
 	GatewayClass *string `pulumi:"gatewayClass"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string           `pulumi:"id"`
-	OutputFile *string          `pulumi:"outputFile"`
-	Stocks     []GetStocksStock `pulumi:"stocks"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Cloud Storage Gateway Stocks. Each element contains the following attributes:
+	Stocks []GetStocksStock `pulumi:"stocks"`
 }
 
 func GetStocksOutput(ctx *pulumi.Context, args GetStocksOutputArgs, opts ...pulumi.InvokeOption) GetStocksResultOutput {
@@ -115,6 +116,7 @@ func (o GetStocksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStocksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cloud Storage Gateway Stocks. Each element contains the following attributes:
 func (o GetStocksResultOutput) Stocks() GetStocksStockArrayOutput {
 	return o.ApplyT(func(v GetStocksResult) []GetStocksStock { return v.Stocks }).(GetStocksStockArrayOutput)
 }

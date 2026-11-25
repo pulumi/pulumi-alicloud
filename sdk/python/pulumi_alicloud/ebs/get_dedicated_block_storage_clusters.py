@@ -111,7 +111,7 @@ def get_dedicated_block_storage_clusters(ids: Optional[Sequence[_builtins.str]] 
     """
     This data source provides Ebs Dedicated Block Storage Cluster available to the user.
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0.
 
     ## Example Usage
 
@@ -150,7 +150,7 @@ def get_dedicated_block_storage_clusters_output(ids: pulumi.Input[Optional[Optio
     """
     This data source provides Ebs Dedicated Block Storage Cluster available to the user.
 
-    > **NOTE:** Available in 1.196.0+
+    > **NOTE:** Available since v1.196.0.
 
     ## Example Usage
 

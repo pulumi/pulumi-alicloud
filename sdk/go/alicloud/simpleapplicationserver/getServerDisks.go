@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Example Usage
 //
@@ -101,16 +101,21 @@ type GetServerDisksArgs struct {
 
 // A collection of values returned by getServerDisks.
 type GetServerDisksResult struct {
-	DiskType *string              `pulumi:"diskType"`
-	Disks    []GetServerDisksDisk `pulumi:"disks"`
+	// The type of the disk. Possible values: `System`, `Data`.
+	DiskType *string `pulumi:"diskType"`
+	// A list of Simple Application Server Disks. Each element contains the following attributes:
+	Disks []GetServerDisksDisk `pulumi:"disks"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	InstanceId *string  `pulumi:"instanceId"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// Alibaba Cloud simple application server instance ID.
+	InstanceId *string `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Disk names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
+	Status *string `pulumi:"status"`
 }
 
 func GetServerDisksOutput(ctx *pulumi.Context, args GetServerDisksOutputArgs, opts ...pulumi.InvokeOption) GetServerDisksResultOutput {
@@ -153,10 +158,12 @@ func (o GetServerDisksResultOutput) ToGetServerDisksResultOutputWithContext(ctx 
 	return o
 }
 
+// The type of the disk. Possible values: `System`, `Data`.
 func (o GetServerDisksResultOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerDisksResult) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Simple Application Server Disks. Each element contains the following attributes:
 func (o GetServerDisksResultOutput) Disks() GetServerDisksDiskArrayOutput {
 	return o.ApplyT(func(v GetServerDisksResult) []GetServerDisksDisk { return v.Disks }).(GetServerDisksDiskArrayOutput)
 }
@@ -170,6 +177,7 @@ func (o GetServerDisksResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerDisksResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// Alibaba Cloud simple application server instance ID.
 func (o GetServerDisksResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerDisksResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
@@ -178,6 +186,7 @@ func (o GetServerDisksResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerDisksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Disk names.
 func (o GetServerDisksResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerDisksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -186,6 +195,7 @@ func (o GetServerDisksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerDisksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
 func (o GetServerDisksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerDisksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

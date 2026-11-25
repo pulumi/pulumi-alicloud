@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Nas Lifecycle Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.153.0+.
+// > **NOTE:** Available since v1.153.0+.
 //
 // ## Example Usage
 //
@@ -79,14 +79,17 @@ type GetLifecyclePoliciesArgs struct {
 
 // A collection of values returned by getLifecyclePolicies.
 type GetLifecyclePoliciesResult struct {
+	// The ID of the file system.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                       `pulumi:"id"`
-	Ids        []string                     `pulumi:"ids"`
-	NameRegex  *string                      `pulumi:"nameRegex"`
-	Names      []string                     `pulumi:"names"`
-	OutputFile *string                      `pulumi:"outputFile"`
-	Policies   []GetLifecyclePoliciesPolicy `pulumi:"policies"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Lifecycle Policy names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Nas Lifecycle Policies. Each element contains the following attributes:
+	Policies []GetLifecyclePoliciesPolicy `pulumi:"policies"`
 }
 
 func GetLifecyclePoliciesOutput(ctx *pulumi.Context, args GetLifecyclePoliciesOutputArgs, opts ...pulumi.InvokeOption) GetLifecyclePoliciesResultOutput {
@@ -125,6 +128,7 @@ func (o GetLifecyclePoliciesResultOutput) ToGetLifecyclePoliciesResultOutputWith
 	return o
 }
 
+// The ID of the file system.
 func (o GetLifecyclePoliciesResultOutput) FileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLifecyclePoliciesResult) string { return v.FileSystemId }).(pulumi.StringOutput)
 }
@@ -142,6 +146,7 @@ func (o GetLifecyclePoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLifecyclePoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Lifecycle Policy names.
 func (o GetLifecyclePoliciesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLifecyclePoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -150,6 +155,7 @@ func (o GetLifecyclePoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLifecyclePoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Nas Lifecycle Policies. Each element contains the following attributes:
 func (o GetLifecyclePoliciesResultOutput) Policies() GetLifecyclePoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetLifecyclePoliciesResult) []GetLifecyclePoliciesPolicy { return v.Policies }).(GetLifecyclePoliciesPolicyArrayOutput)
 }

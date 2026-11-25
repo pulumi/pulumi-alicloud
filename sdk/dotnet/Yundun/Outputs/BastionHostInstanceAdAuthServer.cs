@@ -13,17 +13,53 @@ namespace Pulumi.AliCloud.Yundun.Outputs
     [OutputType]
     public sealed class BastionHostInstanceAdAuthServer
     {
+        /// <summary>
+        /// The username of the account that is used for the AD server.
+        /// </summary>
         public readonly string Account;
+        /// <summary>
+        /// The Base distinguished name (DN).
+        /// </summary>
         public readonly string BaseDn;
+        /// <summary>
+        /// The domain on the AD server.
+        /// </summary>
         public readonly string Domain;
+        /// <summary>
+        /// The field that is used to indicate the email address of a user on the AD server.
+        /// </summary>
         public readonly string? EmailMapping;
+        /// <summary>
+        /// The condition that is used to filter users.
+        /// </summary>
         public readonly string? Filter;
+        /// <summary>
+        /// Specifies whether to support SSL.
+        /// </summary>
         public readonly bool IsSsl;
+        /// <summary>
+        /// The field that is used to indicate the mobile phone number of a user on the AD server.
+        /// </summary>
         public readonly string? MobileMapping;
+        /// <summary>
+        /// The field that is used to indicate the name of a user on the AD server.
+        /// </summary>
         public readonly string? NameMapping;
+        /// <summary>
+        /// The password of the account that is used for the AD server.
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// The port that is used to access the AD server.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// The address of the AD server.
+        /// </summary>
         public readonly string Server;
+        /// <summary>
+        /// The address of the secondary AD server.
+        /// </summary>
         public readonly string? StandbyServer;
 
         [OutputConstructor]

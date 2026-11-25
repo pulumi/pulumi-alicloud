@@ -31,12 +31,12 @@ public final class GetImagesImage {
      */
     private String imageName;
     /**
-     * @return The type of the image. Valid values: `app`, `custom`, `system`.
+     * @return The image type. Valid values: `app`, `custom`, `system`.
      * 
      */
     private String imageType;
     /**
-     * @return The platform of Plan supported.
+     * @return Available in v1.161.0. The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
      * 
      */
     private String platform;
@@ -71,14 +71,14 @@ public final class GetImagesImage {
         return this.imageName;
     }
     /**
-     * @return The type of the image. Valid values: `app`, `custom`, `system`.
+     * @return The image type. Valid values: `app`, `custom`, `system`.
      * 
      */
     public String imageType() {
         return this.imageType;
     }
     /**
-     * @return The platform of Plan supported.
+     * @return Available in v1.161.0. The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
      * 
      */
     public String platform() {

@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVirtualHostsResult {
+    /**
+     * @return A list of Amqp Virtual Hosts. Each element contains the following attributes:
+     * 
+     */
     private List<GetVirtualHostsHost> hosts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,12 +25,24 @@ public final class GetVirtualHostsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return InstanceId.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Virtual Host names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetVirtualHostsResult() {}
+    /**
+     * @return A list of Amqp Virtual Hosts. Each element contains the following attributes:
+     * 
+     */
     public List<GetVirtualHostsHost> hosts() {
         return this.hosts;
     }
@@ -40,12 +56,20 @@ public final class GetVirtualHostsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return InstanceId.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Virtual Host names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

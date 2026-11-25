@@ -12,28 +12,64 @@ namespace Pulumi.AliCloud.ActionTrail
     /// <summary>
     /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.actiontrail.Trail from version 1.95.0.
     /// 
-    /// Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+    /// Provides a Actiontrail Trail resource.
     /// 
-    /// &gt; **NOTE:** Available in 1.35.0+
+    /// Trail of ActionTrail. After creating a trail, you need to enable the trail through StartLogging.
+    /// 
+    /// For information about Actiontrail Trail and how to use it, see [What is Trail](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createtrail).
+    /// 
+    /// &gt; **NOTE:** Available since v1.95.0.
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new action trail.
-    ///     var foo = new AliCloud.ActionTrail.TrailDeprecated("foo", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         Name = "action-trail",
-    ///         EventRw = "Write-test",
-    ///         OssBucketName = bucket.Id,
-    ///         RoleName = attach.RoleName,
-    ///         OssKeyPrefix = "at-product-account-audit-B",
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultGetAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var defaultInteger = new Random.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultProject = new AliCloud.Log.Project("default", new()
+    ///     {
+    ///         ProjectName = $"{name}-{defaultInteger.Result}",
+    ///         Description = "tf actiontrail example",
+    ///     });
+    /// 
+    ///     var defaultGetRoles = AliCloud.Ram.GetRoles.Invoke(new()
+    ///     {
+    ///         NameRegex = "AliyunServiceRoleForActionTrail",
+    ///     });
+    /// 
+    ///     var defaultTrail = new AliCloud.ActionTrail.Trail("default", new()
+    ///     {
+    ///         TrailName = name,
+    ///         SlsWriteRoleArn = defaultGetRoles.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Arn),
+    ///         SlsProjectArn = Output.Tuple(@default, defaultGetAccount, defaultProject.ProjectName).Apply(values =&gt;
+    ///         {
+    ///             var @default = values.Item1;
+    ///             var defaultGetAccount = values.Item2;
+    ///             var projectName = values.Item3;
+    ///             return $"acs:log:{@default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{projectName}";
+    ///         }),
     ///     });
     /// 
     /// });
@@ -43,93 +79,127 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     /// ## Import
     /// 
-    /// Action trail can be imported using the id, e.g.
+    /// Actiontrail Trail can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+    /// $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated example &lt;id&gt;
     /// ```
     /// </summary>
     [Obsolete(@"Resource renamed to `Trail`")]
     [AliCloudResourceType("alicloud:actiontrail/trailDeprecated:TrailDeprecated")]
     public partial class TrailDeprecated : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (Available since v1.256.0) The time when the trail was created.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+        /// </summary>
         [Output("dataEventTrailRegion")]
         public Output<string?> DataEventTrailRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+        /// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
         /// </summary>
         [Output("eventRw")]
         public Output<string> EventRw { get; private set; } = null!;
 
+        /// <summary>
+        /// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+        /// </summary>
         [Output("eventSelectors")]
         public Output<string?> EventSelectors { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to create a multi-account trail. Default value: `False`. Valid values:
+        /// </summary>
         [Output("isOrganizationTrail")]
         public Output<bool?> IsOrganizationTrail { get; private set; } = null!;
 
+        /// <summary>
+        /// The ARN of the MaxCompute project to which you want to deliver events.
+        /// </summary>
         [Output("maxComputeProjectArn")]
         public Output<string?> MaxComputeProjectArn { get; private set; } = null!;
 
+        /// <summary>
+        /// The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+        /// </summary>
         [Output("maxComputeWriteRoleArn")]
         public Output<string> MaxComputeWriteRoleArn { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `MnsTopicArn` has been deprecated from provider version 1.118.0.
+        /// </summary>
         [Output("mnsTopicArn")]
         public Output<string?> MnsTopicArn { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the trail to be created, which must be unique for an account.
+        /// Field `Name` has been deprecated from provider version 1.95.0. New field `TrailName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+        /// The OSS bucket to which the trail delivers logs.
         /// </summary>
         [Output("ossBucketName")]
         public Output<string?> OssBucketName { get; private set; } = null!;
 
         /// <summary>
-        /// The prefix of the specified OSS bucket name. This parameter can be left empty.
+        /// The prefix of the file name in the OSS bucket to which the trail delivers logs.
         /// </summary>
         [Output("ossKeyPrefix")]
         public Output<string?> OssKeyPrefix { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the RAM role that the user allows ActionTrail to access OSS service.
+        /// </summary>
         [Output("ossWriteRoleArn")]
         public Output<string?> OssWriteRoleArn { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available since v1.256.0) The home region of the trail.
+        /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The RAM role in ActionTrail permitted by the user.
+        /// Field `RoleName` has been deprecated from provider version 1.118.0.
         /// </summary>
         [Output("roleName")]
         public Output<string?> RoleName { get; private set; } = null!;
 
         /// <summary>
-        /// The unique ARN of the Log Service project.
+        /// The ARN of the Simple Log Service project to which the trail delivers logs.
         /// </summary>
         [Output("slsProjectArn")]
         public Output<string?> SlsProjectArn { get; private set; } = null!;
 
         /// <summary>
-        /// The unique ARN of the Log Service role.
-        /// 
-        /// &gt; **NOTE:** `SlsProjectArn` and `SlsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+        /// The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
         /// </summary>
         [Output("slsWriteRoleArn")]
         public Output<string> SlsWriteRoleArn { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the trail to be created.
+        /// </summary>
         [Output("trailName")]
         public Output<string> TrailName { get; private set; } = null!;
 
+        /// <summary>
+        /// The region of the trail.
+        /// </summary>
         [Output("trailRegion")]
         public Output<string> TrailRegion { get; private set; } = null!;
 
@@ -179,77 +249,105 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class TrailDeprecatedArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+        /// </summary>
         [Input("dataEventTrailRegion")]
         public Input<string>? DataEventTrailRegion { get; set; }
 
         /// <summary>
-        /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+        /// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
         /// </summary>
         [Input("eventRw")]
         public Input<string>? EventRw { get; set; }
 
+        /// <summary>
+        /// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+        /// </summary>
         [Input("eventSelectors")]
         public Input<string>? EventSelectors { get; set; }
 
+        /// <summary>
+        /// Specifies whether to create a multi-account trail. Default value: `False`. Valid values:
+        /// </summary>
         [Input("isOrganizationTrail")]
         public Input<bool>? IsOrganizationTrail { get; set; }
 
+        /// <summary>
+        /// The ARN of the MaxCompute project to which you want to deliver events.
+        /// </summary>
         [Input("maxComputeProjectArn")]
         public Input<string>? MaxComputeProjectArn { get; set; }
 
+        /// <summary>
+        /// The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+        /// </summary>
         [Input("maxComputeWriteRoleArn")]
         public Input<string>? MaxComputeWriteRoleArn { get; set; }
 
+        /// <summary>
+        /// Field `MnsTopicArn` has been deprecated from provider version 1.118.0.
+        /// </summary>
         [Input("mnsTopicArn")]
         public Input<string>? MnsTopicArn { get; set; }
 
         /// <summary>
-        /// The name of the trail to be created, which must be unique for an account.
+        /// Field `Name` has been deprecated from provider version 1.95.0. New field `TrailName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+        /// The OSS bucket to which the trail delivers logs.
         /// </summary>
         [Input("ossBucketName")]
         public Input<string>? OssBucketName { get; set; }
 
         /// <summary>
-        /// The prefix of the specified OSS bucket name. This parameter can be left empty.
+        /// The prefix of the file name in the OSS bucket to which the trail delivers logs.
         /// </summary>
         [Input("ossKeyPrefix")]
         public Input<string>? OssKeyPrefix { get; set; }
 
+        /// <summary>
+        /// The name of the RAM role that the user allows ActionTrail to access OSS service.
+        /// </summary>
         [Input("ossWriteRoleArn")]
         public Input<string>? OssWriteRoleArn { get; set; }
 
         /// <summary>
-        /// The RAM role in ActionTrail permitted by the user.
+        /// Field `RoleName` has been deprecated from provider version 1.118.0.
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
 
         /// <summary>
-        /// The unique ARN of the Log Service project.
+        /// The ARN of the Simple Log Service project to which the trail delivers logs.
         /// </summary>
         [Input("slsProjectArn")]
         public Input<string>? SlsProjectArn { get; set; }
 
         /// <summary>
-        /// The unique ARN of the Log Service role.
-        /// 
-        /// &gt; **NOTE:** `SlsProjectArn` and `SlsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+        /// The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
         /// </summary>
         [Input("slsWriteRoleArn")]
         public Input<string>? SlsWriteRoleArn { get; set; }
 
+        /// <summary>
+        /// The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The name of the trail to be created.
+        /// </summary>
         [Input("trailName")]
         public Input<string>? TrailName { get; set; }
 
+        /// <summary>
+        /// The region of the trail.
+        /// </summary>
         [Input("trailRegion")]
         public Input<string>? TrailRegion { get; set; }
 
@@ -261,83 +359,117 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class TrailDeprecatedState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Available since v1.256.0) The time when the trail was created.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+        /// </summary>
         [Input("dataEventTrailRegion")]
         public Input<string>? DataEventTrailRegion { get; set; }
 
         /// <summary>
-        /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+        /// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
         /// </summary>
         [Input("eventRw")]
         public Input<string>? EventRw { get; set; }
 
+        /// <summary>
+        /// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+        /// </summary>
         [Input("eventSelectors")]
         public Input<string>? EventSelectors { get; set; }
 
+        /// <summary>
+        /// Specifies whether to create a multi-account trail. Default value: `False`. Valid values:
+        /// </summary>
         [Input("isOrganizationTrail")]
         public Input<bool>? IsOrganizationTrail { get; set; }
 
+        /// <summary>
+        /// The ARN of the MaxCompute project to which you want to deliver events.
+        /// </summary>
         [Input("maxComputeProjectArn")]
         public Input<string>? MaxComputeProjectArn { get; set; }
 
+        /// <summary>
+        /// The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+        /// </summary>
         [Input("maxComputeWriteRoleArn")]
         public Input<string>? MaxComputeWriteRoleArn { get; set; }
 
+        /// <summary>
+        /// Field `MnsTopicArn` has been deprecated from provider version 1.118.0.
+        /// </summary>
         [Input("mnsTopicArn")]
         public Input<string>? MnsTopicArn { get; set; }
 
         /// <summary>
-        /// The name of the trail to be created, which must be unique for an account.
+        /// Field `Name` has been deprecated from provider version 1.95.0. New field `TrailName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+        /// The OSS bucket to which the trail delivers logs.
         /// </summary>
         [Input("ossBucketName")]
         public Input<string>? OssBucketName { get; set; }
 
         /// <summary>
-        /// The prefix of the specified OSS bucket name. This parameter can be left empty.
+        /// The prefix of the file name in the OSS bucket to which the trail delivers logs.
         /// </summary>
         [Input("ossKeyPrefix")]
         public Input<string>? OssKeyPrefix { get; set; }
 
+        /// <summary>
+        /// The name of the RAM role that the user allows ActionTrail to access OSS service.
+        /// </summary>
         [Input("ossWriteRoleArn")]
         public Input<string>? OssWriteRoleArn { get; set; }
 
+        /// <summary>
+        /// (Available since v1.256.0) The home region of the trail.
+        /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// The RAM role in ActionTrail permitted by the user.
+        /// Field `RoleName` has been deprecated from provider version 1.118.0.
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
 
         /// <summary>
-        /// The unique ARN of the Log Service project.
+        /// The ARN of the Simple Log Service project to which the trail delivers logs.
         /// </summary>
         [Input("slsProjectArn")]
         public Input<string>? SlsProjectArn { get; set; }
 
         /// <summary>
-        /// The unique ARN of the Log Service role.
-        /// 
-        /// &gt; **NOTE:** `SlsProjectArn` and `SlsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+        /// The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
         /// </summary>
         [Input("slsWriteRoleArn")]
         public Input<string>? SlsWriteRoleArn { get; set; }
 
+        /// <summary>
+        /// The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The name of the trail to be created.
+        /// </summary>
         [Input("trailName")]
         public Input<string>? TrailName { get; set; }
 
+        /// <summary>
+        /// The region of the trail.
+        /// </summary>
         [Input("trailRegion")]
         public Input<string>? TrailRegion { get; set; }
 

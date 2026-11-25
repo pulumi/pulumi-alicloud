@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.193.0+.
+        /// &gt; **NOTE:** Available since v1.193.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.193.0+.
+        /// &gt; **NOTE:** Available since v1.193.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.193.0+.
+        /// &gt; **NOTE:** Available since v1.193.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -246,8 +246,17 @@ namespace Pulumi.AliCloud.CloudSso
     [OutputType]
     public sealed class GetAccessAssignmentsResult
     {
+        /// <summary>
+        /// Access configuration ID.
+        /// </summary>
         public readonly string? AccessConfigurationId;
+        /// <summary>
+        /// A list of Cloud Sso Access Assignments. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccessAssignmentsAssignmentResult> Assignments;
+        /// <summary>
+        /// Directory ID.
+        /// </summary>
         public readonly string DirectoryId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -255,8 +264,17 @@ namespace Pulumi.AliCloud.CloudSso
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Create the identity type of the access assignment, which can be a user or a user group.
+        /// </summary>
         public readonly string? PrincipalType;
+        /// <summary>
+        /// The ID of the target to create the resource range.
+        /// </summary>
         public readonly string? TargetId;
+        /// <summary>
+        /// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+        /// </summary>
         public readonly string? TargetType;
 
         [OutputConstructor]

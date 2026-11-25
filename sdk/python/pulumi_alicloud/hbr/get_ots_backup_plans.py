@@ -77,6 +77,9 @@ class GetOtsBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of OtsBackupPlan names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -97,11 +100,17 @@ class GetOtsBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetOtsBackupPlansPlanResult']:
+        """
+        A list of Hbr OtsBackupPlans. Each element contains the following attributes:
+        """
         return pulumi.get(self, "plans")
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of backup vault.
+        """
         return pulumi.get(self, "vault_id")
 
 
@@ -132,7 +141,7 @@ def get_ots_backup_plans(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.163.0+.
+    > **NOTE:** Available since v1.163.0.
 
     ## Example Usage
 
@@ -184,7 +193,7 @@ def get_ots_backup_plans_output(ids: pulumi.Input[Optional[Optional[Sequence[_bu
     """
     This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.163.0+.
+    > **NOTE:** Available since v1.163.0.
 
     ## Example Usage
 

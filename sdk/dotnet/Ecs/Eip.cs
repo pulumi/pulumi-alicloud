@@ -58,129 +58,184 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/eip:Eip")]
     public partial class Eip : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The promotion code. This parameter is not required.
+        /// </summary>
         [Output("activityId")]
         public Output<string?> ActivityId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        /// The EIP name.
+        /// 
+        /// The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         /// </summary>
         [Output("addressName")]
         public Output<string> AddressName { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the EIP instance.
+        /// </summary>
         [Output("allocationId")]
         public Output<string> AllocationId { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to enable automatic payment. Valid values:
+        /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        /// The maximum bandwidth of the specified EIP. Unit: Mbit/s.
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
 
+        /// <summary>
+        /// The time when the EIP was created.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `False`.
-        /// - true: Enable deletion protection.
-        /// - false: Disable deletion protection.
+        /// Specifies whether to enable deletion protection. Valid values:
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the EIP.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of fine-grained monitoring. Valid values:
+        /// - `ON`
+        /// - `OFF`
+        /// </summary>
         [Output("highDefinitionMonitorLogStatus")]
         public Output<string> HighDefinitionMonitorLogStatus { get; private set; } = null!;
 
         /// <summary>
-        /// (It has been deprecated from version 1.126.0 and using new attribute `PaymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        /// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `PaymentType` instead.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `InstanceChargeType` is PrePaid.
+        /// The metering method of the EIP. Valid values:
+        /// - `PayByBandwidth` (default): pay-by-bandwidth.
+        /// - `PayByTraffic`: pay-by-data-transfer.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The elastic ip address
+        /// The IP address of the EIP. Supports a maximum of 50 EIPs.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+        /// The line type. Valid values:
+        /// - `BGP` (default): BGP (Multi-ISP) line
+        /// - `BGP_PRO`: BGP (Multi-ISP) Pro line
         /// </summary>
         [Output("isp")]
         public Output<string> Isp { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Simple Log Service (SLS) project.
+        /// </summary>
         [Output("logProject")]
         public Output<string?> LogProject { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Logstore.
+        /// </summary>
         [Output("logStore")]
         public Output<string?> LogStore { get; private set; } = null!;
 
+        /// <summary>
+        /// The association mode. Valid values:
+        /// - `NAT` (default): NAT mode
+        /// - `MULTI_BINDED`: multi-EIP-to-ENI mode
+        /// - `BINDED`: cut-network interface controller mode
+        /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.126.0 and using new attribute `AddressName` instead.
+        /// . Field 'name' has been deprecated from provider version 1.126.0. New field `AddressName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The network type. By default, this value is set to `Public`, which specifies the public network type.
+        /// </summary>
         [Output("netmode")]
         public Output<string> Netmode { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        /// The billing method of the EIP. Valid values:
+        /// - `Subscription`: subscription
+        /// - `PayAsYouGo` (default): pay-as-you-go
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// Duration of purchase. When the value of `PricingCycle` is `Month`, the value range of `Period` is `1` to `9`. When the value of `PricingCycle` is `Year`, the value range of `Period` is `1` to `5`. If the value of the `PaymentType` parameter is `Subscription`, this parameter is required. If the value of the `PaymentType` parameter is `PayAsYouGo`, this parameter is left blank.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
+        /// <summary>
+        /// The billing cycle of the subscription EIP. Valid values:
+        /// - `Month` (default)
+        /// - `Year`
+        /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the IP address pool. The EIP is allocated from the IP address pool.
+        /// </summary>
         [Output("publicIpAddressPoolId")]
         public Output<string?> PublicIpAddressPoolId { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the eip belongs.
+        /// The ID of the resource group to which you want to move the resource.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// Security protection level.
+        /// - When the return is empty, the basic DDoS protection is specified.
+        /// - When `AntidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+        /// </summary>
         [Output("securityProtectionTypes")]
         public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The EIP current status.
+        /// The state of the EIP.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The zone of the EIP.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -230,113 +285,161 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class EipArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The promotion code. This parameter is not required.
+        /// </summary>
         [Input("activityId")]
         public Input<string>? ActivityId { get; set; }
 
         /// <summary>
-        /// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        /// The EIP name.
+        /// 
+        /// The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         /// </summary>
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
 
+        /// <summary>
+        /// The ID of the EIP instance.
+        /// </summary>
         [Input("allocationId")]
         public Input<string>? AllocationId { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable automatic payment. Valid values:
+        /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        /// The maximum bandwidth of the specified EIP. Unit: Mbit/s.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `False`.
-        /// - true: Enable deletion protection.
-        /// - false: Disable deletion protection.
+        /// Specifies whether to enable deletion protection. Valid values:
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the EIP.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The status of fine-grained monitoring. Valid values:
+        /// - `ON`
+        /// - `OFF`
+        /// </summary>
         [Input("highDefinitionMonitorLogStatus")]
         public Input<string>? HighDefinitionMonitorLogStatus { get; set; }
 
         /// <summary>
-        /// (It has been deprecated from version 1.126.0 and using new attribute `PaymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        /// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `PaymentType` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `InstanceChargeType` is PrePaid.
+        /// The metering method of the EIP. Valid values:
+        /// - `PayByBandwidth` (default): pay-by-bandwidth.
+        /// - `PayByTraffic`: pay-by-data-transfer.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The elastic ip address
+        /// The IP address of the EIP. Supports a maximum of 50 EIPs.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+        /// The line type. Valid values:
+        /// - `BGP` (default): BGP (Multi-ISP) line
+        /// - `BGP_PRO`: BGP (Multi-ISP) Pro line
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
 
+        /// <summary>
+        /// The name of the Simple Log Service (SLS) project.
+        /// </summary>
         [Input("logProject")]
         public Input<string>? LogProject { get; set; }
 
+        /// <summary>
+        /// The name of the Logstore.
+        /// </summary>
         [Input("logStore")]
         public Input<string>? LogStore { get; set; }
 
+        /// <summary>
+        /// The association mode. Valid values:
+        /// - `NAT` (default): NAT mode
+        /// - `MULTI_BINDED`: multi-EIP-to-ENI mode
+        /// - `BINDED`: cut-network interface controller mode
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.126.0 and using new attribute `AddressName` instead.
+        /// . Field 'name' has been deprecated from provider version 1.126.0. New field `AddressName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The network type. By default, this value is set to `Public`, which specifies the public network type.
+        /// </summary>
         [Input("netmode")]
         public Input<string>? Netmode { get; set; }
 
         /// <summary>
-        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        /// The billing method of the EIP. Valid values:
+        /// - `Subscription`: subscription
+        /// - `PayAsYouGo` (default): pay-as-you-go
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// Duration of purchase. When the value of `PricingCycle` is `Month`, the value range of `Period` is `1` to `9`. When the value of `PricingCycle` is `Year`, the value range of `Period` is `1` to `5`. If the value of the `PaymentType` parameter is `Subscription`, this parameter is required. If the value of the `PaymentType` parameter is `PayAsYouGo`, this parameter is left blank.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The billing cycle of the subscription EIP. Valid values:
+        /// - `Month` (default)
+        /// - `Year`
+        /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
+        /// <summary>
+        /// The ID of the IP address pool. The EIP is allocated from the IP address pool.
+        /// </summary>
         [Input("publicIpAddressPoolId")]
         public Input<string>? PublicIpAddressPoolId { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the eip belongs.
+        /// The ID of the resource group to which you want to move the resource.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("securityProtectionTypes")]
         private InputList<string>? _securityProtectionTypes;
+
+        /// <summary>
+        /// Security protection level.
+        /// - When the return is empty, the basic DDoS protection is specified.
+        /// - When `AntidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+        /// </summary>
         public InputList<string> SecurityProtectionTypes
         {
             get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
@@ -347,7 +450,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -355,6 +458,11 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The zone of the EIP.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -366,116 +474,167 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class EipState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The promotion code. This parameter is not required.
+        /// </summary>
         [Input("activityId")]
         public Input<string>? ActivityId { get; set; }
 
         /// <summary>
-        /// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        /// The EIP name.
+        /// 
+        /// The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         /// </summary>
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
 
+        /// <summary>
+        /// The ID of the EIP instance.
+        /// </summary>
         [Input("allocationId")]
         public Input<string>? AllocationId { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable automatic payment. Valid values:
+        /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        /// The maximum bandwidth of the specified EIP. Unit: Mbit/s.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
 
+        /// <summary>
+        /// The time when the EIP was created.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `False`.
-        /// - true: Enable deletion protection.
-        /// - false: Disable deletion protection.
+        /// Specifies whether to enable deletion protection. Valid values:
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the EIP.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The status of fine-grained monitoring. Valid values:
+        /// - `ON`
+        /// - `OFF`
+        /// </summary>
         [Input("highDefinitionMonitorLogStatus")]
         public Input<string>? HighDefinitionMonitorLogStatus { get; set; }
 
         /// <summary>
-        /// (It has been deprecated from version 1.126.0 and using new attribute `PaymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        /// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `PaymentType` instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `InstanceChargeType` is PrePaid.
+        /// The metering method of the EIP. Valid values:
+        /// - `PayByBandwidth` (default): pay-by-bandwidth.
+        /// - `PayByTraffic`: pay-by-data-transfer.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The elastic ip address
+        /// The IP address of the EIP. Supports a maximum of 50 EIPs.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+        /// The line type. Valid values:
+        /// - `BGP` (default): BGP (Multi-ISP) line
+        /// - `BGP_PRO`: BGP (Multi-ISP) Pro line
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
 
+        /// <summary>
+        /// The name of the Simple Log Service (SLS) project.
+        /// </summary>
         [Input("logProject")]
         public Input<string>? LogProject { get; set; }
 
+        /// <summary>
+        /// The name of the Logstore.
+        /// </summary>
         [Input("logStore")]
         public Input<string>? LogStore { get; set; }
 
+        /// <summary>
+        /// The association mode. Valid values:
+        /// - `NAT` (default): NAT mode
+        /// - `MULTI_BINDED`: multi-EIP-to-ENI mode
+        /// - `BINDED`: cut-network interface controller mode
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.126.0 and using new attribute `AddressName` instead.
+        /// . Field 'name' has been deprecated from provider version 1.126.0. New field `AddressName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The network type. By default, this value is set to `Public`, which specifies the public network type.
+        /// </summary>
         [Input("netmode")]
         public Input<string>? Netmode { get; set; }
 
         /// <summary>
-        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        /// The billing method of the EIP. Valid values:
+        /// - `Subscription`: subscription
+        /// - `PayAsYouGo` (default): pay-as-you-go
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        /// **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// Duration of purchase. When the value of `PricingCycle` is `Month`, the value range of `Period` is `1` to `9`. When the value of `PricingCycle` is `Year`, the value range of `Period` is `1` to `5`. If the value of the `PaymentType` parameter is `Subscription`, this parameter is required. If the value of the `PaymentType` parameter is `PayAsYouGo`, this parameter is left blank.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The billing cycle of the subscription EIP. Valid values:
+        /// - `Month` (default)
+        /// - `Year`
+        /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
+        /// <summary>
+        /// The ID of the IP address pool. The EIP is allocated from the IP address pool.
+        /// </summary>
         [Input("publicIpAddressPoolId")]
         public Input<string>? PublicIpAddressPoolId { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the eip belongs.
+        /// The ID of the resource group to which you want to move the resource.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("securityProtectionTypes")]
         private InputList<string>? _securityProtectionTypes;
+
+        /// <summary>
+        /// Security protection level.
+        /// - When the return is empty, the basic DDoS protection is specified.
+        /// - When `AntidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+        /// </summary>
         public InputList<string> SecurityProtectionTypes
         {
             get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
@@ -483,7 +642,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The EIP current status.
+        /// The state of the EIP.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -492,7 +651,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -500,6 +659,11 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The zone of the EIP.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

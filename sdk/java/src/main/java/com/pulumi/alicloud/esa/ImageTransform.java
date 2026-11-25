@@ -91,32 +91,74 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/imageTransform:ImageTransform")
 public class ImageTransform extends com.pulumi.resources.CustomResource {
     /**
-     * Config Id
+     * Specifies whether to enable adaptive AVIF. Valid values:
+     * 
+     */
+    @Export(name="autoAvif", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> autoAvif;
+
+    /**
+     * @return Specifies whether to enable adaptive AVIF. Valid values:
+     * 
+     */
+    public Output<Optional<String>> autoAvif() {
+        return Codegen.optional(this.autoAvif);
+    }
+    /**
+     * Specifies whether to enable adaptive WebP. Valid values:
+     * 
+     */
+    @Export(name="autoWebp", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> autoWebp;
+
+    /**
+     * @return Specifies whether to enable adaptive WebP. Valid values:
+     * 
+     */
+    public Output<Optional<String>> autoWebp() {
+        return Codegen.optional(this.autoWebp);
+    }
+    /**
+     * The configuration ID.
      * 
      */
     @Export(name="configId", refs={Integer.class}, tree="[0]")
     private Output<Integer> configId;
 
     /**
-     * @return Config Id
+     * @return The configuration ID.
      * 
      */
     public Output<Integer> configId() {
         return this.configId;
     }
     /**
-     * Indicates whether the image transformations feature is enabled. Valid values:
+     * (Available since v2.2.0) The configuration type.
+     * 
+     */
+    @Export(name="configType", refs={String.class}, tree="[0]")
+    private Output<String> configType;
+
+    /**
+     * @return (Available since v2.2.0) The configuration type.
+     * 
+     */
+    public Output<String> configType() {
+        return this.configType;
+    }
+    /**
+     * Specifies whether to enable image transformation. Valid values:
      * 
      */
     @Export(name="enable", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> enable;
+    private Output<String> enable;
 
     /**
-     * @return Indicates whether the image transformations feature is enabled. Valid values:
+     * @return Specifies whether to enable image transformation. Valid values:
      * 
      */
-    public Output<Optional<String>> enable() {
-        return Codegen.optional(this.enable);
+    public Output<String> enable() {
+        return this.enable;
     }
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -137,14 +179,14 @@ public class ImageTransform extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rule);
     }
     /**
-     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
      * 
      */
     @Export(name="ruleEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleEnable;
 
     /**
-     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * @return Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
      * 
      */
     public Output<Optional<String>> ruleEnable() {

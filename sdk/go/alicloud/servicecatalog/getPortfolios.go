@@ -13,7 +13,7 @@ import (
 
 // This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
 //
-// > **NOTE:** Available in 1.204.0+
+// > **NOTE:** Available since v1.204.0+
 //
 // ## Example Usage
 //

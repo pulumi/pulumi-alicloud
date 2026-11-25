@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -40,6 +40,9 @@ export function getSubscriptionJobs(args?: GetSubscriptionJobsArgs, opts?: pulum
  * A collection of arguments for invoking getSubscriptionJobs.
  */
 export interface GetSubscriptionJobsArgs {
+    /**
+     * Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
+     */
     enableDetails?: boolean;
     /**
      * A list of Subscription Job IDs.
@@ -57,6 +60,9 @@ export interface GetSubscriptionJobsArgs {
      * The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
      */
     status?: string;
+    /**
+     * A mapping of tags to filter results.
+     */
     tags?: {[key: string]: string};
 }
 
@@ -69,18 +75,33 @@ export interface GetSubscriptionJobsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Subscription Job IDs.
+     */
     readonly ids: string[];
+    /**
+     * A list of Dts Subscription Jobs. Each element contains the following attributes:
+     */
     readonly jobs: outputs.dts.GetSubscriptionJobsJob[];
     readonly nameRegex?: string;
+    /**
+     * A list of Subscription Job names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+     */
     readonly status?: string;
+    /**
+     * The tag of the resource.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -111,6 +132,9 @@ export function getSubscriptionJobsOutput(args?: GetSubscriptionJobsOutputArgs, 
  * A collection of arguments for invoking getSubscriptionJobs.
  */
 export interface GetSubscriptionJobsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Subscription Job IDs.
@@ -128,5 +152,8 @@ export interface GetSubscriptionJobsOutputArgs {
      * The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to filter results.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

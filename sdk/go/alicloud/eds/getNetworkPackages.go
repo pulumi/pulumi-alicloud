@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -82,11 +82,13 @@ type GetNetworkPackagesArgs struct {
 // A collection of values returned by getNetworkPackages.
 type GetNetworkPackagesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                      `pulumi:"id"`
-	Ids        []string                    `pulumi:"ids"`
-	OutputFile *string                     `pulumi:"outputFile"`
-	Packages   []GetNetworkPackagesPackage `pulumi:"packages"`
-	Status     *string                     `pulumi:"status"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ecd Network Packages. Each element contains the following attributes:
+	Packages []GetNetworkPackagesPackage `pulumi:"packages"`
+	// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+	Status *string `pulumi:"status"`
 }
 
 func GetNetworkPackagesOutput(ctx *pulumi.Context, args GetNetworkPackagesOutputArgs, opts ...pulumi.InvokeOption) GetNetworkPackagesResultOutput {
@@ -136,10 +138,12 @@ func (o GetNetworkPackagesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkPackagesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Network Packages. Each element contains the following attributes:
 func (o GetNetworkPackagesResultOutput) Packages() GetNetworkPackagesPackageArrayOutput {
 	return o.ApplyT(func(v GetNetworkPackagesResult) []GetNetworkPackagesPackage { return v.Packages }).(GetNetworkPackagesPackageArrayOutput)
 }
 
+// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
 func (o GetNetworkPackagesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkPackagesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

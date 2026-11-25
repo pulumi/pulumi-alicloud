@@ -20,14 +20,14 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
     public static final GetQuotaApplicationsArgs Empty = new GetQuotaApplicationsArgs();
 
     /**
-     * The quota dimensions.
+     * The quota dimensions. See `dimensions` below.
      * 
      */
     @Import(name="dimensions")
     private @Nullable Output<List<GetQuotaApplicationsDimensionArgs>> dimensions;
 
     /**
-     * @return The quota dimensions.
+     * @return The quota dimensions. See `dimensions` below.
      * 
      */
     public Optional<Output<List<GetQuotaApplicationsDimensionArgs>>> dimensions() {
@@ -64,9 +64,17 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The key word.
+     * 
+     */
     @Import(name="keyWord")
     private @Nullable Output<String> keyWord;
 
+    /**
+     * @return The key word.
+     * 
+     */
     public Optional<Output<String>> keyWord() {
         return Optional.ofNullable(this.keyWord);
     }
@@ -179,7 +187,7 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param dimensions The quota dimensions.
+         * @param dimensions The quota dimensions. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -190,7 +198,7 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param dimensions The quota dimensions.
+         * @param dimensions The quota dimensions. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -200,7 +208,7 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param dimensions The quota dimensions.
+         * @param dimensions The quota dimensions. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -261,11 +269,23 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
             return ids(List.of(ids));
         }
 
+        /**
+         * @param keyWord The key word.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyWord(@Nullable Output<String> keyWord) {
             $.keyWord = keyWord;
             return this;
         }
 
+        /**
+         * @param keyWord The key word.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyWord(String keyWord) {
             return keyWord(Output.of(keyWord));
         }

@@ -67,14 +67,14 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Priority parameter. See the following `Block preferenceParameters`.
+     * Priority parameter. See `preferenceParameters` below.
      * 
      */
     @Import(name="preferenceParameters")
     private @Nullable Output<List<TemplateScratchPreferenceParameterArgs>> preferenceParameters;
 
     /**
-     * @return Priority parameter. See the following `Block preferenceParameters`.
+     * @return Priority parameter. See `preferenceParameters` below.
      * 
      */
     public Optional<Output<List<TemplateScratchPreferenceParameterArgs>>> preferenceParameters() {
@@ -82,14 +82,14 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Source resource grouping. See the following `Block sourceResourceGroup`.
+     * Source resource grouping. See `sourceResourceGroup` below.
      * 
      */
     @Import(name="sourceResourceGroup")
     private @Nullable Output<TemplateScratchSourceResourceGroupArgs> sourceResourceGroup;
 
     /**
-     * @return Source resource grouping. See the following `Block sourceResourceGroup`.
+     * @return Source resource grouping. See `sourceResourceGroup` below.
      * 
      */
     public Optional<Output<TemplateScratchSourceResourceGroupArgs>> sourceResourceGroup() {
@@ -97,14 +97,14 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Source resource. See the following `Block sourceResources`.
+     * Source resource. See `sourceResources` below.
      * 
      */
     @Import(name="sourceResources")
     private @Nullable Output<List<TemplateScratchSourceResourceArgs>> sourceResources;
 
     /**
-     * @return Source resource. See the following `Block sourceResources`.
+     * @return Source resource. See `sourceResources` below.
      * 
      */
     public Optional<Output<List<TemplateScratchSourceResourceArgs>>> sourceResources() {
@@ -112,14 +112,14 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Source tag. See the following `Block sourceTag`.
+     * Source tag. See `sourceTag` below.
      * 
      */
     @Import(name="sourceTag")
     private @Nullable Output<TemplateScratchSourceTagArgs> sourceTag;
 
     /**
-     * @return Source tag. See the following `Block sourceTag`.
+     * @return Source tag. See `sourceTag` below.
      * 
      */
     public Optional<Output<TemplateScratchSourceTagArgs>> sourceTag() {
@@ -236,7 +236,7 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param preferenceParameters Priority parameter. See the following `Block preferenceParameters`.
+         * @param preferenceParameters Priority parameter. See `preferenceParameters` below.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param preferenceParameters Priority parameter. See the following `Block preferenceParameters`.
+         * @param preferenceParameters Priority parameter. See `preferenceParameters` below.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param preferenceParameters Priority parameter. See the following `Block preferenceParameters`.
+         * @param preferenceParameters Priority parameter. See `preferenceParameters` below.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sourceResourceGroup Source resource grouping. See the following `Block sourceResourceGroup`.
+         * @param sourceResourceGroup Source resource grouping. See `sourceResourceGroup` below.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sourceResourceGroup Source resource grouping. See the following `Block sourceResourceGroup`.
+         * @param sourceResourceGroup Source resource grouping. See `sourceResourceGroup` below.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sourceResources Source resource. See the following `Block sourceResources`.
+         * @param sourceResources Source resource. See `sourceResources` below.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sourceResources Source resource. See the following `Block sourceResources`.
+         * @param sourceResources Source resource. See `sourceResources` below.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sourceResources Source resource. See the following `Block sourceResources`.
+         * @param sourceResources Source resource. See `sourceResources` below.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sourceTag Source tag. See the following `Block sourceTag`.
+         * @param sourceTag Source tag. See `sourceTag` below.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class TemplateScratchArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sourceTag Source tag. See the following `Block sourceTag`.
+         * @param sourceTag Source tag. See `sourceTag` below.
          * 
          * @return builder
          * 

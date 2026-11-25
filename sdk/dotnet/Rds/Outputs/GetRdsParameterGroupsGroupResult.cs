@@ -13,15 +13,48 @@ namespace Pulumi.AliCloud.Rds.Outputs
     [OutputType]
     public sealed class GetRdsParameterGroupsGroupResult
     {
+        /// <summary>
+        /// The database engine.
+        /// </summary>
         public readonly string Engine;
+        /// <summary>
+        /// The version of the database engine.
+        /// </summary>
         public readonly string EngineVersion;
+        /// <summary>
+        /// Indicates whether applying the parameter template requires the instance to be restarted. Valid values: `0`: A restart is not required. `1`: A restart is required.
+        /// </summary>
         public readonly int ForceRestart;
+        /// <summary>
+        /// The ID of the Parameter Group.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The number of parameters in the parameter template.
+        /// </summary>
         public readonly int ParamCounts;
+        /// <summary>
+        /// Parameter list.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRdsParameterGroupsGroupParamDetailResult> ParamDetails;
+        /// <summary>
+        /// The description of the parameter template.
+        /// </summary>
         public readonly string ParameterGroupDesc;
+        /// <summary>
+        /// The ParameterGroupId of the Parameter Group.
+        /// </summary>
         public readonly string ParameterGroupId;
+        /// <summary>
+        /// The name of the parameter template.
+        /// </summary>
         public readonly string ParameterGroupName;
+        /// <summary>
+        /// The type of the parameter template. Valid values:
+        /// `0`: indicates a default parameter template.
+        /// `1`: indicates a custom parameter template.
+        /// `2`: an automatic backup parameter template. After you apply this type of template to an RDS instance, the system automatically backs up the parameter settings of that instance and saves the data backup as a template.
+        /// </summary>
         public readonly int ParameterGroupType;
 
         [OutputConstructor]

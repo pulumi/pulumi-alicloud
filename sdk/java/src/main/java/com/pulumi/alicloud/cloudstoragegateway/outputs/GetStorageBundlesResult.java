@@ -16,24 +16,44 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetStorageBundlesResult {
     private String backendBucketRegionId;
+    /**
+     * @return A list of Cloud Storage Gateway Storage Bundles. Each element contains the following attributes:
+     * 
+     */
     private List<GetStorageBundlesBundle> bundles;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of Storage Bundle IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Storage Bundle names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return Total count of Storage Bundle.
+     * 
+     */
     private Integer totalCount;
 
     private GetStorageBundlesResult() {}
     public String backendBucketRegionId() {
         return this.backendBucketRegionId;
     }
+    /**
+     * @return A list of Cloud Storage Gateway Storage Bundles. Each element contains the following attributes:
+     * 
+     */
     public List<GetStorageBundlesBundle> bundles() {
         return this.bundles;
     }
@@ -44,12 +64,20 @@ public final class GetStorageBundlesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Storage Bundle IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Storage Bundle names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -62,6 +90,10 @@ public final class GetStorageBundlesResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return Total count of Storage Bundle.
+     * 
+     */
     public Integer totalCount() {
         return this.totalCount;
     }

@@ -455,6 +455,219 @@ func (o InstanceDataNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceIndexNodeConfiguration struct {
+	// Number of index nodes.
+	Amount *int `pulumi:"amount"`
+	// Storage capacity per node, in GB.
+	Disk *int `pulumi:"disk"`
+	// Storage type of the node. ESSD (`cloudEssd`) is supported. Changing this forces recreation.
+	DiskType *string `pulumi:"diskType"`
+	// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+	Spec string `pulumi:"spec"`
+}
+
+// InstanceIndexNodeConfigurationInput is an input type that accepts InstanceIndexNodeConfigurationArgs and InstanceIndexNodeConfigurationOutput values.
+// You can construct a concrete instance of `InstanceIndexNodeConfigurationInput` via:
+//
+//	InstanceIndexNodeConfigurationArgs{...}
+type InstanceIndexNodeConfigurationInput interface {
+	pulumi.Input
+
+	ToInstanceIndexNodeConfigurationOutput() InstanceIndexNodeConfigurationOutput
+	ToInstanceIndexNodeConfigurationOutputWithContext(context.Context) InstanceIndexNodeConfigurationOutput
+}
+
+type InstanceIndexNodeConfigurationArgs struct {
+	// Number of index nodes.
+	Amount pulumi.IntPtrInput `pulumi:"amount"`
+	// Storage capacity per node, in GB.
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// Storage type of the node. ESSD (`cloudEssd`) is supported. Changing this forces recreation.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+	Spec pulumi.StringInput `pulumi:"spec"`
+}
+
+func (InstanceIndexNodeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIndexNodeConfiguration)(nil)).Elem()
+}
+
+func (i InstanceIndexNodeConfigurationArgs) ToInstanceIndexNodeConfigurationOutput() InstanceIndexNodeConfigurationOutput {
+	return i.ToInstanceIndexNodeConfigurationOutputWithContext(context.Background())
+}
+
+func (i InstanceIndexNodeConfigurationArgs) ToInstanceIndexNodeConfigurationOutputWithContext(ctx context.Context) InstanceIndexNodeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIndexNodeConfigurationOutput)
+}
+
+func (i InstanceIndexNodeConfigurationArgs) ToInstanceIndexNodeConfigurationPtrOutput() InstanceIndexNodeConfigurationPtrOutput {
+	return i.ToInstanceIndexNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceIndexNodeConfigurationArgs) ToInstanceIndexNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceIndexNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIndexNodeConfigurationOutput).ToInstanceIndexNodeConfigurationPtrOutputWithContext(ctx)
+}
+
+// InstanceIndexNodeConfigurationPtrInput is an input type that accepts InstanceIndexNodeConfigurationArgs, InstanceIndexNodeConfigurationPtr and InstanceIndexNodeConfigurationPtrOutput values.
+// You can construct a concrete instance of `InstanceIndexNodeConfigurationPtrInput` via:
+//
+//	        InstanceIndexNodeConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceIndexNodeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceIndexNodeConfigurationPtrOutput() InstanceIndexNodeConfigurationPtrOutput
+	ToInstanceIndexNodeConfigurationPtrOutputWithContext(context.Context) InstanceIndexNodeConfigurationPtrOutput
+}
+
+type instanceIndexNodeConfigurationPtrType InstanceIndexNodeConfigurationArgs
+
+func InstanceIndexNodeConfigurationPtr(v *InstanceIndexNodeConfigurationArgs) InstanceIndexNodeConfigurationPtrInput {
+	return (*instanceIndexNodeConfigurationPtrType)(v)
+}
+
+func (*instanceIndexNodeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIndexNodeConfiguration)(nil)).Elem()
+}
+
+func (i *instanceIndexNodeConfigurationPtrType) ToInstanceIndexNodeConfigurationPtrOutput() InstanceIndexNodeConfigurationPtrOutput {
+	return i.ToInstanceIndexNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceIndexNodeConfigurationPtrType) ToInstanceIndexNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceIndexNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIndexNodeConfigurationPtrOutput)
+}
+
+type InstanceIndexNodeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InstanceIndexNodeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIndexNodeConfiguration)(nil)).Elem()
+}
+
+func (o InstanceIndexNodeConfigurationOutput) ToInstanceIndexNodeConfigurationOutput() InstanceIndexNodeConfigurationOutput {
+	return o
+}
+
+func (o InstanceIndexNodeConfigurationOutput) ToInstanceIndexNodeConfigurationOutputWithContext(ctx context.Context) InstanceIndexNodeConfigurationOutput {
+	return o
+}
+
+func (o InstanceIndexNodeConfigurationOutput) ToInstanceIndexNodeConfigurationPtrOutput() InstanceIndexNodeConfigurationPtrOutput {
+	return o.ToInstanceIndexNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceIndexNodeConfigurationOutput) ToInstanceIndexNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceIndexNodeConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIndexNodeConfiguration) *InstanceIndexNodeConfiguration {
+		return &v
+	}).(InstanceIndexNodeConfigurationPtrOutput)
+}
+
+// Number of index nodes.
+func (o InstanceIndexNodeConfigurationOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceIndexNodeConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
+}
+
+// Storage capacity per node, in GB.
+func (o InstanceIndexNodeConfigurationOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceIndexNodeConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// Storage type of the node. ESSD (`cloudEssd`) is supported. Changing this forces recreation.
+func (o InstanceIndexNodeConfigurationOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIndexNodeConfiguration) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+func (o InstanceIndexNodeConfigurationOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIndexNodeConfiguration) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+func (o InstanceIndexNodeConfigurationOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceIndexNodeConfiguration) string { return v.Spec }).(pulumi.StringOutput)
+}
+
+type InstanceIndexNodeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceIndexNodeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIndexNodeConfiguration)(nil)).Elem()
+}
+
+func (o InstanceIndexNodeConfigurationPtrOutput) ToInstanceIndexNodeConfigurationPtrOutput() InstanceIndexNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceIndexNodeConfigurationPtrOutput) ToInstanceIndexNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceIndexNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceIndexNodeConfigurationPtrOutput) Elem() InstanceIndexNodeConfigurationOutput {
+	return o.ApplyT(func(v *InstanceIndexNodeConfiguration) InstanceIndexNodeConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceIndexNodeConfiguration
+		return ret
+	}).(InstanceIndexNodeConfigurationOutput)
+}
+
+// Number of index nodes.
+func (o InstanceIndexNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceIndexNodeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Storage capacity per node, in GB.
+func (o InstanceIndexNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceIndexNodeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// Storage type of the node. ESSD (`cloudEssd`) is supported. Changing this forces recreation.
+func (o InstanceIndexNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIndexNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+func (o InstanceIndexNodeConfigurationPtrOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIndexNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+func (o InstanceIndexNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIndexNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Spec
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceKibanaConfiguration struct {
 	// The number of nodes.
 	Amount *int `pulumi:"amount"`
@@ -821,6 +1034,219 @@ func (o InstanceMasterConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Spec
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceSearchNodeConfiguration struct {
+	// Number of search (query) nodes.
+	Amount *int `pulumi:"amount"`
+	// Storage capacity per node, in GB.
+	Disk *int `pulumi:"disk"`
+	// Storage type of the node. ESSD (`cloudEssd`) is supported. Changing this forces recreation.
+	DiskType *string `pulumi:"diskType"`
+	// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+	Spec string `pulumi:"spec"`
+}
+
+// InstanceSearchNodeConfigurationInput is an input type that accepts InstanceSearchNodeConfigurationArgs and InstanceSearchNodeConfigurationOutput values.
+// You can construct a concrete instance of `InstanceSearchNodeConfigurationInput` via:
+//
+//	InstanceSearchNodeConfigurationArgs{...}
+type InstanceSearchNodeConfigurationInput interface {
+	pulumi.Input
+
+	ToInstanceSearchNodeConfigurationOutput() InstanceSearchNodeConfigurationOutput
+	ToInstanceSearchNodeConfigurationOutputWithContext(context.Context) InstanceSearchNodeConfigurationOutput
+}
+
+type InstanceSearchNodeConfigurationArgs struct {
+	// Number of search (query) nodes.
+	Amount pulumi.IntPtrInput `pulumi:"amount"`
+	// Storage capacity per node, in GB.
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// Storage type of the node. ESSD (`cloudEssd`) is supported. Changing this forces recreation.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+	Spec pulumi.StringInput `pulumi:"spec"`
+}
+
+func (InstanceSearchNodeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSearchNodeConfiguration)(nil)).Elem()
+}
+
+func (i InstanceSearchNodeConfigurationArgs) ToInstanceSearchNodeConfigurationOutput() InstanceSearchNodeConfigurationOutput {
+	return i.ToInstanceSearchNodeConfigurationOutputWithContext(context.Background())
+}
+
+func (i InstanceSearchNodeConfigurationArgs) ToInstanceSearchNodeConfigurationOutputWithContext(ctx context.Context) InstanceSearchNodeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSearchNodeConfigurationOutput)
+}
+
+func (i InstanceSearchNodeConfigurationArgs) ToInstanceSearchNodeConfigurationPtrOutput() InstanceSearchNodeConfigurationPtrOutput {
+	return i.ToInstanceSearchNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceSearchNodeConfigurationArgs) ToInstanceSearchNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceSearchNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSearchNodeConfigurationOutput).ToInstanceSearchNodeConfigurationPtrOutputWithContext(ctx)
+}
+
+// InstanceSearchNodeConfigurationPtrInput is an input type that accepts InstanceSearchNodeConfigurationArgs, InstanceSearchNodeConfigurationPtr and InstanceSearchNodeConfigurationPtrOutput values.
+// You can construct a concrete instance of `InstanceSearchNodeConfigurationPtrInput` via:
+//
+//	        InstanceSearchNodeConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceSearchNodeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceSearchNodeConfigurationPtrOutput() InstanceSearchNodeConfigurationPtrOutput
+	ToInstanceSearchNodeConfigurationPtrOutputWithContext(context.Context) InstanceSearchNodeConfigurationPtrOutput
+}
+
+type instanceSearchNodeConfigurationPtrType InstanceSearchNodeConfigurationArgs
+
+func InstanceSearchNodeConfigurationPtr(v *InstanceSearchNodeConfigurationArgs) InstanceSearchNodeConfigurationPtrInput {
+	return (*instanceSearchNodeConfigurationPtrType)(v)
+}
+
+func (*instanceSearchNodeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSearchNodeConfiguration)(nil)).Elem()
+}
+
+func (i *instanceSearchNodeConfigurationPtrType) ToInstanceSearchNodeConfigurationPtrOutput() InstanceSearchNodeConfigurationPtrOutput {
+	return i.ToInstanceSearchNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceSearchNodeConfigurationPtrType) ToInstanceSearchNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceSearchNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSearchNodeConfigurationPtrOutput)
+}
+
+type InstanceSearchNodeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InstanceSearchNodeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSearchNodeConfiguration)(nil)).Elem()
+}
+
+func (o InstanceSearchNodeConfigurationOutput) ToInstanceSearchNodeConfigurationOutput() InstanceSearchNodeConfigurationOutput {
+	return o
+}
+
+func (o InstanceSearchNodeConfigurationOutput) ToInstanceSearchNodeConfigurationOutputWithContext(ctx context.Context) InstanceSearchNodeConfigurationOutput {
+	return o
+}
+
+func (o InstanceSearchNodeConfigurationOutput) ToInstanceSearchNodeConfigurationPtrOutput() InstanceSearchNodeConfigurationPtrOutput {
+	return o.ToInstanceSearchNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceSearchNodeConfigurationOutput) ToInstanceSearchNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceSearchNodeConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceSearchNodeConfiguration) *InstanceSearchNodeConfiguration {
+		return &v
+	}).(InstanceSearchNodeConfigurationPtrOutput)
+}
+
+// Number of search (query) nodes.
+func (o InstanceSearchNodeConfigurationOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSearchNodeConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
+}
+
+// Storage capacity per node, in GB.
+func (o InstanceSearchNodeConfigurationOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSearchNodeConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// Storage type of the node. ESSD (`cloudEssd`) is supported. Changing this forces recreation.
+func (o InstanceSearchNodeConfigurationOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSearchNodeConfiguration) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+func (o InstanceSearchNodeConfigurationOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceSearchNodeConfiguration) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+func (o InstanceSearchNodeConfigurationOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceSearchNodeConfiguration) string { return v.Spec }).(pulumi.StringOutput)
+}
+
+type InstanceSearchNodeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceSearchNodeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceSearchNodeConfiguration)(nil)).Elem()
+}
+
+func (o InstanceSearchNodeConfigurationPtrOutput) ToInstanceSearchNodeConfigurationPtrOutput() InstanceSearchNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceSearchNodeConfigurationPtrOutput) ToInstanceSearchNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceSearchNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceSearchNodeConfigurationPtrOutput) Elem() InstanceSearchNodeConfigurationOutput {
+	return o.ApplyT(func(v *InstanceSearchNodeConfiguration) InstanceSearchNodeConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceSearchNodeConfiguration
+		return ret
+	}).(InstanceSearchNodeConfigurationOutput)
+}
+
+// Number of search (query) nodes.
+func (o InstanceSearchNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceSearchNodeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Storage capacity per node, in GB.
+func (o InstanceSearchNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceSearchNodeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// Storage type of the node. ESSD (`cloudEssd`) is supported. Changing this forces recreation.
+func (o InstanceSearchNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSearchNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
+func (o InstanceSearchNodeConfigurationPtrOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSearchNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node specification. **Note: The parameter is immutable after resource creation.** For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+func (o InstanceSearchNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSearchNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Spec
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1322,10 +1748,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClientNodeConfigurationPtrInput)(nil)).Elem(), InstanceClientNodeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataNodeConfigurationInput)(nil)).Elem(), InstanceDataNodeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataNodeConfigurationPtrInput)(nil)).Elem(), InstanceDataNodeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIndexNodeConfigurationInput)(nil)).Elem(), InstanceIndexNodeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIndexNodeConfigurationPtrInput)(nil)).Elem(), InstanceIndexNodeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceKibanaConfigurationInput)(nil)).Elem(), InstanceKibanaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceKibanaConfigurationPtrInput)(nil)).Elem(), InstanceKibanaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMasterConfigurationInput)(nil)).Elem(), InstanceMasterConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMasterConfigurationPtrInput)(nil)).Elem(), InstanceMasterConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSearchNodeConfigurationInput)(nil)).Elem(), InstanceSearchNodeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSearchNodeConfigurationPtrInput)(nil)).Elem(), InstanceSearchNodeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceWarmNodeConfigurationInput)(nil)).Elem(), InstanceWarmNodeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceWarmNodeConfigurationPtrInput)(nil)).Elem(), InstanceWarmNodeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
@@ -1336,10 +1766,14 @@ func init() {
 	pulumi.RegisterOutputType(InstanceClientNodeConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(InstanceDataNodeConfigurationOutput{})
 	pulumi.RegisterOutputType(InstanceDataNodeConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(InstanceIndexNodeConfigurationOutput{})
+	pulumi.RegisterOutputType(InstanceIndexNodeConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(InstanceKibanaConfigurationOutput{})
 	pulumi.RegisterOutputType(InstanceKibanaConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMasterConfigurationOutput{})
 	pulumi.RegisterOutputType(InstanceMasterConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(InstanceSearchNodeConfigurationOutput{})
+	pulumi.RegisterOutputType(InstanceSearchNodeConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(InstanceWarmNodeConfigurationOutput{})
 	pulumi.RegisterOutputType(InstanceWarmNodeConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})

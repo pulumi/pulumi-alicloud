@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.181.0+.
+ * > **NOTE:** Available since v1.181.0.
  *
  * ## Example Usage
  *
@@ -61,6 +61,9 @@ export interface GetDelegatedAdministratorsArgs {
  * A collection of values returned by getDelegatedAdministrators.
  */
 export interface GetDelegatedAdministratorsResult {
+    /**
+     * A list of Resource Manager Delegated Administrators. Each element contains the following attributes:
+     */
     readonly administrators: outputs.resourcemanager.GetDelegatedAdministratorsAdministrator[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -70,12 +73,15 @@ export interface GetDelegatedAdministratorsResult {
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The identity of the trusted service.
+     */
     readonly servicePrincipal?: string;
 }
 /**
  * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.181.0+.
+ * > **NOTE:** Available since v1.181.0.
  *
  * ## Example Usage
  *

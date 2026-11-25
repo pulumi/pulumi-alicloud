@@ -180,7 +180,7 @@ def get_metric_rule_black_lists(category: Optional[_builtins.str] = None,
     """
     This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
 
-    > **NOTE:** Available in 1.194.0+
+    > **NOTE:** Available since v1.194.0+
 
     ## Example Usage
 
@@ -200,6 +200,7 @@ def get_metric_rule_black_lists(category: Optional[_builtins.str] = None,
     :param _builtins.str metric_rule_black_list_id: The first ID of the resource
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str namespace: The data namespace of the cloud service.
+    :param _builtins.int order: The order of the Metric Rule Black List.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -241,7 +242,7 @@ def get_metric_rule_black_lists_output(category: pulumi.Input[Optional[Optional[
     """
     This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
 
-    > **NOTE:** Available in 1.194.0+
+    > **NOTE:** Available since v1.194.0+
 
     ## Example Usage
 
@@ -261,6 +262,7 @@ def get_metric_rule_black_lists_output(category: pulumi.Input[Optional[Optional[
     :param _builtins.str metric_rule_black_list_id: The first ID of the resource
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str namespace: The data namespace of the cloud service.
+    :param _builtins.int order: The order of the Metric Rule Black List.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()

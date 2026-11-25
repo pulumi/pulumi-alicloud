@@ -33,6 +33,17 @@ class OpenApiImageCacheArgs:
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OpenApiImageCache resource.
+
+        :param pulumi.Input[_builtins.str] image_cache_name: The name of the image cache.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] images: The images to be cached. The image name must be versioned.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. You do not need to specify the same security group as the container group.
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+        :param pulumi.Input[_builtins.str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+        :param pulumi.Input[_builtins.int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
+        :param pulumi.Input[Sequence[pulumi.Input['OpenApiImageCacheImageRegistryCredentialArgs']]] image_registry_credentials: The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+        :param pulumi.Input[_builtins.str] zone_id: The zone id to cache image.
         """
         pulumi.set(__self__, "image_cache_name", image_cache_name)
         pulumi.set(__self__, "images", images)
@@ -54,6 +65,9 @@ class OpenApiImageCacheArgs:
     @_builtins.property
     @pulumi.getter(name="imageCacheName")
     def image_cache_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the image cache.
+        """
         return pulumi.get(self, "image_cache_name")
 
     @image_cache_name.setter
@@ -63,6 +77,9 @@ class OpenApiImageCacheArgs:
     @_builtins.property
     @pulumi.getter
     def images(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The images to be cached. The image name must be versioned.
+        """
         return pulumi.get(self, "images")
 
     @images.setter
@@ -72,6 +89,9 @@ class OpenApiImageCacheArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the security group. You do not need to specify the same security group as the container group.
+        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -81,6 +101,9 @@ class OpenApiImageCacheArgs:
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -90,6 +113,9 @@ class OpenApiImageCacheArgs:
     @_builtins.property
     @pulumi.getter(name="eipInstanceId")
     def eip_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+        """
         return pulumi.get(self, "eip_instance_id")
 
     @eip_instance_id.setter
@@ -99,6 +125,9 @@ class OpenApiImageCacheArgs:
     @_builtins.property
     @pulumi.getter(name="imageCacheSize")
     def image_cache_size(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The size of the image cache. Default to `20`. Unit: GiB.
+        """
         return pulumi.get(self, "image_cache_size")
 
     @image_cache_size.setter
@@ -108,6 +137,9 @@ class OpenApiImageCacheArgs:
     @_builtins.property
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiImageCacheImageRegistryCredentialArgs']]]]:
+        """
+        The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+        """
         return pulumi.get(self, "image_registry_credentials")
 
     @image_registry_credentials.setter
@@ -117,6 +149,9 @@ class OpenApiImageCacheArgs:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -126,6 +161,9 @@ class OpenApiImageCacheArgs:
     @_builtins.property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+        """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
@@ -135,6 +173,9 @@ class OpenApiImageCacheArgs:
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The zone id to cache image.
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -159,6 +200,19 @@ class _OpenApiImageCacheState:
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OpenApiImageCache resources.
+
+        :param pulumi.Input[_builtins.str] container_group_id: The ID of the container group job that is used to create the image cache.
+        :param pulumi.Input[_builtins.str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+        :param pulumi.Input[_builtins.str] image_cache_name: The name of the image cache.
+        :param pulumi.Input[_builtins.int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
+        :param pulumi.Input[Sequence[pulumi.Input['OpenApiImageCacheImageRegistryCredentialArgs']]] image_registry_credentials: The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] images: The images to be cached. The image name must be versioned.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. You do not need to specify the same security group as the container group.
+        :param pulumi.Input[_builtins.str] status: The status of the image cache.
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+        :param pulumi.Input[_builtins.str] zone_id: The zone id to cache image.
         """
         if container_group_id is not None:
             pulumi.set(__self__, "container_group_id", container_group_id)
@@ -188,6 +242,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter(name="containerGroupId")
     def container_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the container group job that is used to create the image cache.
+        """
         return pulumi.get(self, "container_group_id")
 
     @container_group_id.setter
@@ -197,6 +254,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter(name="eipInstanceId")
     def eip_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+        """
         return pulumi.get(self, "eip_instance_id")
 
     @eip_instance_id.setter
@@ -206,6 +266,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter(name="imageCacheName")
     def image_cache_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the image cache.
+        """
         return pulumi.get(self, "image_cache_name")
 
     @image_cache_name.setter
@@ -215,6 +278,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter(name="imageCacheSize")
     def image_cache_size(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The size of the image cache. Default to `20`. Unit: GiB.
+        """
         return pulumi.get(self, "image_cache_size")
 
     @image_cache_size.setter
@@ -224,6 +290,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiImageCacheImageRegistryCredentialArgs']]]]:
+        """
+        The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+        """
         return pulumi.get(self, "image_registry_credentials")
 
     @image_registry_credentials.setter
@@ -233,6 +302,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter
     def images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The images to be cached. The image name must be versioned.
+        """
         return pulumi.get(self, "images")
 
     @images.setter
@@ -242,6 +314,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -251,6 +326,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+        """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
@@ -260,6 +338,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the security group. You do not need to specify the same security group as the container group.
+        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -269,6 +350,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the image cache.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -278,6 +362,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -287,6 +374,9 @@ class _OpenApiImageCacheState:
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The zone id to cache image.
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -312,10 +402,83 @@ class OpenApiImageCache(pulumi.CustomResource):
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a OpenApiImageCache resource with the given unique name, props, and options.
+        `eci.OpenApiImageCache` is an alias of `eci.ImageCache`.
+        Both resource type names are registered against the same `ResourceEciImageCache` implementation and share an
+        identical schema, lifecycle and acceptance coverage; they may be used interchangeably. The
+        `eci.OpenApiImageCache` name is retained for compatibility with the OpenAPI resource
+        registration of the ECI service.
+
+        An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about
+        Alicloud ECI Image Cache and how to use it, see
+        [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
+
+        > **NOTE:** Available since v1.89.0.
+
+        > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_eip_address = alicloud.ecs.EipAddress("default",
+            isp="BGP",
+            address_name=name,
+            netmode="public",
+            bandwidth="1",
+            security_protection_types=["AntiDDoS_Enhanced"],
+            payment_type="PayAsYouGo")
+        default_get_regions = alicloud.get_regions(current=True)
+        default_open_api_image_cache = alicloud.eci.OpenApiImageCache("default",
+            image_cache_name=name,
+            images=[f"registry-vpc.{default_get_regions.regions[0].id}.aliyuncs.com/eci_open/nginx:alpine"],
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id,
+            eip_instance_id=default_eip_address.id)
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Import
+
+        ECI Image Cache can be imported using the id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:eci/openApiImageCache:OpenApiImageCache example abc123456
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+        :param pulumi.Input[_builtins.str] image_cache_name: The name of the image cache.
+        :param pulumi.Input[_builtins.int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OpenApiImageCacheImageRegistryCredentialArgs', 'OpenApiImageCacheImageRegistryCredentialArgsDict', 'outputs.OpenApiImageCacheImageRegistryCredential']]]] image_registry_credentials: The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] images: The images to be cached. The image name must be versioned.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. You do not need to specify the same security group as the container group.
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+        :param pulumi.Input[_builtins.str] zone_id: The zone id to cache image.
         """
         ...
     @overload
@@ -324,7 +487,70 @@ class OpenApiImageCache(pulumi.CustomResource):
                  args: OpenApiImageCacheArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OpenApiImageCache resource with the given unique name, props, and options.
+        `eci.OpenApiImageCache` is an alias of `eci.ImageCache`.
+        Both resource type names are registered against the same `ResourceEciImageCache` implementation and share an
+        identical schema, lifecycle and acceptance coverage; they may be used interchangeably. The
+        `eci.OpenApiImageCache` name is retained for compatibility with the OpenAPI resource
+        registration of the ECI service.
+
+        An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about
+        Alicloud ECI Image Cache and how to use it, see
+        [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
+
+        > **NOTE:** Available since v1.89.0.
+
+        > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_eip_address = alicloud.ecs.EipAddress("default",
+            isp="BGP",
+            address_name=name,
+            netmode="public",
+            bandwidth="1",
+            security_protection_types=["AntiDDoS_Enhanced"],
+            payment_type="PayAsYouGo")
+        default_get_regions = alicloud.get_regions(current=True)
+        default_open_api_image_cache = alicloud.eci.OpenApiImageCache("default",
+            image_cache_name=name,
+            images=[f"registry-vpc.{default_get_regions.regions[0].id}.aliyuncs.com/eci_open/nginx:alpine"],
+            security_group_id=default_security_group.id,
+            vswitch_id=default_switch.id,
+            eip_instance_id=default_eip_address.id)
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Import
+
+        ECI Image Cache can be imported using the id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:eci/openApiImageCache:OpenApiImageCache example abc123456
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param OpenApiImageCacheArgs args: The arguments to use to populate this resource's properties.
@@ -409,6 +635,18 @@ class OpenApiImageCache(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] container_group_id: The ID of the container group job that is used to create the image cache.
+        :param pulumi.Input[_builtins.str] eip_instance_id: The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+        :param pulumi.Input[_builtins.str] image_cache_name: The name of the image cache.
+        :param pulumi.Input[_builtins.int] image_cache_size: The size of the image cache. Default to `20`. Unit: GiB.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OpenApiImageCacheImageRegistryCredentialArgs', 'OpenApiImageCacheImageRegistryCredentialArgsDict', 'outputs.OpenApiImageCacheImageRegistryCredential']]]] image_registry_credentials: The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] images: The images to be cached. The image name must be versioned.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.int] retention_days: The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. You do not need to specify the same security group as the container group.
+        :param pulumi.Input[_builtins.str] status: The status of the image cache.
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+        :param pulumi.Input[_builtins.str] zone_id: The zone id to cache image.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -461,60 +699,96 @@ class OpenApiImageCache(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="containerGroupId")
     def container_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the container group job that is used to create the image cache.
+        """
         return pulumi.get(self, "container_group_id")
 
     @_builtins.property
     @pulumi.getter(name="eipInstanceId")
     def eip_instance_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+        """
         return pulumi.get(self, "eip_instance_id")
 
     @_builtins.property
     @pulumi.getter(name="imageCacheName")
     def image_cache_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the image cache.
+        """
         return pulumi.get(self, "image_cache_name")
 
     @_builtins.property
     @pulumi.getter(name="imageCacheSize")
     def image_cache_size(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The size of the image cache. Default to `20`. Unit: GiB.
+        """
         return pulumi.get(self, "image_cache_size")
 
     @_builtins.property
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> pulumi.Output[Optional[Sequence['outputs.OpenApiImageCacheImageRegistryCredential']]]:
+        """
+        The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
+        """
         return pulumi.get(self, "image_registry_credentials")
 
     @_builtins.property
     @pulumi.getter
     def images(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        The images to be cached. The image name must be versioned.
+        """
         return pulumi.get(self, "images")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+        """
         return pulumi.get(self, "retention_days")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the security group. You do not need to specify the same security group as the container group.
+        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the image cache.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The zone id to cache image.
+        """
         return pulumi.get(self, "zone_id")
 

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.185.0+.
+// > **NOTE:** Available since v1.185.0.
 //
 // ## Example Usage
 //
@@ -78,18 +78,22 @@ type GetBackupPlansArgs struct {
 
 // A collection of values returned by getBackupPlans.
 type GetBackupPlansResult struct {
+	// The name of the resource.
 	BackupPlanName *string `pulumi:"backupPlanName"`
 	EnableDetails  *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string               `pulumi:"id"`
-	Ids        []string             `pulumi:"ids"`
-	NameRegex  *string              `pulumi:"nameRegex"`
-	Names      []string             `pulumi:"names"`
-	OutputFile *string              `pulumi:"outputFile"`
-	PageNumber *int                 `pulumi:"pageNumber"`
-	PageSize   *int                 `pulumi:"pageSize"`
-	Plans      []GetBackupPlansPlan `pulumi:"plans"`
-	Status     *string              `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Backup Plan names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// A list of Dbs Backup Plans. Each element contains the following attributes:
+	Plans []GetBackupPlansPlan `pulumi:"plans"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetBackupPlansOutput(ctx *pulumi.Context, args GetBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetBackupPlansResultOutput {
@@ -134,6 +138,7 @@ func (o GetBackupPlansResultOutput) ToGetBackupPlansResultOutputWithContext(ctx 
 	return o
 }
 
+// The name of the resource.
 func (o GetBackupPlansResultOutput) BackupPlanName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) *string { return v.BackupPlanName }).(pulumi.StringPtrOutput)
 }
@@ -155,6 +160,7 @@ func (o GetBackupPlansResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Backup Plan names.
 func (o GetBackupPlansResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -171,10 +177,12 @@ func (o GetBackupPlansResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// A list of Dbs Backup Plans. Each element contains the following attributes:
 func (o GetBackupPlansResultOutput) Plans() GetBackupPlansPlanArrayOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) []GetBackupPlansPlan { return v.Plans }).(GetBackupPlansPlanArrayOutput)
 }
 
+// The status of the resource.
 func (o GetBackupPlansResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupPlansResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

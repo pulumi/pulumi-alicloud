@@ -16,7 +16,7 @@ public final class GetAccountsAccount {
      */
     private String accountDescription;
     /**
-     * @return The name of the account.
+     * @return The name of the account. Valid values: `root`.
      * 
      */
     private String accountName;
@@ -31,7 +31,7 @@ public final class GetAccountsAccount {
      */
     private String id;
     /**
-     * @return The id of the instance to which the account belongs.
+     * @return The ID of the instance.
      * 
      */
     private String instanceId;
@@ -50,7 +50,7 @@ public final class GetAccountsAccount {
         return this.accountDescription;
     }
     /**
-     * @return The name of the account.
+     * @return The name of the account. Valid values: `root`.
      * 
      */
     public String accountName() {
@@ -71,7 +71,7 @@ public final class GetAccountsAccount {
         return this.id;
     }
     /**
-     * @return The id of the instance to which the account belongs.
+     * @return The ID of the instance.
      * 
      */
     public String instanceId() {

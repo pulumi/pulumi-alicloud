@@ -53,6 +53,9 @@ class GetEndpointsResult:
     @_builtins.property
     @pulumi.getter
     def endpoints(self) -> Sequence['outputs.GetEndpointsEndpointResult']:
+        """
+        A list of Pvtz Endpoints. Each element contains the following attributes:
+        """
         return pulumi.get(self, "endpoints")
 
     @_builtins.property
@@ -76,6 +79,9 @@ class GetEndpointsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Endpoint names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -86,6 +92,9 @@ class GetEndpointsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -112,7 +121,7 @@ def get_endpoints(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 
@@ -158,7 +167,7 @@ def get_endpoints_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
     """
     This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 

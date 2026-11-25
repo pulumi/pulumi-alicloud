@@ -32,9 +32,17 @@ public final class GetAccessGroupsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The number of Access Groups to return.
+     * 
+     */
     @Import(name="limit")
     private @Nullable Output<Integer> limit;
 
+    /**
+     * @return The number of Access Groups to return.
+     * 
+     */
     public Optional<Output<Integer>> limit() {
         return Optional.ofNullable(this.limit);
     }
@@ -54,16 +62,32 @@ public final class GetAccessGroupsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+     * 
+     */
     @Import(name="orderBy")
     private @Nullable Output<String> orderBy;
 
+    /**
+     * @return The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+     * 
+     */
     public Optional<Output<String>> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
 
+    /**
+     * The sort order. Valid values: `ASC`, `DESC`.
+     * 
+     */
     @Import(name="orderType")
     private @Nullable Output<String> orderType;
 
+    /**
+     * @return The sort order. Valid values: `ASC`, `DESC`.
+     * 
+     */
     public Optional<Output<String>> orderType() {
         return Optional.ofNullable(this.orderType);
     }
@@ -83,9 +107,17 @@ public final class GetAccessGroupsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The start offset of the Access Groups list.
+     * 
+     */
     @Import(name="startOffset")
     private @Nullable Output<Integer> startOffset;
 
+    /**
+     * @return The start offset of the Access Groups list.
+     * 
+     */
     public Optional<Output<Integer>> startOffset() {
         return Optional.ofNullable(this.startOffset);
     }
@@ -151,11 +183,23 @@ public final class GetAccessGroupsArgs extends com.pulumi.resources.InvokeArgs {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param limit The number of Access Groups to return.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limit(@Nullable Output<Integer> limit) {
             $.limit = limit;
             return this;
         }
 
+        /**
+         * @param limit The number of Access Groups to return.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limit(Integer limit) {
             return limit(Output.of(limit));
         }
@@ -181,20 +225,44 @@ public final class GetAccessGroupsArgs extends com.pulumi.resources.InvokeArgs {
             return nameRegex(Output.of(nameRegex));
         }
 
+        /**
+         * @param orderBy The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderBy(@Nullable Output<String> orderBy) {
             $.orderBy = orderBy;
             return this;
         }
 
+        /**
+         * @param orderBy The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderBy(String orderBy) {
             return orderBy(Output.of(orderBy));
         }
 
+        /**
+         * @param orderType The sort order. Valid values: `ASC`, `DESC`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderType(@Nullable Output<String> orderType) {
             $.orderType = orderType;
             return this;
         }
 
+        /**
+         * @param orderType The sort order. Valid values: `ASC`, `DESC`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderType(String orderType) {
             return orderType(Output.of(orderType));
         }
@@ -220,11 +288,23 @@ public final class GetAccessGroupsArgs extends com.pulumi.resources.InvokeArgs {
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param startOffset The start offset of the Access Groups list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startOffset(@Nullable Output<Integer> startOffset) {
             $.startOffset = startOffset;
             return this;
         }
 
+        /**
+         * @param startOffset The start offset of the Access Groups list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startOffset(Integer startOffset) {
             return startOffset(Output.of(startOffset));
         }

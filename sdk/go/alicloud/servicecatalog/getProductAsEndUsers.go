@@ -62,8 +62,10 @@ type GetProductAsEndUsersArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	SortBy     *string `pulumi:"sortBy"`
-	SortOrder  *string `pulumi:"sortOrder"`
+	// The field that is used to sort the queried data.
+	SortBy *string `pulumi:"sortBy"`
+	// The sorting method. Valid values: `Asc`, `Desc`.
+	SortOrder *string `pulumi:"sortOrder"`
 }
 
 // A collection of values returned by getProductAsEndUsers.
@@ -93,8 +95,10 @@ type GetProductAsEndUsersOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	SortBy     pulumi.StringPtrInput `pulumi:"sortBy"`
-	SortOrder  pulumi.StringPtrInput `pulumi:"sortOrder"`
+	// The field that is used to sort the queried data.
+	SortBy pulumi.StringPtrInput `pulumi:"sortBy"`
+	// The sorting method. Valid values: `Asc`, `Desc`.
+	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
 }
 
 func (GetProductAsEndUsersOutputArgs) ElementType() reflect.Type {

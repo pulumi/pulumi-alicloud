@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Imp App Templates of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.137.0+.
+// > **NOTE:** Available since v1.137.0.
 //
 // ## Example Usage
 //
@@ -73,13 +73,16 @@ type GetAppTemplatesArgs struct {
 // A collection of values returned by getAppTemplates.
 type GetAppTemplatesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                    `pulumi:"id"`
-	Ids        []string                  `pulumi:"ids"`
-	NameRegex  *string                   `pulumi:"nameRegex"`
-	Names      []string                  `pulumi:"names"`
-	OutputFile *string                   `pulumi:"outputFile"`
-	Status     *string                   `pulumi:"status"`
-	Templates  []GetAppTemplatesTemplate `pulumi:"templates"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of App Template names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Application template usage status.
+	Status *string `pulumi:"status"`
+	// A list of Imp App Templates. Each element contains the following attributes:
+	Templates []GetAppTemplatesTemplate `pulumi:"templates"`
 }
 
 func GetAppTemplatesOutput(ctx *pulumi.Context, args GetAppTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetAppTemplatesResultOutput {
@@ -131,6 +134,7 @@ func (o GetAppTemplatesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppTemplatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of App Template names.
 func (o GetAppTemplatesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppTemplatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -139,10 +143,12 @@ func (o GetAppTemplatesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppTemplatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Application template usage status.
 func (o GetAppTemplatesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppTemplatesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of Imp App Templates. Each element contains the following attributes:
 func (o GetAppTemplatesResultOutput) Templates() GetAppTemplatesTemplateArrayOutput {
 	return o.ApplyT(func(v GetAppTemplatesResult) []GetAppTemplatesTemplate { return v.Templates }).(GetAppTemplatesTemplateArrayOutput)
 }

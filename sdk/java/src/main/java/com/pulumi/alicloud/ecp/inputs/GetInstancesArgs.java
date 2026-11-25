@@ -17,9 +17,17 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetInstancesArgs Empty = new GetInstancesArgs();
 
+    /**
+     * Specifies whether to fetch the VNC login address of the instance. Default value: `false`.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Specifies whether to fetch the VNC login address of the instance. Default value: `false`.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -182,9 +190,17 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The zone ID of the ECP instance.
+     * 
+     */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
+    /**
+     * @return The zone ID of the ECP instance.
+     * 
+     */
     public Optional<Output<String>> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -224,11 +240,23 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetInstancesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Specifies whether to fetch the VNC login address of the instance. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Specifies whether to fetch the VNC login address of the instance. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }
@@ -461,11 +489,23 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
             return status(Output.of(status));
         }
 
+        /**
+         * @param zoneId The zone ID of the ECP instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
+        /**
+         * @param zoneId The zone ID of the ECP instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
         }

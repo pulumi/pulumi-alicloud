@@ -18,16 +18,14 @@ public final class GetCollationTimeZonesArgs extends com.pulumi.resources.Invoke
     public static final GetCollationTimeZonesArgs Empty = new GetCollationTimeZonesArgs();
 
     /**
-     * An array that consists of the character set collations and time zones that are available for
-     * use in ApsaraDB RDS.
+     * An array that consists of the character set collations and time zones. See `collationTimeZones` below.
      * 
      */
     @Import(name="collationTimeZones")
     private @Nullable Output<List<GetCollationTimeZonesCollationTimeZoneArgs>> collationTimeZones;
 
     /**
-     * @return An array that consists of the character set collations and time zones that are available for
-     * use in ApsaraDB RDS.
+     * @return An array that consists of the character set collations and time zones. See `collationTimeZones` below.
      * 
      */
     public Optional<Output<List<GetCollationTimeZonesCollationTimeZoneArgs>>> collationTimeZones() {
@@ -75,8 +73,7 @@ public final class GetCollationTimeZonesArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param collationTimeZones An array that consists of the character set collations and time zones that are available for
-         * use in ApsaraDB RDS.
+         * @param collationTimeZones An array that consists of the character set collations and time zones. See `collationTimeZones` below.
          * 
          * @return builder
          * 
@@ -87,8 +84,7 @@ public final class GetCollationTimeZonesArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param collationTimeZones An array that consists of the character set collations and time zones that are available for
-         * use in ApsaraDB RDS.
+         * @param collationTimeZones An array that consists of the character set collations and time zones. See `collationTimeZones` below.
          * 
          * @return builder
          * 
@@ -98,8 +94,7 @@ public final class GetCollationTimeZonesArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param collationTimeZones An array that consists of the character set collations and time zones that are available for
-         * use in ApsaraDB RDS.
+         * @param collationTimeZones An array that consists of the character set collations and time zones. See `collationTimeZones` below.
          * 
          * @return builder
          * 

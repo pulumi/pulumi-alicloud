@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides Cen Inter Region Traffic Qos Queue available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0+
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides Cen Inter Region Traffic Qos Queue available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0+
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides Cen Inter Region Traffic Qos Queue available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0+
         /// 
         /// ## Example Usage
         /// 

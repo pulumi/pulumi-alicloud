@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSystemGroupsResult {
+    /**
+     * @return A list of Video Surveillance System Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetSystemGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,14 +25,26 @@ public final class GetSystemGroupsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+     * 
+     */
     private @Nullable String inProtocol;
     private @Nullable String name;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable String status;
 
     private GetSystemGroupsResult() {}
+    /**
+     * @return A list of Video Surveillance System Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetSystemGroupsGroup> groups() {
         return this.groups;
     }
@@ -42,6 +58,10 @@ public final class GetSystemGroupsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+     * 
+     */
     public Optional<String> inProtocol() {
         return Optional.ofNullable(this.inProtocol);
     }
@@ -51,6 +71,10 @@ public final class GetSystemGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

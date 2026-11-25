@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
     public sealed class GetDirectoriesDirectoryResult
     {
         /// <summary>
-        /// The CreateTime of the CloudSSO directory.
+        /// Saml identifies the creation time of the provider configuration.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>

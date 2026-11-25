@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Amqp Queues of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.127.0+.
+ * > **NOTE:** Available since v1.127.0.
  *
  * ## Example Usage
  *
@@ -82,17 +82,29 @@ export interface GetQueuesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of the instance.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Queue names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Amqp Queues. Each element contains the following attributes:
+     */
     readonly queues: outputs.amqp.GetQueuesQueue[];
+    /**
+     * The name of the virtual host.
+     */
     readonly virtualHostName: string;
 }
 /**
  * This data source provides the Amqp Queues of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.127.0+.
+ * > **NOTE:** Available since v1.127.0.
  *
  * ## Example Usage
  *

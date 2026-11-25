@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetScimServerCredentialsResult {
+    /**
+     * @return A list of Cloud Sso Scim Server Credentials. Each element contains the following attributes:
+     * 
+     */
     private List<GetScimServerCredentialsCredential> credentials;
+    /**
+     * @return The ID of the Directory.
+     * 
+     */
     private String directoryId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,12 +31,24 @@ public final class GetScimServerCredentialsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * 
+     */
     private @Nullable String status;
 
     private GetScimServerCredentialsResult() {}
+    /**
+     * @return A list of Cloud Sso Scim Server Credentials. Each element contains the following attributes:
+     * 
+     */
     public List<GetScimServerCredentialsCredential> credentials() {
         return this.credentials;
     }
+    /**
+     * @return The ID of the Directory.
+     * 
+     */
     public String directoryId() {
         return this.directoryId;
     }
@@ -45,6 +65,10 @@ public final class GetScimServerCredentialsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

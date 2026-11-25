@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.195.0+.
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -64,6 +64,7 @@ func GetBackupPolicies(ctx *pulumi.Context, args *GetBackupPoliciesArgs, opts ..
 
 // A collection of arguments for invoking getBackupPolicies.
 type GetBackupPoliciesArgs struct {
+	// The page number. Must be greater than 0.
 	CurrentPage *int `pulumi:"currentPage"`
 	// A list of Threat Detection Backup Policies IDs.
 	Ids []string `pulumi:"ids"`
@@ -106,6 +107,7 @@ func GetBackupPoliciesOutput(ctx *pulumi.Context, args GetBackupPoliciesOutputAr
 
 // A collection of arguments for invoking getBackupPolicies.
 type GetBackupPoliciesOutputArgs struct {
+	// The page number. Must be greater than 0.
 	CurrentPage pulumi.IntPtrInput `pulumi:"currentPage"`
 	// A list of Threat Detection Backup Policies IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

@@ -14,7 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ApplicationInfoDimension struct {
-	Key   *string `pulumi:"key"`
+	// The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+	Key *string `pulumi:"key"`
+	// The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
 	Value *string `pulumi:"value"`
 }
 
@@ -30,7 +32,9 @@ type ApplicationInfoDimensionInput interface {
 }
 
 type ApplicationInfoDimensionArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
+	// The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -85,10 +89,12 @@ func (o ApplicationInfoDimensionOutput) ToApplicationInfoDimensionOutputWithCont
 	return o
 }
 
+// The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
 func (o ApplicationInfoDimensionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationInfoDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
 func (o ApplicationInfoDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationInfoDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -450,7 +456,7 @@ type TemplateApplicationsQuotaApplicationDetail struct {
 	// - 0 (default): No.
 	// - 3: Yes.
 	NoticeType *int `pulumi:"noticeType"`
-	// Quota calculation period.
+	// Quota calculation period. See `period` below.
 	Period *TemplateApplicationsQuotaApplicationDetailPeriod `pulumi:"period"`
 	// Quota ARN.
 	QuotaArn *string `pulumi:"quotaArn"`
@@ -461,6 +467,7 @@ type TemplateApplicationsQuotaApplicationDetail struct {
 	// Quota unit.
 	QuotaUnit *string `pulumi:"quotaUnit"`
 	// Reason for quota application.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason *string `pulumi:"reason"`
 	// The approval status of the quota promotion application. Value:
@@ -501,7 +508,7 @@ type TemplateApplicationsQuotaApplicationDetailArgs struct {
 	// - 0 (default): No.
 	// - 3: Yes.
 	NoticeType pulumi.IntPtrInput `pulumi:"noticeType"`
-	// Quota calculation period.
+	// Quota calculation period. See `period` below.
 	Period TemplateApplicationsQuotaApplicationDetailPeriodPtrInput `pulumi:"period"`
 	// Quota ARN.
 	QuotaArn pulumi.StringPtrInput `pulumi:"quotaArn"`
@@ -512,6 +519,7 @@ type TemplateApplicationsQuotaApplicationDetailArgs struct {
 	// Quota unit.
 	QuotaUnit pulumi.StringPtrInput `pulumi:"quotaUnit"`
 	// Reason for quota application.
+	//
 	// > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
 	// The approval status of the quota promotion application. Value:
@@ -612,7 +620,7 @@ func (o TemplateApplicationsQuotaApplicationDetailOutput) NoticeType() pulumi.In
 	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *int { return v.NoticeType }).(pulumi.IntPtrOutput)
 }
 
-// Quota calculation period.
+// Quota calculation period. See `period` below.
 func (o TemplateApplicationsQuotaApplicationDetailOutput) Period() TemplateApplicationsQuotaApplicationDetailPeriodPtrOutput {
 	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *TemplateApplicationsQuotaApplicationDetailPeriod {
 		return v.Period
@@ -640,6 +648,7 @@ func (o TemplateApplicationsQuotaApplicationDetailOutput) QuotaUnit() pulumi.Str
 }
 
 // Reason for quota application.
+//
 // > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 func (o TemplateApplicationsQuotaApplicationDetailOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TemplateApplicationsQuotaApplicationDetail) *string { return v.Reason }).(pulumi.StringPtrOutput)
@@ -937,22 +946,38 @@ func (o TemplateQuotaDimensionArrayOutput) Index(i pulumi.IntInput) TemplateQuot
 }
 
 type GetApplicationInfosApplication struct {
-	ApplicationId    string                                    `pulumi:"applicationId"`
-	ApproveValue     string                                    `pulumi:"approveValue"`
-	AuditReason      string                                    `pulumi:"auditReason"`
-	DesireValue      float64                                   `pulumi:"desireValue"`
-	Dimensions       []GetApplicationInfosApplicationDimension `pulumi:"dimensions"`
-	EffectiveTime    string                                    `pulumi:"effectiveTime"`
-	ExpireTime       string                                    `pulumi:"expireTime"`
-	Id               string                                    `pulumi:"id"`
-	NoticeType       int                                       `pulumi:"noticeType"`
-	ProductCode      string                                    `pulumi:"productCode"`
-	QuotaActionCode  string                                    `pulumi:"quotaActionCode"`
-	QuotaDescription string                                    `pulumi:"quotaDescription"`
-	QuotaName        string                                    `pulumi:"quotaName"`
-	QuotaUnit        string                                    `pulumi:"quotaUnit"`
-	Reason           string                                    `pulumi:"reason"`
-	Status           string                                    `pulumi:"status"`
+	// The first ID of the resource.
+	ApplicationId string `pulumi:"applicationId"`
+	// The approve value.
+	ApproveValue string `pulumi:"approveValue"`
+	// The audit reason.
+	AuditReason string `pulumi:"auditReason"`
+	// The desire value of the quota application.
+	DesireValue float64 `pulumi:"desireValue"`
+	// The quota dimensions. See `dimensions` below.
+	Dimensions []GetApplicationInfosApplicationDimension `pulumi:"dimensions"`
+	// The effective time.
+	EffectiveTime string `pulumi:"effectiveTime"`
+	// The expire time.
+	ExpireTime string `pulumi:"expireTime"`
+	// The ID of the Application Info.
+	Id string `pulumi:"id"`
+	// The notice type.
+	NoticeType int `pulumi:"noticeType"`
+	// The product code.
+	ProductCode string `pulumi:"productCode"`
+	// The ID of quota action.
+	QuotaActionCode string `pulumi:"quotaActionCode"`
+	// The description of the quota.
+	QuotaDescription string `pulumi:"quotaDescription"`
+	// The name of the quota.
+	QuotaName string `pulumi:"quotaName"`
+	// The quota unit.
+	QuotaUnit string `pulumi:"quotaUnit"`
+	// The reason of the quota application.
+	Reason string `pulumi:"reason"`
+	// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+	Status string `pulumi:"status"`
 }
 
 // GetApplicationInfosApplicationInput is an input type that accepts GetApplicationInfosApplicationArgs and GetApplicationInfosApplicationOutput values.
@@ -967,22 +992,38 @@ type GetApplicationInfosApplicationInput interface {
 }
 
 type GetApplicationInfosApplicationArgs struct {
-	ApplicationId    pulumi.StringInput                                `pulumi:"applicationId"`
-	ApproveValue     pulumi.StringInput                                `pulumi:"approveValue"`
-	AuditReason      pulumi.StringInput                                `pulumi:"auditReason"`
-	DesireValue      pulumi.Float64Input                               `pulumi:"desireValue"`
-	Dimensions       GetApplicationInfosApplicationDimensionArrayInput `pulumi:"dimensions"`
-	EffectiveTime    pulumi.StringInput                                `pulumi:"effectiveTime"`
-	ExpireTime       pulumi.StringInput                                `pulumi:"expireTime"`
-	Id               pulumi.StringInput                                `pulumi:"id"`
-	NoticeType       pulumi.IntInput                                   `pulumi:"noticeType"`
-	ProductCode      pulumi.StringInput                                `pulumi:"productCode"`
-	QuotaActionCode  pulumi.StringInput                                `pulumi:"quotaActionCode"`
-	QuotaDescription pulumi.StringInput                                `pulumi:"quotaDescription"`
-	QuotaName        pulumi.StringInput                                `pulumi:"quotaName"`
-	QuotaUnit        pulumi.StringInput                                `pulumi:"quotaUnit"`
-	Reason           pulumi.StringInput                                `pulumi:"reason"`
-	Status           pulumi.StringInput                                `pulumi:"status"`
+	// The first ID of the resource.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The approve value.
+	ApproveValue pulumi.StringInput `pulumi:"approveValue"`
+	// The audit reason.
+	AuditReason pulumi.StringInput `pulumi:"auditReason"`
+	// The desire value of the quota application.
+	DesireValue pulumi.Float64Input `pulumi:"desireValue"`
+	// The quota dimensions. See `dimensions` below.
+	Dimensions GetApplicationInfosApplicationDimensionArrayInput `pulumi:"dimensions"`
+	// The effective time.
+	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
+	// The expire time.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The ID of the Application Info.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The notice type.
+	NoticeType pulumi.IntInput `pulumi:"noticeType"`
+	// The product code.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// The ID of quota action.
+	QuotaActionCode pulumi.StringInput `pulumi:"quotaActionCode"`
+	// The description of the quota.
+	QuotaDescription pulumi.StringInput `pulumi:"quotaDescription"`
+	// The name of the quota.
+	QuotaName pulumi.StringInput `pulumi:"quotaName"`
+	// The quota unit.
+	QuotaUnit pulumi.StringInput `pulumi:"quotaUnit"`
+	// The reason of the quota application.
+	Reason pulumi.StringInput `pulumi:"reason"`
+	// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+	Status pulumi.StringInput `pulumi:"status"`
 }
 
 func (GetApplicationInfosApplicationArgs) ElementType() reflect.Type {
@@ -1036,66 +1077,82 @@ func (o GetApplicationInfosApplicationOutput) ToGetApplicationInfosApplicationOu
 	return o
 }
 
+// The first ID of the resource.
 func (o GetApplicationInfosApplicationOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
+// The approve value.
 func (o GetApplicationInfosApplicationOutput) ApproveValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.ApproveValue }).(pulumi.StringOutput)
 }
 
+// The audit reason.
 func (o GetApplicationInfosApplicationOutput) AuditReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.AuditReason }).(pulumi.StringOutput)
 }
 
+// The desire value of the quota application.
 func (o GetApplicationInfosApplicationOutput) DesireValue() pulumi.Float64Output {
 	return o.ApplyT(func(v GetApplicationInfosApplication) float64 { return v.DesireValue }).(pulumi.Float64Output)
 }
 
+// The quota dimensions. See `dimensions` below.
 func (o GetApplicationInfosApplicationOutput) Dimensions() GetApplicationInfosApplicationDimensionArrayOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) []GetApplicationInfosApplicationDimension { return v.Dimensions }).(GetApplicationInfosApplicationDimensionArrayOutput)
 }
 
+// The effective time.
 func (o GetApplicationInfosApplicationOutput) EffectiveTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.EffectiveTime }).(pulumi.StringOutput)
 }
 
+// The expire time.
 func (o GetApplicationInfosApplicationOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
+// The ID of the Application Info.
 func (o GetApplicationInfosApplicationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The notice type.
 func (o GetApplicationInfosApplicationOutput) NoticeType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) int { return v.NoticeType }).(pulumi.IntOutput)
 }
 
+// The product code.
 func (o GetApplicationInfosApplicationOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
+// The ID of quota action.
 func (o GetApplicationInfosApplicationOutput) QuotaActionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.QuotaActionCode }).(pulumi.StringOutput)
 }
 
+// The description of the quota.
 func (o GetApplicationInfosApplicationOutput) QuotaDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.QuotaDescription }).(pulumi.StringOutput)
 }
 
+// The name of the quota.
 func (o GetApplicationInfosApplicationOutput) QuotaName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.QuotaName }).(pulumi.StringOutput)
 }
 
+// The quota unit.
 func (o GetApplicationInfosApplicationOutput) QuotaUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.QuotaUnit }).(pulumi.StringOutput)
 }
 
+// The reason of the quota application.
 func (o GetApplicationInfosApplicationOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.Reason }).(pulumi.StringOutput)
 }
 
+// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
 func (o GetApplicationInfosApplicationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplication) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1121,7 +1178,9 @@ func (o GetApplicationInfosApplicationArrayOutput) Index(i pulumi.IntInput) GetA
 }
 
 type GetApplicationInfosApplicationDimension struct {
-	Key   string `pulumi:"key"`
+	// The key of dimensions.
+	Key string `pulumi:"key"`
+	// The value of dimensions.
 	Value string `pulumi:"value"`
 }
 
@@ -1137,7 +1196,9 @@ type GetApplicationInfosApplicationDimensionInput interface {
 }
 
 type GetApplicationInfosApplicationDimensionArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// The key of dimensions.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of dimensions.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1192,10 +1253,12 @@ func (o GetApplicationInfosApplicationDimensionOutput) ToGetApplicationInfosAppl
 	return o
 }
 
+// The key of dimensions.
 func (o GetApplicationInfosApplicationDimensionOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplicationDimension) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The value of dimensions.
 func (o GetApplicationInfosApplicationDimensionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosApplicationDimension) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1221,7 +1284,9 @@ func (o GetApplicationInfosApplicationDimensionArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetApplicationInfosDimension struct {
-	Key   *string `pulumi:"key"`
+	// The key of dimensions.
+	Key *string `pulumi:"key"`
+	// The value of dimensions.
 	Value *string `pulumi:"value"`
 }
 
@@ -1237,7 +1302,9 @@ type GetApplicationInfosDimensionInput interface {
 }
 
 type GetApplicationInfosDimensionArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
+	// The key of dimensions.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of dimensions.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1292,10 +1359,12 @@ func (o GetApplicationInfosDimensionOutput) ToGetApplicationInfosDimensionOutput
 	return o
 }
 
+// The key of dimensions.
 func (o GetApplicationInfosDimensionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationInfosDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The value of dimensions.
 func (o GetApplicationInfosDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationInfosDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1331,7 +1400,7 @@ type GetQuotaAlarmsAlarm struct {
 	QuotaActionCode string `pulumi:"quotaActionCode"`
 	// The name of Quota Alarm.
 	QuotaAlarmName string `pulumi:"quotaAlarmName"`
-	// The Quota Dimensions.
+	// The Quota Dimensions. See `quotaDimensions` below.
 	QuotaDimensions []GetQuotaAlarmsAlarmQuotaDimension `pulumi:"quotaDimensions"`
 	// The threshold of Quota Alarm.
 	Threshold float64 `pulumi:"threshold"`
@@ -1363,7 +1432,7 @@ type GetQuotaAlarmsAlarmArgs struct {
 	QuotaActionCode pulumi.StringInput `pulumi:"quotaActionCode"`
 	// The name of Quota Alarm.
 	QuotaAlarmName pulumi.StringInput `pulumi:"quotaAlarmName"`
-	// The Quota Dimensions.
+	// The Quota Dimensions. See `quotaDimensions` below.
 	QuotaDimensions GetQuotaAlarmsAlarmQuotaDimensionArrayInput `pulumi:"quotaDimensions"`
 	// The threshold of Quota Alarm.
 	Threshold pulumi.Float64Input `pulumi:"threshold"`
@@ -1449,7 +1518,7 @@ func (o GetQuotaAlarmsAlarmOutput) QuotaAlarmName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsAlarm) string { return v.QuotaAlarmName }).(pulumi.StringOutput)
 }
 
-// The Quota Dimensions.
+// The Quota Dimensions. See `quotaDimensions` below.
 func (o GetQuotaAlarmsAlarmOutput) QuotaDimensions() GetQuotaAlarmsAlarmQuotaDimensionArrayOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsAlarm) []GetQuotaAlarmsAlarmQuotaDimension { return v.QuotaDimensions }).(GetQuotaAlarmsAlarmQuotaDimensionArrayOutput)
 }
@@ -1596,7 +1665,9 @@ func (o GetQuotaAlarmsAlarmQuotaDimensionArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetQuotaAlarmsQuotaDimension struct {
-	Key   *string `pulumi:"key"`
+	// The key of quota_dimensions.
+	Key *string `pulumi:"key"`
+	// The value of quota_dimensions.
 	Value *string `pulumi:"value"`
 }
 
@@ -1612,7 +1683,9 @@ type GetQuotaAlarmsQuotaDimensionInput interface {
 }
 
 type GetQuotaAlarmsQuotaDimensionArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
+	// The key of quota_dimensions.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of quota_dimensions.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1667,10 +1740,12 @@ func (o GetQuotaAlarmsQuotaDimensionOutput) ToGetQuotaAlarmsQuotaDimensionOutput
 	return o
 }
 
+// The key of quota_dimensions.
 func (o GetQuotaAlarmsQuotaDimensionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsQuotaDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The value of quota_dimensions.
 func (o GetQuotaAlarmsQuotaDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsQuotaDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1704,7 +1779,7 @@ type GetQuotaApplicationsApplication struct {
 	AuditReason string `pulumi:"auditReason"`
 	// The desire value of the quota application.
 	DesireValue float64 `pulumi:"desireValue"`
-	// The quota dimensions.
+	// The quota dimensions. See `dimensions` below.
 	Dimensions []GetQuotaApplicationsApplicationDimension `pulumi:"dimensions"`
 	// The effective time.
 	EffectiveTime string `pulumi:"effectiveTime"`
@@ -1716,7 +1791,7 @@ type GetQuotaApplicationsApplication struct {
 	NoticeType int `pulumi:"noticeType"`
 	// The product code.
 	ProductCode string `pulumi:"productCode"`
-	// The ID of quota action..
+	// The ID of quota action.
 	QuotaActionCode string `pulumi:"quotaActionCode"`
 	// The description of the quota.
 	QuotaDescription string `pulumi:"quotaDescription"`
@@ -1726,7 +1801,7 @@ type GetQuotaApplicationsApplication struct {
 	QuotaUnit string `pulumi:"quotaUnit"`
 	// The reason of the quota application.
 	Reason string `pulumi:"reason"`
-	// The status of the quota application.
+	// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
 	Status string `pulumi:"status"`
 }
 
@@ -1750,7 +1825,7 @@ type GetQuotaApplicationsApplicationArgs struct {
 	AuditReason pulumi.StringInput `pulumi:"auditReason"`
 	// The desire value of the quota application.
 	DesireValue pulumi.Float64Input `pulumi:"desireValue"`
-	// The quota dimensions.
+	// The quota dimensions. See `dimensions` below.
 	Dimensions GetQuotaApplicationsApplicationDimensionArrayInput `pulumi:"dimensions"`
 	// The effective time.
 	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
@@ -1762,7 +1837,7 @@ type GetQuotaApplicationsApplicationArgs struct {
 	NoticeType pulumi.IntInput `pulumi:"noticeType"`
 	// The product code.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
-	// The ID of quota action..
+	// The ID of quota action.
 	QuotaActionCode pulumi.StringInput `pulumi:"quotaActionCode"`
 	// The description of the quota.
 	QuotaDescription pulumi.StringInput `pulumi:"quotaDescription"`
@@ -1772,7 +1847,7 @@ type GetQuotaApplicationsApplicationArgs struct {
 	QuotaUnit pulumi.StringInput `pulumi:"quotaUnit"`
 	// The reason of the quota application.
 	Reason pulumi.StringInput `pulumi:"reason"`
-	// The status of the quota application.
+	// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -1847,7 +1922,7 @@ func (o GetQuotaApplicationsApplicationOutput) DesireValue() pulumi.Float64Outpu
 	return o.ApplyT(func(v GetQuotaApplicationsApplication) float64 { return v.DesireValue }).(pulumi.Float64Output)
 }
 
-// The quota dimensions.
+// The quota dimensions. See `dimensions` below.
 func (o GetQuotaApplicationsApplicationOutput) Dimensions() GetQuotaApplicationsApplicationDimensionArrayOutput {
 	return o.ApplyT(func(v GetQuotaApplicationsApplication) []GetQuotaApplicationsApplicationDimension {
 		return v.Dimensions
@@ -1879,7 +1954,7 @@ func (o GetQuotaApplicationsApplicationOutput) ProductCode() pulumi.StringOutput
 	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
-// The ID of quota action..
+// The ID of quota action.
 func (o GetQuotaApplicationsApplicationOutput) QuotaActionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.QuotaActionCode }).(pulumi.StringOutput)
 }
@@ -1904,7 +1979,7 @@ func (o GetQuotaApplicationsApplicationOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.Reason }).(pulumi.StringOutput)
 }
 
-// The status of the quota application.
+// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
 func (o GetQuotaApplicationsApplicationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotaApplicationsApplication) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2036,7 +2111,9 @@ func (o GetQuotaApplicationsApplicationDimensionArrayOutput) Index(i pulumi.IntI
 }
 
 type GetQuotaApplicationsDimension struct {
-	Key   *string `pulumi:"key"`
+	// The key of dimensions.
+	Key *string `pulumi:"key"`
+	// The value of dimensions.
 	Value *string `pulumi:"value"`
 }
 
@@ -2052,7 +2129,9 @@ type GetQuotaApplicationsDimensionInput interface {
 }
 
 type GetQuotaApplicationsDimensionArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
+	// The key of dimensions.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of dimensions.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2107,10 +2186,12 @@ func (o GetQuotaApplicationsDimensionOutput) ToGetQuotaApplicationsDimensionOutp
 	return o
 }
 
+// The key of dimensions.
 func (o GetQuotaApplicationsDimensionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaApplicationsDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The value of dimensions.
 func (o GetQuotaApplicationsDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaApplicationsDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

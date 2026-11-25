@@ -49,6 +49,7 @@ public final class IpSetState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The bandwidth allocated to the acceleration region.
+     * 
      * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      * 
      */
@@ -57,6 +58,7 @@ public final class IpSetState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The bandwidth allocated to the acceleration region.
+     * 
      * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      * 
      */
@@ -198,6 +200,7 @@ public final class IpSetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bandwidth The bandwidth allocated to the acceleration region.
+         * 
          * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
          * 
          * @return builder
@@ -210,6 +213,7 @@ public final class IpSetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bandwidth The bandwidth allocated to the acceleration region.
+         * 
          * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
          * 
          * @return builder

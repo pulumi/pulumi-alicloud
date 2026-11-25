@@ -60,6 +60,7 @@ class ManagedKubernetesArgs:
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
                  slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  upgrade_policy: pulumi.Input[Optional['ManagedKubernetesUpgradePolicyArgs']] = None,
@@ -78,8 +79,6 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-               
-               *Removed params*
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster, which can be empty. Valid values:
                * ack.standard : Basic managed clusters.
@@ -134,6 +133,7 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
+        :param pulumi.Input[_builtins.str] support_policy: Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[_builtins.str] timezone: Cluster timezone, works for control plane and Worker nodes.
                
@@ -145,7 +145,7 @@ class ManagedKubernetesArgs:
                
                > **NOTE:** This parameter only applies during resource update.
                
-               *Network params*
+               Network params
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vSwitches of the control plane.
@@ -248,6 +248,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "skip_set_certificate_authority", skip_set_certificate_authority)
         if slb_internet_enabled is not None:
             pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
+        if support_policy is not None:
+            pulumi.set(__self__, "support_policy", support_policy)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
@@ -348,8 +350,6 @@ class ManagedKubernetesArgs:
     def cluster_ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-
-        *Removed params*
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -765,6 +765,18 @@ class ManagedKubernetesArgs:
         pulumi.set(self, "slb_internet_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="supportPolicy")
+    def support_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+        """
+        return pulumi.get(self, "support_policy")
+
+    @support_policy.setter
+    def support_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "support_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -801,7 +813,7 @@ class ManagedKubernetesArgs:
 
         > **NOTE:** This parameter only applies during resource update.
 
-        *Network params*
+        Network params
         """
         return pulumi.get(self, "upgrade_policy")
 
@@ -926,6 +938,7 @@ class _ManagedKubernetesState:
                  slb_internet: pulumi.Input[Optional[_builtins.str]] = None,
                  slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  slb_intranet: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  upgrade_policy: pulumi.Input[Optional['ManagedKubernetesUpgradePolicyArgs']] = None,
@@ -947,8 +960,6 @@ class _ManagedKubernetesState:
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-               
-               *Removed params*
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster, which can be empty. Valid values:
                * ack.standard : Basic managed clusters.
@@ -1009,6 +1020,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[_builtins.str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
+        :param pulumi.Input[_builtins.str] support_policy: Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[_builtins.str] timezone: Cluster timezone, works for control plane and Worker nodes.
                
@@ -1020,7 +1032,7 @@ class _ManagedKubernetesState:
                
                > **NOTE:** This parameter only applies during resource update.
                
-               *Network params*
+               Network params
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of VPC where the current cluster is located.
@@ -1142,6 +1154,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
         if slb_intranet is not None:
             pulumi.set(__self__, "slb_intranet", slb_intranet)
+        if support_policy is not None:
+            pulumi.set(__self__, "support_policy", support_policy)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if timezone is not None:
@@ -1259,8 +1273,6 @@ class _ManagedKubernetesState:
     def cluster_ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-
-        *Removed params*
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -1748,6 +1760,18 @@ class _ManagedKubernetesState:
         pulumi.set(self, "slb_intranet", value)
 
     @_builtins.property
+    @pulumi.getter(name="supportPolicy")
+    def support_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+        """
+        return pulumi.get(self, "support_policy")
+
+    @support_policy.setter
+    def support_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "support_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -1784,7 +1808,7 @@ class _ManagedKubernetesState:
 
         > **NOTE:** This parameter only applies during resource update.
 
-        *Network params*
+        Network params
         """
         return pulumi.get(self, "upgrade_policy")
 
@@ -1929,6 +1953,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
                  slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  upgrade_policy: pulumi.Input[Optional[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict', 'outputs.ManagedKubernetesUpgradePolicy']]] = None,
@@ -2293,6 +2318,22 @@ class ManagedKubernetes(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+        ### Extended version support
+
+        Set `support_policy = "Extended"` on an ACK Pro cluster to enable extended version support. The same argument can be added to an existing cluster to update its policy without recreating it.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        extended = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
+            profile="Default",
+            support_policy="Extended",
+            kubernetes_version=kubernetes_version)
+        ```
+
+        Query results depend on ACK's current version lifecycle and regional availability. Use the exact version you intend to deploy rather than a fixed index into the metadata list.
+
         ## Import
 
         Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -2311,8 +2352,6 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-               
-               *Removed params*
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster, which can be empty. Valid values:
                * ack.standard : Basic managed clusters.
@@ -2367,6 +2406,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
+        :param pulumi.Input[_builtins.str] support_policy: Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[_builtins.str] timezone: Cluster timezone, works for control plane and Worker nodes.
                
@@ -2378,7 +2418,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                
                > **NOTE:** This parameter only applies during resource update.
                
-               *Network params*
+               Network params
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vSwitches of the control plane.
@@ -2752,6 +2792,22 @@ class ManagedKubernetes(pulumi.CustomResource):
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
+        ### Extended version support
+
+        Set `support_policy = "Extended"` on an ACK Pro cluster to enable extended version support. The same argument can be added to an existing cluster to update its policy without recreating it.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        extended = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
+            profile="Default",
+            support_policy="Extended",
+            kubernetes_version=kubernetes_version)
+        ```
+
+        Query results depend on ACK's current version lifecycle and regional availability. Use the exact version you intend to deploy rather than a fixed index into the metadata list.
+
         ## Import
 
         Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -2815,6 +2871,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
                  slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  upgrade_policy: pulumi.Input[Optional[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict', 'outputs.ManagedKubernetesUpgradePolicy']]] = None,
@@ -2871,6 +2928,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["service_cidr"] = service_cidr
             __props__.__dict__["skip_set_certificate_authority"] = skip_set_certificate_authority
             __props__.__dict__["slb_internet_enabled"] = slb_internet_enabled
+            __props__.__dict__["support_policy"] = support_policy
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["upgrade_policy"] = upgrade_policy
@@ -2944,6 +3002,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             slb_internet: pulumi.Input[Optional[_builtins.str]] = None,
             slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             slb_intranet: pulumi.Input[Optional[_builtins.str]] = None,
+            support_policy: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             timezone: pulumi.Input[Optional[_builtins.str]] = None,
             upgrade_policy: pulumi.Input[Optional[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict', 'outputs.ManagedKubernetesUpgradePolicy']]] = None,
@@ -2969,8 +3028,6 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-               
-               *Removed params*
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster, which can be empty. Valid values:
                * ack.standard : Basic managed clusters.
@@ -3031,6 +3088,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
+        :param pulumi.Input[_builtins.str] support_policy: Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[_builtins.str] timezone: Cluster timezone, works for control plane and Worker nodes.
                
@@ -3042,7 +3100,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                
                > **NOTE:** This parameter only applies during resource update.
                
-               *Network params*
+               Network params
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[_builtins.str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of VPC where the current cluster is located.
@@ -3107,6 +3165,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["slb_internet"] = slb_internet
         __props__.__dict__["slb_internet_enabled"] = slb_internet_enabled
         __props__.__dict__["slb_intranet"] = slb_intranet
+        __props__.__dict__["support_policy"] = support_policy
         __props__.__dict__["tags"] = tags
         __props__.__dict__["timezone"] = timezone
         __props__.__dict__["upgrade_policy"] = upgrade_policy
@@ -3168,6 +3227,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             slb_internet: pulumi.Input[Optional[_builtins.str]] = None,
             slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             slb_intranet: pulumi.Input[Optional[_builtins.str]] = None,
+            support_policy: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             timezone: pulumi.Input[Optional[_builtins.str]] = None,
             upgrade_policy: pulumi.Input[Optional[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict', 'outputs.ManagedKubernetesUpgradePolicy']]] = None,
@@ -3225,6 +3285,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["slbInternet"] = slb_internet
         __props__["slbInternetEnabled"] = slb_internet_enabled
         __props__["slbIntranet"] = slb_intranet
+        __props__["supportPolicy"] = support_policy
         __props__["tags"] = tags
         __props__["timezone"] = timezone
         __props__["upgradePolicy"] = upgrade_policy
@@ -3302,8 +3363,6 @@ class ManagedKubernetes(pulumi.CustomResource):
     def cluster_ca_cert(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-
-        *Removed params*
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -3635,6 +3694,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "slb_intranet")
 
     @_builtins.property
+    @pulumi.getter(name="supportPolicy")
+    def support_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+        """
+        return pulumi.get(self, "support_policy")
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
@@ -3663,7 +3730,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
         > **NOTE:** This parameter only applies during resource update.
 
-        *Network params*
+        Network params
         """
         return pulumi.get(self, "upgrade_policy")
 

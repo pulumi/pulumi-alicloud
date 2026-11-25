@@ -50,6 +50,9 @@ class GetMountPointsResult:
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> _builtins.str:
+        """
+        The ID of the File System.
+        """
         return pulumi.get(self, "file_system_id")
 
     @_builtins.property
@@ -73,11 +76,17 @@ class GetMountPointsResult:
     @_builtins.property
     @pulumi.getter
     def points(self) -> Sequence['outputs.GetMountPointsPointResult']:
+        """
+        A list of Dfs Mount Points. Each element contains the following attributes:
+        """
         return pulumi.get(self, "points")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the Mount Point. Valid values: `Active`, `Inactive`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -103,7 +112,7 @@ def get_mount_points(file_system_id: Optional[_builtins.str] = None,
     """
     This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 
@@ -150,7 +159,7 @@ def get_mount_points_output(file_system_id: pulumi.Input[Optional[_builtins.str]
     """
     This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 

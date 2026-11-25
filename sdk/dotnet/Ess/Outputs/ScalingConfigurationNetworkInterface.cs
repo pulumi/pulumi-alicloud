@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+        /// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
         /// </summary>
         public readonly int? Ipv6AddressCount;
         /// <summary>

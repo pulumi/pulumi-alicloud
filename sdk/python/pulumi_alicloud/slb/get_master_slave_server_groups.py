@@ -121,7 +121,7 @@ def get_master_slave_server_groups(ids: Optional[Sequence[_builtins.str]] = None
     """
     This data source provides the master slave server groups related to a server load balancer.
 
-    > **NOTE:** Available in 1.54.0+
+    > **NOTE:** Available since v1.54.0.
 
 
     :param Sequence[_builtins.str] ids: A list of master slave server group IDs to filter results.
@@ -153,7 +153,7 @@ def get_master_slave_server_groups_output(ids: pulumi.Input[Optional[Optional[Se
     """
     This data source provides the master slave server groups related to a server load balancer.
 
-    > **NOTE:** Available in 1.54.0+
+    > **NOTE:** Available since v1.54.0.
 
 
     :param Sequence[_builtins.str] ids: A list of master slave server group IDs to filter results.

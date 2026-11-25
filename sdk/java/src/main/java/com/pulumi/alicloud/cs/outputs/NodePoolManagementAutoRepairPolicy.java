@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,16 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolManagementAutoRepairPolicy {
     /**
-     * @return Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+     * @return The ID of the auto repair policy bound to the node pool. It takes precedence over `restartNode`. The value is only sent when it is non-empty: Terraform treats an empty attribute value as unset, so to suspend automatic repair set `autoRepair` to `false` instead of clearing this field. The binding is retained while auto repair is off and takes effect again when `autoRepair` is turned back on. Once a policy ID has been bound explicitly, removing the argument from the configuration does not unbind the policy. You can use `alicloud.cs.AutoRepairPolicy` to create a custom policy, or reference a builtin policy returned by the `alicloud.cs.getAutoRepairPolicies` data source. The builtin policies are `r-repair-sys-comp-failure` (repair, restarting the node when needed) and `r-repair-sys-comp-failure-without-reboots` (repair without restarting the node). They replace the deprecated `restartNode` switch: `r-repair-sys-comp-failure` is equivalent to `restartNode = true` and `r-repair-sys-comp-failure-without-reboots` to `restartNode = false`. The policy subtype must match the node pool type (`ess` or `lingjun`).
      * 
      */
+    private @Nullable String autoRepairPolicyId;
+    /**
+     * @return The maximum number of nodes that can be repaired simultaneously. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]` (decimals such as `2.5%` are accepted). Defaults to `1`. An empty value is treated as unset by Terraform and is not sent.
+     * 
+     */
+    private @Nullable String maxParallelRepairingNodes;
+    /**
+     * @return The circuit breaker threshold for auto repair. When the number of unhealthy nodes in the node pool reaches this threshold, the node pool stops starting new repair actions. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]`. It must be greater than or equal to `maxParallelRepairingNodes` when both are given in the same form (both a count or both a percentage). Defaults to `100%`. An empty value is treated as unset by Terraform and is not sent.
+     * 
+     * &gt; **NOTE:** An auto repair policy can only be bound to a managed node pool of an ACK Pro cluster, and Auto mode node pools do not support auto repair policies. Binding a policy requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later; automatic fault diagnosis additionally requires `ack-node-problem-detector` at version `1.2.41` or later. The service validates the installed versions on every request and rejects requests whose add-on version is below the minimum, so install or upgrade the add-ons with csKubernetesAddon before enabling these features.
+     * 
+     */
+    private @Nullable String maxUnhealthyNodesThreshold;
+    /**
+     * @return Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+     * 
+     * @deprecated Field &#39;management.auto_repair_policy.restart_node&#39; has been deprecated from provider version 2.3.0. Use &#39;management.auto_repair_policy.auto_repair_policy_id&#39; instead: set it to &#39;r-repair-sys-comp-failure&#39; to replace restartNode = true, or to &#39;r-repair-sys-comp-failure-without-reboots&#39; to replace restartNode = false. When both are set, autoRepairPolicyId takes precedence and restartNode is ignored.
+     * 
+     */
+    @Deprecated
     private @Nullable Boolean restartNode;
 
     private NodePoolManagementAutoRepairPolicy() {}
     /**
-     * @return Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+     * @return The ID of the auto repair policy bound to the node pool. It takes precedence over `restartNode`. The value is only sent when it is non-empty: Terraform treats an empty attribute value as unset, so to suspend automatic repair set `autoRepair` to `false` instead of clearing this field. The binding is retained while auto repair is off and takes effect again when `autoRepair` is turned back on. Once a policy ID has been bound explicitly, removing the argument from the configuration does not unbind the policy. You can use `alicloud.cs.AutoRepairPolicy` to create a custom policy, or reference a builtin policy returned by the `alicloud.cs.getAutoRepairPolicies` data source. The builtin policies are `r-repair-sys-comp-failure` (repair, restarting the node when needed) and `r-repair-sys-comp-failure-without-reboots` (repair without restarting the node). They replace the deprecated `restartNode` switch: `r-repair-sys-comp-failure` is equivalent to `restartNode = true` and `r-repair-sys-comp-failure-without-reboots` to `restartNode = false`. The policy subtype must match the node pool type (`ess` or `lingjun`).
      * 
      */
+    public Optional<String> autoRepairPolicyId() {
+        return Optional.ofNullable(this.autoRepairPolicyId);
+    }
+    /**
+     * @return The maximum number of nodes that can be repaired simultaneously. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]` (decimals such as `2.5%` are accepted). Defaults to `1`. An empty value is treated as unset by Terraform and is not sent.
+     * 
+     */
+    public Optional<String> maxParallelRepairingNodes() {
+        return Optional.ofNullable(this.maxParallelRepairingNodes);
+    }
+    /**
+     * @return The circuit breaker threshold for auto repair. When the number of unhealthy nodes in the node pool reaches this threshold, the node pool stops starting new repair actions. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]`. It must be greater than or equal to `maxParallelRepairingNodes` when both are given in the same form (both a count or both a percentage). Defaults to `100%`. An empty value is treated as unset by Terraform and is not sent.
+     * 
+     * &gt; **NOTE:** An auto repair policy can only be bound to a managed node pool of an ACK Pro cluster, and Auto mode node pools do not support auto repair policies. Binding a policy requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later; automatic fault diagnosis additionally requires `ack-node-problem-detector` at version `1.2.41` or later. The service validates the installed versions on every request and rejects requests whose add-on version is below the minimum, so install or upgrade the add-ons with csKubernetesAddon before enabling these features.
+     * 
+     */
+    public Optional<String> maxUnhealthyNodesThreshold() {
+        return Optional.ofNullable(this.maxUnhealthyNodesThreshold);
+    }
+    /**
+     * @return Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+     * 
+     * @deprecated Field &#39;management.auto_repair_policy.restart_node&#39; has been deprecated from provider version 2.3.0. Use &#39;management.auto_repair_policy.auto_repair_policy_id&#39; instead: set it to &#39;r-repair-sys-comp-failure&#39; to replace restartNode = true, or to &#39;r-repair-sys-comp-failure-without-reboots&#39; to replace restartNode = false. When both are set, autoRepairPolicyId takes precedence and restartNode is ignored.
+     * 
+     */
+    @Deprecated
     public Optional<Boolean> restartNode() {
         return Optional.ofNullable(this.restartNode);
     }
@@ -35,13 +82,37 @@ public final class NodePoolManagementAutoRepairPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String autoRepairPolicyId;
+        private @Nullable String maxParallelRepairingNodes;
+        private @Nullable String maxUnhealthyNodesThreshold;
         private @Nullable Boolean restartNode;
         public Builder() {}
         public Builder(NodePoolManagementAutoRepairPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoRepairPolicyId = defaults.autoRepairPolicyId;
+    	      this.maxParallelRepairingNodes = defaults.maxParallelRepairingNodes;
+    	      this.maxUnhealthyNodesThreshold = defaults.maxUnhealthyNodesThreshold;
     	      this.restartNode = defaults.restartNode;
         }
 
+        @CustomType.Setter
+        public Builder autoRepairPolicyId(@Nullable String autoRepairPolicyId) {
+
+            this.autoRepairPolicyId = autoRepairPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxParallelRepairingNodes(@Nullable String maxParallelRepairingNodes) {
+
+            this.maxParallelRepairingNodes = maxParallelRepairingNodes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxUnhealthyNodesThreshold(@Nullable String maxUnhealthyNodesThreshold) {
+
+            this.maxUnhealthyNodesThreshold = maxUnhealthyNodesThreshold;
+            return this;
+        }
         @CustomType.Setter
         public Builder restartNode(@Nullable Boolean restartNode) {
 
@@ -50,6 +121,9 @@ public final class NodePoolManagementAutoRepairPolicy {
         }
         public NodePoolManagementAutoRepairPolicy build() {
             final var _resultValue = new NodePoolManagementAutoRepairPolicy();
+            _resultValue.autoRepairPolicyId = autoRepairPolicyId;
+            _resultValue.maxParallelRepairingNodes = maxParallelRepairingNodes;
+            _resultValue.maxUnhealthyNodesThreshold = maxUnhealthyNodesThreshold;
             _resultValue.restartNode = restartNode;
             return _resultValue;
         }

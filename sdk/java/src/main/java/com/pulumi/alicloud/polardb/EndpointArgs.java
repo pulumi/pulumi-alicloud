@@ -169,6 +169,21 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint&#39;s read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `sccMode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
+     * 
+     */
+    @Import(name="sccMode")
+    private @Nullable Output<String> sccMode;
+
+    /**
+     * @return Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint&#39;s read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `sccMode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
+     * 
+     */
+    public Optional<Output<String>> sccMode() {
+        return Optional.ofNullable(this.sccMode);
+    }
+
+    /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
      * 
      */
@@ -211,6 +226,7 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         this.nodes = $.nodes;
         this.port = $.port;
         this.readWriteMode = $.readWriteMode;
+        this.sccMode = $.sccMode;
         this.sslAutoRotate = $.sslAutoRotate;
         this.sslEnabled = $.sslEnabled;
     }
@@ -451,6 +467,27 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder readWriteMode(String readWriteMode) {
             return readWriteMode(Output.of(readWriteMode));
+        }
+
+        /**
+         * @param sccMode Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint&#39;s read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `sccMode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sccMode(@Nullable Output<String> sccMode) {
+            $.sccMode = sccMode;
+            return this;
+        }
+
+        /**
+         * @param sccMode Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint&#39;s read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `sccMode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sccMode(String sccMode) {
+            return sccMode(Output.of(sccMode));
         }
 
         /**

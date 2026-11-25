@@ -17,7 +17,13 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// Indicates whether the event is a read or a write event.
         /// </summary>
         public readonly string EventRw;
+        /// <summary>
+        /// The id of the ActionTrail Trail. It is the same as trail name.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Indicates whether the trail is a multi-account trail.
+        /// </summary>
         public readonly bool IsOrganizationTrail;
         /// <summary>
         /// The name of the specified OSS bucket.
@@ -27,6 +33,9 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The prefix of the specified OSS bucket name.
         /// </summary>
         public readonly string OssKeyPrefix;
+        /// <summary>
+        /// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
+        /// </summary>
         public readonly string OssWriteRoleArn;
         /// <summary>
         /// The unique ARN of the Log Service project.
@@ -36,8 +45,17 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The unique ARN of the Log Service role.
         /// </summary>
         public readonly string SlsWriteRoleArn;
+        /// <summary>
+        /// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The name of the ActionTrail Trail.
+        /// </summary>
         public readonly string TrailName;
+        /// <summary>
+        /// The regions to which the trail is applied.
+        /// </summary>
         public readonly string TrailRegion;
 
         [OutputConstructor]

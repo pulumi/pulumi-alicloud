@@ -128,17 +128,18 @@ class GetInstancesInstanceResult(dict):
         """
         :param _builtins.str create_time: Instance creation time
         :param _builtins.str destination_endpoint_engine_name: The target database engine type.
-        :param _builtins.str destination_region: The destination instance region.
+        :param _builtins.str destination_region: The target instance region.
         :param _builtins.str dts_instance_id: The ID of the subscription instance.
         :param _builtins.str id: The ID of the instance.
         :param _builtins.str instance_class: The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
+        :param _builtins.str instance_name: The name of the instance.
         :param _builtins.str payment_type: The payment type of the resource.
         :param _builtins.str resource_group_id: Resource Group ID
         :param _builtins.str source_endpoint_engine_name: Source instance database engine type.
         :param _builtins.str source_region: The source instance region.
         :param _builtins.str status: Instance status.
         :param _builtins.str type: The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
-        :param Mapping[str, _builtins.str] tags: The tag value corresponding to the tag key.
+        :param Mapping[str, _builtins.str] tags: (Optional) The tag value corresponding to the tag key.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
@@ -176,7 +177,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="destinationRegion")
     def destination_region(self) -> _builtins.str:
         """
-        The destination instance region.
+        The target instance region.
         """
         return pulumi.get(self, "destination_region")
 
@@ -207,6 +208,9 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> _builtins.str:
+        """
+        The name of the instance.
+        """
         return pulumi.get(self, "instance_name")
 
     @_builtins.property
@@ -261,7 +265,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        The tag value corresponding to the tag key.
+        (Optional) The tag value corresponding to the tag key.
         """
         return pulumi.get(self, "tags")
 
@@ -655,14 +659,14 @@ class GetSubscriptionJobsJobResult(dict):
         :param _builtins.str source_endpoint_region: The region of source database.
         :param _builtins.str source_endpoint_role: Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
         :param _builtins.str source_endpoint_user_name: The username of source database instance account.
-        :param _builtins.str status: The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+        :param _builtins.str status: The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
         :param _builtins.bool subscription_data_type_ddl: Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
         :param _builtins.bool subscription_data_type_dml: Whether to subscribe the DML type of data. Valid values: `true`, `false`.
         :param Sequence['GetSubscriptionJobsJobSubscriptionHostArgs'] subscription_hosts: Network information.
         :param _builtins.str subscription_instance_network_type: The type of subscription instance network. Valid value: `classic`, `vpc`.
         :param _builtins.str subscription_instance_vpc_id: The ID of subscription instance vpc.
         :param _builtins.str subscription_instance_vswitch_id: The ID of subscription instance vswitch.
-        :param Mapping[str, _builtins.str] tags: The tag of the resource.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to filter results.
         """
         pulumi.set(__self__, "checkpoint", checkpoint)
         pulumi.set(__self__, "create_time", create_time)
@@ -857,7 +861,7 @@ class GetSubscriptionJobsJobResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+        The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
         """
         return pulumi.get(self, "status")
 
@@ -913,7 +917,7 @@ class GetSubscriptionJobsJobResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        The tag of the resource.
+        A mapping of tags to filter results.
         """
         return pulumi.get(self, "tags")
 
@@ -996,6 +1000,7 @@ class GetSynchronizationJobsJobResult(dict):
                  synchronization_direction: _builtins.str):
         """
         :param _builtins.str checkpoint: Start time in Unix timestamp format.
+        :param _builtins.str create_time: The creation time of synchronization job.
         :param _builtins.bool data_initialization: Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
         :param _builtins.bool data_synchronization: Whether to perform incremental data migration for migration types or synchronization.
         :param _builtins.str db_list: Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, synchronization or subscription objects](https://help.aliyun.com/document_detail/209545.html).
@@ -1008,7 +1013,10 @@ class GetSynchronizationJobsJobResult(dict):
         :param _builtins.str destination_endpoint_port: The port of source endpoint.
         :param _builtins.str destination_endpoint_region: The region of destination instance.
         :param _builtins.str destination_endpoint_user_name: The username of database account.
+        :param _builtins.str dts_instance_id: The ID of synchronization instance.
+        :param _builtins.str dts_job_id: The ID of synchronization job.
         :param _builtins.str dts_job_name: The name of synchronization job.
+        :param _builtins.str expire_time: The expiration time. Formatting with yyyy-MM-ddTHH:mm:ssZ(UTC time).
         :param _builtins.str id: The ID of synchronizing instance. It's the ID of resource `dts.SynchronizationInstance`.
         :param _builtins.str source_endpoint_database_name: The name of migrate the database.
         :param _builtins.str source_endpoint_engine_name: The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
@@ -1021,7 +1029,7 @@ class GetSynchronizationJobsJobResult(dict):
         :param _builtins.str source_endpoint_region: The region of source instance.
         :param _builtins.str source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs.
         :param _builtins.str source_endpoint_user_name: The username of database account.
-        :param _builtins.str status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        :param _builtins.str status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
         :param _builtins.bool structure_initialization: Whether to perform a database table structure to migrate or initialization values include:
         :param _builtins.str synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
@@ -1070,6 +1078,9 @@ class GetSynchronizationJobsJobResult(dict):
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
+        """
+        The creation time of synchronization job.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
@@ -1171,11 +1182,17 @@ class GetSynchronizationJobsJobResult(dict):
     @_builtins.property
     @pulumi.getter(name="dtsInstanceId")
     def dts_instance_id(self) -> _builtins.str:
+        """
+        The ID of synchronization instance.
+        """
         return pulumi.get(self, "dts_instance_id")
 
     @_builtins.property
     @pulumi.getter(name="dtsJobId")
     def dts_job_id(self) -> _builtins.str:
+        """
+        The ID of synchronization job.
+        """
         return pulumi.get(self, "dts_job_id")
 
     @_builtins.property
@@ -1189,6 +1206,9 @@ class GetSynchronizationJobsJobResult(dict):
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> _builtins.str:
+        """
+        The expiration time. Formatting with yyyy-MM-ddTHH:mm:ssZ(UTC time).
+        """
         return pulumi.get(self, "expire_time")
 
     @_builtins.property
@@ -1291,7 +1311,7 @@ class GetSynchronizationJobsJobResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
         """
         return pulumi.get(self, "status")
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd bundles of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd bundles of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd bundles of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -101,6 +101,10 @@ namespace Pulumi.AliCloud.Eds
     {
         [Input("bundleIds")]
         private List<string>? _bundleIds;
+
+        /// <summary>
+        /// A list of bundle IDs used to filter the results.
+        /// </summary>
         public List<string> BundleIds
         {
             get => _bundleIds ?? (_bundleIds = new List<string>());
@@ -147,6 +151,10 @@ namespace Pulumi.AliCloud.Eds
     {
         [Input("bundleIds")]
         private InputList<string>? _bundleIds;
+
+        /// <summary>
+        /// A list of bundle IDs used to filter the results.
+        /// </summary>
         public InputList<string> BundleIds
         {
             get => _bundleIds ?? (_bundleIds = new InputList<string>());
@@ -193,8 +201,17 @@ namespace Pulumi.AliCloud.Eds
     [OutputType]
     public sealed class GetBundlesResult
     {
+        /// <summary>
+        /// The bundle id of the bundle.
+        /// </summary>
         public readonly ImmutableArray<string> BundleIds;
+        /// <summary>
+        /// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+        /// </summary>
         public readonly string? BundleType;
+        /// <summary>
+        /// A list of Ecd Bundle. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBundlesBundleResult> Bundles;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -202,6 +219,9 @@ namespace Pulumi.AliCloud.Eds
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Bundle names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

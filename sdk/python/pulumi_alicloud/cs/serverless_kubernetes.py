@@ -62,14 +62,13 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-               - ack.standard: Standard serverless clusters.
-               - ack.pro.small: Professional serverless clusters.
+               - `ack.standard`: Standard serverless clusters.
+               - `ack.pro.small`: Professional serverless clusters.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
         :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
                > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
@@ -85,7 +84,7 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         :param pulumi.Input['ServerlessKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
                
-               *Removed params*
+               The following arguments have been removed since v1.229.1: `vswitch_id`, `create_v2_cluster`, and `force_update`. Use `vswitch_ids` instead of `vswitch_id`.
         :param pulumi.Input[_builtins.bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
@@ -247,8 +246,8 @@ class ServerlessKubernetesArgs:
     def cluster_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-        - ack.standard: Standard serverless clusters.
-        - ack.pro.small: Professional serverless clusters.
+        - `ack.standard`: Standard serverless clusters.
+        - `ack.pro.small`: Professional serverless clusters.
         """
         return pulumi.get(self, "cluster_spec")
 
@@ -261,6 +260,7 @@ class ServerlessKubernetesArgs:
     def custom_san(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         """
         return pulumi.get(self, "custom_san")
@@ -286,8 +286,6 @@ class ServerlessKubernetesArgs:
     def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether enable the deletion protection or not.
-        - true: Enable deletion protection.
-        - false: Disable deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -438,7 +436,7 @@ class ServerlessKubernetesArgs:
         """
         The cluster automatic operation policy. See `operation_policy` below.
 
-        *Removed params*
+        The following arguments have been removed since v1.229.1: `vswitch_id`, `create_v2_cluster`, and `force_update`. Use `vswitch_ids` instead of `vswitch_id`.
         """
         return pulumi.get(self, "operation_policy")
 
@@ -650,14 +648,13 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-               - ack.standard: Standard serverless clusters.
-               - ack.pro.small: Professional serverless clusters.
+               - `ack.standard`: Standard serverless clusters.
+               - `ack.pro.small`: Professional serverless clusters.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
         :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
                > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
@@ -673,7 +670,7 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         :param pulumi.Input['ServerlessKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
                
-               *Removed params*
+               The following arguments have been removed since v1.229.1: `vswitch_id`, `create_v2_cluster`, and `force_update`. Use `vswitch_ids` instead of `vswitch_id`.
         :param pulumi.Input[_builtins.bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
@@ -838,8 +835,8 @@ class _ServerlessKubernetesState:
     def cluster_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-        - ack.standard: Standard serverless clusters.
-        - ack.pro.small: Professional serverless clusters.
+        - `ack.standard`: Standard serverless clusters.
+        - `ack.pro.small`: Professional serverless clusters.
         """
         return pulumi.get(self, "cluster_spec")
 
@@ -852,6 +849,7 @@ class _ServerlessKubernetesState:
     def custom_san(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         """
         return pulumi.get(self, "custom_san")
@@ -877,8 +875,6 @@ class _ServerlessKubernetesState:
     def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether enable the deletion protection or not.
-        - true: Enable deletion protection.
-        - false: Disable deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1029,7 +1025,7 @@ class _ServerlessKubernetesState:
         """
         The cluster automatic operation policy. See `operation_policy` below.
 
-        *Removed params*
+        The following arguments have been removed since v1.229.1: `vswitch_id`, `create_v2_cluster`, and `force_update`. Use `vswitch_ids` instead of `vswitch_id`.
         """
         return pulumi.get(self, "operation_policy")
 
@@ -1328,14 +1324,13 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-               - ack.standard: Standard serverless clusters.
-               - ack.pro.small: Professional serverless clusters.
+               - `ack.standard`: Standard serverless clusters.
+               - `ack.pro.small`: Professional serverless clusters.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict', 'outputs.ServerlessKubernetesDeleteOption']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
         :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
                > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
@@ -1351,7 +1346,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         :param pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict', 'outputs.ServerlessKubernetesOperationPolicy']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
                
-               *Removed params*
+               The following arguments have been removed since v1.229.1: `vswitch_id`, `create_v2_cluster`, and `force_update`. Use `vswitch_ids` instead of `vswitch_id`.
         :param pulumi.Input[_builtins.bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
@@ -1592,14 +1587,13 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-               - ack.standard: Standard serverless clusters.
-               - ack.pro.small: Professional serverless clusters.
+               - `ack.standard`: Standard serverless clusters.
+               - `ack.pro.small`: Professional serverless clusters.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+               
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict', 'outputs.ServerlessKubernetesDeleteOption']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
         :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
                > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
@@ -1615,7 +1609,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         :param pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict', 'outputs.ServerlessKubernetesOperationPolicy']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
                
-               *Removed params*
+               The following arguments have been removed since v1.229.1: `vswitch_id`, `create_v2_cluster`, and `force_update`. Use `vswitch_ids` instead of `vswitch_id`.
         :param pulumi.Input[_builtins.bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
@@ -1785,8 +1779,8 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def cluster_spec(self) -> pulumi.Output[_builtins.str]:
         """
         The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-        - ack.standard: Standard serverless clusters.
-        - ack.pro.small: Professional serverless clusters.
+        - `ack.standard`: Standard serverless clusters.
+        - `ack.pro.small`: Professional serverless clusters.
         """
         return pulumi.get(self, "cluster_spec")
 
@@ -1795,6 +1789,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def custom_san(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
         """
         return pulumi.get(self, "custom_san")
@@ -1812,8 +1807,6 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Whether enable the deletion protection or not.
-        - true: Enable deletion protection.
-        - false: Disable deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1916,7 +1909,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         """
         The cluster automatic operation policy. See `operation_policy` below.
 
-        *Removed params*
+        The following arguments have been removed since v1.229.1: `vswitch_id`, `create_v2_cluster`, and `force_update`. Use `vswitch_ids` instead of `vswitch_id`.
         """
         return pulumi.get(self, "operation_policy")
 

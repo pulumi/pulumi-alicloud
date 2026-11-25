@@ -22,12 +22,32 @@ public final class GetSecurityPoliciesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Security Policy names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Nlb Security Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetSecurityPoliciesPolicy> policies;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
     private @Nullable List<String> securityPolicyNames;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetSecurityPoliciesResult() {}
@@ -44,24 +64,44 @@ public final class GetSecurityPoliciesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Security Policy names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Nlb Security Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetSecurityPoliciesPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
     public List<String> securityPolicyNames() {
         return this.securityPolicyNames == null ? List.of() : this.securityPolicyNames;
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

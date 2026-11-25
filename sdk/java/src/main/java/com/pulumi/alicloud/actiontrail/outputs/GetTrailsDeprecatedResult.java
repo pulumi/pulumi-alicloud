@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetTrailsDeprecatedResult {
     /**
-     * @return A list of actiontrails. Each element contains the following attributes:
+     * @return (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
      * 
      * @deprecated Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
      * 
@@ -29,6 +29,10 @@ public final class GetTrailsDeprecatedResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of ActionTrail Trail ids. It is the same as trail name.
+     * 
+     */
     private List<String> ids;
     private @Nullable Boolean includeOrganizationTrail;
     private @Nullable Boolean includeShadowTrails;
@@ -39,12 +43,20 @@ public final class GetTrailsDeprecatedResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the ActionTrail Trail.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of ActionTrail Trails. Each element contains the following attributes:
+     * 
+     */
     private List<GetTrailsDeprecatedTrail> trails;
 
     private GetTrailsDeprecatedResult() {}
     /**
-     * @return A list of actiontrails. Each element contains the following attributes:
+     * @return (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
      * 
      * @deprecated Field &#39;actiontrails&#39; has been deprecated from version 1.95.0. Use &#39;trails&#39; instead.
      * 
@@ -60,6 +72,10 @@ public final class GetTrailsDeprecatedResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of ActionTrail Trail ids. It is the same as trail name.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
@@ -82,9 +98,17 @@ public final class GetTrailsDeprecatedResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the ActionTrail Trail.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of ActionTrail Trails. Each element contains the following attributes:
+     * 
+     */
     public List<GetTrailsDeprecatedTrail> trails() {
         return this.trails;
     }

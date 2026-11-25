@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUsersResult {
+    /**
+     * @return The ID of the Directory.
+     * 
+     */
     private String directoryId;
     private @Nullable Boolean enableDetails;
     /**
@@ -24,13 +28,33 @@ public final class GetUsersResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of User names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return ProvisionType.
+     * 
+     */
     private @Nullable String provisionType;
+    /**
+     * @return User status. Valid values: `Enabled` and `Disabled`.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of Cloud Sso Users. Each element contains the following attributes:
+     * 
+     */
     private List<GetUsersUser> users;
 
     private GetUsersResult() {}
+    /**
+     * @return The ID of the Directory.
+     * 
+     */
     public String directoryId() {
         return this.directoryId;
     }
@@ -50,18 +74,34 @@ public final class GetUsersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of User names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return ProvisionType.
+     * 
+     */
     public Optional<String> provisionType() {
         return Optional.ofNullable(this.provisionType);
     }
+    /**
+     * @return User status. Valid values: `Enabled` and `Disabled`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of Cloud Sso Users. Each element contains the following attributes:
+     * 
+     */
     public List<GetUsersUser> users() {
         return this.users;
     }

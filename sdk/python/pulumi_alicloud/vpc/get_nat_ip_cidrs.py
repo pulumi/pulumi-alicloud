@@ -62,6 +62,9 @@ class GetNatIpCidrsResult:
     @_builtins.property
     @pulumi.getter
     def cidrs(self) -> Sequence['outputs.GetNatIpCidrsCidrResult']:
+        """
+        A list of Vpc Nat Ip Cidrs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "cidrs")
 
     @_builtins.property
@@ -85,16 +88,25 @@ class GetNatIpCidrsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Nat Ip Cidr names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter(name="natGatewayId")
     def nat_gateway_id(self) -> _builtins.str:
+        """
+        The ID of the VPC NAT gateway.
+        """
         return pulumi.get(self, "nat_gateway_id")
 
     @_builtins.property
     @pulumi.getter(name="natIpCidrNames")
     def nat_ip_cidr_names(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        """
         return pulumi.get(self, "nat_ip_cidr_names")
 
     @_builtins.property
@@ -110,6 +122,9 @@ class GetNatIpCidrsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+        """
         return pulumi.get(self, "status")
 
 
@@ -142,7 +157,7 @@ def get_nat_ip_cidrs(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0+.
 
     ## Example Usage
 
@@ -215,7 +230,7 @@ def get_nat_ip_cidrs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
     """
     This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0+.
 
     ## Example Usage
 

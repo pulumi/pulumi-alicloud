@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Fnf Flows of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.105.0+.
+ * > **NOTE:** Available since v1.105.0.
  *
  * ## Example Usage
  *
@@ -63,6 +63,9 @@ export interface GetFlowsArgs {
  * A collection of values returned by getFlows.
  */
 export interface GetFlowsResult {
+    /**
+     * A list of Fnf Flows. Each element contains the following attributes:
+     */
     readonly flows: outputs.fnf.GetFlowsFlow[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -71,13 +74,16 @@ export interface GetFlowsResult {
     readonly ids: string[];
     readonly limit?: number;
     readonly nameRegex?: string;
+    /**
+     * A list of Flow names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Fnf Flows of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.105.0+.
+ * > **NOTE:** Available since v1.105.0.
  *
  * ## Example Usage
  *

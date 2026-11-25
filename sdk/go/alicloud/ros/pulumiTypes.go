@@ -1469,7 +1469,8 @@ func (o TemplateScratchSourceResourceArrayOutput) Index(i pulumi.IntInput) Templ
 
 type TemplateScratchSourceResourceGroup struct {
 	// The ID of the Source Resource Group.
-	ResourceGroupId     string   `pulumi:"resourceGroupId"`
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
 	ResourceTypeFilters []string `pulumi:"resourceTypeFilters"`
 }
 
@@ -1486,7 +1487,8 @@ type TemplateScratchSourceResourceGroupInput interface {
 
 type TemplateScratchSourceResourceGroupArgs struct {
 	// The ID of the Source Resource Group.
-	ResourceGroupId     pulumi.StringInput      `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
 	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
 }
 
@@ -1572,6 +1574,7 @@ func (o TemplateScratchSourceResourceGroupOutput) ResourceGroupId() pulumi.Strin
 	return o.ApplyT(func(v TemplateScratchSourceResourceGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
 func (o TemplateScratchSourceResourceGroupOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TemplateScratchSourceResourceGroup) []string { return v.ResourceTypeFilters }).(pulumi.StringArrayOutput)
 }
@@ -1610,6 +1613,7 @@ func (o TemplateScratchSourceResourceGroupPtrOutput) ResourceGroupId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
 func (o TemplateScratchSourceResourceGroupPtrOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TemplateScratchSourceResourceGroup) []string {
 		if v == nil {
@@ -1621,8 +1625,9 @@ func (o TemplateScratchSourceResourceGroupPtrOutput) ResourceTypeFilters() pulum
 
 type TemplateScratchSourceTag struct {
 	// Source label. **NOTE:** A maximum of 10 source labels can be configured.
-	ResourceTags        map[string]string `pulumi:"resourceTags"`
-	ResourceTypeFilters []string          `pulumi:"resourceTypeFilters"`
+	ResourceTags map[string]string `pulumi:"resourceTags"`
+	// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+	ResourceTypeFilters []string `pulumi:"resourceTypeFilters"`
 }
 
 // TemplateScratchSourceTagInput is an input type that accepts TemplateScratchSourceTagArgs and TemplateScratchSourceTagOutput values.
@@ -1638,7 +1643,8 @@ type TemplateScratchSourceTagInput interface {
 
 type TemplateScratchSourceTagArgs struct {
 	// Source label. **NOTE:** A maximum of 10 source labels can be configured.
-	ResourceTags        pulumi.StringMapInput   `pulumi:"resourceTags"`
+	ResourceTags pulumi.StringMapInput `pulumi:"resourceTags"`
+	// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
 	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
 }
 
@@ -1724,6 +1730,7 @@ func (o TemplateScratchSourceTagOutput) ResourceTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TemplateScratchSourceTag) map[string]string { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
 
+// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
 func (o TemplateScratchSourceTagOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TemplateScratchSourceTag) []string { return v.ResourceTypeFilters }).(pulumi.StringArrayOutput)
 }
@@ -1762,6 +1769,7 @@ func (o TemplateScratchSourceTagPtrOutput) ResourceTags() pulumi.StringMapOutput
 	}).(pulumi.StringMapOutput)
 }
 
+// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
 func (o TemplateScratchSourceTagPtrOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TemplateScratchSourceTag) []string {
 		if v == nil {
@@ -1786,13 +1794,13 @@ type GetChangeSetsSet struct {
 	ExecutionStatus string `pulumi:"executionStatus"`
 	// The ID of the Change Set.
 	Id string `pulumi:"id"`
-	// Parameters.
+	// Parameters. See `parameters` below.
 	Parameters []GetChangeSetsSetParameter `pulumi:"parameters"`
 	// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
 	StackId string `pulumi:"stackId"`
 	// The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
 	StackName string `pulumi:"stackName"`
-	// The status of the change set.
+	// The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
 	Status string `pulumi:"status"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody string `pulumi:"templateBody"`
@@ -1826,13 +1834,13 @@ type GetChangeSetsSetArgs struct {
 	ExecutionStatus pulumi.StringInput `pulumi:"executionStatus"`
 	// The ID of the Change Set.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Parameters.
+	// Parameters. See `parameters` below.
 	Parameters GetChangeSetsSetParameterArrayInput `pulumi:"parameters"`
 	// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
 	StackId pulumi.StringInput `pulumi:"stackId"`
 	// The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
 	StackName pulumi.StringInput `pulumi:"stackName"`
-	// The status of the change set.
+	// The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody pulumi.StringInput `pulumi:"templateBody"`
@@ -1926,7 +1934,7 @@ func (o GetChangeSetsSetOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetChangeSetsSet) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Parameters.
+// Parameters. See `parameters` below.
 func (o GetChangeSetsSetOutput) Parameters() GetChangeSetsSetParameterArrayOutput {
 	return o.ApplyT(func(v GetChangeSetsSet) []GetChangeSetsSetParameter { return v.Parameters }).(GetChangeSetsSetParameterArrayOutput)
 }
@@ -1941,7 +1949,7 @@ func (o GetChangeSetsSetOutput) StackName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetChangeSetsSet) string { return v.StackName }).(pulumi.StringOutput)
 }
 
-// The status of the change set.
+// The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
 func (o GetChangeSetsSetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetChangeSetsSet) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2206,13 +2214,13 @@ type GetStackGroupsGroup struct {
 	ExecutionRoleName string `pulumi:"executionRoleName"`
 	// The ID of the Stack Group.
 	Id string `pulumi:"id"`
-	// The parameters.
+	// The parameters. See `parameters` below.
 	Parameters []GetStackGroupsGroupParameter `pulumi:"parameters"`
 	// The id of Stack Group.
 	StackGroupId string `pulumi:"stackGroupId"`
 	// The name of the stack group..
 	StackGroupName string `pulumi:"stackGroupName"`
-	// The status of Stack Group.
+	// The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
 	Status string `pulumi:"status"`
 	// The structure that contains the template body.
 	TemplateBody string `pulumi:"templateBody"`
@@ -2238,13 +2246,13 @@ type GetStackGroupsGroupArgs struct {
 	ExecutionRoleName pulumi.StringInput `pulumi:"executionRoleName"`
 	// The ID of the Stack Group.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The parameters.
+	// The parameters. See `parameters` below.
 	Parameters GetStackGroupsGroupParameterArrayInput `pulumi:"parameters"`
 	// The id of Stack Group.
 	StackGroupId pulumi.StringInput `pulumi:"stackGroupId"`
 	// The name of the stack group..
 	StackGroupName pulumi.StringInput `pulumi:"stackGroupName"`
-	// The status of Stack Group.
+	// The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The structure that contains the template body.
 	TemplateBody pulumi.StringInput `pulumi:"templateBody"`
@@ -2321,7 +2329,7 @@ func (o GetStackGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The parameters.
+// The parameters. See `parameters` below.
 func (o GetStackGroupsGroupOutput) Parameters() GetStackGroupsGroupParameterArrayOutput {
 	return o.ApplyT(func(v GetStackGroupsGroup) []GetStackGroupsGroupParameter { return v.Parameters }).(GetStackGroupsGroupParameterArrayOutput)
 }
@@ -2336,7 +2344,7 @@ func (o GetStackGroupsGroupOutput) StackGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackGroupsGroup) string { return v.StackGroupName }).(pulumi.StringOutput)
 }
 
-// The status of Stack Group.
+// The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
 func (o GetStackGroupsGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2777,7 +2785,7 @@ type GetStacksStack struct {
 	Id string `pulumi:"id"`
 	// The parameters.
 	Parameters []GetStacksStackParameter `pulumi:"parameters"`
-	// Parent Stack Id.
+	// ParentStackId.
 	ParentStackId string `pulumi:"parentStackId"`
 	// The RamRoleName.
 	RamRoleName string `pulumi:"ramRoleName"`
@@ -2787,7 +2795,7 @@ type GetStacksStack struct {
 	StackDriftStatus string `pulumi:"stackDriftStatus"`
 	// Stack Id.
 	StackId string `pulumi:"stackId"`
-	// Stack Name.
+	// StackName.
 	StackName string `pulumi:"stackName"`
 	// The structure that contains the stack policy body.
 	StackPolicyBody string `pulumi:"stackPolicyBody"`
@@ -2827,7 +2835,7 @@ type GetStacksStackArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The parameters.
 	Parameters GetStacksStackParameterArrayInput `pulumi:"parameters"`
-	// Parent Stack Id.
+	// ParentStackId.
 	ParentStackId pulumi.StringInput `pulumi:"parentStackId"`
 	// The RamRoleName.
 	RamRoleName pulumi.StringInput `pulumi:"ramRoleName"`
@@ -2837,7 +2845,7 @@ type GetStacksStackArgs struct {
 	StackDriftStatus pulumi.StringInput `pulumi:"stackDriftStatus"`
 	// Stack Id.
 	StackId pulumi.StringInput `pulumi:"stackId"`
-	// Stack Name.
+	// StackName.
 	StackName pulumi.StringInput `pulumi:"stackName"`
 	// The structure that contains the stack policy body.
 	StackPolicyBody pulumi.StringInput `pulumi:"stackPolicyBody"`
@@ -2934,7 +2942,7 @@ func (o GetStacksStackOutput) Parameters() GetStacksStackParameterArrayOutput {
 	return o.ApplyT(func(v GetStacksStack) []GetStacksStackParameter { return v.Parameters }).(GetStacksStackParameterArrayOutput)
 }
 
-// Parent Stack Id.
+// ParentStackId.
 func (o GetStacksStackOutput) ParentStackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStacksStack) string { return v.ParentStackId }).(pulumi.StringOutput)
 }
@@ -2959,7 +2967,7 @@ func (o GetStacksStackOutput) StackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStacksStack) string { return v.StackId }).(pulumi.StringOutput)
 }
 
-// Stack Name.
+// StackName.
 func (o GetStacksStackOutput) StackName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStacksStack) string { return v.StackName }).(pulumi.StringOutput)
 }
@@ -3129,21 +3137,21 @@ type GetTemplateScratchesScratch struct {
 	Id string `pulumi:"id"`
 	// The Logical ID generation strategy of the Template Scratch.
 	LogicalIdStrategy string `pulumi:"logicalIdStrategy"`
-	// Priority parameter.
+	// Priority parameter. See `preferenceParameters` below.
 	PreferenceParameters []GetTemplateScratchesScratchPreferenceParameter `pulumi:"preferenceParameters"`
-	// Source resource grouping.
+	// Source resource grouping. See `sourceResourceGroup` below.
 	SourceResourceGroups []GetTemplateScratchesScratchSourceResourceGroup `pulumi:"sourceResourceGroups"`
-	// Source resource.
+	// Source resource. See `sourceResources` below.
 	SourceResources []GetTemplateScratchesScratchSourceResource `pulumi:"sourceResources"`
-	// The Source label list.
+	// The Source label list. See `sourceTag` below.
 	SourceTags []GetTemplateScratchesScratchSourceTag `pulumi:"sourceTags"`
-	// A list of resource stacks associated with the resource scene.
+	// A list of resource stacks associated with the resource scene. See `stacks` below.
 	Stacks []GetTemplateScratchesScratchStack `pulumi:"stacks"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
 	Status string `pulumi:"status"`
 	// The ID of the Template Scratch.
 	TemplateScratchId string `pulumi:"templateScratchId"`
-	// The type of the Template Scratch.
+	// The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
 	TemplateScratchType string `pulumi:"templateScratchType"`
 }
 
@@ -3167,21 +3175,21 @@ type GetTemplateScratchesScratchArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Logical ID generation strategy of the Template Scratch.
 	LogicalIdStrategy pulumi.StringInput `pulumi:"logicalIdStrategy"`
-	// Priority parameter.
+	// Priority parameter. See `preferenceParameters` below.
 	PreferenceParameters GetTemplateScratchesScratchPreferenceParameterArrayInput `pulumi:"preferenceParameters"`
-	// Source resource grouping.
+	// Source resource grouping. See `sourceResourceGroup` below.
 	SourceResourceGroups GetTemplateScratchesScratchSourceResourceGroupArrayInput `pulumi:"sourceResourceGroups"`
-	// Source resource.
+	// Source resource. See `sourceResources` below.
 	SourceResources GetTemplateScratchesScratchSourceResourceArrayInput `pulumi:"sourceResources"`
-	// The Source label list.
+	// The Source label list. See `sourceTag` below.
 	SourceTags GetTemplateScratchesScratchSourceTagArrayInput `pulumi:"sourceTags"`
-	// A list of resource stacks associated with the resource scene.
+	// A list of resource stacks associated with the resource scene. See `stacks` below.
 	Stacks GetTemplateScratchesScratchStackArrayInput `pulumi:"stacks"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The ID of the Template Scratch.
 	TemplateScratchId pulumi.StringInput `pulumi:"templateScratchId"`
-	// The type of the Template Scratch.
+	// The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
 	TemplateScratchType pulumi.StringInput `pulumi:"templateScratchType"`
 }
 
@@ -3256,38 +3264,38 @@ func (o GetTemplateScratchesScratchOutput) LogicalIdStrategy() pulumi.StringOutp
 	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.LogicalIdStrategy }).(pulumi.StringOutput)
 }
 
-// Priority parameter.
+// Priority parameter. See `preferenceParameters` below.
 func (o GetTemplateScratchesScratchOutput) PreferenceParameters() GetTemplateScratchesScratchPreferenceParameterArrayOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratch) []GetTemplateScratchesScratchPreferenceParameter {
 		return v.PreferenceParameters
 	}).(GetTemplateScratchesScratchPreferenceParameterArrayOutput)
 }
 
-// Source resource grouping.
+// Source resource grouping. See `sourceResourceGroup` below.
 func (o GetTemplateScratchesScratchOutput) SourceResourceGroups() GetTemplateScratchesScratchSourceResourceGroupArrayOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratch) []GetTemplateScratchesScratchSourceResourceGroup {
 		return v.SourceResourceGroups
 	}).(GetTemplateScratchesScratchSourceResourceGroupArrayOutput)
 }
 
-// Source resource.
+// Source resource. See `sourceResources` below.
 func (o GetTemplateScratchesScratchOutput) SourceResources() GetTemplateScratchesScratchSourceResourceArrayOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratch) []GetTemplateScratchesScratchSourceResource {
 		return v.SourceResources
 	}).(GetTemplateScratchesScratchSourceResourceArrayOutput)
 }
 
-// The Source label list.
+// The Source label list. See `sourceTag` below.
 func (o GetTemplateScratchesScratchOutput) SourceTags() GetTemplateScratchesScratchSourceTagArrayOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratch) []GetTemplateScratchesScratchSourceTag { return v.SourceTags }).(GetTemplateScratchesScratchSourceTagArrayOutput)
 }
 
-// A list of resource stacks associated with the resource scene.
+// A list of resource stacks associated with the resource scene. See `stacks` below.
 func (o GetTemplateScratchesScratchOutput) Stacks() GetTemplateScratchesScratchStackArrayOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratch) []GetTemplateScratchesScratchStack { return v.Stacks }).(GetTemplateScratchesScratchStackArrayOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
 func (o GetTemplateScratchesScratchOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -3297,7 +3305,7 @@ func (o GetTemplateScratchesScratchOutput) TemplateScratchId() pulumi.StringOutp
 	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.TemplateScratchId }).(pulumi.StringOutput)
 }
 
-// The type of the Template Scratch.
+// The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
 func (o GetTemplateScratchesScratchOutput) TemplateScratchType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratch) string { return v.TemplateScratchType }).(pulumi.StringOutput)
 }
@@ -3850,13 +3858,13 @@ type GetTemplatesTemplate struct {
 	Description string `pulumi:"description"`
 	// The ID of the Template.
 	Id string `pulumi:"id"`
-	// Share Type.
+	// Share Type. Valid Values: `Private`, `Shared`
 	ShareType string `pulumi:"shareType"`
 	// The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
 	StackGroupName string `pulumi:"stackGroupName"`
 	// The ID of the stack.
 	StackId string `pulumi:"stackId"`
-	// Tags.
+	// Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
 	Tags map[string]string `pulumi:"tags"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody string `pulumi:"templateBody"`
@@ -3886,13 +3894,13 @@ type GetTemplatesTemplateArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The ID of the Template.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Share Type.
+	// Share Type. Valid Values: `Private`, `Shared`
 	ShareType pulumi.StringInput `pulumi:"shareType"`
 	// The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
 	StackGroupName pulumi.StringInput `pulumi:"stackGroupName"`
 	// The ID of the stack.
 	StackId pulumi.StringInput `pulumi:"stackId"`
-	// Tags.
+	// Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
 	TemplateBody pulumi.StringInput `pulumi:"templateBody"`
@@ -3970,7 +3978,7 @@ func (o GetTemplatesTemplateOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Share Type.
+// Share Type. Valid Values: `Private`, `Shared`
 func (o GetTemplatesTemplateOutput) ShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.ShareType }).(pulumi.StringOutput)
 }
@@ -3985,7 +3993,7 @@ func (o GetTemplatesTemplateOutput) StackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplatesTemplate) string { return v.StackId }).(pulumi.StringOutput)
 }
 
-// Tags.
+// Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
 func (o GetTemplatesTemplateOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetTemplatesTemplate) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

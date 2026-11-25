@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
  *
- * > **NOTE:** Available in 1.194.0+
+ * > **NOTE:** Available since v1.194.0+
  *
  * ## Example Usage
  *
@@ -65,6 +65,9 @@ export interface GetMetricRuleBlackListsArgs {
      * The data namespace of the cloud service.
      */
     namespace?: string;
+    /**
+     * The order of the Metric Rule Black List.
+     */
     order?: number;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -115,7 +118,7 @@ export interface GetMetricRuleBlackListsResult {
 /**
  * This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
  *
- * > **NOTE:** Available in 1.194.0+
+ * > **NOTE:** Available since v1.194.0+
  *
  * ## Example Usage
  *
@@ -171,6 +174,9 @@ export interface GetMetricRuleBlackListsOutputArgs {
      * The data namespace of the cloud service.
      */
     namespace?: pulumi.Input<string | undefined>;
+    /**
+     * The order of the Metric Rule Black List.
+     */
     order?: pulumi.Input<number | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

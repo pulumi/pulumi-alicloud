@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-testAccServiceCatalogProvisionedProduct");
+ *         final var name = config.get("name").orElse("tf-accServiceCatalogProvisionedProduct");
  *         var default_ = new ProvisionedProduct("default", ProvisionedProductArgs.builder()
  *             .provisionedProductName(name)
  *             .stackRegionId("cn-hangzhou")
@@ -184,14 +184,14 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
         return this.ownerPrincipalType;
     }
     /**
-     * Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+     * Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
      * 
      */
     @Export(name="parameters", refs={List.class,ProvisionedProductParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProvisionedProductParameter>> parameters;
 
     /**
-     * @return Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+     * @return Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
      * 
      */
     public Output<Optional<List<ProvisionedProductParameter>>> parameters() {

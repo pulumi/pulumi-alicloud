@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.56.0+
+        /// &gt; **NOTE:** Available since v1.56.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.56.0+
+        /// &gt; **NOTE:** Available since v1.56.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.56.0+
+        /// &gt; **NOTE:** Available since v1.56.0.
         /// 
         /// ## Example Usage
         /// 
@@ -190,9 +190,12 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class GetConsumerGroupsResult
     {
         public readonly string? ConsumerIdRegex;
+        /// <summary>
+        /// A list of consumer group ids.
+        /// </summary>
         public readonly ImmutableArray<string> ConsumerIds;
         /// <summary>
-        /// A list of consumer group. Each element contains the following attributes:
+        /// A list of consumer group. Each element contains the following attributes. See `Groups` for the optional argument block.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConsumerGroupsGroupResult> Groups;
         /// <summary>

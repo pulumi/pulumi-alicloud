@@ -23,11 +23,23 @@ public final class GetEventRulesResult {
     private List<String> ids;
     private @Nullable String namePrefix;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Event Rule names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return A list of Cms Event Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetEventRulesRule> rules;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetEventRulesResult() {}
@@ -47,6 +59,10 @@ public final class GetEventRulesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Event Rule names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -59,9 +75,17 @@ public final class GetEventRulesResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return A list of Cms Event Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetEventRulesRule> rules() {
         return this.rules;
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

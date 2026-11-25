@@ -228,7 +228,7 @@ import (
 //				tmp13 = pulumi.Any(vswitchId)
 //			}
 //			_, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
-//				Name:        pulumi.String("terraform-create-cluster-test"),
+//				Name:        pulumi.String("terraform-create-cluster"),
 //				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
 //				ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
 //				HostGroups: emr.ClusterHostGroupArray{
@@ -286,6 +286,7 @@ import (
 // ```
 //
 // ### 2. Scale Up
+//
 // The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
 //
 // In the case of scaling up cluster, we should add the nodeCount of some host group.
@@ -501,7 +502,7 @@ import (
 //				tmp13 = pulumi.Any(vswitchId)
 //			}
 //			_, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
-//				Name:        pulumi.String("terraform-resize-cluster-test"),
+//				Name:        pulumi.String("terraform-resize-cluster"),
 //				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
 //				ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
 //				HostGroups: emr.ClusterHostGroupArray{
@@ -772,7 +773,7 @@ import (
 //				tmp13 = pulumi.Any(vswitchId)
 //			}
 //			_, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
-//				Name:        pulumi.String("terraform-resize-cluster-test"),
+//				Name:        pulumi.String("terraform-resize-cluster"),
 //				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
 //				ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
 //				HostGroups: emr.ClusterHostGroupArray{
@@ -1011,7 +1012,7 @@ import (
 //				tmp9 = pulumi.Any(vswitchId)
 //			}
 //			_, err = emr.NewCluster(ctx, "gateway", &emr.ClusterArgs{
-//				Name:        pulumi.String("terraform-gateway-cluster-test"),
+//				Name:        pulumi.String("terraform-gateway-cluster"),
 //				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
 //				ClusterType: pulumi.String("GATEWAY"),
 //				HostGroups: emr.ClusterHostGroupArray{
@@ -1059,13 +1060,13 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// Boot action parameters.
+	// Boot action parameters. See `bootstrapAction` below.
 	BootstrapActions ClusterBootstrapActionArrayOutput `pulumi:"bootstrapActions"`
 	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType pulumi.StringPtrOutput `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
-	// The custom configurations of emr-cluster service.
+	// The custom configurations of emr-cluster service. See `configs` below.
 	Configs ClusterConfigArrayOutput `pulumi:"configs"`
 	// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 	DepositType pulumi.StringPtrOutput `pulumi:"depositType"`
@@ -1075,7 +1076,7 @@ type Cluster struct {
 	EmrVer pulumi.StringOutput `pulumi:"emrVer"`
 	// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
 	HighAvailabilityEnable pulumi.BoolPtrOutput `pulumi:"highAvailabilityEnable"`
-	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
 	HostGroups ClusterHostGroupArrayOutput `pulumi:"hostGroups"`
 	// Whether the MASTER node has a public IP address enabled. Default value is false.
 	IsOpenPublicIp pulumi.BoolPtrOutput `pulumi:"isOpenPublicIp"`
@@ -1083,11 +1084,11 @@ type Cluster struct {
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
 	// Master ssh password.
 	MasterPwd pulumi.StringPtrOutput `pulumi:"masterPwd"`
-	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
 	MetaStoreConf ClusterMetaStoreConfPtrOutput `pulumi:"metaStoreConf"`
 	// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
 	MetaStoreType pulumi.StringOutput `pulumi:"metaStoreType"`
-	// The configurations of emr-cluster service modification after cluster created.
+	// The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
 	ModifyClusterServiceConfig ClusterModifyClusterServiceConfigPtrOutput `pulumi:"modifyClusterServiceConfig"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -1154,13 +1155,13 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// Boot action parameters.
+	// Boot action parameters. See `bootstrapAction` below.
 	BootstrapActions []ClusterBootstrapAction `pulumi:"bootstrapActions"`
 	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType *string `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType *string `pulumi:"clusterType"`
-	// The custom configurations of emr-cluster service.
+	// The custom configurations of emr-cluster service. See `configs` below.
 	Configs []ClusterConfig `pulumi:"configs"`
 	// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 	DepositType *string `pulumi:"depositType"`
@@ -1170,7 +1171,7 @@ type clusterState struct {
 	EmrVer *string `pulumi:"emrVer"`
 	// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
 	HighAvailabilityEnable *bool `pulumi:"highAvailabilityEnable"`
-	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
 	HostGroups []ClusterHostGroup `pulumi:"hostGroups"`
 	// Whether the MASTER node has a public IP address enabled. Default value is false.
 	IsOpenPublicIp *bool `pulumi:"isOpenPublicIp"`
@@ -1178,11 +1179,11 @@ type clusterState struct {
 	KeyPairName *string `pulumi:"keyPairName"`
 	// Master ssh password.
 	MasterPwd *string `pulumi:"masterPwd"`
-	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
 	MetaStoreConf *ClusterMetaStoreConf `pulumi:"metaStoreConf"`
 	// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
 	MetaStoreType *string `pulumi:"metaStoreType"`
-	// The configurations of emr-cluster service modification after cluster created.
+	// The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
 	ModifyClusterServiceConfig *ClusterModifyClusterServiceConfig `pulumi:"modifyClusterServiceConfig"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name *string `pulumi:"name"`
@@ -1211,13 +1212,13 @@ type clusterState struct {
 }
 
 type ClusterState struct {
-	// Boot action parameters.
+	// Boot action parameters. See `bootstrapAction` below.
 	BootstrapActions ClusterBootstrapActionArrayInput
 	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType pulumi.StringPtrInput
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType pulumi.StringPtrInput
-	// The custom configurations of emr-cluster service.
+	// The custom configurations of emr-cluster service. See `configs` below.
 	Configs ClusterConfigArrayInput
 	// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 	DepositType pulumi.StringPtrInput
@@ -1227,7 +1228,7 @@ type ClusterState struct {
 	EmrVer pulumi.StringPtrInput
 	// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
 	HighAvailabilityEnable pulumi.BoolPtrInput
-	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
 	HostGroups ClusterHostGroupArrayInput
 	// Whether the MASTER node has a public IP address enabled. Default value is false.
 	IsOpenPublicIp pulumi.BoolPtrInput
@@ -1235,11 +1236,11 @@ type ClusterState struct {
 	KeyPairName pulumi.StringPtrInput
 	// Master ssh password.
 	MasterPwd pulumi.StringPtrInput
-	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
 	MetaStoreConf ClusterMetaStoreConfPtrInput
 	// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
 	MetaStoreType pulumi.StringPtrInput
-	// The configurations of emr-cluster service modification after cluster created.
+	// The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
 	ModifyClusterServiceConfig ClusterModifyClusterServiceConfigPtrInput
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name pulumi.StringPtrInput
@@ -1278,13 +1279,13 @@ func ClusterExists(ctx *pulumi.Context,
 }
 
 type clusterArgs struct {
-	// Boot action parameters.
+	// Boot action parameters. See `bootstrapAction` below.
 	BootstrapActions []ClusterBootstrapAction `pulumi:"bootstrapActions"`
 	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType *string `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType string `pulumi:"clusterType"`
-	// The custom configurations of emr-cluster service.
+	// The custom configurations of emr-cluster service. See `configs` below.
 	Configs []ClusterConfig `pulumi:"configs"`
 	// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 	DepositType *string `pulumi:"depositType"`
@@ -1294,7 +1295,7 @@ type clusterArgs struct {
 	EmrVer string `pulumi:"emrVer"`
 	// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
 	HighAvailabilityEnable *bool `pulumi:"highAvailabilityEnable"`
-	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
 	HostGroups []ClusterHostGroup `pulumi:"hostGroups"`
 	// Whether the MASTER node has a public IP address enabled. Default value is false.
 	IsOpenPublicIp *bool `pulumi:"isOpenPublicIp"`
@@ -1302,11 +1303,11 @@ type clusterArgs struct {
 	KeyPairName *string `pulumi:"keyPairName"`
 	// Master ssh password.
 	MasterPwd *string `pulumi:"masterPwd"`
-	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
 	MetaStoreConf *ClusterMetaStoreConf `pulumi:"metaStoreConf"`
 	// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
 	MetaStoreType *string `pulumi:"metaStoreType"`
-	// The configurations of emr-cluster service modification after cluster created.
+	// The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
 	ModifyClusterServiceConfig *ClusterModifyClusterServiceConfig `pulumi:"modifyClusterServiceConfig"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name *string `pulumi:"name"`
@@ -1336,13 +1337,13 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// Boot action parameters.
+	// Boot action parameters. See `bootstrapAction` below.
 	BootstrapActions ClusterBootstrapActionArrayInput
 	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
 	ChargeType pulumi.StringPtrInput
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
 	ClusterType pulumi.StringInput
-	// The custom configurations of emr-cluster service.
+	// The custom configurations of emr-cluster service. See `configs` below.
 	Configs ClusterConfigArrayInput
 	// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
 	DepositType pulumi.StringPtrInput
@@ -1352,7 +1353,7 @@ type ClusterArgs struct {
 	EmrVer pulumi.StringInput
 	// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
 	HighAvailabilityEnable pulumi.BoolPtrInput
-	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+	// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
 	HostGroups ClusterHostGroupArrayInput
 	// Whether the MASTER node has a public IP address enabled. Default value is false.
 	IsOpenPublicIp pulumi.BoolPtrInput
@@ -1360,11 +1361,11 @@ type ClusterArgs struct {
 	KeyPairName pulumi.StringPtrInput
 	// Master ssh password.
 	MasterPwd pulumi.StringPtrInput
-	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+	// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
 	MetaStoreConf ClusterMetaStoreConfPtrInput
 	// The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
 	MetaStoreType pulumi.StringPtrInput
-	// The configurations of emr-cluster service modification after cluster created.
+	// The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
 	ModifyClusterServiceConfig ClusterModifyClusterServiceConfigPtrInput
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name pulumi.StringPtrInput
@@ -1479,7 +1480,7 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-// Boot action parameters.
+// Boot action parameters. See `bootstrapAction` below.
 func (o ClusterOutput) BootstrapActions() ClusterBootstrapActionArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterBootstrapActionArrayOutput { return v.BootstrapActions }).(ClusterBootstrapActionArrayOutput)
 }
@@ -1494,7 +1495,7 @@ func (o ClusterOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
 }
 
-// The custom configurations of emr-cluster service.
+// The custom configurations of emr-cluster service. See `configs` below.
 func (o ClusterOutput) Configs() ClusterConfigArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterConfigArrayOutput { return v.Configs }).(ClusterConfigArrayOutput)
 }
@@ -1519,7 +1520,7 @@ func (o ClusterOutput) HighAvailabilityEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.HighAvailabilityEnable }).(pulumi.BoolPtrOutput)
 }
 
-// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `hostGroup` below.
 func (o ClusterOutput) HostGroups() ClusterHostGroupArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterHostGroupArrayOutput { return v.HostGroups }).(ClusterHostGroupArrayOutput)
 }
@@ -1539,7 +1540,7 @@ func (o ClusterOutput) MasterPwd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.MasterPwd }).(pulumi.StringPtrOutput)
 }
 
-// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `metaStoreConf` below.
 func (o ClusterOutput) MetaStoreConf() ClusterMetaStoreConfPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMetaStoreConfPtrOutput { return v.MetaStoreConf }).(ClusterMetaStoreConfPtrOutput)
 }
@@ -1549,7 +1550,7 @@ func (o ClusterOutput) MetaStoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MetaStoreType }).(pulumi.StringOutput)
 }
 
-// The configurations of emr-cluster service modification after cluster created.
+// The configurations of emr-cluster service modification after cluster created. See `modifyClusterServiceConfig` below.
 func (o ClusterOutput) ModifyClusterServiceConfig() ClusterModifyClusterServiceConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterModifyClusterServiceConfigPtrOutput { return v.ModifyClusterServiceConfig }).(ClusterModifyClusterServiceConfigPtrOutput)
 }

@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     [OutputType]
     public sealed class GetCommonBandwidthPackagesPackagePublicIpAddressResult
     {
+        /// <summary>
+        /// The ID of the EIP instance.
+        /// </summary>
         public readonly string AllocationId;
+        /// <summary>
+        /// The IP relation status of bandwidth package.
+        /// </summary>
         public readonly string BandwidthPackageIpRelationStatus;
+        /// <summary>
+        /// The address of the EIP.
+        /// </summary>
         public readonly string IpAddress;
 
         [OutputConstructor]

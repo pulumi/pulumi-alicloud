@@ -41,9 +41,21 @@ public final class GetNetworkInterfacesResult {
     @Deprecated
     private @Nullable String name;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of ENI names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return The name of the ENI.
+     * 
+     */
     private @Nullable String networkInterfaceName;
     private @Nullable String outputFile;
+    /**
+     * @return The primary private IP address.
+     * 
+     */
     private @Nullable String primaryIpAddress;
     /**
      * @return Primary private IP of the ENI.
@@ -59,6 +71,10 @@ public final class GetNetworkInterfacesResult {
      */
     private @Nullable String resourceGroupId;
     private @Nullable String securityGroupId;
+    /**
+     * @return Whether the ENI is service managed.
+     * 
+     */
     private @Nullable Boolean serviceManaged;
     /**
      * @return Current status of the ENI.
@@ -70,6 +86,10 @@ public final class GetNetworkInterfacesResult {
      * 
      */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The type of the ENI.
+     * 
+     */
     private @Nullable String type;
     /**
      * @return ID of the VPC that the ENI belongs to.
@@ -120,15 +140,27 @@ public final class GetNetworkInterfacesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of ENI names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return The name of the ENI.
+     * 
+     */
     public Optional<String> networkInterfaceName() {
         return Optional.ofNullable(this.networkInterfaceName);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The primary private IP address.
+     * 
+     */
     public Optional<String> primaryIpAddress() {
         return Optional.ofNullable(this.primaryIpAddress);
     }
@@ -152,6 +184,10 @@ public final class GetNetworkInterfacesResult {
     public Optional<String> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
+    /**
+     * @return Whether the ENI is service managed.
+     * 
+     */
     public Optional<Boolean> serviceManaged() {
         return Optional.ofNullable(this.serviceManaged);
     }
@@ -169,6 +205,10 @@ public final class GetNetworkInterfacesResult {
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The type of the ENI.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

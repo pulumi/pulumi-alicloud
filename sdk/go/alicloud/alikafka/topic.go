@@ -99,11 +99,9 @@ import (
 //				return err
 //			}
 //			tmpJSON1, err := json.Marshal(map[string]string{
-//				"message.format.version": "2.2.0",
-//				"max.message.bytes":      "10485760",
-//				"min.insync.replicas":    "1",
-//				"replication-factor":     "2",
 //				"retention.ms":           "3600000",
+//				"max.message.bytes":      "10485760",
+//				"message.timestamp.type": "LogAppendTime",
 //			})
 //			if err != nil {
 //				return err
@@ -147,7 +145,17 @@ type Topic struct {
 	// - false: The delete cleanup policy is used.
 	// - true: The compact cleanup policy is used.
 	CompactTopic pulumi.BoolPtrOutput `pulumi:"compactTopic"`
-	// The advanced configurations.
+	// The advanced configurations of the topic, as a JSON encoded object. The service carries every value as a string; a value declared as a number or a boolean is compared through its literal text, so it matches the string the service reports for it. The keys the service accepts and their value ranges depend on the instance:
+	// - Serverless instance: `retention.hours` (the retention period in hours, from `24` to `8760`), `max.message.bytes` (the maximum message size in bytes, from `1048576` to `10485760`), `message.timestamp.type` (`CreateTime` or `LogAppendTime`) and `message.timestamp.difference.max.ms` (the maximum allowed difference between the timestamp carried by a message and the time the server receives it).
+	// - Reserved instance: only a topic that uses the Local storage engine can be configured, and the supported keys include `retention.ms` (the retention period in milliseconds, from `3600000` to `31536000000`), `max.message.bytes`, `message.timestamp.type`, `message.timestamp.difference.max.ms`, `min.insync.replicas` and `message.format.version`.
+	//
+	// > **NOTE:** The service reports the whole effective configuration of the topic, which can contain keys that were never declared in `configs` - a topic on a serverless instance reports `cloud.native.topic.type` and `replication-factor`, for example. Only the keys declared in `configs` are compared against the reported configuration, so those extra keys do not produce a diff.
+	//
+	// > **NOTE:** Removing a key from `configs` neither resets it on the topic nor produces a diff, because the update merges the submitted keys and there is no way to delete or reset a single key. Set the key to the value you want instead of removing it, or recreate the topic.
+	//
+	// > **NOTE:** A key that the service does not accept for the instance makes the update fail with `InvalidParameter.NotSupport`, so a configuration written for one instance type cannot be reused for the other as is - `retention.ms` and `retention.hours` in particular are not interchangeable.
+	//
+	// > **NOTE:** On a serverless instance, `replication-factor` is part of the configuration reported by the service, but the topic update does not accept it. Declaring it in `configs` therefore cannot make the reported configuration of a serverless topic match the configuration.
 	Configs pulumi.StringOutput `pulumi:"configs"`
 	// (Available since v1.262.1) The time when the topic was created.
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
@@ -214,7 +222,17 @@ type topicState struct {
 	// - false: The delete cleanup policy is used.
 	// - true: The compact cleanup policy is used.
 	CompactTopic *bool `pulumi:"compactTopic"`
-	// The advanced configurations.
+	// The advanced configurations of the topic, as a JSON encoded object. The service carries every value as a string; a value declared as a number or a boolean is compared through its literal text, so it matches the string the service reports for it. The keys the service accepts and their value ranges depend on the instance:
+	// - Serverless instance: `retention.hours` (the retention period in hours, from `24` to `8760`), `max.message.bytes` (the maximum message size in bytes, from `1048576` to `10485760`), `message.timestamp.type` (`CreateTime` or `LogAppendTime`) and `message.timestamp.difference.max.ms` (the maximum allowed difference between the timestamp carried by a message and the time the server receives it).
+	// - Reserved instance: only a topic that uses the Local storage engine can be configured, and the supported keys include `retention.ms` (the retention period in milliseconds, from `3600000` to `31536000000`), `max.message.bytes`, `message.timestamp.type`, `message.timestamp.difference.max.ms`, `min.insync.replicas` and `message.format.version`.
+	//
+	// > **NOTE:** The service reports the whole effective configuration of the topic, which can contain keys that were never declared in `configs` - a topic on a serverless instance reports `cloud.native.topic.type` and `replication-factor`, for example. Only the keys declared in `configs` are compared against the reported configuration, so those extra keys do not produce a diff.
+	//
+	// > **NOTE:** Removing a key from `configs` neither resets it on the topic nor produces a diff, because the update merges the submitted keys and there is no way to delete or reset a single key. Set the key to the value you want instead of removing it, or recreate the topic.
+	//
+	// > **NOTE:** A key that the service does not accept for the instance makes the update fail with `InvalidParameter.NotSupport`, so a configuration written for one instance type cannot be reused for the other as is - `retention.ms` and `retention.hours` in particular are not interchangeable.
+	//
+	// > **NOTE:** On a serverless instance, `replication-factor` is part of the configuration reported by the service, but the topic update does not accept it. Declaring it in `configs` therefore cannot make the reported configuration of a serverless topic match the configuration.
 	Configs *string `pulumi:"configs"`
 	// (Available since v1.262.1) The time when the topic was created.
 	CreateTime *int `pulumi:"createTime"`
@@ -243,7 +261,17 @@ type TopicState struct {
 	// - false: The delete cleanup policy is used.
 	// - true: The compact cleanup policy is used.
 	CompactTopic pulumi.BoolPtrInput
-	// The advanced configurations.
+	// The advanced configurations of the topic, as a JSON encoded object. The service carries every value as a string; a value declared as a number or a boolean is compared through its literal text, so it matches the string the service reports for it. The keys the service accepts and their value ranges depend on the instance:
+	// - Serverless instance: `retention.hours` (the retention period in hours, from `24` to `8760`), `max.message.bytes` (the maximum message size in bytes, from `1048576` to `10485760`), `message.timestamp.type` (`CreateTime` or `LogAppendTime`) and `message.timestamp.difference.max.ms` (the maximum allowed difference between the timestamp carried by a message and the time the server receives it).
+	// - Reserved instance: only a topic that uses the Local storage engine can be configured, and the supported keys include `retention.ms` (the retention period in milliseconds, from `3600000` to `31536000000`), `max.message.bytes`, `message.timestamp.type`, `message.timestamp.difference.max.ms`, `min.insync.replicas` and `message.format.version`.
+	//
+	// > **NOTE:** The service reports the whole effective configuration of the topic, which can contain keys that were never declared in `configs` - a topic on a serverless instance reports `cloud.native.topic.type` and `replication-factor`, for example. Only the keys declared in `configs` are compared against the reported configuration, so those extra keys do not produce a diff.
+	//
+	// > **NOTE:** Removing a key from `configs` neither resets it on the topic nor produces a diff, because the update merges the submitted keys and there is no way to delete or reset a single key. Set the key to the value you want instead of removing it, or recreate the topic.
+	//
+	// > **NOTE:** A key that the service does not accept for the instance makes the update fail with `InvalidParameter.NotSupport`, so a configuration written for one instance type cannot be reused for the other as is - `retention.ms` and `retention.hours` in particular are not interchangeable.
+	//
+	// > **NOTE:** On a serverless instance, `replication-factor` is part of the configuration reported by the service, but the topic update does not accept it. Declaring it in `configs` therefore cannot make the reported configuration of a serverless topic match the configuration.
 	Configs pulumi.StringPtrInput
 	// (Available since v1.262.1) The time when the topic was created.
 	CreateTime pulumi.IntPtrInput
@@ -282,7 +310,17 @@ type topicArgs struct {
 	// - false: The delete cleanup policy is used.
 	// - true: The compact cleanup policy is used.
 	CompactTopic *bool `pulumi:"compactTopic"`
-	// The advanced configurations.
+	// The advanced configurations of the topic, as a JSON encoded object. The service carries every value as a string; a value declared as a number or a boolean is compared through its literal text, so it matches the string the service reports for it. The keys the service accepts and their value ranges depend on the instance:
+	// - Serverless instance: `retention.hours` (the retention period in hours, from `24` to `8760`), `max.message.bytes` (the maximum message size in bytes, from `1048576` to `10485760`), `message.timestamp.type` (`CreateTime` or `LogAppendTime`) and `message.timestamp.difference.max.ms` (the maximum allowed difference between the timestamp carried by a message and the time the server receives it).
+	// - Reserved instance: only a topic that uses the Local storage engine can be configured, and the supported keys include `retention.ms` (the retention period in milliseconds, from `3600000` to `31536000000`), `max.message.bytes`, `message.timestamp.type`, `message.timestamp.difference.max.ms`, `min.insync.replicas` and `message.format.version`.
+	//
+	// > **NOTE:** The service reports the whole effective configuration of the topic, which can contain keys that were never declared in `configs` - a topic on a serverless instance reports `cloud.native.topic.type` and `replication-factor`, for example. Only the keys declared in `configs` are compared against the reported configuration, so those extra keys do not produce a diff.
+	//
+	// > **NOTE:** Removing a key from `configs` neither resets it on the topic nor produces a diff, because the update merges the submitted keys and there is no way to delete or reset a single key. Set the key to the value you want instead of removing it, or recreate the topic.
+	//
+	// > **NOTE:** A key that the service does not accept for the instance makes the update fail with `InvalidParameter.NotSupport`, so a configuration written for one instance type cannot be reused for the other as is - `retention.ms` and `retention.hours` in particular are not interchangeable.
+	//
+	// > **NOTE:** On a serverless instance, `replication-factor` is part of the configuration reported by the service, but the topic update does not accept it. Declaring it in `configs` therefore cannot make the reported configuration of a serverless topic match the configuration.
 	Configs *string `pulumi:"configs"`
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -306,7 +344,17 @@ type TopicArgs struct {
 	// - false: The delete cleanup policy is used.
 	// - true: The compact cleanup policy is used.
 	CompactTopic pulumi.BoolPtrInput
-	// The advanced configurations.
+	// The advanced configurations of the topic, as a JSON encoded object. The service carries every value as a string; a value declared as a number or a boolean is compared through its literal text, so it matches the string the service reports for it. The keys the service accepts and their value ranges depend on the instance:
+	// - Serverless instance: `retention.hours` (the retention period in hours, from `24` to `8760`), `max.message.bytes` (the maximum message size in bytes, from `1048576` to `10485760`), `message.timestamp.type` (`CreateTime` or `LogAppendTime`) and `message.timestamp.difference.max.ms` (the maximum allowed difference between the timestamp carried by a message and the time the server receives it).
+	// - Reserved instance: only a topic that uses the Local storage engine can be configured, and the supported keys include `retention.ms` (the retention period in milliseconds, from `3600000` to `31536000000`), `max.message.bytes`, `message.timestamp.type`, `message.timestamp.difference.max.ms`, `min.insync.replicas` and `message.format.version`.
+	//
+	// > **NOTE:** The service reports the whole effective configuration of the topic, which can contain keys that were never declared in `configs` - a topic on a serverless instance reports `cloud.native.topic.type` and `replication-factor`, for example. Only the keys declared in `configs` are compared against the reported configuration, so those extra keys do not produce a diff.
+	//
+	// > **NOTE:** Removing a key from `configs` neither resets it on the topic nor produces a diff, because the update merges the submitted keys and there is no way to delete or reset a single key. Set the key to the value you want instead of removing it, or recreate the topic.
+	//
+	// > **NOTE:** A key that the service does not accept for the instance makes the update fail with `InvalidParameter.NotSupport`, so a configuration written for one instance type cannot be reused for the other as is - `retention.ms` and `retention.hours` in particular are not interchangeable.
+	//
+	// > **NOTE:** On a serverless instance, `replication-factor` is part of the configuration reported by the service, but the topic update does not accept it. Declaring it in `configs` therefore cannot make the reported configuration of a serverless topic match the configuration.
 	Configs pulumi.StringPtrInput
 	// The ID of the instance.
 	InstanceId pulumi.StringInput
@@ -418,7 +466,17 @@ func (o TopicOutput) CompactTopic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.BoolPtrOutput { return v.CompactTopic }).(pulumi.BoolPtrOutput)
 }
 
-// The advanced configurations.
+// The advanced configurations of the topic, as a JSON encoded object. The service carries every value as a string; a value declared as a number or a boolean is compared through its literal text, so it matches the string the service reports for it. The keys the service accepts and their value ranges depend on the instance:
+// - Serverless instance: `retention.hours` (the retention period in hours, from `24` to `8760`), `max.message.bytes` (the maximum message size in bytes, from `1048576` to `10485760`), `message.timestamp.type` (`CreateTime` or `LogAppendTime`) and `message.timestamp.difference.max.ms` (the maximum allowed difference between the timestamp carried by a message and the time the server receives it).
+// - Reserved instance: only a topic that uses the Local storage engine can be configured, and the supported keys include `retention.ms` (the retention period in milliseconds, from `3600000` to `31536000000`), `max.message.bytes`, `message.timestamp.type`, `message.timestamp.difference.max.ms`, `min.insync.replicas` and `message.format.version`.
+//
+// > **NOTE:** The service reports the whole effective configuration of the topic, which can contain keys that were never declared in `configs` - a topic on a serverless instance reports `cloud.native.topic.type` and `replication-factor`, for example. Only the keys declared in `configs` are compared against the reported configuration, so those extra keys do not produce a diff.
+//
+// > **NOTE:** Removing a key from `configs` neither resets it on the topic nor produces a diff, because the update merges the submitted keys and there is no way to delete or reset a single key. Set the key to the value you want instead of removing it, or recreate the topic.
+//
+// > **NOTE:** A key that the service does not accept for the instance makes the update fail with `InvalidParameter.NotSupport`, so a configuration written for one instance type cannot be reused for the other as is - `retention.ms` and `retention.hours` in particular are not interchangeable.
+//
+// > **NOTE:** On a serverless instance, `replication-factor` is part of the configuration reported by the service, but the topic update does not accept it. Declaring it in `configs` therefore cannot make the reported configuration of a serverless topic match the configuration.
 func (o TopicOutput) Configs() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Configs }).(pulumi.StringOutput)
 }

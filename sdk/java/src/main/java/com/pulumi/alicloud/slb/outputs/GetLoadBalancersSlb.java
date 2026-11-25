@@ -18,7 +18,7 @@ public final class GetLoadBalancersSlb {
      */
     private String address;
     /**
-     * @return SLB creation time.
+     * @return The creation time of the SLB.
      * 
      */
     private String creationTime;
@@ -28,17 +28,17 @@ public final class GetLoadBalancersSlb {
      */
     private String id;
     /**
-     * @return SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `networkType` is `vpc`.
+     * @return Whether the SLB is internet-facing.
      * 
      */
     private Boolean internet;
     /**
-     * @return Master availability zone of the SLBs.
+     * @return Master availability zone of the SLB.
      * 
      */
     private String masterAvailabilityZone;
     /**
-     * @return SLB name.
+     * @return The name of the SLB.
      * 
      */
     private String name;
@@ -53,50 +53,17 @@ public final class GetLoadBalancersSlb {
      */
     private String regionId;
     /**
-     * @return Slave availability zone of the SLBs.
+     * @return Slave availability zone of the SLB.
      * 
      */
     private String slaveAvailabilityZone;
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     private String status;
     /**
      * @return A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var taggedInstances = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .tags(Map.ofEntries(
-     *                 Map.entry("tagKey1", "tagValue1"),
-     *                 Map.entry("tagKey2", "tagValue2")
-     *             ))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     private Map<String,String> tags;
@@ -120,7 +87,7 @@ public final class GetLoadBalancersSlb {
         return this.address;
     }
     /**
-     * @return SLB creation time.
+     * @return The creation time of the SLB.
      * 
      */
     public String creationTime() {
@@ -134,21 +101,21 @@ public final class GetLoadBalancersSlb {
         return this.id;
     }
     /**
-     * @return SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `networkType` is `vpc`.
+     * @return Whether the SLB is internet-facing.
      * 
      */
     public Boolean internet() {
         return this.internet;
     }
     /**
-     * @return Master availability zone of the SLBs.
+     * @return Master availability zone of the SLB.
      * 
      */
     public String masterAvailabilityZone() {
         return this.masterAvailabilityZone;
     }
     /**
-     * @return SLB name.
+     * @return The name of the SLB.
      * 
      */
     public String name() {
@@ -169,14 +136,14 @@ public final class GetLoadBalancersSlb {
         return this.regionId;
     }
     /**
-     * @return Slave availability zone of the SLBs.
+     * @return Slave availability zone of the SLB.
      * 
      */
     public String slaveAvailabilityZone() {
         return this.slaveAvailabilityZone;
     }
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     public String status() {
@@ -184,39 +151,6 @@ public final class GetLoadBalancersSlb {
     }
     /**
      * @return A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var taggedInstances = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .tags(Map.ofEntries(
-     *                 Map.entry("tagKey1", "tagValue1"),
-     *                 Map.entry("tagKey2", "tagValue2")
-     *             ))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public Map<String,String> tags() {

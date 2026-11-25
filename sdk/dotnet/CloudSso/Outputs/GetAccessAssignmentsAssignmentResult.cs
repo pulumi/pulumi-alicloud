@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
         /// </summary>
         public readonly string PrincipalName;
         /// <summary>
-        /// Create the identity type of the access assignment, which can be a user or a user group.
+        /// Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
         /// </summary>
         public readonly string PrincipalType;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
         /// </summary>
         public readonly string TargetPathName;
         /// <summary>
-        /// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+        /// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
         /// </summary>
         public readonly string TargetType;
 

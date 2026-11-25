@@ -112,9 +112,10 @@ import (
 //				return err
 //			}
 //			_, err = privatelink.NewVpcEndpointServiceConnection(ctx, "example", &privatelink.VpcEndpointServiceConnectionArgs{
-//				EndpointId: exampleVpcEndpoint.ID(),
-//				ServiceId:  exampleVpcEndpoint.ServiceId,
-//				Bandwidth:  pulumi.Int(1024),
+//				EndpointId:         exampleVpcEndpoint.ID(),
+//				ServiceId:          exampleVpcEndpoint.ServiceId,
+//				Bandwidth:          pulumi.Int(1024),
+//				TrafficControlMode: pulumi.String("BandwidthLimit"),
 //			})
 //			if err != nil {
 //				return err
@@ -145,10 +146,14 @@ type VpcEndpointServiceConnection struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The endpoint ID.
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
+	// The owner ID of the endpoint.
+	EndpointOwnerId pulumi.IntOutput `pulumi:"endpointOwnerId"`
 	// The endpoint service ID.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The state of the endpoint connection.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+	TrafficControlMode pulumi.StringOutput `pulumi:"trafficControlMode"`
 }
 
 // NewVpcEndpointServiceConnection registers a new resource with the given unique name, arguments, and options.
@@ -195,10 +200,14 @@ type vpcEndpointServiceConnectionState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The endpoint ID.
 	EndpointId *string `pulumi:"endpointId"`
+	// The owner ID of the endpoint.
+	EndpointOwnerId *int `pulumi:"endpointOwnerId"`
 	// The endpoint service ID.
 	ServiceId *string `pulumi:"serviceId"`
 	// The state of the endpoint connection.
 	Status *string `pulumi:"status"`
+	// The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+	TrafficControlMode *string `pulumi:"trafficControlMode"`
 }
 
 type VpcEndpointServiceConnectionState struct {
@@ -210,10 +219,14 @@ type VpcEndpointServiceConnectionState struct {
 	DryRun pulumi.BoolPtrInput
 	// The endpoint ID.
 	EndpointId pulumi.StringPtrInput
+	// The owner ID of the endpoint.
+	EndpointOwnerId pulumi.IntPtrInput
 	// The endpoint service ID.
 	ServiceId pulumi.StringPtrInput
 	// The state of the endpoint connection.
 	Status pulumi.StringPtrInput
+	// The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+	TrafficControlMode pulumi.StringPtrInput
 }
 
 func (VpcEndpointServiceConnectionState) ElementType() reflect.Type {
@@ -237,6 +250,8 @@ type vpcEndpointServiceConnectionArgs struct {
 	EndpointId string `pulumi:"endpointId"`
 	// The endpoint service ID.
 	ServiceId string `pulumi:"serviceId"`
+	// The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+	TrafficControlMode *string `pulumi:"trafficControlMode"`
 }
 
 // The set of arguments for constructing a VpcEndpointServiceConnection resource.
@@ -251,6 +266,8 @@ type VpcEndpointServiceConnectionArgs struct {
 	EndpointId pulumi.StringInput
 	// The endpoint service ID.
 	ServiceId pulumi.StringInput
+	// The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+	TrafficControlMode pulumi.StringPtrInput
 }
 
 func (VpcEndpointServiceConnectionArgs) ElementType() reflect.Type {
@@ -357,6 +374,11 @@ func (o VpcEndpointServiceConnectionOutput) EndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointServiceConnection) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
 }
 
+// The owner ID of the endpoint.
+func (o VpcEndpointServiceConnectionOutput) EndpointOwnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceConnection) pulumi.IntOutput { return v.EndpointOwnerId }).(pulumi.IntOutput)
+}
+
 // The endpoint service ID.
 func (o VpcEndpointServiceConnectionOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointServiceConnection) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
@@ -365,6 +387,11 @@ func (o VpcEndpointServiceConnectionOutput) ServiceId() pulumi.StringOutput {
 // The state of the endpoint connection.
 func (o VpcEndpointServiceConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointServiceConnection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+func (o VpcEndpointServiceConnectionOutput) TrafficControlMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceConnection) pulumi.StringOutput { return v.TrafficControlMode }).(pulumi.StringOutput)
 }
 
 type VpcEndpointServiceConnectionArrayOutput struct{ *pulumi.OutputState }

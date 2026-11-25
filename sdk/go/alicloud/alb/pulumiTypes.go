@@ -7711,7 +7711,8 @@ type ServerGroupServer struct {
 	// The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 	//
 	// > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-	// **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+	//
+	// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -7762,7 +7763,8 @@ type ServerGroupServerArgs struct {
 	// The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 	//
 	// > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-	// **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+	//
+	// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -7876,7 +7878,8 @@ func (o ServerGroupServerOutput) Status() pulumi.StringPtrOutput {
 // The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 //
 // > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-// **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+//
+// > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
 func (o ServerGroupServerOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -8516,7 +8519,7 @@ type GetAclsAcl struct {
 	Id string `pulumi:"id"`
 	// Resource Group to Which the Number.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status string `pulumi:"status"`
 }
 
@@ -8544,7 +8547,7 @@ type GetAclsAclArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Resource Group to Which the Number.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -8629,7 +8632,7 @@ func (o GetAclsAclOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAcl) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 func (o GetAclsAclOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAcl) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -8659,7 +8662,7 @@ type GetAclsAclAclEntry struct {
 	Description string `pulumi:"description"`
 	// The resource ID in terraform of Acl.
 	Entry string `pulumi:"entry"`
-	// The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
+	// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status string `pulumi:"status"`
 }
 
@@ -8679,7 +8682,7 @@ type GetAclsAclAclEntryArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The resource ID in terraform of Acl.
 	Entry pulumi.StringInput `pulumi:"entry"`
-	// The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
+	// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -8744,7 +8747,7 @@ func (o GetAclsAclAclEntryOutput) Entry() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.Entry }).(pulumi.StringOutput)
 }
 
-// The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
+// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 func (o GetAclsAclAclEntryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -8780,9 +8783,11 @@ type GetAscriptsAscript struct {
 	ExtAttributeEnabled bool `pulumi:"extAttributeEnabled"`
 	// Extended attribute list.
 	ExtAttributes []GetAscriptsAscriptExtAttribute `pulumi:"extAttributes"`
-	Id            string                           `pulumi:"id"`
+	// The ID of the AScript.
+	Id string `pulumi:"id"`
 	// Listener ID of script attribution
-	ListenerId     string `pulumi:"listenerId"`
+	ListenerId string `pulumi:"listenerId"`
+	// The ID of the load balancer to which the listener belongs.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// Script execution location.
 	Position string `pulumi:"position"`
@@ -8814,9 +8819,11 @@ type GetAscriptsAscriptArgs struct {
 	ExtAttributeEnabled pulumi.BoolInput `pulumi:"extAttributeEnabled"`
 	// Extended attribute list.
 	ExtAttributes GetAscriptsAscriptExtAttributeArrayInput `pulumi:"extAttributes"`
-	Id            pulumi.StringInput                       `pulumi:"id"`
+	// The ID of the AScript.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Listener ID of script attribution
-	ListenerId     pulumi.StringInput `pulumi:"listenerId"`
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// The ID of the load balancer to which the listener belongs.
 	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
 	// Script execution location.
 	Position pulumi.StringInput `pulumi:"position"`
@@ -8902,6 +8909,7 @@ func (o GetAscriptsAscriptOutput) ExtAttributes() GetAscriptsAscriptExtAttribute
 	return o.ApplyT(func(v GetAscriptsAscript) []GetAscriptsAscriptExtAttribute { return v.ExtAttributes }).(GetAscriptsAscriptExtAttributeArrayOutput)
 }
 
+// The ID of the AScript.
 func (o GetAscriptsAscriptOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAscriptsAscript) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -8911,6 +8919,7 @@ func (o GetAscriptsAscriptOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAscriptsAscript) string { return v.ListenerId }).(pulumi.StringOutput)
 }
 
+// The ID of the load balancer to which the listener belongs.
 func (o GetAscriptsAscriptOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAscriptsAscript) string { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
@@ -9059,7 +9068,7 @@ func (o GetAscriptsAscriptExtAttributeArrayOutput) Index(i pulumi.IntInput) GetA
 type GetHealthCheckTemplatesTemplate struct {
 	// The HTTP status code that indicates a successful health check.
 	HealthCheckCodes []string `pulumi:"healthCheckCodes"`
-	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
+	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`0`. This default value indicates that the backend server is used for health checks.
 	HealthCheckConnectPort int `pulumi:"healthCheckConnectPort"`
 	// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.
 	HealthCheckHost string `pulumi:"healthCheckHost"`
@@ -9069,7 +9078,7 @@ type GetHealthCheckTemplatesTemplate struct {
 	HealthCheckInterval int `pulumi:"healthCheckInterval"`
 	// The health check method.  Valid values: `GET` and `HEAD`.  Default value: `HEAD`.
 	HealthCheckMethod string `pulumi:"healthCheckMethod"`
-	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
+	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
 	HealthCheckPath string `pulumi:"healthCheckPath"`
 	// The protocol that is used for health checks.  Valid values: HTTP and TCP.  Default value: HTTP.
 	HealthCheckProtocol string `pulumi:"healthCheckProtocol"`
@@ -9101,7 +9110,7 @@ type GetHealthCheckTemplatesTemplateInput interface {
 type GetHealthCheckTemplatesTemplateArgs struct {
 	// The HTTP status code that indicates a successful health check.
 	HealthCheckCodes pulumi.StringArrayInput `pulumi:"healthCheckCodes"`
-	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
+	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`0`. This default value indicates that the backend server is used for health checks.
 	HealthCheckConnectPort pulumi.IntInput `pulumi:"healthCheckConnectPort"`
 	// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.
 	HealthCheckHost pulumi.StringInput `pulumi:"healthCheckHost"`
@@ -9111,7 +9120,7 @@ type GetHealthCheckTemplatesTemplateArgs struct {
 	HealthCheckInterval pulumi.IntInput `pulumi:"healthCheckInterval"`
 	// The health check method.  Valid values: `GET` and `HEAD`.  Default value: `HEAD`.
 	HealthCheckMethod pulumi.StringInput `pulumi:"healthCheckMethod"`
-	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
+	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
 	HealthCheckPath pulumi.StringInput `pulumi:"healthCheckPath"`
 	// The protocol that is used for health checks.  Valid values: HTTP and TCP.  Default value: HTTP.
 	HealthCheckProtocol pulumi.StringInput `pulumi:"healthCheckProtocol"`
@@ -9185,7 +9194,7 @@ func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckCodes() pulumi.StringA
 	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) []string { return v.HealthCheckCodes }).(pulumi.StringArrayOutput)
 }
 
-// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
+// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`0`. This default value indicates that the backend server is used for health checks.
 func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckConnectPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) int { return v.HealthCheckConnectPort }).(pulumi.IntOutput)
 }
@@ -9210,7 +9219,7 @@ func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckMethod() pulumi.String
 	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) string { return v.HealthCheckMethod }).(pulumi.StringOutput)
 }
 
-// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
+// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
 func (o GetHealthCheckTemplatesTemplateOutput) HealthCheckPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckTemplatesTemplate) string { return v.HealthCheckPath }).(pulumi.StringOutput)
 }
@@ -9272,8 +9281,6 @@ func (o GetHealthCheckTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) Get
 
 type GetListenersListener struct {
 	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
-	//
-	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information.
 	AccessLogTracingConfigs []GetListenersListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfigs"`
@@ -9286,8 +9293,6 @@ type GetListenersListener struct {
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
 	GzipEnabled bool `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-	//
-	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	Http2Enabled bool `pulumi:"http2Enabled"`
 	// The ID of the Listener.
 	Id string `pulumi:"id"`
@@ -9312,8 +9317,6 @@ type GetListenersListener struct {
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout int `pulumi:"requestTimeout"`
 	// Security Policy.
-	//
-	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	SecurityPolicyId string `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status string `pulumi:"status"`
@@ -9334,8 +9337,6 @@ type GetListenersListenerInput interface {
 
 type GetListenersListenerArgs struct {
 	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
-	//
-	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolInput `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information.
 	AccessLogTracingConfigs GetListenersListenerAccessLogTracingConfigArrayInput `pulumi:"accessLogTracingConfigs"`
@@ -9348,8 +9349,6 @@ type GetListenersListenerArgs struct {
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
 	GzipEnabled pulumi.BoolInput `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-	//
-	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	Http2Enabled pulumi.BoolInput `pulumi:"http2Enabled"`
 	// The ID of the Listener.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -9374,8 +9373,6 @@ type GetListenersListenerArgs struct {
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntInput `pulumi:"requestTimeout"`
 	// Security Policy.
-	//
-	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	SecurityPolicyId pulumi.StringInput `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -9435,8 +9432,6 @@ func (o GetListenersListenerOutput) ToGetListenersListenerOutputWithContext(ctx 
 }
 
 // Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
-//
-// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 func (o GetListenersListenerOutput) AccessLogRecordCustomizedHeadersEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListener) bool { return v.AccessLogRecordCustomizedHeadersEnabled }).(pulumi.BoolOutput)
 }
@@ -9469,8 +9464,6 @@ func (o GetListenersListenerOutput) GzipEnabled() pulumi.BoolOutput {
 }
 
 // Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
-//
-// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 func (o GetListenersListenerOutput) Http2Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListener) bool { return v.Http2Enabled }).(pulumi.BoolOutput)
 }
@@ -9531,8 +9524,6 @@ func (o GetListenersListenerOutput) RequestTimeout() pulumi.IntOutput {
 }
 
 // Security Policy.
-//
-// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 func (o GetListenersListenerOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
@@ -9569,16 +9560,10 @@ func (o GetListenersListenerArrayOutput) Index(i pulumi.IntInput) GetListenersLi
 
 type GetListenersListenerAccessLogTracingConfig struct {
 	// Xtrace Function. Value: True Or False. Default Value: False.
-	//
-	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	TracingEnabled bool `pulumi:"tracingEnabled"`
 	// Xtrace Sampling Rate. Value: **1~10000**.
-	//
-	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 	TracingSample int `pulumi:"tracingSample"`
 	// Xtrace Type Value Is **Zipkin**.
-	//
-	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 	TracingType string `pulumi:"tracingType"`
 }
 
@@ -9595,16 +9580,10 @@ type GetListenersListenerAccessLogTracingConfigInput interface {
 
 type GetListenersListenerAccessLogTracingConfigArgs struct {
 	// Xtrace Function. Value: True Or False. Default Value: False.
-	//
-	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	TracingEnabled pulumi.BoolInput `pulumi:"tracingEnabled"`
 	// Xtrace Sampling Rate. Value: **1~10000**.
-	//
-	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 	TracingSample pulumi.IntInput `pulumi:"tracingSample"`
 	// Xtrace Type Value Is **Zipkin**.
-	//
-	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 	TracingType pulumi.StringInput `pulumi:"tracingType"`
 }
 
@@ -9660,22 +9639,16 @@ func (o GetListenersListenerAccessLogTracingConfigOutput) ToGetListenersListener
 }
 
 // Xtrace Function. Value: True Or False. Default Value: False.
-//
-// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) bool { return v.TracingEnabled }).(pulumi.BoolOutput)
 }
 
 // Xtrace Sampling Rate. Value: **1~10000**.
-//
-// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingSample() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) int { return v.TracingSample }).(pulumi.IntOutput)
 }
 
 // Xtrace Type Value Is **Zipkin**.
-//
-// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) string { return v.TracingType }).(pulumi.StringOutput)
 }
@@ -9811,7 +9784,7 @@ func (o GetListenersListenerAclConfigArrayOutput) Index(i pulumi.IntInput) GetLi
 type GetListenersListenerAclConfigAclRelation struct {
 	// Snooping Binding of the Access Policy Group ID List.
 	AclId string `pulumi:"aclId"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status string `pulumi:"status"`
 }
 
@@ -9829,7 +9802,7 @@ type GetListenersListenerAclConfigAclRelationInput interface {
 type GetListenersListenerAclConfigAclRelationArgs struct {
 	// Snooping Binding of the Access Policy Group ID List.
 	AclId pulumi.StringInput `pulumi:"aclId"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -9889,7 +9862,7 @@ func (o GetListenersListenerAclConfigAclRelationOutput) AclId() pulumi.StringOut
 	return o.ApplyT(func(v GetListenersListenerAclConfigAclRelation) string { return v.AclId }).(pulumi.StringOutput)
 }
 
-// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 func (o GetListenersListenerAclConfigAclRelationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAclConfigAclRelation) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -14266,9 +14239,9 @@ type GetSecurityPoliciesPolicy struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The first ID of the resource.
 	SecurityPolicyId string `pulumi:"securityPolicyId"`
-	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the resource.
 	SecurityPolicyName string `pulumi:"securityPolicyName"`
-	// The status of the resource.
+	// The status of the resource. Valid values : `Available`, `Configuring`.
 	Status string `pulumi:"status"`
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions []string `pulumi:"tlsVersions"`
@@ -14294,9 +14267,9 @@ type GetSecurityPoliciesPolicyArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The first ID of the resource.
 	SecurityPolicyId pulumi.StringInput `pulumi:"securityPolicyId"`
-	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the resource.
 	SecurityPolicyName pulumi.StringInput `pulumi:"securityPolicyName"`
-	// The status of the resource.
+	// The status of the resource. Valid values : `Available`, `Configuring`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
 	TlsVersions pulumi.StringArrayInput `pulumi:"tlsVersions"`
@@ -14373,12 +14346,12 @@ func (o GetSecurityPoliciesPolicyOutput) SecurityPolicyId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetSecurityPoliciesPolicy) string { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
-// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+// The name of the resource.
 func (o GetSecurityPoliciesPolicyOutput) SecurityPolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesPolicy) string { return v.SecurityPolicyName }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values : `Available`, `Configuring`.
 func (o GetSecurityPoliciesPolicyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
 }

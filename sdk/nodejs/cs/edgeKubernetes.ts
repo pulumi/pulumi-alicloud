@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.ManagedKubernetes` instead.
+ * > **DEPRECATED:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.ManagedKubernetes` instead.
  *
  * This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is edge kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ack-edge-cluster).
  *
@@ -211,7 +211,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
-     * *Removed params*
+     * Removed params
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
@@ -252,7 +252,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      *
-     * *Worker params*
+     * Worker params
      */
     declare public readonly loadBalancerSpec: pulumi.Output<string>;
     /**
@@ -320,9 +320,12 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
-     * *Network params*
+     * Network params
      */
     declare public readonly skipSetCertificateAuthority: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of APIServer load balancer.
+     */
     declare public /*out*/ readonly slbId: pulumi.Output<string>;
     /**
      * The public ip of load balancer.
@@ -371,7 +374,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     /**
      * Worker node system disk auto snapshot policy.
      *
-     * *Computed params*
+     * Computed params
      *
      * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
      */
@@ -564,7 +567,7 @@ export interface EdgeKubernetesState {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
-     * *Removed params*
+     * Removed params
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
@@ -605,7 +608,7 @@ export interface EdgeKubernetesState {
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      *
-     * *Worker params*
+     * Worker params
      */
     loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
@@ -673,9 +676,12 @@ export interface EdgeKubernetesState {
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
-     * *Network params*
+     * Network params
      */
     skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ID of APIServer load balancer.
+     */
     slbId?: pulumi.Input<string | undefined>;
     /**
      * The public ip of load balancer.
@@ -724,7 +730,7 @@ export interface EdgeKubernetesState {
     /**
      * Worker node system disk auto snapshot policy.
      *
-     * *Computed params*
+     * Computed params
      *
      * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
      */
@@ -782,7 +788,7 @@ export interface EdgeKubernetesArgs {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
-     * *Removed params*
+     * Removed params
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
@@ -819,7 +825,7 @@ export interface EdgeKubernetesArgs {
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      *
-     * *Worker params*
+     * Worker params
      */
     loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
@@ -883,7 +889,7 @@ export interface EdgeKubernetesArgs {
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
-     * *Network params*
+     * Network params
      */
     skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
     /**
@@ -921,7 +927,7 @@ export interface EdgeKubernetesArgs {
     /**
      * Worker node system disk auto snapshot policy.
      *
-     * *Computed params*
+     * Computed params
      *
      * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
      */

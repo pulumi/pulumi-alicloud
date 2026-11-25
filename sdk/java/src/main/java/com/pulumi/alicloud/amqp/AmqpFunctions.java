@@ -39,7 +39,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Bindings of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -84,7 +84,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Bindings of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -129,7 +129,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Bindings of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -174,7 +174,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Bindings of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -219,7 +219,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Bindings of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * ## Example Usage
      * 
@@ -264,7 +264,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -320,7 +320,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -376,7 +376,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -432,7 +432,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -488,7 +488,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.128.0+.
+     * &gt; **NOTE:** Available since v1.128.0.
      * 
      * ## Example Usage
      * 
@@ -2123,7 +2123,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Queues of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.127.0+.
+     * &gt; **NOTE:** Available since v1.127.0.
      * 
      * ## Example Usage
      * 
@@ -2179,7 +2179,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Queues of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.127.0+.
+     * &gt; **NOTE:** Available since v1.127.0.
      * 
      * ## Example Usage
      * 
@@ -2235,7 +2235,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Queues of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.127.0+.
+     * &gt; **NOTE:** Available since v1.127.0.
      * 
      * ## Example Usage
      * 
@@ -2291,7 +2291,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Queues of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.127.0+.
+     * &gt; **NOTE:** Available since v1.127.0.
      * 
      * ## Example Usage
      * 
@@ -2347,7 +2347,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Queues of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.127.0+.
+     * &gt; **NOTE:** Available since v1.127.0.
      * 
      * ## Example Usage
      * 
@@ -2704,7 +2704,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -2758,7 +2758,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -2812,7 +2812,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -2866,7 +2866,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -2920,7 +2920,7 @@ public final class AmqpFunctions {
     /**
      * This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 

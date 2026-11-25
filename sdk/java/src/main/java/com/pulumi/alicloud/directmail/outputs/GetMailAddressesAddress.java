@@ -66,7 +66,7 @@ public final class GetMailAddressesAddress {
      */
     private String replyStatus;
     /**
-     * @return Account type.
+     * @return Account type. Valid values: `batch`, `trigger`.
      * 
      */
     private String sendtype;
@@ -155,7 +155,7 @@ public final class GetMailAddressesAddress {
         return this.replyStatus;
     }
     /**
-     * @return Account type.
+     * @return Account type. Valid values: `batch`, `trigger`.
      * 
      */
     public String sendtype() {

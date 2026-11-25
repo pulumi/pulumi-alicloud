@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Tsdb
         /// <summary>
         /// This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// &gt; **NOTE:** Available since v1.112.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Tsdb
         /// <summary>
         /// This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// &gt; **NOTE:** Available since v1.112.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Tsdb
         /// <summary>
         /// This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// &gt; **NOTE:** Available since v1.112.0.
         /// 
         /// ## Example Usage
         /// 
@@ -248,15 +248,24 @@ namespace Pulumi.AliCloud.Tsdb
     {
         public readonly string? AppKey;
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// The engine type of instance. Enumerative: `TsdbTsdb` refers to TSDB, `TsdbInfluxdb` refers to TSDB for InfluxDB️.
+        /// </summary>
         public readonly string? EngineType;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of TSDB Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? OutputFile;
         public readonly string? QueryStr;
+        /// <summary>
+        /// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+        /// </summary>
         public readonly string? Status;
         public readonly string? StatusList;
 

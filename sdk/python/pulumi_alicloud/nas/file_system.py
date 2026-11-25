@@ -23,6 +23,7 @@ class FileSystemArgs:
     def __init__(__self__, *,
                  protocol_type: pulumi.Input[_builtins.str],
                  storage_type: pulumi.Input[_builtins.str],
+                 auto_upgrade_config: pulumi.Input[Optional['FileSystemAutoUpgradeConfigArgs']] = None,
                  capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_type: pulumi.Input[Optional[_builtins.int]] = None,
@@ -54,6 +55,7 @@ class FileSystemArgs:
                - When FileSystemType = extreme, the value is standard or advance.
                - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
                - When storage_type = Agentic, the general-purpose NAS features `recycle_bin`, `nfs_acl` and `smb_acl` are not supported and must be omitted; Agentic file systems are currently in whitelist mode and you must submit a ticket to apply for the feature before use.
+        :param pulumi.Input['FileSystemAutoUpgradeConfigArgs'] auto_upgrade_config: The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `auto_upgrade_config` below.
         :param pulumi.Input[_builtins.int] capacity: File system capacity.
                
                Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -69,6 +71,8 @@ class FileSystemArgs:
                - 2~128 English or Chinese characters in length.
                - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+               
+               > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         :param pulumi.Input[_builtins.int] encrypt_type: Whether the file system is encrypted.
                
                Use the KMS service hosting key to encrypt and store the file system disk data. When reading and writing encrypted data, there is no need to decrypt it.
@@ -101,6 +105,8 @@ class FileSystemArgs:
         :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+               
+               > **NOTE:** For `standard` file system types, the NAS server writes `resource_group_id` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         :param pulumi.Input['FileSystemSmbAclArgs'] smb_acl: SMB ACL See `smb_acl` below.
         :param pulumi.Input[_builtins.str] snapshot_id: Only extreme NAS is supported.
                
@@ -132,6 +138,8 @@ class FileSystemArgs:
         """
         pulumi.set(__self__, "protocol_type", protocol_type)
         pulumi.set(__self__, "storage_type", storage_type)
+        if auto_upgrade_config is not None:
+            pulumi.set(__self__, "auto_upgrade_config", auto_upgrade_config)
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
         if description is not None:
@@ -203,6 +211,18 @@ class FileSystemArgs:
         pulumi.set(self, "storage_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoUpgradeConfig")
+    def auto_upgrade_config(self) -> pulumi.Input[Optional['FileSystemAutoUpgradeConfigArgs']]:
+        """
+        The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `auto_upgrade_config` below.
+        """
+        return pulumi.get(self, "auto_upgrade_config")
+
+    @auto_upgrade_config.setter
+    def auto_upgrade_config(self, value: pulumi.Input[Optional['FileSystemAutoUpgradeConfigArgs']]):
+        pulumi.set(self, "auto_upgrade_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -232,6 +252,8 @@ class FileSystemArgs:
         - 2~128 English or Chinese characters in length.
         - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         - Can contain numbers, colons (:), underscores (_), or dashes (-).
+
+        > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         """
         return pulumi.get(self, "description")
 
@@ -385,6 +407,8 @@ class FileSystemArgs:
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
+
+        > **NOTE:** For `standard` file system types, the NAS server writes `resource_group_id` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -490,6 +514,7 @@ class FileSystemArgs:
 @pulumi.input_type
 class _FileSystemState:
     def __init__(__self__, *,
+                 auto_upgrade_config: pulumi.Input[Optional['FileSystemAutoUpgradeConfigArgs']] = None,
                  capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -517,6 +542,7 @@ class _FileSystemState:
         """
         Input properties used for looking up and filtering FileSystem resources.
 
+        :param pulumi.Input['FileSystemAutoUpgradeConfigArgs'] auto_upgrade_config: The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `auto_upgrade_config` below.
         :param pulumi.Input[_builtins.int] capacity: File system capacity.
                
                Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -533,6 +559,8 @@ class _FileSystemState:
                - 2~128 English or Chinese characters in length.
                - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+               
+               > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         :param pulumi.Input[_builtins.int] encrypt_type: Whether the file system is encrypted.
                
                Use the KMS service hosting key to encrypt and store the file system disk data. When reading and writing encrypted data, there is no need to decrypt it.
@@ -570,6 +598,8 @@ class _FileSystemState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+               
+               > **NOTE:** For `standard` file system types, the NAS server writes `resource_group_id` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         :param pulumi.Input['FileSystemSmbAclArgs'] smb_acl: SMB ACL See `smb_acl` below.
         :param pulumi.Input[_builtins.str] snapshot_id: Only extreme NAS is supported.
                
@@ -605,6 +635,8 @@ class _FileSystemState:
                
                > **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         """
+        if auto_upgrade_config is not None:
+            pulumi.set(__self__, "auto_upgrade_config", auto_upgrade_config)
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
         if create_time is not None:
@@ -655,6 +687,18 @@ class _FileSystemState:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
+    @pulumi.getter(name="autoUpgradeConfig")
+    def auto_upgrade_config(self) -> pulumi.Input[Optional['FileSystemAutoUpgradeConfigArgs']]:
+        """
+        The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `auto_upgrade_config` below.
+        """
+        return pulumi.get(self, "auto_upgrade_config")
+
+    @auto_upgrade_config.setter
+    def auto_upgrade_config(self, value: pulumi.Input[Optional['FileSystemAutoUpgradeConfigArgs']]):
+        pulumi.set(self, "auto_upgrade_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -696,6 +740,8 @@ class _FileSystemState:
         - 2~128 English or Chinese characters in length.
         - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         - Can contain numbers, colons (:), underscores (_), or dashes (-).
+
+        > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         """
         return pulumi.get(self, "description")
 
@@ -876,6 +922,8 @@ class _FileSystemState:
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
+
+        > **NOTE:** For `standard` file system types, the NAS server writes `resource_group_id` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1012,6 +1060,7 @@ class FileSystem(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_upgrade_config: pulumi.Input[Optional[Union['FileSystemAutoUpgradeConfigArgs', 'FileSystemAutoUpgradeConfigArgsDict', 'outputs.FileSystemAutoUpgradeConfig']]] = None,
                  capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_type: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1103,6 +1152,7 @@ class FileSystem(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['FileSystemAutoUpgradeConfigArgs', 'FileSystemAutoUpgradeConfigArgsDict', 'outputs.FileSystemAutoUpgradeConfig']] auto_upgrade_config: The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `auto_upgrade_config` below.
         :param pulumi.Input[_builtins.int] capacity: File system capacity.
                
                Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -1118,6 +1168,8 @@ class FileSystem(pulumi.CustomResource):
                - 2~128 English or Chinese characters in length.
                - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+               
+               > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         :param pulumi.Input[_builtins.int] encrypt_type: Whether the file system is encrypted.
                
                Use the KMS service hosting key to encrypt and store the file system disk data. When reading and writing encrypted data, there is no need to decrypt it.
@@ -1154,6 +1206,8 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+               
+               > **NOTE:** For `standard` file system types, the NAS server writes `resource_group_id` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         :param pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict', 'outputs.FileSystemSmbAcl']] smb_acl: SMB ACL See `smb_acl` below.
         :param pulumi.Input[_builtins.str] snapshot_id: Only extreme NAS is supported.
                
@@ -1276,6 +1330,7 @@ class FileSystem(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_upgrade_config: pulumi.Input[Optional[Union['FileSystemAutoUpgradeConfigArgs', 'FileSystemAutoUpgradeConfigArgsDict', 'outputs.FileSystemAutoUpgradeConfig']]] = None,
                  capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypt_type: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1306,6 +1361,7 @@ class FileSystem(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FileSystemArgs.__new__(FileSystemArgs)
 
+            __props__.__dict__["auto_upgrade_config"] = auto_upgrade_config
             __props__.__dict__["capacity"] = capacity
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypt_type"] = encrypt_type
@@ -1344,6 +1400,7 @@ class FileSystem(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_upgrade_config: pulumi.Input[Optional[Union['FileSystemAutoUpgradeConfigArgs', 'FileSystemAutoUpgradeConfigArgsDict', 'outputs.FileSystemAutoUpgradeConfig']]] = None,
             capacity: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1375,6 +1432,7 @@ class FileSystem(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['FileSystemAutoUpgradeConfigArgs', 'FileSystemAutoUpgradeConfigArgsDict', 'outputs.FileSystemAutoUpgradeConfig']] auto_upgrade_config: The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `auto_upgrade_config` below.
         :param pulumi.Input[_builtins.int] capacity: File system capacity.
                
                Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -1391,6 +1449,8 @@ class FileSystem(pulumi.CustomResource):
                - 2~128 English or Chinese characters in length.
                - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
+               
+               > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         :param pulumi.Input[_builtins.int] encrypt_type: Whether the file system is encrypted.
                
                Use the KMS service hosting key to encrypt and store the file system disk data. When reading and writing encrypted data, there is no need to decrypt it.
@@ -1428,6 +1488,8 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+               
+               > **NOTE:** For `standard` file system types, the NAS server writes `resource_group_id` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         :param pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict', 'outputs.FileSystemSmbAcl']] smb_acl: SMB ACL See `smb_acl` below.
         :param pulumi.Input[_builtins.str] snapshot_id: Only extreme NAS is supported.
                
@@ -1467,6 +1529,7 @@ class FileSystem(pulumi.CustomResource):
 
         __props__ = _FileSystemState.__new__(_FileSystemState)
 
+        __props__.__dict__["auto_upgrade_config"] = auto_upgrade_config
         __props__.__dict__["capacity"] = capacity
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
@@ -1496,6 +1559,7 @@ class FileSystem(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_upgrade_config: pulumi.Input[Optional[Union['FileSystemAutoUpgradeConfigArgs', 'FileSystemAutoUpgradeConfigArgsDict', 'outputs.FileSystemAutoUpgradeConfig']]] = None,
             capacity: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1521,6 +1585,7 @@ class FileSystem(pulumi.CustomResource):
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["autoUpgradeConfig"] = auto_upgrade_config
         __props__["capacity"] = capacity
         __props__["createTime"] = create_time
         __props__["description"] = description
@@ -1546,6 +1611,14 @@ class FileSystem(pulumi.CustomResource):
         __props__["vswitchId"] = vswitch_id
         __props__["zoneId"] = zone_id
         return pulumi.runtime.exists_resource(None, 'alicloud:nas/fileSystem:FileSystem', id, __props__, opts or pulumi.ResourceOptions())
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeConfig")
+    def auto_upgrade_config(self) -> pulumi.Output['outputs.FileSystemAutoUpgradeConfig']:
+        """
+        The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `auto_upgrade_config` below.
+        """
+        return pulumi.get(self, "auto_upgrade_config")
 
     @_builtins.property
     @pulumi.getter
@@ -1581,6 +1654,8 @@ class FileSystem(pulumi.CustomResource):
         - 2~128 English or Chinese characters in length.
         - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         - Can contain numbers, colons (:), underscores (_), or dashes (-).
+
+        > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         """
         return pulumi.get(self, "description")
 
@@ -1709,6 +1784,8 @@ class FileSystem(pulumi.CustomResource):
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the resource group.
+
+        > **NOTE:** For `standard` file system types, the NAS server writes `resource_group_id` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
         """
         return pulumi.get(self, "resource_group_id")
 

@@ -13,6 +13,8 @@ import (
 
 // This data source provides the CA certificate list.
 //
+// > **NOTE:** Available since v1.22.0.
+//
 // ## Example Usage
 //
 // ```go

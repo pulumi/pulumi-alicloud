@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Activations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.177.0+.
+        /// &gt; **NOTE:** Available since v1.177.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Activations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.177.0+.
+        /// &gt; **NOTE:** Available since v1.177.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Activations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.177.0+.
+        /// &gt; **NOTE:** Available since v1.177.0.
         /// 
         /// ## Example Usage
         /// 
@@ -180,12 +180,18 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetActivationsResult
     {
+        /// <summary>
+        /// A list of Ecs Activations. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetActivationsActivationResult> Activations;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The default prefix of the instance name.
+        /// </summary>
         public readonly string? InstanceName;
         public readonly string? OutputFile;
         public readonly int? PageNumber;

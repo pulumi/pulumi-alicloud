@@ -84,81 +84,136 @@ export class Eip extends pulumi.CustomResource {
         return obj['__pulumiType'] === Eip.__pulumiType;
     }
 
+    /**
+     * The promotion code. This parameter is not required.
+     */
     declare public readonly activityId: pulumi.Output<string | undefined>;
     /**
-     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The EIP name.
+     *
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
      */
     declare public readonly addressName: pulumi.Output<string>;
+    /**
+     * The ID of the EIP instance.
+     */
     declare public readonly allocationId: pulumi.Output<string>;
+    /**
+     * Specifies whether to enable automatic payment. Valid values:
+     */
     declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
-     * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+     * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
      */
     declare public readonly bandwidth: pulumi.Output<string>;
+    /**
+     * The time when the EIP was created.
+     */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
+     * Specifies whether to enable deletion protection. Valid values:
      */
     declare public readonly deletionProtection: pulumi.Output<boolean>;
     /**
-     * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * The description of the EIP.
      */
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
+     */
     declare public readonly highDefinitionMonitorLogStatus: pulumi.Output<string>;
     /**
-     * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     * . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
     declare public readonly instanceChargeType: pulumi.Output<string>;
     /**
-     * Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
+     * The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
      */
     declare public readonly internetChargeType: pulumi.Output<string>;
     /**
-     * The elastic ip address
+     * The IP address of the EIP. Supports a maximum of 50 EIPs.
      */
     declare public readonly ipAddress: pulumi.Output<string>;
     /**
-     * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line
      */
     declare public readonly isp: pulumi.Output<string>;
+    /**
+     * The name of the Simple Log Service (SLS) project.
+     */
     declare public readonly logProject: pulumi.Output<string | undefined>;
+    /**
+     * The name of the Logstore.
+     */
     declare public readonly logStore: pulumi.Output<string | undefined>;
+    /**
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
+     */
     declare public readonly mode: pulumi.Output<string>;
     /**
-     * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+     * . Field 'name' has been deprecated from provider version 1.126.0. New field `addressName` instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The network type. By default, this value is set to `public`, which specifies the public network type.
+     */
     declare public readonly netmode: pulumi.Output<string>;
     /**
-     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
+    /**
+     * The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     */
     declare public readonly pricingCycle: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool.
+     */
     declare public readonly publicIpAddressPoolId: pulumi.Output<string | undefined>;
     /**
-     * The Id of resource group which the eip belongs.
+     * The ID of the resource group to which you want to move the resource.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * Security protection level.
+     * - When the return is empty, the basic DDoS protection is specified.
+     * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+     */
     declare public readonly securityProtectionTypes: pulumi.Output<string[] | undefined>;
     /**
-     * The EIP current status.
+     * The state of the EIP.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The zone of the EIP.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     declare public readonly zone: pulumi.Output<string>;
 
     /**
@@ -243,81 +298,136 @@ export class Eip extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Eip resources.
  */
 export interface EipState {
+    /**
+     * The promotion code. This parameter is not required.
+     */
     activityId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The EIP name.
+     *
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
      */
     addressName?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the EIP instance.
+     */
     allocationId?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable automatic payment. Valid values:
+     */
     autoPay?: pulumi.Input<boolean | undefined>;
     /**
-     * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+     * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
      */
     bandwidth?: pulumi.Input<string | undefined>;
+    /**
+     * The time when the EIP was created.
+     */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
+     * Specifies whether to enable deletion protection. Valid values:
      */
     deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
-     * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * The description of the EIP.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
+     */
     highDefinitionMonitorLogStatus?: pulumi.Input<string | undefined>;
     /**
-     * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     * . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string | undefined>;
     /**
-     * Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
+     * The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
      */
     internetChargeType?: pulumi.Input<string | undefined>;
     /**
-     * The elastic ip address
+     * The IP address of the EIP. Supports a maximum of 50 EIPs.
      */
     ipAddress?: pulumi.Input<string | undefined>;
     /**
-     * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line
      */
     isp?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the Simple Log Service (SLS) project.
+     */
     logProject?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the Logstore.
+     */
     logStore?: pulumi.Input<string | undefined>;
+    /**
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
+     */
     mode?: pulumi.Input<string | undefined>;
     /**
-     * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+     * . Field 'name' has been deprecated from provider version 1.126.0. New field `addressName` instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The network type. By default, this value is set to `public`, which specifies the public network type.
+     */
     netmode?: pulumi.Input<string | undefined>;
     /**
-     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
      */
     paymentType?: pulumi.Input<string | undefined>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      */
     period?: pulumi.Input<number | undefined>;
+    /**
+     * The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     */
     pricingCycle?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool.
+     */
     publicIpAddressPoolId?: pulumi.Input<string | undefined>;
     /**
-     * The Id of resource group which the eip belongs.
+     * The ID of the resource group to which you want to move the resource.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * Security protection level.
+     * - When the return is empty, the basic DDoS protection is specified.
+     * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+     */
     securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The EIP current status.
+     * The state of the EIP.
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The zone of the EIP.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     zone?: pulumi.Input<string | undefined>;
 }
 
@@ -325,75 +435,127 @@ export interface EipState {
  * The set of arguments for constructing a Eip resource.
  */
 export interface EipArgs {
+    /**
+     * The promotion code. This parameter is not required.
+     */
     activityId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The EIP name.
+     *
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
      */
     addressName?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the EIP instance.
+     */
     allocationId?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable automatic payment. Valid values:
+     */
     autoPay?: pulumi.Input<boolean | undefined>;
     /**
-     * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+     * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
      */
     bandwidth?: pulumi.Input<string | undefined>;
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
+     * Specifies whether to enable deletion protection. Valid values:
      */
     deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
-     * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * The description of the EIP.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
+     */
     highDefinitionMonitorLogStatus?: pulumi.Input<string | undefined>;
     /**
-     * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     * . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string | undefined>;
     /**
-     * Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
+     * The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
      */
     internetChargeType?: pulumi.Input<string | undefined>;
     /**
-     * The elastic ip address
+     * The IP address of the EIP. Supports a maximum of 50 EIPs.
      */
     ipAddress?: pulumi.Input<string | undefined>;
     /**
-     * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line
      */
     isp?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the Simple Log Service (SLS) project.
+     */
     logProject?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the Logstore.
+     */
     logStore?: pulumi.Input<string | undefined>;
+    /**
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
+     */
     mode?: pulumi.Input<string | undefined>;
     /**
-     * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+     * . Field 'name' has been deprecated from provider version 1.126.0. New field `addressName` instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The network type. By default, this value is set to `public`, which specifies the public network type.
+     */
     netmode?: pulumi.Input<string | undefined>;
     /**
-     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
      */
     paymentType?: pulumi.Input<string | undefined>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-     * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      */
     period?: pulumi.Input<number | undefined>;
+    /**
+     * The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     */
     pricingCycle?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool.
+     */
     publicIpAddressPoolId?: pulumi.Input<string | undefined>;
     /**
-     * The Id of resource group which the eip belongs.
+     * The ID of the resource group to which you want to move the resource.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * Security protection level.
+     * - When the return is empty, the basic DDoS protection is specified.
+     * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+     */
     securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The zone of the EIP.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
     zone?: pulumi.Input<string | undefined>;
 }

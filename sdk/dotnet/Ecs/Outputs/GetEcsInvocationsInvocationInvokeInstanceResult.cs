@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
         /// </summary>
         public readonly int Dropped;
+        /// <summary>
+        /// The code that indicates why the command failed to be sent or run.
+        /// </summary>
         public readonly string ErrorCode;
         /// <summary>
         /// Details about the reason why the command failed to be sent or run.
@@ -38,6 +41,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The ID of the instance.
         /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// **Note:** We recommend that you ignore this parameter and check the value of the `InvocationStatus` response parameter for the overall execution state.
+        /// </summary>
         public readonly string InstanceInvokeStatus;
         /// <summary>
         /// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
@@ -61,8 +67,6 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string StopTime;
         /// <summary>
         /// Indicates whether the commands are to be automatically run.
-        /// * `ErrorCode	` - The code that indicates why the command failed to be sent or run.
-        /// * `InstanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `InvocationStatus` response parameter for the overall execution state.
         /// </summary>
         public readonly bool Timed;
         /// <summary>

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.126.0+.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *
@@ -70,21 +70,30 @@ export interface GetVirtualHostsArgs {
  * A collection of values returned by getVirtualHosts.
  */
 export interface GetVirtualHostsResult {
+    /**
+     * A list of Amqp Virtual Hosts. Each element contains the following attributes:
+     */
     readonly hosts: outputs.amqp.GetVirtualHostsHost[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * InstanceId.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Virtual Host names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.126.0+.
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *

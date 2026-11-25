@@ -52,6 +52,9 @@ class GetZonesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of TSDB instance zone IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -62,6 +65,9 @@ class GetZonesResult:
     @_builtins.property
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
+        """
+        A list of TSDB Instance zones. Each element contains the following attributes:
+        """
         return pulumi.get(self, "zones")
 
 
@@ -82,7 +88,7 @@ def get_zones(output_file: Optional[_builtins.str] = None,
     """
     This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.112.0+.
+    > **NOTE:** Available since v1.112.0.
 
     ## Example Usage
 
@@ -114,7 +120,7 @@ def get_zones_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]
     """
     This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.112.0+.
+    > **NOTE:** Available since v1.112.0.
 
     ## Example Usage
 

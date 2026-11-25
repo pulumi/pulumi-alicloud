@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConsumerChannelsResult {
+    /**
+     * @return A list of Dts Consumer Channels. Each element contains the following attributes:
+     * 
+     */
     private List<GetConsumerChannelsChannel> channels;
     private String dtsInstanceId;
     /**
@@ -25,6 +29,10 @@ public final class GetConsumerChannelsResult {
     private @Nullable String outputFile;
 
     private GetConsumerChannelsResult() {}
+    /**
+     * @return A list of Dts Consumer Channels. Each element contains the following attributes:
+     * 
+     */
     public List<GetConsumerChannelsChannel> channels() {
         return this.channels;
     }

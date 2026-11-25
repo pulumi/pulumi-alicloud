@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
  *
- * > **NOTE:** Available in 1.198.0+
+ * > **NOTE:** Available since v1.198.0.
  *
  * ## Example Usage
  *
@@ -93,7 +93,7 @@ export interface GetInstancesResult {
 /**
  * This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
  *
- * > **NOTE:** Available in 1.198.0+
+ * > **NOTE:** Available since v1.198.0.
  *
  * ## Example Usage
  *

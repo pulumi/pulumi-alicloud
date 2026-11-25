@@ -62,6 +62,9 @@ class GetInstanceSpecificationsResult:
     @_builtins.property
     @pulumi.getter
     def specifications(self) -> Sequence['outputs.GetInstanceSpecificationsSpecificationResult']:
+        """
+        A list of Sae Instance Specifications. Each element contains the following attributes:
+        """
         return pulumi.get(self, "specifications")
 
 
@@ -83,7 +86,7 @@ def get_instance_specifications(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.139.0+.
+    > **NOTE:** Available since v1.139.0.
 
     ## Example Usage
 
@@ -118,7 +121,7 @@ def get_instance_specifications_output(ids: pulumi.Input[Optional[Optional[Seque
     """
     This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.139.0+.
+    > **NOTE:** Available since v1.139.0.
 
     ## Example Usage
 

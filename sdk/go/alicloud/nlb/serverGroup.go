@@ -131,7 +131,7 @@ type ServerGroup struct {
 	//
 	// - `TCP` (default)
 	// - `UDP`
-	// - `TCPSSL`
+	// - `TCP_UDP`
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The ID of the region where the NLB instance is deployed.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
@@ -229,7 +229,7 @@ type serverGroupState struct {
 	//
 	// - `TCP` (default)
 	// - `UDP`
-	// - `TCPSSL`
+	// - `TCP_UDP`
 	Protocol *string `pulumi:"protocol"`
 	// The ID of the region where the NLB instance is deployed.
 	RegionId *string `pulumi:"regionId"`
@@ -292,7 +292,7 @@ type ServerGroupState struct {
 	//
 	// - `TCP` (default)
 	// - `UDP`
-	// - `TCPSSL`
+	// - `TCP_UDP`
 	Protocol pulumi.StringPtrInput
 	// The ID of the region where the NLB instance is deployed.
 	RegionId pulumi.StringPtrInput
@@ -365,7 +365,7 @@ type serverGroupArgs struct {
 	//
 	// - `TCP` (default)
 	// - `UDP`
-	// - `TCPSSL`
+	// - `TCP_UDP`
 	Protocol *string `pulumi:"protocol"`
 	// The ID of the new resource group.
 	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
@@ -425,7 +425,7 @@ type ServerGroupArgs struct {
 	//
 	// - `TCP` (default)
 	// - `UDP`
-	// - `TCPSSL`
+	// - `TCP_UDP`
 	Protocol pulumi.StringPtrInput
 	// The ID of the new resource group.
 	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
@@ -594,7 +594,7 @@ func (o ServerGroupOutput) PreserveClientIpEnabled() pulumi.BoolOutput {
 //
 // - `TCP` (default)
 // - `UDP`
-// - `TCPSSL`
+// - `TCP_UDP`
 func (o ServerGroupOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }

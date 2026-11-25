@@ -64,11 +64,17 @@ class GetExecutionsResult:
     @_builtins.property
     @pulumi.getter
     def executions(self) -> Sequence['outputs.GetExecutionsExecutionResult']:
+        """
+        A list of Fn F Executions. Each element contains the following attributes:
+        """
         return pulumi.get(self, "executions")
 
     @_builtins.property
     @pulumi.getter(name="flowName")
     def flow_name(self) -> _builtins.str:
+        """
+        The name of the flow.
+        """
         return pulumi.get(self, "flow_name")
 
     @_builtins.property
@@ -92,6 +98,9 @@ class GetExecutionsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Execution names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -102,6 +111,9 @@ class GetExecutionsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -132,7 +144,7 @@ def get_executions(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the FnF Executions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.149.0+.
+    > **NOTE:** Available since v1.149.0.
 
     ## Example Usage
 
@@ -188,7 +200,7 @@ def get_executions_output(enable_details: pulumi.Input[Optional[Optional[_builti
     """
     This data source provides the FnF Executions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.149.0+.
+    > **NOTE:** Available since v1.149.0.
 
     ## Example Usage
 

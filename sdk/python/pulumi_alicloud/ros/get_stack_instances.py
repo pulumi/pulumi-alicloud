@@ -77,6 +77,9 @@ class GetStackInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetStackInstancesInstanceResult']:
+        """
+        A list of Ros Stack Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -87,21 +90,33 @@ class GetStackInstancesResult:
     @_builtins.property
     @pulumi.getter(name="stackGroupName")
     def stack_group_name(self) -> _builtins.str:
+        """
+        The name of the stack group.
+        """
         return pulumi.get(self, "stack_group_name")
 
     @_builtins.property
     @pulumi.getter(name="stackInstanceAccountId")
     def stack_instance_account_id(self) -> Optional[_builtins.str]:
+        """
+        The account to which the stack instance belongs.
+        """
         return pulumi.get(self, "stack_instance_account_id")
 
     @_builtins.property
     @pulumi.getter(name="stackInstanceRegionId")
     def stack_instance_region_id(self) -> Optional[_builtins.str]:
+        """
+        The region of the stack instance.
+        """
         return pulumi.get(self, "stack_instance_region_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
+        """
         return pulumi.get(self, "status")
 
 
@@ -133,7 +148,7 @@ def get_stack_instances(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.145.0+.
+    > **NOTE:** Available since v1.145.0.
 
     ## Example Usage
 
@@ -210,7 +225,7 @@ def get_stack_instances_output(enable_details: pulumi.Input[Optional[Optional[_b
     """
     This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.145.0+.
+    > **NOTE:** Available since v1.145.0.
 
     ## Example Usage
 

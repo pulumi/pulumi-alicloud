@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Data Works Folders of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *
@@ -67,6 +67,9 @@ export interface GetFoldersArgs {
  * A collection of values returned by getFolders.
  */
 export interface GetFoldersResult {
+    /**
+     * A list of Data Works Folders. Each element contains the following attributes:
+     */
     readonly folders: outputs.dataworks.GetFoldersFolder[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -75,12 +78,15 @@ export interface GetFoldersResult {
     readonly ids: string[];
     readonly outputFile?: string;
     readonly parentFolderPath: string;
+    /**
+     * The ID of the project.
+     */
     readonly projectId: string;
 }
 /**
  * This data source provides the Data Works Folders of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *

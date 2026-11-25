@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGroupsResult {
+    /**
+     * @return The ID of the Directory.
+     * 
+     */
     private String directoryId;
+    /**
+     * @return A list of Cloud Sso Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,14 +31,30 @@ public final class GetGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+     * 
+     */
     private @Nullable String provisionType;
 
     private GetGroupsResult() {}
+    /**
+     * @return The ID of the Directory.
+     * 
+     */
     public String directoryId() {
         return this.directoryId;
     }
+    /**
+     * @return A list of Cloud Sso Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetGroupsGroup> groups() {
         return this.groups;
     }
@@ -47,12 +71,20 @@ public final class GetGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+     * 
+     */
     public Optional<String> provisionType() {
         return Optional.ofNullable(this.provisionType);
     }

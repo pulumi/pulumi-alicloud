@@ -100,7 +100,7 @@ class KeyVersion(pulumi.CustomResource):
         """
         Provides a Alikms Key Version resource. For information about Alikms Key Version and how to use it, see [What is Resource Alikms Key Version](https://www.alibabacloud.com/help/doc-detail/133838.htm).
 
-        > **NOTE:** Available in v1.85.0+.
+        > **NOTE:** Available since v1.85.0.
 
         ## Example Usage
 
@@ -140,7 +140,7 @@ class KeyVersion(pulumi.CustomResource):
         """
         Provides a Alikms Key Version resource. For information about Alikms Key Version and how to use it, see [What is Resource Alikms Key Version](https://www.alibabacloud.com/help/doc-detail/133838.htm).
 
-        > **NOTE:** Available in v1.85.0+.
+        > **NOTE:** Available since v1.85.0.
 
         ## Example Usage
 

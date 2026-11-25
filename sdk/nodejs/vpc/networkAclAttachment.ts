@@ -98,7 +98,7 @@ export class NetworkAclAttachment extends pulumi.CustomResource {
      */
     declare public readonly networkAclId: pulumi.Output<string>;
     /**
-     * List of the resources associated with the network acl. The details see Block Resources.
+     * List of the resources associated with the network acl. See `resources` below.
      */
     declare public readonly resources: pulumi.Output<outputs.vpc.NetworkAclAttachmentResource[]>;
 
@@ -142,7 +142,7 @@ export interface NetworkAclAttachmentState {
      */
     networkAclId?: pulumi.Input<string | undefined>;
     /**
-     * List of the resources associated with the network acl. The details see Block Resources.
+     * List of the resources associated with the network acl. See `resources` below.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclAttachmentResource>[] | undefined>;
 }
@@ -156,7 +156,7 @@ export interface NetworkAclAttachmentArgs {
      */
     networkAclId: pulumi.Input<string>;
     /**
-     * List of the resources associated with the network acl. The details see Block Resources.
+     * List of the resources associated with the network acl. See `resources` below.
      */
     resources: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclAttachmentResource>[]>;
 }

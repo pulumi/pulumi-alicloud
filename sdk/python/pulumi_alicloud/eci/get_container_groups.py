@@ -77,6 +77,9 @@ class GetContainerGroupsResult:
     @_builtins.property
     @pulumi.getter(name="containerGroupName")
     def container_group_name(self) -> Optional[_builtins.str]:
+        """
+        The name of ContainerGroup.
+        """
         return pulumi.get(self, "container_group_name")
 
     @_builtins.property
@@ -87,6 +90,9 @@ class GetContainerGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetContainerGroupsGroupResult']:
+        """
+        A list of Eci Container Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -115,6 +121,9 @@ class GetContainerGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Container Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -125,21 +134,33 @@ class GetContainerGroupsResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of container.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[_builtins.str]:
+        """
+        The vswitch id.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @_builtins.property
@@ -150,6 +171,9 @@ class GetContainerGroupsResult:
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -192,7 +216,7 @@ def get_container_groups(container_group_name: Optional[_builtins.str] = None,
     """
     This data source provides the Eci Container Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
+    > **NOTE:** Available since v1.111.0.
 
     ## Example Usage
 
@@ -215,7 +239,9 @@ def get_container_groups(container_group_name: Optional[_builtins.str] = None,
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
     :param _builtins.str status: The status list. For more information, see the description of ContainerGroup arrays.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     :param _builtins.str vswitch_id: The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
+    :param _builtins.bool with_event: Whether to return container group events.
     :param _builtins.str zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
     """
     __args__ = dict()
@@ -266,7 +292,7 @@ def get_container_groups_output(container_group_name: pulumi.Input[Optional[Opti
     """
     This data source provides the Eci Container Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.111.0+.
+    > **NOTE:** Available since v1.111.0.
 
     ## Example Usage
 
@@ -289,7 +315,9 @@ def get_container_groups_output(container_group_name: pulumi.Input[Optional[Opti
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
     :param _builtins.str status: The status list. For more information, see the description of ContainerGroup arrays.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     :param _builtins.str vswitch_id: The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
+    :param _builtins.bool with_event: Whether to return container group events.
     :param _builtins.str zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
     """
     __args__ = dict()

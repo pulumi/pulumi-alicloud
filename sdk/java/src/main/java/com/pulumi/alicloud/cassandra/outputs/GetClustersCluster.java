@@ -23,6 +23,10 @@ public final class GetClustersCluster {
      * 
      */
     private String clusterName;
+    /**
+     * @return The created time of the cluster.
+     * 
+     */
     private String createdTime;
     /**
      * @return The count of data centers
@@ -85,6 +89,10 @@ public final class GetClustersCluster {
     public String clusterName() {
         return this.clusterName;
     }
+    /**
+     * @return The created time of the cluster.
+     * 
+     */
     public String createdTime() {
         return this.createdTime;
     }

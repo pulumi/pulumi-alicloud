@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.CloudSso
         /// <summary>
         /// This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
@@ -243,7 +243,13 @@ namespace Pulumi.AliCloud.CloudSso
     [OutputType]
     public sealed class GetGroupsResult
     {
+        /// <summary>
+        /// The ID of the Directory.
+        /// </summary>
         public readonly string DirectoryId;
+        /// <summary>
+        /// A list of Cloud Sso Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -251,8 +257,14 @@ namespace Pulumi.AliCloud.CloudSso
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+        /// </summary>
         public readonly string? ProvisionType;
 
         [OutputConstructor]

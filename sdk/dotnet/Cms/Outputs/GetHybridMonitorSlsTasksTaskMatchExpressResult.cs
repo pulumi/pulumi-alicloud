@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class GetHybridMonitorSlsTasksTaskMatchExpressResult
     {
         /// <summary>
-        /// The method that is used to match the instance name.
+        /// The function that is used to aggregate log data within a statistical period.
         /// </summary>
         public readonly string Function;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The keyword that corresponds to the instance name.
+        /// The value of the key that is used to filter logs imported from Log Service.
         /// </summary>
         public readonly string Value;
 

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Edas Namespaces of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.173.0+.
+// > **NOTE:** Available since v1.173.0.
 //
 // ## Example Usage
 //
@@ -75,10 +75,12 @@ type GetNamespacesArgs struct {
 // A collection of values returned by getNamespaces.
 type GetNamespacesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                   `pulumi:"id"`
-	Ids        []string                 `pulumi:"ids"`
-	NameRegex  *string                  `pulumi:"nameRegex"`
-	Names      []string                 `pulumi:"names"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Namespace names.
+	Names []string `pulumi:"names"`
+	// A list of Edas Namespaces. Each element contains the following attributes:
 	Namespaces []GetNamespacesNamespace `pulumi:"namespaces"`
 	OutputFile *string                  `pulumi:"outputFile"`
 }
@@ -130,10 +132,12 @@ func (o GetNamespacesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNamespacesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Namespace names.
 func (o GetNamespacesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNamespacesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// A list of Edas Namespaces. Each element contains the following attributes:
 func (o GetNamespacesResultOutput) Namespaces() GetNamespacesNamespaceArrayOutput {
 	return o.ApplyT(func(v GetNamespacesResult) []GetNamespacesNamespace { return v.Namespaces }).(GetNamespacesNamespaceArrayOutput)
 }

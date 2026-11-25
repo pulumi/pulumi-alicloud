@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// Number of probes available.
         /// </summary>
         public readonly int AvailableProbeNum;
+        /// <summary>
+        /// The creation time of the honeypot management node.
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// The ID of the Honeypot management node.
@@ -38,6 +41,9 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// Release the collection of network segments.
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupProbeIpLists;
+        /// <summary>
+        /// The status of the honeypot management node.
+        /// </summary>
         public readonly int Status;
 
         [OutputConstructor]

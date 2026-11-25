@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -228,6 +228,9 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEcsDeploymentSetsResult
     {
+        /// <summary>
+        /// The name of the deployment set.
+        /// </summary>
         public readonly string? DeploymentSetName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -235,9 +238,18 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Deployment Set names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ecs Deployment Sets. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsDeploymentSetsSetResult> Sets;
+        /// <summary>
+        /// The deployment strategy.
+        /// </summary>
         public readonly string? Strategy;
 
         [OutputConstructor]

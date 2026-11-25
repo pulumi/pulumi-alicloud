@@ -35,10 +35,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var description = config.Get("description") ?? "Created by Terraform";
     ///     var firewallName = config.Get("firewallName") ?? "tf-example";
-    ///     var trAttachmentMasterCidr = config.Get("trAttachmentMasterCidr") ?? "192.168.3.192/26";
-    ///     var firewallSubnetCidr = config.Get("firewallSubnetCidr") ?? "192.168.3.0/25";
     ///     var region = config.Get("region") ?? "cn-hangzhou";
-    ///     var trAttachmentSlaveCidr = config.Get("trAttachmentSlaveCidr") ?? "192.168.3.128/26";
     ///     var firewallVpcCidr = config.Get("firewallVpcCidr") ?? "192.168.3.0/24";
     ///     var zone1 = config.Get("zone1") ?? "cn-hangzhou-h";
     ///     var firewallNameUpdate = config.Get("firewallNameUpdate") ?? "tf-example-1";
@@ -108,46 +105,30 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///                 VswitchId = vpc1vsw2.Id,
     ///             },
     ///         },
-    ///         VpcId = vpc1.Id,
+    ///         VpcId = foo.VpcId,
     ///         CenId = cen.Id,
     ///         TransitRouterId = tr.TransitRouterId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             foo,
-    ///         },
     ///     });
     /// 
     ///     var wait10Minutes = new Time.Sleep("wait_10_minutes", new()
     ///     {
     ///         CreateDuration = "10m",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
+    ///         Triggers = 
     ///         {
-    ///             tr_vpc1,
+    ///             { "attachmentId", tr_vpc1.Id },
+    ///             { "cenId", tr_vpc1.CenId },
     ///         },
     ///     });
     /// 
     ///     var defaultVpcCenTrFirewall = new AliCloud.CloudFirewall.VpcCenTrFirewall("default", new()
     ///     {
-    ///         CenId = tr_vpc1.CenId,
+    ///         CenId = wait10Minutes.Triggers.Cen_id,
     ///         FirewallName = name,
-    ///         FirewallSubnetCidr = firewallSubnetCidr,
-    ///         TrAttachmentSlaveCidr = trAttachmentSlaveCidr,
     ///         FirewallDescription = "VpcCenTrFirewall created by terraform",
     ///         RegionNo = region,
-    ///         TrAttachmentMasterCidr = trAttachmentMasterCidr,
     ///         FirewallVpcCidr = firewallVpcCidr,
     ///         TransitRouterId = tr.TransitRouterId,
     ///         RouteMode = "managed",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             wait10Minutes,
-    ///         },
     ///     });
     /// 
     /// });
@@ -197,10 +178,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> FirewallName { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+        /// Field `FirewallSubnetCidr` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Output("firewallSubnetCidr")]
-        public Output<string?> FirewallSubnetCidr { get; private set; } = null!;
+        public Output<string> FirewallSubnetCidr { get; private set; } = null!;
 
         /// <summary>
         /// The attachment ID used in the firewall VPC to connect to the transit router (TR) in automatic mode.
@@ -212,7 +193,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The CIDR block of the firewall VPC in automatic mode.
         /// </summary>
         [Output("firewallVpcCidr")]
-        public Output<string> FirewallVpcCidr { get; private set; } = null!;
+        public Output<string?> FirewallVpcCidr { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC where the firewall ENI is created in manual mode.
+        /// </summary>
+        [Output("firewallVpcId")]
+        public Output<string> FirewallVpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the vSwitch where the firewall ENI is created in manual mode.
+        /// </summary>
+        [Output("firewallVswitchId")]
+        public Output<string> FirewallVswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The region ID of transit router instance I.
@@ -233,29 +226,25 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+        /// Field `TrAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Output("trAttachmentMasterCidr")]
         public Output<string?> TrAttachmentMasterCidr { get; private set; } = null!;
 
         /// <summary>
         /// The primary zone of the vSwitch.
-        /// 
-        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("trAttachmentMasterZone")]
         public Output<string?> TrAttachmentMasterZone { get; private set; } = null!;
 
         /// <summary>
-        /// The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+        /// Field `TrAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Output("trAttachmentSlaveCidr")]
         public Output<string?> TrAttachmentSlaveCidr { get; private set; } = null!;
 
         /// <summary>
         /// The secondary zone of the vSwitch.
-        /// 
-        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("trAttachmentSlaveZone")]
         public Output<string?> TrAttachmentSlaveZone { get; private set; } = null!;
@@ -331,7 +320,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> FirewallName { get; set; } = null!;
 
         /// <summary>
-        /// The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+        /// Field `FirewallSubnetCidr` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Input("firewallSubnetCidr")]
         public Input<string>? FirewallSubnetCidr { get; set; }
@@ -339,8 +328,20 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The CIDR block of the firewall VPC in automatic mode.
         /// </summary>
-        [Input("firewallVpcCidr", required: true)]
-        public Input<string> FirewallVpcCidr { get; set; } = null!;
+        [Input("firewallVpcCidr")]
+        public Input<string>? FirewallVpcCidr { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC where the firewall ENI is created in manual mode.
+        /// </summary>
+        [Input("firewallVpcId")]
+        public Input<string>? FirewallVpcId { get; set; }
+
+        /// <summary>
+        /// The ID of the vSwitch where the firewall ENI is created in manual mode.
+        /// </summary>
+        [Input("firewallVswitchId")]
+        public Input<string>? FirewallVswitchId { get; set; }
 
         /// <summary>
         /// The region ID of transit router instance I.
@@ -355,29 +356,25 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> RouteMode { get; set; } = null!;
 
         /// <summary>
-        /// The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+        /// Field `TrAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Input("trAttachmentMasterCidr")]
         public Input<string>? TrAttachmentMasterCidr { get; set; }
 
         /// <summary>
         /// The primary zone of the vSwitch.
-        /// 
-        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("trAttachmentMasterZone")]
         public Input<string>? TrAttachmentMasterZone { get; set; }
 
         /// <summary>
-        /// The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+        /// Field `TrAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Input("trAttachmentSlaveCidr")]
         public Input<string>? TrAttachmentSlaveCidr { get; set; }
 
         /// <summary>
         /// The secondary zone of the vSwitch.
-        /// 
-        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("trAttachmentSlaveZone")]
         public Input<string>? TrAttachmentSlaveZone { get; set; }
@@ -427,7 +424,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? FirewallName { get; set; }
 
         /// <summary>
-        /// The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
+        /// Field `FirewallSubnetCidr` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Input("firewallSubnetCidr")]
         public Input<string>? FirewallSubnetCidr { get; set; }
@@ -443,6 +440,18 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Input("firewallVpcCidr")]
         public Input<string>? FirewallVpcCidr { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC where the firewall ENI is created in manual mode.
+        /// </summary>
+        [Input("firewallVpcId")]
+        public Input<string>? FirewallVpcId { get; set; }
+
+        /// <summary>
+        /// The ID of the vSwitch where the firewall ENI is created in manual mode.
+        /// </summary>
+        [Input("firewallVswitchId")]
+        public Input<string>? FirewallVswitchId { get; set; }
 
         /// <summary>
         /// The region ID of transit router instance I.
@@ -463,29 +472,25 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+        /// Field `TrAttachmentMasterCidr` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Input("trAttachmentMasterCidr")]
         public Input<string>? TrAttachmentMasterCidr { get; set; }
 
         /// <summary>
         /// The primary zone of the vSwitch.
-        /// 
-        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("trAttachmentMasterZone")]
         public Input<string>? TrAttachmentMasterZone { get; set; }
 
         /// <summary>
-        /// The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
+        /// Field `TrAttachmentSlaveCidr` has been deprecated from provider version 2.2.0.
         /// </summary>
         [Input("trAttachmentSlaveCidr")]
         public Input<string>? TrAttachmentSlaveCidr { get; set; }
 
         /// <summary>
         /// The secondary zone of the vSwitch.
-        /// 
-        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("trAttachmentSlaveZone")]
         public Input<string>? TrAttachmentSlaveZone { get; set; }

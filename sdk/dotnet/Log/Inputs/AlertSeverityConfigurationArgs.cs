@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         private InputMap<string>? _evalCondition;
 
         /// <summary>
-        /// Severity when this condition is met.
+        /// Severity when this condition is met. The map supports `Condition` (condition for each row) and `CountCondition` (count's condition for the rows met condition above) keys.
         /// </summary>
         public InputMap<string> EvalCondition
         {

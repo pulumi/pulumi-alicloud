@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // ## Example Usage
 //
@@ -71,13 +71,16 @@ type GetSimpleOfficeSitesArgs struct {
 // A collection of values returned by getSimpleOfficeSites.
 type GetSimpleOfficeSitesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                     `pulumi:"id"`
-	Ids        []string                   `pulumi:"ids"`
-	NameRegex  *string                    `pulumi:"nameRegex"`
-	Names      []string                   `pulumi:"names"`
-	OutputFile *string                    `pulumi:"outputFile"`
-	Sites      []GetSimpleOfficeSitesSite `pulumi:"sites"`
-	Status     *string                    `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Simple Office Site names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ecd Simple Office Sites. Each element contains the following attributes:
+	Sites []GetSimpleOfficeSitesSite `pulumi:"sites"`
+	// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+	Status *string `pulumi:"status"`
 }
 
 func GetSimpleOfficeSitesOutput(ctx *pulumi.Context, args GetSimpleOfficeSitesOutputArgs, opts ...pulumi.InvokeOption) GetSimpleOfficeSitesResultOutput {
@@ -129,6 +132,7 @@ func (o GetSimpleOfficeSitesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSimpleOfficeSitesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Simple Office Site names.
 func (o GetSimpleOfficeSitesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSimpleOfficeSitesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -137,10 +141,12 @@ func (o GetSimpleOfficeSitesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSimpleOfficeSitesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Simple Office Sites. Each element contains the following attributes:
 func (o GetSimpleOfficeSitesResultOutput) Sites() GetSimpleOfficeSitesSiteArrayOutput {
 	return o.ApplyT(func(v GetSimpleOfficeSitesResult) []GetSimpleOfficeSitesSite { return v.Sites }).(GetSimpleOfficeSitesSiteArrayOutput)
 }
 
+// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
 func (o GetSimpleOfficeSitesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSimpleOfficeSitesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

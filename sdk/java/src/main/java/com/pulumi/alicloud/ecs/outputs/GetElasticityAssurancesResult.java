@@ -43,7 +43,7 @@ public final class GetElasticityAssurancesResult {
      */
     private @Nullable String status;
     /**
-     * @return A mapping of tags to assign to the Capacity Reservation.
+     * @return (Optional) A mapping of tags to assign to the Capacity Reservation.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -91,7 +91,7 @@ public final class GetElasticityAssurancesResult {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return A mapping of tags to assign to the Capacity Reservation.
+     * @return (Optional) A mapping of tags to assign to the Capacity Reservation.
      * 
      */
     public Map<String,String> tags() {

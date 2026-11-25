@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0.
  *
  * ## Example Usage
  *
@@ -50,12 +50,15 @@ export interface GetReplicationVaultRegionsResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * A list of Ros Regions. Each element contains the following attributes:
+     */
     readonly regions: outputs.hbr.GetReplicationVaultRegionsRegion[];
 }
 /**
  * This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0.
  *
  * ## Example Usage
  *

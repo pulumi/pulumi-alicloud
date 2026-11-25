@@ -39,11 +39,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
- * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.LaunchTemplate;
  * import com.pulumi.alicloud.ecs.LaunchTemplateArgs;
+ * import com.pulumi.alicloud.ecs.inputs.LaunchTemplateSystemDiskArgs;
  * import com.pulumi.alicloud.ecs.inputs.LaunchTemplateNetworkInterfacesArgs;
  * import com.pulumi.alicloud.ecs.inputs.LaunchTemplateDataDiskArgs;
  * import java.util.ArrayList;
@@ -59,41 +67,62 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
  *         final var images = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^ubuntu_18.*64")
  *             .owners("system")
  *             .build());
  * 
- *         final var instances = EcsFunctions.getInstances(GetInstancesArgs.builder()
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .securityGroupName("terraform-example")
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var template = new LaunchTemplate("template", LaunchTemplateArgs.builder()
- *             .name("tf-test-template")
+ *             .launchTemplateName("tf-template")
  *             .description("test1")
  *             .imageId(images.images()[0].id())
- *             .hostName("tf-test-host")
+ *             .hostName("tf-host")
  *             .instanceChargeType("PrePaid")
  *             .instanceName("tf-instance-name")
- *             .instanceType(instances.instances()[0].instanceType())
+ *             .instanceType("ecs.s6-c1m1.small")
  *             .internetChargeType("PayByBandwidth")
  *             .internetMaxBandwidthIn(5)
- *             .internetMaxBandwidthOut(0)
- *             .ioOptimized("none")
- *             .keyPairName("test-key-pair")
+ *             .internetMaxBandwidthOut(5)
+ *             .ioOptimized("optimized")
+ *             .keyPairName("tf-key-pair")
  *             .ramRoleName("xxxxx")
  *             .networkType("vpc")
  *             .securityEnhancementStrategy("Active")
  *             .spotPriceLimit(5.0)
  *             .spotStrategy("SpotWithPriceLimit")
- *             .securityGroupId("sg-zxcvj0lasdf102350asdf9a")
- *             .systemDiskCategory("cloud_ssd")
- *             .systemDiskDescription("test disk")
- *             .systemDiskName("hello")
- *             .systemDiskSize(40)
- *             .resourceGroupId("rg-zkdfjahg9zxncv0")
- *             .userdata("xxxxxxxxxxxxxx")
- *             .vswitchId("sw-ljkngaksdjfj0nnasdf")
- *             .vpcId("vpc-asdfnbg0as8dfk1nb2")
- *             .zoneId("beijing-a")
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(default_.zones()[0].id())
+ *             .userData("xxxxxxxxxxxxxx")
+ *             .systemDisk(LaunchTemplateSystemDiskArgs.builder()
+ *                 .category("cloud_ssd")
+ *                 .description("test disk")
+ *                 .name("hello")
+ *                 .size(40)
+ *                 .build())
  *             .tags(Map.ofEntries(
  *                 Map.entry("tag1", "hello"),
  *                 Map.entry("tag2", "world")
@@ -102,8 +131,8 @@ import javax.annotation.Nullable;
  *                 .name("eth0")
  *                 .description("hello1")
  *                 .primaryIp("10.0.0.2")
- *                 .securityGroupId("xxxx")
- *                 .vswitchId("xxxxxxx")
+ *                 .securityGroupId(defaultSecurityGroup.id())
+ *                 .vswitchId(defaultSwitch.id())
  *                 .build())
  *             .dataDisks(            
  *                 LaunchTemplateDataDiskArgs.builder()
@@ -135,54 +164,86 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/launchTemplate:LaunchTemplate")
 public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     /**
-     * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+     * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
      * 
      */
     @Export(name="autoReleaseTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoReleaseTime;
 
     /**
-     * @return Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+     * @return Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
      * 
      */
     public Output<Optional<String>> autoReleaseTime() {
         return Codegen.optional(this.autoReleaseTime);
     }
+    /**
+     * Whether to enable auto-renewal for the instance.
+     * 
+     */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenew;
 
+    /**
+     * @return Whether to enable auto-renewal for the instance.
+     * 
+     */
     public Output<Boolean> autoRenew() {
         return this.autoRenew;
     }
+    /**
+     * The auto-renewal period of the instance.
+     * 
+     */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> autoRenewPeriod;
 
+    /**
+     * @return The auto-renewal period of the instance.
+     * 
+     */
     public Output<Integer> autoRenewPeriod() {
         return this.autoRenewPeriod;
     }
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,LaunchTemplateDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LaunchTemplateDataDisk>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance.
+     * @return The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     public Output<Optional<List<LaunchTemplateDataDisk>>> dataDisks() {
         return Codegen.optional(this.dataDisks);
     }
+    /**
+     * The version number of the default launch template version.
+     * 
+     */
     @Export(name="defaultVersionNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultVersionNumber;
 
+    /**
+     * @return The version number of the default launch template version.
+     * 
+     */
     public Output<Integer> defaultVersionNumber() {
         return this.defaultVersionNumber;
     }
+    /**
+     * The ID of the deployment set.
+     * 
+     */
     @Export(name="deploymentSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentSetId;
 
+    /**
+     * @return The ID of the deployment set.
+     * 
+     */
     public Output<Optional<String>> deploymentSetId() {
         return Codegen.optional(this.deploymentSetId);
     }
@@ -200,41 +261,73 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Whether to enable VM OS configuration.
+     * 
+     */
     @Export(name="enableVmOsConfig", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableVmOsConfig;
 
+    /**
+     * @return Whether to enable VM OS configuration.
+     * 
+     */
     public Output<Optional<Boolean>> enableVmOsConfig() {
         return Codegen.optional(this.enableVmOsConfig);
     }
     /**
-     * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+     * Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      * 
      */
     @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     /**
-     * @return Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+     * @return Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      * 
      */
     public Output<Optional<String>> hostName() {
         return Codegen.optional(this.hostName);
     }
+    /**
+     * Whether to enable access to instance metadata.
+     * 
+     */
     @Export(name="httpEndpoint", refs={String.class}, tree="[0]")
     private Output<String> httpEndpoint;
 
+    /**
+     * @return Whether to enable access to instance metadata.
+     * 
+     */
     public Output<String> httpEndpoint() {
         return this.httpEndpoint;
     }
+    /**
+     * The HTTP PUT response hop limit required for instance metadata requests.
+     * 
+     */
     @Export(name="httpPutResponseHopLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> httpPutResponseHopLimit;
 
+    /**
+     * @return The HTTP PUT response hop limit required for instance metadata requests.
+     * 
+     */
     public Output<Integer> httpPutResponseHopLimit() {
         return this.httpPutResponseHopLimit;
     }
+    /**
+     * Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+     * 
+     */
     @Export(name="httpTokens", refs={String.class}, tree="[0]")
     private Output<String> httpTokens;
 
+    /**
+     * @return Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+     * 
+     */
     public Output<String> httpTokens() {
         return this.httpTokens;
     }
@@ -252,15 +345,31 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
     }
+    /**
+     * The options of images. See `imageOptions` below.
+     * 
+     */
     @Export(name="imageOptions", refs={LaunchTemplateImageOptions.class}, tree="[0]")
     private Output<LaunchTemplateImageOptions> imageOptions;
 
+    /**
+     * @return The options of images. See `imageOptions` below.
+     * 
+     */
     public Output<LaunchTemplateImageOptions> imageOptions() {
         return this.imageOptions;
     }
+    /**
+     * The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+     * 
+     */
     @Export(name="imageOwnerAlias", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageOwnerAlias;
 
+    /**
+     * @return The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+     * 
+     */
     public Output<Optional<String>> imageOwnerAlias() {
         return Codegen.optional(this.imageOwnerAlias);
     }
@@ -376,7 +485,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the key pair.
-     * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+     * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      * 
      */
@@ -385,27 +494,43 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the key pair.
-     * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+     * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      * 
      */
     public Output<Optional<String>> keyPairName() {
         return Codegen.optional(this.keyPairName);
     }
+    /**
+     * The latest version number of the launch template.
+     * 
+     */
     @Export(name="latestVersionNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> latestVersionNumber;
 
+    /**
+     * @return The latest version number of the launch template.
+     * 
+     */
     public Output<Integer> latestVersionNumber() {
         return this.latestVersionNumber;
     }
+    /**
+     * The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * 
+     */
     @Export(name="launchTemplateName", refs={String.class}, tree="[0]")
     private Output<String> launchTemplateName;
 
+    /**
+     * @return The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * 
+     */
     public Output<String> launchTemplateName() {
         return this.launchTemplateName;
     }
     /**
-     * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
      * 
@@ -415,21 +540,21 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * @return It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The list of network interfaces created with instance.
+     * The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     @Export(name="networkInterfaces", refs={LaunchTemplateNetworkInterfaces.class}, tree="[0]")
     private Output</* @Nullable */ LaunchTemplateNetworkInterfaces> networkInterfaces;
 
     /**
-     * @return The list of network interfaces created with instance.
+     * @return The list of network interfaces created with instance. See `networkInterfaces` below.
      * 
      */
     public Output<Optional<LaunchTemplateNetworkInterfaces>> networkInterfaces() {
@@ -449,27 +574,59 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> networkType() {
         return Codegen.optional(this.networkType);
     }
+    /**
+     * Whether to use the password inherited from the image.
+     * 
+     */
     @Export(name="passwordInherit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordInherit;
 
+    /**
+     * @return Whether to use the password inherited from the image.
+     * 
+     */
     public Output<Optional<Boolean>> passwordInherit() {
         return Codegen.optional(this.passwordInherit);
     }
+    /**
+     * The purchase duration of the instance.
+     * 
+     */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
+    /**
+     * @return The purchase duration of the instance.
+     * 
+     */
     public Output<Integer> period() {
         return this.period;
     }
+    /**
+     * The unit of the purchase duration.
+     * 
+     */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output<String> periodUnit;
 
+    /**
+     * @return The unit of the purchase duration.
+     * 
+     */
     public Output<String> periodUnit() {
         return this.periodUnit;
     }
+    /**
+     * The private IP address of the instance.
+     * 
+     */
     @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateIpAddress;
 
+    /**
+     * @return The private IP address of the instance.
+     * 
+     */
     public Output<Optional<String>> privateIpAddress() {
         return Codegen.optional(this.privateIpAddress);
     }
@@ -487,9 +644,17 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> ramRoleName() {
         return Codegen.optional(this.ramRoleName);
     }
+    /**
+     * The ID of the resource group to which the resource belongs.
+     * 
+     */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group to which the resource belongs.
+     * 
+     */
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
@@ -521,15 +686,31 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> securityGroupId() {
         return Codegen.optional(this.securityGroupId);
     }
+    /**
+     * The list of security group IDs.
+     * 
+     */
     @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
+    /**
+     * @return The list of security group IDs.
+     * 
+     */
     public Output<Optional<List<String>>> securityGroupIds() {
         return Codegen.optional(this.securityGroupIds);
     }
+    /**
+     * The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+     * 
+     */
     @Export(name="spotDuration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotDuration;
 
+    /**
+     * @return The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+     * 
+     */
     public Output<Optional<String>> spotDuration() {
         return Codegen.optional(this.spotDuration);
     }
@@ -567,19 +748,22 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> spotStrategy() {
         return Codegen.optional(this.spotStrategy);
     }
+    /**
+     * The system disk. See `systemDisk` below.
+     * 
+     */
     @Export(name="systemDisk", refs={LaunchTemplateSystemDisk.class}, tree="[0]")
     private Output<LaunchTemplateSystemDisk> systemDisk;
 
+    /**
+     * @return The system disk. See `systemDisk` below.
+     * 
+     */
     public Output<LaunchTemplateSystemDisk> systemDisk() {
         return this.systemDisk;
     }
     /**
-     * The category of the system disk. System disk type. Optional values:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
+     * It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -589,19 +773,14 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> systemDiskCategory;
 
     /**
-     * @return The category of the system disk. System disk type. Optional values:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
+     * @return It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      */
     public Output<String> systemDiskCategory() {
         return this.systemDiskCategory;
     }
     /**
-     * System disk description. It cannot begin with http:// or https://.
+     * It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -611,14 +790,14 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> systemDiskDescription;
 
     /**
-     * @return System disk description. It cannot begin with http:// or https://.
+     * @return It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      */
     public Output<String> systemDiskDescription() {
         return this.systemDiskDescription;
     }
     /**
-     * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+     * It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -628,14 +807,14 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> systemDiskName;
 
     /**
-     * @return System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+     * @return It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      */
     public Output<String> systemDiskName() {
         return this.systemDiskName;
     }
     /**
-     * Size of the system disk, measured in GB. Value range: [20, 500].
+     * It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      * @deprecated Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
      * 
@@ -645,7 +824,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<Integer> systemDiskSize;
 
     /**
-     * @return Size of the system disk, measured in GB. Value range: [20, 500].
+     * @return It has been deprecated from version 1.120.0. New field `systemDisk` instead.
      * 
      */
     public Output<Integer> systemDiskSize() {
@@ -669,32 +848,64 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * The ID of the resource group for the launch template.
+     * 
+     */
     @Export(name="templateResourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateResourceGroupId;
 
+    /**
+     * @return The ID of the resource group for the launch template.
+     * 
+     */
     public Output<Optional<String>> templateResourceGroupId() {
         return Codegen.optional(this.templateResourceGroupId);
     }
+    /**
+     * A mapping of tags to assign to the launch template.
+     * 
+     */
     @Export(name="templateTags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> templateTags;
 
+    /**
+     * @return A mapping of tags to assign to the launch template.
+     * 
+     */
     public Output<Optional<Map<String,String>>> templateTags() {
         return Codegen.optional(this.templateTags);
     }
+    /**
+     * Whether to update the default version of the launch template to the latest version automatically.
+     * 
+     */
     @Export(name="updateDefaultVersionNumber", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> updateDefaultVersionNumber;
 
+    /**
+     * @return Whether to update the default version of the launch template to the latest version automatically.
+     * 
+     */
     public Output<Optional<Boolean>> updateDefaultVersionNumber() {
         return Codegen.optional(this.updateDefaultVersionNumber);
     }
+    /**
+     * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     * 
+     */
     @Export(name="userData", refs={String.class}, tree="[0]")
     private Output<String> userData;
 
+    /**
+     * @return User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     * 
+     */
     public Output<String> userData() {
         return this.userData;
     }
     /**
-     * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     * It has been deprecated from version 1.120.0. New field `userData` instead.
      * 
      * @deprecated Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
      * 
@@ -704,21 +915,37 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> userdata;
 
     /**
-     * @return User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+     * @return It has been deprecated from version 1.120.0. New field `userData` instead.
      * 
      */
     public Output<String> userdata() {
         return this.userdata;
     }
+    /**
+     * The description of the launch template version.
+     * 
+     */
     @Export(name="versionDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> versionDescription;
 
+    /**
+     * @return The description of the launch template version.
+     * 
+     */
     public Output<Optional<String>> versionDescription() {
         return Codegen.optional(this.versionDescription);
     }
+    /**
+     * The VPC ID.
+     * 
+     */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
+    /**
+     * @return The VPC ID.
+     * 
+     */
     public Output<String> vpcId() {
         return this.vpcId;
     }

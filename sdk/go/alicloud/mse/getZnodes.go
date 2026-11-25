@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Mse Znodes of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.162.0+.
+// > **NOTE:** Available since v1.162.0.
 //
 // ## Example Usage
 //
@@ -86,15 +86,19 @@ type GetZnodesArgs struct {
 // A collection of values returned by getZnodes.
 type GetZnodesResult struct {
 	AcceptLanguage *string `pulumi:"acceptLanguage"`
-	ClusterId      string  `pulumi:"clusterId"`
+	// The ID of the Cluster.
+	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string           `pulumi:"id"`
-	Ids        []string         `pulumi:"ids"`
-	NameRegex  *string          `pulumi:"nameRegex"`
-	Names      []string         `pulumi:"names"`
-	OutputFile *string          `pulumi:"outputFile"`
-	Path       string           `pulumi:"path"`
-	Znodes     []GetZnodesZnode `pulumi:"znodes"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Znode names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The Node path.
+	Path string `pulumi:"path"`
+	// A list of Mse Znodes. Each element contains the following attributes:
+	Znodes []GetZnodesZnode `pulumi:"znodes"`
 }
 
 func GetZnodesOutput(ctx *pulumi.Context, args GetZnodesOutputArgs, opts ...pulumi.InvokeOption) GetZnodesResultOutput {
@@ -141,6 +145,7 @@ func (o GetZnodesResultOutput) AcceptLanguage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZnodesResult) *string { return v.AcceptLanguage }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the Cluster.
 func (o GetZnodesResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZnodesResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -158,6 +163,7 @@ func (o GetZnodesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZnodesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Znode names.
 func (o GetZnodesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZnodesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -166,10 +172,12 @@ func (o GetZnodesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZnodesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The Node path.
 func (o GetZnodesResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZnodesResult) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// A list of Mse Znodes. Each element contains the following attributes:
 func (o GetZnodesResultOutput) Znodes() GetZnodesZnodeArrayOutput {
 	return o.ApplyT(func(v GetZnodesResult) []GetZnodesZnode { return v.Znodes }).(GetZnodesZnodeArrayOutput)
 }

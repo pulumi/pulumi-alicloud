@@ -13,7 +13,7 @@ import (
 
 // This data source provides the master slave server groups related to a server load balancer.
 //
-// > **NOTE:** Available in 1.54.0+
+// > **NOTE:** Available since v1.54.0.
 func GetMasterSlaveServerGroups(ctx *pulumi.Context, args *GetMasterSlaveServerGroupsArgs, opts ...pulumi.InvokeOption) (*GetMasterSlaveServerGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMasterSlaveServerGroupsResult

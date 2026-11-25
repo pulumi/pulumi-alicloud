@@ -36,7 +36,7 @@ public final class GetFunctionsFunction {
      */
     private String creationTime;
     /**
-     * @return The configuration for custom container runtime. It contains following attributes:
+     * @return (Optional, MaxItems: 1) The configuration for custom container runtime. The data source Read backfills this block from the server response when the function uses a custom container; it contains the following attributes:
      * 
      */
     private @Nullable GetFunctionsFunctionCustomContainerConfig customContainerConfig;
@@ -136,7 +136,7 @@ public final class GetFunctionsFunction {
         return this.creationTime;
     }
     /**
-     * @return The configuration for custom container runtime. It contains following attributes:
+     * @return (Optional, MaxItems: 1) The configuration for custom container runtime. The data source Read backfills this block from the server response when the function uses a custom container; it contains the following attributes:
      * 
      */
     public Optional<GetFunctionsFunctionCustomContainerConfig> customContainerConfig() {

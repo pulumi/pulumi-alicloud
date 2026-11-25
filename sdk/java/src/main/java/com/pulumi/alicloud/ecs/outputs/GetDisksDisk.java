@@ -17,18 +17,22 @@ import java.util.Objects;
 @CustomType
 public final class GetDisksDisk {
     /**
-     * @return Disk attachment time.
+     * @return The attached time.
      * 
      */
     private String attachedTime;
+    /**
+     * @return The ID of the automatic snapshot policy.
+     * 
+     */
     private String autoSnapshotPolicyId;
     /**
-     * @return Availability zone of the disk.
+     * @return The availability zone. Deprecated; use `zoneId` instead.
      * 
      */
     private String availabilityZone;
     /**
-     * @return Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
+     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, and `cloudRegionalDiskAuto` (Regional ESSD).
      * 
      */
     private String category;
@@ -37,7 +41,15 @@ public final class GetDisksDisk {
      * 
      */
     private String creationTime;
+    /**
+     * @return Whether to delete the automatic snapshot.
+     * 
+     */
     private Boolean deleteAutoSnapshot;
+    /**
+     * @return Whether to delete the disk with the instance.
+     * 
+     */
     private Boolean deleteWithInstance;
     /**
      * @return Disk description.
@@ -49,11 +61,35 @@ public final class GetDisksDisk {
      * 
      */
     private String detachedTime;
+    /**
+     * @return The device name.
+     * 
+     */
     private String device;
+    /**
+     * @return The ID of the disk.
+     * 
+     */
     private String diskId;
+    /**
+     * @return The name of the disk.
+     * 
+     */
     private String diskName;
+    /**
+     * @return Disk type. Valid values: `system`, `data`, `all`.
+     * 
+     */
     private String diskType;
+    /**
+     * @return Whether to enable the automatic snapshot.
+     * 
+     */
     private Boolean enableAutoSnapshot;
+    /**
+     * @return Whether to enable the automated snapshot policy.
+     * 
+     */
     private Boolean enableAutomatedSnapshotPolicy;
     /**
      * @return Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
@@ -65,6 +101,10 @@ public final class GetDisksDisk {
      * 
      */
     private String expirationTime;
+    /**
+     * @return The expired time of the disk.
+     * 
+     */
     private String expiredTime;
     /**
      * @return ID of the disk.
@@ -81,21 +121,65 @@ public final class GetDisksDisk {
      * 
      */
     private String instanceId;
+    /**
+     * @return The IOPS of the disk.
+     * 
+     */
     private Integer iops;
+    /**
+     * @return The read IOPS.
+     * 
+     */
     private Integer iopsRead;
+    /**
+     * @return The write IOPS.
+     * 
+     */
     private Integer iopsWrite;
+    /**
+     * @return The KMS key ID.
+     * 
+     */
     private String kmsKeyId;
+    /**
+     * @return The number of mounted instances.
+     * 
+     */
     private Integer mountInstanceNum;
+    /**
+     * @return A list of mounted instances.
+     * 
+     */
     private List<GetDisksDiskMountInstance> mountInstances;
     /**
      * @return Disk name.
      * 
      */
     private String name;
+    /**
+     * @return Operation locks. See `operationLocks` below.
+     * 
+     */
     private List<GetDisksDiskOperationLock> operationLocks;
+    /**
+     * @return The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
     private String paymentType;
+    /**
+     * @return The performance level of the ESSD.
+     * 
+     */
     private String performanceLevel;
+    /**
+     * @return Whether the disk is portable.
+     * 
+     */
     private Boolean portable;
+    /**
+     * @return The product code.
+     * 
+     */
     private String productCode;
     /**
      * @return Region ID the disk belongs to.
@@ -113,17 +197,18 @@ public final class GetDisksDisk {
      */
     private Integer size;
     /**
-     * @return Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * @return The snapshot ID.
      * 
      */
     private String snapshotId;
     /**
-     * @return Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+     * @return The status of the disk.
      * 
      */
     private String status;
     /**
      * @return A map of tags assigned to the disks. It must be in the format:
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -165,28 +250,36 @@ public final class GetDisksDisk {
      * 
      */
     private String type;
+    /**
+     * @return The zone ID.
+     * 
+     */
     private String zoneId;
 
     private GetDisksDisk() {}
     /**
-     * @return Disk attachment time.
+     * @return The attached time.
      * 
      */
     public String attachedTime() {
         return this.attachedTime;
     }
+    /**
+     * @return The ID of the automatic snapshot policy.
+     * 
+     */
     public String autoSnapshotPolicyId() {
         return this.autoSnapshotPolicyId;
     }
     /**
-     * @return Availability zone of the disk.
+     * @return The availability zone. Deprecated; use `zoneId` instead.
      * 
      */
     public String availabilityZone() {
         return this.availabilityZone;
     }
     /**
-     * @return Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
+     * @return Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, and `cloudRegionalDiskAuto` (Regional ESSD).
      * 
      */
     public String category() {
@@ -199,9 +292,17 @@ public final class GetDisksDisk {
     public String creationTime() {
         return this.creationTime;
     }
+    /**
+     * @return Whether to delete the automatic snapshot.
+     * 
+     */
     public Boolean deleteAutoSnapshot() {
         return this.deleteAutoSnapshot;
     }
+    /**
+     * @return Whether to delete the disk with the instance.
+     * 
+     */
     public Boolean deleteWithInstance() {
         return this.deleteWithInstance;
     }
@@ -219,21 +320,45 @@ public final class GetDisksDisk {
     public String detachedTime() {
         return this.detachedTime;
     }
+    /**
+     * @return The device name.
+     * 
+     */
     public String device() {
         return this.device;
     }
+    /**
+     * @return The ID of the disk.
+     * 
+     */
     public String diskId() {
         return this.diskId;
     }
+    /**
+     * @return The name of the disk.
+     * 
+     */
     public String diskName() {
         return this.diskName;
     }
+    /**
+     * @return Disk type. Valid values: `system`, `data`, `all`.
+     * 
+     */
     public String diskType() {
         return this.diskType;
     }
+    /**
+     * @return Whether to enable the automatic snapshot.
+     * 
+     */
     public Boolean enableAutoSnapshot() {
         return this.enableAutoSnapshot;
     }
+    /**
+     * @return Whether to enable the automated snapshot policy.
+     * 
+     */
     public Boolean enableAutomatedSnapshotPolicy() {
         return this.enableAutomatedSnapshotPolicy;
     }
@@ -251,6 +376,10 @@ public final class GetDisksDisk {
     public String expirationTime() {
         return this.expirationTime;
     }
+    /**
+     * @return The expired time of the disk.
+     * 
+     */
     public String expiredTime() {
         return this.expiredTime;
     }
@@ -275,21 +404,45 @@ public final class GetDisksDisk {
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return The IOPS of the disk.
+     * 
+     */
     public Integer iops() {
         return this.iops;
     }
+    /**
+     * @return The read IOPS.
+     * 
+     */
     public Integer iopsRead() {
         return this.iopsRead;
     }
+    /**
+     * @return The write IOPS.
+     * 
+     */
     public Integer iopsWrite() {
         return this.iopsWrite;
     }
+    /**
+     * @return The KMS key ID.
+     * 
+     */
     public String kmsKeyId() {
         return this.kmsKeyId;
     }
+    /**
+     * @return The number of mounted instances.
+     * 
+     */
     public Integer mountInstanceNum() {
         return this.mountInstanceNum;
     }
+    /**
+     * @return A list of mounted instances.
+     * 
+     */
     public List<GetDisksDiskMountInstance> mountInstances() {
         return this.mountInstances;
     }
@@ -300,18 +453,38 @@ public final class GetDisksDisk {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Operation locks. See `operationLocks` below.
+     * 
+     */
     public List<GetDisksDiskOperationLock> operationLocks() {
         return this.operationLocks;
     }
+    /**
+     * @return The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
     public String paymentType() {
         return this.paymentType;
     }
+    /**
+     * @return The performance level of the ESSD.
+     * 
+     */
     public String performanceLevel() {
         return this.performanceLevel;
     }
+    /**
+     * @return Whether the disk is portable.
+     * 
+     */
     public Boolean portable() {
         return this.portable;
     }
+    /**
+     * @return The product code.
+     * 
+     */
     public String productCode() {
         return this.productCode;
     }
@@ -337,14 +510,14 @@ public final class GetDisksDisk {
         return this.size;
     }
     /**
-     * @return Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * @return The snapshot ID.
      * 
      */
     public String snapshotId() {
         return this.snapshotId;
     }
     /**
-     * @return Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+     * @return The status of the disk.
      * 
      */
     public String status() {
@@ -352,6 +525,7 @@ public final class GetDisksDisk {
     }
     /**
      * @return A map of tags assigned to the disks. It must be in the format:
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -397,6 +571,10 @@ public final class GetDisksDisk {
     public String type() {
         return this.type;
     }
+    /**
+     * @return The zone ID.
+     * 
+     */
     public String zoneId() {
         return this.zoneId;
     }

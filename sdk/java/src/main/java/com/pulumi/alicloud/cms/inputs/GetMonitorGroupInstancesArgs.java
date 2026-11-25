@@ -16,23 +16,47 @@ public final class GetMonitorGroupInstancesArgs extends com.pulumi.resources.Inv
 
     public static final GetMonitorGroupInstancesArgs Empty = new GetMonitorGroupInstancesArgs();
 
+    /**
+     * A list of Monitor Group Instances IDs.
+     * 
+     */
     @Import(name="ids", required=true)
     private Output<String> ids;
 
+    /**
+     * @return A list of Monitor Group Instances IDs.
+     * 
+     */
     public Output<String> ids() {
         return this.ids;
     }
 
+    /**
+     * The keyword.
+     * 
+     */
     @Import(name="keyword")
     private @Nullable Output<String> keyword;
 
+    /**
+     * @return The keyword.
+     * 
+     */
     public Optional<Output<String>> keyword() {
         return Optional.ofNullable(this.keyword);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -63,29 +87,65 @@ public final class GetMonitorGroupInstancesArgs extends com.pulumi.resources.Inv
             $ = new GetMonitorGroupInstancesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of Monitor Group Instances IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(Output<String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of Monitor Group Instances IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param keyword The keyword.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyword(@Nullable Output<String> keyword) {
             $.keyword = keyword;
             return this;
         }
 
+        /**
+         * @param keyword The keyword.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyword(String keyword) {
             return keyword(Output.of(keyword));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -81,15 +81,24 @@ export interface GetControlPoliciesResult {
     readonly ids: string[];
     readonly language?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Control Policy names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Resource Manager Control Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.resourcemanager.GetControlPoliciesPolicy[];
+    /**
+     * The type of policy.
+     */
     readonly policyType?: string;
 }
 /**
  * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *

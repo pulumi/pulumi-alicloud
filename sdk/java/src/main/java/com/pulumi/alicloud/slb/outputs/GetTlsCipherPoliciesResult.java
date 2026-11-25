@@ -23,10 +23,26 @@ public final class GetTlsCipherPoliciesResult {
     private List<String> ids;
     private @Nullable Boolean includeListener;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Tls Cipher Policy names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Slb Tls Cipher Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetTlsCipherPoliciesPolicy> policies;
+    /**
+     * @return TLS policy instance state.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+     * 
+     */
     private @Nullable String tlsCipherPolicyName;
 
     private GetTlsCipherPoliciesResult() {}
@@ -46,18 +62,34 @@ public final class GetTlsCipherPoliciesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Tls Cipher Policy names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Slb Tls Cipher Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetTlsCipherPoliciesPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return TLS policy instance state.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+     * 
+     */
     public Optional<String> tlsCipherPolicyName() {
         return Optional.ofNullable(this.tlsCipherPolicyName);
     }

@@ -2819,17 +2819,27 @@ class GetClustersClusterTagResult(dict):
     def __init__(__self__, *,
                  key: _builtins.str,
                  value: _builtins.str):
+        """
+        :param _builtins.str key: The key of the tag.
+        :param _builtins.str value: The value of the tag.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> _builtins.str:
+        """
+        The key of the tag.
+        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
+        """
+        The value of the tag.
+        """
         return pulumi.get(self, "value")
 
 

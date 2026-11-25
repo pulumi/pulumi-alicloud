@@ -27,6 +27,10 @@ public final class GetDbInstancePlansPlan {
      * 
      */
     private List<GetDbInstancePlansPlanPlanConfig> planConfigs;
+    /**
+     * @return The description of the Plan.
+     * 
+     */
     private String planDesc;
     /**
      * @return The end time of the Plan.
@@ -54,7 +58,7 @@ public final class GetDbInstancePlansPlan {
      */
     private String planType;
     /**
-     * @return The Status of the Plan.
+     * @return Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
      * 
      */
     private String status;
@@ -81,6 +85,10 @@ public final class GetDbInstancePlansPlan {
     public List<GetDbInstancePlansPlanPlanConfig> planConfigs() {
         return this.planConfigs;
     }
+    /**
+     * @return The description of the Plan.
+     * 
+     */
     public String planDesc() {
         return this.planDesc;
     }
@@ -120,7 +128,7 @@ public final class GetDbInstancePlansPlan {
         return this.planType;
     }
     /**
-     * @return The Status of the Plan.
+     * @return Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
      * 
      */
     public String status() {

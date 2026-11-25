@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly bool SsoEnabled;
         /// <summary>
-        /// The status of directory.
+        /// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
         /// </summary>
         public readonly string Status;
         /// <summary>

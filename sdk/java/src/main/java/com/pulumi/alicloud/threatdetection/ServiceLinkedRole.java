@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -22,6 +23,10 @@ import javax.annotation.Nullable;
  * For information about Threat Detection Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/doc-detail/42302.htm).
  * 
  * &gt; **NOTE:** Available since v1.283.0.
+ * 
+ * &gt; **NOTE:** This resource refuses to adopt a service linked role that already exists, for example one created by the Security Center console or by another tool. Creation fails with the import command to run instead of taking the existing role into state, so that a later `terraform destroy` never deletes a role that Terraform did not create. When importing a role other than `AliyunServiceRoleForSas`, keep `serviceLinkedRole` in the configuration with that same name; because the argument has a default, omitting it plans a replacement of the imported role.
+ * 
+ * &gt; **NOTE:** Upgrading from v1.283.0-v2.1.0: if `serviceLinkedRole` was omitted from the configuration, the state entry stores an id that is not a role name. The first apply after upgrading replaces the resource and fails with an import hint. Run the printed `pulumi import` command; if it reports that the resource is already managed by Terraform, run `terraform state rm &lt;ADDRESS&gt;` and then import again.
  * 
  * ## Example Usage
  * 
@@ -86,18 +91,34 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
         return this.roleStatus;
     }
     /**
-     * The name of the service linked role.
+     * The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+     * - `AliyunServiceRoleForSas`
+     * - `AliyunServiceRoleForSasCspm`
+     * - `AliyunServiceRoleForSasAgentless`
+     * - `AliyunServiceRoleForOssMfd`
+     * - `AliyunServiceRoleForAntiRansomwareMssp`
+     * - `AliyunServiceRoleForSasSecllm`
+     * - `AliyunServiceRoleForSasAI`
+     * - `AliyunLogETLRole`
      * 
      */
     @Export(name="serviceLinkedRole", refs={String.class}, tree="[0]")
-    private Output<String> serviceLinkedRole;
+    private Output</* @Nullable */ String> serviceLinkedRole;
 
     /**
-     * @return The name of the service linked role.
+     * @return The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+     * - `AliyunServiceRoleForSas`
+     * - `AliyunServiceRoleForSasCspm`
+     * - `AliyunServiceRoleForSasAgentless`
+     * - `AliyunServiceRoleForOssMfd`
+     * - `AliyunServiceRoleForAntiRansomwareMssp`
+     * - `AliyunServiceRoleForSasSecllm`
+     * - `AliyunServiceRoleForSasAI`
+     * - `AliyunLogETLRole`
      * 
      */
-    public Output<String> serviceLinkedRole() {
-        return this.serviceLinkedRole;
+    public Output<Optional<String>> serviceLinkedRole() {
+        return Codegen.optional(this.serviceLinkedRole);
     }
 
     /**

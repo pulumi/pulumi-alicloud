@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.nas.inputs;
 
+import com.pulumi.alicloud.nas.inputs.FileSystemAutoUpgradeConfigArgs;
 import com.pulumi.alicloud.nas.inputs.FileSystemNfsAclArgs;
 import com.pulumi.alicloud.nas.inputs.FileSystemOptionsArgs;
 import com.pulumi.alicloud.nas.inputs.FileSystemRecycleBinArgs;
@@ -21,6 +22,21 @@ import javax.annotation.Nullable;
 public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
     public static final FileSystemState Empty = new FileSystemState();
+
+    /**
+     * The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+     * 
+     */
+    @Import(name="autoUpgradeConfig")
+    private @Nullable Output<FileSystemAutoUpgradeConfigArgs> autoUpgradeConfig;
+
+    /**
+     * @return The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+     * 
+     */
+    public Optional<Output<FileSystemAutoUpgradeConfigArgs>> autoUpgradeConfig() {
+        return Optional.ofNullable(this.autoUpgradeConfig);
+    }
 
     /**
      * File system capacity.
@@ -76,6 +92,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * - Must start with upper and lower case letters or Chinese, and cannot start with &#39;http://&#39; and &#39;https&#39;.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      * 
+     * &gt; **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -87,6 +105,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * - 2~128 English or Chinese characters in length.
      * - Must start with upper and lower case letters or Chinese, and cannot start with &#39;http://&#39; and &#39;https&#39;.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
+     * 
+     * &gt; **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
      * 
      */
     public Optional<Output<String>> description() {
@@ -324,12 +344,16 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the resource group.
      * 
+     * &gt; **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
+     * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
      * @return The ID of the resource group.
+     * 
+     * &gt; **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -511,6 +535,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     private FileSystemState() {}
 
     private FileSystemState(FileSystemState $) {
+        this.autoUpgradeConfig = $.autoUpgradeConfig;
         this.capacity = $.capacity;
         this.createTime = $.createTime;
         this.description = $.description;
@@ -553,6 +578,27 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FileSystemState defaults) {
             $ = new FileSystemState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoUpgradeConfig The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradeConfig(@Nullable Output<FileSystemAutoUpgradeConfigArgs> autoUpgradeConfig) {
+            $.autoUpgradeConfig = autoUpgradeConfig;
+            return this;
+        }
+
+        /**
+         * @param autoUpgradeConfig The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradeConfig(FileSystemAutoUpgradeConfigArgs autoUpgradeConfig) {
+            return autoUpgradeConfig(Output.of(autoUpgradeConfig));
         }
 
         /**
@@ -621,6 +667,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * - Must start with upper and lower case letters or Chinese, and cannot start with &#39;http://&#39; and &#39;https&#39;.
          * - Can contain numbers, colons (:), underscores (_), or dashes (-).
          * 
+         * &gt; **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
+         * 
          * @return builder
          * 
          */
@@ -636,6 +684,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * - 2~128 English or Chinese characters in length.
          * - Must start with upper and lower case letters or Chinese, and cannot start with &#39;http://&#39; and &#39;https&#39;.
          * - Can contain numbers, colons (:), underscores (_), or dashes (-).
+         * 
+         * &gt; **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
          * 
          * @return builder
          * 
@@ -957,6 +1007,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param resourceGroupId The ID of the resource group.
          * 
+         * &gt; **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
+         * 
          * @return builder
          * 
          */
@@ -967,6 +1019,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The ID of the resource group.
+         * 
+         * &gt; **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
          * 
          * @return builder
          * 

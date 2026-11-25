@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.35.0.
  *
- * > **NOTE:** Deprecated since v1.129.0.
- *
  * > **NOTE:** The Certificate name which you want to add must be already registered and had not added by another account. Every Certificate name can only exist in a unique group.
  *
  * > **NOTE:** The Cas Certificate region only support cn-hangzhou, me-east-1, eu-central-1, ap-northeast-1.
@@ -133,34 +131,65 @@ export class Certificate extends pulumi.CustomResource {
     }
 
     /**
-     * Cert of the Certificate in which the Certificate will add.
+     * The content of a non-SM certificate in PEM format.
      */
     declare public readonly cert: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+     */
+    declare public /*out*/ readonly certIdentifier: pulumi.Output<string>;
+    /**
+     * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+     */
     declare public readonly certificateName: pulumi.Output<string>;
+    /**
+     * The content of an SM encryption certificate in PEM format.
+     */
     declare public readonly encryptCert: pulumi.Output<string | undefined>;
+    /**
+     * The private key of an SM encryption certificate in PEM format.
+     */
     declare public readonly encryptPrivateKey: pulumi.Output<string | undefined>;
     /**
-     * Key of the Certificate in which the Certificate will add.
+     * The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      */
     declare public readonly key: pulumi.Output<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
      */
     declare public readonly keyWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     */
     declare public readonly keyWoVersion: pulumi.Output<number | undefined>;
     /**
+     * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     *
      * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      */
     declare public readonly lang: pulumi.Output<string | undefined>;
     /**
-     * Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+     * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the resource group.
+     */
     declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * The content of an SM signing certificate in PEM format.
+     */
     declare public readonly signCert: pulumi.Output<string | undefined>;
+    /**
+     * The private key of an SM signing certificate in PEM format.
+     */
     declare public readonly signPrivateKey: pulumi.Output<string | undefined>;
+    /**
+     * The tag of the resource.
+     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -180,6 +209,7 @@ export class Certificate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
             resourceInputs["cert"] = state?.cert;
+            resourceInputs["certIdentifier"] = state?.certIdentifier;
             resourceInputs["certificateName"] = state?.certificateName;
             resourceInputs["encryptCert"] = state?.encryptCert;
             resourceInputs["encryptPrivateKey"] = state?.encryptPrivateKey;
@@ -207,6 +237,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["signCert"] = args?.signCert;
             resourceInputs["signPrivateKey"] = args?.signPrivateKey ? pulumi.secret(args.signPrivateKey) : undefined;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["certIdentifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["encryptPrivateKey", "key", "keyWo", "signPrivateKey"] };
@@ -220,34 +251,65 @@ export class Certificate extends pulumi.CustomResource {
  */
 export interface CertificateState {
     /**
-     * Cert of the Certificate in which the Certificate will add.
+     * The content of a non-SM certificate in PEM format.
      */
     cert?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+     */
+    certIdentifier?: pulumi.Input<string | undefined>;
+    /**
+     * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+     */
     certificateName?: pulumi.Input<string | undefined>;
+    /**
+     * The content of an SM encryption certificate in PEM format.
+     */
     encryptCert?: pulumi.Input<string | undefined>;
+    /**
+     * The private key of an SM encryption certificate in PEM format.
+     */
     encryptPrivateKey?: pulumi.Input<string | undefined>;
     /**
-     * Key of the Certificate in which the Certificate will add.
+     * The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      */
     key?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
      */
     keyWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     */
     keyWoVersion?: pulumi.Input<number | undefined>;
     /**
+     * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     *
      * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      */
     lang?: pulumi.Input<string | undefined>;
     /**
-     * Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+     * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the resource group.
+     */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The content of an SM signing certificate in PEM format.
+     */
     signCert?: pulumi.Input<string | undefined>;
+    /**
+     * The private key of an SM signing certificate in PEM format.
+     */
     signPrivateKey?: pulumi.Input<string | undefined>;
+    /**
+     * The tag of the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
@@ -256,33 +318,60 @@ export interface CertificateState {
  */
 export interface CertificateArgs {
     /**
-     * Cert of the Certificate in which the Certificate will add.
+     * The content of a non-SM certificate in PEM format.
      */
     cert?: pulumi.Input<string | undefined>;
+    /**
+     * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+     */
     certificateName?: pulumi.Input<string | undefined>;
+    /**
+     * The content of an SM encryption certificate in PEM format.
+     */
     encryptCert?: pulumi.Input<string | undefined>;
+    /**
+     * The private key of an SM encryption certificate in PEM format.
+     */
     encryptPrivateKey?: pulumi.Input<string | undefined>;
     /**
-     * Key of the Certificate in which the Certificate will add.
+     * The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      */
     key?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
      */
     keyWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     */
     keyWoVersion?: pulumi.Input<number | undefined>;
     /**
+     * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     *
      * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      */
     lang?: pulumi.Input<string | undefined>;
     /**
-     * Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+     * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the resource group.
+     */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The content of an SM signing certificate in PEM format.
+     */
     signCert?: pulumi.Input<string | undefined>;
+    /**
+     * The private key of an SM signing certificate in PEM format.
+     */
     signPrivateKey?: pulumi.Input<string | undefined>;
+    /**
+     * The tag of the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

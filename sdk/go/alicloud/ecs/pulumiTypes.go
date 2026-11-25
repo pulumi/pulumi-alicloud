@@ -2759,7 +2759,7 @@ type InstanceDataDisk struct {
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
 	BurstingEnabled *bool `pulumi:"burstingEnabled"`
-	// The category of the disk. Default value: `cloudEfficiency`. Valid values:
+	// The category of the disk. Defaults to `cloudEfficiency`. Valid values:
 	Category *string `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
@@ -2809,7 +2809,7 @@ type InstanceDataDiskArgs struct {
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// Specifies whether to enable the performance burst feature for the system disk. Valid values:
 	BurstingEnabled pulumi.BoolPtrInput `pulumi:"burstingEnabled"`
-	// The category of the disk. Default value: `cloudEfficiency`. Valid values:
+	// The category of the disk. Defaults to `cloudEfficiency`. Valid values:
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
@@ -2904,7 +2904,7 @@ func (o InstanceDataDiskOutput) BurstingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *bool { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The category of the disk. Default value: `cloudEfficiency`. Valid values:
+// The category of the disk. Defaults to `cloudEfficiency`. Valid values:
 func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -3542,38 +3542,25 @@ func (o InstanceNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOutput {
 }
 
 type LaunchTemplateDataDisk struct {
-	// The category of the disk:
-	// - cloud: Basic cloud disk.
-	// - cloud_efficiency: Ultra cloud disk.
-	// - cloud_ssd: SSD cloud Disks.
-	// - ephemeral_ssd: local SSD Disks
-	// - cloud_essd: ESSD cloud Disks.
-	//
-	// Default to `cloudEfficiency`.
+	// The category of the disk.
 	Category *string `pulumi:"category"`
-	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-	//
-	// Default to true
+	// Delete this data disk when the instance is destroyed. Default to `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	Device      *string `pulumi:"device"`
-	// Encrypted the data in this disk.
-	//
-	// Default to false
-	Encrypted *bool   `pulumi:"encrypted"`
-	KmsKeyId  *string `pulumi:"kmsKeyId"`
+	// The mount point of the data disk.
+	Device *string `pulumi:"device"`
+	// Encrypted the data in this disk. Default to `false`.
+	Encrypted *bool `pulumi:"encrypted"`
+	// The ID of the KMS key used for the data disk.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// The name of the data disk.
-	Name             *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The performance level of the ESSD used as the data disk.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The size of the data disk.
-	// - cloud：[5, 2000]
-	// - cloud_efficiency：[20, 32768]
-	// - cloud_ssd：[20, 32768]
-	// - cloud_essd：[20, 32768]
-	// - ephemeral_ssd: [5, 800]
 	Size *int `pulumi:"size"`
-	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+	// The snapshot ID used to initialize the data disk.
 	SnapshotId *string `pulumi:"snapshotId"`
 }
 
@@ -3589,38 +3576,25 @@ type LaunchTemplateDataDiskInput interface {
 }
 
 type LaunchTemplateDataDiskArgs struct {
-	// The category of the disk:
-	// - cloud: Basic cloud disk.
-	// - cloud_efficiency: Ultra cloud disk.
-	// - cloud_ssd: SSD cloud Disks.
-	// - ephemeral_ssd: local SSD Disks
-	// - cloud_essd: ESSD cloud Disks.
-	//
-	// Default to `cloudEfficiency`.
+	// The category of the disk.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-	//
-	// Default to true
+	// Delete this data disk when the instance is destroyed. Default to `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Device      pulumi.StringPtrInput `pulumi:"device"`
-	// Encrypted the data in this disk.
-	//
-	// Default to false
-	Encrypted pulumi.BoolPtrInput   `pulumi:"encrypted"`
-	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The mount point of the data disk.
+	Device pulumi.StringPtrInput `pulumi:"device"`
+	// Encrypted the data in this disk. Default to `false`.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// The ID of the KMS key used for the data disk.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The name of the data disk.
-	Name             pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The performance level of the ESSD used as the data disk.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// The size of the data disk.
-	// - cloud：[5, 2000]
-	// - cloud_efficiency：[20, 32768]
-	// - cloud_ssd：[20, 32768]
-	// - cloud_essd：[20, 32768]
-	// - ephemeral_ssd: [5, 800]
 	Size pulumi.IntPtrInput `pulumi:"size"`
-	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+	// The snapshot ID used to initialize the data disk.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 
@@ -3675,21 +3649,12 @@ func (o LaunchTemplateDataDiskOutput) ToLaunchTemplateDataDiskOutputWithContext(
 	return o
 }
 
-// The category of the disk:
-// - cloud: Basic cloud disk.
-// - cloud_efficiency: Ultra cloud disk.
-// - cloud_ssd: SSD cloud Disks.
-// - ephemeral_ssd: local SSD Disks
-// - cloud_essd: ESSD cloud Disks.
-//
-// Default to `cloudEfficiency`.
+// The category of the disk.
 func (o LaunchTemplateDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-//
-// Default to true
+// Delete this data disk when the instance is destroyed. Default to `true`.
 func (o LaunchTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
@@ -3699,17 +3664,17 @@ func (o LaunchTemplateDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The mount point of the data disk.
 func (o LaunchTemplateDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
-// Encrypted the data in this disk.
-//
-// Default to false
+// Encrypted the data in this disk. Default to `false`.
 func (o LaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the KMS key used for the data disk.
 func (o LaunchTemplateDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
@@ -3719,21 +3684,17 @@ func (o LaunchTemplateDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The performance level of the ESSD used as the data disk.
 func (o LaunchTemplateDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
 // The size of the data disk.
-// - cloud：[5, 2000]
-// - cloud_efficiency：[20, 32768]
-// - cloud_ssd：[20, 32768]
-// - cloud_essd：[20, 32768]
-// - ephemeral_ssd: [5, 800]
 func (o LaunchTemplateDataDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
-// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+// The snapshot ID used to initialize the data disk.
 func (o LaunchTemplateDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -3759,6 +3720,7 @@ func (o LaunchTemplateDataDiskArrayOutput) Index(i pulumi.IntInput) LaunchTempla
 }
 
 type LaunchTemplateImageOptions struct {
+	// Whether the instance that uses the image supports logons of the ecs-user user.
 	LoginAsNonRoot *bool `pulumi:"loginAsNonRoot"`
 }
 
@@ -3774,6 +3736,7 @@ type LaunchTemplateImageOptionsInput interface {
 }
 
 type LaunchTemplateImageOptionsArgs struct {
+	// Whether the instance that uses the image supports logons of the ecs-user user.
 	LoginAsNonRoot pulumi.BoolPtrInput `pulumi:"loginAsNonRoot"`
 }
 
@@ -3854,6 +3817,7 @@ func (o LaunchTemplateImageOptionsOutput) ToLaunchTemplateImageOptionsPtrOutputW
 	}).(LaunchTemplateImageOptionsPtrOutput)
 }
 
+// Whether the instance that uses the image supports logons of the ecs-user user.
 func (o LaunchTemplateImageOptionsOutput) LoginAsNonRoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateImageOptions) *bool { return v.LoginAsNonRoot }).(pulumi.BoolPtrOutput)
 }
@@ -3882,6 +3846,7 @@ func (o LaunchTemplateImageOptionsPtrOutput) Elem() LaunchTemplateImageOptionsOu
 	}).(LaunchTemplateImageOptionsOutput)
 }
 
+// Whether the instance that uses the image supports logons of the ecs-user user.
 func (o LaunchTemplateImageOptionsPtrOutput) LoginAsNonRoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateImageOptions) *bool {
 		if v == nil {
@@ -3892,6 +3857,7 @@ func (o LaunchTemplateImageOptionsPtrOutput) LoginAsNonRoot() pulumi.BoolPtrOutp
 }
 
 type LaunchTemplateNetworkInterfaces struct {
+	// Whether to release the ENI when the instance is released.
 	DeleteOnRelease *bool `pulumi:"deleteOnRelease"`
 	// The ENI description.
 	Description *string `pulumi:"description"`
@@ -3917,6 +3883,7 @@ type LaunchTemplateNetworkInterfacesInput interface {
 }
 
 type LaunchTemplateNetworkInterfacesArgs struct {
+	// Whether to release the ENI when the instance is released.
 	DeleteOnRelease pulumi.BoolPtrInput `pulumi:"deleteOnRelease"`
 	// The ENI description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -4007,6 +3974,7 @@ func (o LaunchTemplateNetworkInterfacesOutput) ToLaunchTemplateNetworkInterfaces
 	}).(LaunchTemplateNetworkInterfacesPtrOutput)
 }
 
+// Whether to release the ENI when the instance is released.
 func (o LaunchTemplateNetworkInterfacesOutput) DeleteOnRelease() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *bool { return v.DeleteOnRelease }).(pulumi.BoolPtrOutput)
 }
@@ -4060,6 +4028,7 @@ func (o LaunchTemplateNetworkInterfacesPtrOutput) Elem() LaunchTemplateNetworkIn
 	}).(LaunchTemplateNetworkInterfacesOutput)
 }
 
+// Whether to release the ENI when the instance is released.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) DeleteOnRelease() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateNetworkInterfaces) *bool {
 		if v == nil {
@@ -4120,36 +4089,23 @@ func (o LaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOu
 }
 
 type LaunchTemplateSystemDisk struct {
-	// The category of the disk:
-	// - cloud: Basic cloud disk.
-	// - cloud_efficiency: Ultra cloud disk.
-	// - cloud_ssd: SSD cloud Disks.
-	// - ephemeral_ssd: local SSD Disks
-	// - cloud_essd: ESSD cloud Disks.
-	//
-	// Default to `cloudEfficiency`.
+	// The category of the system disk.
 	Category *string `pulumi:"category"`
-	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-	//
-	// Default to true
+	// Whether to release the system disk when the instance is released. Default to `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
-	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+	// System disk description.
 	Description *string `pulumi:"description"`
-	// Encrypted the data in this disk.
-	//
-	// Default to false
-	Encrypted *bool   `pulumi:"encrypted"`
-	Iops      *string `pulumi:"iops"`
-	KmsKeyId  *string `pulumi:"kmsKeyId"`
-	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-	Name             *string `pulumi:"name"`
+	// Whether the system disk is encrypted.
+	Encrypted *bool `pulumi:"encrypted"`
+	// The Iops.
+	Iops *string `pulumi:"iops"`
+	// The ID of the KMS key to use for the system disk.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// System disk name.
+	Name *string `pulumi:"name"`
+	// The performance level of the ESSD used as the system disk.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The size of the data disk.
-	// - cloud：[5, 2000]
-	// - cloud_efficiency：[20, 32768]
-	// - cloud_ssd：[20, 32768]
-	// - cloud_essd：[20, 32768]
-	// - ephemeral_ssd: [5, 800]
+	// Size of the system disk, measured in GB.
 	Size *int `pulumi:"size"`
 }
 
@@ -4165,36 +4121,23 @@ type LaunchTemplateSystemDiskInput interface {
 }
 
 type LaunchTemplateSystemDiskArgs struct {
-	// The category of the disk:
-	// - cloud: Basic cloud disk.
-	// - cloud_efficiency: Ultra cloud disk.
-	// - cloud_ssd: SSD cloud Disks.
-	// - ephemeral_ssd: local SSD Disks
-	// - cloud_essd: ESSD cloud Disks.
-	//
-	// Default to `cloudEfficiency`.
+	// The category of the system disk.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-	//
-	// Default to true
+	// Whether to release the system disk when the instance is released. Default to `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
-	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+	// System disk description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Encrypted the data in this disk.
-	//
-	// Default to false
-	Encrypted pulumi.BoolPtrInput   `pulumi:"encrypted"`
-	Iops      pulumi.StringPtrInput `pulumi:"iops"`
-	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-	Name             pulumi.StringPtrInput `pulumi:"name"`
+	// Whether the system disk is encrypted.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// The Iops.
+	Iops pulumi.StringPtrInput `pulumi:"iops"`
+	// The ID of the KMS key to use for the system disk.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// System disk name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The performance level of the ESSD used as the system disk.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// The size of the data disk.
-	// - cloud：[5, 2000]
-	// - cloud_efficiency：[20, 32768]
-	// - cloud_ssd：[20, 32768]
-	// - cloud_essd：[20, 32768]
-	// - ephemeral_ssd: [5, 800]
+	// Size of the system disk, measured in GB.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -4275,60 +4218,47 @@ func (o LaunchTemplateSystemDiskOutput) ToLaunchTemplateSystemDiskPtrOutputWithC
 	}).(LaunchTemplateSystemDiskPtrOutput)
 }
 
-// The category of the disk:
-// - cloud: Basic cloud disk.
-// - cloud_efficiency: Ultra cloud disk.
-// - cloud_ssd: SSD cloud Disks.
-// - ephemeral_ssd: local SSD Disks
-// - cloud_essd: ESSD cloud Disks.
-//
-// Default to `cloudEfficiency`.
+// The category of the system disk.
 func (o LaunchTemplateSystemDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-//
-// Default to true
+// Whether to release the system disk when the instance is released. Default to `true`.
 func (o LaunchTemplateSystemDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
-// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+// System disk description.
 func (o LaunchTemplateSystemDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Encrypted the data in this disk.
-//
-// Default to false
+// Whether the system disk is encrypted.
 func (o LaunchTemplateSystemDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// The Iops.
 func (o LaunchTemplateSystemDiskOutput) Iops() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Iops }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the KMS key to use for the system disk.
 func (o LaunchTemplateSystemDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+// System disk name.
 func (o LaunchTemplateSystemDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The performance level of the ESSD used as the system disk.
 func (o LaunchTemplateSystemDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// The size of the data disk.
-// - cloud：[5, 2000]
-// - cloud_efficiency：[20, 32768]
-// - cloud_ssd：[20, 32768]
-// - cloud_essd：[20, 32768]
-// - ephemeral_ssd: [5, 800]
+// Size of the system disk, measured in GB.
 func (o LaunchTemplateSystemDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -4357,14 +4287,7 @@ func (o LaunchTemplateSystemDiskPtrOutput) Elem() LaunchTemplateSystemDiskOutput
 	}).(LaunchTemplateSystemDiskOutput)
 }
 
-// The category of the disk:
-// - cloud: Basic cloud disk.
-// - cloud_efficiency: Ultra cloud disk.
-// - cloud_ssd: SSD cloud Disks.
-// - ephemeral_ssd: local SSD Disks
-// - cloud_essd: ESSD cloud Disks.
-//
-// Default to `cloudEfficiency`.
+// The category of the system disk.
 func (o LaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -4374,9 +4297,7 @@ func (o LaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-//
-// Default to true
+// Whether to release the system disk when the instance is released. Default to `true`.
 func (o LaunchTemplateSystemDiskPtrOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *bool {
 		if v == nil {
@@ -4386,7 +4307,7 @@ func (o LaunchTemplateSystemDiskPtrOutput) DeleteWithInstance() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+// System disk description.
 func (o LaunchTemplateSystemDiskPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -4396,9 +4317,7 @@ func (o LaunchTemplateSystemDiskPtrOutput) Description() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Encrypted the data in this disk.
-//
-// Default to false
+// Whether the system disk is encrypted.
 func (o LaunchTemplateSystemDiskPtrOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *bool {
 		if v == nil {
@@ -4408,6 +4327,7 @@ func (o LaunchTemplateSystemDiskPtrOutput) Encrypted() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The Iops.
 func (o LaunchTemplateSystemDiskPtrOutput) Iops() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -4417,6 +4337,7 @@ func (o LaunchTemplateSystemDiskPtrOutput) Iops() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The ID of the KMS key to use for the system disk.
 func (o LaunchTemplateSystemDiskPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -4426,7 +4347,7 @@ func (o LaunchTemplateSystemDiskPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+// System disk name.
 func (o LaunchTemplateSystemDiskPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -4436,6 +4357,7 @@ func (o LaunchTemplateSystemDiskPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The performance level of the ESSD used as the system disk.
 func (o LaunchTemplateSystemDiskPtrOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -4445,12 +4367,7 @@ func (o LaunchTemplateSystemDiskPtrOutput) PerformanceLevel() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The size of the data disk.
-// - cloud：[5, 2000]
-// - cloud_efficiency：[20, 32768]
-// - cloud_ssd：[20, 32768]
-// - cloud_essd：[20, 32768]
-// - ephemeral_ssd: [5, 800]
+// Size of the system disk, measured in GB.
 func (o LaunchTemplateSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *int {
 		if v == nil {
@@ -4558,8 +4475,10 @@ func (o ReservedInstanceOperationLockArrayOutput) Index(i pulumi.IntInput) Reser
 }
 
 type SnapshotPolicyCopyEncryptionConfiguration struct {
-	Encrypted *bool   `pulumi:"encrypted"`
-	KmsKeyId  *string `pulumi:"kmsKeyId"`
+	// Whether to encrypt the snapshot.
+	Encrypted *bool `pulumi:"encrypted"`
+	// The KMS key ID used for encryption.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 }
 
 // SnapshotPolicyCopyEncryptionConfigurationInput is an input type that accepts SnapshotPolicyCopyEncryptionConfigurationArgs and SnapshotPolicyCopyEncryptionConfigurationOutput values.
@@ -4574,8 +4493,10 @@ type SnapshotPolicyCopyEncryptionConfigurationInput interface {
 }
 
 type SnapshotPolicyCopyEncryptionConfigurationArgs struct {
-	Encrypted pulumi.BoolPtrInput   `pulumi:"encrypted"`
-	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// Whether to encrypt the snapshot.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// The KMS key ID used for encryption.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 }
 
 func (SnapshotPolicyCopyEncryptionConfigurationArgs) ElementType() reflect.Type {
@@ -4655,10 +4576,12 @@ func (o SnapshotPolicyCopyEncryptionConfigurationOutput) ToSnapshotPolicyCopyEnc
 	}).(SnapshotPolicyCopyEncryptionConfigurationPtrOutput)
 }
 
+// Whether to encrypt the snapshot.
 func (o SnapshotPolicyCopyEncryptionConfigurationOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SnapshotPolicyCopyEncryptionConfiguration) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// The KMS key ID used for encryption.
 func (o SnapshotPolicyCopyEncryptionConfigurationOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapshotPolicyCopyEncryptionConfiguration) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
@@ -4687,6 +4610,7 @@ func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) Elem() SnapshotPolic
 	}).(SnapshotPolicyCopyEncryptionConfigurationOutput)
 }
 
+// Whether to encrypt the snapshot.
 func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SnapshotPolicyCopyEncryptionConfiguration) *bool {
 		if v == nil {
@@ -4696,6 +4620,7 @@ func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) Encrypted() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The KMS key ID used for encryption.
 func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SnapshotPolicyCopyEncryptionConfiguration) *string {
 		if v == nil {
@@ -4706,7 +4631,9 @@ func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) KmsKeyId() pulumi.St
 }
 
 type SnapshotPolicyTargetTag struct {
-	TagKey   *string `pulumi:"tagKey"`
+	// The key of the tag.
+	TagKey *string `pulumi:"tagKey"`
+	// The value of the tag.
 	TagValue *string `pulumi:"tagValue"`
 }
 
@@ -4722,7 +4649,9 @@ type SnapshotPolicyTargetTagInput interface {
 }
 
 type SnapshotPolicyTargetTagArgs struct {
-	TagKey   pulumi.StringPtrInput `pulumi:"tagKey"`
+	// The key of the tag.
+	TagKey pulumi.StringPtrInput `pulumi:"tagKey"`
+	// The value of the tag.
 	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
 }
 
@@ -4777,10 +4706,12 @@ func (o SnapshotPolicyTargetTagOutput) ToSnapshotPolicyTargetTagOutputWithContex
 	return o
 }
 
+// The key of the tag.
 func (o SnapshotPolicyTargetTagOutput) TagKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapshotPolicyTargetTag) *string { return v.TagKey }).(pulumi.StringPtrOutput)
 }
 
+// The value of the tag.
 func (o SnapshotPolicyTargetTagOutput) TagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapshotPolicyTargetTag) *string { return v.TagValue }).(pulumi.StringPtrOutput)
 }
@@ -5609,13 +5540,13 @@ type GetCommandsCommand struct {
 	EnableParameter bool `pulumi:"enableParameter"`
 	// The ID of the Command.
 	Id string `pulumi:"id"`
-	// The name of the command
+	// The name of the command.
 	Name string `pulumi:"name"`
 	// A list of custom parameter names which are parsed from the command content specified when the command was being created.
 	ParameterNames []string `pulumi:"parameterNames"`
 	// The timeout period that is specified for the command to be run on ECS instances.
 	Timeout int `pulumi:"timeout"`
-	// The command type.
+	// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
 	Type string `pulumi:"type"`
 	// The execution path of the command in the ECS instance.
 	WorkingDir string `pulumi:"workingDir"`
@@ -5643,13 +5574,13 @@ type GetCommandsCommandArgs struct {
 	EnableParameter pulumi.BoolInput `pulumi:"enableParameter"`
 	// The ID of the Command.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the command
+	// The name of the command.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A list of custom parameter names which are parsed from the command content specified when the command was being created.
 	ParameterNames pulumi.StringArrayInput `pulumi:"parameterNames"`
 	// The timeout period that is specified for the command to be run on ECS instances.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
-	// The command type.
+	// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The execution path of the command in the ECS instance.
 	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
@@ -5731,7 +5662,7 @@ func (o GetCommandsCommandOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommandsCommand) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the command
+// The name of the command.
 func (o GetCommandsCommandOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommandsCommand) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5746,7 +5677,7 @@ func (o GetCommandsCommandOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCommandsCommand) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// The command type.
+// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
 func (o GetCommandsCommandOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommandsCommand) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6710,62 +6641,84 @@ func (o GetDedicatedHostsOperationLockArrayOutput) Index(i pulumi.IntInput) GetD
 }
 
 type GetDisksDisk struct {
-	// Disk attachment time.
-	AttachedTime         string `pulumi:"attachedTime"`
+	// The attached time.
+	AttachedTime string `pulumi:"attachedTime"`
+	// The ID of the automatic snapshot policy.
 	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
-	// Availability zone of the disk.
+	// The availability zone. Deprecated; use `zoneId` instead.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
+	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, and `cloudRegionalDiskAuto` (Regional ESSD).
 	Category string `pulumi:"category"`
 	// Disk creation time.
-	CreationTime       string `pulumi:"creationTime"`
-	DeleteAutoSnapshot bool   `pulumi:"deleteAutoSnapshot"`
-	DeleteWithInstance bool   `pulumi:"deleteWithInstance"`
+	CreationTime string `pulumi:"creationTime"`
+	// Whether to delete the automatic snapshot.
+	DeleteAutoSnapshot bool `pulumi:"deleteAutoSnapshot"`
+	// Whether to delete the disk with the instance.
+	DeleteWithInstance bool `pulumi:"deleteWithInstance"`
 	// Disk description.
 	Description string `pulumi:"description"`
 	// Disk detachment time.
-	DetachedTime                  string `pulumi:"detachedTime"`
-	Device                        string `pulumi:"device"`
-	DiskId                        string `pulumi:"diskId"`
-	DiskName                      string `pulumi:"diskName"`
-	DiskType                      string `pulumi:"diskType"`
-	EnableAutoSnapshot            bool   `pulumi:"enableAutoSnapshot"`
-	EnableAutomatedSnapshotPolicy bool   `pulumi:"enableAutomatedSnapshotPolicy"`
+	DetachedTime string `pulumi:"detachedTime"`
+	// The device name.
+	Device string `pulumi:"device"`
+	// The ID of the disk.
+	DiskId string `pulumi:"diskId"`
+	// The name of the disk.
+	DiskName string `pulumi:"diskName"`
+	// Disk type. Valid values: `system`, `data`, `all`.
+	DiskType string `pulumi:"diskType"`
+	// Whether to enable the automatic snapshot.
+	EnableAutoSnapshot bool `pulumi:"enableAutoSnapshot"`
+	// Whether to enable the automated snapshot policy.
+	EnableAutomatedSnapshotPolicy bool `pulumi:"enableAutomatedSnapshotPolicy"`
 	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 	Encrypted string `pulumi:"encrypted"`
 	// Disk expiration time.
 	ExpirationTime string `pulumi:"expirationTime"`
-	ExpiredTime    string `pulumi:"expiredTime"`
+	// The expired time of the disk.
+	ExpiredTime string `pulumi:"expiredTime"`
 	// ID of the disk.
 	Id string `pulumi:"id"`
 	// ID of the image from which the disk is created. It is null unless the disk is created using an image.
 	ImageId string `pulumi:"imageId"`
 	// Filter the results by the specified ECS instance ID.
-	InstanceId       string                      `pulumi:"instanceId"`
-	Iops             int                         `pulumi:"iops"`
-	IopsRead         int                         `pulumi:"iopsRead"`
-	IopsWrite        int                         `pulumi:"iopsWrite"`
-	KmsKeyId         string                      `pulumi:"kmsKeyId"`
-	MountInstanceNum int                         `pulumi:"mountInstanceNum"`
-	MountInstances   []GetDisksDiskMountInstance `pulumi:"mountInstances"`
+	InstanceId string `pulumi:"instanceId"`
+	// The IOPS of the disk.
+	Iops int `pulumi:"iops"`
+	// The read IOPS.
+	IopsRead int `pulumi:"iopsRead"`
+	// The write IOPS.
+	IopsWrite int `pulumi:"iopsWrite"`
+	// The KMS key ID.
+	KmsKeyId string `pulumi:"kmsKeyId"`
+	// The number of mounted instances.
+	MountInstanceNum int `pulumi:"mountInstanceNum"`
+	// A list of mounted instances.
+	MountInstances []GetDisksDiskMountInstance `pulumi:"mountInstances"`
 	// Disk name.
-	Name             string                      `pulumi:"name"`
-	OperationLocks   []GetDisksDiskOperationLock `pulumi:"operationLocks"`
-	PaymentType      string                      `pulumi:"paymentType"`
-	PerformanceLevel string                      `pulumi:"performanceLevel"`
-	Portable         bool                        `pulumi:"portable"`
-	ProductCode      string                      `pulumi:"productCode"`
+	Name string `pulumi:"name"`
+	// Operation locks. See `operationLocks` below.
+	OperationLocks []GetDisksDiskOperationLock `pulumi:"operationLocks"`
+	// The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType string `pulumi:"paymentType"`
+	// The performance level of the ESSD.
+	PerformanceLevel string `pulumi:"performanceLevel"`
+	// Whether the disk is portable.
+	Portable bool `pulumi:"portable"`
+	// The product code.
+	ProductCode string `pulumi:"productCode"`
 	// Region ID the disk belongs to.
 	RegionId string `pulumi:"regionId"`
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// Disk size in GiB.
 	Size int `pulumi:"size"`
-	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+	// The snapshot ID.
 	SnapshotId string `pulumi:"snapshotId"`
-	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+	// The status of the disk.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -6791,7 +6744,8 @@ type GetDisksDisk struct {
 	// ```
 	Tags map[string]string `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
-	Type   string `pulumi:"type"`
+	Type string `pulumi:"type"`
+	// The zone ID.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -6807,62 +6761,84 @@ type GetDisksDiskInput interface {
 }
 
 type GetDisksDiskArgs struct {
-	// Disk attachment time.
-	AttachedTime         pulumi.StringInput `pulumi:"attachedTime"`
+	// The attached time.
+	AttachedTime pulumi.StringInput `pulumi:"attachedTime"`
+	// The ID of the automatic snapshot policy.
 	AutoSnapshotPolicyId pulumi.StringInput `pulumi:"autoSnapshotPolicyId"`
-	// Availability zone of the disk.
+	// The availability zone. Deprecated; use `zoneId` instead.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
+	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, and `cloudRegionalDiskAuto` (Regional ESSD).
 	Category pulumi.StringInput `pulumi:"category"`
 	// Disk creation time.
-	CreationTime       pulumi.StringInput `pulumi:"creationTime"`
-	DeleteAutoSnapshot pulumi.BoolInput   `pulumi:"deleteAutoSnapshot"`
-	DeleteWithInstance pulumi.BoolInput   `pulumi:"deleteWithInstance"`
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// Whether to delete the automatic snapshot.
+	DeleteAutoSnapshot pulumi.BoolInput `pulumi:"deleteAutoSnapshot"`
+	// Whether to delete the disk with the instance.
+	DeleteWithInstance pulumi.BoolInput `pulumi:"deleteWithInstance"`
 	// Disk description.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Disk detachment time.
-	DetachedTime                  pulumi.StringInput `pulumi:"detachedTime"`
-	Device                        pulumi.StringInput `pulumi:"device"`
-	DiskId                        pulumi.StringInput `pulumi:"diskId"`
-	DiskName                      pulumi.StringInput `pulumi:"diskName"`
-	DiskType                      pulumi.StringInput `pulumi:"diskType"`
-	EnableAutoSnapshot            pulumi.BoolInput   `pulumi:"enableAutoSnapshot"`
-	EnableAutomatedSnapshotPolicy pulumi.BoolInput   `pulumi:"enableAutomatedSnapshotPolicy"`
+	DetachedTime pulumi.StringInput `pulumi:"detachedTime"`
+	// The device name.
+	Device pulumi.StringInput `pulumi:"device"`
+	// The ID of the disk.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// The name of the disk.
+	DiskName pulumi.StringInput `pulumi:"diskName"`
+	// Disk type. Valid values: `system`, `data`, `all`.
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// Whether to enable the automatic snapshot.
+	EnableAutoSnapshot pulumi.BoolInput `pulumi:"enableAutoSnapshot"`
+	// Whether to enable the automated snapshot policy.
+	EnableAutomatedSnapshotPolicy pulumi.BoolInput `pulumi:"enableAutomatedSnapshotPolicy"`
 	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 	Encrypted pulumi.StringInput `pulumi:"encrypted"`
 	// Disk expiration time.
 	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
-	ExpiredTime    pulumi.StringInput `pulumi:"expiredTime"`
+	// The expired time of the disk.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
 	// ID of the disk.
 	Id pulumi.StringInput `pulumi:"id"`
 	// ID of the image from which the disk is created. It is null unless the disk is created using an image.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// Filter the results by the specified ECS instance ID.
-	InstanceId       pulumi.StringInput                  `pulumi:"instanceId"`
-	Iops             pulumi.IntInput                     `pulumi:"iops"`
-	IopsRead         pulumi.IntInput                     `pulumi:"iopsRead"`
-	IopsWrite        pulumi.IntInput                     `pulumi:"iopsWrite"`
-	KmsKeyId         pulumi.StringInput                  `pulumi:"kmsKeyId"`
-	MountInstanceNum pulumi.IntInput                     `pulumi:"mountInstanceNum"`
-	MountInstances   GetDisksDiskMountInstanceArrayInput `pulumi:"mountInstances"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The IOPS of the disk.
+	Iops pulumi.IntInput `pulumi:"iops"`
+	// The read IOPS.
+	IopsRead pulumi.IntInput `pulumi:"iopsRead"`
+	// The write IOPS.
+	IopsWrite pulumi.IntInput `pulumi:"iopsWrite"`
+	// The KMS key ID.
+	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
+	// The number of mounted instances.
+	MountInstanceNum pulumi.IntInput `pulumi:"mountInstanceNum"`
+	// A list of mounted instances.
+	MountInstances GetDisksDiskMountInstanceArrayInput `pulumi:"mountInstances"`
 	// Disk name.
-	Name             pulumi.StringInput                  `pulumi:"name"`
-	OperationLocks   GetDisksDiskOperationLockArrayInput `pulumi:"operationLocks"`
-	PaymentType      pulumi.StringInput                  `pulumi:"paymentType"`
-	PerformanceLevel pulumi.StringInput                  `pulumi:"performanceLevel"`
-	Portable         pulumi.BoolInput                    `pulumi:"portable"`
-	ProductCode      pulumi.StringInput                  `pulumi:"productCode"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operation locks. See `operationLocks` below.
+	OperationLocks GetDisksDiskOperationLockArrayInput `pulumi:"operationLocks"`
+	// The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The performance level of the ESSD.
+	PerformanceLevel pulumi.StringInput `pulumi:"performanceLevel"`
+	// Whether the disk is portable.
+	Portable pulumi.BoolInput `pulumi:"portable"`
+	// The product code.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
 	// Region ID the disk belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// Disk size in GiB.
 	Size pulumi.IntInput `pulumi:"size"`
-	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+	// The snapshot ID.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+	// The status of the disk.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -6888,7 +6864,8 @@ type GetDisksDiskArgs struct {
 	// ```
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
-	Type   pulumi.StringInput `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
+	// The zone ID.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -6943,21 +6920,22 @@ func (o GetDisksDiskOutput) ToGetDisksDiskOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Disk attachment time.
+// The attached time.
 func (o GetDisksDiskOutput) AttachedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.AttachedTime }).(pulumi.StringOutput)
 }
 
+// The ID of the automatic snapshot policy.
 func (o GetDisksDiskOutput) AutoSnapshotPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.AutoSnapshotPolicyId }).(pulumi.StringOutput)
 }
 
-// Availability zone of the disk.
+// The availability zone. Deprecated; use `zoneId` instead.
 func (o GetDisksDiskOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
+// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, and `cloudRegionalDiskAuto` (Regional ESSD).
 func (o GetDisksDiskOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.Category }).(pulumi.StringOutput)
 }
@@ -6967,10 +6945,12 @@ func (o GetDisksDiskOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// Whether to delete the automatic snapshot.
 func (o GetDisksDiskOutput) DeleteAutoSnapshot() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDisksDisk) bool { return v.DeleteAutoSnapshot }).(pulumi.BoolOutput)
 }
 
+// Whether to delete the disk with the instance.
 func (o GetDisksDiskOutput) DeleteWithInstance() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDisksDisk) bool { return v.DeleteWithInstance }).(pulumi.BoolOutput)
 }
@@ -6985,26 +6965,32 @@ func (o GetDisksDiskOutput) DetachedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.DetachedTime }).(pulumi.StringOutput)
 }
 
+// The device name.
 func (o GetDisksDiskOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.Device }).(pulumi.StringOutput)
 }
 
+// The ID of the disk.
 func (o GetDisksDiskOutput) DiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.DiskId }).(pulumi.StringOutput)
 }
 
+// The name of the disk.
 func (o GetDisksDiskOutput) DiskName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.DiskName }).(pulumi.StringOutput)
 }
 
+// Disk type. Valid values: `system`, `data`, `all`.
 func (o GetDisksDiskOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
+// Whether to enable the automatic snapshot.
 func (o GetDisksDiskOutput) EnableAutoSnapshot() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDisksDisk) bool { return v.EnableAutoSnapshot }).(pulumi.BoolOutput)
 }
 
+// Whether to enable the automated snapshot policy.
 func (o GetDisksDiskOutput) EnableAutomatedSnapshotPolicy() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDisksDisk) bool { return v.EnableAutomatedSnapshotPolicy }).(pulumi.BoolOutput)
 }
@@ -7019,6 +7005,7 @@ func (o GetDisksDiskOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
+// The expired time of the disk.
 func (o GetDisksDiskOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
@@ -7038,26 +7025,32 @@ func (o GetDisksDiskOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The IOPS of the disk.
 func (o GetDisksDiskOutput) Iops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDisksDisk) int { return v.Iops }).(pulumi.IntOutput)
 }
 
+// The read IOPS.
 func (o GetDisksDiskOutput) IopsRead() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDisksDisk) int { return v.IopsRead }).(pulumi.IntOutput)
 }
 
+// The write IOPS.
 func (o GetDisksDiskOutput) IopsWrite() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDisksDisk) int { return v.IopsWrite }).(pulumi.IntOutput)
 }
 
+// The KMS key ID.
 func (o GetDisksDiskOutput) KmsKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.KmsKeyId }).(pulumi.StringOutput)
 }
 
+// The number of mounted instances.
 func (o GetDisksDiskOutput) MountInstanceNum() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDisksDisk) int { return v.MountInstanceNum }).(pulumi.IntOutput)
 }
 
+// A list of mounted instances.
 func (o GetDisksDiskOutput) MountInstances() GetDisksDiskMountInstanceArrayOutput {
 	return o.ApplyT(func(v GetDisksDisk) []GetDisksDiskMountInstance { return v.MountInstances }).(GetDisksDiskMountInstanceArrayOutput)
 }
@@ -7067,22 +7060,27 @@ func (o GetDisksDiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Operation locks. See `operationLocks` below.
 func (o GetDisksDiskOutput) OperationLocks() GetDisksDiskOperationLockArrayOutput {
 	return o.ApplyT(func(v GetDisksDisk) []GetDisksDiskOperationLock { return v.OperationLocks }).(GetDisksDiskOperationLockArrayOutput)
 }
 
+// The payment type. Valid values: `PayAsYouGo`, `Subscription`.
 func (o GetDisksDiskOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
+// The performance level of the ESSD.
 func (o GetDisksDiskOutput) PerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.PerformanceLevel }).(pulumi.StringOutput)
 }
 
+// Whether the disk is portable.
 func (o GetDisksDiskOutput) Portable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDisksDisk) bool { return v.Portable }).(pulumi.BoolOutput)
 }
 
+// The product code.
 func (o GetDisksDiskOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.ProductCode }).(pulumi.StringOutput)
 }
@@ -7102,17 +7100,18 @@ func (o GetDisksDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDisksDisk) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+// The snapshot ID.
 func (o GetDisksDiskOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+// The status of the disk.
 func (o GetDisksDiskOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A map of tags assigned to the disks. It must be in the format:
+//
 // ```go
 // package main
 //
@@ -7148,6 +7147,7 @@ func (o GetDisksDiskOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The zone ID.
 func (o GetDisksDiskOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDisk) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -7173,9 +7173,10 @@ func (o GetDisksDiskArrayOutput) Index(i pulumi.IntInput) GetDisksDiskOutput {
 }
 
 type GetDisksDiskMountInstance struct {
-	// Disk attachment time.
+	// The attached time.
 	AttachedTime string `pulumi:"attachedTime"`
-	Device       string `pulumi:"device"`
+	// The device name.
+	Device string `pulumi:"device"`
 	// Filter the results by the specified ECS instance ID.
 	InstanceId string `pulumi:"instanceId"`
 }
@@ -7192,9 +7193,10 @@ type GetDisksDiskMountInstanceInput interface {
 }
 
 type GetDisksDiskMountInstanceArgs struct {
-	// Disk attachment time.
+	// The attached time.
 	AttachedTime pulumi.StringInput `pulumi:"attachedTime"`
-	Device       pulumi.StringInput `pulumi:"device"`
+	// The device name.
+	Device pulumi.StringInput `pulumi:"device"`
 	// Filter the results by the specified ECS instance ID.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 }
@@ -7250,11 +7252,12 @@ func (o GetDisksDiskMountInstanceOutput) ToGetDisksDiskMountInstanceOutputWithCo
 	return o
 }
 
-// Disk attachment time.
+// The attached time.
 func (o GetDisksDiskMountInstanceOutput) AttachedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDiskMountInstance) string { return v.AttachedTime }).(pulumi.StringOutput)
 }
 
+// The device name.
 func (o GetDisksDiskMountInstanceOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDiskMountInstance) string { return v.Device }).(pulumi.StringOutput)
 }
@@ -7285,6 +7288,7 @@ func (o GetDisksDiskMountInstanceArrayOutput) Index(i pulumi.IntInput) GetDisksD
 }
 
 type GetDisksDiskOperationLock struct {
+	// The reason of the operation lock.
 	LockReason string `pulumi:"lockReason"`
 }
 
@@ -7300,6 +7304,7 @@ type GetDisksDiskOperationLockInput interface {
 }
 
 type GetDisksDiskOperationLockArgs struct {
+	// The reason of the operation lock.
 	LockReason pulumi.StringInput `pulumi:"lockReason"`
 }
 
@@ -7354,6 +7359,7 @@ func (o GetDisksDiskOperationLockOutput) ToGetDisksDiskOperationLockOutputWithCo
 	return o
 }
 
+// The reason of the operation lock.
 func (o GetDisksDiskOperationLockOutput) LockReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDisksDiskOperationLock) string { return v.LockReason }).(pulumi.StringOutput)
 }
@@ -7379,6 +7385,7 @@ func (o GetDisksDiskOperationLockArrayOutput) Index(i pulumi.IntInput) GetDisksD
 }
 
 type GetDisksOperationLock struct {
+	// The reason of the operation lock.
 	LockReason *string `pulumi:"lockReason"`
 }
 
@@ -7394,6 +7401,7 @@ type GetDisksOperationLockInput interface {
 }
 
 type GetDisksOperationLockArgs struct {
+	// The reason of the operation lock.
 	LockReason pulumi.StringPtrInput `pulumi:"lockReason"`
 }
 
@@ -7448,6 +7456,7 @@ func (o GetDisksOperationLockOutput) ToGetDisksOperationLockOutputWithContext(ct
 	return o
 }
 
+// The reason of the operation lock.
 func (o GetDisksOperationLockOutput) LockReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDisksOperationLock) *string { return v.LockReason }).(pulumi.StringPtrOutput)
 }
@@ -7918,7 +7927,7 @@ type GetEcsDeploymentSetsSet struct {
 	InstanceAmount int `pulumi:"instanceAmount"`
 	// The IDs of the instances in the deployment set.
 	InstanceIds []string `pulumi:"instanceIds"`
-	// The deployment strategy.
+	// The deployment strategy. Valid values: `Availability`.
 	Strategy string `pulumi:"strategy"`
 }
 
@@ -7952,7 +7961,7 @@ type GetEcsDeploymentSetsSetArgs struct {
 	InstanceAmount pulumi.IntInput `pulumi:"instanceAmount"`
 	// The IDs of the instances in the deployment set.
 	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
-	// The deployment strategy.
+	// The deployment strategy. Valid values: `Availability`.
 	Strategy pulumi.StringInput `pulumi:"strategy"`
 }
 
@@ -8052,7 +8061,7 @@ func (o GetEcsDeploymentSetsSetOutput) InstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsDeploymentSetsSet) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
 }
 
-// The deployment strategy.
+// The deployment strategy. Valid values: `Availability`.
 func (o GetEcsDeploymentSetsSetOutput) Strategy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsDeploymentSetsSet) string { return v.Strategy }).(pulumi.StringOutput)
 }
@@ -8084,7 +8093,7 @@ type GetEcsDisksDisk struct {
 	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
 	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
 	Category string `pulumi:"category"`
 	// Disk creation time.
 	CreationTime string `pulumi:"creationTime"`
@@ -8180,7 +8189,7 @@ type GetEcsDisksDiskArgs struct {
 	AutoSnapshotPolicyId pulumi.StringInput `pulumi:"autoSnapshotPolicyId"`
 	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
 	Category pulumi.StringInput `pulumi:"category"`
 	// Disk creation time.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
@@ -8324,7 +8333,7 @@ func (o GetEcsDisksDiskOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
 func (o GetEcsDisksDiskOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsDisksDisk) string { return v.Category }).(pulumi.StringOutput)
 }
@@ -8856,15 +8865,17 @@ type GetEcsImageComponentsComponent struct {
 	Id string `pulumi:"id"`
 	// The ID of the image component.
 	ImageComponentId string `pulumi:"imageComponentId"`
-	// The name of the image component.
+	// The name of the component.
 	ImageComponentName string `pulumi:"imageComponentName"`
-	// The type of the image component.
+	// Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+	// - SELF: The custom image component you created.
+	// - ALIYUN: System components provided by Alibaba Cloud.
 	Owner string `pulumi:"owner"`
 	// The ID of the resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The operating system type supported by the image component.
 	SystemType string `pulumi:"systemType"`
-	// List of label key-value pairs.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -8892,15 +8903,17 @@ type GetEcsImageComponentsComponentArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the image component.
 	ImageComponentId pulumi.StringInput `pulumi:"imageComponentId"`
-	// The name of the image component.
+	// The name of the component.
 	ImageComponentName pulumi.StringInput `pulumi:"imageComponentName"`
-	// The type of the image component.
+	// Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+	// - SELF: The custom image component you created.
+	// - ALIYUN: System components provided by Alibaba Cloud.
 	Owner pulumi.StringInput `pulumi:"owner"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The operating system type supported by the image component.
 	SystemType pulumi.StringInput `pulumi:"systemType"`
-	// List of label key-value pairs.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -8985,12 +8998,14 @@ func (o GetEcsImageComponentsComponentOutput) ImageComponentId() pulumi.StringOu
 	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.ImageComponentId }).(pulumi.StringOutput)
 }
 
-// The name of the image component.
+// The name of the component.
 func (o GetEcsImageComponentsComponentOutput) ImageComponentName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.ImageComponentName }).(pulumi.StringOutput)
 }
 
-// The type of the image component.
+// Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+// - SELF: The custom image component you created.
+// - ALIYUN: System components provided by Alibaba Cloud.
 func (o GetEcsImageComponentsComponentOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.Owner }).(pulumi.StringOutput)
 }
@@ -9005,7 +9020,7 @@ func (o GetEcsImageComponentsComponentOutput) SystemType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsComponent) string { return v.SystemType }).(pulumi.StringOutput)
 }
 
-// List of label key-value pairs.
+// A mapping of tags to assign to the resource.
 func (o GetEcsImageComponentsComponentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsImageComponentsComponent) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -9283,7 +9298,7 @@ func (o GetEcsImagePipelinePipelineArrayOutput) Index(i pulumi.IntInput) GetEcsI
 type GetEcsInvocationsInvocation struct {
 	// The Base64-encoded command content.
 	CommandContent string `pulumi:"commandContent"`
-	// The ID of the command.
+	// The execution ID of the command.
 	CommandId string `pulumi:"commandId"`
 	// The name of the command.
 	CommandName string `pulumi:"commandName"`
@@ -9297,11 +9312,11 @@ type GetEcsInvocationsInvocation struct {
 	Id string `pulumi:"id"`
 	// The ID of the Invocation.
 	InvocationId string `pulumi:"invocationId"`
-	// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
+	// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
 	InvocationStatus string `pulumi:"invocationStatus"`
 	// Execute target instance set type.
 	InvokeInstances []GetEcsInvocationsInvocationInvokeInstance `pulumi:"invokeInstances"`
-	// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
 	InvokeStatus string `pulumi:"invokeStatus"`
 	// The custom parameters in the command.
 	Parameters string `pulumi:"parameters"`
@@ -9327,7 +9342,7 @@ type GetEcsInvocationsInvocationInput interface {
 type GetEcsInvocationsInvocationArgs struct {
 	// The Base64-encoded command content.
 	CommandContent pulumi.StringInput `pulumi:"commandContent"`
-	// The ID of the command.
+	// The execution ID of the command.
 	CommandId pulumi.StringInput `pulumi:"commandId"`
 	// The name of the command.
 	CommandName pulumi.StringInput `pulumi:"commandName"`
@@ -9341,11 +9356,11 @@ type GetEcsInvocationsInvocationArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the Invocation.
 	InvocationId pulumi.StringInput `pulumi:"invocationId"`
-	// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
+	// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
 	InvocationStatus pulumi.StringInput `pulumi:"invocationStatus"`
 	// Execute target instance set type.
 	InvokeInstances GetEcsInvocationsInvocationInvokeInstanceArrayInput `pulumi:"invokeInstances"`
-	// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
 	InvokeStatus pulumi.StringInput `pulumi:"invokeStatus"`
 	// The custom parameters in the command.
 	Parameters pulumi.StringInput `pulumi:"parameters"`
@@ -9413,7 +9428,7 @@ func (o GetEcsInvocationsInvocationOutput) CommandContent() pulumi.StringOutput 
 	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.CommandContent }).(pulumi.StringOutput)
 }
 
-// The ID of the command.
+// The execution ID of the command.
 func (o GetEcsInvocationsInvocationOutput) CommandId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.CommandId }).(pulumi.StringOutput)
 }
@@ -9448,7 +9463,7 @@ func (o GetEcsInvocationsInvocationOutput) InvocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.InvocationId }).(pulumi.StringOutput)
 }
 
-// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
+// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
 func (o GetEcsInvocationsInvocationOutput) InvocationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.InvocationStatus }).(pulumi.StringOutput)
 }
@@ -9460,7 +9475,7 @@ func (o GetEcsInvocationsInvocationOutput) InvokeInstances() GetEcsInvocationsIn
 	}).(GetEcsInvocationsInvocationInvokeInstanceArrayOutput)
 }
 
-// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
 func (o GetEcsInvocationsInvocationOutput) InvokeStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsInvocationsInvocation) string { return v.InvokeStatus }).(pulumi.StringOutput)
 }
@@ -9509,7 +9524,8 @@ type GetEcsInvocationsInvocationInvokeInstance struct {
 	// The start time of the execution.
 	CreationTime string `pulumi:"creationTime"`
 	// The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
-	Dropped   int    `pulumi:"dropped"`
+	Dropped int `pulumi:"dropped"`
+	// The code that indicates why the command failed to be sent or run.
 	ErrorCode string `pulumi:"errorCode"`
 	// Details about the reason why the command failed to be sent or run.
 	ErrorInfo string `pulumi:"errorInfo"`
@@ -9518,7 +9534,8 @@ type GetEcsInvocationsInvocationInvokeInstance struct {
 	// The end time of the execution.
 	FinishTime string `pulumi:"finishTime"`
 	// The ID of the instance.
-	InstanceId           string `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
 	InstanceInvokeStatus string `pulumi:"instanceInvokeStatus"`
 	// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
 	InvocationStatus string `pulumi:"invocationStatus"`
@@ -9531,8 +9548,6 @@ type GetEcsInvocationsInvocationInvokeInstance struct {
 	// The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
 	StopTime string `pulumi:"stopTime"`
 	// Indicates whether the commands are to be automatically run.
-	// * `errorCode	` - The code that indicates why the command failed to be sent or run.
-	// * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
 	Timed bool `pulumi:"timed"`
 	// The time when the execution state was updated.
 	UpdateTime string `pulumi:"updateTime"`
@@ -9553,7 +9568,8 @@ type GetEcsInvocationsInvocationInvokeInstanceArgs struct {
 	// The start time of the execution.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
-	Dropped   pulumi.IntInput    `pulumi:"dropped"`
+	Dropped pulumi.IntInput `pulumi:"dropped"`
+	// The code that indicates why the command failed to be sent or run.
 	ErrorCode pulumi.StringInput `pulumi:"errorCode"`
 	// Details about the reason why the command failed to be sent or run.
 	ErrorInfo pulumi.StringInput `pulumi:"errorInfo"`
@@ -9562,7 +9578,8 @@ type GetEcsInvocationsInvocationInvokeInstanceArgs struct {
 	// The end time of the execution.
 	FinishTime pulumi.StringInput `pulumi:"finishTime"`
 	// The ID of the instance.
-	InstanceId           pulumi.StringInput `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
 	InstanceInvokeStatus pulumi.StringInput `pulumi:"instanceInvokeStatus"`
 	// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
 	InvocationStatus pulumi.StringInput `pulumi:"invocationStatus"`
@@ -9575,8 +9592,6 @@ type GetEcsInvocationsInvocationInvokeInstanceArgs struct {
 	// The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
 	StopTime pulumi.StringInput `pulumi:"stopTime"`
 	// Indicates whether the commands are to be automatically run.
-	// * `errorCode	` - The code that indicates why the command failed to be sent or run.
-	// * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
 	Timed pulumi.BoolInput `pulumi:"timed"`
 	// The time when the execution state was updated.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
@@ -9643,6 +9658,7 @@ func (o GetEcsInvocationsInvocationInvokeInstanceOutput) Dropped() pulumi.IntOut
 	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) int { return v.Dropped }).(pulumi.IntOutput)
 }
 
+// The code that indicates why the command failed to be sent or run.
 func (o GetEcsInvocationsInvocationInvokeInstanceOutput) ErrorCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.ErrorCode }).(pulumi.StringOutput)
 }
@@ -9667,6 +9683,7 @@ func (o GetEcsInvocationsInvocationInvokeInstanceOutput) InstanceId() pulumi.Str
 	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
 func (o GetEcsInvocationsInvocationInvokeInstanceOutput) InstanceInvokeStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) string { return v.InstanceInvokeStatus }).(pulumi.StringOutput)
 }
@@ -9697,8 +9714,6 @@ func (o GetEcsInvocationsInvocationInvokeInstanceOutput) StopTime() pulumi.Strin
 }
 
 // Indicates whether the commands are to be automatically run.
-// * `errorCode	` - The code that indicates why the command failed to be sent or run.
-// * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
 func (o GetEcsInvocationsInvocationInvokeInstanceOutput) Timed() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEcsInvocationsInvocationInvokeInstance) bool { return v.Timed }).(pulumi.BoolOutput)
 }
@@ -11383,7 +11398,7 @@ type GetEcsNetworkInterfacePermissionsPermission struct {
 	Permission string `pulumi:"permission"`
 	// Alibaba Cloud service name.
 	ServiceName string `pulumi:"serviceName"`
-	// The Status of the Network Interface Permissions.
+	// The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
 	Status string `pulumi:"status"`
 }
 
@@ -11411,7 +11426,7 @@ type GetEcsNetworkInterfacePermissionsPermissionArgs struct {
 	Permission pulumi.StringInput `pulumi:"permission"`
 	// Alibaba Cloud service name.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The Status of the Network Interface Permissions.
+	// The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -11496,7 +11511,7 @@ func (o GetEcsNetworkInterfacePermissionsPermissionOutput) ServiceName() pulumi.
 	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsPermission) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The Status of the Network Interface Permissions.
+// The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
 func (o GetEcsNetworkInterfacePermissionsPermissionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacePermissionsPermission) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -11961,15 +11976,16 @@ func (o GetEcsNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput) Index(i p
 }
 
 type GetEcsPrefixListsList struct {
-	// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+	// The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
 	AddressFamily string `pulumi:"addressFamily"`
 	// The amount of associated resources.
 	AssociationCount int `pulumi:"associationCount"`
 	// The time when the prefix list was created.
 	CreateTime string `pulumi:"createTime"`
-	// The description of the prefix list.
-	Description string                       `pulumi:"description"`
-	Entries     []GetEcsPrefixListsListEntry `pulumi:"entries"`
+	// The description of the entry.
+	Description string `pulumi:"description"`
+	// The entries of the prefix list.
+	Entries []GetEcsPrefixListsListEntry `pulumi:"entries"`
 	// The ID of the prefix list.
 	Id string `pulumi:"id"`
 	// The maximum number of entries that the prefix list supports.
@@ -11992,15 +12008,16 @@ type GetEcsPrefixListsListInput interface {
 }
 
 type GetEcsPrefixListsListArgs struct {
-	// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+	// The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
 	AddressFamily pulumi.StringInput `pulumi:"addressFamily"`
 	// The amount of associated resources.
 	AssociationCount pulumi.IntInput `pulumi:"associationCount"`
 	// The time when the prefix list was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The description of the prefix list.
-	Description pulumi.StringInput                   `pulumi:"description"`
-	Entries     GetEcsPrefixListsListEntryArrayInput `pulumi:"entries"`
+	// The description of the entry.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The entries of the prefix list.
+	Entries GetEcsPrefixListsListEntryArrayInput `pulumi:"entries"`
 	// The ID of the prefix list.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The maximum number of entries that the prefix list supports.
@@ -12062,7 +12079,7 @@ func (o GetEcsPrefixListsListOutput) ToGetEcsPrefixListsListOutputWithContext(ct
 	return o
 }
 
-// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+// The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
 func (o GetEcsPrefixListsListOutput) AddressFamily() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsList) string { return v.AddressFamily }).(pulumi.StringOutput)
 }
@@ -12077,11 +12094,12 @@ func (o GetEcsPrefixListsListOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsList) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the prefix list.
+// The description of the entry.
 func (o GetEcsPrefixListsListOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsList) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The entries of the prefix list.
 func (o GetEcsPrefixListsListOutput) Entries() GetEcsPrefixListsListEntryArrayOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsList) []GetEcsPrefixListsListEntry { return v.Entries }).(GetEcsPrefixListsListEntryArrayOutput)
 }
@@ -12127,8 +12145,9 @@ func (o GetEcsPrefixListsListArrayOutput) Index(i pulumi.IntInput) GetEcsPrefixL
 }
 
 type GetEcsPrefixListsListEntry struct {
+	// The CIDR block of the entry.
 	Cidr string `pulumi:"cidr"`
-	// The description of the prefix list.
+	// The description of the entry.
 	Description string `pulumi:"description"`
 }
 
@@ -12144,8 +12163,9 @@ type GetEcsPrefixListsListEntryInput interface {
 }
 
 type GetEcsPrefixListsListEntryArgs struct {
+	// The CIDR block of the entry.
 	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// The description of the prefix list.
+	// The description of the entry.
 	Description pulumi.StringInput `pulumi:"description"`
 }
 
@@ -12200,11 +12220,12 @@ func (o GetEcsPrefixListsListEntryOutput) ToGetEcsPrefixListsListEntryOutputWith
 	return o
 }
 
+// The CIDR block of the entry.
 func (o GetEcsPrefixListsListEntryOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsListEntry) string { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// The description of the prefix list.
+// The description of the entry.
 func (o GetEcsPrefixListsListEntryOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsListEntry) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -12242,9 +12263,9 @@ type GetEcsSnapshotGroupsGroup struct {
 	SnapshotGroupId string `pulumi:"snapshotGroupId"`
 	// The name of the snapshot-consistent group.
 	SnapshotGroupName string `pulumi:"snapshotGroupName"`
-	// The status of the resource.
+	// The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
 	Status string `pulumi:"status"`
-	// List of label key-value pairs.
+	// A mapping of tags to assign to the snapshot group.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -12272,9 +12293,9 @@ type GetEcsSnapshotGroupsGroupArgs struct {
 	SnapshotGroupId pulumi.StringInput `pulumi:"snapshotGroupId"`
 	// The name of the snapshot-consistent group.
 	SnapshotGroupName pulumi.StringInput `pulumi:"snapshotGroupName"`
-	// The status of the resource.
+	// The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// List of label key-value pairs.
+	// A mapping of tags to assign to the snapshot group.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -12359,12 +12380,12 @@ func (o GetEcsSnapshotGroupsGroupOutput) SnapshotGroupName() pulumi.StringOutput
 	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) string { return v.SnapshotGroupName }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
 func (o GetEcsSnapshotGroupsGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// List of label key-value pairs.
+// A mapping of tags to assign to the snapshot group.
 func (o GetEcsSnapshotGroupsGroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -12726,7 +12747,7 @@ type GetEcsStorageCapacityUnitsUnit struct {
 	Id string `pulumi:"id"`
 	// The effective time of the Storage Capacity Unit.
 	StartTime string `pulumi:"startTime"`
-	// The status of Storage Capacity Unit.
+	// The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
 	Status string `pulumi:"status"`
 	// The ID of Storage Capacity Unit.
 	StorageCapacityUnitId string `pulumi:"storageCapacityUnitId"`
@@ -12760,7 +12781,7 @@ type GetEcsStorageCapacityUnitsUnitArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The effective time of the Storage Capacity Unit.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// The status of Storage Capacity Unit.
+	// The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The ID of Storage Capacity Unit.
 	StorageCapacityUnitId pulumi.StringInput `pulumi:"storageCapacityUnitId"`
@@ -12854,7 +12875,7 @@ func (o GetEcsStorageCapacityUnitsUnitOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// The status of Storage Capacity Unit.
+// The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
 func (o GetEcsStorageCapacityUnitsUnitOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsStorageCapacityUnitsUnit) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -12890,13 +12911,13 @@ func (o GetEcsStorageCapacityUnitsUnitArrayOutput) Index(i pulumi.IntInput) GetE
 }
 
 type GetEipAddressesAddress struct {
-	// The name of the EIP.
+	// The eip name.
 	AddressName string `pulumi:"addressName"`
 	// The ID of the EIP.
 	AllocationId string `pulumi:"allocationId"`
 	// The ID of the region to which the EIP belongs.
 	AvailableRegions []string `pulumi:"availableRegions"`
-	// The maximum bandwidth of the EIP. Unit: Mbit/s.
+	// The maximum bandwidth of the EIP.
 	Bandwidth string `pulumi:"bandwidth"`
 	// The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
 	BandwidthPackageBandwidth string `pulumi:"bandwidthPackageBandwidth"`
@@ -12916,7 +12937,7 @@ type GetEipAddressesAddress struct {
 	HasReservationData string `pulumi:"hasReservationData"`
 	// Indicates whether fine-grained monitoring is enabled for the EIP.
 	HdMonitorStatus string `pulumi:"hdMonitorStatus"`
-	// The ID of the Address.
+	// The ID of the EIP.
 	Id string `pulumi:"id"`
 	// The ID of the instance with which the EIP is associated.
 	InstanceId string `pulumi:"instanceId"`
@@ -12926,13 +12947,13 @@ type GetEipAddressesAddress struct {
 	InstanceType string `pulumi:"instanceType"`
 	// The metering method of the EIP.
 	InternetChargeType string `pulumi:"internetChargeType"`
-	// The IP address of the EIP.
+	// The eip address.
 	IpAddress string `pulumi:"ipAddress"`
-	// The Internet service provider (ISP).
+	// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
 	Isp string `pulumi:"isp"`
 	// The details about the locked EIP.
 	OperationLocks []string `pulumi:"operationLocks"`
-	// The billing method of the EIP.
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
 	// The time when the renewal takes effect.
 	ReservationActiveTime string `pulumi:"reservationActiveTime"`
@@ -12946,11 +12967,13 @@ type GetEipAddressesAddress struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// Indicates whether level-2 throttling is configured.
 	SecondLimited bool `pulumi:"secondLimited"`
-	// The IDs of the contiguous EIPs.
+	// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
 	SegmentInstanceId string `pulumi:"segmentInstanceId"`
-	// The status of the EIP.
+	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -12966,13 +12989,13 @@ type GetEipAddressesAddressInput interface {
 }
 
 type GetEipAddressesAddressArgs struct {
-	// The name of the EIP.
+	// The eip name.
 	AddressName pulumi.StringInput `pulumi:"addressName"`
 	// The ID of the EIP.
 	AllocationId pulumi.StringInput `pulumi:"allocationId"`
 	// The ID of the region to which the EIP belongs.
 	AvailableRegions pulumi.StringArrayInput `pulumi:"availableRegions"`
-	// The maximum bandwidth of the EIP. Unit: Mbit/s.
+	// The maximum bandwidth of the EIP.
 	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
 	// The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
 	BandwidthPackageBandwidth pulumi.StringInput `pulumi:"bandwidthPackageBandwidth"`
@@ -12992,7 +13015,7 @@ type GetEipAddressesAddressArgs struct {
 	HasReservationData pulumi.StringInput `pulumi:"hasReservationData"`
 	// Indicates whether fine-grained monitoring is enabled for the EIP.
 	HdMonitorStatus pulumi.StringInput `pulumi:"hdMonitorStatus"`
-	// The ID of the Address.
+	// The ID of the EIP.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the instance with which the EIP is associated.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
@@ -13002,13 +13025,13 @@ type GetEipAddressesAddressArgs struct {
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 	// The metering method of the EIP.
 	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
-	// The IP address of the EIP.
+	// The eip address.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// The Internet service provider (ISP).
+	// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
 	Isp pulumi.StringInput `pulumi:"isp"`
 	// The details about the locked EIP.
 	OperationLocks pulumi.StringArrayInput `pulumi:"operationLocks"`
-	// The billing method of the EIP.
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// The time when the renewal takes effect.
 	ReservationActiveTime pulumi.StringInput `pulumi:"reservationActiveTime"`
@@ -13022,11 +13045,13 @@ type GetEipAddressesAddressArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// Indicates whether level-2 throttling is configured.
 	SecondLimited pulumi.BoolInput `pulumi:"secondLimited"`
-	// The IDs of the contiguous EIPs.
+	// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
 	SegmentInstanceId pulumi.StringInput `pulumi:"segmentInstanceId"`
-	// The status of the EIP.
+	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -13081,7 +13106,7 @@ func (o GetEipAddressesAddressOutput) ToGetEipAddressesAddressOutputWithContext(
 	return o
 }
 
-// The name of the EIP.
+// The eip name.
 func (o GetEipAddressesAddressOutput) AddressName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.AddressName }).(pulumi.StringOutput)
 }
@@ -13096,7 +13121,7 @@ func (o GetEipAddressesAddressOutput) AvailableRegions() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v GetEipAddressesAddress) []string { return v.AvailableRegions }).(pulumi.StringArrayOutput)
 }
 
-// The maximum bandwidth of the EIP. Unit: Mbit/s.
+// The maximum bandwidth of the EIP.
 func (o GetEipAddressesAddressOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.Bandwidth }).(pulumi.StringOutput)
 }
@@ -13146,7 +13171,7 @@ func (o GetEipAddressesAddressOutput) HdMonitorStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.HdMonitorStatus }).(pulumi.StringOutput)
 }
 
-// The ID of the Address.
+// The ID of the EIP.
 func (o GetEipAddressesAddressOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -13171,12 +13196,12 @@ func (o GetEipAddressesAddressOutput) InternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
-// The IP address of the EIP.
+// The eip address.
 func (o GetEipAddressesAddressOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// The Internet service provider (ISP).
+// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
 func (o GetEipAddressesAddressOutput) Isp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.Isp }).(pulumi.StringOutput)
 }
@@ -13186,7 +13211,7 @@ func (o GetEipAddressesAddressOutput) OperationLocks() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GetEipAddressesAddress) []string { return v.OperationLocks }).(pulumi.StringArrayOutput)
 }
 
-// The billing method of the EIP.
+// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
 func (o GetEipAddressesAddressOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -13221,17 +13246,19 @@ func (o GetEipAddressesAddressOutput) SecondLimited() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) bool { return v.SecondLimited }).(pulumi.BoolOutput)
 }
 
-// The IDs of the contiguous EIPs.
+// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
 func (o GetEipAddressesAddressOutput) SegmentInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.SegmentInstanceId }).(pulumi.StringOutput)
 }
 
-// The status of the EIP.
+// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 func (o GetEipAddressesAddressOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o GetEipAddressesAddressOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEipAddressesAddress) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -13257,12 +13284,13 @@ func (o GetEipAddressesAddressArrayOutput) Index(i pulumi.IntInput) GetEipAddres
 }
 
 type GetEipAddressesEip struct {
-	// The maximum bandwidth of the EIP. Unit: Mbit/s.
-	Bandwidth    string `pulumi:"bandwidth"`
+	// The maximum bandwidth of the EIP.
+	Bandwidth string `pulumi:"bandwidth"`
+	// The time when the EIP was created.
 	CreationTime string `pulumi:"creationTime"`
 	// Indicates whether deletion protection is enabled.
 	DeletionProtection bool `pulumi:"deletionProtection"`
-	// The ID of the Address.
+	// The ID of the EIP.
 	Id string `pulumi:"id"`
 	// The ID of the instance with which the EIP is associated.
 	InstanceId string `pulumi:"instanceId"`
@@ -13288,12 +13316,13 @@ type GetEipAddressesEipInput interface {
 }
 
 type GetEipAddressesEipArgs struct {
-	// The maximum bandwidth of the EIP. Unit: Mbit/s.
-	Bandwidth    pulumi.StringInput `pulumi:"bandwidth"`
+	// The maximum bandwidth of the EIP.
+	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
+	// The time when the EIP was created.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// Indicates whether deletion protection is enabled.
 	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
-	// The ID of the Address.
+	// The ID of the EIP.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the instance with which the EIP is associated.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
@@ -13358,11 +13387,12 @@ func (o GetEipAddressesEipOutput) ToGetEipAddressesEipOutputWithContext(ctx cont
 	return o
 }
 
-// The maximum bandwidth of the EIP. Unit: Mbit/s.
+// The maximum bandwidth of the EIP.
 func (o GetEipAddressesEipOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesEip) string { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
+// The time when the EIP was created.
 func (o GetEipAddressesEipOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesEip) string { return v.CreationTime }).(pulumi.StringOutput)
 }
@@ -13372,7 +13402,7 @@ func (o GetEipAddressesEipOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEipAddressesEip) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
-// The ID of the Address.
+// The ID of the EIP.
 func (o GetEipAddressesEipOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipAddressesEip) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -13423,46 +13453,69 @@ func (o GetEipAddressesEipArrayOutput) Index(i pulumi.IntInput) GetEipAddressesE
 }
 
 type GetEipsAddress struct {
-	AddressName      string   `pulumi:"addressName"`
-	AllocationId     string   `pulumi:"allocationId"`
+	// The eip name.
+	AddressName string `pulumi:"addressName"`
+	// The ID of the EIP.
+	AllocationId string `pulumi:"allocationId"`
+	// The ID of the region to which the EIP belongs.
 	AvailableRegions []string `pulumi:"availableRegions"`
-	// EIP internet max bandwidth in Mbps.
-	Bandwidth                 string `pulumi:"bandwidth"`
+	// The maximum bandwidth of the EIP.
+	Bandwidth string `pulumi:"bandwidth"`
+	// The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
 	BandwidthPackageBandwidth string `pulumi:"bandwidthPackageBandwidth"`
-	BandwidthPackageId        string `pulumi:"bandwidthPackageId"`
-	BandwidthPackageType      string `pulumi:"bandwidthPackageType"`
-	CreateTime                string `pulumi:"createTime"`
-	// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
-	DeletionProtection bool   `pulumi:"deletionProtection"`
-	Description        string `pulumi:"description"`
-	ExpiredTime        string `pulumi:"expiredTime"`
+	// The ID of the EIP bandwidth plan.
+	BandwidthPackageId string `pulumi:"bandwidthPackageId"`
+	// The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+	BandwidthPackageType string `pulumi:"bandwidthPackageType"`
+	// The time when the EIP was created.
+	CreateTime string `pulumi:"createTime"`
+	// Indicates whether deletion protection is enabled.
+	DeletionProtection bool `pulumi:"deletionProtection"`
+	// The description of the EIP.
+	Description string `pulumi:"description"`
+	// The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+	ExpiredTime string `pulumi:"expiredTime"`
+	// Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
 	HasReservationData string `pulumi:"hasReservationData"`
-	HdMonitorStatus    string `pulumi:"hdMonitorStatus"`
-	// ID of the EIP.
+	// Indicates whether fine-grained monitoring is enabled for the EIP.
+	HdMonitorStatus string `pulumi:"hdMonitorStatus"`
+	// The ID of the EIP.
 	Id string `pulumi:"id"`
-	// The ID of the instance that is being bound.
-	InstanceId       string `pulumi:"instanceId"`
+	// The ID of the instance with which the EIP is associated.
+	InstanceId string `pulumi:"instanceId"`
+	// The region ID of the associated resource.
 	InstanceRegionId string `pulumi:"instanceRegionId"`
-	// The instance type of that the EIP is bound.
+	// The type of the instance with which the EIP is associated.
 	InstanceType string `pulumi:"instanceType"`
-	// EIP internet charge type.
+	// The metering method of the EIP.
 	InternetChargeType string `pulumi:"internetChargeType"`
-	// Public IP Address of the the EIP.
-	IpAddress                     string   `pulumi:"ipAddress"`
-	Isp                           string   `pulumi:"isp"`
-	OperationLocks                []string `pulumi:"operationLocks"`
-	PaymentType                   string   `pulumi:"paymentType"`
-	ReservationActiveTime         string   `pulumi:"reservationActiveTime"`
-	ReservationBandwidth          string   `pulumi:"reservationBandwidth"`
-	ReservationInternetChargeType string   `pulumi:"reservationInternetChargeType"`
-	ReservationOrderType          string   `pulumi:"reservationOrderType"`
-	// The Id of resource group which the eips belongs.
-	ResourceGroupId   string `pulumi:"resourceGroupId"`
-	SecondLimited     bool   `pulumi:"secondLimited"`
+	// The eip address.
+	IpAddress string `pulumi:"ipAddress"`
+	// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+	Isp string `pulumi:"isp"`
+	// The details about the locked EIP.
+	OperationLocks []string `pulumi:"operationLocks"`
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+	PaymentType string `pulumi:"paymentType"`
+	// The time when the renewal takes effect.
+	ReservationActiveTime string `pulumi:"reservationActiveTime"`
+	// The bandwidth after the renewal takes effect.
+	ReservationBandwidth string `pulumi:"reservationBandwidth"`
+	// The metering method of the renewal.
+	ReservationInternetChargeType string `pulumi:"reservationInternetChargeType"`
+	// The type of the renewal order.
+	ReservationOrderType string `pulumi:"reservationOrderType"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Indicates whether level-2 throttling is configured.
+	SecondLimited bool `pulumi:"secondLimited"`
+	// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
 	SegmentInstanceId string `pulumi:"segmentInstanceId"`
-	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -13478,46 +13531,69 @@ type GetEipsAddressInput interface {
 }
 
 type GetEipsAddressArgs struct {
-	AddressName      pulumi.StringInput      `pulumi:"addressName"`
-	AllocationId     pulumi.StringInput      `pulumi:"allocationId"`
+	// The eip name.
+	AddressName pulumi.StringInput `pulumi:"addressName"`
+	// The ID of the EIP.
+	AllocationId pulumi.StringInput `pulumi:"allocationId"`
+	// The ID of the region to which the EIP belongs.
 	AvailableRegions pulumi.StringArrayInput `pulumi:"availableRegions"`
-	// EIP internet max bandwidth in Mbps.
-	Bandwidth                 pulumi.StringInput `pulumi:"bandwidth"`
+	// The maximum bandwidth of the EIP.
+	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
+	// The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
 	BandwidthPackageBandwidth pulumi.StringInput `pulumi:"bandwidthPackageBandwidth"`
-	BandwidthPackageId        pulumi.StringInput `pulumi:"bandwidthPackageId"`
-	BandwidthPackageType      pulumi.StringInput `pulumi:"bandwidthPackageType"`
-	CreateTime                pulumi.StringInput `pulumi:"createTime"`
-	// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
-	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
-	Description        pulumi.StringInput `pulumi:"description"`
-	ExpiredTime        pulumi.StringInput `pulumi:"expiredTime"`
+	// The ID of the EIP bandwidth plan.
+	BandwidthPackageId pulumi.StringInput `pulumi:"bandwidthPackageId"`
+	// The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+	BandwidthPackageType pulumi.StringInput `pulumi:"bandwidthPackageType"`
+	// The time when the EIP was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Indicates whether deletion protection is enabled.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
+	// The description of the EIP.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
+	// Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
 	HasReservationData pulumi.StringInput `pulumi:"hasReservationData"`
-	HdMonitorStatus    pulumi.StringInput `pulumi:"hdMonitorStatus"`
-	// ID of the EIP.
+	// Indicates whether fine-grained monitoring is enabled for the EIP.
+	HdMonitorStatus pulumi.StringInput `pulumi:"hdMonitorStatus"`
+	// The ID of the EIP.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the instance that is being bound.
-	InstanceId       pulumi.StringInput `pulumi:"instanceId"`
+	// The ID of the instance with which the EIP is associated.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The region ID of the associated resource.
 	InstanceRegionId pulumi.StringInput `pulumi:"instanceRegionId"`
-	// The instance type of that the EIP is bound.
+	// The type of the instance with which the EIP is associated.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// EIP internet charge type.
+	// The metering method of the EIP.
 	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
-	// Public IP Address of the the EIP.
-	IpAddress                     pulumi.StringInput      `pulumi:"ipAddress"`
-	Isp                           pulumi.StringInput      `pulumi:"isp"`
-	OperationLocks                pulumi.StringArrayInput `pulumi:"operationLocks"`
-	PaymentType                   pulumi.StringInput      `pulumi:"paymentType"`
-	ReservationActiveTime         pulumi.StringInput      `pulumi:"reservationActiveTime"`
-	ReservationBandwidth          pulumi.StringInput      `pulumi:"reservationBandwidth"`
-	ReservationInternetChargeType pulumi.StringInput      `pulumi:"reservationInternetChargeType"`
-	ReservationOrderType          pulumi.StringInput      `pulumi:"reservationOrderType"`
-	// The Id of resource group which the eips belongs.
-	ResourceGroupId   pulumi.StringInput `pulumi:"resourceGroupId"`
-	SecondLimited     pulumi.BoolInput   `pulumi:"secondLimited"`
+	// The eip address.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+	Isp pulumi.StringInput `pulumi:"isp"`
+	// The details about the locked EIP.
+	OperationLocks pulumi.StringArrayInput `pulumi:"operationLocks"`
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The time when the renewal takes effect.
+	ReservationActiveTime pulumi.StringInput `pulumi:"reservationActiveTime"`
+	// The bandwidth after the renewal takes effect.
+	ReservationBandwidth pulumi.StringInput `pulumi:"reservationBandwidth"`
+	// The metering method of the renewal.
+	ReservationInternetChargeType pulumi.StringInput `pulumi:"reservationInternetChargeType"`
+	// The type of the renewal order.
+	ReservationOrderType pulumi.StringInput `pulumi:"reservationOrderType"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Indicates whether level-2 throttling is configured.
+	SecondLimited pulumi.BoolInput `pulumi:"secondLimited"`
+	// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
 	SegmentInstanceId pulumi.StringInput `pulumi:"segmentInstanceId"`
-	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -13572,136 +13648,159 @@ func (o GetEipsAddressOutput) ToGetEipsAddressOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The eip name.
 func (o GetEipsAddressOutput) AddressName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.AddressName }).(pulumi.StringOutput)
 }
 
+// The ID of the EIP.
 func (o GetEipsAddressOutput) AllocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.AllocationId }).(pulumi.StringOutput)
 }
 
+// The ID of the region to which the EIP belongs.
 func (o GetEipsAddressOutput) AvailableRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEipsAddress) []string { return v.AvailableRegions }).(pulumi.StringArrayOutput)
 }
 
-// EIP internet max bandwidth in Mbps.
+// The maximum bandwidth of the EIP.
 func (o GetEipsAddressOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
+// The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
 func (o GetEipsAddressOutput) BandwidthPackageBandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.BandwidthPackageBandwidth }).(pulumi.StringOutput)
 }
 
+// The ID of the EIP bandwidth plan.
 func (o GetEipsAddressOutput) BandwidthPackageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.BandwidthPackageId }).(pulumi.StringOutput)
 }
 
+// The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
 func (o GetEipsAddressOutput) BandwidthPackageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.BandwidthPackageType }).(pulumi.StringOutput)
 }
 
+// The time when the EIP was created.
 func (o GetEipsAddressOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+// Indicates whether deletion protection is enabled.
 func (o GetEipsAddressOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEipsAddress) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
+// The description of the EIP.
 func (o GetEipsAddressOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
 func (o GetEipsAddressOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
+// Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
 func (o GetEipsAddressOutput) HasReservationData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.HasReservationData }).(pulumi.StringOutput)
 }
 
+// Indicates whether fine-grained monitoring is enabled for the EIP.
 func (o GetEipsAddressOutput) HdMonitorStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.HdMonitorStatus }).(pulumi.StringOutput)
 }
 
-// ID of the EIP.
+// The ID of the EIP.
 func (o GetEipsAddressOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the instance that is being bound.
+// The ID of the instance with which the EIP is associated.
 func (o GetEipsAddressOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The region ID of the associated resource.
 func (o GetEipsAddressOutput) InstanceRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.InstanceRegionId }).(pulumi.StringOutput)
 }
 
-// The instance type of that the EIP is bound.
+// The type of the instance with which the EIP is associated.
 func (o GetEipsAddressOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// EIP internet charge type.
+// The metering method of the EIP.
 func (o GetEipsAddressOutput) InternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
-// Public IP Address of the the EIP.
+// The eip address.
 func (o GetEipsAddressOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
 func (o GetEipsAddressOutput) Isp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.Isp }).(pulumi.StringOutput)
 }
 
+// The details about the locked EIP.
 func (o GetEipsAddressOutput) OperationLocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEipsAddress) []string { return v.OperationLocks }).(pulumi.StringArrayOutput)
 }
 
+// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
 func (o GetEipsAddressOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
+// The time when the renewal takes effect.
 func (o GetEipsAddressOutput) ReservationActiveTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.ReservationActiveTime }).(pulumi.StringOutput)
 }
 
+// The bandwidth after the renewal takes effect.
 func (o GetEipsAddressOutput) ReservationBandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.ReservationBandwidth }).(pulumi.StringOutput)
 }
 
+// The metering method of the renewal.
 func (o GetEipsAddressOutput) ReservationInternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.ReservationInternetChargeType }).(pulumi.StringOutput)
 }
 
+// The type of the renewal order.
 func (o GetEipsAddressOutput) ReservationOrderType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.ReservationOrderType }).(pulumi.StringOutput)
 }
 
-// The Id of resource group which the eips belongs.
+// The ID of the resource group.
 func (o GetEipsAddressOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// Indicates whether level-2 throttling is configured.
 func (o GetEipsAddressOutput) SecondLimited() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEipsAddress) bool { return v.SecondLimited }).(pulumi.BoolOutput)
 }
 
+// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
 func (o GetEipsAddressOutput) SegmentInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.SegmentInstanceId }).(pulumi.StringOutput)
 }
 
-// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 func (o GetEipsAddressOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsAddress) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o GetEipsAddressOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEipsAddress) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -13727,23 +13826,23 @@ func (o GetEipsAddressArrayOutput) Index(i pulumi.IntInput) GetEipsAddressOutput
 }
 
 type GetEipsEip struct {
-	// EIP internet max bandwidth in Mbps.
+	// The maximum bandwidth of the EIP.
 	Bandwidth string `pulumi:"bandwidth"`
-	// Time of creation.
+	// The time when the EIP was created.
 	CreationTime string `pulumi:"creationTime"`
-	// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+	// Indicates whether deletion protection is enabled.
 	DeletionProtection bool `pulumi:"deletionProtection"`
-	// ID of the EIP.
+	// The ID of the EIP.
 	Id string `pulumi:"id"`
-	// The ID of the instance that is being bound.
+	// The ID of the instance with which the EIP is associated.
 	InstanceId string `pulumi:"instanceId"`
-	// The instance type of that the EIP is bound.
+	// The type of the instance with which the EIP is associated.
 	InstanceType string `pulumi:"instanceType"`
-	// EIP internet charge type.
+	// The metering method of the EIP.
 	InternetChargeType string `pulumi:"internetChargeType"`
-	// Public IP Address of the the EIP.
+	// The eip address.
 	IpAddress string `pulumi:"ipAddress"`
-	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status string `pulumi:"status"`
 }
 
@@ -13759,23 +13858,23 @@ type GetEipsEipInput interface {
 }
 
 type GetEipsEipArgs struct {
-	// EIP internet max bandwidth in Mbps.
+	// The maximum bandwidth of the EIP.
 	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
-	// Time of creation.
+	// The time when the EIP was created.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+	// Indicates whether deletion protection is enabled.
 	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
-	// ID of the EIP.
+	// The ID of the EIP.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the instance that is being bound.
+	// The ID of the instance with which the EIP is associated.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// The instance type of that the EIP is bound.
+	// The type of the instance with which the EIP is associated.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// EIP internet charge type.
+	// The metering method of the EIP.
 	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
-	// Public IP Address of the the EIP.
+	// The eip address.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -13830,47 +13929,47 @@ func (o GetEipsEipOutput) ToGetEipsEipOutputWithContext(ctx context.Context) Get
 	return o
 }
 
-// EIP internet max bandwidth in Mbps.
+// The maximum bandwidth of the EIP.
 func (o GetEipsEipOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
-// Time of creation.
+// The time when the EIP was created.
 func (o GetEipsEipOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+// Indicates whether deletion protection is enabled.
 func (o GetEipsEipOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEipsEip) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
-// ID of the EIP.
+// The ID of the EIP.
 func (o GetEipsEipOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the instance that is being bound.
+// The ID of the instance with which the EIP is associated.
 func (o GetEipsEipOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The instance type of that the EIP is bound.
+// The type of the instance with which the EIP is associated.
 func (o GetEipsEipOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// EIP internet charge type.
+// The metering method of the EIP.
 func (o GetEipsEipOutput) InternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
-// Public IP Address of the the EIP.
+// The eip address.
 func (o GetEipsEipOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 func (o GetEipsEipOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -14384,7 +14483,7 @@ type GetImagesImage struct {
 	CreationTime string `pulumi:"creationTime"`
 	// The description of the image.
 	Description string `pulumi:"description"`
-	// A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
+	// A list of disk device mappings. Each element contains the following attributes:
 	DiskDeviceMappings []GetImagesImageDiskDeviceMapping `pulumi:"diskDeviceMappings"`
 	// The ID of the image.
 	Id string `pulumi:"id"`
@@ -14394,26 +14493,31 @@ type GetImagesImage struct {
 	ImageOwnerAlias string `pulumi:"imageOwnerAlias"`
 	// Version of the image.
 	ImageVersion string `pulumi:"imageVersion"`
-	IsCopied     bool   `pulumi:"isCopied"`
+	// Whether the image is copied.
+	IsCopied bool `pulumi:"isCopied"`
+	// Whether the image is shared by the current user.
 	IsSelfShared string `pulumi:"isSelfShared"`
 	// Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
 	IsSubscribed bool `pulumi:"isSubscribed"`
 	// Specifies whether the image can be used on I/O optimized instances.
-	IsSupportIoOptimized bool   `pulumi:"isSupportIoOptimized"`
-	Name                 string `pulumi:"name"`
+	IsSupportIoOptimized bool `pulumi:"isSupportIoOptimized"`
+	// The name of the image.
+	Name string `pulumi:"name"`
 	// The display Chinese name of the OS.
 	OsName string `pulumi:"osName"`
 	// The english name of the OS.
 	OsNameEn string `pulumi:"osNameEn"`
 	// The operating system type of the image. Valid values: `windows` and `linux`.
-	OsType   string `pulumi:"osType"`
+	OsType string `pulumi:"osType"`
+	// The platform of the image.
 	Platform string `pulumi:"platform"`
 	// The product code of the image on the image market.
 	ProductCode string `pulumi:"productCode"`
 	// Progress of image creation, presented in percentages.
 	Progress string `pulumi:"progress"`
 	// The size of the created disk.
-	Size  int    `pulumi:"size"`
+	Size int `pulumi:"size"`
+	// The state of the image.
 	State string `pulumi:"state"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
 	// - `Creating`: The image is being created.
@@ -14447,7 +14551,7 @@ type GetImagesImageArgs struct {
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// The description of the image.
 	Description pulumi.StringInput `pulumi:"description"`
-	// A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
+	// A list of disk device mappings. Each element contains the following attributes:
 	DiskDeviceMappings GetImagesImageDiskDeviceMappingArrayInput `pulumi:"diskDeviceMappings"`
 	// The ID of the image.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -14457,26 +14561,31 @@ type GetImagesImageArgs struct {
 	ImageOwnerAlias pulumi.StringInput `pulumi:"imageOwnerAlias"`
 	// Version of the image.
 	ImageVersion pulumi.StringInput `pulumi:"imageVersion"`
-	IsCopied     pulumi.BoolInput   `pulumi:"isCopied"`
+	// Whether the image is copied.
+	IsCopied pulumi.BoolInput `pulumi:"isCopied"`
+	// Whether the image is shared by the current user.
 	IsSelfShared pulumi.StringInput `pulumi:"isSelfShared"`
 	// Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
 	IsSubscribed pulumi.BoolInput `pulumi:"isSubscribed"`
 	// Specifies whether the image can be used on I/O optimized instances.
-	IsSupportIoOptimized pulumi.BoolInput   `pulumi:"isSupportIoOptimized"`
-	Name                 pulumi.StringInput `pulumi:"name"`
+	IsSupportIoOptimized pulumi.BoolInput `pulumi:"isSupportIoOptimized"`
+	// The name of the image.
+	Name pulumi.StringInput `pulumi:"name"`
 	// The display Chinese name of the OS.
 	OsName pulumi.StringInput `pulumi:"osName"`
 	// The english name of the OS.
 	OsNameEn pulumi.StringInput `pulumi:"osNameEn"`
 	// The operating system type of the image. Valid values: `windows` and `linux`.
-	OsType   pulumi.StringInput `pulumi:"osType"`
+	OsType pulumi.StringInput `pulumi:"osType"`
+	// The platform of the image.
 	Platform pulumi.StringInput `pulumi:"platform"`
 	// The product code of the image on the image market.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
 	// Progress of image creation, presented in percentages.
 	Progress pulumi.StringInput `pulumi:"progress"`
 	// The size of the created disk.
-	Size  pulumi.IntInput    `pulumi:"size"`
+	Size pulumi.IntInput `pulumi:"size"`
+	// The state of the image.
 	State pulumi.StringInput `pulumi:"state"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
 	// - `Creating`: The image is being created.
@@ -14558,7 +14667,7 @@ func (o GetImagesImageOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// A `diskDeviceMappings` block as defined below. Description of the system with disks and snapshots under the image.
+// A list of disk device mappings. Each element contains the following attributes:
 func (o GetImagesImageOutput) DiskDeviceMappings() GetImagesImageDiskDeviceMappingArrayOutput {
 	return o.ApplyT(func(v GetImagesImage) []GetImagesImageDiskDeviceMapping { return v.DiskDeviceMappings }).(GetImagesImageDiskDeviceMappingArrayOutput)
 }
@@ -14583,10 +14692,12 @@ func (o GetImagesImageOutput) ImageVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ImageVersion }).(pulumi.StringOutput)
 }
 
+// Whether the image is copied.
 func (o GetImagesImageOutput) IsCopied() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImagesImage) bool { return v.IsCopied }).(pulumi.BoolOutput)
 }
 
+// Whether the image is shared by the current user.
 func (o GetImagesImageOutput) IsSelfShared() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.IsSelfShared }).(pulumi.StringOutput)
 }
@@ -14601,6 +14712,7 @@ func (o GetImagesImageOutput) IsSupportIoOptimized() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImagesImage) bool { return v.IsSupportIoOptimized }).(pulumi.BoolOutput)
 }
 
+// The name of the image.
 func (o GetImagesImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -14620,6 +14732,7 @@ func (o GetImagesImageOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.OsType }).(pulumi.StringOutput)
 }
 
+// The platform of the image.
 func (o GetImagesImageOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Platform }).(pulumi.StringOutput)
 }
@@ -14639,6 +14752,7 @@ func (o GetImagesImageOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImagesImage) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The state of the image.
 func (o GetImagesImageOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.State }).(pulumi.StringOutput)
 }
@@ -16018,10 +16132,11 @@ type GetKeyPairsKeyPair struct {
 	FingerPrint string `pulumi:"fingerPrint"`
 	// ID of the key pair.
 	Id string `pulumi:"id"`
-	// A list of ECS instances that has been bound this key pair.
+	// A list of ECS instances bound to this key pair.
 	Instances []GetKeyPairsKeyPairInstance `pulumi:"instances"`
+	// The key name.
+	KeyName string `pulumi:"keyName"`
 	// Name of the key pair.
-	KeyName     string `pulumi:"keyName"`
 	KeyPairName string `pulumi:"keyPairName"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
@@ -16045,10 +16160,11 @@ type GetKeyPairsKeyPairArgs struct {
 	FingerPrint pulumi.StringInput `pulumi:"fingerPrint"`
 	// ID of the key pair.
 	Id pulumi.StringInput `pulumi:"id"`
-	// A list of ECS instances that has been bound this key pair.
+	// A list of ECS instances bound to this key pair.
 	Instances GetKeyPairsKeyPairInstanceArrayInput `pulumi:"instances"`
+	// The key name.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
 	// Name of the key pair.
-	KeyName     pulumi.StringInput `pulumi:"keyName"`
 	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
@@ -16117,16 +16233,17 @@ func (o GetKeyPairsKeyPairOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPair) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of ECS instances that has been bound this key pair.
+// A list of ECS instances bound to this key pair.
 func (o GetKeyPairsKeyPairOutput) Instances() GetKeyPairsKeyPairInstanceArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPair) []GetKeyPairsKeyPairInstance { return v.Instances }).(GetKeyPairsKeyPairInstanceArrayOutput)
 }
 
-// Name of the key pair.
+// The key name.
 func (o GetKeyPairsKeyPairOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPair) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
+// Name of the key pair.
 func (o GetKeyPairsKeyPairOutput) KeyPairName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPair) string { return v.KeyPairName }).(pulumi.StringOutput)
 }
@@ -16162,24 +16279,29 @@ func (o GetKeyPairsKeyPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsKeyPa
 }
 
 type GetKeyPairsKeyPairInstance struct {
-	// The ID of the availability zone where the ECS instance is located.
+	// The availability zone ID.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	Description      string `pulumi:"description"`
-	ImageId          string `pulumi:"imageId"`
+	// Description of the ECS instance.
+	Description string `pulumi:"description"`
+	// The image ID.
+	ImageId string `pulumi:"imageId"`
 	// The ID of the ECS instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The name of the ECS instance.
 	InstanceName string `pulumi:"instanceName"`
+	// The instance type.
 	InstanceType string `pulumi:"instanceType"`
-	// Name of the key pair.
+	// The key name.
 	KeyName string `pulumi:"keyName"`
-	// The private IP address of the ECS instance.
+	// The private IP address.
 	PrivateIp string `pulumi:"privateIp"`
-	// The public IP address or EIP of the ECS instance.
+	// The public IP address.
 	PublicIp string `pulumi:"publicIp"`
+	// The region ID.
 	RegionId string `pulumi:"regionId"`
-	Status   string `pulumi:"status"`
-	// The ID of the vSwitch attached to the ECS instance.
+	// The status of the ECS instance.
+	Status string `pulumi:"status"`
+	// The vSwitch ID.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -16195,24 +16317,29 @@ type GetKeyPairsKeyPairInstanceInput interface {
 }
 
 type GetKeyPairsKeyPairInstanceArgs struct {
-	// The ID of the availability zone where the ECS instance is located.
+	// The availability zone ID.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	Description      pulumi.StringInput `pulumi:"description"`
-	ImageId          pulumi.StringInput `pulumi:"imageId"`
+	// Description of the ECS instance.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The image ID.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// The ID of the ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The name of the ECS instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The instance type.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// Name of the key pair.
+	// The key name.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
-	// The private IP address of the ECS instance.
+	// The private IP address.
 	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
-	// The public IP address or EIP of the ECS instance.
+	// The public IP address.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+	// The region ID.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	Status   pulumi.StringInput `pulumi:"status"`
-	// The ID of the vSwitch attached to the ECS instance.
+	// The status of the ECS instance.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The vSwitch ID.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -16267,15 +16394,17 @@ func (o GetKeyPairsKeyPairInstanceOutput) ToGetKeyPairsKeyPairInstanceOutputWith
 	return o
 }
 
-// The ID of the availability zone where the ECS instance is located.
+// The availability zone ID.
 func (o GetKeyPairsKeyPairInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// Description of the ECS instance.
 func (o GetKeyPairsKeyPairInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The image ID.
 func (o GetKeyPairsKeyPairInstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.ImageId }).(pulumi.StringOutput)
 }
@@ -16290,34 +16419,37 @@ func (o GetKeyPairsKeyPairInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
+// The instance type.
 func (o GetKeyPairsKeyPairInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// Name of the key pair.
+// The key name.
 func (o GetKeyPairsKeyPairInstanceOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// The private IP address of the ECS instance.
+// The private IP address.
 func (o GetKeyPairsKeyPairInstanceOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// The public IP address or EIP of the ECS instance.
+// The public IP address.
 func (o GetKeyPairsKeyPairInstanceOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
+// The region ID.
 func (o GetKeyPairsKeyPairInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
+// The status of the ECS instance.
 func (o GetKeyPairsKeyPairInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the vSwitch attached to the ECS instance.
+// The vSwitch ID.
 func (o GetKeyPairsKeyPairInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -16347,10 +16479,11 @@ type GetKeyPairsPair struct {
 	FingerPrint string `pulumi:"fingerPrint"`
 	// ID of the key pair.
 	Id string `pulumi:"id"`
-	// A list of ECS instances that has been bound this key pair.
+	// A list of ECS instances bound to this key pair.
 	Instances []GetKeyPairsPairInstance `pulumi:"instances"`
+	// The key name.
+	KeyName string `pulumi:"keyName"`
 	// Name of the key pair.
-	KeyName     string `pulumi:"keyName"`
 	KeyPairName string `pulumi:"keyPairName"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
@@ -16374,10 +16507,11 @@ type GetKeyPairsPairArgs struct {
 	FingerPrint pulumi.StringInput `pulumi:"fingerPrint"`
 	// ID of the key pair.
 	Id pulumi.StringInput `pulumi:"id"`
-	// A list of ECS instances that has been bound this key pair.
+	// A list of ECS instances bound to this key pair.
 	Instances GetKeyPairsPairInstanceArrayInput `pulumi:"instances"`
+	// The key name.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
 	// Name of the key pair.
-	KeyName     pulumi.StringInput `pulumi:"keyName"`
 	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
@@ -16446,16 +16580,17 @@ func (o GetKeyPairsPairOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPair) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of ECS instances that has been bound this key pair.
+// A list of ECS instances bound to this key pair.
 func (o GetKeyPairsPairOutput) Instances() GetKeyPairsPairInstanceArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsPair) []GetKeyPairsPairInstance { return v.Instances }).(GetKeyPairsPairInstanceArrayOutput)
 }
 
-// Name of the key pair.
+// The key name.
 func (o GetKeyPairsPairOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPair) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
+// Name of the key pair.
 func (o GetKeyPairsPairOutput) KeyPairName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPair) string { return v.KeyPairName }).(pulumi.StringOutput)
 }
@@ -16491,24 +16626,29 @@ func (o GetKeyPairsPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsPairOutp
 }
 
 type GetKeyPairsPairInstance struct {
-	// The ID of the availability zone where the ECS instance is located.
+	// The availability zone ID.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	Description      string `pulumi:"description"`
-	ImageId          string `pulumi:"imageId"`
+	// Description of the ECS instance.
+	Description string `pulumi:"description"`
+	// The image ID.
+	ImageId string `pulumi:"imageId"`
 	// The ID of the ECS instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The name of the ECS instance.
 	InstanceName string `pulumi:"instanceName"`
+	// The instance type.
 	InstanceType string `pulumi:"instanceType"`
-	// Name of the key pair.
+	// The key name.
 	KeyName string `pulumi:"keyName"`
-	// The private IP address of the ECS instance.
+	// The private IP address.
 	PrivateIp string `pulumi:"privateIp"`
-	// The public IP address or EIP of the ECS instance.
+	// The public IP address.
 	PublicIp string `pulumi:"publicIp"`
+	// The region ID.
 	RegionId string `pulumi:"regionId"`
-	Status   string `pulumi:"status"`
-	// The ID of the vSwitch attached to the ECS instance.
+	// The status of the ECS instance.
+	Status string `pulumi:"status"`
+	// The vSwitch ID.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -16524,24 +16664,29 @@ type GetKeyPairsPairInstanceInput interface {
 }
 
 type GetKeyPairsPairInstanceArgs struct {
-	// The ID of the availability zone where the ECS instance is located.
+	// The availability zone ID.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	Description      pulumi.StringInput `pulumi:"description"`
-	ImageId          pulumi.StringInput `pulumi:"imageId"`
+	// Description of the ECS instance.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The image ID.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// The ID of the ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The name of the ECS instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The instance type.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// Name of the key pair.
+	// The key name.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
-	// The private IP address of the ECS instance.
+	// The private IP address.
 	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
-	// The public IP address or EIP of the ECS instance.
+	// The public IP address.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+	// The region ID.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	Status   pulumi.StringInput `pulumi:"status"`
-	// The ID of the vSwitch attached to the ECS instance.
+	// The status of the ECS instance.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The vSwitch ID.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -16596,15 +16741,17 @@ func (o GetKeyPairsPairInstanceOutput) ToGetKeyPairsPairInstanceOutputWithContex
 	return o
 }
 
-// The ID of the availability zone where the ECS instance is located.
+// The availability zone ID.
 func (o GetKeyPairsPairInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// Description of the ECS instance.
 func (o GetKeyPairsPairInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The image ID.
 func (o GetKeyPairsPairInstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.ImageId }).(pulumi.StringOutput)
 }
@@ -16619,34 +16766,37 @@ func (o GetKeyPairsPairInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
+// The instance type.
 func (o GetKeyPairsPairInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// Name of the key pair.
+// The key name.
 func (o GetKeyPairsPairInstanceOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// The private IP address of the ECS instance.
+// The private IP address.
 func (o GetKeyPairsPairInstanceOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// The public IP address or EIP of the ECS instance.
+// The public IP address.
 func (o GetKeyPairsPairInstanceOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
+// The region ID.
 func (o GetKeyPairsPairInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
+// The status of the ECS instance.
 func (o GetKeyPairsPairInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the vSwitch attached to the ECS instance.
+// The vSwitch ID.
 func (o GetKeyPairsPairInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -16672,6 +16822,7 @@ func (o GetKeyPairsPairInstanceArrayOutput) Index(i pulumi.IntInput) GetKeyPairs
 }
 
 type GetNetworkInterfacesInterface struct {
+	// The associated public IP.
 	AssociatedPublicIps []GetNetworkInterfacesInterfaceAssociatedPublicIp `pulumi:"associatedPublicIps"`
 	// Creation time of the ENI.
 	CreationTime string `pulumi:"creationTime"`
@@ -16679,39 +16830,51 @@ type GetNetworkInterfacesInterface struct {
 	Description string `pulumi:"description"`
 	// ID of the ENI.
 	Id string `pulumi:"id"`
-	// ID of the instance that the ENI is attached to.
-	InstanceId string   `pulumi:"instanceId"`
-	Ipv6Sets   []string `pulumi:"ipv6Sets"`
+	// The ECS instance ID that the ENI is attached to.
+	InstanceId string `pulumi:"instanceId"`
+	// A list of IPv6 addresses.
+	Ipv6Sets []string `pulumi:"ipv6Sets"`
 	// MAC address of the ENI.
 	Mac string `pulumi:"mac"`
-	// Name of the ENI.
-	Name                        string `pulumi:"name"`
-	NetworkInterfaceId          string `pulumi:"networkInterfaceId"`
-	NetworkInterfaceName        string `pulumi:"networkInterfaceName"`
+	// The name of the ENIs. Deprecated; use `networkInterfaceName` instead.
+	Name string `pulumi:"name"`
+	// The ID of the ENI.
+	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
+	// The name of the ENI.
+	NetworkInterfaceName string `pulumi:"networkInterfaceName"`
+	// The traffic mode.
 	NetworkInterfaceTrafficMode string `pulumi:"networkInterfaceTrafficMode"`
-	OwnerId                     string `pulumi:"ownerId"`
-	PrimaryIpAddress            string `pulumi:"primaryIpAddress"`
-	// Primary private IP of the ENI.
-	PrivateIp          string   `pulumi:"privateIp"`
+	// The owner ID.
+	OwnerId string `pulumi:"ownerId"`
+	// The primary private IP address of the ENI.
+	PrimaryIpAddress string `pulumi:"primaryIpAddress"`
+	// The primary private IP address of the ENI. Deprecated; use `primaryIpAddress` instead.
+	PrivateIp string `pulumi:"privateIp"`
+	// A list of private IP addresses.
 	PrivateIpAddresses []string `pulumi:"privateIpAddresses"`
 	// A list of secondary private IP address that is assigned to the ENI.
-	PrivateIps  []string `pulumi:"privateIps"`
-	QueueNumber int      `pulumi:"queueNumber"`
-	// The Id of resource group.
-	ResourceGroupId  string   `pulumi:"resourceGroupId"`
+	PrivateIps []string `pulumi:"privateIps"`
+	// The queue number.
+	QueueNumber int `pulumi:"queueNumber"`
+	// The Id of resource group which the network interface belongs.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// A list of security group IDs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A list of security group that the ENI belongs to.
 	SecurityGroups []string `pulumi:"securityGroups"`
-	ServiceId      int      `pulumi:"serviceId"`
-	ServiceManaged bool     `pulumi:"serviceManaged"`
-	// Current status of the ENI.
+	// The service ID.
+	ServiceId int `pulumi:"serviceId"`
+	// Whether the ENI is service managed.
+	ServiceManaged bool `pulumi:"serviceManaged"`
+	// The status of the ENI.
 	Status string `pulumi:"status"`
-	// A map of tags assigned to the ENI.
+	// A map of tags assigned to ENIs.
 	Tags map[string]string `pulumi:"tags"`
-	Type string            `pulumi:"type"`
-	// ID of the VPC that the ENI belongs to.
+	// The type of ENIs, Only support for "Primary" or "Secondary".
+	Type string `pulumi:"type"`
+	// The VPC ID linked to ENIs.
 	VpcId string `pulumi:"vpcId"`
-	// ID of the vSwitch that the ENI is linked to.
+	// The vSwitch ID linked to ENIs.
 	VswitchId string `pulumi:"vswitchId"`
 	// ID of the availability zone that the ENI belongs to.
 	ZoneId string `pulumi:"zoneId"`
@@ -16729,6 +16892,7 @@ type GetNetworkInterfacesInterfaceInput interface {
 }
 
 type GetNetworkInterfacesInterfaceArgs struct {
+	// The associated public IP.
 	AssociatedPublicIps GetNetworkInterfacesInterfaceAssociatedPublicIpArrayInput `pulumi:"associatedPublicIps"`
 	// Creation time of the ENI.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
@@ -16736,39 +16900,51 @@ type GetNetworkInterfacesInterfaceArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the ENI.
 	Id pulumi.StringInput `pulumi:"id"`
-	// ID of the instance that the ENI is attached to.
-	InstanceId pulumi.StringInput      `pulumi:"instanceId"`
-	Ipv6Sets   pulumi.StringArrayInput `pulumi:"ipv6Sets"`
+	// The ECS instance ID that the ENI is attached to.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A list of IPv6 addresses.
+	Ipv6Sets pulumi.StringArrayInput `pulumi:"ipv6Sets"`
 	// MAC address of the ENI.
 	Mac pulumi.StringInput `pulumi:"mac"`
-	// Name of the ENI.
-	Name                        pulumi.StringInput `pulumi:"name"`
-	NetworkInterfaceId          pulumi.StringInput `pulumi:"networkInterfaceId"`
-	NetworkInterfaceName        pulumi.StringInput `pulumi:"networkInterfaceName"`
+	// The name of the ENIs. Deprecated; use `networkInterfaceName` instead.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the ENI.
+	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
+	// The name of the ENI.
+	NetworkInterfaceName pulumi.StringInput `pulumi:"networkInterfaceName"`
+	// The traffic mode.
 	NetworkInterfaceTrafficMode pulumi.StringInput `pulumi:"networkInterfaceTrafficMode"`
-	OwnerId                     pulumi.StringInput `pulumi:"ownerId"`
-	PrimaryIpAddress            pulumi.StringInput `pulumi:"primaryIpAddress"`
-	// Primary private IP of the ENI.
-	PrivateIp          pulumi.StringInput      `pulumi:"privateIp"`
+	// The owner ID.
+	OwnerId pulumi.StringInput `pulumi:"ownerId"`
+	// The primary private IP address of the ENI.
+	PrimaryIpAddress pulumi.StringInput `pulumi:"primaryIpAddress"`
+	// The primary private IP address of the ENI. Deprecated; use `primaryIpAddress` instead.
+	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
+	// A list of private IP addresses.
 	PrivateIpAddresses pulumi.StringArrayInput `pulumi:"privateIpAddresses"`
 	// A list of secondary private IP address that is assigned to the ENI.
-	PrivateIps  pulumi.StringArrayInput `pulumi:"privateIps"`
-	QueueNumber pulumi.IntInput         `pulumi:"queueNumber"`
-	// The Id of resource group.
-	ResourceGroupId  pulumi.StringInput      `pulumi:"resourceGroupId"`
+	PrivateIps pulumi.StringArrayInput `pulumi:"privateIps"`
+	// The queue number.
+	QueueNumber pulumi.IntInput `pulumi:"queueNumber"`
+	// The Id of resource group which the network interface belongs.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// A list of security group IDs.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
 	// A list of security group that the ENI belongs to.
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
-	ServiceId      pulumi.IntInput         `pulumi:"serviceId"`
-	ServiceManaged pulumi.BoolInput        `pulumi:"serviceManaged"`
-	// Current status of the ENI.
+	// The service ID.
+	ServiceId pulumi.IntInput `pulumi:"serviceId"`
+	// Whether the ENI is service managed.
+	ServiceManaged pulumi.BoolInput `pulumi:"serviceManaged"`
+	// The status of the ENI.
 	Status pulumi.StringInput `pulumi:"status"`
-	// A map of tags assigned to the ENI.
+	// A map of tags assigned to ENIs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	Type pulumi.StringInput    `pulumi:"type"`
-	// ID of the VPC that the ENI belongs to.
+	// The type of ENIs, Only support for "Primary" or "Secondary".
+	Type pulumi.StringInput `pulumi:"type"`
+	// The VPC ID linked to ENIs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// ID of the vSwitch that the ENI is linked to.
+	// The vSwitch ID linked to ENIs.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// ID of the availability zone that the ENI belongs to.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -16825,6 +17001,7 @@ func (o GetNetworkInterfacesInterfaceOutput) ToGetNetworkInterfacesInterfaceOutp
 	return o
 }
 
+// The associated public IP.
 func (o GetNetworkInterfacesInterfaceOutput) AssociatedPublicIps() GetNetworkInterfacesInterfaceAssociatedPublicIpArrayOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) []GetNetworkInterfacesInterfaceAssociatedPublicIp {
 		return v.AssociatedPublicIps
@@ -16846,11 +17023,12 @@ func (o GetNetworkInterfacesInterfaceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ID of the instance that the ENI is attached to.
+// The ECS instance ID that the ENI is attached to.
 func (o GetNetworkInterfacesInterfaceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// A list of IPv6 addresses.
 func (o GetNetworkInterfacesInterfaceOutput) Ipv6Sets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.Ipv6Sets }).(pulumi.StringArrayOutput)
 }
@@ -16860,36 +17038,42 @@ func (o GetNetworkInterfacesInterfaceOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Mac }).(pulumi.StringOutput)
 }
 
-// Name of the ENI.
+// The name of the ENIs. Deprecated; use `networkInterfaceName` instead.
 func (o GetNetworkInterfacesInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) NetworkInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }
 
+// The name of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) NetworkInterfaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.NetworkInterfaceName }).(pulumi.StringOutput)
 }
 
+// The traffic mode.
 func (o GetNetworkInterfacesInterfaceOutput) NetworkInterfaceTrafficMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.NetworkInterfaceTrafficMode }).(pulumi.StringOutput)
 }
 
+// The owner ID.
 func (o GetNetworkInterfacesInterfaceOutput) OwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.OwnerId }).(pulumi.StringOutput)
 }
 
+// The primary private IP address of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) PrimaryIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PrimaryIpAddress }).(pulumi.StringOutput)
 }
 
-// Primary private IP of the ENI.
+// The primary private IP address of the ENI. Deprecated; use `primaryIpAddress` instead.
 func (o GetNetworkInterfacesInterfaceOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
+// A list of private IP addresses.
 func (o GetNetworkInterfacesInterfaceOutput) PrivateIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.PrivateIpAddresses }).(pulumi.StringArrayOutput)
 }
@@ -16899,15 +17083,17 @@ func (o GetNetworkInterfacesInterfaceOutput) PrivateIps() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }
 
+// The queue number.
 func (o GetNetworkInterfacesInterfaceOutput) QueueNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) int { return v.QueueNumber }).(pulumi.IntOutput)
 }
 
-// The Id of resource group.
+// The Id of resource group which the network interface belongs.
 func (o GetNetworkInterfacesInterfaceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// A list of security group IDs.
 func (o GetNetworkInterfacesInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -16917,34 +17103,37 @@ func (o GetNetworkInterfacesInterfaceOutput) SecurityGroups() pulumi.StringArray
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
 
+// The service ID.
 func (o GetNetworkInterfacesInterfaceOutput) ServiceId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) int { return v.ServiceId }).(pulumi.IntOutput)
 }
 
+// Whether the ENI is service managed.
 func (o GetNetworkInterfacesInterfaceOutput) ServiceManaged() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) bool { return v.ServiceManaged }).(pulumi.BoolOutput)
 }
 
-// Current status of the ENI.
+// The status of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// A map of tags assigned to the ENI.
+// A map of tags assigned to ENIs.
 func (o GetNetworkInterfacesInterfaceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The type of ENIs, Only support for "Primary" or "Secondary".
 func (o GetNetworkInterfacesInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// ID of the VPC that the ENI belongs to.
+// The VPC ID linked to ENIs.
 func (o GetNetworkInterfacesInterfaceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// ID of the vSwitch that the ENI is linked to.
+// The vSwitch ID linked to ENIs.
 func (o GetNetworkInterfacesInterfaceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -16975,6 +17164,7 @@ func (o GetNetworkInterfacesInterfaceArrayOutput) Index(i pulumi.IntInput) GetNe
 }
 
 type GetNetworkInterfacesInterfaceAssociatedPublicIp struct {
+	// The public IP address.
 	PublicIpAddress string `pulumi:"publicIpAddress"`
 }
 
@@ -16990,6 +17180,7 @@ type GetNetworkInterfacesInterfaceAssociatedPublicIpInput interface {
 }
 
 type GetNetworkInterfacesInterfaceAssociatedPublicIpArgs struct {
+	// The public IP address.
 	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
 }
 
@@ -17044,6 +17235,7 @@ func (o GetNetworkInterfacesInterfaceAssociatedPublicIpOutput) ToGetNetworkInter
 	return o
 }
 
+// The public IP address.
 func (o GetNetworkInterfacesInterfaceAssociatedPublicIpOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterfaceAssociatedPublicIp) string { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
@@ -17289,6 +17481,7 @@ type GetSecurityGroupsGroup struct {
 	// The type of the security group.
 	SecurityGroupType string `pulumi:"securityGroupType"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -17344,6 +17537,7 @@ type GetSecurityGroupsGroupArgs struct {
 	// The type of the security group.
 	SecurityGroupType pulumi.StringInput `pulumi:"securityGroupType"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -17459,6 +17653,7 @@ func (o GetSecurityGroupsGroupOutput) SecurityGroupType() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the ECS instances. It must be in the format:
+//
 // ```go
 // package main
 //
@@ -17515,18 +17710,22 @@ func (o GetSecurityGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetSecurityG
 }
 
 type GetSnapshotsSnapshot struct {
+	// The category of the snapshot. Valid values: `flash`, `standard`.
 	Category string `pulumi:"category"`
 	// Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
 	CreationTime string `pulumi:"creationTime"`
 	// Description of the snapshot.
 	Description string `pulumi:"description"`
-	DiskId      string `pulumi:"diskId"`
-	// Whether the snapshot is encrypted or not.
+	// The source disk ID.
+	DiskId string `pulumi:"diskId"`
+	// Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
 	Encrypted bool `pulumi:"encrypted"`
 	// ID of the snapshot.
-	Id                         string `pulumi:"id"`
-	InstantAccess              bool   `pulumi:"instantAccess"`
-	InstantAccessRetentionDays int    `pulumi:"instantAccessRetentionDays"`
+	Id string `pulumi:"id"`
+	// Whether instant access is enabled.
+	InstantAccess bool `pulumi:"instantAccess"`
+	// The retention days of instant access.
+	InstantAccessRetentionDays int `pulumi:"instantAccessRetentionDays"`
 	// Name of the snapshot.
 	Name string `pulumi:"name"`
 	// Product code on the image market place.
@@ -17534,27 +17733,47 @@ type GetSnapshotsSnapshot struct {
 	// Progress of snapshot creation, presented in percentage.
 	Progress string `pulumi:"progress"`
 	// The remaining time of a snapshot creation task, in seconds.
-	RemainTime      int    `pulumi:"remainTime"`
+	RemainTime int `pulumi:"remainTime"`
+	// The resource group ID.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The number of days that an automatic snapshot retains in the console for your instance.
-	RetentionDays int    `pulumi:"retentionDays"`
-	SnapshotId    string `pulumi:"snapshotId"`
-	SnapshotName  string `pulumi:"snapshotName"`
-	SnapshotSn    string `pulumi:"snapshotSn"`
-	SnapshotType  string `pulumi:"snapshotType"`
+	RetentionDays int `pulumi:"retentionDays"`
+	// The ID of the snapshot.
+	SnapshotId string `pulumi:"snapshotId"`
+	// The name of the snapshot.
+	SnapshotName string `pulumi:"snapshotName"`
+	// The SN of the snapshot.
+	SnapshotSn string `pulumi:"snapshotSn"`
+	// The type of the snapshot. Valid values: `auto`, `user`, `all`.
+	SnapshotType string `pulumi:"snapshotType"`
 	// Source disk ID, which is retained after the source disk of the snapshot is deleted.
 	SourceDiskId string `pulumi:"sourceDiskId"`
 	// Size of the source disk, measured in GB.
 	SourceDiskSize string `pulumi:"sourceDiskSize"`
-	// Source disk attribute. Value range: `System`,`Data`.
-	SourceDiskType    string `pulumi:"sourceDiskType"`
+	// The type of source disk:
+	// * System: The snapshots are created for system disks.
+	// * Data: The snapshots are created for data disks.
+	SourceDiskType string `pulumi:"sourceDiskType"`
+	// The source storage type.
 	SourceStorageType string `pulumi:"sourceStorageType"`
-	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+	// The specified snapshot status. Default value: `all`. Optional values:
+	// * progressing: The snapshots are being created.
+	// * accomplished: The snapshots are ready to use.
+	// * failed: The snapshot creation failed.
+	// * all: All status.
 	Status string `pulumi:"status"`
-	// A map of tags assigned to the snapshot.
+	// A map of tags assigned to snapshots.
 	Tags map[string]string `pulumi:"tags"`
-	Type string            `pulumi:"type"`
-	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+	// The snapshot category. Default value: `all`. Optional values:
+	// * auto: Auto snapshots.
+	// * user: Manual snapshots.
+	// * all: Auto and manual snapshots.
+	Type string `pulumi:"type"`
+	// The usage of the snapshot:
+	// * image: The snapshots are used to create custom images.
+	// * disk: The snapshots are used to CreateDisk.
+	// * mage_disk: The snapshots are used to create custom images and data disks.
+	// * none: The snapshots are not used yet.
 	Usage string `pulumi:"usage"`
 }
 
@@ -17570,18 +17789,22 @@ type GetSnapshotsSnapshotInput interface {
 }
 
 type GetSnapshotsSnapshotArgs struct {
+	// The category of the snapshot. Valid values: `flash`, `standard`.
 	Category pulumi.StringInput `pulumi:"category"`
 	// Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// Description of the snapshot.
 	Description pulumi.StringInput `pulumi:"description"`
-	DiskId      pulumi.StringInput `pulumi:"diskId"`
-	// Whether the snapshot is encrypted or not.
+	// The source disk ID.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
 	Encrypted pulumi.BoolInput `pulumi:"encrypted"`
 	// ID of the snapshot.
-	Id                         pulumi.StringInput `pulumi:"id"`
-	InstantAccess              pulumi.BoolInput   `pulumi:"instantAccess"`
-	InstantAccessRetentionDays pulumi.IntInput    `pulumi:"instantAccessRetentionDays"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether instant access is enabled.
+	InstantAccess pulumi.BoolInput `pulumi:"instantAccess"`
+	// The retention days of instant access.
+	InstantAccessRetentionDays pulumi.IntInput `pulumi:"instantAccessRetentionDays"`
 	// Name of the snapshot.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Product code on the image market place.
@@ -17589,27 +17812,47 @@ type GetSnapshotsSnapshotArgs struct {
 	// Progress of snapshot creation, presented in percentage.
 	Progress pulumi.StringInput `pulumi:"progress"`
 	// The remaining time of a snapshot creation task, in seconds.
-	RemainTime      pulumi.IntInput    `pulumi:"remainTime"`
+	RemainTime pulumi.IntInput `pulumi:"remainTime"`
+	// The resource group ID.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The number of days that an automatic snapshot retains in the console for your instance.
-	RetentionDays pulumi.IntInput    `pulumi:"retentionDays"`
-	SnapshotId    pulumi.StringInput `pulumi:"snapshotId"`
-	SnapshotName  pulumi.StringInput `pulumi:"snapshotName"`
-	SnapshotSn    pulumi.StringInput `pulumi:"snapshotSn"`
-	SnapshotType  pulumi.StringInput `pulumi:"snapshotType"`
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// The ID of the snapshot.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+	// The name of the snapshot.
+	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
+	// The SN of the snapshot.
+	SnapshotSn pulumi.StringInput `pulumi:"snapshotSn"`
+	// The type of the snapshot. Valid values: `auto`, `user`, `all`.
+	SnapshotType pulumi.StringInput `pulumi:"snapshotType"`
 	// Source disk ID, which is retained after the source disk of the snapshot is deleted.
 	SourceDiskId pulumi.StringInput `pulumi:"sourceDiskId"`
 	// Size of the source disk, measured in GB.
 	SourceDiskSize pulumi.StringInput `pulumi:"sourceDiskSize"`
-	// Source disk attribute. Value range: `System`,`Data`.
-	SourceDiskType    pulumi.StringInput `pulumi:"sourceDiskType"`
+	// The type of source disk:
+	// * System: The snapshots are created for system disks.
+	// * Data: The snapshots are created for data disks.
+	SourceDiskType pulumi.StringInput `pulumi:"sourceDiskType"`
+	// The source storage type.
 	SourceStorageType pulumi.StringInput `pulumi:"sourceStorageType"`
-	// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+	// The specified snapshot status. Default value: `all`. Optional values:
+	// * progressing: The snapshots are being created.
+	// * accomplished: The snapshots are ready to use.
+	// * failed: The snapshot creation failed.
+	// * all: All status.
 	Status pulumi.StringInput `pulumi:"status"`
-	// A map of tags assigned to the snapshot.
+	// A map of tags assigned to snapshots.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	Type pulumi.StringInput    `pulumi:"type"`
-	// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+	// The snapshot category. Default value: `all`. Optional values:
+	// * auto: Auto snapshots.
+	// * user: Manual snapshots.
+	// * all: Auto and manual snapshots.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The usage of the snapshot:
+	// * image: The snapshots are used to create custom images.
+	// * disk: The snapshots are used to CreateDisk.
+	// * mage_disk: The snapshots are used to create custom images and data disks.
+	// * none: The snapshots are not used yet.
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
@@ -17664,6 +17907,7 @@ func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutputWithContext(ctx 
 	return o
 }
 
+// The category of the snapshot. Valid values: `flash`, `standard`.
 func (o GetSnapshotsSnapshotOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Category }).(pulumi.StringOutput)
 }
@@ -17678,11 +17922,12 @@ func (o GetSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The source disk ID.
 func (o GetSnapshotsSnapshotOutput) DiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.DiskId }).(pulumi.StringOutput)
 }
 
-// Whether the snapshot is encrypted or not.
+// Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
 func (o GetSnapshotsSnapshotOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) bool { return v.Encrypted }).(pulumi.BoolOutput)
 }
@@ -17692,10 +17937,12 @@ func (o GetSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Whether instant access is enabled.
 func (o GetSnapshotsSnapshotOutput) InstantAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) bool { return v.InstantAccess }).(pulumi.BoolOutput)
 }
 
+// The retention days of instant access.
 func (o GetSnapshotsSnapshotOutput) InstantAccessRetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.InstantAccessRetentionDays }).(pulumi.IntOutput)
 }
@@ -17720,6 +17967,7 @@ func (o GetSnapshotsSnapshotOutput) RemainTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RemainTime }).(pulumi.IntOutput)
 }
 
+// The resource group ID.
 func (o GetSnapshotsSnapshotOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -17729,18 +17977,22 @@ func (o GetSnapshotsSnapshotOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
+// The ID of the snapshot.
 func (o GetSnapshotsSnapshotOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
+// The name of the snapshot.
 func (o GetSnapshotsSnapshotOutput) SnapshotName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotName }).(pulumi.StringOutput)
 }
 
+// The SN of the snapshot.
 func (o GetSnapshotsSnapshotOutput) SnapshotSn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotSn }).(pulumi.StringOutput)
 }
 
+// The type of the snapshot. Valid values: `auto`, `user`, `all`.
 func (o GetSnapshotsSnapshotOutput) SnapshotType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SnapshotType }).(pulumi.StringOutput)
 }
@@ -17755,30 +18007,45 @@ func (o GetSnapshotsSnapshotOutput) SourceDiskSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskSize }).(pulumi.StringOutput)
 }
 
-// Source disk attribute. Value range: `System`,`Data`.
+// The type of source disk:
+// * System: The snapshots are created for system disks.
+// * Data: The snapshots are created for data disks.
 func (o GetSnapshotsSnapshotOutput) SourceDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskType }).(pulumi.StringOutput)
 }
 
+// The source storage type.
 func (o GetSnapshotsSnapshotOutput) SourceStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceStorageType }).(pulumi.StringOutput)
 }
 
-// The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+// The specified snapshot status. Default value: `all`. Optional values:
+// * progressing: The snapshots are being created.
+// * accomplished: The snapshots are ready to use.
+// * failed: The snapshot creation failed.
+// * all: All status.
 func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// A map of tags assigned to the snapshot.
+// A map of tags assigned to snapshots.
 func (o GetSnapshotsSnapshotOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The snapshot category. Default value: `all`. Optional values:
+// * auto: Auto snapshots.
+// * user: Manual snapshots.
+// * all: Auto and manual snapshots.
 func (o GetSnapshotsSnapshotOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+// The usage of the snapshot:
+// * image: The snapshots are used to create custom images.
+// * disk: The snapshots are used to CreateDisk.
+// * mage_disk: The snapshots are used to create custom images and data disks.
+// * none: The snapshots are not used yet.
 func (o GetSnapshotsSnapshotOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Usage }).(pulumi.StringOutput)
 }

@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly bool Disabled;
         /// <summary>
-        /// The File System ID of Nas.
+        /// The Nas fileSystem instance ID of the EcsBackupPlan used.
         /// </summary>
         public readonly string FileSystemId;
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string Retention;
         /// <summary>
         /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-        /// * `startTime` Backup start time, UNIX time seconds.
+        /// - `startTime` Backup start time, UNIX time seconds.
         /// </summary>
         public readonly string Schedule;
         /// <summary>
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// The ID of backup vault.
+        /// The backup vault ID of the NasBackupPlan used.
         /// </summary>
         public readonly string VaultId;
 

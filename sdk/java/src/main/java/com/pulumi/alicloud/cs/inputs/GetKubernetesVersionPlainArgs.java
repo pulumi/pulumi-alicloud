@@ -60,12 +60,28 @@ public final class GetKubernetesVersionPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.profile);
     }
 
+    /**
+     * Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+     * 
+     */
+    @Import(name="supportPolicy")
+    private @Nullable String supportPolicy;
+
+    /**
+     * @return Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+     * 
+     */
+    public Optional<String> supportPolicy() {
+        return Optional.ofNullable(this.supportPolicy);
+    }
+
     private GetKubernetesVersionPlainArgs() {}
 
     private GetKubernetesVersionPlainArgs(GetKubernetesVersionPlainArgs $) {
         this.clusterType = $.clusterType;
         this.kubernetesVersion = $.kubernetesVersion;
         this.profile = $.profile;
+        this.supportPolicy = $.supportPolicy;
     }
 
     public static Builder builder() {
@@ -116,6 +132,17 @@ public final class GetKubernetesVersionPlainArgs extends com.pulumi.resources.In
          */
         public Builder profile(@Nullable String profile) {
             $.profile = profile;
+            return this;
+        }
+
+        /**
+         * @param supportPolicy Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportPolicy(@Nullable String supportPolicy) {
+            $.supportPolicy = supportPolicy;
             return this;
         }
 

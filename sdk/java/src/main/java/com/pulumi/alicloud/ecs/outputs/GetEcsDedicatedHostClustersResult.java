@@ -15,8 +15,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsDedicatedHostClustersResult {
+    /**
+     * @return A list of Ecs Dedicated Host Clusters. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsDedicatedHostClustersCluster> clusters;
     private @Nullable List<String> dedicatedHostClusterIds;
+    /**
+     * @return The name of the dedicated host cluster.
+     * 
+     */
     private @Nullable String dedicatedHostClusterName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,18 +33,38 @@ public final class GetEcsDedicatedHostClustersResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Dedicated Host Cluster names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The zone ID of the dedicated host cluster.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetEcsDedicatedHostClustersResult() {}
+    /**
+     * @return A list of Ecs Dedicated Host Clusters. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsDedicatedHostClustersCluster> clusters() {
         return this.clusters;
     }
     public List<String> dedicatedHostClusterIds() {
         return this.dedicatedHostClusterIds == null ? List.of() : this.dedicatedHostClusterIds;
     }
+    /**
+     * @return The name of the dedicated host cluster.
+     * 
+     */
     public Optional<String> dedicatedHostClusterName() {
         return Optional.ofNullable(this.dedicatedHostClusterName);
     }
@@ -53,15 +81,27 @@ public final class GetEcsDedicatedHostClustersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Dedicated Host Cluster names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The zone ID of the dedicated host cluster.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

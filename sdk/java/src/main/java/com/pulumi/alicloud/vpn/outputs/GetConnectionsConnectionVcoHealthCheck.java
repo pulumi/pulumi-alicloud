@@ -13,74 +13,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetConnectionsConnectionVcoHealthCheck {
     /**
-     * @return The destination ip address.
+     * @return (Optional) The destination ip address.
      * 
      */
     private @Nullable String dip;
     /**
-     * @return The health check on status. Valid values: `true`, `false`.
+     * @return (Optional) The health check on status. Valid values: `true`, `false`.
      * 
      */
     private @Nullable String enable;
     /**
-     * @return The time interval between health checks.
+     * @return (Optional) The time interval between health checks.
      * 
      */
     private @Nullable Integer interval;
     /**
-     * @return The number of retries for health checks issued.
+     * @return (Optional) The number of retries for health checks issued.
      * 
      */
     private @Nullable Integer retry;
     /**
-     * @return The source ip address.
+     * @return (Optional) The source ip address.
      * 
      */
     private @Nullable String sip;
     /**
-     * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+     * @return The status of the tunnel.
      * 
      */
     private @Nullable String status;
 
     private GetConnectionsConnectionVcoHealthCheck() {}
     /**
-     * @return The destination ip address.
+     * @return (Optional) The destination ip address.
      * 
      */
     public Optional<String> dip() {
         return Optional.ofNullable(this.dip);
     }
     /**
-     * @return The health check on status. Valid values: `true`, `false`.
+     * @return (Optional) The health check on status. Valid values: `true`, `false`.
      * 
      */
     public Optional<String> enable() {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return The time interval between health checks.
+     * @return (Optional) The time interval between health checks.
      * 
      */
     public Optional<Integer> interval() {
         return Optional.ofNullable(this.interval);
     }
     /**
-     * @return The number of retries for health checks issued.
+     * @return (Optional) The number of retries for health checks issued.
      * 
      */
     public Optional<Integer> retry() {
         return Optional.ofNullable(this.retry);
     }
     /**
-     * @return The source ip address.
+     * @return (Optional) The source ip address.
      * 
      */
     public Optional<String> sip() {
         return Optional.ofNullable(this.sip);
     }
     /**
-     * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+     * @return The status of the tunnel.
      * 
      */
     public Optional<String> status() {

@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTrafficMirrorSessionsResult {
+    /**
+     * @return Indicates whether traffic mirror sessions are enabled. default to `false`.
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,17 +28,49 @@ public final class GetTrafficMirrorSessionsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Traffic Mirror Session names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The priority of the traffic mirror session. A smaller value indicates a higher priority.
+     * 
+     */
     private @Nullable Integer priority;
+    /**
+     * @return A list of Vpc Traffic Mirror Sessions. Each element contains the following attributes:
+     * 
+     */
     private List<GetTrafficMirrorSessionsSession> sessions;
+    /**
+     * @return The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The ID of the filter.
+     * 
+     */
     private @Nullable String trafficMirrorFilterId;
+    /**
+     * @return The name of the traffic mirror session.
+     * 
+     */
     private @Nullable String trafficMirrorSessionName;
     private @Nullable String trafficMirrorSourceId;
+    /**
+     * @return The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+     * 
+     */
     private @Nullable String trafficMirrorTargetId;
 
     private GetTrafficMirrorSessionsResult() {}
+    /**
+     * @return Indicates whether traffic mirror sessions are enabled. default to `false`.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -51,30 +87,58 @@ public final class GetTrafficMirrorSessionsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Traffic Mirror Session names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The priority of the traffic mirror session. A smaller value indicates a higher priority.
+     * 
+     */
     public Optional<Integer> priority() {
         return Optional.ofNullable(this.priority);
     }
+    /**
+     * @return A list of Vpc Traffic Mirror Sessions. Each element contains the following attributes:
+     * 
+     */
     public List<GetTrafficMirrorSessionsSession> sessions() {
         return this.sessions;
     }
+    /**
+     * @return The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The ID of the filter.
+     * 
+     */
     public Optional<String> trafficMirrorFilterId() {
         return Optional.ofNullable(this.trafficMirrorFilterId);
     }
+    /**
+     * @return The name of the traffic mirror session.
+     * 
+     */
     public Optional<String> trafficMirrorSessionName() {
         return Optional.ofNullable(this.trafficMirrorSessionName);
     }
     public Optional<String> trafficMirrorSourceId() {
         return Optional.ofNullable(this.trafficMirrorSourceId);
     }
+    /**
+     * @return The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+     * 
+     */
     public Optional<String> trafficMirrorTargetId() {
         return Optional.ofNullable(this.trafficMirrorTargetId);
     }

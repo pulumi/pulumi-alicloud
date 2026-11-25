@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Nas.Outputs
     public sealed class GetFileSystemsSystemResult
     {
         /// <summary>
+        /// (List, Available since v2.1.0) The automatic capacity expansion configuration. Each element contains the following attributes:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFileSystemsSystemAutoUpgradeConfigResult> AutoUpgradeConfigs;
+        /// <summary>
         /// (Optional, Available in v1.140.0+) The capacity of the file system.
         /// </summary>
         public readonly int Capacity;
@@ -75,6 +79,8 @@ namespace Pulumi.AliCloud.Nas.Outputs
 
         [OutputConstructor]
         private GetFileSystemsSystemResult(
+            ImmutableArray<Outputs.GetFileSystemsSystemAutoUpgradeConfigResult> autoUpgradeConfigs,
+
             int capacity,
 
             string createTime,
@@ -99,6 +105,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
 
             string zoneId)
         {
+            AutoUpgradeConfigs = autoUpgradeConfigs;
             Capacity = capacity;
             CreateTime = createTime;
             Description = description;

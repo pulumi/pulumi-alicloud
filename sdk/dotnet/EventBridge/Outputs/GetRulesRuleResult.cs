@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// </summary>
         public readonly string RuleName;
         /// <summary>
-        /// Rule status, either Enable or Disable.
+        /// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
         /// </summary>
         public readonly string Status;
         /// <summary>

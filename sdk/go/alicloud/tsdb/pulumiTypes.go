@@ -40,7 +40,7 @@ type GetInstancesInstance struct {
 	NetworkType string `pulumi:"networkType"`
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
 	PaymentType string `pulumi:"paymentType"`
-	// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+	// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
 	Status string `pulumi:"status"`
 	// The vpc connection address of instance.
 	VpcConnectionAddress string `pulumi:"vpcConnectionAddress"`
@@ -90,7 +90,7 @@ type GetInstancesInstanceArgs struct {
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+	// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The vpc connection address of instance.
 	VpcConnectionAddress pulumi.StringInput `pulumi:"vpcConnectionAddress"`
@@ -218,7 +218,7 @@ func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }

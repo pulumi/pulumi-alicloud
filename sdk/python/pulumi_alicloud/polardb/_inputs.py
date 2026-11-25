@@ -19,6 +19,10 @@ __all__ = [
     'ApplicationComponentArgsDict',
     'ApplicationParameterArgs',
     'ApplicationParameterArgsDict',
+    'BackupPolicyAdvancedDataPolicyArgs',
+    'BackupPolicyAdvancedDataPolicyArgsDict',
+    'BackupPolicyAutoCreatedAdvancedDataPolicyArgs',
+    'BackupPolicyAutoCreatedAdvancedDataPolicyArgsDict',
     'BatchTaskTaskParamArgs',
     'BatchTaskTaskParamArgsDict',
     'ClusterDbClusterIpArrayArgs',
@@ -41,6 +45,8 @@ __all__ = [
     'GatewaySecurityIpArrayArgsDict',
     'ParameterGroupParameterArgs',
     'ParameterGroupParameterArgsDict',
+    'PolarFsEndpointAddressItemArgs',
+    'PolarFsEndpointAddressItemArgsDict',
 ]
 
 class ApplicationComponentArgsDict(TypedDict):
@@ -159,6 +165,660 @@ class ApplicationParameterArgs:
     @parameter_value.setter
     def parameter_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_value", value)
+
+
+class BackupPolicyAdvancedDataPolicyArgsDict(TypedDict):
+    dest_type: pulumi.Input[_builtins.str]
+    """
+    `level1`, `level2`, or `level2Cross`.
+    """
+    filter_type: pulumi.Input[_builtins.str]
+    """
+    `crontab` or `event`.
+    """
+    retention_type: pulumi.Input[_builtins.str]
+    """
+    `never` or `delay`.
+    """
+    src_type: pulumi.Input[_builtins.str]
+    """
+    `db`, `level1`, `level2`, or `level2Cross`.
+    """
+    auto_created: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the service generated the rule.
+    """
+    bak_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Backup type supplied by the service.
+    """
+    dest_region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Destination region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+    """
+    dump_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    `copy`.
+    """
+    filter_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    `dayOfWeek`, `dayOfMonth`, `dayOfYear`, or `backupInterval`; required for `crontab`.
+    """
+    filter_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Filter expression corresponding to `filter_key`.
+    """
+    only_preserve_one_each_day: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to retain only one backup per day. If omitted, the service default is used.
+    """
+    only_preserve_one_each_hour: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Hourly preservation setting supplied by the service.
+    """
+    policy_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Service-assigned rule ID. Specify it to take over and update an existing custom rule after importing the cluster policy.
+    """
+    retention_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Retention duration in days; required when `retention_type` is `delay`.
+    """
+    src_region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Source region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+    """
+    storage_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Destination storage class.
+    """
+
+@pulumi.input_type
+class BackupPolicyAdvancedDataPolicyArgs:
+    def __init__(__self__, *,
+                 dest_type: pulumi.Input[_builtins.str],
+                 filter_type: pulumi.Input[_builtins.str],
+                 retention_type: pulumi.Input[_builtins.str],
+                 src_type: pulumi.Input[_builtins.str],
+                 auto_created: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bak_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dump_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 only_preserve_one_each_day: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_preserve_one_each_hour: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] dest_type: `level1`, `level2`, or `level2Cross`.
+        :param pulumi.Input[_builtins.str] filter_type: `crontab` or `event`.
+        :param pulumi.Input[_builtins.str] retention_type: `never` or `delay`.
+        :param pulumi.Input[_builtins.str] src_type: `db`, `level1`, `level2`, or `level2Cross`.
+        :param pulumi.Input[_builtins.bool] auto_created: Whether the service generated the rule.
+        :param pulumi.Input[_builtins.str] bak_type: Backup type supplied by the service.
+        :param pulumi.Input[_builtins.str] dest_region: Destination region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+        :param pulumi.Input[_builtins.str] dump_action: `copy`.
+        :param pulumi.Input[_builtins.str] filter_key: `dayOfWeek`, `dayOfMonth`, `dayOfYear`, or `backupInterval`; required for `crontab`.
+        :param pulumi.Input[_builtins.str] filter_value: Filter expression corresponding to `filter_key`.
+        :param pulumi.Input[_builtins.bool] only_preserve_one_each_day: Whether to retain only one backup per day. If omitted, the service default is used.
+        :param pulumi.Input[_builtins.bool] only_preserve_one_each_hour: Hourly preservation setting supplied by the service.
+        :param pulumi.Input[_builtins.str] policy_id: Service-assigned rule ID. Specify it to take over and update an existing custom rule after importing the cluster policy.
+        :param pulumi.Input[_builtins.str] retention_value: Retention duration in days; required when `retention_type` is `delay`.
+        :param pulumi.Input[_builtins.str] src_region: Source region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+        :param pulumi.Input[_builtins.str] storage_class: Destination storage class.
+        """
+        pulumi.set(__self__, "dest_type", dest_type)
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "retention_type", retention_type)
+        pulumi.set(__self__, "src_type", src_type)
+        if auto_created is not None:
+            pulumi.set(__self__, "auto_created", auto_created)
+        if bak_type is not None:
+            pulumi.set(__self__, "bak_type", bak_type)
+        if dest_region is not None:
+            pulumi.set(__self__, "dest_region", dest_region)
+        if dump_action is not None:
+            pulumi.set(__self__, "dump_action", dump_action)
+        if filter_key is not None:
+            pulumi.set(__self__, "filter_key", filter_key)
+        if filter_value is not None:
+            pulumi.set(__self__, "filter_value", filter_value)
+        if only_preserve_one_each_day is not None:
+            pulumi.set(__self__, "only_preserve_one_each_day", only_preserve_one_each_day)
+        if only_preserve_one_each_hour is not None:
+            pulumi.set(__self__, "only_preserve_one_each_hour", only_preserve_one_each_hour)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+        if retention_value is not None:
+            pulumi.set(__self__, "retention_value", retention_value)
+        if src_region is not None:
+            pulumi.set(__self__, "src_region", src_region)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
+
+    @_builtins.property
+    @pulumi.getter(name="destType")
+    def dest_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        `level1`, `level2`, or `level2Cross`.
+        """
+        return pulumi.get(self, "dest_type")
+
+    @dest_type.setter
+    def dest_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "dest_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        `crontab` or `event`.
+        """
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "filter_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionType")
+    def retention_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        `never` or `delay`.
+        """
+        return pulumi.get(self, "retention_type")
+
+    @retention_type.setter
+    def retention_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "retention_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcType")
+    def src_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        `db`, `level1`, `level2`, or `level2Cross`.
+        """
+        return pulumi.get(self, "src_type")
+
+    @src_type.setter
+    def src_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "src_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreated")
+    def auto_created(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the service generated the rule.
+        """
+        return pulumi.get(self, "auto_created")
+
+    @auto_created.setter
+    def auto_created(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_created", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bakType")
+    def bak_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Backup type supplied by the service.
+        """
+        return pulumi.get(self, "bak_type")
+
+    @bak_type.setter
+    def bak_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bak_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destRegion")
+    def dest_region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Destination region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+        """
+        return pulumi.get(self, "dest_region")
+
+    @dest_region.setter
+    def dest_region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dest_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dumpAction")
+    def dump_action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        `copy`.
+        """
+        return pulumi.get(self, "dump_action")
+
+    @dump_action.setter
+    def dump_action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dump_action", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterKey")
+    def filter_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        `dayOfWeek`, `dayOfMonth`, `dayOfYear`, or `backupInterval`; required for `crontab`.
+        """
+        return pulumi.get(self, "filter_key")
+
+    @filter_key.setter
+    def filter_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterValue")
+    def filter_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Filter expression corresponding to `filter_key`.
+        """
+        return pulumi.get(self, "filter_value")
+
+    @filter_value.setter
+    def filter_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onlyPreserveOneEachDay")
+    def only_preserve_one_each_day(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to retain only one backup per day. If omitted, the service default is used.
+        """
+        return pulumi.get(self, "only_preserve_one_each_day")
+
+    @only_preserve_one_each_day.setter
+    def only_preserve_one_each_day(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "only_preserve_one_each_day", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onlyPreserveOneEachHour")
+    def only_preserve_one_each_hour(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Hourly preservation setting supplied by the service.
+        """
+        return pulumi.get(self, "only_preserve_one_each_hour")
+
+    @only_preserve_one_each_hour.setter
+    def only_preserve_one_each_hour(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "only_preserve_one_each_hour", value)
+
+    @_builtins.property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Service-assigned rule ID. Specify it to take over and update an existing custom rule after importing the cluster policy.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionValue")
+    def retention_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Retention duration in days; required when `retention_type` is `delay`.
+        """
+        return pulumi.get(self, "retention_value")
+
+    @retention_value.setter
+    def retention_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "retention_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcRegion")
+    def src_region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Source region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+        """
+        return pulumi.get(self, "src_region")
+
+    @src_region.setter
+    def src_region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Destination storage class.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "storage_class", value)
+
+
+class BackupPolicyAutoCreatedAdvancedDataPolicyArgsDict(TypedDict):
+    auto_created: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the service generated the rule.
+    """
+    bak_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Backup type.
+    """
+    dest_region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Destination region.
+    """
+    dest_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Destination type.
+    """
+    dump_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Method for converting level-1 backups to level-2 backups.
+    """
+    filter_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Scheduling key.
+    """
+    filter_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Scheduling type.
+    """
+    filter_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Scheduling expression.
+    """
+    only_preserve_one_each_day: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether only one backup is retained per day.
+    """
+    only_preserve_one_each_hour: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Hourly preservation setting.
+    """
+    policy_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Service-assigned rule ID.
+    """
+    retention_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Retention period type.
+    """
+    retention_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Retention duration in days.
+    """
+    src_region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Source region.
+    """
+    src_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Source type.
+    """
+    storage_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Destination storage class.
+    """
+
+@pulumi.input_type
+class BackupPolicyAutoCreatedAdvancedDataPolicyArgs:
+    def __init__(__self__, *,
+                 auto_created: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bak_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dump_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 only_preserve_one_each_day: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_preserve_one_each_hour: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] auto_created: Whether the service generated the rule.
+        :param pulumi.Input[_builtins.str] bak_type: Backup type.
+        :param pulumi.Input[_builtins.str] dest_region: Destination region.
+        :param pulumi.Input[_builtins.str] dest_type: Destination type.
+        :param pulumi.Input[_builtins.str] dump_action: Method for converting level-1 backups to level-2 backups.
+        :param pulumi.Input[_builtins.str] filter_key: Scheduling key.
+        :param pulumi.Input[_builtins.str] filter_type: Scheduling type.
+        :param pulumi.Input[_builtins.str] filter_value: Scheduling expression.
+        :param pulumi.Input[_builtins.bool] only_preserve_one_each_day: Whether only one backup is retained per day.
+        :param pulumi.Input[_builtins.bool] only_preserve_one_each_hour: Hourly preservation setting.
+        :param pulumi.Input[_builtins.str] policy_id: Service-assigned rule ID.
+        :param pulumi.Input[_builtins.str] retention_type: Retention period type.
+        :param pulumi.Input[_builtins.str] retention_value: Retention duration in days.
+        :param pulumi.Input[_builtins.str] src_region: Source region.
+        :param pulumi.Input[_builtins.str] src_type: Source type.
+        :param pulumi.Input[_builtins.str] storage_class: Destination storage class.
+        """
+        if auto_created is not None:
+            pulumi.set(__self__, "auto_created", auto_created)
+        if bak_type is not None:
+            pulumi.set(__self__, "bak_type", bak_type)
+        if dest_region is not None:
+            pulumi.set(__self__, "dest_region", dest_region)
+        if dest_type is not None:
+            pulumi.set(__self__, "dest_type", dest_type)
+        if dump_action is not None:
+            pulumi.set(__self__, "dump_action", dump_action)
+        if filter_key is not None:
+            pulumi.set(__self__, "filter_key", filter_key)
+        if filter_type is not None:
+            pulumi.set(__self__, "filter_type", filter_type)
+        if filter_value is not None:
+            pulumi.set(__self__, "filter_value", filter_value)
+        if only_preserve_one_each_day is not None:
+            pulumi.set(__self__, "only_preserve_one_each_day", only_preserve_one_each_day)
+        if only_preserve_one_each_hour is not None:
+            pulumi.set(__self__, "only_preserve_one_each_hour", only_preserve_one_each_hour)
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+        if retention_type is not None:
+            pulumi.set(__self__, "retention_type", retention_type)
+        if retention_value is not None:
+            pulumi.set(__self__, "retention_value", retention_value)
+        if src_region is not None:
+            pulumi.set(__self__, "src_region", src_region)
+        if src_type is not None:
+            pulumi.set(__self__, "src_type", src_type)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreated")
+    def auto_created(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the service generated the rule.
+        """
+        return pulumi.get(self, "auto_created")
+
+    @auto_created.setter
+    def auto_created(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_created", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bakType")
+    def bak_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Backup type.
+        """
+        return pulumi.get(self, "bak_type")
+
+    @bak_type.setter
+    def bak_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bak_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destRegion")
+    def dest_region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Destination region.
+        """
+        return pulumi.get(self, "dest_region")
+
+    @dest_region.setter
+    def dest_region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dest_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destType")
+    def dest_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Destination type.
+        """
+        return pulumi.get(self, "dest_type")
+
+    @dest_type.setter
+    def dest_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dest_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dumpAction")
+    def dump_action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Method for converting level-1 backups to level-2 backups.
+        """
+        return pulumi.get(self, "dump_action")
+
+    @dump_action.setter
+    def dump_action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dump_action", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterKey")
+    def filter_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Scheduling key.
+        """
+        return pulumi.get(self, "filter_key")
+
+    @filter_key.setter
+    def filter_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Scheduling type.
+        """
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterValue")
+    def filter_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Scheduling expression.
+        """
+        return pulumi.get(self, "filter_value")
+
+    @filter_value.setter
+    def filter_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "filter_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onlyPreserveOneEachDay")
+    def only_preserve_one_each_day(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether only one backup is retained per day.
+        """
+        return pulumi.get(self, "only_preserve_one_each_day")
+
+    @only_preserve_one_each_day.setter
+    def only_preserve_one_each_day(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "only_preserve_one_each_day", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onlyPreserveOneEachHour")
+    def only_preserve_one_each_hour(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Hourly preservation setting.
+        """
+        return pulumi.get(self, "only_preserve_one_each_hour")
+
+    @only_preserve_one_each_hour.setter
+    def only_preserve_one_each_hour(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "only_preserve_one_each_hour", value)
+
+    @_builtins.property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Service-assigned rule ID.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionType")
+    def retention_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Retention period type.
+        """
+        return pulumi.get(self, "retention_type")
+
+    @retention_type.setter
+    def retention_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "retention_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionValue")
+    def retention_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Retention duration in days.
+        """
+        return pulumi.get(self, "retention_value")
+
+    @retention_value.setter
+    def retention_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "retention_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcRegion")
+    def src_region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Source region.
+        """
+        return pulumi.get(self, "src_region")
+
+    @src_region.setter
+    def src_region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcType")
+    def src_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Source type.
+        """
+        return pulumi.get(self, "src_type")
+
+    @src_type.setter
+    def src_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Destination storage class.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "storage_class", value)
 
 
 class BatchTaskTaskParamArgsDict(TypedDict):
@@ -994,5 +1654,154 @@ class ParameterGroupParameterArgs:
     @param_value.setter
     def param_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "param_value", value)
+
+
+class PolarFsEndpointAddressItemArgsDict(TypedDict):
+    connection_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Available since v2.1.0) The connection string.
+    """
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Available since v2.1.0) The IP address.
+    """
+    net_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Available since v2.1.0) The network type.
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Available since v2.1.0) The port.
+    """
+    private_zone_connection_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Available since v2.1.0) The PrivateZone connection string.
+    """
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The VPC ID.
+    """
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The vSwitch ID.
+    """
+
+@pulumi.input_type
+class PolarFsEndpointAddressItemArgs:
+    def __init__(__self__, *,
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_zone_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] connection_string: (Available since v2.1.0) The connection string.
+        :param pulumi.Input[_builtins.str] ip_address: (Available since v2.1.0) The IP address.
+        :param pulumi.Input[_builtins.str] net_type: (Available since v2.1.0) The network type.
+        :param pulumi.Input[_builtins.str] port: (Available since v2.1.0) The port.
+        :param pulumi.Input[_builtins.str] private_zone_connection_string: (Available since v2.1.0) The PrivateZone connection string.
+        :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
+        :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID.
+        """
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if net_type is not None:
+            pulumi.set(__self__, "net_type", net_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if private_zone_connection_string is not None:
+            pulumi.set(__self__, "private_zone_connection_string", private_zone_connection_string)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) The connection string.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_string", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) The IP address.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="netType")
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) The network type.
+        """
+        return pulumi.get(self, "net_type")
+
+    @net_type.setter
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "net_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) The port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateZoneConnectionString")
+    def private_zone_connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.1.0) The PrivateZone connection string.
+        """
+        return pulumi.get(self, "private_zone_connection_string")
+
+    @private_zone_connection_string.setter
+    def private_zone_connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "private_zone_connection_string", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The VPC ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The vSwitch ID.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 

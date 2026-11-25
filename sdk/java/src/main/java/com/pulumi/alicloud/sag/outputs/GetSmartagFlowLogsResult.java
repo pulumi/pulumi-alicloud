@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSmartagFlowLogsResult {
+    /**
+     * @return The description of the flow log.
+     * 
+     */
     private @Nullable String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,15 +26,31 @@ public final class GetSmartagFlowLogsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Smartag Flow Logs. Each element contains the following attributes:
+     * 
+     */
     private List<GetSmartagFlowLogsLog> logs;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Flow Log names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
+     * 
+     */
     private @Nullable String status;
 
     private GetSmartagFlowLogsResult() {}
+    /**
+     * @return The description of the flow log.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -44,12 +64,20 @@ public final class GetSmartagFlowLogsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Smartag Flow Logs. Each element contains the following attributes:
+     * 
+     */
     public List<GetSmartagFlowLogsLog> logs() {
         return this.logs;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Flow Log names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -62,6 +90,10 @@ public final class GetSmartagFlowLogsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

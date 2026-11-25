@@ -18,6 +18,8 @@ import (
 //
 // > **NOTE:** Available since v1.172.0.
 //
+// > **NOTE:** `startOffset`, `endOffset` and `startOffsetFlag` are only supported for `Stream` tunnels; configuring any of them for a `BaseData` or `BaseAndStream` tunnel is rejected during planning. The OTS stream expiration (maximum 7 days) determines the valid time window for `startOffset`/`endOffset`. Changing any of these arguments replaces the tunnel. `startOffset` and `startOffsetFlag` are mutually exclusive. When importing a `Stream` tunnel, configure the same offsets or the same flag that the tunnel reports; an omitted `startOffsetFlag` and `LATEST` are equivalent, while an imported tunnel that reports `EARLIEST` must be configured with `EARLIEST`. Otherwise the next plan proposes a replacement.
+//
 // ## Example Usage
 //
 // ```go
@@ -26,7 +28,6 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ots"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -39,15 +40,8 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstance, err := ots.NewInstance(ctx, "default", &ots.InstanceArgs{
-//				Name:        pulumi.Sprintf("%v-%v", name, _default.Result),
+//			_default, err := ots.NewInstance(ctx, "default", &ots.InstanceArgs{
+//				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
 //				AccessedBy:  pulumi.String("Any"),
 //				Tags: pulumi.StringMap{
@@ -59,7 +53,7 @@ import (
 //				return err
 //			}
 //			defaultTable, err := ots.NewTable(ctx, "default", &ots.TableArgs{
-//				InstanceName: defaultInstance.Name,
+//				InstanceName: _default.Name,
 //				TableName:    pulumi.String("tf_example"),
 //				TimeToLive:   pulumi.Int(-1),
 //				MaxVersion:   pulumi.Int(1),
@@ -84,10 +78,69 @@ import (
 //				return err
 //			}
 //			_, err = ots.NewTunnel(ctx, "default", &ots.TunnelArgs{
-//				InstanceName: defaultInstance.Name,
+//				InstanceName: _default.Name,
 //				TableName:    defaultTable.TableName,
 //				TunnelName:   pulumi.String("tf_example"),
 //				TunnelType:   pulumi.String("BaseAndStream"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Stream tunnel with incremental data consumption from the earliest available offset:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ots"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example-demo"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := ots.NewInstance(ctx, "default", &ots.InstanceArgs{
+//				Name:        pulumi.String(name),
+//				Description: pulumi.String(name),
+//				AccessedBy:  pulumi.String("Any"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTable, err := ots.NewTable(ctx, "default", &ots.TableArgs{
+//				InstanceName: _default.Name,
+//				TableName:    pulumi.String("terraform_example_stream"),
+//				TimeToLive:   pulumi.Int(-1),
+//				MaxVersion:   pulumi.Int(1),
+//				PrimaryKeys: ots.TablePrimaryKeyArray{
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk1"),
+//						Type: pulumi.String("Integer"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ots.NewTunnel(ctx, "default", &ots.TunnelArgs{
+//				InstanceName:    _default.Name,
+//				TableName:       defaultTable.TableName,
+//				TunnelName:      pulumi.String("terraform_example_stream"),
+//				TunnelType:      pulumi.String("Stream"),
+//				StartOffsetFlag: pulumi.String("EARLIEST"),
 //			})
 //			if err != nil {
 //				return err
@@ -114,10 +167,16 @@ type Tunnel struct {
 	Channels TunnelChannelArrayOutput `pulumi:"channels"`
 	// The creation time of the Tunnel.
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
+	// The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	EndOffset pulumi.StringPtrOutput `pulumi:"endOffset"`
 	// Whether the tunnel has expired.
 	Expired pulumi.BoolOutput `pulumi:"expired"`
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
+	// The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	StartOffset pulumi.StringPtrOutput `pulumi:"startOffset"`
+	// The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	StartOffsetFlag pulumi.StringOutput `pulumi:"startOffsetFlag"`
 	// The name of the OTS table. If changed, a new table would be created.
 	TableName pulumi.StringOutput `pulumi:"tableName"`
 	// The tunnel id of the OTS which could not be changed.
@@ -178,10 +237,16 @@ type tunnelState struct {
 	Channels []TunnelChannel `pulumi:"channels"`
 	// The creation time of the Tunnel.
 	CreateTime *int `pulumi:"createTime"`
+	// The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	EndOffset *string `pulumi:"endOffset"`
 	// Whether the tunnel has expired.
 	Expired *bool `pulumi:"expired"`
 	// The name of the OTS instance in which table will located.
 	InstanceName *string `pulumi:"instanceName"`
+	// The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	StartOffset *string `pulumi:"startOffset"`
+	// The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	StartOffsetFlag *string `pulumi:"startOffsetFlag"`
 	// The name of the OTS table. If changed, a new table would be created.
 	TableName *string `pulumi:"tableName"`
 	// The tunnel id of the OTS which could not be changed.
@@ -201,10 +266,16 @@ type TunnelState struct {
 	Channels TunnelChannelArrayInput
 	// The creation time of the Tunnel.
 	CreateTime pulumi.IntPtrInput
+	// The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	EndOffset pulumi.StringPtrInput
 	// Whether the tunnel has expired.
 	Expired pulumi.BoolPtrInput
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringPtrInput
+	// The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	StartOffset pulumi.StringPtrInput
+	// The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	StartOffsetFlag pulumi.StringPtrInput
 	// The name of the OTS table. If changed, a new table would be created.
 	TableName pulumi.StringPtrInput
 	// The tunnel id of the OTS which could not be changed.
@@ -230,8 +301,14 @@ func TunnelExists(ctx *pulumi.Context,
 }
 
 type tunnelArgs struct {
+	// The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	EndOffset *string `pulumi:"endOffset"`
 	// The name of the OTS instance in which table will located.
 	InstanceName string `pulumi:"instanceName"`
+	// The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	StartOffset *string `pulumi:"startOffset"`
+	// The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	StartOffsetFlag *string `pulumi:"startOffsetFlag"`
 	// The name of the OTS table. If changed, a new table would be created.
 	TableName string `pulumi:"tableName"`
 	// The name of the OTS tunnel. If changed, a new tunnel would be created.
@@ -242,8 +319,14 @@ type tunnelArgs struct {
 
 // The set of arguments for constructing a Tunnel resource.
 type TunnelArgs struct {
+	// The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	EndOffset pulumi.StringPtrInput
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringInput
+	// The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	StartOffset pulumi.StringPtrInput
+	// The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+	StartOffsetFlag pulumi.StringPtrInput
 	// The name of the OTS table. If changed, a new table would be created.
 	TableName pulumi.StringInput
 	// The name of the OTS tunnel. If changed, a new tunnel would be created.
@@ -349,6 +432,11 @@ func (o TunnelOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Tunnel) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
 
+// The end timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros and greater than `startOffset` when both are set. If not set, the tunnel keeps consuming incremental data. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+func (o TunnelOutput) EndOffset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.StringPtrOutput { return v.EndOffset }).(pulumi.StringPtrOutput)
+}
+
 // Whether the tunnel has expired.
 func (o TunnelOutput) Expired() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Tunnel) pulumi.BoolOutput { return v.Expired }).(pulumi.BoolOutput)
@@ -357,6 +445,16 @@ func (o TunnelOutput) Expired() pulumi.BoolOutput {
 // The name of the OTS instance in which table will located.
 func (o TunnelOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tunnel) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The start timestamp, in milliseconds, of the incremental data consumed by a `Stream` tunnel. It must be a positive integer without leading zeros. Valid range: `[current system time - stream expiration + 5 minutes, current system time]`. This argument conflicts with `startOffsetFlag`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+func (o TunnelOutput) StartOffset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.StringPtrOutput { return v.StartOffset }).(pulumi.StringPtrOutput)
+}
+
+// The start offset flag of a `Stream` tunnel, used as the consumption start point. Valid values: `LATEST` and `EARLIEST`. `LATEST` consumes incremental data from the tunnel creation time; `EARLIEST` consumes from the earliest available incremental log. Defaults to `LATEST`, which is also the server default. This argument conflicts with `startOffset`. Available since v2.3.0. This argument is only supported when `tunnelType` is `Stream`; configuring it for a `BaseData` or `BaseAndStream` tunnel is rejected during planning.
+func (o TunnelOutput) StartOffsetFlag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tunnel) pulumi.StringOutput { return v.StartOffsetFlag }).(pulumi.StringOutput)
 }
 
 // The name of the OTS table. If changed, a new table would be created.

@@ -24,9 +24,21 @@ public final class GetControlPoliciesResult {
     private List<String> ids;
     private @Nullable String language;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Control Policy names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Resource Manager Control Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetControlPoliciesPolicy> policies;
+    /**
+     * @return The type of policy.
+     * 
+     */
     private @Nullable String policyType;
 
     private GetControlPoliciesResult() {}
@@ -49,15 +61,27 @@ public final class GetControlPoliciesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Control Policy names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Resource Manager Control Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetControlPoliciesPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return The type of policy.
+     * 
+     */
     public Optional<String> policyType() {
         return Optional.ofNullable(this.policyType);
     }

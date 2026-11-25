@@ -14,6 +14,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
     {
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the resource.
+        /// 
         /// &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         /// </summary>
         [Input("arn")]

@@ -12,9 +12,55 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Event Bridge Service Linked Role resource.
+//
+// `eventbridge.Slr` is an alias of `eventbridge.ServiceLinkedRole`. The two resource types share the same schema, CRUD behavior and service-linked-role lifecycle; use either name interchangeably.
+//
+// For information about Event Bridge Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+//
+// > **NOTE:** Available since v1.129.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/eventbridge"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := eventbridge.NewSlr(ctx, "default", &eventbridge.SlrArgs{
+//				ProductName: pulumi.String("AliyunServiceRoleForEventBridgeSourceRocketMQ"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
+// ## Import
+//
+// Event Bridge Service Linked Role can be imported using the id, e.g.
+//
+// ```sh
+// $ pulumi import alicloud:eventbridge/slr:Slr example <product_name>
+// ```
 type Slr struct {
 	pulumi.CustomResourceState
 
+	// The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
 	ProductName pulumi.StringOutput `pulumi:"productName"`
 }
 
@@ -51,10 +97,12 @@ func GetSlr(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Slr resources.
 type slrState struct {
+	// The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
 	ProductName *string `pulumi:"productName"`
 }
 
 type SlrState struct {
+	// The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
 	ProductName pulumi.StringPtrInput
 }
 
@@ -69,11 +117,13 @@ func SlrExists(ctx *pulumi.Context,
 }
 
 type slrArgs struct {
+	// The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
 	ProductName string `pulumi:"productName"`
 }
 
 // The set of arguments for constructing a Slr resource.
 type SlrArgs struct {
+	// The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
 	ProductName pulumi.StringInput
 }
 
@@ -164,6 +214,7 @@ func (o SlrOutput) ToSlrOutputWithContext(ctx context.Context) SlrOutput {
 	return o
 }
 
+// The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
 func (o SlrOutput) ProductName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Slr) pulumi.StringOutput { return v.ProductName }).(pulumi.StringOutput)
 }

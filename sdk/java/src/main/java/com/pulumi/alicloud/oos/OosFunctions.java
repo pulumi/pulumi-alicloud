@@ -39,7 +39,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Application Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -93,7 +93,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Application Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -147,7 +147,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Application Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -201,7 +201,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Application Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -255,7 +255,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Application Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -309,7 +309,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -358,7 +358,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -407,7 +407,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -456,7 +456,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -505,7 +505,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -554,7 +554,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -603,7 +603,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1464,7 +1464,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      */
     public static Output<GetPatchBaselinesResult> getPatchBaselines() {
@@ -1473,7 +1473,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      */
     public static CompletableFuture<GetPatchBaselinesResult> getPatchBaselinesPlain() {
@@ -1482,7 +1482,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      */
     public static Output<GetPatchBaselinesResult> getPatchBaselines(GetPatchBaselinesArgs args) {
@@ -1491,7 +1491,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      */
     public static CompletableFuture<GetPatchBaselinesResult> getPatchBaselinesPlain(GetPatchBaselinesPlainArgs args) {
@@ -1500,7 +1500,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      */
     public static Output<GetPatchBaselinesResult> getPatchBaselines(GetPatchBaselinesArgs args, InvokeOptions options) {
@@ -1509,7 +1509,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      */
     public static Output<GetPatchBaselinesResult> getPatchBaselines(GetPatchBaselinesArgs args, InvokeOutputOptions options) {
@@ -1518,7 +1518,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      */
     public static CompletableFuture<GetPatchBaselinesResult> getPatchBaselinesPlain(GetPatchBaselinesPlainArgs args, InvokeOptions options) {
@@ -2017,7 +2017,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -2061,7 +2061,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -2105,7 +2105,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -2149,7 +2149,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -2193,7 +2193,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -2237,7 +2237,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -2281,7 +2281,7 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
      * 
      * ## Example Usage
      * 
@@ -2325,7 +2325,7 @@ public final class OosFunctions {
     /**
      * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.92.0+.
+     * &gt; **NOTE:** Available since v1.92.0.
      * 
      * ## Example Usage
      * 
@@ -2375,7 +2375,7 @@ public final class OosFunctions {
     /**
      * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.92.0+.
+     * &gt; **NOTE:** Available since v1.92.0.
      * 
      * ## Example Usage
      * 
@@ -2425,7 +2425,7 @@ public final class OosFunctions {
     /**
      * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.92.0+.
+     * &gt; **NOTE:** Available since v1.92.0.
      * 
      * ## Example Usage
      * 
@@ -2475,7 +2475,7 @@ public final class OosFunctions {
     /**
      * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.92.0+.
+     * &gt; **NOTE:** Available since v1.92.0.
      * 
      * ## Example Usage
      * 
@@ -2525,7 +2525,7 @@ public final class OosFunctions {
     /**
      * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.92.0+.
+     * &gt; **NOTE:** Available since v1.92.0.
      * 
      * ## Example Usage
      * 
@@ -2575,7 +2575,7 @@ public final class OosFunctions {
     /**
      * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.92.0+.
+     * &gt; **NOTE:** Available since v1.92.0.
      * 
      * ## Example Usage
      * 
@@ -2625,7 +2625,7 @@ public final class OosFunctions {
     /**
      * This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.92.0+.
+     * &gt; **NOTE:** Available since v1.92.0.
      * 
      * ## Example Usage
      * 

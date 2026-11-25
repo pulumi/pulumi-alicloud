@@ -9,36 +9,127 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// &gt; **DEPRECATED:** `alicloud.ecs.CopyImage` is a deprecated alias of alicloud_image_copy. Use `alicloud.ecs.ImageCopy` instead. The two resources share the same schema and backend `CopyImage` API; this page is retained only for backward compatibility and will be removed in a future release.
+    /// 
+    /// Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).
+    /// 
+    /// For information about image copy and how to use it, see [CopyImage](https://www.alibabacloud.com/help/doc-detail/25538.html).
+    /// 
+    /// &gt; **NOTE:** You can only copy the custom image when it is in the Available state.
+    /// 
+    /// &gt; **NOTE:** You can only copy the image belonging to your Alibaba Cloud account. Images cannot be copied from one account to another.
+    /// 
+    /// &gt; **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
+    /// 
+    /// &gt; **NOTE:** Available since v1.66.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Ecs.Image("default", new()
+    ///     {
+    ///         InstanceId = defaultAlicloudInstance.Id,
+    ///         ImageName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultCopyImage = new AliCloud.Ecs.CopyImage("default", new()
+    ///     {
+    ///         SourceImageId = @default.Id,
+    ///         SourceRegionId = "cn-hangzhou",
+    ///         ImageName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///         Tags = 
+    ///         {
+    ///             { "FinanceDept", "FinanceDeptJoshua" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
+    /// ## Import
+    /// 
+    /// Image can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:ecs/copyImage:CopyImage default m-uf66871ape***yg1q***
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:ecs/copyImage:CopyImage")]
     public partial class CopyImage : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Output("deleteAutoSnapshot")]
         public Output<bool?> DeleteAutoSnapshot { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether to encrypt the image.
+        /// </summary>
         [Output("encrypted")]
         public Output<bool?> Encrypted { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether to force delete the custom image, Default is `False`.
+        /// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+        /// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+        /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
+        /// <summary>
+        /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+        /// </summary>
         [Output("imageName")]
         public Output<string> ImageName { get; private set; } = null!;
 
+        /// <summary>
+        /// Key ID used to encrypt the image.
+        /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
+        /// <summary>
+        /// Attribute 'name' has been deprecated, please use `ImageName` instead.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The source image ID.
+        /// </summary>
         [Output("sourceImageId")]
         public Output<string> SourceImageId { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+        /// </summary>
         [Output("sourceRegionId")]
         public Output<string> SourceRegionId { get; private set; } = null!;
 
+        /// <summary>
+        /// The tag value of an image. The value of N ranges from 1 to 20.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -88,35 +179,70 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class CopyImageArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
 
+        /// <summary>
+        /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Indicates whether to encrypt the image.
+        /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
+        /// <summary>
+        /// Indicates whether to force delete the custom image, Default is `False`.
+        /// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+        /// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
+        /// <summary>
+        /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+        /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
 
+        /// <summary>
+        /// Key ID used to encrypt the image.
+        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
+        /// <summary>
+        /// Attribute 'name' has been deprecated, please use `ImageName` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The source image ID.
+        /// </summary>
         [Input("sourceImageId", required: true)]
         public Input<string> SourceImageId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+        /// </summary>
         [Input("sourceRegionId", required: true)]
         public Input<string> SourceRegionId { get; set; } = null!;
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag value of an image. The value of N ranges from 1 to 20.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -131,35 +257,70 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class CopyImageState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
 
+        /// <summary>
+        /// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Indicates whether to encrypt the image.
+        /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
+        /// <summary>
+        /// Indicates whether to force delete the custom image, Default is `False`.
+        /// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+        /// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+        /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
+        /// <summary>
+        /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+        /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
 
+        /// <summary>
+        /// Key ID used to encrypt the image.
+        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
+        /// <summary>
+        /// Attribute 'name' has been deprecated, please use `ImageName` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The source image ID.
+        /// </summary>
         [Input("sourceImageId")]
         public Input<string>? SourceImageId { get; set; }
 
+        /// <summary>
+        /// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+        /// </summary>
         [Input("sourceRegionId")]
         public Input<string>? SourceRegionId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag value of an image. The value of N ranges from 1 to 20.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

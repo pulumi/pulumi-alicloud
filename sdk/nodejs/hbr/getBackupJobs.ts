@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -86,6 +86,9 @@ export function getBackupJobs(args: GetBackupJobsArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getBackupJobs.
  */
 export interface GetBackupJobsArgs {
+    /**
+     * More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+     */
     filters?: inputs.hbr.GetBackupJobsFilter[];
     /**
      * A list of Backup Job IDs.
@@ -119,16 +122,25 @@ export interface GetBackupJobsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Hbr Backup Jobs. Each element contains the following attributes:
+     */
     readonly jobs: outputs.hbr.GetBackupJobsJob[];
     readonly outputFile?: string;
     readonly sortDirection?: string;
+    /**
+     * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     */
     readonly sourceType: string;
+    /**
+     * The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -205,6 +217,9 @@ export function getBackupJobsOutput(args: GetBackupJobsOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getBackupJobs.
  */
 export interface GetBackupJobsOutputArgs {
+    /**
+     * More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.hbr.GetBackupJobsFilterArgs>[] | undefined>;
     /**
      * A list of Backup Job IDs.

@@ -9,52 +9,155 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
+    /// <summary>
+    /// Provides a VPC Subnet resource. `alicloud.vpc.Subnet` is an alias of `alicloud.vpc.Switch`; the two resource types share the same schema and behavior and may be used interchangeably.
+    /// 
+    /// You can use to the existing vpc module  to create a VPC and several VSwitches one-click.
+    /// 
+    /// For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
+    /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var fooNetwork = new AliCloud.Vpc.Network("foo", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var fooSubnet = new AliCloud.Vpc.Subnet("foo", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         VpcId = fooNetwork.Id,
+    ///         ZoneId = foo.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
+    /// ## Import
+    /// 
+    /// VPC Vswitch can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:vpc/subnet:Subnet example &lt;id&gt;
+    /// ```
+    /// </summary>
     [Obsolete(@"This resource has been deprecated and replaced by the Switch resource.")]
     [AliCloudResourceType("alicloud:vpc/subnet:Subnet")]
     public partial class Subnet : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.119.0. New field `ZoneId` instead.
+        /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
+        /// <summary>
+        /// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `CidrBlock` is required.
+        /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
 
+        /// <summary>
+        /// The creation time of the VSwitch.
+        /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the IPv6 function is enabled in the switch. Value:
+        /// </summary>
         [Output("enableIpv6")]
         public Output<bool> EnableIpv6 { get; private set; } = null!;
 
+        /// <summary>
+        /// The IPv6 CIDR block of the VSwitch.
+        /// </summary>
         [Output("ipv6CidrBlock")]
         public Output<string> Ipv6CidrBlock { get; private set; } = null!;
 
+        /// <summary>
+        /// The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `EnableIpv6` is `True`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+        /// - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+        /// - When the VPC IPv6 address mask is `56`: `0` to `255`.
+        /// - When the VPC IPv6 address mask is `60`: `0` to `15`.
+        /// </summary>
         [Output("ipv6CidrBlockMask")]
         public Output<int> Ipv6CidrBlockMask { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to create the default VSwitch. Default value: `False`. Valid values:
+        /// </summary>
         [Output("isDefault")]
         public Output<bool> IsDefault { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `Name` has been deprecated from provider version 1.119.0. New field `VswitchName` instead.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The tags of VSwitch.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `VpcId` is required.
+        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
+        /// <summary>
+        /// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Output("vpcIpv6CidrBlock")]
         public Output<string?> VpcIpv6CidrBlock { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
         [Output("vswitchName")]
         public Output<string> VswitchName { get; private set; } = null!;
 
+        /// <summary>
+        /// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+        /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
@@ -104,44 +207,86 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class SubnetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.119.0. New field `ZoneId` instead.
+        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
+        /// <summary>
+        /// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `CidrBlock` is required.
+        /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
 
+        /// <summary>
+        /// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether the IPv6 function is enabled in the switch. Value:
+        /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
+        /// <summary>
+        /// The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `EnableIpv6` is `True`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+        /// - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+        /// - When the VPC IPv6 address mask is `56`: `0` to `255`.
+        /// - When the VPC IPv6 address mask is `60`: `0` to `15`.
+        /// </summary>
         [Input("ipv6CidrBlockMask")]
         public Input<int>? Ipv6CidrBlockMask { get; set; }
 
+        /// <summary>
+        /// Specifies whether to create the default VSwitch. Default value: `False`. Valid values:
+        /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
+        /// <summary>
+        /// Field `Name` has been deprecated from provider version 1.119.0. New field `VswitchName` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags of VSwitch.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `VpcId` is required.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
+        /// <summary>
+        /// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Input("vpcIpv6CidrBlock")]
         public Input<string>? VpcIpv6CidrBlock { get; set; }
 
+        /// <summary>
+        /// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
         [Input("vswitchName")]
         public Input<string>? VswitchName { get; set; }
 
+        /// <summary>
+        /// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
@@ -153,53 +298,104 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class SubnetState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field `AvailabilityZone` has been deprecated from provider version 1.119.0. New field `ZoneId` instead.
+        /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
+        /// <summary>
+        /// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `CidrBlock` is required.
+        /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
 
+        /// <summary>
+        /// The creation time of the VSwitch.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether the IPv6 function is enabled in the switch. Value:
+        /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
+        /// <summary>
+        /// The IPv6 CIDR block of the VSwitch.
+        /// </summary>
         [Input("ipv6CidrBlock")]
         public Input<string>? Ipv6CidrBlock { get; set; }
 
+        /// <summary>
+        /// The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `EnableIpv6` is `True`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+        /// - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+        /// - When the VPC IPv6 address mask is `56`: `0` to `255`.
+        /// - When the VPC IPv6 address mask is `60`: `0` to `15`.
+        /// </summary>
         [Input("ipv6CidrBlockMask")]
         public Input<int>? Ipv6CidrBlockMask { get; set; }
 
+        /// <summary>
+        /// Specifies whether to create the default VSwitch. Default value: `False`. Valid values:
+        /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
+        /// <summary>
+        /// Field `Name` has been deprecated from provider version 1.119.0. New field `VswitchName` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags of VSwitch.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `VpcId` is required.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
+        /// <summary>
+        /// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Input("vpcIpv6CidrBlock")]
         public Input<string>? VpcIpv6CidrBlock { get; set; }
 
+        /// <summary>
+        /// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
         [Input("vswitchName")]
         public Input<string>? VswitchName { get; set; }
 
+        /// <summary>
+        /// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 

@@ -16,7 +16,7 @@ public final class GetInstancesInstanceIpWhitelist {
      */
     private String ipGroupAttribute;
     /**
-     * @return IP whitelist group name
+     * @return IP whitelist group name.
      * 
      */
     private String ipGroupName;
@@ -35,7 +35,7 @@ public final class GetInstancesInstanceIpWhitelist {
         return this.ipGroupAttribute;
     }
     /**
-     * @return IP whitelist group name
+     * @return IP whitelist group name.
      * 
      */
     public String ipGroupName() {

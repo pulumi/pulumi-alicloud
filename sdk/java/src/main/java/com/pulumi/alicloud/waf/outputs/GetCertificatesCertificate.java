@@ -42,7 +42,15 @@ public final class GetCertificatesCertificate {
      * 
      */
     private String instanceId;
+    /**
+     * @return Indicates whether the certificate is in use.
+     * 
+     */
     private Boolean isUsing;
+    /**
+     * @return The Subject Alternative Names (SAN) of the certificate.
+     * 
+     */
     private List<String> sans;
 
     private GetCertificatesCertificate() {}
@@ -88,9 +96,17 @@ public final class GetCertificatesCertificate {
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return Indicates whether the certificate is in use.
+     * 
+     */
     public Boolean isUsing() {
         return this.isUsing;
     }
+    /**
+     * @return The Subject Alternative Names (SAN) of the certificate.
+     * 
+     */
     public List<String> sans() {
         return this.sans;
     }

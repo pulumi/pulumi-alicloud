@@ -42,7 +42,7 @@ public final class GetPatchBaselinesBaseline {
      */
     private Boolean isDefault;
     /**
-     * @return Operating system type.
+     * @return Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      * 
      */
     private String operationSystem;
@@ -57,7 +57,7 @@ public final class GetPatchBaselinesBaseline {
      */
     private String patchBaselineName;
     /**
-     * @return Patch baseline sharing type.
+     * @return Patch baseline sharing type. Valid values: `Private`, `Public`.
      * 
      */
     private String shareType;
@@ -116,7 +116,7 @@ public final class GetPatchBaselinesBaseline {
         return this.isDefault;
     }
     /**
-     * @return Operating system type.
+     * @return Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      * 
      */
     public String operationSystem() {
@@ -137,7 +137,7 @@ public final class GetPatchBaselinesBaseline {
         return this.patchBaselineName;
     }
     /**
-     * @return Patch baseline sharing type.
+     * @return Patch baseline sharing type. Valid values: `Private`, `Public`.
      * 
      */
     public String shareType() {

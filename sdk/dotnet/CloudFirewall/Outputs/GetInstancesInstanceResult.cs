@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// The payment type of the resource. Valid values: `Subscription`.
+        /// The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>

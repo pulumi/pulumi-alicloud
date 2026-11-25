@@ -14,69 +14,197 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationInfosApplication {
+    /**
+     * @return The first ID of the resource.
+     * 
+     */
     private String applicationId;
+    /**
+     * @return The approve value.
+     * 
+     */
     private String approveValue;
+    /**
+     * @return The audit reason.
+     * 
+     */
     private String auditReason;
+    /**
+     * @return The desire value of the quota application.
+     * 
+     */
     private Double desireValue;
+    /**
+     * @return The quota dimensions. See `dimensions` below.
+     * 
+     */
     private List<GetApplicationInfosApplicationDimension> dimensions;
+    /**
+     * @return The effective time.
+     * 
+     */
     private String effectiveTime;
+    /**
+     * @return The expire time.
+     * 
+     */
     private String expireTime;
+    /**
+     * @return The ID of the Application Info.
+     * 
+     */
     private String id;
+    /**
+     * @return The notice type.
+     * 
+     */
     private Integer noticeType;
+    /**
+     * @return The product code.
+     * 
+     */
     private String productCode;
+    /**
+     * @return The ID of quota action.
+     * 
+     */
     private String quotaActionCode;
+    /**
+     * @return The description of the quota.
+     * 
+     */
     private String quotaDescription;
+    /**
+     * @return The name of the quota.
+     * 
+     */
     private String quotaName;
+    /**
+     * @return The quota unit.
+     * 
+     */
     private String quotaUnit;
+    /**
+     * @return The reason of the quota application.
+     * 
+     */
     private String reason;
+    /**
+     * @return The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+     * 
+     */
     private String status;
 
     private GetApplicationInfosApplication() {}
+    /**
+     * @return The first ID of the resource.
+     * 
+     */
     public String applicationId() {
         return this.applicationId;
     }
+    /**
+     * @return The approve value.
+     * 
+     */
     public String approveValue() {
         return this.approveValue;
     }
+    /**
+     * @return The audit reason.
+     * 
+     */
     public String auditReason() {
         return this.auditReason;
     }
+    /**
+     * @return The desire value of the quota application.
+     * 
+     */
     public Double desireValue() {
         return this.desireValue;
     }
+    /**
+     * @return The quota dimensions. See `dimensions` below.
+     * 
+     */
     public List<GetApplicationInfosApplicationDimension> dimensions() {
         return this.dimensions;
     }
+    /**
+     * @return The effective time.
+     * 
+     */
     public String effectiveTime() {
         return this.effectiveTime;
     }
+    /**
+     * @return The expire time.
+     * 
+     */
     public String expireTime() {
         return this.expireTime;
     }
+    /**
+     * @return The ID of the Application Info.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The notice type.
+     * 
+     */
     public Integer noticeType() {
         return this.noticeType;
     }
+    /**
+     * @return The product code.
+     * 
+     */
     public String productCode() {
         return this.productCode;
     }
+    /**
+     * @return The ID of quota action.
+     * 
+     */
     public String quotaActionCode() {
         return this.quotaActionCode;
     }
+    /**
+     * @return The description of the quota.
+     * 
+     */
     public String quotaDescription() {
         return this.quotaDescription;
     }
+    /**
+     * @return The name of the quota.
+     * 
+     */
     public String quotaName() {
         return this.quotaName;
     }
+    /**
+     * @return The quota unit.
+     * 
+     */
     public String quotaUnit() {
         return this.quotaUnit;
     }
+    /**
+     * @return The reason of the quota application.
+     * 
+     */
     public String reason() {
         return this.reason;
     }
+    /**
+     * @return The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+     * 
+     */
     public String status() {
         return this.status;
     }

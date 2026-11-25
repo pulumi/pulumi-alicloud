@@ -64,11 +64,17 @@ class GetKeyPairsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Key Pair IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the key pair.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @_builtins.property
@@ -79,6 +85,9 @@ class GetKeyPairsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Key Pair names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +98,17 @@ class GetKeyPairsResult:
     @_builtins.property
     @pulumi.getter
     def pairs(self) -> Sequence['outputs.GetKeyPairsPairResult']:
+        """
+        A list of Ens Key Pairs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "pairs")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
+        """
+        The version number.
+        """
         return pulumi.get(self, "version")
 
 
@@ -121,7 +136,7 @@ def get_key_pairs(key_pair_name: Optional[_builtins.str] = None,
     """
     This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -167,7 +182,7 @@ def get_key_pairs_output(key_pair_name: pulumi.Input[Optional[Optional[_builtins
     """
     This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 

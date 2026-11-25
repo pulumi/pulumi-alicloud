@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Threat Detection Honeypot Preset available to the user.
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     ids: [defaultAlicloudThreatDetectionHoneypotPreset.id],
  *     honeypotImageName: "shiro",
  *     nodeId: "example_value",
- *     presetName: "apiapec_test",
+ *     presetName: "apiapec_example",
  * });
  * export const alicloudThreatDetectionHoneypotPresetExampleId = _default.then(_default => _default.presets?.[0]?.id);
  * ```
@@ -48,6 +48,9 @@ export function getHoneypotPresets(args?: GetHoneypotPresetsArgs, opts?: pulumi.
  * A collection of arguments for invoking getHoneypotPresets.
  */
 export interface GetHoneypotPresetsArgs {
+    /**
+     * The current page number.
+     */
     currentPage?: number;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -61,11 +64,17 @@ export interface GetHoneypotPresetsArgs {
      * A list of Honeypot Preset IDs.
      */
     ids?: string[];
+    /**
+     * The language.
+     */
     lang?: string;
     /**
      * Unique id of management node
      */
     nodeId?: string;
+    /**
+     * The name of the management node.
+     */
     nodeName?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -118,7 +127,7 @@ export interface GetHoneypotPresetsResult {
 /**
  * This data source provides Threat Detection Honeypot Preset available to the user.
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -130,7 +139,7 @@ export interface GetHoneypotPresetsResult {
  *     ids: [defaultAlicloudThreatDetectionHoneypotPreset.id],
  *     honeypotImageName: "shiro",
  *     nodeId: "example_value",
- *     presetName: "apiapec_test",
+ *     presetName: "apiapec_example",
  * });
  * export const alicloudThreatDetectionHoneypotPresetExampleId = _default.then(_default => _default.presets?.[0]?.id);
  * ```
@@ -157,6 +166,9 @@ export function getHoneypotPresetsOutput(args?: GetHoneypotPresetsOutputArgs, op
  * A collection of arguments for invoking getHoneypotPresets.
  */
 export interface GetHoneypotPresetsOutputArgs {
+    /**
+     * The current page number.
+     */
     currentPage?: pulumi.Input<number | undefined>;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -170,11 +182,17 @@ export interface GetHoneypotPresetsOutputArgs {
      * A list of Honeypot Preset IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The language.
+     */
     lang?: pulumi.Input<string | undefined>;
     /**
      * Unique id of management node
      */
     nodeId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the management node.
+     */
     nodeName?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

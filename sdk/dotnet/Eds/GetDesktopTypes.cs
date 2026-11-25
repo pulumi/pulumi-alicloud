@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.170.0+.
+        /// &gt; **NOTE:** Available since v1.170.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.170.0+.
+        /// &gt; **NOTE:** Available since v1.170.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.170.0+.
+        /// &gt; **NOTE:** Available since v1.170.0.
         /// 
         /// ## Example Usage
         /// 
@@ -225,17 +225,38 @@ namespace Pulumi.AliCloud.Eds
     [OutputType]
     public sealed class GetDesktopTypesResult
     {
+        /// <summary>
+        /// The CPU cores.
+        /// </summary>
         public readonly int? CpuCount;
+        /// <summary>
+        /// The GPU cores.
+        /// </summary>
         public readonly double? GpuCount;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Desktop Type IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The Specification family.
+        /// </summary>
         public readonly string? InstanceTypeFamily;
+        /// <summary>
+        /// The Memory size. Unit: MiB.
+        /// </summary>
         public readonly int? MemorySize;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A list of Ecd Desktop Types. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDesktopTypesTypeResult> Types;
 
         [OutputConstructor]

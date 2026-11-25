@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
- * const endpointGroupRegion = config.get("endpointGroupRegion") || "cn-beijing";
  * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
@@ -42,19 +41,16 @@ import * as utilities from "../utilities";
  *     addressType: "intranet",
  * });
  * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("default", {
- *     duration: 1,
+ *     paymentType: "PayAsYouGo",
  *     basicAcceleratorName: "terraform-example",
  *     description: "terraform-example",
  *     bandwidthBillingType: "CDT",
- *     autoUseCoupon: "true",
- *     autoPay: true,
  * });
  * const defaultBasicEndpointGroup = new alicloud.ga.BasicEndpointGroup("default", {
  *     acceleratorId: defaultBasicAccelerator.id,
- *     endpointGroupRegion: endpointGroupRegion,
+ *     endpointGroupRegion: region,
  *     endpointType: "SLB",
  *     endpointAddress: defaultApplicationLoadBalancer.id,
- *     endpointSubAddress: "192.168.0.1",
  *     basicEndpointGroupName: "terraform-example",
  *     description: "terraform-example",
  * });
@@ -114,11 +110,15 @@ export class BasicEndpointGroup extends pulumi.CustomResource {
      */
     declare public readonly acceleratorId: pulumi.Output<string>;
     /**
-     * The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the endpoint group.
+     *
+     * The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
      */
     declare public readonly basicEndpointGroupName: pulumi.Output<string | undefined>;
     /**
-     * The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+     * The description of the endpoint group.
+     *
+     * The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -126,15 +126,24 @@ export class BasicEndpointGroup extends pulumi.CustomResource {
      */
     declare public readonly endpointAddress: pulumi.Output<string>;
     /**
-     * The ID of the region where you want to create the endpoint group.
+     * The ID of the region to which the endpoint group belongs.
+     *
+     * You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
      */
     declare public readonly endpointGroupRegion: pulumi.Output<string>;
     /**
-     * The sub address of the endpoint.
+     * The secondary address of the endpoint.
+     *
+     * This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+     * - If you set the endpoint type to `ECS`, you can set `endpointSubAddress` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+     * - If you set the endpoint type to `ENI`, you can set `endpointSubAddress` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
      */
     declare public readonly endpointSubAddress: pulumi.Output<string>;
     /**
-     * The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+     * The type of the endpoint. Valid values:
+     * - `ENI`: elastic network interface (ENI).
+     * - `SLB`: Classic Load Balancer (CLB) instance.
+     * - `ECS`: Elastic Compute Service (ECS) instance.
      */
     declare public readonly endpointType: pulumi.Output<string>;
     /**
@@ -194,11 +203,15 @@ export interface BasicEndpointGroupState {
      */
     acceleratorId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the endpoint group.
+     *
+     * The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
      */
     basicEndpointGroupName?: pulumi.Input<string | undefined>;
     /**
-     * The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+     * The description of the endpoint group.
+     *
+     * The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -206,15 +219,24 @@ export interface BasicEndpointGroupState {
      */
     endpointAddress?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the region where you want to create the endpoint group.
+     * The ID of the region to which the endpoint group belongs.
+     *
+     * You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
      */
     endpointGroupRegion?: pulumi.Input<string | undefined>;
     /**
-     * The sub address of the endpoint.
+     * The secondary address of the endpoint.
+     *
+     * This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+     * - If you set the endpoint type to `ECS`, you can set `endpointSubAddress` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+     * - If you set the endpoint type to `ENI`, you can set `endpointSubAddress` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
      */
     endpointSubAddress?: pulumi.Input<string | undefined>;
     /**
-     * The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+     * The type of the endpoint. Valid values:
+     * - `ENI`: elastic network interface (ENI).
+     * - `SLB`: Classic Load Balancer (CLB) instance.
+     * - `ECS`: Elastic Compute Service (ECS) instance.
      */
     endpointType?: pulumi.Input<string | undefined>;
     /**
@@ -232,11 +254,15 @@ export interface BasicEndpointGroupArgs {
      */
     acceleratorId: pulumi.Input<string>;
     /**
-     * The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the endpoint group.
+     *
+     * The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
      */
     basicEndpointGroupName?: pulumi.Input<string | undefined>;
     /**
-     * The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+     * The description of the endpoint group.
+     *
+     * The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -244,15 +270,24 @@ export interface BasicEndpointGroupArgs {
      */
     endpointAddress?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the region where you want to create the endpoint group.
+     * The ID of the region to which the endpoint group belongs.
+     *
+     * You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
      */
     endpointGroupRegion: pulumi.Input<string>;
     /**
-     * The sub address of the endpoint.
+     * The secondary address of the endpoint.
+     *
+     * This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+     * - If you set the endpoint type to `ECS`, you can set `endpointSubAddress` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+     * - If you set the endpoint type to `ENI`, you can set `endpointSubAddress` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
      */
     endpointSubAddress?: pulumi.Input<string | undefined>;
     /**
-     * The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+     * The type of the endpoint. Valid values:
+     * - `ENI`: elastic network interface (ENI).
+     * - `SLB`: Classic Load Balancer (CLB) instance.
+     * - `ECS`: Elastic Compute Service (ECS) instance.
      */
     endpointType?: pulumi.Input<string | undefined>;
 }

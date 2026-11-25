@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupPoliciesResult {
+    /**
+     * @return The db cluster id.
+     * 
+     */
     private String dbClusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,9 +25,17 @@ public final class GetBackupPoliciesResult {
      */
     private String id;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Click House Backup Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetBackupPoliciesPolicy> policies;
 
     private GetBackupPoliciesResult() {}
+    /**
+     * @return The db cluster id.
+     * 
+     */
     public String dbClusterId() {
         return this.dbClusterId;
     }
@@ -37,6 +49,10 @@ public final class GetBackupPoliciesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Click House Backup Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetBackupPoliciesPolicy> policies() {
         return this.policies;
     }

@@ -4,6 +4,36 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a Event Bridge Service Linked Role resource.
+ *
+ * `alicloud.eventbridge.Slr` is an alias of `alicloud.eventbridge.ServiceLinkedRole`. The two resource types share the same schema, CRUD behavior and service-linked-role lifecycle; use either name interchangeably.
+ *
+ * For information about Event Bridge Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+ *
+ * > **NOTE:** Available since v1.129.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.eventbridge.Slr("default", {productName: "AliyunServiceRoleForEventBridgeSourceRocketMQ"});
+ * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
+ * ## Import
+ *
+ * Event Bridge Service Linked Role can be imported using the id, e.g.
+ *
+ * ```sh
+ * $ pulumi import alicloud:eventbridge/slr:Slr example <product_name>
+ * ```
+ */
 export class Slr extends pulumi.CustomResource {
     /**
      * Get an existing Slr resource's state with the given name, ID, and optional extra
@@ -43,6 +73,9 @@ export class Slr extends pulumi.CustomResource {
         return obj['__pulumiType'] === Slr.__pulumiType;
     }
 
+    /**
+     * The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+     */
     declare public readonly productName: pulumi.Output<string>;
 
     /**
@@ -75,6 +108,9 @@ export class Slr extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Slr resources.
  */
 export interface SlrState {
+    /**
+     * The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+     */
     productName?: pulumi.Input<string | undefined>;
 }
 
@@ -82,5 +118,8 @@ export interface SlrState {
  * The set of arguments for constructing a Slr resource.
  */
 export interface SlrArgs {
+    /**
+     * The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+     */
     productName: pulumi.Input<string>;
 }

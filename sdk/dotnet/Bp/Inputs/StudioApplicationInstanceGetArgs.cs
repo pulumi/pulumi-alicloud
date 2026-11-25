@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Bp.Inputs
     public sealed class StudioApplicationInstanceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resource ID in terraform of Application.
+        /// The id of the instance.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

@@ -62,6 +62,9 @@ class GetSmartagFlowLogsResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the flow log.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -80,6 +83,9 @@ class GetSmartagFlowLogsResult:
     @_builtins.property
     @pulumi.getter
     def logs(self) -> Sequence['outputs.GetSmartagFlowLogsLogResult']:
+        """
+        A list of Smartag Flow Logs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "logs")
 
     @_builtins.property
@@ -90,6 +96,9 @@ class GetSmartagFlowLogsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Flow Log names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -110,6 +119,9 @@ class GetSmartagFlowLogsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
+        """
         return pulumi.get(self, "status")
 
 
@@ -142,7 +154,7 @@ def get_smartag_flow_logs(description: Optional[_builtins.str] = None,
     """
     This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.168.0+.
+    > **NOTE:** Available since v1.168.0+
 
     ## Example Usage
 
@@ -198,7 +210,7 @@ def get_smartag_flow_logs_output(description: pulumi.Input[Optional[Optional[_bu
     """
     This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.168.0+.
+    > **NOTE:** Available since v1.168.0+
 
     ## Example Usage
 

@@ -29,6 +29,7 @@ class TableArgs:
                  allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
                  deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_local_txn: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
                  sse_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sse_key_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -44,10 +45,11 @@ class TableArgs:
         :param pulumi.Input[_builtins.bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[_builtins.str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
-        :param pulumi.Input[_builtins.bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
-        :param pulumi.Input[_builtins.str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
-        :param pulumi.Input[_builtins.str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
-        :param pulumi.Input[_builtins.str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        :param pulumi.Input[_builtins.bool] enable_local_txn: Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+        :param pulumi.Input[_builtins.bool] enable_sse: Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         """
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "max_version", max_version)
@@ -60,6 +62,8 @@ class TableArgs:
             pulumi.set(__self__, "defined_columns", defined_columns)
         if deviation_cell_version_in_sec is not None:
             pulumi.set(__self__, "deviation_cell_version_in_sec", deviation_cell_version_in_sec)
+        if enable_local_txn is not None:
+            pulumi.set(__self__, "enable_local_txn", enable_local_txn)
         if enable_sse is not None:
             pulumi.set(__self__, "enable_sse", enable_sse)
         if sse_key_id is not None:
@@ -166,10 +170,22 @@ class TableArgs:
         pulumi.set(self, "deviation_cell_version_in_sec", value)
 
     @_builtins.property
+    @pulumi.getter(name="enableLocalTxn")
+    def enable_local_txn(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+        """
+        return pulumi.get(self, "enable_local_txn")
+
+    @enable_local_txn.setter
+    def enable_local_txn(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_local_txn", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableSse")
     def enable_sse(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether enable OTS server side encryption. Default value is false.
+        Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "enable_sse")
 
@@ -181,7 +197,7 @@ class TableArgs:
     @pulumi.getter(name="sseKeyId")
     def sse_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "sse_key_id")
 
@@ -193,7 +209,7 @@ class TableArgs:
     @pulumi.getter(name="sseKeyType")
     def sse_key_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+        The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "sse_key_type")
 
@@ -205,7 +221,7 @@ class TableArgs:
     @pulumi.getter(name="sseRoleArn")
     def sse_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "sse_role_arn")
 
@@ -220,6 +236,7 @@ class _TableState:
                  allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
                  deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_local_txn: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  max_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -235,13 +252,14 @@ class _TableState:
         :param pulumi.Input[_builtins.bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[_builtins.str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
-        :param pulumi.Input[_builtins.bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
+        :param pulumi.Input[_builtins.bool] enable_local_txn: Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+        :param pulumi.Input[_builtins.bool] enable_sse: Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[_builtins.int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
         :param pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
-        :param pulumi.Input[_builtins.str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
-        :param pulumi.Input[_builtins.str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
-        :param pulumi.Input[_builtins.str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        :param pulumi.Input[_builtins.str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[_builtins.int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
@@ -251,6 +269,8 @@ class _TableState:
             pulumi.set(__self__, "defined_columns", defined_columns)
         if deviation_cell_version_in_sec is not None:
             pulumi.set(__self__, "deviation_cell_version_in_sec", deviation_cell_version_in_sec)
+        if enable_local_txn is not None:
+            pulumi.set(__self__, "enable_local_txn", enable_local_txn)
         if enable_sse is not None:
             pulumi.set(__self__, "enable_sse", enable_sse)
         if instance_name is not None:
@@ -307,10 +327,22 @@ class _TableState:
         pulumi.set(self, "deviation_cell_version_in_sec", value)
 
     @_builtins.property
+    @pulumi.getter(name="enableLocalTxn")
+    def enable_local_txn(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+        """
+        return pulumi.get(self, "enable_local_txn")
+
+    @enable_local_txn.setter
+    def enable_local_txn(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_local_txn", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableSse")
     def enable_sse(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether enable OTS server side encryption. Default value is false.
+        Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "enable_sse")
 
@@ -358,7 +390,7 @@ class _TableState:
     @pulumi.getter(name="sseKeyId")
     def sse_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "sse_key_id")
 
@@ -370,7 +402,7 @@ class _TableState:
     @pulumi.getter(name="sseKeyType")
     def sse_key_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+        The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "sse_key_type")
 
@@ -382,7 +414,7 @@ class _TableState:
     @pulumi.getter(name="sseRoleArn")
     def sse_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "sse_role_arn")
 
@@ -424,6 +456,7 @@ class Table(pulumi.CustomResource):
                  allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]]] = None,
                  deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_local_txn: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  max_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -442,6 +475,8 @@ class Table(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.9.2.
 
+        > **NOTE:** A table can have at most one primary key with `auto_increment` enabled, the primary key with `auto_increment` enabled cannot be the first primary key (the partition key) of the table, and `enable_local_txn` cannot be enabled together with a primary key that enables `auto_increment`.
+
         ## Example Usage
 
         ```python
@@ -499,6 +534,76 @@ class Table(pulumi.CustomResource):
                     "type": "Binary",
                 },
             ])
+        ```
+
+        ### Auto-Increment Primary Key
+
+        The following example creates a table whose second primary key column is an auto-increment column. The first primary key column is the partition key and cannot be auto-incremented.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = random.Integer("default",
+            min=10000,
+            max=99999)
+        default_instance = alicloud.ots.Instance("default",
+            name=f"{name}-{default['result']}",
+            description=name,
+            accessed_by="Any")
+        default_table = alicloud.ots.Table("default",
+            instance_name=default_instance.name,
+            table_name="terraform_example_auto_increment",
+            time_to_live=-1,
+            max_version=1,
+            primary_keys=[
+                {
+                    "name": "pk1",
+                    "type": "Integer",
+                },
+                {
+                    "name": "pk2",
+                    "type": "Integer",
+                    "auto_increment": True,
+                },
+            ])
+        ```
+
+        ### Local Transaction
+
+        The following example creates a table with local transactions enabled.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = random.Integer("default",
+            min=10000,
+            max=99999)
+        default_instance = alicloud.ots.Instance("default",
+            name=f"{name}-{default['result']}",
+            description=name,
+            accessed_by="Any")
+        default_table = alicloud.ots.Table("default",
+            instance_name=default_instance.name,
+            table_name="terraform_example_local_txn",
+            time_to_live=-1,
+            max_version=1,
+            enable_local_txn=True,
+            primary_keys=[{
+                "name": "pk1",
+                "type": "Integer",
+            }])
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -517,13 +622,14 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[_builtins.str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
-        :param pulumi.Input[_builtins.bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
+        :param pulumi.Input[_builtins.bool] enable_local_txn: Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+        :param pulumi.Input[_builtins.bool] enable_sse: Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[_builtins.int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict', 'outputs.TablePrimaryKey']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
-        :param pulumi.Input[_builtins.str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
-        :param pulumi.Input[_builtins.str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
-        :param pulumi.Input[_builtins.str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        :param pulumi.Input[_builtins.str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[_builtins.int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
@@ -540,6 +646,8 @@ class Table(pulumi.CustomResource):
         you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
 
         > **NOTE:** Available since v1.9.2.
+
+        > **NOTE:** A table can have at most one primary key with `auto_increment` enabled, the primary key with `auto_increment` enabled cannot be the first primary key (the partition key) of the table, and `enable_local_txn` cannot be enabled together with a primary key that enables `auto_increment`.
 
         ## Example Usage
 
@@ -598,6 +706,76 @@ class Table(pulumi.CustomResource):
                     "type": "Binary",
                 },
             ])
+        ```
+
+        ### Auto-Increment Primary Key
+
+        The following example creates a table whose second primary key column is an auto-increment column. The first primary key column is the partition key and cannot be auto-incremented.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = random.Integer("default",
+            min=10000,
+            max=99999)
+        default_instance = alicloud.ots.Instance("default",
+            name=f"{name}-{default['result']}",
+            description=name,
+            accessed_by="Any")
+        default_table = alicloud.ots.Table("default",
+            instance_name=default_instance.name,
+            table_name="terraform_example_auto_increment",
+            time_to_live=-1,
+            max_version=1,
+            primary_keys=[
+                {
+                    "name": "pk1",
+                    "type": "Integer",
+                },
+                {
+                    "name": "pk2",
+                    "type": "Integer",
+                    "auto_increment": True,
+                },
+            ])
+        ```
+
+        ### Local Transaction
+
+        The following example creates a table with local transactions enabled.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = random.Integer("default",
+            min=10000,
+            max=99999)
+        default_instance = alicloud.ots.Instance("default",
+            name=f"{name}-{default['result']}",
+            description=name,
+            accessed_by="Any")
+        default_table = alicloud.ots.Table("default",
+            instance_name=default_instance.name,
+            table_name="terraform_example_local_txn",
+            time_to_live=-1,
+            max_version=1,
+            enable_local_txn=True,
+            primary_keys=[{
+                "name": "pk1",
+                "type": "Integer",
+            }])
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -629,6 +807,7 @@ class Table(pulumi.CustomResource):
                  allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]]] = None,
                  deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_local_txn: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  max_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -650,6 +829,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["allow_update"] = allow_update
             __props__.__dict__["defined_columns"] = defined_columns
             __props__.__dict__["deviation_cell_version_in_sec"] = deviation_cell_version_in_sec
+            __props__.__dict__["enable_local_txn"] = enable_local_txn
             __props__.__dict__["enable_sse"] = enable_sse
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
@@ -682,6 +862,7 @@ class Table(pulumi.CustomResource):
             allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
             defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]]] = None,
             deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_local_txn: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             max_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -701,13 +882,14 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[_builtins.str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
-        :param pulumi.Input[_builtins.bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
+        :param pulumi.Input[_builtins.bool] enable_local_txn: Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+        :param pulumi.Input[_builtins.bool] enable_sse: Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[_builtins.int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict', 'outputs.TablePrimaryKey']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
-        :param pulumi.Input[_builtins.str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
-        :param pulumi.Input[_builtins.str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
-        :param pulumi.Input[_builtins.str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        :param pulumi.Input[_builtins.str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[_builtins.int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
@@ -718,6 +900,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["allow_update"] = allow_update
         __props__.__dict__["defined_columns"] = defined_columns
         __props__.__dict__["deviation_cell_version_in_sec"] = deviation_cell_version_in_sec
+        __props__.__dict__["enable_local_txn"] = enable_local_txn
         __props__.__dict__["enable_sse"] = enable_sse
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["max_version"] = max_version
@@ -735,6 +918,7 @@ class Table(pulumi.CustomResource):
             allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
             defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict', 'outputs.TableDefinedColumn']]]]] = None,
             deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_local_txn: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             max_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -748,6 +932,7 @@ class Table(pulumi.CustomResource):
         __props__["allowUpdate"] = allow_update
         __props__["definedColumns"] = defined_columns
         __props__["deviationCellVersionInSec"] = deviation_cell_version_in_sec
+        __props__["enableLocalTxn"] = enable_local_txn
         __props__["enableSse"] = enable_sse
         __props__["instanceName"] = instance_name
         __props__["maxVersion"] = max_version
@@ -784,10 +969,18 @@ class Table(pulumi.CustomResource):
         return pulumi.get(self, "deviation_cell_version_in_sec")
 
     @_builtins.property
+    @pulumi.getter(name="enableLocalTxn")
+    def enable_local_txn(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+        """
+        return pulumi.get(self, "enable_local_txn")
+
+    @_builtins.property
     @pulumi.getter(name="enableSse")
     def enable_sse(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether enable OTS server side encryption. Default value is false.
+        Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "enable_sse")
 
@@ -819,7 +1012,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="sseKeyId")
     def sse_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "sse_key_id")
 
@@ -827,7 +1020,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="sseKeyType")
     def sse_key_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+        The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "sse_key_type")
 
@@ -835,7 +1028,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="sseRoleArn")
     def sse_role_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "sse_role_arn")
 

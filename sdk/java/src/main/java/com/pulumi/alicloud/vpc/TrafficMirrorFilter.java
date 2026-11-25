@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default3iXhoa = new ResourceGroup("default3iXhoa", ResourceGroupArgs.builder()
- *             .displayName("testname03")
+ *             .displayName("example03")
  *             .resourceGroupName(name)
  *             .build());
  * 
  *         var defaultdNz2qk = new ResourceGroup("defaultdNz2qk", ResourceGroupArgs.builder()
- *             .displayName("testname04")
+ *             .displayName("example04")
  *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
@@ -129,28 +129,28 @@ public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Information about the outbound rule. See the following `Block EgressRules`.
+     * Information about the outbound rule. See `egressRules` below.
      * 
      */
     @Export(name="egressRules", refs={List.class,TrafficMirrorFilterEgressRule.class}, tree="[0,1]")
     private Output<List<TrafficMirrorFilterEgressRule>> egressRules;
 
     /**
-     * @return Information about the outbound rule. See the following `Block EgressRules`.
+     * @return Information about the outbound rule. See `egressRules` below.
      * 
      */
     public Output<List<TrafficMirrorFilterEgressRule>> egressRules() {
         return this.egressRules;
     }
     /**
-     * Inward direction rule information. See the following `Block IngressRules`.
+     * Inward direction rule information. See `ingressRules` below.
      * 
      */
     @Export(name="ingressRules", refs={List.class,TrafficMirrorFilterIngressRule.class}, tree="[0,1]")
     private Output<List<TrafficMirrorFilterIngressRule>> ingressRules;
 
     /**
-     * @return Inward direction rule information. See the following `Block IngressRules`.
+     * @return Inward direction rule information. See `ingressRules` below.
      * 
      */
     public Output<List<TrafficMirrorFilterIngressRule>> ingressRules() {

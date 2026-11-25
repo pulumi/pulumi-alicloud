@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Open Search App Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf_testacc"
+//			name := "tf_acc"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -79,33 +79,39 @@ type GetAppGroupsArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of App Group IDs. Its element value is same as App Group Name.
 	Ids []string `pulumi:"ids"`
-	// The Instance ID.
+	// Instance ID.
 	InstanceId *string `pulumi:"instanceId"`
-	Name       *string `pulumi:"name"`
+	// The name of AppGroup.
+	Name *string `pulumi:"name"`
 	// A regex string to filter results by App Group name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The Resource Group ID.
+	// Resource Group Id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Application type. Valid Values: `standard`, `enhanced`.
+	// The Type of AppGroup. Valid values: `standard`,`enhanced`.
 	Type *string `pulumi:"type"`
 }
 
 // A collection of values returned by getAppGroups.
 type GetAppGroupsResult struct {
-	EnableDetails *bool               `pulumi:"enableDetails"`
-	Groups        []GetAppGroupsGroup `pulumi:"groups"`
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of App Groups. Each element contains the following attributes:
+	Groups []GetAppGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	Ids             []string `pulumi:"ids"`
-	InstanceId      *string  `pulumi:"instanceId"`
-	Name            *string  `pulumi:"name"`
-	NameRegex       *string  `pulumi:"nameRegex"`
-	Names           []string `pulumi:"names"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
-	Type            *string  `pulumi:"type"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The Instance ID.
+	InstanceId *string `pulumi:"instanceId"`
+	Name       *string `pulumi:"name"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of App Group names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The Resource Group ID.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Application type. Valid Values: `standard`, `enhanced`.
+	Type *string `pulumi:"type"`
 }
 
 func GetAppGroupsOutput(ctx *pulumi.Context, args GetAppGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAppGroupsResultOutput {
@@ -119,16 +125,17 @@ type GetAppGroupsOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of App Group IDs. Its element value is same as App Group Name.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The Instance ID.
+	// Instance ID.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
+	// The name of AppGroup.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A regex string to filter results by App Group name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The Resource Group ID.
+	// Resource Group Id.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// Application type. Valid Values: `standard`, `enhanced`.
+	// The Type of AppGroup. Valid values: `standard`,`enhanced`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -155,6 +162,7 @@ func (o GetAppGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppGroupsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// A list of App Groups. Each element contains the following attributes:
 func (o GetAppGroupsResultOutput) Groups() GetAppGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetAppGroupsResult) []GetAppGroupsGroup { return v.Groups }).(GetAppGroupsGroupArrayOutput)
 }
@@ -168,6 +176,7 @@ func (o GetAppGroupsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The Instance ID.
 func (o GetAppGroupsResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
@@ -180,6 +189,7 @@ func (o GetAppGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of App Group names.
 func (o GetAppGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -188,10 +198,12 @@ func (o GetAppGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The Resource Group ID.
 func (o GetAppGroupsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// Application type. Valid Values: `standard`, `enhanced`.
 func (o GetAppGroupsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppGroupsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

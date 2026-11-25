@@ -76,11 +76,17 @@ class GetRestoreJobsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of restore job IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter
     def jobs(self) -> Sequence['outputs.GetRestoreJobsJobResult']:
+        """
+        A list of Hbr restore jobs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "jobs")
 
     @_builtins.property
@@ -96,36 +102,57 @@ class GetRestoreJobsResult:
     @_builtins.property
     @pulumi.getter(name="restoreType")
     def restore_type(self) -> _builtins.str:
+        """
+        The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        """
         return pulumi.get(self, "restore_type")
 
     @_builtins.property
     @pulumi.getter(name="sourceTypes")
     def source_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`, `UDM_ECS_ROLLBACK`.
+        """
         return pulumi.get(self, "source_types")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of restore job.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="targetBuckets")
     def target_buckets(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The name of target ofo OSS bucket.
+        """
         return pulumi.get(self, "target_buckets")
 
     @_builtins.property
     @pulumi.getter(name="targetFileSystemIds")
     def target_file_system_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The ID of destination file system.
+        """
         return pulumi.get(self, "target_file_system_ids")
 
     @_builtins.property
     @pulumi.getter(name="targetInstanceIds")
     def target_instance_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The ID of target ECS instance.
+        """
         return pulumi.get(self, "target_instance_ids")
 
     @_builtins.property
     @pulumi.getter(name="vaultIds")
     def vault_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The ID of backup vault.
+        """
         return pulumi.get(self, "vault_ids")
 
 
@@ -162,7 +189,7 @@ def get_restore_jobs(output_file: Optional[_builtins.str] = None,
     """
     This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -228,7 +255,7 @@ def get_restore_jobs_output(output_file: pulumi.Input[Optional[Optional[_builtin
     """
     This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 

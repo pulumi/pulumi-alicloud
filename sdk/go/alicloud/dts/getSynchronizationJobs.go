@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // ## Example Usage
 //
@@ -53,6 +53,7 @@ func GetSynchronizationJobs(ctx *pulumi.Context, args *GetSynchronizationJobsArg
 
 // A collection of arguments for invoking getSynchronizationJobs.
 type GetSynchronizationJobsArgs struct {
+	// Default to `false`. Set it to `true` to fetch detailed attributes for each synchronization job, including `sourceEndpointOwnerId` and `sourceEndpointRole`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Synchronization Job IDs.
 	Ids []string `pulumi:"ids"`
@@ -68,12 +69,14 @@ type GetSynchronizationJobsArgs struct {
 type GetSynchronizationJobsResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                      `pulumi:"id"`
-	Ids        []string                    `pulumi:"ids"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Dts Synchronization Jobs. Each element contains the following attributes:
 	Jobs       []GetSynchronizationJobsJob `pulumi:"jobs"`
 	NameRegex  *string                     `pulumi:"nameRegex"`
 	OutputFile *string                     `pulumi:"outputFile"`
-	Status     *string                     `pulumi:"status"`
+	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	Status *string `pulumi:"status"`
 }
 
 func GetSynchronizationJobsOutput(ctx *pulumi.Context, args GetSynchronizationJobsOutputArgs, opts ...pulumi.InvokeOption) GetSynchronizationJobsResultOutput {
@@ -83,6 +86,7 @@ func GetSynchronizationJobsOutput(ctx *pulumi.Context, args GetSynchronizationJo
 
 // A collection of arguments for invoking getSynchronizationJobs.
 type GetSynchronizationJobsOutputArgs struct {
+	// Default to `false`. Set it to `true` to fetch detailed attributes for each synchronization job, including `sourceEndpointOwnerId` and `sourceEndpointRole`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Synchronization Job IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -126,6 +130,7 @@ func (o GetSynchronizationJobsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Dts Synchronization Jobs. Each element contains the following attributes:
 func (o GetSynchronizationJobsResultOutput) Jobs() GetSynchronizationJobsJobArrayOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsResult) []GetSynchronizationJobsJob { return v.Jobs }).(GetSynchronizationJobsJobArrayOutput)
 }
@@ -138,6 +143,7 @@ func (o GetSynchronizationJobsResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetSynchronizationJobsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
 func (o GetSynchronizationJobsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSynchronizationJobsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

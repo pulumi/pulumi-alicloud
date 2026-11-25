@@ -435,7 +435,7 @@ class HoneypotProbeHoneypotBindList(dict):
                  bind_port_lists: Optional[Sequence['outputs.HoneypotProbeHoneypotBindListBindPortList']] = None,
                  honeypot_id: Optional[_builtins.str] = None):
         """
-        :param Sequence['HoneypotProbeHoneypotBindListBindPortListArgs'] bind_port_lists: List of listening ports.See the following `Block BindPortList`.
+        :param Sequence['HoneypotProbeHoneypotBindListBindPortListArgs'] bind_port_lists: List of listening ports.See the following `bind_port_list` below.
         :param _builtins.str honeypot_id: Honeypot ID.
         """
         if bind_port_lists is not None:
@@ -447,7 +447,7 @@ class HoneypotProbeHoneypotBindList(dict):
     @pulumi.getter(name="bindPortLists")
     def bind_port_lists(self) -> Optional[Sequence['outputs.HoneypotProbeHoneypotBindListBindPortList']]:
         """
-        List of listening ports.See the following `Block BindPortList`.
+        List of listening ports.See the following `bind_port_list` below.
         """
         return pulumi.get(self, "bind_port_lists")
 
@@ -555,12 +555,18 @@ class InstancePostPayModuleSwitchObj(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "antiRansomware":
+        if key == "aiDigital":
+            suggest = "ai_digital"
+        elif key == "antiRansomware":
             suggest = "anti_ransomware"
         elif key == "basicService":
             suggest = "basic_service"
+        elif key == "cspmInstance":
+            suggest = "cspm_instance"
         elif key == "ctdrStorage":
             suggest = "ctdr_storage"
+        elif key == "imageScan":
+            suggest = "image_scan"
         elif key == "postHost":
             suggest = "post_host"
         elif key == "webLock":
@@ -579,11 +585,14 @@ class InstancePostPayModuleSwitchObj(dict):
 
     def __init__(__self__, *,
                  agentless: Optional[_builtins.int] = None,
+                 ai_digital: Optional[_builtins.int] = None,
                  anti_ransomware: Optional[_builtins.int] = None,
                  basic_service: Optional[_builtins.int] = None,
                  cspm: Optional[_builtins.int] = None,
+                 cspm_instance: Optional[_builtins.int] = None,
                  ctdr: Optional[_builtins.int] = None,
                  ctdr_storage: Optional[_builtins.int] = None,
+                 image_scan: Optional[_builtins.int] = None,
                  post_host: Optional[_builtins.int] = None,
                  rasp: Optional[_builtins.int] = None,
                  sdk: Optional[_builtins.int] = None,
@@ -592,11 +601,14 @@ class InstancePostPayModuleSwitchObj(dict):
                  web_lock: Optional[_builtins.int] = None):
         """
         :param _builtins.int agentless: Agentless Detection Module. Valid values:
+        :param _builtins.int ai_digital: The AI digital human module. Valid values:
         :param _builtins.int anti_ransomware: Anti-Ransomware Module. Valid values:
         :param _builtins.int basic_service: Basic service module. Valid values:
         :param _builtins.int cspm: Cloud Security Configuration Check Module. Valid values:
+        :param _builtins.int cspm_instance: The Agentic cloud security configuration check module. Valid values:
         :param _builtins.int ctdr: Threat Analysis and Response Module. Valid values:
         :param _builtins.int ctdr_storage: Log Management Module. Valid values:
+        :param _builtins.int image_scan: The image scan module. Valid values:
         :param _builtins.int post_host: Host and Container Security Module. Valid values:
         :param _builtins.int rasp: Application Protection Module. Valid values:
         :param _builtins.int sdk: Malicious File Detection SDK Module. Valid values:
@@ -606,16 +618,22 @@ class InstancePostPayModuleSwitchObj(dict):
         """
         if agentless is not None:
             pulumi.set(__self__, "agentless", agentless)
+        if ai_digital is not None:
+            pulumi.set(__self__, "ai_digital", ai_digital)
         if anti_ransomware is not None:
             pulumi.set(__self__, "anti_ransomware", anti_ransomware)
         if basic_service is not None:
             pulumi.set(__self__, "basic_service", basic_service)
         if cspm is not None:
             pulumi.set(__self__, "cspm", cspm)
+        if cspm_instance is not None:
+            pulumi.set(__self__, "cspm_instance", cspm_instance)
         if ctdr is not None:
             pulumi.set(__self__, "ctdr", ctdr)
         if ctdr_storage is not None:
             pulumi.set(__self__, "ctdr_storage", ctdr_storage)
+        if image_scan is not None:
+            pulumi.set(__self__, "image_scan", image_scan)
         if post_host is not None:
             pulumi.set(__self__, "post_host", post_host)
         if rasp is not None:
@@ -636,6 +654,14 @@ class InstancePostPayModuleSwitchObj(dict):
         Agentless Detection Module. Valid values:
         """
         return pulumi.get(self, "agentless")
+
+    @_builtins.property
+    @pulumi.getter(name="aiDigital")
+    def ai_digital(self) -> Optional[_builtins.int]:
+        """
+        The AI digital human module. Valid values:
+        """
+        return pulumi.get(self, "ai_digital")
 
     @_builtins.property
     @pulumi.getter(name="antiRansomware")
@@ -662,6 +688,14 @@ class InstancePostPayModuleSwitchObj(dict):
         return pulumi.get(self, "cspm")
 
     @_builtins.property
+    @pulumi.getter(name="cspmInstance")
+    def cspm_instance(self) -> Optional[_builtins.int]:
+        """
+        The Agentic cloud security configuration check module. Valid values:
+        """
+        return pulumi.get(self, "cspm_instance")
+
+    @_builtins.property
     @pulumi.getter
     def ctdr(self) -> Optional[_builtins.int]:
         """
@@ -676,6 +710,14 @@ class InstancePostPayModuleSwitchObj(dict):
         Log Management Module. Valid values:
         """
         return pulumi.get(self, "ctdr_storage")
+
+    @_builtins.property
+    @pulumi.getter(name="imageScan")
+    def image_scan(self) -> Optional[_builtins.int]:
+        """
+        The image scan module. Valid values:
+        """
+        return pulumi.get(self, "image_scan")
 
     @_builtins.property
     @pulumi.getter(name="postHost")
@@ -1293,7 +1335,9 @@ class GetBaselineStrategiesStrategyResult(dict):
                * **18**: 18:00~24:00
         :param _builtins.str end_time: The baseline check policy execution end time.
         :param _builtins.str id: The ID of the baseline check policy.
+        :param _builtins.str risk_sub_type_name: The risk sub type name of the baseline check policy.
         :param _builtins.str start_time: The baseline check policy start time.
+        :param _builtins.str target_type: The target type of the baseline check policy.
         """
         pulumi.set(__self__, "baseline_strategy_id", baseline_strategy_id)
         pulumi.set(__self__, "baseline_strategy_name", baseline_strategy_name)
@@ -1369,6 +1413,9 @@ class GetBaselineStrategiesStrategyResult(dict):
     @_builtins.property
     @pulumi.getter(name="riskSubTypeName")
     def risk_sub_type_name(self) -> _builtins.str:
+        """
+        The risk sub type name of the baseline check policy.
+        """
         return pulumi.get(self, "risk_sub_type_name")
 
     @_builtins.property
@@ -1382,6 +1429,9 @@ class GetBaselineStrategiesStrategyResult(dict):
     @_builtins.property
     @pulumi.getter(name="targetType")
     def target_type(self) -> _builtins.str:
+        """
+        The target type of the baseline check policy.
+        """
         return pulumi.get(self, "target_type")
 
 
@@ -1407,34 +1457,34 @@ class GetCheckItemConfigsConfigResult(dict):
         :param 'GetCheckItemConfigsConfigDescriptionArgs' description: The description of the check item.
         :param _builtins.int estimated_count: The estimated quota that will be consumed by this check item.
         :param _builtins.str instance_sub_type: The asset subtype of the cloud service. Valid values depend on `instance_type`:
-               * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
-               * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
-               * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
-               * `WAF`: `DOMAIN`.
-               * Other values: `INSTANCE`.
+               - `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+               - `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+               - `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+               - `WAF`: `DOMAIN`.
+               - Other values: `INSTANCE`.
         :param _builtins.str instance_type: The asset type of the cloud service. Valid values:
-               * `ECS`: Elastic Compute Service.
-               * `SLB`: Server Load Balancer.
-               * `RDS`: ApsaraDB RDS.
-               * `MONGODB`: ApsaraDB for MongoDB.
-               * `KVSTORE`: ApsaraDB for Redis.
-               * `ACR`: Container Registry.
-               * `CSK`: Container Service for Kubernetes.
-               * `VPC`: Virtual Private Cloud.
-               * `ACTIONTRAIL`: ActionTrail.
-               * `CDN`: Alibaba Cloud CDN.
-               * `CAS`: Certificate Management Service.
-               * `RDC`: Apsara DevOps.
-               * `RAM`: Resource Access Management.
-               * `DDOS`: Anti-DDoS.
-               * `WAF`: Web Application Firewall.
-               * `OSS`: Object Storage Service.
-               * `POLARDB`: PolarDB.
-               * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
-               * `MSE`: Microservices Engine.
-               * `NAS`: File Storage NAS.
-               * `SDDP`: Sensitive Data Discovery and Protection.
-               * `EIP`: Elastic IP Address.
+               - `ECS`: Elastic Compute Service.
+               - `SLB`: Server Load Balancer.
+               - `RDS`: ApsaraDB RDS.
+               - `MONGODB`: ApsaraDB for MongoDB.
+               - `KVSTORE`: ApsaraDB for Redis.
+               - `ACR`: Container Registry.
+               - `CSK`: Container Service for Kubernetes.
+               - `VPC`: Virtual Private Cloud.
+               - `ACTIONTRAIL`: ActionTrail.
+               - `CDN`: Alibaba Cloud CDN.
+               - `CAS`: Certificate Management Service.
+               - `RDC`: Apsara DevOps.
+               - `RAM`: Resource Access Management.
+               - `DDOS`: Anti-DDoS.
+               - `WAF`: Web Application Firewall.
+               - `OSS`: Object Storage Service.
+               - `POLARDB`: PolarDB.
+               - `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+               - `MSE`: Microservices Engine.
+               - `NAS`: File Storage NAS.
+               - `SDDP`: Sensitive Data Discovery and Protection.
+               - `EIP`: Elastic IP Address.
         :param _builtins.str risk_level: The risk level of the check item. Valid values: `HIGH`, `MEDIUM`, `LOW`.
         :param Sequence[_builtins.int] section_ids: The IDs of the sections associated with the check items.
         :param _builtins.str vendor: The type of the cloud asset. Valid values: `0` (an asset provided by Alibaba Cloud), `1` (an asset outside Alibaba Cloud), `2` (an asset in a data center), `3`/`4`/`5`/`7` (other cloud asset), `8` (a simple application server).
@@ -1504,11 +1554,11 @@ class GetCheckItemConfigsConfigResult(dict):
     def instance_sub_type(self) -> _builtins.str:
         """
         The asset subtype of the cloud service. Valid values depend on `instance_type`:
-        * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
-        * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
-        * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
-        * `WAF`: `DOMAIN`.
-        * Other values: `INSTANCE`.
+        - `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+        - `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+        - `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+        - `WAF`: `DOMAIN`.
+        - Other values: `INSTANCE`.
         """
         return pulumi.get(self, "instance_sub_type")
 
@@ -1517,28 +1567,28 @@ class GetCheckItemConfigsConfigResult(dict):
     def instance_type(self) -> _builtins.str:
         """
         The asset type of the cloud service. Valid values:
-        * `ECS`: Elastic Compute Service.
-        * `SLB`: Server Load Balancer.
-        * `RDS`: ApsaraDB RDS.
-        * `MONGODB`: ApsaraDB for MongoDB.
-        * `KVSTORE`: ApsaraDB for Redis.
-        * `ACR`: Container Registry.
-        * `CSK`: Container Service for Kubernetes.
-        * `VPC`: Virtual Private Cloud.
-        * `ACTIONTRAIL`: ActionTrail.
-        * `CDN`: Alibaba Cloud CDN.
-        * `CAS`: Certificate Management Service.
-        * `RDC`: Apsara DevOps.
-        * `RAM`: Resource Access Management.
-        * `DDOS`: Anti-DDoS.
-        * `WAF`: Web Application Firewall.
-        * `OSS`: Object Storage Service.
-        * `POLARDB`: PolarDB.
-        * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
-        * `MSE`: Microservices Engine.
-        * `NAS`: File Storage NAS.
-        * `SDDP`: Sensitive Data Discovery and Protection.
-        * `EIP`: Elastic IP Address.
+        - `ECS`: Elastic Compute Service.
+        - `SLB`: Server Load Balancer.
+        - `RDS`: ApsaraDB RDS.
+        - `MONGODB`: ApsaraDB for MongoDB.
+        - `KVSTORE`: ApsaraDB for Redis.
+        - `ACR`: Container Registry.
+        - `CSK`: Container Service for Kubernetes.
+        - `VPC`: Virtual Private Cloud.
+        - `ACTIONTRAIL`: ActionTrail.
+        - `CDN`: Alibaba Cloud CDN.
+        - `CAS`: Certificate Management Service.
+        - `RDC`: Apsara DevOps.
+        - `RAM`: Resource Access Management.
+        - `DDOS`: Anti-DDoS.
+        - `WAF`: Web Application Firewall.
+        - `OSS`: Object Storage Service.
+        - `POLARDB`: PolarDB.
+        - `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+        - `MSE`: Microservices Engine.
+        - `NAS`: File Storage NAS.
+        - `SDDP`: Sensitive Data Discovery and Protection.
+        - `EIP`: Elastic IP Address.
         """
         return pulumi.get(self, "instance_type")
 
@@ -2055,10 +2105,12 @@ class GetHoneypotNodesNodeResult(dict):
         """
         :param _builtins.bool allow_honeypot_access_internet: Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
         :param _builtins.int available_probe_num: Number of probes available.
+        :param _builtins.str create_time: The creation time of the honeypot management node.
         :param _builtins.str id: The ID of the Honeypot management node.
         :param _builtins.str node_id: Honeypot management node id.
         :param _builtins.str node_name: The name of the management node.
         :param Sequence[_builtins.str] security_group_probe_ip_lists: Release the collection of network segments.
+        :param _builtins.int status: The status of the honeypot management node.
         """
         pulumi.set(__self__, "allow_honeypot_access_internet", allow_honeypot_access_internet)
         pulumi.set(__self__, "available_probe_num", available_probe_num)
@@ -2088,6 +2140,9 @@ class GetHoneypotNodesNodeResult(dict):
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
+        """
+        The creation time of the honeypot management node.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
@@ -2125,6 +2180,9 @@ class GetHoneypotNodesNodeResult(dict):
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.int:
+        """
+        The status of the honeypot management node.
+        """
         return pulumi.get(self, "status")
 
 
@@ -2260,6 +2318,7 @@ class GetHoneypotProbesProbeResult(dict):
         :param _builtins.bool arp: ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `enable_details` is on.
         :param _builtins.str control_node_id: The ID of the management node.
         :param _builtins.str display_name: Probe name
+        :param Sequence['GetHoneypotProbesProbeHoneypotBindListArgs'] honeypot_bind_lists: A list of honeypot bind. Available when `enable_details` is on.
         :param _builtins.str honeypot_probe_id: The first ID of the resource
         :param _builtins.str id: The ID of the honeypot probe. Its value is the same as `honeypot_probe_id`.
         :param _builtins.bool ping: Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `enable_details` is on.
@@ -2309,6 +2368,9 @@ class GetHoneypotProbesProbeResult(dict):
     @_builtins.property
     @pulumi.getter(name="honeypotBindLists")
     def honeypot_bind_lists(self) -> Sequence['outputs.GetHoneypotProbesProbeHoneypotBindListResult']:
+        """
+        A list of honeypot bind. Available when `enable_details` is on.
+        """
         return pulumi.get(self, "honeypot_bind_lists")
 
     @_builtins.property
@@ -2383,6 +2445,7 @@ class GetHoneypotProbesProbeHoneypotBindListResult(dict):
                  honeypot_id: _builtins.str):
         """
         :param Sequence['GetHoneypotProbesProbeHoneypotBindListBindPortListArgs'] bind_port_lists: List of listening ports. Available when `enable_details` is on.
+        :param _builtins.str honeypot_id: Honeypot ID.
         """
         pulumi.set(__self__, "bind_port_lists", bind_port_lists)
         pulumi.set(__self__, "honeypot_id", honeypot_id)
@@ -2398,6 +2461,9 @@ class GetHoneypotProbesProbeHoneypotBindListResult(dict):
     @_builtins.property
     @pulumi.getter(name="honeypotId")
     def honeypot_id(self) -> _builtins.str:
+        """
+        Honeypot ID.
+        """
         return pulumi.get(self, "honeypot_id")
 
 

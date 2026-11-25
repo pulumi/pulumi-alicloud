@@ -19,8 +19,16 @@ public final class GetInstancesResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Cloud Firewall Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetInstancesInstance> instances;
     private @Nullable String outputFile;
+    /**
+     * @return The payment type of the resource. Valid values: `Subscription`.
+     * 
+     */
     private @Nullable String paymentType;
 
     private GetInstancesResult() {}
@@ -31,12 +39,20 @@ public final class GetInstancesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Cloud Firewall Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetInstancesInstance> instances() {
         return this.instances;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The payment type of the resource. Valid values: `Subscription`.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }

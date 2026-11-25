@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *
@@ -65,14 +65,20 @@ export interface GetExpressSyncsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Express Sync names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Cloud Storage Gateway Express Syncs. Each element contains the following attributes:
+     */
     readonly syncs: outputs.cloudstoragegateway.GetExpressSyncsSync[];
 }
 /**
  * This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *

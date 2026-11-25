@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+// This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
 //
 // > **NOTE:** Available since v1.194.0.
 //
@@ -55,6 +55,7 @@ func GetInstanceMembers(ctx *pulumi.Context, args *GetInstanceMembersArgs, opts 
 
 // A collection of arguments for invoking getInstanceMembers.
 type GetInstanceMembersArgs struct {
+	// The current page number.
 	CurrentPage *string `pulumi:"currentPage"`
 	// A list of Instance Member IDs.
 	Ids []string `pulumi:"ids"`
@@ -85,6 +86,7 @@ func GetInstanceMembersOutput(ctx *pulumi.Context, args GetInstanceMembersOutput
 
 // A collection of arguments for invoking getInstanceMembers.
 type GetInstanceMembersOutputArgs struct {
+	// The current page number.
 	CurrentPage pulumi.StringPtrInput `pulumi:"currentPage"`
 	// A list of Instance Member IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

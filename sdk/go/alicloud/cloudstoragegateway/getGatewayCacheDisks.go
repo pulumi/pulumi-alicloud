@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.144.0+.
+// > **NOTE:** Available since v1.144.0.
 //
 // ## Example Usage
 //
@@ -83,13 +83,16 @@ type GetGatewayCacheDisksArgs struct {
 
 // A collection of values returned by getGatewayCacheDisks.
 type GetGatewayCacheDisksResult struct {
-	Disks     []GetGatewayCacheDisksDisk `pulumi:"disks"`
-	GatewayId string                     `pulumi:"gatewayId"`
+	// A list of Cloud Storage Gateway Gateway Cache Disks. Each element contains the following attributes:
+	Disks []GetGatewayCacheDisksDisk `pulumi:"disks"`
+	// The ID of the gateway.
+	GatewayId string `pulumi:"gatewayId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *int     `pulumi:"status"`
+	// The status of the resource.
+	Status *int `pulumi:"status"`
 }
 
 func GetGatewayCacheDisksOutput(ctx *pulumi.Context, args GetGatewayCacheDisksOutputArgs, opts ...pulumi.InvokeOption) GetGatewayCacheDisksResultOutput {
@@ -128,10 +131,12 @@ func (o GetGatewayCacheDisksResultOutput) ToGetGatewayCacheDisksResultOutputWith
 	return o
 }
 
+// A list of Cloud Storage Gateway Gateway Cache Disks. Each element contains the following attributes:
 func (o GetGatewayCacheDisksResultOutput) Disks() GetGatewayCacheDisksDiskArrayOutput {
 	return o.ApplyT(func(v GetGatewayCacheDisksResult) []GetGatewayCacheDisksDisk { return v.Disks }).(GetGatewayCacheDisksDiskArrayOutput)
 }
 
+// The ID of the gateway.
 func (o GetGatewayCacheDisksResultOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayCacheDisksResult) string { return v.GatewayId }).(pulumi.StringOutput)
 }
@@ -149,6 +154,7 @@ func (o GetGatewayCacheDisksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewayCacheDisksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetGatewayCacheDisksResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetGatewayCacheDisksResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }

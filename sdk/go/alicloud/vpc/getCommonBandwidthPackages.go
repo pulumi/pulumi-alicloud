@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
 //
-// > **NOTE:** Available in 1.36.0+.
+// > **NOTE:** Available since v1.36.0+.
 //
 // ## Example Usage
 //
@@ -31,14 +31,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "foo", &vpc.CommonBandwithPackageArgs{
 //				Bandwidth:   pulumi.String("2"),
-//				Name:        pulumi.String("tf-testAccCommonBandwidthPackage"),
-//				Description: pulumi.String("tf-testAcc-CommonBandwidthPackage"),
+//				Name:        pulumi.String("tf-exampleCommonBandwidthPackage"),
+//				Description: pulumi.String("tf-exampleCommonBandwidthPackage"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_ = vpc.GetCommonBandwidthPackagesOutput(ctx, vpc.GetCommonBandwidthPackagesOutputArgs{
-//				NameRegex: pulumi.String("^tf-testAcc.*"),
+//				NameRegex: pulumi.String("^tf-example.*"),
 //				Ids: pulumi.StringArray{
 //					fooCommonBandwithPackage.ID(),
 //				},
@@ -48,14 +48,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Public ip addresses Block
-//
-//	The public ip addresses mapping supports the following:
-//
-//	* `ipAddress`   - The address of the EIP.
-//	* `allocationId` - The ID of the EIP instance.
-//	* `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
 func GetCommonBandwidthPackages(ctx *pulumi.Context, args *GetCommonBandwidthPackagesArgs, opts ...pulumi.InvokeOption) (*GetCommonBandwidthPackagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCommonBandwidthPackagesResult

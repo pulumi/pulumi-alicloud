@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The parameters.
+        /// The parameters. See `Parameters` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetStackGroupsGroupParameterResult> Parameters;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// </summary>
         public readonly string StackGroupName;
         /// <summary>
-        /// The status of Stack Group.
+        /// The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
         /// </summary>
         public readonly string Status;
         /// <summary>

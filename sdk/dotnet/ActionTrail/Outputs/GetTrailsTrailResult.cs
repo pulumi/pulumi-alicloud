@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The id of the ActionTrail Trail. It is the same as trail name.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Indicates whether the trail is a multi-account trail.
+        /// </summary>
         public readonly bool IsOrganizationTrail;
         /// <summary>
         /// The name of the specified OSS bucket.
@@ -30,6 +33,9 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// The prefix of the specified OSS bucket name.
         /// </summary>
         public readonly string OssKeyPrefix;
+        /// <summary>
+        /// The RAM role ARN that ActionTrail assumes to access the OSS bucket.
+        /// </summary>
         public readonly string OssWriteRoleArn;
         /// <summary>
         /// The unique ARN of the Log Service project.

@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// &gt; **NOTE:** Terraform will auto Create a Private Zone Record while it uses `alicloud.pvtz.ZoneRecord` to build a Private Zone Record resource.
     /// 
+    /// &gt; **NOTE:** Available since v1.13.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -28,7 +30,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// {
     ///     var zone = new AliCloud.Pvtz.Zone("zone", new()
     ///     {
-    ///         ZoneName = "foo.test.com",
+    ///         ZoneName = "terraform-example.com",
     ///     });
     /// 
     ///     var foo = new AliCloud.Pvtz.ZoneRecord("foo", new()
@@ -37,6 +39,33 @@ namespace Pulumi.AliCloud.Pvtz
     ///         Rr = "www",
     ///         Type = "CNAME",
     ///         Value = "bbb.test.com",
+    ///         Ttl = 60,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// AAAA (IPv6) Record
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var zone = new AliCloud.Pvtz.Zone("zone", new()
+    ///     {
+    ///         ZoneName = "terraform-example-aaaa.com",
+    ///     });
+    /// 
+    ///     var foo = new AliCloud.Pvtz.ZoneRecord("foo", new()
+    ///     {
+    ///         ZoneId = zone.Id,
+    ///         Rr = "www",
+    ///         Type = "AAAA",
+    ///         Value = "2001:db8::1",
     ///         Ttl = 60,
     ///     });
     /// 
@@ -107,11 +136,14 @@ namespace Pulumi.AliCloud.Pvtz
         public Output<int?> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        /// The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// The user client ip of the Private Zone Record.
+        /// </summary>
         [Output("userClientIp")]
         public Output<string?> UserClientIp { get; private set; } = null!;
 
@@ -218,11 +250,14 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        /// The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        /// <summary>
+        /// The user client ip of the Private Zone Record.
+        /// </summary>
         [Input("userClientIp")]
         public Input<string>? UserClientIp { get; set; }
 
@@ -297,11 +332,14 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        /// The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// The user client ip of the Private Zone Record.
+        /// </summary>
         [Input("userClientIp")]
         public Input<string>? UserClientIp { get; set; }
 

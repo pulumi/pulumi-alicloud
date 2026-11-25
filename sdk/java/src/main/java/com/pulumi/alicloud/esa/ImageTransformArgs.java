@@ -18,18 +18,48 @@ public final class ImageTransformArgs extends com.pulumi.resources.ResourceArgs 
     public static final ImageTransformArgs Empty = new ImageTransformArgs();
 
     /**
-     * Indicates whether the image transformations feature is enabled. Valid values:
+     * Specifies whether to enable adaptive AVIF. Valid values:
      * 
      */
-    @Import(name="enable")
-    private @Nullable Output<String> enable;
+    @Import(name="autoAvif")
+    private @Nullable Output<String> autoAvif;
 
     /**
-     * @return Indicates whether the image transformations feature is enabled. Valid values:
+     * @return Specifies whether to enable adaptive AVIF. Valid values:
      * 
      */
-    public Optional<Output<String>> enable() {
-        return Optional.ofNullable(this.enable);
+    public Optional<Output<String>> autoAvif() {
+        return Optional.ofNullable(this.autoAvif);
+    }
+
+    /**
+     * Specifies whether to enable adaptive WebP. Valid values:
+     * 
+     */
+    @Import(name="autoWebp")
+    private @Nullable Output<String> autoWebp;
+
+    /**
+     * @return Specifies whether to enable adaptive WebP. Valid values:
+     * 
+     */
+    public Optional<Output<String>> autoWebp() {
+        return Optional.ofNullable(this.autoWebp);
+    }
+
+    /**
+     * Specifies whether to enable image transformation. Valid values:
+     * 
+     */
+    @Import(name="enable", required=true)
+    private Output<String> enable;
+
+    /**
+     * @return Specifies whether to enable image transformation. Valid values:
+     * 
+     */
+    public Output<String> enable() {
+        return this.enable;
     }
 
     /**
@@ -52,14 +82,14 @@ public final class ImageTransformArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * @return Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -129,6 +159,8 @@ public final class ImageTransformArgs extends com.pulumi.resources.ResourceArgs 
     private ImageTransformArgs() {}
 
     private ImageTransformArgs(ImageTransformArgs $) {
+        this.autoAvif = $.autoAvif;
+        this.autoWebp = $.autoWebp;
         this.enable = $.enable;
         this.rule = $.rule;
         this.ruleEnable = $.ruleEnable;
@@ -157,18 +189,60 @@ public final class ImageTransformArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enable Indicates whether the image transformations feature is enabled. Valid values:
+         * @param autoAvif Specifies whether to enable adaptive AVIF. Valid values:
          * 
          * @return builder
          * 
          */
-        public Builder enable(@Nullable Output<String> enable) {
+        public Builder autoAvif(@Nullable Output<String> autoAvif) {
+            $.autoAvif = autoAvif;
+            return this;
+        }
+
+        /**
+         * @param autoAvif Specifies whether to enable adaptive AVIF. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoAvif(String autoAvif) {
+            return autoAvif(Output.of(autoAvif));
+        }
+
+        /**
+         * @param autoWebp Specifies whether to enable adaptive WebP. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoWebp(@Nullable Output<String> autoWebp) {
+            $.autoWebp = autoWebp;
+            return this;
+        }
+
+        /**
+         * @param autoWebp Specifies whether to enable adaptive WebP. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoWebp(String autoWebp) {
+            return autoWebp(Output.of(autoWebp));
+        }
+
+        /**
+         * @param enable Specifies whether to enable image transformation. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enable(Output<String> enable) {
             $.enable = enable;
             return this;
         }
 
         /**
-         * @param enable Indicates whether the image transformations feature is enabled. Valid values:
+         * @param enable Specifies whether to enable image transformation. Valid values:
          * 
          * @return builder
          * 
@@ -203,7 +277,7 @@ public final class ImageTransformArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * @param ruleEnable Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
          * 
          * @return builder
          * 
@@ -214,7 +288,7 @@ public final class ImageTransformArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * @param ruleEnable Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
          * 
          * @return builder
          * 
@@ -308,6 +382,9 @@ public final class ImageTransformArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ImageTransformArgs build() {
+            if ($.enable == null) {
+                throw new MissingRequiredPropertyException("ImageTransformArgs", "enable");
+            }
             if ($.siteId == null) {
                 throw new MissingRequiredPropertyException("ImageTransformArgs", "siteId");
             }

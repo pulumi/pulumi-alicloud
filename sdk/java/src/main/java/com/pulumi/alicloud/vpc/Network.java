@@ -469,31 +469,35 @@ public class Network extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="systemRouteTableDescription", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> systemRouteTableDescription;
+    private Output<String> systemRouteTableDescription;
 
     /**
      * @return The description of the route table.
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
-    public Output<Optional<String>> systemRouteTableDescription() {
-        return Codegen.optional(this.systemRouteTableDescription);
+    public Output<String> systemRouteTableDescription() {
+        return this.systemRouteTableDescription;
     }
     /**
      * The name of the route table.
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
+     * &gt; **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
+     * 
      */
     @Export(name="systemRouteTableName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> systemRouteTableName;
+    private Output<String> systemRouteTableName;
 
     /**
      * @return The name of the route table.
      * The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
+     * &gt; **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
+     * 
      */
-    public Output<Optional<String>> systemRouteTableName() {
-        return Codegen.optional(this.systemRouteTableName);
+    public Output<String> systemRouteTableName() {
+        return this.systemRouteTableName;
     }
     /**
      * Whether the system route table receives propagation routes.

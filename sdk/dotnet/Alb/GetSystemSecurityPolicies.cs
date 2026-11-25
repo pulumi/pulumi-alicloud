@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.183.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.183.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.183.0.
         /// 
         /// ## Example Usage
         /// 
@@ -140,6 +140,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags of the resource.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -174,6 +178,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags of the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

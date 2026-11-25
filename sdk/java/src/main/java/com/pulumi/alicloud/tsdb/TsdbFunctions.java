@@ -21,7 +21,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -66,7 +66,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -111,7 +111,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -156,7 +156,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -201,7 +201,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -246,7 +246,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -291,7 +291,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -336,7 +336,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -380,7 +380,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -424,7 +424,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -468,7 +468,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -512,7 +512,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -556,7 +556,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 
@@ -600,7 +600,7 @@ public final class TsdbFunctions {
     /**
      * This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.112.0+.
+     * &gt; **NOTE:** Available since v1.112.0.
      * 
      * ## Example Usage
      * 

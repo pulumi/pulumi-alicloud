@@ -1930,7 +1930,7 @@ func (o GetDomainConfigsConfigFunctionArgArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetRealTimeLogDeliveriesDelivery struct {
-	// Real-Time Log Service Domain.
+	// The domain name.
 	Domain string `pulumi:"domain"`
 	// The ID of the Real Time Log Delivery.
 	Id string `pulumi:"id"`
@@ -1956,7 +1956,7 @@ type GetRealTimeLogDeliveriesDeliveryInput interface {
 }
 
 type GetRealTimeLogDeliveriesDeliveryArgs struct {
-	// Real-Time Log Service Domain.
+	// The domain name.
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// The ID of the Real Time Log Delivery.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -2021,7 +2021,7 @@ func (o GetRealTimeLogDeliveriesDeliveryOutput) ToGetRealTimeLogDeliveriesDelive
 	return o
 }
 
-// Real-Time Log Service Domain.
+// The domain name.
 func (o GetRealTimeLogDeliveriesDeliveryOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRealTimeLogDeliveriesDelivery) string { return v.Domain }).(pulumi.StringOutput)
 }

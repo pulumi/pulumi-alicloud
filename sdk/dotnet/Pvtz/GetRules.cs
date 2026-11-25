@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -198,6 +198,9 @@ namespace Pulumi.AliCloud.Pvtz
     [OutputType]
     public sealed class GetRulesResult
     {
+        /// <summary>
+        /// The ID of the Endpoint.
+        /// </summary>
         public readonly string? EndpointId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -205,8 +208,14 @@ namespace Pulumi.AliCloud.Pvtz
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Rule names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of PrivateZone Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleResult> Rules;
 
         [OutputConstructor]

@@ -909,25 +909,25 @@ class GetLoadBalancersBalancerResult(dict):
                  zone_mappings: Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult'],
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param _builtins.str address_ip_version: The IP version.
-        :param _builtins.str address_type: The type of IPv4 address used by the NLB instance.
+        :param _builtins.str address_ip_version: The IP version. Valid values: `ipv4`, `DualStack`.
+        :param _builtins.str address_type: The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
         :param _builtins.str bandwidth_package_id: The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
         :param _builtins.str create_time: The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
         :param _builtins.bool cross_zone_enabled: Indicates whether cross-zone load balancing is enabled for the NLB instance.
         :param _builtins.str dns_name: The domain name of the NLB instance.
         :param _builtins.str id: The ID of the NLB instance.
-        :param _builtins.str ipv6_address_type: The type of IPv6 address used by the NLB instance.
-        :param _builtins.str load_balancer_business_status: The business status of the NLB instance.
+        :param _builtins.str ipv6_address_type: The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
+        :param _builtins.str load_balancer_business_status: The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
         :param _builtins.str load_balancer_id: The ID of the NLB instance.
         :param _builtins.str load_balancer_name: The name of the NLB instance.
         :param _builtins.str load_balancer_type: The type of the SLB instance. Only Network is supported, which indicates NLB.
         :param Sequence['GetLoadBalancersBalancerOperationLockArgs'] operation_locks: The configuration of the operation lock. This parameter takes effect if LoadBalancerBussinessStatus is Abnormal.
         :param _builtins.str resource_group_id: The ID of the resource group.
         :param Sequence[_builtins.str] security_group_ids: The security group to which the NLB instance belongs.
-        :param _builtins.str status: The status of the NLB instance.
+        :param _builtins.str status: The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
         :param _builtins.str vpc_id: The ID of the VPC where the NLB instance is deployed.
         :param Sequence['GetLoadBalancersBalancerZoneMappingArgs'] zone_mappings: The zones and the vSwitches in the zones. An NLB instance can be deployed across 2 to 10 zones.
-        :param Mapping[str, _builtins.str] tags: The tag of the resource.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "address_ip_version", address_ip_version)
         pulumi.set(__self__, "address_type", address_type)
@@ -954,7 +954,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> _builtins.str:
         """
-        The IP version.
+        The IP version. Valid values: `ipv4`, `DualStack`.
         """
         return pulumi.get(self, "address_ip_version")
 
@@ -962,7 +962,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="addressType")
     def address_type(self) -> _builtins.str:
         """
-        The type of IPv4 address used by the NLB instance.
+        The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
         """
         return pulumi.get(self, "address_type")
 
@@ -1010,7 +1010,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="ipv6AddressType")
     def ipv6_address_type(self) -> _builtins.str:
         """
-        The type of IPv6 address used by the NLB instance.
+        The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
         """
         return pulumi.get(self, "ipv6_address_type")
 
@@ -1018,7 +1018,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter(name="loadBalancerBusinessStatus")
     def load_balancer_business_status(self) -> _builtins.str:
         """
-        The business status of the NLB instance.
+        The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
         """
         return pulumi.get(self, "load_balancer_business_status")
 
@@ -1074,7 +1074,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the NLB instance.
+        The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
         """
         return pulumi.get(self, "status")
 
@@ -1098,7 +1098,7 @@ class GetLoadBalancersBalancerResult(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        The tag of the resource.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -1231,7 +1231,7 @@ class GetSecurityPoliciesPolicyResult(dict):
         :param _builtins.str id: The id of the TLS security policy.
         :param _builtins.str resource_group_id: The ID of the resource group.
         :param _builtins.str security_policy_name: The name of the TLS security policy.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: `Available`, `Configuring`.
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         :param Sequence[_builtins.str] tls_versions: The TLS protocol versions that are supported.
         """
@@ -1279,7 +1279,7 @@ class GetSecurityPoliciesPolicyResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `Available`, `Configuring`.
         """
         return pulumi.get(self, "status")
 

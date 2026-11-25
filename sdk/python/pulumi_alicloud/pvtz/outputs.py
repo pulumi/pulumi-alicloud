@@ -296,7 +296,8 @@ class GetEndpointsEndpointResult(dict):
         """
         :param _builtins.str create_time: The creation time of the resource.
         :param _builtins.str endpoint_name: The name of the resource.
-        :param Sequence['GetEndpointsEndpointIpConfigArgs'] ip_configs: The Ip Configs.
+        :param _builtins.str id: The ID of the Endpoint.
+        :param Sequence['GetEndpointsEndpointIpConfigArgs'] ip_configs: The Ip Configs. Each element contains the following attributes:
         :param _builtins.str security_group_id: The ID of the Security Group.
         :param _builtins.str status: The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
         :param _builtins.str vpc_id: The VPC ID.
@@ -332,13 +333,16 @@ class GetEndpointsEndpointResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the Endpoint.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> Sequence['outputs.GetEndpointsEndpointIpConfigResult']:
         """
-        The Ip Configs.
+        The Ip Configs. Each element contains the following attributes:
         """
         return pulumi.get(self, "ip_configs")
 
@@ -440,7 +444,7 @@ class GetResolverZonesZoneResult(dict):
                  status: _builtins.str,
                  zone_id: _builtins.str):
         """
-        :param _builtins.str status: The status of the Zone.
+        :param _builtins.str status: The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
         :param _builtins.str zone_id: The zone ID.
         """
         pulumi.set(__self__, "status", status)
@@ -450,7 +454,7 @@ class GetResolverZonesZoneResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the Zone.
+        The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
         """
         return pulumi.get(self, "status")
 
@@ -477,10 +481,11 @@ class GetRulesRuleResult(dict):
                  type: _builtins.str,
                  zone_name: _builtins.str):
         """
-        :param Sequence['GetRulesRuleBindVpcArgs'] bind_vpcs: The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
+        :param Sequence['GetRulesRuleBindVpcArgs'] bind_vpcs: The List of the VPC. Each element contains the following attributes:
         :param _builtins.str create_time: The creation time of the resource.
         :param _builtins.str endpoint_id: The ID of the Endpoint.
         :param _builtins.str endpoint_name: The Name of the Endpoint.
+        :param Sequence['GetRulesRuleForwardIpArgs'] forward_ips: Forwarding targets. Each element contains the following attributes:
         :param _builtins.str id: The ID of the Rule.
         :param _builtins.str rule_id: The first ID of the resource.
         :param _builtins.str rule_name: The name of the resource.
@@ -502,7 +507,7 @@ class GetRulesRuleResult(dict):
     @pulumi.getter(name="bindVpcs")
     def bind_vpcs(self) -> Sequence['outputs.GetRulesRuleBindVpcResult']:
         """
-        The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
+        The List of the VPC. Each element contains the following attributes:
         """
         return pulumi.get(self, "bind_vpcs")
 
@@ -533,6 +538,9 @@ class GetRulesRuleResult(dict):
     @_builtins.property
     @pulumi.getter(name="forwardIps")
     def forward_ips(self) -> Sequence['outputs.GetRulesRuleForwardIpResult']:
+        """
+        Forwarding targets. Each element contains the following attributes:
+        """
         return pulumi.get(self, "forward_ips")
 
     @_builtins.property
@@ -632,17 +640,27 @@ class GetRulesRuleForwardIpResult(dict):
     def __init__(__self__, *,
                  ip: _builtins.str,
                  port: _builtins.int):
+        """
+        :param _builtins.str ip: The ip of the forwarding destination.
+        :param _builtins.int port: The port of the forwarding destination.
+        """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "port", port)
 
     @_builtins.property
     @pulumi.getter
     def ip(self) -> _builtins.str:
+        """
+        The ip of the forwarding destination.
+        """
         return pulumi.get(self, "ip")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> _builtins.int:
+        """
+        The port of the forwarding destination.
+        """
         return pulumi.get(self, "port")
 
 

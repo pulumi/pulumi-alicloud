@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.128.0+.
+ * > **NOTE:** Available since v1.128.0.
  *
  * ## Example Usage
  *
@@ -77,22 +77,34 @@ export interface GetExchangesArgs {
  * A collection of values returned by getExchanges.
  */
 export interface GetExchangesResult {
+    /**
+     * A list of Amqp Exchanges. Each element contains the following attributes:
+     */
     readonly exchanges: outputs.amqp.GetExchangesExchange[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of the instance.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Exchange names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The name of virtual host where an exchange resides.
+     */
     readonly virtualHostName: string;
 }
 /**
  * This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.128.0+.
+ * > **NOTE:** Available since v1.128.0.
  *
  * ## Example Usage
  *

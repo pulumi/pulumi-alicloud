@@ -120,6 +120,7 @@ class InstanceReplicaSet(dict):
         :param _builtins.str connection_domain: The connection address of the node.
         :param _builtins.str connection_port: The connection port of the node.
         :param _builtins.str network_type: The network type of the instance. Valid values: `VPC`.
+               
                > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         :param _builtins.str replica_set_role: The role of the node.
         :param _builtins.str role_id: The id of the role.
@@ -165,6 +166,7 @@ class InstanceReplicaSet(dict):
     def network_type(self) -> Optional[_builtins.str]:
         """
         The network type of the instance. Valid values: `VPC`.
+
         > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
         """
         return pulumi.get(self, "network_type")
@@ -1341,10 +1343,10 @@ class GetAccountsAccountResult(dict):
                  status: _builtins.str):
         """
         :param _builtins.str account_description: The description of the account.
-        :param _builtins.str account_name: The name of the account.
+        :param _builtins.str account_name: The name of the account. Valid values: `root`.
         :param _builtins.str character_type: The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
         :param _builtins.str id: The ID of the Account. The value formats as `<instance_id>:<account_name>`.
-        :param _builtins.str instance_id: The id of the instance to which the account belongs.
+        :param _builtins.str instance_id: The ID of the instance.
         :param _builtins.str status: The status of the account. Valid values: `Unavailable`, `Available`.
         """
         pulumi.set(__self__, "account_description", account_description)
@@ -1366,7 +1368,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter(name="accountName")
     def account_name(self) -> _builtins.str:
         """
-        The name of the account.
+        The name of the account. Valid values: `root`.
         """
         return pulumi.get(self, "account_name")
 
@@ -1390,7 +1392,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        The id of the instance to which the account belongs.
+        The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -2032,14 +2034,14 @@ class GetServerlessInstancesInstanceResult(dict):
         :param _builtins.str maintain_start_time: The end time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
         :param _builtins.int max_connections: Instance maximum connections.
         :param _builtins.int max_iops: The maximum IOPS of the instance.
-        :param _builtins.str network_type: The network type of the instance.
+        :param _builtins.str network_type: The network type of the instance. Valid values: `Classic` or `VPC`.
         :param _builtins.str payment_type: The Payment type of the instance.
         :param _builtins.str protocol_type: The access protocol type of the instance. Valid values: `mongodb`, `dynamodb`.
         :param _builtins.str resource_group_id: The ID of the resource group.
         :param Sequence['GetServerlessInstancesInstanceSecurityIpGroupArgs'] security_ip_groups: The security ip list.
-        :param _builtins.str status: The status of the instance.
+        :param _builtins.str status: The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
         :param _builtins.str storage_engine: The storage engine used by the instance.
-        :param Mapping[str, _builtins.str] tags: The tag of the resource.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         :param _builtins.str vpc_auth_mode: Intranet secret free access mode.
         :param _builtins.str vpc_id: The ID of the VPC network.
         :param _builtins.str vswitch_id: The id of the vswitch.
@@ -2206,7 +2208,7 @@ class GetServerlessInstancesInstanceResult(dict):
     @pulumi.getter(name="networkType")
     def network_type(self) -> _builtins.str:
         """
-        The network type of the instance.
+        The network type of the instance. Valid values: `Classic` or `VPC`.
         """
         return pulumi.get(self, "network_type")
 
@@ -2246,7 +2248,7 @@ class GetServerlessInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the instance.
+        The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
         """
         return pulumi.get(self, "status")
 
@@ -2262,7 +2264,7 @@ class GetServerlessInstancesInstanceResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        The tag of the resource.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -2468,7 +2470,7 @@ class GetShardingNetworkPrivateAddressesAddressResult(dict):
         :param _builtins.str node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
         :param _builtins.str node_type: The type of the node.
         :param _builtins.str port: The port number.
-        :param _builtins.str role: The role of the node.
+        :param _builtins.str role: The role of the node. Valid values: `Primary` or `Secondary`.
         :param _builtins.str vpc_id: The ID of the VPC.
         :param _builtins.str vswitch_id: The vSwitch ID of the VPC.
         """
@@ -2552,7 +2554,7 @@ class GetShardingNetworkPrivateAddressesAddressResult(dict):
     @pulumi.getter
     def role(self) -> _builtins.str:
         """
-        The role of the node.
+        The role of the node. Valid values: `Primary` or `Secondary`.
         """
         return pulumi.get(self, "role")
 
@@ -2596,7 +2598,7 @@ class GetShardingNetworkPublicAddressesAddressResult(dict):
         :param _builtins.str node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
         :param _builtins.str node_type: The type of the node.
         :param _builtins.str port: The port number.
-        :param _builtins.str role: The role of the node.
+        :param _builtins.str role: The role of the node. Valid values: `Primary` or `Secondary`.
         :param _builtins.str vpc_id: The ID of the VPC.
         :param _builtins.str vswitch_id: The vSwitch ID of the VPC.
         """
@@ -2680,7 +2682,7 @@ class GetShardingNetworkPublicAddressesAddressResult(dict):
     @pulumi.getter
     def role(self) -> _builtins.str:
         """
-        The role of the node.
+        The role of the node. Valid values: `Primary` or `Secondary`.
         """
         return pulumi.get(self, "role")
 

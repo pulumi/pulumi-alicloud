@@ -6,13 +6,31 @@ package com.pulumi.alicloud.ots.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class TablePrimaryKeyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TablePrimaryKeyArgs Empty = new TablePrimaryKeyArgs();
+
+    /**
+     * Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `autoIncrement`. Changing this field forces a new resource.
+     * 
+     */
+    @Import(name="autoIncrement")
+    private @Nullable Output<Boolean> autoIncrement;
+
+    /**
+     * @return Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `autoIncrement`. Changing this field forces a new resource.
+     * 
+     */
+    public Optional<Output<Boolean>> autoIncrement() {
+        return Optional.ofNullable(this.autoIncrement);
+    }
 
     /**
      * Name for primary key.
@@ -47,6 +65,7 @@ public final class TablePrimaryKeyArgs extends com.pulumi.resources.ResourceArgs
     private TablePrimaryKeyArgs() {}
 
     private TablePrimaryKeyArgs(TablePrimaryKeyArgs $) {
+        this.autoIncrement = $.autoIncrement;
         this.name = $.name;
         this.type = $.type;
     }
@@ -67,6 +86,27 @@ public final class TablePrimaryKeyArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(TablePrimaryKeyArgs defaults) {
             $ = new TablePrimaryKeyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoIncrement Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `autoIncrement`. Changing this field forces a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoIncrement(@Nullable Output<Boolean> autoIncrement) {
+            $.autoIncrement = autoIncrement;
+            return this;
+        }
+
+        /**
+         * @param autoIncrement Specifies whether the primary key column is auto-incremented. Defaults to `false`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `autoIncrement`. Changing this field forces a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoIncrement(Boolean autoIncrement) {
+            return autoIncrement(Output.of(autoIncrement));
         }
 
         /**

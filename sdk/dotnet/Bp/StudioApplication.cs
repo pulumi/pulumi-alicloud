@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Bp
     /// <summary>
     /// Provides a Cloud Architect Design Tools Application resource.
     /// 
-    /// For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/428263.html).
+    /// For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/cadt/developer-reference/api-bpstudio-2021-09-31-createapplication).
     /// 
     /// &gt; **NOTE:** Available since v1.192.0.
     /// 
@@ -47,8 +47,8 @@ namespace Pulumi.AliCloud.Bp
     ///         {
     ///             new AliCloud.Bp.Inputs.StudioApplicationInstanceArgs
     ///             {
-    ///                 Id = "data.alicloud_instances.default.instances.0.id",
-    ///                 NodeName = "data.alicloud_instances.default.instances.0.name",
+    ///                 Id = defaultGetInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+    ///                 NodeName = defaultGetInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Name),
     ///                 NodeType = "ecs",
     ///             },
     ///         },
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Bp
         public Output<ImmutableDictionary<string, string>?> Configuration { get; private set; } = null!;
 
         /// <summary>
-        /// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        /// The instance list. Support the creation of instances in the existing vpc under the application. See `Instances` below.
         /// </summary>
         [Output("instances")]
         public Output<ImmutableArray<Outputs.StudioApplicationInstance>> Instances { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Bp
         private InputList<Inputs.StudioApplicationInstanceArgs>? _instances;
 
         /// <summary>
-        /// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        /// The instance list. Support the creation of instances in the existing vpc under the application. See `Instances` below.
         /// </summary>
         public InputList<Inputs.StudioApplicationInstanceArgs> Instances
         {
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.Bp
         private InputList<Inputs.StudioApplicationInstanceGetArgs>? _instances;
 
         /// <summary>
-        /// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+        /// The instance list. Support the creation of instances in the existing vpc under the application. See `Instances` below.
         /// </summary>
         public InputList<Inputs.StudioApplicationInstanceGetArgs> Instances
         {

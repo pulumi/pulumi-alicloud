@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
+        /// <summary>
+        /// The index of the network card.
+        /// </summary>
         [Output("networkCardIndex")]
         public Output<int?> NetworkCardIndex { get; private set; } = null!;
 
@@ -42,9 +45,15 @@ namespace Pulumi.AliCloud.Vpc
         [Output("networkInterfaceId")]
         public Output<string> NetworkInterfaceId { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the trunk network instance.
+        /// </summary>
         [Output("trunkNetworkInstanceId")]
         public Output<string?> TrunkNetworkInstanceId { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to wait for the network configuration to be ready.
+        /// </summary>
         [Output("waitForNetworkConfigurationReady")]
         public Output<bool?> WaitForNetworkConfigurationReady { get; private set; } = null!;
 
@@ -100,6 +109,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// The index of the network card.
+        /// </summary>
         [Input("networkCardIndex")]
         public Input<int>? NetworkCardIndex { get; set; }
 
@@ -109,9 +121,15 @@ namespace Pulumi.AliCloud.Vpc
         [Input("networkInterfaceId", required: true)]
         public Input<string> NetworkInterfaceId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the trunk network instance.
+        /// </summary>
         [Input("trunkNetworkInstanceId")]
         public Input<string>? TrunkNetworkInstanceId { get; set; }
 
+        /// <summary>
+        /// Whether to wait for the network configuration to be ready.
+        /// </summary>
         [Input("waitForNetworkConfigurationReady")]
         public Input<bool>? WaitForNetworkConfigurationReady { get; set; }
 
@@ -129,6 +147,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        /// <summary>
+        /// The index of the network card.
+        /// </summary>
         [Input("networkCardIndex")]
         public Input<int>? NetworkCardIndex { get; set; }
 
@@ -138,9 +159,15 @@ namespace Pulumi.AliCloud.Vpc
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
 
+        /// <summary>
+        /// The ID of the trunk network instance.
+        /// </summary>
         [Input("trunkNetworkInstanceId")]
         public Input<string>? TrunkNetworkInstanceId { get; set; }
 
+        /// <summary>
+        /// Whether to wait for the network configuration to be ready.
+        /// </summary>
         [Input("waitForNetworkConfigurationReady")]
         public Input<bool>? WaitForNetworkConfigurationReady { get; set; }
 

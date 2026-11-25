@@ -47,6 +47,9 @@ class GetConsumerChannelsResult:
     @_builtins.property
     @pulumi.getter
     def channels(self) -> Sequence['outputs.GetConsumerChannelsChannelResult']:
+        """
+        A list of Dts Consumer Channels. Each element contains the following attributes:
+        """
         return pulumi.get(self, "channels")
 
     @_builtins.property
@@ -93,7 +96,7 @@ def get_consumer_channels(dts_instance_id: Optional[_builtins.str] = None,
     """
     This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 
@@ -132,7 +135,7 @@ def get_consumer_channels_output(dts_instance_id: pulumi.Input[Optional[_builtin
     """
     This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 

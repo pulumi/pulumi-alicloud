@@ -56,26 +56,26 @@ class AlertArgs:
         :param pulumi.Input[_builtins.str] alert_name: Name of logstore for configuring alarm service.
         :param pulumi.Input[_builtins.str] project_name: The project name.
         :param pulumi.Input[_builtins.str] alert_description: Alert description.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]] annotations: Annotations for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]] annotations: Annotations for new alert. See `annotations` below.
         :param pulumi.Input[_builtins.bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[_builtins.str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] dashboard: The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
-        :param pulumi.Input['AlertGroupConfigurationArgs'] group_configuration: Group configuration for new alert.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]] join_configurations: Join configuration for different queries.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]] labels: Labels for new alert.
+        :param pulumi.Input['AlertGroupConfigurationArgs'] group_configuration: Group configuration for new alert. See `group_configuration` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]] join_configurations: Join configuration for different queries. See `join_configurations` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]] labels: Labels for new alert. See `labels` below.
         :param pulumi.Input[_builtins.int] mute_until: Timestamp, notifications before closing again.
         :param pulumi.Input[_builtins.bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
         :param pulumi.Input[_builtins.int] no_data_severity: when no data happens, the severity of new alert.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+. See `notification_list` below.
         :param pulumi.Input[_builtins.int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
-        :param pulumi.Input['AlertPolicyConfigurationArgs'] policy_configuration: Policy configuration for new alert.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input['AlertScheduleArgs'] schedule: schedule for alert.
+        :param pulumi.Input['AlertPolicyConfigurationArgs'] policy_configuration: Policy configuration for new alert. See `policy_configuration` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]] query_lists: Multiple conditions for configured alarm query. See `query_list` below.
+        :param pulumi.Input['AlertScheduleArgs'] schedule: schedule for alert. See `schedule` below.
         :param pulumi.Input[_builtins.str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         :param pulumi.Input[_builtins.str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[_builtins.bool] send_resolved: when new alert is resolved, whether to notify, default is false.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]] severity_configurations: Severity configuration for new alert.
-        :param pulumi.Input['AlertTemplateConfigurationArgs'] template_configuration: Template configuration for alert, when `type` is `tpl`.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]] severity_configurations: Severity configuration for new alert. See `severity_configurations` below.
+        :param pulumi.Input['AlertTemplateConfigurationArgs'] template_configuration: Template configuration for alert, when `type` is `tpl`. See `template_configuration` below.
         :param pulumi.Input[_builtins.int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[_builtins.str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] type: The type of new alert, `default` for custom alert, `tpl` for template alert.
@@ -208,7 +208,7 @@ class AlertArgs:
     @pulumi.getter
     def annotations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertAnnotationArgs']]]]:
         """
-        Annotations for new alert.
+        Annotations for new alert. See `annotations` below.
         """
         return pulumi.get(self, "annotations")
 
@@ -258,7 +258,7 @@ class AlertArgs:
     @pulumi.getter(name="groupConfiguration")
     def group_configuration(self) -> pulumi.Input[Optional['AlertGroupConfigurationArgs']]:
         """
-        Group configuration for new alert.
+        Group configuration for new alert. See `group_configuration` below.
         """
         return pulumi.get(self, "group_configuration")
 
@@ -270,7 +270,7 @@ class AlertArgs:
     @pulumi.getter(name="joinConfigurations")
     def join_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]]]:
         """
-        Join configuration for different queries.
+        Join configuration for different queries. See `join_configurations` below.
         """
         return pulumi.get(self, "join_configurations")
 
@@ -282,7 +282,7 @@ class AlertArgs:
     @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertLabelArgs']]]]:
         """
-        Labels for new alert.
+        Labels for new alert. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
@@ -331,7 +331,7 @@ class AlertArgs:
     @_utilities.deprecated("""Deprecated from 1.161.0+, use policy_configuration for notification""")
     def notification_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertNotificationListArgs']]]]:
         """
-        Alarm information notification list, Deprecated from 1.161.0+.
+        Alarm information notification list, Deprecated from 1.161.0+. See `notification_list` below.
         """
         return pulumi.get(self, "notification_lists")
 
@@ -356,7 +356,7 @@ class AlertArgs:
     @pulumi.getter(name="policyConfiguration")
     def policy_configuration(self) -> pulumi.Input[Optional['AlertPolicyConfigurationArgs']]:
         """
-        Policy configuration for new alert.
+        Policy configuration for new alert. See `policy_configuration` below.
         """
         return pulumi.get(self, "policy_configuration")
 
@@ -368,7 +368,7 @@ class AlertArgs:
     @pulumi.getter(name="queryLists")
     def query_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertQueryListArgs']]]]:
         """
-        Multiple conditions for configured alarm query.
+        Multiple conditions for configured alarm query. See `query_list` below.
         """
         return pulumi.get(self, "query_lists")
 
@@ -380,7 +380,7 @@ class AlertArgs:
     @pulumi.getter
     def schedule(self) -> pulumi.Input[Optional['AlertScheduleArgs']]:
         """
-        schedule for alert.
+        schedule for alert. See `schedule` below.
         """
         return pulumi.get(self, "schedule")
 
@@ -430,7 +430,7 @@ class AlertArgs:
     @pulumi.getter(name="severityConfigurations")
     def severity_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]]]:
         """
-        Severity configuration for new alert.
+        Severity configuration for new alert. See `severity_configurations` below.
         """
         return pulumi.get(self, "severity_configurations")
 
@@ -442,7 +442,7 @@ class AlertArgs:
     @pulumi.getter(name="templateConfiguration")
     def template_configuration(self) -> pulumi.Input[Optional['AlertTemplateConfigurationArgs']]:
         """
-        Template configuration for alert, when `type` is `tpl`.
+        Template configuration for alert, when `type` is `tpl`. See `template_configuration` below.
         """
         return pulumi.get(self, "template_configuration")
 
@@ -537,27 +537,27 @@ class _AlertState:
         :param pulumi.Input[_builtins.str] alert_description: Alert description.
         :param pulumi.Input[_builtins.str] alert_displayname: Alert displayname.
         :param pulumi.Input[_builtins.str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]] annotations: Annotations for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]] annotations: Annotations for new alert. See `annotations` below.
         :param pulumi.Input[_builtins.bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[_builtins.str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] dashboard: The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
-        :param pulumi.Input['AlertGroupConfigurationArgs'] group_configuration: Group configuration for new alert.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]] join_configurations: Join configuration for different queries.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]] labels: Labels for new alert.
+        :param pulumi.Input['AlertGroupConfigurationArgs'] group_configuration: Group configuration for new alert. See `group_configuration` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]] join_configurations: Join configuration for different queries. See `join_configurations` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]] labels: Labels for new alert. See `labels` below.
         :param pulumi.Input[_builtins.int] mute_until: Timestamp, notifications before closing again.
         :param pulumi.Input[_builtins.bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
         :param pulumi.Input[_builtins.int] no_data_severity: when no data happens, the severity of new alert.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+. See `notification_list` below.
         :param pulumi.Input[_builtins.int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
-        :param pulumi.Input['AlertPolicyConfigurationArgs'] policy_configuration: Policy configuration for new alert.
+        :param pulumi.Input['AlertPolicyConfigurationArgs'] policy_configuration: Policy configuration for new alert. See `policy_configuration` below.
         :param pulumi.Input[_builtins.str] project_name: The project name.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input['AlertScheduleArgs'] schedule: schedule for alert.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]] query_lists: Multiple conditions for configured alarm query. See `query_list` below.
+        :param pulumi.Input['AlertScheduleArgs'] schedule: schedule for alert. See `schedule` below.
         :param pulumi.Input[_builtins.str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         :param pulumi.Input[_builtins.str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[_builtins.bool] send_resolved: when new alert is resolved, whether to notify, default is false.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]] severity_configurations: Severity configuration for new alert.
-        :param pulumi.Input['AlertTemplateConfigurationArgs'] template_configuration: Template configuration for alert, when `type` is `tpl`.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]] severity_configurations: Severity configuration for new alert. See `severity_configurations` below.
+        :param pulumi.Input['AlertTemplateConfigurationArgs'] template_configuration: Template configuration for alert, when `type` is `tpl`. See `template_configuration` below.
         :param pulumi.Input[_builtins.int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[_builtins.str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] type: The type of new alert, `default` for custom alert, `tpl` for template alert.
@@ -681,7 +681,7 @@ class _AlertState:
     @pulumi.getter
     def annotations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertAnnotationArgs']]]]:
         """
-        Annotations for new alert.
+        Annotations for new alert. See `annotations` below.
         """
         return pulumi.get(self, "annotations")
 
@@ -731,7 +731,7 @@ class _AlertState:
     @pulumi.getter(name="groupConfiguration")
     def group_configuration(self) -> pulumi.Input[Optional['AlertGroupConfigurationArgs']]:
         """
-        Group configuration for new alert.
+        Group configuration for new alert. See `group_configuration` below.
         """
         return pulumi.get(self, "group_configuration")
 
@@ -743,7 +743,7 @@ class _AlertState:
     @pulumi.getter(name="joinConfigurations")
     def join_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]]]:
         """
-        Join configuration for different queries.
+        Join configuration for different queries. See `join_configurations` below.
         """
         return pulumi.get(self, "join_configurations")
 
@@ -755,7 +755,7 @@ class _AlertState:
     @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertLabelArgs']]]]:
         """
-        Labels for new alert.
+        Labels for new alert. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
@@ -804,7 +804,7 @@ class _AlertState:
     @_utilities.deprecated("""Deprecated from 1.161.0+, use policy_configuration for notification""")
     def notification_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertNotificationListArgs']]]]:
         """
-        Alarm information notification list, Deprecated from 1.161.0+.
+        Alarm information notification list, Deprecated from 1.161.0+. See `notification_list` below.
         """
         return pulumi.get(self, "notification_lists")
 
@@ -829,7 +829,7 @@ class _AlertState:
     @pulumi.getter(name="policyConfiguration")
     def policy_configuration(self) -> pulumi.Input[Optional['AlertPolicyConfigurationArgs']]:
         """
-        Policy configuration for new alert.
+        Policy configuration for new alert. See `policy_configuration` below.
         """
         return pulumi.get(self, "policy_configuration")
 
@@ -853,7 +853,7 @@ class _AlertState:
     @pulumi.getter(name="queryLists")
     def query_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertQueryListArgs']]]]:
         """
-        Multiple conditions for configured alarm query.
+        Multiple conditions for configured alarm query. See `query_list` below.
         """
         return pulumi.get(self, "query_lists")
 
@@ -865,7 +865,7 @@ class _AlertState:
     @pulumi.getter
     def schedule(self) -> pulumi.Input[Optional['AlertScheduleArgs']]:
         """
-        schedule for alert.
+        schedule for alert. See `schedule` below.
         """
         return pulumi.get(self, "schedule")
 
@@ -915,7 +915,7 @@ class _AlertState:
     @pulumi.getter(name="severityConfigurations")
     def severity_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]]]:
         """
-        Severity configuration for new alert.
+        Severity configuration for new alert. See `severity_configurations` below.
         """
         return pulumi.get(self, "severity_configurations")
 
@@ -927,7 +927,7 @@ class _AlertState:
     @pulumi.getter(name="templateConfiguration")
     def template_configuration(self) -> pulumi.Input[Optional['AlertTemplateConfigurationArgs']]:
         """
-        Template configuration for alert, when `type` is `tpl`.
+        Template configuration for alert, when `type` is `tpl`. See `template_configuration` below.
         """
         return pulumi.get(self, "template_configuration")
 
@@ -1026,7 +1026,7 @@ class Alert(pulumi.CustomResource):
 
         For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 
-        > **NOTE:** Available in 1.78.0
+        > **NOTE:** Available since v1.78.0.
 
         ## Example Usage
 
@@ -1290,27 +1290,27 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alert_description: Alert description.
         :param pulumi.Input[_builtins.str] alert_displayname: Alert displayname.
         :param pulumi.Input[_builtins.str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict', 'outputs.AlertAnnotation']]]] annotations: Annotations for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict', 'outputs.AlertAnnotation']]]] annotations: Annotations for new alert. See `annotations` below.
         :param pulumi.Input[_builtins.bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[_builtins.str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] dashboard: The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
-        :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict', 'outputs.AlertGroupConfiguration']] group_configuration: Group configuration for new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict', 'outputs.AlertJoinConfiguration']]]] join_configurations: Join configuration for different queries.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict', 'outputs.AlertLabel']]]] labels: Labels for new alert.
+        :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict', 'outputs.AlertGroupConfiguration']] group_configuration: Group configuration for new alert. See `group_configuration` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict', 'outputs.AlertJoinConfiguration']]]] join_configurations: Join configuration for different queries. See `join_configurations` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict', 'outputs.AlertLabel']]]] labels: Labels for new alert. See `labels` below.
         :param pulumi.Input[_builtins.int] mute_until: Timestamp, notifications before closing again.
         :param pulumi.Input[_builtins.bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
         :param pulumi.Input[_builtins.int] no_data_severity: when no data happens, the severity of new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict', 'outputs.AlertNotificationList']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict', 'outputs.AlertNotificationList']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+. See `notification_list` below.
         :param pulumi.Input[_builtins.int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
-        :param pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict', 'outputs.AlertPolicyConfiguration']] policy_configuration: Policy configuration for new alert.
+        :param pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict', 'outputs.AlertPolicyConfiguration']] policy_configuration: Policy configuration for new alert. See `policy_configuration` below.
         :param pulumi.Input[_builtins.str] project_name: The project name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict', 'outputs.AlertQueryList']]]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']] schedule: schedule for alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict', 'outputs.AlertQueryList']]]] query_lists: Multiple conditions for configured alarm query. See `query_list` below.
+        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']] schedule: schedule for alert. See `schedule` below.
         :param pulumi.Input[_builtins.str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         :param pulumi.Input[_builtins.str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[_builtins.bool] send_resolved: when new alert is resolved, whether to notify, default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict', 'outputs.AlertSeverityConfiguration']]]] severity_configurations: Severity configuration for new alert.
-        :param pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict', 'outputs.AlertTemplateConfiguration']] template_configuration: Template configuration for alert, when `type` is `tpl`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict', 'outputs.AlertSeverityConfiguration']]]] severity_configurations: Severity configuration for new alert. See `severity_configurations` below.
+        :param pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict', 'outputs.AlertTemplateConfiguration']] template_configuration: Template configuration for alert, when `type` is `tpl`. See `template_configuration` below.
         :param pulumi.Input[_builtins.int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[_builtins.str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] type: The type of new alert, `default` for custom alert, `tpl` for template alert.
@@ -1328,7 +1328,7 @@ class Alert(pulumi.CustomResource):
 
         For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 
-        > **NOTE:** Available in 1.78.0
+        > **NOTE:** Available since v1.78.0.
 
         ## Example Usage
 
@@ -1721,27 +1721,27 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alert_description: Alert description.
         :param pulumi.Input[_builtins.str] alert_displayname: Alert displayname.
         :param pulumi.Input[_builtins.str] alert_name: Name of logstore for configuring alarm service.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict', 'outputs.AlertAnnotation']]]] annotations: Annotations for new alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertAnnotationArgs', 'AlertAnnotationArgsDict', 'outputs.AlertAnnotation']]]] annotations: Annotations for new alert. See `annotations` below.
         :param pulumi.Input[_builtins.bool] auto_annotation: whether to add automatic annotation, default is false.
         :param pulumi.Input[_builtins.str] condition: Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] dashboard: The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
-        :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict', 'outputs.AlertGroupConfiguration']] group_configuration: Group configuration for new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict', 'outputs.AlertJoinConfiguration']]]] join_configurations: Join configuration for different queries.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict', 'outputs.AlertLabel']]]] labels: Labels for new alert.
+        :param pulumi.Input[Union['AlertGroupConfigurationArgs', 'AlertGroupConfigurationArgsDict', 'outputs.AlertGroupConfiguration']] group_configuration: Group configuration for new alert. See `group_configuration` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertJoinConfigurationArgs', 'AlertJoinConfigurationArgsDict', 'outputs.AlertJoinConfiguration']]]] join_configurations: Join configuration for different queries. See `join_configurations` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertLabelArgs', 'AlertLabelArgsDict', 'outputs.AlertLabel']]]] labels: Labels for new alert. See `labels` below.
         :param pulumi.Input[_builtins.int] mute_until: Timestamp, notifications before closing again.
         :param pulumi.Input[_builtins.bool] no_data_fire: Switch for whether new alert fires when no data happens, default is false.
         :param pulumi.Input[_builtins.int] no_data_severity: when no data happens, the severity of new alert.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict', 'outputs.AlertNotificationList']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertNotificationListArgs', 'AlertNotificationListArgsDict', 'outputs.AlertNotificationList']]]] notification_lists: Alarm information notification list, Deprecated from 1.161.0+. See `notification_list` below.
         :param pulumi.Input[_builtins.int] notify_threshold: Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
-        :param pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict', 'outputs.AlertPolicyConfiguration']] policy_configuration: Policy configuration for new alert.
+        :param pulumi.Input[Union['AlertPolicyConfigurationArgs', 'AlertPolicyConfigurationArgsDict', 'outputs.AlertPolicyConfiguration']] policy_configuration: Policy configuration for new alert. See `policy_configuration` below.
         :param pulumi.Input[_builtins.str] project_name: The project name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict', 'outputs.AlertQueryList']]]] query_lists: Multiple conditions for configured alarm query.
-        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']] schedule: schedule for alert.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertQueryListArgs', 'AlertQueryListArgsDict', 'outputs.AlertQueryList']]]] query_lists: Multiple conditions for configured alarm query. See `query_list` below.
+        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict', 'outputs.AlertSchedule']] schedule: schedule for alert. See `schedule` below.
         :param pulumi.Input[_builtins.str] schedule_interval: Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         :param pulumi.Input[_builtins.str] schedule_type: Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         :param pulumi.Input[_builtins.bool] send_resolved: when new alert is resolved, whether to notify, default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict', 'outputs.AlertSeverityConfiguration']]]] severity_configurations: Severity configuration for new alert.
-        :param pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict', 'outputs.AlertTemplateConfiguration']] template_configuration: Template configuration for alert, when `type` is `tpl`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlertSeverityConfigurationArgs', 'AlertSeverityConfigurationArgsDict', 'outputs.AlertSeverityConfiguration']]]] severity_configurations: Severity configuration for new alert. See `severity_configurations` below.
+        :param pulumi.Input[Union['AlertTemplateConfigurationArgs', 'AlertTemplateConfigurationArgsDict', 'outputs.AlertTemplateConfiguration']] template_configuration: Template configuration for alert, when `type` is `tpl`. See `template_configuration` below.
         :param pulumi.Input[_builtins.int] threshold: Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         :param pulumi.Input[_builtins.str] throttling: Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         :param pulumi.Input[_builtins.str] type: The type of new alert, `default` for custom alert, `tpl` for template alert.
@@ -1871,7 +1871,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Sequence['outputs.AlertAnnotation']]]:
         """
-        Annotations for new alert.
+        Annotations for new alert. See `annotations` below.
         """
         return pulumi.get(self, "annotations")
 
@@ -1905,7 +1905,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter(name="groupConfiguration")
     def group_configuration(self) -> pulumi.Output[Optional['outputs.AlertGroupConfiguration']]:
         """
-        Group configuration for new alert.
+        Group configuration for new alert. See `group_configuration` below.
         """
         return pulumi.get(self, "group_configuration")
 
@@ -1913,7 +1913,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter(name="joinConfigurations")
     def join_configurations(self) -> pulumi.Output[Optional[Sequence['outputs.AlertJoinConfiguration']]]:
         """
-        Join configuration for different queries.
+        Join configuration for different queries. See `join_configurations` below.
         """
         return pulumi.get(self, "join_configurations")
 
@@ -1921,7 +1921,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Sequence['outputs.AlertLabel']]]:
         """
-        Labels for new alert.
+        Labels for new alert. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
@@ -1954,7 +1954,7 @@ class Alert(pulumi.CustomResource):
     @_utilities.deprecated("""Deprecated from 1.161.0+, use policy_configuration for notification""")
     def notification_lists(self) -> pulumi.Output[Optional[Sequence['outputs.AlertNotificationList']]]:
         """
-        Alarm information notification list, Deprecated from 1.161.0+.
+        Alarm information notification list, Deprecated from 1.161.0+. See `notification_list` below.
         """
         return pulumi.get(self, "notification_lists")
 
@@ -1971,7 +1971,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter(name="policyConfiguration")
     def policy_configuration(self) -> pulumi.Output[Optional['outputs.AlertPolicyConfiguration']]:
         """
-        Policy configuration for new alert.
+        Policy configuration for new alert. See `policy_configuration` below.
         """
         return pulumi.get(self, "policy_configuration")
 
@@ -1987,7 +1987,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter(name="queryLists")
     def query_lists(self) -> pulumi.Output[Optional[Sequence['outputs.AlertQueryList']]]:
         """
-        Multiple conditions for configured alarm query.
+        Multiple conditions for configured alarm query. See `query_list` below.
         """
         return pulumi.get(self, "query_lists")
 
@@ -1995,7 +1995,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional['outputs.AlertSchedule']]:
         """
-        schedule for alert.
+        schedule for alert. See `schedule` below.
         """
         return pulumi.get(self, "schedule")
 
@@ -2029,7 +2029,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter(name="severityConfigurations")
     def severity_configurations(self) -> pulumi.Output[Optional[Sequence['outputs.AlertSeverityConfiguration']]]:
         """
-        Severity configuration for new alert.
+        Severity configuration for new alert. See `severity_configurations` below.
         """
         return pulumi.get(self, "severity_configurations")
 
@@ -2037,7 +2037,7 @@ class Alert(pulumi.CustomResource):
     @pulumi.getter(name="templateConfiguration")
     def template_configuration(self) -> pulumi.Output[Optional['outputs.AlertTemplateConfiguration']]:
         """
-        Template configuration for alert, when `type` is `tpl`.
+        Template configuration for alert, when `type` is `tpl`. See `template_configuration` below.
         """
         return pulumi.get(self, "template_configuration")
 

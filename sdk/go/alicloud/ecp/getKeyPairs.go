@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -73,13 +73,16 @@ type GetKeyPairsArgs struct {
 // A collection of values returned by getKeyPairs.
 type GetKeyPairsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string            `pulumi:"id"`
-	Ids                []string          `pulumi:"ids"`
-	KeyPairFingerPrint *string           `pulumi:"keyPairFingerPrint"`
-	NameRegex          *string           `pulumi:"nameRegex"`
-	Names              []string          `pulumi:"names"`
-	OutputFile         *string           `pulumi:"outputFile"`
-	Pairs              []GetKeyPairsPair `pulumi:"pairs"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The Private Key of the Fingerprint.
+	KeyPairFingerPrint *string `pulumi:"keyPairFingerPrint"`
+	NameRegex          *string `pulumi:"nameRegex"`
+	// A list of Key Pair names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ecp Key Pairs. Each element contains the following attributes:
+	Pairs []GetKeyPairsPair `pulumi:"pairs"`
 }
 
 func GetKeyPairsOutput(ctx *pulumi.Context, args GetKeyPairsOutputArgs, opts ...pulumi.InvokeOption) GetKeyPairsResultOutput {
@@ -127,6 +130,7 @@ func (o GetKeyPairsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The Private Key of the Fingerprint.
 func (o GetKeyPairsResultOutput) KeyPairFingerPrint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.KeyPairFingerPrint }).(pulumi.StringPtrOutput)
 }
@@ -135,6 +139,7 @@ func (o GetKeyPairsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Key Pair names.
 func (o GetKeyPairsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -143,6 +148,7 @@ func (o GetKeyPairsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecp Key Pairs. Each element contains the following attributes:
 func (o GetKeyPairsResultOutput) Pairs() GetKeyPairsPairArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) []GetKeyPairsPair { return v.Pairs }).(GetKeyPairsPairArrayOutput)
 }

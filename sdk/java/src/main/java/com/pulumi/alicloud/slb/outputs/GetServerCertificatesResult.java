@@ -38,12 +38,12 @@ public final class GetServerCertificatesResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return The Id of resource group which the slb server certificates belongs.
+     * @return (Optional) The Id of resource group which the slb server certificates belongs.
      * 
      */
     private @Nullable String resourceGroupId;
     /**
-     * @return (Available in v1.66.0+) A mapping of tags to assign to the resource.
+     * @return (Optional) A mapping of tags to assign to the resource.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -84,14 +84,14 @@ public final class GetServerCertificatesResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return The Id of resource group which the slb server certificates belongs.
+     * @return (Optional) The Id of resource group which the slb server certificates belongs.
      * 
      */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
     /**
-     * @return (Available in v1.66.0+) A mapping of tags to assign to the resource.
+     * @return (Optional) A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {

@@ -109,6 +109,26 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
+        /// 
+        /// ### Query extended support versions
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var extended = AliCloud.CS.GetKubernetesVersion.Invoke(new()
+        ///     {
+        ///         ClusterType = "ManagedKubernetes",
+        ///         Profile = "Default",
+        ///         SupportPolicy = "Extended",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetKubernetesVersionResult> InvokeAsync(GetKubernetesVersionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionArgs(), options.WithDefaults());
@@ -209,6 +229,26 @@ namespace Pulumi.AliCloud.CS
         ///     {
         ///         ["metadata"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas)),
         ///     };
+        /// });
+        /// ```
+        /// 
+        /// ### Query extended support versions
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var extended = AliCloud.CS.GetKubernetesVersion.Invoke(new()
+        ///     {
+        ///         ClusterType = "ManagedKubernetes",
+        ///         Profile = "Default",
+        ///         SupportPolicy = "Extended",
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
@@ -313,6 +353,26 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
+        /// 
+        /// ### Query extended support versions
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var extended = AliCloud.CS.GetKubernetesVersion.Invoke(new()
+        ///     {
+        ///         ClusterType = "ManagedKubernetes",
+        ///         Profile = "Default",
+        ///         SupportPolicy = "Extended",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetKubernetesVersionResult> Invoke(GetKubernetesVersionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesVersionResult>("alicloud:cs/getKubernetesVersion:getKubernetesVersion", args ?? new GetKubernetesVersionInvokeArgs(), options.WithDefaults());
@@ -338,6 +398,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("profile")]
         public string? Profile { get; set; }
+
+        /// <summary>
+        /// Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+        /// </summary>
+        [Input("supportPolicy")]
+        public string? SupportPolicy { get; set; }
 
         public GetKubernetesVersionArgs()
         {
@@ -365,6 +431,12 @@ namespace Pulumi.AliCloud.CS
         [Input("profile")]
         public Input<string>? Profile { get; set; }
 
+        /// <summary>
+        /// Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+        /// </summary>
+        [Input("supportPolicy")]
+        public Input<string>? SupportPolicy { get; set; }
+
         public GetKubernetesVersionInvokeArgs()
         {
         }
@@ -382,10 +454,14 @@ namespace Pulumi.AliCloud.CS
         public readonly string Id;
         public readonly string? KubernetesVersion;
         /// <summary>
-        /// A list of metadata of kubernetes version.
+        /// A Set of Kubernetes version metadata.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesVersionMetadataResult> Metadatas;
         public readonly string? Profile;
+        /// <summary>
+        /// (Available since v2.3.0) The support policy required by the version (`Standard` or `Extended`).
+        /// </summary>
+        public readonly string? SupportPolicy;
 
         [OutputConstructor]
         private GetKubernetesVersionResult(
@@ -397,13 +473,16 @@ namespace Pulumi.AliCloud.CS
 
             ImmutableArray<Outputs.GetKubernetesVersionMetadataResult> metadatas,
 
-            string? profile)
+            string? profile,
+
+            string? supportPolicy)
         {
             ClusterType = clusterType;
             Id = id;
             KubernetesVersion = kubernetesVersion;
             Metadatas = metadatas;
             Profile = profile;
+            SupportPolicy = supportPolicy;
         }
     }
 }

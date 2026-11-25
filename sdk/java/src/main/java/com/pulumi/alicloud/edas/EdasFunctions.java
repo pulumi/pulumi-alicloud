@@ -563,7 +563,7 @@ public final class EdasFunctions {
     /**
      * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.82.0+
+     * &gt; **NOTE:** Available since v1.82.0.
      * 
      * ## Example Usage
      * 
@@ -591,7 +591,6 @@ public final class EdasFunctions {
      *     public static void stack(Context ctx) {
      *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
      *             .appId("xxx")
-     *             .ids(Arrays.asList("xxx"))
      *             .outputFile("groups.txt")
      *             .build());
      * 
@@ -608,7 +607,7 @@ public final class EdasFunctions {
     /**
      * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.82.0+
+     * &gt; **NOTE:** Available since v1.82.0.
      * 
      * ## Example Usage
      * 
@@ -636,7 +635,6 @@ public final class EdasFunctions {
      *     public static void stack(Context ctx) {
      *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
      *             .appId("xxx")
-     *             .ids(Arrays.asList("xxx"))
      *             .outputFile("groups.txt")
      *             .build());
      * 
@@ -653,7 +651,7 @@ public final class EdasFunctions {
     /**
      * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.82.0+
+     * &gt; **NOTE:** Available since v1.82.0.
      * 
      * ## Example Usage
      * 
@@ -681,7 +679,6 @@ public final class EdasFunctions {
      *     public static void stack(Context ctx) {
      *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
      *             .appId("xxx")
-     *             .ids(Arrays.asList("xxx"))
      *             .outputFile("groups.txt")
      *             .build());
      * 
@@ -698,7 +695,7 @@ public final class EdasFunctions {
     /**
      * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.82.0+
+     * &gt; **NOTE:** Available since v1.82.0.
      * 
      * ## Example Usage
      * 
@@ -726,7 +723,6 @@ public final class EdasFunctions {
      *     public static void stack(Context ctx) {
      *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
      *             .appId("xxx")
-     *             .ids(Arrays.asList("xxx"))
      *             .outputFile("groups.txt")
      *             .build());
      * 
@@ -743,7 +739,7 @@ public final class EdasFunctions {
     /**
      * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.82.0+
+     * &gt; **NOTE:** Available since v1.82.0.
      * 
      * ## Example Usage
      * 
@@ -771,7 +767,6 @@ public final class EdasFunctions {
      *     public static void stack(Context ctx) {
      *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
      *             .appId("xxx")
-     *             .ids(Arrays.asList("xxx"))
      *             .outputFile("groups.txt")
      *             .build());
      * 
@@ -788,7 +783,7 @@ public final class EdasFunctions {
     /**
      * This data source provides the Edas Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -838,7 +833,7 @@ public final class EdasFunctions {
     /**
      * This data source provides the Edas Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -888,7 +883,7 @@ public final class EdasFunctions {
     /**
      * This data source provides the Edas Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -938,7 +933,7 @@ public final class EdasFunctions {
     /**
      * This data source provides the Edas Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -988,7 +983,7 @@ public final class EdasFunctions {
     /**
      * This data source provides the Edas Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -1038,7 +1033,7 @@ public final class EdasFunctions {
     /**
      * This data source provides the Edas Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 
@@ -1088,7 +1083,7 @@ public final class EdasFunctions {
     /**
      * This data source provides the Edas Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.173.0+.
+     * &gt; **NOTE:** Available since v1.173.0.
      * 
      * ## Example Usage
      * 

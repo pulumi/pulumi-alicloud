@@ -77,11 +77,17 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> Optional[_builtins.str]:
+        """
+        (OSS) The name of OSS bucket.
+        """
         return pulumi.get(self, "bucket")
 
     @_builtins.property
     @pulumi.getter(name="completeTime")
     def complete_time(self) -> Optional[_builtins.str]:
+        """
+        The time when the snapshot completed. UNIX time in seconds.
+        """
         return pulumi.get(self, "complete_time")
 
     @_builtins.property
@@ -92,11 +98,17 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[_builtins.str]:
+        """
+        (NAS) File System Creation Time of Nas. Unix Time Seconds.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> Optional[_builtins.str]:
+        """
+        (NAS) The ID of NAS File system.
+        """
         return pulumi.get(self, "file_system_id")
 
     @_builtins.property
@@ -115,6 +127,9 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[_builtins.str]:
+        """
+        (ECS_FILE) The ID of ECS instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -135,16 +150,25 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter
     def snapshots(self) -> Sequence['outputs.GetSnapshotsSnapshotResult']:
+        """
+        A list of Hbr Snapshots. Each element contains the following attributes:
+        """
         return pulumi.get(self, "snapshots")
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> _builtins.str:
+        """
+        Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+        """
         return pulumi.get(self, "source_type")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -193,7 +217,7 @@ def get_snapshots(bucket: Optional[_builtins.str] = None,
     """
     This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -231,7 +255,9 @@ def get_snapshots(bucket: Optional[_builtins.str] = None,
     :param _builtins.str file_system_id: The File System ID of Nas. While source_type equals `NAS`, this parameter must be set.
     :param Sequence[_builtins.str] ids: A list of Snapshot IDs.
     :param _builtins.str instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host. While source_type equals `ECS_FILE`, this parameter must be set.
+    :param _builtins.int limit: The limit of snapshots to query.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str query: The query string used to filter snapshots.
     :param _builtins.str source_type: Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
     :param _builtins.str status: The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
     :param _builtins.str vault_id: The ID of Vault.
@@ -286,7 +312,7 @@ def get_snapshots_output(bucket: pulumi.Input[Optional[Optional[_builtins.str]]]
     """
     This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -324,7 +350,9 @@ def get_snapshots_output(bucket: pulumi.Input[Optional[Optional[_builtins.str]]]
     :param _builtins.str file_system_id: The File System ID of Nas. While source_type equals `NAS`, this parameter must be set.
     :param Sequence[_builtins.str] ids: A list of Snapshot IDs.
     :param _builtins.str instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host. While source_type equals `ECS_FILE`, this parameter must be set.
+    :param _builtins.int limit: The limit of snapshots to query.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str query: The query string used to filter snapshots.
     :param _builtins.str source_type: Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
     :param _builtins.str status: The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
     :param _builtins.str vault_id: The ID of Vault.

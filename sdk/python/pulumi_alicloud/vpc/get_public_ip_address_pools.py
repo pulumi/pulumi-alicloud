@@ -75,6 +75,9 @@ class GetPublicIpAddressPoolsResult:
     @_builtins.property
     @pulumi.getter
     def isp(self) -> Optional[_builtins.str]:
+        """
+        The Internet service provider.
+        """
         return pulumi.get(self, "isp")
 
     @_builtins.property
@@ -85,6 +88,9 @@ class GetPublicIpAddressPoolsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Public Ip Address Pool names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -95,6 +101,9 @@ class GetPublicIpAddressPoolsResult:
     @_builtins.property
     @pulumi.getter
     def pools(self) -> Sequence['outputs.GetPublicIpAddressPoolsPoolResult']:
+        """
+        A list of Vpc Public Ip Address Pools. Each element contains the following attributes:
+        """
         return pulumi.get(self, "pools")
 
     @_builtins.property
@@ -105,11 +114,17 @@ class GetPublicIpAddressPoolsResult:
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolName")
     def public_ip_address_pool_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the Vpc Public Ip Address Pool.
+        """
         return pulumi.get(self, "public_ip_address_pool_name")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the Vpc Public Ip Address Pool.
+        """
         return pulumi.get(self, "status")
 
 
@@ -142,7 +157,7 @@ def get_public_ip_address_pools(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.186.0+.
+    > **NOTE:** Available since v1.186.0.
 
     ## Example Usage
 
@@ -200,7 +215,7 @@ def get_public_ip_address_pools_output(ids: pulumi.Input[Optional[Optional[Seque
     """
     This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.186.0+.
+    > **NOTE:** Available since v1.186.0.
 
     ## Example Usage
 

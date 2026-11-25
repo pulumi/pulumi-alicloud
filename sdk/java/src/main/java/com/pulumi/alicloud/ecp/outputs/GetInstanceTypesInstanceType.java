@@ -26,6 +26,10 @@ public final class GetInstanceTypesInstanceType {
      * 
      */
     private String instanceType;
+    /**
+     * @return The family of the current instance type.
+     * 
+     */
     private String instanceTypeFamily;
     /**
      * @return The name of the current instance type.
@@ -60,6 +64,10 @@ public final class GetInstanceTypesInstanceType {
     public String instanceType() {
         return this.instanceType;
     }
+    /**
+     * @return The family of the current instance type.
+     * 
+     */
     public String instanceTypeFamily() {
         return this.instanceTypeFamily;
     }

@@ -209,6 +209,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * - `Ipv4Gateway`: An IPv4 gateway.
      * - `GatewayEndpoint`: A gateway endpoint.
      * - `Ecr`: A Express Connect Router (ECR).
+     * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
      * 
      */
     @Export(name="nexthopType", refs={String.class}, tree="[0]")
@@ -228,6 +229,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * - `Ipv4Gateway`: An IPv4 gateway.
      * - `GatewayEndpoint`: A gateway endpoint.
      * - `Ecr`: A Express Connect Router (ECR).
+     * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
      * 
      */
     public Output<Optional<String>> nexthopType() {

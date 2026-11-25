@@ -85,7 +85,7 @@ class GetKeyPairsResult:
     @_utilities.deprecated("""Field `key_pairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.""")
     def key_pairs(self) -> Sequence['outputs.GetKeyPairsKeyPairResult']:
         """
-        A list of key pairs. Each element contains the following attributes:
+        (Deprecated) A list of key pairs. Each element contains the following attributes:
         """
         return pulumi.get(self, "key_pairs")
 
@@ -110,6 +110,9 @@ class GetKeyPairsResult:
     @_builtins.property
     @pulumi.getter
     def pairs(self) -> Sequence['outputs.GetKeyPairsPairResult']:
+        """
+        A list of key pairs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "pairs")
 
     @_builtins.property
@@ -124,7 +127,7 @@ class GetKeyPairsResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
+        A map of tags assigned to the key pair.
         """
         return pulumi.get(self, "tags")
 

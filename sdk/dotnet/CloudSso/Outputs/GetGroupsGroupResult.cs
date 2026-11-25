@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+        /// The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
         /// </summary>
         public readonly string ProvisionType;
 

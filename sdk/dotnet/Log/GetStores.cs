@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Log
         /// <summary>
         /// This data source provides the Log Stores of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Log
         /// <summary>
         /// This data source provides the Log Stores of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Log
         /// <summary>
         /// This data source provides the Log Stores of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
         /// 
@@ -147,6 +147,9 @@ namespace Pulumi.AliCloud.Log
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The name of the log project.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -182,6 +185,9 @@ namespace Pulumi.AliCloud.Log
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The name of the log project.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -201,9 +207,15 @@ namespace Pulumi.AliCloud.Log
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of store names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string Project;
+        /// <summary>
+        /// A list of Log Stores. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetStoresStoreResult> Stores;
 
         [OutputConstructor]

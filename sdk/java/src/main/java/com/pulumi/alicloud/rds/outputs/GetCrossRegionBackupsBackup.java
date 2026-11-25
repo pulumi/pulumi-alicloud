@@ -74,7 +74,9 @@ public final class GetCrossRegionBackupsBackup {
      */
     private String crossBackupId;
     /**
-     * @return The ID of the destination region where the cross-region data backup file of the instance is stored.
+     * @return The ID of the destination region where the cross-region data backup file is stored.
+     * 
+     * &gt; **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
      * 
      */
     private String crossBackupRegion;
@@ -217,7 +219,9 @@ public final class GetCrossRegionBackupsBackup {
         return this.crossBackupId;
     }
     /**
-     * @return The ID of the destination region where the cross-region data backup file of the instance is stored.
+     * @return The ID of the destination region where the cross-region data backup file is stored.
+     * 
+     * &gt; **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
      * 
      */
     public String crossBackupRegion() {

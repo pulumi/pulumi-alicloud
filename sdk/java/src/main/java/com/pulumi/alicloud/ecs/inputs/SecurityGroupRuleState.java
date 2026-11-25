@@ -17,14 +17,14 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     public static final SecurityGroupRuleState Empty = new SecurityGroupRuleState();
 
     /**
-     * The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
+     * The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. The value must be a single IPv4 address or CIDR block, without leading or trailing whitespace or a trailing comma; a comma or whitespace separated list of CIDRs is rejected by the provider during plan because one rule carries exactly one CIDR — define one `alicloud.ecs.SecurityGroupRule` resource per CIDR instead. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
      * 
      */
     @Import(name="cidrIp")
     private @Nullable Output<String> cidrIp;
 
     /**
-     * @return The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
+     * @return The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. The value must be a single IPv4 address or CIDR block, without leading or trailing whitespace or a trailing comma; a comma or whitespace separated list of CIDRs is rejected by the provider during plan because one rule carries exactly one CIDR — define one `alicloud.ecs.SecurityGroupRule` resource per CIDR instead. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
      * 
      */
     public Optional<Output<String>> cidrIp() {
@@ -292,7 +292,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cidrIp The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
+         * @param cidrIp The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. The value must be a single IPv4 address or CIDR block, without leading or trailing whitespace or a trailing comma; a comma or whitespace separated list of CIDRs is rejected by the provider during plan because one rule carries exactly one CIDR — define one `alicloud.ecs.SecurityGroupRule` resource per CIDR instead. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cidrIp The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
+         * @param cidrIp The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. The value must be a single IPv4 address or CIDR block, without leading or trailing whitespace or a trailing comma; a comma or whitespace separated list of CIDRs is rejected by the provider during plan because one rule carries exactly one CIDR — define one `alicloud.ecs.SecurityGroupRule` resource per CIDR instead. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidrIp = &#34;0.0.0.0/0&#34;` explicitly.
          * 
          * @return builder
          * 

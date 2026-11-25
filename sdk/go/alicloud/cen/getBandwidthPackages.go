@@ -13,6 +13,8 @@ import (
 
 // This data source provides CEN Bandwidth Packages available to the user.
 //
+// > **NOTE:** Available since v1.18.0+
+//
 // ## Example Usage
 //
 // ```go

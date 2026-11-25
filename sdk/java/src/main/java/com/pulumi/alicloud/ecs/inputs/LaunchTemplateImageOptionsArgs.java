@@ -15,9 +15,17 @@ public final class LaunchTemplateImageOptionsArgs extends com.pulumi.resources.R
 
     public static final LaunchTemplateImageOptionsArgs Empty = new LaunchTemplateImageOptionsArgs();
 
+    /**
+     * Whether the instance that uses the image supports logons of the ecs-user user.
+     * 
+     */
     @Import(name="loginAsNonRoot")
     private @Nullable Output<Boolean> loginAsNonRoot;
 
+    /**
+     * @return Whether the instance that uses the image supports logons of the ecs-user user.
+     * 
+     */
     public Optional<Output<Boolean>> loginAsNonRoot() {
         return Optional.ofNullable(this.loginAsNonRoot);
     }
@@ -46,11 +54,23 @@ public final class LaunchTemplateImageOptionsArgs extends com.pulumi.resources.R
             $ = new LaunchTemplateImageOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param loginAsNonRoot Whether the instance that uses the image supports logons of the ecs-user user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder loginAsNonRoot(@Nullable Output<Boolean> loginAsNonRoot) {
             $.loginAsNonRoot = loginAsNonRoot;
             return this;
         }
 
+        /**
+         * @param loginAsNonRoot Whether the instance that uses the image supports logons of the ecs-user user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder loginAsNonRoot(Boolean loginAsNonRoot) {
             return loginAsNonRoot(Output.of(loginAsNonRoot));
         }

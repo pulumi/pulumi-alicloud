@@ -104,7 +104,7 @@ class GetInstancesResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        A mapping of tags to assign to the resource.
+        (Optional) A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -135,7 +135,7 @@ def get_instances(availability_zone: Optional[_builtins.str] = None,
     The `hbase_get_instances` data source provides a collection of HBase instances available in Alicloud account.
     Filters support regular expression for the instance name, ids or availability_zone.
 
-    > **NOTE:**  Available in 1.67.0+
+    > **NOTE:** Available since v1.67.0.
 
     ## Example Usage
 
@@ -182,7 +182,7 @@ def get_instances_output(availability_zone: pulumi.Input[Optional[Optional[_buil
     The `hbase_get_instances` data source provides a collection of HBase instances available in Alicloud account.
     Filters support regular expression for the instance name, ids or availability_zone.
 
-    > **NOTE:**  Available in 1.67.0+
+    > **NOTE:** Available since v1.67.0.
 
     ## Example Usage
 

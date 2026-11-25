@@ -5,10 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ConfigSetArgs, ConfigSetState } from "./configSet";
+export type ConfigSet = import("./configSet").ConfigSet;
+export const ConfigSet: typeof import("./configSet").ConfigSet = null as any;
+utilities.lazyLoad(exports, ["ConfigSet"], () => require("./configSet"));
+
+export { DedicatedIpPoolArgs, DedicatedIpPoolState } from "./dedicatedIpPool";
+export type DedicatedIpPool = import("./dedicatedIpPool").DedicatedIpPool;
+export const DedicatedIpPool: typeof import("./dedicatedIpPool").DedicatedIpPool = null as any;
+utilities.lazyLoad(exports, ["DedicatedIpPool"], () => require("./dedicatedIpPool"));
+
 export { DomainArgs, DomainState } from "./domain";
 export type Domain = import("./domain").Domain;
 export const Domain: typeof import("./domain").Domain = null as any;
 utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
+export { GetConfigSetsArgs, GetConfigSetsResult, GetConfigSetsOutputArgs } from "./getConfigSets";
+export const getConfigSets: typeof import("./getConfigSets").getConfigSets = null as any;
+export const getConfigSetsOutput: typeof import("./getConfigSets").getConfigSetsOutput = null as any;
+utilities.lazyLoad(exports, ["getConfigSets","getConfigSetsOutput"], () => require("./getConfigSets"));
+
+export { GetDedicatedIpPoolsArgs, GetDedicatedIpPoolsResult, GetDedicatedIpPoolsOutputArgs } from "./getDedicatedIpPools";
+export const getDedicatedIpPools: typeof import("./getDedicatedIpPools").getDedicatedIpPools = null as any;
+export const getDedicatedIpPoolsOutput: typeof import("./getDedicatedIpPools").getDedicatedIpPoolsOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedIpPools","getDedicatedIpPoolsOutput"], () => require("./getDedicatedIpPools"));
 
 export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
 export const getDomains: typeof import("./getDomains").getDomains = null as any;
@@ -50,6 +70,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:directmail/configSet:ConfigSet":
+                return new ConfigSet(name, <any>undefined, { urn })
+            case "alicloud:directmail/dedicatedIpPool:DedicatedIpPool":
+                return new DedicatedIpPool(name, <any>undefined, { urn })
             case "alicloud:directmail/domain:Domain":
                 return new Domain(name, <any>undefined, { urn })
             case "alicloud:directmail/mailAddress:MailAddress":
@@ -63,6 +87,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "directmail/configSet", _module)
+pulumi.runtime.registerResourceModule("alicloud", "directmail/dedicatedIpPool", _module)
 pulumi.runtime.registerResourceModule("alicloud", "directmail/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "directmail/mailAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "directmail/receivers", _module)

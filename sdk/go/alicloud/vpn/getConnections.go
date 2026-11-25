@@ -77,10 +77,10 @@ type GetConnectionsResult struct {
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (Optional) IDs of the VPN connections.
+	// IDs of the VPN connections.
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
-	// (Optional) names of the VPN connections.
+	// Names of the VPN connections.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// ID of the VPN gateway.
@@ -140,7 +140,7 @@ func (o GetConnectionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (Optional) IDs of the VPN connections.
+// IDs of the VPN connections.
 func (o GetConnectionsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -149,7 +149,7 @@ func (o GetConnectionsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) names of the VPN connections.
+// Names of the VPN connections.
 func (o GetConnectionsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectionsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

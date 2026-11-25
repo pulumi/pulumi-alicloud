@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Commands of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.116.0+.
+ * > **NOTE:** Available since v1.116.0.
  *
  * ## Example Usage
  *
@@ -84,24 +84,39 @@ export interface GetCommandsArgs {
  */
 export interface GetCommandsResult {
     readonly commandProvider?: string;
+    /**
+     * A list of Ecs Commands. Each element contains the following attributes:
+     */
     readonly commands: outputs.ecs.GetCommandsCommand[];
     readonly contentEncoding?: string;
+    /**
+     * The description of command.
+     */
     readonly description?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The name of the command
+     */
     readonly name?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Command names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The command type.
+     */
     readonly type?: string;
 }
 /**
  * This data source provides the Ecs Commands of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.116.0+.
+ * > **NOTE:** Available since v1.116.0.
  *
  * ## Example Usage
  *

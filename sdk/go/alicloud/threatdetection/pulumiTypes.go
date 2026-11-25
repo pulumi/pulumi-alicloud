@@ -745,7 +745,7 @@ func (o HoneypotPresetMetaPtrOutput) TrojanGit() pulumi.StringPtrOutput {
 }
 
 type HoneypotProbeHoneypotBindList struct {
-	// List of listening ports.See the following `Block BindPortList`.
+	// List of listening ports.See the following `bindPortList` below.
 	BindPortLists []HoneypotProbeHoneypotBindListBindPortList `pulumi:"bindPortLists"`
 	// Honeypot ID.
 	HoneypotId *string `pulumi:"honeypotId"`
@@ -763,7 +763,7 @@ type HoneypotProbeHoneypotBindListInput interface {
 }
 
 type HoneypotProbeHoneypotBindListArgs struct {
-	// List of listening ports.See the following `Block BindPortList`.
+	// List of listening ports.See the following `bindPortList` below.
 	BindPortLists HoneypotProbeHoneypotBindListBindPortListArrayInput `pulumi:"bindPortLists"`
 	// Honeypot ID.
 	HoneypotId pulumi.StringPtrInput `pulumi:"honeypotId"`
@@ -820,7 +820,7 @@ func (o HoneypotProbeHoneypotBindListOutput) ToHoneypotProbeHoneypotBindListOutp
 	return o
 }
 
-// List of listening ports.See the following `Block BindPortList`.
+// List of listening ports.See the following `bindPortList` below.
 func (o HoneypotProbeHoneypotBindListOutput) BindPortLists() HoneypotProbeHoneypotBindListBindPortListArrayOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindList) []HoneypotProbeHoneypotBindListBindPortList {
 		return v.BindPortLists
@@ -988,16 +988,22 @@ func (o HoneypotProbeHoneypotBindListBindPortListArrayOutput) Index(i pulumi.Int
 type InstancePostPayModuleSwitchObj struct {
 	// Agentless Detection Module. Valid values:
 	Agentless *int `pulumi:"agentless"`
+	// The AI digital human module. Valid values:
+	AiDigital *int `pulumi:"aiDigital"`
 	// Anti-Ransomware Module. Valid values:
 	AntiRansomware *int `pulumi:"antiRansomware"`
 	// Basic service module. Valid values:
 	BasicService *int `pulumi:"basicService"`
 	// Cloud Security Configuration Check Module. Valid values:
 	Cspm *int `pulumi:"cspm"`
+	// The Agentic cloud security configuration check module. Valid values:
+	CspmInstance *int `pulumi:"cspmInstance"`
 	// Threat Analysis and Response Module. Valid values:
 	Ctdr *int `pulumi:"ctdr"`
 	// Log Management Module. Valid values:
 	CtdrStorage *int `pulumi:"ctdrStorage"`
+	// The image scan module. Valid values:
+	ImageScan *int `pulumi:"imageScan"`
 	// Host and Container Security Module. Valid values:
 	PostHost *int `pulumi:"postHost"`
 	// Application Protection Module. Valid values:
@@ -1026,16 +1032,22 @@ type InstancePostPayModuleSwitchObjInput interface {
 type InstancePostPayModuleSwitchObjArgs struct {
 	// Agentless Detection Module. Valid values:
 	Agentless pulumi.IntPtrInput `pulumi:"agentless"`
+	// The AI digital human module. Valid values:
+	AiDigital pulumi.IntPtrInput `pulumi:"aiDigital"`
 	// Anti-Ransomware Module. Valid values:
 	AntiRansomware pulumi.IntPtrInput `pulumi:"antiRansomware"`
 	// Basic service module. Valid values:
 	BasicService pulumi.IntPtrInput `pulumi:"basicService"`
 	// Cloud Security Configuration Check Module. Valid values:
 	Cspm pulumi.IntPtrInput `pulumi:"cspm"`
+	// The Agentic cloud security configuration check module. Valid values:
+	CspmInstance pulumi.IntPtrInput `pulumi:"cspmInstance"`
 	// Threat Analysis and Response Module. Valid values:
 	Ctdr pulumi.IntPtrInput `pulumi:"ctdr"`
 	// Log Management Module. Valid values:
 	CtdrStorage pulumi.IntPtrInput `pulumi:"ctdrStorage"`
+	// The image scan module. Valid values:
+	ImageScan pulumi.IntPtrInput `pulumi:"imageScan"`
 	// Host and Container Security Module. Valid values:
 	PostHost pulumi.IntPtrInput `pulumi:"postHost"`
 	// Application Protection Module. Valid values:
@@ -1132,6 +1144,11 @@ func (o InstancePostPayModuleSwitchObjOutput) Agentless() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.Agentless }).(pulumi.IntPtrOutput)
 }
 
+// The AI digital human module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) AiDigital() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.AiDigital }).(pulumi.IntPtrOutput)
+}
+
 // Anti-Ransomware Module. Valid values:
 func (o InstancePostPayModuleSwitchObjOutput) AntiRansomware() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.AntiRansomware }).(pulumi.IntPtrOutput)
@@ -1147,6 +1164,11 @@ func (o InstancePostPayModuleSwitchObjOutput) Cspm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.Cspm }).(pulumi.IntPtrOutput)
 }
 
+// The Agentic cloud security configuration check module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) CspmInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.CspmInstance }).(pulumi.IntPtrOutput)
+}
+
 // Threat Analysis and Response Module. Valid values:
 func (o InstancePostPayModuleSwitchObjOutput) Ctdr() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.Ctdr }).(pulumi.IntPtrOutput)
@@ -1155,6 +1177,11 @@ func (o InstancePostPayModuleSwitchObjOutput) Ctdr() pulumi.IntPtrOutput {
 // Log Management Module. Valid values:
 func (o InstancePostPayModuleSwitchObjOutput) CtdrStorage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.CtdrStorage }).(pulumi.IntPtrOutput)
+}
+
+// The image scan module. Valid values:
+func (o InstancePostPayModuleSwitchObjOutput) ImageScan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePostPayModuleSwitchObj) *int { return v.ImageScan }).(pulumi.IntPtrOutput)
 }
 
 // Host and Container Security Module. Valid values:
@@ -1221,6 +1248,16 @@ func (o InstancePostPayModuleSwitchObjPtrOutput) Agentless() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// The AI digital human module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) AiDigital() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AiDigital
+	}).(pulumi.IntPtrOutput)
+}
+
 // Anti-Ransomware Module. Valid values:
 func (o InstancePostPayModuleSwitchObjPtrOutput) AntiRansomware() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
@@ -1251,6 +1288,16 @@ func (o InstancePostPayModuleSwitchObjPtrOutput) Cspm() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The Agentic cloud security configuration check module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) CspmInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CspmInstance
+	}).(pulumi.IntPtrOutput)
+}
+
 // Threat Analysis and Response Module. Valid values:
 func (o InstancePostPayModuleSwitchObjPtrOutput) Ctdr() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
@@ -1268,6 +1315,16 @@ func (o InstancePostPayModuleSwitchObjPtrOutput) CtdrStorage() pulumi.IntPtrOutp
 			return nil
 		}
 		return v.CtdrStorage
+	}).(pulumi.IntPtrOutput)
+}
+
+// The image scan module. Valid values:
+func (o InstancePostPayModuleSwitchObjPtrOutput) ImageScan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePostPayModuleSwitchObj) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ImageScan
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -2330,10 +2387,12 @@ type GetBaselineStrategiesStrategy struct {
 	// The baseline check policy execution end time.
 	EndTime string `pulumi:"endTime"`
 	// The ID of the baseline check policy.
-	Id              string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The risk sub type name of the baseline check policy.
 	RiskSubTypeName string `pulumi:"riskSubTypeName"`
 	// The baseline check policy start time.
-	StartTime  string `pulumi:"startTime"`
+	StartTime string `pulumi:"startTime"`
+	// The target type of the baseline check policy.
 	TargetType string `pulumi:"targetType"`
 }
 
@@ -2366,10 +2425,12 @@ type GetBaselineStrategiesStrategyArgs struct {
 	// The baseline check policy execution end time.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
 	// The ID of the baseline check policy.
-	Id              pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The risk sub type name of the baseline check policy.
 	RiskSubTypeName pulumi.StringInput `pulumi:"riskSubTypeName"`
 	// The baseline check policy start time.
-	StartTime  pulumi.StringInput `pulumi:"startTime"`
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The target type of the baseline check policy.
 	TargetType pulumi.StringInput `pulumi:"targetType"`
 }
 
@@ -2463,6 +2524,7 @@ func (o GetBaselineStrategiesStrategyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaselineStrategiesStrategy) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The risk sub type name of the baseline check policy.
 func (o GetBaselineStrategiesStrategyOutput) RiskSubTypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaselineStrategiesStrategy) string { return v.RiskSubTypeName }).(pulumi.StringOutput)
 }
@@ -2472,6 +2534,7 @@ func (o GetBaselineStrategiesStrategyOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaselineStrategiesStrategy) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// The target type of the baseline check policy.
 func (o GetBaselineStrategiesStrategyOutput) TargetType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaselineStrategiesStrategy) string { return v.TargetType }).(pulumi.StringOutput)
 }
@@ -2510,35 +2573,35 @@ type GetCheckItemConfigsConfig struct {
 	// The estimated quota that will be consumed by this check item.
 	EstimatedCount int `pulumi:"estimatedCount"`
 	// The asset subtype of the cloud service. Valid values depend on `instanceType`:
-	// * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
-	// * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
-	// * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
-	// * `WAF`: `DOMAIN`.
-	// * Other values: `INSTANCE`.
+	// - `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+	// - `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+	// - `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+	// - `WAF`: `DOMAIN`.
+	// - Other values: `INSTANCE`.
 	InstanceSubType string `pulumi:"instanceSubType"`
 	// The asset type of the cloud service. Valid values:
-	// * `ECS`: Elastic Compute Service.
-	// * `SLB`: Server Load Balancer.
-	// * `RDS`: ApsaraDB RDS.
-	// * `MONGODB`: ApsaraDB for MongoDB.
-	// * `KVSTORE`: ApsaraDB for Redis.
-	// * `ACR`: Container Registry.
-	// * `CSK`: Container Service for Kubernetes.
-	// * `VPC`: Virtual Private Cloud.
-	// * `ACTIONTRAIL`: ActionTrail.
-	// * `CDN`: Alibaba Cloud CDN.
-	// * `CAS`: Certificate Management Service.
-	// * `RDC`: Apsara DevOps.
-	// * `RAM`: Resource Access Management.
-	// * `DDOS`: Anti-DDoS.
-	// * `WAF`: Web Application Firewall.
-	// * `OSS`: Object Storage Service.
-	// * `POLARDB`: PolarDB.
-	// * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
-	// * `MSE`: Microservices Engine.
-	// * `NAS`: File Storage NAS.
-	// * `SDDP`: Sensitive Data Discovery and Protection.
-	// * `EIP`: Elastic IP Address.
+	// - `ECS`: Elastic Compute Service.
+	// - `SLB`: Server Load Balancer.
+	// - `RDS`: ApsaraDB RDS.
+	// - `MONGODB`: ApsaraDB for MongoDB.
+	// - `KVSTORE`: ApsaraDB for Redis.
+	// - `ACR`: Container Registry.
+	// - `CSK`: Container Service for Kubernetes.
+	// - `VPC`: Virtual Private Cloud.
+	// - `ACTIONTRAIL`: ActionTrail.
+	// - `CDN`: Alibaba Cloud CDN.
+	// - `CAS`: Certificate Management Service.
+	// - `RDC`: Apsara DevOps.
+	// - `RAM`: Resource Access Management.
+	// - `DDOS`: Anti-DDoS.
+	// - `WAF`: Web Application Firewall.
+	// - `OSS`: Object Storage Service.
+	// - `POLARDB`: PolarDB.
+	// - `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+	// - `MSE`: Microservices Engine.
+	// - `NAS`: File Storage NAS.
+	// - `SDDP`: Sensitive Data Discovery and Protection.
+	// - `EIP`: Elastic IP Address.
 	InstanceType string `pulumi:"instanceType"`
 	// The risk level of the check item. Valid values: `HIGH`, `MEDIUM`, `LOW`.
 	RiskLevel string `pulumi:"riskLevel"`
@@ -2573,35 +2636,35 @@ type GetCheckItemConfigsConfigArgs struct {
 	// The estimated quota that will be consumed by this check item.
 	EstimatedCount pulumi.IntInput `pulumi:"estimatedCount"`
 	// The asset subtype of the cloud service. Valid values depend on `instanceType`:
-	// * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
-	// * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
-	// * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
-	// * `WAF`: `DOMAIN`.
-	// * Other values: `INSTANCE`.
+	// - `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+	// - `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+	// - `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+	// - `WAF`: `DOMAIN`.
+	// - Other values: `INSTANCE`.
 	InstanceSubType pulumi.StringInput `pulumi:"instanceSubType"`
 	// The asset type of the cloud service. Valid values:
-	// * `ECS`: Elastic Compute Service.
-	// * `SLB`: Server Load Balancer.
-	// * `RDS`: ApsaraDB RDS.
-	// * `MONGODB`: ApsaraDB for MongoDB.
-	// * `KVSTORE`: ApsaraDB for Redis.
-	// * `ACR`: Container Registry.
-	// * `CSK`: Container Service for Kubernetes.
-	// * `VPC`: Virtual Private Cloud.
-	// * `ACTIONTRAIL`: ActionTrail.
-	// * `CDN`: Alibaba Cloud CDN.
-	// * `CAS`: Certificate Management Service.
-	// * `RDC`: Apsara DevOps.
-	// * `RAM`: Resource Access Management.
-	// * `DDOS`: Anti-DDoS.
-	// * `WAF`: Web Application Firewall.
-	// * `OSS`: Object Storage Service.
-	// * `POLARDB`: PolarDB.
-	// * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
-	// * `MSE`: Microservices Engine.
-	// * `NAS`: File Storage NAS.
-	// * `SDDP`: Sensitive Data Discovery and Protection.
-	// * `EIP`: Elastic IP Address.
+	// - `ECS`: Elastic Compute Service.
+	// - `SLB`: Server Load Balancer.
+	// - `RDS`: ApsaraDB RDS.
+	// - `MONGODB`: ApsaraDB for MongoDB.
+	// - `KVSTORE`: ApsaraDB for Redis.
+	// - `ACR`: Container Registry.
+	// - `CSK`: Container Service for Kubernetes.
+	// - `VPC`: Virtual Private Cloud.
+	// - `ACTIONTRAIL`: ActionTrail.
+	// - `CDN`: Alibaba Cloud CDN.
+	// - `CAS`: Certificate Management Service.
+	// - `RDC`: Apsara DevOps.
+	// - `RAM`: Resource Access Management.
+	// - `DDOS`: Anti-DDoS.
+	// - `WAF`: Web Application Firewall.
+	// - `OSS`: Object Storage Service.
+	// - `POLARDB`: PolarDB.
+	// - `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+	// - `MSE`: Microservices Engine.
+	// - `NAS`: File Storage NAS.
+	// - `SDDP`: Sensitive Data Discovery and Protection.
+	// - `EIP`: Elastic IP Address.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 	// The risk level of the check item. Valid values: `HIGH`, `MEDIUM`, `LOW`.
 	RiskLevel pulumi.StringInput `pulumi:"riskLevel"`
@@ -2693,38 +2756,38 @@ func (o GetCheckItemConfigsConfigOutput) EstimatedCount() pulumi.IntOutput {
 }
 
 // The asset subtype of the cloud service. Valid values depend on `instanceType`:
-// * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
-// * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
-// * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
-// * `WAF`: `DOMAIN`.
-// * Other values: `INSTANCE`.
+// - `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+// - `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+// - `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+// - `WAF`: `DOMAIN`.
+// - Other values: `INSTANCE`.
 func (o GetCheckItemConfigsConfigOutput) InstanceSubType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.InstanceSubType }).(pulumi.StringOutput)
 }
 
 // The asset type of the cloud service. Valid values:
-// * `ECS`: Elastic Compute Service.
-// * `SLB`: Server Load Balancer.
-// * `RDS`: ApsaraDB RDS.
-// * `MONGODB`: ApsaraDB for MongoDB.
-// * `KVSTORE`: ApsaraDB for Redis.
-// * `ACR`: Container Registry.
-// * `CSK`: Container Service for Kubernetes.
-// * `VPC`: Virtual Private Cloud.
-// * `ACTIONTRAIL`: ActionTrail.
-// * `CDN`: Alibaba Cloud CDN.
-// * `CAS`: Certificate Management Service.
-// * `RDC`: Apsara DevOps.
-// * `RAM`: Resource Access Management.
-// * `DDOS`: Anti-DDoS.
-// * `WAF`: Web Application Firewall.
-// * `OSS`: Object Storage Service.
-// * `POLARDB`: PolarDB.
-// * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
-// * `MSE`: Microservices Engine.
-// * `NAS`: File Storage NAS.
-// * `SDDP`: Sensitive Data Discovery and Protection.
-// * `EIP`: Elastic IP Address.
+// - `ECS`: Elastic Compute Service.
+// - `SLB`: Server Load Balancer.
+// - `RDS`: ApsaraDB RDS.
+// - `MONGODB`: ApsaraDB for MongoDB.
+// - `KVSTORE`: ApsaraDB for Redis.
+// - `ACR`: Container Registry.
+// - `CSK`: Container Service for Kubernetes.
+// - `VPC`: Virtual Private Cloud.
+// - `ACTIONTRAIL`: ActionTrail.
+// - `CDN`: Alibaba Cloud CDN.
+// - `CAS`: Certificate Management Service.
+// - `RDC`: Apsara DevOps.
+// - `RAM`: Resource Access Management.
+// - `DDOS`: Anti-DDoS.
+// - `WAF`: Web Application Firewall.
+// - `OSS`: Object Storage Service.
+// - `POLARDB`: PolarDB.
+// - `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+// - `MSE`: Microservices Engine.
+// - `NAS`: File Storage NAS.
+// - `SDDP`: Sensitive Data Discovery and Protection.
+// - `EIP`: Elastic IP Address.
 func (o GetCheckItemConfigsConfigOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -3773,8 +3836,9 @@ type GetHoneypotNodesNode struct {
 	// Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
 	AllowHoneypotAccessInternet bool `pulumi:"allowHoneypotAccessInternet"`
 	// Number of probes available.
-	AvailableProbeNum int    `pulumi:"availableProbeNum"`
-	CreateTime        string `pulumi:"createTime"`
+	AvailableProbeNum int `pulumi:"availableProbeNum"`
+	// The creation time of the honeypot management node.
+	CreateTime string `pulumi:"createTime"`
 	// The ID of the Honeypot management node.
 	Id string `pulumi:"id"`
 	// Honeypot management node id.
@@ -3783,7 +3847,8 @@ type GetHoneypotNodesNode struct {
 	NodeName string `pulumi:"nodeName"`
 	// Release the collection of network segments.
 	SecurityGroupProbeIpLists []string `pulumi:"securityGroupProbeIpLists"`
-	Status                    int      `pulumi:"status"`
+	// The status of the honeypot management node.
+	Status int `pulumi:"status"`
 }
 
 // GetHoneypotNodesNodeInput is an input type that accepts GetHoneypotNodesNodeArgs and GetHoneypotNodesNodeOutput values.
@@ -3801,8 +3866,9 @@ type GetHoneypotNodesNodeArgs struct {
 	// Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
 	AllowHoneypotAccessInternet pulumi.BoolInput `pulumi:"allowHoneypotAccessInternet"`
 	// Number of probes available.
-	AvailableProbeNum pulumi.IntInput    `pulumi:"availableProbeNum"`
-	CreateTime        pulumi.StringInput `pulumi:"createTime"`
+	AvailableProbeNum pulumi.IntInput `pulumi:"availableProbeNum"`
+	// The creation time of the honeypot management node.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The ID of the Honeypot management node.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Honeypot management node id.
@@ -3811,7 +3877,8 @@ type GetHoneypotNodesNodeArgs struct {
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 	// Release the collection of network segments.
 	SecurityGroupProbeIpLists pulumi.StringArrayInput `pulumi:"securityGroupProbeIpLists"`
-	Status                    pulumi.IntInput         `pulumi:"status"`
+	// The status of the honeypot management node.
+	Status pulumi.IntInput `pulumi:"status"`
 }
 
 func (GetHoneypotNodesNodeArgs) ElementType() reflect.Type {
@@ -3875,6 +3942,7 @@ func (o GetHoneypotNodesNodeOutput) AvailableProbeNum() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHoneypotNodesNode) int { return v.AvailableProbeNum }).(pulumi.IntOutput)
 }
 
+// The creation time of the honeypot management node.
 func (o GetHoneypotNodesNodeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotNodesNode) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -3899,6 +3967,7 @@ func (o GetHoneypotNodesNodeOutput) SecurityGroupProbeIpLists() pulumi.StringArr
 	return o.ApplyT(func(v GetHoneypotNodesNode) []string { return v.SecurityGroupProbeIpLists }).(pulumi.StringArrayOutput)
 }
 
+// The status of the honeypot management node.
 func (o GetHoneypotNodesNodeOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHoneypotNodesNode) int { return v.Status }).(pulumi.IntOutput)
 }
@@ -4186,7 +4255,8 @@ type GetHoneypotProbesProbe struct {
 	// The ID of the management node.
 	ControlNodeId string `pulumi:"controlNodeId"`
 	// Probe name
-	DisplayName       string                                   `pulumi:"displayName"`
+	DisplayName string `pulumi:"displayName"`
+	// A list of honeypot bind. Available when `enableDetails` is on.
 	HoneypotBindLists []GetHoneypotProbesProbeHoneypotBindList `pulumi:"honeypotBindLists"`
 	// The first ID of the resource
 	HoneypotProbeId string `pulumi:"honeypotProbeId"`
@@ -4223,7 +4293,8 @@ type GetHoneypotProbesProbeArgs struct {
 	// The ID of the management node.
 	ControlNodeId pulumi.StringInput `pulumi:"controlNodeId"`
 	// Probe name
-	DisplayName       pulumi.StringInput                               `pulumi:"displayName"`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// A list of honeypot bind. Available when `enableDetails` is on.
 	HoneypotBindLists GetHoneypotProbesProbeHoneypotBindListArrayInput `pulumi:"honeypotBindLists"`
 	// The first ID of the resource
 	HoneypotProbeId pulumi.StringInput `pulumi:"honeypotProbeId"`
@@ -4309,6 +4380,7 @@ func (o GetHoneypotProbesProbeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotProbesProbe) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// A list of honeypot bind. Available when `enableDetails` is on.
 func (o GetHoneypotProbesProbeOutput) HoneypotBindLists() GetHoneypotProbesProbeHoneypotBindListArrayOutput {
 	return o.ApplyT(func(v GetHoneypotProbesProbe) []GetHoneypotProbesProbeHoneypotBindList { return v.HoneypotBindLists }).(GetHoneypotProbesProbeHoneypotBindListArrayOutput)
 }
@@ -4376,7 +4448,8 @@ func (o GetHoneypotProbesProbeArrayOutput) Index(i pulumi.IntInput) GetHoneypotP
 type GetHoneypotProbesProbeHoneypotBindList struct {
 	// List of listening ports. Available when `enableDetails` is on.
 	BindPortLists []GetHoneypotProbesProbeHoneypotBindListBindPortList `pulumi:"bindPortLists"`
-	HoneypotId    string                                               `pulumi:"honeypotId"`
+	// Honeypot ID.
+	HoneypotId string `pulumi:"honeypotId"`
 }
 
 // GetHoneypotProbesProbeHoneypotBindListInput is an input type that accepts GetHoneypotProbesProbeHoneypotBindListArgs and GetHoneypotProbesProbeHoneypotBindListOutput values.
@@ -4393,7 +4466,8 @@ type GetHoneypotProbesProbeHoneypotBindListInput interface {
 type GetHoneypotProbesProbeHoneypotBindListArgs struct {
 	// List of listening ports. Available when `enableDetails` is on.
 	BindPortLists GetHoneypotProbesProbeHoneypotBindListBindPortListArrayInput `pulumi:"bindPortLists"`
-	HoneypotId    pulumi.StringInput                                           `pulumi:"honeypotId"`
+	// Honeypot ID.
+	HoneypotId pulumi.StringInput `pulumi:"honeypotId"`
 }
 
 func (GetHoneypotProbesProbeHoneypotBindListArgs) ElementType() reflect.Type {
@@ -4454,6 +4528,7 @@ func (o GetHoneypotProbesProbeHoneypotBindListOutput) BindPortLists() GetHoneypo
 	}).(GetHoneypotProbesProbeHoneypotBindListBindPortListArrayOutput)
 }
 
+// Honeypot ID.
 func (o GetHoneypotProbesProbeHoneypotBindListOutput) HoneypotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotProbesProbeHoneypotBindList) string { return v.HoneypotId }).(pulumi.StringOutput)
 }

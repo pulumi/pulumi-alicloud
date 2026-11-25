@@ -58,7 +58,7 @@ class DedicatedHostArgs:
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[_builtins.str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         :param pulumi.Input[_builtins.int] min_quantity: Specify the minimum purchase quantity of a dedicated host.
-        :param pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]] network_attributes: dedicated host network parameters. contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]] network_attributes: Dedicated host network parameters. See `network_attributes` below.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
         :param pulumi.Input[_builtins.str] sale_cycle: The unit of the subscription period of the dedicated host.
@@ -277,7 +277,7 @@ class DedicatedHostArgs:
     @pulumi.getter(name="networkAttributes")
     def network_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]]:
         """
-        dedicated host network parameters. contains the following attributes:
+        Dedicated host network parameters. See `network_attributes` below.
         """
         return pulumi.get(self, "network_attributes")
 
@@ -387,7 +387,7 @@ class _DedicatedHostState:
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[_builtins.str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         :param pulumi.Input[_builtins.int] min_quantity: Specify the minimum purchase quantity of a dedicated host.
-        :param pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]] network_attributes: dedicated host network parameters. contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]] network_attributes: Dedicated host network parameters. See `network_attributes` below.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
         :param pulumi.Input[_builtins.str] sale_cycle: The unit of the subscription period of the dedicated host.
@@ -610,7 +610,7 @@ class _DedicatedHostState:
     @pulumi.getter(name="networkAttributes")
     def network_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]]:
         """
-        dedicated host network parameters. contains the following attributes:
+        Dedicated host network parameters. See `network_attributes` below.
         """
         return pulumi.get(self, "network_attributes")
 
@@ -723,6 +723,8 @@ class DedicatedHost(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.91.0.
 
+        > **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PostPaid` by setting `payment_type = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+
         ## Example Usage
 
         Basic Usage
@@ -759,6 +761,7 @@ class DedicatedHost(pulumi.CustomResource):
             expired_time="1",
             sale_cycle="Month")
         ```
+
         ### Deleting ecs.DedicatedHost or removing it from your configuration
 
         The ecs.DedicatedHost resource allows you to manage payment_type = "PrePaid" dedicated host, but Terraform cannot destroy it.
@@ -793,7 +796,7 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[_builtins.str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         :param pulumi.Input[_builtins.int] min_quantity: Specify the minimum purchase quantity of a dedicated host.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict', 'outputs.DedicatedHostNetworkAttribute']]]] network_attributes: dedicated host network parameters. contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict', 'outputs.DedicatedHostNetworkAttribute']]]] network_attributes: Dedicated host network parameters. See `network_attributes` below.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
         :param pulumi.Input[_builtins.str] sale_cycle: The unit of the subscription period of the dedicated host.
@@ -810,6 +813,8 @@ class DedicatedHost(pulumi.CustomResource):
         This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
 
         > **NOTE:** Available since v1.91.0.
+
+        > **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PostPaid` by setting `payment_type = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
 
         ## Example Usage
 
@@ -847,6 +852,7 @@ class DedicatedHost(pulumi.CustomResource):
             expired_time="1",
             sale_cycle="Month")
         ```
+
         ### Deleting ecs.DedicatedHost or removing it from your configuration
 
         The ecs.DedicatedHost resource allows you to manage payment_type = "PrePaid" dedicated host, but Terraform cannot destroy it.
@@ -984,7 +990,7 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[_builtins.str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         :param pulumi.Input[_builtins.int] min_quantity: Specify the minimum purchase quantity of a dedicated host.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict', 'outputs.DedicatedHostNetworkAttribute']]]] network_attributes: dedicated host network parameters. contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict', 'outputs.DedicatedHostNetworkAttribute']]]] network_attributes: Dedicated host network parameters. See `network_attributes` below.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
         :param pulumi.Input[_builtins.str] sale_cycle: The unit of the subscription period of the dedicated host.
@@ -1183,7 +1189,7 @@ class DedicatedHost(pulumi.CustomResource):
     @pulumi.getter(name="networkAttributes")
     def network_attributes(self) -> pulumi.Output[Optional[Sequence['outputs.DedicatedHostNetworkAttribute']]]:
         """
-        dedicated host network parameters. contains the following attributes:
+        Dedicated host network parameters. See `network_attributes` below.
         """
         return pulumi.get(self, "network_attributes")
 

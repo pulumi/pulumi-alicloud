@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.189.0+.
+ * > **NOTE:** Available since v1.189.0.
  *
  * ## Example Usage
  *
@@ -89,17 +89,32 @@ export interface GetDbInstancePlansResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of DB Instance Plan names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Plan scheduling type. Valid values: `Postpone`, `Regular`.
+     */
     readonly planScheduleType?: string;
+    /**
+     * The type of the Plan. Valid values: `PauseResume`, `Resize`.
+     */
     readonly planType?: string;
+    /**
+     * A list of Gpdb Db Instance Plans. Each element contains the following attributes:
+     */
     readonly plans: outputs.gpdb.GetDbInstancePlansPlan[];
+    /**
+     * The Status of the Plan.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.189.0+.
+ * > **NOTE:** Available since v1.189.0.
  *
  * ## Example Usage
  *

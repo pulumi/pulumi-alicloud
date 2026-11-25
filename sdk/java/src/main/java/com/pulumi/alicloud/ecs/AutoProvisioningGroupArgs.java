@@ -97,14 +97,14 @@ public final class AutoProvisioningGroupArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+     * DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
      * 
      */
     @Import(name="launchTemplateConfigs", required=true)
     private Output<List<AutoProvisioningGroupLaunchTemplateConfigArgs>> launchTemplateConfigs;
 
     /**
-     * @return DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+     * @return DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
      * 
      */
     public Output<List<AutoProvisioningGroupLaunchTemplateConfigArgs>> launchTemplateConfigs() {
@@ -470,7 +470,7 @@ public final class AutoProvisioningGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class AutoProvisioningGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class AutoProvisioningGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+         * @param launchTemplateConfigs DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
          * 
          * @return builder
          * 

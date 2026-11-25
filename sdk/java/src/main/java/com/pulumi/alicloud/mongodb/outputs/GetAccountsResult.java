@@ -14,20 +14,40 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountsResult {
+    /**
+     * @return The name of the account.
+     * 
+     */
     private @Nullable String accountName;
+    /**
+     * @return A list of Mongodb Accounts. Each element contains the following attributes:
+     * 
+     */
     private List<GetAccountsAccount> accounts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The id of the instance to which the account belongs.
+     * 
+     */
     private String instanceId;
     private @Nullable String outputFile;
 
     private GetAccountsResult() {}
+    /**
+     * @return The name of the account.
+     * 
+     */
     public Optional<String> accountName() {
         return Optional.ofNullable(this.accountName);
     }
+    /**
+     * @return A list of Mongodb Accounts. Each element contains the following attributes:
+     * 
+     */
     public List<GetAccountsAccount> accounts() {
         return this.accounts;
     }
@@ -38,6 +58,10 @@ public final class GetAccountsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The id of the instance to which the account belongs.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }

@@ -15,7 +15,9 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
         /// 
-        /// This data source provides a list of action trail of the current Alibaba Cloud user.
+        /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.95.0.
         /// 
         /// ## Example Usage
         /// 
@@ -27,14 +29,14 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var trails = AliCloud.ActionTrail.GetTrailsDeprecated.Invoke(new()
+        ///     var @default = AliCloud.ActionTrail.GetTrails.Invoke(new()
         ///     {
         ///         NameRegex = "tf-testacc-actiontrail",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTrailName"] = trails.Apply(getTrailsDeprecatedResult =&gt; getTrailsDeprecatedResult.Actiontrails[0]?.Name),
+        ///         ["trailName"] = @default.Apply(@default =&gt; @default.Apply(getTrailsResult =&gt; getTrailsResult.Trails[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -45,7 +47,9 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
         /// 
-        /// This data source provides a list of action trail of the current Alibaba Cloud user.
+        /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.95.0.
         /// 
         /// ## Example Usage
         /// 
@@ -57,14 +61,14 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var trails = AliCloud.ActionTrail.GetTrailsDeprecated.Invoke(new()
+        ///     var @default = AliCloud.ActionTrail.GetTrails.Invoke(new()
         ///     {
         ///         NameRegex = "tf-testacc-actiontrail",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTrailName"] = trails.Apply(getTrailsDeprecatedResult =&gt; getTrailsDeprecatedResult.Actiontrails[0]?.Name),
+        ///         ["trailName"] = @default.Apply(@default =&gt; @default.Apply(getTrailsResult =&gt; getTrailsResult.Trails[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -75,7 +79,9 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
         /// 
-        /// This data source provides a list of action trail of the current Alibaba Cloud user.
+        /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.95.0.
         /// 
         /// ## Example Usage
         /// 
@@ -87,14 +93,14 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var trails = AliCloud.ActionTrail.GetTrailsDeprecated.Invoke(new()
+        ///     var @default = AliCloud.ActionTrail.GetTrails.Invoke(new()
         ///     {
         ///         NameRegex = "tf-testacc-actiontrail",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstTrailName"] = trails.Apply(getTrailsDeprecatedResult =&gt; getTrailsDeprecatedResult.Actiontrails[0]?.Name),
+        ///         ["trailName"] = @default.Apply(@default =&gt; @default.Apply(getTrailsResult =&gt; getTrailsResult.Trails[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -108,20 +114,30 @@ namespace Pulumi.AliCloud.ActionTrail
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of ActionTrail Trail IDs. It is the same as trail name.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Whether to show organization tracking. Default to `False`.
+        /// </summary>
         [Input("includeOrganizationTrail")]
         public bool? IncludeOrganizationTrail { get; set; }
 
+        /// <summary>
+        /// Whether to show shadow tracking. Default to `False`.
+        /// </summary>
         [Input("includeShadowTrails")]
         public bool? IncludeShadowTrails { get; set; }
 
         /// <summary>
-        /// A regex string to filter results action trail name.
+        /// A regex string to filter results by trail name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -132,6 +148,9 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
@@ -145,20 +164,30 @@ namespace Pulumi.AliCloud.ActionTrail
     {
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of ActionTrail Trail IDs. It is the same as trail name.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Whether to show organization tracking. Default to `False`.
+        /// </summary>
         [Input("includeOrganizationTrail")]
         public Input<bool>? IncludeOrganizationTrail { get; set; }
 
+        /// <summary>
+        /// Whether to show shadow tracking. Default to `False`.
+        /// </summary>
         [Input("includeShadowTrails")]
         public Input<bool>? IncludeShadowTrails { get; set; }
 
         /// <summary>
-        /// A regex string to filter results action trail name.
+        /// A regex string to filter results by trail name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -169,6 +198,9 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -183,13 +215,16 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class GetTrailsDeprecatedResult
     {
         /// <summary>
-        /// A list of actiontrails. Each element contains the following attributes:
+        /// (Deprecated since v1.95.0) Field `Actiontrails` has been deprecated from version 1.95.0. Use `Trails` instead. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTrailsDeprecatedActiontrailResult> Actiontrails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of ActionTrail Trail ids. It is the same as trail name.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly bool? IncludeOrganizationTrail;
         public readonly bool? IncludeShadowTrails;
@@ -199,7 +234,13 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the ActionTrail Trail.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A list of ActionTrail Trails. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTrailsDeprecatedTrailResult> Trails;
 
         [OutputConstructor]

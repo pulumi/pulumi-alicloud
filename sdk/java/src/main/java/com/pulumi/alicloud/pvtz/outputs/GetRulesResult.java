@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesResult {
+    /**
+     * @return The ID of the Endpoint.
+     * 
+     */
     private @Nullable String endpointId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,23 @@ public final class GetRulesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Rule names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of PrivateZone Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetRulesRule> rules;
 
     private GetRulesResult() {}
+    /**
+     * @return The ID of the Endpoint.
+     * 
+     */
     public Optional<String> endpointId() {
         return Optional.ofNullable(this.endpointId);
     }
@@ -43,12 +59,20 @@ public final class GetRulesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Rule names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of PrivateZone Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetRulesRule> rules() {
         return this.rules;
     }

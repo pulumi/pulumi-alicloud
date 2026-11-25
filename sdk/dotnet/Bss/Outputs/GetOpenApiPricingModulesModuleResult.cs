@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Bss.Outputs
         /// </summary>
         public readonly string Code;
         /// <summary>
-        /// A list of Price Module IDs.
+        /// The ID of the pricing module. The value is formulated as `&lt;product_code&gt;:&lt;product_type&gt;:&lt;subscription_type&gt;:&lt;code&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -17,36 +17,54 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetCertificatesArgs Empty = new GetCertificatesArgs();
 
+    /**
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
 
     /**
-     * A list of cert IDs.
+     * A list of Ssl Certificates IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of cert IDs.
+     * @return A list of Ssl Certificates IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+     * 
+     */
     @Import(name="keyword")
     private @Nullable Output<String> keyword;
 
+    /**
+     * @return The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+     * 
+     */
     public Optional<Output<String>> keyword() {
         return Optional.ofNullable(this.keyword);
     }
 
     /**
+     * The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+     * 
      * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
@@ -55,6 +73,8 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> lang;
 
     /**
+     * @return The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+     * 
      * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
@@ -64,14 +84,14 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A regex string to filter results by the certificate name.
+     * A regex string to filter results by Ssl Certificates name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
     /**
-     * @return A regex string to filter results by the certificate name.
+     * @return A regex string to filter results by Ssl Certificates name.
      * 
      */
     public Optional<Output<String>> nameRegex() {
@@ -122,17 +142,29 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetCertificatesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }
 
         /**
-         * @param ids A list of cert IDs.
+         * @param ids A list of Ssl Certificates IDs.
          * 
          * @return builder
          * 
@@ -143,7 +175,7 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of cert IDs.
+         * @param ids A list of Ssl Certificates IDs.
          * 
          * @return builder
          * 
@@ -153,7 +185,7 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of cert IDs.
+         * @param ids A list of Ssl Certificates IDs.
          * 
          * @return builder
          * 
@@ -162,16 +194,30 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param keyword The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyword(@Nullable Output<String> keyword) {
             $.keyword = keyword;
             return this;
         }
 
+        /**
+         * @param keyword The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyword(String keyword) {
             return keyword(Output.of(keyword));
         }
 
         /**
+         * @param lang The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+         * 
          * @return builder
          * 
          * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
@@ -184,6 +230,8 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param lang The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+         * 
          * @return builder
          * 
          * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
@@ -195,7 +243,7 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameRegex A regex string to filter results by the certificate name.
+         * @param nameRegex A regex string to filter results by Ssl Certificates name.
          * 
          * @return builder
          * 
@@ -206,7 +254,7 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameRegex A regex string to filter results by the certificate name.
+         * @param nameRegex A regex string to filter results by Ssl Certificates name.
          * 
          * @return builder
          * 

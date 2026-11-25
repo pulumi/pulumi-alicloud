@@ -51,7 +51,7 @@ public final class GetShardingNetworkPrivateAddressesAddress {
      */
     private String port;
     /**
-     * @return The role of the node.
+     * @return The role of the node. Valid values: `Primary` or `Secondary`.
      * 
      */
     private String role;
@@ -124,7 +124,7 @@ public final class GetShardingNetworkPrivateAddressesAddress {
         return this.port;
     }
     /**
-     * @return The role of the node.
+     * @return The role of the node. Valid values: `Primary` or `Secondary`.
      * 
      */
     public String role() {

@@ -80,11 +80,17 @@ class GetImagesResult:
     @_builtins.property
     @pulumi.getter(name="imageType")
     def image_type(self) -> Optional[_builtins.str]:
+        """
+        The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+        """
         return pulumi.get(self, "image_type")
 
     @_builtins.property
     @pulumi.getter
     def images(self) -> Sequence['outputs.GetImagesImageResult']:
+        """
+        A list of Ecd Images. Each element contains the following attributes:
+        """
         return pulumi.get(self, "images")
 
     @_builtins.property
@@ -95,11 +101,17 @@ class GetImagesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Image names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter(name="osType")
     def os_type(self) -> Optional[_builtins.str]:
+        """
+        The os type of the image.
+        """
         return pulumi.get(self, "os_type")
 
     @_builtins.property
@@ -110,6 +122,9 @@ class GetImagesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -142,7 +157,7 @@ def get_images(desktop_instance_type: Optional[_builtins.str] = None,
     """
     This data source provides the Ecd Images of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 
@@ -231,7 +246,7 @@ def get_images_output(desktop_instance_type: pulumi.Input[Optional[Optional[_bui
     """
     This data source provides the Ecd Images of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 

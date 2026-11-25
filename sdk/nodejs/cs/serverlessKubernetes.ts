@@ -144,12 +144,13 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     declare public readonly clusterCaCert: pulumi.Output<string | undefined>;
     /**
      * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-     * - ack.standard: Standard serverless clusters.
-     * - ack.pro.small: Professional serverless clusters.
+     * - `ack.standard`: Standard serverless clusters.
+     * - `ack.pro.small`: Professional serverless clusters.
      */
     declare public readonly clusterSpec: pulumi.Output<string>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     *
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
     declare public readonly customSan: pulumi.Output<string | undefined>;
@@ -159,8 +160,6 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     declare public readonly deleteOptions: pulumi.Output<outputs.cs.ServerlessKubernetesDeleteOption[] | undefined>;
     /**
      * Whether enable the deletion protection or not.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
@@ -218,7 +217,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     /**
      * The cluster automatic operation policy. See `operationPolicy` below.
      *
-     * *Removed params*
+     * The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
      */
     declare public readonly operationPolicy: pulumi.Output<outputs.cs.ServerlessKubernetesOperationPolicy>;
     /**
@@ -399,12 +398,13 @@ export interface ServerlessKubernetesState {
     clusterCaCert?: pulumi.Input<string | undefined>;
     /**
      * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-     * - ack.standard: Standard serverless clusters.
-     * - ack.pro.small: Professional serverless clusters.
+     * - `ack.standard`: Standard serverless clusters.
+     * - `ack.pro.small`: Professional serverless clusters.
      */
     clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     *
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
     customSan?: pulumi.Input<string | undefined>;
@@ -414,8 +414,6 @@ export interface ServerlessKubernetesState {
     deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesDeleteOption>[] | undefined>;
     /**
      * Whether enable the deletion protection or not.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
@@ -473,7 +471,7 @@ export interface ServerlessKubernetesState {
     /**
      * The cluster automatic operation policy. See `operationPolicy` below.
      *
-     * *Removed params*
+     * The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
      */
     operationPolicy?: pulumi.Input<inputs.cs.ServerlessKubernetesOperationPolicy | undefined>;
     /**
@@ -566,12 +564,13 @@ export interface ServerlessKubernetesArgs {
     clusterCaCert?: pulumi.Input<string | undefined>;
     /**
      * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-     * - ack.standard: Standard serverless clusters.
-     * - ack.pro.small: Professional serverless clusters.
+     * - `ack.standard`: Standard serverless clusters.
+     * - `ack.pro.small`: Professional serverless clusters.
      */
     clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     *
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
     customSan?: pulumi.Input<string | undefined>;
@@ -581,8 +580,6 @@ export interface ServerlessKubernetesArgs {
     deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesDeleteOption>[] | undefined>;
     /**
      * Whether enable the deletion protection or not.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      */
     deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
@@ -640,7 +637,7 @@ export interface ServerlessKubernetesArgs {
     /**
      * The cluster automatic operation policy. See `operationPolicy` below.
      *
-     * *Removed params*
+     * The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
      */
     operationPolicy?: pulumi.Input<inputs.cs.ServerlessKubernetesOperationPolicy | undefined>;
     /**

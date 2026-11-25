@@ -38,7 +38,7 @@ public final class GetRulesRule {
      */
     private String ruleName;
     /**
-     * @return Rule status, either Enable or Disable.
+     * @return Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
      * 
      */
     private String status;
@@ -85,7 +85,7 @@ public final class GetRulesRule {
         return this.ruleName;
     }
     /**
-     * @return Rule status, either Enable or Disable.
+     * @return Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
      * 
      */
     public String status() {

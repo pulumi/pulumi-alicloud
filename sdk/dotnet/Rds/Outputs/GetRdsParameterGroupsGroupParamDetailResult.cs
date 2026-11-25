@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Rds.Outputs
     [OutputType]
     public sealed class GetRdsParameterGroupsGroupParamDetailResult
     {
+        /// <summary>
+        /// The value of a parameter.
+        /// </summary>
         public readonly string ParamName;
+        /// <summary>
+        /// The name of a parameter.
+        /// </summary>
         public readonly string ParamValue;
 
         [OutputConstructor]

@@ -71,6 +71,9 @@ class GetMigrationJobsResult:
     @_builtins.property
     @pulumi.getter
     def jobs(self) -> Sequence['outputs.GetMigrationJobsJobResult']:
+        """
+        A list of Dts Migration Jobs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "jobs")
 
     @_builtins.property
@@ -81,6 +84,9 @@ class GetMigrationJobsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Migration Job names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -112,7 +118,7 @@ def get_migration_jobs(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.157.0+.
+    > **NOTE:** Available since v1.157.0.
 
     ## Example Usage
 
@@ -156,7 +162,7 @@ def get_migration_jobs_output(enable_details: pulumi.Input[Optional[Optional[_bu
     """
     This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.157.0+.
+    > **NOTE:** Available since v1.157.0.
 
     ## Example Usage
 

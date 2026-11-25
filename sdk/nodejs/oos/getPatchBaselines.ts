@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  */
 export function getPatchBaselines(args?: GetPatchBaselinesArgs, opts?: pulumi.InvokeOptions): Promise<GetPatchBaselinesResult> {
     args = args || {};
@@ -58,6 +58,9 @@ export interface GetPatchBaselinesArgs {
  * A collection of values returned by getPatchBaselines.
  */
 export interface GetPatchBaselinesResult {
+    /**
+     * A list of Oos Patch Baselines. Each element contains the following attributes:
+     */
     readonly baselines: outputs.oos.GetPatchBaselinesBaseline[];
     readonly enableDetails?: boolean;
     /**
@@ -66,15 +69,24 @@ export interface GetPatchBaselinesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Patch Baseline names.
+     */
     readonly names: string[];
+    /**
+     * Operating system type.
+     */
     readonly operationSystem?: string;
     readonly outputFile?: string;
+    /**
+     * Patch baseline sharing type.
+     */
     readonly shareType?: string;
 }
 /**
  * This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  */
 export function getPatchBaselinesOutput(args?: GetPatchBaselinesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPatchBaselinesResult> {
     args = args || {};

@@ -20,11 +20,27 @@ public final class GetInstancesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Simple Application Server Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetInstancesInstance> instances;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Instance names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The billing method of the simple application server.
+     * 
+     */
     private @Nullable String paymentType;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetInstancesResult() {}
@@ -38,21 +54,37 @@ public final class GetInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Simple Application Server Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetInstancesInstance> instances() {
         return this.instances;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Instance names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The billing method of the simple application server.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

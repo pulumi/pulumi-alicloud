@@ -17,6 +17,10 @@ public final class GetHoneypotProbesProbeHoneypotBindList {
      * 
      */
     private List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists;
+    /**
+     * @return Honeypot ID.
+     * 
+     */
     private String honeypotId;
 
     private GetHoneypotProbesProbeHoneypotBindList() {}
@@ -27,6 +31,10 @@ public final class GetHoneypotProbesProbeHoneypotBindList {
     public List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists() {
         return this.bindPortLists;
     }
+    /**
+     * @return Honeypot ID.
+     * 
+     */
     public String honeypotId() {
         return this.honeypotId;
     }

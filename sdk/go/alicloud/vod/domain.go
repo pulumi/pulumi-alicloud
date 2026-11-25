@@ -16,7 +16,7 @@ import (
 //
 // For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
 //
-// > **NOTE:** Available since v1.136.0+.
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -78,33 +78,43 @@ import (
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+	// The ID of the certificate.
+	CertId pulumi.StringOutput `pulumi:"certId"`
+	// The name of the certificate.
 	CertName pulumi.StringOutput `pulumi:"certName"`
-	// The URL that is used for health checks.
+	// The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+	CertRegion pulumi.StringOutput `pulumi:"certRegion"`
+	// The type of the certificate. Valid values:
+	CertType pulumi.StringOutput `pulumi:"certType"`
+	// The URL for health checks.
 	CheckUrl pulumi.StringPtrOutput `pulumi:"checkUrl"`
 	// The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
 	Cname pulumi.StringOutput `pulumi:"cname"`
-	// The description of the domain name for CDN.
+	// The description of the ApsaraVideo VOD accelerated domain name.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+	Env pulumi.StringPtrOutput `pulumi:"env"`
+	// The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
 	GmtCreated pulumi.StringOutput `pulumi:"gmtCreated"`
-	// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
 	GmtModified pulumi.StringOutput `pulumi:"gmtModified"`
-	// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+	// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
-	// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+	// The list of origin addresses. See `sources` below.
 	Sources DomainSourceArrayOutput `pulumi:"sources"`
-	// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+	// The content of the private key.
+	SslPri pulumi.StringPtrOutput `pulumi:"sslPri"`
+	// Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
 	SslProtocol pulumi.StringOutput `pulumi:"sslProtocol"`
-	// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+	// The content of the security certificate.
 	SslPub pulumi.StringOutput `pulumi:"sslPub"`
-	// The status of the domain name for CDN. Valid values:
+	// The running status of the accelerated domain name.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
+	// - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+	// - `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrOutput `pulumi:"topLevelDomain"`
@@ -125,6 +135,13 @@ func NewDomain(ctx *pulumi.Context,
 	if args.Sources == nil {
 		return nil, errors.New("invalid value for required argument 'Sources'")
 	}
+	if args.SslPri != nil {
+		args.SslPri = pulumi.ToSecret(args.SslPri).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"sslPri",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Domain
 	err := ctx.RegisterResource("alicloud:vod/domain:Domain", name, args, &resource, opts...)
@@ -148,33 +165,43 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+	// The ID of the certificate.
+	CertId *string `pulumi:"certId"`
+	// The name of the certificate.
 	CertName *string `pulumi:"certName"`
-	// The URL that is used for health checks.
+	// The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+	CertRegion *string `pulumi:"certRegion"`
+	// The type of the certificate. Valid values:
+	CertType *string `pulumi:"certType"`
+	// The URL for health checks.
 	CheckUrl *string `pulumi:"checkUrl"`
 	// The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
 	Cname *string `pulumi:"cname"`
-	// The description of the domain name for CDN.
+	// The description of the ApsaraVideo VOD accelerated domain name.
 	Description *string `pulumi:"description"`
 	// The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
 	DomainName *string `pulumi:"domainName"`
-	// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+	Env *string `pulumi:"env"`
+	// The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
 	GmtCreated *string `pulumi:"gmtCreated"`
-	// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
 	GmtModified *string `pulumi:"gmtModified"`
-	// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+	// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
 	Scope *string `pulumi:"scope"`
-	// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+	// The list of origin addresses. See `sources` below.
 	Sources []DomainSource `pulumi:"sources"`
-	// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+	// The content of the private key.
+	SslPri *string `pulumi:"sslPri"`
+	// Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
 	SslProtocol *string `pulumi:"sslProtocol"`
-	// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+	// The content of the security certificate.
 	SslPub *string `pulumi:"sslPub"`
-	// The status of the domain name for CDN. Valid values:
+	// The running status of the accelerated domain name.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
+	// - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+	// - `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags map[string]string `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
@@ -183,33 +210,43 @@ type domainState struct {
 }
 
 type DomainState struct {
-	// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+	// The ID of the certificate.
+	CertId pulumi.StringPtrInput
+	// The name of the certificate.
 	CertName pulumi.StringPtrInput
-	// The URL that is used for health checks.
+	// The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+	CertRegion pulumi.StringPtrInput
+	// The type of the certificate. Valid values:
+	CertType pulumi.StringPtrInput
+	// The URL for health checks.
 	CheckUrl pulumi.StringPtrInput
 	// The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
 	Cname pulumi.StringPtrInput
-	// The description of the domain name for CDN.
+	// The description of the ApsaraVideo VOD accelerated domain name.
 	Description pulumi.StringPtrInput
 	// The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
 	DomainName pulumi.StringPtrInput
-	// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+	Env pulumi.StringPtrInput
+	// The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
 	GmtCreated pulumi.StringPtrInput
-	// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
 	GmtModified pulumi.StringPtrInput
-	// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+	// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
 	Scope pulumi.StringPtrInput
-	// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+	// The list of origin addresses. See `sources` below.
 	Sources DomainSourceArrayInput
-	// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+	// The content of the private key.
+	SslPri pulumi.StringPtrInput
+	// Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
 	SslProtocol pulumi.StringPtrInput
-	// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+	// The content of the security certificate.
 	SslPub pulumi.StringPtrInput
-	// The status of the domain name for CDN. Valid values:
+	// The running status of the accelerated domain name.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
+	// - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+	// - `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags pulumi.StringMapInput
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrInput
@@ -228,17 +265,33 @@ func DomainExists(ctx *pulumi.Context,
 }
 
 type domainArgs struct {
-	// The URL that is used for health checks.
+	// The ID of the certificate.
+	CertId *string `pulumi:"certId"`
+	// The name of the certificate.
+	CertName *string `pulumi:"certName"`
+	// The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+	CertRegion *string `pulumi:"certRegion"`
+	// The type of the certificate. Valid values:
+	CertType *string `pulumi:"certType"`
+	// The URL for health checks.
 	CheckUrl *string `pulumi:"checkUrl"`
 	// The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
 	DomainName string `pulumi:"domainName"`
-	// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+	// Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+	Env *string `pulumi:"env"`
+	// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
 	Scope *string `pulumi:"scope"`
-	// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+	// The list of origin addresses. See `sources` below.
 	Sources []DomainSource `pulumi:"sources"`
+	// The content of the private key.
+	SslPri *string `pulumi:"sslPri"`
+	// Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+	SslProtocol *string `pulumi:"sslProtocol"`
+	// The content of the security certificate.
+	SslPub *string `pulumi:"sslPub"`
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
+	// - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+	// - `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags map[string]string `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
@@ -246,17 +299,33 @@ type domainArgs struct {
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The URL that is used for health checks.
+	// The ID of the certificate.
+	CertId pulumi.StringPtrInput
+	// The name of the certificate.
+	CertName pulumi.StringPtrInput
+	// The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+	CertRegion pulumi.StringPtrInput
+	// The type of the certificate. Valid values:
+	CertType pulumi.StringPtrInput
+	// The URL for health checks.
 	CheckUrl pulumi.StringPtrInput
 	// The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
 	DomainName pulumi.StringInput
-	// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+	// Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+	Env pulumi.StringPtrInput
+	// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
 	Scope pulumi.StringPtrInput
-	// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+	// The list of origin addresses. See `sources` below.
 	Sources DomainSourceArrayInput
+	// The content of the private key.
+	SslPri pulumi.StringPtrInput
+	// Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+	SslProtocol pulumi.StringPtrInput
+	// The content of the security certificate.
+	SslPub pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-	// * `Value`: It can be up to 128 characters in length. It can be a null string.
+	// - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+	// - `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags pulumi.StringMapInput
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrInput
@@ -349,12 +418,27 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
-// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+// The ID of the certificate.
+func (o DomainOutput) CertId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CertId }).(pulumi.StringOutput)
+}
+
+// The name of the certificate.
 func (o DomainOutput) CertName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CertName }).(pulumi.StringOutput)
 }
 
-// The URL that is used for health checks.
+// The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+func (o DomainOutput) CertRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CertRegion }).(pulumi.StringOutput)
+}
+
+// The type of the certificate. Valid values:
+func (o DomainOutput) CertType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CertType }).(pulumi.StringOutput)
+}
+
+// The URL for health checks.
 func (o DomainOutput) CheckUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.CheckUrl }).(pulumi.StringPtrOutput)
 }
@@ -364,7 +448,7 @@ func (o DomainOutput) Cname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
 }
 
-// The description of the domain name for CDN.
+// The description of the ApsaraVideo VOD accelerated domain name.
 func (o DomainOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -374,44 +458,54 @@ func (o DomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+// Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+func (o DomainOutput) Env() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Env }).(pulumi.StringPtrOutput)
+}
+
+// The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
 func (o DomainOutput) GmtCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.GmtCreated }).(pulumi.StringOutput)
 }
 
-// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+// The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
 func (o DomainOutput) GmtModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.GmtModified }).(pulumi.StringOutput)
 }
 
-// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
 func (o DomainOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
-// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+// The list of origin addresses. See `sources` below.
 func (o DomainOutput) Sources() DomainSourceArrayOutput {
 	return o.ApplyT(func(v *Domain) DomainSourceArrayOutput { return v.Sources }).(DomainSourceArrayOutput)
 }
 
-// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+// The content of the private key.
+func (o DomainOutput) SslPri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SslPri }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
 func (o DomainOutput) SslProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.SslProtocol }).(pulumi.StringOutput)
 }
 
-// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+// The content of the security certificate.
 func (o DomainOutput) SslPub() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.SslPub }).(pulumi.StringOutput)
 }
 
-// The status of the domain name for CDN. Valid values:
+// The running status of the accelerated domain name.
 func (o DomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.
-// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-// * `Value`: It can be up to 128 characters in length. It can be a null string.
+// - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+// - `Value`: It can be up to 128 characters in length. It can be a null string.
 func (o DomainOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LaunchTemplateImageOptions {
+    /**
+     * @return Whether the instance that uses the image supports logons of the ecs-user user.
+     * 
+     */
     private @Nullable Boolean loginAsNonRoot;
 
     private LaunchTemplateImageOptions() {}
+    /**
+     * @return Whether the instance that uses the image supports logons of the ecs-user user.
+     * 
+     */
     public Optional<Boolean> loginAsNonRoot() {
         return Optional.ofNullable(this.loginAsNonRoot);
     }

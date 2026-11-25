@@ -21,7 +21,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Apps of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -56,7 +56,7 @@ public final class MhubFunctions {
      *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.get("id"))
-     *             .packageName("com.test.android")
+     *             .packageName("com.example.android")
      *             .type("2")
      *             .build());
      * 
@@ -81,7 +81,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Apps of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -116,7 +116,7 @@ public final class MhubFunctions {
      *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.get("id"))
-     *             .packageName("com.test.android")
+     *             .packageName("com.example.android")
      *             .type("2")
      *             .build());
      * 
@@ -141,7 +141,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Apps of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -176,7 +176,7 @@ public final class MhubFunctions {
      *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.get("id"))
-     *             .packageName("com.test.android")
+     *             .packageName("com.example.android")
      *             .type("2")
      *             .build());
      * 
@@ -201,7 +201,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Apps of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -236,7 +236,7 @@ public final class MhubFunctions {
      *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.get("id"))
-     *             .packageName("com.test.android")
+     *             .packageName("com.example.android")
      *             .type("2")
      *             .build());
      * 
@@ -261,7 +261,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Apps of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -296,7 +296,7 @@ public final class MhubFunctions {
      *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.get("id"))
-     *             .packageName("com.test.android")
+     *             .packageName("com.example.android")
      *             .type("2")
      *             .build());
      * 
@@ -321,7 +321,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Products of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -378,7 +378,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Products of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -435,7 +435,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Products of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -492,7 +492,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Products of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -549,7 +549,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Products of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -606,7 +606,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Products of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 
@@ -663,7 +663,7 @@ public final class MhubFunctions {
     /**
      * This data source provides the Mhub Products of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * ## Example Usage
      * 

@@ -26,6 +26,10 @@ public final class GetImageCachesCacheEvent {
      * 
      */
     private String lastTimestamp;
+    /**
+     * @return The content of the event.
+     * 
+     */
     private String message;
     /**
      * @return The name of event.
@@ -60,6 +64,10 @@ public final class GetImageCachesCacheEvent {
     public String lastTimestamp() {
         return this.lastTimestamp;
     }
+    /**
+     * @return The content of the event.
+     * 
+     */
     public String message() {
         return this.message;
     }

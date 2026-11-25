@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Slb.Inputs
 
     public sealed class AclEntryListArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The comment of the entry.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// The CIDR blocks.
+        /// </summary>
         [Input("entry")]
         public Input<string>? Entry { get; set; }
 

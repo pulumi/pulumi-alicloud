@@ -53,6 +53,9 @@ class GetApplicationsResult:
     @_builtins.property
     @pulumi.getter
     def applications(self) -> Sequence['outputs.GetApplicationsApplicationResult']:
+        """
+        A list of Oos Applications. Each element contains the following attributes:
+        """
         return pulumi.get(self, "applications")
 
     @_builtins.property
@@ -76,6 +79,9 @@ class GetApplicationsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of oss application names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -86,6 +92,9 @@ class GetApplicationsResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -112,7 +121,7 @@ def get_applications(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Oos Applications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.145.0+.
+    > **NOTE:** Available since v1.145.0.
 
     ## Example Usage
 
@@ -158,7 +167,7 @@ def get_applications_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
     """
     This data source provides the Oos Applications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.145.0+.
+    > **NOTE:** Available since v1.145.0.
 
     ## Example Usage
 

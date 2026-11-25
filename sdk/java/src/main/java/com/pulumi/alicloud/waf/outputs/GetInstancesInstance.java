@@ -41,6 +41,10 @@ public final class GetInstancesInstance {
      * 
      */
     private Integer status;
+    /**
+     * @return The billing method of the WAF instance.
+     * 
+     */
     private String subscriptionType;
     /**
      * @return Indicates whether this is a trial instance.
@@ -91,6 +95,10 @@ public final class GetInstancesInstance {
     public Integer status() {
         return this.status;
     }
+    /**
+     * @return The billing method of the WAF instance.
+     * 
+     */
     public String subscriptionType() {
         return this.subscriptionType;
     }

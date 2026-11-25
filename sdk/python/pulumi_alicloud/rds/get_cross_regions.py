@@ -88,7 +88,7 @@ def get_cross_regions(output_file: Optional[_builtins.str] = None,
     """
     This data source provides an available area for remote disaster recovery for RDS.
 
-    > **NOTE:** Available in v1.193.0+.
+    > **NOTE:** Available since v1.193.0+.
 
     ## Example Usage
 
@@ -100,6 +100,9 @@ def get_cross_regions(output_file: Optional[_builtins.str] = None,
     cross_regions = alicloud.rds.get_cross_regions()
     pulumi.export("firstRdsCrossRegions", regions["ids"][0])
     ```
+
+
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -116,7 +119,7 @@ def get_cross_regions_output(output_file: pulumi.Input[Optional[Optional[_builti
     """
     This data source provides an available area for remote disaster recovery for RDS.
 
-    > **NOTE:** Available in v1.193.0+.
+    > **NOTE:** Available since v1.193.0+.
 
     ## Example Usage
 
@@ -128,6 +131,9 @@ def get_cross_regions_output(output_file: pulumi.Input[Optional[Optional[_builti
     cross_regions = alicloud.rds.get_cross_regions()
     pulumi.export("firstRdsCrossRegions", regions["ids"][0])
     ```
+
+
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file

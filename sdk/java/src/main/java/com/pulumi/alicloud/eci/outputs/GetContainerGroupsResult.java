@@ -17,8 +17,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetContainerGroupsResult {
+    /**
+     * @return The name of ContainerGroup.
+     * 
+     */
     private @Nullable String containerGroupName;
     private @Nullable Boolean enableDetails;
+    /**
+     * @return A list of Eci Container Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetContainerGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -28,22 +36,54 @@ public final class GetContainerGroupsResult {
     private List<String> ids;
     private @Nullable Integer limit;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Container Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The status of container.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The vswitch id.
+     * 
+     */
     private @Nullable String vswitchId;
     private @Nullable Boolean withEvent;
+    /**
+     * @return The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetContainerGroupsResult() {}
+    /**
+     * @return The name of ContainerGroup.
+     * 
+     */
     public Optional<String> containerGroupName() {
         return Optional.ofNullable(this.containerGroupName);
     }
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return A list of Eci Container Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetContainerGroupsGroup> groups() {
         return this.groups;
     }
@@ -63,27 +103,51 @@ public final class GetContainerGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Container Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The status of container.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The vswitch id.
+     * 
+     */
     public Optional<String> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }
     public Optional<Boolean> withEvent() {
         return Optional.ofNullable(this.withEvent);
     }
+    /**
+     * @return The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

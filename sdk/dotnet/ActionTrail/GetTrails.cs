@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.95.0+
+        /// &gt; **NOTE:** Available since v1.95.0.
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.95.0+
+        /// &gt; **NOTE:** Available since v1.95.0.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.95.0+
+        /// &gt; **NOTE:** Available since v1.95.0.
         /// 
         /// ## Example Usage
         /// 
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class GetTrailsResult
     {
         /// <summary>
-        /// Field `Actiontrails` has been deprecated from version 1.95.0. Use `Trails` instead."
+        /// (Deprecated since v1.95.0) Field `Actiontrails` has been deprecated from version 1.95.0. Use `Trails` instead. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTrailsActiontrailResult> Actiontrails;
         /// <summary>

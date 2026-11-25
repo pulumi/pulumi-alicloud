@@ -40,6 +40,9 @@ namespace Pulumi.AliCloud.Cas
 
     public sealed class GetCertificatesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -47,7 +50,7 @@ namespace Pulumi.AliCloud.Cas
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of cert IDs.
+        /// A list of Ssl Certificates IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -55,14 +58,20 @@ namespace Pulumi.AliCloud.Cas
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+        /// </summary>
         [Input("keyword")]
         public string? Keyword { get; set; }
 
+        /// <summary>
+        /// The language of the content within the request and response. **Note:** Field `Lang` has been deprecated from provider version 1.232.0.
+        /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
 
         /// <summary>
-        /// A regex string to filter results by the certificate name.
+        /// A regex string to filter results by Ssl Certificates name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -81,6 +90,9 @@ namespace Pulumi.AliCloud.Cas
 
     public sealed class GetCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to query the detailed list of resource attributes. Default value: `False`.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -88,7 +100,7 @@ namespace Pulumi.AliCloud.Cas
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of cert IDs.
+        /// A list of Ssl Certificates IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -96,14 +108,20 @@ namespace Pulumi.AliCloud.Cas
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+        /// </summary>
         [Input("keyword")]
         public Input<string>? Keyword { get; set; }
 
+        /// <summary>
+        /// The language of the content within the request and response. **Note:** Field `Lang` has been deprecated from provider version 1.232.0.
+        /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// A regex string to filter results by the certificate name.
+        /// A regex string to filter results by Ssl Certificates name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -125,7 +143,7 @@ namespace Pulumi.AliCloud.Cas
     public sealed class GetCertificatesResult
     {
         /// <summary>
-        /// A list of apis. Each element contains the following attributes:
+        /// A list of Ssl Certificates Service Certificates. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCertificatesCertificateResult> Certificates;
         public readonly bool? EnableDetails;
@@ -133,15 +151,12 @@ namespace Pulumi.AliCloud.Cas
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of cert IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
         public readonly string? Lang;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of cert names.
+        /// A list of Ssl Certificates names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

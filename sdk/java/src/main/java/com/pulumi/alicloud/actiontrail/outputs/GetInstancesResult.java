@@ -27,7 +27,7 @@ public final class GetInstancesResult {
      */
     private List<String> ids;
     /**
-     * @return A list of instances. Each element contains the following attributes:
+     * @return A list of instances. Each element contains the following attributes. See `instances` for the optional argument block.
      * 
      */
     private List<GetInstancesInstance> instances;
@@ -58,7 +58,7 @@ public final class GetInstancesResult {
         return this.ids;
     }
     /**
-     * @return A list of instances. Each element contains the following attributes:
+     * @return A list of instances. Each element contains the following attributes. See `instances` for the optional argument block.
      * 
      */
     public List<GetInstancesInstance> instances() {

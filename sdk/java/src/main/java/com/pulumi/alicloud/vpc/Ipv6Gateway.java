@@ -53,24 +53,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-testacc-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
- *             .description("tf-testacc")
+ *             .description("terraform-example")
  *             .enableIpv6(true)
  *             .build());
  * 
  *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()
- *             .displayName("tf-testacc-ipv6gateway503")
+ *             .displayName("terraform-example-ipv6gateway503")
  *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
  *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()
- *             .displayName("tf-testacc-ipv6gateway311")
+ *             .displayName("terraform-example-ipv6gateway311")
  *             .resourceGroupName(String.format("%s2", name))
  *             .build());
  * 
  *         var default_ = new Ipv6Gateway("default", Ipv6GatewayArgs.builder()
- *             .description("test")
+ *             .description("terraform-example")
  *             .ipv6GatewayName(name)
  *             .vpcId(defaultVpc.id())
  *             .resourceGroupId(defaultRg.id())
@@ -123,14 +123,14 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+     * The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+     * @return The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
@@ -179,14 +179,14 @@ public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
         return this.ipv6GatewayId;
     }
     /**
-     * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="ipv6GatewayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv6GatewayName;
 
     /**
-     * @return The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * @return The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> ipv6GatewayName() {

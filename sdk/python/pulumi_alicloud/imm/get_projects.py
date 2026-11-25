@@ -62,6 +62,9 @@ class GetProjectsResult:
     @_builtins.property
     @pulumi.getter
     def projects(self) -> Sequence['outputs.GetProjectsProjectResult']:
+        """
+        A list of Imm Projects. Each element contains the following attributes:
+        """
         return pulumi.get(self, "projects")
 
 
@@ -83,7 +86,7 @@ def get_projects(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -118,7 +121,7 @@ def get_projects_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
     """
     This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 

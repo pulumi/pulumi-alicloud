@@ -65,11 +65,17 @@ class GetNetworkPackagesResult:
     @_builtins.property
     @pulumi.getter
     def packages(self) -> Sequence['outputs.GetNetworkPackagesPackageResult']:
+        """
+        A list of Ecd Network Packages. Each element contains the following attributes:
+        """
         return pulumi.get(self, "packages")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -93,7 +99,7 @@ def get_network_packages(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.142.0+.
+    > **NOTE:** Available since v1.142.0.
 
     ## Example Usage
 
@@ -139,7 +145,7 @@ def get_network_packages_output(ids: pulumi.Input[Optional[Optional[Sequence[_bu
     """
     This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.142.0+.
+    > **NOTE:** Available since v1.142.0.
 
     ## Example Usage
 

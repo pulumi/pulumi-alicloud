@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the service.See the following `Block HoneypotBindList`.
+        /// Configure the service.See the following `HoneypotBindList` below.
         /// </summary>
         [Output("honeypotBindLists")]
         public Output<ImmutableArray<Outputs.HoneypotProbeHoneypotBindList>> HoneypotBindLists { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<Inputs.HoneypotProbeHoneypotBindListArgs>? _honeypotBindLists;
 
         /// <summary>
-        /// Configure the service.See the following `Block HoneypotBindList`.
+        /// Configure the service.See the following `HoneypotBindList` below.
         /// </summary>
         public InputList<Inputs.HoneypotProbeHoneypotBindListArgs> HoneypotBindLists
         {
@@ -301,7 +301,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<Inputs.HoneypotProbeHoneypotBindListGetArgs>? _honeypotBindLists;
 
         /// <summary>
-        /// Configure the service.See the following `Block HoneypotBindList`.
+        /// Configure the service.See the following `HoneypotBindList` below.
         /// </summary>
         public InputList<Inputs.HoneypotProbeHoneypotBindListGetArgs> HoneypotBindLists
         {

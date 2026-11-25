@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
  *
  * ## Example Usage
  *
@@ -118,14 +118,20 @@ export interface GetIngressesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Sae Ingresses. Each element contains the following attributes:
+     */
     readonly ingresses: outputs.sae.GetIngressesIngress[];
+    /**
+     * The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+     */
     readonly namespaceId: string;
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
  *
  * ## Example Usage
  *

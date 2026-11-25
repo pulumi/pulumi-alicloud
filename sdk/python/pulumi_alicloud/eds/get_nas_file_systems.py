@@ -74,11 +74,17 @@ class GetNasFileSystemsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Nas File System names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter(name="officeSiteId")
     def office_site_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of office site.
+        """
         return pulumi.get(self, "office_site_id")
 
     @_builtins.property
@@ -89,11 +95,17 @@ class GetNasFileSystemsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def systems(self) -> Sequence['outputs.GetNasFileSystemsSystemResult']:
+        """
+        A list of Ecd Nas File Systems. Each element contains the following attributes:
+        """
         return pulumi.get(self, "systems")
 
 
@@ -122,7 +134,7 @@ def get_nas_file_systems(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.141.0+.
+    > **NOTE:** Available since v1.141.0.
 
     ## Example Usage
 
@@ -181,7 +193,7 @@ def get_nas_file_systems_output(ids: pulumi.Input[Optional[Optional[Sequence[_bu
     """
     This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.141.0+.
+    > **NOTE:** Available since v1.141.0.
 
     ## Example Usage
 

@@ -11,6 +11,85 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available since v1.13.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/dds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := mongodb.GetZones(ctx, &mongodb.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
+//				VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := mongodb.NewInstance(ctx, "default", &mongodb.InstanceArgs{
+//				EngineVersion:     pulumi.String("4.4"),
+//				DbInstanceClass:   pulumi.String("mdb.shard.2x.xlarge.d"),
+//				DbInstanceStorage: pulumi.Int(20),
+//				VswitchId:         pulumi.String(defaultGetSwitches.Ids[0]),
+//				Name:              pulumi.String(name),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Instance"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := dds.GetMongoInstancesOutput(ctx, dds.GetMongoInstancesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultInstance.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("mongodbInstancesId0", ids.ApplyT(func(ids dds.GetMongoInstancesResult) (*string, error) {
+//				return ids.Instances[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetMongoInstances(ctx *pulumi.Context, args *GetMongoInstancesArgs, opts ...pulumi.InvokeOption) (*GetMongoInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMongoInstancesResult
@@ -23,32 +102,48 @@ func GetMongoInstances(ctx *pulumi.Context, args *GetMongoInstancesArgs, opts ..
 
 // A collection of arguments for invoking getMongoInstances.
 type GetMongoInstancesArgs struct {
-	AvailabilityZone *string           `pulumi:"availabilityZone"`
-	EnableDetails    *bool             `pulumi:"enableDetails"`
-	Ids              []string          `pulumi:"ids"`
-	InstanceClass    *string           `pulumi:"instanceClass"`
-	InstanceType     *string           `pulumi:"instanceType"`
-	NameRegex        *string           `pulumi:"nameRegex"`
-	OutputFile       *string           `pulumi:"outputFile"`
-	Status           *string           `pulumi:"status"`
-	Tags             map[string]string `pulumi:"tags"`
+	// The zone ID.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of Instance IDs.
+	Ids []string `pulumi:"ids"`
+	// The instance type.
+	InstanceClass *string `pulumi:"instanceClass"`
+	// The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+	InstanceType *string `pulumi:"instanceType"`
+	// A regex string to filter results by Instance name.
+	NameRegex *string `pulumi:"nameRegex"`
+	// The name of file that can save the collection of instances after running `pulumi preview`.
+	OutputFile *string `pulumi:"outputFile"`
+	// The instance status.
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getMongoInstances.
 type GetMongoInstancesResult struct {
+	// The zone ID of the instance.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	EnableDetails    *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                      `pulumi:"id"`
-	Ids           []string                    `pulumi:"ids"`
-	InstanceClass *string                     `pulumi:"instanceClass"`
-	InstanceType  *string                     `pulumi:"instanceType"`
-	Instances     []GetMongoInstancesInstance `pulumi:"instances"`
-	NameRegex     *string                     `pulumi:"nameRegex"`
-	Names         []string                    `pulumi:"names"`
-	OutputFile    *string                     `pulumi:"outputFile"`
-	Status        *string                     `pulumi:"status"`
-	Tags          map[string]string           `pulumi:"tags"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The instance type.
+	InstanceClass *string `pulumi:"instanceClass"`
+	// The instance architecture.
+	InstanceType *string `pulumi:"instanceType"`
+	// A list of Instances. Each element contains the following attributes:
+	Instances []GetMongoInstancesInstance `pulumi:"instances"`
+	NameRegex *string                     `pulumi:"nameRegex"`
+	// (Available since v1.42.0) A list of Instance names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The instance status.
+	Status *string `pulumi:"status"`
+	// (Available since v1.66.0) The details of the resource tags.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetMongoInstancesOutput(ctx *pulumi.Context, args GetMongoInstancesOutputArgs, opts ...pulumi.InvokeOption) GetMongoInstancesResultOutput {
@@ -58,15 +153,24 @@ func GetMongoInstancesOutput(ctx *pulumi.Context, args GetMongoInstancesOutputAr
 
 // A collection of arguments for invoking getMongoInstances.
 type GetMongoInstancesOutputArgs struct {
-	AvailabilityZone pulumi.StringPtrInput   `pulumi:"availabilityZone"`
-	EnableDetails    pulumi.BoolPtrInput     `pulumi:"enableDetails"`
-	Ids              pulumi.StringArrayInput `pulumi:"ids"`
-	InstanceClass    pulumi.StringPtrInput   `pulumi:"instanceClass"`
-	InstanceType     pulumi.StringPtrInput   `pulumi:"instanceType"`
-	NameRegex        pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
-	Status           pulumi.StringPtrInput   `pulumi:"status"`
-	Tags             pulumi.StringMapInput   `pulumi:"tags"`
+	// The zone ID.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Instance IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The instance type.
+	InstanceClass pulumi.StringPtrInput `pulumi:"instanceClass"`
+	// The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// A regex string to filter results by Instance name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The name of file that can save the collection of instances after running `pulumi preview`.
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The instance status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetMongoInstancesOutputArgs) ElementType() reflect.Type {
@@ -88,6 +192,7 @@ func (o GetMongoInstancesResultOutput) ToGetMongoInstancesResultOutputWithContex
 	return o
 }
 
+// The zone ID of the instance.
 func (o GetMongoInstancesResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
@@ -105,14 +210,17 @@ func (o GetMongoInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The instance type.
 func (o GetMongoInstancesResultOutput) InstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.InstanceClass }).(pulumi.StringPtrOutput)
 }
 
+// The instance architecture.
 func (o GetMongoInstancesResultOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Instances. Each element contains the following attributes:
 func (o GetMongoInstancesResultOutput) Instances() GetMongoInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) []GetMongoInstancesInstance { return v.Instances }).(GetMongoInstancesInstanceArrayOutput)
 }
@@ -121,6 +229,7 @@ func (o GetMongoInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.42.0) A list of Instance names.
 func (o GetMongoInstancesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -129,10 +238,12 @@ func (o GetMongoInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The instance status.
 func (o GetMongoInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.66.0) The details of the resource tags.
 func (o GetMongoInstancesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetMongoInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

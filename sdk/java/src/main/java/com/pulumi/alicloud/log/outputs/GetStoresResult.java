@@ -21,9 +21,17 @@ public final class GetStoresResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of store names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private String project;
+    /**
+     * @return A list of Log Stores. Each element contains the following attributes:
+     * 
+     */
     private List<GetStoresStore> stores;
 
     private GetStoresResult() {}
@@ -40,6 +48,10 @@ public final class GetStoresResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of store names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -49,6 +61,10 @@ public final class GetStoresResult {
     public String project() {
         return this.project;
     }
+    /**
+     * @return A list of Log Stores. Each element contains the following attributes:
+     * 
+     */
     public List<GetStoresStore> stores() {
         return this.stores;
     }

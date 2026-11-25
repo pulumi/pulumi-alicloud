@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Eci Container Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -80,11 +80,17 @@ export interface GetContainerGroupsArgs {
      * The status list. For more information, see the description of ContainerGroup arrays.
      */
     status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: {[key: string]: string};
     /**
      * The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      */
     vswitchId?: string;
+    /**
+     * Whether to return container group events.
+     */
     withEvent?: boolean;
     /**
      * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
@@ -96,8 +102,14 @@ export interface GetContainerGroupsArgs {
  * A collection of values returned by getContainerGroups.
  */
 export interface GetContainerGroupsResult {
+    /**
+     * The name of ContainerGroup.
+     */
     readonly containerGroupName?: string;
     readonly enableDetails?: boolean;
+    /**
+     * A list of Eci Container Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.eci.GetContainerGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -106,19 +118,37 @@ export interface GetContainerGroupsResult {
     readonly ids: string[];
     readonly limit?: number;
     readonly nameRegex?: string;
+    /**
+     * A list of Container Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The status of container.
+     */
     readonly status?: string;
+    /**
+     * The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The vswitch id.
+     */
     readonly vswitchId?: string;
     readonly withEvent?: boolean;
+    /**
+     * The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+     */
     readonly zoneId?: string;
 }
 /**
  * This data source provides the Eci Container Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.111.0+.
+ * > **NOTE:** Available since v1.111.0.
  *
  * ## Example Usage
  *
@@ -189,11 +219,17 @@ export interface GetContainerGroupsOutputArgs {
      * The status list. For more information, see the description of ContainerGroup arrays.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      */
     vswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to return container group events.
+     */
     withEvent?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.

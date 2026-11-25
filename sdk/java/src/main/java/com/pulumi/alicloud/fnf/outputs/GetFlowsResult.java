@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlowsResult {
+    /**
+     * @return A list of Fnf Flows. Each element contains the following attributes:
+     * 
+     */
     private List<GetFlowsFlow> flows;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,10 +28,18 @@ public final class GetFlowsResult {
     private List<String> ids;
     private @Nullable Integer limit;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Flow names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetFlowsResult() {}
+    /**
+     * @return A list of Fnf Flows. Each element contains the following attributes:
+     * 
+     */
     public List<GetFlowsFlow> flows() {
         return this.flows;
     }
@@ -47,6 +59,10 @@ public final class GetFlowsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Flow names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

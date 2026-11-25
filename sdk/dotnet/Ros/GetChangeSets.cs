@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Change Sets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.105.0+.
+        /// &gt; **NOTE:** Available since v1.105.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Change Sets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.105.0+.
+        /// &gt; **NOTE:** Available since v1.105.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Change Sets of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.105.0+.
+        /// &gt; **NOTE:** Available since v1.105.0.
         /// 
         /// ## Example Usage
         /// 
@@ -240,6 +240,9 @@ namespace Pulumi.AliCloud.Ros
     [OutputType]
     public sealed class GetChangeSetsResult
     {
+        /// <summary>
+        /// The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+        /// </summary>
         public readonly string? ChangeSetName;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -248,10 +251,22 @@ namespace Pulumi.AliCloud.Ros
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Change Set names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ros Change Sets. Each element contains the following attributes. See `Sets` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetChangeSetsSetResult> Sets;
+        /// <summary>
+        /// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
+        /// </summary>
         public readonly string StackId;
+        /// <summary>
+        /// The status of the change set.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

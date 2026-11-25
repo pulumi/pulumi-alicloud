@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetDisksOperationLockResult
     {
+        /// <summary>
+        /// The reason of the operation lock.
+        /// </summary>
         public readonly string? LockReason;
 
         [OutputConstructor]

@@ -2921,7 +2921,7 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 type GetLogConfigsConfig struct {
 	// The ID of the Log Config.
 	Id string `pulumi:"id"`
-	// The type the of log.
+	// The type the of log. Valid values: `PROVIDER`.
 	LogType string `pulumi:"logType"`
 	// The region ID of the Log Config.
 	RegionId string `pulumi:"regionId"`
@@ -2945,7 +2945,7 @@ type GetLogConfigsConfigInput interface {
 type GetLogConfigsConfigArgs struct {
 	// The ID of the Log Config.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The type the of log.
+	// The type the of log. Valid values: `PROVIDER`.
 	LogType pulumi.StringInput `pulumi:"logType"`
 	// The region ID of the Log Config.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
@@ -3011,7 +3011,7 @@ func (o GetLogConfigsConfigOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogConfigsConfig) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The type the of log.
+// The type the of log. Valid values: `PROVIDER`.
 func (o GetLogConfigsConfigOutput) LogType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogConfigsConfig) string { return v.LogType }).(pulumi.StringOutput)
 }
@@ -3233,11 +3233,11 @@ type GetPluginsPlugin struct {
 	PluginData string `pulumi:"pluginData"`
 	// The first ID of the resource.
 	PluginId string `pulumi:"pluginId"`
-	// The name of the plug-in that you want to create.
+	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
 	PluginName string `pulumi:"pluginName"`
-	// The type of the plug-in.
+	// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
 	PluginType string `pulumi:"pluginType"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -3265,11 +3265,11 @@ type GetPluginsPluginArgs struct {
 	PluginData pulumi.StringInput `pulumi:"pluginData"`
 	// The first ID of the resource.
 	PluginId pulumi.StringInput `pulumi:"pluginId"`
-	// The name of the plug-in that you want to create.
+	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
 	PluginName pulumi.StringInput `pulumi:"pluginName"`
-	// The type of the plug-in.
+	// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
 	PluginType pulumi.StringInput `pulumi:"pluginType"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -3354,17 +3354,17 @@ func (o GetPluginsPluginOutput) PluginId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPluginsPlugin) string { return v.PluginId }).(pulumi.StringOutput)
 }
 
-// The name of the plug-in that you want to create.
+// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
 func (o GetPluginsPluginOutput) PluginName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPluginsPlugin) string { return v.PluginName }).(pulumi.StringOutput)
 }
 
-// The type of the plug-in.
+// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
 func (o GetPluginsPluginOutput) PluginType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPluginsPlugin) string { return v.PluginType }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// A mapping of tags to assign to the resource.
 func (o GetPluginsPluginOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetPluginsPlugin) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

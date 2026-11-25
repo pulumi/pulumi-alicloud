@@ -777,6 +777,7 @@ class TemplateScratchSourceResourceGroup(dict):
                  resource_type_filters: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str resource_group_id: The ID of the Source Resource Group.
+        :param Sequence[_builtins.str] resource_type_filters: Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
         """
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_type_filters is not None:
@@ -793,6 +794,9 @@ class TemplateScratchSourceResourceGroup(dict):
     @_builtins.property
     @pulumi.getter(name="resourceTypeFilters")
     def resource_type_filters(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+        """
         return pulumi.get(self, "resource_type_filters")
 
 
@@ -822,6 +826,7 @@ class TemplateScratchSourceTag(dict):
                  resource_type_filters: Optional[Sequence[_builtins.str]] = None):
         """
         :param Mapping[str, _builtins.str] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        :param Sequence[_builtins.str] resource_type_filters: Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
         """
         pulumi.set(__self__, "resource_tags", resource_tags)
         if resource_type_filters is not None:
@@ -838,6 +843,9 @@ class TemplateScratchSourceTag(dict):
     @_builtins.property
     @pulumi.getter(name="resourceTypeFilters")
     def resource_type_filters(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
+        """
         return pulumi.get(self, "resource_type_filters")
 
 
@@ -865,10 +873,10 @@ class GetChangeSetsSetResult(dict):
         :param _builtins.bool disable_rollback: Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
         :param _builtins.str execution_status: The execution status of change set N. Maximum value of N: 5. Valid values:  UNAVAILABLE AVAILABLE EXECUTE_IN_PROGRESS EXECUTE_COMPLETE EXECUTE_FAILED OBSOLETE.
         :param _builtins.str id: The ID of the Change Set.
-        :param Sequence['GetChangeSetsSetParameterArgs'] parameters: Parameters.
+        :param Sequence['GetChangeSetsSetParameterArgs'] parameters: Parameters. See `parameters` below.
         :param _builtins.str stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
         :param _builtins.str stack_name: The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
-        :param _builtins.str status: The status of the change set.
+        :param _builtins.str status: The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
         :param _builtins.str template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
         :param _builtins.int timeout_in_minutes: Timeout In Minutes.
         """
@@ -946,7 +954,7 @@ class GetChangeSetsSetResult(dict):
     @pulumi.getter
     def parameters(self) -> Sequence['outputs.GetChangeSetsSetParameterResult']:
         """
-        Parameters.
+        Parameters. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -970,7 +978,7 @@ class GetChangeSetsSetResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the change set.
+        The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
         """
         return pulumi.get(self, "status")
 
@@ -1077,10 +1085,10 @@ class GetStackGroupsGroupResult(dict):
         :param _builtins.str description: The description of the stack group.
         :param _builtins.str execution_role_name: The name of the RAM execution role assumed by the administrator role.
         :param _builtins.str id: The ID of the Stack Group.
-        :param Sequence['GetStackGroupsGroupParameterArgs'] parameters: The parameters.
+        :param Sequence['GetStackGroupsGroupParameterArgs'] parameters: The parameters. See `parameters` below.
         :param _builtins.str stack_group_id: The id of Stack Group.
         :param _builtins.str stack_group_name: The name of the stack group..
-        :param _builtins.str status: The status of Stack Group.
+        :param _builtins.str status: The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
         :param _builtins.str template_body: The structure that contains the template body.
         """
         pulumi.set(__self__, "administration_role_name", administration_role_name)
@@ -1129,7 +1137,7 @@ class GetStackGroupsGroupResult(dict):
     @pulumi.getter
     def parameters(self) -> Sequence['outputs.GetStackGroupsGroupParameterResult']:
         """
-        The parameters.
+        The parameters. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -1153,7 +1161,7 @@ class GetStackGroupsGroupResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of Stack Group.
+        The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
         """
         return pulumi.get(self, "status")
 
@@ -1368,12 +1376,12 @@ class GetStacksStackResult(dict):
         :param _builtins.str drift_detection_time: Drift DetectionTime.
         :param _builtins.str id: The ID of the Stack.
         :param Sequence['GetStacksStackParameterArgs'] parameters: The parameters.
-        :param _builtins.str parent_stack_id: Parent Stack Id.
+        :param _builtins.str parent_stack_id: ParentStackId.
         :param _builtins.str ram_role_name: The RamRoleName.
         :param _builtins.str root_stack_id: Root Stack Id.
         :param _builtins.str stack_drift_status: Stack DriftStatus.
         :param _builtins.str stack_id: Stack Id.
-        :param _builtins.str stack_name: Stack Name.
+        :param _builtins.str stack_name: StackName.
         :param _builtins.str stack_policy_body: The structure that contains the stack policy body.
         :param _builtins.str status: The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
         :param _builtins.str status_reason: Status Reason.
@@ -1452,7 +1460,7 @@ class GetStacksStackResult(dict):
     @pulumi.getter(name="parentStackId")
     def parent_stack_id(self) -> _builtins.str:
         """
-        Parent Stack Id.
+        ParentStackId.
         """
         return pulumi.get(self, "parent_stack_id")
 
@@ -1492,7 +1500,7 @@ class GetStacksStackResult(dict):
     @pulumi.getter(name="stackName")
     def stack_name(self) -> _builtins.str:
         """
-        Stack Name.
+        StackName.
         """
         return pulumi.get(self, "stack_name")
 
@@ -1594,14 +1602,14 @@ class GetTemplateScratchesScratchResult(dict):
         :param _builtins.str description: The description of the Template Scratch.
         :param _builtins.str id: The ID of the Template Scratch.
         :param _builtins.str logical_id_strategy: The Logical ID generation strategy of the Template Scratch.
-        :param Sequence['GetTemplateScratchesScratchPreferenceParameterArgs'] preference_parameters: Priority parameter.
-        :param Sequence['GetTemplateScratchesScratchSourceResourceGroupArgs'] source_resource_groups: Source resource grouping.
-        :param Sequence['GetTemplateScratchesScratchSourceResourceArgs'] source_resources: Source resource.
-        :param Sequence['GetTemplateScratchesScratchSourceTagArgs'] source_tags: The Source label list.
-        :param Sequence['GetTemplateScratchesScratchStackArgs'] stacks: A list of resource stacks associated with the resource scene.
-        :param _builtins.str status: The status of the resource.
+        :param Sequence['GetTemplateScratchesScratchPreferenceParameterArgs'] preference_parameters: Priority parameter. See `preference_parameters` below.
+        :param Sequence['GetTemplateScratchesScratchSourceResourceGroupArgs'] source_resource_groups: Source resource grouping. See `source_resource_group` below.
+        :param Sequence['GetTemplateScratchesScratchSourceResourceArgs'] source_resources: Source resource. See `source_resources` below.
+        :param Sequence['GetTemplateScratchesScratchSourceTagArgs'] source_tags: The Source label list. See `source_tag` below.
+        :param Sequence['GetTemplateScratchesScratchStackArgs'] stacks: A list of resource stacks associated with the resource scene. See `stacks` below.
+        :param _builtins.str status: The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
         :param _builtins.str template_scratch_id: The ID of the Template Scratch.
-        :param _builtins.str template_scratch_type: The type of the Template Scratch.
+        :param _builtins.str template_scratch_type: The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
@@ -1652,7 +1660,7 @@ class GetTemplateScratchesScratchResult(dict):
     @pulumi.getter(name="preferenceParameters")
     def preference_parameters(self) -> Sequence['outputs.GetTemplateScratchesScratchPreferenceParameterResult']:
         """
-        Priority parameter.
+        Priority parameter. See `preference_parameters` below.
         """
         return pulumi.get(self, "preference_parameters")
 
@@ -1660,7 +1668,7 @@ class GetTemplateScratchesScratchResult(dict):
     @pulumi.getter(name="sourceResourceGroups")
     def source_resource_groups(self) -> Sequence['outputs.GetTemplateScratchesScratchSourceResourceGroupResult']:
         """
-        Source resource grouping.
+        Source resource grouping. See `source_resource_group` below.
         """
         return pulumi.get(self, "source_resource_groups")
 
@@ -1668,7 +1676,7 @@ class GetTemplateScratchesScratchResult(dict):
     @pulumi.getter(name="sourceResources")
     def source_resources(self) -> Sequence['outputs.GetTemplateScratchesScratchSourceResourceResult']:
         """
-        Source resource.
+        Source resource. See `source_resources` below.
         """
         return pulumi.get(self, "source_resources")
 
@@ -1676,7 +1684,7 @@ class GetTemplateScratchesScratchResult(dict):
     @pulumi.getter(name="sourceTags")
     def source_tags(self) -> Sequence['outputs.GetTemplateScratchesScratchSourceTagResult']:
         """
-        The Source label list.
+        The Source label list. See `source_tag` below.
         """
         return pulumi.get(self, "source_tags")
 
@@ -1684,7 +1692,7 @@ class GetTemplateScratchesScratchResult(dict):
     @pulumi.getter
     def stacks(self) -> Sequence['outputs.GetTemplateScratchesScratchStackResult']:
         """
-        A list of resource stacks associated with the resource scene.
+        A list of resource stacks associated with the resource scene. See `stacks` below.
         """
         return pulumi.get(self, "stacks")
 
@@ -1692,7 +1700,7 @@ class GetTemplateScratchesScratchResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
         """
         return pulumi.get(self, "status")
 
@@ -1708,7 +1716,7 @@ class GetTemplateScratchesScratchResult(dict):
     @pulumi.getter(name="templateScratchType")
     def template_scratch_type(self) -> _builtins.str:
         """
-        The type of the Template Scratch.
+        The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
         """
         return pulumi.get(self, "template_scratch_type")
 
@@ -1865,10 +1873,10 @@ class GetTemplatesTemplateResult(dict):
         :param _builtins.str change_set_id: The ID of the change set.
         :param _builtins.str description: The description of the template. The description can be up to 256 characters in length.
         :param _builtins.str id: The ID of the Template.
-        :param _builtins.str share_type: Share Type.
+        :param _builtins.str share_type: Share Type. Valid Values: `Private`, `Shared`
         :param _builtins.str stack_group_name: The name of the stack group. The name must be unique in a region.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         :param _builtins.str stack_id: The ID of the stack.
-        :param Mapping[str, _builtins.str] tags: Tags.
+        :param Mapping[str, _builtins.str] tags: Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         :param _builtins.str template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
         :param _builtins.str template_id: The ID of the template.
         :param _builtins.str template_name: The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -1914,7 +1922,7 @@ class GetTemplatesTemplateResult(dict):
     @pulumi.getter(name="shareType")
     def share_type(self) -> _builtins.str:
         """
-        Share Type.
+        Share Type. Valid Values: `Private`, `Shared`
         """
         return pulumi.get(self, "share_type")
 
@@ -1938,7 +1946,7 @@ class GetTemplatesTemplateResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        Tags.
+        Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         """
         return pulumi.get(self, "tags")
 

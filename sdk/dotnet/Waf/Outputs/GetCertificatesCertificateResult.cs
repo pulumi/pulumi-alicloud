@@ -37,7 +37,13 @@ namespace Pulumi.AliCloud.Waf.Outputs
         /// WAF instance ID.
         /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// Indicates whether the certificate is in use.
+        /// </summary>
         public readonly bool IsUsing;
+        /// <summary>
+        /// The Subject Alternative Names (SAN) of the certificate.
+        /// </summary>
         public readonly ImmutableArray<string> Sans;
 
         [OutputConstructor]

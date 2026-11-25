@@ -71,6 +71,9 @@ class GetAdConnectorOfficeSitesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Ad Connector Office Site names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -81,11 +84,17 @@ class GetAdConnectorOfficeSitesResult:
     @_builtins.property
     @pulumi.getter
     def sites(self) -> Sequence['outputs.GetAdConnectorOfficeSitesSiteResult']:
+        """
+        A list of Ecd Ad Connector Office Sites. Each element contains the following attributes:
+        """
         return pulumi.get(self, "sites")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The workspace status.
+        """
         return pulumi.get(self, "status")
 
 
@@ -112,7 +121,7 @@ def get_ad_connector_office_sites(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.176.0+.
+    > **NOTE:** Available since v1.176.0.
 
     ## Example Usage
 
@@ -167,7 +176,7 @@ def get_ad_connector_office_sites_output(ids: pulumi.Input[Optional[Optional[Seq
     """
     This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.176.0+.
+    > **NOTE:** Available since v1.176.0.
 
     ## Example Usage
 

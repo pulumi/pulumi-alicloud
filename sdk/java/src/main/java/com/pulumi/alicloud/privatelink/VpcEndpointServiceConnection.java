@@ -120,6 +120,7 @@ import javax.annotation.Nullable;
  *             .endpointId(exampleVpcEndpoint.id())
  *             .serviceId(exampleVpcEndpoint.serviceId())
  *             .bandwidth(1024)
+ *             .trafficControlMode("BandwidthLimit")
  *             .build());
  * 
  *     }
@@ -187,6 +188,20 @@ public class VpcEndpointServiceConnection extends com.pulumi.resources.CustomRes
         return this.endpointId;
     }
     /**
+     * The owner ID of the endpoint.
+     * 
+     */
+    @Export(name="endpointOwnerId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> endpointOwnerId;
+
+    /**
+     * @return The owner ID of the endpoint.
+     * 
+     */
+    public Output<Integer> endpointOwnerId() {
+        return this.endpointOwnerId;
+    }
+    /**
      * The endpoint service ID.
      * 
      */
@@ -213,6 +228,20 @@ public class VpcEndpointServiceConnection extends com.pulumi.resources.CustomRes
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+     * 
+     */
+    @Export(name="trafficControlMode", refs={String.class}, tree="[0]")
+    private Output<String> trafficControlMode;
+
+    /**
+     * @return The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+     * 
+     */
+    public Output<String> trafficControlMode() {
+        return this.trafficControlMode;
     }
 
     /**

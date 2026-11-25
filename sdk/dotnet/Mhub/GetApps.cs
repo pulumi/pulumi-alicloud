@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Mhub
         /// <summary>
         /// This data source provides the Mhub Apps of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Mhub
         ///     {
         ///         AppName = name,
         ///         ProductId = defaultAlicloudMhubProduct.Id,
-        ///         PackageName = "com.test.android",
+        ///         PackageName = "com.example.android",
         ///         Type = "2",
         ///     });
         /// 
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Mhub
         /// <summary>
         /// This data source provides the Mhub Apps of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Mhub
         ///     {
         ///         AppName = name,
         ///         ProductId = defaultAlicloudMhubProduct.Id,
-        ///         PackageName = "com.test.android",
+        ///         PackageName = "com.example.android",
         ///         Type = "2",
         ///     });
         /// 
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Mhub
         /// <summary>
         /// This data source provides the Mhub Apps of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Mhub
         ///     {
         ///         AppName = name,
         ///         ProductId = defaultAlicloudMhubProduct.Id,
-        ///         PackageName = "com.test.android",
+        ///         PackageName = "com.example.android",
         ///         Type = "2",
         ///     });
         /// 
@@ -252,6 +252,9 @@ namespace Pulumi.AliCloud.Mhub
     [OutputType]
     public sealed class GetAppsResult
     {
+        /// <summary>
+        /// A list of Mhub Apps. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppsAppResult> Apps;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -260,9 +263,15 @@ namespace Pulumi.AliCloud.Mhub
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of App names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OsType;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the Product.
+        /// </summary>
         public readonly string ProductId;
 
         [OutputConstructor]

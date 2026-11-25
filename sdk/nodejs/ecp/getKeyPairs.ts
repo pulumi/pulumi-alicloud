@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -69,16 +69,25 @@ export interface GetKeyPairsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The Private Key of the Fingerprint.
+     */
     readonly keyPairFingerPrint?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Key Pair names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ecp Key Pairs. Each element contains the following attributes:
+     */
     readonly pairs: outputs.ecp.GetKeyPairsPair[];
 }
 /**
  * This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *

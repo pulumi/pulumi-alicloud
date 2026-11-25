@@ -13,14 +13,29 @@ namespace Pulumi.AliCloud.Cen.Outputs
     [OutputType]
     public sealed class GetTransitRouterRouteEntriesEntryResult
     {
+        /// <summary>
+        /// The ID of the CEN Transit Router Route Entry.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The description of the transit router route entry.
+        /// </summary>
         public readonly string TransitRouterRouteEntryDescription;
         /// <summary>
-        /// The target network segment of the route entry.
+        /// The destination CIDR block of the route entry.
         /// </summary>
         public readonly string TransitRouterRouteEntryDestinationCidrBlock;
+        /// <summary>
+        /// The ID of the route entry.
+        /// </summary>
         public readonly string TransitRouterRouteEntryId;
+        /// <summary>
+        /// The name of the transit router route entry.
+        /// </summary>
         public readonly string TransitRouterRouteEntryName;
         /// <summary>
         /// ID of the next hop.

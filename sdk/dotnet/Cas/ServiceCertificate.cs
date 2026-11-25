@@ -117,6 +117,12 @@ namespace Pulumi.AliCloud.Cas
         public Output<string?> Cert { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+        /// </summary>
+        [Output("certIdentifier")]
+        public Output<string> CertIdentifier { get; private set; } = null!;
+
+        /// <summary>
         /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `CertificateName` can be modified.
         /// </summary>
         [Output("certificateName")]
@@ -380,6 +386,12 @@ namespace Pulumi.AliCloud.Cas
         /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }
+
+        /// <summary>
+        /// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+        /// </summary>
+        [Input("certIdentifier")]
+        public Input<string>? CertIdentifier { get; set; }
 
         /// <summary>
         /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `CertificateName` can be modified.

@@ -33,11 +33,17 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// Extended attribute list.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAscriptsAscriptExtAttributeResult> ExtAttributes;
+        /// <summary>
+        /// The ID of the AScript.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Listener ID of script attribution
         /// </summary>
         public readonly string ListenerId;
+        /// <summary>
+        /// The ID of the load balancer to which the listener belongs.
+        /// </summary>
         public readonly string LoadBalancerId;
         /// <summary>
         /// Script execution location.

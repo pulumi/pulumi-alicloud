@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -135,6 +135,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// The id of the honeypot management node.
+        /// </summary>
         [Input("nodeId")]
         public string? NodeId { get; set; }
 
@@ -170,6 +173,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// The id of the honeypot management node.
+        /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 

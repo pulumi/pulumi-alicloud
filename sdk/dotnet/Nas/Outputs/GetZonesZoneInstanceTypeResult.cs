@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Nas.Outputs
     public sealed class GetZonesZoneInstanceTypeResult
     {
         /// <summary>
-        /// File transfer protocol type. Valid values:
+        /// File transfer protocol type. Valid values: `NFS`, `SMB` and `Cpfs`.
         /// </summary>
         public readonly string ProtocolType;
         /// <summary>
-        /// The storage type of the nas zones. Valid values:
+        /// The storage type of the nas zones. Valid values: `Performance`, `Capacity`, `Standard`, `Advance`, `Advance100` and `Advance200`.
         /// </summary>
         public readonly string StorageType;
 

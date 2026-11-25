@@ -13,7 +13,7 @@ import (
 
 // This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
 //
-// > **NOTE:** Available in 1.194.0+
+// > **NOTE:** Available since v1.194.0+
 //
 // ## Example Usage
 //
@@ -67,7 +67,8 @@ type GetMetricRuleBlackListsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// The data namespace of the cloud service.
 	Namespace *string `pulumi:"namespace"`
-	Order     *int    `pulumi:"order"`
+	// The order of the Metric Rule Black List.
+	Order *int `pulumi:"order"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
@@ -114,7 +115,8 @@ type GetMetricRuleBlackListsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The data namespace of the cloud service.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	Order     pulumi.IntPtrInput    `pulumi:"order"`
+	// The order of the Metric Rule Black List.
+	Order pulumi.IntPtrInput `pulumi:"order"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`

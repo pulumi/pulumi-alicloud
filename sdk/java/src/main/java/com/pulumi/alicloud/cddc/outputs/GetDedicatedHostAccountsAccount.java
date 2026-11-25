@@ -16,7 +16,7 @@ public final class GetDedicatedHostAccountsAccount {
      */
     private String accountName;
     /**
-     * @return The ID of the Dedicated host.
+     * @return The ID of the host.
      * 
      */
     private String dedicatedHostId;
@@ -35,7 +35,7 @@ public final class GetDedicatedHostAccountsAccount {
         return this.accountName;
     }
     /**
-     * @return The ID of the Dedicated host.
+     * @return The ID of the host.
      * 
      */
     public String dedicatedHostId() {

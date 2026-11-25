@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMongoInstancesInstanceRestoreRange {
+    /**
+     * @return The beginning of the recoverable time range.
+     * 
+     */
     private String restoreBeginTime;
+    /**
+     * @return The end of the recoverable time range.
+     * 
+     */
     private String restoreEndTime;
+    /**
+     * @return The restoration method.
+     * 
+     */
     private String restoreType;
 
     private GetMongoInstancesInstanceRestoreRange() {}
+    /**
+     * @return The beginning of the recoverable time range.
+     * 
+     */
     public String restoreBeginTime() {
         return this.restoreBeginTime;
     }
+    /**
+     * @return The end of the recoverable time range.
+     * 
+     */
     public String restoreEndTime() {
         return this.restoreEndTime;
     }
+    /**
+     * @return The restoration method.
+     * 
+     */
     public String restoreType() {
         return this.restoreType;
     }

@@ -37,7 +37,7 @@ public final class GetApplicationsApplication {
      */
     private String resourceGroupId;
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
@@ -84,7 +84,7 @@ public final class GetApplicationsApplication {
         return this.resourceGroupId;
     }
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {

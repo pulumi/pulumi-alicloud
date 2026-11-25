@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+// > **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
 //
 // This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.156.0+.
+// > **NOTE:** Available since v1.156.0.
 //
 // ## Example Usage
 //
@@ -86,13 +86,16 @@ type GetSnapshotsArgs struct {
 // A collection of values returned by getSnapshots.
 type GetSnapshotsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Snapshots  []GetSnapshotsSnapshot `pulumi:"snapshots"`
-	Status     *string                `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Snapshot names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Dbfs Snapshots. Each element contains the following attributes:
+	Snapshots []GetSnapshotsSnapshot `pulumi:"snapshots"`
+	// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+	Status *string `pulumi:"status"`
 }
 
 func GetSnapshotsOutput(ctx *pulumi.Context, args GetSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetSnapshotsResultOutput {
@@ -144,6 +147,7 @@ func (o GetSnapshotsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Snapshot names.
 func (o GetSnapshotsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -152,10 +156,12 @@ func (o GetSnapshotsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Dbfs Snapshots. Each element contains the following attributes:
 func (o GetSnapshotsResultOutput) Snapshots() GetSnapshotsSnapshotArrayOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) []GetSnapshotsSnapshot { return v.Snapshots }).(GetSnapshotsSnapshotArrayOutput)
 }
 
+// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
 func (o GetSnapshotsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -58,15 +58,15 @@ namespace Pulumi.AliCloud.EipAnycast.Outputs
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+        /// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+        /// Anycast EIP instance access area. `International`: Refers to areas outside of Mainland China.
         /// </summary>
         public readonly string ServiceLocation;
         /// <summary>
-        /// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+        /// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
         /// </summary>
         public readonly string Status;
 

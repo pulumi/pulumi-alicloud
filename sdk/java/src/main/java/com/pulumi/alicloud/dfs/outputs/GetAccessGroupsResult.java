@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccessGroupsResult {
+    /**
+     * @return A list of Dfs Access Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetAccessGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,6 +28,10 @@ public final class GetAccessGroupsResult {
     private List<String> ids;
     private @Nullable Integer limit;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Access Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String orderBy;
     private @Nullable String orderType;
@@ -31,6 +39,10 @@ public final class GetAccessGroupsResult {
     private @Nullable Integer startOffset;
 
     private GetAccessGroupsResult() {}
+    /**
+     * @return A list of Dfs Access Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetAccessGroupsGroup> groups() {
         return this.groups;
     }
@@ -50,6 +62,10 @@ public final class GetAccessGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Access Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

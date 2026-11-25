@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccessRulesResult {
+    /**
+     * @return The resource ID of the Access Group.
+     * 
+     */
     private String accessGroupId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,9 +26,17 @@ public final class GetAccessRulesResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Dfs Access Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetAccessRulesRule> rules;
 
     private GetAccessRulesResult() {}
+    /**
+     * @return The resource ID of the Access Group.
+     * 
+     */
     public String accessGroupId() {
         return this.accessGroupId;
     }
@@ -41,6 +53,10 @@ public final class GetAccessRulesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Dfs Access Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetAccessRulesRule> rules() {
         return this.rules;
     }

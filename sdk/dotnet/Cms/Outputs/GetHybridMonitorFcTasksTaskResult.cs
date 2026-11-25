@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The index warehouse where the host belongs.
+        /// The name of the namespace.
         /// </summary>
         public readonly string Namespace;
         /// <summary>

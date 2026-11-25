@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server certificate list.
         /// 
+        /// &gt; **NOTE:** Available since v1.21.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,6 +41,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server certificate list.
         /// 
+        /// &gt; **NOTE:** Available since v1.21.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -63,6 +67,8 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// This data source provides the server certificate list.
+        /// 
+        /// &gt; **NOTE:** Available since v1.21.0.
         /// 
         /// ## Example Usage
         /// 
@@ -211,11 +217,11 @@ namespace Pulumi.AliCloud.Slb
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// The Id of resource group which the slb server certificates belongs.
+        /// (Optional) The Id of resource group which the slb server certificates belongs.
         /// </summary>
         public readonly string? ResourceGroupId;
         /// <summary>
-        /// (Available in v1.66.0+) A mapping of tags to assign to the resource.
+        /// (Optional) A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 

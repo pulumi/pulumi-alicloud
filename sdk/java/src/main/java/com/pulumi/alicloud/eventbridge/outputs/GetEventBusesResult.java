@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEventBusesResult {
+    /**
+     * @return A list of Event Bridge Event Buses. Each element contains the following attributes:
+     * 
+     */
     private List<GetEventBusesBus> buses;
     private @Nullable String eventBusType;
     /**
@@ -24,10 +28,18 @@ public final class GetEventBusesResult {
     private List<String> ids;
     private @Nullable String namePrefix;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Event Bus names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetEventBusesResult() {}
+    /**
+     * @return A list of Event Bridge Event Buses. Each element contains the following attributes:
+     * 
+     */
     public List<GetEventBusesBus> buses() {
         return this.buses;
     }
@@ -50,6 +62,10 @@ public final class GetEventBusesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Event Bus names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

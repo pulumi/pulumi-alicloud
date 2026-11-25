@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string ImageType;
         /// <summary>
-        /// The os type of the image.
+        /// The operating system type of the image. Valid values: `Windows` and `Linux`.
         /// </summary>
         public readonly string OsType;
         /// <summary>

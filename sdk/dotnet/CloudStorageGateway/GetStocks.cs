@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -159,6 +159,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Cloud Storage Gateway Stocks. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetStocksStockResult> Stocks;
 
         [OutputConstructor]

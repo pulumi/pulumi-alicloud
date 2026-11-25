@@ -105,6 +105,10 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      */
     declare public readonly cameraRedirect: pulumi.Output<string>;
     /**
+     * The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+     */
+    declare public readonly clientTypes: pulumi.Output<outputs.eds.EcdPolicyGroupClientType[] | undefined>;
+    /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
     declare public readonly clipboard: pulumi.Output<string>;
@@ -112,6 +116,14 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      * The list of domain.
      */
     declare public readonly domainList: pulumi.Output<string | undefined>;
+    /**
+     * Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+     */
+    declare public readonly endUserApplyAdminCoordinate: pulumi.Output<string>;
+    /**
+     * Whether to allow end users to join user groups. Valid values: `off`, `on`.
+     */
+    declare public readonly endUserGroupCoordinate: pulumi.Output<string>;
     /**
      * The access of html5. Valid values: `off`, `on`.
      */
@@ -121,7 +133,11 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      */
     declare public readonly htmlFileTransfer: pulumi.Output<string>;
     /**
-     * Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+     * The network communication protocol. Valid values: `BOTH`, `TCP`.
+     */
+    declare public readonly internetCommunicationProtocol: pulumi.Output<string>;
+    /**
+     * Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
      */
     declare public readonly localDrive: pulumi.Output<string>;
     /**
@@ -132,6 +148,10 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      */
     declare public readonly recording: pulumi.Output<string>;
+    /**
+     * The recording duration. Valid values: `10`, `20`, `30`, `60`.
+     */
+    declare public readonly recordingDuration: pulumi.Output<number>;
     /**
      * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */
@@ -189,13 +209,18 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
             resourceInputs["authorizeAccessPolicyRules"] = state?.authorizeAccessPolicyRules;
             resourceInputs["authorizeSecurityPolicyRules"] = state?.authorizeSecurityPolicyRules;
             resourceInputs["cameraRedirect"] = state?.cameraRedirect;
+            resourceInputs["clientTypes"] = state?.clientTypes;
             resourceInputs["clipboard"] = state?.clipboard;
             resourceInputs["domainList"] = state?.domainList;
+            resourceInputs["endUserApplyAdminCoordinate"] = state?.endUserApplyAdminCoordinate;
+            resourceInputs["endUserGroupCoordinate"] = state?.endUserGroupCoordinate;
             resourceInputs["htmlAccess"] = state?.htmlAccess;
             resourceInputs["htmlFileTransfer"] = state?.htmlFileTransfer;
+            resourceInputs["internetCommunicationProtocol"] = state?.internetCommunicationProtocol;
             resourceInputs["localDrive"] = state?.localDrive;
             resourceInputs["policyGroupName"] = state?.policyGroupName;
             resourceInputs["recording"] = state?.recording;
+            resourceInputs["recordingDuration"] = state?.recordingDuration;
             resourceInputs["recordingEndTime"] = state?.recordingEndTime;
             resourceInputs["recordingExpires"] = state?.recordingExpires;
             resourceInputs["recordingFps"] = state?.recordingFps;
@@ -211,13 +236,18 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
             resourceInputs["authorizeAccessPolicyRules"] = args?.authorizeAccessPolicyRules;
             resourceInputs["authorizeSecurityPolicyRules"] = args?.authorizeSecurityPolicyRules;
             resourceInputs["cameraRedirect"] = args?.cameraRedirect;
+            resourceInputs["clientTypes"] = args?.clientTypes;
             resourceInputs["clipboard"] = args?.clipboard;
             resourceInputs["domainList"] = args?.domainList;
+            resourceInputs["endUserApplyAdminCoordinate"] = args?.endUserApplyAdminCoordinate;
+            resourceInputs["endUserGroupCoordinate"] = args?.endUserGroupCoordinate;
             resourceInputs["htmlAccess"] = args?.htmlAccess;
             resourceInputs["htmlFileTransfer"] = args?.htmlFileTransfer;
+            resourceInputs["internetCommunicationProtocol"] = args?.internetCommunicationProtocol;
             resourceInputs["localDrive"] = args?.localDrive;
             resourceInputs["policyGroupName"] = args?.policyGroupName;
             resourceInputs["recording"] = args?.recording;
+            resourceInputs["recordingDuration"] = args?.recordingDuration;
             resourceInputs["recordingEndTime"] = args?.recordingEndTime;
             resourceInputs["recordingExpires"] = args?.recordingExpires;
             resourceInputs["recordingFps"] = args?.recordingFps;
@@ -251,6 +281,10 @@ export interface EcdPolicyGroupState {
      */
     cameraRedirect?: pulumi.Input<string | undefined>;
     /**
+     * The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+     */
+    clientTypes?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupClientType>[] | undefined>;
+    /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
     clipboard?: pulumi.Input<string | undefined>;
@@ -258,6 +292,14 @@ export interface EcdPolicyGroupState {
      * The list of domain.
      */
     domainList?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+     */
+    endUserApplyAdminCoordinate?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to allow end users to join user groups. Valid values: `off`, `on`.
+     */
+    endUserGroupCoordinate?: pulumi.Input<string | undefined>;
     /**
      * The access of html5. Valid values: `off`, `on`.
      */
@@ -267,7 +309,11 @@ export interface EcdPolicyGroupState {
      */
     htmlFileTransfer?: pulumi.Input<string | undefined>;
     /**
-     * Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+     * The network communication protocol. Valid values: `BOTH`, `TCP`.
+     */
+    internetCommunicationProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
      */
     localDrive?: pulumi.Input<string | undefined>;
     /**
@@ -278,6 +324,10 @@ export interface EcdPolicyGroupState {
      * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      */
     recording?: pulumi.Input<string | undefined>;
+    /**
+     * The recording duration. Valid values: `10`, `20`, `30`, `60`.
+     */
+    recordingDuration?: pulumi.Input<number | undefined>;
     /**
      * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */
@@ -337,6 +387,10 @@ export interface EcdPolicyGroupArgs {
      */
     cameraRedirect?: pulumi.Input<string | undefined>;
     /**
+     * The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+     */
+    clientTypes?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupClientType>[] | undefined>;
+    /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
     clipboard?: pulumi.Input<string | undefined>;
@@ -344,6 +398,14 @@ export interface EcdPolicyGroupArgs {
      * The list of domain.
      */
     domainList?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+     */
+    endUserApplyAdminCoordinate?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to allow end users to join user groups. Valid values: `off`, `on`.
+     */
+    endUserGroupCoordinate?: pulumi.Input<string | undefined>;
     /**
      * The access of html5. Valid values: `off`, `on`.
      */
@@ -353,7 +415,11 @@ export interface EcdPolicyGroupArgs {
      */
     htmlFileTransfer?: pulumi.Input<string | undefined>;
     /**
-     * Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+     * The network communication protocol. Valid values: `BOTH`, `TCP`.
+     */
+    internetCommunicationProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
      */
     localDrive?: pulumi.Input<string | undefined>;
     /**
@@ -364,6 +430,10 @@ export interface EcdPolicyGroupArgs {
      * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      */
     recording?: pulumi.Input<string | undefined>;
+    /**
+     * The recording duration. Valid values: `10`, `20`, `30`, `60`.
+     */
+    recordingDuration?: pulumi.Input<number | undefined>;
     /**
      * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */

@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsDeploymentSetsResult {
+    /**
+     * @return The name of the deployment set.
+     * 
+     */
     private @Nullable String deploymentSetName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,12 +26,28 @@ public final class GetEcsDeploymentSetsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Deployment Set names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ecs Deployment Sets. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsDeploymentSetsSet> sets;
+    /**
+     * @return The deployment strategy.
+     * 
+     */
     private @Nullable String strategy;
 
     private GetEcsDeploymentSetsResult() {}
+    /**
+     * @return The name of the deployment set.
+     * 
+     */
     public Optional<String> deploymentSetName() {
         return Optional.ofNullable(this.deploymentSetName);
     }
@@ -44,15 +64,27 @@ public final class GetEcsDeploymentSetsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Deployment Set names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ecs Deployment Sets. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsDeploymentSetsSet> sets() {
         return this.sets;
     }
+    /**
+     * @return The deployment strategy.
+     * 
+     */
     public Optional<String> strategy() {
         return Optional.ofNullable(this.strategy);
     }

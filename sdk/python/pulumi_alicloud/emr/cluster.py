@@ -54,19 +54,19 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[_builtins.str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[_builtins.str] zone_id: Zone ID, e.g. cn-huhehaote-a
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]] bootstrap_actions: Boot action parameters.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]] bootstrap_actions: Boot action parameters. See `bootstrap_action` below.
         :param pulumi.Input[_builtins.str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]] configs: The custom configurations of emr-cluster service.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]] configs: The custom configurations of emr-cluster service. See `configs` below.
         :param pulumi.Input[_builtins.str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         :param pulumi.Input[_builtins.bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[_builtins.bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `host_group` below.
         :param pulumi.Input[_builtins.bool] is_open_public_ip: Whether the MASTER node has a public IP address enabled. Default value is false.
         :param pulumi.Input[_builtins.str] key_pair_name: Ssh key pair.
         :param pulumi.Input[_builtins.str] master_pwd: Master ssh password.
-        :param pulumi.Input['ClusterMetaStoreConfArgs'] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        :param pulumi.Input['ClusterMetaStoreConfArgs'] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `meta_store_conf` below.
         :param pulumi.Input[_builtins.str] meta_store_type: The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
-        :param pulumi.Input['ClusterModifyClusterServiceConfigArgs'] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
+        :param pulumi.Input['ClusterModifyClusterServiceConfigArgs'] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created. See `modify_cluster_service_config` below.
         :param pulumi.Input[_builtins.str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] option_software_lists: Optional software list.
         :param pulumi.Input[_builtins.int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
@@ -171,7 +171,7 @@ class ClusterArgs:
     @pulumi.getter(name="bootstrapActions")
     def bootstrap_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]:
         """
-        Boot action parameters.
+        Boot action parameters. See `bootstrap_action` below.
         """
         return pulumi.get(self, "bootstrap_actions")
 
@@ -195,7 +195,7 @@ class ClusterArgs:
     @pulumi.getter
     def configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterConfigArgs']]]]:
         """
-        The custom configurations of emr-cluster service.
+        The custom configurations of emr-cluster service. See `configs` below.
         """
         return pulumi.get(self, "configs")
 
@@ -243,7 +243,7 @@ class ClusterArgs:
     @pulumi.getter(name="hostGroups")
     def host_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]:
         """
-        Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `host_group` below.
         """
         return pulumi.get(self, "host_groups")
 
@@ -291,7 +291,7 @@ class ClusterArgs:
     @pulumi.getter(name="metaStoreConf")
     def meta_store_conf(self) -> pulumi.Input[Optional['ClusterMetaStoreConfArgs']]:
         """
-        The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `meta_store_conf` below.
         """
         return pulumi.get(self, "meta_store_conf")
 
@@ -315,7 +315,7 @@ class ClusterArgs:
     @pulumi.getter(name="modifyClusterServiceConfig")
     def modify_cluster_service_config(self) -> pulumi.Input[Optional['ClusterModifyClusterServiceConfigArgs']]:
         """
-        The configurations of emr-cluster service modification after cluster created.
+        The configurations of emr-cluster service modification after cluster created. See `modify_cluster_service_config` below.
         """
         return pulumi.get(self, "modify_cluster_service_config")
 
@@ -489,21 +489,21 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]] bootstrap_actions: Boot action parameters.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]] bootstrap_actions: Boot action parameters. See `bootstrap_action` below.
         :param pulumi.Input[_builtins.str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]] configs: The custom configurations of emr-cluster service.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]] configs: The custom configurations of emr-cluster service. See `configs` below.
         :param pulumi.Input[_builtins.str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         :param pulumi.Input[_builtins.bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[_builtins.str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[_builtins.bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `host_group` below.
         :param pulumi.Input[_builtins.bool] is_open_public_ip: Whether the MASTER node has a public IP address enabled. Default value is false.
         :param pulumi.Input[_builtins.str] key_pair_name: Ssh key pair.
         :param pulumi.Input[_builtins.str] master_pwd: Master ssh password.
-        :param pulumi.Input['ClusterMetaStoreConfArgs'] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        :param pulumi.Input['ClusterMetaStoreConfArgs'] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `meta_store_conf` below.
         :param pulumi.Input[_builtins.str] meta_store_type: The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
-        :param pulumi.Input['ClusterModifyClusterServiceConfigArgs'] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
+        :param pulumi.Input['ClusterModifyClusterServiceConfigArgs'] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created. See `modify_cluster_service_config` below.
         :param pulumi.Input[_builtins.str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] option_software_lists: Optional software list.
         :param pulumi.Input[_builtins.int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
@@ -576,7 +576,7 @@ class _ClusterState:
     @pulumi.getter(name="bootstrapActions")
     def bootstrap_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]:
         """
-        Boot action parameters.
+        Boot action parameters. See `bootstrap_action` below.
         """
         return pulumi.get(self, "bootstrap_actions")
 
@@ -612,7 +612,7 @@ class _ClusterState:
     @pulumi.getter
     def configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterConfigArgs']]]]:
         """
-        The custom configurations of emr-cluster service.
+        The custom configurations of emr-cluster service. See `configs` below.
         """
         return pulumi.get(self, "configs")
 
@@ -672,7 +672,7 @@ class _ClusterState:
     @pulumi.getter(name="hostGroups")
     def host_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]:
         """
-        Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `host_group` below.
         """
         return pulumi.get(self, "host_groups")
 
@@ -720,7 +720,7 @@ class _ClusterState:
     @pulumi.getter(name="metaStoreConf")
     def meta_store_conf(self) -> pulumi.Input[Optional['ClusterMetaStoreConfArgs']]:
         """
-        The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `meta_store_conf` below.
         """
         return pulumi.get(self, "meta_store_conf")
 
@@ -744,7 +744,7 @@ class _ClusterState:
     @pulumi.getter(name="modifyClusterServiceConfig")
     def modify_cluster_service_config(self) -> pulumi.Input[Optional['ClusterModifyClusterServiceConfigArgs']]:
         """
-        The configurations of emr-cluster service modification after cluster created.
+        The configurations of emr-cluster service modification after cluster created. See `modify_cluster_service_config` below.
         """
         return pulumi.get(self, "modify_cluster_service_config")
 
@@ -1007,7 +1007,7 @@ class Cluster(pulumi.CustomResource):
             description="this is a role test.",
             force=True)
         default_cluster = alicloud.emr.Cluster("default",
-            name="terraform-create-cluster-test",
+            name="terraform-create-cluster",
             emr_ver=default.main_versions[0].emr_version,
             cluster_type=default.main_versions[0].cluster_types[0],
             host_groups=[
@@ -1057,6 +1057,7 @@ class Cluster(pulumi.CustomResource):
         ```
 
         ### 2. Scale Up
+
         The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
 
         In the case of scaling up cluster, we should add the node_count of some host group.
@@ -1131,7 +1132,7 @@ class Cluster(pulumi.CustomResource):
             description="this is a role test.",
             force=True)
         default_cluster = alicloud.emr.Cluster("default",
-            name="terraform-resize-cluster-test",
+            name="terraform-resize-cluster",
             emr_ver=default.main_versions[0].emr_version,
             cluster_type=default.main_versions[0].cluster_types[0],
             host_groups=[
@@ -1253,7 +1254,7 @@ class Cluster(pulumi.CustomResource):
             description="this is a role test.",
             force=True)
         default_cluster = alicloud.emr.Cluster("default",
-            name="terraform-resize-cluster-test",
+            name="terraform-resize-cluster",
             emr_ver=default.main_versions[0].emr_version,
             cluster_type=default.main_versions[0].cluster_types[0],
             host_groups=[
@@ -1365,7 +1366,7 @@ class Cluster(pulumi.CustomResource):
             description="this is a role test.",
             force=True)
         gateway = alicloud.emr.Cluster("gateway",
-            name="terraform-gateway-cluster-test",
+            name="terraform-gateway-cluster",
             emr_ver=default.main_versions[0].emr_version,
             cluster_type="GATEWAY",
             host_groups=[{
@@ -1404,21 +1405,21 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict', 'outputs.ClusterBootstrapAction']]]] bootstrap_actions: Boot action parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict', 'outputs.ClusterBootstrapAction']]]] bootstrap_actions: Boot action parameters. See `bootstrap_action` below.
         :param pulumi.Input[_builtins.str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict', 'outputs.ClusterConfig']]]] configs: The custom configurations of emr-cluster service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict', 'outputs.ClusterConfig']]]] configs: The custom configurations of emr-cluster service. See `configs` below.
         :param pulumi.Input[_builtins.str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         :param pulumi.Input[_builtins.bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[_builtins.str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[_builtins.bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict', 'outputs.ClusterHostGroup']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict', 'outputs.ClusterHostGroup']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `host_group` below.
         :param pulumi.Input[_builtins.bool] is_open_public_ip: Whether the MASTER node has a public IP address enabled. Default value is false.
         :param pulumi.Input[_builtins.str] key_pair_name: Ssh key pair.
         :param pulumi.Input[_builtins.str] master_pwd: Master ssh password.
-        :param pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict', 'outputs.ClusterMetaStoreConf']] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        :param pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict', 'outputs.ClusterMetaStoreConf']] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `meta_store_conf` below.
         :param pulumi.Input[_builtins.str] meta_store_type: The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
-        :param pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict', 'outputs.ClusterModifyClusterServiceConfig']] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
+        :param pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict', 'outputs.ClusterModifyClusterServiceConfig']] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created. See `modify_cluster_service_config` below.
         :param pulumi.Input[_builtins.str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] option_software_lists: Optional software list.
         :param pulumi.Input[_builtins.int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
@@ -1514,7 +1515,7 @@ class Cluster(pulumi.CustomResource):
             description="this is a role test.",
             force=True)
         default_cluster = alicloud.emr.Cluster("default",
-            name="terraform-create-cluster-test",
+            name="terraform-create-cluster",
             emr_ver=default.main_versions[0].emr_version,
             cluster_type=default.main_versions[0].cluster_types[0],
             host_groups=[
@@ -1564,6 +1565,7 @@ class Cluster(pulumi.CustomResource):
         ```
 
         ### 2. Scale Up
+
         The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
 
         In the case of scaling up cluster, we should add the node_count of some host group.
@@ -1638,7 +1640,7 @@ class Cluster(pulumi.CustomResource):
             description="this is a role test.",
             force=True)
         default_cluster = alicloud.emr.Cluster("default",
-            name="terraform-resize-cluster-test",
+            name="terraform-resize-cluster",
             emr_ver=default.main_versions[0].emr_version,
             cluster_type=default.main_versions[0].cluster_types[0],
             host_groups=[
@@ -1760,7 +1762,7 @@ class Cluster(pulumi.CustomResource):
             description="this is a role test.",
             force=True)
         default_cluster = alicloud.emr.Cluster("default",
-            name="terraform-resize-cluster-test",
+            name="terraform-resize-cluster",
             emr_ver=default.main_versions[0].emr_version,
             cluster_type=default.main_versions[0].cluster_types[0],
             host_groups=[
@@ -1872,7 +1874,7 @@ class Cluster(pulumi.CustomResource):
             description="this is a role test.",
             force=True)
         gateway = alicloud.emr.Cluster("gateway",
-            name="terraform-gateway-cluster-test",
+            name="terraform-gateway-cluster",
             emr_ver=default.main_versions[0].emr_version,
             cluster_type="GATEWAY",
             host_groups=[{
@@ -2037,21 +2039,21 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict', 'outputs.ClusterBootstrapAction']]]] bootstrap_actions: Boot action parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict', 'outputs.ClusterBootstrapAction']]]] bootstrap_actions: Boot action parameters. See `bootstrap_action` below.
         :param pulumi.Input[_builtins.str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         :param pulumi.Input[_builtins.str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict', 'outputs.ClusterConfig']]]] configs: The custom configurations of emr-cluster service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict', 'outputs.ClusterConfig']]]] configs: The custom configurations of emr-cluster service. See `configs` below.
         :param pulumi.Input[_builtins.str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         :param pulumi.Input[_builtins.bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[_builtins.str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[_builtins.bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict', 'outputs.ClusterHostGroup']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict', 'outputs.ClusterHostGroup']]]] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `host_group` below.
         :param pulumi.Input[_builtins.bool] is_open_public_ip: Whether the MASTER node has a public IP address enabled. Default value is false.
         :param pulumi.Input[_builtins.str] key_pair_name: Ssh key pair.
         :param pulumi.Input[_builtins.str] master_pwd: Master ssh password.
-        :param pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict', 'outputs.ClusterMetaStoreConf']] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        :param pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict', 'outputs.ClusterMetaStoreConf']] meta_store_conf: The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `meta_store_conf` below.
         :param pulumi.Input[_builtins.str] meta_store_type: The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
-        :param pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict', 'outputs.ClusterModifyClusterServiceConfig']] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created.
+        :param pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict', 'outputs.ClusterModifyClusterServiceConfig']] modify_cluster_service_config: The configurations of emr-cluster service modification after cluster created. See `modify_cluster_service_config` below.
         :param pulumi.Input[_builtins.str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] option_software_lists: Optional software list.
         :param pulumi.Input[_builtins.int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
@@ -2162,7 +2164,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="bootstrapActions")
     def bootstrap_actions(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterBootstrapAction']]]:
         """
-        Boot action parameters.
+        Boot action parameters. See `bootstrap_action` below.
         """
         return pulumi.get(self, "bootstrap_actions")
 
@@ -2186,7 +2188,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def configs(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterConfig']]]:
         """
-        The custom configurations of emr-cluster service.
+        The custom configurations of emr-cluster service. See `configs` below.
         """
         return pulumi.get(self, "configs")
 
@@ -2226,7 +2228,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="hostGroups")
     def host_groups(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterHostGroup']]]:
         """
-        Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `host_group` below.
         """
         return pulumi.get(self, "host_groups")
 
@@ -2258,7 +2260,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="metaStoreConf")
     def meta_store_conf(self) -> pulumi.Output[Optional['outputs.ClusterMetaStoreConf']]:
         """
-        The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `meta_store_conf` below.
         """
         return pulumi.get(self, "meta_store_conf")
 
@@ -2274,7 +2276,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="modifyClusterServiceConfig")
     def modify_cluster_service_config(self) -> pulumi.Output[Optional['outputs.ClusterModifyClusterServiceConfig']]:
         """
-        The configurations of emr-cluster service modification after cluster created.
+        The configurations of emr-cluster service modification after cluster created. See `modify_cluster_service_config` below.
         """
         return pulumi.get(self, "modify_cluster_service_config")
 

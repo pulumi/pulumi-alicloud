@@ -116,9 +116,17 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * The product type of the MaxCompute project.
+     * 
+     */
     @Import(name="productType")
     private @Nullable Output<String> productType;
 
+    /**
+     * @return The product type of the MaxCompute project.
+     * 
+     */
     public Optional<Output<String>> productType() {
         return Optional.ofNullable(this.productType);
     }
@@ -413,11 +421,23 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
             return owner(Output.of(owner));
         }
 
+        /**
+         * @param productType The product type of the MaxCompute project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productType(@Nullable Output<String> productType) {
             $.productType = productType;
             return this;
         }
 
+        /**
+         * @param productType The product type of the MaxCompute project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productType(String productType) {
             return productType(Output.of(productType));
         }

@@ -17,11 +17,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.slb.LoadBalancer("default", {name: "sample_slb"});
- * const slbsDs = alicloud.slb.getLoadBalancers({
+ * const example = alicloud.slb.getLoadBalancers({
  *     nameRegex: "sample_slb",
+ *     tags: {
+ *         tagKey1: "tagValue1",
+ *         tagKey2: "tagValue2",
+ *     },
  * });
- * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs?.[0]?.id);
+ * export const firstSlbId = example.then(example => example.balancers?.[0]?.id);
  * ```
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
@@ -61,15 +64,33 @@ export interface GetLoadBalancersArgs {
      * Service address of the SLBs.
      */
     address?: string;
+    /**
+     * The address ip version. Valid values `ipv4` and `ipv6`.
+     */
     addressIpVersion?: string;
+    /**
+     * The address type of the SLB. Valid values `internet` and `intranet`.
+     */
     addressType?: string;
+    /**
+     * Whether to enable details of the SLB. Default to `false`.
+     */
     enableDetails?: boolean;
     /**
      * A list of SLBs IDs.
      */
     ids?: string[];
+    /**
+     * The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+     */
     internetChargeType?: string;
+    /**
+     * The name of the SLB.
+     */
     loadBalancerName?: string;
+    /**
+     * The master zone id of the SLB.
+     */
     masterZoneId?: string;
     /**
      * A regex string to filter results by SLB name.
@@ -85,31 +106,32 @@ export interface GetLoadBalancersArgs {
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
+    /**
+     * The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+     */
     paymentType?: string;
     /**
      * The Id of resource group which SLB belongs.
      */
     resourceGroupId?: string;
+    /**
+     * The server ID.
+     */
     serverId?: string;
+    /**
+     * The server intranet address.
+     */
     serverIntranetAddress?: string;
+    /**
+     * The slave zone id of the SLB.
+     */
     slaveZoneId?: string;
     /**
-     * SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      */
     status?: string;
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as alicloud from "@pulumi/alicloud";
-     *
-     * const taggedInstances = alicloud.slb.getLoadBalancers({
-     *     tags: {
-     *         tagKey1: "tagValue1",
-     *         tagKey2: "tagValue2",
-     *     },
-     * });
-     * ```
      */
     tags?: {[key: string]: string};
     /**
@@ -127,11 +149,20 @@ export interface GetLoadBalancersArgs {
  */
 export interface GetLoadBalancersResult {
     /**
-     * Service address of the SLB.
+     * The IP address that the SLB instance uses to provide services.
      */
     readonly address?: string;
+    /**
+     * The address ip version.
+     */
     readonly addressIpVersion?: string;
+    /**
+     * The address type.
+     */
     readonly addressType?: string;
+    /**
+     * A list of SLBs. Each element contains the following attributes:
+     */
     readonly balancers: outputs.slb.GetLoadBalancersBalancer[];
     readonly enableDetails?: boolean;
     /**
@@ -142,8 +173,17 @@ export interface GetLoadBalancersResult {
      * A list of slb IDs.
      */
     readonly ids: string[];
+    /**
+     * The billing method of the Internet-facing SLB instance.
+     */
     readonly internetChargeType?: string;
+    /**
+     * The name of the SLB.
+     */
     readonly loadBalancerName?: string;
+    /**
+     * Master availability zone of the SLBs.
+     */
     readonly masterZoneId?: string;
     readonly nameRegex?: string;
     /**
@@ -157,13 +197,25 @@ export interface GetLoadBalancersResult {
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The payment type of the SLB.
+     */
     readonly paymentType?: string;
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The ID of the Elastic Compute Service (ECS) instance that is specified as a backend server of the CLB instance.
+     */
     readonly serverId?: string;
     readonly serverIntranetAddress?: string;
+    /**
+     * Slave availability zone of the SLBs.
+     */
     readonly slaveZoneId?: string;
     /**
-     * A list of SLBs. Each element contains the following attributes:
+     * **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
      *
      * @deprecated Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.
      */
@@ -173,7 +225,7 @@ export interface GetLoadBalancersResult {
      */
     readonly status?: string;
     /**
-     * A map of tags assigned to the SLB instance.
+     * The tags of the SLB.
      */
     readonly tags?: {[key: string]: string};
     readonly totalCount: number;
@@ -197,11 +249,14 @@ export interface GetLoadBalancersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.slb.LoadBalancer("default", {name: "sample_slb"});
- * const slbsDs = alicloud.slb.getLoadBalancers({
+ * const example = alicloud.slb.getLoadBalancers({
  *     nameRegex: "sample_slb",
+ *     tags: {
+ *         tagKey1: "tagValue1",
+ *         tagKey2: "tagValue2",
+ *     },
  * });
- * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs?.[0]?.id);
+ * export const firstSlbId = example.then(example => example.balancers?.[0]?.id);
  * ```
  */
 export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancersResult> {
@@ -241,15 +296,33 @@ export interface GetLoadBalancersOutputArgs {
      * Service address of the SLBs.
      */
     address?: pulumi.Input<string | undefined>;
+    /**
+     * The address ip version. Valid values `ipv4` and `ipv6`.
+     */
     addressIpVersion?: pulumi.Input<string | undefined>;
+    /**
+     * The address type of the SLB. Valid values `internet` and `intranet`.
+     */
     addressType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable details of the SLB. Default to `false`.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of SLBs IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+     */
     internetChargeType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the SLB.
+     */
     loadBalancerName?: pulumi.Input<string | undefined>;
+    /**
+     * The master zone id of the SLB.
+     */
     masterZoneId?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by SLB name.
@@ -265,31 +338,32 @@ export interface GetLoadBalancersOutputArgs {
     outputFile?: pulumi.Input<string | undefined>;
     pageNumber?: pulumi.Input<number | undefined>;
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+     */
     paymentType?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which SLB belongs.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The server ID.
+     */
     serverId?: pulumi.Input<string | undefined>;
+    /**
+     * The server intranet address.
+     */
     serverIntranetAddress?: pulumi.Input<string | undefined>;
+    /**
+     * The slave zone id of the SLB.
+     */
     slaveZoneId?: pulumi.Input<string | undefined>;
     /**
-     * SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      */
     status?: pulumi.Input<string | undefined>;
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as alicloud from "@pulumi/alicloud";
-     *
-     * const taggedInstances = alicloud.slb.getLoadBalancers({
-     *     tags: {
-     *         tagKey1: "tagValue1",
-     *         tagKey2: "tagValue2",
-     *     },
-     * });
-     * ```
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**

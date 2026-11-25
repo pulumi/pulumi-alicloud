@@ -1489,9 +1489,9 @@ func (o GetListenersListenerArrayOutput) Index(i pulumi.IntInput) GetListenersLi
 }
 
 type GetLoadBalancersBalancer struct {
-	// The IP version.
+	// The IP version. Valid values: `ipv4`, `DualStack`.
 	AddressIpVersion string `pulumi:"addressIpVersion"`
-	// The type of IPv4 address used by the NLB instance.
+	// The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
 	AddressType string `pulumi:"addressType"`
 	// The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
 	BandwidthPackageId string `pulumi:"bandwidthPackageId"`
@@ -1503,9 +1503,9 @@ type GetLoadBalancersBalancer struct {
 	DnsName string `pulumi:"dnsName"`
 	// The ID of the NLB instance.
 	Id string `pulumi:"id"`
-	// The type of IPv6 address used by the NLB instance.
+	// The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
 	Ipv6AddressType string `pulumi:"ipv6AddressType"`
-	// The business status of the NLB instance.
+	// The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
 	LoadBalancerBusinessStatus string `pulumi:"loadBalancerBusinessStatus"`
 	// The ID of the NLB instance.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
@@ -1519,9 +1519,9 @@ type GetLoadBalancersBalancer struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The security group to which the NLB instance belongs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The status of the NLB instance.
+	// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
 	Status string `pulumi:"status"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the VPC where the NLB instance is deployed.
 	VpcId string `pulumi:"vpcId"`
@@ -1541,9 +1541,9 @@ type GetLoadBalancersBalancerInput interface {
 }
 
 type GetLoadBalancersBalancerArgs struct {
-	// The IP version.
+	// The IP version. Valid values: `ipv4`, `DualStack`.
 	AddressIpVersion pulumi.StringInput `pulumi:"addressIpVersion"`
-	// The type of IPv4 address used by the NLB instance.
+	// The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
 	AddressType pulumi.StringInput `pulumi:"addressType"`
 	// The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
 	BandwidthPackageId pulumi.StringInput `pulumi:"bandwidthPackageId"`
@@ -1555,9 +1555,9 @@ type GetLoadBalancersBalancerArgs struct {
 	DnsName pulumi.StringInput `pulumi:"dnsName"`
 	// The ID of the NLB instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The type of IPv6 address used by the NLB instance.
+	// The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
 	Ipv6AddressType pulumi.StringInput `pulumi:"ipv6AddressType"`
-	// The business status of the NLB instance.
+	// The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
 	LoadBalancerBusinessStatus pulumi.StringInput `pulumi:"loadBalancerBusinessStatus"`
 	// The ID of the NLB instance.
 	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
@@ -1571,9 +1571,9 @@ type GetLoadBalancersBalancerArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The security group to which the NLB instance belongs.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// The status of the NLB instance.
+	// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the VPC where the NLB instance is deployed.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -1632,12 +1632,12 @@ func (o GetLoadBalancersBalancerOutput) ToGetLoadBalancersBalancerOutputWithCont
 	return o
 }
 
-// The IP version.
+// The IP version. Valid values: `ipv4`, `DualStack`.
 func (o GetLoadBalancersBalancerOutput) AddressIpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.AddressIpVersion }).(pulumi.StringOutput)
 }
 
-// The type of IPv4 address used by the NLB instance.
+// The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
 func (o GetLoadBalancersBalancerOutput) AddressType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.AddressType }).(pulumi.StringOutput)
 }
@@ -1667,12 +1667,12 @@ func (o GetLoadBalancersBalancerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The type of IPv6 address used by the NLB instance.
+// The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
 func (o GetLoadBalancersBalancerOutput) Ipv6AddressType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.Ipv6AddressType }).(pulumi.StringOutput)
 }
 
-// The business status of the NLB instance.
+// The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
 func (o GetLoadBalancersBalancerOutput) LoadBalancerBusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.LoadBalancerBusinessStatus }).(pulumi.StringOutput)
 }
@@ -1707,12 +1707,12 @@ func (o GetLoadBalancersBalancerOutput) SecurityGroupIds() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetLoadBalancersBalancer) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The status of the NLB instance.
+// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
 func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// A mapping of tags to assign to the resource.
 func (o GetLoadBalancersBalancerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancer) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -2013,7 +2013,7 @@ type GetSecurityPoliciesPolicy struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The name of the TLS security policy.
 	SecurityPolicyName string `pulumi:"securityPolicyName"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Available`, `Configuring`.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -2041,7 +2041,7 @@ type GetSecurityPoliciesPolicyArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The name of the TLS security policy.
 	SecurityPolicyName pulumi.StringInput `pulumi:"securityPolicyName"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Available`, `Configuring`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -2120,7 +2120,7 @@ func (o GetSecurityPoliciesPolicyOutput) SecurityPolicyName() pulumi.StringOutpu
 	return o.ApplyT(func(v GetSecurityPoliciesPolicy) string { return v.SecurityPolicyName }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Available`, `Configuring`.
 func (o GetSecurityPoliciesPolicyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
 }

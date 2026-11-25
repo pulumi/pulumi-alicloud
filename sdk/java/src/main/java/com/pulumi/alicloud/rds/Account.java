@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  *         var account = new Account("account", AccountArgs.builder()
  *             .instanceId(instance.id())
- *             .name("tftestnormal")
+ *             .name("tfaccountnormal")
  *             .password("Test12345")
  *             .build());
  * 
@@ -107,26 +107,51 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:rds/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {
+    /**
+     * The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+     * 
+     */
     @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output<String> accountDescription;
 
+    /**
+     * @return The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `description` and is ignored when `description` is set.
+     * 
+     */
     public Output<String> accountDescription() {
         return this.accountDescription;
     }
+    /**
+     * The name of the account. It conflicts with `name` and is ignored when `name` is set.
+     * 
+     */
     @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
+    /**
+     * @return The name of the account. It conflicts with `name` and is ignored when `name` is set.
+     * 
+     */
     public Output<String> accountName() {
         return this.accountName;
     }
+    /**
+     * The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+     * 
+     */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountPassword;
 
+    /**
+     * @return The password of the account. It conflicts with `password`, `kmsEncryptedPassword` and `accountPasswordWo`, and one of the four password sources must be set.
+     * 
+     */
     public Output<Optional<String>> accountPassword() {
         return Codegen.optional(this.accountPassword);
     }
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
      * 
      */
     @Export(name="accountPasswordWo", refs={String.class}, tree="[0]")
@@ -134,37 +159,70 @@ public class Account extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It conflicts with `password` and `kmsEncryptedPassword`, and must be specified together with `accountPasswordWoVersion`.
      * 
      */
     public Output<Optional<String>> accountPasswordWo() {
         return Codegen.optional(this.accountPasswordWo);
     }
+    /**
+     * The version of the write-only password. It must be specified together with `accountPasswordWo`.
+     * 
+     */
     @Export(name="accountPasswordWoVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> accountPasswordWoVersion;
 
+    /**
+     * @return The version of the write-only password. It must be specified together with `accountPasswordWo`.
+     * 
+     */
     public Output<Optional<Integer>> accountPasswordWoVersion() {
         return Codegen.optional(this.accountPasswordWoVersion);
     }
+    /**
+     * The account type. Valid values: Normal/Super/Sysadmin.
+     * 
+     */
     @Export(name="accountType", refs={String.class}, tree="[0]")
     private Output<String> accountType;
 
+    /**
+     * @return The account type. Valid values: Normal/Super/Sysadmin.
+     * 
+     */
     public Output<String> accountType() {
         return this.accountType;
     }
+    /**
+     * Whether to apply password policy.
+     * 
+     */
     @Export(name="checkPolicy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> checkPolicy;
 
+    /**
+     * @return Whether to apply password policy.
+     * 
+     */
     public Output<Optional<Boolean>> checkPolicy() {
         return Codegen.optional(this.checkPolicy);
     }
+    /**
+     * The ID of the instance.
+     * 
+     */
     @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     public Output<String> dbInstanceId() {
         return this.dbInstanceId;
     }
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      * 
      * @deprecated Field &#39;description&#39; has been deprecated from provider version 1.120.0. New field &#39;account_description&#39; instead.
      * 
@@ -174,14 +232,14 @@ public class Account extends com.pulumi.resources.CustomResource {
     private Output<String> description;
 
     /**
-     * @return Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * @return Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * The Id of instance in which account belongs.
+     * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      * 
      * @deprecated Field &#39;instance_id&#39; has been deprecated from provider version 1.120.0. New field &#39;db_instance_id&#39; instead.
      * 
@@ -191,7 +249,7 @@ public class Account extends com.pulumi.resources.CustomResource {
     private Output<String> instanceId;
 
     /**
-     * @return The Id of instance in which account belongs.
+     * @return The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      * 
      */
     public Output<String> instanceId() {
@@ -226,7 +284,7 @@ public class Account extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;account_name&#39; instead.
      * 
@@ -236,14 +294,14 @@ public class Account extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * @return Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      * 
      * @deprecated Field &#39;password&#39; has been deprecated from provider version 1.120.0. New field &#39;account_password&#39; instead.
      * 
@@ -253,21 +311,37 @@ public class Account extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
+    /**
+     * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     * 
+     */
     @Export(name="resetPermissionFlag", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> resetPermissionFlag;
 
+    /**
+     * @return Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+     * 
+     */
     public Output<Optional<Boolean>> resetPermissionFlag() {
         return Codegen.optional(this.resetPermissionFlag);
     }
+    /**
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return The status of the resource. Valid values: `Available`, `Unavailable`.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
@@ -276,7 +350,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * - Normal: Common privilege.
      * - Super: High privilege.
      * 
-     * Default to Normal.
+     * Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      * 
      * @deprecated Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
      * 
@@ -290,7 +364,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * - Normal: Common privilege.
      * - Super: High privilege.
      * 
-     * Default to Normal.
+     * Default to Normal. The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      * 
      */
     public Output<String> type() {

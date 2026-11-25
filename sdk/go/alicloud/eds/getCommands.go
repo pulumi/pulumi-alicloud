@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Commands of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.146.0+.
+// > **NOTE:** Available since v1.146.0.
 //
 // ## Example Usage
 //
@@ -126,15 +126,19 @@ type GetCommandsArgs struct {
 
 // A collection of values returned by getCommands.
 type GetCommandsResult struct {
-	CommandType     *string              `pulumi:"commandType"`
+	// The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+	CommandType *string `pulumi:"commandType"`
+	// A list of Ecd Commands. Each element contains the following attributes:
 	Commands        []GetCommandsCommand `pulumi:"commands"`
 	ContentEncoding *string              `pulumi:"contentEncoding"`
-	DesktopId       *string              `pulumi:"desktopId"`
+	// The desktop id of the Desktop.
+	DesktopId *string `pulumi:"desktopId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+	Status *string `pulumi:"status"`
 }
 
 func GetCommandsOutput(ctx *pulumi.Context, args GetCommandsOutputArgs, opts ...pulumi.InvokeOption) GetCommandsResultOutput {
@@ -177,10 +181,12 @@ func (o GetCommandsResultOutput) ToGetCommandsResultOutputWithContext(ctx contex
 	return o
 }
 
+// The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
 func (o GetCommandsResultOutput) CommandType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.CommandType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Commands. Each element contains the following attributes:
 func (o GetCommandsResultOutput) Commands() GetCommandsCommandArrayOutput {
 	return o.ApplyT(func(v GetCommandsResult) []GetCommandsCommand { return v.Commands }).(GetCommandsCommandArrayOutput)
 }
@@ -189,6 +195,7 @@ func (o GetCommandsResultOutput) ContentEncoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.ContentEncoding }).(pulumi.StringPtrOutput)
 }
 
+// The desktop id of the Desktop.
 func (o GetCommandsResultOutput) DesktopId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.DesktopId }).(pulumi.StringPtrOutput)
 }
@@ -206,6 +213,7 @@ func (o GetCommandsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
 func (o GetCommandsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCommandsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

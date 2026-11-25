@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -73,23 +73,29 @@ type GetServerPlansArgs struct {
 	Memory *float64 `pulumi:"memory"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The platform of Plan supported. Valid values: ["Linux", "Windows"].
+	// Available in v1.161.0. The platform of Plan supported. Valid values: ["Linux", "Windows"].
 	Platform *string `pulumi:"platform"`
 }
 
 // A collection of values returned by getServerPlans.
 type GetServerPlansResult struct {
+	// The peak bandwidth. Unit: Mbit/s.
 	Bandwidth *int `pulumi:"bandwidth"`
-	Core      *int `pulumi:"core"`
-	DiskSize  *int `pulumi:"diskSize"`
-	Flow      *int `pulumi:"flow"`
+	// The number of CPU cores.
+	Core *int `pulumi:"core"`
+	// The size of the enhanced SSD (ESSD). Unit: GB.
+	DiskSize *int `pulumi:"diskSize"`
+	// The monthly data transfer quota. Unit: GB.
+	Flow *int `pulumi:"flow"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string               `pulumi:"id"`
-	Ids        []string             `pulumi:"ids"`
-	Memory     *float64             `pulumi:"memory"`
-	OutputFile *string              `pulumi:"outputFile"`
-	Plans      []GetServerPlansPlan `pulumi:"plans"`
-	Platform   *string              `pulumi:"platform"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The memory size. Unit: GB.
+	Memory     *float64 `pulumi:"memory"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Simple Application Server Plans. Each element contains the following attributes:
+	Plans    []GetServerPlansPlan `pulumi:"plans"`
+	Platform *string              `pulumi:"platform"`
 }
 
 func GetServerPlansOutput(ctx *pulumi.Context, args GetServerPlansOutputArgs, opts ...pulumi.InvokeOption) GetServerPlansResultOutput {
@@ -113,7 +119,7 @@ type GetServerPlansOutputArgs struct {
 	Memory pulumi.Float64PtrInput `pulumi:"memory"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The platform of Plan supported. Valid values: ["Linux", "Windows"].
+	// Available in v1.161.0. The platform of Plan supported. Valid values: ["Linux", "Windows"].
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
 }
 
@@ -136,18 +142,22 @@ func (o GetServerPlansResultOutput) ToGetServerPlansResultOutputWithContext(ctx 
 	return o
 }
 
+// The peak bandwidth. Unit: Mbit/s.
 func (o GetServerPlansResultOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServerPlansResult) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
 
+// The number of CPU cores.
 func (o GetServerPlansResultOutput) Core() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServerPlansResult) *int { return v.Core }).(pulumi.IntPtrOutput)
 }
 
+// The size of the enhanced SSD (ESSD). Unit: GB.
 func (o GetServerPlansResultOutput) DiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServerPlansResult) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
+// The monthly data transfer quota. Unit: GB.
 func (o GetServerPlansResultOutput) Flow() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServerPlansResult) *int { return v.Flow }).(pulumi.IntPtrOutput)
 }
@@ -161,6 +171,7 @@ func (o GetServerPlansResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerPlansResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The memory size. Unit: GB.
 func (o GetServerPlansResultOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetServerPlansResult) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
@@ -169,6 +180,7 @@ func (o GetServerPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerPlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Simple Application Server Plans. Each element contains the following attributes:
 func (o GetServerPlansResultOutput) Plans() GetServerPlansPlanArrayOutput {
 	return o.ApplyT(func(v GetServerPlansResult) []GetServerPlansPlan { return v.Plans }).(GetServerPlansPlanArrayOutput)
 }

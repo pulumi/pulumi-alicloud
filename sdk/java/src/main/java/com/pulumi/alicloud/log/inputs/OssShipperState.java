@@ -64,44 +64,92 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.compressType);
     }
 
+    /**
+     * Field configuration in csv configuration format.
+     * 
+     */
     @Import(name="csvConfigColumns")
     private @Nullable Output<List<String>> csvConfigColumns;
 
+    /**
+     * @return Field configuration in csv configuration format.
+     * 
+     */
     public Optional<Output<List<String>>> csvConfigColumns() {
         return Optional.ofNullable(this.csvConfigColumns);
     }
 
+    /**
+     * Separator configuration in csv configuration format.
+     * 
+     */
     @Import(name="csvConfigDelimiter")
     private @Nullable Output<String> csvConfigDelimiter;
 
+    /**
+     * @return Separator configuration in csv configuration format.
+     * 
+     */
     public Optional<Output<String>> csvConfigDelimiter() {
         return Optional.ofNullable(this.csvConfigDelimiter);
     }
 
+    /**
+     * Indicates whether to write the field name to the CSV file, the default value is `false`.
+     * 
+     */
     @Import(name="csvConfigHeader")
     private @Nullable Output<Boolean> csvConfigHeader;
 
+    /**
+     * @return Indicates whether to write the field name to the CSV file, the default value is `false`.
+     * 
+     */
     public Optional<Output<Boolean>> csvConfigHeader() {
         return Optional.ofNullable(this.csvConfigHeader);
     }
 
+    /**
+     * lineFeed in csv configuration.
+     * 
+     */
     @Import(name="csvConfigLinefeed")
     private @Nullable Output<String> csvConfigLinefeed;
 
+    /**
+     * @return lineFeed in csv configuration.
+     * 
+     */
     public Optional<Output<String>> csvConfigLinefeed() {
         return Optional.ofNullable(this.csvConfigLinefeed);
     }
 
+    /**
+     * Invalid field content.
+     * 
+     */
     @Import(name="csvConfigNullidentifier")
     private @Nullable Output<String> csvConfigNullidentifier;
 
+    /**
+     * @return Invalid field content.
+     * 
+     */
     public Optional<Output<String>> csvConfigNullidentifier() {
         return Optional.ofNullable(this.csvConfigNullidentifier);
     }
 
+    /**
+     * Escape character under csv configuration.
+     * 
+     */
     @Import(name="csvConfigQuote")
     private @Nullable Output<String> csvConfigQuote;
 
+    /**
+     * @return Escape character under csv configuration.
+     * 
+     */
     public Optional<Output<String>> csvConfigQuote() {
         return Optional.ofNullable(this.csvConfigQuote);
     }
@@ -109,19 +157,6 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
     /**
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
-     * - format = `json`
-     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
-     * - format = `csv`
-     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
-     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
-     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-     * - format = `parquet`
-     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
-     *   `name` - (Required) The name of the key.
-     *   `type` - (Required) Type of configuration name.
      * 
      */
     @Import(name="format")
@@ -130,28 +165,23 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
-     * - format = `json`
-     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
-     * - format = `csv`
-     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
-     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
-     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-     * - format = `parquet`
-     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
-     *   `name` - (Required) The name of the key.
-     *   `type` - (Required) Type of configuration name.
      * 
      */
     public Optional<Output<String>> format() {
         return Optional.ofNullable(this.format);
     }
 
+    /**
+     * Whether to deliver the label.
+     * 
+     */
     @Import(name="jsonEnableTag")
     private @Nullable Output<Boolean> jsonEnableTag;
 
+    /**
+     * @return Whether to deliver the label.
+     * 
+     */
     public Optional<Output<Boolean>> jsonEnableTag() {
         return Optional.ofNullable(this.jsonEnableTag);
     }
@@ -201,9 +231,17 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ossPrefix);
     }
 
+    /**
+     * Configure to use parquet storage format. See `parquetConfig` below.
+     * 
+     */
     @Import(name="parquetConfigs")
     private @Nullable Output<List<OssShipperParquetConfigArgs>> parquetConfigs;
 
+    /**
+     * @return Configure to use parquet storage format. See `parquetConfig` below.
+     * 
+     */
     public Optional<Output<List<OssShipperParquetConfigArgs>>> parquetConfigs() {
         return Optional.ofNullable(this.parquetConfigs);
     }
@@ -373,60 +411,138 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
             return compressType(Output.of(compressType));
         }
 
+        /**
+         * @param csvConfigColumns Field configuration in csv configuration format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigColumns(@Nullable Output<List<String>> csvConfigColumns) {
             $.csvConfigColumns = csvConfigColumns;
             return this;
         }
 
+        /**
+         * @param csvConfigColumns Field configuration in csv configuration format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigColumns(List<String> csvConfigColumns) {
             return csvConfigColumns(Output.of(csvConfigColumns));
         }
 
+        /**
+         * @param csvConfigColumns Field configuration in csv configuration format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigColumns(String... csvConfigColumns) {
             return csvConfigColumns(List.of(csvConfigColumns));
         }
 
+        /**
+         * @param csvConfigDelimiter Separator configuration in csv configuration format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigDelimiter(@Nullable Output<String> csvConfigDelimiter) {
             $.csvConfigDelimiter = csvConfigDelimiter;
             return this;
         }
 
+        /**
+         * @param csvConfigDelimiter Separator configuration in csv configuration format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigDelimiter(String csvConfigDelimiter) {
             return csvConfigDelimiter(Output.of(csvConfigDelimiter));
         }
 
+        /**
+         * @param csvConfigHeader Indicates whether to write the field name to the CSV file, the default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigHeader(@Nullable Output<Boolean> csvConfigHeader) {
             $.csvConfigHeader = csvConfigHeader;
             return this;
         }
 
+        /**
+         * @param csvConfigHeader Indicates whether to write the field name to the CSV file, the default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigHeader(Boolean csvConfigHeader) {
             return csvConfigHeader(Output.of(csvConfigHeader));
         }
 
+        /**
+         * @param csvConfigLinefeed lineFeed in csv configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigLinefeed(@Nullable Output<String> csvConfigLinefeed) {
             $.csvConfigLinefeed = csvConfigLinefeed;
             return this;
         }
 
+        /**
+         * @param csvConfigLinefeed lineFeed in csv configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigLinefeed(String csvConfigLinefeed) {
             return csvConfigLinefeed(Output.of(csvConfigLinefeed));
         }
 
+        /**
+         * @param csvConfigNullidentifier Invalid field content.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigNullidentifier(@Nullable Output<String> csvConfigNullidentifier) {
             $.csvConfigNullidentifier = csvConfigNullidentifier;
             return this;
         }
 
+        /**
+         * @param csvConfigNullidentifier Invalid field content.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigNullidentifier(String csvConfigNullidentifier) {
             return csvConfigNullidentifier(Output.of(csvConfigNullidentifier));
         }
 
+        /**
+         * @param csvConfigQuote Escape character under csv configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigQuote(@Nullable Output<String> csvConfigQuote) {
             $.csvConfigQuote = csvConfigQuote;
             return this;
         }
 
+        /**
+         * @param csvConfigQuote Escape character under csv configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder csvConfigQuote(String csvConfigQuote) {
             return csvConfigQuote(Output.of(csvConfigQuote));
         }
@@ -434,19 +550,6 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param format Storage format, only supports three types: `json`, `parquet`, `csv`.
          * **According to the different format, please select the following parameters**
-         * - format = `json`
-         *   `jsonEnableTag` - (Optional) Whether to deliver the label.
-         * - format = `csv`
-         *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-         *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-         *   `csvConfigNullidentifier` - (Optional) Invalid field content.
-         *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
-         *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-         *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-         * - format = `parquet`
-         *   `parquetConfig` - (Optional) Configure to use parquet storage format.
-         *   `name` - (Required) The name of the key.
-         *   `type` - (Required) Type of configuration name.
          * 
          * @return builder
          * 
@@ -459,19 +562,6 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param format Storage format, only supports three types: `json`, `parquet`, `csv`.
          * **According to the different format, please select the following parameters**
-         * - format = `json`
-         *   `jsonEnableTag` - (Optional) Whether to deliver the label.
-         * - format = `csv`
-         *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-         *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-         *   `csvConfigNullidentifier` - (Optional) Invalid field content.
-         *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
-         *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-         *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-         * - format = `parquet`
-         *   `parquetConfig` - (Optional) Configure to use parquet storage format.
-         *   `name` - (Required) The name of the key.
-         *   `type` - (Required) Type of configuration name.
          * 
          * @return builder
          * 
@@ -480,11 +570,23 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
             return format(Output.of(format));
         }
 
+        /**
+         * @param jsonEnableTag Whether to deliver the label.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jsonEnableTag(@Nullable Output<Boolean> jsonEnableTag) {
             $.jsonEnableTag = jsonEnableTag;
             return this;
         }
 
+        /**
+         * @param jsonEnableTag Whether to deliver the label.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jsonEnableTag(Boolean jsonEnableTag) {
             return jsonEnableTag(Output.of(jsonEnableTag));
         }
@@ -552,15 +654,33 @@ public final class OssShipperState extends com.pulumi.resources.ResourceArgs {
             return ossPrefix(Output.of(ossPrefix));
         }
 
+        /**
+         * @param parquetConfigs Configure to use parquet storage format. See `parquetConfig` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parquetConfigs(@Nullable Output<List<OssShipperParquetConfigArgs>> parquetConfigs) {
             $.parquetConfigs = parquetConfigs;
             return this;
         }
 
+        /**
+         * @param parquetConfigs Configure to use parquet storage format. See `parquetConfig` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parquetConfigs(List<OssShipperParquetConfigArgs> parquetConfigs) {
             return parquetConfigs(Output.of(parquetConfigs));
         }
 
+        /**
+         * @param parquetConfigs Configure to use parquet storage format. See `parquetConfig` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parquetConfigs(OssShipperParquetConfigArgs... parquetConfigs) {
             return parquetConfigs(List.of(parquetConfigs));
         }

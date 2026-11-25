@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0+.
  *
  * ## Example Usage
  *
@@ -92,6 +92,9 @@ export interface GetNatIpsArgs {
      * NAT IP ADDRESS of the address segment.
      */
     natIpCidr?: string;
+    /**
+     * A list of Nat Ip IDs used to filter results.
+     */
     natIpIds?: string[];
     /**
      * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
@@ -115,21 +118,42 @@ export interface GetNatIpsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Nat Ip IDs.
+     */
     readonly ids: string[];
+    /**
+     * A list of Vpc Nat Ips. Each element contains the following attributes:
+     */
     readonly ips: outputs.vpc.GetNatIpsIp[];
     readonly nameRegex?: string;
+    /**
+     * A list of Nat Ip names.
+     */
     readonly names: string[];
+    /**
+     * The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+     */
     readonly natGatewayId: string;
+    /**
+     * The CIDR block to which the NAT IP address belongs.
+     */
     readonly natIpCidr?: string;
     readonly natIpIds?: string[];
+    /**
+     * The name of the NAT IP address.
+     */
     readonly natIpNames?: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0+.
  *
  * ## Example Usage
  *
@@ -212,6 +236,9 @@ export interface GetNatIpsOutputArgs {
      * NAT IP ADDRESS of the address segment.
      */
     natIpCidr?: pulumi.Input<string | undefined>;
+    /**
+     * A list of Nat Ip IDs used to filter results.
+     */
     natIpIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.

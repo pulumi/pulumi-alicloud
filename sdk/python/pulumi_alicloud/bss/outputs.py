@@ -34,7 +34,7 @@ class GetOpenApiPricingModulesModuleResult(dict):
                  values: Sequence['outputs.GetOpenApiPricingModulesModuleValueResult']):
         """
         :param _builtins.str code: Property Code.
-        :param _builtins.str id: A list of Price Module IDs.
+        :param _builtins.str id: The ID of the pricing module. The value is formulated as `<product_code>:<product_type>:<subscription_type>:<code>`.
         :param _builtins.str pricing_module_name: Attribute name.
         :param _builtins.str product_code: The product code.
         :param _builtins.str product_type: The product type.
@@ -65,7 +65,7 @@ class GetOpenApiPricingModulesModuleResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        A list of Price Module IDs.
+        The ID of the pricing module. The value is formulated as `<product_code>:<product_type>:<subscription_type>:<code>`.
         """
         return pulumi.get(self, "id")
 

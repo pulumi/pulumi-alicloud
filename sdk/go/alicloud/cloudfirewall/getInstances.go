@@ -62,10 +62,12 @@ type GetInstancesArgs struct {
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                 `pulumi:"id"`
-	Instances   []GetInstancesInstance `pulumi:"instances"`
-	OutputFile  *string                `pulumi:"outputFile"`
-	PaymentType *string                `pulumi:"paymentType"`
+	Id string `pulumi:"id"`
+	// A list of Cloud Firewall Instances. Each element contains the following attributes:
+	Instances  []GetInstancesInstance `pulumi:"instances"`
+	OutputFile *string                `pulumi:"outputFile"`
+	// The payment type of the resource. Valid values: `Subscription`.
+	PaymentType *string `pulumi:"paymentType"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -105,6 +107,7 @@ func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Cloud Firewall Instances. Each element contains the following attributes:
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
@@ -113,6 +116,7 @@ func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The payment type of the resource. Valid values: `Subscription`.
 func (o GetInstancesResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }

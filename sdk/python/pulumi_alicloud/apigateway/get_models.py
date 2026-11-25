@@ -154,7 +154,7 @@ def get_models(group_id: Optional[_builtins.str] = None,
     """
     This data source provides the Api Gateway Models of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 
@@ -211,7 +211,7 @@ def get_models_output(group_id: pulumi.Input[Optional[_builtins.str]] = None,
     """
     This data source provides the Api Gateway Models of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 

@@ -24,6 +24,10 @@ public final class GetUsersResult {
     private List<String> ids;
     private @Nullable String keyword;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Quick BI Users. Each element contains the following attributes:
+     * 
+     */
     private List<GetUsersUser> users;
 
     private GetUsersResult() {}
@@ -46,6 +50,10 @@ public final class GetUsersResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Quick BI Users. Each element contains the following attributes:
+     * 
+     */
     public List<GetUsersUser> users() {
         return this.users;
     }

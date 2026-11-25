@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *
@@ -60,6 +60,9 @@ export interface GetStateConfigurationsArgs {
  * A collection of values returned by getStateConfigurations.
  */
 export interface GetStateConfigurationsResult {
+    /**
+     * A list of Oos State Configurations. Each element contains the following attributes:
+     */
     readonly configurations: outputs.oos.GetStateConfigurationsConfiguration[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -67,13 +70,19 @@ export interface GetStateConfigurationsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The tag of the resource.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the Oos State Configurations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  *
  * ## Example Usage
  *

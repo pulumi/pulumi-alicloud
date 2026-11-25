@@ -68,6 +68,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> BackupId { get; private set; } = null!;
 
         /// <summary>
+        /// (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+        /// </summary>
+        [Output("backupJobId")]
+        public Output<string> BackupJobId { get; private set; } = null!;
+
+        /// <summary>
         /// The backup type. Valid values:
         /// * `Logical`: logical backup (supported only for MySQL)
         /// * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
@@ -256,6 +262,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
+
+        /// <summary>
+        /// (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+        /// </summary>
+        [Input("backupJobId")]
+        public Input<string>? BackupJobId { get; set; }
 
         /// <summary>
         /// The backup type. Valid values:

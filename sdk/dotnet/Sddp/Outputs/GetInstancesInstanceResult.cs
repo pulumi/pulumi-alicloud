@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Sddp.Outputs
         /// Whether the required RAM authorization is configured.
         /// </summary>
         public readonly bool Authed;
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the instance.

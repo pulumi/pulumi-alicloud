@@ -31,7 +31,7 @@ class PrefixListArgs:
         """
         The set of arguments for constructing a PrefixList resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        :param pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]] entrys: The CIDR address block list of the prefix list. See `entrys` below.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries for CIDR address blocks in the prefix list.
         :param pulumi.Input[_builtins.str] prefix_list_description: The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
@@ -58,7 +58,7 @@ class PrefixListArgs:
     @pulumi.getter
     def entrys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListEntryArgs']]]]:
         """
-        The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        The CIDR address block list of the prefix list. See `entrys` below.
         """
         return pulumi.get(self, "entrys")
 
@@ -158,7 +158,7 @@ class _PrefixListState:
         Input properties used for looking up and filtering PrefixList resources.
 
         :param pulumi.Input[_builtins.str] create_time: The time when the prefix list was created.
-        :param pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        :param pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]] entrys: The CIDR address block list of the prefix list. See `entrys` below.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries for CIDR address blocks in the prefix list.
         :param pulumi.Input[Sequence[pulumi.Input['PrefixListPrefixListAssociationArgs']]] prefix_list_associations: The association list information of the prefix list.
@@ -211,7 +211,7 @@ class _PrefixListState:
     @pulumi.getter
     def entrys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListEntryArgs']]]]:
         """
-        The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        The CIDR address block list of the prefix list. See `entrys` below.
         """
         return pulumi.get(self, "entrys")
 
@@ -372,12 +372,12 @@ class PrefixList(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc-example"
+            name = "tf-prefixlist-example"
         default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-testacc-chenyi",
+            display_name="tf-prefixlist-default-rg",
             resource_group_name=name)
         change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-chenyi-change",
+            display_name="tf-prefixlist-change-rg",
             resource_group_name=f"{name}1")
         default = alicloud.vpc.PrefixList("default",
             max_entries=50,
@@ -404,7 +404,7 @@ class PrefixList(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict', 'outputs.PrefixListEntry']]]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict', 'outputs.PrefixListEntry']]]] entrys: The CIDR address block list of the prefix list. See `entrys` below.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries for CIDR address blocks in the prefix list.
         :param pulumi.Input[_builtins.str] prefix_list_description: The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
@@ -436,12 +436,12 @@ class PrefixList(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc-example"
+            name = "tf-prefixlist-example"
         default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-testacc-chenyi",
+            display_name="tf-prefixlist-default-rg",
             resource_group_name=name)
         change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-chenyi-change",
+            display_name="tf-prefixlist-change-rg",
             resource_group_name=f"{name}1")
         default = alicloud.vpc.PrefixList("default",
             max_entries=50,
@@ -539,7 +539,7 @@ class PrefixList(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time when the prefix list was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict', 'outputs.PrefixListEntry']]]] entrys: The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict', 'outputs.PrefixListEntry']]]] entrys: The CIDR address block list of the prefix list. See `entrys` below.
         :param pulumi.Input[_builtins.str] ip_version: The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         :param pulumi.Input[_builtins.int] max_entries: The maximum number of entries for CIDR address blocks in the prefix list.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrefixListPrefixListAssociationArgs', 'PrefixListPrefixListAssociationArgsDict', 'outputs.PrefixListPrefixListAssociation']]]] prefix_list_associations: The association list information of the prefix list.
@@ -611,7 +611,7 @@ class PrefixList(pulumi.CustomResource):
     @pulumi.getter
     def entrys(self) -> pulumi.Output[Optional[Sequence['outputs.PrefixListEntry']]]:
         """
-        The CIDR address block list of the prefix list.See the following `Block Entrys`.
+        The CIDR address block list of the prefix list. See `entrys` below.
         """
         return pulumi.get(self, "entrys")
 

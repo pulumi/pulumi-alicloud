@@ -18,14 +18,14 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
     public static final HoneypotProbeHoneypotBindListArgs Empty = new HoneypotProbeHoneypotBindListArgs();
 
     /**
-     * List of listening ports.See the following `Block BindPortList`.
+     * List of listening ports.See the following `bindPortList` below.
      * 
      */
     @Import(name="bindPortLists")
     private @Nullable Output<List<HoneypotProbeHoneypotBindListBindPortListArgs>> bindPortLists;
 
     /**
-     * @return List of listening ports.See the following `Block BindPortList`.
+     * @return List of listening ports.See the following `bindPortList` below.
      * 
      */
     public Optional<Output<List<HoneypotProbeHoneypotBindListBindPortListArgs>>> bindPortLists() {
@@ -73,7 +73,7 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bindPortLists List of listening ports.See the following `Block BindPortList`.
+         * @param bindPortLists List of listening ports.See the following `bindPortList` below.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bindPortLists List of listening ports.See the following `Block BindPortList`.
+         * @param bindPortLists List of listening ports.See the following `bindPortList` below.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bindPortLists List of listening ports.See the following `Block BindPortList`.
+         * @param bindPortLists List of listening ports.See the following `bindPortList` below.
          * 
          * @return builder
          * 

@@ -70,6 +70,9 @@ class GetAppGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetAppGroupsGroupResult']:
+        """
+        A list of App Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -88,6 +91,9 @@ class GetAppGroupsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[_builtins.str]:
+        """
+        The Instance ID.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -103,6 +109,9 @@ class GetAppGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of App Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -113,11 +122,17 @@ class GetAppGroupsResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The Resource Group ID.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
+        """
+        Application type. Valid Values: `standard`, `enhanced`.
+        """
         return pulumi.get(self, "type")
 
 
@@ -152,7 +167,7 @@ def get_app_groups(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Open Search App Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 
@@ -165,7 +180,7 @@ def get_app_groups(enable_details: Optional[_builtins.bool] = None,
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "tf_testacc"
+        name = "tf_acc"
     default_app_group = alicloud.opensearch.AppGroup("default",
         app_group_name=name,
         payment_type="PayAsYouGo",
@@ -182,11 +197,12 @@ def get_app_groups(enable_details: Optional[_builtins.bool] = None,
 
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of App Group IDs. Its element value is same as App Group Name.
-    :param _builtins.str instance_id: The Instance ID.
+    :param _builtins.str instance_id: Instance ID.
+    :param _builtins.str name: The name of AppGroup.
     :param _builtins.str name_regex: A regex string to filter results by App Group name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str resource_group_id: The Resource Group ID.
-    :param _builtins.str type: Application type. Valid Values: `standard`, `enhanced`.
+    :param _builtins.str resource_group_id: Resource Group Id.
+    :param _builtins.str type: The Type of AppGroup. Valid values: `standard`,`enhanced`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -224,7 +240,7 @@ def get_app_groups_output(enable_details: pulumi.Input[Optional[Optional[_builti
     """
     This data source provides the Open Search App Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 
@@ -237,7 +253,7 @@ def get_app_groups_output(enable_details: pulumi.Input[Optional[Optional[_builti
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "tf_testacc"
+        name = "tf_acc"
     default_app_group = alicloud.opensearch.AppGroup("default",
         app_group_name=name,
         payment_type="PayAsYouGo",
@@ -254,11 +270,12 @@ def get_app_groups_output(enable_details: pulumi.Input[Optional[Optional[_builti
 
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of App Group IDs. Its element value is same as App Group Name.
-    :param _builtins.str instance_id: The Instance ID.
+    :param _builtins.str instance_id: Instance ID.
+    :param _builtins.str name: The name of AppGroup.
     :param _builtins.str name_regex: A regex string to filter results by App Group name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str resource_group_id: The Resource Group ID.
-    :param _builtins.str type: Application type. Valid Values: `standard`, `enhanced`.
+    :param _builtins.str resource_group_id: Resource Group Id.
+    :param _builtins.str type: The Type of AppGroup. Valid values: `standard`,`enhanced`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

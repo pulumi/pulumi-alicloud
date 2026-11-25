@@ -72,11 +72,17 @@ class GetSubscriptionJobsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Subscription Job IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter
     def jobs(self) -> Sequence['outputs.GetSubscriptionJobsJobResult']:
+        """
+        A list of Dts Subscription Jobs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "jobs")
 
     @_builtins.property
@@ -87,6 +93,9 @@ class GetSubscriptionJobsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Subscription Job names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -97,11 +106,17 @@ class GetSubscriptionJobsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -132,7 +147,7 @@ def get_subscription_jobs(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 
@@ -147,10 +162,12 @@ def get_subscription_jobs(enable_details: Optional[_builtins.bool] = None,
     ```
 
 
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `source_endpoint_owner_id`, `source_endpoint_role`, `subscription_data_type_ddl` and `subscription_data_type_dml`.
     :param Sequence[_builtins.str] ids: A list of Subscription Job IDs.
     :param _builtins.str name_regex: A regex string to filter results by subscription job name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to filter results.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -182,7 +199,7 @@ def get_subscription_jobs_output(enable_details: pulumi.Input[Optional[Optional[
     """
     This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     ## Example Usage
 
@@ -197,10 +214,12 @@ def get_subscription_jobs_output(enable_details: pulumi.Input[Optional[Optional[
     ```
 
 
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `source_endpoint_owner_id`, `source_endpoint_role`, `subscription_data_type_ddl` and `subscription_data_type_dml`.
     :param Sequence[_builtins.str] ids: A list of Subscription Job IDs.
     :param _builtins.str name_regex: A regex string to filter results by subscription job name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to filter results.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

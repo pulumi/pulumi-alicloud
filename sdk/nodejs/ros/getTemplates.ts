@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ros Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.108.0+.
+ * > **NOTE:** Available since v1.108.0.
  *
  * ## Example Usage
  *
@@ -85,17 +85,32 @@ export interface GetTemplatesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Template names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Share Type.
+     */
     readonly shareType?: string;
+    /**
+     * Tags.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+     */
     readonly templateName?: string;
+    /**
+     * A list of Ros Templates. Each element contains the following attributes:
+     */
     readonly templates: outputs.ros.GetTemplatesTemplate[];
 }
 /**
  * This data source provides the Ros Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.108.0+.
+ * > **NOTE:** Available since v1.108.0.
  *
  * ## Example Usage
  *

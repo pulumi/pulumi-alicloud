@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.56.0+
+ * > **NOTE:** Available since v1.56.0.
  *
  * ## Example Usage
  *
@@ -92,7 +92,7 @@ export interface GetTopicsResult {
      */
     readonly topic?: string;
     /**
-     * A list of topics. Each element contains the following attributes:
+     * A list of topics. Each element contains the following attributes. See `topics` for the optional argument block.
      */
     readonly topics: outputs.actiontrail.GetTopicsTopic[];
     readonly totalCount: number;
@@ -100,7 +100,7 @@ export interface GetTopicsResult {
 /**
  * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.56.0+
+ * > **NOTE:** Available since v1.56.0.
  *
  * ## Example Usage
  *

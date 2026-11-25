@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides AccessRule available to the user.
         /// 
-        /// &gt; **NOTE**: Available in 1.35.0+
+        /// &gt; **NOTE:** Available since v1.35.0+
         /// 
         /// ## Example Usage
         /// 
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Nas
         /// {
         ///     var foo = AliCloud.Nas.GetAccessRules.Invoke(new()
         ///     {
-        ///         AccessGroupName = "tf-testAccAccessGroupsdatasource",
+        ///         AccessGroupName = "tf-example",
         ///         SourceCidrIp = "168.1.1.0/16",
         ///         RwAccess = "RDWR",
         ///         UserAccess = "no_squash",
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides AccessRule available to the user.
         /// 
-        /// &gt; **NOTE**: Available in 1.35.0+
+        /// &gt; **NOTE:** Available since v1.35.0+
         /// 
         /// ## Example Usage
         /// 
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Nas
         /// {
         ///     var foo = AliCloud.Nas.GetAccessRules.Invoke(new()
         ///     {
-        ///         AccessGroupName = "tf-testAccAccessGroupsdatasource",
+        ///         AccessGroupName = "tf-example",
         ///         SourceCidrIp = "168.1.1.0/16",
         ///         RwAccess = "RDWR",
         ///         UserAccess = "no_squash",
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// This data source provides AccessRule available to the user.
         /// 
-        /// &gt; **NOTE**: Available in 1.35.0+
+        /// &gt; **NOTE:** Available since v1.35.0+
         /// 
         /// ## Example Usage
         /// 
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Nas
         /// {
         ///     var foo = AliCloud.Nas.GetAccessRules.Invoke(new()
         ///     {
-        ///         AccessGroupName = "tf-testAccAccessGroupsdatasource",
+        ///         AccessGroupName = "tf-example",
         ///         SourceCidrIp = "168.1.1.0/16",
         ///         RwAccess = "RDWR",
         ///         UserAccess = "no_squash",

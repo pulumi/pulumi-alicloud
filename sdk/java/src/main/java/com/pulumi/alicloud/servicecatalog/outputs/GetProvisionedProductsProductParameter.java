@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProvisionedProductsProductParameter {
+    /**
+     * @return The name of the parameter defined in the template.
+     * 
+     */
     private String parameterKey;
+    /**
+     * @return The Template parameter value entered by the user.
+     * 
+     */
     private String parameterValue;
 
     private GetProvisionedProductsProductParameter() {}
+    /**
+     * @return The name of the parameter defined in the template.
+     * 
+     */
     public String parameterKey() {
         return this.parameterKey;
     }
+    /**
+     * @return The Template parameter value entered by the user.
+     * 
+     */
     public String parameterValue() {
         return this.parameterValue;
     }

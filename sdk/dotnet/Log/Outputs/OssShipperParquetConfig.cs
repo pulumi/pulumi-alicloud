@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Log.Outputs
     [OutputType]
     public sealed class OssShipperParquetConfig
     {
+        /// <summary>
+        /// The name of the key.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Type of configuration name.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -34,7 +34,7 @@ type GetSystemGroupsGroup struct {
 	GroupName string `pulumi:"groupName"`
 	// The ID of the Group.
 	Id string `pulumi:"id"`
-	// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+	// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
 	InProtocol string `pulumi:"inProtocol"`
 	// The use of space play Protocol multi-valued separate them with commas (,). Valid values: `flv`,`hls`, `rtmp`(Real Time Messaging Protocol).
 	OutProtocol string `pulumi:"outProtocol"`
@@ -78,7 +78,7 @@ type GetSystemGroupsGroupArgs struct {
 	GroupName pulumi.StringInput `pulumi:"groupName"`
 	// The ID of the Group.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+	// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
 	InProtocol pulumi.StringInput `pulumi:"inProtocol"`
 	// The use of space play Protocol multi-valued separate them with commas (,). Valid values: `flv`,`hls`, `rtmp`(Real Time Messaging Protocol).
 	OutProtocol pulumi.StringInput `pulumi:"outProtocol"`
@@ -191,7 +191,7 @@ func (o GetSystemGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSystemGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
 func (o GetSystemGroupsGroupOutput) InProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSystemGroupsGroup) string { return v.InProtocol }).(pulumi.StringOutput)
 }

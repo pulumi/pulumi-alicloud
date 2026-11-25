@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.Slb.Outputs
     [OutputType]
     public sealed class BackendServerBackendServer
     {
+        /// <summary>
+        /// A list backend server ID (ECS instance ID).
+        /// </summary>
         public readonly string ServerId;
+        /// <summary>
+        /// ServerIp of the backend server. This parameter can be specified when the type is `Eni`. `Ecs` type currently does not support adding `ServerIp` parameter.
+        /// </summary>
         public readonly string? ServerIp;
+        /// <summary>
+        /// Type of the backend server. Valid value `Ecs`, `Eni`, `Eci`. Default to `Ecs`. **NOTE:** From 1.170.0+, The `Eci` is valid.
+        /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Weight of the backend server. Valid value range: [0-100].
+        /// </summary>
         public readonly int Weight;
 
         [OutputConstructor]

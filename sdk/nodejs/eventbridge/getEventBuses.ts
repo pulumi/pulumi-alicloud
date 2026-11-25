@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *
@@ -69,6 +69,9 @@ export interface GetEventBusesArgs {
  * A collection of values returned by getEventBuses.
  */
 export interface GetEventBusesResult {
+    /**
+     * A list of Event Bridge Event Buses. Each element contains the following attributes:
+     */
     readonly buses: outputs.eventbridge.GetEventBusesBus[];
     readonly eventBusType?: string;
     /**
@@ -78,13 +81,16 @@ export interface GetEventBusesResult {
     readonly ids: string[];
     readonly namePrefix?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Event Bus names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *

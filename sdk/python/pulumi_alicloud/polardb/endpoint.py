@@ -29,6 +29,7 @@ class EndpointArgs:
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  port: pulumi.Input[Optional[_builtins.str]] = None,
                  read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -44,6 +45,7 @@ class EndpointArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[_builtins.str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[_builtins.str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+        :param pulumi.Input[_builtins.str] scc_mode: Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint's read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `scc_mode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
         :param pulumi.Input[_builtins.str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
         :param pulumi.Input[_builtins.str] ssl_enabled: Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
         """
@@ -66,6 +68,8 @@ class EndpointArgs:
             pulumi.set(__self__, "port", port)
         if read_write_mode is not None:
             pulumi.set(__self__, "read_write_mode", read_write_mode)
+        if scc_mode is not None:
+            pulumi.set(__self__, "scc_mode", scc_mode)
         if ssl_auto_rotate is not None:
             pulumi.set(__self__, "ssl_auto_rotate", ssl_auto_rotate)
         if ssl_enabled is not None:
@@ -192,6 +196,18 @@ class EndpointArgs:
         pulumi.set(self, "read_write_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="sccMode")
+    def scc_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint's read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `scc_mode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
+        """
+        return pulumi.get(self, "scc_mode")
+
+    @scc_mode.setter
+    def scc_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "scc_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslAutoRotate")
     def ssl_auto_rotate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -230,6 +246,7 @@ class _EndpointState:
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  port: pulumi.Input[Optional[_builtins.str]] = None,
                  read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_certificate_url: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
@@ -249,6 +266,7 @@ class _EndpointState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[_builtins.str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[_builtins.str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+        :param pulumi.Input[_builtins.str] scc_mode: Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint's read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `scc_mode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
         :param pulumi.Input[_builtins.str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
         :param pulumi.Input[_builtins.str] ssl_certificate_url: Specifies SSL certificate download link.\\
                **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
@@ -279,6 +297,8 @@ class _EndpointState:
             pulumi.set(__self__, "port", port)
         if read_write_mode is not None:
             pulumi.set(__self__, "read_write_mode", read_write_mode)
+        if scc_mode is not None:
+            pulumi.set(__self__, "scc_mode", scc_mode)
         if ssl_auto_rotate is not None:
             pulumi.set(__self__, "ssl_auto_rotate", ssl_auto_rotate)
         if ssl_certificate_url is not None:
@@ -423,6 +443,18 @@ class _EndpointState:
         pulumi.set(self, "read_write_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="sccMode")
+    def scc_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint's read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `scc_mode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
+        """
+        return pulumi.get(self, "scc_mode")
+
+    @scc_mode.setter
+    def scc_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "scc_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslAutoRotate")
     def ssl_auto_rotate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -501,6 +533,7 @@ class Endpoint(pulumi.CustomResource):
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  port: pulumi.Input[Optional[_builtins.str]] = None,
                  read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -513,7 +546,11 @@ class Endpoint(pulumi.CustomResource):
 
         > **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
 
+        > **NOTE:** A PolarDB cluster has only one default cluster endpoint, and it can be managed either by this resource (after importing it) or by `polardb.ClusterEndpoint`. Manage one endpoint address from only one Terraform resource. If the same default cluster endpoint is controlled by both resources, a change to an attribute they share (such as `scc_mode`) is sent to that endpoint by both resources: when the two configurations specify different values, the later apply overwrites the earlier one and the other configuration keeps reporting a diff. Different endpoint addresses have different identities and can be managed by different resources: for example, a custom endpoint created by this resource and the default cluster endpoint managed by `polardb.ClusterEndpoint` can coexist. `scc_mode` (global consistency, high-performance mode) is available only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); on other clusters the setting is not supported. On a cluster that meets these prerequisites, endpoint identity alone does not determine the scope: `scc_mode` can be enabled or disabled independently for each endpoint only when PolarProxy is version `2.9.12` or later and the engine minor version is `8.0.2.2.29` or later (MySQL `8.0.2`), `8.0.1.1.48` or later (MySQL `8.0.1`), or `5.7.1.0.38` or later (MySQL `5.7`); in that case different endpoint addresses can control `scc_mode` separately. If the additional conditions are not met, `scc_mode` is a cluster-level setting: enabling or disabling it on one endpoint also applies it to all other endpoints of the same cluster, so the Terraform resources that manage endpoints of the same cluster must use the same value and cannot expect each endpoint address to control it independently.
+
         > **NOTE:** The DynamoDB type endpoint does not support deletion. When destroying the Terraform resource, the DynamoDB endpoint will be removed from state but not deleted from the cloud.
+
+        > **NOTE:** The endpoint's advanced configuration must stay compatible with global consistency (high-performance mode) and the endpoint's read/write mode. `ConsistLevel` and `CausalConsistRead` are separate settings. An incompatible combination can be rejected with an `EndpointConfig.Conflict` error; an error requiring `CausalConsistRead=session` does not imply that `ConsistLevel` must be `0`.
 
         ## Example Usage
 
@@ -524,7 +561,8 @@ class Endpoint(pulumi.CustomResource):
         default = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
             pay_type="PostPaid",
-            category="Normal")
+            category="Normal",
+            db_node_class="polar.mysql.x4.medium")
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
@@ -568,6 +606,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[_builtins.str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[_builtins.str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+        :param pulumi.Input[_builtins.str] scc_mode: Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint's read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `scc_mode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
         :param pulumi.Input[_builtins.str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
         :param pulumi.Input[_builtins.str] ssl_enabled: Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
         """
@@ -586,7 +625,11 @@ class Endpoint(pulumi.CustomResource):
 
         > **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
 
+        > **NOTE:** A PolarDB cluster has only one default cluster endpoint, and it can be managed either by this resource (after importing it) or by `polardb.ClusterEndpoint`. Manage one endpoint address from only one Terraform resource. If the same default cluster endpoint is controlled by both resources, a change to an attribute they share (such as `scc_mode`) is sent to that endpoint by both resources: when the two configurations specify different values, the later apply overwrites the earlier one and the other configuration keeps reporting a diff. Different endpoint addresses have different identities and can be managed by different resources: for example, a custom endpoint created by this resource and the default cluster endpoint managed by `polardb.ClusterEndpoint` can coexist. `scc_mode` (global consistency, high-performance mode) is available only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); on other clusters the setting is not supported. On a cluster that meets these prerequisites, endpoint identity alone does not determine the scope: `scc_mode` can be enabled or disabled independently for each endpoint only when PolarProxy is version `2.9.12` or later and the engine minor version is `8.0.2.2.29` or later (MySQL `8.0.2`), `8.0.1.1.48` or later (MySQL `8.0.1`), or `5.7.1.0.38` or later (MySQL `5.7`); in that case different endpoint addresses can control `scc_mode` separately. If the additional conditions are not met, `scc_mode` is a cluster-level setting: enabling or disabling it on one endpoint also applies it to all other endpoints of the same cluster, so the Terraform resources that manage endpoints of the same cluster must use the same value and cannot expect each endpoint address to control it independently.
+
         > **NOTE:** The DynamoDB type endpoint does not support deletion. When destroying the Terraform resource, the DynamoDB endpoint will be removed from state but not deleted from the cloud.
+
+        > **NOTE:** The endpoint's advanced configuration must stay compatible with global consistency (high-performance mode) and the endpoint's read/write mode. `ConsistLevel` and `CausalConsistRead` are separate settings. An incompatible combination can be rejected with an `EndpointConfig.Conflict` error; an error requiring `CausalConsistRead=session` does not imply that `ConsistLevel` must be `0`.
 
         ## Example Usage
 
@@ -597,7 +640,8 @@ class Endpoint(pulumi.CustomResource):
         default = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
             pay_type="PostPaid",
-            category="Normal")
+            category="Normal",
+            db_node_class="polar.mysql.x4.medium")
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
@@ -654,6 +698,7 @@ class Endpoint(pulumi.CustomResource):
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  port: pulumi.Input[Optional[_builtins.str]] = None,
                  read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -677,6 +722,7 @@ class Endpoint(pulumi.CustomResource):
             __props__.__dict__["nodes"] = nodes
             __props__.__dict__["port"] = port
             __props__.__dict__["read_write_mode"] = read_write_mode
+            __props__.__dict__["scc_mode"] = scc_mode
             __props__.__dict__["ssl_auto_rotate"] = ssl_auto_rotate
             __props__.__dict__["ssl_enabled"] = ssl_enabled
             __props__.__dict__["db_endpoint_id"] = None
@@ -704,6 +750,7 @@ class Endpoint(pulumi.CustomResource):
             nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             port: pulumi.Input[Optional[_builtins.str]] = None,
             read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_certificate_url: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
@@ -727,6 +774,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         :param pulumi.Input[_builtins.str] port: Port of the specified endpoint. Valid values: 3000 to 5999.
         :param pulumi.Input[_builtins.str] read_write_mode: Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
+        :param pulumi.Input[_builtins.str] scc_mode: Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint's read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `scc_mode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
         :param pulumi.Input[_builtins.str] ssl_auto_rotate: Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
         :param pulumi.Input[_builtins.str] ssl_certificate_url: Specifies SSL certificate download link.\\
                **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
@@ -750,6 +798,7 @@ class Endpoint(pulumi.CustomResource):
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["port"] = port
         __props__.__dict__["read_write_mode"] = read_write_mode
+        __props__.__dict__["scc_mode"] = scc_mode
         __props__.__dict__["ssl_auto_rotate"] = ssl_auto_rotate
         __props__.__dict__["ssl_certificate_url"] = ssl_certificate_url
         __props__.__dict__["ssl_connection_string"] = ssl_connection_string
@@ -771,6 +820,7 @@ class Endpoint(pulumi.CustomResource):
             nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             port: pulumi.Input[Optional[_builtins.str]] = None,
             read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            scc_mode: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_certificate_url: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
@@ -788,6 +838,7 @@ class Endpoint(pulumi.CustomResource):
         __props__["nodes"] = nodes
         __props__["port"] = port
         __props__["readWriteMode"] = read_write_mode
+        __props__["sccMode"] = scc_mode
         __props__["sslAutoRotate"] = ssl_auto_rotate
         __props__["sslCertificateUrl"] = ssl_certificate_url
         __props__["sslConnectionString"] = ssl_connection_string
@@ -882,6 +933,14 @@ class Endpoint(pulumi.CustomResource):
         Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         """
         return pulumi.get(self, "read_write_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="sccMode")
+    def scc_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies whether to enable global consistency (high-performance mode) for the endpoint. Valid values: `on`, `off`. Global consistency (high-performance mode) is supported only on PolarDB for MySQL Enterprise Edition clusters whose engine minor version is `8.0.2.2.19` or later (MySQL `8.0.2`), `8.0.1.1.29` or later (MySQL `8.0.1`), or `5.7.1.0.26` or later (MySQL `5.7`); whether the setting applies to a single endpoint or to the whole cluster depends on the PolarProxy and engine versions described in the resource-level note above. For `endpoint_config.ConsistLevel`, `0` means eventual consistency, `1` means session consistency (the API default), and `2` means global consistency; a `ReadOnly` endpoint supports only `0`. Select the value for the endpoint's read/write mode and required proxy consistency behavior; `0` is not a universal prerequisite for setting `scc_mode` to `on`. If this argument is omitted, the provider does not send `SccMode` when the endpoint is created, and the value reported by the service is read back into the state. Removing this argument from the configuration after it has been set does not send an update request; the value last read from the service is kept in the state.
+        """
+        return pulumi.get(self, "scc_mode")
 
     @_builtins.property
     @pulumi.getter(name="sslAutoRotate")

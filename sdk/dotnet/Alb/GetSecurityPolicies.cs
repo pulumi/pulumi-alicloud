@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Security Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Security Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Security Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -176,6 +176,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags of the resource.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -246,6 +250,10 @@ namespace Pulumi.AliCloud.Alb
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags of the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -268,12 +276,27 @@ namespace Pulumi.AliCloud.Alb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Security Policy names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Alb Security Policies. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSecurityPoliciesPolicyResult> Policies;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
         public readonly ImmutableArray<string> SecurityPolicyIds;
+        /// <summary>
+        /// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        /// </summary>
         public readonly string? SecurityPolicyName;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
         public readonly ImmutableDictionary<string, string>? Tags;
 

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -80,16 +80,19 @@ type GetGatewaysArgs struct {
 
 // A collection of values returned by getGateways.
 type GetGatewaysResult struct {
-	EnableDetails *bool                `pulumi:"enableDetails"`
-	Gateways      []GetGatewaysGateway `pulumi:"gateways"`
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of Database Gateway Gateways. Each element contains the following attributes:
+	Gateways []GetGatewaysGateway `pulumi:"gateways"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Gateway names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	SearchKey  *string  `pulumi:"searchKey"`
-	Status     *string  `pulumi:"status"`
+	// The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+	Status *string `pulumi:"status"`
 }
 
 func GetGatewaysOutput(ctx *pulumi.Context, args GetGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetGatewaysResultOutput {
@@ -136,6 +139,7 @@ func (o GetGatewaysResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// A list of Database Gateway Gateways. Each element contains the following attributes:
 func (o GetGatewaysResultOutput) Gateways() GetGatewaysGatewayArrayOutput {
 	return o.ApplyT(func(v GetGatewaysResult) []GetGatewaysGateway { return v.Gateways }).(GetGatewaysGatewayArrayOutput)
 }
@@ -153,6 +157,7 @@ func (o GetGatewaysResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Gateway names.
 func (o GetGatewaysResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGatewaysResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -165,6 +170,7 @@ func (o GetGatewaysResultOutput) SearchKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.SearchKey }).(pulumi.StringPtrOutput)
 }
 
+// The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
 func (o GetGatewaysResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

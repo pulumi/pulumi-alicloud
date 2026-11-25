@@ -222,18 +222,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-     * * key: The key of label
-     * * value: The value of label
+     * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
      * 
      */
     @Import(name="logHeaders")
     private @Nullable Output<List<DomainLogHeaderArgs>> logHeaders;
 
     /**
-     * @return The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-     * * key: The key of label
-     * * value: The value of label
+     * @return The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
      * 
      */
     public Optional<Output<List<DomainLogHeaderArgs>>> logHeaders() {
@@ -653,9 +649,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logHeaders The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-         * * key: The key of label
-         * * value: The value of label
+         * @param logHeaders The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
          * 
          * @return builder
          * 
@@ -666,9 +660,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logHeaders The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-         * * key: The key of label
-         * * value: The value of label
+         * @param logHeaders The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
          * 
          * @return builder
          * 
@@ -678,9 +670,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logHeaders The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-         * * key: The key of label
-         * * value: The value of label
+         * @param logHeaders The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
          * 
          * @return builder
          * 

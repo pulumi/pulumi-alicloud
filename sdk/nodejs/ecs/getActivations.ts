@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Activations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.177.0+.
+ * > **NOTE:** Available since v1.177.0.
  *
  * ## Example Usage
  *
@@ -59,12 +59,18 @@ export interface GetActivationsArgs {
  * A collection of values returned by getActivations.
  */
 export interface GetActivationsResult {
+    /**
+     * A list of Ecs Activations. Each element contains the following attributes:
+     */
     readonly activations: outputs.ecs.GetActivationsActivation[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The default prefix of the instance name.
+     */
     readonly instanceName?: string;
     readonly outputFile?: string;
     readonly pageNumber?: number;
@@ -74,7 +80,7 @@ export interface GetActivationsResult {
 /**
  * This data source provides the Ecs Activations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.177.0+.
+ * > **NOTE:** Available since v1.177.0.
  *
  * ## Example Usage
  *

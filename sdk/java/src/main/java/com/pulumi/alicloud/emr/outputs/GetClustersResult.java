@@ -16,11 +16,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClustersResult {
+    /**
+     * @return The name of the associated cluster.
+     * 
+     */
     private @Nullable String clusterName;
     private @Nullable List<String> clusterTypeLists;
+    /**
+     * @return A list of Emr Clusters. Each element contains the following attributes:
+     * 
+     */
     private List<GetClustersCluster> clusters;
+    /**
+     * @return How to create a cluster.
+     * 
+     */
     private @Nullable String createType;
     private @Nullable Boolean defaultStatus;
+    /**
+     * @return The hosting type of the cluster.
+     * 
+     */
     private @Nullable String depositType;
     private @Nullable Boolean enableDetails;
     /**
@@ -28,35 +44,71 @@ public final class GetClustersResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Cluster IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable Boolean isDesc;
+    /**
+     * @return The host type of the cluster. The default is ECS.
+     * 
+     */
     private @Nullable String machineType;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Cluster names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
     private @Nullable String resourceGroupId;
     private @Nullable List<String> statusLists;
+    /**
+     * @return Total count of clusters.
+     * 
+     */
     private Integer totalCount;
+    /**
+     * @return The VPC ID.
+     * 
+     */
     private @Nullable String vpcId;
 
     private GetClustersResult() {}
+    /**
+     * @return The name of the associated cluster.
+     * 
+     */
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
     public List<String> clusterTypeLists() {
         return this.clusterTypeLists == null ? List.of() : this.clusterTypeLists;
     }
+    /**
+     * @return A list of Emr Clusters. Each element contains the following attributes:
+     * 
+     */
     public List<GetClustersCluster> clusters() {
         return this.clusters;
     }
+    /**
+     * @return How to create a cluster.
+     * 
+     */
     public Optional<String> createType() {
         return Optional.ofNullable(this.createType);
     }
     public Optional<Boolean> defaultStatus() {
         return Optional.ofNullable(this.defaultStatus);
     }
+    /**
+     * @return The hosting type of the cluster.
+     * 
+     */
     public Optional<String> depositType() {
         return Optional.ofNullable(this.depositType);
     }
@@ -70,18 +122,30 @@ public final class GetClustersResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Cluster IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<Boolean> isDesc() {
         return Optional.ofNullable(this.isDesc);
     }
+    /**
+     * @return The host type of the cluster. The default is ECS.
+     * 
+     */
     public Optional<String> machineType() {
         return Optional.ofNullable(this.machineType);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Cluster names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -100,9 +164,17 @@ public final class GetClustersResult {
     public List<String> statusLists() {
         return this.statusLists == null ? List.of() : this.statusLists;
     }
+    /**
+     * @return Total count of clusters.
+     * 
+     */
     public Integer totalCount() {
         return this.totalCount;
     }
+    /**
+     * @return The VPC ID.
+     * 
+     */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }

@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsResult {
+    /**
+     * @return A list of Mhub Apps. Each element contains the following attributes:
+     * 
+     */
     private List<GetAppsApp> apps;
     private @Nullable Boolean enableDetails;
     /**
@@ -24,12 +28,24 @@ public final class GetAppsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of App names.
+     * 
+     */
     private List<String> names;
     private @Nullable String osType;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the Product.
+     * 
+     */
     private String productId;
 
     private GetAppsResult() {}
+    /**
+     * @return A list of Mhub Apps. Each element contains the following attributes:
+     * 
+     */
     public List<GetAppsApp> apps() {
         return this.apps;
     }
@@ -49,6 +65,10 @@ public final class GetAppsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of App names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -58,6 +78,10 @@ public final class GetAppsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the Product.
+     * 
+     */
     public String productId() {
         return this.productId;
     }

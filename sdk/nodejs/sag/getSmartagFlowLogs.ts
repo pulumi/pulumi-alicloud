@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.168.0+.
+ * > **NOTE:** Available since v1.168.0+
  *
  * ## Example Usage
  *
@@ -75,24 +75,36 @@ export interface GetSmartagFlowLogsArgs {
  * A collection of values returned by getSmartagFlowLogs.
  */
 export interface GetSmartagFlowLogsResult {
+    /**
+     * The description of the flow log.
+     */
     readonly description?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Smartag Flow Logs. Each element contains the following attributes:
+     */
     readonly logs: outputs.sag.GetSmartagFlowLogsLog[];
     readonly nameRegex?: string;
+    /**
+     * A list of Flow Log names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.168.0+.
+ * > **NOTE:** Available since v1.168.0+
  *
  * ## Example Usage
  *

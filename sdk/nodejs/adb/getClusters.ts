@@ -10,21 +10,20 @@ import * as utilities from "../utilities";
  * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
  * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
  *
- * > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
- *
- * > **NOTE:** Available in v1.71.0+.
+ * > **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const adbClustersDs = alicloud.adb.getClusters({
- *     descriptionRegex: "am-\\w+",
- *     status: "Running",
+ * const example = alicloud.adb.getClusters({
+ *     descriptionRegex: "example",
  * });
- * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters?.[0]?.id);
+ * export const firstAdbClusterId = example.then(example => example.clusters?.[0]?.id);
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
@@ -49,16 +48,19 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetClustersArgs {
     /**
-     * The description of the ADB cluster.
+     * The description of DBCluster.
      */
     description?: string;
     /**
-     * A regex string to filter results by cluster description.
+     * A regex string to filter results by DBCluster description.
      */
     descriptionRegex?: string;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
     /**
-     * A list of ADB cluster IDs.
+     * A list of DBCluster IDs.
      */
     ids?: string[];
     /**
@@ -67,15 +69,16 @@ export interface GetClustersArgs {
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
+    /**
+     * The ID of the resource group.
+     */
     resourceGroupId?: string;
     /**
-     * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+     * The status of the resource.
      */
     status?: string;
     /**
-     * A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * A map of tags assigned to the cluster.
      */
     tags?: {[key: string]: string};
 }
@@ -85,16 +88,16 @@ export interface GetClustersArgs {
  */
 export interface GetClustersResult {
     /**
-     * A list of ADB clusters. Each element contains the following attributes:
+     * A list of Adb Db Clusters. Each element contains the following attributes:
      */
     readonly clusters: outputs.adb.GetClustersCluster[];
     /**
-     * The description of the ADB cluster.
+     * The description of DBCluster.
      */
     readonly description?: string;
     readonly descriptionRegex?: string;
     /**
-     * A list of ADB cluster descriptions.
+     * A list of DBCluster descriptions.
      */
     readonly descriptions: string[];
     readonly enableDetails?: boolean;
@@ -102,18 +105,21 @@ export interface GetClustersResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of ADB cluster IDs.
-     */
     readonly ids: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
     /**
-     * Status of the cluster.
+     * The status of the resource.
      */
     readonly status?: string;
+    /**
+     * The tags of the resource.
+     */
     readonly tags?: {[key: string]: string};
     readonly totalCount: number;
 }
@@ -121,21 +127,20 @@ export interface GetClustersResult {
  * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
  * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
  *
- * > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
- *
- * > **NOTE:** Available in v1.71.0+.
+ * > **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const adbClustersDs = alicloud.adb.getClusters({
- *     descriptionRegex: "am-\\w+",
- *     status: "Running",
+ * const example = alicloud.adb.getClusters({
+ *     descriptionRegex: "example",
  * });
- * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters?.[0]?.id);
+ * export const firstAdbClusterId = example.then(example => example.clusters?.[0]?.id);
  * ```
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClustersResult> {
@@ -160,16 +165,19 @@ export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.In
  */
 export interface GetClustersOutputArgs {
     /**
-     * The description of the ADB cluster.
+     * The description of DBCluster.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * A regex string to filter results by cluster description.
+     * A regex string to filter results by DBCluster description.
      */
     descriptionRegex?: pulumi.Input<string | undefined>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
-     * A list of ADB cluster IDs.
+     * A list of DBCluster IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -178,15 +186,16 @@ export interface GetClustersOutputArgs {
     outputFile?: pulumi.Input<string | undefined>;
     pageNumber?: pulumi.Input<number | undefined>;
     pageSize?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of the resource group.
+     */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+     * The status of the resource.
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * A mapping of tags to assign to the resource.
-     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     * A map of tags assigned to the cluster.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

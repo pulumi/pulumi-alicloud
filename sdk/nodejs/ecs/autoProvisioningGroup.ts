@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and payAsYouGo instances to rapidly deploy clusters.
  *
- * > **NOTE:** Available in 1.79.0+
+ * > **NOTE:** Available since v1.79.0
  *
  * ## Example Usage
  *
@@ -132,7 +132,7 @@ export class AutoProvisioningGroup extends pulumi.CustomResource {
      */
     declare public readonly excessCapacityTerminationPolicy: pulumi.Output<string | undefined>;
     /**
-     * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+     * DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
      */
     declare public readonly launchTemplateConfigs: pulumi.Output<outputs.ecs.AutoProvisioningGroupLaunchTemplateConfig[]>;
     /**
@@ -287,7 +287,7 @@ export interface AutoProvisioningGroupState {
      */
     excessCapacityTerminationPolicy?: pulumi.Input<string | undefined>;
     /**
-     * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+     * DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
      */
     launchTemplateConfigs?: pulumi.Input<pulumi.Input<inputs.ecs.AutoProvisioningGroupLaunchTemplateConfig>[] | undefined>;
     /**
@@ -373,7 +373,7 @@ export interface AutoProvisioningGroupArgs {
      */
     excessCapacityTerminationPolicy?: pulumi.Input<string | undefined>;
     /**
-     * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+     * DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
      */
     launchTemplateConfigs: pulumi.Input<pulumi.Input<inputs.ecs.AutoProvisioningGroupLaunchTemplateConfig>[]>;
     /**

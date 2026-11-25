@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  */
 export function getHostEcsLevelInfos(args: GetHostEcsLevelInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetHostEcsLevelInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -58,6 +58,9 @@ export interface GetHostEcsLevelInfosResult {
      */
     readonly id: string;
     readonly imageCategory?: string;
+    /**
+     * A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+     */
     readonly infos: outputs.cddc.GetHostEcsLevelInfosInfo[];
     readonly outputFile?: string;
     readonly storageType: string;
@@ -66,7 +69,7 @@ export interface GetHostEcsLevelInfosResult {
 /**
  * This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
  */
 export function getHostEcsLevelInfosOutput(args: GetHostEcsLevelInfosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostEcsLevelInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

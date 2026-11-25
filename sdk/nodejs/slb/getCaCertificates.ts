@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the CA certificate list.
  *
+ * > **NOTE:** Available since v1.22.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -90,6 +92,8 @@ export interface GetCaCertificatesResult {
 }
 /**
  * This data source provides the CA certificate list.
+ *
+ * > **NOTE:** Available since v1.22.0.
  *
  * ## Example Usage
  *

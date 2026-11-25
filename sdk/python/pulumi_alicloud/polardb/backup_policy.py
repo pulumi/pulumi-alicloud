@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['BackupPolicyArgs', 'BackupPolicy']
 
@@ -20,7 +22,9 @@ __all__ = ['BackupPolicyArgs', 'BackupPolicy']
 class BackupPolicyArgs:
     def __init__(__self__, *,
                  db_cluster_id: pulumi.Input[_builtins.str],
+                 advanced_data_policies: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPolicyAdvancedDataPolicyArgs']]]] = None,
                  backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_policy_level: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
@@ -40,29 +44,38 @@ class BackupPolicyArgs:
         The set of arguments for constructing a BackupPolicy resource.
 
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
+        :param pulumi.Input[Sequence[pulumi.Input['BackupPolicyAdvancedDataPolicyArgs']]] advanced_data_policies: Custom advanced data backup policy blocks. Available only when `backup_policy_level` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advanced_data_policies` below.
         :param pulumi.Input[_builtins.str] backup_frequency: The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
+        :param pulumi.Input[_builtins.str] backup_policy_level: Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
         :param pulumi.Input[_builtins.str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
         :param pulumi.Input[_builtins.str] data_level1_backup_frequency: The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level1_backup_periods: PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level1_backup_retention_period: The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         :param pulumi.Input[_builtins.str] data_level1_backup_time: The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
         :param pulumi.Input[_builtins.str] data_level2_backup_another_region_region: PolarDB Cluster of level-2 backup is a cross regional backup area.
         :param pulumi.Input[_builtins.int] data_level2_backup_another_region_retention_period: PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level2_backup_periods: PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level2_backup_retention_period: The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[_builtins.str] log_backup_another_region_region: The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         :param pulumi.Input[_builtins.int] log_backup_another_region_retention_period: The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+               
                > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] log_backup_retention_period: The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[_builtins.str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if advanced_data_policies is not None:
+            pulumi.set(__self__, "advanced_data_policies", advanced_data_policies)
         if backup_frequency is not None:
             pulumi.set(__self__, "backup_frequency", backup_frequency)
+        if backup_policy_level is not None:
+            pulumi.set(__self__, "backup_policy_level", backup_policy_level)
         if backup_retention_period is not None:
             pulumi.set(__self__, "backup_retention_period", backup_retention_period)
         if backup_retention_policy_on_cluster_deletion is not None:
@@ -107,6 +120,18 @@ class BackupPolicyArgs:
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="advancedDataPolicies")
+    def advanced_data_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BackupPolicyAdvancedDataPolicyArgs']]]]:
+        """
+        Custom advanced data backup policy blocks. Available only when `backup_policy_level` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advanced_data_policies` below.
+        """
+        return pulumi.get(self, "advanced_data_policies")
+
+    @advanced_data_policies.setter
+    def advanced_data_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPolicyAdvancedDataPolicyArgs']]]]):
+        pulumi.set(self, "advanced_data_policies", value)
+
+    @_builtins.property
     @pulumi.getter(name="backupFrequency")
     def backup_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -117,6 +142,18 @@ class BackupPolicyArgs:
     @backup_frequency.setter
     def backup_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_frequency", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupPolicyLevel")
+    def backup_policy_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+        """
+        return pulumi.get(self, "backup_policy_level")
+
+    @backup_policy_level.setter
+    def backup_policy_level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backup_policy_level", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -159,6 +196,7 @@ class BackupPolicyArgs:
     def data_level1_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level1_backup_periods")
@@ -220,6 +258,7 @@ class BackupPolicyArgs:
     def data_level2_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level2_backup_periods")
@@ -257,6 +296,7 @@ class BackupPolicyArgs:
     def log_backup_another_region_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+
         > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         """
         return pulumi.get(self, "log_backup_another_region_retention_period")
@@ -305,7 +345,11 @@ class BackupPolicyArgs:
 @pulumi.input_type
 class _BackupPolicyState:
     def __init__(__self__, *,
+                 advanced_data_policies: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPolicyAdvancedDataPolicyArgs']]]] = None,
+                 advanced_policy_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_created_advanced_data_policies: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPolicyAutoCreatedAdvancedDataPolicyArgs']]]] = None,
                  backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_policy_level: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
@@ -326,30 +370,45 @@ class _BackupPolicyState:
         """
         Input properties used for looking up and filtering BackupPolicy resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input['BackupPolicyAdvancedDataPolicyArgs']]] advanced_data_policies: Custom advanced data backup policy blocks. Available only when `backup_policy_level` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advanced_data_policies` below.
+        :param pulumi.Input[_builtins.str] advanced_policy_option: Whether advanced policies are supported or enabled by the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['BackupPolicyAutoCreatedAdvancedDataPolicyArgs']]] auto_created_advanced_data_policies: Service-generated advanced backup rules. Fields have the same names as `advanced_data_policies`, but are read-only.
         :param pulumi.Input[_builtins.str] backup_frequency: The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
+        :param pulumi.Input[_builtins.str] backup_policy_level: Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
         :param pulumi.Input[_builtins.str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
         :param pulumi.Input[_builtins.str] data_level1_backup_frequency: The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level1_backup_periods: PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level1_backup_retention_period: The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         :param pulumi.Input[_builtins.str] data_level1_backup_time: The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
         :param pulumi.Input[_builtins.str] data_level2_backup_another_region_region: PolarDB Cluster of level-2 backup is a cross regional backup area.
         :param pulumi.Input[_builtins.int] data_level2_backup_another_region_retention_period: PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level2_backup_periods: PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level2_backup_retention_period: The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[_builtins.int] enable_backup_log: Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
         :param pulumi.Input[_builtins.str] log_backup_another_region_region: The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         :param pulumi.Input[_builtins.int] log_backup_another_region_retention_period: The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+               
                > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] log_backup_retention_period: The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         :param pulumi.Input[_builtins.str] preferred_backup_time: PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
+        if advanced_data_policies is not None:
+            pulumi.set(__self__, "advanced_data_policies", advanced_data_policies)
+        if advanced_policy_option is not None:
+            pulumi.set(__self__, "advanced_policy_option", advanced_policy_option)
+        if auto_created_advanced_data_policies is not None:
+            pulumi.set(__self__, "auto_created_advanced_data_policies", auto_created_advanced_data_policies)
         if backup_frequency is not None:
             pulumi.set(__self__, "backup_frequency", backup_frequency)
+        if backup_policy_level is not None:
+            pulumi.set(__self__, "backup_policy_level", backup_policy_level)
         if backup_retention_period is not None:
             pulumi.set(__self__, "backup_retention_period", backup_retention_period)
         if backup_retention_policy_on_cluster_deletion is not None:
@@ -386,6 +445,42 @@ class _BackupPolicyState:
             pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
 
     @_builtins.property
+    @pulumi.getter(name="advancedDataPolicies")
+    def advanced_data_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BackupPolicyAdvancedDataPolicyArgs']]]]:
+        """
+        Custom advanced data backup policy blocks. Available only when `backup_policy_level` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advanced_data_policies` below.
+        """
+        return pulumi.get(self, "advanced_data_policies")
+
+    @advanced_data_policies.setter
+    def advanced_data_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPolicyAdvancedDataPolicyArgs']]]]):
+        pulumi.set(self, "advanced_data_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedPolicyOption")
+    def advanced_policy_option(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether advanced policies are supported or enabled by the cluster.
+        """
+        return pulumi.get(self, "advanced_policy_option")
+
+    @advanced_policy_option.setter
+    def advanced_policy_option(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "advanced_policy_option", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreatedAdvancedDataPolicies")
+    def auto_created_advanced_data_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BackupPolicyAutoCreatedAdvancedDataPolicyArgs']]]]:
+        """
+        Service-generated advanced backup rules. Fields have the same names as `advanced_data_policies`, but are read-only.
+        """
+        return pulumi.get(self, "auto_created_advanced_data_policies")
+
+    @auto_created_advanced_data_policies.setter
+    def auto_created_advanced_data_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPolicyAutoCreatedAdvancedDataPolicyArgs']]]]):
+        pulumi.set(self, "auto_created_advanced_data_policies", value)
+
+    @_builtins.property
     @pulumi.getter(name="backupFrequency")
     def backup_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -396,6 +491,18 @@ class _BackupPolicyState:
     @backup_frequency.setter
     def backup_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_frequency", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupPolicyLevel")
+    def backup_policy_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+        """
+        return pulumi.get(self, "backup_policy_level")
+
+    @backup_policy_level.setter
+    def backup_policy_level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backup_policy_level", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -438,6 +545,7 @@ class _BackupPolicyState:
     def data_level1_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level1_backup_periods")
@@ -499,6 +607,7 @@ class _BackupPolicyState:
     def data_level2_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level2_backup_periods")
@@ -560,6 +669,7 @@ class _BackupPolicyState:
     def log_backup_another_region_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+
         > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         """
         return pulumi.get(self, "log_backup_another_region_retention_period")
@@ -611,7 +721,9 @@ class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_data_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPolicyAdvancedDataPolicyArgs', 'BackupPolicyAdvancedDataPolicyArgsDict', 'outputs.BackupPolicyAdvancedDataPolicy']]]]] = None,
                  backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_policy_level: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
@@ -668,9 +780,41 @@ class BackupPolicy(pulumi.CustomResource):
             preferred_backup_time="10:00Z-11:00Z",
             backup_retention_policy_on_cluster_deletion="NONE")
         ```
+
+        ### Advanced backup policies
+
+        The following example manages a custom advanced data backup rule. Use a separate cluster from a Normal backup policy example: changing `backup_policy_level` from `Normal` to `Advanced` is irreversible. The cluster must support advanced backup policies (`advanced_policy_option` must not be `notSupport`).
+
+        For a same-region rule such as this example, the provider fills omitted `src_region` and `dest_region` with its configured region because the API requires both values. For a cross-region rule (`src_type` or `dest_type` is `level2Cross`), set both regions explicitly.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        advanced = alicloud.polardb.BackupPolicy("advanced",
+            db_cluster_id=default["id"],
+            backup_policy_level="Advanced",
+            backup_retention_policy_on_cluster_deletion="NONE",
+            advanced_data_policies=[{
+                "retention_type": "delay",
+                "retention_value": "7",
+                "filter_type": "crontab",
+                "filter_key": "dayOfWeek",
+                "filter_value": "1,2,3,4,5,6,7",
+                "src_type": "db",
+                "dest_type": "level1",
+            }])
+        ```
+
+        `policy_id` is assigned by the service after creation. To manage an existing custom rule after importing the cluster policy, specify that rule's `policy_id` in the `advanced_data_policies` block. Rules generated automatically by the service are exposed through `auto_created_advanced_data_policies` and are never modified or deleted by this resource.
+
+        Optional advanced-rule fields returned by the service retain their current values if removed from Terraform configuration. Removing an attribute is not a way to clear it; the API does not document clearing semantics for omitted fields. To remove a custom rule entirely, remove its `advanced_data_policies` block.
+
+        In Advanced mode, the legacy data-backup and log-backup arguments cannot be changed through this resource; configure data backup behavior with `advanced_data_policies` instead. Removing this Terraform resource deletes only its managed custom advanced rules. It does not delete the cluster backup policy or restore the `Normal` level.
+
         ### Removing polardb.Cluster from your configuration
 
-        The polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+        The `polardb.BackupPolicy` resource manages a cluster policy, but Terraform cannot destroy the policy itself. Removing a Normal policy resource only removes it from Terraform state. Removing an Advanced policy resource deletes its managed custom advanced rules but leaves the cluster policy, its Advanced level, and service-generated rules in place.
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
@@ -685,22 +829,27 @@ class BackupPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupPolicyAdvancedDataPolicyArgs', 'BackupPolicyAdvancedDataPolicyArgsDict', 'outputs.BackupPolicyAdvancedDataPolicy']]]] advanced_data_policies: Custom advanced data backup policy blocks. Available only when `backup_policy_level` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advanced_data_policies` below.
         :param pulumi.Input[_builtins.str] backup_frequency: The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
+        :param pulumi.Input[_builtins.str] backup_policy_level: Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
         :param pulumi.Input[_builtins.str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
         :param pulumi.Input[_builtins.str] data_level1_backup_frequency: The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level1_backup_periods: PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level1_backup_retention_period: The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         :param pulumi.Input[_builtins.str] data_level1_backup_time: The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
         :param pulumi.Input[_builtins.str] data_level2_backup_another_region_region: PolarDB Cluster of level-2 backup is a cross regional backup area.
         :param pulumi.Input[_builtins.int] data_level2_backup_another_region_retention_period: PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level2_backup_periods: PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level2_backup_retention_period: The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[_builtins.str] log_backup_another_region_region: The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         :param pulumi.Input[_builtins.int] log_backup_another_region_retention_period: The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+               
                > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] log_backup_retention_period: The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
@@ -751,9 +900,41 @@ class BackupPolicy(pulumi.CustomResource):
             preferred_backup_time="10:00Z-11:00Z",
             backup_retention_policy_on_cluster_deletion="NONE")
         ```
+
+        ### Advanced backup policies
+
+        The following example manages a custom advanced data backup rule. Use a separate cluster from a Normal backup policy example: changing `backup_policy_level` from `Normal` to `Advanced` is irreversible. The cluster must support advanced backup policies (`advanced_policy_option` must not be `notSupport`).
+
+        For a same-region rule such as this example, the provider fills omitted `src_region` and `dest_region` with its configured region because the API requires both values. For a cross-region rule (`src_type` or `dest_type` is `level2Cross`), set both regions explicitly.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        advanced = alicloud.polardb.BackupPolicy("advanced",
+            db_cluster_id=default["id"],
+            backup_policy_level="Advanced",
+            backup_retention_policy_on_cluster_deletion="NONE",
+            advanced_data_policies=[{
+                "retention_type": "delay",
+                "retention_value": "7",
+                "filter_type": "crontab",
+                "filter_key": "dayOfWeek",
+                "filter_value": "1,2,3,4,5,6,7",
+                "src_type": "db",
+                "dest_type": "level1",
+            }])
+        ```
+
+        `policy_id` is assigned by the service after creation. To manage an existing custom rule after importing the cluster policy, specify that rule's `policy_id` in the `advanced_data_policies` block. Rules generated automatically by the service are exposed through `auto_created_advanced_data_policies` and are never modified or deleted by this resource.
+
+        Optional advanced-rule fields returned by the service retain their current values if removed from Terraform configuration. Removing an attribute is not a way to clear it; the API does not document clearing semantics for omitted fields. To remove a custom rule entirely, remove its `advanced_data_policies` block.
+
+        In Advanced mode, the legacy data-backup and log-backup arguments cannot be changed through this resource; configure data backup behavior with `advanced_data_policies` instead. Removing this Terraform resource deletes only its managed custom advanced rules. It does not delete the cluster backup policy or restore the `Normal` level.
+
         ### Removing polardb.Cluster from your configuration
 
-        The polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+        The `polardb.BackupPolicy` resource manages a cluster policy, but Terraform cannot destroy the policy itself. Removing a Normal policy resource only removes it from Terraform state. Removing an Advanced policy resource deletes its managed custom advanced rules but leaves the cluster policy, its Advanced level, and service-generated rules in place.
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
@@ -781,7 +962,9 @@ class BackupPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_data_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPolicyAdvancedDataPolicyArgs', 'BackupPolicyAdvancedDataPolicyArgsDict', 'outputs.BackupPolicyAdvancedDataPolicy']]]]] = None,
                  backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_policy_level: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
                  data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
@@ -807,7 +990,9 @@ class BackupPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BackupPolicyArgs.__new__(BackupPolicyArgs)
 
+            __props__.__dict__["advanced_data_policies"] = advanced_data_policies
             __props__.__dict__["backup_frequency"] = backup_frequency
+            __props__.__dict__["backup_policy_level"] = backup_policy_level
             __props__.__dict__["backup_retention_period"] = backup_retention_period
             __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
             __props__.__dict__["data_level1_backup_frequency"] = data_level1_backup_frequency
@@ -826,6 +1011,8 @@ class BackupPolicy(pulumi.CustomResource):
             __props__.__dict__["log_backup_retention_period"] = log_backup_retention_period
             __props__.__dict__["preferred_backup_periods"] = preferred_backup_periods
             __props__.__dict__["preferred_backup_time"] = preferred_backup_time
+            __props__.__dict__["advanced_policy_option"] = None
+            __props__.__dict__["auto_created_advanced_data_policies"] = None
             __props__.__dict__["enable_backup_log"] = None
         super(BackupPolicy, __self__).__init__(
             'alicloud:polardb/backupPolicy:BackupPolicy',
@@ -837,7 +1024,11 @@ class BackupPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_data_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPolicyAdvancedDataPolicyArgs', 'BackupPolicyAdvancedDataPolicyArgsDict', 'outputs.BackupPolicyAdvancedDataPolicy']]]]] = None,
+            advanced_policy_option: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_created_advanced_data_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPolicyAutoCreatedAdvancedDataPolicyArgs', 'BackupPolicyAutoCreatedAdvancedDataPolicyArgsDict', 'outputs.BackupPolicyAutoCreatedAdvancedDataPolicy']]]]] = None,
             backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_policy_level: pulumi.Input[Optional[_builtins.str]] = None,
             backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
             backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
             data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
@@ -862,23 +1053,30 @@ class BackupPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupPolicyAdvancedDataPolicyArgs', 'BackupPolicyAdvancedDataPolicyArgsDict', 'outputs.BackupPolicyAdvancedDataPolicy']]]] advanced_data_policies: Custom advanced data backup policy blocks. Available only when `backup_policy_level` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advanced_data_policies` below.
+        :param pulumi.Input[_builtins.str] advanced_policy_option: Whether advanced policies are supported or enabled by the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BackupPolicyAutoCreatedAdvancedDataPolicyArgs', 'BackupPolicyAutoCreatedAdvancedDataPolicyArgsDict', 'outputs.BackupPolicyAutoCreatedAdvancedDataPolicy']]]] auto_created_advanced_data_policies: Service-generated advanced backup rules. Fields have the same names as `advanced_data_policies`, but are read-only.
         :param pulumi.Input[_builtins.str] backup_frequency: The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
+        :param pulumi.Input[_builtins.str] backup_policy_level: Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
         :param pulumi.Input[_builtins.str] backup_retention_period: Cluster backup retention days, Fixed for 7 days, not modified.
         :param pulumi.Input[_builtins.str] backup_retention_policy_on_cluster_deletion: Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
         :param pulumi.Input[_builtins.str] data_level1_backup_frequency: The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level1_backup_periods: PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level1_backup_retention_period: The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         :param pulumi.Input[_builtins.str] data_level1_backup_time: The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
         :param pulumi.Input[_builtins.str] data_level2_backup_another_region_region: PolarDB Cluster of level-2 backup is a cross regional backup area.
         :param pulumi.Input[_builtins.int] data_level2_backup_another_region_retention_period: PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_level2_backup_periods: PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+               
                > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         :param pulumi.Input[_builtins.int] data_level2_backup_retention_period: The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[_builtins.int] enable_backup_log: Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
         :param pulumi.Input[_builtins.str] log_backup_another_region_region: The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         :param pulumi.Input[_builtins.int] log_backup_another_region_retention_period: The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+               
                > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] log_backup_retention_period: The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_backup_periods: PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
@@ -888,7 +1086,11 @@ class BackupPolicy(pulumi.CustomResource):
 
         __props__ = _BackupPolicyState.__new__(_BackupPolicyState)
 
+        __props__.__dict__["advanced_data_policies"] = advanced_data_policies
+        __props__.__dict__["advanced_policy_option"] = advanced_policy_option
+        __props__.__dict__["auto_created_advanced_data_policies"] = auto_created_advanced_data_policies
         __props__.__dict__["backup_frequency"] = backup_frequency
+        __props__.__dict__["backup_policy_level"] = backup_policy_level
         __props__.__dict__["backup_retention_period"] = backup_retention_period
         __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
         __props__.__dict__["data_level1_backup_frequency"] = data_level1_backup_frequency
@@ -911,7 +1113,11 @@ class BackupPolicy(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            advanced_data_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPolicyAdvancedDataPolicyArgs', 'BackupPolicyAdvancedDataPolicyArgsDict', 'outputs.BackupPolicyAdvancedDataPolicy']]]]] = None,
+            advanced_policy_option: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_created_advanced_data_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPolicyAutoCreatedAdvancedDataPolicyArgs', 'BackupPolicyAutoCreatedAdvancedDataPolicyArgsDict', 'outputs.BackupPolicyAutoCreatedAdvancedDataPolicy']]]]] = None,
             backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_policy_level: pulumi.Input[Optional[_builtins.str]] = None,
             backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
             backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
             data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
@@ -930,7 +1136,11 @@ class BackupPolicy(pulumi.CustomResource):
             preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["advancedDataPolicies"] = advanced_data_policies
+        __props__["advancedPolicyOption"] = advanced_policy_option
+        __props__["autoCreatedAdvancedDataPolicies"] = auto_created_advanced_data_policies
         __props__["backupFrequency"] = backup_frequency
+        __props__["backupPolicyLevel"] = backup_policy_level
         __props__["backupRetentionPeriod"] = backup_retention_period
         __props__["backupRetentionPolicyOnClusterDeletion"] = backup_retention_policy_on_cluster_deletion
         __props__["dataLevel1BackupFrequency"] = data_level1_backup_frequency
@@ -951,12 +1161,44 @@ class BackupPolicy(pulumi.CustomResource):
         return pulumi.runtime.exists_resource(None, 'alicloud:polardb/backupPolicy:BackupPolicy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
+    @pulumi.getter(name="advancedDataPolicies")
+    def advanced_data_policies(self) -> pulumi.Output[Optional[Sequence['outputs.BackupPolicyAdvancedDataPolicy']]]:
+        """
+        Custom advanced data backup policy blocks. Available only when `backup_policy_level` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `advanced_data_policies` below.
+        """
+        return pulumi.get(self, "advanced_data_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="advancedPolicyOption")
+    def advanced_policy_option(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether advanced policies are supported or enabled by the cluster.
+        """
+        return pulumi.get(self, "advanced_policy_option")
+
+    @_builtins.property
+    @pulumi.getter(name="autoCreatedAdvancedDataPolicies")
+    def auto_created_advanced_data_policies(self) -> pulumi.Output[Sequence['outputs.BackupPolicyAutoCreatedAdvancedDataPolicy']]:
+        """
+        Service-generated advanced backup rules. Fields have the same names as `advanced_data_policies`, but are read-only.
+        """
+        return pulumi.get(self, "auto_created_advanced_data_policies")
+
+    @_builtins.property
     @pulumi.getter(name="backupFrequency")
     def backup_frequency(self) -> pulumi.Output[_builtins.str]:
         """
         The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         """
         return pulumi.get(self, "backup_frequency")
+
+    @_builtins.property
+    @pulumi.getter(name="backupPolicyLevel")
+    def backup_policy_level(self) -> pulumi.Output[_builtins.str]:
+        """
+        Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+        """
+        return pulumi.get(self, "backup_policy_level")
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -987,6 +1229,7 @@ class BackupPolicy(pulumi.CustomResource):
     def data_level1_backup_periods(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level1_backup_periods")
@@ -1028,6 +1271,7 @@ class BackupPolicy(pulumi.CustomResource):
     def data_level2_backup_periods(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "data_level2_backup_periods")
@@ -1069,6 +1313,7 @@ class BackupPolicy(pulumi.CustomResource):
     def log_backup_another_region_retention_period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+
         > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         """
         return pulumi.get(self, "log_backup_another_region_retention_period")

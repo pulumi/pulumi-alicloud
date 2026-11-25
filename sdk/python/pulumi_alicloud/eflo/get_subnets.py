@@ -85,6 +85,9 @@ class GetSubnetsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Subnet IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -217,9 +220,9 @@ def get_subnets(ids: Optional[Sequence[_builtins.str]] = None,
                 zone_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetsResult:
     """
-    This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+    This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
 
-    > **NOTE:** Available in 1.204.0+
+    > **NOTE:** Available since v1.204.0
 
     ## Example Usage
 
@@ -235,6 +238,7 @@ def get_subnets(ids: Optional[Sequence[_builtins.str]] = None,
     ```
 
 
+    :param Sequence[_builtins.str] ids: A list of Subnet IDs.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: Resource Group ID.
@@ -294,9 +298,9 @@ def get_subnets_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.st
                        zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetsResult]:
     """
-    This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+    This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
 
-    > **NOTE:** Available in 1.204.0+
+    > **NOTE:** Available since v1.204.0
 
     ## Example Usage
 
@@ -312,6 +316,7 @@ def get_subnets_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.st
     ```
 
 
+    :param Sequence[_builtins.str] ids: A list of Subnet IDs.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: Resource Group ID.

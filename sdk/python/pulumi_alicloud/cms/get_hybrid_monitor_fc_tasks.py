@@ -66,6 +66,9 @@ class GetHybridMonitorFcTasksResult:
     @_builtins.property
     @pulumi.getter
     def namespace(self) -> Optional[_builtins.str]:
+        """
+        The index warehouse where the host belongs.
+        """
         return pulumi.get(self, "namespace")
 
     @_builtins.property
@@ -86,6 +89,9 @@ class GetHybridMonitorFcTasksResult:
     @_builtins.property
     @pulumi.getter
     def tasks(self) -> Sequence['outputs.GetHybridMonitorFcTasksTaskResult']:
+        """
+        A list of Cms Hybrid Monitor Fc Tasks. Each element contains the following attributes:
+        """
         return pulumi.get(self, "tasks")
 
 
@@ -113,7 +119,7 @@ def get_hybrid_monitor_fc_tasks(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.179.0+.
+    > **NOTE:** Available since v1.179.0+.
 
     ## Example Usage
 
@@ -158,7 +164,7 @@ def get_hybrid_monitor_fc_tasks_output(ids: pulumi.Input[Optional[Optional[Seque
     """
     This data source provides the Cms Hybrid Monitor Fc Tasks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.179.0+.
+    > **NOTE:** Available since v1.179.0+.
 
     ## Example Usage
 

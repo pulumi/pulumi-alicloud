@@ -20,25 +20,33 @@ __all__ = ['DomainExtensionArgs', 'DomainExtension']
 class DomainExtensionArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[_builtins.str],
-                 frontend_port: pulumi.Input[_builtins.int],
                  load_balancer_id: pulumi.Input[_builtins.str],
                  server_certificate_id: pulumi.Input[_builtins.str],
-                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None):
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DomainExtension resource.
 
         :param pulumi.Input[_builtins.str] domain: The domain name.
-        :param pulumi.Input[_builtins.int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[_builtins.str] server_certificate_id: The ID of the certificate used by the domain name.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[_builtins.int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listener_port` instead. Exactly one of `listener_port` or `frontend_port` must be specified.
+        :param pulumi.Input[_builtins.int] listener_port: The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listener_port` or `frontend_port` must be specified; the constraint is enforced at plan time.
         """
         pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "frontend_port", frontend_port)
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         pulumi.set(__self__, "server_certificate_id", server_certificate_id)
         if delete_protection_validation is not None:
             pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+        if frontend_port is not None:
+            warnings.warn("""Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.""", DeprecationWarning)
+            pulumi.log.warn("""frontend_port is deprecated: Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.""")
+        if frontend_port is not None:
+            pulumi.set(__self__, "frontend_port", frontend_port)
+        if listener_port is not None:
+            pulumi.set(__self__, "listener_port", listener_port)
 
     @_builtins.property
     @pulumi.getter
@@ -51,18 +59,6 @@ class DomainExtensionArgs:
     @domain.setter
     def domain(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "domain", value)
-
-    @_builtins.property
-    @pulumi.getter(name="frontendPort")
-    def frontend_port(self) -> pulumi.Input[_builtins.int]:
-        """
-        The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
-        """
-        return pulumi.get(self, "frontend_port")
-
-    @frontend_port.setter
-    def frontend_port(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "frontend_port", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
@@ -100,6 +96,31 @@ class DomainExtensionArgs:
     def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
+    @_builtins.property
+    @pulumi.getter(name="frontendPort")
+    @_utilities.deprecated("""Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.""")
+    def frontend_port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listener_port` instead. Exactly one of `listener_port` or `frontend_port` must be specified.
+        """
+        return pulumi.get(self, "frontend_port")
+
+    @frontend_port.setter
+    def frontend_port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "frontend_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listener_port` or `frontend_port` must be specified; the constraint is enforced at plan time.
+        """
+        return pulumi.get(self, "listener_port")
+
+    @listener_port.setter
+    def listener_port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "listener_port", value)
+
 
 @pulumi.input_type
 class _DomainExtensionState:
@@ -107,6 +128,7 @@ class _DomainExtensionState:
                  delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -114,7 +136,8 @@ class _DomainExtensionState:
 
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] domain: The domain name.
-        :param pulumi.Input[_builtins.int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        :param pulumi.Input[_builtins.int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listener_port` instead. Exactly one of `listener_port` or `frontend_port` must be specified.
+        :param pulumi.Input[_builtins.int] listener_port: The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listener_port` or `frontend_port` must be specified; the constraint is enforced at plan time.
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[_builtins.str] server_certificate_id: The ID of the certificate used by the domain name.
         """
@@ -123,7 +146,12 @@ class _DomainExtensionState:
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if frontend_port is not None:
+            warnings.warn("""Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.""", DeprecationWarning)
+            pulumi.log.warn("""frontend_port is deprecated: Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.""")
+        if frontend_port is not None:
             pulumi.set(__self__, "frontend_port", frontend_port)
+        if listener_port is not None:
+            pulumi.set(__self__, "listener_port", listener_port)
         if load_balancer_id is not None:
             pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         if server_certificate_id is not None:
@@ -155,15 +183,28 @@ class _DomainExtensionState:
 
     @_builtins.property
     @pulumi.getter(name="frontendPort")
+    @_utilities.deprecated("""Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.""")
     def frontend_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listener_port` instead. Exactly one of `listener_port` or `frontend_port` must be specified.
         """
         return pulumi.get(self, "frontend_port")
 
     @frontend_port.setter
     def frontend_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "frontend_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listener_port` or `frontend_port` must be specified; the constraint is enforced at plan time.
+        """
+        return pulumi.get(self, "listener_port")
+
+    @listener_port.setter
+    def listener_port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "listener_port", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
@@ -199,6 +240,7 @@ class DomainExtension(pulumi.CustomResource):
                  delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -206,7 +248,7 @@ class DomainExtension(pulumi.CustomResource):
         HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
         Please refer to the [documentation](https://www.alibabacloud.com/help/doc-detail/85956.htm?spm=a2c63.p38356.b99.40.1c881563Co8p6w) for details.
 
-        > **NOTE:** Available in 1.60.0+
+        > **NOTE:** Available since v1.60.0
 
         > **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
 
@@ -233,7 +275,7 @@ class DomainExtension(pulumi.CustomResource):
             load_balancer_spec="slb.s2.small",
             vswitch_id=domain_extension_switch.id)
         domain_extension_server_certificate = alicloud.slb.ServerCertificate("domain_extension",
-            name="tf-testAccSlbServerCertificate",
+            name="terraform-example-slb-domain-extension",
             server_certificate=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
         bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
@@ -303,7 +345,7 @@ class DomainExtension(pulumi.CustomResource):
             server_certificate_id=domain_extension_server_certificate.id)
         example1 = alicloud.slb.DomainExtension("example1",
             load_balancer_id=instance.id,
-            frontend_port=https.frontend_port,
+            listener_port=https.frontend_port,
             domain="www.test.com",
             server_certificate_id=domain_extension_server_certificate.id)
         ```
@@ -323,7 +365,8 @@ class DomainExtension(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] domain: The domain name.
-        :param pulumi.Input[_builtins.int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        :param pulumi.Input[_builtins.int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listener_port` instead. Exactly one of `listener_port` or `frontend_port` must be specified.
+        :param pulumi.Input[_builtins.int] listener_port: The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listener_port` or `frontend_port` must be specified; the constraint is enforced at plan time.
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[_builtins.str] server_certificate_id: The ID of the certificate used by the domain name.
         """
@@ -337,7 +380,7 @@ class DomainExtension(pulumi.CustomResource):
         HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
         Please refer to the [documentation](https://www.alibabacloud.com/help/doc-detail/85956.htm?spm=a2c63.p38356.b99.40.1c881563Co8p6w) for details.
 
-        > **NOTE:** Available in 1.60.0+
+        > **NOTE:** Available since v1.60.0
 
         > **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
 
@@ -364,7 +407,7 @@ class DomainExtension(pulumi.CustomResource):
             load_balancer_spec="slb.s2.small",
             vswitch_id=domain_extension_switch.id)
         domain_extension_server_certificate = alicloud.slb.ServerCertificate("domain_extension",
-            name="tf-testAccSlbServerCertificate",
+            name="terraform-example-slb-domain-extension",
             server_certificate=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
         bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
@@ -434,7 +477,7 @@ class DomainExtension(pulumi.CustomResource):
             server_certificate_id=domain_extension_server_certificate.id)
         example1 = alicloud.slb.DomainExtension("example1",
             load_balancer_id=instance.id,
-            frontend_port=https.frontend_port,
+            listener_port=https.frontend_port,
             domain="www.test.com",
             server_certificate_id=domain_extension_server_certificate.id)
         ```
@@ -468,6 +511,7 @@ class DomainExtension(pulumi.CustomResource):
                  delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
                  load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -483,9 +527,8 @@ class DomainExtension(pulumi.CustomResource):
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
-            if frontend_port is None and not opts.urn:
-                raise TypeError("Missing required property 'frontend_port'")
             __props__.__dict__["frontend_port"] = frontend_port
+            __props__.__dict__["listener_port"] = listener_port
             if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
             __props__.__dict__["load_balancer_id"] = load_balancer_id
@@ -505,6 +548,7 @@ class DomainExtension(pulumi.CustomResource):
             delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
             load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
             server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DomainExtension':
         """
@@ -516,7 +560,8 @@ class DomainExtension(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[_builtins.str] domain: The domain name.
-        :param pulumi.Input[_builtins.int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        :param pulumi.Input[_builtins.int] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listener_port` instead. Exactly one of `listener_port` or `frontend_port` must be specified.
+        :param pulumi.Input[_builtins.int] listener_port: The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listener_port` or `frontend_port` must be specified; the constraint is enforced at plan time.
         :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[_builtins.str] server_certificate_id: The ID of the certificate used by the domain name.
         """
@@ -527,6 +572,7 @@ class DomainExtension(pulumi.CustomResource):
         __props__.__dict__["delete_protection_validation"] = delete_protection_validation
         __props__.__dict__["domain"] = domain
         __props__.__dict__["frontend_port"] = frontend_port
+        __props__.__dict__["listener_port"] = listener_port
         __props__.__dict__["load_balancer_id"] = load_balancer_id
         __props__.__dict__["server_certificate_id"] = server_certificate_id
         return DomainExtension(resource_name, opts=opts, __props__=__props__)
@@ -537,12 +583,14 @@ class DomainExtension(pulumi.CustomResource):
             delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
             load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
             server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["deleteProtectionValidation"] = delete_protection_validation
         __props__["domain"] = domain
         __props__["frontendPort"] = frontend_port
+        __props__["listenerPort"] = listener_port
         __props__["loadBalancerId"] = load_balancer_id
         __props__["serverCertificateId"] = server_certificate_id
         return pulumi.runtime.exists_resource(None, 'alicloud:slb/domainExtension:DomainExtension', id, __props__, opts or pulumi.ResourceOptions())
@@ -565,11 +613,20 @@ class DomainExtension(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="frontendPort")
+    @_utilities.deprecated("""Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.""")
     def frontend_port(self) -> pulumi.Output[_builtins.int]:
         """
-        The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+        The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listener_port` instead. Exactly one of `listener_port` or `frontend_port` must be specified.
         """
         return pulumi.get(self, "frontend_port")
+
+    @_builtins.property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> pulumi.Output[_builtins.int]:
+        """
+        The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listener_port` or `frontend_port` must be specified; the constraint is enforced at plan time.
+        """
+        return pulumi.get(self, "listener_port")
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")

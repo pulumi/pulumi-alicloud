@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Scdn.Outputs
         /// </summary>
         public readonly string Content;
         /// <summary>
-        /// The source status. Valid values: online, offline.
+        /// The source status. Valid values: `Online`, `Offline`.
         /// </summary>
         public readonly string? Enabled;
         /// <summary>
@@ -30,10 +30,7 @@ namespace Pulumi.AliCloud.Scdn.Outputs
         /// </summary>
         public readonly string Priority;
         /// <summary>
-        /// The Origin Server Type. Valid Values:
-        /// * ipaddr: IP Source Station
-        /// * domain: the Domain Name
-        /// * oss: OSS Bucket as a Source Station.
+        /// The Origin Server Type. Valid values:
         /// </summary>
         public readonly string Type;
 

@@ -25,20 +25,29 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// enable nat traversal.
         /// </summary>
         public readonly bool EnableNatTraversal;
+        /// <summary>
+        /// The internet IP of the tunnel.
+        /// </summary>
         public readonly string InternetIp;
         /// <summary>
         /// The role of Tunnel.
         /// </summary>
         public readonly string Role;
+        /// <summary>
+        /// The state of the tunnel.
+        /// </summary>
         public readonly string State;
         /// <summary>
-        /// The negotiation status of the BGP routing protocol. Valid values: `Success`, `False`.
+        /// The status of the tunnel.
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// The bgp config of Tunnel.
         /// </summary>
         public readonly Outputs.GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigResult TunnelBgpConfig;
+        /// <summary>
+        /// The ID of the tunnel.
+        /// </summary>
         public readonly string TunnelId;
         /// <summary>
         /// The configuration of Phase 1 negotiations in Tunnel.
@@ -48,6 +57,9 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// IPsec configuration in Tunnel.
         /// </summary>
         public readonly Outputs.GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfigResult TunnelIpsecConfig;
+        /// <summary>
+        /// The zone of the tunnel.
+        /// </summary>
         public readonly string ZoneNo;
 
         [OutputConstructor]

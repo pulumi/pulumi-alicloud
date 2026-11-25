@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string BackupMethod;
         /// <summary>
-        /// BackupMode.
+        /// BackupMode. Valid values: `Automated` and `Manual`.
         /// </summary>
         public readonly string BackupMode;
         /// <summary>
@@ -52,14 +52,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string BackupStartTime;
         /// <summary>
-        /// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-        /// * **NoStart**: Not started
-        /// * **Checking**: check the backup
-        /// * **Preparing**: Prepare a backup
-        /// * **Waiting**: Waiting for backup
-        /// * **Uploading**: Upload backup
-        /// * **Finished**: Complete backup
-        /// * **Failed**: backup Failed
+        /// Backup task status. Valid values: `Automated` and `Manual`.
         /// </summary>
         public readonly string BackupStatus;
         /// <summary>

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * ## Example Usage
  *
@@ -110,17 +110,32 @@ export interface GetStackInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Ros Stack Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.ros.GetStackInstancesInstance[];
     readonly outputFile?: string;
+    /**
+     * The name of the stack group.
+     */
     readonly stackGroupName: string;
+    /**
+     * The account to which the stack instance belongs.
+     */
     readonly stackInstanceAccountId?: string;
+    /**
+     * The region of the stack instance.
+     */
     readonly stackInstanceRegionId?: string;
+    /**
+     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.145.0+.
+ * > **NOTE:** Available since v1.145.0.
  *
  * ## Example Usage
  *

@@ -20,14 +20,74 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     public static final DomainArgs Empty = new DomainArgs();
 
     /**
-     * The URL that is used for health checks.
+     * The ID of the certificate.
+     * 
+     */
+    @Import(name="certId")
+    private @Nullable Output<String> certId;
+
+    /**
+     * @return The ID of the certificate.
+     * 
+     */
+    public Optional<Output<String>> certId() {
+        return Optional.ofNullable(this.certId);
+    }
+
+    /**
+     * The name of the certificate.
+     * 
+     */
+    @Import(name="certName")
+    private @Nullable Output<String> certName;
+
+    /**
+     * @return The name of the certificate.
+     * 
+     */
+    public Optional<Output<String>> certName() {
+        return Optional.ofNullable(this.certName);
+    }
+
+    /**
+     * The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+     * 
+     */
+    @Import(name="certRegion")
+    private @Nullable Output<String> certRegion;
+
+    /**
+     * @return The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+     * 
+     */
+    public Optional<Output<String>> certRegion() {
+        return Optional.ofNullable(this.certRegion);
+    }
+
+    /**
+     * The type of the certificate. Valid values:
+     * 
+     */
+    @Import(name="certType")
+    private @Nullable Output<String> certType;
+
+    /**
+     * @return The type of the certificate. Valid values:
+     * 
+     */
+    public Optional<Output<String>> certType() {
+        return Optional.ofNullable(this.certType);
+    }
+
+    /**
+     * The URL for health checks.
      * 
      */
     @Import(name="checkUrl")
     private @Nullable Output<String> checkUrl;
 
     /**
-     * @return The URL that is used for health checks.
+     * @return The URL for health checks.
      * 
      */
     public Optional<Output<String>> checkUrl() {
@@ -50,14 +110,29 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+     * Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+     * 
+     */
+    @Import(name="env")
+    private @Nullable Output<String> env;
+
+    /**
+     * @return Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+     * 
+     */
+    public Optional<Output<String>> env() {
+        return Optional.ofNullable(this.env);
+    }
+
+    /**
+     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+     * @return This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
      * 
      */
     public Optional<Output<String>> scope() {
@@ -65,14 +140,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * The list of origin addresses. See `sources` below.
      * 
      */
     @Import(name="sources", required=true)
     private Output<List<DomainSourceArgs>> sources;
 
     /**
-     * @return The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * @return The list of origin addresses. See `sources` below.
      * 
      */
     public Output<List<DomainSourceArgs>> sources() {
@@ -80,9 +155,54 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The content of the private key.
+     * 
+     */
+    @Import(name="sslPri")
+    private @Nullable Output<String> sslPri;
+
+    /**
+     * @return The content of the private key.
+     * 
+     */
+    public Optional<Output<String>> sslPri() {
+        return Optional.ofNullable(this.sslPri);
+    }
+
+    /**
+     * Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+     * 
+     */
+    @Import(name="sslProtocol")
+    private @Nullable Output<String> sslProtocol;
+
+    /**
+     * @return Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> sslProtocol() {
+        return Optional.ofNullable(this.sslProtocol);
+    }
+
+    /**
+     * The content of the security certificate.
+     * 
+     */
+    @Import(name="sslPub")
+    private @Nullable Output<String> sslPub;
+
+    /**
+     * @return The content of the security certificate.
+     * 
+     */
+    public Optional<Output<String>> sslPub() {
+        return Optional.ofNullable(this.sslPub);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
+     * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * - `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     @Import(name="tags")
@@ -90,8 +210,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
+     * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * - `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -116,10 +236,18 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     private DomainArgs() {}
 
     private DomainArgs(DomainArgs $) {
+        this.certId = $.certId;
+        this.certName = $.certName;
+        this.certRegion = $.certRegion;
+        this.certType = $.certType;
         this.checkUrl = $.checkUrl;
         this.domainName = $.domainName;
+        this.env = $.env;
         this.scope = $.scope;
         this.sources = $.sources;
+        this.sslPri = $.sslPri;
+        this.sslProtocol = $.sslProtocol;
+        this.sslPub = $.sslPub;
         this.tags = $.tags;
         this.topLevelDomain = $.topLevelDomain;
     }
@@ -143,7 +271,91 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkUrl The URL that is used for health checks.
+         * @param certId The ID of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certId(@Nullable Output<String> certId) {
+            $.certId = certId;
+            return this;
+        }
+
+        /**
+         * @param certId The ID of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certId(String certId) {
+            return certId(Output.of(certId));
+        }
+
+        /**
+         * @param certName The name of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certName(@Nullable Output<String> certName) {
+            $.certName = certName;
+            return this;
+        }
+
+        /**
+         * @param certName The name of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certName(String certName) {
+            return certName(Output.of(certName));
+        }
+
+        /**
+         * @param certRegion The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certRegion(@Nullable Output<String> certRegion) {
+            $.certRegion = certRegion;
+            return this;
+        }
+
+        /**
+         * @param certRegion The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certRegion(String certRegion) {
+            return certRegion(Output.of(certRegion));
+        }
+
+        /**
+         * @param certType The type of the certificate. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certType(@Nullable Output<String> certType) {
+            $.certType = certType;
+            return this;
+        }
+
+        /**
+         * @param certType The type of the certificate. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certType(String certType) {
+            return certType(Output.of(certType));
+        }
+
+        /**
+         * @param checkUrl The URL for health checks.
          * 
          * @return builder
          * 
@@ -154,7 +366,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkUrl The URL that is used for health checks.
+         * @param checkUrl The URL for health checks.
          * 
          * @return builder
          * 
@@ -185,7 +397,28 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scope This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+         * @param env Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(@Nullable Output<String> env) {
+            $.env = env;
+            return this;
+        }
+
+        /**
+         * @param env Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(String env) {
+            return env(Output.of(env));
+        }
+
+        /**
+         * @param scope This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
          * 
          * @return builder
          * 
@@ -196,7 +429,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scope This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+         * @param scope This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
          * 
          * @return builder
          * 
@@ -206,7 +439,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+         * @param sources The list of origin addresses. See `sources` below.
          * 
          * @return builder
          * 
@@ -217,7 +450,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+         * @param sources The list of origin addresses. See `sources` below.
          * 
          * @return builder
          * 
@@ -227,7 +460,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+         * @param sources The list of origin addresses. See `sources` below.
          * 
          * @return builder
          * 
@@ -237,9 +470,72 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param sslPri The content of the private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslPri(@Nullable Output<String> sslPri) {
+            $.sslPri = sslPri;
+            return this;
+        }
+
+        /**
+         * @param sslPri The content of the private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslPri(String sslPri) {
+            return sslPri(Output.of(sslPri));
+        }
+
+        /**
+         * @param sslProtocol Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslProtocol(@Nullable Output<String> sslProtocol) {
+            $.sslProtocol = sslProtocol;
+            return this;
+        }
+
+        /**
+         * @param sslProtocol Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslProtocol(String sslProtocol) {
+            return sslProtocol(Output.of(sslProtocol));
+        }
+
+        /**
+         * @param sslPub The content of the security certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslPub(@Nullable Output<String> sslPub) {
+            $.sslPub = sslPub;
+            return this;
+        }
+
+        /**
+         * @param sslPub The content of the security certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslPub(String sslPub) {
+            return sslPub(Output.of(sslPub));
+        }
+
+        /**
          * @param tags A mapping of tags to assign to the resource.
-         * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-         * * `Value`: It can be up to 128 characters in length. It can be a null string.
+         * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+         * - `Value`: It can be up to 128 characters in length. It can be a null string.
          * 
          * @return builder
          * 
@@ -251,8 +547,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-         * * `Value`: It can be up to 128 characters in length. It can be a null string.
+         * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+         * - `Value`: It can be up to 128 characters in length. It can be a null string.
          * 
          * @return builder
          * 

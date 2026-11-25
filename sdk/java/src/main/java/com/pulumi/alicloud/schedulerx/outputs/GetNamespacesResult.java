@@ -21,7 +21,15 @@ public final class GetNamespacesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Namespace names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return A list of Schedulerx Namespaces. Each element contains the following attributes:
+     * 
+     */
     private List<GetNamespacesNamespace> namespaces;
     private @Nullable String outputFile;
 
@@ -39,9 +47,17 @@ public final class GetNamespacesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Namespace names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return A list of Schedulerx Namespaces. Each element contains the following attributes:
+     * 
+     */
     public List<GetNamespacesNamespace> namespaces() {
         return this.namespaces;
     }

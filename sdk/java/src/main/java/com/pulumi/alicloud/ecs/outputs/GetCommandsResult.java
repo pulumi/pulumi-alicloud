@@ -15,8 +15,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCommandsResult {
     private @Nullable String commandProvider;
+    /**
+     * @return A list of Ecs Commands. Each element contains the following attributes:
+     * 
+     */
     private List<GetCommandsCommand> commands;
     private @Nullable String contentEncoding;
+    /**
+     * @return The description of command.
+     * 
+     */
     private @Nullable String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,22 +32,42 @@ public final class GetCommandsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The name of the command
+     * 
+     */
     private @Nullable String name;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Command names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The command type.
+     * 
+     */
     private @Nullable String type;
 
     private GetCommandsResult() {}
     public Optional<String> commandProvider() {
         return Optional.ofNullable(this.commandProvider);
     }
+    /**
+     * @return A list of Ecs Commands. Each element contains the following attributes:
+     * 
+     */
     public List<GetCommandsCommand> commands() {
         return this.commands;
     }
     public Optional<String> contentEncoding() {
         return Optional.ofNullable(this.contentEncoding);
     }
+    /**
+     * @return The description of command.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -53,18 +81,30 @@ public final class GetCommandsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The name of the command
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Command names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The command type.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

@@ -26,7 +26,8 @@ class ParameterGroupArgs:
                  parameters: pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None):
+                 parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ParameterGroup resource.
 
@@ -38,8 +39,6 @@ class ParameterGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]] parameters: Details about the parameters. See `parameters` below.
                
                > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-               
-               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] description: The description of the parameter template.
         :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
         :param pulumi.Input[_builtins.str] parameter_group_name: The name of the parameter template. The name must meet the following requirements:
@@ -47,6 +46,9 @@ class ParameterGroupArgs:
                - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
                
                - It must be 8 to 64 characters in length.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         pulumi.set(__self__, "db_type", db_type)
         pulumi.set(__self__, "db_version", db_version)
@@ -60,6 +62,8 @@ class ParameterGroupArgs:
             pulumi.set(__self__, "name", name)
         if parameter_group_name is not None:
             pulumi.set(__self__, "parameter_group_name", parameter_group_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
 
     @_builtins.property
     @pulumi.getter(name="dbType")
@@ -95,8 +99,6 @@ class ParameterGroupArgs:
         Details about the parameters. See `parameters` below.
 
         > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "parameters")
 
@@ -145,6 +147,20 @@ class ParameterGroupArgs:
     def parameter_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_group_name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
 
 @pulumi.input_type
 class _ParameterGroupState:
@@ -155,7 +171,8 @@ class _ParameterGroupState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ParameterGroupParameterArgs']]]] = None):
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ParameterGroupParameterArgs']]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ParameterGroup resources.
 
@@ -175,6 +192,7 @@ class _ParameterGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]] parameters: Details about the parameters. See `parameters` below.
                
                > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -195,6 +213,8 @@ class _ParameterGroupState:
             pulumi.set(__self__, "parameter_group_name", parameter_group_name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -283,14 +303,26 @@ class _ParameterGroupState:
         Details about the parameters. See `parameters` below.
 
         > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
     def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ParameterGroupParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
 
 
 @pulumi.type_token("alicloud:polardb/parameterGroup:ParameterGroup")
@@ -305,6 +337,7 @@ class ParameterGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict', 'outputs.ParameterGroupParameter']]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Polar Db Parameter Group resource.
@@ -360,6 +393,7 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict', 'outputs.ParameterGroupParameter']]]] parameters: Details about the parameters. See `parameters` below.
                
                > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -427,6 +461,7 @@ class ParameterGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict', 'outputs.ParameterGroupParameter']]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -448,6 +483,7 @@ class ParameterGroup(pulumi.CustomResource):
             if parameters is None and not opts.urn:
                 raise TypeError("Missing required property 'parameters'")
             __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["create_time"] = None
         super(ParameterGroup, __self__).__init__(
             'alicloud:polardb/parameterGroup:ParameterGroup',
@@ -465,7 +501,8 @@ class ParameterGroup(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict', 'outputs.ParameterGroupParameter']]]]] = None) -> 'ParameterGroup':
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict', 'outputs.ParameterGroupParameter']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ParameterGroup':
         """
         Get an existing ParameterGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -489,6 +526,7 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict', 'outputs.ParameterGroupParameter']]]] parameters: Details about the parameters. See `parameters` below.
                
                > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -503,6 +541,7 @@ class ParameterGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parameter_group_name"] = parameter_group_name
         __props__.__dict__["parameters"] = parameters
+        __props__.__dict__["resource_group_id"] = resource_group_id
         return ParameterGroup(resource_name, opts=opts, __props__=__props__)
 
     @staticmethod
@@ -514,7 +553,8 @@ class ParameterGroup(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict', 'outputs.ParameterGroupParameter']]]]] = None) -> pulumi.Output[bool]:
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict', 'outputs.ParameterGroupParameter']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["createTime"] = create_time
         __props__["dbType"] = db_type
@@ -523,6 +563,7 @@ class ParameterGroup(pulumi.CustomResource):
         __props__["name"] = name
         __props__["parameterGroupName"] = parameter_group_name
         __props__["parameters"] = parameters
+        __props__["resourceGroupId"] = resource_group_id
         return pulumi.runtime.exists_resource(None, 'alicloud:polardb/parameterGroup:ParameterGroup', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
@@ -588,8 +629,16 @@ class ParameterGroup(pulumi.CustomResource):
         Details about the parameters. See `parameters` below.
 
         > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+        """
+        return pulumi.get(self, "parameters")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
-        return pulumi.get(self, "parameters")
+        return pulumi.get(self, "resource_group_id")
 

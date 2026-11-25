@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAclsAclRelatedListener {
+    /**
+     * @return The type of the acl (such as white/black).
+     * 
+     */
     private String aclType;
+    /**
+     * @return The listener port.
+     * 
+     */
     private Integer frontendPort;
+    /**
+     * @return The id of load balancer instance the listener belongs to.
+     * 
+     */
     private String loadBalancerId;
+    /**
+     * @return The listener protocol (such as tcp/udp/http/https, etc).
+     * 
+     */
     private String protocol;
 
     private GetAclsAclRelatedListener() {}
+    /**
+     * @return The type of the acl (such as white/black).
+     * 
+     */
     public String aclType() {
         return this.aclType;
     }
+    /**
+     * @return The listener port.
+     * 
+     */
     public Integer frontendPort() {
         return this.frontendPort;
     }
+    /**
+     * @return The id of load balancer instance the listener belongs to.
+     * 
+     */
     public String loadBalancerId() {
         return this.loadBalancerId;
     }
+    /**
+     * @return The listener protocol (such as tcp/udp/http/https, etc).
+     * 
+     */
     public String protocol() {
         return this.protocol;
     }

@@ -59,6 +59,9 @@ class GetTrafficMarkingPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the Traffic Marking Policy.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -82,6 +85,9 @@ class GetTrafficMarkingPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Traffic Marking Policy names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -92,16 +98,25 @@ class GetTrafficMarkingPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetTrafficMarkingPoliciesPolicyResult']:
+        """
+        A list of Cen Traffic Marking Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> _builtins.str:
+        """
+        The ID of the transit router.
+        """
         return pulumi.get(self, "transit_router_id")
 
 
@@ -132,7 +147,7 @@ def get_traffic_marking_policies(description: Optional[_builtins.str] = None,
     """
     This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.173.0+.
+    > **NOTE:** Available since v1.173.0+.
 
     ## Example Usage
 
@@ -154,6 +169,7 @@ def get_traffic_marking_policies(description: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str description: The traffic marking policy description.
     :param Sequence[_builtins.str] ids: A list of Traffic Marking Policy IDs.
     :param _builtins.str name_regex: A regex string to filter results by Traffic Marking Policy name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -190,7 +206,7 @@ def get_traffic_marking_policies_output(description: pulumi.Input[Optional[Optio
     """
     This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.173.0+.
+    > **NOTE:** Available since v1.173.0+.
 
     ## Example Usage
 
@@ -212,6 +228,7 @@ def get_traffic_marking_policies_output(description: pulumi.Input[Optional[Optio
     ```
 
 
+    :param _builtins.str description: The traffic marking policy description.
     :param Sequence[_builtins.str] ids: A list of Traffic Marking Policy IDs.
     :param _builtins.str name_regex: A regex string to filter results by Traffic Marking Policy name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

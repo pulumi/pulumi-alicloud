@@ -20,14 +20,14 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     public static final NodePoolManagementArgs Empty = new NodePoolManagementArgs();
 
     /**
-     * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
+     * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resourceIds` when it is queried. Turning `autoRepair` back on makes the retained policy take effect again. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See csKubernetesAddon for installation.
      * 
      */
     @Import(name="autoRepair")
     private @Nullable Output<Boolean> autoRepair;
 
     /**
-     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
+     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resourceIds` when it is queried. Turning `autoRepair` back on makes the retained policy take effect again. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See csKubernetesAddon for installation.
      * 
      */
     public Optional<Output<Boolean>> autoRepair() {
@@ -215,7 +215,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRepair Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
+         * @param autoRepair Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resourceIds` when it is queried. Turning `autoRepair` back on makes the retained policy take effect again. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See csKubernetesAddon for installation.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRepair Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
+         * @param autoRepair Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resourceIds` when it is queried. Turning `autoRepair` back on makes the retained policy take effect again. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See csKubernetesAddon for installation.
          * 
          * @return builder
          * 

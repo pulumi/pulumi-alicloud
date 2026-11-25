@@ -197,7 +197,7 @@ def get_domains(change_end_time: Optional[_builtins.str] = None,
     """
     Provides a collection of DCDN Domains to the specified filters.
 
-    > **NOTE:** Available since 1.94.0.
+    > **NOTE:** Available since v1.94.0.
 
     ## Example Usage
 
@@ -219,6 +219,7 @@ def get_domains(change_end_time: Optional[_builtins.str] = None,
     :param _builtins.str name_regex: A regex string to filter results by the DCDN Domain.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: The ID of the resource group.
+    :param _builtins.str security_token: The security token.
     :param _builtins.str status: The status of DCDN Domain.
     """
     __args__ = dict()
@@ -266,7 +267,7 @@ def get_domains_output(change_end_time: pulumi.Input[Optional[Optional[_builtins
     """
     Provides a collection of DCDN Domains to the specified filters.
 
-    > **NOTE:** Available since 1.94.0.
+    > **NOTE:** Available since v1.94.0.
 
     ## Example Usage
 
@@ -288,6 +289,7 @@ def get_domains_output(change_end_time: pulumi.Input[Optional[Optional[_builtins
     :param _builtins.str name_regex: A regex string to filter results by the DCDN Domain.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: The ID of the resource group.
+    :param _builtins.str security_token: The security token.
     :param _builtins.str status: The status of DCDN Domain.
     """
     __args__ = dict()

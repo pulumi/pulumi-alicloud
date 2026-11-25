@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.174.0+.
+ * > **NOTE:** Available since v1.174.0.
  *
  * ## Example Usage
  *
@@ -62,6 +62,9 @@ export interface GetAdConnectorDirectoriesArgs {
  * A collection of values returned by getAdConnectorDirectories.
  */
 export interface GetAdConnectorDirectoriesResult {
+    /**
+     * A list of Ecd Ad Connector Directories. Each element contains the following attributes:
+     */
     readonly directories: outputs.eds.GetAdConnectorDirectoriesDirectory[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -69,14 +72,20 @@ export interface GetAdConnectorDirectoriesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Ecd Ad Connector Directory names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of directory.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.174.0+.
+ * > **NOTE:** Available since v1.174.0.
  *
  * ## Example Usage
  *

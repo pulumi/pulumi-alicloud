@@ -124,7 +124,7 @@ def get_policies(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.86.0+.
+    > **NOTE:** Available since v1.86.0.
 
     ## Example Usage
 
@@ -168,7 +168,7 @@ def get_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
     """
     This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.86.0+.
+    > **NOTE:** Available since v1.86.0.
 
     ## Example Usage
 

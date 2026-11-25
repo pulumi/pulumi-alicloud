@@ -21,8 +21,16 @@ public final class GetEventSourcesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Event Source names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Event Bridge Event Sources. Each element contains the following attributes:
+     * 
+     */
     private List<GetEventSourcesSource> sources;
 
     private GetEventSourcesResult() {}
@@ -39,12 +47,20 @@ public final class GetEventSourcesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Event Source names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Event Bridge Event Sources. Each element contains the following attributes:
+     * 
+     */
     public List<GetEventSourcesSource> sources() {
         return this.sources;
     }

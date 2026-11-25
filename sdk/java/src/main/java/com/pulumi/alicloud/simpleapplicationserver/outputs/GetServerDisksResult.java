@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerDisksResult {
+    /**
+     * @return The type of the disk. Possible values: `System`, `Data`.
+     * 
+     */
     private @Nullable String diskType;
+    /**
+     * @return A list of Simple Application Server Disks. Each element contains the following attributes:
+     * 
+     */
     private List<GetServerDisksDisk> disks;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,16 +30,36 @@ public final class GetServerDisksResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return Alibaba Cloud simple application server instance ID.
+     * 
+     */
     private @Nullable String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Disk names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
+     * 
+     */
     private @Nullable String status;
 
     private GetServerDisksResult() {}
+    /**
+     * @return The type of the disk. Possible values: `System`, `Data`.
+     * 
+     */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
+    /**
+     * @return A list of Simple Application Server Disks. Each element contains the following attributes:
+     * 
+     */
     public List<GetServerDisksDisk> disks() {
         return this.disks;
     }
@@ -45,18 +73,30 @@ public final class GetServerDisksResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return Alibaba Cloud simple application server instance ID.
+     * 
+     */
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Disk names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

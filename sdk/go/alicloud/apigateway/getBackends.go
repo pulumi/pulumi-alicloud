@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.181.0+.
+// > **NOTE:** Available since v1.181.0.
 //
 // ## Example Usage
 //
@@ -65,11 +65,13 @@ type GetBackendsArgs struct {
 
 // A collection of values returned by getBackends.
 type GetBackendsResult struct {
+	// A list of Api Gateway Backends. Each element contains the following attributes:
 	Backends []GetBackendsBackend `pulumi:"backends"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Backend names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	PageNumber *int     `pulumi:"pageNumber"`
@@ -112,6 +114,7 @@ func (o GetBackendsResultOutput) ToGetBackendsResultOutputWithContext(ctx contex
 	return o
 }
 
+// A list of Api Gateway Backends. Each element contains the following attributes:
 func (o GetBackendsResultOutput) Backends() GetBackendsBackendArrayOutput {
 	return o.ApplyT(func(v GetBackendsResult) []GetBackendsBackend { return v.Backends }).(GetBackendsBackendArrayOutput)
 }
@@ -129,6 +132,7 @@ func (o GetBackendsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackendsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Backend names.
 func (o GetBackendsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackendsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

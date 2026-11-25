@@ -32,6 +32,7 @@ namespace Pulumi.AliCloud.Ga.Inputs
 
         /// <summary>
         /// The private IP address of the ENI.
+        /// 
         /// &gt; **NOTE:** `SubAddress` is valid only when `Type` is set to `ENI`.
         /// </summary>
         [Input("subAddress")]
@@ -73,6 +74,7 @@ namespace Pulumi.AliCloud.Ga.Inputs
 
         /// <summary>
         /// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
+        /// 
         /// &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         /// </summary>
         [Input("weight", required: true)]

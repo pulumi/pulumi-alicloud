@@ -36,7 +36,7 @@ import (
 //				CenId:           pulumi.StringRef("cen-cjok7uyb5w2b27573v"),
 //				MemberUid:       pulumi.StringRef("1415189284827022"),
 //				Status:          pulumi.StringRef("closed"),
-//				VpcFirewallName: pulumi.StringRef("tf-test"),
+//				VpcFirewallName: pulumi.StringRef("tf-example"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -90,11 +90,10 @@ type GetVpcFirewallCensResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Vpc Firewall Cen IDs.
-	Ids  []string `pulumi:"ids"`
-	Lang *string  `pulumi:"lang"`
-	// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-	MemberUid *string `pulumi:"memberUid"`
-	// The ID of the VPC instance that created the VPC firewall.
+	Ids       []string `pulumi:"ids"`
+	Lang      *string  `pulumi:"lang"`
+	MemberUid *string  `pulumi:"memberUid"`
+	// The ID of the network instance.
 	NetworkInstanceId *string `pulumi:"networkInstanceId"`
 	OutputFile        *string `pulumi:"outputFile"`
 	PageNumber        *int    `pulumi:"pageNumber"`
@@ -179,12 +178,11 @@ func (o GetVpcFirewallCensResultOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
 func (o GetVpcFirewallCensResultOutput) MemberUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensResult) *string { return v.MemberUid }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the VPC instance that created the VPC firewall.
+// The ID of the network instance.
 func (o GetVpcFirewallCensResultOutput) NetworkInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensResult) *string { return v.NetworkInstanceId }).(pulumi.StringPtrOutput)
 }

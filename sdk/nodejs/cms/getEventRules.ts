@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.182.0+.
+ * > **NOTE:** Available since v1.182.0+.
  *
  * ## Example Usage
  *
@@ -82,17 +82,26 @@ export interface GetEventRulesResult {
     readonly ids: string[];
     readonly namePrefix?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Event Rule names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * A list of Cms Event Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.cms.GetEventRulesRule[];
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Cms Event Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.182.0+.
+ * > **NOTE:** Available since v1.182.0+.
  *
  * ## Example Usage
  *

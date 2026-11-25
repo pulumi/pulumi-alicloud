@@ -73,11 +73,17 @@ class GetOtsSnapshotsResult:
     @_builtins.property
     @pulumi.getter
     def snapshots(self) -> Sequence['outputs.GetOtsSnapshotsSnapshotResult']:
+        """
+        A list of Hbr Ots Snapshots. Each element contains the following attributes:
+        """
         return pulumi.get(self, "snapshots")
 
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[_builtins.str]:
+        """
+        The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        """
         return pulumi.get(self, "start_time")
 
 
@@ -103,7 +109,7 @@ def get_ots_snapshots(end_time: Optional[_builtins.str] = None,
     """
     This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.164.0+.
+    > **NOTE:** Available since v1.164.0.
 
     ## Example Usage
 
@@ -118,6 +124,7 @@ def get_ots_snapshots(end_time: Optional[_builtins.str] = None,
 
 
     :param _builtins.str end_time: The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
+    :param Sequence[_builtins.str] ids: A list of Ots Snapshot IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str start_time: The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
     """
@@ -144,7 +151,7 @@ def get_ots_snapshots_output(end_time: pulumi.Input[Optional[Optional[_builtins.
     """
     This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.164.0+.
+    > **NOTE:** Available since v1.164.0.
 
     ## Example Usage
 
@@ -159,6 +166,7 @@ def get_ots_snapshots_output(end_time: pulumi.Input[Optional[Optional[_builtins.
 
 
     :param _builtins.str end_time: The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
+    :param Sequence[_builtins.str] ids: A list of Ots Snapshot IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str start_time: The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
     """

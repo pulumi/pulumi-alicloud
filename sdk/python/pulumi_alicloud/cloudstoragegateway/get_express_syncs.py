@@ -68,6 +68,9 @@ class GetExpressSyncsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Express Sync names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -78,6 +81,9 @@ class GetExpressSyncsResult:
     @_builtins.property
     @pulumi.getter
     def syncs(self) -> Sequence['outputs.GetExpressSyncsSyncResult']:
+        """
+        A list of Cloud Storage Gateway Express Syncs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "syncs")
 
 
@@ -102,7 +108,7 @@ def get_express_syncs(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 
@@ -144,7 +150,7 @@ def get_express_syncs_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     """
     This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 

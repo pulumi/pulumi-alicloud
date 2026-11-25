@@ -22,7 +22,15 @@ public final class GetRegionsResult {
      */
     private String id;
     private @Nullable String outputFile;
+    /**
+     * @return The Region ID.
+     * 
+     */
     private @Nullable String regionId;
+    /**
+     * @return A list of Click House Regions. Each element contains the following attributes:
+     * 
+     */
     private List<GetRegionsRegion> regions;
 
     private GetRegionsResult() {}
@@ -39,9 +47,17 @@ public final class GetRegionsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The Region ID.
+     * 
+     */
     public Optional<String> regionId() {
         return Optional.ofNullable(this.regionId);
     }
+    /**
+     * @return A list of Click House Regions. Each element contains the following attributes:
+     * 
+     */
     public List<GetRegionsRegion> regions() {
         return this.regions;
     }

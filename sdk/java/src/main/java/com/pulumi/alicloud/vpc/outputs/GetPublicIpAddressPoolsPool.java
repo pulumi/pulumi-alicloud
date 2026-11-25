@@ -33,7 +33,7 @@ public final class GetPublicIpAddressPoolsPool {
      */
     private Boolean ipAddressRemaining;
     /**
-     * @return The Internet service provider.
+     * @return The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
      * 
      */
     private String isp;
@@ -43,7 +43,7 @@ public final class GetPublicIpAddressPoolsPool {
      */
     private String publicIpAddressPoolId;
     /**
-     * @return The name of the Vpc Public Ip Address Pool.
+     * @return The name of the VPC Public IP address pool.
      * 
      */
     private String publicIpAddressPoolName;
@@ -53,7 +53,7 @@ public final class GetPublicIpAddressPoolsPool {
      */
     private String regionId;
     /**
-     * @return The status of the Vpc Public Ip Address Pool.
+     * @return The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
      * 
      */
     private String status;
@@ -103,7 +103,7 @@ public final class GetPublicIpAddressPoolsPool {
         return this.ipAddressRemaining;
     }
     /**
-     * @return The Internet service provider.
+     * @return The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
      * 
      */
     public String isp() {
@@ -117,7 +117,7 @@ public final class GetPublicIpAddressPoolsPool {
         return this.publicIpAddressPoolId;
     }
     /**
-     * @return The name of the Vpc Public Ip Address Pool.
+     * @return The name of the VPC Public IP address pool.
      * 
      */
     public String publicIpAddressPoolName() {
@@ -131,7 +131,7 @@ public final class GetPublicIpAddressPoolsPool {
         return this.regionId;
     }
     /**
-     * @return The status of the Vpc Public Ip Address Pool.
+     * @return The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
      * 
      */
     public String status() {

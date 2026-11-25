@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupPlansResult {
+    /**
+     * @return The name of the resource.
+     * 
+     */
     private @Nullable String backupPlanName;
     private @Nullable Boolean enableDetails;
     /**
@@ -25,14 +29,30 @@ public final class GetBackupPlansResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Backup Plan names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return A list of Dbs Backup Plans. Each element contains the following attributes:
+     * 
+     */
     private List<GetBackupPlansPlan> plans;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetBackupPlansResult() {}
+    /**
+     * @return The name of the resource.
+     * 
+     */
     public Optional<String> backupPlanName() {
         return Optional.ofNullable(this.backupPlanName);
     }
@@ -52,6 +72,10 @@ public final class GetBackupPlansResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Backup Plan names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -64,9 +88,17 @@ public final class GetBackupPlansResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return A list of Dbs Backup Plans. Each element contains the following attributes:
+     * 
+     */
     public List<GetBackupPlansPlan> plans() {
         return this.plans;
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

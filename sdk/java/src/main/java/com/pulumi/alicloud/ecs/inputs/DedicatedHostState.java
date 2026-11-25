@@ -232,14 +232,14 @@ public final class DedicatedHostState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * dedicated host network parameters. contains the following attributes:
+     * Dedicated host network parameters. See `networkAttributes` below.
      * 
      */
     @Import(name="networkAttributes")
     private @Nullable Output<List<DedicatedHostNetworkAttributeArgs>> networkAttributes;
 
     /**
-     * @return dedicated host network parameters. contains the following attributes:
+     * @return Dedicated host network parameters. See `networkAttributes` below.
      * 
      */
     public Optional<Output<List<DedicatedHostNetworkAttributeArgs>>> networkAttributes() {
@@ -675,7 +675,7 @@ public final class DedicatedHostState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkAttributes dedicated host network parameters. contains the following attributes:
+         * @param networkAttributes Dedicated host network parameters. See `networkAttributes` below.
          * 
          * @return builder
          * 
@@ -686,7 +686,7 @@ public final class DedicatedHostState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkAttributes dedicated host network parameters. contains the following attributes:
+         * @param networkAttributes Dedicated host network parameters. See `networkAttributes` below.
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class DedicatedHostState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkAttributes dedicated host network parameters. contains the following attributes:
+         * @param networkAttributes Dedicated host network parameters. See `networkAttributes` below.
          * 
          * @return builder
          * 

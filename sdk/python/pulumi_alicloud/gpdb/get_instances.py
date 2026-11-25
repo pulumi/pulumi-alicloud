@@ -80,6 +80,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        The ID of the availability zone.
+        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
@@ -95,6 +98,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the instance.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -113,16 +119,25 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        The ids list of AnalyticDB for PostgreSQL instances.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter(name="instanceNetworkType")
     def instance_network_type(self) -> Optional[_builtins.str]:
+        """
+        The network type of the instance.
+        """
         return pulumi.get(self, "instance_network_type")
 
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        A list of Gpdb Db Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -133,6 +148,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        The names list of AnalyticDB for PostgreSQL instance.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -148,16 +166,25 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tags of the instance.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[_builtins.str]:
+        """
+        The vswitch id.
+        """
         return pulumi.get(self, "vswitch_id")
 
 
@@ -202,7 +229,7 @@ def get_instances(availability_zone: Optional[_builtins.str] = None,
     """
     This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.47.0+
+    > **NOTE:** Available since v1.47.0.
 
     ## Example Usage
 
@@ -222,12 +249,13 @@ def get_instances(availability_zone: Optional[_builtins.str] = None,
     :param _builtins.str db_instance_modes: The db instance modes.
     :param _builtins.str description: The description of the instance.
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param Sequence[_builtins.str] ids: The ids list of AnalyticDB for PostgreSQL instances.
+    :param Sequence[_builtins.str] ids: A list of DB Instance IDs.
     :param _builtins.str instance_network_type: The network type of the instance.
     :param _builtins.str name_regex: A regex string to apply to the instance name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: The ID of the enterprise resource group to which the instance belongs.
     :param _builtins.str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     :param _builtins.str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
     """
     __args__ = dict()
@@ -281,7 +309,7 @@ def get_instances_output(availability_zone: pulumi.Input[Optional[Optional[_buil
     """
     This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.47.0+
+    > **NOTE:** Available since v1.47.0.
 
     ## Example Usage
 
@@ -301,12 +329,13 @@ def get_instances_output(availability_zone: pulumi.Input[Optional[Optional[_buil
     :param _builtins.str db_instance_modes: The db instance modes.
     :param _builtins.str description: The description of the instance.
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param Sequence[_builtins.str] ids: The ids list of AnalyticDB for PostgreSQL instances.
+    :param Sequence[_builtins.str] ids: A list of DB Instance IDs.
     :param _builtins.str instance_network_type: The network type of the instance.
     :param _builtins.str name_regex: A regex string to apply to the instance name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str resource_group_id: The ID of the enterprise resource group to which the instance belongs.
     :param _builtins.str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     :param _builtins.str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
     """
     __args__ = dict()

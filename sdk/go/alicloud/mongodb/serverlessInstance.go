@@ -16,9 +16,9 @@ import (
 //
 // For information about MongoDB Serverless Instance and how to use it, see [What is Serverless Instance](https://www.alibabacloud.com/help/doc-detail/26558.html).
 //
-// > **NOTE:** Deprecated since v1.214.0.
+// > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 //
-// > **DEPRECATED:**  This resource has been deprecated from version `1.214.0`.
+// > **DEPRECATED:** This resource has been deprecated from v1.214.0.
 //
 // ## Example Usage
 //
@@ -132,7 +132,7 @@ type ServerlessInstance struct {
 	PeriodPriceType pulumi.StringPtrOutput `pulumi:"periodPriceType"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// An array that consists of the information of IP whitelists.
+	// An array that consists of the information of IP whitelists. See `securityIpGroups` below.
 	SecurityIpGroups ServerlessInstanceSecurityIpGroupArrayOutput `pulumi:"securityIpGroups"`
 	// The instance status. For more information, see the instance Status Table.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -232,7 +232,7 @@ type serverlessInstanceState struct {
 	PeriodPriceType *string `pulumi:"periodPriceType"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// An array that consists of the information of IP whitelists.
+	// An array that consists of the information of IP whitelists. See `securityIpGroups` below.
 	SecurityIpGroups []ServerlessInstanceSecurityIpGroup `pulumi:"securityIpGroups"`
 	// The instance status. For more information, see the instance Status Table.
 	Status *string `pulumi:"status"`
@@ -275,7 +275,7 @@ type ServerlessInstanceState struct {
 	PeriodPriceType pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// An array that consists of the information of IP whitelists.
+	// An array that consists of the information of IP whitelists. See `securityIpGroups` below.
 	SecurityIpGroups ServerlessInstanceSecurityIpGroupArrayInput
 	// The instance status. For more information, see the instance Status Table.
 	Status pulumi.StringPtrInput
@@ -328,7 +328,7 @@ type serverlessInstanceArgs struct {
 	PeriodPriceType *string `pulumi:"periodPriceType"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// An array that consists of the information of IP whitelists.
+	// An array that consists of the information of IP whitelists. See `securityIpGroups` below.
 	SecurityIpGroups []ServerlessInstanceSecurityIpGroup `pulumi:"securityIpGroups"`
 	// The storage engine used by the instance. Valid values: `WiredTiger`.
 	StorageEngine *string `pulumi:"storageEngine"`
@@ -370,7 +370,7 @@ type ServerlessInstanceArgs struct {
 	PeriodPriceType pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// An array that consists of the information of IP whitelists.
+	// An array that consists of the information of IP whitelists. See `securityIpGroups` below.
 	SecurityIpGroups ServerlessInstanceSecurityIpGroupArrayInput
 	// The storage engine used by the instance. Valid values: `WiredTiger`.
 	StorageEngine pulumi.StringPtrInput
@@ -533,7 +533,7 @@ func (o ServerlessInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// An array that consists of the information of IP whitelists.
+// An array that consists of the information of IP whitelists. See `securityIpGroups` below.
 func (o ServerlessInstanceOutput) SecurityIpGroups() ServerlessInstanceSecurityIpGroupArrayOutput {
 	return o.ApplyT(func(v *ServerlessInstance) ServerlessInstanceSecurityIpGroupArrayOutput { return v.SecurityIpGroups }).(ServerlessInstanceSecurityIpGroupArrayOutput)
 }

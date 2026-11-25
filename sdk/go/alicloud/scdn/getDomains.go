@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Scdn Domains of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.131.0+.
+// > **NOTE:** Available since v1.131.0.
 //
 // ## Example Usage
 //
@@ -71,16 +71,20 @@ type GetDomainsArgs struct {
 
 // A collection of values returned by getDomains.
 type GetDomainsResult struct {
+	// A list of Scdn Domains. Each element contains the following attributes:
 	Domains       []GetDomainsDomain `pulumi:"domains"`
 	EnableDetails *bool              `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	Ids             []string `pulumi:"ids"`
-	NameRegex       *string  `pulumi:"nameRegex"`
-	Names           []string `pulumi:"names"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
-	Status          *string  `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Domain names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The Resource Group ID.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
@@ -123,6 +127,7 @@ func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.
 	return o
 }
 
+// A list of Scdn Domains. Each element contains the following attributes:
 func (o GetDomainsResultOutput) Domains() GetDomainsDomainArrayOutput {
 	return o.ApplyT(func(v GetDomainsResult) []GetDomainsDomain { return v.Domains }).(GetDomainsDomainArrayOutput)
 }
@@ -144,6 +149,7 @@ func (o GetDomainsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Domain names.
 func (o GetDomainsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDomainsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -152,10 +158,12 @@ func (o GetDomainsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The Resource Group ID.
 func (o GetDomainsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetDomainsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

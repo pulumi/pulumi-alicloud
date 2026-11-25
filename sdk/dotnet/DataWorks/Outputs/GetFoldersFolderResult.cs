@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.DataWorks.Outputs
     [OutputType]
     public sealed class GetFoldersFolderResult
     {
+        /// <summary>
+        /// The ID of the Folder.
+        /// </summary>
         public readonly string FolderId;
         /// <summary>
         /// Folder Path.

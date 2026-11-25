@@ -24,6 +24,10 @@ public final class AlertSchedule {
      * 
      */
     private @Nullable Integer dayOfWeek;
+    /**
+     * @return Delay time for schedule.
+     * 
+     */
     private @Nullable Integer delay;
     /**
      * @return Hour of day when type is Weekly/Daily.
@@ -35,6 +39,10 @@ public final class AlertSchedule {
      * 
      */
     private @Nullable String interval;
+    /**
+     * @return Whether to run the alert immediately.
+     * 
+     */
     private @Nullable Boolean runImmediately;
     /**
      * @return Time zone for schedule.
@@ -62,6 +70,10 @@ public final class AlertSchedule {
     public Optional<Integer> dayOfWeek() {
         return Optional.ofNullable(this.dayOfWeek);
     }
+    /**
+     * @return Delay time for schedule.
+     * 
+     */
     public Optional<Integer> delay() {
         return Optional.ofNullable(this.delay);
     }
@@ -79,6 +91,10 @@ public final class AlertSchedule {
     public Optional<String> interval() {
         return Optional.ofNullable(this.interval);
     }
+    /**
+     * @return Whether to run the alert immediately.
+     * 
+     */
     public Optional<Boolean> runImmediately() {
         return Optional.ofNullable(this.runImmediately);
     }

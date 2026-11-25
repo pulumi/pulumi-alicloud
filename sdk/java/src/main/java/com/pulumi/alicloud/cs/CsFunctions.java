@@ -6,6 +6,8 @@ package com.pulumi.alicloud.cs;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
 import com.pulumi.alicloud.cs.inputs.GetAckServicePlainArgs;
+import com.pulumi.alicloud.cs.inputs.GetAutoRepairPoliciesArgs;
+import com.pulumi.alicloud.cs.inputs.GetAutoRepairPoliciesPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
 import com.pulumi.alicloud.cs.inputs.GetClusterCredentialPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
@@ -37,6 +39,7 @@ import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
 import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersPlainArgs;
 import com.pulumi.alicloud.cs.outputs.GetAckServiceResult;
+import com.pulumi.alicloud.cs.outputs.GetAutoRepairPoliciesResult;
 import com.pulumi.alicloud.cs.outputs.GetClusterCredentialResult;
 import com.pulumi.alicloud.cs.outputs.GetClustersResult;
 import com.pulumi.alicloud.cs.outputs.GetEdgeKubernetesClustersResult;
@@ -286,6 +289,856 @@ public final class CsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getAckService:getAckService", TypeShape.of(GetAckServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides the Container Service for Kubernetes (ACK) Auto Repair Policies of the current Alibaba Cloud user. Both custom policies and builtin policies are returned.
+     * 
+     * &gt; **NOTE:** Available since v2.3.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.AutoRepairPolicy;
+     * import com.pulumi.alicloud.cs.AutoRepairPolicyArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleIncidentArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleRepairProcedureArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetAutoRepairPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(defaultNetwork.cidrBlock())
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .podVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .isEnterpriseSecurityGroup(true)
+     *             .slbInternetEnabled(false)
+     *             .deletionProtection(false)
+     *             .build());
+     * 
+     *         var defaultAutoRepairPolicy = new AutoRepairPolicy("defaultAutoRepairPolicy", AutoRepairPolicyArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .name(name)
+     *             .resourceSubType("ess")
+     *             .rules(AutoRepairPolicyRuleArgs.builder()
+     *                 .incidents(AutoRepairPolicyRuleIncidentArgs.builder()
+     *                     .name("NTPProblem")
+     *                     .build())
+     *                 .repairProcedures(                
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("QuarantineNode")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("Evict")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("Repair")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("UnquarantineNode")
+     *                         .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Query custom policies created by the user
+     *         final var custom = CsFunctions.getAutoRepairPolicies(GetAutoRepairPoliciesArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .type("custom")
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         // Query builtin policies that apply to elastic (ESS) node pools
+     *         final var builtin = CsFunctions.getAutoRepairPolicies(GetAutoRepairPoliciesArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .type("builtin")
+     *             .resourceSubType("ess")
+     *             .build());
+     * 
+     *         ctx.export("customPolicyIds", custom.applyValue(_custom -> _custom.ids()));
+     *         ctx.export("builtinPolicyIds", builtin.applyValue(_builtin -> _builtin.ids()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Builtin policies
+     * 
+     * Besides the custom policies, every cluster has two read-only builtin policies. They are returned by this data source with `type = &#34;builtin&#34;` and can be bound to a node pool through `autoRepairPolicyId`.
+     * 
+     * | Policy ID | Incidents | Procedures | Node pool types |
+     * | --- | --- | --- | --- |
+     * | `r-repair-sys-comp-failure` | `NTPProblem`, `RuntimeOffline`, `Ready` | `QuarantineNode`, `Evict` (`evictTimeout = 300`), `Repair` (`restartNode = true`), `UnquarantineNode` | `ess`, `lingjun` |
+     * | `r-repair-sys-comp-failure` | `SystemdOffline`, `ReadonlyFilesystem` | `QuarantineNode`, `Evict` (`evictTimeout = 300`), `Repair`, `UnquarantineNode` | `ess`, `lingjun` |
+     * | `r-repair-sys-comp-failure-without-reboots` | `NTPProblem`, `RuntimeOffline`, `Ready` | `Repair` (`restartNode = false`) | `ess`, `lingjun` |
+     * 
+     * A builtin policy covers several node pool types at the same time, so it is returned for both `resourceSubType = &#34;ess&#34;` and `resourceSubType = &#34;lingjun&#34;`.
+     * 
+     * The `rules` attribute of an item is the JSON encoding of the rules. It uses the same structure as the `rules` block of `alicloud.cs.AutoRepairPolicy`: a list of rules, each holding an `incidents` list and a `repairProcedure` list. The `config` of a procedure is a JSON object, for example `{&#34;evictTimeout&#34;: 300}` for `Evict` and `{&#34;restartNode&#34;: true}` for `Repair`.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JsondecodeArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         ctx.export("builtinPolicyRules", StdFunctions.jsondecode(JsondecodeArgs.builder()
+     *             .input(builtin.get("policies")[0].get("rules"))
+     *             .build()).result());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAutoRepairPoliciesResult> getAutoRepairPolicies(GetAutoRepairPoliciesArgs args) {
+        return getAutoRepairPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Container Service for Kubernetes (ACK) Auto Repair Policies of the current Alibaba Cloud user. Both custom policies and builtin policies are returned.
+     * 
+     * &gt; **NOTE:** Available since v2.3.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.AutoRepairPolicy;
+     * import com.pulumi.alicloud.cs.AutoRepairPolicyArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleIncidentArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleRepairProcedureArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetAutoRepairPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(defaultNetwork.cidrBlock())
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .podVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .isEnterpriseSecurityGroup(true)
+     *             .slbInternetEnabled(false)
+     *             .deletionProtection(false)
+     *             .build());
+     * 
+     *         var defaultAutoRepairPolicy = new AutoRepairPolicy("defaultAutoRepairPolicy", AutoRepairPolicyArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .name(name)
+     *             .resourceSubType("ess")
+     *             .rules(AutoRepairPolicyRuleArgs.builder()
+     *                 .incidents(AutoRepairPolicyRuleIncidentArgs.builder()
+     *                     .name("NTPProblem")
+     *                     .build())
+     *                 .repairProcedures(                
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("QuarantineNode")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("Evict")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("Repair")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("UnquarantineNode")
+     *                         .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Query custom policies created by the user
+     *         final var custom = CsFunctions.getAutoRepairPolicies(GetAutoRepairPoliciesArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .type("custom")
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         // Query builtin policies that apply to elastic (ESS) node pools
+     *         final var builtin = CsFunctions.getAutoRepairPolicies(GetAutoRepairPoliciesArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .type("builtin")
+     *             .resourceSubType("ess")
+     *             .build());
+     * 
+     *         ctx.export("customPolicyIds", custom.applyValue(_custom -> _custom.ids()));
+     *         ctx.export("builtinPolicyIds", builtin.applyValue(_builtin -> _builtin.ids()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Builtin policies
+     * 
+     * Besides the custom policies, every cluster has two read-only builtin policies. They are returned by this data source with `type = &#34;builtin&#34;` and can be bound to a node pool through `autoRepairPolicyId`.
+     * 
+     * | Policy ID | Incidents | Procedures | Node pool types |
+     * | --- | --- | --- | --- |
+     * | `r-repair-sys-comp-failure` | `NTPProblem`, `RuntimeOffline`, `Ready` | `QuarantineNode`, `Evict` (`evictTimeout = 300`), `Repair` (`restartNode = true`), `UnquarantineNode` | `ess`, `lingjun` |
+     * | `r-repair-sys-comp-failure` | `SystemdOffline`, `ReadonlyFilesystem` | `QuarantineNode`, `Evict` (`evictTimeout = 300`), `Repair`, `UnquarantineNode` | `ess`, `lingjun` |
+     * | `r-repair-sys-comp-failure-without-reboots` | `NTPProblem`, `RuntimeOffline`, `Ready` | `Repair` (`restartNode = false`) | `ess`, `lingjun` |
+     * 
+     * A builtin policy covers several node pool types at the same time, so it is returned for both `resourceSubType = &#34;ess&#34;` and `resourceSubType = &#34;lingjun&#34;`.
+     * 
+     * The `rules` attribute of an item is the JSON encoding of the rules. It uses the same structure as the `rules` block of `alicloud.cs.AutoRepairPolicy`: a list of rules, each holding an `incidents` list and a `repairProcedure` list. The `config` of a procedure is a JSON object, for example `{&#34;evictTimeout&#34;: 300}` for `Evict` and `{&#34;restartNode&#34;: true}` for `Repair`.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JsondecodeArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         ctx.export("builtinPolicyRules", StdFunctions.jsondecode(JsondecodeArgs.builder()
+     *             .input(builtin.get("policies")[0].get("rules"))
+     *             .build()).result());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAutoRepairPoliciesResult> getAutoRepairPoliciesPlain(GetAutoRepairPoliciesPlainArgs args) {
+        return getAutoRepairPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Container Service for Kubernetes (ACK) Auto Repair Policies of the current Alibaba Cloud user. Both custom policies and builtin policies are returned.
+     * 
+     * &gt; **NOTE:** Available since v2.3.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.AutoRepairPolicy;
+     * import com.pulumi.alicloud.cs.AutoRepairPolicyArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleIncidentArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleRepairProcedureArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetAutoRepairPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(defaultNetwork.cidrBlock())
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .podVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .isEnterpriseSecurityGroup(true)
+     *             .slbInternetEnabled(false)
+     *             .deletionProtection(false)
+     *             .build());
+     * 
+     *         var defaultAutoRepairPolicy = new AutoRepairPolicy("defaultAutoRepairPolicy", AutoRepairPolicyArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .name(name)
+     *             .resourceSubType("ess")
+     *             .rules(AutoRepairPolicyRuleArgs.builder()
+     *                 .incidents(AutoRepairPolicyRuleIncidentArgs.builder()
+     *                     .name("NTPProblem")
+     *                     .build())
+     *                 .repairProcedures(                
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("QuarantineNode")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("Evict")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("Repair")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("UnquarantineNode")
+     *                         .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Query custom policies created by the user
+     *         final var custom = CsFunctions.getAutoRepairPolicies(GetAutoRepairPoliciesArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .type("custom")
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         // Query builtin policies that apply to elastic (ESS) node pools
+     *         final var builtin = CsFunctions.getAutoRepairPolicies(GetAutoRepairPoliciesArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .type("builtin")
+     *             .resourceSubType("ess")
+     *             .build());
+     * 
+     *         ctx.export("customPolicyIds", custom.applyValue(_custom -> _custom.ids()));
+     *         ctx.export("builtinPolicyIds", builtin.applyValue(_builtin -> _builtin.ids()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Builtin policies
+     * 
+     * Besides the custom policies, every cluster has two read-only builtin policies. They are returned by this data source with `type = &#34;builtin&#34;` and can be bound to a node pool through `autoRepairPolicyId`.
+     * 
+     * | Policy ID | Incidents | Procedures | Node pool types |
+     * | --- | --- | --- | --- |
+     * | `r-repair-sys-comp-failure` | `NTPProblem`, `RuntimeOffline`, `Ready` | `QuarantineNode`, `Evict` (`evictTimeout = 300`), `Repair` (`restartNode = true`), `UnquarantineNode` | `ess`, `lingjun` |
+     * | `r-repair-sys-comp-failure` | `SystemdOffline`, `ReadonlyFilesystem` | `QuarantineNode`, `Evict` (`evictTimeout = 300`), `Repair`, `UnquarantineNode` | `ess`, `lingjun` |
+     * | `r-repair-sys-comp-failure-without-reboots` | `NTPProblem`, `RuntimeOffline`, `Ready` | `Repair` (`restartNode = false`) | `ess`, `lingjun` |
+     * 
+     * A builtin policy covers several node pool types at the same time, so it is returned for both `resourceSubType = &#34;ess&#34;` and `resourceSubType = &#34;lingjun&#34;`.
+     * 
+     * The `rules` attribute of an item is the JSON encoding of the rules. It uses the same structure as the `rules` block of `alicloud.cs.AutoRepairPolicy`: a list of rules, each holding an `incidents` list and a `repairProcedure` list. The `config` of a procedure is a JSON object, for example `{&#34;evictTimeout&#34;: 300}` for `Evict` and `{&#34;restartNode&#34;: true}` for `Repair`.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JsondecodeArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         ctx.export("builtinPolicyRules", StdFunctions.jsondecode(JsondecodeArgs.builder()
+     *             .input(builtin.get("policies")[0].get("rules"))
+     *             .build()).result());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAutoRepairPoliciesResult> getAutoRepairPolicies(GetAutoRepairPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getAutoRepairPolicies:getAutoRepairPolicies", TypeShape.of(GetAutoRepairPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Container Service for Kubernetes (ACK) Auto Repair Policies of the current Alibaba Cloud user. Both custom policies and builtin policies are returned.
+     * 
+     * &gt; **NOTE:** Available since v2.3.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.AutoRepairPolicy;
+     * import com.pulumi.alicloud.cs.AutoRepairPolicyArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleIncidentArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleRepairProcedureArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetAutoRepairPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(defaultNetwork.cidrBlock())
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .podVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .isEnterpriseSecurityGroup(true)
+     *             .slbInternetEnabled(false)
+     *             .deletionProtection(false)
+     *             .build());
+     * 
+     *         var defaultAutoRepairPolicy = new AutoRepairPolicy("defaultAutoRepairPolicy", AutoRepairPolicyArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .name(name)
+     *             .resourceSubType("ess")
+     *             .rules(AutoRepairPolicyRuleArgs.builder()
+     *                 .incidents(AutoRepairPolicyRuleIncidentArgs.builder()
+     *                     .name("NTPProblem")
+     *                     .build())
+     *                 .repairProcedures(                
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("QuarantineNode")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("Evict")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("Repair")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("UnquarantineNode")
+     *                         .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Query custom policies created by the user
+     *         final var custom = CsFunctions.getAutoRepairPolicies(GetAutoRepairPoliciesArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .type("custom")
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         // Query builtin policies that apply to elastic (ESS) node pools
+     *         final var builtin = CsFunctions.getAutoRepairPolicies(GetAutoRepairPoliciesArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .type("builtin")
+     *             .resourceSubType("ess")
+     *             .build());
+     * 
+     *         ctx.export("customPolicyIds", custom.applyValue(_custom -> _custom.ids()));
+     *         ctx.export("builtinPolicyIds", builtin.applyValue(_builtin -> _builtin.ids()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Builtin policies
+     * 
+     * Besides the custom policies, every cluster has two read-only builtin policies. They are returned by this data source with `type = &#34;builtin&#34;` and can be bound to a node pool through `autoRepairPolicyId`.
+     * 
+     * | Policy ID | Incidents | Procedures | Node pool types |
+     * | --- | --- | --- | --- |
+     * | `r-repair-sys-comp-failure` | `NTPProblem`, `RuntimeOffline`, `Ready` | `QuarantineNode`, `Evict` (`evictTimeout = 300`), `Repair` (`restartNode = true`), `UnquarantineNode` | `ess`, `lingjun` |
+     * | `r-repair-sys-comp-failure` | `SystemdOffline`, `ReadonlyFilesystem` | `QuarantineNode`, `Evict` (`evictTimeout = 300`), `Repair`, `UnquarantineNode` | `ess`, `lingjun` |
+     * | `r-repair-sys-comp-failure-without-reboots` | `NTPProblem`, `RuntimeOffline`, `Ready` | `Repair` (`restartNode = false`) | `ess`, `lingjun` |
+     * 
+     * A builtin policy covers several node pool types at the same time, so it is returned for both `resourceSubType = &#34;ess&#34;` and `resourceSubType = &#34;lingjun&#34;`.
+     * 
+     * The `rules` attribute of an item is the JSON encoding of the rules. It uses the same structure as the `rules` block of `alicloud.cs.AutoRepairPolicy`: a list of rules, each holding an `incidents` list and a `repairProcedure` list. The `config` of a procedure is a JSON object, for example `{&#34;evictTimeout&#34;: 300}` for `Evict` and `{&#34;restartNode&#34;: true}` for `Repair`.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JsondecodeArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         ctx.export("builtinPolicyRules", StdFunctions.jsondecode(JsondecodeArgs.builder()
+     *             .input(builtin.get("policies")[0].get("rules"))
+     *             .build()).result());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAutoRepairPoliciesResult> getAutoRepairPolicies(GetAutoRepairPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getAutoRepairPolicies:getAutoRepairPolicies", TypeShape.of(GetAutoRepairPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Container Service for Kubernetes (ACK) Auto Repair Policies of the current Alibaba Cloud user. Both custom policies and builtin policies are returned.
+     * 
+     * &gt; **NOTE:** Available since v2.3.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.AutoRepairPolicy;
+     * import com.pulumi.alicloud.cs.AutoRepairPolicyArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleIncidentArgs;
+     * import com.pulumi.alicloud.cs.inputs.AutoRepairPolicyRuleRepairProcedureArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetAutoRepairPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(defaultNetwork.cidrBlock())
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .podVswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .isEnterpriseSecurityGroup(true)
+     *             .slbInternetEnabled(false)
+     *             .deletionProtection(false)
+     *             .build());
+     * 
+     *         var defaultAutoRepairPolicy = new AutoRepairPolicy("defaultAutoRepairPolicy", AutoRepairPolicyArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .name(name)
+     *             .resourceSubType("ess")
+     *             .rules(AutoRepairPolicyRuleArgs.builder()
+     *                 .incidents(AutoRepairPolicyRuleIncidentArgs.builder()
+     *                     .name("NTPProblem")
+     *                     .build())
+     *                 .repairProcedures(                
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("QuarantineNode")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("Evict")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("Repair")
+     *                         .build(),
+     *                     AutoRepairPolicyRuleRepairProcedureArgs.builder()
+     *                         .name("UnquarantineNode")
+     *                         .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         // Query custom policies created by the user
+     *         final var custom = CsFunctions.getAutoRepairPolicies(GetAutoRepairPoliciesArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .type("custom")
+     *             .nameRegex(name)
+     *             .build());
+     * 
+     *         // Query builtin policies that apply to elastic (ESS) node pools
+     *         final var builtin = CsFunctions.getAutoRepairPolicies(GetAutoRepairPoliciesArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .type("builtin")
+     *             .resourceSubType("ess")
+     *             .build());
+     * 
+     *         ctx.export("customPolicyIds", custom.applyValue(_custom -> _custom.ids()));
+     *         ctx.export("builtinPolicyIds", builtin.applyValue(_builtin -> _builtin.ids()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Builtin policies
+     * 
+     * Besides the custom policies, every cluster has two read-only builtin policies. They are returned by this data source with `type = &#34;builtin&#34;` and can be bound to a node pool through `autoRepairPolicyId`.
+     * 
+     * | Policy ID | Incidents | Procedures | Node pool types |
+     * | --- | --- | --- | --- |
+     * | `r-repair-sys-comp-failure` | `NTPProblem`, `RuntimeOffline`, `Ready` | `QuarantineNode`, `Evict` (`evictTimeout = 300`), `Repair` (`restartNode = true`), `UnquarantineNode` | `ess`, `lingjun` |
+     * | `r-repair-sys-comp-failure` | `SystemdOffline`, `ReadonlyFilesystem` | `QuarantineNode`, `Evict` (`evictTimeout = 300`), `Repair`, `UnquarantineNode` | `ess`, `lingjun` |
+     * | `r-repair-sys-comp-failure-without-reboots` | `NTPProblem`, `RuntimeOffline`, `Ready` | `Repair` (`restartNode = false`) | `ess`, `lingjun` |
+     * 
+     * A builtin policy covers several node pool types at the same time, so it is returned for both `resourceSubType = &#34;ess&#34;` and `resourceSubType = &#34;lingjun&#34;`.
+     * 
+     * The `rules` attribute of an item is the JSON encoding of the rules. It uses the same structure as the `rules` block of `alicloud.cs.AutoRepairPolicy`: a list of rules, each holding an `incidents` list and a `repairProcedure` list. The `config` of a procedure is a JSON object, for example `{&#34;evictTimeout&#34;: 300}` for `Evict` and `{&#34;restartNode&#34;: true}` for `Repair`.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JsondecodeArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         ctx.export("builtinPolicyRules", StdFunctions.jsondecode(JsondecodeArgs.builder()
+     *             .input(builtin.get("policies")[0].get("rules"))
+     *             .build()).result());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAutoRepairPoliciesResult> getAutoRepairPoliciesPlain(GetAutoRepairPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cs/getAutoRepairPolicies:getAutoRepairPolicies", TypeShape.of(GetAutoRepairPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides Container Service cluster credential on Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.187.0
@@ -293,6 +1146,89 @@ public final class CsFunctions {
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(defaultNetwork.cidrBlock())
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(37)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.18.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .temporaryDurationMinutes(60)
+     *             .outputFile("my-auth-json")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args) {
@@ -307,6 +1243,89 @@ public final class CsFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(defaultNetwork.cidrBlock())
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(37)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.18.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .temporaryDurationMinutes(60)
+     *             .outputFile("my-auth-json")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args) {
         return getClusterCredentialPlain(args, InvokeOptions.Empty);
@@ -319,6 +1338,89 @@ public final class CsFunctions {
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(defaultNetwork.cidrBlock())
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(37)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.18.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .temporaryDurationMinutes(60)
+     *             .outputFile("my-auth-json")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOptions options) {
@@ -333,6 +1435,89 @@ public final class CsFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(defaultNetwork.cidrBlock())
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(37)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.18.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .temporaryDurationMinutes(60)
+     *             .outputFile("my-auth-json")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
@@ -345,6 +1530,89 @@ public final class CsFunctions {
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.CidrsubnetArgs;
+     * import com.pulumi.alicloud.cs.ManagedKubernetes;
+     * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input(defaultNetwork.cidrBlock())
+     *                 .newbits(8)
+     *                 .netnum(8)
+     *                 .build()).applyValue(_invoke -> _invoke.result()))
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+     *             .name(name)
+     *             .clusterSpec("ack.pro.small")
+     *             .vswitchIds(defaultSwitch.id())
+     *             .newNatGateway(false)
+     *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("10.0.0.0/8")
+     *                 .newbits(8)
+     *                 .netnum(37)
+     *                 .build()).result())
+     *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+     *                 .input("172.18.0.0/16")
+     *                 .newbits(4)
+     *                 .netnum(7)
+     *                 .build()).result())
+     *             .slbInternetEnabled(true)
+     *             .build());
+     * 
+     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
+     *             .clusterId(defaultManagedKubernetes.id())
+     *             .temporaryDurationMinutes(60)
+     *             .outputFile("my-auth-json")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args, InvokeOptions options) {
@@ -430,9 +1698,11 @@ public final class CsFunctions {
      *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(defaultManagedKubernetes.id())
      *             .nameRegex(defaultManagedKubernetes.name())
+     *             .enableDetails(true)
      *             .build());
      * 
      *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters().get(0).id()));
+     *         ctx.export("alicloudCsManagedKubernetesExampleApiServerInternet", default_.applyValue(_default_ -> _default_.clusters().get(0).connections().get(0).apiServerInternet()));
      *     }
      * }
      * }
@@ -522,9 +1792,11 @@ public final class CsFunctions {
      *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(defaultManagedKubernetes.id())
      *             .nameRegex(defaultManagedKubernetes.name())
+     *             .enableDetails(true)
      *             .build());
      * 
      *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters().get(0).id()));
+     *         ctx.export("alicloudCsManagedKubernetesExampleApiServerInternet", default_.applyValue(_default_ -> _default_.clusters().get(0).connections().get(0).apiServerInternet()));
      *     }
      * }
      * }
@@ -614,9 +1886,11 @@ public final class CsFunctions {
      *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(defaultManagedKubernetes.id())
      *             .nameRegex(defaultManagedKubernetes.name())
+     *             .enableDetails(true)
      *             .build());
      * 
      *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters().get(0).id()));
+     *         ctx.export("alicloudCsManagedKubernetesExampleApiServerInternet", default_.applyValue(_default_ -> _default_.clusters().get(0).connections().get(0).apiServerInternet()));
      *     }
      * }
      * }
@@ -706,9 +1980,11 @@ public final class CsFunctions {
      *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(defaultManagedKubernetes.id())
      *             .nameRegex(defaultManagedKubernetes.name())
+     *             .enableDetails(true)
      *             .build());
      * 
      *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters().get(0).id()));
+     *         ctx.export("alicloudCsManagedKubernetesExampleApiServerInternet", default_.applyValue(_default_ -> _default_.clusters().get(0).connections().get(0).apiServerInternet()));
      *     }
      * }
      * }
@@ -798,9 +2074,11 @@ public final class CsFunctions {
      *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(defaultManagedKubernetes.id())
      *             .nameRegex(defaultManagedKubernetes.name())
+     *             .enableDetails(true)
      *             .build());
      * 
      *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters().get(0).id()));
+     *         ctx.export("alicloudCsManagedKubernetesExampleApiServerInternet", default_.applyValue(_default_ -> _default_.clusters().get(0).connections().get(0).apiServerInternet()));
      *     }
      * }
      * }
@@ -890,9 +2168,11 @@ public final class CsFunctions {
      *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(defaultManagedKubernetes.id())
      *             .nameRegex(defaultManagedKubernetes.name())
+     *             .enableDetails(true)
      *             .build());
      * 
      *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters().get(0).id()));
+     *         ctx.export("alicloudCsManagedKubernetesExampleApiServerInternet", default_.applyValue(_default_ -> _default_.clusters().get(0).connections().get(0).apiServerInternet()));
      *     }
      * }
      * }
@@ -982,9 +2262,11 @@ public final class CsFunctions {
      *         final var default = CsFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(defaultManagedKubernetes.id())
      *             .nameRegex(defaultManagedKubernetes.name())
+     *             .enableDetails(true)
      *             .build());
      * 
      *         ctx.export("alicloudCsManagedKubernetesExampleId", default_.applyValue(_default_ -> _default_.clusters().get(0).id()));
+     *         ctx.export("alicloudCsManagedKubernetesExampleApiServerInternet", default_.applyValue(_default_ -> _default_.clusters().get(0).connections().get(0).apiServerInternet()));
      *     }
      * }
      * }
@@ -995,7 +2277,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -1042,7 +2324,7 @@ public final class CsFunctions {
         return getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -1089,7 +2371,7 @@ public final class CsFunctions {
         return getEdgeKubernetesClustersPlain(GetEdgeKubernetesClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -1136,7 +2418,7 @@ public final class CsFunctions {
         return getEdgeKubernetesClusters(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -1183,7 +2465,7 @@ public final class CsFunctions {
         return getEdgeKubernetesClustersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -1230,7 +2512,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", TypeShape.of(GetEdgeKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -1277,7 +2559,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", TypeShape.of(GetEdgeKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -2239,7 +3521,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getKubernetesAddons:getKubernetesAddons", TypeShape.of(GetKubernetesAddonsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -2289,7 +3571,7 @@ public final class CsFunctions {
         return getKubernetesClusters(GetKubernetesClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -2339,7 +3621,7 @@ public final class CsFunctions {
         return getKubernetesClustersPlain(GetKubernetesClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -2389,7 +3671,7 @@ public final class CsFunctions {
         return getKubernetesClusters(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -2439,7 +3721,7 @@ public final class CsFunctions {
         return getKubernetesClustersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -2489,7 +3771,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesClusters:getKubernetesClusters", TypeShape.of(GetKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -2539,7 +3821,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesClusters:getKubernetesClusters", TypeShape.of(GetKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -3635,6 +4917,41 @@ public final class CsFunctions {
      * }
      * </pre>
      * 
+     * ### Query extended support versions
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var extended = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType("ManagedKubernetes")
+     *             .profile("Default")
+     *             .supportPolicy("Extended")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetKubernetesVersionResult> getKubernetesVersion(GetKubernetesVersionArgs args) {
         return getKubernetesVersion(args, InvokeOptions.Empty);
@@ -3781,6 +5098,41 @@ public final class CsFunctions {
      *             .build());
      * 
      *         ctx.export("metadata", default_.metadatas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Query extended support versions
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var extended = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType("ManagedKubernetes")
+     *             .profile("Default")
+     *             .supportPolicy("Extended")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -3937,6 +5289,41 @@ public final class CsFunctions {
      * }
      * </pre>
      * 
+     * ### Query extended support versions
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var extended = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType("ManagedKubernetes")
+     *             .profile("Default")
+     *             .supportPolicy("Extended")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetKubernetesVersionResult> getKubernetesVersion(GetKubernetesVersionArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesVersion:getKubernetesVersion", TypeShape.of(GetKubernetesVersionResult.class), args, Utilities.withVersion(options));
@@ -4083,6 +5470,41 @@ public final class CsFunctions {
      *             .build());
      * 
      *         ctx.export("metadata", default_.metadatas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Query extended support versions
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var extended = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType("ManagedKubernetes")
+     *             .profile("Default")
+     *             .supportPolicy("Extended")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -4239,12 +5661,47 @@ public final class CsFunctions {
      * }
      * </pre>
      * 
+     * ### Query extended support versions
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var extended = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+     *             .clusterType("ManagedKubernetes")
+     *             .profile("Default")
+     *             .supportPolicy("Extended")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetKubernetesVersionResult> getKubernetesVersionPlain(GetKubernetesVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getKubernetesVersion:getKubernetesVersion", TypeShape.of(GetKubernetesVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -4294,7 +5751,7 @@ public final class CsFunctions {
         return getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -4344,7 +5801,7 @@ public final class CsFunctions {
         return getManagedKubernetesClustersPlain(GetManagedKubernetesClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -4394,7 +5851,7 @@ public final class CsFunctions {
         return getManagedKubernetesClusters(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -4444,7 +5901,7 @@ public final class CsFunctions {
         return getManagedKubernetesClustersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -4494,7 +5951,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", TypeShape.of(GetManagedKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -4544,7 +6001,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", TypeShape.of(GetManagedKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -5739,7 +7196,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", TypeShape.of(GetRegistryEnterpriseSyncRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -5789,7 +7246,7 @@ public final class CsFunctions {
         return getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -5839,7 +7296,7 @@ public final class CsFunctions {
         return getServerlessKubernetesClustersPlain(GetServerlessKubernetesClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -5889,7 +7346,7 @@ public final class CsFunctions {
         return getServerlessKubernetesClusters(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -5939,7 +7396,7 @@ public final class CsFunctions {
         return getServerlessKubernetesClustersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -5989,7 +7446,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", TypeShape.of(GetServerlessKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 
@@ -6039,7 +7496,7 @@ public final class CsFunctions {
         return Deployment.getInstance().invoke("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", TypeShape.of(GetServerlessKubernetesClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+     * &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
      * 
      * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
      * 

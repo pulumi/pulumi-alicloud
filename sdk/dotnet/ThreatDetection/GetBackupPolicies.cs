@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.195.0+.
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.195.0+.
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.195.0+.
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -138,6 +138,9 @@ namespace Pulumi.AliCloud.ThreatDetection
 
     public sealed class GetBackupPoliciesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The page number. Must be greater than 0.
+        /// </summary>
         [Input("currentPage")]
         public int? CurrentPage { get; set; }
 
@@ -194,6 +197,9 @@ namespace Pulumi.AliCloud.ThreatDetection
 
     public sealed class GetBackupPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The page number. Must be greater than 0.
+        /// </summary>
         [Input("currentPage")]
         public Input<int>? CurrentPage { get; set; }
 

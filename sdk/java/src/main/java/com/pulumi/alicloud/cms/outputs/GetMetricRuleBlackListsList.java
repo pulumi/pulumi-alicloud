@@ -38,6 +38,10 @@ public final class GetMetricRuleBlackListsList {
      * 
      */
     private String enableStartTime;
+    /**
+     * @return The ID of the Metric Rule Black List.
+     * 
+     */
     private String id;
     /**
      * @return The list of instances of cloud services specified in the alert blacklist policy.
@@ -116,6 +120,10 @@ public final class GetMetricRuleBlackListsList {
     public String enableStartTime() {
         return this.enableStartTime;
     }
+    /**
+     * @return The ID of the Metric Rule Black List.
+     * 
+     */
     public String id() {
         return this.id;
     }

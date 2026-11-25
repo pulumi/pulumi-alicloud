@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Eci Container Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.111.0+.
+// > **NOTE:** Available since v1.111.0.
 //
 // ## Example Usage
 //
@@ -72,33 +72,43 @@ type GetContainerGroupsArgs struct {
 	// The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status list. For more information, see the description of ContainerGroup arrays.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
 	VswitchId *string `pulumi:"vswitchId"`
-	WithEvent *bool   `pulumi:"withEvent"`
+	// Whether to return container group events.
+	WithEvent *bool `pulumi:"withEvent"`
 	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getContainerGroups.
 type GetContainerGroupsResult struct {
-	ContainerGroupName *string                   `pulumi:"containerGroupName"`
-	EnableDetails      *bool                     `pulumi:"enableDetails"`
-	Groups             []GetContainerGroupsGroup `pulumi:"groups"`
+	// The name of ContainerGroup.
+	ContainerGroupName *string `pulumi:"containerGroupName"`
+	EnableDetails      *bool   `pulumi:"enableDetails"`
+	// A list of Eci Container Groups. Each element contains the following attributes:
+	Groups []GetContainerGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string            `pulumi:"id"`
-	Ids             []string          `pulumi:"ids"`
-	Limit           *int              `pulumi:"limit"`
-	NameRegex       *string           `pulumi:"nameRegex"`
-	Names           []string          `pulumi:"names"`
-	OutputFile      *string           `pulumi:"outputFile"`
-	ResourceGroupId *string           `pulumi:"resourceGroupId"`
-	Status          *string           `pulumi:"status"`
-	Tags            map[string]string `pulumi:"tags"`
-	VswitchId       *string           `pulumi:"vswitchId"`
-	WithEvent       *bool             `pulumi:"withEvent"`
-	ZoneId          *string           `pulumi:"zoneId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	Limit     *int     `pulumi:"limit"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Container Group names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of container.
+	Status *string `pulumi:"status"`
+	// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+	Tags map[string]string `pulumi:"tags"`
+	// The vswitch id.
+	VswitchId *string `pulumi:"vswitchId"`
+	WithEvent *bool   `pulumi:"withEvent"`
+	// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetContainerGroupsOutput(ctx *pulumi.Context, args GetContainerGroupsOutputArgs, opts ...pulumi.InvokeOption) GetContainerGroupsResultOutput {
@@ -124,10 +134,12 @@ type GetContainerGroupsOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status list. For more information, see the description of ContainerGroup arrays.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.StringMapInput `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
-	WithEvent pulumi.BoolPtrInput   `pulumi:"withEvent"`
+	// Whether to return container group events.
+	WithEvent pulumi.BoolPtrInput `pulumi:"withEvent"`
 	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
@@ -151,6 +163,7 @@ func (o GetContainerGroupsResultOutput) ToGetContainerGroupsResultOutputWithCont
 	return o
 }
 
+// The name of ContainerGroup.
 func (o GetContainerGroupsResultOutput) ContainerGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) *string { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
 }
@@ -159,6 +172,7 @@ func (o GetContainerGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// A list of Eci Container Groups. Each element contains the following attributes:
 func (o GetContainerGroupsResultOutput) Groups() GetContainerGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) []GetContainerGroupsGroup { return v.Groups }).(GetContainerGroupsGroupArrayOutput)
 }
@@ -180,6 +194,7 @@ func (o GetContainerGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Container Group names.
 func (o GetContainerGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -188,18 +203,22 @@ func (o GetContainerGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
 func (o GetContainerGroupsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The status of container.
 func (o GetContainerGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
 func (o GetContainerGroupsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The vswitch id.
 func (o GetContainerGroupsResultOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
@@ -208,6 +227,7 @@ func (o GetContainerGroupsResultOutput) WithEvent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) *bool { return v.WithEvent }).(pulumi.BoolPtrOutput)
 }
 
+// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
 func (o GetContainerGroupsResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetContainerGroupsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

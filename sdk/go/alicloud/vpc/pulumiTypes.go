@@ -1738,13 +1738,31 @@ func (o RouteTargetGroupRouteTargetMemberListArrayOutput) Index(i pulumi.IntInpu
 }
 
 type TrafficMirrorFilterEgressRuleType struct {
-	Action                        string  `pulumi:"action"`
-	DestinationCidrBlock          *string `pulumi:"destinationCidrBlock"`
-	DestinationPortRange          *string `pulumi:"destinationPortRange"`
-	Priority                      *int    `pulumi:"priority"`
-	Protocol                      string  `pulumi:"protocol"`
-	SourceCidrBlock               *string `pulumi:"sourceCidrBlock"`
-	SourcePortRange               *string `pulumi:"sourcePortRange"`
+	// Collection strategy for outbound rules. Value:
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	Action string `pulumi:"action"`
+	// DestinationCidrBlock.
+	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
+	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	DestinationPortRange *string `pulumi:"destinationPortRange"`
+	// Priority.
+	Priority *int `pulumi:"priority"`
+	// The type of protocol used by the outbound network traffic to be mirrored. Value:
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	Protocol string `pulumi:"protocol"`
+	// The source address of the outbound rule network traffic.
+	SourceCidrBlock *string `pulumi:"sourceCidrBlock"`
+	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	SourcePortRange *string `pulumi:"sourcePortRange"`
+	// The status of the traffic mirror filter rule.
 	TrafficMirrorFilterRuleStatus *string `pulumi:"trafficMirrorFilterRuleStatus"`
 }
 
@@ -1760,13 +1778,31 @@ type TrafficMirrorFilterEgressRuleTypeInput interface {
 }
 
 type TrafficMirrorFilterEgressRuleTypeArgs struct {
-	Action                        pulumi.StringInput    `pulumi:"action"`
-	DestinationCidrBlock          pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
-	DestinationPortRange          pulumi.StringPtrInput `pulumi:"destinationPortRange"`
-	Priority                      pulumi.IntPtrInput    `pulumi:"priority"`
-	Protocol                      pulumi.StringInput    `pulumi:"protocol"`
-	SourceCidrBlock               pulumi.StringPtrInput `pulumi:"sourceCidrBlock"`
-	SourcePortRange               pulumi.StringPtrInput `pulumi:"sourcePortRange"`
+	// Collection strategy for outbound rules. Value:
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	Action pulumi.StringInput `pulumi:"action"`
+	// DestinationCidrBlock.
+	DestinationCidrBlock pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
+	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	DestinationPortRange pulumi.StringPtrInput `pulumi:"destinationPortRange"`
+	// Priority.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// The type of protocol used by the outbound network traffic to be mirrored. Value:
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The source address of the outbound rule network traffic.
+	SourceCidrBlock pulumi.StringPtrInput `pulumi:"sourceCidrBlock"`
+	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	SourcePortRange pulumi.StringPtrInput `pulumi:"sourcePortRange"`
+	// The status of the traffic mirror filter rule.
 	TrafficMirrorFilterRuleStatus pulumi.StringPtrInput `pulumi:"trafficMirrorFilterRuleStatus"`
 }
 
@@ -1821,34 +1857,52 @@ func (o TrafficMirrorFilterEgressRuleTypeOutput) ToTrafficMirrorFilterEgressRule
 	return o
 }
 
+// Collection strategy for outbound rules. Value:
+// - accept: collects network traffic.
+// - drop: No network traffic is collected.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// DestinationCidrBlock.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) DestinationCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.DestinationCidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+//
+// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) DestinationPortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
 }
 
+// Priority.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// The type of protocol used by the outbound network traffic to be mirrored. Value:
+// - ALL: ALL agreements.
+// - ICMP: Network Control Message Protocol.
+// - TCP: Transmission Control Protocol.
+// - UDP: User Datagram Protocol.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
+// The source address of the outbound rule network traffic.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) SourceCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.SourceCidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+//
+// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) SourcePortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
 }
 
+// The status of the traffic mirror filter rule.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) TrafficMirrorFilterRuleStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.TrafficMirrorFilterRuleStatus }).(pulumi.StringPtrOutput)
 }
@@ -1874,13 +1928,31 @@ func (o TrafficMirrorFilterEgressRuleTypeArrayOutput) Index(i pulumi.IntInput) T
 }
 
 type TrafficMirrorFilterIngressRuleType struct {
-	Action                        string  `pulumi:"action"`
-	DestinationCidrBlock          *string `pulumi:"destinationCidrBlock"`
-	DestinationPortRange          *string `pulumi:"destinationPortRange"`
-	Priority                      *int    `pulumi:"priority"`
-	Protocol                      string  `pulumi:"protocol"`
-	SourceCidrBlock               *string `pulumi:"sourceCidrBlock"`
-	SourcePortRange               *string `pulumi:"sourcePortRange"`
+	// Collection strategy for outbound rules. Value:
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	Action string `pulumi:"action"`
+	// The destination address of the outbound rule network traffic.
+	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
+	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	DestinationPortRange *string `pulumi:"destinationPortRange"`
+	// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
+	Priority *int `pulumi:"priority"`
+	// The type of protocol used by the outbound network traffic to be mirrored. Value:
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	Protocol string `pulumi:"protocol"`
+	// The source address of the outbound rule network traffic.
+	SourceCidrBlock *string `pulumi:"sourceCidrBlock"`
+	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	SourcePortRange *string `pulumi:"sourcePortRange"`
+	// The status of the traffic mirror filter rule.
 	TrafficMirrorFilterRuleStatus *string `pulumi:"trafficMirrorFilterRuleStatus"`
 }
 
@@ -1896,13 +1968,31 @@ type TrafficMirrorFilterIngressRuleTypeInput interface {
 }
 
 type TrafficMirrorFilterIngressRuleTypeArgs struct {
-	Action                        pulumi.StringInput    `pulumi:"action"`
-	DestinationCidrBlock          pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
-	DestinationPortRange          pulumi.StringPtrInput `pulumi:"destinationPortRange"`
-	Priority                      pulumi.IntPtrInput    `pulumi:"priority"`
-	Protocol                      pulumi.StringInput    `pulumi:"protocol"`
-	SourceCidrBlock               pulumi.StringPtrInput `pulumi:"sourceCidrBlock"`
-	SourcePortRange               pulumi.StringPtrInput `pulumi:"sourcePortRange"`
+	// Collection strategy for outbound rules. Value:
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	Action pulumi.StringInput `pulumi:"action"`
+	// The destination address of the outbound rule network traffic.
+	DestinationCidrBlock pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
+	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	DestinationPortRange pulumi.StringPtrInput `pulumi:"destinationPortRange"`
+	// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// The type of protocol used by the outbound network traffic to be mirrored. Value:
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The source address of the outbound rule network traffic.
+	SourceCidrBlock pulumi.StringPtrInput `pulumi:"sourceCidrBlock"`
+	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	SourcePortRange pulumi.StringPtrInput `pulumi:"sourcePortRange"`
+	// The status of the traffic mirror filter rule.
 	TrafficMirrorFilterRuleStatus pulumi.StringPtrInput `pulumi:"trafficMirrorFilterRuleStatus"`
 }
 
@@ -1957,34 +2047,52 @@ func (o TrafficMirrorFilterIngressRuleTypeOutput) ToTrafficMirrorFilterIngressRu
 	return o
 }
 
+// Collection strategy for outbound rules. Value:
+// - accept: collects network traffic.
+// - drop: No network traffic is collected.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// The destination address of the outbound rule network traffic.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) DestinationCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.DestinationCidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+//
+// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) DestinationPortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
 }
 
+// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// The type of protocol used by the outbound network traffic to be mirrored. Value:
+// - ALL: ALL agreements.
+// - ICMP: Network Control Message Protocol.
+// - TCP: Transmission Control Protocol.
+// - UDP: User Datagram Protocol.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
+// The source address of the outbound rule network traffic.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) SourceCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.SourceCidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+//
+// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) SourcePortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
 }
 
+// The status of the traffic mirror filter rule.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) TrafficMirrorFilterRuleStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.TrafficMirrorFilterRuleStatus }).(pulumi.StringPtrOutput)
 }
@@ -2464,9 +2572,9 @@ type GetBgpGroupsGroup struct {
 	PeerAsn int `pulumi:"peerAsn"`
 	// Routing limits.
 	RouteLimit string `pulumi:"routeLimit"`
-	// The ID of the VBR.
+	// The ID of the virtual border router (VBR) that is associated with the BGP group.
 	RouterId string `pulumi:"routerId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
 	Status string `pulumi:"status"`
 }
 
@@ -2504,9 +2612,9 @@ type GetBgpGroupsGroupArgs struct {
 	PeerAsn pulumi.IntInput `pulumi:"peerAsn"`
 	// Routing limits.
 	RouteLimit pulumi.StringInput `pulumi:"routeLimit"`
-	// The ID of the VBR.
+	// The ID of the virtual border router (VBR) that is associated with the BGP group.
 	RouterId pulumi.StringInput `pulumi:"routerId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2616,12 +2724,12 @@ func (o GetBgpGroupsGroupOutput) RouteLimit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.RouteLimit }).(pulumi.StringOutput)
 }
 
-// The ID of the VBR.
+// The ID of the virtual border router (VBR) that is associated with the BGP group.
 func (o GetBgpGroupsGroupOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.RouterId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
 func (o GetBgpGroupsGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBgpGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2651,9 +2759,9 @@ type GetBgpNetworksNetwork struct {
 	DstCidrBlock string `pulumi:"dstCidrBlock"`
 	// The ID of the Bgp Network. The value formats as `<router_id>:<dst_cidr_block>`.
 	Id string `pulumi:"id"`
-	// The ID of the vRouter.
+	// The ID of the router to which the route table belongs.
 	RouterId string `pulumi:"routerId"`
-	// The state of the advertised BGP network.
+	// The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
 	Status string `pulumi:"status"`
 }
 
@@ -2673,9 +2781,9 @@ type GetBgpNetworksNetworkArgs struct {
 	DstCidrBlock pulumi.StringInput `pulumi:"dstCidrBlock"`
 	// The ID of the Bgp Network. The value formats as `<router_id>:<dst_cidr_block>`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the vRouter.
+	// The ID of the router to which the route table belongs.
 	RouterId pulumi.StringInput `pulumi:"routerId"`
-	// The state of the advertised BGP network.
+	// The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2740,12 +2848,12 @@ func (o GetBgpNetworksNetworkOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBgpNetworksNetwork) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the vRouter.
+// The ID of the router to which the route table belongs.
 func (o GetBgpNetworksNetworkOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBgpNetworksNetwork) string { return v.RouterId }).(pulumi.StringOutput)
 }
 
-// The state of the advertised BGP network.
+// The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
 func (o GetBgpNetworksNetworkOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBgpNetworksNetwork) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2775,7 +2883,7 @@ type GetBgpPeersPeer struct {
 	AuthKey string `pulumi:"authKey"`
 	// The BFD hop count.
 	BfdMultiHop int `pulumi:"bfdMultiHop"`
-	// The ID of the BGP group.
+	// The ID of the BGP group to which the BGP peer that you want to query belongs.
 	BgpGroupId string `pulumi:"bgpGroupId"`
 	// The ID of the BGP neighbor.
 	BgpPeerId string `pulumi:"bgpPeerId"`
@@ -2805,9 +2913,9 @@ type GetBgpPeersPeer struct {
 	PeerIpAddress string `pulumi:"peerIpAddress"`
 	// The limit on routes.
 	RouteLimit string `pulumi:"routeLimit"`
-	// The ID of the router.
+	// The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
 	RouterId string `pulumi:"routerId"`
-	// The status of the BGP peer.
+	// The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
 	Status string `pulumi:"status"`
 }
 
@@ -2827,7 +2935,7 @@ type GetBgpPeersPeerArgs struct {
 	AuthKey pulumi.StringInput `pulumi:"authKey"`
 	// The BFD hop count.
 	BfdMultiHop pulumi.IntInput `pulumi:"bfdMultiHop"`
-	// The ID of the BGP group.
+	// The ID of the BGP group to which the BGP peer that you want to query belongs.
 	BgpGroupId pulumi.StringInput `pulumi:"bgpGroupId"`
 	// The ID of the BGP neighbor.
 	BgpPeerId pulumi.StringInput `pulumi:"bgpPeerId"`
@@ -2857,9 +2965,9 @@ type GetBgpPeersPeerArgs struct {
 	PeerIpAddress pulumi.StringInput `pulumi:"peerIpAddress"`
 	// The limit on routes.
 	RouteLimit pulumi.StringInput `pulumi:"routeLimit"`
-	// The ID of the router.
+	// The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
 	RouterId pulumi.StringInput `pulumi:"routerId"`
-	// The status of the BGP peer.
+	// The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2924,7 +3032,7 @@ func (o GetBgpPeersPeerOutput) BfdMultiHop() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBgpPeersPeer) int { return v.BfdMultiHop }).(pulumi.IntOutput)
 }
 
-// The ID of the BGP group.
+// The ID of the BGP group to which the BGP peer that you want to query belongs.
 func (o GetBgpPeersPeerOutput) BgpGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.BgpGroupId }).(pulumi.StringOutput)
 }
@@ -2999,12 +3107,12 @@ func (o GetBgpPeersPeerOutput) RouteLimit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.RouteLimit }).(pulumi.StringOutput)
 }
 
-// The ID of the router.
+// The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
 func (o GetBgpPeersPeerOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.RouterId }).(pulumi.StringOutput)
 }
 
-// The status of the BGP peer.
+// The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
 func (o GetBgpPeersPeerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBgpPeersPeer) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -3056,7 +3164,7 @@ type GetCommonBandwidthPackagesPackage struct {
 	Name string `pulumi:"name"`
 	// The payment type of bandwidth package.
 	PaymentType string `pulumi:"paymentType"`
-	// Public ip addresses that in the Common Bandwidth Pakcage.
+	// The publicIpAddresses mapping supports the following:
 	PublicIpAddresses []GetCommonBandwidthPackagesPackagePublicIpAddress `pulumi:"publicIpAddresses"`
 	// The ratio of bandwidth package.
 	Ratio int `pulumi:"ratio"`
@@ -3114,7 +3222,7 @@ type GetCommonBandwidthPackagesPackageArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The payment type of bandwidth package.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// Public ip addresses that in the Common Bandwidth Pakcage.
+	// The publicIpAddresses mapping supports the following:
 	PublicIpAddresses GetCommonBandwidthPackagesPackagePublicIpAddressArrayInput `pulumi:"publicIpAddresses"`
 	// The ratio of bandwidth package.
 	Ratio pulumi.IntInput `pulumi:"ratio"`
@@ -3250,7 +3358,7 @@ func (o GetCommonBandwidthPackagesPackageOutput) PaymentType() pulumi.StringOutp
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Public ip addresses that in the Common Bandwidth Pakcage.
+// The publicIpAddresses mapping supports the following:
 func (o GetCommonBandwidthPackagesPackageOutput) PublicIpAddresses() GetCommonBandwidthPackagesPackagePublicIpAddressArrayOutput {
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackage) []GetCommonBandwidthPackagesPackagePublicIpAddress {
 		return v.PublicIpAddresses
@@ -3318,9 +3426,12 @@ func (o GetCommonBandwidthPackagesPackageArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetCommonBandwidthPackagesPackagePublicIpAddress struct {
-	AllocationId                     string `pulumi:"allocationId"`
+	// The ID of the EIP instance.
+	AllocationId string `pulumi:"allocationId"`
+	// The IP relation status of bandwidth package.
 	BandwidthPackageIpRelationStatus string `pulumi:"bandwidthPackageIpRelationStatus"`
-	IpAddress                        string `pulumi:"ipAddress"`
+	// The address of the EIP.
+	IpAddress string `pulumi:"ipAddress"`
 }
 
 // GetCommonBandwidthPackagesPackagePublicIpAddressInput is an input type that accepts GetCommonBandwidthPackagesPackagePublicIpAddressArgs and GetCommonBandwidthPackagesPackagePublicIpAddressOutput values.
@@ -3335,9 +3446,12 @@ type GetCommonBandwidthPackagesPackagePublicIpAddressInput interface {
 }
 
 type GetCommonBandwidthPackagesPackagePublicIpAddressArgs struct {
-	AllocationId                     pulumi.StringInput `pulumi:"allocationId"`
+	// The ID of the EIP instance.
+	AllocationId pulumi.StringInput `pulumi:"allocationId"`
+	// The IP relation status of bandwidth package.
 	BandwidthPackageIpRelationStatus pulumi.StringInput `pulumi:"bandwidthPackageIpRelationStatus"`
-	IpAddress                        pulumi.StringInput `pulumi:"ipAddress"`
+	// The address of the EIP.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 }
 
 func (GetCommonBandwidthPackagesPackagePublicIpAddressArgs) ElementType() reflect.Type {
@@ -3391,16 +3505,19 @@ func (o GetCommonBandwidthPackagesPackagePublicIpAddressOutput) ToGetCommonBandw
 	return o
 }
 
+// The ID of the EIP instance.
 func (o GetCommonBandwidthPackagesPackagePublicIpAddressOutput) AllocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackagePublicIpAddress) string { return v.AllocationId }).(pulumi.StringOutput)
 }
 
+// The IP relation status of bandwidth package.
 func (o GetCommonBandwidthPackagesPackagePublicIpAddressOutput) BandwidthPackageIpRelationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackagePublicIpAddress) string {
 		return v.BandwidthPackageIpRelationStatus
 	}).(pulumi.StringOutput)
 }
 
+// The address of the EIP.
 func (o GetCommonBandwidthPackagesPackagePublicIpAddressOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCommonBandwidthPackagesPackagePublicIpAddress) string { return v.IpAddress }).(pulumi.StringOutput)
 }
@@ -6904,17 +7021,17 @@ type GetNatIpCidrsCidr struct {
 	Id string `pulumi:"id"`
 	// Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
 	IsDefault bool `pulumi:"isDefault"`
-	// The ID of the VPC NAT gateway.
+	// NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
 	NatGatewayId string `pulumi:"natGatewayId"`
 	// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
 	NatIpCidr string `pulumi:"natIpCidr"`
-	// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+	// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the `http://` Or `https://` at the beginning.
 	NatIpCidrDescription string `pulumi:"natIpCidrDescription"`
 	// NAT IP ADDRESS instance ID.
 	NatIpCidrId string `pulumi:"natIpCidrId"`
-	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	// The name of the CIDR block that you want to query. Support up to `20`.
 	NatIpCidrName string `pulumi:"natIpCidrName"`
-	// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+	// The status of the NAT IP address. Valid values:`Available`.
 	Status string `pulumi:"status"`
 }
 
@@ -6936,17 +7053,17 @@ type GetNatIpCidrsCidrArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
 	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
-	// The ID of the VPC NAT gateway.
+	// NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
 	// The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
 	NatIpCidr pulumi.StringInput `pulumi:"natIpCidr"`
-	// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+	// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the `http://` Or `https://` at the beginning.
 	NatIpCidrDescription pulumi.StringInput `pulumi:"natIpCidrDescription"`
 	// NAT IP ADDRESS instance ID.
 	NatIpCidrId pulumi.StringInput `pulumi:"natIpCidrId"`
-	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	// The name of the CIDR block that you want to query. Support up to `20`.
 	NatIpCidrName pulumi.StringInput `pulumi:"natIpCidrName"`
-	// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+	// The status of the NAT IP address. Valid values:`Available`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -7016,7 +7133,7 @@ func (o GetNatIpCidrsCidrOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNatIpCidrsCidr) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
-// The ID of the VPC NAT gateway.
+// NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
 func (o GetNatIpCidrsCidrOutput) NatGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.NatGatewayId }).(pulumi.StringOutput)
 }
@@ -7026,7 +7143,7 @@ func (o GetNatIpCidrsCidrOutput) NatIpCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.NatIpCidr }).(pulumi.StringOutput)
 }
 
-// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+// NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the `http://` Or `https://` at the beginning.
 func (o GetNatIpCidrsCidrOutput) NatIpCidrDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.NatIpCidrDescription }).(pulumi.StringOutput)
 }
@@ -7036,12 +7153,12 @@ func (o GetNatIpCidrsCidrOutput) NatIpCidrId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.NatIpCidrId }).(pulumi.StringOutput)
 }
 
-// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+// The name of the CIDR block that you want to query. Support up to `20`.
 func (o GetNatIpCidrsCidrOutput) NatIpCidrName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.NatIpCidrName }).(pulumi.StringOutput)
 }
 
-// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+// The status of the NAT IP address. Valid values:`Available`.
 func (o GetNatIpCidrsCidrOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpCidrsCidr) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -7071,17 +7188,17 @@ type GetNatIpsIp struct {
 	Id string `pulumi:"id"`
 	// Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
 	IsDefault bool `pulumi:"isDefault"`
-	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId string `pulumi:"natGatewayId"`
 	// The NAT IP address that is queried.
 	NatIp string `pulumi:"natIp"`
-	// The CIDR block to which the NAT IP address belongs.
+	// NAT IP ADDRESS of the address segment.
 	NatIpCidr string `pulumi:"natIpCidr"`
 	// The description of the NAT IP address.
 	NatIpDescription string `pulumi:"natIpDescription"`
 	// The ID of the NAT IP address.
 	NatIpId string `pulumi:"natIpId"`
-	// The name of the NAT IP address.
+	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 	NatIpName string `pulumi:"natIpName"`
 	// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
 	Status string `pulumi:"status"`
@@ -7103,17 +7220,17 @@ type GetNatIpsIpArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Indicates whether the BGP Group is the default NAT IP ADDRESS. Valid values: `true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
 	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
-	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
 	// The NAT IP address that is queried.
 	NatIp pulumi.StringInput `pulumi:"natIp"`
-	// The CIDR block to which the NAT IP address belongs.
+	// NAT IP ADDRESS of the address segment.
 	NatIpCidr pulumi.StringInput `pulumi:"natIpCidr"`
 	// The description of the NAT IP address.
 	NatIpDescription pulumi.StringInput `pulumi:"natIpDescription"`
 	// The ID of the NAT IP address.
 	NatIpId pulumi.StringInput `pulumi:"natIpId"`
-	// The name of the NAT IP address.
+	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 	NatIpName pulumi.StringInput `pulumi:"natIpName"`
 	// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -7180,7 +7297,7 @@ func (o GetNatIpsIpOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNatIpsIp) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
-// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 func (o GetNatIpsIpOutput) NatGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatGatewayId }).(pulumi.StringOutput)
 }
@@ -7190,7 +7307,7 @@ func (o GetNatIpsIpOutput) NatIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatIp }).(pulumi.StringOutput)
 }
 
-// The CIDR block to which the NAT IP address belongs.
+// NAT IP ADDRESS of the address segment.
 func (o GetNatIpsIpOutput) NatIpCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatIpCidr }).(pulumi.StringOutput)
 }
@@ -7205,7 +7322,7 @@ func (o GetNatIpsIpOutput) NatIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatIpId }).(pulumi.StringOutput)
 }
 
-// The name of the NAT IP address.
+// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 func (o GetNatIpsIpOutput) NatIpName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpsIp) string { return v.NatIpName }).(pulumi.StringOutput)
 }
@@ -8862,15 +8979,15 @@ type GetPublicIpAddressPoolsPool struct {
 	Id string `pulumi:"id"`
 	// Indicates whether the Vpc Public Ip Address Pool has idle IP addresses.
 	IpAddressRemaining bool `pulumi:"ipAddressRemaining"`
-	// The Internet service provider.
+	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
 	Isp string `pulumi:"isp"`
 	// The ID of the Vpc Public Ip Address Pool.
 	PublicIpAddressPoolId string `pulumi:"publicIpAddressPoolId"`
-	// The name of the Vpc Public Ip Address Pool.
+	// The name of the VPC Public IP address pool.
 	PublicIpAddressPoolName string `pulumi:"publicIpAddressPoolName"`
 	// The region ID of the Vpc Public Ip Address Pool.
 	RegionId string `pulumi:"regionId"`
-	// The status of the Vpc Public Ip Address Pool.
+	// The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
 	Status string `pulumi:"status"`
 	// The total number of IP addresses in the Vpc Public Ip Address Pool.
 	TotalIpNum int `pulumi:"totalIpNum"`
@@ -8900,15 +9017,15 @@ type GetPublicIpAddressPoolsPoolArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Indicates whether the Vpc Public Ip Address Pool has idle IP addresses.
 	IpAddressRemaining pulumi.BoolInput `pulumi:"ipAddressRemaining"`
-	// The Internet service provider.
+	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
 	Isp pulumi.StringInput `pulumi:"isp"`
 	// The ID of the Vpc Public Ip Address Pool.
 	PublicIpAddressPoolId pulumi.StringInput `pulumi:"publicIpAddressPoolId"`
-	// The name of the Vpc Public Ip Address Pool.
+	// The name of the VPC Public IP address pool.
 	PublicIpAddressPoolName pulumi.StringInput `pulumi:"publicIpAddressPoolName"`
 	// The region ID of the Vpc Public Ip Address Pool.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// The status of the Vpc Public Ip Address Pool.
+	// The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The total number of IP addresses in the Vpc Public Ip Address Pool.
 	TotalIpNum pulumi.IntInput `pulumi:"totalIpNum"`
@@ -8989,7 +9106,7 @@ func (o GetPublicIpAddressPoolsPoolOutput) IpAddressRemaining() pulumi.BoolOutpu
 	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) bool { return v.IpAddressRemaining }).(pulumi.BoolOutput)
 }
 
-// The Internet service provider.
+// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
 func (o GetPublicIpAddressPoolsPoolOutput) Isp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.Isp }).(pulumi.StringOutput)
 }
@@ -8999,7 +9116,7 @@ func (o GetPublicIpAddressPoolsPoolOutput) PublicIpAddressPoolId() pulumi.String
 	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.PublicIpAddressPoolId }).(pulumi.StringOutput)
 }
 
-// The name of the Vpc Public Ip Address Pool.
+// The name of the VPC Public IP address pool.
 func (o GetPublicIpAddressPoolsPoolOutput) PublicIpAddressPoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.PublicIpAddressPoolName }).(pulumi.StringOutput)
 }
@@ -9009,7 +9126,7 @@ func (o GetPublicIpAddressPoolsPoolOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// The status of the Vpc Public Ip Address Pool.
+// The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
 func (o GetPublicIpAddressPoolsPoolOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPublicIpAddressPoolsPool) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -10883,7 +11000,7 @@ type GetTrafficMirrorFilterEgressRulesRule struct {
 	SourcePortRange string `pulumi:"sourcePortRange"`
 	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
 	Status string `pulumi:"status"`
-	// The ID of the filter associated with the outbound rule.
+	// The ID of the Traffic Mirror Filter.
 	TrafficMirrorFilterId string `pulumi:"trafficMirrorFilterId"`
 	// The first ID of the resource.
 	TrafficMirrorFilterRuleId string `pulumi:"trafficMirrorFilterRuleId"`
@@ -10919,7 +11036,7 @@ type GetTrafficMirrorFilterEgressRulesRuleArgs struct {
 	SourcePortRange pulumi.StringInput `pulumi:"sourcePortRange"`
 	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The ID of the filter associated with the outbound rule.
+	// The ID of the Traffic Mirror Filter.
 	TrafficMirrorFilterId pulumi.StringInput `pulumi:"trafficMirrorFilterId"`
 	// The first ID of the resource.
 	TrafficMirrorFilterRuleId pulumi.StringInput `pulumi:"trafficMirrorFilterRuleId"`
@@ -11021,7 +11138,7 @@ func (o GetTrafficMirrorFilterEgressRulesRuleOutput) Status() pulumi.StringOutpu
 	return o.ApplyT(func(v GetTrafficMirrorFilterEgressRulesRule) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the filter associated with the outbound rule.
+// The ID of the Traffic Mirror Filter.
 func (o GetTrafficMirrorFilterEgressRulesRuleOutput) TrafficMirrorFilterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFilterEgressRulesRule) string { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
 }
@@ -11070,7 +11187,7 @@ type GetTrafficMirrorFilterIngressRulesRule struct {
 	SourcePortRange string `pulumi:"sourcePortRange"`
 	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
 	Status string `pulumi:"status"`
-	// The ID of the filter associated with the inbound rule.
+	// The ID of the Traffic Mirror Filter.
 	TrafficMirrorFilterId string `pulumi:"trafficMirrorFilterId"`
 	// The first ID of the resource.
 	TrafficMirrorFilterRuleId string `pulumi:"trafficMirrorFilterRuleId"`
@@ -11106,7 +11223,7 @@ type GetTrafficMirrorFilterIngressRulesRuleArgs struct {
 	SourcePortRange pulumi.StringInput `pulumi:"sourcePortRange"`
 	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The ID of the filter associated with the inbound rule.
+	// The ID of the Traffic Mirror Filter.
 	TrafficMirrorFilterId pulumi.StringInput `pulumi:"trafficMirrorFilterId"`
 	// The first ID of the resource.
 	TrafficMirrorFilterRuleId pulumi.StringInput `pulumi:"trafficMirrorFilterRuleId"`
@@ -11208,7 +11325,7 @@ func (o GetTrafficMirrorFilterIngressRulesRuleOutput) Status() pulumi.StringOutp
 	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the filter associated with the inbound rule.
+// The ID of the Traffic Mirror Filter.
 func (o GetTrafficMirrorFilterIngressRulesRuleOutput) TrafficMirrorFilterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFilterIngressRulesRule) string { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
 }
@@ -11372,13 +11489,13 @@ func (o GetTrafficMirrorFiltersFilterArrayOutput) Index(i pulumi.IntInput) GetTr
 }
 
 type GetTrafficMirrorSessionsSession struct {
-	// Indicates whether traffic mirror sessions are enabled. default to `false`.
+	// Specifies whether to enable traffic mirror sessions. default to `false`.
 	Enabled bool `pulumi:"enabled"`
 	// The ID of the Traffic Mirror Session.
 	Id string `pulumi:"id"`
 	// The maximum transmission unit (MTU).
 	PacketLength int `pulumi:"packetLength"`
-	// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+	// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
 	Priority int `pulumi:"priority"`
 	// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
 	Status string `pulumi:"status"`
@@ -11390,7 +11507,7 @@ type GetTrafficMirrorSessionsSession struct {
 	TrafficMirrorSessionDescription string `pulumi:"trafficMirrorSessionDescription"`
 	// The first ID of the resource.
 	TrafficMirrorSessionId string `pulumi:"trafficMirrorSessionId"`
-	// The name of the traffic mirror session.
+	// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
 	TrafficMirrorSessionName string `pulumi:"trafficMirrorSessionName"`
 	// The ID of the mirror source.
 	TrafficMirrorSourceIds []string `pulumi:"trafficMirrorSourceIds"`
@@ -11414,13 +11531,13 @@ type GetTrafficMirrorSessionsSessionInput interface {
 }
 
 type GetTrafficMirrorSessionsSessionArgs struct {
-	// Indicates whether traffic mirror sessions are enabled. default to `false`.
+	// Specifies whether to enable traffic mirror sessions. default to `false`.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The ID of the Traffic Mirror Session.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The maximum transmission unit (MTU).
 	PacketLength pulumi.IntInput `pulumi:"packetLength"`
-	// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+	// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -11432,7 +11549,7 @@ type GetTrafficMirrorSessionsSessionArgs struct {
 	TrafficMirrorSessionDescription pulumi.StringInput `pulumi:"trafficMirrorSessionDescription"`
 	// The first ID of the resource.
 	TrafficMirrorSessionId pulumi.StringInput `pulumi:"trafficMirrorSessionId"`
-	// The name of the traffic mirror session.
+	// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
 	TrafficMirrorSessionName pulumi.StringInput `pulumi:"trafficMirrorSessionName"`
 	// The ID of the mirror source.
 	TrafficMirrorSourceIds pulumi.StringArrayInput `pulumi:"trafficMirrorSourceIds"`
@@ -11495,7 +11612,7 @@ func (o GetTrafficMirrorSessionsSessionOutput) ToGetTrafficMirrorSessionsSession
 	return o
 }
 
-// Indicates whether traffic mirror sessions are enabled. default to `false`.
+// Specifies whether to enable traffic mirror sessions. default to `false`.
 func (o GetTrafficMirrorSessionsSessionOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -11510,7 +11627,7 @@ func (o GetTrafficMirrorSessionsSessionOutput) PacketLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) int { return v.PacketLength }).(pulumi.IntOutput)
 }
 
-// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
 func (o GetTrafficMirrorSessionsSessionOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) int { return v.Priority }).(pulumi.IntOutput)
 }
@@ -11540,7 +11657,7 @@ func (o GetTrafficMirrorSessionsSessionOutput) TrafficMirrorSessionId() pulumi.S
 	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.TrafficMirrorSessionId }).(pulumi.StringOutput)
 }
 
-// The name of the traffic mirror session.
+// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
 func (o GetTrafficMirrorSessionsSessionOutput) TrafficMirrorSessionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrafficMirrorSessionsSession) string { return v.TrafficMirrorSessionName }).(pulumi.StringOutput)
 }

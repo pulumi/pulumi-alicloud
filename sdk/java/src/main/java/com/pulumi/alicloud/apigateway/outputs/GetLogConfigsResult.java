@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLogConfigsResult {
+    /**
+     * @return A list of Api Gateway Log Configs. Each element contains the following attributes:
+     * 
+     */
     private List<GetLogConfigsConfig> configs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,10 +25,18 @@ public final class GetLogConfigsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The type the of log.
+     * 
+     */
     private @Nullable String logType;
     private @Nullable String outputFile;
 
     private GetLogConfigsResult() {}
+    /**
+     * @return A list of Api Gateway Log Configs. Each element contains the following attributes:
+     * 
+     */
     public List<GetLogConfigsConfig> configs() {
         return this.configs;
     }
@@ -38,6 +50,10 @@ public final class GetLogConfigsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The type the of log.
+     * 
+     */
     public Optional<String> logType() {
         return Optional.ofNullable(this.logType);
     }

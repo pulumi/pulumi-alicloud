@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGatewaySmbUsersResult {
+    /**
+     * @return The Gateway ID.
+     * 
+     */
     private String gatewayId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,9 +27,17 @@ public final class GetGatewaySmbUsersResult {
     private List<String> ids;
     private @Nullable String nameRegex;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Cloud Storage Gateway SMB Users. Each element contains the following attributes:
+     * 
+     */
     private List<GetGatewaySmbUsersUser> users;
 
     private GetGatewaySmbUsersResult() {}
+    /**
+     * @return The Gateway ID.
+     * 
+     */
     public String gatewayId() {
         return this.gatewayId;
     }
@@ -45,6 +57,10 @@ public final class GetGatewaySmbUsersResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Cloud Storage Gateway SMB Users. Each element contains the following attributes:
+     * 
+     */
     public List<GetGatewaySmbUsersUser> users() {
         return this.users;
     }

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// The category of the disk. Default value: `CloudEfficiency`. Valid values:
+        /// The category of the disk. Defaults to `CloudEfficiency`. Valid values:
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }

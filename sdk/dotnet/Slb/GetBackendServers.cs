@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server load balancer backend servers related to a server load balancer..
         /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
+        /// &gt; **NOTE:** Available since v1.53.0.
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server load balancer backend servers related to a server load balancer..
         /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
+        /// &gt; **NOTE:** Available since v1.53.0.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server load balancer backend servers related to a server load balancer..
         /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
+        /// &gt; **NOTE:** Available since v1.53.0.
         /// 
         /// ## Example Usage
         /// 

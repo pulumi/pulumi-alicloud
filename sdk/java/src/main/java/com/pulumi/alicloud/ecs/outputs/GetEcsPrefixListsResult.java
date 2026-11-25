@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsPrefixListsResult {
+    /**
+     * @return The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+     * 
+     */
     private @Nullable String addressFamily;
     private @Nullable Boolean enableDetails;
     /**
@@ -23,12 +27,24 @@ public final class GetEcsPrefixListsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Prefix Lists. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsPrefixListsList> lists;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Prefix List names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetEcsPrefixListsResult() {}
+    /**
+     * @return The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+     * 
+     */
     public Optional<String> addressFamily() {
         return Optional.ofNullable(this.addressFamily);
     }
@@ -45,12 +61,20 @@ public final class GetEcsPrefixListsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Prefix Lists. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsPrefixListsList> lists() {
         return this.lists;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Prefix List names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

@@ -17,9 +17,17 @@ public final class GetInstanceMembersArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetInstanceMembersArgs Empty = new GetInstanceMembersArgs();
 
+    /**
+     * The current page number.
+     * 
+     */
     @Import(name="currentPage")
     private @Nullable Output<String> currentPage;
 
+    /**
+     * @return The current page number.
+     * 
+     */
     public Optional<Output<String>> currentPage() {
         return Optional.ofNullable(this.currentPage);
     }
@@ -96,11 +104,23 @@ public final class GetInstanceMembersArgs extends com.pulumi.resources.InvokeArg
             $ = new GetInstanceMembersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param currentPage The current page number.
+         * 
+         * @return builder
+         * 
+         */
         public Builder currentPage(@Nullable Output<String> currentPage) {
             $.currentPage = currentPage;
             return this;
         }
 
+        /**
+         * @param currentPage The current page number.
+         * 
+         * @return builder
+         * 
+         */
         public Builder currentPage(String currentPage) {
             return currentPage(Output.of(currentPage));
         }

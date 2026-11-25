@@ -1213,7 +1213,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1263,7 +1263,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1313,7 +1313,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1363,7 +1363,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1413,7 +1413,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1463,7 +1463,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1513,7 +1513,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.195.0+.
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1563,7 +1563,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1607,7 +1607,7 @@ public final class ThreatdetectionFunctions {
      *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.get("strategys")[0].get("id"));
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", default_.applyValue(_default_ -> _default_.strategies().get(0).id()));
      *     }
      * }
      * }
@@ -1620,7 +1620,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1664,7 +1664,7 @@ public final class ThreatdetectionFunctions {
      *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.get("strategys")[0].get("id"));
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", default_.applyValue(_default_ -> _default_.strategies().get(0).id()));
      *     }
      * }
      * }
@@ -1677,7 +1677,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1721,7 +1721,7 @@ public final class ThreatdetectionFunctions {
      *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.get("strategys")[0].get("id"));
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", default_.applyValue(_default_ -> _default_.strategies().get(0).id()));
      *     }
      * }
      * }
@@ -1734,7 +1734,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1778,7 +1778,7 @@ public final class ThreatdetectionFunctions {
      *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.get("strategys")[0].get("id"));
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", default_.applyValue(_default_ -> _default_.strategies().get(0).id()));
      *     }
      * }
      * }
@@ -1791,7 +1791,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1835,7 +1835,7 @@ public final class ThreatdetectionFunctions {
      *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.get("strategys")[0].get("id"));
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", default_.applyValue(_default_ -> _default_.strategies().get(0).id()));
      *     }
      * }
      * }
@@ -1848,7 +1848,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1892,7 +1892,7 @@ public final class ThreatdetectionFunctions {
      *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.get("strategys")[0].get("id"));
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", default_.applyValue(_default_ -> _default_.strategies().get(0).id()));
      *     }
      * }
      * }
@@ -1905,7 +1905,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -1949,7 +1949,7 @@ public final class ThreatdetectionFunctions {
      *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.get("strategys")[0].get("id"));
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", default_.applyValue(_default_ -> _default_.strategies().get(0).id()));
      *     }
      * }
      * }
@@ -2921,7 +2921,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -2965,7 +2965,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3009,7 +3009,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3053,7 +3053,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3097,7 +3097,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3141,7 +3141,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3185,7 +3185,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3229,7 +3229,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3272,7 +3272,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3315,7 +3315,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3358,7 +3358,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3401,7 +3401,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3444,7 +3444,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3487,7 +3487,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3530,7 +3530,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Preset available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3560,7 +3560,7 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.get("id"))
      *             .honeypotImageName("shiro")
      *             .nodeId("example_value")
-     *             .presetName("apiapec_test")
+     *             .presetName("apiapec_example")
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
@@ -3576,7 +3576,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Preset available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3606,7 +3606,7 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.get("id"))
      *             .honeypotImageName("shiro")
      *             .nodeId("example_value")
-     *             .presetName("apiapec_test")
+     *             .presetName("apiapec_example")
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
@@ -3622,7 +3622,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Preset available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3652,7 +3652,7 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.get("id"))
      *             .honeypotImageName("shiro")
      *             .nodeId("example_value")
-     *             .presetName("apiapec_test")
+     *             .presetName("apiapec_example")
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
@@ -3668,7 +3668,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Preset available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3698,7 +3698,7 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.get("id"))
      *             .honeypotImageName("shiro")
      *             .nodeId("example_value")
-     *             .presetName("apiapec_test")
+     *             .presetName("apiapec_example")
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
@@ -3714,7 +3714,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Preset available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3744,7 +3744,7 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.get("id"))
      *             .honeypotImageName("shiro")
      *             .nodeId("example_value")
-     *             .presetName("apiapec_test")
+     *             .presetName("apiapec_example")
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
@@ -3760,7 +3760,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Preset available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3790,7 +3790,7 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.get("id"))
      *             .honeypotImageName("shiro")
      *             .nodeId("example_value")
-     *             .presetName("apiapec_test")
+     *             .presetName("apiapec_example")
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
@@ -3806,7 +3806,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Preset available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3836,7 +3836,7 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.get("id"))
      *             .honeypotImageName("shiro")
      *             .nodeId("example_value")
-     *             .presetName("apiapec_test")
+     *             .presetName("apiapec_example")
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
@@ -3852,7 +3852,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3883,7 +3883,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         final var name = config.get("name").orElse("tf-exampleThreatDetectionHoneypotProbe");
      *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
@@ -3920,7 +3920,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -3951,7 +3951,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         final var name = config.get("name").orElse("tf-exampleThreatDetectionHoneypotProbe");
      *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
@@ -3988,7 +3988,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -4019,7 +4019,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         final var name = config.get("name").orElse("tf-exampleThreatDetectionHoneypotProbe");
      *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
@@ -4056,7 +4056,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -4087,7 +4087,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         final var name = config.get("name").orElse("tf-exampleThreatDetectionHoneypotProbe");
      *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
@@ -4124,7 +4124,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -4155,7 +4155,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         final var name = config.get("name").orElse("tf-exampleThreatDetectionHoneypotProbe");
      *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
@@ -4192,7 +4192,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -4223,7 +4223,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         final var name = config.get("name").orElse("tf-exampleThreatDetectionHoneypotProbe");
      *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
@@ -4260,7 +4260,7 @@ public final class ThreatdetectionFunctions {
     /**
      * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -4291,7 +4291,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         final var name = config.get("name").orElse("tf-exampleThreatDetectionHoneypotProbe");
      *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")

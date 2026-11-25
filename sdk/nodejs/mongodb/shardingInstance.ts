@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.40.0.
  *
+ * > **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+ *
  * > **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
  * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
  *
@@ -125,11 +127,21 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     declare public readonly accountPassword: pulumi.Output<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan.
+     */
+    declare public readonly accountPasswordWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    declare public readonly accountPasswordWoVersion: pulumi.Output<number | undefined>;
+    /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
     declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     *
      * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      */
     declare public readonly autoRenewDuration: pulumi.Output<number>;
@@ -266,6 +278,7 @@ export class ShardingInstance extends pulumi.CustomResource {
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     *
      * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      */
     declare public readonly restoreTime: pulumi.Output<string | undefined>;
@@ -312,6 +325,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     *
      * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
      */
     declare public readonly sslAction: pulumi.Output<string | undefined>;
@@ -367,6 +381,8 @@ export class ShardingInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ShardingInstanceState | undefined;
             resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountPasswordWo"] = state?.accountPasswordWo;
+            resourceInputs["accountPasswordWoVersion"] = state?.accountPasswordWoVersion;
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["autoRenewDuration"] = state?.autoRenewDuration;
             resourceInputs["backupInterval"] = state?.backupInterval;
@@ -433,6 +449,8 @@ export class ShardingInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'shardLists'");
             }
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
+            resourceInputs["accountPasswordWo"] = args?.accountPasswordWo ? pulumi.secret(args.accountPasswordWo) : undefined;
+            resourceInputs["accountPasswordWoVersion"] = args?.accountPasswordWoVersion;
             resourceInputs["autoRenew"] = args?.autoRenew;
             resourceInputs["autoRenewDuration"] = args?.autoRenewDuration;
             resourceInputs["backupInterval"] = args?.backupInterval;
@@ -489,7 +507,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["zoneInfos"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        const secretOpts = { additionalSecretOutputs: ["accountPassword", "accountPasswordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ShardingInstance.__pulumiType, name, resourceInputs, opts);
     }
@@ -504,11 +522,21 @@ export interface ShardingInstanceState {
      */
     accountPassword?: pulumi.Input<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan.
+     */
+    accountPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    accountPasswordWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
     autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     *
      * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      */
     autoRenewDuration?: pulumi.Input<number | undefined>;
@@ -645,6 +673,7 @@ export interface ShardingInstanceState {
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     *
      * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      */
     restoreTime?: pulumi.Input<string | undefined>;
@@ -691,6 +720,7 @@ export interface ShardingInstanceState {
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     *
      * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
      */
     sslAction?: pulumi.Input<string | undefined>;
@@ -742,11 +772,21 @@ export interface ShardingInstanceArgs {
      */
     accountPassword?: pulumi.Input<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan.
+     */
+    accountPasswordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     */
+    accountPasswordWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
     autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     *
      * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      */
     autoRenewDuration?: pulumi.Input<number | undefined>;
@@ -879,6 +919,7 @@ export interface ShardingInstanceArgs {
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     *
      * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      */
     restoreTime?: pulumi.Input<string | undefined>;
@@ -921,6 +962,7 @@ export interface ShardingInstanceArgs {
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     *
      * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
      */
     sslAction?: pulumi.Input<string | undefined>;

@@ -193,6 +193,7 @@ type ProjectProperties struct {
 	// Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
 	EnableDr *bool `pulumi:"enableDr"`
 	// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+	//
 	// > **NOTE :**:
 	// To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 	//
@@ -238,6 +239,7 @@ type ProjectPropertiesArgs struct {
 	// Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
 	EnableDr pulumi.BoolPtrInput `pulumi:"enableDr"`
 	// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+	//
 	// > **NOTE :**:
 	// To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 	//
@@ -357,6 +359,7 @@ func (o ProjectPropertiesOutput) EnableDr() pulumi.BoolPtrOutput {
 }
 
 // Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+//
 // > **NOTE :**:
 // To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 //
@@ -454,6 +457,7 @@ func (o ProjectPropertiesPtrOutput) EnableDr() pulumi.BoolPtrOutput {
 }
 
 // Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+//
 // > **NOTE :**:
 // To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.
 //
@@ -878,7 +882,7 @@ type ProjectSecurityProperties struct {
 	ProjectProtection *ProjectSecurityPropertiesProjectProtection `pulumi:"projectProtection"`
 	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl *bool `pulumi:"usingAcl"`
-	// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+	// Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingPolicy *bool `pulumi:"usingPolicy"`
 }
 
@@ -906,7 +910,7 @@ type ProjectSecurityPropertiesArgs struct {
 	ProjectProtection ProjectSecurityPropertiesProjectProtectionPtrInput `pulumi:"projectProtection"`
 	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl pulumi.BoolPtrInput `pulumi:"usingAcl"`
-	// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+	// Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingPolicy pulumi.BoolPtrInput `pulumi:"usingPolicy"`
 }
 
@@ -1019,7 +1023,7 @@ func (o ProjectSecurityPropertiesOutput) UsingAcl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectSecurityProperties) *bool { return v.UsingAcl }).(pulumi.BoolPtrOutput)
 }
 
-// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+// Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 func (o ProjectSecurityPropertiesOutput) UsingPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectSecurityProperties) *bool { return v.UsingPolicy }).(pulumi.BoolPtrOutput)
 }
@@ -1108,7 +1112,7 @@ func (o ProjectSecurityPropertiesPtrOutput) UsingAcl() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+// Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 func (o ProjectSecurityPropertiesPtrOutput) UsingPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectSecurityProperties) *bool {
 		if v == nil {
@@ -2859,7 +2863,7 @@ type GetProjectsProject struct {
 	SecurityProperties GetProjectsProjectSecurityProperties `pulumi:"securityProperties"`
 	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status string `pulumi:"status"`
-	// Project type
+	// Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
 	Type string `pulumi:"type"`
 }
 
@@ -2895,7 +2899,7 @@ type GetProjectsProjectArgs struct {
 	SecurityProperties GetProjectsProjectSecurityPropertiesInput `pulumi:"securityProperties"`
 	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status pulumi.StringInput `pulumi:"status"`
-	// Project type
+	// Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3000,7 +3004,7 @@ func (o GetProjectsProjectOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Project type
+// Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
 func (o GetProjectsProjectOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3274,7 +3278,7 @@ func (o GetProjectsProjectPropertiesEncryptionOutput) Key() pulumi.StringOutput 
 }
 
 type GetProjectsProjectPropertiesTableLifecycle struct {
-	// Project type
+	// Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
 	Type string `pulumi:"type"`
 	// The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
 	Value string `pulumi:"value"`
@@ -3292,7 +3296,7 @@ type GetProjectsProjectPropertiesTableLifecycleInput interface {
 }
 
 type GetProjectsProjectPropertiesTableLifecycleArgs struct {
-	// Project type
+	// Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -3324,7 +3328,7 @@ func (o GetProjectsProjectPropertiesTableLifecycleOutput) ToGetProjectsProjectPr
 	return o
 }
 
-// Project type
+// Optional: When creating a table, the Lifecycle clause is optional. If the Lifecycle of the table is not set, the table is permanently valid.mandatory: the Lifecycle clause is required. You must set the Lifecycle of the table.inherit: If you do not set the lifecycle of the table when creating a table, the lifecycle of the table is the value of ODPS. table.lifecycle.value, and the ODPS. table.lifecycle.value attribute sets the lifecycle of the table.
 func (o GetProjectsProjectPropertiesTableLifecycleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectPropertiesTableLifecycle) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3347,7 +3351,7 @@ type GetProjectsProjectSecurityProperties struct {
 	ProjectProtection GetProjectsProjectSecurityPropertiesProjectProtection `pulumi:"projectProtection"`
 	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl bool `pulumi:"usingAcl"`
-	// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+	// Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingPolicy bool `pulumi:"usingPolicy"`
 }
 
@@ -3375,7 +3379,7 @@ type GetProjectsProjectSecurityPropertiesArgs struct {
 	ProjectProtection GetProjectsProjectSecurityPropertiesProjectProtectionInput `pulumi:"projectProtection"`
 	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl pulumi.BoolInput `pulumi:"usingAcl"`
-	// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+	// Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingPolicy pulumi.BoolInput `pulumi:"usingPolicy"`
 }
 
@@ -3437,7 +3441,7 @@ func (o GetProjectsProjectSecurityPropertiesOutput) UsingAcl() pulumi.BoolOutput
 	return o.ApplyT(func(v GetProjectsProjectSecurityProperties) bool { return v.UsingAcl }).(pulumi.BoolOutput)
 }
 
-// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+// Set whether to use the [Policy permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 func (o GetProjectsProjectSecurityPropertiesOutput) UsingPolicy() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectSecurityProperties) bool { return v.UsingPolicy }).(pulumi.BoolOutput)
 }

@@ -14,7 +14,7 @@ import (
 
 // Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
 //
-// > **NOTE:** Available in 1.53.0+
+// > **NOTE:** Available since v1.53.0+
 //
 // ## Import
 //
@@ -26,7 +26,7 @@ import (
 type BackendServer struct {
 	pulumi.CustomResourceState
 
-	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
 	BackendServers BackendServerBackendServerArrayOutput `pulumi:"backendServers"`
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation pulumi.BoolPtrOutput `pulumi:"deleteProtectionValidation"`
@@ -67,7 +67,7 @@ func GetBackendServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackendServer resources.
 type backendServerState struct {
-	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
 	BackendServers []BackendServerBackendServer `pulumi:"backendServers"`
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`
@@ -76,7 +76,7 @@ type backendServerState struct {
 }
 
 type BackendServerState struct {
-	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
 	BackendServers BackendServerBackendServerArrayInput
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation pulumi.BoolPtrInput
@@ -95,7 +95,7 @@ func BackendServerExists(ctx *pulumi.Context,
 }
 
 type backendServerArgs struct {
-	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
 	BackendServers []BackendServerBackendServer `pulumi:"backendServers"`
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`
@@ -105,7 +105,7 @@ type backendServerArgs struct {
 
 // The set of arguments for constructing a BackendServer resource.
 type BackendServerArgs struct {
-	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+	// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
 	BackendServers BackendServerBackendServerArrayInput
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation pulumi.BoolPtrInput
@@ -200,7 +200,7 @@ func (o BackendServerOutput) ToBackendServerOutputWithContext(ctx context.Contex
 	return o
 }
 
-// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
 func (o BackendServerOutput) BackendServers() BackendServerBackendServerArrayOutput {
 	return o.ApplyT(func(v *BackendServer) BackendServerBackendServerArrayOutput { return v.BackendServers }).(BackendServerBackendServerArrayOutput)
 }

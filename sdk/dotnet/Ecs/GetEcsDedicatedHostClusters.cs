@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -339,8 +339,14 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEcsDedicatedHostClustersResult
     {
+        /// <summary>
+        /// A list of Ecs Dedicated Host Clusters. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsDedicatedHostClustersClusterResult> Clusters;
         public readonly ImmutableArray<string> DedicatedHostClusterIds;
+        /// <summary>
+        /// The name of the dedicated host cluster.
+        /// </summary>
         public readonly string? DedicatedHostClusterName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -348,9 +354,18 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Dedicated Host Cluster names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The zone ID of the dedicated host cluster.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

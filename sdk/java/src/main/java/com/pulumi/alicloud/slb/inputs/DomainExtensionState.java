@@ -48,18 +48,39 @@ public final class DomainExtensionState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+     * 
+     * @deprecated Field &#39;frontend_port&#39; has been deprecated from provider version 2.3.0. New field &#39;listener_port&#39; instead.
      * 
      */
+    @Deprecated
     @Import(name="frontendPort")
     private @Nullable Output<Integer> frontendPort;
 
     /**
-     * @return The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+     * @return The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+     * 
+     * @deprecated Field &#39;frontend_port&#39; has been deprecated from provider version 2.3.0. New field &#39;listener_port&#39; instead.
      * 
      */
+    @Deprecated
     public Optional<Output<Integer>> frontendPort() {
         return Optional.ofNullable(this.frontendPort);
+    }
+
+    /**
+     * The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+     * 
+     */
+    @Import(name="listenerPort")
+    private @Nullable Output<Integer> listenerPort;
+
+    /**
+     * @return The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+     * 
+     */
+    public Optional<Output<Integer>> listenerPort() {
+        return Optional.ofNullable(this.listenerPort);
     }
 
     /**
@@ -98,6 +119,7 @@ public final class DomainExtensionState extends com.pulumi.resources.ResourceArg
         this.deleteProtectionValidation = $.deleteProtectionValidation;
         this.domain = $.domain;
         this.frontendPort = $.frontendPort;
+        this.listenerPort = $.listenerPort;
         this.loadBalancerId = $.loadBalancerId;
         this.serverCertificateId = $.serverCertificateId;
     }
@@ -163,24 +185,51 @@ public final class DomainExtensionState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param frontendPort The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+         * @param frontendPort The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
          * 
          * @return builder
          * 
+         * @deprecated Field &#39;frontend_port&#39; has been deprecated from provider version 2.3.0. New field &#39;listener_port&#39; instead.
+         * 
          */
+        @Deprecated
         public Builder frontendPort(@Nullable Output<Integer> frontendPort) {
             $.frontendPort = frontendPort;
             return this;
         }
 
         /**
-         * @param frontendPort The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+         * @param frontendPort The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+         * 
+         * @return builder
+         * 
+         * @deprecated Field &#39;frontend_port&#39; has been deprecated from provider version 2.3.0. New field &#39;listener_port&#39; instead.
+         * 
+         */
+        @Deprecated
+        public Builder frontendPort(Integer frontendPort) {
+            return frontendPort(Output.of(frontendPort));
+        }
+
+        /**
+         * @param listenerPort The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
          * 
          * @return builder
          * 
          */
-        public Builder frontendPort(Integer frontendPort) {
-            return frontendPort(Output.of(frontendPort));
+        public Builder listenerPort(@Nullable Output<Integer> listenerPort) {
+            $.listenerPort = listenerPort;
+            return this;
+        }
+
+        /**
+         * @param listenerPort The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder listenerPort(Integer listenerPort) {
+            return listenerPort(Output.of(listenerPort));
         }
 
         /**

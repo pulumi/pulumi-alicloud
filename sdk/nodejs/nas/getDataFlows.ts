@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Nas Data Flows of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0+.
  *
  * ## Example Usage
  *
@@ -70,7 +70,13 @@ export interface GetDataFlowsArgs {
  * A collection of values returned by getDataFlows.
  */
 export interface GetDataFlowsResult {
+    /**
+     * The ID of the file system.
+     */
     readonly fileSystemId: string;
+    /**
+     * A list of Nas Data Flows. Each element contains the following attributes:
+     */
     readonly flows: outputs.nas.GetDataFlowsFlow[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -78,12 +84,15 @@ export interface GetDataFlowsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the Data flow.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Nas Data Flows of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0+.
  *
  * ## Example Usage
  *

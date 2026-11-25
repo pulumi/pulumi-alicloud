@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Imm
         /// <summary>
         /// This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Imm
         /// <summary>
         /// This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Imm
         /// <summary>
         /// This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -180,6 +180,9 @@ namespace Pulumi.AliCloud.Imm
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Imm Projects. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectResult> Projects;
 
         [OutputConstructor]

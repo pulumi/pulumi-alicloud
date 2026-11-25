@@ -115,7 +115,7 @@ public final class GetSubscriptionJobsJob {
      */
     private String sourceEndpointUserName;
     /**
-     * @return The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+     * @return The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
      * 
      */
     private String status;
@@ -150,7 +150,7 @@ public final class GetSubscriptionJobsJob {
      */
     private String subscriptionInstanceVswitchId;
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to filter results.
      * 
      */
     private Map<String,String> tags;
@@ -297,7 +297,7 @@ public final class GetSubscriptionJobsJob {
         return this.sourceEndpointUserName;
     }
     /**
-     * @return The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+     * @return The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
      * 
      */
     public String status() {
@@ -346,7 +346,7 @@ public final class GetSubscriptionJobsJob {
         return this.subscriptionInstanceVswitchId;
     }
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to filter results.
      * 
      */
     public Map<String,String> tags() {

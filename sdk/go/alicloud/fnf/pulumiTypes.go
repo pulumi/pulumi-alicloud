@@ -26,7 +26,7 @@ type GetExecutionsExecution struct {
 	Output string `pulumi:"output"`
 	// The started time of the execution.
 	StartedTime string `pulumi:"startedTime"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
 	Status string `pulumi:"status"`
 	// The stopped time of the execution.
 	StoppedTime string `pulumi:"stoppedTime"`
@@ -56,7 +56,7 @@ type GetExecutionsExecutionArgs struct {
 	Output pulumi.StringInput `pulumi:"output"`
 	// The started time of the execution.
 	StartedTime pulumi.StringInput `pulumi:"startedTime"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The stopped time of the execution.
 	StoppedTime pulumi.StringInput `pulumi:"stoppedTime"`
@@ -143,7 +143,7 @@ func (o GetExecutionsExecutionOutput) StartedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExecutionsExecution) string { return v.StartedTime }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
 func (o GetExecutionsExecutionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExecutionsExecution) string { return v.Status }).(pulumi.StringOutput)
 }

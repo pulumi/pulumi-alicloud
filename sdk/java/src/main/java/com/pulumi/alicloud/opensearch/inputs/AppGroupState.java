@@ -109,14 +109,14 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Order cycle information. The details see Block order.
+     * Order cycle information. See `order` below.
      * 
      */
     @Import(name="orders")
     private @Nullable Output<List<AppGroupOrderArgs>> orders;
 
     /**
-     * @return Order cycle information. The details see Block order.
+     * @return Order cycle information. See `order` below.
      * 
      */
     public Optional<Output<List<AppGroupOrderArgs>>> orders() {
@@ -139,14 +139,14 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Quota information.  The details see Block quota.
+     * Quota information. See `quota` below.
      * 
      */
     @Import(name="quota")
     private @Nullable Output<AppGroupQuotaArgs> quota;
 
     /**
-     * @return Quota information.  The details see Block quota.
+     * @return Quota information. See `quota` below.
      * 
      */
     public Optional<Output<AppGroupQuotaArgs>> quota() {
@@ -344,7 +344,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orders Order cycle information. The details see Block order.
+         * @param orders Order cycle information. See `order` below.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orders Order cycle information. The details see Block order.
+         * @param orders Order cycle information. See `order` below.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orders Order cycle information. The details see Block order.
+         * @param orders Order cycle information. See `order` below.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quota Quota information.  The details see Block quota.
+         * @param quota Quota information. See `quota` below.
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quota Quota information.  The details see Block quota.
+         * @param quota Quota information. See `quota` below.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -320,6 +320,10 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("natIpIds")]
         private List<string>? _natIpIds;
+
+        /// <summary>
+        /// A list of Nat Ip IDs used to filter results.
+        /// </summary>
         public List<string> NatIpIds
         {
             get => _natIpIds ?? (_natIpIds = new List<string>());
@@ -390,6 +394,10 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("natIpIds")]
         private InputList<string>? _natIpIds;
+
+        /// <summary>
+        /// A list of Nat Ip IDs used to filter results.
+        /// </summary>
         public InputList<string> NatIpIds
         {
             get => _natIpIds ?? (_natIpIds = new InputList<string>());
@@ -434,15 +442,36 @@ namespace Pulumi.AliCloud.Vpc
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Nat Ip IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Vpc Nat Ips. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNatIpsIpResult> Ips;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Nat Ip names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+        /// </summary>
         public readonly string NatGatewayId;
+        /// <summary>
+        /// The CIDR block to which the NAT IP address belongs.
+        /// </summary>
         public readonly string? NatIpCidr;
         public readonly ImmutableArray<string> NatIpIds;
+        /// <summary>
+        /// The name of the NAT IP address.
+        /// </summary>
         public readonly ImmutableArray<string> NatIpNames;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

@@ -94,6 +94,9 @@ namespace Pulumi.AliCloud.MaxCompute
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
+        /// <summary>
+        /// The product type of the MaxCompute project.
+        /// </summary>
         [Output("productType")]
         public Output<string?> ProductType { get; private set; } = null!;
 
@@ -218,6 +221,9 @@ namespace Pulumi.AliCloud.MaxCompute
         [Input("isLogical")]
         public Input<string>? IsLogical { get; set; }
 
+        /// <summary>
+        /// The product type of the MaxCompute project.
+        /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }
 
@@ -310,6 +316,9 @@ namespace Pulumi.AliCloud.MaxCompute
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// The product type of the MaxCompute project.
+        /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }
 

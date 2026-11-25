@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+ * This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
  *
- * > **NOTE:** Available in 1.204.0+
+ * > **NOTE:** Available since v1.204.0
  *
  * ## Example Usage
  *
@@ -49,6 +49,9 @@ export function getSubnets(args?: GetSubnetsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getSubnets.
  */
 export interface GetSubnetsArgs {
+    /**
+     * A list of Subnet IDs.
+     */
     ids?: string[];
     /**
      * A regex string to filter results by Group Metric Rule name.
@@ -101,6 +104,9 @@ export interface GetSubnetsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Subnet IDs.
+     */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
@@ -144,9 +150,9 @@ export interface GetSubnetsResult {
     readonly zoneId?: string;
 }
 /**
- * This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+ * This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
  *
- * > **NOTE:** Available in 1.204.0+
+ * > **NOTE:** Available since v1.204.0
  *
  * ## Example Usage
  *
@@ -186,6 +192,9 @@ export function getSubnetsOutput(args?: GetSubnetsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getSubnets.
  */
 export interface GetSubnetsOutputArgs {
+    /**
+     * A list of Subnet IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.

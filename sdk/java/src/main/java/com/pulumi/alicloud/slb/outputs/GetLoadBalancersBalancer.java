@@ -21,86 +21,153 @@ public final class GetLoadBalancersBalancer {
      * 
      */
     private String address;
+    /**
+     * @return The address ip version. Valid values `ipv4` and `ipv6`.
+     * 
+     */
     private String addressIpVersion;
+    /**
+     * @return The address type of the SLB. Valid values `internet` and `intranet`.
+     * 
+     */
     private String addressType;
+    /**
+     * @return The auto release time.
+     * 
+     */
     private Integer autoReleaseTime;
+    /**
+     * @return The backend servers of the SLB.
+     * 
+     */
     private List<GetLoadBalancersBalancerBackendServer> backendServers;
+    /**
+     * @return The bandwidth of the SLB.
+     * 
+     */
     private Integer bandwidth;
+    /**
+     * @return The creation time of the SLB, mapped from the API `CreateTime` field.
+     * 
+     */
     private String createTime;
+    /**
+     * @return The create time stamp of the SLB.
+     * 
+     */
     private Integer createTimeStamp;
+    /**
+     * @return Whether the SLB should delete protection.
+     * 
+     */
     private String deleteProtection;
+    /**
+     * @return The end time of the SLB.
+     * 
+     */
     private String endTime;
+    /**
+     * @return The end time stamp of the SLB.
+     * 
+     */
     private Integer endTimeStamp;
     /**
      * @return ID of the SLB.
      * 
      */
     private String id;
+    /**
+     * @return The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+     * 
+     */
     private String internetChargeType;
+    /**
+     * @return The listener ports and protocol of the SLB.
+     * 
+     */
     private List<GetLoadBalancersBalancerListenerPortsAndProtocal> listenerPortsAndProtocals;
+    /**
+     * @return The listener ports and protocol of the SLB.
+     * 
+     */
     private List<GetLoadBalancersBalancerListenerPortsAndProtocol> listenerPortsAndProtocols;
+    /**
+     * @return Thd ID of the SLB.
+     * 
+     */
     private String loadBalancerId;
+    /**
+     * @return The name of the SLB.
+     * 
+     */
     private String loadBalancerName;
+    /**
+     * @return The specification of the SLB.
+     * 
+     */
     private String loadBalancerSpec;
+    /**
+     * @return The master zone id of the SLB.
+     * 
+     */
     private String masterZoneId;
+    /**
+     * @return The reason of modification protection.
+     * 
+     */
     private String modificationProtectionReason;
+    /**
+     * @return The status of modification protection.
+     * 
+     */
     private String modificationProtectionStatus;
     /**
      * @return Network type of the SLBs. Valid values: `vpc` and `classic`.
      * 
      */
     private String networkType;
+    /**
+     * @return The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+     * 
+     */
     private String paymentType;
+    /**
+     * @return Region ID the SLB belongs to.
+     * 
+     */
     private String regionIdAlias;
+    /**
+     * @return The renewal cyc unit of the SLB.
+     * 
+     */
     private String renewalCycUnit;
+    /**
+     * @return The renewal duration of the SLB.
+     * 
+     */
     private Integer renewalDuration;
+    /**
+     * @return The renewal status of the SLB.
+     * 
+     */
     private String renewalStatus;
     /**
      * @return The Id of resource group which SLB belongs.
      * 
      */
     private String resourceGroupId;
+    /**
+     * @return The slave zone id of the SLB.
+     * 
+     */
     private String slaveZoneId;
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     private String status;
     /**
      * @return A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var taggedInstances = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .tags(Map.ofEntries(
-     *                 Map.entry("tagKey1", "tagValue1"),
-     *                 Map.entry("tagKey2", "tagValue2")
-     *             ))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     private Map<String,String> tags;
@@ -123,33 +190,73 @@ public final class GetLoadBalancersBalancer {
     public String address() {
         return this.address;
     }
+    /**
+     * @return The address ip version. Valid values `ipv4` and `ipv6`.
+     * 
+     */
     public String addressIpVersion() {
         return this.addressIpVersion;
     }
+    /**
+     * @return The address type of the SLB. Valid values `internet` and `intranet`.
+     * 
+     */
     public String addressType() {
         return this.addressType;
     }
+    /**
+     * @return The auto release time.
+     * 
+     */
     public Integer autoReleaseTime() {
         return this.autoReleaseTime;
     }
+    /**
+     * @return The backend servers of the SLB.
+     * 
+     */
     public List<GetLoadBalancersBalancerBackendServer> backendServers() {
         return this.backendServers;
     }
+    /**
+     * @return The bandwidth of the SLB.
+     * 
+     */
     public Integer bandwidth() {
         return this.bandwidth;
     }
+    /**
+     * @return The creation time of the SLB, mapped from the API `CreateTime` field.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return The create time stamp of the SLB.
+     * 
+     */
     public Integer createTimeStamp() {
         return this.createTimeStamp;
     }
+    /**
+     * @return Whether the SLB should delete protection.
+     * 
+     */
     public String deleteProtection() {
         return this.deleteProtection;
     }
+    /**
+     * @return The end time of the SLB.
+     * 
+     */
     public String endTime() {
         return this.endTime;
     }
+    /**
+     * @return The end time stamp of the SLB.
+     * 
+     */
     public Integer endTimeStamp() {
         return this.endTimeStamp;
     }
@@ -160,30 +267,66 @@ public final class GetLoadBalancersBalancer {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+     * 
+     */
     public String internetChargeType() {
         return this.internetChargeType;
     }
+    /**
+     * @return The listener ports and protocol of the SLB.
+     * 
+     */
     public List<GetLoadBalancersBalancerListenerPortsAndProtocal> listenerPortsAndProtocals() {
         return this.listenerPortsAndProtocals;
     }
+    /**
+     * @return The listener ports and protocol of the SLB.
+     * 
+     */
     public List<GetLoadBalancersBalancerListenerPortsAndProtocol> listenerPortsAndProtocols() {
         return this.listenerPortsAndProtocols;
     }
+    /**
+     * @return Thd ID of the SLB.
+     * 
+     */
     public String loadBalancerId() {
         return this.loadBalancerId;
     }
+    /**
+     * @return The name of the SLB.
+     * 
+     */
     public String loadBalancerName() {
         return this.loadBalancerName;
     }
+    /**
+     * @return The specification of the SLB.
+     * 
+     */
     public String loadBalancerSpec() {
         return this.loadBalancerSpec;
     }
+    /**
+     * @return The master zone id of the SLB.
+     * 
+     */
     public String masterZoneId() {
         return this.masterZoneId;
     }
+    /**
+     * @return The reason of modification protection.
+     * 
+     */
     public String modificationProtectionReason() {
         return this.modificationProtectionReason;
     }
+    /**
+     * @return The status of modification protection.
+     * 
+     */
     public String modificationProtectionStatus() {
         return this.modificationProtectionStatus;
     }
@@ -194,18 +337,38 @@ public final class GetLoadBalancersBalancer {
     public String networkType() {
         return this.networkType;
     }
+    /**
+     * @return The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+     * 
+     */
     public String paymentType() {
         return this.paymentType;
     }
+    /**
+     * @return Region ID the SLB belongs to.
+     * 
+     */
     public String regionIdAlias() {
         return this.regionIdAlias;
     }
+    /**
+     * @return The renewal cyc unit of the SLB.
+     * 
+     */
     public String renewalCycUnit() {
         return this.renewalCycUnit;
     }
+    /**
+     * @return The renewal duration of the SLB.
+     * 
+     */
     public Integer renewalDuration() {
         return this.renewalDuration;
     }
+    /**
+     * @return The renewal status of the SLB.
+     * 
+     */
     public String renewalStatus() {
         return this.renewalStatus;
     }
@@ -216,11 +379,15 @@ public final class GetLoadBalancersBalancer {
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
+    /**
+     * @return The slave zone id of the SLB.
+     * 
+     */
     public String slaveZoneId() {
         return this.slaveZoneId;
     }
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     public String status() {
@@ -228,39 +395,6 @@ public final class GetLoadBalancersBalancer {
     }
     /**
      * @return A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var taggedInstances = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .tags(Map.ofEntries(
-     *                 Map.entry("tagKey1", "tagValue1"),
-     *                 Map.entry("tagKey2", "tagValue2")
-     *             ))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public Map<String,String> tags() {

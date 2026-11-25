@@ -84,7 +84,11 @@ class KubernetesArgs:
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
-               *Removed params*
+               Removed params:
+               
+               The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+               
+               `master_instance_type`, `worker_instance_type`, `vswitch_id`, `vswitch_ids`, `force_update`, `log_config`, `cluster_network_type`, `worker_data_disk_category`, `worker_data_disk_size`, `worker_numbers`, `nodes`, `exclude_autoscaler_nodes`, `kube_config`, `availability_zone`, `worker_number`, `worker_vswitch_ids`, `worker_instance_types`, `worker_instance_charge_type`, `worker_period`, `worker_period_unit`, `worker_auto_renew`, `worker_auto_renew_period`, `worker_disk_category`, `worker_disk_size`, `worker_data_disks`, `node_port_range`, `cpu_policy`, `user_data`, `taints`, `worker_disk_performance_level`, `worker_disk_snapshot_policy_id`
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
@@ -104,7 +108,7 @@ class KubernetesArgs:
         :param pulumi.Input[_builtins.int] master_disk_size: The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
         :param pulumi.Input[_builtins.str] master_disk_snapshot_policy_id: Master node system disk auto snapshot policy.
                
-               *Computed params*
+               Computed params:
         :param pulumi.Input[_builtins.str] master_instance_charge_type: Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
         :param pulumi.Input[_builtins.int] master_period: Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[_builtins.str] master_period_unit: Master payment period unit, the valid value is `Month`.
@@ -128,13 +132,13 @@ class KubernetesArgs:
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
                
-               *Network params*
+               Network params:
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
                
                > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
                If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
                
-               *Master params*
+               Master params:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[_builtins.str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -339,7 +343,11 @@ class KubernetesArgs:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
-        *Removed params*
+        Removed params:
+
+        The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+
+        `master_instance_type`, `worker_instance_type`, `vswitch_id`, `vswitch_ids`, `force_update`, `log_config`, `cluster_network_type`, `worker_data_disk_category`, `worker_data_disk_size`, `worker_numbers`, `nodes`, `exclude_autoscaler_nodes`, `kube_config`, `availability_zone`, `worker_number`, `worker_vswitch_ids`, `worker_instance_types`, `worker_instance_charge_type`, `worker_period`, `worker_period_unit`, `worker_auto_renew`, `worker_auto_renew_period`, `worker_disk_category`, `worker_disk_size`, `worker_data_disks`, `node_port_range`, `cpu_policy`, `user_data`, `taints`, `worker_disk_performance_level`, `worker_disk_snapshot_policy_id`
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -558,7 +566,7 @@ class KubernetesArgs:
         """
         Master node system disk auto snapshot policy.
 
-        *Computed params*
+        Computed params:
         """
         return pulumi.get(self, "master_disk_snapshot_policy_id")
 
@@ -825,7 +833,7 @@ class KubernetesArgs:
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
 
-        *Network params*
+        Network params:
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
@@ -842,7 +850,7 @@ class KubernetesArgs:
         > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
         If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
 
-        *Master params*
+        Master params:
         """
         return pulumi.get(self, "slb_internet_enabled")
 
@@ -973,7 +981,11 @@ class _KubernetesState:
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
-               *Removed params*
+               Removed params:
+               
+               The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+               
+               `master_instance_type`, `worker_instance_type`, `vswitch_id`, `vswitch_ids`, `force_update`, `log_config`, `cluster_network_type`, `worker_data_disk_category`, `worker_data_disk_size`, `worker_numbers`, `nodes`, `exclude_autoscaler_nodes`, `kube_config`, `availability_zone`, `worker_number`, `worker_vswitch_ids`, `worker_instance_types`, `worker_instance_charge_type`, `worker_period`, `worker_period_unit`, `worker_auto_renew`, `worker_auto_renew_period`, `worker_disk_category`, `worker_disk_size`, `worker_data_disks`, `node_port_range`, `cpu_policy`, `user_data`, `taints`, `worker_disk_performance_level`, `worker_disk_snapshot_policy_id`
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesConnectionArgs']]] connections: (List) A list of kubernetes cluster connection information.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -994,7 +1006,7 @@ class _KubernetesState:
         :param pulumi.Input[_builtins.int] master_disk_size: The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
         :param pulumi.Input[_builtins.str] master_disk_snapshot_policy_id: Master node system disk auto snapshot policy.
                
-               *Computed params*
+               Computed params:
         :param pulumi.Input[_builtins.str] master_instance_charge_type: Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_instance_types: The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesMasterNodeArgs']]] master_nodes: (Optional) The master nodes. See `master_nodes` below.
@@ -1022,7 +1034,7 @@ class _KubernetesState:
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
                
-               *Network params*
+               Network params:
         :param pulumi.Input[_builtins.str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[_builtins.str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
@@ -1030,7 +1042,7 @@ class _KubernetesState:
                > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
                If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
                
-               *Master params*
+               Master params:
         :param pulumi.Input[_builtins.str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[_builtins.str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
@@ -1250,7 +1262,11 @@ class _KubernetesState:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
-        *Removed params*
+        Removed params:
+
+        The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+
+        `master_instance_type`, `worker_instance_type`, `vswitch_id`, `vswitch_ids`, `force_update`, `log_config`, `cluster_network_type`, `worker_data_disk_category`, `worker_data_disk_size`, `worker_numbers`, `nodes`, `exclude_autoscaler_nodes`, `kube_config`, `availability_zone`, `worker_number`, `worker_vswitch_ids`, `worker_instance_types`, `worker_instance_charge_type`, `worker_period`, `worker_period_unit`, `worker_auto_renew`, `worker_auto_renew_period`, `worker_disk_category`, `worker_disk_size`, `worker_data_disks`, `node_port_range`, `cpu_policy`, `user_data`, `taints`, `worker_disk_performance_level`, `worker_disk_snapshot_policy_id`
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -1481,7 +1497,7 @@ class _KubernetesState:
         """
         Master node system disk auto snapshot policy.
 
-        *Computed params*
+        Computed params:
         """
         return pulumi.get(self, "master_disk_snapshot_policy_id")
 
@@ -1796,7 +1812,7 @@ class _KubernetesState:
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
 
-        *Network params*
+        Network params:
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
@@ -1837,7 +1853,7 @@ class _KubernetesState:
         > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
         If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
 
-        *Master params*
+        Master params:
         """
         return pulumi.get(self, "slb_internet_enabled")
 
@@ -1990,7 +2006,7 @@ class Kubernetes(pulumi.CustomResource):
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release.
+        > **DEPRECATED:** This resource has been deprecated from version `1.276.0` and will be removed in a future release.
 
         This resource will help you to manage a Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ask-cluster-1).
 
@@ -2030,8 +2046,6 @@ class Kubernetes(pulumi.CustomResource):
 
         ```python
         import pulumi
-        from typing import Any
-        import json
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -2039,140 +2053,67 @@ class Kubernetes(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-kubernetes-example"
-        # Existing vpc id used to create several vswitches and other resources.
-        vpc_id = config.get("vpcId")
-        if vpc_id is None:
-            vpc_id = ""
-        # The cidr block used to launch a new vpc when 'vpc_id' is not specified.
-        vpc_cidr = config.get("vpcCidr")
-        if vpc_cidr is None:
-            vpc_cidr = "10.0.0.0/8"
-        # List of existing vswitch id.
-        vswitch_ids = config.get_object("vswitchIds")
-        if vswitch_ids is None:
-            vswitch_ids = []
-        # List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
-        vswitch_cidrs = config.get_object("vswitchCidrs")
-        if vswitch_cidrs is None:
-            vswitch_cidrs = [
-                "10.1.0.0/16",
-                "10.2.0.0/16",
-                "10.3.0.0/16",
-            ]
-        # List of existing vswitch ids for terway.
-        terway_vswitch_ids = config.get_object("terwayVswitchIds")
-        if terway_vswitch_ids is None:
-            terway_vswitch_ids = []
-        # List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
-        terway_vswitch_cidrs = config.get_object("terwayVswitchCidrs")
-        if terway_vswitch_cidrs is None:
-            terway_vswitch_cidrs = [
-                "10.4.0.0/16",
-                "10.5.0.0/16",
-                "10.6.0.0/16",
-            ]
-        cluster_addons = config.get_object("clusterAddons")
-        if cluster_addons is None:
-            cluster_addons = [
-                {
-                    "config": {},
-                    "name": "terway-eniip",
-                },
-                {
-                    "config": {},
-                    "name": "csi-plugin",
-                },
-                {
-                    "config": {},
-                    "name": "csi-provisioner",
-                },
-                {
-                    "config": {
-                        "IngressDashboardEnabled": "true",
-                    },
-                    "name": "logtail-ds",
-                },
-                {
-                    "config": {
-                        "IngressSlbNetworkType": "internet",
-                    },
-                    "name": "nginx-ingress-controller",
-                },
-                {
-                    "config": {},
-                    "name": "arms-prometheus",
-                },
-                {
-                    "config": {
-                        "sls_project_name": "",
-                    },
-                    "name": "ack-node-problem-detector",
-                },
-            ]
+        instance_type = config.get("instanceType")
+        if instance_type is None:
+            instance_type = "ecs.c6.xlarge"
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
-        # If there is not specifying vpc_id, the module will launch a new vpc
-        vpc: list[alicloud.vpc.Network] = []
-        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}", cidr_block=vpc_cidr))
-        # According to the vswitch cidr blocks to launch several vswitches
-        vswitches: list[alicloud.vpc.Switch] = []
-        for vswitches_range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
-            vswitches.append(alicloud.vpc.Switch(f"vswitches-{vswitches_range['value']}",
-                vpc_id=std.join_output(separator="",
-                    input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
-                cidr_block=vswitch_cidrs[vswitches_range["value"]],
-                zone_id=enhanced.zones[vswitches_range["value"] if vswitches_range["value"] < len(enhanced.zones) else 0].zone_id))
-        # According to the vswitch cidr blocks to launch several vswitches
-        terway_vswitches: list[alicloud.vpc.Switch] = []
-        for terway_vswitches_range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
-            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{terway_vswitches_range['value']}",
-                vpc_id=std.join_output(separator="",
-                    input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
-                cidr_block=terway_vswitch_cidrs[terway_vswitches_range["value"]],
-                zone_id=enhanced.zones[terway_vswitches_range["value"] if terway_vswitches_range["value"] < len(enhanced.zones) else 0].zone_id))
-        default = alicloud.resourcemanager.get_resource_groups(status="OK")
-        cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=enhanced.zones[__index if __index < len(enhanced.zones) else 0].zone_id,
-            cpu_core_count=4,
-            memory_size=float(8),
-            system_disk_category="cloud_essd") for __index in range(3)]
+        default = alicloud.get_zones(available_resource_creation="Instance",
+            available_disk_category="cloud_essd",
+            available_instance_type=instance_type)
+        # The zone must offer the master instance type and support the enhanced NAT gateway created by `new_nat_gateway`.
+        zone_id = std.sort(input=std.setintersection(input=[
+            [__item.id for __item in default.zones],
+            [__item.zone_id for __item in enhanced.zones],
+        ]).result).result[0]
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_kubernetes_version = alicloud.cs.get_kubernetes_version(cluster_type="Kubernetes")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.1.0/24",
+            zone_id=zone_id)
         default_kubernetes = alicloud.cs.Kubernetes("default",
-            addons=[{
-                "name": output(std.lookup(map=entry["value"],
-                    key="name",
-                    default=cluster_addons).result).apply(lambda x: str(x)),
-                "config": json.dumps(std.lookup(map=entry["value"],
-                    key="config",
-                    default=cluster_addons).result),
-            } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]],
-            master_vswitch_ids=std.split(separator=",",
-                text=std.join(separator=",",
-                    input=vswitch_ids).result).result if len(vswitch_ids) > 0 else [] if len(vswitch_cidrs) < 1 else std.split_output(separator=",",
-                text=std.join_output(separator=",",
-                    input=[__item.id for __item in vswitches]).result).result,
-            pod_vswitch_ids=std.split(separator=",",
-                text=std.join(separator=",",
-                    input=terway_vswitch_ids).result).result if len(terway_vswitch_ids) > 0 else [] if len(terway_vswitch_cidrs) < 1 else std.split_output(separator=",",
-                text=std.join_output(separator=",",
-                    input=[__item.id for __item in terway_vswitches]).result).result,
+            name=name,
+            version=default_get_kubernetes_version.metadatas[2].version,
+            master_vswitch_ids=[
+                default_switch.id,
+                default_switch.id,
+                default_switch.id,
+            ],
             master_instance_types=[
-                cloud_essd[0].instance_types[0].id,
-                cloud_essd[1].instance_types[0].id,
-                cloud_essd[2].instance_types[0].id,
+                instance_type,
+                instance_type,
+                instance_type,
             ],
             master_disk_category="cloud_essd",
+            master_disk_size=80,
             password="Yourpassword1234",
+            pod_cidr="10.72.0.0/16",
             service_cidr="172.18.0.0/16",
+            node_cidr_mask=24,
+            enable_ssh=False,
             install_cloud_monitor=True,
-            resource_group_id=default.groups[0].id,
+            resource_group_id=default_get_resource_groups.groups[0].id,
             deletion_protection=False,
-            timezone="Asia/Shanghai",
             os_type="Linux",
-            platform="AliyunLinux3",
+            platform="AliyunLinux4ContainerOptimized",
+            image_id="aliyun_4_x64_20G_container_optimized_alibase_20260402.vhd",
             cluster_domain="cluster.local",
             proxy_mode="ipvs",
             custom_san="www.terraform.io",
             new_nat_gateway=True,
-            skip_set_certificate_authority=True)
+            slb_internet_enabled=False,
+            skip_set_certificate_authority=False,
+            runtimes=[{
+                "name": "containerd",
+                "version": "1.6.20",
+            }],
+            tags={
+                "Platform": "TF",
+            })
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -2194,7 +2135,11 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
-               *Removed params*
+               Removed params:
+               
+               The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+               
+               `master_instance_type`, `worker_instance_type`, `vswitch_id`, `vswitch_ids`, `force_update`, `log_config`, `cluster_network_type`, `worker_data_disk_category`, `worker_data_disk_size`, `worker_numbers`, `nodes`, `exclude_autoscaler_nodes`, `kube_config`, `availability_zone`, `worker_number`, `worker_vswitch_ids`, `worker_instance_types`, `worker_instance_charge_type`, `worker_period`, `worker_period_unit`, `worker_auto_renew`, `worker_auto_renew_period`, `worker_disk_category`, `worker_disk_size`, `worker_data_disks`, `node_port_range`, `cpu_policy`, `user_data`, `taints`, `worker_disk_performance_level`, `worker_disk_snapshot_policy_id`
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesDeleteOptionArgs', 'KubernetesDeleteOptionArgsDict', 'outputs.KubernetesDeleteOption']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
@@ -2214,7 +2159,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] master_disk_size: The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
         :param pulumi.Input[_builtins.str] master_disk_snapshot_policy_id: Master node system disk auto snapshot policy.
                
-               *Computed params*
+               Computed params:
         :param pulumi.Input[_builtins.str] master_instance_charge_type: Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_instance_types: The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[_builtins.int] master_period: Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
@@ -2240,13 +2185,13 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
                
-               *Network params*
+               Network params:
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
                
                > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
                If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
                
-               *Master params*
+               Master params:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[_builtins.str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[_builtins.str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -2259,7 +2204,7 @@ class Kubernetes(pulumi.CustomResource):
                  args: KubernetesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release.
+        > **DEPRECATED:** This resource has been deprecated from version `1.276.0` and will be removed in a future release.
 
         This resource will help you to manage a Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ask-cluster-1).
 
@@ -2299,8 +2244,6 @@ class Kubernetes(pulumi.CustomResource):
 
         ```python
         import pulumi
-        from typing import Any
-        import json
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -2308,140 +2251,67 @@ class Kubernetes(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-kubernetes-example"
-        # Existing vpc id used to create several vswitches and other resources.
-        vpc_id = config.get("vpcId")
-        if vpc_id is None:
-            vpc_id = ""
-        # The cidr block used to launch a new vpc when 'vpc_id' is not specified.
-        vpc_cidr = config.get("vpcCidr")
-        if vpc_cidr is None:
-            vpc_cidr = "10.0.0.0/8"
-        # List of existing vswitch id.
-        vswitch_ids = config.get_object("vswitchIds")
-        if vswitch_ids is None:
-            vswitch_ids = []
-        # List of cidr blocks used to create several new vswitches when 'vswitch_ids' is not specified.
-        vswitch_cidrs = config.get_object("vswitchCidrs")
-        if vswitch_cidrs is None:
-            vswitch_cidrs = [
-                "10.1.0.0/16",
-                "10.2.0.0/16",
-                "10.3.0.0/16",
-            ]
-        # List of existing vswitch ids for terway.
-        terway_vswitch_ids = config.get_object("terwayVswitchIds")
-        if terway_vswitch_ids is None:
-            terway_vswitch_ids = []
-        # List of cidr blocks used to create several new vswitches when 'terway_vswitch_cidrs' is not specified.
-        terway_vswitch_cidrs = config.get_object("terwayVswitchCidrs")
-        if terway_vswitch_cidrs is None:
-            terway_vswitch_cidrs = [
-                "10.4.0.0/16",
-                "10.5.0.0/16",
-                "10.6.0.0/16",
-            ]
-        cluster_addons = config.get_object("clusterAddons")
-        if cluster_addons is None:
-            cluster_addons = [
-                {
-                    "config": {},
-                    "name": "terway-eniip",
-                },
-                {
-                    "config": {},
-                    "name": "csi-plugin",
-                },
-                {
-                    "config": {},
-                    "name": "csi-provisioner",
-                },
-                {
-                    "config": {
-                        "IngressDashboardEnabled": "true",
-                    },
-                    "name": "logtail-ds",
-                },
-                {
-                    "config": {
-                        "IngressSlbNetworkType": "internet",
-                    },
-                    "name": "nginx-ingress-controller",
-                },
-                {
-                    "config": {},
-                    "name": "arms-prometheus",
-                },
-                {
-                    "config": {
-                        "sls_project_name": "",
-                    },
-                    "name": "ack-node-problem-detector",
-                },
-            ]
+        instance_type = config.get("instanceType")
+        if instance_type is None:
+            instance_type = "ecs.c6.xlarge"
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
-        # If there is not specifying vpc_id, the module will launch a new vpc
-        vpc: list[alicloud.vpc.Network] = []
-        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}", cidr_block=vpc_cidr))
-        # According to the vswitch cidr blocks to launch several vswitches
-        vswitches: list[alicloud.vpc.Switch] = []
-        for vswitches_range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
-            vswitches.append(alicloud.vpc.Switch(f"vswitches-{vswitches_range['value']}",
-                vpc_id=std.join_output(separator="",
-                    input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
-                cidr_block=vswitch_cidrs[vswitches_range["value"]],
-                zone_id=enhanced.zones[vswitches_range["value"] if vswitches_range["value"] < len(enhanced.zones) else 0].zone_id))
-        # According to the vswitch cidr blocks to launch several vswitches
-        terway_vswitches: list[alicloud.vpc.Switch] = []
-        for terway_vswitches_range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
-            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{terway_vswitches_range['value']}",
-                vpc_id=std.join_output(separator="",
-                    input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
-                cidr_block=terway_vswitch_cidrs[terway_vswitches_range["value"]],
-                zone_id=enhanced.zones[terway_vswitches_range["value"] if terway_vswitches_range["value"] < len(enhanced.zones) else 0].zone_id))
-        default = alicloud.resourcemanager.get_resource_groups(status="OK")
-        cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=enhanced.zones[__index if __index < len(enhanced.zones) else 0].zone_id,
-            cpu_core_count=4,
-            memory_size=float(8),
-            system_disk_category="cloud_essd") for __index in range(3)]
+        default = alicloud.get_zones(available_resource_creation="Instance",
+            available_disk_category="cloud_essd",
+            available_instance_type=instance_type)
+        # The zone must offer the master instance type and support the enhanced NAT gateway created by `new_nat_gateway`.
+        zone_id = std.sort(input=std.setintersection(input=[
+            [__item.id for __item in default.zones],
+            [__item.zone_id for __item in enhanced.zones],
+        ]).result).result[0]
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_kubernetes_version = alicloud.cs.get_kubernetes_version(cluster_type="Kubernetes")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.1.0/24",
+            zone_id=zone_id)
         default_kubernetes = alicloud.cs.Kubernetes("default",
-            addons=[{
-                "name": output(std.lookup(map=entry["value"],
-                    key="name",
-                    default=cluster_addons).result).apply(lambda x: str(x)),
-                "config": json.dumps(std.lookup(map=entry["value"],
-                    key="config",
-                    default=cluster_addons).result),
-            } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]],
-            master_vswitch_ids=std.split(separator=",",
-                text=std.join(separator=",",
-                    input=vswitch_ids).result).result if len(vswitch_ids) > 0 else [] if len(vswitch_cidrs) < 1 else std.split_output(separator=",",
-                text=std.join_output(separator=",",
-                    input=[__item.id for __item in vswitches]).result).result,
-            pod_vswitch_ids=std.split(separator=",",
-                text=std.join(separator=",",
-                    input=terway_vswitch_ids).result).result if len(terway_vswitch_ids) > 0 else [] if len(terway_vswitch_cidrs) < 1 else std.split_output(separator=",",
-                text=std.join_output(separator=",",
-                    input=[__item.id for __item in terway_vswitches]).result).result,
+            name=name,
+            version=default_get_kubernetes_version.metadatas[2].version,
+            master_vswitch_ids=[
+                default_switch.id,
+                default_switch.id,
+                default_switch.id,
+            ],
             master_instance_types=[
-                cloud_essd[0].instance_types[0].id,
-                cloud_essd[1].instance_types[0].id,
-                cloud_essd[2].instance_types[0].id,
+                instance_type,
+                instance_type,
+                instance_type,
             ],
             master_disk_category="cloud_essd",
+            master_disk_size=80,
             password="Yourpassword1234",
+            pod_cidr="10.72.0.0/16",
             service_cidr="172.18.0.0/16",
+            node_cidr_mask=24,
+            enable_ssh=False,
             install_cloud_monitor=True,
-            resource_group_id=default.groups[0].id,
+            resource_group_id=default_get_resource_groups.groups[0].id,
             deletion_protection=False,
-            timezone="Asia/Shanghai",
             os_type="Linux",
-            platform="AliyunLinux3",
+            platform="AliyunLinux4ContainerOptimized",
+            image_id="aliyun_4_x64_20G_container_optimized_alibase_20260402.vhd",
             cluster_domain="cluster.local",
             proxy_mode="ipvs",
             custom_san="www.terraform.io",
             new_nat_gateway=True,
-            skip_set_certificate_authority=True)
+            slb_internet_enabled=False,
+            skip_set_certificate_authority=False,
+            runtimes=[{
+                "name": "containerd",
+                "version": "1.6.20",
+            }],
+            tags={
+                "Platform": "TF",
+            })
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -2683,7 +2553,11 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
                
-               *Removed params*
+               Removed params:
+               
+               The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+               
+               `master_instance_type`, `worker_instance_type`, `vswitch_id`, `vswitch_ids`, `force_update`, `log_config`, `cluster_network_type`, `worker_data_disk_category`, `worker_data_disk_size`, `worker_numbers`, `nodes`, `exclude_autoscaler_nodes`, `kube_config`, `availability_zone`, `worker_number`, `worker_vswitch_ids`, `worker_instance_types`, `worker_instance_charge_type`, `worker_period`, `worker_period_unit`, `worker_auto_renew`, `worker_auto_renew_period`, `worker_disk_category`, `worker_disk_size`, `worker_data_disks`, `node_port_range`, `cpu_policy`, `user_data`, `taints`, `worker_disk_performance_level`, `worker_disk_snapshot_policy_id`
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesConnectionArgs', 'KubernetesConnectionArgsDict', 'outputs.KubernetesConnection']]]] connections: (List) A list of kubernetes cluster connection information.
         :param pulumi.Input[_builtins.str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
@@ -2704,7 +2578,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] master_disk_size: The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
         :param pulumi.Input[_builtins.str] master_disk_snapshot_policy_id: Master node system disk auto snapshot policy.
                
-               *Computed params*
+               Computed params:
         :param pulumi.Input[_builtins.str] master_instance_charge_type: Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `master_period`, `master_period_unit`, `master_auto_renew` and `master_auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_instance_types: The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesMasterNodeArgs', 'KubernetesMasterNodeArgsDict', 'outputs.KubernetesMasterNode']]]] master_nodes: (Optional) The master nodes. See `master_nodes` below.
@@ -2732,7 +2606,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
                
-               *Network params*
+               Network params:
         :param pulumi.Input[_builtins.str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[_builtins.str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
@@ -2740,7 +2614,7 @@ class Kubernetes(pulumi.CustomResource):
                > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
                If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
                
-               *Master params*
+               Master params:
         :param pulumi.Input[_builtins.str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[_builtins.str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
@@ -2994,7 +2868,11 @@ class Kubernetes(pulumi.CustomResource):
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
-        *Removed params*
+        Removed params:
+
+        The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+
+        `master_instance_type`, `worker_instance_type`, `vswitch_id`, `vswitch_ids`, `force_update`, `log_config`, `cluster_network_type`, `worker_data_disk_category`, `worker_data_disk_size`, `worker_numbers`, `nodes`, `exclude_autoscaler_nodes`, `kube_config`, `availability_zone`, `worker_number`, `worker_vswitch_ids`, `worker_instance_types`, `worker_instance_charge_type`, `worker_period`, `worker_period_unit`, `worker_auto_renew`, `worker_auto_renew_period`, `worker_disk_category`, `worker_disk_size`, `worker_data_disks`, `node_port_range`, `cpu_policy`, `user_data`, `taints`, `worker_disk_performance_level`, `worker_disk_snapshot_policy_id`
         """
         return pulumi.get(self, "cluster_ca_cert")
 
@@ -3149,7 +3027,7 @@ class Kubernetes(pulumi.CustomResource):
         """
         Master node system disk auto snapshot policy.
 
-        *Computed params*
+        Computed params:
         """
         return pulumi.get(self, "master_disk_snapshot_policy_id")
 
@@ -3360,7 +3238,7 @@ class Kubernetes(pulumi.CustomResource):
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
 
-        *Network params*
+        Network params:
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
@@ -3389,7 +3267,7 @@ class Kubernetes(pulumi.CustomResource):
         > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
         If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
 
-        *Master params*
+        Master params:
         """
         return pulumi.get(self, "slb_internet_enabled")
 

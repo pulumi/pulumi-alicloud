@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.Outputs
         /// Name of the region in the local language.
         /// </summary>
         public readonly string LocalName;
+        /// <summary>
+        /// ID of the region.
+        /// </summary>
         public readonly string RegionId;
 
         [OutputConstructor]

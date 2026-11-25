@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionsRegion {
     /**
-     * @return The ID of the region.
+     * @return A list of Disk Replica Group IDs.
      * 
      */
     private String regionId;
@@ -25,7 +25,7 @@ public final class GetRegionsRegion {
 
     private GetRegionsRegion() {}
     /**
-     * @return The ID of the region.
+     * @return A list of Disk Replica Group IDs.
      * 
      */
     public String regionId() {

@@ -234,7 +234,7 @@ type AssumeRoleWithOidc struct {
 	RoleArn string `pulumi:"roleArn"`
 	// The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
 	RoleSessionName *string `pulumi:"roleSessionName"`
-	// The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+	// The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
 	SessionExpiration *int `pulumi:"sessionExpiration"`
 }
 
@@ -261,7 +261,7 @@ type AssumeRoleWithOidcArgs struct {
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
 	RoleSessionName pulumi.StringPtrInput `pulumi:"roleSessionName"`
-	// The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+	// The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
 	SessionExpiration pulumi.IntPtrInput `pulumi:"sessionExpiration"`
 }
 
@@ -320,7 +320,7 @@ func (o AssumeRoleWithOidcOutput) RoleSessionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssumeRoleWithOidc) *string { return v.RoleSessionName }).(pulumi.StringPtrOutput)
 }
 
-// The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+// The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
 func (o AssumeRoleWithOidcOutput) SessionExpiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AssumeRoleWithOidc) *int { return v.SessionExpiration }).(pulumi.IntPtrOutput)
 }

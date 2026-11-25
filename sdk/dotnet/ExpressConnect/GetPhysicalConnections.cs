@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -228,6 +228,9 @@ namespace Pulumi.AliCloud.ExpressConnect
     [OutputType]
     public sealed class GetPhysicalConnectionsResult
     {
+        /// <summary>
+        /// A list of Express Connect Physical Connections. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPhysicalConnectionsConnectionResult> Connections;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -236,8 +239,14 @@ namespace Pulumi.AliCloud.ExpressConnect
         public readonly ImmutableArray<string> Ids;
         public readonly bool? IncludeReservationData;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Physical Connection names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Resources on Behalf of a State of the Resource Attribute Field.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

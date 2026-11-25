@@ -627,6 +627,39 @@ import (
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
+// ### Extended version support
+//
+// Set `supportPolicy = "Extended"` on an ACK Pro cluster to enable extended version support. The same argument can be added to an existing cluster to update its policy without recreating it.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
+//				ClusterType:       "ManagedKubernetes",
+//				Profile:           pulumi.StringRef("Default"),
+//				SupportPolicy:     pulumi.StringRef("Extended"),
+//				KubernetesVersion: pulumi.StringRef(kubernetesVersion),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Query results depend on ACK's current version lifecycle and regional availability. Use the exact version you intend to deploy rather than a fixed index into the metadata list.
+//
 // ## Import
 //
 // Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -658,8 +691,6 @@ type ManagedKubernetes struct {
 	// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-	//
-	// *Removed params*
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
@@ -763,6 +794,8 @@ type ManagedKubernetes struct {
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringOutput `pulumi:"slbIntranet"`
+	// Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+	SupportPolicy pulumi.StringOutput `pulumi:"supportPolicy"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Cluster timezone, works for control plane and Worker nodes.
@@ -776,7 +809,7 @@ type ManagedKubernetes struct {
 	//
 	// > **NOTE:** This parameter only applies during resource update.
 	//
-	// *Network params*
+	// Network params
 	UpgradePolicy ManagedKubernetesUpgradePolicyPtrOutput `pulumi:"upgradePolicy"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrOutput `pulumi:"userCa"`
@@ -853,8 +886,6 @@ type managedKubernetesState struct {
 	// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey *string `pulumi:"clientKey"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-	//
-	// *Removed params*
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
@@ -958,6 +989,8 @@ type managedKubernetesState struct {
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet *string `pulumi:"slbIntranet"`
+	// Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+	SupportPolicy *string `pulumi:"supportPolicy"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags map[string]string `pulumi:"tags"`
 	// Cluster timezone, works for control plane and Worker nodes.
@@ -971,7 +1004,7 @@ type managedKubernetesState struct {
 	//
 	// > **NOTE:** This parameter only applies during resource update.
 	//
-	// *Network params*
+	// Network params
 	UpgradePolicy *ManagedKubernetesUpgradePolicy `pulumi:"upgradePolicy"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
@@ -1019,8 +1052,6 @@ type ManagedKubernetesState struct {
 	// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey pulumi.StringPtrInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-	//
-	// *Removed params*
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrInput
@@ -1124,6 +1155,8 @@ type ManagedKubernetesState struct {
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringPtrInput
+	// Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+	SupportPolicy pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags pulumi.StringMapInput
 	// Cluster timezone, works for control plane and Worker nodes.
@@ -1137,7 +1170,7 @@ type ManagedKubernetesState struct {
 	//
 	// > **NOTE:** This parameter only applies during resource update.
 	//
-	// *Network params*
+	// Network params
 	UpgradePolicy ManagedKubernetesUpgradePolicyPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput
@@ -1191,8 +1224,6 @@ type managedKubernetesArgs struct {
 	// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey *string `pulumi:"clientKey"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-	//
-	// *Removed params*
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
@@ -1284,6 +1315,8 @@ type managedKubernetesArgs struct {
 	SkipSetCertificateAuthority *bool `pulumi:"skipSetCertificateAuthority"`
 	// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
+	// Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+	SupportPolicy *string `pulumi:"supportPolicy"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags map[string]string `pulumi:"tags"`
 	// Cluster timezone, works for control plane and Worker nodes.
@@ -1297,7 +1330,7 @@ type managedKubernetesArgs struct {
 	//
 	// > **NOTE:** This parameter only applies during resource update.
 	//
-	// *Network params*
+	// Network params
 	UpgradePolicy *ManagedKubernetesUpgradePolicy `pulumi:"upgradePolicy"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
@@ -1338,8 +1371,6 @@ type ManagedKubernetesArgs struct {
 	// Deprecated: Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
 	ClientKey pulumi.StringPtrInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-	//
-	// *Removed params*
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrInput
@@ -1431,6 +1462,8 @@ type ManagedKubernetesArgs struct {
 	SkipSetCertificateAuthority pulumi.BoolPtrInput
 	// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
 	SlbInternetEnabled pulumi.BoolPtrInput
+	// Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+	SupportPolicy pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 	Tags pulumi.StringMapInput
 	// Cluster timezone, works for control plane and Worker nodes.
@@ -1444,7 +1477,7 @@ type ManagedKubernetesArgs struct {
 	//
 	// > **NOTE:** This parameter only applies during resource update.
 	//
-	// *Network params*
+	// Network params
 	UpgradePolicy ManagedKubernetesUpgradePolicyPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput
@@ -1597,8 +1630,6 @@ func (o ManagedKubernetesOutput) ClientKey() pulumi.StringPtrOutput {
 }
 
 // From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-//
-// *Removed params*
 //
 // Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 func (o ManagedKubernetesOutput) ClusterCaCert() pulumi.StringPtrOutput {
@@ -1821,6 +1852,11 @@ func (o ManagedKubernetesOutput) SlbIntranet() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.SlbIntranet }).(pulumi.StringOutput)
 }
 
+// Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+func (o ManagedKubernetesOutput) SupportPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.SupportPolicy }).(pulumi.StringOutput)
+}
+
 // Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
 func (o ManagedKubernetesOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
@@ -1840,7 +1876,7 @@ func (o ManagedKubernetesOutput) Timezone() pulumi.StringPtrOutput {
 //
 // > **NOTE:** This parameter only applies during resource update.
 //
-// *Network params*
+// Network params
 func (o ManagedKubernetesOutput) UpgradePolicy() ManagedKubernetesUpgradePolicyPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesUpgradePolicyPtrOutput { return v.UpgradePolicy }).(ManagedKubernetesUpgradePolicyPtrOutput)
 }

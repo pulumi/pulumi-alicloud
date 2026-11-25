@@ -98,11 +98,17 @@ class GetEipAddressesResult:
     @_builtins.property
     @pulumi.getter(name="addressName")
     def address_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the EIP.
+        """
         return pulumi.get(self, "address_name")
 
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> Sequence['outputs.GetEipAddressesAddressResult']:
+        """
+        A list of Eip Addresses. Each element contains the following attributes:
+        """
         return pulumi.get(self, "addresses")
 
     @_builtins.property
@@ -124,6 +130,9 @@ class GetEipAddressesResult:
     @pulumi.getter
     @_utilities.deprecated("""Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.""")
     def eips(self) -> Sequence['outputs.GetEipAddressesEipResult']:
+        """
+        (Deprecated since v1.126.0) A list of EIPs. This field has been deprecated. Please use `addresses` instead. Each element contains the following attributes:
+        """
         return pulumi.get(self, "eips")
 
     @_builtins.property
@@ -152,6 +161,9 @@ class GetEipAddressesResult:
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[_builtins.str]:
+        """
+        The IP address of the EIP.
+        """
         return pulumi.get(self, "ip_address")
 
     @_builtins.property
@@ -163,6 +175,9 @@ class GetEipAddressesResult:
     @_builtins.property
     @pulumi.getter
     def isp(self) -> Optional[_builtins.str]:
+        """
+        The Internet service provider (ISP).
+        """
         return pulumi.get(self, "isp")
 
     @_builtins.property
@@ -178,6 +193,9 @@ class GetEipAddressesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Address names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -188,26 +206,41 @@ class GetEipAddressesResult:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[_builtins.str]:
+        """
+        The billing method of the EIP.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="segmentInstanceId")
     def segment_instance_id(self) -> Optional[_builtins.str]:
+        """
+        The IDs of the contiguous EIPs.
+        """
         return pulumi.get(self, "segment_instance_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the EIP.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -263,7 +296,7 @@ def get_eip_addresses(address_name: Optional[_builtins.str] = None,
     """
     This data source provides the Eip Addresses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.126.0+.
+    > **NOTE:** Available since v1.126.0.
 
     ## Example Usage
 
@@ -285,8 +318,9 @@ def get_eip_addresses(address_name: Optional[_builtins.str] = None,
     :param _builtins.bool dry_run: The dry run.
     :param _builtins.bool enable_details: Default to `true`. Set it to `false` can hide the `tags` to output.
     :param Sequence[_builtins.str] ids: A list of Address IDs.
-    :param _builtins.bool include_reservation_data: The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+    :param _builtins.bool include_reservation_data: The include reservation data.
     :param _builtins.str ip_address: The eip address.
+    :param Sequence[_builtins.str] ip_addresses: Field `ip_addresses` has been deprecated. Please use `ip_address` instead.
     :param _builtins.str isp: The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
     :param _builtins.str lock_reason: The lock reason.
     :param _builtins.str name_regex: A regex string to filter results by Address name.
@@ -296,6 +330,8 @@ def get_eip_addresses(address_name: Optional[_builtins.str] = None,
     :param _builtins.str segment_instance_id: The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
     :param _builtins.str status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
     :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+           
+           The following arguments will be discarded. Please use new fields as soon as possible:
     """
     __args__ = dict()
     __args__['addressName'] = address_name
@@ -364,7 +400,7 @@ def get_eip_addresses_output(address_name: pulumi.Input[Optional[Optional[_built
     """
     This data source provides the Eip Addresses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.126.0+.
+    > **NOTE:** Available since v1.126.0.
 
     ## Example Usage
 
@@ -386,8 +422,9 @@ def get_eip_addresses_output(address_name: pulumi.Input[Optional[Optional[_built
     :param _builtins.bool dry_run: The dry run.
     :param _builtins.bool enable_details: Default to `true`. Set it to `false` can hide the `tags` to output.
     :param Sequence[_builtins.str] ids: A list of Address IDs.
-    :param _builtins.bool include_reservation_data: The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+    :param _builtins.bool include_reservation_data: The include reservation data.
     :param _builtins.str ip_address: The eip address.
+    :param Sequence[_builtins.str] ip_addresses: Field `ip_addresses` has been deprecated. Please use `ip_address` instead.
     :param _builtins.str isp: The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
     :param _builtins.str lock_reason: The lock reason.
     :param _builtins.str name_regex: A regex string to filter results by Address name.
@@ -397,6 +434,8 @@ def get_eip_addresses_output(address_name: pulumi.Input[Optional[Optional[_built
     :param _builtins.str segment_instance_id: The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
     :param _builtins.str status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
     :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+           
+           The following arguments will be discarded. Please use new fields as soon as possible:
     """
     __args__ = dict()
     __args__['addressName'] = address_name

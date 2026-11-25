@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ros Stacks of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.106.0+.
+// > **NOTE:** Available since v1.106.0.
 //
 // ## Example Usage
 //
@@ -82,17 +82,23 @@ type GetStacksArgs struct {
 type GetStacksResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string            `pulumi:"id"`
-	Ids             []string          `pulumi:"ids"`
-	NameRegex       *string           `pulumi:"nameRegex"`
-	Names           []string          `pulumi:"names"`
-	OutputFile      *string           `pulumi:"outputFile"`
-	ParentStackId   *string           `pulumi:"parentStackId"`
-	ShowNestedStack *bool             `pulumi:"showNestedStack"`
-	StackName       *string           `pulumi:"stackName"`
-	Stacks          []GetStacksStack  `pulumi:"stacks"`
-	Status          *string           `pulumi:"status"`
-	Tags            map[string]string `pulumi:"tags"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Stack names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Parent Stack Id.
+	ParentStackId   *string `pulumi:"parentStackId"`
+	ShowNestedStack *bool   `pulumi:"showNestedStack"`
+	// Stack Name.
+	StackName *string `pulumi:"stackName"`
+	// A list of Ros Stacks. Each element contains the following attributes:
+	Stacks []GetStacksStack `pulumi:"stacks"`
+	// The status of Stack.
+	Status *string `pulumi:"status"`
+	// Tags of the Stack.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetStacksOutput(ctx *pulumi.Context, args GetStacksOutputArgs, opts ...pulumi.InvokeOption) GetStacksResultOutput {
@@ -158,6 +164,7 @@ func (o GetStacksResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStacksResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Stack names.
 func (o GetStacksResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetStacksResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -166,6 +173,7 @@ func (o GetStacksResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStacksResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Parent Stack Id.
 func (o GetStacksResultOutput) ParentStackId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStacksResult) *string { return v.ParentStackId }).(pulumi.StringPtrOutput)
 }
@@ -174,18 +182,22 @@ func (o GetStacksResultOutput) ShowNestedStack() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetStacksResult) *bool { return v.ShowNestedStack }).(pulumi.BoolPtrOutput)
 }
 
+// Stack Name.
 func (o GetStacksResultOutput) StackName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStacksResult) *string { return v.StackName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ros Stacks. Each element contains the following attributes:
 func (o GetStacksResultOutput) Stacks() GetStacksStackArrayOutput {
 	return o.ApplyT(func(v GetStacksResult) []GetStacksStack { return v.Stacks }).(GetStacksStackArrayOutput)
 }
 
+// The status of Stack.
 func (o GetStacksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStacksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Tags of the Stack.
 func (o GetStacksResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetStacksResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// 
         /// The following example is the definition of addons block, The type of this field is list:
         /// 
-        /// ```
+        /// ```text
         /// # install nginx ingress, conflict with SLB ingress
         /// addons {
         /// name = "nginx-ingress-controller"

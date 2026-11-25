@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.176.0+.
+ * > **NOTE:** Available since v1.176.0.
  *
  * ## Example Usage
  *
@@ -58,12 +58,15 @@ export interface GetCustomPropertiesResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ecd Custom Properties. Each element contains the following attributes:
+     */
     readonly properties: outputs.eds.GetCustomPropertiesProperty[];
 }
 /**
  * This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.176.0+.
+ * > **NOTE:** Available since v1.176.0.
  *
  * ## Example Usage
  *

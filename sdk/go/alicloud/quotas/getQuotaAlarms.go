@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.116.0+.
+// > **NOTE:** Available since v1.116.0.
 //
 // ## Example Usage
 //
@@ -72,23 +72,29 @@ type GetQuotaAlarmsArgs struct {
 	QuotaActionCode *string `pulumi:"quotaActionCode"`
 	// The name of Quota Alarm.
 	QuotaAlarmName *string `pulumi:"quotaAlarmName"`
-	// The Quota Dimensions.
+	// The Quota Dimensions. See `quotaDimensions` below.
 	QuotaDimensions []GetQuotaAlarmsQuotaDimension `pulumi:"quotaDimensions"`
 }
 
 // A collection of values returned by getQuotaAlarms.
 type GetQuotaAlarmsResult struct {
+	// A list of Quotas Quota Alarms. Each element contains the following attributes:
 	Alarms        []GetQuotaAlarmsAlarm `pulumi:"alarms"`
 	EnableDetails *bool                 `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                         `pulumi:"id"`
-	Ids             []string                       `pulumi:"ids"`
-	NameRegex       *string                        `pulumi:"nameRegex"`
-	Names           []string                       `pulumi:"names"`
-	OutputFile      *string                        `pulumi:"outputFile"`
-	ProductCode     *string                        `pulumi:"productCode"`
-	QuotaActionCode *string                        `pulumi:"quotaActionCode"`
-	QuotaAlarmName  *string                        `pulumi:"quotaAlarmName"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Quota Alarm names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The Product Code.
+	ProductCode *string `pulumi:"productCode"`
+	// The Quota Action Code.
+	QuotaActionCode *string `pulumi:"quotaActionCode"`
+	// The name of Quota Alarm.
+	QuotaAlarmName *string `pulumi:"quotaAlarmName"`
+	// The Quota Dimensions. See `quotaDimensions` below.
 	QuotaDimensions []GetQuotaAlarmsQuotaDimension `pulumi:"quotaDimensions"`
 }
 
@@ -113,7 +119,7 @@ type GetQuotaAlarmsOutputArgs struct {
 	QuotaActionCode pulumi.StringPtrInput `pulumi:"quotaActionCode"`
 	// The name of Quota Alarm.
 	QuotaAlarmName pulumi.StringPtrInput `pulumi:"quotaAlarmName"`
-	// The Quota Dimensions.
+	// The Quota Dimensions. See `quotaDimensions` below.
 	QuotaDimensions GetQuotaAlarmsQuotaDimensionArrayInput `pulumi:"quotaDimensions"`
 }
 
@@ -136,6 +142,7 @@ func (o GetQuotaAlarmsResultOutput) ToGetQuotaAlarmsResultOutputWithContext(ctx 
 	return o
 }
 
+// A list of Quotas Quota Alarms. Each element contains the following attributes:
 func (o GetQuotaAlarmsResultOutput) Alarms() GetQuotaAlarmsAlarmArrayOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsResult) []GetQuotaAlarmsAlarm { return v.Alarms }).(GetQuotaAlarmsAlarmArrayOutput)
 }
@@ -157,6 +164,7 @@ func (o GetQuotaAlarmsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Quota Alarm names.
 func (o GetQuotaAlarmsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -165,18 +173,22 @@ func (o GetQuotaAlarmsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The Product Code.
 func (o GetQuotaAlarmsResultOutput) ProductCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsResult) *string { return v.ProductCode }).(pulumi.StringPtrOutput)
 }
 
+// The Quota Action Code.
 func (o GetQuotaAlarmsResultOutput) QuotaActionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsResult) *string { return v.QuotaActionCode }).(pulumi.StringPtrOutput)
 }
 
+// The name of Quota Alarm.
 func (o GetQuotaAlarmsResultOutput) QuotaAlarmName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsResult) *string { return v.QuotaAlarmName }).(pulumi.StringPtrOutput)
 }
 
+// The Quota Dimensions. See `quotaDimensions` below.
 func (o GetQuotaAlarmsResultOutput) QuotaDimensions() GetQuotaAlarmsQuotaDimensionArrayOutput {
 	return o.ApplyT(func(v GetQuotaAlarmsResult) []GetQuotaAlarmsQuotaDimension { return v.QuotaDimensions }).(GetQuotaAlarmsQuotaDimensionArrayOutput)
 }

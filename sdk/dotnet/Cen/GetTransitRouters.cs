@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouters
     {
         /// <summary>
-        /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+        /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://www.alibabacloud.com/help/doc-detail/261219.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
         /// 
         /// ## Example Usage
         /// 
@@ -42,9 +42,9 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRoutersResult>("alicloud:cen/getTransitRouters:getTransitRouters", args ?? new GetTransitRoutersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+        /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://www.alibabacloud.com/help/doc-detail/261219.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
         /// 
         /// ## Example Usage
         /// 
@@ -72,9 +72,9 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRoutersResult>("alicloud:cen/getTransitRouters:getTransitRouters", args ?? new GetTransitRoutersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+        /// This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://www.alibabacloud.com/help/doc-detail/261219.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
         /// 
         /// ## Example Usage
         /// 

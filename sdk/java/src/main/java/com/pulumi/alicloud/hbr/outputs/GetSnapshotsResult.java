@@ -15,10 +15,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSnapshotsResult {
+    /**
+     * @return (OSS) The name of OSS bucket.
+     * 
+     */
     private @Nullable String bucket;
+    /**
+     * @return The time when the snapshot completed. UNIX time in seconds.
+     * 
+     */
     private @Nullable String completeTime;
     private @Nullable String completeTimeChecker;
+    /**
+     * @return (NAS) File System Creation Time of Nas. Unix Time Seconds.
+     * 
+     */
     private @Nullable String createTime;
+    /**
+     * @return (NAS) The ID of NAS File system.
+     * 
+     */
     private @Nullable String fileSystemId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -26,28 +42,60 @@ public final class GetSnapshotsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return (ECS_FILE) The ID of ECS instance.
+     * 
+     */
     private @Nullable String instanceId;
     private @Nullable Integer limit;
     private @Nullable String outputFile;
     private @Nullable String query;
+    /**
+     * @return A list of Hbr Snapshots. Each element contains the following attributes:
+     * 
+     */
     private List<GetSnapshotsSnapshot> snapshots;
+    /**
+     * @return Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+     * 
+     */
     private String sourceType;
+    /**
+     * @return The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+     * 
+     */
     private @Nullable String status;
     private String vaultId;
 
     private GetSnapshotsResult() {}
+    /**
+     * @return (OSS) The name of OSS bucket.
+     * 
+     */
     public Optional<String> bucket() {
         return Optional.ofNullable(this.bucket);
     }
+    /**
+     * @return The time when the snapshot completed. UNIX time in seconds.
+     * 
+     */
     public Optional<String> completeTime() {
         return Optional.ofNullable(this.completeTime);
     }
     public Optional<String> completeTimeChecker() {
         return Optional.ofNullable(this.completeTimeChecker);
     }
+    /**
+     * @return (NAS) File System Creation Time of Nas. Unix Time Seconds.
+     * 
+     */
     public Optional<String> createTime() {
         return Optional.ofNullable(this.createTime);
     }
+    /**
+     * @return (NAS) The ID of NAS File system.
+     * 
+     */
     public Optional<String> fileSystemId() {
         return Optional.ofNullable(this.fileSystemId);
     }
@@ -61,6 +109,10 @@ public final class GetSnapshotsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return (ECS_FILE) The ID of ECS instance.
+     * 
+     */
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
@@ -73,12 +125,24 @@ public final class GetSnapshotsResult {
     public Optional<String> query() {
         return Optional.ofNullable(this.query);
     }
+    /**
+     * @return A list of Hbr Snapshots. Each element contains the following attributes:
+     * 
+     */
     public List<GetSnapshotsSnapshot> snapshots() {
         return this.snapshots;
     }
+    /**
+     * @return Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+     * 
+     */
     public String sourceType() {
         return this.sourceType;
     }
+    /**
+     * @return The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides CEN Route Entries available to the user.
  *
+ * > **NOTE:** Available since v1.20.0+
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -82,6 +84,8 @@ export interface GetRouteEntriesResult {
 }
 /**
  * This data source provides CEN Route Entries available to the user.
+ *
+ * > **NOTE:** Available since v1.20.0+
  *
  * ## Example Usage
  *

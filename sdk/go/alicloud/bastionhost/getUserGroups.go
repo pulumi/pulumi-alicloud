@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -81,15 +81,19 @@ type GetUserGroupsArgs struct {
 
 // A collection of values returned by getUserGroups.
 type GetUserGroupsResult struct {
+	// A list of Bastionhost User Groups. Each element contains the following attributes:
 	Groups []GetUserGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string   `pulumi:"id"`
-	Ids           []string `pulumi:"ids"`
-	InstanceId    string   `pulumi:"instanceId"`
-	NameRegex     *string  `pulumi:"nameRegex"`
-	Names         []string `pulumi:"names"`
-	OutputFile    *string  `pulumi:"outputFile"`
-	UserGroupName *string  `pulumi:"userGroupName"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// Specify the New Group of the Bastion Host of Instance Id.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of User Group names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Specify the New Group Name. Supports up to 128 Characters.
+	UserGroupName *string `pulumi:"userGroupName"`
 }
 
 func GetUserGroupsOutput(ctx *pulumi.Context, args GetUserGroupsOutputArgs, opts ...pulumi.InvokeOption) GetUserGroupsResultOutput {
@@ -130,6 +134,7 @@ func (o GetUserGroupsResultOutput) ToGetUserGroupsResultOutputWithContext(ctx co
 	return o
 }
 
+// A list of Bastionhost User Groups. Each element contains the following attributes:
 func (o GetUserGroupsResultOutput) Groups() GetUserGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetUserGroupsResult) []GetUserGroupsGroup { return v.Groups }).(GetUserGroupsGroupArrayOutput)
 }
@@ -143,6 +148,7 @@ func (o GetUserGroupsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUserGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// Specify the New Group of the Bastion Host of Instance Id.
 func (o GetUserGroupsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserGroupsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -151,6 +157,7 @@ func (o GetUserGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUserGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of User Group names.
 func (o GetUserGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUserGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -159,6 +166,7 @@ func (o GetUserGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUserGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Specify the New Group Name. Supports up to 128 Characters.
 func (o GetUserGroupsResultOutput) UserGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUserGroupsResult) *string { return v.UserGroupName }).(pulumi.StringPtrOutput)
 }

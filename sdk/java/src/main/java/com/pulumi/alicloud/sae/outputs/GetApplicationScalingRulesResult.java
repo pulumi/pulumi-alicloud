@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationScalingRulesResult {
+    /**
+     * @return The ID of the Application.
+     * 
+     */
     private String appId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,9 +26,17 @@ public final class GetApplicationScalingRulesResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Sae Application Scaling Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetApplicationScalingRulesRule> rules;
 
     private GetApplicationScalingRulesResult() {}
+    /**
+     * @return The ID of the Application.
+     * 
+     */
     public String appId() {
         return this.appId;
     }
@@ -41,6 +53,10 @@ public final class GetApplicationScalingRulesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Sae Application Scaling Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetApplicationScalingRulesRule> rules() {
         return this.rules;
     }

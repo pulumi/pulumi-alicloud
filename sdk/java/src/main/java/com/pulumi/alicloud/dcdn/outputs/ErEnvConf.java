@@ -48,182 +48,182 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ErEnvConf {
     /**
-     * @return The configuration of a presetCanaryAnhui environment. See `staging` below.
+     * @return The configuration of a presetCanaryAnhui environment. See `presetCanaryAnhui` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryAnhui presetCanaryAnhui;
     /**
-     * @return The configuration of a presetCanaryBeijing environment. See `staging` below.
+     * @return The configuration of a presetCanaryBeijing environment. See `presetCanaryBeijing` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryBeijing presetCanaryBeijing;
     /**
-     * @return The configuration of a presetCanaryChongqing environment. See `staging` below.
+     * @return The configuration of a presetCanaryChongqing environment. See `presetCanaryChongqing` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryChongqing presetCanaryChongqing;
     /**
-     * @return The configuration of a presetCanaryFujian environment. See `staging` below.
+     * @return The configuration of a presetCanaryFujian environment. See `presetCanaryFujian` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryFujian presetCanaryFujian;
     /**
-     * @return The configuration of a presetCanaryGansu environment. See `staging` below.
+     * @return The configuration of a presetCanaryGansu environment. See `presetCanaryGansu` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryGansu presetCanaryGansu;
     /**
-     * @return The configuration of a presetCanaryGuangdong environment. See `staging` below.
+     * @return The configuration of a presetCanaryGuangdong environment. See `presetCanaryGuangdong` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryGuangdong presetCanaryGuangdong;
     /**
-     * @return The configuration of a presetCanaryGuangxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryGuangxi environment. See `presetCanaryGuangxi` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryGuangxi presetCanaryGuangxi;
     /**
-     * @return The configuration of a presetCanaryGuizhou environment. See `staging` below.
+     * @return The configuration of a presetCanaryGuizhou environment. See `presetCanaryGuizhou` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryGuizhou presetCanaryGuizhou;
     /**
-     * @return The configuration of a presetCanaryHainan environment. See `staging` below.
+     * @return The configuration of a presetCanaryHainan environment. See `presetCanaryHainan` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryHainan presetCanaryHainan;
     /**
-     * @return The configuration of a presetCanaryHebei environment. See `staging` below.
+     * @return The configuration of a presetCanaryHebei environment. See `presetCanaryHebei` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryHebei presetCanaryHebei;
     /**
-     * @return The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+     * @return The configuration of a presetCanaryHeilongjiang environment. See `presetCanaryHeilongjiang` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryHeilongjiang presetCanaryHeilongjiang;
     /**
-     * @return The configuration of a presetCanaryHenan environment. See `staging` below.
+     * @return The configuration of a presetCanaryHenan environment. See `presetCanaryHenan` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryHenan presetCanaryHenan;
     /**
-     * @return The configuration of a presetCanaryHongKong environment. See `staging` below.
+     * @return The configuration of a presetCanaryHongKong environment. See `presetCanaryHongKong` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryHongKong presetCanaryHongKong;
     /**
-     * @return The configuration of a presetCanaryHubei environment. See `staging` below.
+     * @return The configuration of a presetCanaryHubei environment. See `presetCanaryHubei` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryHubei presetCanaryHubei;
     /**
-     * @return The configuration of a presetCanaryHunan environment. See `staging` below.
+     * @return The configuration of a presetCanaryHunan environment. See `presetCanaryHunan` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryHunan presetCanaryHunan;
     /**
-     * @return The configuration of a presetCanaryJiangsu environment. See `staging` below.
+     * @return The configuration of a presetCanaryJiangsu environment. See `presetCanaryJiangsu` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryJiangsu presetCanaryJiangsu;
     /**
-     * @return The configuration of a presetCanaryJiangxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryJiangxi environment. See `presetCanaryJiangxi` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryJiangxi presetCanaryJiangxi;
     /**
-     * @return The configuration of a presetCanaryJilin environment. See `staging` below.
+     * @return The configuration of a presetCanaryJilin environment. See `presetCanaryJilin` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryJilin presetCanaryJilin;
     /**
-     * @return The configuration of a presetCanaryLiaoning environment. See `staging` below.
+     * @return The configuration of a presetCanaryLiaoning environment. See `presetCanaryLiaoning` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryLiaoning presetCanaryLiaoning;
     /**
-     * @return The configuration of a presetCanaryMacau environment. See `staging` below.
+     * @return The configuration of a presetCanaryMacau environment. See `presetCanaryMacau` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryMacau presetCanaryMacau;
     /**
-     * @return The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+     * @return The configuration of a presetCanaryNeimenggu environment. See `presetCanaryNeimenggu` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryNeimenggu presetCanaryNeimenggu;
     /**
-     * @return The configuration of a presetCanaryNingxia environment. See `staging` below.
+     * @return The configuration of a presetCanaryNingxia environment. See `presetCanaryNingxia` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryNingxia presetCanaryNingxia;
     /**
-     * @return The configuration of a presetCanaryOverseas environment. See `staging` below.
+     * @return The configuration of a presetCanaryOverseas environment. See `presetCanaryOverseas` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryOverseas presetCanaryOverseas;
     /**
-     * @return The configuration of a presetCanaryQinghai environment. See `staging` below.
+     * @return The configuration of a presetCanaryQinghai environment. See `presetCanaryQinghai` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryQinghai presetCanaryQinghai;
     /**
-     * @return The configuration of a presetCanaryShaanxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryShaanxi environment. See `presetCanaryShaanxi` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryShaanxi presetCanaryShaanxi;
     /**
-     * @return The configuration of a presetCanaryShandong environment. See `staging` below.
+     * @return The configuration of a presetCanaryShandong environment. See `presetCanaryShandong` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryShandong presetCanaryShandong;
     /**
-     * @return The configuration of a presetCanaryShanghai environment. See `staging` below.
+     * @return The configuration of a presetCanaryShanghai environment. See `presetCanaryShanghai` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryShanghai presetCanaryShanghai;
     /**
-     * @return The configuration of a presetCanaryShanxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryShanxi environment. See `presetCanaryShanxi` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryShanxi presetCanaryShanxi;
     /**
-     * @return The configuration of a presetCanarySichuan environment. See `staging` below.
+     * @return The configuration of a presetCanarySichuan environment. See `presetCanarySichuan` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanarySichuan presetCanarySichuan;
     /**
-     * @return The configuration of a presetCanaryTaiwan environment. See `staging` below.
+     * @return The configuration of a presetCanaryTaiwan environment. See `presetCanaryTaiwan` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryTaiwan presetCanaryTaiwan;
     /**
-     * @return The configuration of a presetCanaryTianjin environment. See `staging` below.
+     * @return The configuration of a presetCanaryTianjin environment. See `presetCanaryTianjin` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryTianjin presetCanaryTianjin;
     /**
-     * @return The configuration of a presetCanaryXinjiang environment. See `staging` below.
+     * @return The configuration of a presetCanaryXinjiang environment. See `presetCanaryXinjiang` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryXinjiang presetCanaryXinjiang;
     /**
-     * @return The configuration of a presetCanaryXizang environment. See `staging` below.
+     * @return The configuration of a presetCanaryXizang environment. See `presetCanaryXizang` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryXizang presetCanaryXizang;
     /**
-     * @return The configuration of a presetCanaryYunnan environment. See `staging` below.
+     * @return The configuration of a presetCanaryYunnan environment. See `presetCanaryYunnan` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryYunnan presetCanaryYunnan;
     /**
-     * @return The configuration of a presetCanaryZhejiang environment. See `staging` below.
+     * @return The configuration of a presetCanaryZhejiang environment. See `presetCanaryZhejiang` below.
      * 
      */
     private @Nullable ErEnvConfPresetCanaryZhejiang presetCanaryZhejiang;
     /**
-     * @return The configuration of a production environment. See `staging` below.
+     * @return The configuration of a production environment. See `production` below.
      * 
      */
     private @Nullable ErEnvConfProduction production;
@@ -235,252 +235,252 @@ public final class ErEnvConf {
 
     private ErEnvConf() {}
     /**
-     * @return The configuration of a presetCanaryAnhui environment. See `staging` below.
+     * @return The configuration of a presetCanaryAnhui environment. See `presetCanaryAnhui` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryAnhui> presetCanaryAnhui() {
         return Optional.ofNullable(this.presetCanaryAnhui);
     }
     /**
-     * @return The configuration of a presetCanaryBeijing environment. See `staging` below.
+     * @return The configuration of a presetCanaryBeijing environment. See `presetCanaryBeijing` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryBeijing> presetCanaryBeijing() {
         return Optional.ofNullable(this.presetCanaryBeijing);
     }
     /**
-     * @return The configuration of a presetCanaryChongqing environment. See `staging` below.
+     * @return The configuration of a presetCanaryChongqing environment. See `presetCanaryChongqing` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryChongqing> presetCanaryChongqing() {
         return Optional.ofNullable(this.presetCanaryChongqing);
     }
     /**
-     * @return The configuration of a presetCanaryFujian environment. See `staging` below.
+     * @return The configuration of a presetCanaryFujian environment. See `presetCanaryFujian` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryFujian> presetCanaryFujian() {
         return Optional.ofNullable(this.presetCanaryFujian);
     }
     /**
-     * @return The configuration of a presetCanaryGansu environment. See `staging` below.
+     * @return The configuration of a presetCanaryGansu environment. See `presetCanaryGansu` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryGansu> presetCanaryGansu() {
         return Optional.ofNullable(this.presetCanaryGansu);
     }
     /**
-     * @return The configuration of a presetCanaryGuangdong environment. See `staging` below.
+     * @return The configuration of a presetCanaryGuangdong environment. See `presetCanaryGuangdong` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryGuangdong> presetCanaryGuangdong() {
         return Optional.ofNullable(this.presetCanaryGuangdong);
     }
     /**
-     * @return The configuration of a presetCanaryGuangxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryGuangxi environment. See `presetCanaryGuangxi` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryGuangxi> presetCanaryGuangxi() {
         return Optional.ofNullable(this.presetCanaryGuangxi);
     }
     /**
-     * @return The configuration of a presetCanaryGuizhou environment. See `staging` below.
+     * @return The configuration of a presetCanaryGuizhou environment. See `presetCanaryGuizhou` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryGuizhou> presetCanaryGuizhou() {
         return Optional.ofNullable(this.presetCanaryGuizhou);
     }
     /**
-     * @return The configuration of a presetCanaryHainan environment. See `staging` below.
+     * @return The configuration of a presetCanaryHainan environment. See `presetCanaryHainan` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryHainan> presetCanaryHainan() {
         return Optional.ofNullable(this.presetCanaryHainan);
     }
     /**
-     * @return The configuration of a presetCanaryHebei environment. See `staging` below.
+     * @return The configuration of a presetCanaryHebei environment. See `presetCanaryHebei` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryHebei> presetCanaryHebei() {
         return Optional.ofNullable(this.presetCanaryHebei);
     }
     /**
-     * @return The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+     * @return The configuration of a presetCanaryHeilongjiang environment. See `presetCanaryHeilongjiang` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryHeilongjiang> presetCanaryHeilongjiang() {
         return Optional.ofNullable(this.presetCanaryHeilongjiang);
     }
     /**
-     * @return The configuration of a presetCanaryHenan environment. See `staging` below.
+     * @return The configuration of a presetCanaryHenan environment. See `presetCanaryHenan` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryHenan> presetCanaryHenan() {
         return Optional.ofNullable(this.presetCanaryHenan);
     }
     /**
-     * @return The configuration of a presetCanaryHongKong environment. See `staging` below.
+     * @return The configuration of a presetCanaryHongKong environment. See `presetCanaryHongKong` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryHongKong> presetCanaryHongKong() {
         return Optional.ofNullable(this.presetCanaryHongKong);
     }
     /**
-     * @return The configuration of a presetCanaryHubei environment. See `staging` below.
+     * @return The configuration of a presetCanaryHubei environment. See `presetCanaryHubei` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryHubei> presetCanaryHubei() {
         return Optional.ofNullable(this.presetCanaryHubei);
     }
     /**
-     * @return The configuration of a presetCanaryHunan environment. See `staging` below.
+     * @return The configuration of a presetCanaryHunan environment. See `presetCanaryHunan` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryHunan> presetCanaryHunan() {
         return Optional.ofNullable(this.presetCanaryHunan);
     }
     /**
-     * @return The configuration of a presetCanaryJiangsu environment. See `staging` below.
+     * @return The configuration of a presetCanaryJiangsu environment. See `presetCanaryJiangsu` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryJiangsu> presetCanaryJiangsu() {
         return Optional.ofNullable(this.presetCanaryJiangsu);
     }
     /**
-     * @return The configuration of a presetCanaryJiangxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryJiangxi environment. See `presetCanaryJiangxi` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryJiangxi> presetCanaryJiangxi() {
         return Optional.ofNullable(this.presetCanaryJiangxi);
     }
     /**
-     * @return The configuration of a presetCanaryJilin environment. See `staging` below.
+     * @return The configuration of a presetCanaryJilin environment. See `presetCanaryJilin` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryJilin> presetCanaryJilin() {
         return Optional.ofNullable(this.presetCanaryJilin);
     }
     /**
-     * @return The configuration of a presetCanaryLiaoning environment. See `staging` below.
+     * @return The configuration of a presetCanaryLiaoning environment. See `presetCanaryLiaoning` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryLiaoning> presetCanaryLiaoning() {
         return Optional.ofNullable(this.presetCanaryLiaoning);
     }
     /**
-     * @return The configuration of a presetCanaryMacau environment. See `staging` below.
+     * @return The configuration of a presetCanaryMacau environment. See `presetCanaryMacau` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryMacau> presetCanaryMacau() {
         return Optional.ofNullable(this.presetCanaryMacau);
     }
     /**
-     * @return The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+     * @return The configuration of a presetCanaryNeimenggu environment. See `presetCanaryNeimenggu` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryNeimenggu> presetCanaryNeimenggu() {
         return Optional.ofNullable(this.presetCanaryNeimenggu);
     }
     /**
-     * @return The configuration of a presetCanaryNingxia environment. See `staging` below.
+     * @return The configuration of a presetCanaryNingxia environment. See `presetCanaryNingxia` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryNingxia> presetCanaryNingxia() {
         return Optional.ofNullable(this.presetCanaryNingxia);
     }
     /**
-     * @return The configuration of a presetCanaryOverseas environment. See `staging` below.
+     * @return The configuration of a presetCanaryOverseas environment. See `presetCanaryOverseas` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryOverseas> presetCanaryOverseas() {
         return Optional.ofNullable(this.presetCanaryOverseas);
     }
     /**
-     * @return The configuration of a presetCanaryQinghai environment. See `staging` below.
+     * @return The configuration of a presetCanaryQinghai environment. See `presetCanaryQinghai` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryQinghai> presetCanaryQinghai() {
         return Optional.ofNullable(this.presetCanaryQinghai);
     }
     /**
-     * @return The configuration of a presetCanaryShaanxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryShaanxi environment. See `presetCanaryShaanxi` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryShaanxi> presetCanaryShaanxi() {
         return Optional.ofNullable(this.presetCanaryShaanxi);
     }
     /**
-     * @return The configuration of a presetCanaryShandong environment. See `staging` below.
+     * @return The configuration of a presetCanaryShandong environment. See `presetCanaryShandong` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryShandong> presetCanaryShandong() {
         return Optional.ofNullable(this.presetCanaryShandong);
     }
     /**
-     * @return The configuration of a presetCanaryShanghai environment. See `staging` below.
+     * @return The configuration of a presetCanaryShanghai environment. See `presetCanaryShanghai` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryShanghai> presetCanaryShanghai() {
         return Optional.ofNullable(this.presetCanaryShanghai);
     }
     /**
-     * @return The configuration of a presetCanaryShanxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryShanxi environment. See `presetCanaryShanxi` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryShanxi> presetCanaryShanxi() {
         return Optional.ofNullable(this.presetCanaryShanxi);
     }
     /**
-     * @return The configuration of a presetCanarySichuan environment. See `staging` below.
+     * @return The configuration of a presetCanarySichuan environment. See `presetCanarySichuan` below.
      * 
      */
     public Optional<ErEnvConfPresetCanarySichuan> presetCanarySichuan() {
         return Optional.ofNullable(this.presetCanarySichuan);
     }
     /**
-     * @return The configuration of a presetCanaryTaiwan environment. See `staging` below.
+     * @return The configuration of a presetCanaryTaiwan environment. See `presetCanaryTaiwan` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryTaiwan> presetCanaryTaiwan() {
         return Optional.ofNullable(this.presetCanaryTaiwan);
     }
     /**
-     * @return The configuration of a presetCanaryTianjin environment. See `staging` below.
+     * @return The configuration of a presetCanaryTianjin environment. See `presetCanaryTianjin` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryTianjin> presetCanaryTianjin() {
         return Optional.ofNullable(this.presetCanaryTianjin);
     }
     /**
-     * @return The configuration of a presetCanaryXinjiang environment. See `staging` below.
+     * @return The configuration of a presetCanaryXinjiang environment. See `presetCanaryXinjiang` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryXinjiang> presetCanaryXinjiang() {
         return Optional.ofNullable(this.presetCanaryXinjiang);
     }
     /**
-     * @return The configuration of a presetCanaryXizang environment. See `staging` below.
+     * @return The configuration of a presetCanaryXizang environment. See `presetCanaryXizang` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryXizang> presetCanaryXizang() {
         return Optional.ofNullable(this.presetCanaryXizang);
     }
     /**
-     * @return The configuration of a presetCanaryYunnan environment. See `staging` below.
+     * @return The configuration of a presetCanaryYunnan environment. See `presetCanaryYunnan` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryYunnan> presetCanaryYunnan() {
         return Optional.ofNullable(this.presetCanaryYunnan);
     }
     /**
-     * @return The configuration of a presetCanaryZhejiang environment. See `staging` below.
+     * @return The configuration of a presetCanaryZhejiang environment. See `presetCanaryZhejiang` below.
      * 
      */
     public Optional<ErEnvConfPresetCanaryZhejiang> presetCanaryZhejiang() {
         return Optional.ofNullable(this.presetCanaryZhejiang);
     }
     /**
-     * @return The configuration of a production environment. See `staging` below.
+     * @return The configuration of a production environment. See `production` below.
      * 
      */
     public Optional<ErEnvConfProduction> production() {

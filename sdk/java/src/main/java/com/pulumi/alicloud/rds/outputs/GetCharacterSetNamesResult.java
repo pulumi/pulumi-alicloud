@@ -19,6 +19,10 @@ public final class GetCharacterSetNamesResult {
      * 
      */
     private String id;
+    /**
+     * @return The list of supported character sets.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
@@ -33,6 +37,10 @@ public final class GetCharacterSetNamesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The list of supported character sets.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

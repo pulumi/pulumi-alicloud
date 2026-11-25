@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Rds.Inputs
     public sealed class GetCollationTimeZonesCollationTimeZoneArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The code of the instance type.
+        /// The description.
         /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
         /// <summary>
-        /// The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+        /// The offset of the UTC time.
         /// </summary>
         [Input("standardTimeOffset")]
         public string? StandardTimeOffset { get; set; }
 
         /// <summary>
-        /// The time zone that is available for use in ApsaraDB RDS.
+        /// The time zone.
         /// </summary>
         [Input("timeZone")]
         public string? TimeZone { get; set; }

@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Emr
     /// 
     ///     var defaultCluster = new AliCloud.Emr.Cluster("default", new()
     ///     {
-    ///         Name = "terraform-create-cluster-test",
+    ///         Name = "terraform-create-cluster",
     ///         EmrVer = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
     ///         ClusterType = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes[0])),
     ///         HostGroups = new[]
@@ -178,6 +178,7 @@ namespace Pulumi.AliCloud.Emr
     /// ```
     /// 
     /// ### 2. Scale Up
+    /// 
     /// The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
     /// 
     /// In the case of scaling up cluster, we should add the NodeCount of some host group.
@@ -288,7 +289,7 @@ namespace Pulumi.AliCloud.Emr
     /// 
     ///     var defaultCluster = new AliCloud.Emr.Cluster("default", new()
     ///     {
-    ///         Name = "terraform-resize-cluster-test",
+    ///         Name = "terraform-resize-cluster",
     ///         EmrVer = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
     ///         ClusterType = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes[0])),
     ///         HostGroups = new[]
@@ -453,7 +454,7 @@ namespace Pulumi.AliCloud.Emr
     /// 
     ///     var defaultCluster = new AliCloud.Emr.Cluster("default", new()
     ///     {
-    ///         Name = "terraform-resize-cluster-test",
+    ///         Name = "terraform-resize-cluster",
     ///         EmrVer = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
     ///         ClusterType = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.ClusterTypes[0])),
     ///         HostGroups = new[]
@@ -610,7 +611,7 @@ namespace Pulumi.AliCloud.Emr
     /// 
     ///     var gateway = new AliCloud.Emr.Cluster("gateway", new()
     ///     {
-    ///         Name = "terraform-gateway-cluster-test",
+    ///         Name = "terraform-gateway-cluster",
     ///         EmrVer = @default.Apply(@default =&gt; @default.Apply(getMainVersionsResult =&gt; getMainVersionsResult.MainVersions[0]?.EmrVersion)),
     ///         ClusterType = "GATEWAY",
     ///         HostGroups = new[]
@@ -657,7 +658,7 @@ namespace Pulumi.AliCloud.Emr
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Boot action parameters.
+        /// Boot action parameters. See `BootstrapAction` below.
         /// </summary>
         [Output("bootstrapActions")]
         public Output<ImmutableArray<Outputs.ClusterBootstrapAction>> BootstrapActions { get; private set; } = null!;
@@ -675,7 +676,7 @@ namespace Pulumi.AliCloud.Emr
         public Output<string> ClusterType { get; private set; } = null!;
 
         /// <summary>
-        /// The custom configurations of emr-cluster service.
+        /// The custom configurations of emr-cluster service. See `Configs` below.
         /// </summary>
         [Output("configs")]
         public Output<ImmutableArray<Outputs.ClusterConfig>> Configs { get; private set; } = null!;
@@ -705,7 +706,7 @@ namespace Pulumi.AliCloud.Emr
         public Output<bool?> HighAvailabilityEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `HostGroup` below.
         /// </summary>
         [Output("hostGroups")]
         public Output<ImmutableArray<Outputs.ClusterHostGroup>> HostGroups { get; private set; } = null!;
@@ -729,7 +730,7 @@ namespace Pulumi.AliCloud.Emr
         public Output<string?> MasterPwd { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `MetaStoreConf` below.
         /// </summary>
         [Output("metaStoreConf")]
         public Output<Outputs.ClusterMetaStoreConf?> MetaStoreConf { get; private set; } = null!;
@@ -741,7 +742,7 @@ namespace Pulumi.AliCloud.Emr
         public Output<string> MetaStoreType { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of emr-cluster service modification after cluster created.
+        /// The configurations of emr-cluster service modification after cluster created. See `ModifyClusterServiceConfig` below.
         /// </summary>
         [Output("modifyClusterServiceConfig")]
         public Output<Outputs.ClusterModifyClusterServiceConfig?> ModifyClusterServiceConfig { get; private set; } = null!;
@@ -868,7 +869,7 @@ namespace Pulumi.AliCloud.Emr
         private InputList<Inputs.ClusterBootstrapActionArgs>? _bootstrapActions;
 
         /// <summary>
-        /// Boot action parameters.
+        /// Boot action parameters. See `BootstrapAction` below.
         /// </summary>
         public InputList<Inputs.ClusterBootstrapActionArgs> BootstrapActions
         {
@@ -892,7 +893,7 @@ namespace Pulumi.AliCloud.Emr
         private InputList<Inputs.ClusterConfigArgs>? _configs;
 
         /// <summary>
-        /// The custom configurations of emr-cluster service.
+        /// The custom configurations of emr-cluster service. See `Configs` below.
         /// </summary>
         public InputList<Inputs.ClusterConfigArgs> Configs
         {
@@ -928,7 +929,7 @@ namespace Pulumi.AliCloud.Emr
         private InputList<Inputs.ClusterHostGroupArgs>? _hostGroups;
 
         /// <summary>
-        /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `HostGroup` below.
         /// </summary>
         public InputList<Inputs.ClusterHostGroupArgs> HostGroups
         {
@@ -955,7 +956,7 @@ namespace Pulumi.AliCloud.Emr
         public Input<string>? MasterPwd { get; set; }
 
         /// <summary>
-        /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `MetaStoreConf` below.
         /// </summary>
         [Input("metaStoreConf")]
         public Input<Inputs.ClusterMetaStoreConfArgs>? MetaStoreConf { get; set; }
@@ -967,7 +968,7 @@ namespace Pulumi.AliCloud.Emr
         public Input<string>? MetaStoreType { get; set; }
 
         /// <summary>
-        /// The configurations of emr-cluster service modification after cluster created.
+        /// The configurations of emr-cluster service modification after cluster created. See `ModifyClusterServiceConfig` below.
         /// </summary>
         [Input("modifyClusterServiceConfig")]
         public Input<Inputs.ClusterModifyClusterServiceConfigArgs>? ModifyClusterServiceConfig { get; set; }
@@ -1068,7 +1069,7 @@ namespace Pulumi.AliCloud.Emr
         private InputList<Inputs.ClusterBootstrapActionGetArgs>? _bootstrapActions;
 
         /// <summary>
-        /// Boot action parameters.
+        /// Boot action parameters. See `BootstrapAction` below.
         /// </summary>
         public InputList<Inputs.ClusterBootstrapActionGetArgs> BootstrapActions
         {
@@ -1092,7 +1093,7 @@ namespace Pulumi.AliCloud.Emr
         private InputList<Inputs.ClusterConfigGetArgs>? _configs;
 
         /// <summary>
-        /// The custom configurations of emr-cluster service.
+        /// The custom configurations of emr-cluster service. See `Configs` below.
         /// </summary>
         public InputList<Inputs.ClusterConfigGetArgs> Configs
         {
@@ -1128,7 +1129,7 @@ namespace Pulumi.AliCloud.Emr
         private InputList<Inputs.ClusterHostGroupGetArgs>? _hostGroups;
 
         /// <summary>
-        /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example). See `HostGroup` below.
         /// </summary>
         public InputList<Inputs.ClusterHostGroupGetArgs> HostGroups
         {
@@ -1155,7 +1156,7 @@ namespace Pulumi.AliCloud.Emr
         public Input<string>? MasterPwd { get; set; }
 
         /// <summary>
-        /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
+        /// The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified. See `MetaStoreConf` below.
         /// </summary>
         [Input("metaStoreConf")]
         public Input<Inputs.ClusterMetaStoreConfGetArgs>? MetaStoreConf { get; set; }
@@ -1167,7 +1168,7 @@ namespace Pulumi.AliCloud.Emr
         public Input<string>? MetaStoreType { get; set; }
 
         /// <summary>
-        /// The configurations of emr-cluster service modification after cluster created.
+        /// The configurations of emr-cluster service modification after cluster created. See `ModifyClusterServiceConfig` below.
         /// </summary>
         [Input("modifyClusterServiceConfig")]
         public Input<Inputs.ClusterModifyClusterServiceConfigGetArgs>? ModifyClusterServiceConfig { get; set; }

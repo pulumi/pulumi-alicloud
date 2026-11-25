@@ -31,6 +31,7 @@ class EcsDiskArgs:
                  enable_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  multi_attach: pulumi.Input[Optional[_builtins.str]] = None,
@@ -52,7 +53,7 @@ class EcsDiskArgs:
         :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
-        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
         :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -61,9 +62,10 @@ class EcsDiskArgs:
         :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] force_delete: Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `payment_type = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `force_delete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `delete_with_instance = true` from the state. `force_delete` does not support multi-attach disks (`multi_attach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+               * For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.str] multi_attach: Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
@@ -83,6 +85,7 @@ class EcsDiskArgs:
                - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
                - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
                - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `cloud_regional_disk_auto`. Valid values: `10` to `65536`.
                - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
                - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
                - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
@@ -95,7 +98,7 @@ class EcsDiskArgs:
         :param pulumi.Input[_builtins.int] storage_set_partition_number: The number of partitions in the storage set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         """
         if advanced_features is not None:
             pulumi.set(__self__, "advanced_features", advanced_features)
@@ -127,6 +130,8 @@ class EcsDiskArgs:
             pulumi.set(__self__, "encrypt_algorithm", encrypt_algorithm)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if kms_key_id is not None:
@@ -202,7 +207,7 @@ class EcsDiskArgs:
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
+        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         """
         return pulumi.get(self, "category")
 
@@ -308,12 +313,24 @@ class EcsDiskArgs:
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `payment_type = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `force_delete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `delete_with_instance = true` from the state. `force_delete` does not support multi-attach disks (`multi_attach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force_delete", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance to which the created subscription disk is automatically attached.
         * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-        * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        * For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         """
         return pulumi.get(self, "instance_id")
 
@@ -422,6 +439,7 @@ class EcsDiskArgs:
         - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
         - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
         - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        - If `category` is set to `cloud_regional_disk_auto`. Valid values: `10` to `65536`.
         - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
         - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
         - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
@@ -500,7 +518,7 @@ class EcsDiskArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        ID of the free zone to which the disk belongs. For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -525,6 +543,7 @@ class _EcsDiskState:
                  enable_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  multi_attach: pulumi.Input[Optional[_builtins.str]] = None,
@@ -548,7 +567,7 @@ class _EcsDiskState:
         :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
-        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.237.0) The time when the disk was created.
         :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
@@ -558,9 +577,10 @@ class _EcsDiskState:
         :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] force_delete: Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `payment_type = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `force_delete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `delete_with_instance = true` from the state. `force_delete` does not support multi-attach disks (`multi_attach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+               * For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.str] multi_attach: Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
@@ -581,6 +601,7 @@ class _EcsDiskState:
                - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
                - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
                - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `cloud_regional_disk_auto`. Valid values: `10` to `65536`.
                - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
                - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
                - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
@@ -594,7 +615,7 @@ class _EcsDiskState:
         :param pulumi.Input[_builtins.int] storage_set_partition_number: The number of partitions in the storage set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         """
         if advanced_features is not None:
             pulumi.set(__self__, "advanced_features", advanced_features)
@@ -628,6 +649,8 @@ class _EcsDiskState:
             pulumi.set(__self__, "encrypt_algorithm", encrypt_algorithm)
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if kms_key_id is not None:
@@ -707,7 +730,7 @@ class _EcsDiskState:
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
+        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         """
         return pulumi.get(self, "category")
 
@@ -825,12 +848,24 @@ class _EcsDiskState:
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `payment_type = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `force_delete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `delete_with_instance = true` from the state. `force_delete` does not support multi-attach disks (`multi_attach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force_delete", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance to which the created subscription disk is automatically attached.
         * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-        * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        * For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         """
         return pulumi.get(self, "instance_id")
 
@@ -951,6 +986,7 @@ class _EcsDiskState:
         - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
         - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
         - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        - If `category` is set to `cloud_regional_disk_auto`. Valid values: `10` to `65536`.
         - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
         - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
         - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
@@ -1041,7 +1077,7 @@ class _EcsDiskState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        ID of the free zone to which the disk belongs. For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1068,6 +1104,7 @@ class EcsDisk(pulumi.CustomResource):
                  enable_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  multi_attach: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1117,12 +1154,47 @@ class EcsDisk(pulumi.CustomResource):
             })
         ```
 
+        ### Regional ESSD data disk
+
+        Regional ESSD (`cloud_regional_disk_auto`) is region-scoped. Omit `zone_id` and `performance_level` when creating it:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        regional = alicloud.ecs.EcsDisk("regional",
+            category="cloud_regional_disk_auto",
+            size=20,
+            disk_name="regional-essd-example")
+        ```
+
+        ### Destroying a disk with `force_delete`
+
+        The following example creates a pay-as-you-go disk with `force_delete = true`; destroying the resource releases the disk:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        force_delete = alicloud.get_zones(available_resource_creation="VSwitch",
+            available_disk_category="cloud_essd")
+        force_delete_ecs_disk = alicloud.ecs.EcsDisk("force_delete",
+            zone_id=force_delete.zones[0].id,
+            disk_name="terraform-example",
+            category="cloud_essd",
+            size=40,
+            force_delete=True)
+        ```
+
         ### Deleting `ecs.EcsDisk` or removing it from your configuration
 
-        The `ecs.EcsDisk` resource allows you to manage `payment_type = "Subscription"` and `delete_with_instance = true` disk,
-        but Terraform cannot destroy it. Deleting the subscription resource or removing it from your configuration will
-        remove it from your state file and management, but will not destroy it.
-        If you want to delete it, you can change it to `PayAsYouGo` and setting `delete_with_instance = true` and detach it from instance.
+        By default, destroying an `ecs.EcsDisk` resource or removing it from your configuration only removes the disk from your state file and management, without releasing it, when the disk is PrePaid (`payment_type = "Subscription"`) **and** ECS reports `DeleteWithInstance = true` for it, which is the case for a disk released together with its Subscription instance. This is the only state-only path. Every other case, including a PrePaid disk whose `delete_with_instance` is `false`, calls `DeleteDisk` during destroy; if ECS rejects the release, the destroy fails with the returned error and the disk is kept, rather than being silently removed from the state.
+
+        Set `force_delete = true` to release such a disk: during destroy, the provider converts the disk to pay-as-you-go, detaches it with `DeleteWithInstance=false` and releases it once it is available. **`force_delete` deletes the disk and all data on it, and the release cannot be undone.** `force_delete` takes priority over the legacy state-only behavior; when it is `false` or not set, the behavior above is unchanged.
+
+        Multi-attach disks (`multi_attach = "Enabled"`) are not supported by `force_delete`: the destroy fails with an actionable error and the disk is kept. The PrePaid to pay-as-you-go conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes; the refund of the remaining subscription fee is handled by ECS according to your account settings.
+
+        If you want to delete a disk without `force_delete`, convert it to `PayAsYouGo` and detach it from its instance before deleting it.
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
@@ -1140,7 +1212,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
-        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
         :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -1149,9 +1221,10 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] force_delete: Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `payment_type = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `force_delete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `delete_with_instance = true` from the state. `force_delete` does not support multi-attach disks (`multi_attach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+               * For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.str] multi_attach: Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
@@ -1171,6 +1244,7 @@ class EcsDisk(pulumi.CustomResource):
                - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
                - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
                - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `cloud_regional_disk_auto`. Valid values: `10` to `65536`.
                - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
                - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
                - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
@@ -1183,7 +1257,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] storage_set_partition_number: The number of partitions in the storage set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         """
         ...
     @overload
@@ -1224,12 +1298,47 @@ class EcsDisk(pulumi.CustomResource):
             })
         ```
 
+        ### Regional ESSD data disk
+
+        Regional ESSD (`cloud_regional_disk_auto`) is region-scoped. Omit `zone_id` and `performance_level` when creating it:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        regional = alicloud.ecs.EcsDisk("regional",
+            category="cloud_regional_disk_auto",
+            size=20,
+            disk_name="regional-essd-example")
+        ```
+
+        ### Destroying a disk with `force_delete`
+
+        The following example creates a pay-as-you-go disk with `force_delete = true`; destroying the resource releases the disk:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        force_delete = alicloud.get_zones(available_resource_creation="VSwitch",
+            available_disk_category="cloud_essd")
+        force_delete_ecs_disk = alicloud.ecs.EcsDisk("force_delete",
+            zone_id=force_delete.zones[0].id,
+            disk_name="terraform-example",
+            category="cloud_essd",
+            size=40,
+            force_delete=True)
+        ```
+
         ### Deleting `ecs.EcsDisk` or removing it from your configuration
 
-        The `ecs.EcsDisk` resource allows you to manage `payment_type = "Subscription"` and `delete_with_instance = true` disk,
-        but Terraform cannot destroy it. Deleting the subscription resource or removing it from your configuration will
-        remove it from your state file and management, but will not destroy it.
-        If you want to delete it, you can change it to `PayAsYouGo` and setting `delete_with_instance = true` and detach it from instance.
+        By default, destroying an `ecs.EcsDisk` resource or removing it from your configuration only removes the disk from your state file and management, without releasing it, when the disk is PrePaid (`payment_type = "Subscription"`) **and** ECS reports `DeleteWithInstance = true` for it, which is the case for a disk released together with its Subscription instance. This is the only state-only path. Every other case, including a PrePaid disk whose `delete_with_instance` is `false`, calls `DeleteDisk` during destroy; if ECS rejects the release, the destroy fails with the returned error and the disk is kept, rather than being silently removed from the state.
+
+        Set `force_delete = true` to release such a disk: during destroy, the provider converts the disk to pay-as-you-go, detaches it with `DeleteWithInstance=false` and releases it once it is available. **`force_delete` deletes the disk and all data on it, and the release cannot be undone.** `force_delete` takes priority over the legacy state-only behavior; when it is `false` or not set, the behavior above is unchanged.
+
+        Multi-attach disks (`multi_attach = "Enabled"`) are not supported by `force_delete`: the destroy fails with an actionable error and the disk is kept. The PrePaid to pay-as-you-go conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes; the refund of the remaining subscription fee is handled by ECS according to your account settings.
+
+        If you want to delete a disk without `force_delete`, convert it to `PayAsYouGo` and detach it from its instance before deleting it.
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
@@ -1269,6 +1378,7 @@ class EcsDisk(pulumi.CustomResource):
                  enable_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
                  encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  multi_attach: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1305,6 +1415,7 @@ class EcsDisk(pulumi.CustomResource):
             __props__.__dict__["enable_auto_snapshot"] = enable_auto_snapshot
             __props__.__dict__["encrypt_algorithm"] = encrypt_algorithm
             __props__.__dict__["encrypted"] = encrypted
+            __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["multi_attach"] = multi_attach
@@ -1346,6 +1457,7 @@ class EcsDisk(pulumi.CustomResource):
             enable_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
             encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
             encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
             multi_attach: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1373,7 +1485,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] advanced_features: The advanced features configured for the disk.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         :param pulumi.Input[_builtins.bool] bursting_enabled: Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`; specifying it for other categories is rejected by the API. When `category` is changed to `cloud_auto` in the same apply (for example from `cloud_essd`), the provider defers the `BurstingEnabled` update until the disk category has been confirmed as `cloud_auto` by `ModifyDiskSpec` and `WaitForState`, because the API rejects `BurstingEnabled` on a non-`cloud_auto` disk.
-        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
+        :param pulumi.Input[_builtins.str] category: The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.237.0) The time when the disk was created.
         :param pulumi.Input[_builtins.bool] delete_auto_snapshot: Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk along with its associated instance. Default value: `false`.
@@ -1383,9 +1495,10 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         :param pulumi.Input[_builtins.str] encrypt_algorithm: The encryption algorithm used to encrypt the disk. **NOTE:** `encrypt_algorithm` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+        :param pulumi.Input[_builtins.bool] force_delete: Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `payment_type = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `force_delete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `delete_with_instance = true` from the state. `force_delete` does not support multi-attach disks (`multi_attach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-               * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+               * For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         :param pulumi.Input[_builtins.str] multi_attach: Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
@@ -1406,6 +1519,7 @@ class EcsDisk(pulumi.CustomResource):
                - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
                - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
                - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `cloud_regional_disk_auto`. Valid values: `10` to `65536`.
                - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
                - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
                - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
@@ -1419,7 +1533,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] storage_set_partition_number: The number of partitions in the storage set.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] type: The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
-        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        :param pulumi.Input[_builtins.str] zone_id: ID of the free zone to which the disk belongs. For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1438,6 +1552,7 @@ class EcsDisk(pulumi.CustomResource):
         __props__.__dict__["enable_auto_snapshot"] = enable_auto_snapshot
         __props__.__dict__["encrypt_algorithm"] = encrypt_algorithm
         __props__.__dict__["encrypted"] = encrypted
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["multi_attach"] = multi_attach
@@ -1473,6 +1588,7 @@ class EcsDisk(pulumi.CustomResource):
             enable_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
             encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
             encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
             multi_attach: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1504,6 +1620,7 @@ class EcsDisk(pulumi.CustomResource):
         __props__["enableAutoSnapshot"] = enable_auto_snapshot
         __props__["encryptAlgorithm"] = encrypt_algorithm
         __props__["encrypted"] = encrypted
+        __props__["forceDelete"] = force_delete
         __props__["instanceId"] = instance_id
         __props__["kmsKeyId"] = kms_key_id
         __props__["multiAttach"] = multi_attach
@@ -1552,7 +1669,7 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter
     def category(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories.
+        The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. **NOTE:** When `category` is `cloud_auto`, the `bursting_enabled` and `provisioned_iops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `cloud_essd` to `cloud_auto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         """
         return pulumi.get(self, "category")
 
@@ -1630,12 +1747,20 @@ class EcsDisk(pulumi.CustomResource):
         return pulumi.get(self, "encrypted")
 
     @_builtins.property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `payment_type = "Subscription"` disk. Defaults to `false`. When set to `true`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `force_delete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `delete_with_instance = true` from the state. `force_delete` does not support multi-attach disks (`multi_attach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the instance to which the created subscription disk is automatically attached.
         * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
-        * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        * For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         """
         return pulumi.get(self, "instance_id")
 
@@ -1720,6 +1845,7 @@ class EcsDisk(pulumi.CustomResource):
         - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
         - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
         - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        - If `category` is set to `cloud_regional_disk_auto`. Valid values: `10` to `65536`.
         - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
         - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
         - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
@@ -1782,7 +1908,7 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
+        ID of the free zone to which the disk belongs. For `cloud_regional_disk_auto`, `zone_id` is not required. For other disk categories, specify exactly one of `zone_id` or `instance_id`.
         """
         return pulumi.get(self, "zone_id")
 

@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetHealthCheckTemplatesResult {
     private @Nullable List<String> healthCheckTemplateIds;
+    /**
+     * @return The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * 
+     */
     private @Nullable String healthCheckTemplateName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,14 +27,26 @@ public final class GetHealthCheckTemplatesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Health Check Template names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Alb Health Check Templates. Each element contains the following attributes:
+     * 
+     */
     private List<GetHealthCheckTemplatesTemplate> templates;
 
     private GetHealthCheckTemplatesResult() {}
     public List<String> healthCheckTemplateIds() {
         return this.healthCheckTemplateIds == null ? List.of() : this.healthCheckTemplateIds;
     }
+    /**
+     * @return The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+     * 
+     */
     public Optional<String> healthCheckTemplateName() {
         return Optional.ofNullable(this.healthCheckTemplateName);
     }
@@ -47,12 +63,20 @@ public final class GetHealthCheckTemplatesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Health Check Template names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Alb Health Check Templates. Each element contains the following attributes:
+     * 
+     */
     public List<GetHealthCheckTemplatesTemplate> templates() {
         return this.templates;
     }

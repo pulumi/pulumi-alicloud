@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -158,7 +158,13 @@ namespace Pulumi.AliCloud.Pvtz
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the Zone.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A list of Private Zone Resolver zones. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetResolverZonesZoneResult> Zones;
 
         [OutputConstructor]

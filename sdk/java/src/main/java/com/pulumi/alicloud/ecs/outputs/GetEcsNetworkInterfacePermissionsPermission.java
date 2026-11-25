@@ -41,7 +41,7 @@ public final class GetEcsNetworkInterfacePermissionsPermission {
      */
     private String serviceName;
     /**
-     * @return The Status of the Network Interface Permissions.
+     * @return The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
      * 
      */
     private String status;
@@ -90,7 +90,7 @@ public final class GetEcsNetworkInterfacePermissionsPermission {
         return this.serviceName;
     }
     /**
-     * @return The Status of the Network Interface Permissions.
+     * @return The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
      * 
      */
     public String status() {

@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBgpPeersResult {
+    /**
+     * @return The ID of the BGP group.
+     * 
+     */
     private @Nullable String bgpGroupId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,27 @@ public final class GetBgpPeersResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Vpc Bgp Peers. Each element contains the following attributes:
+     * 
+     */
     private List<GetBgpPeersPeer> peers;
+    /**
+     * @return The ID of the router.
+     * 
+     */
     private @Nullable String routerId;
+    /**
+     * @return The status of the BGP peer.
+     * 
+     */
     private @Nullable String status;
 
     private GetBgpPeersResult() {}
+    /**
+     * @return The ID of the BGP group.
+     * 
+     */
     public Optional<String> bgpGroupId() {
         return Optional.ofNullable(this.bgpGroupId);
     }
@@ -43,12 +63,24 @@ public final class GetBgpPeersResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Vpc Bgp Peers. Each element contains the following attributes:
+     * 
+     */
     public List<GetBgpPeersPeer> peers() {
         return this.peers;
     }
+    /**
+     * @return The ID of the router.
+     * 
+     */
     public Optional<String> routerId() {
         return Optional.ofNullable(this.routerId);
     }
+    /**
+     * @return The status of the BGP peer.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

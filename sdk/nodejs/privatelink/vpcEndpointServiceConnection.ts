@@ -66,6 +66,7 @@ import * as utilities from "../utilities";
  *     endpointId: exampleVpcEndpoint.id,
  *     serviceId: exampleVpcEndpoint.serviceId,
  *     bandwidth: 1024,
+ *     trafficControlMode: "BandwidthLimit",
  * });
  * ```
  *
@@ -133,6 +134,10 @@ export class VpcEndpointServiceConnection extends pulumi.CustomResource {
      */
     declare public readonly endpointId: pulumi.Output<string>;
     /**
+     * The owner ID of the endpoint.
+     */
+    declare public /*out*/ readonly endpointOwnerId: pulumi.Output<number>;
+    /**
      * The endpoint service ID.
      */
     declare public readonly serviceId: pulumi.Output<string>;
@@ -140,6 +145,10 @@ export class VpcEndpointServiceConnection extends pulumi.CustomResource {
      * The state of the endpoint connection.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+     */
+    declare public readonly trafficControlMode: pulumi.Output<string>;
 
     /**
      * Create a VpcEndpointServiceConnection resource with the given unique name, arguments, and options.
@@ -157,8 +166,10 @@ export class VpcEndpointServiceConnection extends pulumi.CustomResource {
             resourceInputs["bandwidth"] = state?.bandwidth;
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["endpointId"] = state?.endpointId;
+            resourceInputs["endpointOwnerId"] = state?.endpointOwnerId;
             resourceInputs["serviceId"] = state?.serviceId;
             resourceInputs["status"] = state?.status;
+            resourceInputs["trafficControlMode"] = state?.trafficControlMode;
         } else {
             const args = argsOrState as VpcEndpointServiceConnectionArgs | undefined;
             if (args?.endpointId === undefined && !opts.urn) {
@@ -171,6 +182,8 @@ export class VpcEndpointServiceConnection extends pulumi.CustomResource {
             resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["endpointId"] = args?.endpointId;
             resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["trafficControlMode"] = args?.trafficControlMode;
+            resourceInputs["endpointOwnerId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -197,6 +210,10 @@ export interface VpcEndpointServiceConnectionState {
      */
     endpointId?: pulumi.Input<string | undefined>;
     /**
+     * The owner ID of the endpoint.
+     */
+    endpointOwnerId?: pulumi.Input<number | undefined>;
+    /**
      * The endpoint service ID.
      */
     serviceId?: pulumi.Input<string | undefined>;
@@ -204,6 +221,10 @@ export interface VpcEndpointServiceConnectionState {
      * The state of the endpoint connection.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+     */
+    trafficControlMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,4 +249,8 @@ export interface VpcEndpointServiceConnectionArgs {
      * The endpoint service ID.
      */
     serviceId: pulumi.Input<string>;
+    /**
+     * The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+     */
+    trafficControlMode?: pulumi.Input<string | undefined>;
 }

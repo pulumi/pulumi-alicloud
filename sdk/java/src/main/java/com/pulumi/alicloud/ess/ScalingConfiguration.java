@@ -1000,32 +1000,40 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;http://&#34;, or &#34;https://&#34; It can be a null string.
      * 
+     * &gt; **NOTE:** When `tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `tags` does not recreate them, while one that sets `tags` converges back to the declared set.
+     * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> tags;
+    private Output<Map<String,String>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;http://&#34;, or &#34;https://&#34; It can be a null string.
      * 
+     * &gt; **NOTE:** When `tags` is not set in the configuration, the provider keeps the tags returned by the API, so tags written out of band (for example by the ACK cluster autoscaler) do not produce a diff. Setting `tags = {}` sends an empty tag set to the API, but the Auto Scaling service keeps the existing instance tags, so the diff remains. Tags removed out of band (a non-empty tag document replaces the whole set) are refreshed into the state: a configuration that does not set `tags` does not recreate them, while one that sets `tags` converges back to the declared set.
+     * 
      */
-    public Output<Optional<Map<String,String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<Map<String,String>> tags() {
+        return this.tags;
     }
     /**
      * User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
      * 
+     * &gt; **NOTE:** When `userData` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `userData` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
+     * 
      */
     @Export(name="userData", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> userData;
+    private Output<String> userData;
 
     /**
      * @return User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
      * 
+     * &gt; **NOTE:** When `userData` is not set in the configuration, the provider keeps the value returned by the API, so user data written out of band (for example by the ACK cluster autoscaler) does not produce a diff. An empty `userData` is treated as unset, so the provider does not send a clear request; sending an empty `UserData` value directly to the API does not clear the stored value either.
+     * 
      */
-    public Output<Optional<String>> userData() {
-        return Codegen.optional(this.userData);
+    public Output<String> userData() {
+        return this.userData;
     }
 
     /**

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -75,22 +75,34 @@ export interface GetUserGroupsArgs {
  * A collection of values returned by getUserGroups.
  */
 export interface GetUserGroupsResult {
+    /**
+     * A list of Bastionhost User Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.bastionhost.GetUserGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * Specify the New Group of the Bastion Host of Instance Id.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
+    /**
+     * A list of User Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Specify the New Group Name. Supports up to 128 Characters.
+     */
     readonly userGroupName?: string;
 }
 /**
  * This data source provides the Bastionhost User Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

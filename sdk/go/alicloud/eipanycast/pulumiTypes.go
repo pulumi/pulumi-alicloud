@@ -133,11 +133,11 @@ type GetAnycastEipAddressesAddress struct {
 	InternetChargeType string `pulumi:"internetChargeType"`
 	// Anycast EIP instance IP address.
 	IpAddress string `pulumi:"ipAddress"`
-	// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+	// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
-	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+	// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
 	ServiceLocation string `pulumi:"serviceLocation"`
-	// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+	// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
 	Status string `pulumi:"status"`
 }
 
@@ -175,11 +175,11 @@ type GetAnycastEipAddressesAddressArgs struct {
 	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
 	// Anycast EIP instance IP address.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+	// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+	// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
 	ServiceLocation pulumi.StringInput `pulumi:"serviceLocation"`
-	// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+	// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -291,17 +291,17 @@ func (o GetAnycastEipAddressesAddressOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesAddress) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
 func (o GetAnycastEipAddressesAddressOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesAddress) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
 func (o GetAnycastEipAddressesAddressOutput) ServiceLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesAddress) string { return v.ServiceLocation }).(pulumi.StringOutput)
 }
 
-// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
 func (o GetAnycastEipAddressesAddressOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAnycastEipAddressesAddress) string { return v.Status }).(pulumi.StringOutput)
 }

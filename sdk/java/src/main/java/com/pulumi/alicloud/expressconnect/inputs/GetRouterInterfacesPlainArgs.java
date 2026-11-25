@@ -17,9 +17,17 @@ public final class GetRouterInterfacesPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetRouterInterfacesPlainArgs Empty = new GetRouterInterfacesPlainArgs();
 
+    /**
+     * Custom filter block as described below. See `filter` below.
+     * 
+     */
     @Import(name="filters")
     private @Nullable List<GetRouterInterfacesFilter> filters;
 
+    /**
+     * @return Custom filter block as described below. See `filter` below.
+     * 
+     */
     public Optional<List<GetRouterInterfacesFilter>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -128,11 +136,23 @@ public final class GetRouterInterfacesPlainArgs extends com.pulumi.resources.Inv
             $ = new GetRouterInterfacesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters Custom filter block as described below. See `filter` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable List<GetRouterInterfacesFilter> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters Custom filter block as described below. See `filter` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(GetRouterInterfacesFilter... filters) {
             return filters(List.of(filters));
         }

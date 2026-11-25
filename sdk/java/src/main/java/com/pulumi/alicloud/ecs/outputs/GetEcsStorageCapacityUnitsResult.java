@@ -21,9 +21,21 @@ public final class GetEcsStorageCapacityUnitsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Storage Capacity Unit names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of Storage Capacity Unit.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A list of Ecs Storage Capacity Units. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsStorageCapacityUnitsUnit> units;
 
     private GetEcsStorageCapacityUnitsResult() {}
@@ -40,15 +52,27 @@ public final class GetEcsStorageCapacityUnitsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Storage Capacity Unit names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of Storage Capacity Unit.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A list of Ecs Storage Capacity Units. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsStorageCapacityUnitsUnit> units() {
         return this.units;
     }

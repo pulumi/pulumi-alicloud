@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Log Stores of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.126.0+.
+// > **NOTE:** Available since v1.126.0.
 //
 // ## Example Usage
 //
@@ -64,19 +64,22 @@ type GetStoresArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	Project    string  `pulumi:"project"`
+	// The name of the log project.
+	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getStores.
 type GetStoresResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string           `pulumi:"id"`
-	Ids        []string         `pulumi:"ids"`
-	NameRegex  *string          `pulumi:"nameRegex"`
-	Names      []string         `pulumi:"names"`
-	OutputFile *string          `pulumi:"outputFile"`
-	Project    string           `pulumi:"project"`
-	Stores     []GetStoresStore `pulumi:"stores"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of store names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	Project    string   `pulumi:"project"`
+	// A list of Log Stores. Each element contains the following attributes:
+	Stores []GetStoresStore `pulumi:"stores"`
 }
 
 func GetStoresOutput(ctx *pulumi.Context, args GetStoresOutputArgs, opts ...pulumi.InvokeOption) GetStoresResultOutput {
@@ -92,7 +95,8 @@ type GetStoresOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	Project    pulumi.StringInput    `pulumi:"project"`
+	// The name of the log project.
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (GetStoresOutputArgs) ElementType() reflect.Type {
@@ -127,6 +131,7 @@ func (o GetStoresResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStoresResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of store names.
 func (o GetStoresResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetStoresResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -139,6 +144,7 @@ func (o GetStoresResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoresResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// A list of Log Stores. Each element contains the following attributes:
 func (o GetStoresResultOutput) Stores() GetStoresStoreArrayOutput {
 	return o.ApplyT(func(v GetStoresResult) []GetStoresStore { return v.Stores }).(GetStoresStoreArrayOutput)
 }

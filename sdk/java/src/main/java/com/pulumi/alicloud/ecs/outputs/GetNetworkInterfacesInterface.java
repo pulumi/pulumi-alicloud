@@ -15,6 +15,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNetworkInterfacesInterface {
+    /**
+     * @return The associated public IP.
+     * 
+     */
     private List<GetNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps;
     /**
      * @return Creation time of the ENI.
@@ -32,10 +36,14 @@ public final class GetNetworkInterfacesInterface {
      */
     private String id;
     /**
-     * @return ID of the instance that the ENI is attached to.
+     * @return The ECS instance ID that the ENI is attached to.
      * 
      */
     private String instanceId;
+    /**
+     * @return A list of IPv6 addresses.
+     * 
+     */
     private List<String> ipv6Sets;
     /**
      * @return MAC address of the ENI.
@@ -43,58 +51,102 @@ public final class GetNetworkInterfacesInterface {
      */
     private String mac;
     /**
-     * @return Name of the ENI.
+     * @return The name of the ENIs. Deprecated; use `networkInterfaceName` instead.
      * 
      */
     private String name;
+    /**
+     * @return The ID of the ENI.
+     * 
+     */
     private String networkInterfaceId;
+    /**
+     * @return The name of the ENI.
+     * 
+     */
     private String networkInterfaceName;
+    /**
+     * @return The traffic mode.
+     * 
+     */
     private String networkInterfaceTrafficMode;
+    /**
+     * @return The owner ID.
+     * 
+     */
     private String ownerId;
+    /**
+     * @return The primary private IP address of the ENI.
+     * 
+     */
     private String primaryIpAddress;
     /**
-     * @return Primary private IP of the ENI.
+     * @return The primary private IP address of the ENI. Deprecated; use `primaryIpAddress` instead.
      * 
      */
     private String privateIp;
+    /**
+     * @return A list of private IP addresses.
+     * 
+     */
     private List<String> privateIpAddresses;
     /**
      * @return A list of secondary private IP address that is assigned to the ENI.
      * 
      */
     private List<String> privateIps;
+    /**
+     * @return The queue number.
+     * 
+     */
     private Integer queueNumber;
     /**
-     * @return The Id of resource group.
+     * @return The Id of resource group which the network interface belongs.
      * 
      */
     private String resourceGroupId;
+    /**
+     * @return A list of security group IDs.
+     * 
+     */
     private List<String> securityGroupIds;
     /**
      * @return A list of security group that the ENI belongs to.
      * 
      */
     private List<String> securityGroups;
+    /**
+     * @return The service ID.
+     * 
+     */
     private Integer serviceId;
+    /**
+     * @return Whether the ENI is service managed.
+     * 
+     */
     private Boolean serviceManaged;
     /**
-     * @return Current status of the ENI.
+     * @return The status of the ENI.
      * 
      */
     private String status;
     /**
-     * @return A map of tags assigned to the ENI.
+     * @return A map of tags assigned to ENIs.
      * 
      */
     private Map<String,String> tags;
+    /**
+     * @return The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
+     * 
+     */
     private String type;
     /**
-     * @return ID of the VPC that the ENI belongs to.
+     * @return The VPC ID linked to ENIs.
      * 
      */
     private String vpcId;
     /**
-     * @return ID of the vSwitch that the ENI is linked to.
+     * @return The vSwitch ID linked to ENIs.
      * 
      */
     private String vswitchId;
@@ -105,6 +157,10 @@ public final class GetNetworkInterfacesInterface {
     private String zoneId;
 
     private GetNetworkInterfacesInterface() {}
+    /**
+     * @return The associated public IP.
+     * 
+     */
     public List<GetNetworkInterfacesInterfaceAssociatedPublicIp> associatedPublicIps() {
         return this.associatedPublicIps;
     }
@@ -130,12 +186,16 @@ public final class GetNetworkInterfacesInterface {
         return this.id;
     }
     /**
-     * @return ID of the instance that the ENI is attached to.
+     * @return The ECS instance ID that the ENI is attached to.
      * 
      */
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return A list of IPv6 addresses.
+     * 
+     */
     public List<String> ipv6Sets() {
         return this.ipv6Sets;
     }
@@ -147,34 +207,58 @@ public final class GetNetworkInterfacesInterface {
         return this.mac;
     }
     /**
-     * @return Name of the ENI.
+     * @return The name of the ENIs. Deprecated; use `networkInterfaceName` instead.
      * 
      */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The ID of the ENI.
+     * 
+     */
     public String networkInterfaceId() {
         return this.networkInterfaceId;
     }
+    /**
+     * @return The name of the ENI.
+     * 
+     */
     public String networkInterfaceName() {
         return this.networkInterfaceName;
     }
+    /**
+     * @return The traffic mode.
+     * 
+     */
     public String networkInterfaceTrafficMode() {
         return this.networkInterfaceTrafficMode;
     }
+    /**
+     * @return The owner ID.
+     * 
+     */
     public String ownerId() {
         return this.ownerId;
     }
+    /**
+     * @return The primary private IP address of the ENI.
+     * 
+     */
     public String primaryIpAddress() {
         return this.primaryIpAddress;
     }
     /**
-     * @return Primary private IP of the ENI.
+     * @return The primary private IP address of the ENI. Deprecated; use `primaryIpAddress` instead.
      * 
      */
     public String privateIp() {
         return this.privateIp;
     }
+    /**
+     * @return A list of private IP addresses.
+     * 
+     */
     public List<String> privateIpAddresses() {
         return this.privateIpAddresses;
     }
@@ -185,16 +269,24 @@ public final class GetNetworkInterfacesInterface {
     public List<String> privateIps() {
         return this.privateIps;
     }
+    /**
+     * @return The queue number.
+     * 
+     */
     public Integer queueNumber() {
         return this.queueNumber;
     }
     /**
-     * @return The Id of resource group.
+     * @return The Id of resource group which the network interface belongs.
      * 
      */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
+    /**
+     * @return A list of security group IDs.
+     * 
+     */
     public List<String> securityGroupIds() {
         return this.securityGroupIds;
     }
@@ -205,38 +297,50 @@ public final class GetNetworkInterfacesInterface {
     public List<String> securityGroups() {
         return this.securityGroups;
     }
+    /**
+     * @return The service ID.
+     * 
+     */
     public Integer serviceId() {
         return this.serviceId;
     }
+    /**
+     * @return Whether the ENI is service managed.
+     * 
+     */
     public Boolean serviceManaged() {
         return this.serviceManaged;
     }
     /**
-     * @return Current status of the ENI.
+     * @return The status of the ENI.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return A map of tags assigned to the ENI.
+     * @return A map of tags assigned to ENIs.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
+    /**
+     * @return The type of ENIs, Only support for &#34;Primary&#34; or &#34;Secondary&#34;.
+     * 
+     */
     public String type() {
         return this.type;
     }
     /**
-     * @return ID of the VPC that the ENI belongs to.
+     * @return The VPC ID linked to ENIs.
      * 
      */
     public String vpcId() {
         return this.vpcId;
     }
     /**
-     * @return ID of the vSwitch that the ENI is linked to.
+     * @return The vSwitch ID linked to ENIs.
      * 
      */
     public String vswitchId() {

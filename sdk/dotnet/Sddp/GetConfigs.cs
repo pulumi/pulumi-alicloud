@@ -153,6 +153,9 @@ namespace Pulumi.AliCloud.Sddp
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The Request and Receive the Language of the Message Type. Valid values: `Zh`, `En`.
+        /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
 
@@ -182,6 +185,9 @@ namespace Pulumi.AliCloud.Sddp
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The Request and Receive the Language of the Message Type. Valid values: `Zh`, `En`.
+        /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 

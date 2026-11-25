@@ -48,9 +48,17 @@ public final class AlertScheduleArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dayOfWeek);
     }
 
+    /**
+     * Delay time for schedule.
+     * 
+     */
     @Import(name="delay")
     private @Nullable Output<Integer> delay;
 
+    /**
+     * @return Delay time for schedule.
+     * 
+     */
     public Optional<Output<Integer>> delay() {
         return Optional.ofNullable(this.delay);
     }
@@ -85,9 +93,17 @@ public final class AlertScheduleArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.interval);
     }
 
+    /**
+     * Whether to run the alert immediately.
+     * 
+     */
     @Import(name="runImmediately")
     private @Nullable Output<Boolean> runImmediately;
 
+    /**
+     * @return Whether to run the alert immediately.
+     * 
+     */
     public Optional<Output<Boolean>> runImmediately() {
         return Optional.ofNullable(this.runImmediately);
     }
@@ -195,11 +211,23 @@ public final class AlertScheduleArgs extends com.pulumi.resources.ResourceArgs {
             return dayOfWeek(Output.of(dayOfWeek));
         }
 
+        /**
+         * @param delay Delay time for schedule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder delay(@Nullable Output<Integer> delay) {
             $.delay = delay;
             return this;
         }
 
+        /**
+         * @param delay Delay time for schedule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder delay(Integer delay) {
             return delay(Output.of(delay));
         }
@@ -246,11 +274,23 @@ public final class AlertScheduleArgs extends com.pulumi.resources.ResourceArgs {
             return interval(Output.of(interval));
         }
 
+        /**
+         * @param runImmediately Whether to run the alert immediately.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runImmediately(@Nullable Output<Boolean> runImmediately) {
             $.runImmediately = runImmediately;
             return this;
         }
 
+        /**
+         * @param runImmediately Whether to run the alert immediately.
+         * 
+         * @return builder
+         * 
+         */
         public Builder runImmediately(Boolean runImmediately) {
             return runImmediately(Output.of(runImmediately));
         }

@@ -31,9 +31,17 @@ public final class GetAccessGroupsPlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The number of Access Groups to return.
+     * 
+     */
     @Import(name="limit")
     private @Nullable Integer limit;
 
+    /**
+     * @return The number of Access Groups to return.
+     * 
+     */
     public Optional<Integer> limit() {
         return Optional.ofNullable(this.limit);
     }
@@ -53,16 +61,32 @@ public final class GetAccessGroupsPlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+     * 
+     */
     @Import(name="orderBy")
     private @Nullable String orderBy;
 
+    /**
+     * @return The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+     * 
+     */
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
 
+    /**
+     * The sort order. Valid values: `ASC`, `DESC`.
+     * 
+     */
     @Import(name="orderType")
     private @Nullable String orderType;
 
+    /**
+     * @return The sort order. Valid values: `ASC`, `DESC`.
+     * 
+     */
     public Optional<String> orderType() {
         return Optional.ofNullable(this.orderType);
     }
@@ -82,9 +106,17 @@ public final class GetAccessGroupsPlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The start offset of the Access Groups list.
+     * 
+     */
     @Import(name="startOffset")
     private @Nullable Integer startOffset;
 
+    /**
+     * @return The start offset of the Access Groups list.
+     * 
+     */
     public Optional<Integer> startOffset() {
         return Optional.ofNullable(this.startOffset);
     }
@@ -140,6 +172,12 @@ public final class GetAccessGroupsPlainArgs extends com.pulumi.resources.InvokeA
             return ids(List.of(ids));
         }
 
+        /**
+         * @param limit The number of Access Groups to return.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limit(@Nullable Integer limit) {
             $.limit = limit;
             return this;
@@ -156,11 +194,23 @@ public final class GetAccessGroupsPlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param orderBy The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderBy(@Nullable String orderBy) {
             $.orderBy = orderBy;
             return this;
         }
 
+        /**
+         * @param orderType The sort order. Valid values: `ASC`, `DESC`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orderType(@Nullable String orderType) {
             $.orderType = orderType;
             return this;
@@ -177,6 +227,12 @@ public final class GetAccessGroupsPlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param startOffset The start offset of the Access Groups list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startOffset(@Nullable Integer startOffset) {
             $.startOffset = startOffset;
             return this;

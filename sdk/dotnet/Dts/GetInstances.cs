@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
         /// 
-        /// &gt; **NOTE:** Available in 1.198.0+
+        /// &gt; **NOTE:** Available since v1.198.0.
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
         /// 
-        /// &gt; **NOTE:** Available in 1.198.0+
+        /// &gt; **NOTE:** Available since v1.198.0.
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
         /// 
-        /// &gt; **NOTE:** Available in 1.198.0+
+        /// &gt; **NOTE:** Available since v1.198.0.
         /// 
         /// ## Example Usage
         /// 

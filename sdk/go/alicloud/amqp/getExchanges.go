@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.128.0+.
+// > **NOTE:** Available since v1.128.0.
 //
 // ## Example Usage
 //
@@ -83,15 +83,19 @@ type GetExchangesArgs struct {
 
 // A collection of values returned by getExchanges.
 type GetExchangesResult struct {
+	// A list of Amqp Exchanges. Each element contains the following attributes:
 	Exchanges []GetExchangesExchange `pulumi:"exchanges"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	Ids             []string `pulumi:"ids"`
-	InstanceId      string   `pulumi:"instanceId"`
-	NameRegex       *string  `pulumi:"nameRegex"`
-	Names           []string `pulumi:"names"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	VirtualHostName string   `pulumi:"virtualHostName"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID of the instance.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Exchange names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The name of virtual host where an exchange resides.
+	VirtualHostName string `pulumi:"virtualHostName"`
 }
 
 func GetExchangesOutput(ctx *pulumi.Context, args GetExchangesOutputArgs, opts ...pulumi.InvokeOption) GetExchangesResultOutput {
@@ -132,6 +136,7 @@ func (o GetExchangesResultOutput) ToGetExchangesResultOutputWithContext(ctx cont
 	return o
 }
 
+// A list of Amqp Exchanges. Each element contains the following attributes:
 func (o GetExchangesResultOutput) Exchanges() GetExchangesExchangeArrayOutput {
 	return o.ApplyT(func(v GetExchangesResult) []GetExchangesExchange { return v.Exchanges }).(GetExchangesExchangeArrayOutput)
 }
@@ -145,6 +150,7 @@ func (o GetExchangesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetExchangesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the instance.
 func (o GetExchangesResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExchangesResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -153,6 +159,7 @@ func (o GetExchangesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExchangesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Exchange names.
 func (o GetExchangesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetExchangesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -161,6 +168,7 @@ func (o GetExchangesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExchangesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The name of virtual host where an exchange resides.
 func (o GetExchangesResultOutput) VirtualHostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExchangesResult) string { return v.VirtualHostName }).(pulumi.StringOutput)
 }

@@ -118,6 +118,8 @@ import (
 type FileSystem struct {
 	pulumi.CustomResourceState
 
+	// The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+	AutoUpgradeConfig FileSystemAutoUpgradeConfigOutput `pulumi:"autoUpgradeConfig"`
 	// File system capacity.
 	//
 	// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -136,6 +138,8 @@ type FileSystem struct {
 	// - 2~128 English or Chinese characters in length.
 	// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
 	// - Can contain numbers, colons (:), underscores (_), or dashes (-).
+	//
+	// > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the file system is encrypted.
 	//
@@ -186,6 +190,8 @@ type FileSystem struct {
 	// RegionId
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group.
+	//
+	// > **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// SMB ACL See `smbAcl` below.
 	SmbAcl FileSystemSmbAclOutput `pulumi:"smbAcl"`
@@ -267,6 +273,8 @@ func GetFileSystem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FileSystem resources.
 type fileSystemState struct {
+	// The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+	AutoUpgradeConfig *FileSystemAutoUpgradeConfig `pulumi:"autoUpgradeConfig"`
 	// File system capacity.
 	//
 	// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -285,6 +293,8 @@ type fileSystemState struct {
 	// - 2~128 English or Chinese characters in length.
 	// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
 	// - Can contain numbers, colons (:), underscores (_), or dashes (-).
+	//
+	// > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 	Description *string `pulumi:"description"`
 	// Whether the file system is encrypted.
 	//
@@ -335,6 +345,8 @@ type fileSystemState struct {
 	// RegionId
 	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group.
+	//
+	// > **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// SMB ACL See `smbAcl` below.
 	SmbAcl *FileSystemSmbAcl `pulumi:"smbAcl"`
@@ -381,6 +393,8 @@ type fileSystemState struct {
 }
 
 type FileSystemState struct {
+	// The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+	AutoUpgradeConfig FileSystemAutoUpgradeConfigPtrInput
 	// File system capacity.
 	//
 	// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -399,6 +413,8 @@ type FileSystemState struct {
 	// - 2~128 English or Chinese characters in length.
 	// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
 	// - Can contain numbers, colons (:), underscores (_), or dashes (-).
+	//
+	// > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 	Description pulumi.StringPtrInput
 	// Whether the file system is encrypted.
 	//
@@ -449,6 +465,8 @@ type FileSystemState struct {
 	// RegionId
 	RegionId pulumi.StringPtrInput
 	// The ID of the resource group.
+	//
+	// > **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 	ResourceGroupId pulumi.StringPtrInput
 	// SMB ACL See `smbAcl` below.
 	SmbAcl FileSystemSmbAclPtrInput
@@ -505,6 +523,8 @@ func FileSystemExists(ctx *pulumi.Context,
 }
 
 type fileSystemArgs struct {
+	// The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+	AutoUpgradeConfig *FileSystemAutoUpgradeConfig `pulumi:"autoUpgradeConfig"`
 	// File system capacity.
 	//
 	// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -521,6 +541,8 @@ type fileSystemArgs struct {
 	// - 2~128 English or Chinese characters in length.
 	// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
 	// - Can contain numbers, colons (:), underscores (_), or dashes (-).
+	//
+	// > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 	Description *string `pulumi:"description"`
 	// Whether the file system is encrypted.
 	//
@@ -569,6 +591,8 @@ type fileSystemArgs struct {
 	// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
 	RedundancyVswitchIds []string `pulumi:"redundancyVswitchIds"`
 	// The ID of the resource group.
+	//
+	// > **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// SMB ACL See `smbAcl` below.
 	SmbAcl *FileSystemSmbAcl `pulumi:"smbAcl"`
@@ -614,6 +638,8 @@ type fileSystemArgs struct {
 
 // The set of arguments for constructing a FileSystem resource.
 type FileSystemArgs struct {
+	// The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+	AutoUpgradeConfig FileSystemAutoUpgradeConfigPtrInput
 	// File system capacity.
 	//
 	// Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -630,6 +656,8 @@ type FileSystemArgs struct {
 	// - 2~128 English or Chinese characters in length.
 	// - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
 	// - Can contain numbers, colons (:), underscores (_), or dashes (-).
+	//
+	// > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 	Description pulumi.StringPtrInput
 	// Whether the file system is encrypted.
 	//
@@ -678,6 +706,8 @@ type FileSystemArgs struct {
 	// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
 	RedundancyVswitchIds pulumi.StringArrayInput
 	// The ID of the resource group.
+	//
+	// > **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 	ResourceGroupId pulumi.StringPtrInput
 	// SMB ACL See `smbAcl` below.
 	SmbAcl FileSystemSmbAclPtrInput
@@ -808,6 +838,11 @@ func (o FileSystemOutput) ToFileSystemOutputWithContext(ctx context.Context) Fil
 	return o
 }
 
+// The automatic capacity expansion configuration. Only cpfsse file systems support this feature. See `autoUpgradeConfig` below.
+func (o FileSystemOutput) AutoUpgradeConfig() FileSystemAutoUpgradeConfigOutput {
+	return o.ApplyT(func(v *FileSystem) FileSystemAutoUpgradeConfigOutput { return v.AutoUpgradeConfig }).(FileSystemAutoUpgradeConfigOutput)
+}
+
 // File system capacity.
 //
 // Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
@@ -832,6 +867,8 @@ func (o FileSystemOutput) CreateTime() pulumi.StringOutput {
 // - 2~128 English or Chinese characters in length.
 // - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
 // - Can contain numbers, colons (:), underscores (_), or dashes (-).
+//
+// > **NOTE:** For `standard` file system types, the NAS server writes `description` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 func (o FileSystemOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -921,6 +958,8 @@ func (o FileSystemOutput) RegionId() pulumi.StringOutput {
 }
 
 // The ID of the resource group.
+//
+// > **NOTE:** For `standard` file system types, the NAS server writes `resourceGroupId` asynchronously after the file system is created. The Provider waits for this field to be persisted before the first read so that the value is correctly populated in state.
 func (o FileSystemOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }

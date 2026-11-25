@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// &gt; **NOTE:** Available since v1.283.0.
     /// 
+    /// &gt; **NOTE:** This resource refuses to adopt a service linked role that already exists, for example one created by the Security Center console or by another tool. Creation fails with the import command to run instead of taking the existing role into state, so that a later `terraform destroy` never deletes a role that Terraform did not create. When importing a role other than `AliyunServiceRoleForSas`, keep `ServiceLinkedRole` in the configuration with that same name; because the argument has a default, omitting it plans a replacement of the imported role.
+    /// 
+    /// &gt; **NOTE:** Upgrading from v1.283.0-v2.1.0: if `ServiceLinkedRole` was omitted from the configuration, the state entry stores an id that is not a role name. The first apply after upgrading replaces the resource and fails with an import hint. Run the printed `pulumi import` command; if it reports that the resource is already managed by Terraform, run `terraform state rm &lt;ADDRESS&gt;` and then import again.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -58,10 +62,18 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<bool> RoleStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service linked role.
+        /// The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+        /// - `AliyunServiceRoleForSas`
+        /// - `AliyunServiceRoleForSasCspm`
+        /// - `AliyunServiceRoleForSasAgentless`
+        /// - `AliyunServiceRoleForOssMfd`
+        /// - `AliyunServiceRoleForAntiRansomwareMssp`
+        /// - `AliyunServiceRoleForSasSecllm`
+        /// - `AliyunServiceRoleForSasAI`
+        /// - `AliyunLogETLRole`
         /// </summary>
         [Output("serviceLinkedRole")]
-        public Output<string> RoleName { get; private set; } = null!;
+        public Output<string?> RoleName { get; private set; } = null!;
 
 
         /// <summary>
@@ -110,7 +122,15 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class ServiceLinkedRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the service linked role.
+        /// The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+        /// - `AliyunServiceRoleForSas`
+        /// - `AliyunServiceRoleForSasCspm`
+        /// - `AliyunServiceRoleForSasAgentless`
+        /// - `AliyunServiceRoleForOssMfd`
+        /// - `AliyunServiceRoleForAntiRansomwareMssp`
+        /// - `AliyunServiceRoleForSasSecllm`
+        /// - `AliyunServiceRoleForSasAI`
+        /// - `AliyunLogETLRole`
         /// </summary>
         [Input("serviceLinkedRole")]
         public Input<string>? RoleName { get; set; }
@@ -130,7 +150,15 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<bool>? RoleStatus { get; set; }
 
         /// <summary>
-        /// The name of the service linked role.
+        /// The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+        /// - `AliyunServiceRoleForSas`
+        /// - `AliyunServiceRoleForSasCspm`
+        /// - `AliyunServiceRoleForSasAgentless`
+        /// - `AliyunServiceRoleForOssMfd`
+        /// - `AliyunServiceRoleForAntiRansomwareMssp`
+        /// - `AliyunServiceRoleForSasSecllm`
+        /// - `AliyunServiceRoleForSasAI`
+        /// - `AliyunLogETLRole`
         /// </summary>
         [Input("serviceLinkedRole")]
         public Input<string>? RoleName { get; set; }

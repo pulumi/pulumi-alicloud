@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUserGroupsResult {
+    /**
+     * @return A list of Bastionhost User Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetUserGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,13 +25,29 @@ public final class GetUserGroupsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return Specify the New Group of the Bastion Host of Instance Id.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of User Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Specify the New Group Name. Supports up to 128 Characters.
+     * 
+     */
     private @Nullable String userGroupName;
 
     private GetUserGroupsResult() {}
+    /**
+     * @return A list of Bastionhost User Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetUserGroupsGroup> groups() {
         return this.groups;
     }
@@ -41,18 +61,30 @@ public final class GetUserGroupsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return Specify the New Group of the Bastion Host of Instance Id.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of User Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Specify the New Group Name. Supports up to 128 Characters.
+     * 
+     */
     public Optional<String> userGroupName() {
         return Optional.ofNullable(this.userGroupName);
     }

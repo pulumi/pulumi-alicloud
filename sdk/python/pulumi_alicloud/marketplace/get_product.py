@@ -86,7 +86,7 @@ def get_product(available_region: Optional[_builtins.str] = None,
     """
     This data source provides the Market product item details of Alibaba Cloud.
 
-    > **NOTE:** Available in 1.69.0+
+    > **NOTE:** Available since v1.69.0+
 
     ## Example Usage
 
@@ -121,7 +121,7 @@ def get_product_output(available_region: pulumi.Input[Optional[Optional[_builtin
     """
     This data source provides the Market product item details of Alibaba Cloud.
 
-    > **NOTE:** Available in 1.69.0+
+    > **NOTE:** Available since v1.69.0+
 
     ## Example Usage
 

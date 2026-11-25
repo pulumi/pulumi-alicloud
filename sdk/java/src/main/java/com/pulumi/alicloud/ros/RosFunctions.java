@@ -36,7 +36,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Change Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.105.0+.
+     * &gt; **NOTE:** Available since v1.105.0.
      * 
      * ## Example Usage
      * 
@@ -83,7 +83,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Change Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.105.0+.
+     * &gt; **NOTE:** Available since v1.105.0.
      * 
      * ## Example Usage
      * 
@@ -130,7 +130,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Change Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.105.0+.
+     * &gt; **NOTE:** Available since v1.105.0.
      * 
      * ## Example Usage
      * 
@@ -177,7 +177,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Change Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.105.0+.
+     * &gt; **NOTE:** Available since v1.105.0.
      * 
      * ## Example Usage
      * 
@@ -224,7 +224,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Change Sets of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.105.0+.
+     * &gt; **NOTE:** Available since v1.105.0.
      * 
      * ## Example Usage
      * 
@@ -271,7 +271,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -315,7 +315,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -359,7 +359,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -403,7 +403,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -447,7 +447,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -491,7 +491,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -535,7 +535,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Regions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -579,7 +579,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.107.0+.
+     * &gt; **NOTE:** Available since v1.107.0.
      * 
      * ## Example Usage
      * 
@@ -625,7 +625,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.107.0+.
+     * &gt; **NOTE:** Available since v1.107.0.
      * 
      * ## Example Usage
      * 
@@ -671,7 +671,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.107.0+.
+     * &gt; **NOTE:** Available since v1.107.0.
      * 
      * ## Example Usage
      * 
@@ -717,7 +717,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.107.0+.
+     * &gt; **NOTE:** Available since v1.107.0.
      * 
      * ## Example Usage
      * 
@@ -763,7 +763,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.107.0+.
+     * &gt; **NOTE:** Available since v1.107.0.
      * 
      * ## Example Usage
      * 
@@ -809,7 +809,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.107.0+.
+     * &gt; **NOTE:** Available since v1.107.0.
      * 
      * ## Example Usage
      * 
@@ -855,7 +855,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.107.0+.
+     * &gt; **NOTE:** Available since v1.107.0.
      * 
      * ## Example Usage
      * 
@@ -901,7 +901,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -971,7 +971,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1041,7 +1041,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1111,7 +1111,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1181,7 +1181,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -1251,7 +1251,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stacks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      * ## Example Usage
      * 
@@ -1297,7 +1297,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stacks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      * ## Example Usage
      * 
@@ -1343,7 +1343,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stacks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      * ## Example Usage
      * 
@@ -1389,7 +1389,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stacks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      * ## Example Usage
      * 
@@ -1435,7 +1435,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stacks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      * ## Example Usage
      * 
@@ -1481,7 +1481,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stacks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      * ## Example Usage
      * 
@@ -1527,7 +1527,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Stacks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      * ## Example Usage
      * 
@@ -1573,7 +1573,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.151.0+.
+     * &gt; **NOTE:** Available since v1.151.0.
      * 
      * ## Example Usage
      * 
@@ -1628,7 +1628,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.151.0+.
+     * &gt; **NOTE:** Available since v1.151.0.
      * 
      * ## Example Usage
      * 
@@ -1683,7 +1683,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.151.0+.
+     * &gt; **NOTE:** Available since v1.151.0.
      * 
      * ## Example Usage
      * 
@@ -1738,7 +1738,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.151.0+.
+     * &gt; **NOTE:** Available since v1.151.0.
      * 
      * ## Example Usage
      * 
@@ -1793,7 +1793,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.151.0+.
+     * &gt; **NOTE:** Available since v1.151.0.
      * 
      * ## Example Usage
      * 
@@ -1848,7 +1848,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.151.0+.
+     * &gt; **NOTE:** Available since v1.151.0.
      * 
      * ## Example Usage
      * 
@@ -1903,7 +1903,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.151.0+.
+     * &gt; **NOTE:** Available since v1.151.0.
      * 
      * ## Example Usage
      * 
@@ -1958,7 +1958,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.108.0+.
+     * &gt; **NOTE:** Available since v1.108.0.
      * 
      * ## Example Usage
      * 
@@ -2004,7 +2004,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.108.0+.
+     * &gt; **NOTE:** Available since v1.108.0.
      * 
      * ## Example Usage
      * 
@@ -2050,7 +2050,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.108.0+.
+     * &gt; **NOTE:** Available since v1.108.0.
      * 
      * ## Example Usage
      * 
@@ -2096,7 +2096,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.108.0+.
+     * &gt; **NOTE:** Available since v1.108.0.
      * 
      * ## Example Usage
      * 
@@ -2142,7 +2142,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.108.0+.
+     * &gt; **NOTE:** Available since v1.108.0.
      * 
      * ## Example Usage
      * 
@@ -2188,7 +2188,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.108.0+.
+     * &gt; **NOTE:** Available since v1.108.0.
      * 
      * ## Example Usage
      * 
@@ -2234,7 +2234,7 @@ public final class RosFunctions {
     /**
      * This data source provides the Ros Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.108.0+.
+     * &gt; **NOTE:** Available since v1.108.0.
      * 
      * ## Example Usage
      * 

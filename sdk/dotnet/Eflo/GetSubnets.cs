@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eflo
     public static class GetSubnets
     {
         /// <summary>
-        /// This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+        /// This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.204.0+
+        /// &gt; **NOTE:** Available since v1.204.0
         /// 
         /// ## Example Usage
         /// 
@@ -45,9 +45,9 @@ namespace Pulumi.AliCloud.Eflo
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetsResult>("alicloud:eflo/getSubnets:getSubnets", args ?? new GetSubnetsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+        /// This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.204.0+
+        /// &gt; **NOTE:** Available since v1.204.0
         /// 
         /// ## Example Usage
         /// 
@@ -78,9 +78,9 @@ namespace Pulumi.AliCloud.Eflo
             => global::Pulumi.Deployment.Instance.Invoke<GetSubnetsResult>("alicloud:eflo/getSubnets:getSubnets", args ?? new GetSubnetsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
+        /// This data source provides Eflo Subnet available to the user.[What is Subnet](https://www.alibabacloud.com/help/doc-detail/604977.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.204.0+
+        /// &gt; **NOTE:** Available since v1.204.0
         /// 
         /// ## Example Usage
         /// 
@@ -116,6 +116,10 @@ namespace Pulumi.AliCloud.Eflo
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of Subnet IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
@@ -195,6 +199,10 @@ namespace Pulumi.AliCloud.Eflo
     {
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Subnet IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
@@ -278,6 +286,9 @@ namespace Pulumi.AliCloud.Eflo
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Subnet IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>

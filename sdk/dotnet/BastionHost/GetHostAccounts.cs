@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.BastionHost
         /// <summary>
         /// This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -267,18 +267,36 @@ namespace Pulumi.AliCloud.BastionHost
     [OutputType]
     public sealed class GetHostAccountsResult
     {
+        /// <summary>
+        /// A list of Bastionhost Host Accounts. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHostAccountsAccountResult> Accounts;
+        /// <summary>
+        /// Specify the new hosting account's name, support the longest 128 characters.
+        /// </summary>
         public readonly string? HostAccountName;
+        /// <summary>
+        /// Specifies the database where you want to create your hosting account's host ID.
+        /// </summary>
         public readonly string HostId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// Specifies the database where you want to create your hosting account's host bastion host ID of.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Host Account names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
+        /// </summary>
         public readonly string? ProtocolName;
 
         [OutputConstructor]

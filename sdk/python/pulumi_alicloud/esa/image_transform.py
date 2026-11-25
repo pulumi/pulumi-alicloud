@@ -19,8 +19,10 @@ __all__ = ['ImageTransformArgs', 'ImageTransform']
 @pulumi.input_type
 class ImageTransformArgs:
     def __init__(__self__, *,
+                 enable: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_avif: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_webp: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -29,19 +31,24 @@ class ImageTransformArgs:
         """
         The set of arguments for constructing a ImageTransform resource.
 
+        :param pulumi.Input[_builtins.str] enable: Specifies whether to enable image transformation. Valid values:
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[_builtins.str] enable: Indicates whether the image transformations feature is enabled. Valid values:
+        :param pulumi.Input[_builtins.str] auto_avif: Specifies whether to enable adaptive AVIF. Valid values:
+        :param pulumi.Input[_builtins.str] auto_webp: Specifies whether to enable adaptive WebP. Valid values:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[_builtins.str] rule_enable: Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
+        pulumi.set(__self__, "enable", enable)
         pulumi.set(__self__, "site_id", site_id)
-        if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+        if auto_avif is not None:
+            pulumi.set(__self__, "auto_avif", auto_avif)
+        if auto_webp is not None:
+            pulumi.set(__self__, "auto_webp", auto_webp)
         if rule is not None:
             pulumi.set(__self__, "rule", rule)
         if rule_enable is not None:
@@ -52,6 +59,18 @@ class ImageTransformArgs:
             pulumi.set(__self__, "sequence", sequence)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> pulumi.Input[_builtins.str]:
+        """
+        Specifies whether to enable image transformation. Valid values:
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
@@ -66,16 +85,28 @@ class ImageTransformArgs:
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
-    @pulumi.getter
-    def enable(self) -> pulumi.Input[Optional[_builtins.str]]:
+    @pulumi.getter(name="autoAvif")
+    def auto_avif(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Indicates whether the image transformations feature is enabled. Valid values:
+        Specifies whether to enable adaptive AVIF. Valid values:
         """
-        return pulumi.get(self, "enable")
+        return pulumi.get(self, "auto_avif")
 
-    @enable.setter
-    def enable(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "enable", value)
+    @auto_avif.setter
+    def auto_avif(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auto_avif", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoWebp")
+    def auto_webp(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable adaptive WebP. Valid values:
+        """
+        return pulumi.get(self, "auto_webp")
+
+    @auto_webp.setter
+    def auto_webp(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auto_webp", value)
 
     @_builtins.property
     @pulumi.getter
@@ -95,7 +126,7 @@ class ImageTransformArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -143,7 +174,10 @@ class ImageTransformArgs:
 @pulumi.input_type
 class _ImageTransformState:
     def __init__(__self__, *,
+                 auto_avif: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_webp: pulumi.Input[Optional[_builtins.str]] = None,
                  config_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 config_type: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
@@ -154,19 +188,28 @@ class _ImageTransformState:
         """
         Input properties used for looking up and filtering ImageTransform resources.
 
-        :param pulumi.Input[_builtins.int] config_id: Config Id
-        :param pulumi.Input[_builtins.str] enable: Indicates whether the image transformations feature is enabled. Valid values:
+        :param pulumi.Input[_builtins.str] auto_avif: Specifies whether to enable adaptive AVIF. Valid values:
+        :param pulumi.Input[_builtins.str] auto_webp: Specifies whether to enable adaptive WebP. Valid values:
+        :param pulumi.Input[_builtins.int] config_id: The configuration ID.
+        :param pulumi.Input[_builtins.str] config_type: (Available since v2.2.0) The configuration type.
+        :param pulumi.Input[_builtins.str] enable: Specifies whether to enable image transformation. Valid values:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[_builtins.str] rule_enable: Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
+        if auto_avif is not None:
+            pulumi.set(__self__, "auto_avif", auto_avif)
+        if auto_webp is not None:
+            pulumi.set(__self__, "auto_webp", auto_webp)
         if config_id is not None:
             pulumi.set(__self__, "config_id", config_id)
+        if config_type is not None:
+            pulumi.set(__self__, "config_type", config_type)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if rule is not None:
@@ -183,10 +226,34 @@ class _ImageTransformState:
             pulumi.set(__self__, "site_version", site_version)
 
     @_builtins.property
+    @pulumi.getter(name="autoAvif")
+    def auto_avif(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable adaptive AVIF. Valid values:
+        """
+        return pulumi.get(self, "auto_avif")
+
+    @auto_avif.setter
+    def auto_avif(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auto_avif", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoWebp")
+    def auto_webp(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable adaptive WebP. Valid values:
+        """
+        return pulumi.get(self, "auto_webp")
+
+    @auto_webp.setter
+    def auto_webp(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auto_webp", value)
+
+    @_builtins.property
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Config Id
+        The configuration ID.
         """
         return pulumi.get(self, "config_id")
 
@@ -195,10 +262,22 @@ class _ImageTransformState:
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v2.2.0) The configuration type.
+        """
+        return pulumi.get(self, "config_type")
+
+    @config_type.setter
+    def config_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "config_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Indicates whether the image transformations feature is enabled. Valid values:
+        Specifies whether to enable image transformation. Valid values:
         """
         return pulumi.get(self, "enable")
 
@@ -224,7 +303,7 @@ class _ImageTransformState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -287,6 +366,8 @@ class ImageTransform(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_avif: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_webp: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
@@ -338,11 +419,13 @@ class ImageTransform(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] enable: Indicates whether the image transformations feature is enabled. Valid values:
+        :param pulumi.Input[_builtins.str] auto_avif: Specifies whether to enable adaptive AVIF. Valid values:
+        :param pulumi.Input[_builtins.str] auto_webp: Specifies whether to enable adaptive WebP. Valid values:
+        :param pulumi.Input[_builtins.str] enable: Specifies whether to enable image transformation. Valid values:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[_builtins.str] rule_enable: Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
@@ -410,6 +493,8 @@ class ImageTransform(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_avif: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_webp: pulumi.Input[Optional[_builtins.str]] = None,
                  enable: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
@@ -426,6 +511,10 @@ class ImageTransform(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ImageTransformArgs.__new__(ImageTransformArgs)
 
+            __props__.__dict__["auto_avif"] = auto_avif
+            __props__.__dict__["auto_webp"] = auto_webp
+            if enable is None and not opts.urn:
+                raise TypeError("Missing required property 'enable'")
             __props__.__dict__["enable"] = enable
             __props__.__dict__["rule"] = rule
             __props__.__dict__["rule_enable"] = rule_enable
@@ -436,6 +525,7 @@ class ImageTransform(pulumi.CustomResource):
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["site_version"] = site_version
             __props__.__dict__["config_id"] = None
+            __props__.__dict__["config_type"] = None
         super(ImageTransform, __self__).__init__(
             'alicloud:esa/imageTransform:ImageTransform',
             resource_name,
@@ -446,7 +536,10 @@ class ImageTransform(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_avif: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_webp: pulumi.Input[Optional[_builtins.str]] = None,
             config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            config_type: pulumi.Input[Optional[_builtins.str]] = None,
             enable: pulumi.Input[Optional[_builtins.str]] = None,
             rule: pulumi.Input[Optional[_builtins.str]] = None,
             rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
@@ -461,12 +554,15 @@ class ImageTransform(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] config_id: Config Id
-        :param pulumi.Input[_builtins.str] enable: Indicates whether the image transformations feature is enabled. Valid values:
+        :param pulumi.Input[_builtins.str] auto_avif: Specifies whether to enable adaptive AVIF. Valid values:
+        :param pulumi.Input[_builtins.str] auto_webp: Specifies whether to enable adaptive WebP. Valid values:
+        :param pulumi.Input[_builtins.int] config_id: The configuration ID.
+        :param pulumi.Input[_builtins.str] config_type: (Available since v2.2.0) The configuration type.
+        :param pulumi.Input[_builtins.str] enable: Specifies whether to enable image transformation. Valid values:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[_builtins.str] rule_enable: Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
@@ -476,7 +572,10 @@ class ImageTransform(pulumi.CustomResource):
 
         __props__ = _ImageTransformState.__new__(_ImageTransformState)
 
+        __props__.__dict__["auto_avif"] = auto_avif
+        __props__.__dict__["auto_webp"] = auto_webp
         __props__.__dict__["config_id"] = config_id
+        __props__.__dict__["config_type"] = config_type
         __props__.__dict__["enable"] = enable
         __props__.__dict__["rule"] = rule
         __props__.__dict__["rule_enable"] = rule_enable
@@ -489,7 +588,10 @@ class ImageTransform(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_avif: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_webp: pulumi.Input[Optional[_builtins.str]] = None,
             config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            config_type: pulumi.Input[Optional[_builtins.str]] = None,
             enable: pulumi.Input[Optional[_builtins.str]] = None,
             rule: pulumi.Input[Optional[_builtins.str]] = None,
             rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
@@ -498,7 +600,10 @@ class ImageTransform(pulumi.CustomResource):
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             site_version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["autoAvif"] = auto_avif
+        __props__["autoWebp"] = auto_webp
         __props__["configId"] = config_id
+        __props__["configType"] = config_type
         __props__["enable"] = enable
         __props__["rule"] = rule
         __props__["ruleEnable"] = rule_enable
@@ -509,18 +614,42 @@ class ImageTransform(pulumi.CustomResource):
         return pulumi.runtime.exists_resource(None, 'alicloud:esa/imageTransform:ImageTransform', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
+    @pulumi.getter(name="autoAvif")
+    def auto_avif(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable adaptive AVIF. Valid values:
+        """
+        return pulumi.get(self, "auto_avif")
+
+    @_builtins.property
+    @pulumi.getter(name="autoWebp")
+    def auto_webp(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable adaptive WebP. Valid values:
+        """
+        return pulumi.get(self, "auto_webp")
+
+    @_builtins.property
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Output[_builtins.int]:
         """
-        Config Id
+        The configuration ID.
         """
         return pulumi.get(self, "config_id")
 
     @_builtins.property
-    @pulumi.getter
-    def enable(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter(name="configType")
+    def config_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates whether the image transformations feature is enabled. Valid values:
+        (Available since v2.2.0) The configuration type.
+        """
+        return pulumi.get(self, "config_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies whether to enable image transformation. Valid values:
         """
         return pulumi.get(self, "enable")
 
@@ -538,7 +667,7 @@ class ImageTransform(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
         """
         return pulumi.get(self, "rule_enable")
 

@@ -903,6 +903,1004 @@ func (o DispatchRuleNotifyTemplateArrayOutput) Index(i pulumi.IntInput) Dispatch
 	}).(DispatchRuleNotifyTemplateOutput)
 }
 
+type NotificationPolicyGroupRule struct {
+	// The group interval, in seconds. Defaults to `30`. Available since v2.2.0.
+	GroupInterval *int `pulumi:"groupInterval"`
+	// The group wait time, in seconds. Defaults to `5`. Available since v2.2.0.
+	GroupWait *int `pulumi:"groupWait"`
+	// The grouping fields. An empty list is sent as an empty grouping array; omit the entire `groupRule` block to use the service's `alertname` grouping. Available since v2.2.0.
+	GroupingFields []string `pulumi:"groupingFields"`
+}
+
+// NotificationPolicyGroupRuleInput is an input type that accepts NotificationPolicyGroupRuleArgs and NotificationPolicyGroupRuleOutput values.
+// You can construct a concrete instance of `NotificationPolicyGroupRuleInput` via:
+//
+//	NotificationPolicyGroupRuleArgs{...}
+type NotificationPolicyGroupRuleInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyGroupRuleOutput() NotificationPolicyGroupRuleOutput
+	ToNotificationPolicyGroupRuleOutputWithContext(context.Context) NotificationPolicyGroupRuleOutput
+}
+
+type NotificationPolicyGroupRuleArgs struct {
+	// The group interval, in seconds. Defaults to `30`. Available since v2.2.0.
+	GroupInterval pulumi.IntPtrInput `pulumi:"groupInterval"`
+	// The group wait time, in seconds. Defaults to `5`. Available since v2.2.0.
+	GroupWait pulumi.IntPtrInput `pulumi:"groupWait"`
+	// The grouping fields. An empty list is sent as an empty grouping array; omit the entire `groupRule` block to use the service's `alertname` grouping. Available since v2.2.0.
+	GroupingFields pulumi.StringArrayInput `pulumi:"groupingFields"`
+}
+
+func (NotificationPolicyGroupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyGroupRule)(nil)).Elem()
+}
+
+func (i NotificationPolicyGroupRuleArgs) ToNotificationPolicyGroupRuleOutput() NotificationPolicyGroupRuleOutput {
+	return i.ToNotificationPolicyGroupRuleOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyGroupRuleArgs) ToNotificationPolicyGroupRuleOutputWithContext(ctx context.Context) NotificationPolicyGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyGroupRuleOutput)
+}
+
+func (i NotificationPolicyGroupRuleArgs) ToNotificationPolicyGroupRulePtrOutput() NotificationPolicyGroupRulePtrOutput {
+	return i.ToNotificationPolicyGroupRulePtrOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyGroupRuleArgs) ToNotificationPolicyGroupRulePtrOutputWithContext(ctx context.Context) NotificationPolicyGroupRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyGroupRuleOutput).ToNotificationPolicyGroupRulePtrOutputWithContext(ctx)
+}
+
+// NotificationPolicyGroupRulePtrInput is an input type that accepts NotificationPolicyGroupRuleArgs, NotificationPolicyGroupRulePtr and NotificationPolicyGroupRulePtrOutput values.
+// You can construct a concrete instance of `NotificationPolicyGroupRulePtrInput` via:
+//
+//	        NotificationPolicyGroupRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotificationPolicyGroupRulePtrInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyGroupRulePtrOutput() NotificationPolicyGroupRulePtrOutput
+	ToNotificationPolicyGroupRulePtrOutputWithContext(context.Context) NotificationPolicyGroupRulePtrOutput
+}
+
+type notificationPolicyGroupRulePtrType NotificationPolicyGroupRuleArgs
+
+func NotificationPolicyGroupRulePtr(v *NotificationPolicyGroupRuleArgs) NotificationPolicyGroupRulePtrInput {
+	return (*notificationPolicyGroupRulePtrType)(v)
+}
+
+func (*notificationPolicyGroupRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationPolicyGroupRule)(nil)).Elem()
+}
+
+func (i *notificationPolicyGroupRulePtrType) ToNotificationPolicyGroupRulePtrOutput() NotificationPolicyGroupRulePtrOutput {
+	return i.ToNotificationPolicyGroupRulePtrOutputWithContext(context.Background())
+}
+
+func (i *notificationPolicyGroupRulePtrType) ToNotificationPolicyGroupRulePtrOutputWithContext(ctx context.Context) NotificationPolicyGroupRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyGroupRulePtrOutput)
+}
+
+type NotificationPolicyGroupRuleOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyGroupRule)(nil)).Elem()
+}
+
+func (o NotificationPolicyGroupRuleOutput) ToNotificationPolicyGroupRuleOutput() NotificationPolicyGroupRuleOutput {
+	return o
+}
+
+func (o NotificationPolicyGroupRuleOutput) ToNotificationPolicyGroupRuleOutputWithContext(ctx context.Context) NotificationPolicyGroupRuleOutput {
+	return o
+}
+
+func (o NotificationPolicyGroupRuleOutput) ToNotificationPolicyGroupRulePtrOutput() NotificationPolicyGroupRulePtrOutput {
+	return o.ToNotificationPolicyGroupRulePtrOutputWithContext(context.Background())
+}
+
+func (o NotificationPolicyGroupRuleOutput) ToNotificationPolicyGroupRulePtrOutputWithContext(ctx context.Context) NotificationPolicyGroupRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationPolicyGroupRule) *NotificationPolicyGroupRule {
+		return &v
+	}).(NotificationPolicyGroupRulePtrOutput)
+}
+
+// The group interval, in seconds. Defaults to `30`. Available since v2.2.0.
+func (o NotificationPolicyGroupRuleOutput) GroupInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyGroupRule) *int { return v.GroupInterval }).(pulumi.IntPtrOutput)
+}
+
+// The group wait time, in seconds. Defaults to `5`. Available since v2.2.0.
+func (o NotificationPolicyGroupRuleOutput) GroupWait() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyGroupRule) *int { return v.GroupWait }).(pulumi.IntPtrOutput)
+}
+
+// The grouping fields. An empty list is sent as an empty grouping array; omit the entire `groupRule` block to use the service's `alertname` grouping. Available since v2.2.0.
+func (o NotificationPolicyGroupRuleOutput) GroupingFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyGroupRule) []string { return v.GroupingFields }).(pulumi.StringArrayOutput)
+}
+
+type NotificationPolicyGroupRulePtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyGroupRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationPolicyGroupRule)(nil)).Elem()
+}
+
+func (o NotificationPolicyGroupRulePtrOutput) ToNotificationPolicyGroupRulePtrOutput() NotificationPolicyGroupRulePtrOutput {
+	return o
+}
+
+func (o NotificationPolicyGroupRulePtrOutput) ToNotificationPolicyGroupRulePtrOutputWithContext(ctx context.Context) NotificationPolicyGroupRulePtrOutput {
+	return o
+}
+
+func (o NotificationPolicyGroupRulePtrOutput) Elem() NotificationPolicyGroupRuleOutput {
+	return o.ApplyT(func(v *NotificationPolicyGroupRule) NotificationPolicyGroupRule {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationPolicyGroupRule
+		return ret
+	}).(NotificationPolicyGroupRuleOutput)
+}
+
+// The group interval, in seconds. Defaults to `30`. Available since v2.2.0.
+func (o NotificationPolicyGroupRulePtrOutput) GroupInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyGroupRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The group wait time, in seconds. Defaults to `5`. Available since v2.2.0.
+func (o NotificationPolicyGroupRulePtrOutput) GroupWait() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyGroupRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupWait
+	}).(pulumi.IntPtrOutput)
+}
+
+// The grouping fields. An empty list is sent as an empty grouping array; omit the entire `groupRule` block to use the service's `alertname` grouping. Available since v2.2.0.
+func (o NotificationPolicyGroupRulePtrOutput) GroupingFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyGroupRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupingFields
+	}).(pulumi.StringArrayOutput)
+}
+
+type NotificationPolicyMatchingRule struct {
+	// The matching conditions. See `matchingConditions` below. Available since v2.2.0.
+	MatchingConditions []NotificationPolicyMatchingRuleMatchingCondition `pulumi:"matchingConditions"`
+}
+
+// NotificationPolicyMatchingRuleInput is an input type that accepts NotificationPolicyMatchingRuleArgs and NotificationPolicyMatchingRuleOutput values.
+// You can construct a concrete instance of `NotificationPolicyMatchingRuleInput` via:
+//
+//	NotificationPolicyMatchingRuleArgs{...}
+type NotificationPolicyMatchingRuleInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyMatchingRuleOutput() NotificationPolicyMatchingRuleOutput
+	ToNotificationPolicyMatchingRuleOutputWithContext(context.Context) NotificationPolicyMatchingRuleOutput
+}
+
+type NotificationPolicyMatchingRuleArgs struct {
+	// The matching conditions. See `matchingConditions` below. Available since v2.2.0.
+	MatchingConditions NotificationPolicyMatchingRuleMatchingConditionArrayInput `pulumi:"matchingConditions"`
+}
+
+func (NotificationPolicyMatchingRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyMatchingRule)(nil)).Elem()
+}
+
+func (i NotificationPolicyMatchingRuleArgs) ToNotificationPolicyMatchingRuleOutput() NotificationPolicyMatchingRuleOutput {
+	return i.ToNotificationPolicyMatchingRuleOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyMatchingRuleArgs) ToNotificationPolicyMatchingRuleOutputWithContext(ctx context.Context) NotificationPolicyMatchingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyMatchingRuleOutput)
+}
+
+// NotificationPolicyMatchingRuleArrayInput is an input type that accepts NotificationPolicyMatchingRuleArray and NotificationPolicyMatchingRuleArrayOutput values.
+// You can construct a concrete instance of `NotificationPolicyMatchingRuleArrayInput` via:
+//
+//	NotificationPolicyMatchingRuleArray{ NotificationPolicyMatchingRuleArgs{...} }
+type NotificationPolicyMatchingRuleArrayInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyMatchingRuleArrayOutput() NotificationPolicyMatchingRuleArrayOutput
+	ToNotificationPolicyMatchingRuleArrayOutputWithContext(context.Context) NotificationPolicyMatchingRuleArrayOutput
+}
+
+type NotificationPolicyMatchingRuleArray []NotificationPolicyMatchingRuleInput
+
+func (NotificationPolicyMatchingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationPolicyMatchingRule)(nil)).Elem()
+}
+
+func (i NotificationPolicyMatchingRuleArray) ToNotificationPolicyMatchingRuleArrayOutput() NotificationPolicyMatchingRuleArrayOutput {
+	return i.ToNotificationPolicyMatchingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyMatchingRuleArray) ToNotificationPolicyMatchingRuleArrayOutputWithContext(ctx context.Context) NotificationPolicyMatchingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyMatchingRuleArrayOutput)
+}
+
+type NotificationPolicyMatchingRuleOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyMatchingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyMatchingRule)(nil)).Elem()
+}
+
+func (o NotificationPolicyMatchingRuleOutput) ToNotificationPolicyMatchingRuleOutput() NotificationPolicyMatchingRuleOutput {
+	return o
+}
+
+func (o NotificationPolicyMatchingRuleOutput) ToNotificationPolicyMatchingRuleOutputWithContext(ctx context.Context) NotificationPolicyMatchingRuleOutput {
+	return o
+}
+
+// The matching conditions. See `matchingConditions` below. Available since v2.2.0.
+func (o NotificationPolicyMatchingRuleOutput) MatchingConditions() NotificationPolicyMatchingRuleMatchingConditionArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyMatchingRule) []NotificationPolicyMatchingRuleMatchingCondition {
+		return v.MatchingConditions
+	}).(NotificationPolicyMatchingRuleMatchingConditionArrayOutput)
+}
+
+type NotificationPolicyMatchingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyMatchingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationPolicyMatchingRule)(nil)).Elem()
+}
+
+func (o NotificationPolicyMatchingRuleArrayOutput) ToNotificationPolicyMatchingRuleArrayOutput() NotificationPolicyMatchingRuleArrayOutput {
+	return o
+}
+
+func (o NotificationPolicyMatchingRuleArrayOutput) ToNotificationPolicyMatchingRuleArrayOutputWithContext(ctx context.Context) NotificationPolicyMatchingRuleArrayOutput {
+	return o
+}
+
+func (o NotificationPolicyMatchingRuleArrayOutput) Index(i pulumi.IntInput) NotificationPolicyMatchingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationPolicyMatchingRule {
+		return vs[0].([]NotificationPolicyMatchingRule)[vs[1].(int)]
+	}).(NotificationPolicyMatchingRuleOutput)
+}
+
+type NotificationPolicyMatchingRuleMatchingCondition struct {
+	// The key of the matching condition. Available since v2.2.0.
+	Key string `pulumi:"key"`
+	// The operator of the matching condition. Valid values: `eq`, `neq`, `in`, `nin`, `re`, `nre`. Available since v2.2.0.
+	Operator string `pulumi:"operator"`
+	// The value of the matching condition. Available since v2.2.0.
+	Value string `pulumi:"value"`
+}
+
+// NotificationPolicyMatchingRuleMatchingConditionInput is an input type that accepts NotificationPolicyMatchingRuleMatchingConditionArgs and NotificationPolicyMatchingRuleMatchingConditionOutput values.
+// You can construct a concrete instance of `NotificationPolicyMatchingRuleMatchingConditionInput` via:
+//
+//	NotificationPolicyMatchingRuleMatchingConditionArgs{...}
+type NotificationPolicyMatchingRuleMatchingConditionInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyMatchingRuleMatchingConditionOutput() NotificationPolicyMatchingRuleMatchingConditionOutput
+	ToNotificationPolicyMatchingRuleMatchingConditionOutputWithContext(context.Context) NotificationPolicyMatchingRuleMatchingConditionOutput
+}
+
+type NotificationPolicyMatchingRuleMatchingConditionArgs struct {
+	// The key of the matching condition. Available since v2.2.0.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The operator of the matching condition. Valid values: `eq`, `neq`, `in`, `nin`, `re`, `nre`. Available since v2.2.0.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The value of the matching condition. Available since v2.2.0.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (NotificationPolicyMatchingRuleMatchingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyMatchingRuleMatchingCondition)(nil)).Elem()
+}
+
+func (i NotificationPolicyMatchingRuleMatchingConditionArgs) ToNotificationPolicyMatchingRuleMatchingConditionOutput() NotificationPolicyMatchingRuleMatchingConditionOutput {
+	return i.ToNotificationPolicyMatchingRuleMatchingConditionOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyMatchingRuleMatchingConditionArgs) ToNotificationPolicyMatchingRuleMatchingConditionOutputWithContext(ctx context.Context) NotificationPolicyMatchingRuleMatchingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyMatchingRuleMatchingConditionOutput)
+}
+
+// NotificationPolicyMatchingRuleMatchingConditionArrayInput is an input type that accepts NotificationPolicyMatchingRuleMatchingConditionArray and NotificationPolicyMatchingRuleMatchingConditionArrayOutput values.
+// You can construct a concrete instance of `NotificationPolicyMatchingRuleMatchingConditionArrayInput` via:
+//
+//	NotificationPolicyMatchingRuleMatchingConditionArray{ NotificationPolicyMatchingRuleMatchingConditionArgs{...} }
+type NotificationPolicyMatchingRuleMatchingConditionArrayInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyMatchingRuleMatchingConditionArrayOutput() NotificationPolicyMatchingRuleMatchingConditionArrayOutput
+	ToNotificationPolicyMatchingRuleMatchingConditionArrayOutputWithContext(context.Context) NotificationPolicyMatchingRuleMatchingConditionArrayOutput
+}
+
+type NotificationPolicyMatchingRuleMatchingConditionArray []NotificationPolicyMatchingRuleMatchingConditionInput
+
+func (NotificationPolicyMatchingRuleMatchingConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationPolicyMatchingRuleMatchingCondition)(nil)).Elem()
+}
+
+func (i NotificationPolicyMatchingRuleMatchingConditionArray) ToNotificationPolicyMatchingRuleMatchingConditionArrayOutput() NotificationPolicyMatchingRuleMatchingConditionArrayOutput {
+	return i.ToNotificationPolicyMatchingRuleMatchingConditionArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyMatchingRuleMatchingConditionArray) ToNotificationPolicyMatchingRuleMatchingConditionArrayOutputWithContext(ctx context.Context) NotificationPolicyMatchingRuleMatchingConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyMatchingRuleMatchingConditionArrayOutput)
+}
+
+type NotificationPolicyMatchingRuleMatchingConditionOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyMatchingRuleMatchingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyMatchingRuleMatchingCondition)(nil)).Elem()
+}
+
+func (o NotificationPolicyMatchingRuleMatchingConditionOutput) ToNotificationPolicyMatchingRuleMatchingConditionOutput() NotificationPolicyMatchingRuleMatchingConditionOutput {
+	return o
+}
+
+func (o NotificationPolicyMatchingRuleMatchingConditionOutput) ToNotificationPolicyMatchingRuleMatchingConditionOutputWithContext(ctx context.Context) NotificationPolicyMatchingRuleMatchingConditionOutput {
+	return o
+}
+
+// The key of the matching condition. Available since v2.2.0.
+func (o NotificationPolicyMatchingRuleMatchingConditionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationPolicyMatchingRuleMatchingCondition) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The operator of the matching condition. Valid values: `eq`, `neq`, `in`, `nin`, `re`, `nre`. Available since v2.2.0.
+func (o NotificationPolicyMatchingRuleMatchingConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationPolicyMatchingRuleMatchingCondition) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The value of the matching condition. Available since v2.2.0.
+func (o NotificationPolicyMatchingRuleMatchingConditionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationPolicyMatchingRuleMatchingCondition) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type NotificationPolicyMatchingRuleMatchingConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyMatchingRuleMatchingConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationPolicyMatchingRuleMatchingCondition)(nil)).Elem()
+}
+
+func (o NotificationPolicyMatchingRuleMatchingConditionArrayOutput) ToNotificationPolicyMatchingRuleMatchingConditionArrayOutput() NotificationPolicyMatchingRuleMatchingConditionArrayOutput {
+	return o
+}
+
+func (o NotificationPolicyMatchingRuleMatchingConditionArrayOutput) ToNotificationPolicyMatchingRuleMatchingConditionArrayOutputWithContext(ctx context.Context) NotificationPolicyMatchingRuleMatchingConditionArrayOutput {
+	return o
+}
+
+func (o NotificationPolicyMatchingRuleMatchingConditionArrayOutput) Index(i pulumi.IntInput) NotificationPolicyMatchingRuleMatchingConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationPolicyMatchingRuleMatchingCondition {
+		return vs[0].([]NotificationPolicyMatchingRuleMatchingCondition)[vs[1].(int)]
+	}).(NotificationPolicyMatchingRuleMatchingConditionOutput)
+}
+
+type NotificationPolicyNotifyRule struct {
+	// The notification channels. Valid values: `dingTalk`, `email`, `sms`, `tts`, `webhook`. Available since v2.2.0.
+	NotifyChannels []string `pulumi:"notifyChannels"`
+	// The end time of the notification window, in `HH:mm` format. Available since v2.2.0.
+	NotifyEndTime *string `pulumi:"notifyEndTime"`
+	// The notification objects. See `notifyObjects` below. Available since v2.2.0.
+	NotifyObjects []NotificationPolicyNotifyRuleNotifyObject `pulumi:"notifyObjects"`
+	// The start time of the notification window, in `HH:mm` format. Available since v2.2.0.
+	NotifyStartTime *string `pulumi:"notifyStartTime"`
+}
+
+// NotificationPolicyNotifyRuleInput is an input type that accepts NotificationPolicyNotifyRuleArgs and NotificationPolicyNotifyRuleOutput values.
+// You can construct a concrete instance of `NotificationPolicyNotifyRuleInput` via:
+//
+//	NotificationPolicyNotifyRuleArgs{...}
+type NotificationPolicyNotifyRuleInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyNotifyRuleOutput() NotificationPolicyNotifyRuleOutput
+	ToNotificationPolicyNotifyRuleOutputWithContext(context.Context) NotificationPolicyNotifyRuleOutput
+}
+
+type NotificationPolicyNotifyRuleArgs struct {
+	// The notification channels. Valid values: `dingTalk`, `email`, `sms`, `tts`, `webhook`. Available since v2.2.0.
+	NotifyChannels pulumi.StringArrayInput `pulumi:"notifyChannels"`
+	// The end time of the notification window, in `HH:mm` format. Available since v2.2.0.
+	NotifyEndTime pulumi.StringPtrInput `pulumi:"notifyEndTime"`
+	// The notification objects. See `notifyObjects` below. Available since v2.2.0.
+	NotifyObjects NotificationPolicyNotifyRuleNotifyObjectArrayInput `pulumi:"notifyObjects"`
+	// The start time of the notification window, in `HH:mm` format. Available since v2.2.0.
+	NotifyStartTime pulumi.StringPtrInput `pulumi:"notifyStartTime"`
+}
+
+func (NotificationPolicyNotifyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyNotifyRule)(nil)).Elem()
+}
+
+func (i NotificationPolicyNotifyRuleArgs) ToNotificationPolicyNotifyRuleOutput() NotificationPolicyNotifyRuleOutput {
+	return i.ToNotificationPolicyNotifyRuleOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyNotifyRuleArgs) ToNotificationPolicyNotifyRuleOutputWithContext(ctx context.Context) NotificationPolicyNotifyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyNotifyRuleOutput)
+}
+
+func (i NotificationPolicyNotifyRuleArgs) ToNotificationPolicyNotifyRulePtrOutput() NotificationPolicyNotifyRulePtrOutput {
+	return i.ToNotificationPolicyNotifyRulePtrOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyNotifyRuleArgs) ToNotificationPolicyNotifyRulePtrOutputWithContext(ctx context.Context) NotificationPolicyNotifyRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyNotifyRuleOutput).ToNotificationPolicyNotifyRulePtrOutputWithContext(ctx)
+}
+
+// NotificationPolicyNotifyRulePtrInput is an input type that accepts NotificationPolicyNotifyRuleArgs, NotificationPolicyNotifyRulePtr and NotificationPolicyNotifyRulePtrOutput values.
+// You can construct a concrete instance of `NotificationPolicyNotifyRulePtrInput` via:
+//
+//	        NotificationPolicyNotifyRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotificationPolicyNotifyRulePtrInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyNotifyRulePtrOutput() NotificationPolicyNotifyRulePtrOutput
+	ToNotificationPolicyNotifyRulePtrOutputWithContext(context.Context) NotificationPolicyNotifyRulePtrOutput
+}
+
+type notificationPolicyNotifyRulePtrType NotificationPolicyNotifyRuleArgs
+
+func NotificationPolicyNotifyRulePtr(v *NotificationPolicyNotifyRuleArgs) NotificationPolicyNotifyRulePtrInput {
+	return (*notificationPolicyNotifyRulePtrType)(v)
+}
+
+func (*notificationPolicyNotifyRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationPolicyNotifyRule)(nil)).Elem()
+}
+
+func (i *notificationPolicyNotifyRulePtrType) ToNotificationPolicyNotifyRulePtrOutput() NotificationPolicyNotifyRulePtrOutput {
+	return i.ToNotificationPolicyNotifyRulePtrOutputWithContext(context.Background())
+}
+
+func (i *notificationPolicyNotifyRulePtrType) ToNotificationPolicyNotifyRulePtrOutputWithContext(ctx context.Context) NotificationPolicyNotifyRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyNotifyRulePtrOutput)
+}
+
+type NotificationPolicyNotifyRuleOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyNotifyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyNotifyRule)(nil)).Elem()
+}
+
+func (o NotificationPolicyNotifyRuleOutput) ToNotificationPolicyNotifyRuleOutput() NotificationPolicyNotifyRuleOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyRuleOutput) ToNotificationPolicyNotifyRuleOutputWithContext(ctx context.Context) NotificationPolicyNotifyRuleOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyRuleOutput) ToNotificationPolicyNotifyRulePtrOutput() NotificationPolicyNotifyRulePtrOutput {
+	return o.ToNotificationPolicyNotifyRulePtrOutputWithContext(context.Background())
+}
+
+func (o NotificationPolicyNotifyRuleOutput) ToNotificationPolicyNotifyRulePtrOutputWithContext(ctx context.Context) NotificationPolicyNotifyRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationPolicyNotifyRule) *NotificationPolicyNotifyRule {
+		return &v
+	}).(NotificationPolicyNotifyRulePtrOutput)
+}
+
+// The notification channels. Valid values: `dingTalk`, `email`, `sms`, `tts`, `webhook`. Available since v2.2.0.
+func (o NotificationPolicyNotifyRuleOutput) NotifyChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyRule) []string { return v.NotifyChannels }).(pulumi.StringArrayOutput)
+}
+
+// The end time of the notification window, in `HH:mm` format. Available since v2.2.0.
+func (o NotificationPolicyNotifyRuleOutput) NotifyEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyRule) *string { return v.NotifyEndTime }).(pulumi.StringPtrOutput)
+}
+
+// The notification objects. See `notifyObjects` below. Available since v2.2.0.
+func (o NotificationPolicyNotifyRuleOutput) NotifyObjects() NotificationPolicyNotifyRuleNotifyObjectArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyRule) []NotificationPolicyNotifyRuleNotifyObject {
+		return v.NotifyObjects
+	}).(NotificationPolicyNotifyRuleNotifyObjectArrayOutput)
+}
+
+// The start time of the notification window, in `HH:mm` format. Available since v2.2.0.
+func (o NotificationPolicyNotifyRuleOutput) NotifyStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyRule) *string { return v.NotifyStartTime }).(pulumi.StringPtrOutput)
+}
+
+type NotificationPolicyNotifyRulePtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyNotifyRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationPolicyNotifyRule)(nil)).Elem()
+}
+
+func (o NotificationPolicyNotifyRulePtrOutput) ToNotificationPolicyNotifyRulePtrOutput() NotificationPolicyNotifyRulePtrOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyRulePtrOutput) ToNotificationPolicyNotifyRulePtrOutputWithContext(ctx context.Context) NotificationPolicyNotifyRulePtrOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyRulePtrOutput) Elem() NotificationPolicyNotifyRuleOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyRule) NotificationPolicyNotifyRule {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationPolicyNotifyRule
+		return ret
+	}).(NotificationPolicyNotifyRuleOutput)
+}
+
+// The notification channels. Valid values: `dingTalk`, `email`, `sms`, `tts`, `webhook`. Available since v2.2.0.
+func (o NotificationPolicyNotifyRulePtrOutput) NotifyChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NotifyChannels
+	}).(pulumi.StringArrayOutput)
+}
+
+// The end time of the notification window, in `HH:mm` format. Available since v2.2.0.
+func (o NotificationPolicyNotifyRulePtrOutput) NotifyEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotifyEndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The notification objects. See `notifyObjects` below. Available since v2.2.0.
+func (o NotificationPolicyNotifyRulePtrOutput) NotifyObjects() NotificationPolicyNotifyRuleNotifyObjectArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyRule) []NotificationPolicyNotifyRuleNotifyObject {
+		if v == nil {
+			return nil
+		}
+		return v.NotifyObjects
+	}).(NotificationPolicyNotifyRuleNotifyObjectArrayOutput)
+}
+
+// The start time of the notification window, in `HH:mm` format. Available since v2.2.0.
+func (o NotificationPolicyNotifyRulePtrOutput) NotifyStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotifyStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotificationPolicyNotifyRuleNotifyObject struct {
+	// The notification channels of the notification object (when the object is a contact). When omitted, the effective channels are returned in state. Valid values: `email`, `sms`, `tts`. Available since v2.2.0.
+	NotifyChannels []string `pulumi:"notifyChannels"`
+	// The ID of the notification object. Available since v2.2.0.
+	NotifyObjectId *int `pulumi:"notifyObjectId"`
+	// The name of the notification object. Available since v2.2.0.
+	NotifyObjectName *string `pulumi:"notifyObjectName"`
+	// The type of the notification object. Valid values: `CONTACT`, `CONTACT_GROUP`, `ARMS_CONTACT`, `ARMS_CONTACT_GROUP`, `DING_ROBOT_GROUP`, `CONTACT_SCHEDULE`. Available since v2.2.0.
+	NotifyObjectType *string `pulumi:"notifyObjectType"`
+}
+
+// NotificationPolicyNotifyRuleNotifyObjectInput is an input type that accepts NotificationPolicyNotifyRuleNotifyObjectArgs and NotificationPolicyNotifyRuleNotifyObjectOutput values.
+// You can construct a concrete instance of `NotificationPolicyNotifyRuleNotifyObjectInput` via:
+//
+//	NotificationPolicyNotifyRuleNotifyObjectArgs{...}
+type NotificationPolicyNotifyRuleNotifyObjectInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyNotifyRuleNotifyObjectOutput() NotificationPolicyNotifyRuleNotifyObjectOutput
+	ToNotificationPolicyNotifyRuleNotifyObjectOutputWithContext(context.Context) NotificationPolicyNotifyRuleNotifyObjectOutput
+}
+
+type NotificationPolicyNotifyRuleNotifyObjectArgs struct {
+	// The notification channels of the notification object (when the object is a contact). When omitted, the effective channels are returned in state. Valid values: `email`, `sms`, `tts`. Available since v2.2.0.
+	NotifyChannels pulumi.StringArrayInput `pulumi:"notifyChannels"`
+	// The ID of the notification object. Available since v2.2.0.
+	NotifyObjectId pulumi.IntPtrInput `pulumi:"notifyObjectId"`
+	// The name of the notification object. Available since v2.2.0.
+	NotifyObjectName pulumi.StringPtrInput `pulumi:"notifyObjectName"`
+	// The type of the notification object. Valid values: `CONTACT`, `CONTACT_GROUP`, `ARMS_CONTACT`, `ARMS_CONTACT_GROUP`, `DING_ROBOT_GROUP`, `CONTACT_SCHEDULE`. Available since v2.2.0.
+	NotifyObjectType pulumi.StringPtrInput `pulumi:"notifyObjectType"`
+}
+
+func (NotificationPolicyNotifyRuleNotifyObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (i NotificationPolicyNotifyRuleNotifyObjectArgs) ToNotificationPolicyNotifyRuleNotifyObjectOutput() NotificationPolicyNotifyRuleNotifyObjectOutput {
+	return i.ToNotificationPolicyNotifyRuleNotifyObjectOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyNotifyRuleNotifyObjectArgs) ToNotificationPolicyNotifyRuleNotifyObjectOutputWithContext(ctx context.Context) NotificationPolicyNotifyRuleNotifyObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyNotifyRuleNotifyObjectOutput)
+}
+
+// NotificationPolicyNotifyRuleNotifyObjectArrayInput is an input type that accepts NotificationPolicyNotifyRuleNotifyObjectArray and NotificationPolicyNotifyRuleNotifyObjectArrayOutput values.
+// You can construct a concrete instance of `NotificationPolicyNotifyRuleNotifyObjectArrayInput` via:
+//
+//	NotificationPolicyNotifyRuleNotifyObjectArray{ NotificationPolicyNotifyRuleNotifyObjectArgs{...} }
+type NotificationPolicyNotifyRuleNotifyObjectArrayInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyNotifyRuleNotifyObjectArrayOutput() NotificationPolicyNotifyRuleNotifyObjectArrayOutput
+	ToNotificationPolicyNotifyRuleNotifyObjectArrayOutputWithContext(context.Context) NotificationPolicyNotifyRuleNotifyObjectArrayOutput
+}
+
+type NotificationPolicyNotifyRuleNotifyObjectArray []NotificationPolicyNotifyRuleNotifyObjectInput
+
+func (NotificationPolicyNotifyRuleNotifyObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationPolicyNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (i NotificationPolicyNotifyRuleNotifyObjectArray) ToNotificationPolicyNotifyRuleNotifyObjectArrayOutput() NotificationPolicyNotifyRuleNotifyObjectArrayOutput {
+	return i.ToNotificationPolicyNotifyRuleNotifyObjectArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyNotifyRuleNotifyObjectArray) ToNotificationPolicyNotifyRuleNotifyObjectArrayOutputWithContext(ctx context.Context) NotificationPolicyNotifyRuleNotifyObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyNotifyRuleNotifyObjectArrayOutput)
+}
+
+type NotificationPolicyNotifyRuleNotifyObjectOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyNotifyRuleNotifyObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (o NotificationPolicyNotifyRuleNotifyObjectOutput) ToNotificationPolicyNotifyRuleNotifyObjectOutput() NotificationPolicyNotifyRuleNotifyObjectOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyRuleNotifyObjectOutput) ToNotificationPolicyNotifyRuleNotifyObjectOutputWithContext(ctx context.Context) NotificationPolicyNotifyRuleNotifyObjectOutput {
+	return o
+}
+
+// The notification channels of the notification object (when the object is a contact). When omitted, the effective channels are returned in state. Valid values: `email`, `sms`, `tts`. Available since v2.2.0.
+func (o NotificationPolicyNotifyRuleNotifyObjectOutput) NotifyChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyRuleNotifyObject) []string { return v.NotifyChannels }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the notification object. Available since v2.2.0.
+func (o NotificationPolicyNotifyRuleNotifyObjectOutput) NotifyObjectId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyRuleNotifyObject) *int { return v.NotifyObjectId }).(pulumi.IntPtrOutput)
+}
+
+// The name of the notification object. Available since v2.2.0.
+func (o NotificationPolicyNotifyRuleNotifyObjectOutput) NotifyObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyRuleNotifyObject) *string { return v.NotifyObjectName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the notification object. Valid values: `CONTACT`, `CONTACT_GROUP`, `ARMS_CONTACT`, `ARMS_CONTACT_GROUP`, `DING_ROBOT_GROUP`, `CONTACT_SCHEDULE`. Available since v2.2.0.
+func (o NotificationPolicyNotifyRuleNotifyObjectOutput) NotifyObjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyRuleNotifyObject) *string { return v.NotifyObjectType }).(pulumi.StringPtrOutput)
+}
+
+type NotificationPolicyNotifyRuleNotifyObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyNotifyRuleNotifyObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationPolicyNotifyRuleNotifyObject)(nil)).Elem()
+}
+
+func (o NotificationPolicyNotifyRuleNotifyObjectArrayOutput) ToNotificationPolicyNotifyRuleNotifyObjectArrayOutput() NotificationPolicyNotifyRuleNotifyObjectArrayOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyRuleNotifyObjectArrayOutput) ToNotificationPolicyNotifyRuleNotifyObjectArrayOutputWithContext(ctx context.Context) NotificationPolicyNotifyRuleNotifyObjectArrayOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyRuleNotifyObjectArrayOutput) Index(i pulumi.IntInput) NotificationPolicyNotifyRuleNotifyObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationPolicyNotifyRuleNotifyObject {
+		return vs[0].([]NotificationPolicyNotifyRuleNotifyObject)[vs[1].(int)]
+	}).(NotificationPolicyNotifyRuleNotifyObjectOutput)
+}
+
+type NotificationPolicyNotifyTemplate struct {
+	// The content of the email alert notification. Available since v2.2.0.
+	EmailContent *string `pulumi:"emailContent"`
+	// The content of the email recovery notification. Available since v2.2.0.
+	EmailRecoverContent *string `pulumi:"emailRecoverContent"`
+	// The title of the email recovery notification. Available since v2.2.0.
+	EmailRecoverTitle *string `pulumi:"emailRecoverTitle"`
+	// The title of the email alert notification. Available since v2.2.0.
+	EmailTitle *string `pulumi:"emailTitle"`
+	// The content of the robot alert notification. Available since v2.2.0.
+	RobotContent *string `pulumi:"robotContent"`
+	// The content of the SMS alert notification. Available since v2.2.0.
+	SmsContent *string `pulumi:"smsContent"`
+	// The content of the SMS recovery notification. Available since v2.2.0.
+	SmsRecoverContent *string `pulumi:"smsRecoverContent"`
+	// The content of the TTS alert notification. Available since v2.2.0.
+	TtsContent *string `pulumi:"ttsContent"`
+	// The content of the TTS recovery notification. Available since v2.2.0.
+	TtsRecoverContent *string `pulumi:"ttsRecoverContent"`
+}
+
+// NotificationPolicyNotifyTemplateInput is an input type that accepts NotificationPolicyNotifyTemplateArgs and NotificationPolicyNotifyTemplateOutput values.
+// You can construct a concrete instance of `NotificationPolicyNotifyTemplateInput` via:
+//
+//	NotificationPolicyNotifyTemplateArgs{...}
+type NotificationPolicyNotifyTemplateInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyNotifyTemplateOutput() NotificationPolicyNotifyTemplateOutput
+	ToNotificationPolicyNotifyTemplateOutputWithContext(context.Context) NotificationPolicyNotifyTemplateOutput
+}
+
+type NotificationPolicyNotifyTemplateArgs struct {
+	// The content of the email alert notification. Available since v2.2.0.
+	EmailContent pulumi.StringPtrInput `pulumi:"emailContent"`
+	// The content of the email recovery notification. Available since v2.2.0.
+	EmailRecoverContent pulumi.StringPtrInput `pulumi:"emailRecoverContent"`
+	// The title of the email recovery notification. Available since v2.2.0.
+	EmailRecoverTitle pulumi.StringPtrInput `pulumi:"emailRecoverTitle"`
+	// The title of the email alert notification. Available since v2.2.0.
+	EmailTitle pulumi.StringPtrInput `pulumi:"emailTitle"`
+	// The content of the robot alert notification. Available since v2.2.0.
+	RobotContent pulumi.StringPtrInput `pulumi:"robotContent"`
+	// The content of the SMS alert notification. Available since v2.2.0.
+	SmsContent pulumi.StringPtrInput `pulumi:"smsContent"`
+	// The content of the SMS recovery notification. Available since v2.2.0.
+	SmsRecoverContent pulumi.StringPtrInput `pulumi:"smsRecoverContent"`
+	// The content of the TTS alert notification. Available since v2.2.0.
+	TtsContent pulumi.StringPtrInput `pulumi:"ttsContent"`
+	// The content of the TTS recovery notification. Available since v2.2.0.
+	TtsRecoverContent pulumi.StringPtrInput `pulumi:"ttsRecoverContent"`
+}
+
+func (NotificationPolicyNotifyTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyNotifyTemplate)(nil)).Elem()
+}
+
+func (i NotificationPolicyNotifyTemplateArgs) ToNotificationPolicyNotifyTemplateOutput() NotificationPolicyNotifyTemplateOutput {
+	return i.ToNotificationPolicyNotifyTemplateOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyNotifyTemplateArgs) ToNotificationPolicyNotifyTemplateOutputWithContext(ctx context.Context) NotificationPolicyNotifyTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyNotifyTemplateOutput)
+}
+
+func (i NotificationPolicyNotifyTemplateArgs) ToNotificationPolicyNotifyTemplatePtrOutput() NotificationPolicyNotifyTemplatePtrOutput {
+	return i.ToNotificationPolicyNotifyTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyNotifyTemplateArgs) ToNotificationPolicyNotifyTemplatePtrOutputWithContext(ctx context.Context) NotificationPolicyNotifyTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyNotifyTemplateOutput).ToNotificationPolicyNotifyTemplatePtrOutputWithContext(ctx)
+}
+
+// NotificationPolicyNotifyTemplatePtrInput is an input type that accepts NotificationPolicyNotifyTemplateArgs, NotificationPolicyNotifyTemplatePtr and NotificationPolicyNotifyTemplatePtrOutput values.
+// You can construct a concrete instance of `NotificationPolicyNotifyTemplatePtrInput` via:
+//
+//	        NotificationPolicyNotifyTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotificationPolicyNotifyTemplatePtrInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyNotifyTemplatePtrOutput() NotificationPolicyNotifyTemplatePtrOutput
+	ToNotificationPolicyNotifyTemplatePtrOutputWithContext(context.Context) NotificationPolicyNotifyTemplatePtrOutput
+}
+
+type notificationPolicyNotifyTemplatePtrType NotificationPolicyNotifyTemplateArgs
+
+func NotificationPolicyNotifyTemplatePtr(v *NotificationPolicyNotifyTemplateArgs) NotificationPolicyNotifyTemplatePtrInput {
+	return (*notificationPolicyNotifyTemplatePtrType)(v)
+}
+
+func (*notificationPolicyNotifyTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationPolicyNotifyTemplate)(nil)).Elem()
+}
+
+func (i *notificationPolicyNotifyTemplatePtrType) ToNotificationPolicyNotifyTemplatePtrOutput() NotificationPolicyNotifyTemplatePtrOutput {
+	return i.ToNotificationPolicyNotifyTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *notificationPolicyNotifyTemplatePtrType) ToNotificationPolicyNotifyTemplatePtrOutputWithContext(ctx context.Context) NotificationPolicyNotifyTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyNotifyTemplatePtrOutput)
+}
+
+type NotificationPolicyNotifyTemplateOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyNotifyTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyNotifyTemplate)(nil)).Elem()
+}
+
+func (o NotificationPolicyNotifyTemplateOutput) ToNotificationPolicyNotifyTemplateOutput() NotificationPolicyNotifyTemplateOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyTemplateOutput) ToNotificationPolicyNotifyTemplateOutputWithContext(ctx context.Context) NotificationPolicyNotifyTemplateOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyTemplateOutput) ToNotificationPolicyNotifyTemplatePtrOutput() NotificationPolicyNotifyTemplatePtrOutput {
+	return o.ToNotificationPolicyNotifyTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o NotificationPolicyNotifyTemplateOutput) ToNotificationPolicyNotifyTemplatePtrOutputWithContext(ctx context.Context) NotificationPolicyNotifyTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationPolicyNotifyTemplate) *NotificationPolicyNotifyTemplate {
+		return &v
+	}).(NotificationPolicyNotifyTemplatePtrOutput)
+}
+
+// The content of the email alert notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplateOutput) EmailContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyTemplate) *string { return v.EmailContent }).(pulumi.StringPtrOutput)
+}
+
+// The content of the email recovery notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplateOutput) EmailRecoverContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyTemplate) *string { return v.EmailRecoverContent }).(pulumi.StringPtrOutput)
+}
+
+// The title of the email recovery notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplateOutput) EmailRecoverTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyTemplate) *string { return v.EmailRecoverTitle }).(pulumi.StringPtrOutput)
+}
+
+// The title of the email alert notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplateOutput) EmailTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyTemplate) *string { return v.EmailTitle }).(pulumi.StringPtrOutput)
+}
+
+// The content of the robot alert notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplateOutput) RobotContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyTemplate) *string { return v.RobotContent }).(pulumi.StringPtrOutput)
+}
+
+// The content of the SMS alert notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplateOutput) SmsContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyTemplate) *string { return v.SmsContent }).(pulumi.StringPtrOutput)
+}
+
+// The content of the SMS recovery notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplateOutput) SmsRecoverContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyTemplate) *string { return v.SmsRecoverContent }).(pulumi.StringPtrOutput)
+}
+
+// The content of the TTS alert notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplateOutput) TtsContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyTemplate) *string { return v.TtsContent }).(pulumi.StringPtrOutput)
+}
+
+// The content of the TTS recovery notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplateOutput) TtsRecoverContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationPolicyNotifyTemplate) *string { return v.TtsRecoverContent }).(pulumi.StringPtrOutput)
+}
+
+type NotificationPolicyNotifyTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyNotifyTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationPolicyNotifyTemplate)(nil)).Elem()
+}
+
+func (o NotificationPolicyNotifyTemplatePtrOutput) ToNotificationPolicyNotifyTemplatePtrOutput() NotificationPolicyNotifyTemplatePtrOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyTemplatePtrOutput) ToNotificationPolicyNotifyTemplatePtrOutputWithContext(ctx context.Context) NotificationPolicyNotifyTemplatePtrOutput {
+	return o
+}
+
+func (o NotificationPolicyNotifyTemplatePtrOutput) Elem() NotificationPolicyNotifyTemplateOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyTemplate) NotificationPolicyNotifyTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationPolicyNotifyTemplate
+		return ret
+	}).(NotificationPolicyNotifyTemplateOutput)
+}
+
+// The content of the email alert notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplatePtrOutput) EmailContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the email recovery notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplatePtrOutput) EmailRecoverContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailRecoverContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The title of the email recovery notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplatePtrOutput) EmailRecoverTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailRecoverTitle
+	}).(pulumi.StringPtrOutput)
+}
+
+// The title of the email alert notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplatePtrOutput) EmailTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailTitle
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the robot alert notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplatePtrOutput) RobotContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RobotContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the SMS alert notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplatePtrOutput) SmsContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the SMS recovery notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplatePtrOutput) SmsRecoverContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsRecoverContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the TTS alert notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplatePtrOutput) TtsContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TtsContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content of the TTS recovery notification. Available since v2.2.0.
+func (o NotificationPolicyNotifyTemplatePtrOutput) TtsRecoverContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyNotifyTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TtsRecoverContent
+	}).(pulumi.StringPtrOutput)
+}
+
 type PrometheusAlertRuleAnnotation struct {
 	// The name of the annotation.
 	Name *string `pulumi:"name"`
@@ -7843,9 +8841,9 @@ func (o GetPrometheusAlertRulesRuleArrayOutput) Index(i pulumi.IntInput) GetProm
 }
 
 type GetPrometheusAlertRulesRuleAnnotation struct {
-	// The value of the annotation.
+	// The name of the label.
 	Name string `pulumi:"name"`
-	// The name of the annotation name.
+	// The value of the label.
 	Value string `pulumi:"value"`
 }
 
@@ -7861,9 +8859,9 @@ type GetPrometheusAlertRulesRuleAnnotationInput interface {
 }
 
 type GetPrometheusAlertRulesRuleAnnotationArgs struct {
-	// The value of the annotation.
+	// The name of the label.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the annotation name.
+	// The value of the label.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -7918,12 +8916,12 @@ func (o GetPrometheusAlertRulesRuleAnnotationOutput) ToGetPrometheusAlertRulesRu
 	return o
 }
 
-// The value of the annotation.
+// The name of the label.
 func (o GetPrometheusAlertRulesRuleAnnotationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesRuleAnnotation) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the annotation name.
+// The value of the label.
 func (o GetPrometheusAlertRulesRuleAnnotationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesRuleAnnotation) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -8603,6 +9601,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleNotifyRuleNotifyObjectArrayInput)(nil)).Elem(), DispatchRuleNotifyRuleNotifyObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleNotifyTemplateInput)(nil)).Elem(), DispatchRuleNotifyTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleNotifyTemplateArrayInput)(nil)).Elem(), DispatchRuleNotifyTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyGroupRuleInput)(nil)).Elem(), NotificationPolicyGroupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyGroupRulePtrInput)(nil)).Elem(), NotificationPolicyGroupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyMatchingRuleInput)(nil)).Elem(), NotificationPolicyMatchingRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyMatchingRuleArrayInput)(nil)).Elem(), NotificationPolicyMatchingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyMatchingRuleMatchingConditionInput)(nil)).Elem(), NotificationPolicyMatchingRuleMatchingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyMatchingRuleMatchingConditionArrayInput)(nil)).Elem(), NotificationPolicyMatchingRuleMatchingConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyNotifyRuleInput)(nil)).Elem(), NotificationPolicyNotifyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyNotifyRulePtrInput)(nil)).Elem(), NotificationPolicyNotifyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyNotifyRuleNotifyObjectInput)(nil)).Elem(), NotificationPolicyNotifyRuleNotifyObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyNotifyRuleNotifyObjectArrayInput)(nil)).Elem(), NotificationPolicyNotifyRuleNotifyObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyNotifyTemplateInput)(nil)).Elem(), NotificationPolicyNotifyTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyNotifyTemplatePtrInput)(nil)).Elem(), NotificationPolicyNotifyTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleAnnotationInput)(nil)).Elem(), PrometheusAlertRuleAnnotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleAnnotationArrayInput)(nil)).Elem(), PrometheusAlertRuleAnnotationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusAlertRuleLabelInput)(nil)).Elem(), PrometheusAlertRuleLabelArgs{})
@@ -8701,6 +9711,18 @@ func init() {
 	pulumi.RegisterOutputType(DispatchRuleNotifyRuleNotifyObjectArrayOutput{})
 	pulumi.RegisterOutputType(DispatchRuleNotifyTemplateOutput{})
 	pulumi.RegisterOutputType(DispatchRuleNotifyTemplateArrayOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyGroupRuleOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyGroupRulePtrOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyMatchingRuleOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyMatchingRuleArrayOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyMatchingRuleMatchingConditionOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyMatchingRuleMatchingConditionArrayOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyNotifyRuleOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyNotifyRulePtrOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyNotifyRuleNotifyObjectOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyNotifyRuleNotifyObjectArrayOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyNotifyTemplateOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyNotifyTemplatePtrOutput{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleAnnotationOutput{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleAnnotationArrayOutput{})
 	pulumi.RegisterOutputType(PrometheusAlertRuleLabelOutput{})

@@ -16,14 +16,14 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
     public static final KubernetesMasterNodeArgs Empty = new KubernetesMasterNodeArgs();
 
     /**
-     * ID of the node.
+     * (Optional) The id of a node.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return ID of the node.
+     * @return (Optional) The id of a node.
      * 
      */
     public Optional<Output<String>> id() {
@@ -46,14 +46,14 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The private IP address of node.
+     * (Optional) The private ip of a node.
      * 
      */
     @Import(name="privateIp")
     private @Nullable Output<String> privateIp;
 
     /**
-     * @return The private IP address of node.
+     * @return (Optional) The private ip of a node.
      * 
      */
     public Optional<Output<String>> privateIp() {
@@ -87,7 +87,7 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id ID of the node.
+         * @param id (Optional) The id of a node.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id ID of the node.
+         * @param id (Optional) The id of a node.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIp The private IP address of node.
+         * @param privateIp (Optional) The private ip of a node.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class KubernetesMasterNodeArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateIp The private IP address of node.
+         * @param privateIp (Optional) The private ip of a node.
          * 
          * @return builder
          * 

@@ -114,6 +114,9 @@ class GetIndustrialPidLoopsResult:
     @_builtins.property
     @pulumi.getter(name="pidProjectId")
     def pid_project_id(self) -> _builtins.str:
+        """
+        The pid project id of Pid Loop.
+        """
         return pulumi.get(self, "pid_project_id")
 
     @_builtins.property
@@ -173,6 +176,7 @@ def get_industrial_pid_loops(enable_details: Optional[_builtins.bool] = None,
     ```
 
 
+    :param _builtins.bool enable_details: Whether to detail the Pid Loops. Default to `false`. When it is set to `true`, the data source will query the Pid Loop details by `GetLoop`.
     :param Sequence[_builtins.str] ids: A list of Pid Loop IDs.
     :param _builtins.str name_regex: A regex string to filter results by Pid Loop name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -232,6 +236,7 @@ def get_industrial_pid_loops_output(enable_details: pulumi.Input[Optional[Option
     ```
 
 
+    :param _builtins.bool enable_details: Whether to detail the Pid Loops. Default to `false`. When it is set to `true`, the data source will query the Pid Loop details by `GetLoop`.
     :param Sequence[_builtins.str] ids: A list of Pid Loop IDs.
     :param _builtins.str name_regex: A regex string to filter results by Pid Loop name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

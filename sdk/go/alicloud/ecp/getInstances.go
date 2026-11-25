@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecp Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.158.0+.
+// > **NOTE:** Available since v1.158.0.
 //
 // ## Example Usage
 //
@@ -101,6 +101,7 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
+	// Specifies whether to fetch the VNC login address of the instance. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Ecp Instances IDs.
 	Ids []string `pulumi:"ids"`
@@ -126,6 +127,7 @@ type GetInstancesArgs struct {
 	// Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
 	// .
 	Status *string `pulumi:"status"`
+	// The zone ID of the ECP instance.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -133,20 +135,30 @@ type GetInstancesArgs struct {
 type GetInstancesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                 `pulumi:"id"`
-	Ids          []string               `pulumi:"ids"`
-	ImageId      *string                `pulumi:"imageId"`
-	InstanceName *string                `pulumi:"instanceName"`
-	InstanceType *string                `pulumi:"instanceType"`
-	Instances    []GetInstancesInstance `pulumi:"instances"`
-	KeyPairName  *string                `pulumi:"keyPairName"`
-	NameRegex    *string                `pulumi:"nameRegex"`
-	Names        []string               `pulumi:"names"`
-	OutputFile   *string                `pulumi:"outputFile"`
-	PaymentType  *string                `pulumi:"paymentType"`
-	Resolution   *string                `pulumi:"resolution"`
-	Status       *string                `pulumi:"status"`
-	ZoneId       *string                `pulumi:"zoneId"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID Of The Image.
+	ImageId *string `pulumi:"imageId"`
+	// Instance Name.
+	InstanceName *string `pulumi:"instanceName"`
+	// Instance Type.
+	InstanceType *string `pulumi:"instanceType"`
+	// A list of Ecp Instances. Each element contains the following attributes:
+	Instances []GetInstancesInstance `pulumi:"instances"`
+	// The Key Name.
+	KeyPairName *string `pulumi:"keyPairName"`
+	NameRegex   *string `pulumi:"nameRegex"`
+	// A list of Instance names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The payment type of the instance.
+	PaymentType *string `pulumi:"paymentType"`
+	// Resolution.
+	Resolution *string `pulumi:"resolution"`
+	// Instance Status.
+	Status *string `pulumi:"status"`
+	// The zone ID of the instance.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -156,6 +168,7 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesOutputArgs struct {
+	// Specifies whether to fetch the VNC login address of the instance. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Ecp Instances IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -181,6 +194,7 @@ type GetInstancesOutputArgs struct {
 	// Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
 	// .
 	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The zone ID of the ECP instance.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -216,22 +230,27 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID Of The Image.
 func (o GetInstancesResultOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.ImageId }).(pulumi.StringPtrOutput)
 }
 
+// Instance Name.
 func (o GetInstancesResultOutput) InstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
 
+// Instance Type.
 func (o GetInstancesResultOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecp Instances. Each element contains the following attributes:
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
 
+// The Key Name.
 func (o GetInstancesResultOutput) KeyPairName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.KeyPairName }).(pulumi.StringPtrOutput)
 }
@@ -240,6 +259,7 @@ func (o GetInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Instance names.
 func (o GetInstancesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -248,18 +268,22 @@ func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The payment type of the instance.
 func (o GetInstancesResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
+// Resolution.
 func (o GetInstancesResultOutput) Resolution() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Resolution }).(pulumi.StringPtrOutput)
 }
 
+// Instance Status.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The zone ID of the instance.
 func (o GetInstancesResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

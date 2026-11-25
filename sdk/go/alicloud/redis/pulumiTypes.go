@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type TairInstanceAdditionalBandwidth struct {
+	// The additional bandwidth to add. Unit: MB/s. Must be set in every `additionalBandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+	Bandwidth *int `pulumi:"bandwidth"`
+	// The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on cluster and read/write splitting instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+	NodeId *string `pulumi:"nodeId"`
+}
+
+// TairInstanceAdditionalBandwidthInput is an input type that accepts TairInstanceAdditionalBandwidthArgs and TairInstanceAdditionalBandwidthOutput values.
+// You can construct a concrete instance of `TairInstanceAdditionalBandwidthInput` via:
+//
+//	TairInstanceAdditionalBandwidthArgs{...}
+type TairInstanceAdditionalBandwidthInput interface {
+	pulumi.Input
+
+	ToTairInstanceAdditionalBandwidthOutput() TairInstanceAdditionalBandwidthOutput
+	ToTairInstanceAdditionalBandwidthOutputWithContext(context.Context) TairInstanceAdditionalBandwidthOutput
+}
+
+type TairInstanceAdditionalBandwidthArgs struct {
+	// The additional bandwidth to add. Unit: MB/s. Must be set in every `additionalBandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
+	// The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on cluster and read/write splitting instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+}
+
+func (TairInstanceAdditionalBandwidthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TairInstanceAdditionalBandwidth)(nil)).Elem()
+}
+
+func (i TairInstanceAdditionalBandwidthArgs) ToTairInstanceAdditionalBandwidthOutput() TairInstanceAdditionalBandwidthOutput {
+	return i.ToTairInstanceAdditionalBandwidthOutputWithContext(context.Background())
+}
+
+func (i TairInstanceAdditionalBandwidthArgs) ToTairInstanceAdditionalBandwidthOutputWithContext(ctx context.Context) TairInstanceAdditionalBandwidthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TairInstanceAdditionalBandwidthOutput)
+}
+
+// TairInstanceAdditionalBandwidthArrayInput is an input type that accepts TairInstanceAdditionalBandwidthArray and TairInstanceAdditionalBandwidthArrayOutput values.
+// You can construct a concrete instance of `TairInstanceAdditionalBandwidthArrayInput` via:
+//
+//	TairInstanceAdditionalBandwidthArray{ TairInstanceAdditionalBandwidthArgs{...} }
+type TairInstanceAdditionalBandwidthArrayInput interface {
+	pulumi.Input
+
+	ToTairInstanceAdditionalBandwidthArrayOutput() TairInstanceAdditionalBandwidthArrayOutput
+	ToTairInstanceAdditionalBandwidthArrayOutputWithContext(context.Context) TairInstanceAdditionalBandwidthArrayOutput
+}
+
+type TairInstanceAdditionalBandwidthArray []TairInstanceAdditionalBandwidthInput
+
+func (TairInstanceAdditionalBandwidthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TairInstanceAdditionalBandwidth)(nil)).Elem()
+}
+
+func (i TairInstanceAdditionalBandwidthArray) ToTairInstanceAdditionalBandwidthArrayOutput() TairInstanceAdditionalBandwidthArrayOutput {
+	return i.ToTairInstanceAdditionalBandwidthArrayOutputWithContext(context.Background())
+}
+
+func (i TairInstanceAdditionalBandwidthArray) ToTairInstanceAdditionalBandwidthArrayOutputWithContext(ctx context.Context) TairInstanceAdditionalBandwidthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TairInstanceAdditionalBandwidthArrayOutput)
+}
+
+type TairInstanceAdditionalBandwidthOutput struct{ *pulumi.OutputState }
+
+func (TairInstanceAdditionalBandwidthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TairInstanceAdditionalBandwidth)(nil)).Elem()
+}
+
+func (o TairInstanceAdditionalBandwidthOutput) ToTairInstanceAdditionalBandwidthOutput() TairInstanceAdditionalBandwidthOutput {
+	return o
+}
+
+func (o TairInstanceAdditionalBandwidthOutput) ToTairInstanceAdditionalBandwidthOutputWithContext(ctx context.Context) TairInstanceAdditionalBandwidthOutput {
+	return o
+}
+
+// The additional bandwidth to add. Unit: MB/s. Must be set in every `additionalBandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+func (o TairInstanceAdditionalBandwidthOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TairInstanceAdditionalBandwidth) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
+}
+
+// The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on cluster and read/write splitting instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+func (o TairInstanceAdditionalBandwidthOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TairInstanceAdditionalBandwidth) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+type TairInstanceAdditionalBandwidthArrayOutput struct{ *pulumi.OutputState }
+
+func (TairInstanceAdditionalBandwidthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TairInstanceAdditionalBandwidth)(nil)).Elem()
+}
+
+func (o TairInstanceAdditionalBandwidthArrayOutput) ToTairInstanceAdditionalBandwidthArrayOutput() TairInstanceAdditionalBandwidthArrayOutput {
+	return o
+}
+
+func (o TairInstanceAdditionalBandwidthArrayOutput) ToTairInstanceAdditionalBandwidthArrayOutputWithContext(ctx context.Context) TairInstanceAdditionalBandwidthArrayOutput {
+	return o
+}
+
+func (o TairInstanceAdditionalBandwidthArrayOutput) Index(i pulumi.IntInput) TairInstanceAdditionalBandwidthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TairInstanceAdditionalBandwidth {
+		return vs[0].([]TairInstanceAdditionalBandwidth)[vs[1].(int)]
+	}).(TairInstanceAdditionalBandwidthOutput)
+}
+
 type GetGlobalSecurityIpGroupsGroup struct {
 	// The name of the IP whitelist template.
 	GlobalIpGroupName string `pulumi:"globalIpGroupName"`
@@ -147,8 +253,12 @@ func (o GetGlobalSecurityIpGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetG
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TairInstanceAdditionalBandwidthInput)(nil)).Elem(), TairInstanceAdditionalBandwidthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TairInstanceAdditionalBandwidthArrayInput)(nil)).Elem(), TairInstanceAdditionalBandwidthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalSecurityIpGroupsGroupInput)(nil)).Elem(), GetGlobalSecurityIpGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalSecurityIpGroupsGroupArrayInput)(nil)).Elem(), GetGlobalSecurityIpGroupsGroupArray{})
+	pulumi.RegisterOutputType(TairInstanceAdditionalBandwidthOutput{})
+	pulumi.RegisterOutputType(TairInstanceAdditionalBandwidthArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalSecurityIpGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGlobalSecurityIpGroupsGroupArrayOutput{})
 }

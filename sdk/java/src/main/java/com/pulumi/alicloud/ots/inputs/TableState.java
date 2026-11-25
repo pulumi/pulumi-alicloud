@@ -66,14 +66,29 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether enable OTS server side encryption. Default value is false.
+     * Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+     * 
+     */
+    @Import(name="enableLocalTxn")
+    private @Nullable Output<Boolean> enableLocalTxn;
+
+    /**
+     * @return Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+     * 
+     */
+    public Optional<Output<Boolean>> enableLocalTxn() {
+        return Optional.ofNullable(this.enableLocalTxn);
+    }
+
+    /**
+     * Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
      * 
      */
     @Import(name="enableSse")
     private @Nullable Output<Boolean> enableSse;
 
     /**
-     * @return Whether enable OTS server side encryption. Default value is false.
+     * @return Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
      * 
      */
     public Optional<Output<Boolean>> enableSse() {
@@ -126,14 +141,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      * 
      */
     @Import(name="sseKeyId")
     private @Nullable Output<String> sseKeyId;
 
     /**
-     * @return . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * @return . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      * 
      */
     public Optional<Output<String>> sseKeyId() {
@@ -141,14 +156,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
      * 
      */
     @Import(name="sseKeyType")
     private @Nullable Output<String> sseKeyType;
 
     /**
-     * @return The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+     * @return The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
      * 
      */
     public Optional<Output<String>> sseKeyType() {
@@ -156,14 +171,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      * 
      */
     @Import(name="sseRoleArn")
     private @Nullable Output<String> sseRoleArn;
 
     /**
-     * @return The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * @return The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      * 
      */
     public Optional<Output<String>> sseRoleArn() {
@@ -206,6 +221,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         this.allowUpdate = $.allowUpdate;
         this.definedColumns = $.definedColumns;
         this.deviationCellVersionInSec = $.deviationCellVersionInSec;
+        this.enableLocalTxn = $.enableLocalTxn;
         this.enableSse = $.enableSse;
         this.instanceName = $.instanceName;
         this.maxVersion = $.maxVersion;
@@ -309,7 +325,28 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableSse Whether enable OTS server side encryption. Default value is false.
+         * @param enableLocalTxn Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableLocalTxn(@Nullable Output<Boolean> enableLocalTxn) {
+            $.enableLocalTxn = enableLocalTxn;
+            return this;
+        }
+
+        /**
+         * @param enableLocalTxn Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableLocalTxn(Boolean enableLocalTxn) {
+            return enableLocalTxn(Output.of(enableLocalTxn));
+        }
+
+        /**
+         * @param enableSse Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -320,7 +357,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableSse Whether enable OTS server side encryption. Default value is false.
+         * @param enableSse Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -403,7 +440,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseKeyId . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+         * @param sseKeyId . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -414,7 +451,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseKeyId . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+         * @param sseKeyId . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -424,7 +461,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseKeyType The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+         * @param sseKeyType The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -435,7 +472,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseKeyType The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+         * @param sseKeyType The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -445,7 +482,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseRoleArn The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+         * @param sseRoleArn The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -456,7 +493,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseRoleArn The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+         * @param sseRoleArn The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
          * 
          * @return builder
          * 

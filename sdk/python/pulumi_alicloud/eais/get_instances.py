@@ -69,11 +69,17 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        """
         return pulumi.get(self, "instance_type")
 
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        A list of EAIS Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -84,6 +90,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Instance names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +103,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +134,7 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Eais Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.137.0+.
+    > **NOTE:** Available since v1.137.0.
 
     > **DEPRECATED:** This data source has been deprecated since v1.278.0.
 
@@ -174,7 +186,7 @@ def get_instances_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
     """
     This data source provides the Eais Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.137.0+.
+    > **NOTE:** Available since v1.137.0.
 
     > **DEPRECATED:** This data source has been deprecated since v1.278.0.
 

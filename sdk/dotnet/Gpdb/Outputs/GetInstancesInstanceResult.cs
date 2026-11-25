@@ -17,9 +17,12 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// Instance availability zone.
         /// </summary>
         public readonly string AvailabilityZone;
+        /// <summary>
+        /// The billing method of the instance.
+        /// </summary>
         public readonly string ChargeType;
         /// <summary>
-        /// The connection string of the instance.
+        /// The endpoint of the instance.
         /// </summary>
         public readonly string ConnectionString;
         /// <summary>
@@ -30,6 +33,9 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// The time when the instance was created.
+        /// </summary>
         public readonly string CreationTime;
         /// <summary>
         /// The db instance category. Valid values: `HighAvailability`, `Basic`.
@@ -112,15 +118,15 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// </summary>
         public readonly string StorageType;
         /// <summary>
-        /// The tags of the instance.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// The ID of the VPC。.
+        /// The ID of the VPC.
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The vswitch id.
+        /// Used to retrieve instances belong to specified `Vswitch` resources.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>

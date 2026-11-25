@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Log.Inputs
 
     public sealed class OssShipperParquetConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the key.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Type of configuration name.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

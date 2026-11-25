@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
     public sealed class SnapshotPolicyCopyEncryptionConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to encrypt the snapshot.
+        /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
+        /// <summary>
+        /// The KMS key ID used for encryption.
+        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 

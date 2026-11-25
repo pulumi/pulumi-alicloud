@@ -56,16 +56,25 @@ class GetApplicationGroupsResult:
     @_builtins.property
     @pulumi.getter(name="applicationName")
     def application_name(self) -> _builtins.str:
+        """
+        The name of the Application.
+        """
         return pulumi.get(self, "application_name")
 
     @_builtins.property
     @pulumi.getter(name="deployRegionId")
     def deploy_region_id(self) -> Optional[_builtins.str]:
+        """
+        The region ID of the deployment.
+        """
         return pulumi.get(self, "deploy_region_id")
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetApplicationGroupsGroupResult']:
+        """
+        A list of Oos Application Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -89,6 +98,9 @@ class GetApplicationGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Application Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -122,7 +134,7 @@ def get_application_groups(application_name: Optional[_builtins.str] = None,
     """
     This data source provides the Oos Application Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 
@@ -177,7 +189,7 @@ def get_application_groups_output(application_name: pulumi.Input[Optional[_built
     """
     This data source provides the Oos Application Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.146.0+.
+    > **NOTE:** Available since v1.146.0.
 
     ## Example Usage
 

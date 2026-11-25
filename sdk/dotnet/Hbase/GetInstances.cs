@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Hbase
         /// The `alicloud.hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
         /// Filters support regular expression for the instance name, ids or availability_zone.
         /// 
-        /// &gt; **NOTE:**  Available in 1.67.0+
+        /// &gt; **NOTE:** Available since v1.67.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Hbase
         /// The `alicloud.hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
         /// Filters support regular expression for the instance name, ids or availability_zone.
         /// 
-        /// &gt; **NOTE:**  Available in 1.67.0+
+        /// &gt; **NOTE:** Available since v1.67.0.
         /// 
         /// ## Example Usage
         /// 
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Hbase
         /// The `alicloud.hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
         /// Filters support regular expression for the instance name, ids or availability_zone.
         /// 
-        /// &gt; **NOTE:**  Available in 1.67.0+
+        /// &gt; **NOTE:** Available since v1.67.0.
         /// 
         /// ## Example Usage
         /// 
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Hbase
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// (Optional) A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 

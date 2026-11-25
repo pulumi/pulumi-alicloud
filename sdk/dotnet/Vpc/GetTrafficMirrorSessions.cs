@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -498,6 +498,9 @@ namespace Pulumi.AliCloud.Vpc
     [OutputType]
     public sealed class GetTrafficMirrorSessionsResult
     {
+        /// <summary>
+        /// Indicates whether traffic mirror sessions are enabled. default to `False`.
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -505,14 +508,35 @@ namespace Pulumi.AliCloud.Vpc
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Traffic Mirror Session names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+        /// </summary>
         public readonly int? Priority;
+        /// <summary>
+        /// A list of Vpc Traffic Mirror Sessions. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTrafficMirrorSessionsSessionResult> Sessions;
+        /// <summary>
+        /// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The ID of the filter.
+        /// </summary>
         public readonly string? TrafficMirrorFilterId;
+        /// <summary>
+        /// The name of the traffic mirror session.
+        /// </summary>
         public readonly string? TrafficMirrorSessionName;
         public readonly string? TrafficMirrorSourceId;
+        /// <summary>
+        /// The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+        /// </summary>
         public readonly string? TrafficMirrorTargetId;
 
         [OutputConstructor]

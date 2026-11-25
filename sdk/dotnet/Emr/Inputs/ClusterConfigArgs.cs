@@ -30,6 +30,9 @@ namespace Pulumi.AliCloud.Emr.Inputs
         [Input("fileName", required: true)]
         public Input<string> FileName { get; set; } = null!;
 
+        /// <summary>
+        /// Custom configuration service name, e.g. ’HDFS’.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 

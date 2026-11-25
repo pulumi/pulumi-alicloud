@@ -56,6 +56,9 @@ class GetEcsPrefixListsResult:
     @_builtins.property
     @pulumi.getter(name="addressFamily")
     def address_family(self) -> Optional[_builtins.str]:
+        """
+        The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+        """
         return pulumi.get(self, "address_family")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetEcsPrefixListsResult:
     @_builtins.property
     @pulumi.getter
     def lists(self) -> Sequence['outputs.GetEcsPrefixListsListResult']:
+        """
+        A list of Prefix Lists. Each element contains the following attributes:
+        """
         return pulumi.get(self, "lists")
 
     @_builtins.property
@@ -89,6 +95,9 @@ class GetEcsPrefixListsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Prefix List names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -122,7 +131,7 @@ def get_ecs_prefix_lists(address_family: Optional[_builtins.str] = None,
     """
     This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.152.0+.
+    > **NOTE:** Available since v1.152.0.
 
     ## Example Usage
 
@@ -139,6 +148,7 @@ def get_ecs_prefix_lists(address_family: Optional[_builtins.str] = None,
 
 
     :param _builtins.str address_family: The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
+    :param _builtins.bool enable_details: Specifies whether to return detailed information about the prefix list entries. Default: false.
     :param Sequence[_builtins.str] ids: A list of Prefix List IDs.
     :param _builtins.str name_regex: A regex string to filter results by `prefix_list_name`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -170,7 +180,7 @@ def get_ecs_prefix_lists_output(address_family: pulumi.Input[Optional[Optional[_
     """
     This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.152.0+.
+    > **NOTE:** Available since v1.152.0.
 
     ## Example Usage
 
@@ -187,6 +197,7 @@ def get_ecs_prefix_lists_output(address_family: pulumi.Input[Optional[Optional[_
 
 
     :param _builtins.str address_family: The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
+    :param _builtins.bool enable_details: Specifies whether to return detailed information about the prefix list entries. Default: false.
     :param Sequence[_builtins.str] ids: A list of Prefix List IDs.
     :param _builtins.str name_regex: A regex string to filter results by `prefix_list_name`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

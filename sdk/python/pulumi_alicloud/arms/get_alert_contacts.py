@@ -59,16 +59,25 @@ class GetAlertContactsResult:
     @_builtins.property
     @pulumi.getter(name="alertContactName")
     def alert_contact_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the alert contact.
+        """
         return pulumi.get(self, "alert_contact_name")
 
     @_builtins.property
     @pulumi.getter
     def contacts(self) -> Sequence['outputs.GetAlertContactsContactResult']:
+        """
+        A list of Arms Alert Contacts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "contacts")
 
     @_builtins.property
     @pulumi.getter
     def email(self) -> Optional[_builtins.str]:
+        """
+        The email address of the alert contact.
+        """
         return pulumi.get(self, "email")
 
     @_builtins.property
@@ -92,6 +101,9 @@ class GetAlertContactsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Alert Contact names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -102,6 +114,9 @@ class GetAlertContactsResult:
     @_builtins.property
     @pulumi.getter(name="phoneNum")
     def phone_num(self) -> Optional[_builtins.str]:
+        """
+        The mobile number of the alert contact.
+        """
         return pulumi.get(self, "phone_num")
 
 
@@ -132,7 +147,7 @@ def get_alert_contacts(alert_contact_name: Optional[_builtins.str] = None,
     """
     This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 
@@ -186,7 +201,7 @@ def get_alert_contacts_output(alert_contact_name: pulumi.Input[Optional[Optional
     """
     This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 

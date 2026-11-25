@@ -111,9 +111,7 @@ type Domain struct {
 	IsAccessProduct pulumi.StringOutput `pulumi:"isAccessProduct"`
 	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing pulumi.StringPtrOutput `pulumi:"loadBalancing"`
-	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-	// * key: The key of label
-	// * value: The value of label
+	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
 	LogHeaders DomainLogHeaderArrayOutput `pulumi:"logHeaders"`
 	// The read timeout of a WAF exclusive cluster. Unit: seconds.
 	ReadTime pulumi.IntPtrOutput `pulumi:"readTime"`
@@ -190,9 +188,7 @@ type domainState struct {
 	IsAccessProduct *string `pulumi:"isAccessProduct"`
 	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing *string `pulumi:"loadBalancing"`
-	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-	// * key: The key of label
-	// * value: The value of label
+	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
 	LogHeaders []DomainLogHeader `pulumi:"logHeaders"`
 	// The read timeout of a WAF exclusive cluster. Unit: seconds.
 	ReadTime *int `pulumi:"readTime"`
@@ -234,9 +230,7 @@ type DomainState struct {
 	IsAccessProduct pulumi.StringPtrInput
 	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing pulumi.StringPtrInput
-	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-	// * key: The key of label
-	// * value: The value of label
+	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
 	LogHeaders DomainLogHeaderArrayInput
 	// The read timeout of a WAF exclusive cluster. Unit: seconds.
 	ReadTime pulumi.IntPtrInput
@@ -286,9 +280,7 @@ type domainArgs struct {
 	IsAccessProduct string `pulumi:"isAccessProduct"`
 	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing *string `pulumi:"loadBalancing"`
-	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-	// * key: The key of label
-	// * value: The value of label
+	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
 	LogHeaders []DomainLogHeader `pulumi:"logHeaders"`
 	// The read timeout of a WAF exclusive cluster. Unit: seconds.
 	ReadTime *int `pulumi:"readTime"`
@@ -329,9 +321,7 @@ type DomainArgs struct {
 	IsAccessProduct pulumi.StringInput
 	// The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
 	LoadBalancing pulumi.StringPtrInput
-	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-	// * key: The key of label
-	// * value: The value of label
+	// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
 	LogHeaders DomainLogHeaderArrayInput
 	// The read timeout of a WAF exclusive cluster. Unit: seconds.
 	ReadTime pulumi.IntPtrInput
@@ -498,9 +488,7 @@ func (o DomainOutput) LoadBalancing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.LoadBalancing }).(pulumi.StringPtrOutput)
 }
 
-// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-// * key: The key of label
-// * value: The value of label
+// The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
 func (o DomainOutput) LogHeaders() DomainLogHeaderArrayOutput {
 	return o.ApplyT(func(v *Domain) DomainLogHeaderArrayOutput { return v.LogHeaders }).(DomainLogHeaderArrayOutput)
 }

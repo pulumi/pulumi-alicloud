@@ -65,6 +65,9 @@ class GetGatewaysResult:
     @_builtins.property
     @pulumi.getter
     def gateways(self) -> Sequence['outputs.GetGatewaysGatewayResult']:
+        """
+        A list of Cloud Storage Gateway Gateways. Each element contains the following attributes:
+        """
         return pulumi.get(self, "gateways")
 
     @_builtins.property
@@ -88,6 +91,9 @@ class GetGatewaysResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Gateway names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -108,11 +114,17 @@ class GetGatewaysResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        gateway status.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="storageBundleId")
     def storage_bundle_id(self) -> _builtins.str:
+        """
+        storage bundle id.
+        """
         return pulumi.get(self, "storage_bundle_id")
 
     @_builtins.property
@@ -151,7 +163,7 @@ def get_gateways(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -208,7 +220,7 @@ def get_gateways_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
     """
     This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 

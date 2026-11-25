@@ -12,15 +12,27 @@ namespace Pulumi.AliCloud.Slb.Inputs
 
     public sealed class BackendServerBackendServerGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A list backend server ID (ECS instance ID).
+        /// </summary>
         [Input("serverId", required: true)]
         public Input<string> ServerId { get; set; } = null!;
 
+        /// <summary>
+        /// ServerIp of the backend server. This parameter can be specified when the type is `Eni`. `Ecs` type currently does not support adding `ServerIp` parameter.
+        /// </summary>
         [Input("serverIp")]
         public Input<string>? ServerIp { get; set; }
 
+        /// <summary>
+        /// Type of the backend server. Valid value `Ecs`, `Eni`, `Eci`. Default to `Ecs`. **NOTE:** From 1.170.0+, The `Eci` is valid.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Weight of the backend server. Valid value range: [0-100].
+        /// </summary>
         [Input("weight", required: true)]
         public Input<int> Weight { get; set; } = null!;
 

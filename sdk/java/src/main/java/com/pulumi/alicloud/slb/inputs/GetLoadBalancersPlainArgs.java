@@ -33,23 +33,47 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.address);
     }
 
+    /**
+     * The address ip version. Valid values `ipv4` and `ipv6`.
+     * 
+     */
     @Import(name="addressIpVersion")
     private @Nullable String addressIpVersion;
 
+    /**
+     * @return The address ip version. Valid values `ipv4` and `ipv6`.
+     * 
+     */
     public Optional<String> addressIpVersion() {
         return Optional.ofNullable(this.addressIpVersion);
     }
 
+    /**
+     * The address type of the SLB. Valid values `internet` and `intranet`.
+     * 
+     */
     @Import(name="addressType")
     private @Nullable String addressType;
 
+    /**
+     * @return The address type of the SLB. Valid values `internet` and `intranet`.
+     * 
+     */
     public Optional<String> addressType() {
         return Optional.ofNullable(this.addressType);
     }
 
+    /**
+     * Whether to enable details of the SLB. Default to `false`.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Whether to enable details of the SLB. Default to `false`.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -69,23 +93,47 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+     * 
+     */
     @Import(name="internetChargeType")
     private @Nullable String internetChargeType;
 
+    /**
+     * @return The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+     * 
+     */
     public Optional<String> internetChargeType() {
         return Optional.ofNullable(this.internetChargeType);
     }
 
+    /**
+     * The name of the SLB.
+     * 
+     */
     @Import(name="loadBalancerName")
     private @Nullable String loadBalancerName;
 
+    /**
+     * @return The name of the SLB.
+     * 
+     */
     public Optional<String> loadBalancerName() {
         return Optional.ofNullable(this.loadBalancerName);
     }
 
+    /**
+     * The master zone id of the SLB.
+     * 
+     */
     @Import(name="masterZoneId")
     private @Nullable String masterZoneId;
 
+    /**
+     * @return The master zone id of the SLB.
+     * 
+     */
     public Optional<String> masterZoneId() {
         return Optional.ofNullable(this.masterZoneId);
     }
@@ -149,9 +197,17 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+     * 
+     */
     @Import(name="paymentType")
     private @Nullable String paymentType;
 
+    /**
+     * @return The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
@@ -171,36 +227,60 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The server ID.
+     * 
+     */
     @Import(name="serverId")
     private @Nullable String serverId;
 
+    /**
+     * @return The server ID.
+     * 
+     */
     public Optional<String> serverId() {
         return Optional.ofNullable(this.serverId);
     }
 
+    /**
+     * The server intranet address.
+     * 
+     */
     @Import(name="serverIntranetAddress")
     private @Nullable String serverIntranetAddress;
 
+    /**
+     * @return The server intranet address.
+     * 
+     */
     public Optional<String> serverIntranetAddress() {
         return Optional.ofNullable(this.serverIntranetAddress);
     }
 
+    /**
+     * The slave zone id of the SLB.
+     * 
+     */
     @Import(name="slaveZoneId")
     private @Nullable String slaveZoneId;
 
+    /**
+     * @return The slave zone id of the SLB.
+     * 
+     */
     public Optional<String> slaveZoneId() {
         return Optional.ofNullable(this.slaveZoneId);
     }
 
     /**
-     * SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
+     * @return The status of the SLB. Valid values: `active`, `inactive` and `locked`.
      * 
      */
     public Optional<String> status() {
@@ -209,39 +289,6 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
 
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var taggedInstances = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .tags(Map.ofEntries(
-     *                 Map.entry("tagKey1", "tagValue1"),
-     *                 Map.entry("tagKey2", "tagValue2")
-     *             ))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     @Import(name="tags")
@@ -249,39 +296,6 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
 
     /**
      * @return A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.slb.SlbFunctions;
-     * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var taggedInstances = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .tags(Map.ofEntries(
-     *                 Map.entry("tagKey1", "tagValue1"),
-     *                 Map.entry("tagKey2", "tagValue2")
-     *             ))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public Optional<Map<String,String>> tags() {
@@ -374,16 +388,34 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param addressIpVersion The address ip version. Valid values `ipv4` and `ipv6`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addressIpVersion(@Nullable String addressIpVersion) {
             $.addressIpVersion = addressIpVersion;
             return this;
         }
 
+        /**
+         * @param addressType The address type of the SLB. Valid values `internet` and `intranet`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder addressType(@Nullable String addressType) {
             $.addressType = addressType;
             return this;
         }
 
+        /**
+         * @param enableDetails Whether to enable details of the SLB. Default to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;
@@ -410,16 +442,34 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
             return ids(List.of(ids));
         }
 
+        /**
+         * @param internetChargeType The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder internetChargeType(@Nullable String internetChargeType) {
             $.internetChargeType = internetChargeType;
             return this;
         }
 
+        /**
+         * @param loadBalancerName The name of the SLB.
+         * 
+         * @return builder
+         * 
+         */
         public Builder loadBalancerName(@Nullable String loadBalancerName) {
             $.loadBalancerName = loadBalancerName;
             return this;
         }
 
+        /**
+         * @param masterZoneId The master zone id of the SLB.
+         * 
+         * @return builder
+         * 
+         */
         public Builder masterZoneId(@Nullable String masterZoneId) {
             $.masterZoneId = masterZoneId;
             return this;
@@ -468,6 +518,12 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param paymentType The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paymentType(@Nullable String paymentType) {
             $.paymentType = paymentType;
             return this;
@@ -484,23 +540,41 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param serverId The server ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverId(@Nullable String serverId) {
             $.serverId = serverId;
             return this;
         }
 
+        /**
+         * @param serverIntranetAddress The server intranet address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverIntranetAddress(@Nullable String serverIntranetAddress) {
             $.serverIntranetAddress = serverIntranetAddress;
             return this;
         }
 
+        /**
+         * @param slaveZoneId The slave zone id of the SLB.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slaveZoneId(@Nullable String slaveZoneId) {
             $.slaveZoneId = slaveZoneId;
             return this;
         }
 
         /**
-         * @param status SLB current status. Possible values: `inactive`, `active` and `locked`.
+         * @param status The status of the SLB. Valid values: `active`, `inactive` and `locked`.
          * 
          * @return builder
          * 
@@ -512,39 +586,6 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param tags A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.alicloud.slb.SlbFunctions;
-         * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-         * import java.util.ArrayList;
-         * import java.util.Arrays;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         final var taggedInstances = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-         *             .tags(Map.ofEntries(
-         *                 Map.entry("tagKey1", "tagValue1"),
-         *                 Map.entry("tagKey2", "tagValue2")
-         *             ))
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
          * 
          * @return builder
          * 

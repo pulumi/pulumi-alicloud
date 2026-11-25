@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides Ecs Elasticity Assurance available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides Ecs Elasticity Assurance available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides Ecs Elasticity Assurance available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0
         /// 
         /// ## Example Usage
         /// 
@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// A mapping of tags to assign to the Capacity Reservation.
+        /// (Optional) A mapping of tags to assign to the Capacity Reservation.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 

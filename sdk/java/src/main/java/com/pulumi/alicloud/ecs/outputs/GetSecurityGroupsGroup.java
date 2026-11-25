@@ -50,6 +50,7 @@ public final class GetSecurityGroupsGroup {
     private String securityGroupType;
     /**
      * @return A map of tags assigned to the ECS instances. It must be in the format:
+     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -144,6 +145,7 @@ public final class GetSecurityGroupsGroup {
     }
     /**
      * @return A map of tags assigned to the ECS instances. It must be in the format:
+     * 
      * <pre>
      * {@code
      * package generated_program;

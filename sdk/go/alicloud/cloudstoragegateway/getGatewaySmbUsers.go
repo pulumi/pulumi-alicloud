@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -111,13 +111,15 @@ type GetGatewaySmbUsersArgs struct {
 
 // A collection of values returned by getGatewaySmbUsers.
 type GetGatewaySmbUsersResult struct {
+	// The Gateway ID.
 	GatewayId string `pulumi:"gatewayId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                   `pulumi:"id"`
-	Ids        []string                 `pulumi:"ids"`
-	NameRegex  *string                  `pulumi:"nameRegex"`
-	OutputFile *string                  `pulumi:"outputFile"`
-	Users      []GetGatewaySmbUsersUser `pulumi:"users"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Cloud Storage Gateway SMB Users. Each element contains the following attributes:
+	Users []GetGatewaySmbUsersUser `pulumi:"users"`
 }
 
 func GetGatewaySmbUsersOutput(ctx *pulumi.Context, args GetGatewaySmbUsersOutputArgs, opts ...pulumi.InvokeOption) GetGatewaySmbUsersResultOutput {
@@ -156,6 +158,7 @@ func (o GetGatewaySmbUsersResultOutput) ToGetGatewaySmbUsersResultOutputWithCont
 	return o
 }
 
+// The Gateway ID.
 func (o GetGatewaySmbUsersResultOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaySmbUsersResult) string { return v.GatewayId }).(pulumi.StringOutput)
 }
@@ -177,6 +180,7 @@ func (o GetGatewaySmbUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaySmbUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cloud Storage Gateway SMB Users. Each element contains the following attributes:
 func (o GetGatewaySmbUsersResultOutput) Users() GetGatewaySmbUsersUserArrayOutput {
 	return o.ApplyT(func(v GetGatewaySmbUsersResult) []GetGatewaySmbUsersUser { return v.Users }).(GetGatewaySmbUsersUserArrayOutput)
 }

@@ -18,7 +18,7 @@ public final class EipanycastFunctions {
     /**
      * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -64,7 +64,7 @@ public final class EipanycastFunctions {
     /**
      * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -110,7 +110,7 @@ public final class EipanycastFunctions {
     /**
      * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -156,7 +156,7 @@ public final class EipanycastFunctions {
     /**
      * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -202,7 +202,7 @@ public final class EipanycastFunctions {
     /**
      * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -248,7 +248,7 @@ public final class EipanycastFunctions {
     /**
      * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 
@@ -294,7 +294,7 @@ public final class EipanycastFunctions {
     /**
      * This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.113.0+.
+     * &gt; **NOTE:** Available since v1.113.0.
      * 
      * ## Example Usage
      * 

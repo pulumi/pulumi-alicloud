@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// The state of the ACL. Valid values:`Provisioning`,`Available`And`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         /// </summary>
         public readonly string Status;
 

@@ -18,6 +18,75 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a VPC Subnet resource. `alicloud.vpc.Subnet` is an alias of `alicloud.vpc.Switch`; the two resource types share the same schema and behavior and may be used interchangeably.
+ * 
+ * You can use to the existing vpc module  to create a VPC and several VSwitches one-click.
+ * 
+ * For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
+ * 
+ * &gt; **NOTE:** Available since v1.0.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Subnet;
+ * import com.pulumi.alicloud.vpc.SubnetArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var foo = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/12")
+ *             .build());
+ * 
+ *         var fooSubnet = new Subnet("fooSubnet", SubnetArgs.builder()
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.16.0.0/21")
+ *             .vpcId(fooNetwork.id())
+ *             .zoneId(foo.zones()[0].id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
+ * ## Import
+ * 
+ * VPC Vswitch can be imported using the id, e.g.
+ * 
+ * ```sh
+ * $ pulumi import alicloud:vpc/subnet:Subnet example &lt;id&gt;
+ * ```
+ * 
  * @deprecated This resource has been deprecated and replaced by the Switch resource.
  * 
  */
@@ -25,6 +94,8 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/subnet:Subnet")
 public class Subnet extends com.pulumi.resources.CustomResource {
     /**
+     * Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+     * 
      * @deprecated Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
      * 
      */
@@ -32,52 +103,120 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
+    /**
+     * @return Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+     * 
+     */
     public Output<String> availabilityZone() {
         return this.availabilityZone;
     }
+    /**
+     * The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * 
+     */
     @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
+    /**
+     * @return The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * 
+     */
     public Output<String> cidrBlock() {
         return this.cidrBlock;
     }
+    /**
+     * The creation time of the VSwitch.
+     * 
+     */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
+    /**
+     * @return The creation time of the VSwitch.
+     * 
+     */
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Whether the IPv6 function is enabled in the switch. Value:
+     * 
+     */
     @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableIpv6;
 
+    /**
+     * @return Whether the IPv6 function is enabled in the switch. Value:
+     * 
+     */
     public Output<Boolean> enableIpv6() {
         return this.enableIpv6;
     }
+    /**
+     * The IPv6 CIDR block of the VSwitch.
+     * 
+     */
     @Export(name="ipv6CidrBlock", refs={String.class}, tree="[0]")
     private Output<String> ipv6CidrBlock;
 
+    /**
+     * @return The IPv6 CIDR block of the VSwitch.
+     * 
+     */
     public Output<String> ipv6CidrBlock() {
         return this.ipv6CidrBlock;
     }
+    /**
+     * The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+     * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+     * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+     * - When the VPC IPv6 address mask is `60`: `0` to `15`.
+     * 
+     */
     @Export(name="ipv6CidrBlockMask", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv6CidrBlockMask;
 
+    /**
+     * @return The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+     * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+     * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+     * - When the VPC IPv6 address mask is `60`: `0` to `15`.
+     * 
+     */
     public Output<Integer> ipv6CidrBlockMask() {
         return this.ipv6CidrBlockMask;
     }
+    /**
+     * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     * 
+     */
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isDefault;
 
+    /**
+     * @return Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     * 
+     */
     public Output<Boolean> isDefault() {
         return this.isDefault;
     }
     /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+     * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
      * 
      */
@@ -85,42 +224,98 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The status of the resource.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
+    /**
+     * The tags of VSwitch.
+     * 
+     */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
+    /**
+     * @return The tags of VSwitch.
+     * 
+     */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+     * 
+     */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
+    /**
+     * @return The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+     * 
+     */
     public Output<String> vpcId() {
         return this.vpcId;
     }
+    /**
+     * The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     @Export(name="vpcIpv6CidrBlock", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcIpv6CidrBlock;
 
+    /**
+     * @return The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     public Output<Optional<String>> vpcIpv6CidrBlock() {
         return Codegen.optional(this.vpcIpv6CidrBlock);
     }
+    /**
+     * The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
     @Export(name="vswitchName", refs={String.class}, tree="[0]")
     private Output<String> vswitchName;
 
+    /**
+     * @return The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
     public Output<String> vswitchName() {
         return this.vswitchName;
     }
+    /**
+     * The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+     * 
+     */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
+    /**
+     * @return The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+     * 
+     */
     public Output<String> zoneId() {
         return this.zoneId;
     }

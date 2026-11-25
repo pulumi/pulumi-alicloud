@@ -30,7 +30,9 @@ namespace Pulumi.AliCloud.Ddos.Outputs
         /// </summary>
         public readonly string Product;
         /// <summary>
-        /// The current state of the IP address.
+        /// The current state of the IP address. Valid Value:
+        /// - normal: indicates normal (not attacked).
+        /// - hole_begin: indicates that you are in a black hole state.
         /// </summary>
         public readonly string Status;
 

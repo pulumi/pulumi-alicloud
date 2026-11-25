@@ -155,9 +155,9 @@ def get_transit_routers(cen_id: Optional[_builtins.str] = None,
                         transit_router_ids: Optional[Sequence[_builtins.str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitRoutersResult:
     """
-    This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+    This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://www.alibabacloud.com/help/doc-detail/261219.html)
 
-    > **NOTE:** Available in 1.126.0+
+    > **NOTE:** Available since v1.126.0+
 
     ## Example Usage
 
@@ -209,9 +209,9 @@ def get_transit_routers_output(cen_id: pulumi.Input[Optional[_builtins.str]] = N
                                transit_router_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRoutersResult]:
     """
-    This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
+    This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://www.alibabacloud.com/help/doc-detail/261219.html)
 
-    > **NOTE:** Available in 1.126.0+
+    > **NOTE:** Available since v1.126.0+
 
     ## Example Usage
 

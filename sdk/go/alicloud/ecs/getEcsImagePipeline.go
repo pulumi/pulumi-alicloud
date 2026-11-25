@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.163.0+.
+// > **NOTE:** Available since v1.163.0.
 //
 // ## Example Usage
 //
@@ -64,7 +64,7 @@ func LookupEcsImagePipeline(ctx *pulumi.Context, args *LookupEcsImagePipelineArg
 
 // A collection of arguments for invoking getEcsImagePipeline.
 type LookupEcsImagePipelineArgs struct {
-	// A list of Image Pipeline ids.
+	// A list of Image Pipeline IDs.
 	Ids []string `pulumi:"ids"`
 	// The name of the image template.
 	Name *string `pulumi:"name"`
@@ -81,15 +81,21 @@ type LookupEcsImagePipelineArgs struct {
 // A collection of values returned by getEcsImagePipeline.
 type LookupEcsImagePipelineResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                        `pulumi:"id"`
-	Ids             []string                      `pulumi:"ids"`
-	Name            *string                       `pulumi:"name"`
-	NameRegex       *string                       `pulumi:"nameRegex"`
-	Names           []string                      `pulumi:"names"`
-	OutputFile      *string                       `pulumi:"outputFile"`
-	Pipelines       []GetEcsImagePipelinePipeline `pulumi:"pipelines"`
-	ResourceGroupId *string                       `pulumi:"resourceGroupId"`
-	Tags            map[string]string             `pulumi:"tags"`
+	Id string `pulumi:"id"`
+	// A list of Image Pipeline ids.
+	Ids []string `pulumi:"ids"`
+	// The name of the image template.
+	Name      *string `pulumi:"name"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// A list of Image Pipeline names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ecs Image Pipelines. Each element contains the following attributes:
+	Pipelines []GetEcsImagePipelinePipeline `pulumi:"pipelines"`
+	// The ID of the resource group to which the image template belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// (Optional) A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func LookupEcsImagePipelineOutput(ctx *pulumi.Context, args LookupEcsImagePipelineOutputArgs, opts ...pulumi.InvokeOption) LookupEcsImagePipelineResultOutput {
@@ -99,7 +105,7 @@ func LookupEcsImagePipelineOutput(ctx *pulumi.Context, args LookupEcsImagePipeli
 
 // A collection of arguments for invoking getEcsImagePipeline.
 type LookupEcsImagePipelineOutputArgs struct {
-	// A list of Image Pipeline ids.
+	// A list of Image Pipeline IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The name of the image template.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -137,10 +143,12 @@ func (o LookupEcsImagePipelineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEcsImagePipelineResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Image Pipeline ids.
 func (o LookupEcsImagePipelineResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEcsImagePipelineResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The name of the image template.
 func (o LookupEcsImagePipelineResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEcsImagePipelineResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -149,6 +157,7 @@ func (o LookupEcsImagePipelineResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEcsImagePipelineResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Image Pipeline names.
 func (o LookupEcsImagePipelineResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEcsImagePipelineResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -157,14 +166,17 @@ func (o LookupEcsImagePipelineResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupEcsImagePipelineResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecs Image Pipelines. Each element contains the following attributes:
 func (o LookupEcsImagePipelineResultOutput) Pipelines() GetEcsImagePipelinePipelineArrayOutput {
 	return o.ApplyT(func(v LookupEcsImagePipelineResult) []GetEcsImagePipelinePipeline { return v.Pipelines }).(GetEcsImagePipelinePipelineArrayOutput)
 }
 
+// The ID of the resource group to which the image template belongs.
 func (o LookupEcsImagePipelineResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEcsImagePipelineResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// (Optional) A mapping of tags to assign to the resource.
 func (o LookupEcsImagePipelineResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupEcsImagePipelineResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

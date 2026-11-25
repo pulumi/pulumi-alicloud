@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.171.0+.
+// > **NOTE:** Available since v1.171.0.
 //
 // ## Example Usage
 //
@@ -78,12 +78,14 @@ type GetSlsGroupsArgs struct {
 
 // A collection of values returned by getSlsGroups.
 type GetSlsGroupsResult struct {
+	// A list of Cms Sls Groups. Each element contains the following attributes:
 	Groups []GetSlsGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	Keyword    *string  `pulumi:"keyword"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	Keyword   *string  `pulumi:"keyword"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Sls Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	PageNumber *int     `pulumi:"pageNumber"`
@@ -128,6 +130,7 @@ func (o GetSlsGroupsResultOutput) ToGetSlsGroupsResultOutputWithContext(ctx cont
 	return o
 }
 
+// A list of Cms Sls Groups. Each element contains the following attributes:
 func (o GetSlsGroupsResultOutput) Groups() GetSlsGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetSlsGroupsResult) []GetSlsGroupsGroup { return v.Groups }).(GetSlsGroupsGroupArrayOutput)
 }
@@ -149,6 +152,7 @@ func (o GetSlsGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSlsGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Sls Group names.
 func (o GetSlsGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSlsGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Rds
     ///     var account = new AliCloud.Rds.Account("account", new()
     ///     {
     ///         InstanceId = instance.Id,
-    ///         Name = "tftestnormal",
+    ///         Name = "tfaccountnormal",
     ///         Password = "Test12345",
     ///     });
     /// 
@@ -79,41 +79,63 @@ namespace Pulumi.AliCloud.Rds
     [AliCloudResourceType("alicloud:rds/account:Account")]
     public partial class Account : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `Description` and is ignored when `Description` is set.
+        /// </summary>
         [Output("accountDescription")]
         public Output<string> AccountDescription { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the account. It conflicts with `Name` and is ignored when `Name` is set.
+        /// </summary>
         [Output("accountName")]
         public Output<string> AccountName { get; private set; } = null!;
 
+        /// <summary>
+        /// The password of the account. It conflicts with `Password`, `KmsEncryptedPassword` and `AccountPasswordWo`, and one of the four password sources must be set.
+        /// </summary>
         [Output("accountPassword")]
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It conflicts with `Password` and `KmsEncryptedPassword`, and must be specified together with `AccountPasswordWoVersion`.
         /// </summary>
         [Output("accountPasswordWo")]
         public Output<string?> AccountPasswordWo { get; private set; } = null!;
 
+        /// <summary>
+        /// The version of the write-only password. It must be specified together with `AccountPasswordWo`.
+        /// </summary>
         [Output("accountPasswordWoVersion")]
         public Output<int?> AccountPasswordWoVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// The account type. Valid values: Normal/Super/Sysadmin.
+        /// </summary>
         [Output("accountType")]
         public Output<string> AccountType { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to apply password policy.
+        /// </summary>
         [Output("checkPolicy")]
         public Output<bool?> CheckPolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
         [Output("dbInstanceId")]
         public Output<string> DbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `AccountDescription` instead.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of instance in which account belongs.
+        /// The attribute has been deprecated from 1.120.0 and using `DbInstanceId` instead.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -131,20 +153,26 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `AccountName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
+        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
+        /// <summary>
+        /// Resets permissions flag of the privileged account. Default to `False`. Set it to `True` can resets permissions of the privileged account.
+        /// </summary>
         [Output("resetPermissionFlag")]
         public Output<bool?> ResetPermissionFlag { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the resource. Valid values: `Available`, `Unavailable`.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -153,7 +181,7 @@ namespace Pulumi.AliCloud.Rds
         /// - Normal: Common privilege.
         /// - Super: High privilege.
         /// 
-        /// Default to Normal.
+        /// Default to Normal. The attribute has been deprecated from 1.120.0 and using `AccountType` instead.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -210,14 +238,24 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `Description` and is ignored when `Description` is set.
+        /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
+        /// <summary>
+        /// The name of the account. It conflicts with `Name` and is ignored when `Name` is set.
+        /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
         [Input("accountPassword")]
         private Input<string>? _accountPassword;
+
+        /// <summary>
+        /// The password of the account. It conflicts with `Password`, `KmsEncryptedPassword` and `AccountPasswordWo`, and one of the four password sources must be set.
+        /// </summary>
         public Input<string>? AccountPassword
         {
             get => _accountPassword;
@@ -233,6 +271,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It conflicts with `Password` and `KmsEncryptedPassword`, and must be specified together with `AccountPasswordWoVersion`.
         /// </summary>
         public Input<string>? AccountPasswordWo
         {
@@ -244,26 +283,38 @@ namespace Pulumi.AliCloud.Rds
             }
         }
 
+        /// <summary>
+        /// The version of the write-only password. It must be specified together with `AccountPasswordWo`.
+        /// </summary>
         [Input("accountPasswordWoVersion")]
         public Input<int>? AccountPasswordWoVersion { get; set; }
 
+        /// <summary>
+        /// The account type. Valid values: Normal/Super/Sysadmin.
+        /// </summary>
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
 
+        /// <summary>
+        /// Whether to apply password policy.
+        /// </summary>
         [Input("checkPolicy")]
         public Input<bool>? CheckPolicy { get; set; }
 
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `AccountDescription` instead.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Id of instance in which account belongs.
+        /// The attribute has been deprecated from 1.120.0 and using `DbInstanceId` instead.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -287,7 +338,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `AccountName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -296,7 +347,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _password;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
+        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead.
         /// </summary>
         [Obsolete(@"Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.")]
         public Input<string>? Password
@@ -309,9 +360,15 @@ namespace Pulumi.AliCloud.Rds
             }
         }
 
+        /// <summary>
+        /// Resets permissions flag of the privileged account. Default to `False`. Set it to `True` can resets permissions of the privileged account.
+        /// </summary>
         [Input("resetPermissionFlag")]
         public Input<bool>? ResetPermissionFlag { get; set; }
 
+        /// <summary>
+        /// The status of the resource. Valid values: `Available`, `Unavailable`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -320,7 +377,7 @@ namespace Pulumi.AliCloud.Rds
         /// - Normal: Common privilege.
         /// - Super: High privilege.
         /// 
-        /// Default to Normal.
+        /// Default to Normal. The attribute has been deprecated from 1.120.0 and using `AccountType` instead.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -333,14 +390,24 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class AccountState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter. It conflicts with `Description` and is ignored when `Description` is set.
+        /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
+        /// <summary>
+        /// The name of the account. It conflicts with `Name` and is ignored when `Name` is set.
+        /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
         [Input("accountPassword")]
         private Input<string>? _accountPassword;
+
+        /// <summary>
+        /// The password of the account. It conflicts with `Password`, `KmsEncryptedPassword` and `AccountPasswordWo`, and one of the four password sources must be set.
+        /// </summary>
         public Input<string>? AccountPassword
         {
             get => _accountPassword;
@@ -356,6 +423,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It conflicts with `Password` and `KmsEncryptedPassword`, and must be specified together with `AccountPasswordWoVersion`.
         /// </summary>
         public Input<string>? AccountPasswordWo
         {
@@ -367,26 +435,38 @@ namespace Pulumi.AliCloud.Rds
             }
         }
 
+        /// <summary>
+        /// The version of the write-only password. It must be specified together with `AccountPasswordWo`.
+        /// </summary>
         [Input("accountPasswordWoVersion")]
         public Input<int>? AccountPasswordWoVersion { get; set; }
 
+        /// <summary>
+        /// The account type. Valid values: Normal/Super/Sysadmin.
+        /// </summary>
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
 
+        /// <summary>
+        /// Whether to apply password policy.
+        /// </summary>
         [Input("checkPolicy")]
         public Input<bool>? CheckPolicy { get; set; }
 
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters. The attribute has been deprecated from 1.120.0 and using `AccountDescription` instead.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Id of instance in which account belongs.
+        /// The attribute has been deprecated from 1.120.0 and using `DbInstanceId` instead.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -410,7 +490,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+        /// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters. The attribute has been deprecated from 1.120.0 and using `AccountName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -419,7 +499,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _password;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
+        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields. The attribute has been deprecated from 1.120.0 and using `AccountPassword` instead.
         /// </summary>
         [Obsolete(@"Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.")]
         public Input<string>? Password
@@ -432,9 +512,15 @@ namespace Pulumi.AliCloud.Rds
             }
         }
 
+        /// <summary>
+        /// Resets permissions flag of the privileged account. Default to `False`. Set it to `True` can resets permissions of the privileged account.
+        /// </summary>
         [Input("resetPermissionFlag")]
         public Input<bool>? ResetPermissionFlag { get; set; }
 
+        /// <summary>
+        /// The status of the resource. Valid values: `Available`, `Unavailable`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -443,7 +529,7 @@ namespace Pulumi.AliCloud.Rds
         /// - Normal: Common privilege.
         /// - Super: High privilege.
         /// 
-        /// Default to Normal.
+        /// Default to Normal. The attribute has been deprecated from 1.120.0 and using `AccountType` instead.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

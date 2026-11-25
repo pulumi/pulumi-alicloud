@@ -41,7 +41,7 @@ public final class GetFilesetsFileset {
      */
     private String id;
     /**
-     * @return The status of the fileset.
+     * @return The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
      * 
      */
     private String status;
@@ -95,7 +95,7 @@ public final class GetFilesetsFileset {
         return this.id;
     }
     /**
-     * @return The status of the fileset.
+     * @return The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
      * 
      */
     public String status() {

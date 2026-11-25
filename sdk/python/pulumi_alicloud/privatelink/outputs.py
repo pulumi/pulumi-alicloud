@@ -93,18 +93,24 @@ class GetVpcEndpointConnectionsConnectionResult(dict):
     def __init__(__self__, *,
                  bandwidth: _builtins.int,
                  endpoint_id: _builtins.str,
+                 endpoint_owner_id: _builtins.int,
                  id: _builtins.str,
-                 status: _builtins.str):
+                 status: _builtins.str,
+                 traffic_control_mode: _builtins.str):
         """
         :param _builtins.int bandwidth: The Bandwidth.
         :param _builtins.str endpoint_id: The ID of the Vpc Endpoint.
+        :param _builtins.int endpoint_owner_id: The endpoint owner id.
         :param _builtins.str id: The ID of the Vpc Endpoint Connection.
         :param _builtins.str status: The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
+        :param _builtins.str traffic_control_mode: The traffic control mode of the endpoint connection.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "endpoint_id", endpoint_id)
+        pulumi.set(__self__, "endpoint_owner_id", endpoint_owner_id)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "traffic_control_mode", traffic_control_mode)
 
     @_builtins.property
     @pulumi.getter
@@ -123,6 +129,14 @@ class GetVpcEndpointConnectionsConnectionResult(dict):
         return pulumi.get(self, "endpoint_id")
 
     @_builtins.property
+    @pulumi.getter(name="endpointOwnerId")
+    def endpoint_owner_id(self) -> _builtins.int:
+        """
+        The endpoint owner id.
+        """
+        return pulumi.get(self, "endpoint_owner_id")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
@@ -137,6 +151,14 @@ class GetVpcEndpointConnectionsConnectionResult(dict):
         The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="trafficControlMode")
+    def traffic_control_mode(self) -> _builtins.str:
+        """
+        The traffic control mode of the endpoint connection.
+        """
+        return pulumi.get(self, "traffic_control_mode")
 
 
 @pulumi.output_type

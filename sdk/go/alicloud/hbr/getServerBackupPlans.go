@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -70,7 +70,7 @@ func GetServerBackupPlans(ctx *pulumi.Context, args *GetServerBackupPlansArgs, o
 
 // A collection of arguments for invoking getServerBackupPlans.
 type GetServerBackupPlansArgs struct {
-	// The filters.
+	// The filters. See `filters` below.
 	Filters []GetServerBackupPlansFilter `pulumi:"filters"`
 	// A list of Server Backup Plan IDs.
 	Ids []string `pulumi:"ids"`
@@ -82,10 +82,11 @@ type GetServerBackupPlansArgs struct {
 type GetServerBackupPlansResult struct {
 	Filters []GetServerBackupPlansFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                     `pulumi:"id"`
-	Ids        []string                   `pulumi:"ids"`
-	OutputFile *string                    `pulumi:"outputFile"`
-	Plans      []GetServerBackupPlansPlan `pulumi:"plans"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of HBR server backup plan. Each element contains the following attributes:
+	Plans []GetServerBackupPlansPlan `pulumi:"plans"`
 }
 
 func GetServerBackupPlansOutput(ctx *pulumi.Context, args GetServerBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetServerBackupPlansResultOutput {
@@ -95,7 +96,7 @@ func GetServerBackupPlansOutput(ctx *pulumi.Context, args GetServerBackupPlansOu
 
 // A collection of arguments for invoking getServerBackupPlans.
 type GetServerBackupPlansOutputArgs struct {
-	// The filters.
+	// The filters. See `filters` below.
 	Filters GetServerBackupPlansFilterArrayInput `pulumi:"filters"`
 	// A list of Server Backup Plan IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -139,6 +140,7 @@ func (o GetServerBackupPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerBackupPlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of HBR server backup plan. Each element contains the following attributes:
 func (o GetServerBackupPlansResultOutput) Plans() GetServerBackupPlansPlanArrayOutput {
 	return o.ApplyT(func(v GetServerBackupPlansResult) []GetServerBackupPlansPlan { return v.Plans }).(GetServerBackupPlansPlanArrayOutput)
 }

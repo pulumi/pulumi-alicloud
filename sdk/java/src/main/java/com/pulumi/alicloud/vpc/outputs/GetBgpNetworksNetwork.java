@@ -21,12 +21,12 @@ public final class GetBgpNetworksNetwork {
      */
     private String id;
     /**
-     * @return The ID of the vRouter.
+     * @return The ID of the router to which the route table belongs.
      * 
      */
     private String routerId;
     /**
-     * @return The state of the advertised BGP network.
+     * @return The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
      * 
      */
     private String status;
@@ -47,14 +47,14 @@ public final class GetBgpNetworksNetwork {
         return this.id;
     }
     /**
-     * @return The ID of the vRouter.
+     * @return The ID of the router to which the route table belongs.
      * 
      */
     public String routerId() {
         return this.routerId;
     }
     /**
-     * @return The state of the advertised BGP network.
+     * @return The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
      * 
      */
     public String status() {

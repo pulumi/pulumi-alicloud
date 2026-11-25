@@ -111,7 +111,7 @@ type StackInstance struct {
 	// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
 	// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 	OperationPreferences pulumi.StringPtrOutput `pulumi:"operationPreferences"`
-	// ParameterOverrides. See the following `Block parameterOverrides`.
+	// ParameterOverrides. See `parameterOverrides` below.
 	ParameterOverrides StackInstanceParameterOverrideArrayOutput `pulumi:"parameterOverrides"`
 	// Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
 	RetainStacks pulumi.BoolPtrOutput `pulumi:"retainStacks"`
@@ -121,12 +121,7 @@ type StackInstance struct {
 	StackInstanceAccountId pulumi.StringOutput `pulumi:"stackInstanceAccountId"`
 	// The region of the stack instance.
 	StackInstanceRegionId pulumi.StringOutput `pulumi:"stackInstanceRegionId"`
-	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-	// * The create or update operation is not complete.
+	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
 	TimeoutInMinutes pulumi.StringPtrOutput `pulumi:"timeoutInMinutes"`
@@ -186,7 +181,7 @@ type stackInstanceState struct {
 	// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
 	// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 	OperationPreferences *string `pulumi:"operationPreferences"`
-	// ParameterOverrides. See the following `Block parameterOverrides`.
+	// ParameterOverrides. See `parameterOverrides` below.
 	ParameterOverrides []StackInstanceParameterOverride `pulumi:"parameterOverrides"`
 	// Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
 	RetainStacks *bool `pulumi:"retainStacks"`
@@ -196,12 +191,7 @@ type stackInstanceState struct {
 	StackInstanceAccountId *string `pulumi:"stackInstanceAccountId"`
 	// The region of the stack instance.
 	StackInstanceRegionId *string `pulumi:"stackInstanceRegionId"`
-	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-	// * The create or update operation is not complete.
+	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
 	Status *string `pulumi:"status"`
 	// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
 	TimeoutInMinutes *string `pulumi:"timeoutInMinutes"`
@@ -216,7 +206,7 @@ type StackInstanceState struct {
 	// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
 	// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 	OperationPreferences pulumi.StringPtrInput
-	// ParameterOverrides. See the following `Block parameterOverrides`.
+	// ParameterOverrides. See `parameterOverrides` below.
 	ParameterOverrides StackInstanceParameterOverrideArrayInput
 	// Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
 	RetainStacks pulumi.BoolPtrInput
@@ -226,12 +216,7 @@ type StackInstanceState struct {
 	StackInstanceAccountId pulumi.StringPtrInput
 	// The region of the stack instance.
 	StackInstanceRegionId pulumi.StringPtrInput
-	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-	// * The create or update operation is not complete.
+	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
 	Status pulumi.StringPtrInput
 	// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
 	TimeoutInMinutes pulumi.StringPtrInput
@@ -256,7 +241,7 @@ type stackInstanceArgs struct {
 	// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
 	// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 	OperationPreferences *string `pulumi:"operationPreferences"`
-	// ParameterOverrides. See the following `Block parameterOverrides`.
+	// ParameterOverrides. See `parameterOverrides` below.
 	ParameterOverrides []StackInstanceParameterOverride `pulumi:"parameterOverrides"`
 	// Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
 	RetainStacks *bool `pulumi:"retainStacks"`
@@ -280,7 +265,7 @@ type StackInstanceArgs struct {
 	// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
 	// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 	OperationPreferences pulumi.StringPtrInput
-	// ParameterOverrides. See the following `Block parameterOverrides`.
+	// ParameterOverrides. See `parameterOverrides` below.
 	ParameterOverrides StackInstanceParameterOverrideArrayInput
 	// Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
 	RetainStacks pulumi.BoolPtrInput
@@ -395,7 +380,7 @@ func (o StackInstanceOutput) OperationPreferences() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StackInstance) pulumi.StringPtrOutput { return v.OperationPreferences }).(pulumi.StringPtrOutput)
 }
 
-// ParameterOverrides. See the following `Block parameterOverrides`.
+// ParameterOverrides. See `parameterOverrides` below.
 func (o StackInstanceOutput) ParameterOverrides() StackInstanceParameterOverrideArrayOutput {
 	return o.ApplyT(func(v *StackInstance) StackInstanceParameterOverrideArrayOutput { return v.ParameterOverrides }).(StackInstanceParameterOverrideArrayOutput)
 }
@@ -420,12 +405,7 @@ func (o StackInstanceOutput) StackInstanceRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StackInstance) pulumi.StringOutput { return v.StackInstanceRegionId }).(pulumi.StringOutput)
 }
 
-// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-// * The create or update operation is not complete.
+// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
 func (o StackInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *StackInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

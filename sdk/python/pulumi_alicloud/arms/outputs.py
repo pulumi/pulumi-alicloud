@@ -23,6 +23,12 @@ __all__ = [
     'DispatchRuleNotifyRule',
     'DispatchRuleNotifyRuleNotifyObject',
     'DispatchRuleNotifyTemplate',
+    'NotificationPolicyGroupRule',
+    'NotificationPolicyMatchingRule',
+    'NotificationPolicyMatchingRuleMatchingCondition',
+    'NotificationPolicyNotifyRule',
+    'NotificationPolicyNotifyRuleNotifyObject',
+    'NotificationPolicyNotifyTemplate',
     'PrometheusAlertRuleAnnotation',
     'PrometheusAlertRuleLabel',
     'SyntheticTaskAvailableAssertion',
@@ -554,6 +560,449 @@ class DispatchRuleNotifyTemplate(dict):
     def tts_recover_content(self) -> _builtins.str:
         """
         The content of the TTS notification for restored alerts.
+        """
+        return pulumi.get(self, "tts_recover_content")
+
+
+@pulumi.output_type
+class NotificationPolicyGroupRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupInterval":
+            suggest = "group_interval"
+        elif key == "groupWait":
+            suggest = "group_wait"
+        elif key == "groupingFields":
+            suggest = "grouping_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationPolicyGroupRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationPolicyGroupRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationPolicyGroupRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 group_interval: Optional[_builtins.int] = None,
+                 group_wait: Optional[_builtins.int] = None,
+                 grouping_fields: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.int group_interval: The group interval, in seconds. Defaults to `30`. Available since v2.2.0.
+        :param _builtins.int group_wait: The group wait time, in seconds. Defaults to `5`. Available since v2.2.0.
+        :param Sequence[_builtins.str] grouping_fields: The grouping fields. An empty list is sent as an empty grouping array; omit the entire `group_rule` block to use the service's `alertname` grouping. Available since v2.2.0.
+        """
+        if group_interval is not None:
+            pulumi.set(__self__, "group_interval", group_interval)
+        if group_wait is not None:
+            pulumi.set(__self__, "group_wait", group_wait)
+        if grouping_fields is not None:
+            pulumi.set(__self__, "grouping_fields", grouping_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="groupInterval")
+    def group_interval(self) -> Optional[_builtins.int]:
+        """
+        The group interval, in seconds. Defaults to `30`. Available since v2.2.0.
+        """
+        return pulumi.get(self, "group_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="groupWait")
+    def group_wait(self) -> Optional[_builtins.int]:
+        """
+        The group wait time, in seconds. Defaults to `5`. Available since v2.2.0.
+        """
+        return pulumi.get(self, "group_wait")
+
+    @_builtins.property
+    @pulumi.getter(name="groupingFields")
+    def grouping_fields(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The grouping fields. An empty list is sent as an empty grouping array; omit the entire `group_rule` block to use the service's `alertname` grouping. Available since v2.2.0.
+        """
+        return pulumi.get(self, "grouping_fields")
+
+
+@pulumi.output_type
+class NotificationPolicyMatchingRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchingConditions":
+            suggest = "matching_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationPolicyMatchingRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationPolicyMatchingRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationPolicyMatchingRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 matching_conditions: Sequence['outputs.NotificationPolicyMatchingRuleMatchingCondition']):
+        """
+        :param Sequence['NotificationPolicyMatchingRuleMatchingConditionArgs'] matching_conditions: The matching conditions. See `matching_conditions` below. Available since v2.2.0.
+        """
+        pulumi.set(__self__, "matching_conditions", matching_conditions)
+
+    @_builtins.property
+    @pulumi.getter(name="matchingConditions")
+    def matching_conditions(self) -> Sequence['outputs.NotificationPolicyMatchingRuleMatchingCondition']:
+        """
+        The matching conditions. See `matching_conditions` below. Available since v2.2.0.
+        """
+        return pulumi.get(self, "matching_conditions")
+
+
+@pulumi.output_type
+class NotificationPolicyMatchingRuleMatchingCondition(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 operator: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The key of the matching condition. Available since v2.2.0.
+        :param _builtins.str operator: The operator of the matching condition. Valid values: `eq`, `neq`, `in`, `nin`, `re`, `nre`. Available since v2.2.0.
+        :param _builtins.str value: The value of the matching condition. Available since v2.2.0.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The key of the matching condition. Available since v2.2.0.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        The operator of the matching condition. Valid values: `eq`, `neq`, `in`, `nin`, `re`, `nre`. Available since v2.2.0.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the matching condition. Available since v2.2.0.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class NotificationPolicyNotifyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notifyChannels":
+            suggest = "notify_channels"
+        elif key == "notifyEndTime":
+            suggest = "notify_end_time"
+        elif key == "notifyObjects":
+            suggest = "notify_objects"
+        elif key == "notifyStartTime":
+            suggest = "notify_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationPolicyNotifyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationPolicyNotifyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationPolicyNotifyRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 notify_channels: Optional[Sequence[_builtins.str]] = None,
+                 notify_end_time: Optional[_builtins.str] = None,
+                 notify_objects: Optional[Sequence['outputs.NotificationPolicyNotifyRuleNotifyObject']] = None,
+                 notify_start_time: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] notify_channels: The notification channels. Valid values: `dingTalk`, `email`, `sms`, `tts`, `webhook`. Available since v2.2.0.
+        :param _builtins.str notify_end_time: The end time of the notification window, in `HH:mm` format. Available since v2.2.0.
+        :param Sequence['NotificationPolicyNotifyRuleNotifyObjectArgs'] notify_objects: The notification objects. See `notify_objects` below. Available since v2.2.0.
+        :param _builtins.str notify_start_time: The start time of the notification window, in `HH:mm` format. Available since v2.2.0.
+        """
+        if notify_channels is not None:
+            pulumi.set(__self__, "notify_channels", notify_channels)
+        if notify_end_time is not None:
+            pulumi.set(__self__, "notify_end_time", notify_end_time)
+        if notify_objects is not None:
+            pulumi.set(__self__, "notify_objects", notify_objects)
+        if notify_start_time is not None:
+            pulumi.set(__self__, "notify_start_time", notify_start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="notifyChannels")
+    def notify_channels(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The notification channels. Valid values: `dingTalk`, `email`, `sms`, `tts`, `webhook`. Available since v2.2.0.
+        """
+        return pulumi.get(self, "notify_channels")
+
+    @_builtins.property
+    @pulumi.getter(name="notifyEndTime")
+    def notify_end_time(self) -> Optional[_builtins.str]:
+        """
+        The end time of the notification window, in `HH:mm` format. Available since v2.2.0.
+        """
+        return pulumi.get(self, "notify_end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="notifyObjects")
+    def notify_objects(self) -> Optional[Sequence['outputs.NotificationPolicyNotifyRuleNotifyObject']]:
+        """
+        The notification objects. See `notify_objects` below. Available since v2.2.0.
+        """
+        return pulumi.get(self, "notify_objects")
+
+    @_builtins.property
+    @pulumi.getter(name="notifyStartTime")
+    def notify_start_time(self) -> Optional[_builtins.str]:
+        """
+        The start time of the notification window, in `HH:mm` format. Available since v2.2.0.
+        """
+        return pulumi.get(self, "notify_start_time")
+
+
+@pulumi.output_type
+class NotificationPolicyNotifyRuleNotifyObject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notifyChannels":
+            suggest = "notify_channels"
+        elif key == "notifyObjectId":
+            suggest = "notify_object_id"
+        elif key == "notifyObjectName":
+            suggest = "notify_object_name"
+        elif key == "notifyObjectType":
+            suggest = "notify_object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationPolicyNotifyRuleNotifyObject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationPolicyNotifyRuleNotifyObject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationPolicyNotifyRuleNotifyObject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 notify_channels: Optional[Sequence[_builtins.str]] = None,
+                 notify_object_id: Optional[_builtins.int] = None,
+                 notify_object_name: Optional[_builtins.str] = None,
+                 notify_object_type: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] notify_channels: The notification channels of the notification object (when the object is a contact). When omitted, the effective channels are returned in state. Valid values: `email`, `sms`, `tts`. Available since v2.2.0.
+        :param _builtins.int notify_object_id: The ID of the notification object. Available since v2.2.0.
+        :param _builtins.str notify_object_name: The name of the notification object. Available since v2.2.0.
+        :param _builtins.str notify_object_type: The type of the notification object. Valid values: `CONTACT`, `CONTACT_GROUP`, `ARMS_CONTACT`, `ARMS_CONTACT_GROUP`, `DING_ROBOT_GROUP`, `CONTACT_SCHEDULE`. Available since v2.2.0.
+        """
+        if notify_channels is not None:
+            pulumi.set(__self__, "notify_channels", notify_channels)
+        if notify_object_id is not None:
+            pulumi.set(__self__, "notify_object_id", notify_object_id)
+        if notify_object_name is not None:
+            pulumi.set(__self__, "notify_object_name", notify_object_name)
+        if notify_object_type is not None:
+            pulumi.set(__self__, "notify_object_type", notify_object_type)
+
+    @_builtins.property
+    @pulumi.getter(name="notifyChannels")
+    def notify_channels(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The notification channels of the notification object (when the object is a contact). When omitted, the effective channels are returned in state. Valid values: `email`, `sms`, `tts`. Available since v2.2.0.
+        """
+        return pulumi.get(self, "notify_channels")
+
+    @_builtins.property
+    @pulumi.getter(name="notifyObjectId")
+    def notify_object_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of the notification object. Available since v2.2.0.
+        """
+        return pulumi.get(self, "notify_object_id")
+
+    @_builtins.property
+    @pulumi.getter(name="notifyObjectName")
+    def notify_object_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the notification object. Available since v2.2.0.
+        """
+        return pulumi.get(self, "notify_object_name")
+
+    @_builtins.property
+    @pulumi.getter(name="notifyObjectType")
+    def notify_object_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the notification object. Valid values: `CONTACT`, `CONTACT_GROUP`, `ARMS_CONTACT`, `ARMS_CONTACT_GROUP`, `DING_ROBOT_GROUP`, `CONTACT_SCHEDULE`. Available since v2.2.0.
+        """
+        return pulumi.get(self, "notify_object_type")
+
+
+@pulumi.output_type
+class NotificationPolicyNotifyTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailContent":
+            suggest = "email_content"
+        elif key == "emailRecoverContent":
+            suggest = "email_recover_content"
+        elif key == "emailRecoverTitle":
+            suggest = "email_recover_title"
+        elif key == "emailTitle":
+            suggest = "email_title"
+        elif key == "robotContent":
+            suggest = "robot_content"
+        elif key == "smsContent":
+            suggest = "sms_content"
+        elif key == "smsRecoverContent":
+            suggest = "sms_recover_content"
+        elif key == "ttsContent":
+            suggest = "tts_content"
+        elif key == "ttsRecoverContent":
+            suggest = "tts_recover_content"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationPolicyNotifyTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationPolicyNotifyTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationPolicyNotifyTemplate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_content: Optional[_builtins.str] = None,
+                 email_recover_content: Optional[_builtins.str] = None,
+                 email_recover_title: Optional[_builtins.str] = None,
+                 email_title: Optional[_builtins.str] = None,
+                 robot_content: Optional[_builtins.str] = None,
+                 sms_content: Optional[_builtins.str] = None,
+                 sms_recover_content: Optional[_builtins.str] = None,
+                 tts_content: Optional[_builtins.str] = None,
+                 tts_recover_content: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str email_content: The content of the email alert notification. Available since v2.2.0.
+        :param _builtins.str email_recover_content: The content of the email recovery notification. Available since v2.2.0.
+        :param _builtins.str email_recover_title: The title of the email recovery notification. Available since v2.2.0.
+        :param _builtins.str email_title: The title of the email alert notification. Available since v2.2.0.
+        :param _builtins.str robot_content: The content of the robot alert notification. Available since v2.2.0.
+        :param _builtins.str sms_content: The content of the SMS alert notification. Available since v2.2.0.
+        :param _builtins.str sms_recover_content: The content of the SMS recovery notification. Available since v2.2.0.
+        :param _builtins.str tts_content: The content of the TTS alert notification. Available since v2.2.0.
+        :param _builtins.str tts_recover_content: The content of the TTS recovery notification. Available since v2.2.0.
+        """
+        if email_content is not None:
+            pulumi.set(__self__, "email_content", email_content)
+        if email_recover_content is not None:
+            pulumi.set(__self__, "email_recover_content", email_recover_content)
+        if email_recover_title is not None:
+            pulumi.set(__self__, "email_recover_title", email_recover_title)
+        if email_title is not None:
+            pulumi.set(__self__, "email_title", email_title)
+        if robot_content is not None:
+            pulumi.set(__self__, "robot_content", robot_content)
+        if sms_content is not None:
+            pulumi.set(__self__, "sms_content", sms_content)
+        if sms_recover_content is not None:
+            pulumi.set(__self__, "sms_recover_content", sms_recover_content)
+        if tts_content is not None:
+            pulumi.set(__self__, "tts_content", tts_content)
+        if tts_recover_content is not None:
+            pulumi.set(__self__, "tts_recover_content", tts_recover_content)
+
+    @_builtins.property
+    @pulumi.getter(name="emailContent")
+    def email_content(self) -> Optional[_builtins.str]:
+        """
+        The content of the email alert notification. Available since v2.2.0.
+        """
+        return pulumi.get(self, "email_content")
+
+    @_builtins.property
+    @pulumi.getter(name="emailRecoverContent")
+    def email_recover_content(self) -> Optional[_builtins.str]:
+        """
+        The content of the email recovery notification. Available since v2.2.0.
+        """
+        return pulumi.get(self, "email_recover_content")
+
+    @_builtins.property
+    @pulumi.getter(name="emailRecoverTitle")
+    def email_recover_title(self) -> Optional[_builtins.str]:
+        """
+        The title of the email recovery notification. Available since v2.2.0.
+        """
+        return pulumi.get(self, "email_recover_title")
+
+    @_builtins.property
+    @pulumi.getter(name="emailTitle")
+    def email_title(self) -> Optional[_builtins.str]:
+        """
+        The title of the email alert notification. Available since v2.2.0.
+        """
+        return pulumi.get(self, "email_title")
+
+    @_builtins.property
+    @pulumi.getter(name="robotContent")
+    def robot_content(self) -> Optional[_builtins.str]:
+        """
+        The content of the robot alert notification. Available since v2.2.0.
+        """
+        return pulumi.get(self, "robot_content")
+
+    @_builtins.property
+    @pulumi.getter(name="smsContent")
+    def sms_content(self) -> Optional[_builtins.str]:
+        """
+        The content of the SMS alert notification. Available since v2.2.0.
+        """
+        return pulumi.get(self, "sms_content")
+
+    @_builtins.property
+    @pulumi.getter(name="smsRecoverContent")
+    def sms_recover_content(self) -> Optional[_builtins.str]:
+        """
+        The content of the SMS recovery notification. Available since v2.2.0.
+        """
+        return pulumi.get(self, "sms_recover_content")
+
+    @_builtins.property
+    @pulumi.getter(name="ttsContent")
+    def tts_content(self) -> Optional[_builtins.str]:
+        """
+        The content of the TTS alert notification. Available since v2.2.0.
+        """
+        return pulumi.get(self, "tts_content")
+
+    @_builtins.property
+    @pulumi.getter(name="ttsRecoverContent")
+    def tts_recover_content(self) -> Optional[_builtins.str]:
+        """
+        The content of the TTS recovery notification. Available since v2.2.0.
         """
         return pulumi.get(self, "tts_recover_content")
 
@@ -4110,8 +4559,8 @@ class GetPrometheusAlertRulesRuleAnnotationResult(dict):
                  name: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str name: The value of the annotation.
-        :param _builtins.str value: The name of the annotation name.
+        :param _builtins.str name: The name of the label.
+        :param _builtins.str value: The value of the label.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -4120,7 +4569,7 @@ class GetPrometheusAlertRulesRuleAnnotationResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The value of the annotation.
+        The name of the label.
         """
         return pulumi.get(self, "name")
 
@@ -4128,7 +4577,7 @@ class GetPrometheusAlertRulesRuleAnnotationResult(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        The name of the annotation name.
+        The value of the label.
         """
         return pulumi.get(self, "value")
 

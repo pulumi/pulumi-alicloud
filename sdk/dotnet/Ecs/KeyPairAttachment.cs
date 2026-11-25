@@ -129,6 +129,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of key pair used to bind.
+        /// </summary>
         [Output("keyPairName")]
         public Output<string> KeyPairName { get; private set; } = null!;
 
@@ -202,6 +205,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
+        /// <summary>
+        /// The name of key pair used to bind.
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
@@ -237,6 +243,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
+        /// <summary>
+        /// The name of key pair used to bind.
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 

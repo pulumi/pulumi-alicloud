@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
@@ -78,12 +78,14 @@ type GetDirectoriesArgs struct {
 
 // A collection of values returned by getDirectories.
 type GetDirectoriesResult struct {
+	// A list of Cloud Sso Directories. Each element contains the following attributes:
 	Directories   []GetDirectoriesDirectory `pulumi:"directories"`
 	EnableDetails *bool                     `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Directory names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -124,6 +126,7 @@ func (o GetDirectoriesResultOutput) ToGetDirectoriesResultOutputWithContext(ctx 
 	return o
 }
 
+// A list of Cloud Sso Directories. Each element contains the following attributes:
 func (o GetDirectoriesResultOutput) Directories() GetDirectoriesDirectoryArrayOutput {
 	return o.ApplyT(func(v GetDirectoriesResult) []GetDirectoriesDirectory { return v.Directories }).(GetDirectoriesDirectoryArrayOutput)
 }
@@ -145,6 +148,7 @@ func (o GetDirectoriesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDirectoriesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Directory names.
 func (o GetDirectoriesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDirectoriesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

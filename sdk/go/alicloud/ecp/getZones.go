@@ -13,7 +13,7 @@ import (
 
 // This data source provides the available zones with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.158.0+.
+// > **NOTE:** Available since v1.158.0.
 //
 // ## Example Usage
 //
@@ -60,9 +60,10 @@ type GetZonesArgs struct {
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string         `pulumi:"id"`
-	OutputFile *string        `pulumi:"outputFile"`
-	Zones      []GetZonesZone `pulumi:"zones"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of availability zone information collection.
+	Zones []GetZonesZone `pulumi:"zones"`
 }
 
 func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
@@ -104,6 +105,7 @@ func (o GetZonesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of availability zone information collection.
 func (o GetZonesResultOutput) Zones() GetZonesZoneArrayOutput {
 	return o.ApplyT(func(v GetZonesResult) []GetZonesZone { return v.Zones }).(GetZonesZoneArrayOutput)
 }

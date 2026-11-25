@@ -56,6 +56,9 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter(name="desktopId")
     def desktop_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the cloud desktop to which the snapshot belongs.
+        """
         return pulumi.get(self, "desktop_id")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Snapshot names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +95,17 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @_builtins.property
     @pulumi.getter
     def snapshots(self) -> Sequence['outputs.GetSnapshotsSnapshotResult']:
+        """
+        A list of Ecd Snapshots. Each element contains the following attributes:
+        """
         return pulumi.get(self, "snapshots")
 
 
@@ -122,7 +134,7 @@ def get_snapshots(desktop_id: Optional[_builtins.str] = None,
     """
     This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.169.0+.
+    > **NOTE:** Available since v1.169.0.
 
     ## Example Usage
 
@@ -170,7 +182,7 @@ def get_snapshots_output(desktop_id: pulumi.Input[Optional[Optional[_builtins.st
     """
     This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.169.0+.
+    > **NOTE:** Available since v1.169.0.
 
     ## Example Usage
 

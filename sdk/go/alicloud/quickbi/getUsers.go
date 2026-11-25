@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Quick BI Users of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -71,11 +71,12 @@ type GetUsersArgs struct {
 type GetUsersResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string         `pulumi:"id"`
-	Ids        []string       `pulumi:"ids"`
-	Keyword    *string        `pulumi:"keyword"`
-	OutputFile *string        `pulumi:"outputFile"`
-	Users      []GetUsersUser `pulumi:"users"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	Keyword    *string  `pulumi:"keyword"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Quick BI Users. Each element contains the following attributes:
+	Users []GetUsersUser `pulumi:"users"`
 }
 
 func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
@@ -135,6 +136,7 @@ func (o GetUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Quick BI Users. Each element contains the following attributes:
 func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
 }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -72,17 +72,29 @@ export interface GetEcsBackupPlansResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of ECS instance.
+     */
     readonly instanceId?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Ecs backup plan names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Hbr Ecs backup plans. Each element contains the following attributes:
+     */
     readonly plans: outputs.hbr.GetEcsBackupPlansPlan[];
+    /**
+     * The ID of Backup vault.
+     */
     readonly vaultId?: string;
 }
 /**
  * This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

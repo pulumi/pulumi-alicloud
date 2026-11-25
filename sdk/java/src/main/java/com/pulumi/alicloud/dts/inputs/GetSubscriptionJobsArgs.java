@@ -18,9 +18,17 @@ public final class GetSubscriptionJobsArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetSubscriptionJobsArgs Empty = new GetSubscriptionJobsArgs();
 
+    /**
+     * Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -85,9 +93,17 @@ public final class GetSubscriptionJobsArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * A mapping of tags to filter results.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to filter results.
+     * 
+     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -121,11 +137,23 @@ public final class GetSubscriptionJobsArgs extends com.pulumi.resources.InvokeAr
             $ = new GetSubscriptionJobsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }
@@ -224,11 +252,23 @@ public final class GetSubscriptionJobsArgs extends com.pulumi.resources.InvokeAr
             return status(Output.of(status));
         }
 
+        /**
+         * @param tags A mapping of tags to filter results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to filter results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }

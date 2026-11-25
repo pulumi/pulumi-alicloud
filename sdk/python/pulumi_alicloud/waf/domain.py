@@ -54,9 +54,7 @@ class DomainArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] https_ports: List of the HTTPS ports.
         :param pulumi.Input[_builtins.str] https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
         :param pulumi.Input[_builtins.str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-               * key: The key of label
-               * value: The value of label
+        :param pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `log_headers` below.
         :param pulumi.Input[_builtins.int] read_time: The read timeout of a WAF exclusive cluster. Unit: seconds.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
@@ -248,9 +246,7 @@ class DomainArgs:
     @pulumi.getter(name="logHeaders")
     def log_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]:
         """
-        The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-        * key: The key of label
-        * value: The value of label
+        The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `log_headers` below.
         """
         return pulumi.get(self, "log_headers")
 
@@ -345,9 +341,7 @@ class _DomainState:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[_builtins.str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         :param pulumi.Input[_builtins.str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-               * key: The key of label
-               * value: The value of label
+        :param pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `log_headers` below.
         :param pulumi.Input[_builtins.int] read_time: The read timeout of a WAF exclusive cluster. Unit: seconds.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
@@ -555,9 +549,7 @@ class _DomainState:
     @pulumi.getter(name="logHeaders")
     def log_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]:
         """
-        The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-        * key: The key of label
-        * value: The value of label
+        The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `log_headers` below.
         """
         return pulumi.get(self, "log_headers")
 
@@ -697,9 +689,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[_builtins.str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         :param pulumi.Input[_builtins.str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict', 'outputs.DomainLogHeader']]]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-               * key: The key of label
-               * value: The value of label
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict', 'outputs.DomainLogHeader']]]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `log_headers` below.
         :param pulumi.Input[_builtins.int] read_time: The read timeout of a WAF exclusive cluster. Unit: seconds.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
@@ -867,9 +857,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[_builtins.str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         :param pulumi.Input[_builtins.str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict', 'outputs.DomainLogHeader']]]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-               * key: The key of label
-               * value: The value of label
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict', 'outputs.DomainLogHeader']]]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `log_headers` below.
         :param pulumi.Input[_builtins.int] read_time: The read timeout of a WAF exclusive cluster. Unit: seconds.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
@@ -1051,9 +1039,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="logHeaders")
     def log_headers(self) -> pulumi.Output[Optional[Sequence['outputs.DomainLogHeader']]]:
         """
-        The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-        * key: The key of label
-        * value: The value of label
+        The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `log_headers` below.
         """
         return pulumi.get(self, "log_headers")
 

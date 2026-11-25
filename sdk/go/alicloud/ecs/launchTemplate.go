@@ -24,51 +24,81 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			images, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				Owners: pulumi.StringRef("system"),
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			instances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{}, nil)
+//			images, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				SecurityGroupName: pulumi.String("terraform-example"),
+//				VpcId:             defaultNetwork.ID(),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewLaunchTemplate(ctx, "template", &ecs.LaunchTemplateArgs{
-//				Name:                        pulumi.String("tf-test-template"),
+//				LaunchTemplateName:          pulumi.String("tf-template"),
 //				Description:                 pulumi.String("test1"),
 //				ImageId:                     pulumi.String(images.Images[0].Id),
-//				HostName:                    pulumi.String("tf-test-host"),
+//				HostName:                    pulumi.String("tf-host"),
 //				InstanceChargeType:          pulumi.String("PrePaid"),
 //				InstanceName:                pulumi.String("tf-instance-name"),
-//				InstanceType:                pulumi.String(instances.Instances[0].InstanceType),
+//				InstanceType:                pulumi.String("ecs.s6-c1m1.small"),
 //				InternetChargeType:          pulumi.String("PayByBandwidth"),
 //				InternetMaxBandwidthIn:      pulumi.Int(5),
-//				InternetMaxBandwidthOut:     pulumi.Int(0),
-//				IoOptimized:                 pulumi.String("none"),
-//				KeyPairName:                 pulumi.String("test-key-pair"),
+//				InternetMaxBandwidthOut:     pulumi.Int(5),
+//				IoOptimized:                 pulumi.String("optimized"),
+//				KeyPairName:                 pulumi.String("tf-key-pair"),
 //				RamRoleName:                 pulumi.String("xxxxx"),
 //				NetworkType:                 pulumi.String("vpc"),
 //				SecurityEnhancementStrategy: pulumi.String("Active"),
 //				SpotPriceLimit:              pulumi.Float64(5),
 //				SpotStrategy:                pulumi.String("SpotWithPriceLimit"),
-//				SecurityGroupId:             pulumi.String("sg-zxcvj0lasdf102350asdf9a"),
-//				SystemDiskCategory:          pulumi.String("cloud_ssd"),
-//				SystemDiskDescription:       pulumi.String("test disk"),
-//				SystemDiskName:              pulumi.String("hello"),
-//				SystemDiskSize:              pulumi.Int(40),
-//				ResourceGroupId:             pulumi.String("rg-zkdfjahg9zxncv0"),
-//				Userdata:                    pulumi.String("xxxxxxxxxxxxxx"),
-//				VswitchId:                   pulumi.String("sw-ljkngaksdjfj0nnasdf"),
-//				VpcId:                       pulumi.String("vpc-asdfnbg0as8dfk1nb2"),
-//				ZoneId:                      pulumi.String("beijing-a"),
+//				SecurityGroupId:             defaultSecurityGroup.ID(),
+//				VswitchId:                   defaultSwitch.ID(),
+//				VpcId:                       defaultNetwork.ID(),
+//				ZoneId:                      pulumi.String(_default.Zones[0].Id),
+//				UserData:                    pulumi.String("xxxxxxxxxxxxxx"),
+//				SystemDisk: &ecs.LaunchTemplateSystemDiskArgs{
+//					Category:    pulumi.String("cloud_ssd"),
+//					Description: pulumi.String("test disk"),
+//					Name:        pulumi.String("hello"),
+//					Size:        pulumi.Int(40),
+//				},
 //				Tags: pulumi.StringMap{
 //					"tag1": pulumi.String("hello"),
 //					"tag2": pulumi.String("world"),
@@ -77,8 +107,8 @@ import (
 //					Name:            pulumi.String("eth0"),
 //					Description:     pulumi.String("hello1"),
 //					PrimaryIp:       pulumi.String("10.0.0.2"),
-//					SecurityGroupId: pulumi.String("xxxx"),
-//					VswitchId:       pulumi.String("xxxxxxx"),
+//					SecurityGroupId: defaultSecurityGroup.ID(),
+//					VswitchId:       defaultSwitch.ID(),
 //				},
 //				DataDisks: ecs.LaunchTemplateDataDiskArray{
 //					&ecs.LaunchTemplateDataDiskArgs{
@@ -112,26 +142,36 @@ import (
 type LaunchTemplate struct {
 	pulumi.CustomResourceState
 
-	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrOutput `pulumi:"autoReleaseTime"`
-	AutoRenew       pulumi.BoolOutput      `pulumi:"autoRenew"`
-	AutoRenewPeriod pulumi.IntOutput       `pulumi:"autoRenewPeriod"`
-	// The list of data disks created with instance.
-	DataDisks            LaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
-	DefaultVersionNumber pulumi.IntOutput                  `pulumi:"defaultVersionNumber"`
-	DeploymentSetId      pulumi.StringPtrOutput            `pulumi:"deploymentSetId"`
+	// Whether to enable auto-renewal for the instance.
+	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
+	// The auto-renewal period of the instance.
+	AutoRenewPeriod pulumi.IntOutput `pulumi:"autoRenewPeriod"`
+	// The list of data disks created with instance. See `dataDisks` below.
+	DataDisks LaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
+	// The version number of the default launch template version.
+	DefaultVersionNumber pulumi.IntOutput `pulumi:"defaultVersionNumber"`
+	// The ID of the deployment set.
+	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-	Description      pulumi.StringPtrOutput `pulumi:"description"`
-	EnableVmOsConfig pulumi.BoolPtrOutput   `pulumi:"enableVmOsConfig"`
-	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
-	HostName                pulumi.StringPtrOutput `pulumi:"hostName"`
-	HttpEndpoint            pulumi.StringOutput    `pulumi:"httpEndpoint"`
-	HttpPutResponseHopLimit pulumi.IntOutput       `pulumi:"httpPutResponseHopLimit"`
-	HttpTokens              pulumi.StringOutput    `pulumi:"httpTokens"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Whether to enable VM OS configuration.
+	EnableVmOsConfig pulumi.BoolPtrOutput `pulumi:"enableVmOsConfig"`
+	// Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+	HostName pulumi.StringPtrOutput `pulumi:"hostName"`
+	// Whether to enable access to instance metadata.
+	HttpEndpoint pulumi.StringOutput `pulumi:"httpEndpoint"`
+	// The HTTP PUT response hop limit required for instance metadata requests.
+	HttpPutResponseHopLimit pulumi.IntOutput `pulumi:"httpPutResponseHopLimit"`
+	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+	HttpTokens pulumi.StringOutput `pulumi:"httpTokens"`
 	// Image ID.
-	ImageId         pulumi.StringPtrOutput           `pulumi:"imageId"`
-	ImageOptions    LaunchTemplateImageOptionsOutput `pulumi:"imageOptions"`
-	ImageOwnerAlias pulumi.StringPtrOutput           `pulumi:"imageOwnerAlias"`
+	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	// The options of images. See `imageOptions` below.
+	ImageOptions LaunchTemplateImageOptionsOutput `pulumi:"imageOptions"`
+	// The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+	ImageOwnerAlias pulumi.StringPtrOutput `pulumi:"imageOwnerAlias"`
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
@@ -153,75 +193,86 @@ type LaunchTemplate struct {
 	// - optimized
 	IoOptimized pulumi.StringPtrOutput `pulumi:"ioOptimized"`
 	// The name of the key pair.
-	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName         pulumi.StringPtrOutput `pulumi:"keyPairName"`
-	LatestVersionNumber pulumi.IntOutput       `pulumi:"latestVersionNumber"`
-	LaunchTemplateName  pulumi.StringOutput    `pulumi:"launchTemplateName"`
-	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
+	// The latest version number of the launch template.
+	LatestVersionNumber pulumi.IntOutput `pulumi:"latestVersionNumber"`
+	// The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+	LaunchTemplateName pulumi.StringOutput `pulumi:"launchTemplateName"`
+	// It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The list of network interfaces created with instance.
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces LaunchTemplateNetworkInterfacesPtrOutput `pulumi:"networkInterfaces"`
 	// Network type of the instance. Value options: `classic` | `vpc`.
-	NetworkType      pulumi.StringPtrOutput `pulumi:"networkType"`
-	PasswordInherit  pulumi.BoolPtrOutput   `pulumi:"passwordInherit"`
-	Period           pulumi.IntOutput       `pulumi:"period"`
-	PeriodUnit       pulumi.StringOutput    `pulumi:"periodUnit"`
+	NetworkType pulumi.StringPtrOutput `pulumi:"networkType"`
+	// Whether to use the password inherited from the image.
+	PasswordInherit pulumi.BoolPtrOutput `pulumi:"passwordInherit"`
+	// The purchase duration of the instance.
+	Period pulumi.IntOutput `pulumi:"period"`
+	// The unit of the purchase duration.
+	PeriodUnit pulumi.StringOutput `pulumi:"periodUnit"`
+	// The private IP address of the instance.
 	PrivateIpAddress pulumi.StringPtrOutput `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
-	RamRoleName     pulumi.StringPtrOutput `pulumi:"ramRoleName"`
+	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
+	// The ID of the resource group to which the resource belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
 	// The security group ID.
-	SecurityGroupId  pulumi.StringPtrOutput   `pulumi:"securityGroupId"`
+	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
+	// The list of security group IDs.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	SpotDuration     pulumi.StringPtrOutput   `pulumi:"spotDuration"`
+	// The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+	SpotDuration pulumi.StringPtrOutput `pulumi:"spotDuration"`
 	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
 	// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
-	SpotStrategy pulumi.StringPtrOutput         `pulumi:"spotStrategy"`
-	SystemDisk   LaunchTemplateSystemDiskOutput `pulumi:"systemDisk"`
-	// The category of the system disk. System disk type. Optional values:
-	// - cloud: Basic cloud disk.
-	// - cloud_efficiency: Ultra cloud disk.
-	// - cloud_ssd: SSD cloud Disks.
-	// - ephemeral_ssd: local SSD Disks
-	// - cloud_essd: ESSD cloud Disks.
+	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
+	// The system disk. See `systemDisk` below.
+	SystemDisk LaunchTemplateSystemDiskOutput `pulumi:"systemDisk"`
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringOutput `pulumi:"systemDiskCategory"`
-	// System disk description. It cannot begin with http:// or https://.
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringOutput `pulumi:"systemDiskDescription"`
-	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringOutput `pulumi:"systemDiskName"`
-	// Size of the system disk, measured in GB. Value range: [20, 500].
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntOutput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                       pulumi.StringMapOutput `pulumi:"tags"`
-	TemplateResourceGroupId    pulumi.StringPtrOutput `pulumi:"templateResourceGroupId"`
-	TemplateTags               pulumi.StringMapOutput `pulumi:"templateTags"`
-	UpdateDefaultVersionNumber pulumi.BoolPtrOutput   `pulumi:"updateDefaultVersionNumber"`
-	UserData                   pulumi.StringOutput    `pulumi:"userData"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The ID of the resource group for the launch template.
+	TemplateResourceGroupId pulumi.StringPtrOutput `pulumi:"templateResourceGroupId"`
+	// A mapping of tags to assign to the launch template.
+	TemplateTags pulumi.StringMapOutput `pulumi:"templateTags"`
+	// Whether to update the default version of the launch template to the latest version automatically.
+	UpdateDefaultVersionNumber pulumi.BoolPtrOutput `pulumi:"updateDefaultVersionNumber"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+	UserData pulumi.StringOutput `pulumi:"userData"`
+	// It has been deprecated from version 1.120.0. New field `userData` instead.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
-	Userdata           pulumi.StringOutput    `pulumi:"userdata"`
+	Userdata pulumi.StringOutput `pulumi:"userdata"`
+	// The description of the launch template version.
 	VersionDescription pulumi.StringPtrOutput `pulumi:"versionDescription"`
-	VpcId              pulumi.StringOutput    `pulumi:"vpcId"`
+	// The VPC ID.
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -258,26 +309,36 @@ func GetLaunchTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LaunchTemplate resources.
 type launchTemplateState struct {
-	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
-	AutoRenew       *bool   `pulumi:"autoRenew"`
-	AutoRenewPeriod *int    `pulumi:"autoRenewPeriod"`
-	// The list of data disks created with instance.
-	DataDisks            []LaunchTemplateDataDisk `pulumi:"dataDisks"`
-	DefaultVersionNumber *int                     `pulumi:"defaultVersionNumber"`
-	DeploymentSetId      *string                  `pulumi:"deploymentSetId"`
+	// Whether to enable auto-renewal for the instance.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The auto-renewal period of the instance.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// The list of data disks created with instance. See `dataDisks` below.
+	DataDisks []LaunchTemplateDataDisk `pulumi:"dataDisks"`
+	// The version number of the default launch template version.
+	DefaultVersionNumber *int `pulumi:"defaultVersionNumber"`
+	// The ID of the deployment set.
+	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-	Description      *string `pulumi:"description"`
-	EnableVmOsConfig *bool   `pulumi:"enableVmOsConfig"`
-	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
-	HostName                *string `pulumi:"hostName"`
-	HttpEndpoint            *string `pulumi:"httpEndpoint"`
-	HttpPutResponseHopLimit *int    `pulumi:"httpPutResponseHopLimit"`
-	HttpTokens              *string `pulumi:"httpTokens"`
+	Description *string `pulumi:"description"`
+	// Whether to enable VM OS configuration.
+	EnableVmOsConfig *bool `pulumi:"enableVmOsConfig"`
+	// Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+	HostName *string `pulumi:"hostName"`
+	// Whether to enable access to instance metadata.
+	HttpEndpoint *string `pulumi:"httpEndpoint"`
+	// The HTTP PUT response hop limit required for instance metadata requests.
+	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
+	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+	HttpTokens *string `pulumi:"httpTokens"`
 	// Image ID.
-	ImageId         *string                     `pulumi:"imageId"`
-	ImageOptions    *LaunchTemplateImageOptions `pulumi:"imageOptions"`
-	ImageOwnerAlias *string                     `pulumi:"imageOwnerAlias"`
+	ImageId *string `pulumi:"imageId"`
+	// The options of images. See `imageOptions` below.
+	ImageOptions *LaunchTemplateImageOptions `pulumi:"imageOptions"`
+	// The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
@@ -299,75 +360,86 @@ type launchTemplateState struct {
 	// - optimized
 	IoOptimized *string `pulumi:"ioOptimized"`
 	// The name of the key pair.
-	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName         *string `pulumi:"keyPairName"`
-	LatestVersionNumber *int    `pulumi:"latestVersionNumber"`
-	LaunchTemplateName  *string `pulumi:"launchTemplateName"`
-	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+	KeyPairName *string `pulumi:"keyPairName"`
+	// The latest version number of the launch template.
+	LatestVersionNumber *int `pulumi:"latestVersionNumber"`
+	// The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+	LaunchTemplateName *string `pulumi:"launchTemplateName"`
+	// It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
-	// The list of network interfaces created with instance.
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces *LaunchTemplateNetworkInterfaces `pulumi:"networkInterfaces"`
 	// Network type of the instance. Value options: `classic` | `vpc`.
-	NetworkType      *string `pulumi:"networkType"`
-	PasswordInherit  *bool   `pulumi:"passwordInherit"`
-	Period           *int    `pulumi:"period"`
-	PeriodUnit       *string `pulumi:"periodUnit"`
+	NetworkType *string `pulumi:"networkType"`
+	// Whether to use the password inherited from the image.
+	PasswordInherit *bool `pulumi:"passwordInherit"`
+	// The purchase duration of the instance.
+	Period *int `pulumi:"period"`
+	// The unit of the purchase duration.
+	PeriodUnit *string `pulumi:"periodUnit"`
+	// The private IP address of the instance.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
-	RamRoleName     *string `pulumi:"ramRoleName"`
+	RamRoleName *string `pulumi:"ramRoleName"`
+	// The ID of the resource group to which the resource belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// The security group ID.
-	SecurityGroupId  *string  `pulumi:"securityGroupId"`
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The list of security group IDs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	SpotDuration     *string  `pulumi:"spotDuration"`
+	// The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+	SpotDuration *string `pulumi:"spotDuration"`
 	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
 	// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
-	SpotStrategy *string                   `pulumi:"spotStrategy"`
-	SystemDisk   *LaunchTemplateSystemDisk `pulumi:"systemDisk"`
-	// The category of the system disk. System disk type. Optional values:
-	// - cloud: Basic cloud disk.
-	// - cloud_efficiency: Ultra cloud disk.
-	// - cloud_ssd: SSD cloud Disks.
-	// - ephemeral_ssd: local SSD Disks
-	// - cloud_essd: ESSD cloud Disks.
+	SpotStrategy *string `pulumi:"spotStrategy"`
+	// The system disk. See `systemDisk` below.
+	SystemDisk *LaunchTemplateSystemDisk `pulumi:"systemDisk"`
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
-	// System disk description. It cannot begin with http:// or https://.
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
-	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName *string `pulumi:"systemDiskName"`
-	// Size of the system disk, measured in GB. Value range: [20, 500].
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                       map[string]string `pulumi:"tags"`
-	TemplateResourceGroupId    *string           `pulumi:"templateResourceGroupId"`
-	TemplateTags               map[string]string `pulumi:"templateTags"`
-	UpdateDefaultVersionNumber *bool             `pulumi:"updateDefaultVersionNumber"`
-	UserData                   *string           `pulumi:"userData"`
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the resource group for the launch template.
+	TemplateResourceGroupId *string `pulumi:"templateResourceGroupId"`
+	// A mapping of tags to assign to the launch template.
+	TemplateTags map[string]string `pulumi:"templateTags"`
+	// Whether to update the default version of the launch template to the latest version automatically.
+	UpdateDefaultVersionNumber *bool `pulumi:"updateDefaultVersionNumber"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+	UserData *string `pulumi:"userData"`
+	// It has been deprecated from version 1.120.0. New field `userData` instead.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
-	Userdata           *string `pulumi:"userdata"`
+	Userdata *string `pulumi:"userdata"`
+	// The description of the launch template version.
 	VersionDescription *string `pulumi:"versionDescription"`
-	VpcId              *string `pulumi:"vpcId"`
+	// The VPC ID.
+	VpcId *string `pulumi:"vpcId"`
 	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -375,25 +447,35 @@ type launchTemplateState struct {
 }
 
 type LaunchTemplateState struct {
-	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrInput
-	AutoRenew       pulumi.BoolPtrInput
+	// Whether to enable auto-renewal for the instance.
+	AutoRenew pulumi.BoolPtrInput
+	// The auto-renewal period of the instance.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// The list of data disks created with instance.
-	DataDisks            LaunchTemplateDataDiskArrayInput
+	// The list of data disks created with instance. See `dataDisks` below.
+	DataDisks LaunchTemplateDataDiskArrayInput
+	// The version number of the default launch template version.
 	DefaultVersionNumber pulumi.IntPtrInput
-	DeploymentSetId      pulumi.StringPtrInput
+	// The ID of the deployment set.
+	DeploymentSetId pulumi.StringPtrInput
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-	Description      pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Whether to enable VM OS configuration.
 	EnableVmOsConfig pulumi.BoolPtrInput
-	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
-	HostName                pulumi.StringPtrInput
-	HttpEndpoint            pulumi.StringPtrInput
+	// Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+	HostName pulumi.StringPtrInput
+	// Whether to enable access to instance metadata.
+	HttpEndpoint pulumi.StringPtrInput
+	// The HTTP PUT response hop limit required for instance metadata requests.
 	HttpPutResponseHopLimit pulumi.IntPtrInput
-	HttpTokens              pulumi.StringPtrInput
+	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+	HttpTokens pulumi.StringPtrInput
 	// Image ID.
-	ImageId         pulumi.StringPtrInput
-	ImageOptions    LaunchTemplateImageOptionsPtrInput
+	ImageId pulumi.StringPtrInput
+	// The options of images. See `imageOptions` below.
+	ImageOptions LaunchTemplateImageOptionsPtrInput
+	// The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -416,32 +498,41 @@ type LaunchTemplateState struct {
 	// - optimized
 	IoOptimized pulumi.StringPtrInput
 	// The name of the key pair.
-	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName         pulumi.StringPtrInput
+	KeyPairName pulumi.StringPtrInput
+	// The latest version number of the launch template.
 	LatestVersionNumber pulumi.IntPtrInput
-	LaunchTemplateName  pulumi.StringPtrInput
-	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+	// The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+	LaunchTemplateName pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
-	// The list of network interfaces created with instance.
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces LaunchTemplateNetworkInterfacesPtrInput
 	// Network type of the instance. Value options: `classic` | `vpc`.
-	NetworkType      pulumi.StringPtrInput
-	PasswordInherit  pulumi.BoolPtrInput
-	Period           pulumi.IntPtrInput
-	PeriodUnit       pulumi.StringPtrInput
+	NetworkType pulumi.StringPtrInput
+	// Whether to use the password inherited from the image.
+	PasswordInherit pulumi.BoolPtrInput
+	// The purchase duration of the instance.
+	Period pulumi.IntPtrInput
+	// The unit of the purchase duration.
+	PeriodUnit pulumi.StringPtrInput
+	// The private IP address of the instance.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
-	RamRoleName     pulumi.StringPtrInput
+	RamRoleName pulumi.StringPtrInput
+	// The ID of the resource group to which the resource belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// The security group ID.
-	SecurityGroupId  pulumi.StringPtrInput
+	SecurityGroupId pulumi.StringPtrInput
+	// The list of security group IDs.
 	SecurityGroupIds pulumi.StringArrayInput
-	SpotDuration     pulumi.StringPtrInput
+	// The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+	SpotDuration pulumi.StringPtrInput
 	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
@@ -449,42 +540,44 @@ type LaunchTemplateState struct {
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
 	// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
 	SpotStrategy pulumi.StringPtrInput
-	SystemDisk   LaunchTemplateSystemDiskPtrInput
-	// The category of the system disk. System disk type. Optional values:
-	// - cloud: Basic cloud disk.
-	// - cloud_efficiency: Ultra cloud disk.
-	// - cloud_ssd: SSD cloud Disks.
-	// - ephemeral_ssd: local SSD Disks
-	// - cloud_essd: ESSD cloud Disks.
+	// The system disk. See `systemDisk` below.
+	SystemDisk LaunchTemplateSystemDiskPtrInput
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringPtrInput
-	// System disk description. It cannot begin with http:// or https://.
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringPtrInput
-	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringPtrInput
-	// Size of the system disk, measured in GB. Value range: [20, 500].
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                       pulumi.StringMapInput
-	TemplateResourceGroupId    pulumi.StringPtrInput
-	TemplateTags               pulumi.StringMapInput
+	Tags pulumi.StringMapInput
+	// The ID of the resource group for the launch template.
+	TemplateResourceGroupId pulumi.StringPtrInput
+	// A mapping of tags to assign to the launch template.
+	TemplateTags pulumi.StringMapInput
+	// Whether to update the default version of the launch template to the latest version automatically.
 	UpdateDefaultVersionNumber pulumi.BoolPtrInput
-	UserData                   pulumi.StringPtrInput
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+	UserData pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0. New field `userData` instead.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
-	Userdata           pulumi.StringPtrInput
+	Userdata pulumi.StringPtrInput
+	// The description of the launch template version.
 	VersionDescription pulumi.StringPtrInput
-	VpcId              pulumi.StringPtrInput
+	// The VPC ID.
+	VpcId pulumi.StringPtrInput
 	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
@@ -502,26 +595,36 @@ func LaunchTemplateExists(ctx *pulumi.Context,
 }
 
 type launchTemplateArgs struct {
-	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
-	AutoRenew       *bool   `pulumi:"autoRenew"`
-	AutoRenewPeriod *int    `pulumi:"autoRenewPeriod"`
-	// The list of data disks created with instance.
-	DataDisks            []LaunchTemplateDataDisk `pulumi:"dataDisks"`
-	DefaultVersionNumber *int                     `pulumi:"defaultVersionNumber"`
-	DeploymentSetId      *string                  `pulumi:"deploymentSetId"`
+	// Whether to enable auto-renewal for the instance.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The auto-renewal period of the instance.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// The list of data disks created with instance. See `dataDisks` below.
+	DataDisks []LaunchTemplateDataDisk `pulumi:"dataDisks"`
+	// The version number of the default launch template version.
+	DefaultVersionNumber *int `pulumi:"defaultVersionNumber"`
+	// The ID of the deployment set.
+	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-	Description      *string `pulumi:"description"`
-	EnableVmOsConfig *bool   `pulumi:"enableVmOsConfig"`
-	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
-	HostName                *string `pulumi:"hostName"`
-	HttpEndpoint            *string `pulumi:"httpEndpoint"`
-	HttpPutResponseHopLimit *int    `pulumi:"httpPutResponseHopLimit"`
-	HttpTokens              *string `pulumi:"httpTokens"`
+	Description *string `pulumi:"description"`
+	// Whether to enable VM OS configuration.
+	EnableVmOsConfig *bool `pulumi:"enableVmOsConfig"`
+	// Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+	HostName *string `pulumi:"hostName"`
+	// Whether to enable access to instance metadata.
+	HttpEndpoint *string `pulumi:"httpEndpoint"`
+	// The HTTP PUT response hop limit required for instance metadata requests.
+	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
+	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+	HttpTokens *string `pulumi:"httpTokens"`
 	// Image ID.
-	ImageId         *string                     `pulumi:"imageId"`
-	ImageOptions    *LaunchTemplateImageOptions `pulumi:"imageOptions"`
-	ImageOwnerAlias *string                     `pulumi:"imageOwnerAlias"`
+	ImageId *string `pulumi:"imageId"`
+	// The options of images. See `imageOptions` below.
+	ImageOptions *LaunchTemplateImageOptions `pulumi:"imageOptions"`
+	// The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
+	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
@@ -543,74 +646,84 @@ type launchTemplateArgs struct {
 	// - optimized
 	IoOptimized *string `pulumi:"ioOptimized"`
 	// The name of the key pair.
-	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName        *string `pulumi:"keyPairName"`
+	KeyPairName *string `pulumi:"keyPairName"`
+	// The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
-	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+	// It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
-	// The list of network interfaces created with instance.
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces *LaunchTemplateNetworkInterfaces `pulumi:"networkInterfaces"`
 	// Network type of the instance. Value options: `classic` | `vpc`.
-	NetworkType      *string `pulumi:"networkType"`
-	PasswordInherit  *bool   `pulumi:"passwordInherit"`
-	Period           *int    `pulumi:"period"`
-	PeriodUnit       *string `pulumi:"periodUnit"`
+	NetworkType *string `pulumi:"networkType"`
+	// Whether to use the password inherited from the image.
+	PasswordInherit *bool `pulumi:"passwordInherit"`
+	// The purchase duration of the instance.
+	Period *int `pulumi:"period"`
+	// The unit of the purchase duration.
+	PeriodUnit *string `pulumi:"periodUnit"`
+	// The private IP address of the instance.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
-	RamRoleName     *string `pulumi:"ramRoleName"`
+	RamRoleName *string `pulumi:"ramRoleName"`
+	// The ID of the resource group to which the resource belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// The security group ID.
-	SecurityGroupId  *string  `pulumi:"securityGroupId"`
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The list of security group IDs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	SpotDuration     *string  `pulumi:"spotDuration"`
+	// The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+	SpotDuration *string `pulumi:"spotDuration"`
 	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
 	// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
-	SpotStrategy *string                   `pulumi:"spotStrategy"`
-	SystemDisk   *LaunchTemplateSystemDisk `pulumi:"systemDisk"`
-	// The category of the system disk. System disk type. Optional values:
-	// - cloud: Basic cloud disk.
-	// - cloud_efficiency: Ultra cloud disk.
-	// - cloud_ssd: SSD cloud Disks.
-	// - ephemeral_ssd: local SSD Disks
-	// - cloud_essd: ESSD cloud Disks.
+	SpotStrategy *string `pulumi:"spotStrategy"`
+	// The system disk. See `systemDisk` below.
+	SystemDisk *LaunchTemplateSystemDisk `pulumi:"systemDisk"`
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
-	// System disk description. It cannot begin with http:// or https://.
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
-	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName *string `pulumi:"systemDiskName"`
-	// Size of the system disk, measured in GB. Value range: [20, 500].
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                       map[string]string `pulumi:"tags"`
-	TemplateResourceGroupId    *string           `pulumi:"templateResourceGroupId"`
-	TemplateTags               map[string]string `pulumi:"templateTags"`
-	UpdateDefaultVersionNumber *bool             `pulumi:"updateDefaultVersionNumber"`
-	UserData                   *string           `pulumi:"userData"`
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the resource group for the launch template.
+	TemplateResourceGroupId *string `pulumi:"templateResourceGroupId"`
+	// A mapping of tags to assign to the launch template.
+	TemplateTags map[string]string `pulumi:"templateTags"`
+	// Whether to update the default version of the launch template to the latest version automatically.
+	UpdateDefaultVersionNumber *bool `pulumi:"updateDefaultVersionNumber"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+	UserData *string `pulumi:"userData"`
+	// It has been deprecated from version 1.120.0. New field `userData` instead.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
-	Userdata           *string `pulumi:"userdata"`
+	Userdata *string `pulumi:"userdata"`
+	// The description of the launch template version.
 	VersionDescription *string `pulumi:"versionDescription"`
-	VpcId              *string `pulumi:"vpcId"`
+	// The VPC ID.
+	VpcId *string `pulumi:"vpcId"`
 	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -619,25 +732,35 @@ type launchTemplateArgs struct {
 
 // The set of arguments for constructing a LaunchTemplate resource.
 type LaunchTemplateArgs struct {
-	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrInput
-	AutoRenew       pulumi.BoolPtrInput
+	// Whether to enable auto-renewal for the instance.
+	AutoRenew pulumi.BoolPtrInput
+	// The auto-renewal period of the instance.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// The list of data disks created with instance.
-	DataDisks            LaunchTemplateDataDiskArrayInput
+	// The list of data disks created with instance. See `dataDisks` below.
+	DataDisks LaunchTemplateDataDiskArrayInput
+	// The version number of the default launch template version.
 	DefaultVersionNumber pulumi.IntPtrInput
-	DeploymentSetId      pulumi.StringPtrInput
+	// The ID of the deployment set.
+	DeploymentSetId pulumi.StringPtrInput
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-	Description      pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Whether to enable VM OS configuration.
 	EnableVmOsConfig pulumi.BoolPtrInput
-	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
-	HostName                pulumi.StringPtrInput
-	HttpEndpoint            pulumi.StringPtrInput
+	// Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+	HostName pulumi.StringPtrInput
+	// Whether to enable access to instance metadata.
+	HttpEndpoint pulumi.StringPtrInput
+	// The HTTP PUT response hop limit required for instance metadata requests.
 	HttpPutResponseHopLimit pulumi.IntPtrInput
-	HttpTokens              pulumi.StringPtrInput
+	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+	HttpTokens pulumi.StringPtrInput
 	// Image ID.
-	ImageId         pulumi.StringPtrInput
-	ImageOptions    LaunchTemplateImageOptionsPtrInput
+	ImageId pulumi.StringPtrInput
+	// The options of images. See `imageOptions` below.
+	ImageOptions LaunchTemplateImageOptionsPtrInput
+	// The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -660,31 +783,39 @@ type LaunchTemplateArgs struct {
 	// - optimized
 	IoOptimized pulumi.StringPtrInput
 	// The name of the key pair.
-	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+	// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
-	KeyPairName        pulumi.StringPtrInput
+	KeyPairName pulumi.StringPtrInput
+	// The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	LaunchTemplateName pulumi.StringPtrInput
-	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+	// It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
-	// The list of network interfaces created with instance.
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces LaunchTemplateNetworkInterfacesPtrInput
 	// Network type of the instance. Value options: `classic` | `vpc`.
-	NetworkType      pulumi.StringPtrInput
-	PasswordInherit  pulumi.BoolPtrInput
-	Period           pulumi.IntPtrInput
-	PeriodUnit       pulumi.StringPtrInput
+	NetworkType pulumi.StringPtrInput
+	// Whether to use the password inherited from the image.
+	PasswordInherit pulumi.BoolPtrInput
+	// The purchase duration of the instance.
+	Period pulumi.IntPtrInput
+	// The unit of the purchase duration.
+	PeriodUnit pulumi.StringPtrInput
+	// The private IP address of the instance.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
-	RamRoleName     pulumi.StringPtrInput
+	RamRoleName pulumi.StringPtrInput
+	// The ID of the resource group to which the resource belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// The security group ID.
-	SecurityGroupId  pulumi.StringPtrInput
+	SecurityGroupId pulumi.StringPtrInput
+	// The list of security group IDs.
 	SecurityGroupIds pulumi.StringArrayInput
-	SpotDuration     pulumi.StringPtrInput
+	// The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
+	SpotDuration pulumi.StringPtrInput
 	// Sets the maximum hourly instance price. Supports up to three decimal places.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
@@ -692,42 +823,44 @@ type LaunchTemplateArgs struct {
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
 	// - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
 	SpotStrategy pulumi.StringPtrInput
-	SystemDisk   LaunchTemplateSystemDiskPtrInput
-	// The category of the system disk. System disk type. Optional values:
-	// - cloud: Basic cloud disk.
-	// - cloud_efficiency: Ultra cloud disk.
-	// - cloud_ssd: SSD cloud Disks.
-	// - ephemeral_ssd: local SSD Disks
-	// - cloud_essd: ESSD cloud Disks.
+	// The system disk. See `systemDisk` below.
+	SystemDisk LaunchTemplateSystemDiskPtrInput
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringPtrInput
-	// System disk description. It cannot begin with http:// or https://.
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringPtrInput
-	// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringPtrInput
-	// Size of the system disk, measured in GB. Value range: [20, 500].
+	// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-	Tags                       pulumi.StringMapInput
-	TemplateResourceGroupId    pulumi.StringPtrInput
-	TemplateTags               pulumi.StringMapInput
+	Tags pulumi.StringMapInput
+	// The ID of the resource group for the launch template.
+	TemplateResourceGroupId pulumi.StringPtrInput
+	// A mapping of tags to assign to the launch template.
+	TemplateTags pulumi.StringMapInput
+	// Whether to update the default version of the launch template to the latest version automatically.
 	UpdateDefaultVersionNumber pulumi.BoolPtrInput
-	UserData                   pulumi.StringPtrInput
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+	UserData pulumi.StringPtrInput
+	// It has been deprecated from version 1.120.0. New field `userData` instead.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
-	Userdata           pulumi.StringPtrInput
+	Userdata pulumi.StringPtrInput
+	// The description of the launch template version.
 	VersionDescription pulumi.StringPtrInput
-	VpcId              pulumi.StringPtrInput
+	// The VPC ID.
+	VpcId pulumi.StringPtrInput
 	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
@@ -821,28 +954,32 @@ func (o LaunchTemplateOutput) ToLaunchTemplateOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is YYYY-MM-DDTHH:MM:SSZ.
 func (o LaunchTemplateOutput) AutoReleaseTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.AutoReleaseTime }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable auto-renewal for the instance.
 func (o LaunchTemplateOutput) AutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
 }
 
+// The auto-renewal period of the instance.
 func (o LaunchTemplateOutput) AutoRenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.AutoRenewPeriod }).(pulumi.IntOutput)
 }
 
-// The list of data disks created with instance.
+// The list of data disks created with instance. See `dataDisks` below.
 func (o LaunchTemplateOutput) DataDisks() LaunchTemplateDataDiskArrayOutput {
 	return o.ApplyT(func(v *LaunchTemplate) LaunchTemplateDataDiskArrayOutput { return v.DataDisks }).(LaunchTemplateDataDiskArrayOutput)
 }
 
+// The version number of the default launch template version.
 func (o LaunchTemplateOutput) DefaultVersionNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.DefaultVersionNumber }).(pulumi.IntOutput)
 }
 
+// The ID of the deployment set.
 func (o LaunchTemplateOutput) DeploymentSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
 }
@@ -852,23 +989,27 @@ func (o LaunchTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable VM OS configuration.
 func (o LaunchTemplateOutput) EnableVmOsConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.BoolPtrOutput { return v.EnableVmOsConfig }).(pulumi.BoolPtrOutput)
 }
 
-// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+// Instance host name. It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-). For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 func (o LaunchTemplateOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable access to instance metadata.
 func (o LaunchTemplateOutput) HttpEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.HttpEndpoint }).(pulumi.StringOutput)
 }
 
+// The HTTP PUT response hop limit required for instance metadata requests.
 func (o LaunchTemplateOutput) HttpPutResponseHopLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.HttpPutResponseHopLimit }).(pulumi.IntOutput)
 }
 
+// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
 func (o LaunchTemplateOutput) HttpTokens() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.HttpTokens }).(pulumi.StringOutput)
 }
@@ -878,10 +1019,12 @@ func (o LaunchTemplateOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
 }
 
+// The options of images. See `imageOptions` below.
 func (o LaunchTemplateOutput) ImageOptions() LaunchTemplateImageOptionsOutput {
 	return o.ApplyT(func(v *LaunchTemplate) LaunchTemplateImageOptionsOutput { return v.ImageOptions }).(LaunchTemplateImageOptionsOutput)
 }
 
+// The image owner alias. Valid values: `system`, `self`, `others`, `marketplace`.
 func (o LaunchTemplateOutput) ImageOwnerAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.ImageOwnerAlias }).(pulumi.StringPtrOutput)
 }
@@ -928,28 +1071,30 @@ func (o LaunchTemplateOutput) IoOptimized() pulumi.StringPtrOutput {
 }
 
 // The name of the key pair.
-// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
+// - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the Password content is used.
 // - The password logon method for Linux instances is set to forbidden upon initialization.
 func (o LaunchTemplateOutput) KeyPairName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
 }
 
+// The latest version number of the launch template.
 func (o LaunchTemplateOutput) LatestVersionNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.LatestVersionNumber }).(pulumi.IntOutput)
 }
 
+// The name of the launch template. It must be 2 to 128 characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 func (o LaunchTemplateOutput) LaunchTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.LaunchTemplateName }).(pulumi.StringOutput)
 }
 
-// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+// It has been deprecated from version 1.120.0. New field `launchTemplateName` instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 func (o LaunchTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of network interfaces created with instance.
+// The list of network interfaces created with instance. See `networkInterfaces` below.
 func (o LaunchTemplateOutput) NetworkInterfaces() LaunchTemplateNetworkInterfacesPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) LaunchTemplateNetworkInterfacesPtrOutput { return v.NetworkInterfaces }).(LaunchTemplateNetworkInterfacesPtrOutput)
 }
@@ -959,18 +1104,22 @@ func (o LaunchTemplateOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
 
+// Whether to use the password inherited from the image.
 func (o LaunchTemplateOutput) PasswordInherit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.BoolPtrOutput { return v.PasswordInherit }).(pulumi.BoolPtrOutput)
 }
 
+// The purchase duration of the instance.
 func (o LaunchTemplateOutput) Period() pulumi.IntOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
 }
 
+// The unit of the purchase duration.
 func (o LaunchTemplateOutput) PeriodUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.PeriodUnit }).(pulumi.StringOutput)
 }
 
+// The private IP address of the instance.
 func (o LaunchTemplateOutput) PrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
 }
@@ -980,6 +1129,7 @@ func (o LaunchTemplateOutput) RamRoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.RamRoleName }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group to which the resource belongs.
 func (o LaunchTemplateOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -994,10 +1144,12 @@ func (o LaunchTemplateOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The list of security group IDs.
 func (o LaunchTemplateOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// The protection period of the preemptible instance. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Default to `1`.
 func (o LaunchTemplateOutput) SpotDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.SpotDuration }).(pulumi.StringPtrOutput)
 }
@@ -1015,37 +1167,33 @@ func (o LaunchTemplateOutput) SpotStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
 }
 
+// The system disk. See `systemDisk` below.
 func (o LaunchTemplateOutput) SystemDisk() LaunchTemplateSystemDiskOutput {
 	return o.ApplyT(func(v *LaunchTemplate) LaunchTemplateSystemDiskOutput { return v.SystemDisk }).(LaunchTemplateSystemDiskOutput)
 }
 
-// The category of the system disk. System disk type. Optional values:
-// - cloud: Basic cloud disk.
-// - cloud_efficiency: Ultra cloud disk.
-// - cloud_ssd: SSD cloud Disks.
-// - ephemeral_ssd: local SSD Disks
-// - cloud_essd: ESSD cloud Disks.
+// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 //
 // Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o LaunchTemplateOutput) SystemDiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
 }
 
-// System disk description. It cannot begin with http:// or https://.
+// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 //
 // Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o LaunchTemplateOutput) SystemDiskDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.SystemDiskDescription }).(pulumi.StringOutput)
 }
 
-// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 //
 // Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o LaunchTemplateOutput) SystemDiskName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.SystemDiskName }).(pulumi.StringOutput)
 }
 
-// Size of the system disk, measured in GB. Value range: [20, 500].
+// It has been deprecated from version 1.120.0. New field `systemDisk` instead.
 //
 // Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o LaunchTemplateOutput) SystemDiskSize() pulumi.IntOutput {
@@ -1059,33 +1207,39 @@ func (o LaunchTemplateOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The ID of the resource group for the launch template.
 func (o LaunchTemplateOutput) TemplateResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.TemplateResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// A mapping of tags to assign to the launch template.
 func (o LaunchTemplateOutput) TemplateTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringMapOutput { return v.TemplateTags }).(pulumi.StringMapOutput)
 }
 
+// Whether to update the default version of the launch template to the latest version automatically.
 func (o LaunchTemplateOutput) UpdateDefaultVersionNumber() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.BoolPtrOutput { return v.UpdateDefaultVersionNumber }).(pulumi.BoolPtrOutput)
 }
 
+// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 func (o LaunchTemplateOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.UserData }).(pulumi.StringOutput)
 }
 
-// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
+// It has been deprecated from version 1.120.0. New field `userData` instead.
 //
 // Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 func (o LaunchTemplateOutput) Userdata() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.Userdata }).(pulumi.StringOutput)
 }
 
+// The description of the launch template version.
 func (o LaunchTemplateOutput) VersionDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.VersionDescription }).(pulumi.StringPtrOutput)
 }
 
+// The VPC ID.
 func (o LaunchTemplateOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

@@ -61,16 +61,32 @@ public final class GetProductAsEndUsersArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The field that is used to sort the queried data.
+     * 
+     */
     @Import(name="sortBy")
     private @Nullable Output<String> sortBy;
 
+    /**
+     * @return The field that is used to sort the queried data.
+     * 
+     */
     public Optional<Output<String>> sortBy() {
         return Optional.ofNullable(this.sortBy);
     }
 
+    /**
+     * The sorting method. Valid values: `Asc`, `Desc`.
+     * 
+     */
     @Import(name="sortOrder")
     private @Nullable Output<String> sortOrder;
 
+    /**
+     * @return The sorting method. Valid values: `Asc`, `Desc`.
+     * 
+     */
     public Optional<Output<String>> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
@@ -176,20 +192,44 @@ public final class GetProductAsEndUsersArgs extends com.pulumi.resources.InvokeA
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param sortBy The field that is used to sort the queried data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortBy(@Nullable Output<String> sortBy) {
             $.sortBy = sortBy;
             return this;
         }
 
+        /**
+         * @param sortBy The field that is used to sort the queried data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortBy(String sortBy) {
             return sortBy(Output.of(sortBy));
         }
 
+        /**
+         * @param sortOrder The sorting method. Valid values: `Asc`, `Desc`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortOrder(@Nullable Output<String> sortOrder) {
             $.sortOrder = sortOrder;
             return this;
         }
 
+        /**
+         * @param sortOrder The sorting method. Valid values: `Asc`, `Desc`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortOrder(String sortOrder) {
             return sortOrder(Output.of(sortOrder));
         }

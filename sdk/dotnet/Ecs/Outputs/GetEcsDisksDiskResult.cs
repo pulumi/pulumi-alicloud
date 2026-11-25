@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
-        /// Disk category. Valid values: `Cloud`, `CloudEfficiency`, `CloudEssd`, `CloudSsd`, `EphemeralSsd`, `CloudAuto`, `CloudEssdEntry`.
+        /// Disk category. Valid values: `Cloud`, `CloudEfficiency`, `CloudEssd`, `CloudSsd`, `EphemeralSsd`, `CloudAuto`, `CloudEssdEntry`, `CloudRegionalDiskAuto`.
         /// </summary>
         public readonly string Category;
         /// <summary>

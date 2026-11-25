@@ -18,18 +18,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClustersResult {
     /**
-     * @return A list of ADB clusters. Each element contains the following attributes:
+     * @return A list of Adb Db Clusters. Each element contains the following attributes:
      * 
      */
     private List<GetClustersCluster> clusters;
     /**
-     * @return The description of the ADB cluster.
+     * @return The description of DBCluster.
      * 
      */
     private @Nullable String description;
     private @Nullable String descriptionRegex;
     /**
-     * @return A list of ADB cluster descriptions.
+     * @return A list of DBCluster descriptions.
      * 
      */
     private List<String> descriptions;
@@ -39,33 +39,37 @@ public final class GetClustersResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of ADB cluster IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
     /**
-     * @return Status of the cluster.
+     * @return The status of the resource.
      * 
      */
     private @Nullable String status;
+    /**
+     * @return The tags of the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
     private Integer totalCount;
 
     private GetClustersResult() {}
     /**
-     * @return A list of ADB clusters. Each element contains the following attributes:
+     * @return A list of Adb Db Clusters. Each element contains the following attributes:
      * 
      */
     public List<GetClustersCluster> clusters() {
         return this.clusters;
     }
     /**
-     * @return The description of the ADB cluster.
+     * @return The description of DBCluster.
      * 
      */
     public Optional<String> description() {
@@ -75,7 +79,7 @@ public final class GetClustersResult {
         return Optional.ofNullable(this.descriptionRegex);
     }
     /**
-     * @return A list of ADB cluster descriptions.
+     * @return A list of DBCluster descriptions.
      * 
      */
     public List<String> descriptions() {
@@ -91,10 +95,6 @@ public final class GetClustersResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of ADB cluster IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -107,16 +107,24 @@ public final class GetClustersResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
     /**
-     * @return Status of the cluster.
+     * @return The status of the resource.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tags of the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

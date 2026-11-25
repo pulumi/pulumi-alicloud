@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// This data source provides the Mse Znodes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.162.0+.
+        /// &gt; **NOTE:** Available since v1.162.0.
         /// 
         /// ## Example Usage
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// This data source provides the Mse Znodes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.162.0+.
+        /// &gt; **NOTE:** Available since v1.162.0.
         /// 
         /// ## Example Usage
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// This data source provides the Mse Znodes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.162.0+.
+        /// &gt; **NOTE:** Available since v1.162.0.
         /// 
         /// ## Example Usage
         /// 
@@ -256,6 +256,9 @@ namespace Pulumi.AliCloud.Mse
     public sealed class GetZnodesResult
     {
         public readonly string? AcceptLanguage;
+        /// <summary>
+        /// The ID of the Cluster.
+        /// </summary>
         public readonly string ClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -263,9 +266,18 @@ namespace Pulumi.AliCloud.Mse
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Znode names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The Node path.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// A list of Mse Znodes. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZnodesZnodeResult> Znodes;
 
         [OutputConstructor]

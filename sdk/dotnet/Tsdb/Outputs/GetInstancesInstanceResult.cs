@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Tsdb.Outputs
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+        /// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
         /// </summary>
         public readonly string Status;
         /// <summary>

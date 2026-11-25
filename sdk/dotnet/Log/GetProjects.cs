@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Log
         /// <summary>
         /// This data source provides the Log Projects of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Log
         /// <summary>
         /// This data source provides the Log Projects of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Log
         /// <summary>
         /// This data source provides the Log Projects of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
         /// 
@@ -204,9 +204,18 @@ namespace Pulumi.AliCloud.Log
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of project names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Log Project. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectResult> Projects;
+        /// <summary>
+        /// The status of project.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

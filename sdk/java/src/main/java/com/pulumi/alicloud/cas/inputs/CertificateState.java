@@ -18,50 +18,89 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     public static final CertificateState Empty = new CertificateState();
 
     /**
-     * Cert of the Certificate in which the Certificate will add.
+     * The content of a non-SM certificate in PEM format.
      * 
      */
     @Import(name="cert")
     private @Nullable Output<String> cert;
 
     /**
-     * @return Cert of the Certificate in which the Certificate will add.
+     * @return The content of a non-SM certificate in PEM format.
      * 
      */
     public Optional<Output<String>> cert() {
         return Optional.ofNullable(this.cert);
     }
 
+    /**
+     * (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+     * 
+     */
+    @Import(name="certIdentifier")
+    private @Nullable Output<String> certIdentifier;
+
+    /**
+     * @return (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+     * 
+     */
+    public Optional<Output<String>> certIdentifier() {
+        return Optional.ofNullable(this.certIdentifier);
+    }
+
+    /**
+     * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+     * 
+     */
     @Import(name="certificateName")
     private @Nullable Output<String> certificateName;
 
+    /**
+     * @return A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+     * 
+     */
     public Optional<Output<String>> certificateName() {
         return Optional.ofNullable(this.certificateName);
     }
 
+    /**
+     * The content of an SM encryption certificate in PEM format.
+     * 
+     */
     @Import(name="encryptCert")
     private @Nullable Output<String> encryptCert;
 
+    /**
+     * @return The content of an SM encryption certificate in PEM format.
+     * 
+     */
     public Optional<Output<String>> encryptCert() {
         return Optional.ofNullable(this.encryptCert);
     }
 
+    /**
+     * The private key of an SM encryption certificate in PEM format.
+     * 
+     */
     @Import(name="encryptPrivateKey")
     private @Nullable Output<String> encryptPrivateKey;
 
+    /**
+     * @return The private key of an SM encryption certificate in PEM format.
+     * 
+     */
     public Optional<Output<String>> encryptPrivateKey() {
         return Optional.ofNullable(this.encryptPrivateKey);
     }
 
     /**
-     * Key of the Certificate in which the Certificate will add.
+     * The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Key of the Certificate in which the Certificate will add.
+     * @return The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      * 
      */
     public Optional<Output<String>> key() {
@@ -70,6 +109,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
      * 
      */
     @Import(name="keyWo")
@@ -77,20 +117,31 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
      * 
      */
     public Optional<Output<String>> keyWo() {
         return Optional.ofNullable(this.keyWo);
     }
 
+    /**
+     * The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     * 
+     */
     @Import(name="keyWoVersion")
     private @Nullable Output<Integer> keyWoVersion;
 
+    /**
+     * @return The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     * 
+     */
     public Optional<Output<Integer>> keyWoVersion() {
         return Optional.ofNullable(this.keyWoVersion);
     }
 
     /**
+     * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * 
      * @deprecated Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      * 
      */
@@ -99,6 +150,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> lang;
 
     /**
+     * @return Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * 
      * @deprecated Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      * 
      */
@@ -108,7 +161,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+     * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
@@ -118,7 +171,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+     * @return Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
@@ -128,30 +181,62 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the resource group.
+     * 
+     */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The content of an SM signing certificate in PEM format.
+     * 
+     */
     @Import(name="signCert")
     private @Nullable Output<String> signCert;
 
+    /**
+     * @return The content of an SM signing certificate in PEM format.
+     * 
+     */
     public Optional<Output<String>> signCert() {
         return Optional.ofNullable(this.signCert);
     }
 
+    /**
+     * The private key of an SM signing certificate in PEM format.
+     * 
+     */
     @Import(name="signPrivateKey")
     private @Nullable Output<String> signPrivateKey;
 
+    /**
+     * @return The private key of an SM signing certificate in PEM format.
+     * 
+     */
     public Optional<Output<String>> signPrivateKey() {
         return Optional.ofNullable(this.signPrivateKey);
     }
 
+    /**
+     * The tag of the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -160,6 +245,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
     private CertificateState(CertificateState $) {
         this.cert = $.cert;
+        this.certIdentifier = $.certIdentifier;
         this.certificateName = $.certificateName;
         this.encryptCert = $.encryptCert;
         this.encryptPrivateKey = $.encryptPrivateKey;
@@ -193,7 +279,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cert Cert of the Certificate in which the Certificate will add.
+         * @param cert The content of a non-SM certificate in PEM format.
          * 
          * @return builder
          * 
@@ -204,7 +290,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cert Cert of the Certificate in which the Certificate will add.
+         * @param cert The content of a non-SM certificate in PEM format.
          * 
          * @return builder
          * 
@@ -213,35 +299,92 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
             return cert(Output.of(cert));
         }
 
+        /**
+         * @param certIdentifier (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certIdentifier(@Nullable Output<String> certIdentifier) {
+            $.certIdentifier = certIdentifier;
+            return this;
+        }
+
+        /**
+         * @param certIdentifier (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certIdentifier(String certIdentifier) {
+            return certIdentifier(Output.of(certIdentifier));
+        }
+
+        /**
+         * @param certificateName A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificateName(@Nullable Output<String> certificateName) {
             $.certificateName = certificateName;
             return this;
         }
 
+        /**
+         * @param certificateName A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificateName(String certificateName) {
             return certificateName(Output.of(certificateName));
         }
 
+        /**
+         * @param encryptCert The content of an SM encryption certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptCert(@Nullable Output<String> encryptCert) {
             $.encryptCert = encryptCert;
             return this;
         }
 
+        /**
+         * @param encryptCert The content of an SM encryption certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptCert(String encryptCert) {
             return encryptCert(Output.of(encryptCert));
         }
 
+        /**
+         * @param encryptPrivateKey The private key of an SM encryption certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptPrivateKey(@Nullable Output<String> encryptPrivateKey) {
             $.encryptPrivateKey = encryptPrivateKey;
             return this;
         }
 
+        /**
+         * @param encryptPrivateKey The private key of an SM encryption certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encryptPrivateKey(String encryptPrivateKey) {
             return encryptPrivateKey(Output.of(encryptPrivateKey));
         }
 
         /**
-         * @param key Key of the Certificate in which the Certificate will add.
+         * @param key The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
          * 
          * @return builder
          * 
@@ -252,7 +395,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Key of the Certificate in which the Certificate will add.
+         * @param key The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
          * 
          * @return builder
          * 
@@ -263,6 +406,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param keyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
          * 
          * @return builder
          * 
@@ -274,6 +418,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param keyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
          * 
          * @return builder
          * 
@@ -282,16 +427,30 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
             return keyWo(Output.of(keyWo));
         }
 
+        /**
+         * @param keyWoVersion The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyWoVersion(@Nullable Output<Integer> keyWoVersion) {
             $.keyWoVersion = keyWoVersion;
             return this;
         }
 
+        /**
+         * @param keyWoVersion The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyWoVersion(Integer keyWoVersion) {
             return keyWoVersion(Output.of(keyWoVersion));
         }
 
         /**
+         * @param lang Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
@@ -304,6 +463,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param lang Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
@@ -315,7 +476,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+         * @param name Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
          * 
          * @return builder
          * 
@@ -329,7 +490,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+         * @param name Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
          * 
          * @return builder
          * 
@@ -341,38 +502,86 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param signCert The content of an SM signing certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder signCert(@Nullable Output<String> signCert) {
             $.signCert = signCert;
             return this;
         }
 
+        /**
+         * @param signCert The content of an SM signing certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder signCert(String signCert) {
             return signCert(Output.of(signCert));
         }
 
+        /**
+         * @param signPrivateKey The private key of an SM signing certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder signPrivateKey(@Nullable Output<String> signPrivateKey) {
             $.signPrivateKey = signPrivateKey;
             return this;
         }
 
+        /**
+         * @param signPrivateKey The private key of an SM signing certificate in PEM format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder signPrivateKey(String signPrivateKey) {
             return signPrivateKey(Output.of(signPrivateKey));
         }
 
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }

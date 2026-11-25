@@ -138,9 +138,17 @@ public final class ClusterModifyClusterServiceConfigArgs extends com.pulumi.reso
         return Optional.ofNullable(this.refreshHostConfig);
     }
 
+    /**
+     * Cluster service configuration modification name, e.g. ’HDFS’.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
+    /**
+     * @return Cluster service configuration modification name, e.g. ’HDFS’.
+     * 
+     */
     public Output<String> serviceName() {
         return this.serviceName;
     }
@@ -355,11 +363,23 @@ public final class ClusterModifyClusterServiceConfigArgs extends com.pulumi.reso
             return refreshHostConfig(Output.of(refreshHostConfig));
         }
 
+        /**
+         * @param serviceName Cluster service configuration modification name, e.g. ’HDFS’.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param serviceName Cluster service configuration modification name, e.g. ’HDFS’.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
         }

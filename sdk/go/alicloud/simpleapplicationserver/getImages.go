@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -43,14 +43,6 @@ import (
 //	}
 //
 // ```
-//
-// The following arguments are supported:
-//
-// * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
-// * `imageType` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
-// * `nameRegex` - (Optional, ForceNew) A regex string to filter results by Image name.
-// * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: ["Linux", "Windows"].
-// * `outputFile` - (Optional) File name where to save data source results (after running `pulumi preview`).
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImagesResult
@@ -63,24 +55,33 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getImages.
 type GetImagesArgs struct {
-	Ids        []string `pulumi:"ids"`
-	ImageType  *string  `pulumi:"imageType"`
-	NameRegex  *string  `pulumi:"nameRegex"`
-	OutputFile *string  `pulumi:"outputFile"`
-	Platform   *string  `pulumi:"platform"`
+	// A list of Image IDs.
+	Ids []string `pulumi:"ids"`
+	// The image type. Valid values: `app`, `custom`, `system`.
+	ImageType *string `pulumi:"imageType"`
+	// A regex string to filter results by Image name.
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	// Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
+	Platform *string `pulumi:"platform"`
 }
 
 // A collection of values returned by getImages.
 type GetImagesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string           `pulumi:"id"`
-	Ids        []string         `pulumi:"ids"`
-	ImageType  *string          `pulumi:"imageType"`
-	Images     []GetImagesImage `pulumi:"images"`
-	NameRegex  *string          `pulumi:"nameRegex"`
-	Names      []string         `pulumi:"names"`
-	OutputFile *string          `pulumi:"outputFile"`
-	Platform   *string          `pulumi:"platform"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The type of the image. Valid values: `app`, `custom`, `system`.
+	ImageType *string `pulumi:"imageType"`
+	// A list of Simple Application Server Images. Each element contains the following attributes:
+	Images    []GetImagesImage `pulumi:"images"`
+	NameRegex *string          `pulumi:"nameRegex"`
+	// A list of  Image names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// (Available in v1.161.0) The platform of Plan supported.
+	Platform *string `pulumi:"platform"`
 }
 
 func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulumi.InvokeOption) GetImagesResultOutput {
@@ -90,11 +91,16 @@ func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getImages.
 type GetImagesOutputArgs struct {
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	ImageType  pulumi.StringPtrInput   `pulumi:"imageType"`
-	NameRegex  pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
-	Platform   pulumi.StringPtrInput   `pulumi:"platform"`
+	// A list of Image IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The image type. Valid values: `app`, `custom`, `system`.
+	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// A regex string to filter results by Image name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
+	Platform pulumi.StringPtrInput `pulumi:"platform"`
 }
 
 func (GetImagesOutputArgs) ElementType() reflect.Type {
@@ -125,10 +131,12 @@ func (o GetImagesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The type of the image. Valid values: `app`, `custom`, `system`.
 func (o GetImagesResultOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Simple Application Server Images. Each element contains the following attributes:
 func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
 }
@@ -137,6 +145,7 @@ func (o GetImagesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of  Image names.
 func (o GetImagesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -145,6 +154,7 @@ func (o GetImagesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// (Available in v1.161.0) The platform of Plan supported.
 func (o GetImagesResultOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.Platform }).(pulumi.StringPtrOutput)
 }

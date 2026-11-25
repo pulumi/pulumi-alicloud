@@ -26,8 +26,7 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn {
      */
     private String threshold;
     /**
-     * @return The consecutive number of times for which the metric value is measured before a warn-level
-     * alert is triggered.
+     * @return The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
      * 
      */
     private String times;
@@ -55,8 +54,7 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn {
         return this.threshold;
     }
     /**
-     * @return The consecutive number of times for which the metric value is measured before a warn-level
-     * alert is triggered.
+     * @return The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
      * 
      */
     public String times() {

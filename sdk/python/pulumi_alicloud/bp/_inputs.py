@@ -22,7 +22,7 @@ __all__ = [
 class StudioApplicationInstanceArgsDict(TypedDict):
     id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The resource ID in terraform of Application.
+    The id of the instance.
     """
     node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -40,7 +40,7 @@ class StudioApplicationInstanceArgs:
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] id: The resource ID in terraform of Application.
+        :param pulumi.Input[_builtins.str] id: The id of the instance.
         :param pulumi.Input[_builtins.str] node_name: The name of the instance.
         :param pulumi.Input[_builtins.str] node_type: The type of the instance.
         """
@@ -55,7 +55,7 @@ class StudioApplicationInstanceArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The resource ID in terraform of Application.
+        The id of the instance.
         """
         return pulumi.get(self, "id")
 

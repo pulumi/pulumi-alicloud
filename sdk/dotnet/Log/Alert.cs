@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
     /// 
-    /// &gt; **NOTE:** Available in 1.78.0
+    /// &gt; **NOTE:** Available since v1.78.0.
     /// 
     /// ## Example Usage
     /// 
@@ -388,7 +388,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> AlertName { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations for new alert.
+        /// Annotations for new alert. See `Annotations` below.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableArray<Outputs.AlertAnnotation>> Annotations { get; private set; } = null!;
@@ -412,19 +412,19 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> Dashboard { get; private set; } = null!;
 
         /// <summary>
-        /// Group configuration for new alert.
+        /// Group configuration for new alert. See `GroupConfiguration` below.
         /// </summary>
         [Output("groupConfiguration")]
         public Output<Outputs.AlertGroupConfiguration?> GroupConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// Join configuration for different queries.
+        /// Join configuration for different queries. See `JoinConfigurations` below.
         /// </summary>
         [Output("joinConfigurations")]
         public Output<ImmutableArray<Outputs.AlertJoinConfiguration>> JoinConfigurations { get; private set; } = null!;
 
         /// <summary>
-        /// Labels for new alert.
+        /// Labels for new alert. See `Labels` below.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<Outputs.AlertLabel>> Labels { get; private set; } = null!;
@@ -448,7 +448,7 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> NoDataSeverity { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm information notification list, Deprecated from 1.161.0+.
+        /// Alarm information notification list, Deprecated from 1.161.0+. See `NotificationList` below.
         /// </summary>
         [Output("notificationLists")]
         public Output<ImmutableArray<Outputs.AlertNotificationList>> NotificationLists { get; private set; } = null!;
@@ -460,7 +460,7 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> NotifyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Policy configuration for new alert.
+        /// Policy configuration for new alert. See `PolicyConfiguration` below.
         /// </summary>
         [Output("policyConfiguration")]
         public Output<Outputs.AlertPolicyConfiguration?> PolicyConfiguration { get; private set; } = null!;
@@ -472,13 +472,13 @@ namespace Pulumi.AliCloud.Log
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// Multiple conditions for configured alarm query.
+        /// Multiple conditions for configured alarm query. See `QueryList` below.
         /// </summary>
         [Output("queryLists")]
         public Output<ImmutableArray<Outputs.AlertQueryList>> QueryLists { get; private set; } = null!;
 
         /// <summary>
-        /// schedule for alert.
+        /// schedule for alert. See `Schedule` below.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.AlertSchedule?> Schedule { get; private set; } = null!;
@@ -502,13 +502,13 @@ namespace Pulumi.AliCloud.Log
         public Output<bool?> SendResolved { get; private set; } = null!;
 
         /// <summary>
-        /// Severity configuration for new alert.
+        /// Severity configuration for new alert. See `SeverityConfigurations` below.
         /// </summary>
         [Output("severityConfigurations")]
         public Output<ImmutableArray<Outputs.AlertSeverityConfiguration>> SeverityConfigurations { get; private set; } = null!;
 
         /// <summary>
-        /// Template configuration for alert, when `Type` is `Tpl`.
+        /// Template configuration for alert, when `Type` is `Tpl`. See `TemplateConfiguration` below.
         /// </summary>
         [Output("templateConfiguration")]
         public Output<Outputs.AlertTemplateConfiguration?> TemplateConfiguration { get; private set; } = null!;
@@ -605,7 +605,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertAnnotationArgs>? _annotations;
 
         /// <summary>
-        /// Annotations for new alert.
+        /// Annotations for new alert. See `Annotations` below.
         /// </summary>
         public InputList<Inputs.AlertAnnotationArgs> Annotations
         {
@@ -632,7 +632,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Dashboard { get; set; }
 
         /// <summary>
-        /// Group configuration for new alert.
+        /// Group configuration for new alert. See `GroupConfiguration` below.
         /// </summary>
         [Input("groupConfiguration")]
         public Input<Inputs.AlertGroupConfigurationArgs>? GroupConfiguration { get; set; }
@@ -641,7 +641,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertJoinConfigurationArgs>? _joinConfigurations;
 
         /// <summary>
-        /// Join configuration for different queries.
+        /// Join configuration for different queries. See `JoinConfigurations` below.
         /// </summary>
         public InputList<Inputs.AlertJoinConfigurationArgs> JoinConfigurations
         {
@@ -653,7 +653,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertLabelArgs>? _labels;
 
         /// <summary>
-        /// Labels for new alert.
+        /// Labels for new alert. See `Labels` below.
         /// </summary>
         public InputList<Inputs.AlertLabelArgs> Labels
         {
@@ -683,7 +683,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertNotificationListArgs>? _notificationLists;
 
         /// <summary>
-        /// Alarm information notification list, Deprecated from 1.161.0+.
+        /// Alarm information notification list, Deprecated from 1.161.0+. See `NotificationList` below.
         /// </summary>
         [Obsolete(@"Deprecated from 1.161.0+, use PolicyConfiguration for notification")]
         public InputList<Inputs.AlertNotificationListArgs> NotificationLists
@@ -699,7 +699,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? NotifyThreshold { get; set; }
 
         /// <summary>
-        /// Policy configuration for new alert.
+        /// Policy configuration for new alert. See `PolicyConfiguration` below.
         /// </summary>
         [Input("policyConfiguration")]
         public Input<Inputs.AlertPolicyConfigurationArgs>? PolicyConfiguration { get; set; }
@@ -714,7 +714,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertQueryListArgs>? _queryLists;
 
         /// <summary>
-        /// Multiple conditions for configured alarm query.
+        /// Multiple conditions for configured alarm query. See `QueryList` below.
         /// </summary>
         public InputList<Inputs.AlertQueryListArgs> QueryLists
         {
@@ -723,7 +723,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// schedule for alert.
+        /// schedule for alert. See `Schedule` below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.AlertScheduleArgs>? Schedule { get; set; }
@@ -750,7 +750,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertSeverityConfigurationArgs>? _severityConfigurations;
 
         /// <summary>
-        /// Severity configuration for new alert.
+        /// Severity configuration for new alert. See `SeverityConfigurations` below.
         /// </summary>
         public InputList<Inputs.AlertSeverityConfigurationArgs> SeverityConfigurations
         {
@@ -759,7 +759,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Template configuration for alert, when `Type` is `Tpl`.
+        /// Template configuration for alert, when `Type` is `Tpl`. See `TemplateConfiguration` below.
         /// </summary>
         [Input("templateConfiguration")]
         public Input<Inputs.AlertTemplateConfigurationArgs>? TemplateConfiguration { get; set; }
@@ -818,7 +818,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertAnnotationGetArgs>? _annotations;
 
         /// <summary>
-        /// Annotations for new alert.
+        /// Annotations for new alert. See `Annotations` below.
         /// </summary>
         public InputList<Inputs.AlertAnnotationGetArgs> Annotations
         {
@@ -845,7 +845,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Dashboard { get; set; }
 
         /// <summary>
-        /// Group configuration for new alert.
+        /// Group configuration for new alert. See `GroupConfiguration` below.
         /// </summary>
         [Input("groupConfiguration")]
         public Input<Inputs.AlertGroupConfigurationGetArgs>? GroupConfiguration { get; set; }
@@ -854,7 +854,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertJoinConfigurationGetArgs>? _joinConfigurations;
 
         /// <summary>
-        /// Join configuration for different queries.
+        /// Join configuration for different queries. See `JoinConfigurations` below.
         /// </summary>
         public InputList<Inputs.AlertJoinConfigurationGetArgs> JoinConfigurations
         {
@@ -866,7 +866,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertLabelGetArgs>? _labels;
 
         /// <summary>
-        /// Labels for new alert.
+        /// Labels for new alert. See `Labels` below.
         /// </summary>
         public InputList<Inputs.AlertLabelGetArgs> Labels
         {
@@ -896,7 +896,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertNotificationListGetArgs>? _notificationLists;
 
         /// <summary>
-        /// Alarm information notification list, Deprecated from 1.161.0+.
+        /// Alarm information notification list, Deprecated from 1.161.0+. See `NotificationList` below.
         /// </summary>
         [Obsolete(@"Deprecated from 1.161.0+, use PolicyConfiguration for notification")]
         public InputList<Inputs.AlertNotificationListGetArgs> NotificationLists
@@ -912,7 +912,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? NotifyThreshold { get; set; }
 
         /// <summary>
-        /// Policy configuration for new alert.
+        /// Policy configuration for new alert. See `PolicyConfiguration` below.
         /// </summary>
         [Input("policyConfiguration")]
         public Input<Inputs.AlertPolicyConfigurationGetArgs>? PolicyConfiguration { get; set; }
@@ -927,7 +927,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertQueryListGetArgs>? _queryLists;
 
         /// <summary>
-        /// Multiple conditions for configured alarm query.
+        /// Multiple conditions for configured alarm query. See `QueryList` below.
         /// </summary>
         public InputList<Inputs.AlertQueryListGetArgs> QueryLists
         {
@@ -936,7 +936,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// schedule for alert.
+        /// schedule for alert. See `Schedule` below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.AlertScheduleGetArgs>? Schedule { get; set; }
@@ -963,7 +963,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertSeverityConfigurationGetArgs>? _severityConfigurations;
 
         /// <summary>
-        /// Severity configuration for new alert.
+        /// Severity configuration for new alert. See `SeverityConfigurations` below.
         /// </summary>
         public InputList<Inputs.AlertSeverityConfigurationGetArgs> SeverityConfigurations
         {
@@ -972,7 +972,7 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// Template configuration for alert, when `Type` is `Tpl`.
+        /// Template configuration for alert, when `Type` is `Tpl`. See `TemplateConfiguration` below.
         /// </summary>
         [Input("templateConfiguration")]
         public Input<Inputs.AlertTemplateConfigurationGetArgs>? TemplateConfiguration { get; set; }

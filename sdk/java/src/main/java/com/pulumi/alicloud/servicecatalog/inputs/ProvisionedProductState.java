@@ -125,14 +125,14 @@ public final class ProvisionedProductState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+     * Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<ProvisionedProductParameterArgs>> parameters;
 
     /**
-     * @return Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+     * @return Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
      * 
      */
     public Optional<Output<List<ProvisionedProductParameterArgs>>> parameters() {
@@ -552,7 +552,7 @@ public final class ProvisionedProductState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class ProvisionedProductState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class ProvisionedProductState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+         * @param parameters Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
          * 
          * @return builder
          * 

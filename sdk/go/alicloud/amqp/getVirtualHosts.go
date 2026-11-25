@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.126.0+.
+// > **NOTE:** Available since v1.126.0.
 //
 // ## Example Usage
 //
@@ -79,12 +79,15 @@ type GetVirtualHostsArgs struct {
 
 // A collection of values returned by getVirtualHosts.
 type GetVirtualHostsResult struct {
+	// A list of Amqp Virtual Hosts. Each element contains the following attributes:
 	Hosts []GetVirtualHostsHost `pulumi:"hosts"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	InstanceId string   `pulumi:"instanceId"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// InstanceId.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Virtual Host names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -125,6 +128,7 @@ func (o GetVirtualHostsResultOutput) ToGetVirtualHostsResultOutputWithContext(ct
 	return o
 }
 
+// A list of Amqp Virtual Hosts. Each element contains the following attributes:
 func (o GetVirtualHostsResultOutput) Hosts() GetVirtualHostsHostArrayOutput {
 	return o.ApplyT(func(v GetVirtualHostsResult) []GetVirtualHostsHost { return v.Hosts }).(GetVirtualHostsHostArrayOutput)
 }
@@ -138,6 +142,7 @@ func (o GetVirtualHostsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVirtualHostsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// InstanceId.
 func (o GetVirtualHostsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualHostsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -146,6 +151,7 @@ func (o GetVirtualHostsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualHostsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Virtual Host names.
 func (o GetVirtualHostsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVirtualHostsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

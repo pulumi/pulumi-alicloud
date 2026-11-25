@@ -42,7 +42,7 @@ public final class GetDesktopTypesType {
      */
     private String id;
     /**
-     * @return The Specification family.
+     * @return The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
      * 
      */
     private String instanceTypeFamily;
@@ -52,7 +52,7 @@ public final class GetDesktopTypesType {
      */
     private String memorySize;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `SUFFICIENT`.
      * 
      */
     private String status;
@@ -106,7 +106,7 @@ public final class GetDesktopTypesType {
         return this.id;
     }
     /**
-     * @return The Specification family.
+     * @return The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
      * 
      */
     public String instanceTypeFamily() {
@@ -120,7 +120,7 @@ public final class GetDesktopTypesType {
         return this.memorySize;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `SUFFICIENT`.
      * 
      */
     public String status() {

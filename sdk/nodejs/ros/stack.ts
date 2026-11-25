@@ -22,18 +22,18 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.ros.Stack("example", {
- *     stackName: "tf-testaccstack",
+ *     stackName: "tfaccstack",
  *     templateBody: `    {
- *     \\t\\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
+ *       \\"ROSTemplateFormatVersion\\": \\"2015-09-01\\"
  *     }
  * `,
  *     stackPolicyBody: `    {
- *     \\t\\"Statement\\": [{
- *     \\t\\t\\"Action\\": \\"Update:Delete\\",
- *     \\t\\t\\"Resource\\": \\"*\\",
- *     \\t\\t\\"Effect\\": \\"Allow\\",
- *     \\t\\t\\"Principal\\": \\"*\\"
- *     \\t}]
+ *       \\"Statement\\": [{
+ *         \\"Action\\": \\"Update:Delete\\",
+ *         \\"Resource\\": \\"*\\",
+ *         \\"Effect\\": \\"Allow\\",
+ *         \\"Principal\\": \\"*\\"
+ *       }]
  *     }
  * `,
  * });
@@ -105,7 +105,7 @@ export class Stack extends pulumi.CustomResource {
      */
     declare public readonly notificationUrls: pulumi.Output<string[] | undefined>;
     /**
-     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
      */
     declare public readonly parameters: pulumi.Output<outputs.ros.StackParameter[] | undefined>;
     /**
@@ -260,7 +260,7 @@ export interface StackState {
      */
     notificationUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.ros.StackParameter>[] | undefined>;
     /**
@@ -350,7 +350,7 @@ export interface StackArgs {
      */
     notificationUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.ros.StackParameter>[] | undefined>;
     /**

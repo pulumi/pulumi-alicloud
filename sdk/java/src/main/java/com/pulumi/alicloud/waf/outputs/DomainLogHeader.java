@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainLogHeader {
+    /**
+     * @return The key of label.
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return The value of label.
+     * 
+     */
     private @Nullable String value;
 
     private DomainLogHeader() {}
+    /**
+     * @return The key of label.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return The value of label.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

@@ -108,16 +108,13 @@ class GetVpcFirewallCensResult:
     @_builtins.property
     @pulumi.getter(name="memberUid")
     def member_uid(self) -> Optional[_builtins.str]:
-        """
-        The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-        """
         return pulumi.get(self, "member_uid")
 
     @_builtins.property
     @pulumi.getter(name="networkInstanceId")
     def network_instance_id(self) -> Optional[_builtins.str]:
         """
-        The ID of the VPC instance that created the VPC firewall.
+        The ID of the network instance.
         """
         return pulumi.get(self, "network_instance_id")
 
@@ -209,7 +206,7 @@ def get_vpc_firewall_cens(cen_id: Optional[_builtins.str] = None,
         cen_id="cen-cjok7uyb5w2b27573v",
         member_uid="1415189284827022",
         status="closed",
-        vpc_firewall_name="tf-test")
+        vpc_firewall_name="tf-example")
     pulumi.export("alicloudCloudFirewallVpcFirewallCenExampleId", default.cens[0].id)
     ```
 
@@ -280,7 +277,7 @@ def get_vpc_firewall_cens_output(cen_id: pulumi.Input[Optional[Optional[_builtin
         cen_id="cen-cjok7uyb5w2b27573v",
         member_uid="1415189284827022",
         status="closed",
-        vpc_firewall_name="tf-test")
+        vpc_firewall_name="tf-example")
     pulumi.export("alicloudCloudFirewallVpcFirewallCenExampleId", default.cens[0].id)
     ```
 

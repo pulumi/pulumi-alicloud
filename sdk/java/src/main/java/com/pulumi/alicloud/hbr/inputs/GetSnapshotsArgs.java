@@ -123,9 +123,17 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.instanceId);
     }
 
+    /**
+     * The limit of snapshots to query.
+     * 
+     */
     @Import(name="limit")
     private @Nullable Output<Integer> limit;
 
+    /**
+     * @return The limit of snapshots to query.
+     * 
+     */
     public Optional<Output<Integer>> limit() {
         return Optional.ofNullable(this.limit);
     }
@@ -145,9 +153,17 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The query string used to filter snapshots.
+     * 
+     */
     @Import(name="query")
     private @Nullable Output<String> query;
 
+    /**
+     * @return The query string used to filter snapshots.
+     * 
+     */
     public Optional<Output<String>> query() {
         return Optional.ofNullable(this.query);
     }
@@ -390,11 +406,23 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
             return instanceId(Output.of(instanceId));
         }
 
+        /**
+         * @param limit The limit of snapshots to query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limit(@Nullable Output<Integer> limit) {
             $.limit = limit;
             return this;
         }
 
+        /**
+         * @param limit The limit of snapshots to query.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limit(Integer limit) {
             return limit(Output.of(limit));
         }
@@ -420,11 +448,23 @@ public final class GetSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param query The query string used to filter snapshots.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(@Nullable Output<String> query) {
             $.query = query;
             return this;
         }
 
+        /**
+         * @param query The query string used to filter snapshots.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(String query) {
             return query(Output.of(query));
         }

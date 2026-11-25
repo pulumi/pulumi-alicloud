@@ -64,17 +64,17 @@ public final class GetBackupJobsJob {
      */
     private String createTime;
     /**
-     * @return The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     private String crossAccountRoleName;
     /**
-     * @return The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     private String crossAccountType;
     /**
-     * @return The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     private Integer crossAccountUserId;
@@ -123,6 +123,10 @@ public final class GetBackupJobsJob {
      * 
      */
     private String nasCreateTime;
+    /**
+     * @return The details about the Table store instance.
+     * 
+     */
     private List<GetBackupJobsJobOtsDetail> otsDetails;
     /**
      * @return List of backup path. e.g. `[&#34;/home&#34;, &#34;/var&#34;]`.
@@ -145,7 +149,7 @@ public final class GetBackupJobsJob {
      */
     private String progress;
     /**
-     * @return The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     * @return The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
      * 
      */
     private String sourceType;
@@ -155,7 +159,7 @@ public final class GetBackupJobsJob {
      */
     private String startTime;
     /**
-     * @return The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     * @return The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
      * 
      */
     private String status;
@@ -242,21 +246,21 @@ public final class GetBackupJobsJob {
         return this.createTime;
     }
     /**
-     * @return The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     public String crossAccountRoleName() {
         return this.crossAccountRoleName;
     }
     /**
-     * @return The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     public String crossAccountType() {
         return this.crossAccountType;
     }
     /**
-     * @return The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     public Integer crossAccountUserId() {
@@ -325,6 +329,10 @@ public final class GetBackupJobsJob {
     public String nasCreateTime() {
         return this.nasCreateTime;
     }
+    /**
+     * @return The details about the Table store instance.
+     * 
+     */
     public List<GetBackupJobsJobOtsDetail> otsDetails() {
         return this.otsDetails;
     }
@@ -357,7 +365,7 @@ public final class GetBackupJobsJob {
         return this.progress;
     }
     /**
-     * @return The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     * @return The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
      * 
      */
     public String sourceType() {
@@ -371,7 +379,7 @@ public final class GetBackupJobsJob {
         return this.startTime;
     }
     /**
-     * @return The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     * @return The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
      * 
      */
     public String status() {

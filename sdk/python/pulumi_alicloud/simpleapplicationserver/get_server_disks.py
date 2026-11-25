@@ -59,11 +59,17 @@ class GetServerDisksResult:
     @_builtins.property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the disk. Possible values: `System`, `Data`.
+        """
         return pulumi.get(self, "disk_type")
 
     @_builtins.property
     @pulumi.getter
     def disks(self) -> Sequence['outputs.GetServerDisksDiskResult']:
+        """
+        A list of Simple Application Server Disks. Each element contains the following attributes:
+        """
         return pulumi.get(self, "disks")
 
     @_builtins.property
@@ -82,6 +88,9 @@ class GetServerDisksResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[_builtins.str]:
+        """
+        Alibaba Cloud simple application server instance ID.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -92,6 +101,9 @@ class GetServerDisksResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Disk names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -102,6 +114,9 @@ class GetServerDisksResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -132,7 +147,7 @@ def get_server_disks(disk_type: Optional[_builtins.str] = None,
     """
     This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 
@@ -192,7 +207,7 @@ def get_server_disks_output(disk_type: pulumi.Input[Optional[Optional[_builtins.
     """
     This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 

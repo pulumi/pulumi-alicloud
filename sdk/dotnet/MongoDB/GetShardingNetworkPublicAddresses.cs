@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// &gt; **NOTE:** Available since v1.149.0.
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// &gt; **NOTE:** Available since v1.149.0.
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.149.0+.
+        /// &gt; **NOTE:** Available since v1.149.0.
         /// 
         /// ## Example Usage
         /// 
@@ -183,14 +183,26 @@ namespace Pulumi.AliCloud.MongoDB
     [OutputType]
     public sealed class GetShardingNetworkPublicAddressesResult
     {
+        /// <summary>
+        /// A list of Mongodb Sharding Network Addresses. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetShardingNetworkPublicAddressesAddressResult> Addresses;
+        /// <summary>
+        /// The db instance id.
+        /// </summary>
         public readonly string DbInstanceId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the `Mongos`, `Shard`, or `Configserver` node in the sharded cluster instance.
+        /// </summary>
         public readonly string? NodeId;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The role of the node.
+        /// </summary>
         public readonly string? Role;
 
         [OutputConstructor]

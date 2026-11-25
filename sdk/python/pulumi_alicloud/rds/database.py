@@ -20,7 +20,10 @@ __all__ = ['DatabaseArgs', 'Database']
 class DatabaseArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
                  character_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 collation_name: pulumi.Input[Optional[_builtins.str]] = None,
                  data_base_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
@@ -28,6 +31,12 @@ class DatabaseArgs:
         The set of arguments for constructing a Database resource.
 
         :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+               
+               > **NOTE:** The account must belong to the instance specified by `instance_id` and must exist before the database is created.
+        :param pulumi.Input[_builtins.str] account_privilege: The privilege granted to the account specified by `account_name` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+               
+               > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `account_name` to be set.
         :param pulumi.Input[_builtins.str] character_set: Character set. The value range is limited to the following:
                - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
                - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -38,7 +47,9 @@ class DatabaseArgs:
                - MariaDB: [ utf8, gbk, latin1, utf8mb4 ]
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
+        :param pulumi.Input[_builtins.str] collation_name: The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `character_set`, for example `gbk_chinese_ci` for `gbk` or `utf8mb4_general_ci` for `utf8mb4`.
         :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               
                > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -47,11 +58,18 @@ class DatabaseArgs:
                For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               
                > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         pulumi.set(__self__, "instance_id", instance_id)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_privilege is not None:
+            pulumi.set(__self__, "account_privilege", account_privilege)
         if character_set is not None:
             pulumi.set(__self__, "character_set", character_set)
+        if collation_name is not None:
+            pulumi.set(__self__, "collation_name", collation_name)
         if data_base_name is not None:
             pulumi.set(__self__, "data_base_name", data_base_name)
         if description is not None:
@@ -75,6 +93,34 @@ class DatabaseArgs:
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+
+        > **NOTE:** The account must belong to the instance specified by `instance_id` and must exist before the database is created.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPrivilege")
+    def account_privilege(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The privilege granted to the account specified by `account_name` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+
+        > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `account_name` to be set.
+        """
+        return pulumi.get(self, "account_privilege")
+
+    @account_privilege.setter
+    def account_privilege(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_privilege", value)
+
+    @_builtins.property
     @pulumi.getter(name="characterSet")
     def character_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -96,10 +142,23 @@ class DatabaseArgs:
         pulumi.set(self, "character_set", value)
 
     @_builtins.property
+    @pulumi.getter(name="collationName")
+    def collation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `character_set`, for example `gbk_chinese_ci` for `gbk` or `utf8mb4_general_ci` for `utf8mb4`.
+        """
+        return pulumi.get(self, "collation_name")
+
+    @collation_name.setter
+    def collation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "collation_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="dataBaseName")
     def data_base_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database.
+
         > **NOTE:**
         The name must be 2 to 64 characters in length.
         The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -131,6 +190,7 @@ class DatabaseArgs:
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+
         > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "name")
@@ -143,7 +203,10 @@ class DatabaseArgs:
 @pulumi.input_type
 class _DatabaseState:
     def __init__(__self__, *,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
                  character_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 collation_name: pulumi.Input[Optional[_builtins.str]] = None,
                  data_base_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -152,6 +215,12 @@ class _DatabaseState:
         """
         Input properties used for looking up and filtering Database resources.
 
+        :param pulumi.Input[_builtins.str] account_name: The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+               
+               > **NOTE:** The account must belong to the instance specified by `instance_id` and must exist before the database is created.
+        :param pulumi.Input[_builtins.str] account_privilege: The privilege granted to the account specified by `account_name` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+               
+               > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `account_name` to be set.
         :param pulumi.Input[_builtins.str] character_set: Character set. The value range is limited to the following:
                - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
                - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -162,7 +231,9 @@ class _DatabaseState:
                - MariaDB: [ utf8, gbk, latin1, utf8mb4 ]
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
+        :param pulumi.Input[_builtins.str] collation_name: The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `character_set`, for example `gbk_chinese_ci` for `gbk` or `utf8mb4_general_ci` for `utf8mb4`.
         :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               
                > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -172,11 +243,18 @@ class _DatabaseState:
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               
                > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         """
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_privilege is not None:
+            pulumi.set(__self__, "account_privilege", account_privilege)
         if character_set is not None:
             pulumi.set(__self__, "character_set", character_set)
+        if collation_name is not None:
+            pulumi.set(__self__, "collation_name", collation_name)
         if data_base_name is not None:
             pulumi.set(__self__, "data_base_name", data_base_name)
         if description is not None:
@@ -190,6 +268,34 @@ class _DatabaseState:
             pulumi.set(__self__, "name", name)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+
+        > **NOTE:** The account must belong to the instance specified by `instance_id` and must exist before the database is created.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPrivilege")
+    def account_privilege(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The privilege granted to the account specified by `account_name` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+
+        > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `account_name` to be set.
+        """
+        return pulumi.get(self, "account_privilege")
+
+    @account_privilege.setter
+    def account_privilege(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_privilege", value)
 
     @_builtins.property
     @pulumi.getter(name="characterSet")
@@ -213,10 +319,23 @@ class _DatabaseState:
         pulumi.set(self, "character_set", value)
 
     @_builtins.property
+    @pulumi.getter(name="collationName")
+    def collation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `character_set`, for example `gbk_chinese_ci` for `gbk` or `utf8mb4_general_ci` for `utf8mb4`.
+        """
+        return pulumi.get(self, "collation_name")
+
+    @collation_name.setter
+    def collation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "collation_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="dataBaseName")
     def data_base_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database.
+
         > **NOTE:**
         The name must be 2 to 64 characters in length.
         The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -260,6 +379,7 @@ class _DatabaseState:
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+
         > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "name")
@@ -287,7 +407,10 @@ class Database(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
                  character_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 collation_name: pulumi.Input[Optional[_builtins.str]] = None,
                  data_base_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -301,6 +424,10 @@ class Database(pulumi.CustomResource):
         For information about RDS Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/Rds/2014-08-15/CreateDatabase).
 
         > **NOTE:** Available since v1.5.0.
+
+        > **NOTE:** The `collation_name`, `account_name` and `account_privilege` arguments take effect only when the database is created. Changing any of them forces a new database to be created.
+
+        > **NOTE:** The account permission granted through `account_name` and `account_privilege` is not read back from the API. If the permission of the same account on this database is also managed by `rds.AccountPrivilege`, both configurations write the same permission and the last applied one wins.
 
         ## Example Usage
 
@@ -336,14 +463,21 @@ class Database(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_ranges.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_ranges[0].min).apply(lambda x: int(x)),
             vswitch_id=default_switch.id,
             instance_name=name,
             instance_charge_type="Postpaid")
+        default_rds_account = alicloud.rds.RdsAccount("default",
+            db_instance_id=default_instance.id,
+            account_name="terraform_example",
+            account_password="Test12345")
         default_database = alicloud.rds.Database("default",
             instance_id=default_instance.id,
             data_base_name=name,
-            character_set="utf8")
+            character_set="gbk",
+            collation_name="gbk_chinese_ci",
+            account_name=default_rds_account.account_name,
+            account_privilege="ReadWrite")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -359,6 +493,12 @@ class Database(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+               
+               > **NOTE:** The account must belong to the instance specified by `instance_id` and must exist before the database is created.
+        :param pulumi.Input[_builtins.str] account_privilege: The privilege granted to the account specified by `account_name` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+               
+               > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `account_name` to be set.
         :param pulumi.Input[_builtins.str] character_set: Character set. The value range is limited to the following:
                - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
                - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -369,7 +509,9 @@ class Database(pulumi.CustomResource):
                - MariaDB: [ utf8, gbk, latin1, utf8mb4 ]
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
+        :param pulumi.Input[_builtins.str] collation_name: The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `character_set`, for example `gbk_chinese_ci` for `gbk` or `utf8mb4_general_ci` for `utf8mb4`.
         :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               
                > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -379,6 +521,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               
                > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         ...
@@ -396,6 +539,10 @@ class Database(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.5.0.
 
+        > **NOTE:** The `collation_name`, `account_name` and `account_privilege` arguments take effect only when the database is created. Changing any of them forces a new database to be created.
+
+        > **NOTE:** The account permission granted through `account_name` and `account_privilege` is not read back from the API. If the permission of the same account on this database is also managed by `rds.AccountPrivilege`, both configurations write the same permission and the last applied one wins.
+
         ## Example Usage
 
         ```python
@@ -430,14 +577,21 @@ class Database(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_ranges.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_ranges[0].min).apply(lambda x: int(x)),
             vswitch_id=default_switch.id,
             instance_name=name,
             instance_charge_type="Postpaid")
+        default_rds_account = alicloud.rds.RdsAccount("default",
+            db_instance_id=default_instance.id,
+            account_name="terraform_example",
+            account_password="Test12345")
         default_database = alicloud.rds.Database("default",
             instance_id=default_instance.id,
             data_base_name=name,
-            character_set="utf8")
+            character_set="gbk",
+            collation_name="gbk_chinese_ci",
+            account_name=default_rds_account.account_name,
+            account_privilege="ReadWrite")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -466,7 +620,10 @@ class Database(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
                  character_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 collation_name: pulumi.Input[Optional[_builtins.str]] = None,
                  data_base_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -480,7 +637,10 @@ class Database(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
+            __props__.__dict__["account_name"] = account_name
+            __props__.__dict__["account_privilege"] = account_privilege
             __props__.__dict__["character_set"] = character_set
+            __props__.__dict__["collation_name"] = collation_name
             __props__.__dict__["data_base_name"] = data_base_name
             __props__.__dict__["description"] = description
             if instance_id is None and not opts.urn:
@@ -498,7 +658,10 @@ class Database(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
             character_set: pulumi.Input[Optional[_builtins.str]] = None,
+            collation_name: pulumi.Input[Optional[_builtins.str]] = None,
             data_base_name: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -511,6 +674,12 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+               
+               > **NOTE:** The account must belong to the instance specified by `instance_id` and must exist before the database is created.
+        :param pulumi.Input[_builtins.str] account_privilege: The privilege granted to the account specified by `account_name` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+               
+               > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `account_name` to be set.
         :param pulumi.Input[_builtins.str] character_set: Character set. The value range is limited to the following:
                - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
                - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -521,7 +690,9 @@ class Database(pulumi.CustomResource):
                - MariaDB: [ utf8, gbk, latin1, utf8mb4 ]
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
+        :param pulumi.Input[_builtins.str] collation_name: The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `character_set`, for example `gbk_chinese_ci` for `gbk` or `utf8mb4_general_ci` for `utf8mb4`.
         :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               
                > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -531,6 +702,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               
                > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         """
@@ -538,7 +710,10 @@ class Database(pulumi.CustomResource):
 
         __props__ = _DatabaseState.__new__(_DatabaseState)
 
+        __props__.__dict__["account_name"] = account_name
+        __props__.__dict__["account_privilege"] = account_privilege
         __props__.__dict__["character_set"] = character_set
+        __props__.__dict__["collation_name"] = collation_name
         __props__.__dict__["data_base_name"] = data_base_name
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_id"] = instance_id
@@ -549,20 +724,46 @@ class Database(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
             character_set: pulumi.Input[Optional[_builtins.str]] = None,
+            collation_name: pulumi.Input[Optional[_builtins.str]] = None,
             data_base_name: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["accountName"] = account_name
+        __props__["accountPrivilege"] = account_privilege
         __props__["characterSet"] = character_set
+        __props__["collationName"] = collation_name
         __props__["dataBaseName"] = data_base_name
         __props__["description"] = description
         __props__["instanceId"] = instance_id
         __props__["name"] = name
         __props__["status"] = status
         return pulumi.runtime.exists_resource(None, 'alicloud:rds/database:Database', id, __props__, opts or pulumi.ResourceOptions())
+
+    @_builtins.property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the account to be granted permissions on the database when you create the database. You can call the DescribeAccounts operation to query the account name.
+
+        > **NOTE:** The account must belong to the instance specified by `instance_id` and must exist before the database is created.
+        """
+        return pulumi.get(self, "account_name")
+
+    @_builtins.property
+    @pulumi.getter(name="accountPrivilege")
+    def account_privilege(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The privilege granted to the account specified by `account_name` when you create the database. Valid values: `ReadOnly`, `ReadWrite`, `DDLOnly`, `DMLOnly`, `DBOwner`.
+
+        > **NOTE:** The valid values depend on the database engine. `DDLOnly` and `DMLOnly` are supported only by MySQL and MariaDB; `DBOwner` is supported only by SQL Server and PostgreSQL. This argument requires `account_name` to be set.
+        """
+        return pulumi.get(self, "account_privilege")
 
     @_builtins.property
     @pulumi.getter(name="characterSet")
@@ -582,10 +783,19 @@ class Database(pulumi.CustomResource):
         return pulumi.get(self, "character_set")
 
     @_builtins.property
+    @pulumi.getter(name="collationName")
+    def collation_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The collation of the database. This parameter is supported only for MySQL instances. Specify a collation that matches `character_set`, for example `gbk_chinese_ci` for `gbk` or `utf8mb4_general_ci` for `utf8mb4`.
+        """
+        return pulumi.get(self, "collation_name")
+
+    @_builtins.property
     @pulumi.getter(name="dataBaseName")
     def data_base_name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the database.
+
         > **NOTE:**
         The name must be 2 to 64 characters in length.
         The name must start with a lowercase letter and end with a lowercase letter or digit.
@@ -617,6 +827,7 @@ class Database(pulumi.CustomResource):
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+
         > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "name")

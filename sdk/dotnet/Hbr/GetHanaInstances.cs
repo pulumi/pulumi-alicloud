@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.178.0+.
+        /// &gt; **NOTE:** Available since v1.178.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.178.0+.
+        /// &gt; **NOTE:** Available since v1.178.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.178.0+.
+        /// &gt; **NOTE:** Available since v1.178.0.
         /// 
         /// ## Example Usage
         /// 
@@ -235,13 +235,25 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Hbr Hana Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHanaInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Hbr Hana Instance names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The status of the SAP HANA instance.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The ID of the backup vault.
+        /// </summary>
         public readonly string? VaultId;
 
         [OutputConstructor]

@@ -42,7 +42,7 @@ public final class GetTransitRouterPrefixListAssociationsAssociation {
      */
     private String prefixListId;
     /**
-     * @return The status of the prefix list.
+     * @return The status of the prefix list. Valid Value: `Active`, `Updating`.
      * 
      */
     private String status;
@@ -101,7 +101,7 @@ public final class GetTransitRouterPrefixListAssociationsAssociation {
         return this.prefixListId;
     }
     /**
-     * @return The status of the prefix list.
+     * @return The status of the prefix list. Valid Value: `Active`, `Updating`.
      * 
      */
     public String status() {

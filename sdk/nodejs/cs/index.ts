@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AutoRepairPolicyArgs, AutoRepairPolicyState } from "./autoRepairPolicy";
+export type AutoRepairPolicy = import("./autoRepairPolicy").AutoRepairPolicy;
+export const AutoRepairPolicy: typeof import("./autoRepairPolicy").AutoRepairPolicy = null as any;
+utilities.lazyLoad(exports, ["AutoRepairPolicy"], () => require("./autoRepairPolicy"));
+
 export { AutoscalingConfigArgs, AutoscalingConfigState } from "./autoscalingConfig";
 export type AutoscalingConfig = import("./autoscalingConfig").AutoscalingConfig;
 export const AutoscalingConfig: typeof import("./autoscalingConfig").AutoscalingConfig = null as any;
@@ -19,6 +24,11 @@ export { GetAckServiceArgs, GetAckServiceResult, GetAckServiceOutputArgs } from 
 export const getAckService: typeof import("./getAckService").getAckService = null as any;
 export const getAckServiceOutput: typeof import("./getAckService").getAckServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getAckService","getAckServiceOutput"], () => require("./getAckService"));
+
+export { GetAutoRepairPoliciesArgs, GetAutoRepairPoliciesResult, GetAutoRepairPoliciesOutputArgs } from "./getAutoRepairPolicies";
+export const getAutoRepairPolicies: typeof import("./getAutoRepairPolicies").getAutoRepairPolicies = null as any;
+export const getAutoRepairPoliciesOutput: typeof import("./getAutoRepairPolicies").getAutoRepairPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getAutoRepairPolicies","getAutoRepairPoliciesOutput"], () => require("./getAutoRepairPolicies"));
 
 export { GetClusterCredentialArgs, GetClusterCredentialResult, GetClusterCredentialOutputArgs } from "./getClusterCredential";
 export const getClusterCredential: typeof import("./getClusterCredential").getClusterCredential = null as any;
@@ -155,6 +165,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cs/autoRepairPolicy:AutoRepairPolicy":
+                return new AutoRepairPolicy(name, <any>undefined, { urn })
             case "alicloud:cs/autoscalingConfig:AutoscalingConfig":
                 return new AutoscalingConfig(name, <any>undefined, { urn })
             case "alicloud:cs/edgeKubernetes:EdgeKubernetes":
@@ -186,6 +198,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cs/autoRepairPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/autoscalingConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/edgeKubernetes", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetes", _module)

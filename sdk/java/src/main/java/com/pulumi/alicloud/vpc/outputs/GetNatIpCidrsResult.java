@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNatIpCidrsResult {
+    /**
+     * @return A list of Vpc Nat Ip Cidrs. Each element contains the following attributes:
+     * 
+     */
     private List<GetNatIpCidrsCidr> cidrs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,14 +26,34 @@ public final class GetNatIpCidrsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Nat Ip Cidr names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return The ID of the VPC NAT gateway.
+     * 
+     */
     private String natGatewayId;
+    /**
+     * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * 
+     */
     private @Nullable List<String> natIpCidrNames;
     private @Nullable List<String> natIpCidrs;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+     * 
+     */
     private @Nullable String status;
 
     private GetNatIpCidrsResult() {}
+    /**
+     * @return A list of Vpc Nat Ip Cidrs. Each element contains the following attributes:
+     * 
+     */
     public List<GetNatIpCidrsCidr> cidrs() {
         return this.cidrs;
     }
@@ -46,12 +70,24 @@ public final class GetNatIpCidrsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Nat Ip Cidr names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return The ID of the VPC NAT gateway.
+     * 
+     */
     public String natGatewayId() {
         return this.natGatewayId;
     }
+    /**
+     * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * 
+     */
     public List<String> natIpCidrNames() {
         return this.natIpCidrNames == null ? List.of() : this.natIpCidrNames;
     }
@@ -61,6 +97,10 @@ public final class GetNatIpCidrsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

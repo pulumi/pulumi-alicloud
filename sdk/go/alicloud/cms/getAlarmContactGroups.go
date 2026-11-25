@@ -13,7 +13,7 @@ import (
 
 // This data source provides the CMS Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.101.0+.
+// > **NOTE:** Available since v1.101.0+.
 //
 // ## Example Usage
 //
@@ -64,11 +64,13 @@ type GetAlarmContactGroupsArgs struct {
 
 // A collection of values returned by getAlarmContactGroups.
 type GetAlarmContactGroupsResult struct {
+	// A list of CMS groups. Each element contains the following attributes:
 	Groups []GetAlarmContactGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of CMS Alarm Contact Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -107,6 +109,7 @@ func (o GetAlarmContactGroupsResultOutput) ToGetAlarmContactGroupsResultOutputWi
 	return o
 }
 
+// A list of CMS groups. Each element contains the following attributes:
 func (o GetAlarmContactGroupsResultOutput) Groups() GetAlarmContactGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetAlarmContactGroupsResult) []GetAlarmContactGroupsGroup { return v.Groups }).(GetAlarmContactGroupsGroupArrayOutput)
 }
@@ -124,6 +127,7 @@ func (o GetAlarmContactGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAlarmContactGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of CMS Alarm Contact Group names.
 func (o GetAlarmContactGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAlarmContactGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

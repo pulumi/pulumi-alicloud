@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -84,16 +84,25 @@ export interface GetListenersResult {
     readonly id: string;
     readonly ids: string[];
     readonly listenerIds?: string[];
+    /**
+     * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
+     */
     readonly listenerProtocol?: string;
+    /**
+     * A list of Alb Listeners. Each element contains the following attributes:
+     */
     readonly listeners: outputs.alb.GetListenersListener[];
     readonly loadBalancerIds?: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the listener.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *

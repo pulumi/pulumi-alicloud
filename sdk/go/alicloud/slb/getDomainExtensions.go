@@ -13,7 +13,7 @@ import (
 
 // This data source provides the domain extensions associated with a server load balancer listener.
 //
-// > **NOTE:** Available in 1.60.0+
+// > **NOTE:** Available since v1.60.0
 //
 // ## Example Usage
 //
@@ -61,8 +61,9 @@ type GetDomainExtensionsArgs struct {
 	// IDs of the SLB domain extensions.
 	Ids []string `pulumi:"ids"`
 	// The ID of the SLB instance.
-	LoadBalancerId string  `pulumi:"loadBalancerId"`
-	OutputFile     *string `pulumi:"outputFile"`
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getDomainExtensions.
@@ -89,8 +90,9 @@ type GetDomainExtensionsOutputArgs struct {
 	// IDs of the SLB domain extensions.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of the SLB instance.
-	LoadBalancerId pulumi.StringInput    `pulumi:"loadBalancerId"`
-	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetDomainExtensionsOutputArgs) ElementType() reflect.Type {

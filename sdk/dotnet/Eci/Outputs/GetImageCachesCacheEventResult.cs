@@ -25,6 +25,9 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// End time.
         /// </summary>
         public readonly string LastTimestamp;
+        /// <summary>
+        /// The content of the event.
+        /// </summary>
         public readonly string Message;
         /// <summary>
         /// The name of event.

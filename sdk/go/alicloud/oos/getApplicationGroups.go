@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Oos Application Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.146.0+.
+// > **NOTE:** Available since v1.146.0.
 //
 // ## Example Usage
 //
@@ -81,13 +81,17 @@ type GetApplicationGroupsArgs struct {
 
 // A collection of values returned by getApplicationGroups.
 type GetApplicationGroupsResult struct {
-	ApplicationName string                      `pulumi:"applicationName"`
-	DeployRegionId  *string                     `pulumi:"deployRegionId"`
-	Groups          []GetApplicationGroupsGroup `pulumi:"groups"`
+	// The name of the Application.
+	ApplicationName string `pulumi:"applicationName"`
+	// The region ID of the deployment.
+	DeployRegionId *string `pulumi:"deployRegionId"`
+	// A list of Oos Application Groups. Each element contains the following attributes:
+	Groups []GetApplicationGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Application Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -130,14 +134,17 @@ func (o GetApplicationGroupsResultOutput) ToGetApplicationGroupsResultOutputWith
 	return o
 }
 
+// The name of the Application.
 func (o GetApplicationGroupsResultOutput) ApplicationName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationGroupsResult) string { return v.ApplicationName }).(pulumi.StringOutput)
 }
 
+// The region ID of the deployment.
 func (o GetApplicationGroupsResultOutput) DeployRegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationGroupsResult) *string { return v.DeployRegionId }).(pulumi.StringPtrOutput)
 }
 
+// A list of Oos Application Groups. Each element contains the following attributes:
 func (o GetApplicationGroupsResultOutput) Groups() GetApplicationGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetApplicationGroupsResult) []GetApplicationGroupsGroup { return v.Groups }).(GetApplicationGroupsGroupArrayOutput)
 }
@@ -155,6 +162,7 @@ func (o GetApplicationGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Application Group names.
 func (o GetApplicationGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

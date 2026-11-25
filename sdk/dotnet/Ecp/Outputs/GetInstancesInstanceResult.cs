@@ -30,7 +30,10 @@ namespace Pulumi.AliCloud.Ecp.Outputs
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// Instance Name.
+        /// The name of the instance. It must be 2 to 128 characters in length and must start with an
+        /// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+        /// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+        /// the instance.
         /// </summary>
         public readonly string InstanceName;
         /// <summary>
@@ -38,7 +41,7 @@ namespace Pulumi.AliCloud.Ecp.Outputs
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
-        /// The Key Name.
+        /// The name of the key pair of the mobile phone instance.
         /// </summary>
         public readonly string KeyPairName;
         /// <summary>
@@ -46,7 +49,7 @@ namespace Pulumi.AliCloud.Ecp.Outputs
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// Resolution.
+        /// The selected resolution for the cloud mobile phone instance.
         /// </summary>
         public readonly string Resolution;
         /// <summary>
@@ -54,7 +57,8 @@ namespace Pulumi.AliCloud.Ecp.Outputs
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
-        /// Instance Status.
+        /// Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+        /// .
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -65,6 +69,9 @@ namespace Pulumi.AliCloud.Ecp.Outputs
         /// The vswitch id.
         /// </summary>
         public readonly string VswitchId;
+        /// <summary>
+        /// The zone ID of the ECP instance.
+        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

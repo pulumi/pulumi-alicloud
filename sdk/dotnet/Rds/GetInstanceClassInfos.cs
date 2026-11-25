@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0
         /// 
         /// ## Example Usage
         /// 
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Rds
         private List<Inputs.GetInstanceClassInfosInfoArgs>? _infos;
 
         /// <summary>
-        /// A list of Rds available resource. Each element contains the following attributes:
+        /// A list of Rds available resource. See `Infos` below.
         /// </summary>
         public List<Inputs.GetInstanceClassInfosInfoArgs> Infos
         {
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.GetInstanceClassInfosInfoInputArgs>? _infos;
 
         /// <summary>
-        /// A list of Rds available resource. Each element contains the following attributes:
+        /// A list of Rds available resource. See `Infos` below.
         /// </summary>
         public InputList<Inputs.GetInstanceClassInfosInfoInputArgs> Infos
         {

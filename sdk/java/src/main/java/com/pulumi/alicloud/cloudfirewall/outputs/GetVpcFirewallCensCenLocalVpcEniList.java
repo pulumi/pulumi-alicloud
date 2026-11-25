@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVpcFirewallCensCenLocalVpcEniList {
+    /**
+     * @return The ID of the ENI.
+     * 
+     */
     private String eniId;
+    /**
+     * @return The private IP address of the ENI.
+     * 
+     */
     private String eniPrivateIpAddress;
 
     private GetVpcFirewallCensCenLocalVpcEniList() {}
+    /**
+     * @return The ID of the ENI.
+     * 
+     */
     public String eniId() {
         return this.eniId;
     }
+    /**
+     * @return The private IP address of the ENI.
+     * 
+     */
     public String eniPrivateIpAddress() {
         return this.eniPrivateIpAddress;
     }

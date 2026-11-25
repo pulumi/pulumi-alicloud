@@ -25,6 +25,9 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// Probe name
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// A list of honeypot bind. Available when `EnableDetails` is on.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHoneypotProbesProbeHoneypotBindListResult> HoneypotBindLists;
         /// <summary>
         /// The first ID of the resource

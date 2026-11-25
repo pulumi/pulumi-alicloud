@@ -198,8 +198,8 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     }
     /**
      * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-     * - ack.standard: Standard serverless clusters.
-     * - ack.pro.small: Professional serverless clusters.
+     * - `ack.standard`: Standard serverless clusters.
+     * - `ack.pro.small`: Professional serverless clusters.
      * 
      */
     @Export(name="clusterSpec", refs={String.class}, tree="[0]")
@@ -207,8 +207,8 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
-     * - ack.standard: Standard serverless clusters.
-     * - ack.pro.small: Professional serverless clusters.
+     * - `ack.standard`: Standard serverless clusters.
+     * - `ack.pro.small`: Professional serverless clusters.
      * 
      */
     public Output<String> clusterSpec() {
@@ -216,6 +216,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     }
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * 
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      */
@@ -224,6 +225,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+     * 
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
      */
@@ -246,8 +248,6 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether enable the deletion protection or not.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
@@ -255,8 +255,6 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether enable the deletion protection or not.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -432,7 +430,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The cluster automatic operation policy. See `operationPolicy` below.
      * 
-     * *Removed params*
+     * The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
      * 
      */
     @Export(name="operationPolicy", refs={ServerlessKubernetesOperationPolicy.class}, tree="[0]")
@@ -441,7 +439,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * @return The cluster automatic operation policy. See `operationPolicy` below.
      * 
-     * *Removed params*
+     * The following arguments have been removed since v1.229.1: `vswitchId`, `createV2Cluster`, and `forceUpdate`. Use `vswitchIds` instead of `vswitchId`.
      * 
      */
     public Output<ServerlessKubernetesOperationPolicy> operationPolicy() {

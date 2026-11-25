@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.179.0+.
+        /// &gt; **NOTE:** Available since v1.179.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.179.0+.
+        /// &gt; **NOTE:** Available since v1.179.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.179.0+.
+        /// &gt; **NOTE:** Available since v1.179.0.
         /// 
         /// ## Example Usage
         /// 
@@ -126,6 +126,9 @@ namespace Pulumi.AliCloud.Hbr
 
     public sealed class GetHanaBackupPlansArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the SAP HANA instance.
+        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
@@ -179,6 +182,9 @@ namespace Pulumi.AliCloud.Hbr
 
     public sealed class GetHanaBackupPlansInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the SAP HANA instance.
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
@@ -234,7 +240,13 @@ namespace Pulumi.AliCloud.Hbr
     [OutputType]
     public sealed class GetHanaBackupPlansResult
     {
+        /// <summary>
+        /// The ID of the SAP HANA instance.
+        /// </summary>
         public readonly string ClusterId;
+        /// <summary>
+        /// The name of the database.
+        /// </summary>
         public readonly string? DatabaseName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -242,11 +254,20 @@ namespace Pulumi.AliCloud.Hbr
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Hbr Hana Backup Plan names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// A list of Hbr Hana Backup Plans. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHanaBackupPlansPlanResult> Plans;
+        /// <summary>
+        /// The ID of the backup vault.
+        /// </summary>
         public readonly string? VaultId;
 
         [OutputConstructor]

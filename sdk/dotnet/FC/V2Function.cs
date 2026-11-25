@@ -162,6 +162,7 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// List of layers.
+        /// 
         /// &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
         /// </summary>
         [Output("layers")]
@@ -367,6 +368,7 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// List of layers.
+        /// 
         /// &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
         /// </summary>
         public InputList<string> Layers
@@ -549,6 +551,7 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// List of layers.
+        /// 
         /// &gt; **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
         /// </summary>
         public InputList<string> Layers

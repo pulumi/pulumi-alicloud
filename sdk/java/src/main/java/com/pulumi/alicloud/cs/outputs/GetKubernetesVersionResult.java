@@ -22,11 +22,16 @@ public final class GetKubernetesVersionResult {
     private String id;
     private @Nullable String kubernetesVersion;
     /**
-     * @return A list of metadata of kubernetes version.
+     * @return A Set of Kubernetes version metadata.
      * 
      */
     private List<GetKubernetesVersionMetadata> metadatas;
     private @Nullable String profile;
+    /**
+     * @return (Available since v2.3.0) The support policy required by the version (`Standard` or `Extended`).
+     * 
+     */
+    private @Nullable String supportPolicy;
 
     private GetKubernetesVersionResult() {}
     public String clusterType() {
@@ -43,7 +48,7 @@ public final class GetKubernetesVersionResult {
         return Optional.ofNullable(this.kubernetesVersion);
     }
     /**
-     * @return A list of metadata of kubernetes version.
+     * @return A Set of Kubernetes version metadata.
      * 
      */
     public List<GetKubernetesVersionMetadata> metadatas() {
@@ -51,6 +56,13 @@ public final class GetKubernetesVersionResult {
     }
     public Optional<String> profile() {
         return Optional.ofNullable(this.profile);
+    }
+    /**
+     * @return (Available since v2.3.0) The support policy required by the version (`Standard` or `Extended`).
+     * 
+     */
+    public Optional<String> supportPolicy() {
+        return Optional.ofNullable(this.supportPolicy);
     }
 
     public static Builder builder() {
@@ -67,6 +79,7 @@ public final class GetKubernetesVersionResult {
         private @Nullable String kubernetesVersion;
         private List<GetKubernetesVersionMetadata> metadatas;
         private @Nullable String profile;
+        private @Nullable String supportPolicy;
         public Builder() {}
         public Builder(GetKubernetesVersionResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -75,6 +88,7 @@ public final class GetKubernetesVersionResult {
     	      this.kubernetesVersion = defaults.kubernetesVersion;
     	      this.metadatas = defaults.metadatas;
     	      this.profile = defaults.profile;
+    	      this.supportPolicy = defaults.supportPolicy;
         }
 
         @CustomType.Setter
@@ -116,6 +130,12 @@ public final class GetKubernetesVersionResult {
             this.profile = profile;
             return this;
         }
+        @CustomType.Setter
+        public Builder supportPolicy(@Nullable String supportPolicy) {
+
+            this.supportPolicy = supportPolicy;
+            return this;
+        }
         public GetKubernetesVersionResult build() {
             final var _resultValue = new GetKubernetesVersionResult();
             _resultValue.clusterType = clusterType;
@@ -123,6 +143,7 @@ public final class GetKubernetesVersionResult {
             _resultValue.kubernetesVersion = kubernetesVersion;
             _resultValue.metadatas = metadatas;
             _resultValue.profile = profile;
+            _resultValue.supportPolicy = supportPolicy;
             return _resultValue;
         }
     }

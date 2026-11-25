@@ -22,14 +22,46 @@ public final class GetVirtualNodesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Virtual Node names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return A list of Eci Virtual Nodes. Each element contains the following attributes:
+     * 
+     */
     private List<GetVirtualNodesNode> nodes;
     private @Nullable String outputFile;
+    /**
+     * @return The resource group ID.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The security group ID.
+     * 
+     */
     private @Nullable String securityGroupId;
+    /**
+     * @return The Status of the virtual node.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The name of the virtual node.
+     * 
+     */
     private @Nullable String virtualNodeName;
+    /**
+     * @return The vswitch id.
+     * 
+     */
     private @Nullable String vswitchId;
 
     private GetVirtualNodesResult() {}
@@ -46,30 +78,62 @@ public final class GetVirtualNodesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Virtual Node names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return A list of Eci Virtual Nodes. Each element contains the following attributes:
+     * 
+     */
     public List<GetVirtualNodesNode> nodes() {
         return this.nodes;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The resource group ID.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The security group ID.
+     * 
+     */
     public Optional<String> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
+    /**
+     * @return The Status of the virtual node.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The name of the virtual node.
+     * 
+     */
     public Optional<String> virtualNodeName() {
         return Optional.ofNullable(this.virtualNodeName);
     }
+    /**
+     * @return The vswitch id.
+     * 
+     */
     public Optional<String> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccClusters";
+ * const name = config.get("name") || "tf-acc-clusters";
  * const _default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
@@ -236,28 +236,55 @@ export interface GetClustersArgs {
  * A collection of values returned by getClusters.
  */
 export interface GetClustersResult {
+    /**
+     * The name of the associated cluster.
+     */
     readonly clusterName?: string;
     readonly clusterTypeLists?: string[];
+    /**
+     * A list of Emr Clusters. Each element contains the following attributes:
+     */
     readonly clusters: outputs.emr.GetClustersCluster[];
+    /**
+     * How to create a cluster.
+     */
     readonly createType?: string;
     readonly defaultStatus?: boolean;
+    /**
+     * The hosting type of the cluster.
+     */
     readonly depositType?: string;
     readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Cluster IDs.
+     */
     readonly ids: string[];
     readonly isDesc?: boolean;
+    /**
+     * The host type of the cluster. The default is ECS.
+     */
     readonly machineType?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Cluster names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
     readonly resourceGroupId?: string;
     readonly statusLists?: string[];
+    /**
+     * Total count of clusters.
+     */
     readonly totalCount: number;
+    /**
+     * The VPC ID.
+     */
     readonly vpcId?: string;
 }
 /**
@@ -265,7 +292,7 @@ export interface GetClustersResult {
  *
  * > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -276,7 +303,7 @@ export interface GetClustersResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccClusters";
+ * const name = config.get("name") || "tf-acc-clusters";
  * const _default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });

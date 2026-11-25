@@ -18,86 +18,182 @@ public final class BastionHostInstanceLdapAuthServerArgs extends com.pulumi.reso
 
     public static final BastionHostInstanceLdapAuthServerArgs Empty = new BastionHostInstanceLdapAuthServerArgs();
 
+    /**
+     * The username of the account that is used for the LDAP server.
+     * 
+     */
     @Import(name="account", required=true)
     private Output<String> account;
 
+    /**
+     * @return The username of the account that is used for the LDAP server.
+     * 
+     */
     public Output<String> account() {
         return this.account;
     }
 
+    /**
+     * The Base distinguished name (DN).
+     * 
+     */
     @Import(name="baseDn", required=true)
     private Output<String> baseDn;
 
+    /**
+     * @return The Base distinguished name (DN).
+     * 
+     */
     public Output<String> baseDn() {
         return this.baseDn;
     }
 
+    /**
+     * The field that is used to indicate the email address of a user on the LDAP server.
+     * 
+     */
     @Import(name="emailMapping")
     private @Nullable Output<String> emailMapping;
 
+    /**
+     * @return The field that is used to indicate the email address of a user on the LDAP server.
+     * 
+     */
     public Optional<Output<String>> emailMapping() {
         return Optional.ofNullable(this.emailMapping);
     }
 
+    /**
+     * The condition that is used to filter users.
+     * 
+     */
     @Import(name="filter")
     private @Nullable Output<String> filter;
 
+    /**
+     * @return The condition that is used to filter users.
+     * 
+     */
     public Optional<Output<String>> filter() {
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * Specifies whether to support SSL.
+     * 
+     */
     @Import(name="isSsl")
     private @Nullable Output<Boolean> isSsl;
 
+    /**
+     * @return Specifies whether to support SSL.
+     * 
+     */
     public Optional<Output<Boolean>> isSsl() {
         return Optional.ofNullable(this.isSsl);
     }
 
+    /**
+     * The field that is used to indicate the logon name of a user on the LDAP server.
+     * 
+     */
     @Import(name="loginNameMapping")
     private @Nullable Output<String> loginNameMapping;
 
+    /**
+     * @return The field that is used to indicate the logon name of a user on the LDAP server.
+     * 
+     */
     public Optional<Output<String>> loginNameMapping() {
         return Optional.ofNullable(this.loginNameMapping);
     }
 
+    /**
+     * The field that is used to indicate the mobile phone number of a user on the LDAP server.
+     * 
+     */
     @Import(name="mobileMapping")
     private @Nullable Output<String> mobileMapping;
 
+    /**
+     * @return The field that is used to indicate the mobile phone number of a user on the LDAP server.
+     * 
+     */
     public Optional<Output<String>> mobileMapping() {
         return Optional.ofNullable(this.mobileMapping);
     }
 
+    /**
+     * The field that are used to indicate the name of a user on the LDAP server.
+     * 
+     */
     @Import(name="nameMapping")
     private @Nullable Output<String> nameMapping;
 
+    /**
+     * @return The field that are used to indicate the name of a user on the LDAP server.
+     * 
+     */
     public Optional<Output<String>> nameMapping() {
         return Optional.ofNullable(this.nameMapping);
     }
 
+    /**
+     * The password of the account that is used for the LDAP server.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return The password of the account that is used for the LDAP server.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * The port that is used to access the LDAP server.
+     * 
+     */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
+    /**
+     * @return The port that is used to access the LDAP server.
+     * 
+     */
     public Output<Integer> port() {
         return this.port;
     }
 
+    /**
+     * The address of the LDAP server.
+     * 
+     */
     @Import(name="server", required=true)
     private Output<String> server;
 
+    /**
+     * @return The address of the LDAP server.
+     * 
+     */
     public Output<String> server() {
         return this.server;
     }
 
+    /**
+     * The address of the secondary LDAP server.
+     * 
+     */
     @Import(name="standbyServer")
     private @Nullable Output<String> standbyServer;
 
+    /**
+     * @return The address of the secondary LDAP server.
+     * 
+     */
     public Optional<Output<String>> standbyServer() {
         return Optional.ofNullable(this.standbyServer);
     }
@@ -137,110 +233,254 @@ public final class BastionHostInstanceLdapAuthServerArgs extends com.pulumi.reso
             $ = new BastionHostInstanceLdapAuthServerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param account The username of the account that is used for the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder account(Output<String> account) {
             $.account = account;
             return this;
         }
 
+        /**
+         * @param account The username of the account that is used for the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder account(String account) {
             return account(Output.of(account));
         }
 
+        /**
+         * @param baseDn The Base distinguished name (DN).
+         * 
+         * @return builder
+         * 
+         */
         public Builder baseDn(Output<String> baseDn) {
             $.baseDn = baseDn;
             return this;
         }
 
+        /**
+         * @param baseDn The Base distinguished name (DN).
+         * 
+         * @return builder
+         * 
+         */
         public Builder baseDn(String baseDn) {
             return baseDn(Output.of(baseDn));
         }
 
+        /**
+         * @param emailMapping The field that is used to indicate the email address of a user on the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailMapping(@Nullable Output<String> emailMapping) {
             $.emailMapping = emailMapping;
             return this;
         }
 
+        /**
+         * @param emailMapping The field that is used to indicate the email address of a user on the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailMapping(String emailMapping) {
             return emailMapping(Output.of(emailMapping));
         }
 
+        /**
+         * @param filter The condition that is used to filter users.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(@Nullable Output<String> filter) {
             $.filter = filter;
             return this;
         }
 
+        /**
+         * @param filter The condition that is used to filter users.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(String filter) {
             return filter(Output.of(filter));
         }
 
+        /**
+         * @param isSsl Specifies whether to support SSL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isSsl(@Nullable Output<Boolean> isSsl) {
             $.isSsl = isSsl;
             return this;
         }
 
+        /**
+         * @param isSsl Specifies whether to support SSL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isSsl(Boolean isSsl) {
             return isSsl(Output.of(isSsl));
         }
 
+        /**
+         * @param loginNameMapping The field that is used to indicate the logon name of a user on the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder loginNameMapping(@Nullable Output<String> loginNameMapping) {
             $.loginNameMapping = loginNameMapping;
             return this;
         }
 
+        /**
+         * @param loginNameMapping The field that is used to indicate the logon name of a user on the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder loginNameMapping(String loginNameMapping) {
             return loginNameMapping(Output.of(loginNameMapping));
         }
 
+        /**
+         * @param mobileMapping The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mobileMapping(@Nullable Output<String> mobileMapping) {
             $.mobileMapping = mobileMapping;
             return this;
         }
 
+        /**
+         * @param mobileMapping The field that is used to indicate the mobile phone number of a user on the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mobileMapping(String mobileMapping) {
             return mobileMapping(Output.of(mobileMapping));
         }
 
+        /**
+         * @param nameMapping The field that are used to indicate the name of a user on the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameMapping(@Nullable Output<String> nameMapping) {
             $.nameMapping = nameMapping;
             return this;
         }
 
+        /**
+         * @param nameMapping The field that are used to indicate the name of a user on the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameMapping(String nameMapping) {
             return nameMapping(Output.of(nameMapping));
         }
 
+        /**
+         * @param password The password of the account that is used for the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password The password of the account that is used for the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param port The port that is used to access the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port The port that is used to access the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param server The address of the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(Output<String> server) {
             $.server = server;
             return this;
         }
 
+        /**
+         * @param server The address of the LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder server(String server) {
             return server(Output.of(server));
         }
 
+        /**
+         * @param standbyServer The address of the secondary LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder standbyServer(@Nullable Output<String> standbyServer) {
             $.standbyServer = standbyServer;
             return this;
         }
 
+        /**
+         * @param standbyServer The address of the secondary LDAP server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder standbyServer(String standbyServer) {
             return standbyServer(Output.of(standbyServer));
         }

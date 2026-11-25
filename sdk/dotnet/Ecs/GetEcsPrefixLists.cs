@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.152.0+.
+        /// &gt; **NOTE:** Available since v1.152.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.152.0+.
+        /// &gt; **NOTE:** Available since v1.152.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.152.0+.
+        /// &gt; **NOTE:** Available since v1.152.0.
         /// 
         /// ## Example Usage
         /// 
@@ -129,6 +129,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("addressFamily")]
         public string? AddressFamily { get; set; }
 
+        /// <summary>
+        /// Specifies whether to return detailed information about the prefix list entries. Default: false.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -170,6 +173,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("addressFamily")]
         public Input<string>? AddressFamily { get; set; }
 
+        /// <summary>
+        /// Specifies whether to return detailed information about the prefix list entries. Default: false.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -207,6 +213,9 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEcsPrefixListsResult
     {
+        /// <summary>
+        /// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+        /// </summary>
         public readonly string? AddressFamily;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -214,8 +223,14 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Prefix Lists. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsPrefixListsListResult> Lists;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Prefix List names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

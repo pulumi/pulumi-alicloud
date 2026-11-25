@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.159.0+.
+// > **NOTE:** Available since v1.159.0.
 //
 // ## Example Usage
 //
@@ -69,12 +69,14 @@ type GetApplicationScalingRulesArgs struct {
 
 // A collection of values returned by getApplicationScalingRules.
 type GetApplicationScalingRulesResult struct {
+	// The ID of the Application.
 	AppId string `pulumi:"appId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                           `pulumi:"id"`
-	Ids        []string                         `pulumi:"ids"`
-	OutputFile *string                          `pulumi:"outputFile"`
-	Rules      []GetApplicationScalingRulesRule `pulumi:"rules"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Sae Application Scaling Rules. Each element contains the following attributes:
+	Rules []GetApplicationScalingRulesRule `pulumi:"rules"`
 }
 
 func GetApplicationScalingRulesOutput(ctx *pulumi.Context, args GetApplicationScalingRulesOutputArgs, opts ...pulumi.InvokeOption) GetApplicationScalingRulesResultOutput {
@@ -111,6 +113,7 @@ func (o GetApplicationScalingRulesResultOutput) ToGetApplicationScalingRulesResu
 	return o
 }
 
+// The ID of the Application.
 func (o GetApplicationScalingRulesResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesResult) string { return v.AppId }).(pulumi.StringOutput)
 }
@@ -128,6 +131,7 @@ func (o GetApplicationScalingRulesResultOutput) OutputFile() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetApplicationScalingRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Sae Application Scaling Rules. Each element contains the following attributes:
 func (o GetApplicationScalingRulesResultOutput) Rules() GetApplicationScalingRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesResult) []GetApplicationScalingRulesRule { return v.Rules }).(GetApplicationScalingRulesRuleArrayOutput)
 }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.165.0+.
+ * > **NOTE:** Available since v1.165.0.
  *
  * ## Example Usage
  *
@@ -81,16 +81,25 @@ export interface GetHostShareKeysResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of the Bastion instance.
+     */
     readonly instanceId: string;
+    /**
+     * A list of Bastionhost Host Share Keys. Each element contains the following attributes:
+     */
     readonly keys: outputs.bastionhost.GetHostShareKeysKey[];
     readonly nameRegex?: string;
+    /**
+     * A list of Host Share Key names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.165.0+.
+ * > **NOTE:** Available since v1.165.0.
  *
  * ## Example Usage
  *

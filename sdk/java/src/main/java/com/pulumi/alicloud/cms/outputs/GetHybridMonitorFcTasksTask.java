@@ -26,7 +26,7 @@ public final class GetHybridMonitorFcTasksTask {
      */
     private String id;
     /**
-     * @return The index warehouse where the host belongs.
+     * @return The name of the namespace.
      * 
      */
     private String namespace;
@@ -64,7 +64,7 @@ public final class GetHybridMonitorFcTasksTask {
         return this.id;
     }
     /**
-     * @return The index warehouse where the host belongs.
+     * @return The name of the namespace.
      * 
      */
     public String namespace() {

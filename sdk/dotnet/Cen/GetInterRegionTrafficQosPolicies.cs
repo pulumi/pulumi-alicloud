@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.195.0+.
+        /// &gt; **NOTE:** Available since v1.195.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.195.0+.
+        /// &gt; **NOTE:** Available since v1.195.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.195.0+.
+        /// &gt; **NOTE:** Available since v1.195.0+.
         /// 
         /// ## Example Usage
         /// 

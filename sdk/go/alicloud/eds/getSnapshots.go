@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.169.0+.
+// > **NOTE:** Available since v1.169.0.
 //
 // ## Example Usage
 //
@@ -67,15 +67,19 @@ type GetSnapshotsArgs struct {
 
 // A collection of values returned by getSnapshots.
 type GetSnapshotsResult struct {
+	// The ID of the cloud desktop to which the snapshot belongs.
 	DesktopId *string `pulumi:"desktopId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	SnapshotId *string                `pulumi:"snapshotId"`
-	Snapshots  []GetSnapshotsSnapshot `pulumi:"snapshots"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Snapshot names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the snapshot.
+	SnapshotId *string `pulumi:"snapshotId"`
+	// A list of Ecd Snapshots. Each element contains the following attributes:
+	Snapshots []GetSnapshotsSnapshot `pulumi:"snapshots"`
 }
 
 func GetSnapshotsOutput(ctx *pulumi.Context, args GetSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetSnapshotsResultOutput {
@@ -116,6 +120,7 @@ func (o GetSnapshotsResultOutput) ToGetSnapshotsResultOutputWithContext(ctx cont
 	return o
 }
 
+// The ID of the cloud desktop to which the snapshot belongs.
 func (o GetSnapshotsResultOutput) DesktopId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.DesktopId }).(pulumi.StringPtrOutput)
 }
@@ -133,6 +138,7 @@ func (o GetSnapshotsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Snapshot names.
 func (o GetSnapshotsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -141,10 +147,12 @@ func (o GetSnapshotsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the snapshot.
 func (o GetSnapshotsResultOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Snapshots. Each element contains the following attributes:
 func (o GetSnapshotsResultOutput) Snapshots() GetSnapshotsSnapshotArrayOutput {
 	return o.ApplyT(func(v GetSnapshotsResult) []GetSnapshotsSnapshot { return v.Snapshots }).(GetSnapshotsSnapshotArrayOutput)
 }

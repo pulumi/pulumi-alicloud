@@ -5,6 +5,7 @@ package com.pulumi.alicloud.eds.inputs;
 
 import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
 import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
+import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupClientTypeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -65,6 +66,21 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+     * 
+     */
+    @Import(name="clientTypes")
+    private @Nullable Output<List<EcdPolicyGroupClientTypeArgs>> clientTypes;
+
+    /**
+     * @return The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+     * 
+     */
+    public Optional<Output<List<EcdPolicyGroupClientTypeArgs>>> clientTypes() {
+        return Optional.ofNullable(this.clientTypes);
+    }
+
+    /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      * 
      */
@@ -92,6 +108,36 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> domainList() {
         return Optional.ofNullable(this.domainList);
+    }
+
+    /**
+     * Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+     * 
+     */
+    @Import(name="endUserApplyAdminCoordinate")
+    private @Nullable Output<String> endUserApplyAdminCoordinate;
+
+    /**
+     * @return Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+     * 
+     */
+    public Optional<Output<String>> endUserApplyAdminCoordinate() {
+        return Optional.ofNullable(this.endUserApplyAdminCoordinate);
+    }
+
+    /**
+     * Whether to allow end users to join user groups. Valid values: `off`, `on`.
+     * 
+     */
+    @Import(name="endUserGroupCoordinate")
+    private @Nullable Output<String> endUserGroupCoordinate;
+
+    /**
+     * @return Whether to allow end users to join user groups. Valid values: `off`, `on`.
+     * 
+     */
+    public Optional<Output<String>> endUserGroupCoordinate() {
+        return Optional.ofNullable(this.endUserGroupCoordinate);
     }
 
     /**
@@ -125,14 +171,29 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+     * The network communication protocol. Valid values: `BOTH`, `TCP`.
+     * 
+     */
+    @Import(name="internetCommunicationProtocol")
+    private @Nullable Output<String> internetCommunicationProtocol;
+
+    /**
+     * @return The network communication protocol. Valid values: `BOTH`, `TCP`.
+     * 
+     */
+    public Optional<Output<String>> internetCommunicationProtocol() {
+        return Optional.ofNullable(this.internetCommunicationProtocol);
+    }
+
+    /**
+     * Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
      * 
      */
     @Import(name="localDrive")
     private @Nullable Output<String> localDrive;
 
     /**
-     * @return Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+     * @return Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
      * 
      */
     public Optional<Output<String>> localDrive() {
@@ -167,6 +228,21 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> recording() {
         return Optional.ofNullable(this.recording);
+    }
+
+    /**
+     * The recording duration. Valid values: `10`, `20`, `30`, `60`.
+     * 
+     */
+    @Import(name="recordingDuration")
+    private @Nullable Output<Integer> recordingDuration;
+
+    /**
+     * @return The recording duration. Valid values: `10`, `20`, `30`, `60`.
+     * 
+     */
+    public Optional<Output<Integer>> recordingDuration() {
+        return Optional.ofNullable(this.recordingDuration);
     }
 
     /**
@@ -325,13 +401,18 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         this.authorizeAccessPolicyRules = $.authorizeAccessPolicyRules;
         this.authorizeSecurityPolicyRules = $.authorizeSecurityPolicyRules;
         this.cameraRedirect = $.cameraRedirect;
+        this.clientTypes = $.clientTypes;
         this.clipboard = $.clipboard;
         this.domainList = $.domainList;
+        this.endUserApplyAdminCoordinate = $.endUserApplyAdminCoordinate;
+        this.endUserGroupCoordinate = $.endUserGroupCoordinate;
         this.htmlAccess = $.htmlAccess;
         this.htmlFileTransfer = $.htmlFileTransfer;
+        this.internetCommunicationProtocol = $.internetCommunicationProtocol;
         this.localDrive = $.localDrive;
         this.policyGroupName = $.policyGroupName;
         this.recording = $.recording;
+        this.recordingDuration = $.recordingDuration;
         this.recordingEndTime = $.recordingEndTime;
         this.recordingExpires = $.recordingExpires;
         this.recordingFps = $.recordingFps;
@@ -446,6 +527,37 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param clientTypes The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientTypes(@Nullable Output<List<EcdPolicyGroupClientTypeArgs>> clientTypes) {
+            $.clientTypes = clientTypes;
+            return this;
+        }
+
+        /**
+         * @param clientTypes The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientTypes(List<EcdPolicyGroupClientTypeArgs> clientTypes) {
+            return clientTypes(Output.of(clientTypes));
+        }
+
+        /**
+         * @param clientTypes The list of client type access rules used to control which clients can access cloud desktops. See `clientTypes` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientTypes(EcdPolicyGroupClientTypeArgs... clientTypes) {
+            return clientTypes(List.of(clientTypes));
+        }
+
+        /**
          * @param clipboard The clipboard policy. Valid values: `off`, `read`, `readwrite`.
          * 
          * @return builder
@@ -485,6 +597,48 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
          */
         public Builder domainList(String domainList) {
             return domainList(Output.of(domainList));
+        }
+
+        /**
+         * @param endUserApplyAdminCoordinate Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endUserApplyAdminCoordinate(@Nullable Output<String> endUserApplyAdminCoordinate) {
+            $.endUserApplyAdminCoordinate = endUserApplyAdminCoordinate;
+            return this;
+        }
+
+        /**
+         * @param endUserApplyAdminCoordinate Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endUserApplyAdminCoordinate(String endUserApplyAdminCoordinate) {
+            return endUserApplyAdminCoordinate(Output.of(endUserApplyAdminCoordinate));
+        }
+
+        /**
+         * @param endUserGroupCoordinate Whether to allow end users to join user groups. Valid values: `off`, `on`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endUserGroupCoordinate(@Nullable Output<String> endUserGroupCoordinate) {
+            $.endUserGroupCoordinate = endUserGroupCoordinate;
+            return this;
+        }
+
+        /**
+         * @param endUserGroupCoordinate Whether to allow end users to join user groups. Valid values: `off`, `on`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endUserGroupCoordinate(String endUserGroupCoordinate) {
+            return endUserGroupCoordinate(Output.of(endUserGroupCoordinate));
         }
 
         /**
@@ -530,7 +684,28 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param localDrive Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+         * @param internetCommunicationProtocol The network communication protocol. Valid values: `BOTH`, `TCP`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetCommunicationProtocol(@Nullable Output<String> internetCommunicationProtocol) {
+            $.internetCommunicationProtocol = internetCommunicationProtocol;
+            return this;
+        }
+
+        /**
+         * @param internetCommunicationProtocol The network communication protocol. Valid values: `BOTH`, `TCP`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internetCommunicationProtocol(String internetCommunicationProtocol) {
+            return internetCommunicationProtocol(Output.of(internetCommunicationProtocol));
+        }
+
+        /**
+         * @param localDrive Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
          * 
          * @return builder
          * 
@@ -541,7 +716,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param localDrive Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+         * @param localDrive Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
          * 
          * @return builder
          * 
@@ -590,6 +765,27 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
          */
         public Builder recording(String recording) {
             return recording(Output.of(recording));
+        }
+
+        /**
+         * @param recordingDuration The recording duration. Valid values: `10`, `20`, `30`, `60`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recordingDuration(@Nullable Output<Integer> recordingDuration) {
+            $.recordingDuration = recordingDuration;
+            return this;
+        }
+
+        /**
+         * @param recordingDuration The recording duration. Valid values: `10`, `20`, `30`, `60`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recordingDuration(Integer recordingDuration) {
+            return recordingDuration(Output.of(recordingDuration));
         }
 
         /**

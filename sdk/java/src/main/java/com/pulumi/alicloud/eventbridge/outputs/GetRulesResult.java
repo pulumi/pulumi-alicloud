@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesResult {
+    /**
+     * @return The name of event bus.
+     * 
+     */
     private String eventBusName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,13 +26,29 @@ public final class GetRulesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Rule names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable String ruleNamePrefix;
+    /**
+     * @return A list of Event Bridge Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetRulesRule> rules;
+    /**
+     * @return Rule status, either Enable or Disable.
+     * 
+     */
     private @Nullable String status;
 
     private GetRulesResult() {}
+    /**
+     * @return The name of event bus.
+     * 
+     */
     public String eventBusName() {
         return this.eventBusName;
     }
@@ -45,6 +65,10 @@ public final class GetRulesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Rule names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -54,9 +78,17 @@ public final class GetRulesResult {
     public Optional<String> ruleNamePrefix() {
         return Optional.ofNullable(this.ruleNamePrefix);
     }
+    /**
+     * @return A list of Event Bridge Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetRulesRule> rules() {
         return this.rules;
     }
+    /**
+     * @return Rule status, either Enable or Disable.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

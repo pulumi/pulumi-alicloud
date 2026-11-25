@@ -37,32 +37,32 @@ public final class GetTemplateScratchesScratch {
      */
     private String logicalIdStrategy;
     /**
-     * @return Priority parameter.
+     * @return Priority parameter. See `preferenceParameters` below.
      * 
      */
     private List<GetTemplateScratchesScratchPreferenceParameter> preferenceParameters;
     /**
-     * @return Source resource grouping.
+     * @return Source resource grouping. See `sourceResourceGroup` below.
      * 
      */
     private List<GetTemplateScratchesScratchSourceResourceGroup> sourceResourceGroups;
     /**
-     * @return Source resource.
+     * @return Source resource. See `sourceResources` below.
      * 
      */
     private List<GetTemplateScratchesScratchSourceResource> sourceResources;
     /**
-     * @return The Source label list.
+     * @return The Source label list. See `sourceTag` below.
      * 
      */
     private List<GetTemplateScratchesScratchSourceTag> sourceTags;
     /**
-     * @return A list of resource stacks associated with the resource scene.
+     * @return A list of resource stacks associated with the resource scene. See `stacks` below.
      * 
      */
     private List<GetTemplateScratchesScratchStack> stacks;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
      * 
      */
     private String status;
@@ -72,7 +72,7 @@ public final class GetTemplateScratchesScratch {
      */
     private String templateScratchId;
     /**
-     * @return The type of the Template Scratch.
+     * @return The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
      * 
      */
     private String templateScratchType;
@@ -107,42 +107,42 @@ public final class GetTemplateScratchesScratch {
         return this.logicalIdStrategy;
     }
     /**
-     * @return Priority parameter.
+     * @return Priority parameter. See `preferenceParameters` below.
      * 
      */
     public List<GetTemplateScratchesScratchPreferenceParameter> preferenceParameters() {
         return this.preferenceParameters;
     }
     /**
-     * @return Source resource grouping.
+     * @return Source resource grouping. See `sourceResourceGroup` below.
      * 
      */
     public List<GetTemplateScratchesScratchSourceResourceGroup> sourceResourceGroups() {
         return this.sourceResourceGroups;
     }
     /**
-     * @return Source resource.
+     * @return Source resource. See `sourceResources` below.
      * 
      */
     public List<GetTemplateScratchesScratchSourceResource> sourceResources() {
         return this.sourceResources;
     }
     /**
-     * @return The Source label list.
+     * @return The Source label list. See `sourceTag` below.
      * 
      */
     public List<GetTemplateScratchesScratchSourceTag> sourceTags() {
         return this.sourceTags;
     }
     /**
-     * @return A list of resource stacks associated with the resource scene.
+     * @return A list of resource stacks associated with the resource scene. See `stacks` below.
      * 
      */
     public List<GetTemplateScratchesScratchStack> stacks() {
         return this.stacks;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
      * 
      */
     public String status() {
@@ -156,7 +156,7 @@ public final class GetTemplateScratchesScratch {
         return this.templateScratchId;
     }
     /**
-     * @return The type of the Template Scratch.
+     * @return The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
      * 
      */
     public String templateScratchType() {

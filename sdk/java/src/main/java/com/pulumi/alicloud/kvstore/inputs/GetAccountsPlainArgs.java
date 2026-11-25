@@ -45,9 +45,17 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
         return this.instanceId;
     }
 
+    /**
+     * A regex string to apply to the account name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to apply to the account name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -132,6 +140,12 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to apply to the account name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;

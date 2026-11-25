@@ -19,14 +19,29 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     public static final DomainState Empty = new DomainState();
 
     /**
-     * The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * The ID of the certificate.
+     * 
+     */
+    @Import(name="certId")
+    private @Nullable Output<String> certId;
+
+    /**
+     * @return The ID of the certificate.
+     * 
+     */
+    public Optional<Output<String>> certId() {
+        return Optional.ofNullable(this.certId);
+    }
+
+    /**
+     * The name of the certificate.
      * 
      */
     @Import(name="certName")
     private @Nullable Output<String> certName;
 
     /**
-     * @return The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * @return The name of the certificate.
      * 
      */
     public Optional<Output<String>> certName() {
@@ -34,14 +49,44 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL that is used for health checks.
+     * The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+     * 
+     */
+    @Import(name="certRegion")
+    private @Nullable Output<String> certRegion;
+
+    /**
+     * @return The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+     * 
+     */
+    public Optional<Output<String>> certRegion() {
+        return Optional.ofNullable(this.certRegion);
+    }
+
+    /**
+     * The type of the certificate. Valid values:
+     * 
+     */
+    @Import(name="certType")
+    private @Nullable Output<String> certType;
+
+    /**
+     * @return The type of the certificate. Valid values:
+     * 
+     */
+    public Optional<Output<String>> certType() {
+        return Optional.ofNullable(this.certType);
+    }
+
+    /**
+     * The URL for health checks.
      * 
      */
     @Import(name="checkUrl")
     private @Nullable Output<String> checkUrl;
 
     /**
-     * @return The URL that is used for health checks.
+     * @return The URL for health checks.
      * 
      */
     public Optional<Output<String>> checkUrl() {
@@ -64,14 +109,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the domain name for CDN.
+     * The description of the ApsaraVideo VOD accelerated domain name.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the domain name for CDN.
+     * @return The description of the ApsaraVideo VOD accelerated domain name.
      * 
      */
     public Optional<Output<String>> description() {
@@ -94,14 +139,29 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+     * 
+     */
+    @Import(name="env")
+    private @Nullable Output<String> env;
+
+    /**
+     * @return Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+     * 
+     */
+    public Optional<Output<String>> env() {
+        return Optional.ofNullable(this.env);
+    }
+
+    /**
+     * The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      * 
      */
     @Import(name="gmtCreated")
     private @Nullable Output<String> gmtCreated;
 
     /**
-     * @return The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * @return The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      * 
      */
     public Optional<Output<String>> gmtCreated() {
@@ -109,14 +169,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      * 
      */
     @Import(name="gmtModified")
     private @Nullable Output<String> gmtModified;
 
     /**
-     * @return The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * @return The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
      * 
      */
     public Optional<Output<String>> gmtModified() {
@@ -124,14 +184,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+     * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+     * @return This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
      * 
      */
     public Optional<Output<String>> scope() {
@@ -139,14 +199,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * The list of origin addresses. See `sources` below.
      * 
      */
     @Import(name="sources")
     private @Nullable Output<List<DomainSourceArgs>> sources;
 
     /**
-     * @return The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+     * @return The list of origin addresses. See `sources` below.
      * 
      */
     public Optional<Output<List<DomainSourceArgs>>> sources() {
@@ -154,14 +214,29 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+     * The content of the private key.
+     * 
+     */
+    @Import(name="sslPri")
+    private @Nullable Output<String> sslPri;
+
+    /**
+     * @return The content of the private key.
+     * 
+     */
+    public Optional<Output<String>> sslPri() {
+        return Optional.ofNullable(this.sslPri);
+    }
+
+    /**
+     * Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
      * 
      */
     @Import(name="sslProtocol")
     private @Nullable Output<String> sslProtocol;
 
     /**
-     * @return Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+     * @return Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
      * 
      */
     public Optional<Output<String>> sslProtocol() {
@@ -169,14 +244,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * The content of the security certificate.
      * 
      */
     @Import(name="sslPub")
     private @Nullable Output<String> sslPub;
 
     /**
-     * @return The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+     * @return The content of the security certificate.
      * 
      */
     public Optional<Output<String>> sslPub() {
@@ -184,14 +259,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the domain name for CDN. Valid values:
+     * The running status of the accelerated domain name.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the domain name for CDN. Valid values:
+     * @return The running status of the accelerated domain name.
      * 
      */
     public Optional<Output<String>> status() {
@@ -200,8 +275,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
+     * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * - `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     @Import(name="tags")
@@ -209,8 +284,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A mapping of tags to assign to the resource.
-     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-     * * `Value`: It can be up to 128 characters in length. It can be a null string.
+     * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * - `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -250,15 +325,20 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     private DomainState() {}
 
     private DomainState(DomainState $) {
+        this.certId = $.certId;
         this.certName = $.certName;
+        this.certRegion = $.certRegion;
+        this.certType = $.certType;
         this.checkUrl = $.checkUrl;
         this.cname = $.cname;
         this.description = $.description;
         this.domainName = $.domainName;
+        this.env = $.env;
         this.gmtCreated = $.gmtCreated;
         this.gmtModified = $.gmtModified;
         this.scope = $.scope;
         this.sources = $.sources;
+        this.sslPri = $.sslPri;
         this.sslProtocol = $.sslProtocol;
         this.sslPub = $.sslPub;
         this.status = $.status;
@@ -286,7 +366,28 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certName The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+         * @param certId The ID of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certId(@Nullable Output<String> certId) {
+            $.certId = certId;
+            return this;
+        }
+
+        /**
+         * @param certId The ID of the certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certId(String certId) {
+            return certId(Output.of(certId));
+        }
+
+        /**
+         * @param certName The name of the certificate.
          * 
          * @return builder
          * 
@@ -297,7 +398,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certName The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+         * @param certName The name of the certificate.
          * 
          * @return builder
          * 
@@ -307,7 +408,49 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkUrl The URL that is used for health checks.
+         * @param certRegion The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certRegion(@Nullable Output<String> certRegion) {
+            $.certRegion = certRegion;
+            return this;
+        }
+
+        /**
+         * @param certRegion The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certRegion(String certRegion) {
+            return certRegion(Output.of(certRegion));
+        }
+
+        /**
+         * @param certType The type of the certificate. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certType(@Nullable Output<String> certType) {
+            $.certType = certType;
+            return this;
+        }
+
+        /**
+         * @param certType The type of the certificate. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certType(String certType) {
+            return certType(Output.of(certType));
+        }
+
+        /**
+         * @param checkUrl The URL for health checks.
          * 
          * @return builder
          * 
@@ -318,7 +461,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkUrl The URL that is used for health checks.
+         * @param checkUrl The URL for health checks.
          * 
          * @return builder
          * 
@@ -349,7 +492,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the domain name for CDN.
+         * @param description The description of the ApsaraVideo VOD accelerated domain name.
          * 
          * @return builder
          * 
@@ -360,7 +503,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the domain name for CDN.
+         * @param description The description of the ApsaraVideo VOD accelerated domain name.
          * 
          * @return builder
          * 
@@ -391,7 +534,28 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gmtCreated The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         * @param env Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(@Nullable Output<String> env) {
+            $.env = env;
+            return this;
+        }
+
+        /**
+         * @param env Specifies whether the certificate is deployed in canary mode. Valid values: `staging`, `production`. `staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(String env) {
+            return env(Output.of(env));
+        }
+
+        /**
+         * @param gmtCreated The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
          * 
          * @return builder
          * 
@@ -402,7 +566,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gmtCreated The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         * @param gmtCreated The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
          * 
          * @return builder
          * 
@@ -412,7 +576,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gmtModified The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         * @param gmtModified The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
          * 
          * @return builder
          * 
@@ -423,7 +587,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gmtModified The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         * @param gmtModified The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
          * 
          * @return builder
          * 
@@ -433,7 +597,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scope This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+         * @param scope This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
          * 
          * @return builder
          * 
@@ -444,7 +608,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scope This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+         * @param scope This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `domestic`. Valid values:
          * 
          * @return builder
          * 
@@ -454,7 +618,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+         * @param sources The list of origin addresses. See `sources` below.
          * 
          * @return builder
          * 
@@ -465,7 +629,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+         * @param sources The list of origin addresses. See `sources` below.
          * 
          * @return builder
          * 
@@ -475,7 +639,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+         * @param sources The list of origin addresses. See `sources` below.
          * 
          * @return builder
          * 
@@ -485,7 +649,28 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslProtocol Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+         * @param sslPri The content of the private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslPri(@Nullable Output<String> sslPri) {
+            $.sslPri = sslPri;
+            return this;
+        }
+
+        /**
+         * @param sslPri The content of the private key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslPri(String sslPri) {
+            return sslPri(Output.of(sslPri));
+        }
+
+        /**
+         * @param sslProtocol Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
          * 
          * @return builder
          * 
@@ -496,7 +681,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslProtocol Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
+         * @param sslProtocol Specifies whether to enable the HTTPS certificate. Default value: `off`. Valid values:
          * 
          * @return builder
          * 
@@ -506,7 +691,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslPub The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+         * @param sslPub The content of the security certificate.
          * 
          * @return builder
          * 
@@ -517,7 +702,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslPub The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+         * @param sslPub The content of the security certificate.
          * 
          * @return builder
          * 
@@ -527,7 +712,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the domain name for CDN. Valid values:
+         * @param status The running status of the accelerated domain name.
          * 
          * @return builder
          * 
@@ -538,7 +723,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the domain name for CDN. Valid values:
+         * @param status The running status of the accelerated domain name.
          * 
          * @return builder
          * 
@@ -549,8 +734,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-         * * `Value`: It can be up to 128 characters in length. It can be a null string.
+         * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+         * - `Value`: It can be up to 128 characters in length. It can be a null string.
          * 
          * @return builder
          * 
@@ -562,8 +747,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
-         * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-         * * `Value`: It can be up to 128 characters in length. It can be a null string.
+         * - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+         * - `Value`: It can be up to 128 characters in length. It can be a null string.
          * 
          * @return builder
          * 

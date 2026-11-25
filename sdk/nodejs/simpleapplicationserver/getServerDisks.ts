@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *
@@ -88,23 +88,38 @@ export interface GetServerDisksArgs {
  * A collection of values returned by getServerDisks.
  */
 export interface GetServerDisksResult {
+    /**
+     * The type of the disk. Possible values: `System`, `Data`.
+     */
     readonly diskType?: string;
+    /**
+     * A list of Simple Application Server Disks. Each element contains the following attributes:
+     */
     readonly disks: outputs.simpleapplicationserver.GetServerDisksDisk[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * Alibaba Cloud simple application server instance ID.
+     */
     readonly instanceId?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Disk names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *

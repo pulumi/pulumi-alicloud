@@ -76,14 +76,14 @@ class GetAppTemplatesTemplateResult(dict):
         :param _builtins.str app_template_id: The first ID of the resource.
         :param _builtins.str app_template_name: The name of the resource.
         :param Sequence[_builtins.str] component_lists: List of components.
-        :param Sequence['GetAppTemplatesTemplateConfigListArgs'] config_lists: List of config.
+        :param Sequence['GetAppTemplatesTemplateConfigListArgs'] config_lists: List of config. Each element contains the following attributes:
         :param _builtins.str create_time: Creation time.
         :param _builtins.str id: The ID of the App Template.
         :param _builtins.str integration_mode: Integration mode (Integrated SDK:paasSDK, Model Room: standardRoom).
         :param _builtins.str scene: Application Template scenario, e-commerce business, classroom classroom.
         :param _builtins.str sdk_info: SDK information.
         :param _builtins.str standard_room_info: Model room information.
-        :param _builtins.str status: Application template usage status.
+        :param _builtins.str status: Application template usage status. Valid values: ["attached", "unattached"].
         """
         pulumi.set(__self__, "app_template_creator", app_template_creator)
         pulumi.set(__self__, "app_template_id", app_template_id)
@@ -134,7 +134,7 @@ class GetAppTemplatesTemplateResult(dict):
     @pulumi.getter(name="configLists")
     def config_lists(self) -> Sequence['outputs.GetAppTemplatesTemplateConfigListResult']:
         """
-        List of config.
+        List of config. Each element contains the following attributes:
         """
         return pulumi.get(self, "config_lists")
 
@@ -190,7 +190,7 @@ class GetAppTemplatesTemplateResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Application template usage status.
+        Application template usage status. Valid values: ["attached", "unattached"].
         """
         return pulumi.get(self, "status")
 

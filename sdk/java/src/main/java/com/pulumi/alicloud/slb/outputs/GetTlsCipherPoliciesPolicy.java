@@ -33,7 +33,7 @@ public final class GetTlsCipherPoliciesPolicy {
      */
     private List<GetTlsCipherPoliciesPolicyRelateListener> relateListeners;
     /**
-     * @return TLS policy instance state.
+     * @return TLS policy instance state. Valid values: `configuring`, `normal`.
      * 
      */
     private String status;
@@ -83,7 +83,7 @@ public final class GetTlsCipherPoliciesPolicy {
         return this.relateListeners;
     }
     /**
-     * @return TLS policy instance state.
+     * @return TLS policy instance state. Valid values: `configuring`, `normal`.
      * 
      */
     public String status() {

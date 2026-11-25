@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class GetApplicationsApplicationMountDescResult
     {
         /// <summary>
-        /// Container mount path.
+        /// The Container mount path.
         /// </summary>
         public readonly string MountPath;
         /// <summary>

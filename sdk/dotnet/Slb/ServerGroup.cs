@@ -108,6 +108,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The list of backend servers to be added. See `Servers` below.
+        /// 
         /// &gt; **NOTE:** Field `Servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
         /// </summary>
         [Output("servers")]
@@ -188,6 +189,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The list of backend servers to be added. See `Servers` below.
+        /// 
         /// &gt; **NOTE:** Field `Servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
         /// </summary>
         [Obsolete(@"Field `Servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.")]
@@ -240,6 +242,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The list of backend servers to be added. See `Servers` below.
+        /// 
         /// &gt; **NOTE:** Field `Servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
         /// </summary>
         [Obsolete(@"Field `Servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.")]

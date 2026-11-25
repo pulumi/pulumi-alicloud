@@ -53,7 +53,6 @@ public final class GetAlarmContactsContact {
     private String channelsStateMail;
     /**
      * @return The status of the phone number.
-     * * `Lang` - The language type of the alarm.
      * 
      */
     private String channelsStatusSms;
@@ -72,6 +71,10 @@ public final class GetAlarmContactsContact {
      * 
      */
     private String id;
+    /**
+     * @return The language type of the alarm.
+     * 
+     */
     private String lang;
 
     private GetAlarmContactsContact() {}
@@ -133,7 +136,6 @@ public final class GetAlarmContactsContact {
     }
     /**
      * @return The status of the phone number.
-     * * `Lang` - The language type of the alarm.
      * 
      */
     public String channelsStatusSms() {
@@ -160,6 +162,10 @@ public final class GetAlarmContactsContact {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The language type of the alarm.
+     * 
+     */
     public String lang() {
         return this.lang;
     }

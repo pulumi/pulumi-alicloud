@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.180.0+.
+        /// &gt; **NOTE:** Available since v1.180.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.180.0+.
+        /// &gt; **NOTE:** Available since v1.180.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.180.0+.
+        /// &gt; **NOTE:** Available since v1.180.0.
         /// 
         /// ## Example Usage
         /// 
@@ -237,12 +237,21 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The ID of the native protection enterprise instance to be operated.
+        /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// A list of Ddos Bgp Ips. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDdosBgpIpsIpResult> Ips;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
         public readonly string? ProductName;
+        /// <summary>
+        /// The current state of the IP address.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

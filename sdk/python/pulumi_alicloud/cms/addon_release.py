@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AddonReleaseArgs', 'AddonRelease']
 
@@ -26,6 +28,7 @@ class AddonReleaseArgs:
                  aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entity_rules: pulumi.Input[Optional['AddonReleaseEntityRulesArgs']] = None,
                  env_type: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -37,7 +40,8 @@ class AddonReleaseArgs:
         :param pulumi.Input[_builtins.str] addon_release_name: The name of the release after the integration.
         :param pulumi.Input[_builtins.str] aliyun_lang: The language of the add-on. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] config: The metadata.
-        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] dry_run: Field `dry_run` has been deprecated from provider version 2.2.0.
+        :param pulumi.Input['AddonReleaseEntityRulesArgs'] entity_rules: The entity discovery rule model. See `entity_rules` below.
         :param pulumi.Input[_builtins.str] env_type: The environment type. Valid values: `CS`, `ECS`, `Cloud`.
         :param pulumi.Input[_builtins.str] workspace: The name of the workspace where the add-on is installed.
         """
@@ -51,7 +55,12 @@ class AddonReleaseArgs:
         if config is not None:
             pulumi.set(__self__, "config", config)
         if dry_run is not None:
+            warnings.warn("""Field `dry_run` has been deprecated from provider version 2.2.0.""", DeprecationWarning)
+            pulumi.log.warn("""dry_run is deprecated: Field `dry_run` has been deprecated from provider version 2.2.0.""")
+        if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if entity_rules is not None:
+            pulumi.set(__self__, "entity_rules", entity_rules)
         if env_type is not None:
             pulumi.set(__self__, "env_type", env_type)
         if workspace is not None:
@@ -131,15 +140,28 @@ class AddonReleaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
+    @_utilities.deprecated("""Field `dry_run` has been deprecated from provider version 2.2.0.""")
     def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Specifies whether to perform a dry run. Valid values: `true`, `false`.
+        Field `dry_run` has been deprecated from provider version 2.2.0.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
     def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityRules")
+    def entity_rules(self) -> pulumi.Input[Optional['AddonReleaseEntityRulesArgs']]:
+        """
+        The entity discovery rule model. See `entity_rules` below.
+        """
+        return pulumi.get(self, "entity_rules")
+
+    @entity_rules.setter
+    def entity_rules(self, value: pulumi.Input[Optional['AddonReleaseEntityRulesArgs']]):
+        pulumi.set(self, "entity_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="envType")
@@ -176,6 +198,7 @@ class _AddonReleaseState:
                  config: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entity_rules: pulumi.Input[Optional['AddonReleaseEntityRulesArgs']] = None,
                  env_type: pulumi.Input[Optional[_builtins.str]] = None,
                  integration_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -189,7 +212,8 @@ class _AddonReleaseState:
         :param pulumi.Input[_builtins.str] aliyun_lang: The language of the add-on. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] config: The metadata.
         :param pulumi.Input[_builtins.str] create_time: The time when the add-on was accessed.
-        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] dry_run: Field `dry_run` has been deprecated from provider version 2.2.0.
+        :param pulumi.Input['AddonReleaseEntityRulesArgs'] entity_rules: The entity discovery rule model. See `entity_rules` below.
         :param pulumi.Input[_builtins.str] env_type: The environment type. Valid values: `CS`, `ECS`, `Cloud`.
         :param pulumi.Input[_builtins.str] integration_policy_id: The ID of the environment policy.
         :param pulumi.Input[_builtins.str] region_id: The ID of the region.
@@ -208,7 +232,12 @@ class _AddonReleaseState:
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if dry_run is not None:
+            warnings.warn("""Field `dry_run` has been deprecated from provider version 2.2.0.""", DeprecationWarning)
+            pulumi.log.warn("""dry_run is deprecated: Field `dry_run` has been deprecated from provider version 2.2.0.""")
+        if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if entity_rules is not None:
+            pulumi.set(__self__, "entity_rules", entity_rules)
         if env_type is not None:
             pulumi.set(__self__, "env_type", env_type)
         if integration_policy_id is not None:
@@ -292,15 +321,28 @@ class _AddonReleaseState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
+    @_utilities.deprecated("""Field `dry_run` has been deprecated from provider version 2.2.0.""")
     def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Specifies whether to perform a dry run. Valid values: `true`, `false`.
+        Field `dry_run` has been deprecated from provider version 2.2.0.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
     def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityRules")
+    def entity_rules(self) -> pulumi.Input[Optional['AddonReleaseEntityRulesArgs']]:
+        """
+        The entity discovery rule model. See `entity_rules` below.
+        """
+        return pulumi.get(self, "entity_rules")
+
+    @entity_rules.setter
+    def entity_rules(self, value: pulumi.Input[Optional['AddonReleaseEntityRulesArgs']]):
+        pulumi.set(self, "entity_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="envType")
@@ -363,6 +405,7 @@ class AddonRelease(pulumi.CustomResource):
                  aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entity_rules: pulumi.Input[Optional[Union['AddonReleaseEntityRulesArgs', 'AddonReleaseEntityRulesArgsDict', 'outputs.AddonReleaseEntityRules']]] = None,
                  env_type: pulumi.Input[Optional[_builtins.str]] = None,
                  integration_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -425,7 +468,8 @@ class AddonRelease(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] addon_version: The version of the add-on to integrate.
         :param pulumi.Input[_builtins.str] aliyun_lang: The language of the add-on. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] config: The metadata.
-        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] dry_run: Field `dry_run` has been deprecated from provider version 2.2.0.
+        :param pulumi.Input[Union['AddonReleaseEntityRulesArgs', 'AddonReleaseEntityRulesArgsDict', 'outputs.AddonReleaseEntityRules']] entity_rules: The entity discovery rule model. See `entity_rules` below.
         :param pulumi.Input[_builtins.str] env_type: The environment type. Valid values: `CS`, `ECS`, `Cloud`.
         :param pulumi.Input[_builtins.str] integration_policy_id: The ID of the environment policy.
         :param pulumi.Input[_builtins.str] workspace: The name of the workspace where the add-on is installed.
@@ -508,6 +552,7 @@ class AddonRelease(pulumi.CustomResource):
                  aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entity_rules: pulumi.Input[Optional[Union['AddonReleaseEntityRulesArgs', 'AddonReleaseEntityRulesArgsDict', 'outputs.AddonReleaseEntityRules']]] = None,
                  env_type: pulumi.Input[Optional[_builtins.str]] = None,
                  integration_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -530,6 +575,7 @@ class AddonRelease(pulumi.CustomResource):
             __props__.__dict__["aliyun_lang"] = aliyun_lang
             __props__.__dict__["config"] = config
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["entity_rules"] = entity_rules
             __props__.__dict__["env_type"] = env_type
             if integration_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_policy_id'")
@@ -554,6 +600,7 @@ class AddonRelease(pulumi.CustomResource):
             config: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            entity_rules: pulumi.Input[Optional[Union['AddonReleaseEntityRulesArgs', 'AddonReleaseEntityRulesArgsDict', 'outputs.AddonReleaseEntityRules']]] = None,
             env_type: pulumi.Input[Optional[_builtins.str]] = None,
             integration_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -571,7 +618,8 @@ class AddonRelease(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] aliyun_lang: The language of the add-on. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] config: The metadata.
         :param pulumi.Input[_builtins.str] create_time: The time when the add-on was accessed.
-        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] dry_run: Field `dry_run` has been deprecated from provider version 2.2.0.
+        :param pulumi.Input[Union['AddonReleaseEntityRulesArgs', 'AddonReleaseEntityRulesArgsDict', 'outputs.AddonReleaseEntityRules']] entity_rules: The entity discovery rule model. See `entity_rules` below.
         :param pulumi.Input[_builtins.str] env_type: The environment type. Valid values: `CS`, `ECS`, `Cloud`.
         :param pulumi.Input[_builtins.str] integration_policy_id: The ID of the environment policy.
         :param pulumi.Input[_builtins.str] region_id: The ID of the region.
@@ -588,6 +636,7 @@ class AddonRelease(pulumi.CustomResource):
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["entity_rules"] = entity_rules
         __props__.__dict__["env_type"] = env_type
         __props__.__dict__["integration_policy_id"] = integration_policy_id
         __props__.__dict__["region_id"] = region_id
@@ -604,6 +653,7 @@ class AddonRelease(pulumi.CustomResource):
             config: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            entity_rules: pulumi.Input[Optional[Union['AddonReleaseEntityRulesArgs', 'AddonReleaseEntityRulesArgsDict', 'outputs.AddonReleaseEntityRules']]] = None,
             env_type: pulumi.Input[Optional[_builtins.str]] = None,
             integration_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -616,6 +666,7 @@ class AddonRelease(pulumi.CustomResource):
         __props__["config"] = config
         __props__["createTime"] = create_time
         __props__["dryRun"] = dry_run
+        __props__["entityRules"] = entity_rules
         __props__["envType"] = env_type
         __props__["integrationPolicyId"] = integration_policy_id
         __props__["regionId"] = region_id
@@ -672,11 +723,20 @@ class AddonRelease(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
+    @_utilities.deprecated("""Field `dry_run` has been deprecated from provider version 2.2.0.""")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether to perform a dry run. Valid values: `true`, `false`.
+        Field `dry_run` has been deprecated from provider version 2.2.0.
         """
         return pulumi.get(self, "dry_run")
+
+    @_builtins.property
+    @pulumi.getter(name="entityRules")
+    def entity_rules(self) -> pulumi.Output[Optional['outputs.AddonReleaseEntityRules']]:
+        """
+        The entity discovery rule model. See `entity_rules` below.
+        """
+        return pulumi.get(self, "entity_rules")
 
     @_builtins.property
     @pulumi.getter(name="envType")

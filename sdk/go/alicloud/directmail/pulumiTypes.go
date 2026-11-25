@@ -13,6 +13,810 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ConfigSetValidationOption struct {
+	// Whether the address validation feature is enabled. true: enabled (the BASIC_ONLY mode of the ValidateEmail API). false: disabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The list of address validation main statuses to block. Before sending, the system pre-validates the recipient address; messages whose validation main status matches this list are rejected. Valid values: `INVALID`, `CATCH_ALL`, `DO_NOT_MAIL`, `UNKNOWN`.
+	ForbiddenStatusLists []string `pulumi:"forbiddenStatusLists"`
+	// The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses. Takes effect as a union with ForbiddenStatusList (a hit in either list blocks the message). Valid values: `NO_DNS_ENTRIES`, `MISSPELLED`, `DOES_NOT_ACCEPT_MAIL`, `MAILBOX_NOT_EXISTS`, `SYSTEM_ERROR`, `MX_FORWARD`, `SYNTAX_INVALID`, `ROLE_ACCOUNT`, `SMTP_CONNECT_FAILED`, `DISABLED`, `UNSPECIFIED`, `IP_UNROUTABLE`, `GRAY_LIST`, `MAILBOX_FULL`, `DISPOSABLE`, `TIMEOUT_EXCEEDED`.
+	ForbiddenSubStatusLists []string `pulumi:"forbiddenSubStatusLists"`
+}
+
+// ConfigSetValidationOptionInput is an input type that accepts ConfigSetValidationOptionArgs and ConfigSetValidationOptionOutput values.
+// You can construct a concrete instance of `ConfigSetValidationOptionInput` via:
+//
+//	ConfigSetValidationOptionArgs{...}
+type ConfigSetValidationOptionInput interface {
+	pulumi.Input
+
+	ToConfigSetValidationOptionOutput() ConfigSetValidationOptionOutput
+	ToConfigSetValidationOptionOutputWithContext(context.Context) ConfigSetValidationOptionOutput
+}
+
+type ConfigSetValidationOptionArgs struct {
+	// Whether the address validation feature is enabled. true: enabled (the BASIC_ONLY mode of the ValidateEmail API). false: disabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The list of address validation main statuses to block. Before sending, the system pre-validates the recipient address; messages whose validation main status matches this list are rejected. Valid values: `INVALID`, `CATCH_ALL`, `DO_NOT_MAIL`, `UNKNOWN`.
+	ForbiddenStatusLists pulumi.StringArrayInput `pulumi:"forbiddenStatusLists"`
+	// The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses. Takes effect as a union with ForbiddenStatusList (a hit in either list blocks the message). Valid values: `NO_DNS_ENTRIES`, `MISSPELLED`, `DOES_NOT_ACCEPT_MAIL`, `MAILBOX_NOT_EXISTS`, `SYSTEM_ERROR`, `MX_FORWARD`, `SYNTAX_INVALID`, `ROLE_ACCOUNT`, `SMTP_CONNECT_FAILED`, `DISABLED`, `UNSPECIFIED`, `IP_UNROUTABLE`, `GRAY_LIST`, `MAILBOX_FULL`, `DISPOSABLE`, `TIMEOUT_EXCEEDED`.
+	ForbiddenSubStatusLists pulumi.StringArrayInput `pulumi:"forbiddenSubStatusLists"`
+}
+
+func (ConfigSetValidationOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigSetValidationOption)(nil)).Elem()
+}
+
+func (i ConfigSetValidationOptionArgs) ToConfigSetValidationOptionOutput() ConfigSetValidationOptionOutput {
+	return i.ToConfigSetValidationOptionOutputWithContext(context.Background())
+}
+
+func (i ConfigSetValidationOptionArgs) ToConfigSetValidationOptionOutputWithContext(ctx context.Context) ConfigSetValidationOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigSetValidationOptionOutput)
+}
+
+func (i ConfigSetValidationOptionArgs) ToConfigSetValidationOptionPtrOutput() ConfigSetValidationOptionPtrOutput {
+	return i.ToConfigSetValidationOptionPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigSetValidationOptionArgs) ToConfigSetValidationOptionPtrOutputWithContext(ctx context.Context) ConfigSetValidationOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigSetValidationOptionOutput).ToConfigSetValidationOptionPtrOutputWithContext(ctx)
+}
+
+// ConfigSetValidationOptionPtrInput is an input type that accepts ConfigSetValidationOptionArgs, ConfigSetValidationOptionPtr and ConfigSetValidationOptionPtrOutput values.
+// You can construct a concrete instance of `ConfigSetValidationOptionPtrInput` via:
+//
+//	        ConfigSetValidationOptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigSetValidationOptionPtrInput interface {
+	pulumi.Input
+
+	ToConfigSetValidationOptionPtrOutput() ConfigSetValidationOptionPtrOutput
+	ToConfigSetValidationOptionPtrOutputWithContext(context.Context) ConfigSetValidationOptionPtrOutput
+}
+
+type configSetValidationOptionPtrType ConfigSetValidationOptionArgs
+
+func ConfigSetValidationOptionPtr(v *ConfigSetValidationOptionArgs) ConfigSetValidationOptionPtrInput {
+	return (*configSetValidationOptionPtrType)(v)
+}
+
+func (*configSetValidationOptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigSetValidationOption)(nil)).Elem()
+}
+
+func (i *configSetValidationOptionPtrType) ToConfigSetValidationOptionPtrOutput() ConfigSetValidationOptionPtrOutput {
+	return i.ToConfigSetValidationOptionPtrOutputWithContext(context.Background())
+}
+
+func (i *configSetValidationOptionPtrType) ToConfigSetValidationOptionPtrOutputWithContext(ctx context.Context) ConfigSetValidationOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigSetValidationOptionPtrOutput)
+}
+
+type ConfigSetValidationOptionOutput struct{ *pulumi.OutputState }
+
+func (ConfigSetValidationOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigSetValidationOption)(nil)).Elem()
+}
+
+func (o ConfigSetValidationOptionOutput) ToConfigSetValidationOptionOutput() ConfigSetValidationOptionOutput {
+	return o
+}
+
+func (o ConfigSetValidationOptionOutput) ToConfigSetValidationOptionOutputWithContext(ctx context.Context) ConfigSetValidationOptionOutput {
+	return o
+}
+
+func (o ConfigSetValidationOptionOutput) ToConfigSetValidationOptionPtrOutput() ConfigSetValidationOptionPtrOutput {
+	return o.ToConfigSetValidationOptionPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigSetValidationOptionOutput) ToConfigSetValidationOptionPtrOutputWithContext(ctx context.Context) ConfigSetValidationOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigSetValidationOption) *ConfigSetValidationOption {
+		return &v
+	}).(ConfigSetValidationOptionPtrOutput)
+}
+
+// Whether the address validation feature is enabled. true: enabled (the BASIC_ONLY mode of the ValidateEmail API). false: disabled.
+func (o ConfigSetValidationOptionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigSetValidationOption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The list of address validation main statuses to block. Before sending, the system pre-validates the recipient address; messages whose validation main status matches this list are rejected. Valid values: `INVALID`, `CATCH_ALL`, `DO_NOT_MAIL`, `UNKNOWN`.
+func (o ConfigSetValidationOptionOutput) ForbiddenStatusLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigSetValidationOption) []string { return v.ForbiddenStatusLists }).(pulumi.StringArrayOutput)
+}
+
+// The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses. Takes effect as a union with ForbiddenStatusList (a hit in either list blocks the message). Valid values: `NO_DNS_ENTRIES`, `MISSPELLED`, `DOES_NOT_ACCEPT_MAIL`, `MAILBOX_NOT_EXISTS`, `SYSTEM_ERROR`, `MX_FORWARD`, `SYNTAX_INVALID`, `ROLE_ACCOUNT`, `SMTP_CONNECT_FAILED`, `DISABLED`, `UNSPECIFIED`, `IP_UNROUTABLE`, `GRAY_LIST`, `MAILBOX_FULL`, `DISPOSABLE`, `TIMEOUT_EXCEEDED`.
+func (o ConfigSetValidationOptionOutput) ForbiddenSubStatusLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigSetValidationOption) []string { return v.ForbiddenSubStatusLists }).(pulumi.StringArrayOutput)
+}
+
+type ConfigSetValidationOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigSetValidationOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigSetValidationOption)(nil)).Elem()
+}
+
+func (o ConfigSetValidationOptionPtrOutput) ToConfigSetValidationOptionPtrOutput() ConfigSetValidationOptionPtrOutput {
+	return o
+}
+
+func (o ConfigSetValidationOptionPtrOutput) ToConfigSetValidationOptionPtrOutputWithContext(ctx context.Context) ConfigSetValidationOptionPtrOutput {
+	return o
+}
+
+func (o ConfigSetValidationOptionPtrOutput) Elem() ConfigSetValidationOptionOutput {
+	return o.ApplyT(func(v *ConfigSetValidationOption) ConfigSetValidationOption {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigSetValidationOption
+		return ret
+	}).(ConfigSetValidationOptionOutput)
+}
+
+// Whether the address validation feature is enabled. true: enabled (the BASIC_ONLY mode of the ValidateEmail API). false: disabled.
+func (o ConfigSetValidationOptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigSetValidationOption) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The list of address validation main statuses to block. Before sending, the system pre-validates the recipient address; messages whose validation main status matches this list are rejected. Valid values: `INVALID`, `CATCH_ALL`, `DO_NOT_MAIL`, `UNKNOWN`.
+func (o ConfigSetValidationOptionPtrOutput) ForbiddenStatusLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigSetValidationOption) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ForbiddenStatusLists
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses. Takes effect as a union with ForbiddenStatusList (a hit in either list blocks the message). Valid values: `NO_DNS_ENTRIES`, `MISSPELLED`, `DOES_NOT_ACCEPT_MAIL`, `MAILBOX_NOT_EXISTS`, `SYSTEM_ERROR`, `MX_FORWARD`, `SYNTAX_INVALID`, `ROLE_ACCOUNT`, `SMTP_CONNECT_FAILED`, `DISABLED`, `UNSPECIFIED`, `IP_UNROUTABLE`, `GRAY_LIST`, `MAILBOX_FULL`, `DISPOSABLE`, `TIMEOUT_EXCEEDED`.
+func (o ConfigSetValidationOptionPtrOutput) ForbiddenSubStatusLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigSetValidationOption) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ForbiddenSubStatusLists
+	}).(pulumi.StringArrayOutput)
+}
+
+type DedicatedIpPoolIp struct {
+	// (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+	Id *string `pulumi:"id"`
+	// (Computed, String, Available since v2.2.0) The IP address.
+	Ip *string `pulumi:"ip"`
+	// (Computed, String, Available since v2.2.0) The zone ID.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// DedicatedIpPoolIpInput is an input type that accepts DedicatedIpPoolIpArgs and DedicatedIpPoolIpOutput values.
+// You can construct a concrete instance of `DedicatedIpPoolIpInput` via:
+//
+//	DedicatedIpPoolIpArgs{...}
+type DedicatedIpPoolIpInput interface {
+	pulumi.Input
+
+	ToDedicatedIpPoolIpOutput() DedicatedIpPoolIpOutput
+	ToDedicatedIpPoolIpOutputWithContext(context.Context) DedicatedIpPoolIpOutput
+}
+
+type DedicatedIpPoolIpArgs struct {
+	// (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// (Computed, String, Available since v2.2.0) The IP address.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// (Computed, String, Available since v2.2.0) The zone ID.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (DedicatedIpPoolIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedIpPoolIp)(nil)).Elem()
+}
+
+func (i DedicatedIpPoolIpArgs) ToDedicatedIpPoolIpOutput() DedicatedIpPoolIpOutput {
+	return i.ToDedicatedIpPoolIpOutputWithContext(context.Background())
+}
+
+func (i DedicatedIpPoolIpArgs) ToDedicatedIpPoolIpOutputWithContext(ctx context.Context) DedicatedIpPoolIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedIpPoolIpOutput)
+}
+
+// DedicatedIpPoolIpArrayInput is an input type that accepts DedicatedIpPoolIpArray and DedicatedIpPoolIpArrayOutput values.
+// You can construct a concrete instance of `DedicatedIpPoolIpArrayInput` via:
+//
+//	DedicatedIpPoolIpArray{ DedicatedIpPoolIpArgs{...} }
+type DedicatedIpPoolIpArrayInput interface {
+	pulumi.Input
+
+	ToDedicatedIpPoolIpArrayOutput() DedicatedIpPoolIpArrayOutput
+	ToDedicatedIpPoolIpArrayOutputWithContext(context.Context) DedicatedIpPoolIpArrayOutput
+}
+
+type DedicatedIpPoolIpArray []DedicatedIpPoolIpInput
+
+func (DedicatedIpPoolIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DedicatedIpPoolIp)(nil)).Elem()
+}
+
+func (i DedicatedIpPoolIpArray) ToDedicatedIpPoolIpArrayOutput() DedicatedIpPoolIpArrayOutput {
+	return i.ToDedicatedIpPoolIpArrayOutputWithContext(context.Background())
+}
+
+func (i DedicatedIpPoolIpArray) ToDedicatedIpPoolIpArrayOutputWithContext(ctx context.Context) DedicatedIpPoolIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedIpPoolIpArrayOutput)
+}
+
+type DedicatedIpPoolIpOutput struct{ *pulumi.OutputState }
+
+func (DedicatedIpPoolIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedIpPoolIp)(nil)).Elem()
+}
+
+func (o DedicatedIpPoolIpOutput) ToDedicatedIpPoolIpOutput() DedicatedIpPoolIpOutput {
+	return o
+}
+
+func (o DedicatedIpPoolIpOutput) ToDedicatedIpPoolIpOutputWithContext(ctx context.Context) DedicatedIpPoolIpOutput {
+	return o
+}
+
+// (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+func (o DedicatedIpPoolIpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DedicatedIpPoolIp) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// (Computed, String, Available since v2.2.0) The IP address.
+func (o DedicatedIpPoolIpOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DedicatedIpPoolIp) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// (Computed, String, Available since v2.2.0) The zone ID.
+func (o DedicatedIpPoolIpOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DedicatedIpPoolIp) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type DedicatedIpPoolIpArrayOutput struct{ *pulumi.OutputState }
+
+func (DedicatedIpPoolIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DedicatedIpPoolIp)(nil)).Elem()
+}
+
+func (o DedicatedIpPoolIpArrayOutput) ToDedicatedIpPoolIpArrayOutput() DedicatedIpPoolIpArrayOutput {
+	return o
+}
+
+func (o DedicatedIpPoolIpArrayOutput) ToDedicatedIpPoolIpArrayOutputWithContext(ctx context.Context) DedicatedIpPoolIpArrayOutput {
+	return o
+}
+
+func (o DedicatedIpPoolIpArrayOutput) Index(i pulumi.IntInput) DedicatedIpPoolIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DedicatedIpPoolIp {
+		return vs[0].([]DedicatedIpPoolIp)[vs[1].(int)]
+	}).(DedicatedIpPoolIpOutput)
+}
+
+type GetConfigSetsSet struct {
+	// (Computed, String, Available since v2.2.0) The description of the configuration set.
+	Description string `pulumi:"description"`
+	// (Computed, String, Available since v2.2.0) The ID of the configuration set.
+	Id string `pulumi:"id"`
+	// (Computed, String, Available since v2.2.0) The ID of the associated IP pool.
+	IpPoolId string `pulumi:"ipPoolId"`
+	// (Computed, String, Available since v2.2.0) The name of the associated IP pool.
+	IpPoolName string `pulumi:"ipPoolName"`
+	// (Computed, Bool, Available since v2.2.0) Whether to fall back to the public channel when the associated dedicated IP pool has problems.
+	IsPublicChannelBackoff bool `pulumi:"isPublicChannelBackoff"`
+	// (Computed, String, Available since v2.2.0) The name of the configuration set.
+	Name string `pulumi:"name"`
+	// (Computed, List, Available since v2.2.0) Address validation options:
+	ValidationOptions []GetConfigSetsSetValidationOption `pulumi:"validationOptions"`
+}
+
+// GetConfigSetsSetInput is an input type that accepts GetConfigSetsSetArgs and GetConfigSetsSetOutput values.
+// You can construct a concrete instance of `GetConfigSetsSetInput` via:
+//
+//	GetConfigSetsSetArgs{...}
+type GetConfigSetsSetInput interface {
+	pulumi.Input
+
+	ToGetConfigSetsSetOutput() GetConfigSetsSetOutput
+	ToGetConfigSetsSetOutputWithContext(context.Context) GetConfigSetsSetOutput
+}
+
+type GetConfigSetsSetArgs struct {
+	// (Computed, String, Available since v2.2.0) The description of the configuration set.
+	Description pulumi.StringInput `pulumi:"description"`
+	// (Computed, String, Available since v2.2.0) The ID of the configuration set.
+	Id pulumi.StringInput `pulumi:"id"`
+	// (Computed, String, Available since v2.2.0) The ID of the associated IP pool.
+	IpPoolId pulumi.StringInput `pulumi:"ipPoolId"`
+	// (Computed, String, Available since v2.2.0) The name of the associated IP pool.
+	IpPoolName pulumi.StringInput `pulumi:"ipPoolName"`
+	// (Computed, Bool, Available since v2.2.0) Whether to fall back to the public channel when the associated dedicated IP pool has problems.
+	IsPublicChannelBackoff pulumi.BoolInput `pulumi:"isPublicChannelBackoff"`
+	// (Computed, String, Available since v2.2.0) The name of the configuration set.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Computed, List, Available since v2.2.0) Address validation options:
+	ValidationOptions GetConfigSetsSetValidationOptionArrayInput `pulumi:"validationOptions"`
+}
+
+func (GetConfigSetsSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigSetsSet)(nil)).Elem()
+}
+
+func (i GetConfigSetsSetArgs) ToGetConfigSetsSetOutput() GetConfigSetsSetOutput {
+	return i.ToGetConfigSetsSetOutputWithContext(context.Background())
+}
+
+func (i GetConfigSetsSetArgs) ToGetConfigSetsSetOutputWithContext(ctx context.Context) GetConfigSetsSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConfigSetsSetOutput)
+}
+
+// GetConfigSetsSetArrayInput is an input type that accepts GetConfigSetsSetArray and GetConfigSetsSetArrayOutput values.
+// You can construct a concrete instance of `GetConfigSetsSetArrayInput` via:
+//
+//	GetConfigSetsSetArray{ GetConfigSetsSetArgs{...} }
+type GetConfigSetsSetArrayInput interface {
+	pulumi.Input
+
+	ToGetConfigSetsSetArrayOutput() GetConfigSetsSetArrayOutput
+	ToGetConfigSetsSetArrayOutputWithContext(context.Context) GetConfigSetsSetArrayOutput
+}
+
+type GetConfigSetsSetArray []GetConfigSetsSetInput
+
+func (GetConfigSetsSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConfigSetsSet)(nil)).Elem()
+}
+
+func (i GetConfigSetsSetArray) ToGetConfigSetsSetArrayOutput() GetConfigSetsSetArrayOutput {
+	return i.ToGetConfigSetsSetArrayOutputWithContext(context.Background())
+}
+
+func (i GetConfigSetsSetArray) ToGetConfigSetsSetArrayOutputWithContext(ctx context.Context) GetConfigSetsSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConfigSetsSetArrayOutput)
+}
+
+type GetConfigSetsSetOutput struct{ *pulumi.OutputState }
+
+func (GetConfigSetsSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigSetsSet)(nil)).Elem()
+}
+
+func (o GetConfigSetsSetOutput) ToGetConfigSetsSetOutput() GetConfigSetsSetOutput {
+	return o
+}
+
+func (o GetConfigSetsSetOutput) ToGetConfigSetsSetOutputWithContext(ctx context.Context) GetConfigSetsSetOutput {
+	return o
+}
+
+// (Computed, String, Available since v2.2.0) The description of the configuration set.
+func (o GetConfigSetsSetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigSetsSet) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Computed, String, Available since v2.2.0) The ID of the configuration set.
+func (o GetConfigSetsSetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigSetsSet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed, String, Available since v2.2.0) The ID of the associated IP pool.
+func (o GetConfigSetsSetOutput) IpPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigSetsSet) string { return v.IpPoolId }).(pulumi.StringOutput)
+}
+
+// (Computed, String, Available since v2.2.0) The name of the associated IP pool.
+func (o GetConfigSetsSetOutput) IpPoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigSetsSet) string { return v.IpPoolName }).(pulumi.StringOutput)
+}
+
+// (Computed, Bool, Available since v2.2.0) Whether to fall back to the public channel when the associated dedicated IP pool has problems.
+func (o GetConfigSetsSetOutput) IsPublicChannelBackoff() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConfigSetsSet) bool { return v.IsPublicChannelBackoff }).(pulumi.BoolOutput)
+}
+
+// (Computed, String, Available since v2.2.0) The name of the configuration set.
+func (o GetConfigSetsSetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConfigSetsSet) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed, List, Available since v2.2.0) Address validation options:
+func (o GetConfigSetsSetOutput) ValidationOptions() GetConfigSetsSetValidationOptionArrayOutput {
+	return o.ApplyT(func(v GetConfigSetsSet) []GetConfigSetsSetValidationOption { return v.ValidationOptions }).(GetConfigSetsSetValidationOptionArrayOutput)
+}
+
+type GetConfigSetsSetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConfigSetsSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConfigSetsSet)(nil)).Elem()
+}
+
+func (o GetConfigSetsSetArrayOutput) ToGetConfigSetsSetArrayOutput() GetConfigSetsSetArrayOutput {
+	return o
+}
+
+func (o GetConfigSetsSetArrayOutput) ToGetConfigSetsSetArrayOutputWithContext(ctx context.Context) GetConfigSetsSetArrayOutput {
+	return o
+}
+
+func (o GetConfigSetsSetArrayOutput) Index(i pulumi.IntInput) GetConfigSetsSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConfigSetsSet {
+		return vs[0].([]GetConfigSetsSet)[vs[1].(int)]
+	}).(GetConfigSetsSetOutput)
+}
+
+type GetConfigSetsSetValidationOption struct {
+	// (Computed, Bool, Available since v2.2.0) Whether the address validation feature is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// (Computed, List, Available since v2.2.0) The list of address validation main statuses to block.
+	ForbiddenStatusLists []string `pulumi:"forbiddenStatusLists"`
+	// (Computed, List, Available since v2.2.0) The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses.
+	ForbiddenSubStatusLists []string `pulumi:"forbiddenSubStatusLists"`
+}
+
+// GetConfigSetsSetValidationOptionInput is an input type that accepts GetConfigSetsSetValidationOptionArgs and GetConfigSetsSetValidationOptionOutput values.
+// You can construct a concrete instance of `GetConfigSetsSetValidationOptionInput` via:
+//
+//	GetConfigSetsSetValidationOptionArgs{...}
+type GetConfigSetsSetValidationOptionInput interface {
+	pulumi.Input
+
+	ToGetConfigSetsSetValidationOptionOutput() GetConfigSetsSetValidationOptionOutput
+	ToGetConfigSetsSetValidationOptionOutputWithContext(context.Context) GetConfigSetsSetValidationOptionOutput
+}
+
+type GetConfigSetsSetValidationOptionArgs struct {
+	// (Computed, Bool, Available since v2.2.0) Whether the address validation feature is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// (Computed, List, Available since v2.2.0) The list of address validation main statuses to block.
+	ForbiddenStatusLists pulumi.StringArrayInput `pulumi:"forbiddenStatusLists"`
+	// (Computed, List, Available since v2.2.0) The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses.
+	ForbiddenSubStatusLists pulumi.StringArrayInput `pulumi:"forbiddenSubStatusLists"`
+}
+
+func (GetConfigSetsSetValidationOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigSetsSetValidationOption)(nil)).Elem()
+}
+
+func (i GetConfigSetsSetValidationOptionArgs) ToGetConfigSetsSetValidationOptionOutput() GetConfigSetsSetValidationOptionOutput {
+	return i.ToGetConfigSetsSetValidationOptionOutputWithContext(context.Background())
+}
+
+func (i GetConfigSetsSetValidationOptionArgs) ToGetConfigSetsSetValidationOptionOutputWithContext(ctx context.Context) GetConfigSetsSetValidationOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConfigSetsSetValidationOptionOutput)
+}
+
+// GetConfigSetsSetValidationOptionArrayInput is an input type that accepts GetConfigSetsSetValidationOptionArray and GetConfigSetsSetValidationOptionArrayOutput values.
+// You can construct a concrete instance of `GetConfigSetsSetValidationOptionArrayInput` via:
+//
+//	GetConfigSetsSetValidationOptionArray{ GetConfigSetsSetValidationOptionArgs{...} }
+type GetConfigSetsSetValidationOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetConfigSetsSetValidationOptionArrayOutput() GetConfigSetsSetValidationOptionArrayOutput
+	ToGetConfigSetsSetValidationOptionArrayOutputWithContext(context.Context) GetConfigSetsSetValidationOptionArrayOutput
+}
+
+type GetConfigSetsSetValidationOptionArray []GetConfigSetsSetValidationOptionInput
+
+func (GetConfigSetsSetValidationOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConfigSetsSetValidationOption)(nil)).Elem()
+}
+
+func (i GetConfigSetsSetValidationOptionArray) ToGetConfigSetsSetValidationOptionArrayOutput() GetConfigSetsSetValidationOptionArrayOutput {
+	return i.ToGetConfigSetsSetValidationOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConfigSetsSetValidationOptionArray) ToGetConfigSetsSetValidationOptionArrayOutputWithContext(ctx context.Context) GetConfigSetsSetValidationOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConfigSetsSetValidationOptionArrayOutput)
+}
+
+type GetConfigSetsSetValidationOptionOutput struct{ *pulumi.OutputState }
+
+func (GetConfigSetsSetValidationOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConfigSetsSetValidationOption)(nil)).Elem()
+}
+
+func (o GetConfigSetsSetValidationOptionOutput) ToGetConfigSetsSetValidationOptionOutput() GetConfigSetsSetValidationOptionOutput {
+	return o
+}
+
+func (o GetConfigSetsSetValidationOptionOutput) ToGetConfigSetsSetValidationOptionOutputWithContext(ctx context.Context) GetConfigSetsSetValidationOptionOutput {
+	return o
+}
+
+// (Computed, Bool, Available since v2.2.0) Whether the address validation feature is enabled.
+func (o GetConfigSetsSetValidationOptionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConfigSetsSetValidationOption) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// (Computed, List, Available since v2.2.0) The list of address validation main statuses to block.
+func (o GetConfigSetsSetValidationOptionOutput) ForbiddenStatusLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConfigSetsSetValidationOption) []string { return v.ForbiddenStatusLists }).(pulumi.StringArrayOutput)
+}
+
+// (Computed, List, Available since v2.2.0) The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses.
+func (o GetConfigSetsSetValidationOptionOutput) ForbiddenSubStatusLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConfigSetsSetValidationOption) []string { return v.ForbiddenSubStatusLists }).(pulumi.StringArrayOutput)
+}
+
+type GetConfigSetsSetValidationOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConfigSetsSetValidationOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConfigSetsSetValidationOption)(nil)).Elem()
+}
+
+func (o GetConfigSetsSetValidationOptionArrayOutput) ToGetConfigSetsSetValidationOptionArrayOutput() GetConfigSetsSetValidationOptionArrayOutput {
+	return o
+}
+
+func (o GetConfigSetsSetValidationOptionArrayOutput) ToGetConfigSetsSetValidationOptionArrayOutputWithContext(ctx context.Context) GetConfigSetsSetValidationOptionArrayOutput {
+	return o
+}
+
+func (o GetConfigSetsSetValidationOptionArrayOutput) Index(i pulumi.IntInput) GetConfigSetsSetValidationOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConfigSetsSetValidationOption {
+		return vs[0].([]GetConfigSetsSetValidationOption)[vs[1].(int)]
+	}).(GetConfigSetsSetValidationOptionOutput)
+}
+
+type GetDedicatedIpPoolsPool struct {
+	// (Computed, String, Available since v2.2.0) The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+	Id string `pulumi:"id"`
+	// (Computed, Int, Available since v2.2.0) The number of source IP addresses.
+	IpCount int `pulumi:"ipCount"`
+	// (Computed, List, Available since v2.2.0) The list of IP addresses in the pool:
+	Ips []GetDedicatedIpPoolsPoolIp `pulumi:"ips"`
+	// (Computed, String, Available since v2.2.0) The name of the IP pool.
+	Name string `pulumi:"name"`
+}
+
+// GetDedicatedIpPoolsPoolInput is an input type that accepts GetDedicatedIpPoolsPoolArgs and GetDedicatedIpPoolsPoolOutput values.
+// You can construct a concrete instance of `GetDedicatedIpPoolsPoolInput` via:
+//
+//	GetDedicatedIpPoolsPoolArgs{...}
+type GetDedicatedIpPoolsPoolInput interface {
+	pulumi.Input
+
+	ToGetDedicatedIpPoolsPoolOutput() GetDedicatedIpPoolsPoolOutput
+	ToGetDedicatedIpPoolsPoolOutputWithContext(context.Context) GetDedicatedIpPoolsPoolOutput
+}
+
+type GetDedicatedIpPoolsPoolArgs struct {
+	// (Computed, String, Available since v2.2.0) The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// (Computed, Int, Available since v2.2.0) The number of source IP addresses.
+	IpCount pulumi.IntInput `pulumi:"ipCount"`
+	// (Computed, List, Available since v2.2.0) The list of IP addresses in the pool:
+	Ips GetDedicatedIpPoolsPoolIpArrayInput `pulumi:"ips"`
+	// (Computed, String, Available since v2.2.0) The name of the IP pool.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetDedicatedIpPoolsPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedIpPoolsPool)(nil)).Elem()
+}
+
+func (i GetDedicatedIpPoolsPoolArgs) ToGetDedicatedIpPoolsPoolOutput() GetDedicatedIpPoolsPoolOutput {
+	return i.ToGetDedicatedIpPoolsPoolOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedIpPoolsPoolArgs) ToGetDedicatedIpPoolsPoolOutputWithContext(ctx context.Context) GetDedicatedIpPoolsPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedIpPoolsPoolOutput)
+}
+
+// GetDedicatedIpPoolsPoolArrayInput is an input type that accepts GetDedicatedIpPoolsPoolArray and GetDedicatedIpPoolsPoolArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedIpPoolsPoolArrayInput` via:
+//
+//	GetDedicatedIpPoolsPoolArray{ GetDedicatedIpPoolsPoolArgs{...} }
+type GetDedicatedIpPoolsPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedIpPoolsPoolArrayOutput() GetDedicatedIpPoolsPoolArrayOutput
+	ToGetDedicatedIpPoolsPoolArrayOutputWithContext(context.Context) GetDedicatedIpPoolsPoolArrayOutput
+}
+
+type GetDedicatedIpPoolsPoolArray []GetDedicatedIpPoolsPoolInput
+
+func (GetDedicatedIpPoolsPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedIpPoolsPool)(nil)).Elem()
+}
+
+func (i GetDedicatedIpPoolsPoolArray) ToGetDedicatedIpPoolsPoolArrayOutput() GetDedicatedIpPoolsPoolArrayOutput {
+	return i.ToGetDedicatedIpPoolsPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedIpPoolsPoolArray) ToGetDedicatedIpPoolsPoolArrayOutputWithContext(ctx context.Context) GetDedicatedIpPoolsPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedIpPoolsPoolArrayOutput)
+}
+
+type GetDedicatedIpPoolsPoolOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedIpPoolsPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedIpPoolsPool)(nil)).Elem()
+}
+
+func (o GetDedicatedIpPoolsPoolOutput) ToGetDedicatedIpPoolsPoolOutput() GetDedicatedIpPoolsPoolOutput {
+	return o
+}
+
+func (o GetDedicatedIpPoolsPoolOutput) ToGetDedicatedIpPoolsPoolOutputWithContext(ctx context.Context) GetDedicatedIpPoolsPoolOutput {
+	return o
+}
+
+// (Computed, String, Available since v2.2.0) The creation time.
+func (o GetDedicatedIpPoolsPoolOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedIpPoolsPool) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+func (o GetDedicatedIpPoolsPoolOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedIpPoolsPool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed, Int, Available since v2.2.0) The number of source IP addresses.
+func (o GetDedicatedIpPoolsPoolOutput) IpCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDedicatedIpPoolsPool) int { return v.IpCount }).(pulumi.IntOutput)
+}
+
+// (Computed, List, Available since v2.2.0) The list of IP addresses in the pool:
+func (o GetDedicatedIpPoolsPoolOutput) Ips() GetDedicatedIpPoolsPoolIpArrayOutput {
+	return o.ApplyT(func(v GetDedicatedIpPoolsPool) []GetDedicatedIpPoolsPoolIp { return v.Ips }).(GetDedicatedIpPoolsPoolIpArrayOutput)
+}
+
+// (Computed, String, Available since v2.2.0) The name of the IP pool.
+func (o GetDedicatedIpPoolsPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedIpPoolsPool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetDedicatedIpPoolsPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedIpPoolsPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedIpPoolsPool)(nil)).Elem()
+}
+
+func (o GetDedicatedIpPoolsPoolArrayOutput) ToGetDedicatedIpPoolsPoolArrayOutput() GetDedicatedIpPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetDedicatedIpPoolsPoolArrayOutput) ToGetDedicatedIpPoolsPoolArrayOutputWithContext(ctx context.Context) GetDedicatedIpPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetDedicatedIpPoolsPoolArrayOutput) Index(i pulumi.IntInput) GetDedicatedIpPoolsPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedIpPoolsPool {
+		return vs[0].([]GetDedicatedIpPoolsPool)[vs[1].(int)]
+	}).(GetDedicatedIpPoolsPoolOutput)
+}
+
+type GetDedicatedIpPoolsPoolIp struct {
+	// (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+	Id string `pulumi:"id"`
+	// (Computed, String, Available since v2.2.0) The IP address.
+	Ip string `pulumi:"ip"`
+	// (Computed, String, Available since v2.2.0) The zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetDedicatedIpPoolsPoolIpInput is an input type that accepts GetDedicatedIpPoolsPoolIpArgs and GetDedicatedIpPoolsPoolIpOutput values.
+// You can construct a concrete instance of `GetDedicatedIpPoolsPoolIpInput` via:
+//
+//	GetDedicatedIpPoolsPoolIpArgs{...}
+type GetDedicatedIpPoolsPoolIpInput interface {
+	pulumi.Input
+
+	ToGetDedicatedIpPoolsPoolIpOutput() GetDedicatedIpPoolsPoolIpOutput
+	ToGetDedicatedIpPoolsPoolIpOutputWithContext(context.Context) GetDedicatedIpPoolsPoolIpOutput
+}
+
+type GetDedicatedIpPoolsPoolIpArgs struct {
+	// (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// (Computed, String, Available since v2.2.0) The IP address.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// (Computed, String, Available since v2.2.0) The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetDedicatedIpPoolsPoolIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedIpPoolsPoolIp)(nil)).Elem()
+}
+
+func (i GetDedicatedIpPoolsPoolIpArgs) ToGetDedicatedIpPoolsPoolIpOutput() GetDedicatedIpPoolsPoolIpOutput {
+	return i.ToGetDedicatedIpPoolsPoolIpOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedIpPoolsPoolIpArgs) ToGetDedicatedIpPoolsPoolIpOutputWithContext(ctx context.Context) GetDedicatedIpPoolsPoolIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedIpPoolsPoolIpOutput)
+}
+
+// GetDedicatedIpPoolsPoolIpArrayInput is an input type that accepts GetDedicatedIpPoolsPoolIpArray and GetDedicatedIpPoolsPoolIpArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedIpPoolsPoolIpArrayInput` via:
+//
+//	GetDedicatedIpPoolsPoolIpArray{ GetDedicatedIpPoolsPoolIpArgs{...} }
+type GetDedicatedIpPoolsPoolIpArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedIpPoolsPoolIpArrayOutput() GetDedicatedIpPoolsPoolIpArrayOutput
+	ToGetDedicatedIpPoolsPoolIpArrayOutputWithContext(context.Context) GetDedicatedIpPoolsPoolIpArrayOutput
+}
+
+type GetDedicatedIpPoolsPoolIpArray []GetDedicatedIpPoolsPoolIpInput
+
+func (GetDedicatedIpPoolsPoolIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedIpPoolsPoolIp)(nil)).Elem()
+}
+
+func (i GetDedicatedIpPoolsPoolIpArray) ToGetDedicatedIpPoolsPoolIpArrayOutput() GetDedicatedIpPoolsPoolIpArrayOutput {
+	return i.ToGetDedicatedIpPoolsPoolIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedIpPoolsPoolIpArray) ToGetDedicatedIpPoolsPoolIpArrayOutputWithContext(ctx context.Context) GetDedicatedIpPoolsPoolIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedIpPoolsPoolIpArrayOutput)
+}
+
+type GetDedicatedIpPoolsPoolIpOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedIpPoolsPoolIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedIpPoolsPoolIp)(nil)).Elem()
+}
+
+func (o GetDedicatedIpPoolsPoolIpOutput) ToGetDedicatedIpPoolsPoolIpOutput() GetDedicatedIpPoolsPoolIpOutput {
+	return o
+}
+
+func (o GetDedicatedIpPoolsPoolIpOutput) ToGetDedicatedIpPoolsPoolIpOutputWithContext(ctx context.Context) GetDedicatedIpPoolsPoolIpOutput {
+	return o
+}
+
+// (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+func (o GetDedicatedIpPoolsPoolIpOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedIpPoolsPoolIp) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Computed, String, Available since v2.2.0) The IP address.
+func (o GetDedicatedIpPoolsPoolIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedIpPoolsPoolIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// (Computed, String, Available since v2.2.0) The zone ID.
+func (o GetDedicatedIpPoolsPoolIpOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedIpPoolsPoolIp) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetDedicatedIpPoolsPoolIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedIpPoolsPoolIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedIpPoolsPoolIp)(nil)).Elem()
+}
+
+func (o GetDedicatedIpPoolsPoolIpArrayOutput) ToGetDedicatedIpPoolsPoolIpArrayOutput() GetDedicatedIpPoolsPoolIpArrayOutput {
+	return o
+}
+
+func (o GetDedicatedIpPoolsPoolIpArrayOutput) ToGetDedicatedIpPoolsPoolIpArrayOutputWithContext(ctx context.Context) GetDedicatedIpPoolsPoolIpArrayOutput {
+	return o
+}
+
+func (o GetDedicatedIpPoolsPoolIpArrayOutput) Index(i pulumi.IntInput) GetDedicatedIpPoolsPoolIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedIpPoolsPoolIp {
+		return vs[0].([]GetDedicatedIpPoolsPoolIp)[vs[1].(int)]
+	}).(GetDedicatedIpPoolsPoolIpOutput)
+}
+
 type GetDomainsDomain struct {
 	// Indicates whether your ownership of the domain is verified.
 	CnameAuthStatus string `pulumi:"cnameAuthStatus"`
@@ -385,7 +1189,7 @@ type GetMailAddressesAddress struct {
 	ReplyAddress string `pulumi:"replyAddress"`
 	// If using STMP address status.
 	ReplyStatus string `pulumi:"replyStatus"`
-	// Account type.
+	// Account type. Valid values: `batch`, `trigger`.
 	Sendtype string `pulumi:"sendtype"`
 	// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
 	Status string `pulumi:"status"`
@@ -425,7 +1229,7 @@ type GetMailAddressesAddressArgs struct {
 	ReplyAddress pulumi.StringInput `pulumi:"replyAddress"`
 	// If using STMP address status.
 	ReplyStatus pulumi.StringInput `pulumi:"replyStatus"`
-	// Account type.
+	// Account type. Valid values: `batch`, `trigger`.
 	Sendtype pulumi.StringInput `pulumi:"sendtype"`
 	// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -537,7 +1341,7 @@ func (o GetMailAddressesAddressOutput) ReplyStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMailAddressesAddress) string { return v.ReplyStatus }).(pulumi.StringOutput)
 }
 
-// Account type.
+// Account type. Valid values: `batch`, `trigger`.
 func (o GetMailAddressesAddressOutput) Sendtype() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMailAddressesAddress) string { return v.Sendtype }).(pulumi.StringOutput)
 }
@@ -580,7 +1384,7 @@ type GetReceiversReceiverse struct {
 	ReceiversId string `pulumi:"receiversId"`
 	// The name of the resource.
 	ReceiversName string `pulumi:"receiversName"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
 	Status int `pulumi:"status"`
 }
 
@@ -608,7 +1412,7 @@ type GetReceiversReceiverseArgs struct {
 	ReceiversId pulumi.StringInput `pulumi:"receiversId"`
 	// The name of the resource.
 	ReceiversName pulumi.StringInput `pulumi:"receiversName"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
 	Status pulumi.IntInput `pulumi:"status"`
 }
 
@@ -693,7 +1497,7 @@ func (o GetReceiversReceiverseOutput) ReceiversName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReceiversReceiverse) string { return v.ReceiversName }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
 func (o GetReceiversReceiverseOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v GetReceiversReceiverse) int { return v.Status }).(pulumi.IntOutput)
 }
@@ -834,6 +1638,18 @@ func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigSetValidationOptionInput)(nil)).Elem(), ConfigSetValidationOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigSetValidationOptionPtrInput)(nil)).Elem(), ConfigSetValidationOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedIpPoolIpInput)(nil)).Elem(), DedicatedIpPoolIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedIpPoolIpArrayInput)(nil)).Elem(), DedicatedIpPoolIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigSetsSetInput)(nil)).Elem(), GetConfigSetsSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigSetsSetArrayInput)(nil)).Elem(), GetConfigSetsSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigSetsSetValidationOptionInput)(nil)).Elem(), GetConfigSetsSetValidationOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConfigSetsSetValidationOptionArrayInput)(nil)).Elem(), GetConfigSetsSetValidationOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedIpPoolsPoolInput)(nil)).Elem(), GetDedicatedIpPoolsPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedIpPoolsPoolArrayInput)(nil)).Elem(), GetDedicatedIpPoolsPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedIpPoolsPoolIpInput)(nil)).Elem(), GetDedicatedIpPoolsPoolIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedIpPoolsPoolIpArrayInput)(nil)).Elem(), GetDedicatedIpPoolsPoolIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMailAddressesAddressInput)(nil)).Elem(), GetMailAddressesAddressArgs{})
@@ -842,6 +1658,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReceiversReceiverseArrayInput)(nil)).Elem(), GetReceiversReceiverseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
+	pulumi.RegisterOutputType(ConfigSetValidationOptionOutput{})
+	pulumi.RegisterOutputType(ConfigSetValidationOptionPtrOutput{})
+	pulumi.RegisterOutputType(DedicatedIpPoolIpOutput{})
+	pulumi.RegisterOutputType(DedicatedIpPoolIpArrayOutput{})
+	pulumi.RegisterOutputType(GetConfigSetsSetOutput{})
+	pulumi.RegisterOutputType(GetConfigSetsSetArrayOutput{})
+	pulumi.RegisterOutputType(GetConfigSetsSetValidationOptionOutput{})
+	pulumi.RegisterOutputType(GetConfigSetsSetValidationOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedIpPoolsPoolOutput{})
+	pulumi.RegisterOutputType(GetDedicatedIpPoolsPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedIpPoolsPoolIpOutput{})
+	pulumi.RegisterOutputType(GetDedicatedIpPoolsPoolIpArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetMailAddressesAddressOutput{})

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     nameRegex: defaultBaselineStrategy.name,
  *     customType: "custom",
  * });
- * export const alicloudThreatDetectionBaselineStrategyExampleId = defaultAlicloudThreatDetectionBaselineStrategys.strategys[0].id;
+ * export const alicloudThreatDetectionBaselineStrategyExampleId = _default.apply(_default => _default.strategies?.[0]?.id);
  * ```
  */
 export function getBaselineStrategies(args?: GetBaselineStrategiesArgs, opts?: pulumi.InvokeOptions): Promise<GetBaselineStrategiesResult> {
@@ -66,6 +66,9 @@ export interface GetBaselineStrategiesArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The IDs of the Baseline Strategy.
+     */
     strategyIds?: string;
 }
 
@@ -89,17 +92,20 @@ export interface GetBaselineStrategiesResult {
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of name of Baseline Strategys.
+     * A list of name of Baseline Strategies.
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Baseline Strategy Entries. Each element contains the following attributes:
+     */
     readonly strategies: outputs.threatdetection.GetBaselineStrategiesStrategy[];
     readonly strategyIds?: string;
 }
 /**
  * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -121,7 +127,7 @@ export interface GetBaselineStrategiesResult {
  *     nameRegex: defaultBaselineStrategy.name,
  *     customType: "custom",
  * });
- * export const alicloudThreatDetectionBaselineStrategyExampleId = defaultAlicloudThreatDetectionBaselineStrategys.strategys[0].id;
+ * export const alicloudThreatDetectionBaselineStrategyExampleId = _default.apply(_default => _default.strategies?.[0]?.id);
  * ```
  */
 export function getBaselineStrategiesOutput(args?: GetBaselineStrategiesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBaselineStrategiesResult> {
@@ -156,5 +162,8 @@ export interface GetBaselineStrategiesOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The IDs of the Baseline Strategy.
+     */
     strategyIds?: pulumi.Input<string | undefined>;
 }

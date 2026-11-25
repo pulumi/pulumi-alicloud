@@ -77,7 +77,7 @@ public final class GetSnapshotsSnapshot {
      */
     private Integer sourceFsSize;
     /**
-     * @return The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+     * @return The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
      * 
      */
     private String status;
@@ -175,7 +175,7 @@ public final class GetSnapshotsSnapshot {
         return this.sourceFsSize;
     }
     /**
-     * @return The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+     * @return The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
      * 
      */
     public String status() {

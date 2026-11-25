@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ebs.Outputs
     public sealed class GetRegionsRegionResult
     {
         /// <summary>
-        /// The ID of the region.
+        /// A list of Disk Replica Group IDs.
         /// </summary>
         public readonly string RegionId;
         /// <summary>

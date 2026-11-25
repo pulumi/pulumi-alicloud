@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Tag Meta Tags of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.169.0+.
+// > **NOTE:** Available since v1.169.0.
 //
 // ## Example Usage
 //
@@ -64,10 +64,12 @@ type GetMetaTagsArgs struct {
 // A collection of values returned by getMetaTags.
 type GetMetaTagsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string           `pulumi:"id"`
-	KeyName    *string          `pulumi:"keyName"`
-	OutputFile *string          `pulumi:"outputFile"`
-	Tags       []GetMetaTagsTag `pulumi:"tags"`
+	Id string `pulumi:"id"`
+	// The name of the key.
+	KeyName    *string `pulumi:"keyName"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Meta Tags. Each element contains the following attributes:
+	Tags []GetMetaTagsTag `pulumi:"tags"`
 }
 
 func GetMetaTagsOutput(ctx *pulumi.Context, args GetMetaTagsOutputArgs, opts ...pulumi.InvokeOption) GetMetaTagsResultOutput {
@@ -107,6 +109,7 @@ func (o GetMetaTagsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetaTagsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the key.
 func (o GetMetaTagsResultOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetaTagsResult) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
@@ -115,6 +118,7 @@ func (o GetMetaTagsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetaTagsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Meta Tags. Each element contains the following attributes:
 func (o GetMetaTagsResultOutput) Tags() GetMetaTagsTagArrayOutput {
 	return o.ApplyT(func(v GetMetaTagsResult) []GetMetaTagsTag { return v.Tags }).(GetMetaTagsTagArrayOutput)
 }

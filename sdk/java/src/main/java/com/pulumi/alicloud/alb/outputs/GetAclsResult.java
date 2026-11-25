@@ -16,7 +16,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAclsResult {
     private @Nullable List<String> aclIds;
+    /**
+     * @return The ACL Name.
+     * 
+     */
     private @Nullable String aclName;
+    /**
+     * @return A list of Alb Acls. Each element contains the following attributes:
+     * 
+     */
     private List<GetAclsAcl> acls;
     private @Nullable Boolean enableDetails;
     /**
@@ -26,18 +34,38 @@ public final class GetAclsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Acl names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Resource Group to Which the Number.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * 
+     */
     private @Nullable String status;
 
     private GetAclsResult() {}
     public List<String> aclIds() {
         return this.aclIds == null ? List.of() : this.aclIds;
     }
+    /**
+     * @return The ACL Name.
+     * 
+     */
     public Optional<String> aclName() {
         return Optional.ofNullable(this.aclName);
     }
+    /**
+     * @return A list of Alb Acls. Each element contains the following attributes:
+     * 
+     */
     public List<GetAclsAcl> acls() {
         return this.acls;
     }
@@ -57,15 +85,27 @@ public final class GetAclsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Acl names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Resource Group to Which the Number.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

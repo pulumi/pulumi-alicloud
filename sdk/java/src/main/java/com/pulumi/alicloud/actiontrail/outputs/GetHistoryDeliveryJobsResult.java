@@ -23,8 +23,16 @@ public final class GetHistoryDeliveryJobsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Actiontrail History Delivery Jobs. Each element contains the following attributes:
+     * 
+     */
     private List<GetHistoryDeliveryJobsJob> jobs;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+     * 
+     */
     private @Nullable Integer status;
 
     private GetHistoryDeliveryJobsResult() {}
@@ -41,12 +49,20 @@ public final class GetHistoryDeliveryJobsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Actiontrail History Delivery Jobs. Each element contains the following attributes:
+     * 
+     */
     public List<GetHistoryDeliveryJobsJob> jobs() {
         return this.jobs;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+     * 
+     */
     public Optional<Integer> status() {
         return Optional.ofNullable(this.status);
     }

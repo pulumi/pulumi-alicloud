@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Rds Backups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.149.0+.
+// > **NOTE:** Available since v1.149.0+.
 //
 // ## Example Usage
 //
@@ -73,11 +73,22 @@ type GetRdsBackupsArgs struct {
 
 // A collection of values returned by getRdsBackups.
 type GetRdsBackupsResult struct {
-	BackupMode   *string               `pulumi:"backupMode"`
-	BackupStatus *string               `pulumi:"backupStatus"`
-	Backups      []GetRdsBackupsBackup `pulumi:"backups"`
-	DbInstanceId string                `pulumi:"dbInstanceId"`
-	EndTime      *string               `pulumi:"endTime"`
+	// BackupMode.
+	BackupMode *string `pulumi:"backupMode"`
+	// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+	// * **NoStart**: Not started
+	// * **Checking**: check the backup
+	// * **Preparing**: Prepare a backup
+	// * **Waiting**: Waiting for backup
+	// * **Uploading**: Upload backup
+	// * **Finished**: Complete backup
+	// * **Failed**: backup Failed
+	BackupStatus *string `pulumi:"backupStatus"`
+	// A list of Rds Backups. Each element contains the following attributes:
+	Backups []GetRdsBackupsBackup `pulumi:"backups"`
+	// The db instance id.
+	DbInstanceId string  `pulumi:"dbInstanceId"`
+	EndTime      *string `pulumi:"endTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
@@ -127,18 +138,29 @@ func (o GetRdsBackupsResultOutput) ToGetRdsBackupsResultOutputWithContext(ctx co
 	return o
 }
 
+// BackupMode.
 func (o GetRdsBackupsResultOutput) BackupMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRdsBackupsResult) *string { return v.BackupMode }).(pulumi.StringPtrOutput)
 }
 
+// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+// * **NoStart**: Not started
+// * **Checking**: check the backup
+// * **Preparing**: Prepare a backup
+// * **Waiting**: Waiting for backup
+// * **Uploading**: Upload backup
+// * **Finished**: Complete backup
+// * **Failed**: backup Failed
 func (o GetRdsBackupsResultOutput) BackupStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRdsBackupsResult) *string { return v.BackupStatus }).(pulumi.StringPtrOutput)
 }
 
+// A list of Rds Backups. Each element contains the following attributes:
 func (o GetRdsBackupsResultOutput) Backups() GetRdsBackupsBackupArrayOutput {
 	return o.ApplyT(func(v GetRdsBackupsResult) []GetRdsBackupsBackup { return v.Backups }).(GetRdsBackupsBackupArrayOutput)
 }
 
+// The db instance id.
 func (o GetRdsBackupsResultOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRdsBackupsResult) string { return v.DbInstanceId }).(pulumi.StringOutput)
 }

@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// &gt; **NOTE:** Destroying a `PrePaid` instance fails with an error since v1.294.0. To destroy it, convert the instance to `PostPaid` by setting `PaymentType = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
     /// 
+    /// &gt; **NOTE:** Refreshing a `Redis` type instance calls the `DescribeRoleZoneInfo` operation to read the additional bandwidth purchased for its data shards, so the RAM policy used by Terraform must allow `kvstore:DescribeRoleZoneInfo` in addition to the instance query permissions.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -133,7 +135,7 @@ namespace Pulumi.AliCloud.KVStore
     ///         {
     ///             { "appendonly", "no" },
     ///             { "lazyfree-lazy-eviction", "no" },
-    ///             { "EvictionPolicy", "volatile-lru" },
+    ///             { "maxmemory-policy", "volatile-lru" },
     ///         },
     ///         Tags = 
     ///         {
@@ -208,7 +210,7 @@ namespace Pulumi.AliCloud.KVStore
     ///         {
     ///             { "appendonly", "yes" },
     ///             { "lazyfree-lazy-eviction", "yes" },
-    ///             { "EvictionPolicy", "volatile-lru" },
+    ///             { "maxmemory-policy", "volatile-lru" },
     ///         },
     ///         Tags = 
     ///         {
@@ -233,6 +235,12 @@ namespace Pulumi.AliCloud.KVStore
     [AliCloudResourceType("alicloud:kvstore/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `Bandwidth` of the instance. See `AdditionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `Bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+        /// </summary>
+        [Output("additionalBandwidths")]
+        public Output<ImmutableArray<Outputs.InstanceAdditionalBandwidth>> AdditionalBandwidths { get; private set; } = null!;
+
         /// <summary>
         /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when PaymentType is `PrePaid`. Default value: `False`.
         /// </summary>
@@ -282,10 +290,28 @@ namespace Pulumi.AliCloud.KVStore
         public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+        /// </summary>
+        [Output("bandwidthBurst")]
+        public Output<bool?> BandwidthBurst { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the event or the business information.
         /// </summary>
         [Output("businessInfo")]
         public Output<string?> BusinessInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Output("caCertCommonName")]
+        public Output<string> CaCertCommonName { get; private set; } = null!;
+
+        /// <summary>
+        /// The download URL of the CA certificate. This attribute is populated when `SslEnable` is set to `Enable`.
+        /// </summary>
+        [Output("caCertDownloadUrl")]
+        public Output<string> CaCertDownloadUrl { get; private set; } = null!;
 
         /// <summary>
         /// The storage capacity of the KVStore DBInstance. Unit: MB.
@@ -307,14 +333,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Indicates whether the address is a private endpoint.
-        /// 
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-        /// 
-        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
-        /// 
-        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-        /// 
-        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
@@ -413,6 +431,20 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> GlobalInstanceId { get; private set; } = null!;
 
         /// <summary>
+        /// The list of Global Security Group Ids.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
+        /// </summary>
+        [Output("globalSecurityGroupLists")]
+        public Output<ImmutableArray<string>> GlobalSecurityGroupLists { get; private set; } = null!;
+
+        /// <summary>
         /// It has been deprecated from provider version 1.101.0 and `PaymentType` instead.
         /// </summary>
         [Output("instanceChargeType")]
@@ -500,6 +532,19 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `PasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        [Output("passwordWo")]
+        public Output<string?> PasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `PasswordWo` changes.
+        /// </summary>
+        [Output("passwordWoVersion")]
+        public Output<int?> PasswordWoVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         /// </summary>
         [Output("paymentType")]
@@ -573,6 +618,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+        /// 
         /// &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         /// </summary>
         [Output("secondaryZoneId")]
@@ -610,6 +656,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `SecondaryZoneId` and `SlaveReadOnlyCount`.
+        /// 
         /// &gt; **NOTE:** The sum of `ReadOnlyCount` and `SlaveReadOnlyCount` cannot be greater than `9`.
         /// </summary>
         [Output("slaveReadOnlyCount")]
@@ -617,6 +664,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// 
         /// &gt; **NOTE:** `ReplicaCount`/`SlaveReplicaCount` (replica nodes) and `ReadOnlyCount`/`SlaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         /// </summary>
         [Output("slaveReplicaCount")]
@@ -634,6 +682,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Output("sslEnable")]
         public Output<string> SslEnable { get; private set; } = null!;
+
+        /// <summary>
+        /// The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Output("sslExpiredTime")]
+        public Output<string> SslExpiredTime { get; private set; } = null!;
 
         /// <summary>
         /// The status of KVStore DBInstance.
@@ -699,6 +753,7 @@ namespace Pulumi.AliCloud.KVStore
                 AdditionalSecretOutputs =
                 {
                     "password",
+                    "passwordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -723,6 +778,18 @@ namespace Pulumi.AliCloud.KVStore
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalBandwidths")]
+        private InputList<Inputs.InstanceAdditionalBandwidthArgs>? _additionalBandwidths;
+
+        /// <summary>
+        /// The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `Bandwidth` of the instance. See `AdditionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `Bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+        /// </summary>
+        public InputList<Inputs.InstanceAdditionalBandwidthArgs> AdditionalBandwidths
+        {
+            get => _additionalBandwidths ?? (_additionalBandwidths = new InputList<Inputs.InstanceAdditionalBandwidthArgs>());
+            set => _additionalBandwidths = value;
+        }
+
         /// <summary>
         /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when PaymentType is `PrePaid`. Default value: `False`.
         /// </summary>
@@ -776,6 +843,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+        /// </summary>
+        [Input("bandwidthBurst")]
+        public Input<bool>? BandwidthBurst { get; set; }
 
         /// <summary>
         /// The ID of the event or the business information.
@@ -887,6 +960,26 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("globalInstanceId")]
         public Input<string>? GlobalInstanceId { get; set; }
+
+        [Input("globalSecurityGroupLists")]
+        private InputList<string>? _globalSecurityGroupLists;
+
+        /// <summary>
+        /// The list of Global Security Group Ids.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
+        /// </summary>
+        public InputList<string> GlobalSecurityGroupLists
+        {
+            get => _globalSecurityGroupLists ?? (_globalSecurityGroupLists = new InputList<string>());
+            set => _globalSecurityGroupLists = value;
+        }
 
         /// <summary>
         /// It has been deprecated from provider version 1.101.0 and `PaymentType` instead.
@@ -998,6 +1091,29 @@ namespace Pulumi.AliCloud.KVStore
             }
         }
 
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `PasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `PasswordWo` changes.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
+
         /// <summary>
         /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         /// </summary>
@@ -1066,6 +1182,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+        /// 
         /// &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         /// </summary>
         [Input("secondaryZoneId")]
@@ -1109,6 +1226,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `SecondaryZoneId` and `SlaveReadOnlyCount`.
+        /// 
         /// &gt; **NOTE:** The sum of `ReadOnlyCount` and `SlaveReadOnlyCount` cannot be greater than `9`.
         /// </summary>
         [Input("slaveReadOnlyCount")]
@@ -1116,6 +1234,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// 
         /// &gt; **NOTE:** `ReplicaCount`/`SlaveReplicaCount` (replica nodes) and `ReadOnlyCount`/`SlaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         /// </summary>
         [Input("slaveReplicaCount")]
@@ -1180,6 +1299,18 @@ namespace Pulumi.AliCloud.KVStore
 
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("additionalBandwidths")]
+        private InputList<Inputs.InstanceAdditionalBandwidthGetArgs>? _additionalBandwidths;
+
+        /// <summary>
+        /// The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `Bandwidth` of the instance. See `AdditionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `Bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+        /// </summary>
+        public InputList<Inputs.InstanceAdditionalBandwidthGetArgs> AdditionalBandwidths
+        {
+            get => _additionalBandwidths ?? (_additionalBandwidths = new InputList<Inputs.InstanceAdditionalBandwidthGetArgs>());
+            set => _additionalBandwidths = value;
+        }
+
         /// <summary>
         /// Whether to renewal a KVStore DBInstance automatically or not. It is valid when PaymentType is `PrePaid`. Default value: `False`.
         /// </summary>
@@ -1235,10 +1366,28 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+        /// </summary>
+        [Input("bandwidthBurst")]
+        public Input<bool>? BandwidthBurst { get; set; }
+
+        /// <summary>
         /// The ID of the event or the business information.
         /// </summary>
         [Input("businessInfo")]
         public Input<string>? BusinessInfo { get; set; }
+
+        /// <summary>
+        /// The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Input("caCertCommonName")]
+        public Input<string>? CaCertCommonName { get; set; }
+
+        /// <summary>
+        /// The download URL of the CA certificate. This attribute is populated when `SslEnable` is set to `Enable`.
+        /// </summary>
+        [Input("caCertDownloadUrl")]
+        public Input<string>? CaCertDownloadUrl { get; set; }
 
         /// <summary>
         /// The storage capacity of the KVStore DBInstance. Unit: MB.
@@ -1266,14 +1415,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Indicates whether the address is a private endpoint.
-        /// 
-        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-        /// 
-        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
-        /// 
-        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-        /// 
-        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
@@ -1370,6 +1511,26 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("globalInstanceId")]
         public Input<string>? GlobalInstanceId { get; set; }
+
+        [Input("globalSecurityGroupLists")]
+        private InputList<string>? _globalSecurityGroupLists;
+
+        /// <summary>
+        /// The list of Global Security Group Ids.
+        /// 
+        /// &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the `Capacity` and `InstanceClass` parameters when you call create instance operation.
+        /// 
+        /// &gt; **NOTE:** The `PrivateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+        /// 
+        /// &gt; **NOTE:** If you specify the `SrcdbInstanceId` parameter, you must specify the `BackupId` or `RestoreTime` parameter.
+        /// </summary>
+        public InputList<string> GlobalSecurityGroupLists
+        {
+            get => _globalSecurityGroupLists ?? (_globalSecurityGroupLists = new InputList<string>());
+            set => _globalSecurityGroupLists = value;
+        }
 
         /// <summary>
         /// It has been deprecated from provider version 1.101.0 and `PaymentType` instead.
@@ -1481,6 +1642,29 @@ namespace Pulumi.AliCloud.KVStore
             }
         }
 
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `PasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `PasswordWo` changes.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
+
         /// <summary>
         /// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         /// </summary>
@@ -1555,6 +1739,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+        /// 
         /// &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         /// </summary>
         [Input("secondaryZoneId")]
@@ -1598,6 +1783,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `SecondaryZoneId` and `SlaveReadOnlyCount`.
+        /// 
         /// &gt; **NOTE:** The sum of `ReadOnlyCount` and `SlaveReadOnlyCount` cannot be greater than `9`.
         /// </summary>
         [Input("slaveReadOnlyCount")]
@@ -1605,6 +1791,7 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// 
         /// &gt; **NOTE:** `ReplicaCount`/`SlaveReplicaCount` (replica nodes) and `ReadOnlyCount`/`SlaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         /// </summary>
         [Input("slaveReplicaCount")]
@@ -1622,6 +1809,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("sslEnable")]
         public Input<string>? SslEnable { get; set; }
+
+        /// <summary>
+        /// The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Input("sslExpiredTime")]
+        public Input<string>? SslExpiredTime { get; set; }
 
         /// <summary>
         /// The status of KVStore DBInstance.

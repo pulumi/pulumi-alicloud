@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// The Physical Connection to Which the Access Point State.
+        /// The Physical Connection to Which the Access Point State. Valid values: `Disabled`, `Full`, `Hot`, `Recommended`.
         /// </summary>
         public readonly string Status;
         /// <summary>

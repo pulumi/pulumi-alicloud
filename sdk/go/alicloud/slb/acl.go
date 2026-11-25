@@ -35,6 +35,8 @@ import (
 //
 // For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/70015.htm).
 //
+// > **NOTE:** Available since v1.20.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -64,13 +66,6 @@ import (
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
-// ## Entry Block
-//
-// The entry mapping supports the following:
-//
-// * `entry` - (Optional, Computed) The CIDR blocks.
-// * `comment` - (Optional, Computed) The comment of the entry.
-//
 // ## Import
 //
 // Server Load balancer access control list can be imported using the id, e.g.
@@ -81,7 +76,7 @@ import (
 type Acl struct {
 	pulumi.CustomResourceState
 
-	// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+	// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. See `entryList` below. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
 	//
 	// Deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
 	EntryLists AclEntryListArrayOutput `pulumi:"entryLists"`
@@ -125,7 +120,7 @@ func GetAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Acl resources.
 type aclState struct {
-	// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+	// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. See `entryList` below. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
 	//
 	// Deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
 	EntryLists []AclEntryList `pulumi:"entryLists"`
@@ -140,7 +135,7 @@ type aclState struct {
 }
 
 type AclState struct {
-	// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+	// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. See `entryList` below. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
 	//
 	// Deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
 	EntryLists AclEntryListArrayInput
@@ -165,7 +160,7 @@ func AclExists(ctx *pulumi.Context,
 }
 
 type aclArgs struct {
-	// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+	// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. See `entryList` below. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
 	//
 	// Deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
 	EntryLists []AclEntryList `pulumi:"entryLists"`
@@ -181,7 +176,7 @@ type aclArgs struct {
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
-	// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+	// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. See `entryList` below. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
 	//
 	// Deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
 	EntryLists AclEntryListArrayInput
@@ -282,7 +277,7 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
-// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. See `entryList` below. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
 //
 // Deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.
 func (o AclOutput) EntryLists() AclEntryListArrayOutput {

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -47,6 +47,9 @@ export interface GetHoneypotImagesArgs {
      * A regex string to filter results by Honeypot mirror nam.
      */
     nameRegex?: string;
+    /**
+     * The id of the honeypot management node.
+     */
     nodeId?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -81,7 +84,7 @@ export interface GetHoneypotImagesResult {
 /**
  * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -119,6 +122,9 @@ export interface GetHoneypotImagesOutputArgs {
      * A regex string to filter results by Honeypot mirror nam.
      */
     nameRegex?: pulumi.Input<string | undefined>;
+    /**
+     * The id of the honeypot management node.
+     */
     nodeId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///         CenId = "cen-cjok7uyb5w2b27573v",
         ///         MemberUid = "1415189284827022",
         ///         Status = "closed",
-        ///         VpcFirewallName = "tf-test",
+        ///         VpcFirewallName = "tf-example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///         CenId = "cen-cjok7uyb5w2b27573v",
         ///         MemberUid = "1415189284827022",
         ///         Status = "closed",
-        ///         VpcFirewallName = "tf-test",
+        ///         VpcFirewallName = "tf-example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///         CenId = "cen-cjok7uyb5w2b27573v",
         ///         MemberUid = "1415189284827022",
         ///         Status = "closed",
-        ///         VpcFirewallName = "tf-test",
+        ///         VpcFirewallName = "tf-example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -293,12 +293,9 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? Lang;
-        /// <summary>
-        /// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-        /// </summary>
         public readonly string? MemberUid;
         /// <summary>
-        /// The ID of the VPC instance that created the VPC firewall.
+        /// The ID of the network instance.
         /// </summary>
         public readonly string? NetworkInstanceId;
         public readonly string? OutputFile;

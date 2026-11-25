@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -76,7 +76,13 @@ export interface GetDeviceGroupsArgs {
  */
 export interface GetDeviceGroupsResult {
     readonly enableDetails?: boolean;
+    /**
+     * The GroupName of the device group.
+     */
     readonly groupName?: string;
+    /**
+     * A list of Iot Device Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.iot.GetDeviceGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -91,7 +97,7 @@ export interface GetDeviceGroupsResult {
 /**
  * This data source provides the Iot Device Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *

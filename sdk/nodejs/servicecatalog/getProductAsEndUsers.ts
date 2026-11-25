@@ -54,7 +54,13 @@ export interface GetProductAsEndUsersArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The field that is used to sort the queried data.
+     */
     sortBy?: string;
+    /**
+     * The sorting method. Valid values: `Asc`, `Desc`.
+     */
     sortOrder?: string;
 }
 
@@ -127,6 +133,12 @@ export interface GetProductAsEndUsersOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The field that is used to sort the queried data.
+     */
     sortBy?: pulumi.Input<string | undefined>;
+    /**
+     * The sorting method. Valid values: `Asc`, `Desc`.
+     */
     sortOrder?: pulumi.Input<string | undefined>;
 }

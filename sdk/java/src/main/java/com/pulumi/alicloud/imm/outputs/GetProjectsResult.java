@@ -21,6 +21,10 @@ public final class GetProjectsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Imm Projects. Each element contains the following attributes:
+     * 
+     */
     private List<GetProjectsProject> projects;
 
     private GetProjectsResult() {}
@@ -37,6 +41,10 @@ public final class GetProjectsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Imm Projects. Each element contains the following attributes:
+     * 
+     */
     public List<GetProjectsProject> projects() {
         return this.projects;
     }

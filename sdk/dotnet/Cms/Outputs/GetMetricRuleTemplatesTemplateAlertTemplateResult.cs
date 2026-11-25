@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// The name of the alert rule.
         /// </summary>
         public readonly string RuleName;
+        /// <summary>
+        /// The extended dimension options of the alert.
+        /// </summary>
         public readonly string Selector;
         /// <summary>
         /// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.

@@ -39,6 +39,10 @@ public final class GetIndustrialPidLoopsResult {
      * 
      */
     private @Nullable String pidLoopName;
+    /**
+     * @return The pid project id of Pid Loop.
+     * 
+     */
     private String pidProjectId;
     /**
      * @return The status of Pid Loop.
@@ -87,6 +91,10 @@ public final class GetIndustrialPidLoopsResult {
     public Optional<String> pidLoopName() {
         return Optional.ofNullable(this.pidLoopName);
     }
+    /**
+     * @return The pid project id of Pid Loop.
+     * 
+     */
     public String pidProjectId() {
         return this.pidProjectId;
     }

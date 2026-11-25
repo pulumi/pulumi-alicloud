@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
  *
- * > **NOTE:** Available in 1.78.0
+ * > **NOTE:** Available since v1.78.0.
  *
  * ## Example Usage
  *
@@ -334,7 +334,7 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly alertName: pulumi.Output<string>;
     /**
-     * Annotations for new alert.
+     * Annotations for new alert. See `annotations` below.
      */
     declare public readonly annotations: pulumi.Output<outputs.log.AlertAnnotation[] | undefined>;
     /**
@@ -354,15 +354,15 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly dashboard: pulumi.Output<string | undefined>;
     /**
-     * Group configuration for new alert.
+     * Group configuration for new alert. See `groupConfiguration` below.
      */
     declare public readonly groupConfiguration: pulumi.Output<outputs.log.AlertGroupConfiguration | undefined>;
     /**
-     * Join configuration for different queries.
+     * Join configuration for different queries. See `joinConfigurations` below.
      */
     declare public readonly joinConfigurations: pulumi.Output<outputs.log.AlertJoinConfiguration[] | undefined>;
     /**
-     * Labels for new alert.
+     * Labels for new alert. See `labels` below.
      */
     declare public readonly labels: pulumi.Output<outputs.log.AlertLabel[] | undefined>;
     /**
@@ -378,7 +378,7 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly noDataSeverity: pulumi.Output<number | undefined>;
     /**
-     * Alarm information notification list, Deprecated from 1.161.0+.
+     * Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
      *
      * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      */
@@ -390,7 +390,7 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly notifyThreshold: pulumi.Output<number | undefined>;
     /**
-     * Policy configuration for new alert.
+     * Policy configuration for new alert. See `policyConfiguration` below.
      */
     declare public readonly policyConfiguration: pulumi.Output<outputs.log.AlertPolicyConfiguration | undefined>;
     /**
@@ -398,11 +398,11 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly projectName: pulumi.Output<string>;
     /**
-     * Multiple conditions for configured alarm query.
+     * Multiple conditions for configured alarm query. See `queryList` below.
      */
     declare public readonly queryLists: pulumi.Output<outputs.log.AlertQueryList[] | undefined>;
     /**
-     * schedule for alert.
+     * schedule for alert. See `schedule` below.
      */
     declare public readonly schedule: pulumi.Output<outputs.log.AlertSchedule | undefined>;
     /**
@@ -422,11 +422,11 @@ export class Alert extends pulumi.CustomResource {
      */
     declare public readonly sendResolved: pulumi.Output<boolean | undefined>;
     /**
-     * Severity configuration for new alert.
+     * Severity configuration for new alert. See `severityConfigurations` below.
      */
     declare public readonly severityConfigurations: pulumi.Output<outputs.log.AlertSeverityConfiguration[] | undefined>;
     /**
-     * Template configuration for alert, when `type` is `tpl`.
+     * Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
      */
     declare public readonly templateConfiguration: pulumi.Output<outputs.log.AlertTemplateConfiguration | undefined>;
     /**
@@ -551,7 +551,7 @@ export interface AlertState {
      */
     alertName?: pulumi.Input<string | undefined>;
     /**
-     * Annotations for new alert.
+     * Annotations for new alert. See `annotations` below.
      */
     annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[] | undefined>;
     /**
@@ -571,15 +571,15 @@ export interface AlertState {
      */
     dashboard?: pulumi.Input<string | undefined>;
     /**
-     * Group configuration for new alert.
+     * Group configuration for new alert. See `groupConfiguration` below.
      */
     groupConfiguration?: pulumi.Input<inputs.log.AlertGroupConfiguration | undefined>;
     /**
-     * Join configuration for different queries.
+     * Join configuration for different queries. See `joinConfigurations` below.
      */
     joinConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertJoinConfiguration>[] | undefined>;
     /**
-     * Labels for new alert.
+     * Labels for new alert. See `labels` below.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.log.AlertLabel>[] | undefined>;
     /**
@@ -595,7 +595,7 @@ export interface AlertState {
      */
     noDataSeverity?: pulumi.Input<number | undefined>;
     /**
-     * Alarm information notification list, Deprecated from 1.161.0+.
+     * Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
      *
      * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      */
@@ -607,7 +607,7 @@ export interface AlertState {
      */
     notifyThreshold?: pulumi.Input<number | undefined>;
     /**
-     * Policy configuration for new alert.
+     * Policy configuration for new alert. See `policyConfiguration` below.
      */
     policyConfiguration?: pulumi.Input<inputs.log.AlertPolicyConfiguration | undefined>;
     /**
@@ -615,11 +615,11 @@ export interface AlertState {
      */
     projectName?: pulumi.Input<string | undefined>;
     /**
-     * Multiple conditions for configured alarm query.
+     * Multiple conditions for configured alarm query. See `queryList` below.
      */
     queryLists?: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[] | undefined>;
     /**
-     * schedule for alert.
+     * schedule for alert. See `schedule` below.
      */
     schedule?: pulumi.Input<inputs.log.AlertSchedule | undefined>;
     /**
@@ -639,11 +639,11 @@ export interface AlertState {
      */
     sendResolved?: pulumi.Input<boolean | undefined>;
     /**
-     * Severity configuration for new alert.
+     * Severity configuration for new alert. See `severityConfigurations` below.
      */
     severityConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertSeverityConfiguration>[] | undefined>;
     /**
-     * Template configuration for alert, when `type` is `tpl`.
+     * Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
      */
     templateConfiguration?: pulumi.Input<inputs.log.AlertTemplateConfiguration | undefined>;
     /**
@@ -683,7 +683,7 @@ export interface AlertArgs {
      */
     alertName: pulumi.Input<string>;
     /**
-     * Annotations for new alert.
+     * Annotations for new alert. See `annotations` below.
      */
     annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[] | undefined>;
     /**
@@ -703,15 +703,15 @@ export interface AlertArgs {
      */
     dashboard?: pulumi.Input<string | undefined>;
     /**
-     * Group configuration for new alert.
+     * Group configuration for new alert. See `groupConfiguration` below.
      */
     groupConfiguration?: pulumi.Input<inputs.log.AlertGroupConfiguration | undefined>;
     /**
-     * Join configuration for different queries.
+     * Join configuration for different queries. See `joinConfigurations` below.
      */
     joinConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertJoinConfiguration>[] | undefined>;
     /**
-     * Labels for new alert.
+     * Labels for new alert. See `labels` below.
      */
     labels?: pulumi.Input<pulumi.Input<inputs.log.AlertLabel>[] | undefined>;
     /**
@@ -727,7 +727,7 @@ export interface AlertArgs {
      */
     noDataSeverity?: pulumi.Input<number | undefined>;
     /**
-     * Alarm information notification list, Deprecated from 1.161.0+.
+     * Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
      *
      * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      */
@@ -739,7 +739,7 @@ export interface AlertArgs {
      */
     notifyThreshold?: pulumi.Input<number | undefined>;
     /**
-     * Policy configuration for new alert.
+     * Policy configuration for new alert. See `policyConfiguration` below.
      */
     policyConfiguration?: pulumi.Input<inputs.log.AlertPolicyConfiguration | undefined>;
     /**
@@ -747,11 +747,11 @@ export interface AlertArgs {
      */
     projectName: pulumi.Input<string>;
     /**
-     * Multiple conditions for configured alarm query.
+     * Multiple conditions for configured alarm query. See `queryList` below.
      */
     queryLists?: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[] | undefined>;
     /**
-     * schedule for alert.
+     * schedule for alert. See `schedule` below.
      */
     schedule?: pulumi.Input<inputs.log.AlertSchedule | undefined>;
     /**
@@ -771,11 +771,11 @@ export interface AlertArgs {
      */
     sendResolved?: pulumi.Input<boolean | undefined>;
     /**
-     * Severity configuration for new alert.
+     * Severity configuration for new alert. See `severityConfigurations` below.
      */
     severityConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertSeverityConfiguration>[] | undefined>;
     /**
-     * Template configuration for alert, when `type` is `tpl`.
+     * Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
      */
     templateConfiguration?: pulumi.Input<inputs.log.AlertTemplateConfiguration | undefined>;
     /**

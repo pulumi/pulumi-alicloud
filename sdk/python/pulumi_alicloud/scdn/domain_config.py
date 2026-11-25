@@ -28,7 +28,7 @@ class DomainConfigArgs:
         The set of arguments for constructing a DomainConfig resource.
 
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config. See `function_args` below for details.
         :param pulumi.Input[_builtins.str] function_name: The name of the domain config.
         """
         pulumi.set(__self__, "domain_name", domain_name)
@@ -51,7 +51,7 @@ class DomainConfigArgs:
     @pulumi.getter(name="functionArgs")
     def function_args(self) -> pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]:
         """
-        The args of the domain config.
+        The args of the domain config. See `function_args` below for details.
         """
         return pulumi.get(self, "function_args")
 
@@ -85,7 +85,7 @@ class _DomainConfigState:
 
         :param pulumi.Input[_builtins.str] config_id: The SCDN domain config id.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config. See `function_args` below for details.
         :param pulumi.Input[_builtins.str] function_name: The name of the domain config.
         :param pulumi.Input[_builtins.str] status: The status of this resource.
         """
@@ -128,7 +128,7 @@ class _DomainConfigState:
     @pulumi.getter(name="functionArgs")
     def function_args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]]:
         """
-        The args of the domain config.
+        The args of the domain config. See `function_args` below for details.
         """
         return pulumi.get(self, "function_args")
 
@@ -174,9 +174,9 @@ class DomainConfig(pulumi.CustomResource):
         """
         Provides a SCDN Accelerated Domain resource.
 
-        For information about domain config and how to use it, see [Batch set config](https://help.aliyun.com/document_detail/92912.html)
+        For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/doc-detail/92912.html)
 
-        > **NOTE:** Available in v1.131.0+.
+        > **NOTE:** Available since v1.131.0.
 
         > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
 
@@ -224,7 +224,7 @@ class DomainConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict', 'outputs.DomainConfigFunctionArg']]]] function_args: The args of the domain config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict', 'outputs.DomainConfigFunctionArg']]]] function_args: The args of the domain config. See `function_args` below for details.
         :param pulumi.Input[_builtins.str] function_name: The name of the domain config.
         """
         ...
@@ -236,9 +236,9 @@ class DomainConfig(pulumi.CustomResource):
         """
         Provides a SCDN Accelerated Domain resource.
 
-        For information about domain config and how to use it, see [Batch set config](https://help.aliyun.com/document_detail/92912.html)
+        For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/doc-detail/92912.html)
 
-        > **NOTE:** Available in v1.131.0+.
+        > **NOTE:** Available since v1.131.0.
 
         > **NOTE:** Alibaba Cloud SCDN has stopped new customer purchases from January 26, 2023, and you can choose to buy Alibaba Cloud DCDN products with more comprehensive acceleration and protection capabilities. If you are already a SCDN customer, you can submit a work order at any time to apply for a smooth migration to Alibaba Cloud DCDN products. In the future, we will provide better acceleration and security protection services in Alibaba Cloud DCDN, thank you for your understanding and cooperation.
 
@@ -345,7 +345,7 @@ class DomainConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_id: The SCDN domain config id.
         :param pulumi.Input[_builtins.str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict', 'outputs.DomainConfigFunctionArg']]]] function_args: The args of the domain config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict', 'outputs.DomainConfigFunctionArg']]]] function_args: The args of the domain config. See `function_args` below for details.
         :param pulumi.Input[_builtins.str] function_name: The name of the domain config.
         :param pulumi.Input[_builtins.str] status: The status of this resource.
         """
@@ -396,7 +396,7 @@ class DomainConfig(pulumi.CustomResource):
     @pulumi.getter(name="functionArgs")
     def function_args(self) -> pulumi.Output[Sequence['outputs.DomainConfigFunctionArg']]:
         """
-        The args of the domain config.
+        The args of the domain config. See `function_args` below for details.
         """
         return pulumi.get(self, "function_args")
 

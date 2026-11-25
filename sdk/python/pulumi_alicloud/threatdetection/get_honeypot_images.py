@@ -121,7 +121,7 @@ def get_honeypot_images(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -137,6 +137,7 @@ def get_honeypot_images(ids: Optional[Sequence[_builtins.str]] = None,
 
     :param Sequence[_builtins.str] ids: A list of Honeypot Image IDs.
     :param _builtins.str name_regex: A regex string to filter results by Honeypot mirror nam.
+    :param _builtins.str node_id: The id of the honeypot management node.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -163,7 +164,7 @@ def get_honeypot_images_output(ids: pulumi.Input[Optional[Optional[Sequence[_bui
     """
     This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -179,6 +180,7 @@ def get_honeypot_images_output(ids: pulumi.Input[Optional[Optional[Sequence[_bui
 
     :param Sequence[_builtins.str] ids: A list of Honeypot Image IDs.
     :param _builtins.str name_regex: A regex string to filter results by Honeypot mirror nam.
+    :param _builtins.str node_id: The id of the honeypot management node.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()

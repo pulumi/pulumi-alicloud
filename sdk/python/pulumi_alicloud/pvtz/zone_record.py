@@ -33,7 +33,7 @@ class ZoneRecordArgs:
         """
         The set of arguments for constructing a ZoneRecord resource.
 
-        :param pulumi.Input[_builtins.str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        :param pulumi.Input[_builtins.str] type: The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
         :param pulumi.Input[_builtins.str] value: The value of the Private Zone Record.
         :param pulumi.Input[_builtins.str] zone_id: The name of the Private Zone Record.
         :param pulumi.Input[_builtins.str] lang: User language.
@@ -45,6 +45,7 @@ class ZoneRecordArgs:
                - ENABLE: enable resolution.
                - DISABLE: pause parsing.
         :param pulumi.Input[_builtins.int] ttl: The ttl of the Private Zone Record. Default to `60`.
+        :param pulumi.Input[_builtins.str] user_client_ip: The user client ip of the Private Zone Record.
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "value", value)
@@ -73,7 +74,7 @@ class ZoneRecordArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
         """
         return pulumi.get(self, "type")
 
@@ -195,6 +196,9 @@ class ZoneRecordArgs:
     @_builtins.property
     @pulumi.getter(name="userClientIp")
     def user_client_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The user client ip of the Private Zone Record.
+        """
         return pulumi.get(self, "user_client_ip")
 
     @user_client_ip.setter
@@ -230,7 +234,8 @@ class _ZoneRecordState:
                - ENABLE: enable resolution.
                - DISABLE: pause parsing.
         :param pulumi.Input[_builtins.int] ttl: The ttl of the Private Zone Record. Default to `60`.
-        :param pulumi.Input[_builtins.str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        :param pulumi.Input[_builtins.str] type: The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
+        :param pulumi.Input[_builtins.str] user_client_ip: The user client ip of the Private Zone Record.
         :param pulumi.Input[_builtins.str] value: The value of the Private Zone Record.
         :param pulumi.Input[_builtins.str] zone_id: The name of the Private Zone Record.
         """
@@ -365,7 +370,7 @@ class _ZoneRecordState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
         """
         return pulumi.get(self, "type")
 
@@ -376,6 +381,9 @@ class _ZoneRecordState:
     @_builtins.property
     @pulumi.getter(name="userClientIp")
     def user_client_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The user client ip of the Private Zone Record.
+        """
         return pulumi.get(self, "user_client_ip")
 
     @user_client_ip.setter
@@ -430,6 +438,8 @@ class ZoneRecord(pulumi.CustomResource):
 
         > **NOTE:** Terraform will auto Create a Private Zone Record while it uses `pvtz.ZoneRecord` to build a Private Zone Record resource.
 
+        > **NOTE:** Available since v1.13.0.
+
         ## Example Usage
 
         Basic Usage
@@ -438,12 +448,27 @@ class ZoneRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        zone = alicloud.pvtz.Zone("zone", zone_name="foo.test.com")
+        zone = alicloud.pvtz.Zone("zone", zone_name="terraform-example.com")
         foo = alicloud.pvtz.ZoneRecord("foo",
             zone_id=zone.id,
             rr="www",
             type="CNAME",
             value="bbb.test.com",
+            ttl=60)
+        ```
+
+        AAAA (IPv6) Record
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        zone = alicloud.pvtz.Zone("zone", zone_name="terraform-example-aaaa.com")
+        foo = alicloud.pvtz.ZoneRecord("foo",
+            zone_id=zone.id,
+            rr="www",
+            type="AAAA",
+            value="2001:db8::1",
             ttl=60)
         ```
 
@@ -469,7 +494,8 @@ class ZoneRecord(pulumi.CustomResource):
                - ENABLE: enable resolution.
                - DISABLE: pause parsing.
         :param pulumi.Input[_builtins.int] ttl: The ttl of the Private Zone Record. Default to `60`.
-        :param pulumi.Input[_builtins.str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        :param pulumi.Input[_builtins.str] type: The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
+        :param pulumi.Input[_builtins.str] user_client_ip: The user client ip of the Private Zone Record.
         :param pulumi.Input[_builtins.str] value: The value of the Private Zone Record.
         :param pulumi.Input[_builtins.str] zone_id: The name of the Private Zone Record.
         """
@@ -484,6 +510,8 @@ class ZoneRecord(pulumi.CustomResource):
 
         > **NOTE:** Terraform will auto Create a Private Zone Record while it uses `pvtz.ZoneRecord` to build a Private Zone Record resource.
 
+        > **NOTE:** Available since v1.13.0.
+
         ## Example Usage
 
         Basic Usage
@@ -492,12 +520,27 @@ class ZoneRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        zone = alicloud.pvtz.Zone("zone", zone_name="foo.test.com")
+        zone = alicloud.pvtz.Zone("zone", zone_name="terraform-example.com")
         foo = alicloud.pvtz.ZoneRecord("foo",
             zone_id=zone.id,
             rr="www",
             type="CNAME",
             value="bbb.test.com",
+            ttl=60)
+        ```
+
+        AAAA (IPv6) Record
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        zone = alicloud.pvtz.Zone("zone", zone_name="terraform-example-aaaa.com")
+        foo = alicloud.pvtz.ZoneRecord("foo",
+            zone_id=zone.id,
+            rr="www",
+            type="AAAA",
+            value="2001:db8::1",
             ttl=60)
         ```
 
@@ -604,7 +647,8 @@ class ZoneRecord(pulumi.CustomResource):
                - ENABLE: enable resolution.
                - DISABLE: pause parsing.
         :param pulumi.Input[_builtins.int] ttl: The ttl of the Private Zone Record. Default to `60`.
-        :param pulumi.Input[_builtins.str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        :param pulumi.Input[_builtins.str] type: The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
+        :param pulumi.Input[_builtins.str] user_client_ip: The user client ip of the Private Zone Record.
         :param pulumi.Input[_builtins.str] value: The value of the Private Zone Record.
         :param pulumi.Input[_builtins.str] zone_id: The name of the Private Zone Record.
         """
@@ -727,13 +771,16 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+        The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
         """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="userClientIp")
     def user_client_ip(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The user client ip of the Private Zone Record.
+        """
         return pulumi.get(self, "user_client_ip")
 
     @_builtins.property

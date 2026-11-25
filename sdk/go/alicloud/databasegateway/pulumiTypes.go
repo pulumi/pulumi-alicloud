@@ -17,7 +17,8 @@ type GetGatewaysGateway struct {
 	// The creation time of Gateway.
 	CreateTime string `pulumi:"createTime"`
 	// The description of Gateway.
-	GatewayDesc      string                              `pulumi:"gatewayDesc"`
+	GatewayDesc string `pulumi:"gatewayDesc"`
+	// Gateway instance List.
 	GatewayInstances []GetGatewaysGatewayGatewayInstance `pulumi:"gatewayInstances"`
 	// The name of the Gateway.
 	GatewayName string `pulumi:"gatewayName"`
@@ -50,7 +51,8 @@ type GetGatewaysGatewayArgs struct {
 	// The creation time of Gateway.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description of Gateway.
-	GatewayDesc      pulumi.StringInput                          `pulumi:"gatewayDesc"`
+	GatewayDesc pulumi.StringInput `pulumi:"gatewayDesc"`
+	// Gateway instance List.
 	GatewayInstances GetGatewaysGatewayGatewayInstanceArrayInput `pulumi:"gatewayInstances"`
 	// The name of the Gateway.
 	GatewayName pulumi.StringInput `pulumi:"gatewayName"`
@@ -129,6 +131,7 @@ func (o GetGatewaysGatewayOutput) GatewayDesc() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GatewayDesc }).(pulumi.StringOutput)
 }
 
+// Gateway instance List.
 func (o GetGatewaysGatewayOutput) GatewayInstances() GetGatewaysGatewayGatewayInstanceArrayOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) []GetGatewaysGatewayGatewayInstance { return v.GatewayInstances }).(GetGatewaysGatewayGatewayInstanceArrayOutput)
 }

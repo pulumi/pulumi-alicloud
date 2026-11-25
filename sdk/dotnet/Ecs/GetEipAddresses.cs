@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Eip Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Eip Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Eip Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.126.0+.
+        /// &gt; **NOTE:** Available since v1.126.0.
         /// 
         /// ## Example Usage
         /// 
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+        /// The include reservation data.
         /// </summary>
         [Input("includeReservationData")]
         public bool? IncludeReservationData { get; set; }
@@ -179,6 +179,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("ipAddresses")]
         private List<string>? _ipAddresses;
+
+        /// <summary>
+        /// Field `IpAddresses` has been deprecated. Please use `IpAddress` instead.
+        /// </summary>
         [Obsolete(@"Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.")]
         public List<string> IpAddresses
         {
@@ -239,6 +243,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -297,7 +303,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The include reservation data. Valid values: `BGP` and `BGP_PRO`.
+        /// The include reservation data.
         /// </summary>
         [Input("includeReservationData")]
         public Input<bool>? IncludeReservationData { get; set; }
@@ -310,6 +316,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("ipAddresses")]
         private InputList<string>? _ipAddresses;
+
+        /// <summary>
+        /// Field `IpAddresses` has been deprecated. Please use `IpAddress` instead.
+        /// </summary>
         [Obsolete(@"Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.")]
         public InputList<string> IpAddresses
         {
@@ -370,6 +380,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputMap<string> Tags
         {
@@ -387,11 +399,20 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEipAddressesResult
     {
+        /// <summary>
+        /// The name of the EIP.
+        /// </summary>
         public readonly string? AddressName;
+        /// <summary>
+        /// A list of Eip Addresses. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEipAddressesAddressResult> Addresses;
         public readonly string? AssociatedInstanceId;
         public readonly string? AssociatedInstanceType;
         public readonly bool? DryRun;
+        /// <summary>
+        /// (Deprecated since v1.126.0) A list of EIPs. This field has been deprecated. Please use `Addresses` instead. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEipAddressesEipResult> Eips;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -400,17 +421,41 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly bool? IncludeReservationData;
+        /// <summary>
+        /// The IP address of the EIP.
+        /// </summary>
         public readonly string? IpAddress;
         public readonly ImmutableArray<string> IpAddresses;
+        /// <summary>
+        /// The Internet service provider (ISP).
+        /// </summary>
         public readonly string? Isp;
         public readonly string? LockReason;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Address names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The billing method of the EIP.
+        /// </summary>
         public readonly string? PaymentType;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The IDs of the contiguous EIPs.
+        /// </summary>
         public readonly string? SegmentInstanceId;
+        /// <summary>
+        /// The status of the EIP.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

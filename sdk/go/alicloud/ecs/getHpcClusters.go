@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Hpc Clusters of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.116.0+.
+// > **NOTE:** Available since v1.116.0.
 //
 // ## Example Usage
 //
@@ -68,11 +68,13 @@ type GetHpcClustersArgs struct {
 
 // A collection of values returned by getHpcClusters.
 type GetHpcClustersResult struct {
+	// A list of Ecs Hpc Clusters. Each element contains the following attributes:
 	Clusters []GetHpcClustersCluster `pulumi:"clusters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Hpc Cluster names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -111,6 +113,7 @@ func (o GetHpcClustersResultOutput) ToGetHpcClustersResultOutputWithContext(ctx 
 	return o
 }
 
+// A list of Ecs Hpc Clusters. Each element contains the following attributes:
 func (o GetHpcClustersResultOutput) Clusters() GetHpcClustersClusterArrayOutput {
 	return o.ApplyT(func(v GetHpcClustersResult) []GetHpcClustersCluster { return v.Clusters }).(GetHpcClustersClusterArrayOutput)
 }
@@ -128,6 +131,7 @@ func (o GetHpcClustersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHpcClustersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Hpc Cluster names.
 func (o GetHpcClustersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHpcClustersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

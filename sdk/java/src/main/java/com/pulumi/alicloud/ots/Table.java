@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.9.2.
  * 
+ * &gt; **NOTE:** A table can have at most one primary key with `autoIncrement` enabled, the primary key with `autoIncrement` enabled cannot be the first primary key (the partition key) of the table, and `enableLocalTxn` cannot be enabled together with a primary key that enables `autoIncrement`.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -114,6 +116,133 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Auto-Increment Primary Key
+ * 
+ * The following example creates a table whose second primary key column is an auto-increment column. The first primary key column is the partition key and cannot be auto-incremented.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.ots.Instance;
+ * import com.pulumi.alicloud.ots.InstanceArgs;
+ * import com.pulumi.alicloud.ots.Table;
+ * import com.pulumi.alicloud.ots.TableArgs;
+ * import com.pulumi.alicloud.ots.inputs.TablePrimaryKeyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .name(String.format("%s-%s", name,default_.get("result")))
+ *             .description(name)
+ *             .accessedBy("Any")
+ *             .build());
+ * 
+ *         var defaultTable = new Table("defaultTable", TableArgs.builder()
+ *             .instanceName(defaultInstance.name())
+ *             .tableName("terraform_example_auto_increment")
+ *             .timeToLive(-1)
+ *             .maxVersion(1)
+ *             .primaryKeys(            
+ *                 TablePrimaryKeyArgs.builder()
+ *                     .name("pk1")
+ *                     .type("Integer")
+ *                     .build(),
+ *                 TablePrimaryKeyArgs.builder()
+ *                     .name("pk2")
+ *                     .type("Integer")
+ *                     .autoIncrement(true)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Local Transaction
+ * 
+ * The following example creates a table with local transactions enabled.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.ots.Instance;
+ * import com.pulumi.alicloud.ots.InstanceArgs;
+ * import com.pulumi.alicloud.ots.Table;
+ * import com.pulumi.alicloud.ots.TableArgs;
+ * import com.pulumi.alicloud.ots.inputs.TablePrimaryKeyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .name(String.format("%s-%s", name,default_.get("result")))
+ *             .description(name)
+ *             .accessedBy("Any")
+ *             .build());
+ * 
+ *         var defaultTable = new Table("defaultTable", TableArgs.builder()
+ *             .instanceName(defaultInstance.name())
+ *             .tableName("terraform_example_local_txn")
+ *             .timeToLive(-1)
+ *             .maxVersion(1)
+ *             .enableLocalTxn(true)
+ *             .primaryKeys(TablePrimaryKeyArgs.builder()
+ *                 .name("pk1")
+ *                 .type("Integer")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
@@ -170,14 +299,28 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deviationCellVersionInSec);
     }
     /**
-     * Whether enable OTS server side encryption. Default value is false.
+     * Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+     * 
+     */
+    @Export(name="enableLocalTxn", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableLocalTxn;
+
+    /**
+     * @return Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+     * 
+     */
+    public Output<Optional<Boolean>> enableLocalTxn() {
+        return Codegen.optional(this.enableLocalTxn);
+    }
+    /**
+     * Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
      * 
      */
     @Export(name="enableSse", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableSse;
 
     /**
-     * @return Whether enable OTS server side encryption. Default value is false.
+     * @return Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
      * 
      */
     public Output<Optional<Boolean>> enableSse() {
@@ -226,42 +369,42 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.primaryKeys;
     }
     /**
-     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      * 
      */
     @Export(name="sseKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sseKeyId;
 
     /**
-     * @return . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * @return . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      * 
      */
     public Output<Optional<String>> sseKeyId() {
         return Codegen.optional(this.sseKeyId);
     }
     /**
-     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
      * 
      */
     @Export(name="sseKeyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sseKeyType;
 
     /**
-     * @return The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+     * @return The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
      * 
      */
     public Output<Optional<String>> sseKeyType() {
         return Codegen.optional(this.sseKeyType);
     }
     /**
-     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      * 
      */
     @Export(name="sseRoleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sseRoleArn;
 
     /**
-     * @return The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     * @return The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
      * 
      */
     public Output<Optional<String>> sseRoleArn() {

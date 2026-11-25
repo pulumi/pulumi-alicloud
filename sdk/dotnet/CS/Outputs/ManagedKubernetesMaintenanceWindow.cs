@@ -29,7 +29,8 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
         /// 
         /// for example:
-        /// ```
+        /// 
+        /// ```text
         /// maintenance_window {
         /// enable            = true
         /// maintenance_time  = "2024-10-15T12:31:00.000+08:00"

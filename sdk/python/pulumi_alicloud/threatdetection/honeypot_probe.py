@@ -39,7 +39,7 @@ class HoneypotProbeArgs:
         :param pulumi.Input[_builtins.str] display_name: Probe display name.
         :param pulumi.Input[_builtins.str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.
         :param pulumi.Input[_builtins.bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
-        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
+        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]] honeypot_bind_lists: Configure the service.See the following `honeypot_bind_list` below.
         :param pulumi.Input[_builtins.bool] ping: Ping scan detection. Value: **true**: Enable **false**: Disabled
         :param pulumi.Input[_builtins.str] probe_version: The version of the probe.
         :param pulumi.Input[_builtins.str] proxy_ip: The IP address of the proxy.
@@ -119,7 +119,7 @@ class HoneypotProbeArgs:
     @pulumi.getter(name="honeypotBindLists")
     def honeypot_bind_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]:
         """
-        Configure the service.See the following `Block HoneypotBindList`.
+        Configure the service.See the following `honeypot_bind_list` below.
         """
         return pulumi.get(self, "honeypot_bind_lists")
 
@@ -222,7 +222,7 @@ class _HoneypotProbeState:
         :param pulumi.Input[_builtins.bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
         :param pulumi.Input[_builtins.str] control_node_id: The ID of the management node.
         :param pulumi.Input[_builtins.str] display_name: Probe display name.
-        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
+        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]] honeypot_bind_lists: Configure the service.See the following `honeypot_bind_list` below.
         :param pulumi.Input[_builtins.str] honeypot_probe_id: The first ID of the resource
         :param pulumi.Input[_builtins.bool] ping: Ping scan detection. Value: **true**: Enable **false**: Disabled
         :param pulumi.Input[_builtins.str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.
@@ -300,7 +300,7 @@ class _HoneypotProbeState:
     @pulumi.getter(name="honeypotBindLists")
     def honeypot_bind_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]:
         """
-        Configure the service.See the following `Block HoneypotBindList`.
+        Configure the service.See the following `honeypot_bind_list` below.
         """
         return pulumi.get(self, "honeypot_bind_lists")
 
@@ -482,7 +482,7 @@ class HoneypotProbe(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
         :param pulumi.Input[_builtins.str] control_node_id: The ID of the management node.
         :param pulumi.Input[_builtins.str] display_name: Probe display name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict', 'outputs.HoneypotProbeHoneypotBindList']]]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict', 'outputs.HoneypotProbeHoneypotBindList']]]] honeypot_bind_lists: Configure the service.See the following `honeypot_bind_list` below.
         :param pulumi.Input[_builtins.bool] ping: Ping scan detection. Value: **true**: Enable **false**: Disabled
         :param pulumi.Input[_builtins.str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.
         :param pulumi.Input[_builtins.str] probe_version: The version of the probe.
@@ -626,7 +626,7 @@ class HoneypotProbe(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
         :param pulumi.Input[_builtins.str] control_node_id: The ID of the management node.
         :param pulumi.Input[_builtins.str] display_name: Probe display name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict', 'outputs.HoneypotProbeHoneypotBindList']]]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict', 'outputs.HoneypotProbeHoneypotBindList']]]] honeypot_bind_lists: Configure the service.See the following `honeypot_bind_list` below.
         :param pulumi.Input[_builtins.str] honeypot_probe_id: The first ID of the resource
         :param pulumi.Input[_builtins.bool] ping: Ping scan detection. Value: **true**: Enable **false**: Disabled
         :param pulumi.Input[_builtins.str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.
@@ -716,7 +716,7 @@ class HoneypotProbe(pulumi.CustomResource):
     @pulumi.getter(name="honeypotBindLists")
     def honeypot_bind_lists(self) -> pulumi.Output[Optional[Sequence['outputs.HoneypotProbeHoneypotBindList']]]:
         """
-        Configure the service.See the following `Block HoneypotBindList`.
+        Configure the service.See the following `honeypot_bind_list` below.
         """
         return pulumi.get(self, "honeypot_bind_lists")
 

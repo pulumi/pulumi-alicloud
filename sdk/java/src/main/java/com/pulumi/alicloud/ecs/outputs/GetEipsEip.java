@@ -12,110 +12,110 @@ import java.util.Objects;
 @CustomType
 public final class GetEipsEip {
     /**
-     * @return EIP internet max bandwidth in Mbps.
+     * @return The maximum bandwidth of the EIP.
      * 
      */
     private String bandwidth;
     /**
-     * @return Time of creation.
+     * @return The time when the EIP was created.
      * 
      */
     private String creationTime;
     /**
-     * @return (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+     * @return Indicates whether deletion protection is enabled.
      * 
      */
     private Boolean deletionProtection;
     /**
-     * @return ID of the EIP.
+     * @return The ID of the EIP.
      * 
      */
     private String id;
     /**
-     * @return The ID of the instance that is being bound.
+     * @return The ID of the instance with which the EIP is associated.
      * 
      */
     private String instanceId;
     /**
-     * @return The instance type of that the EIP is bound.
+     * @return The type of the instance with which the EIP is associated.
      * 
      */
     private String instanceType;
     /**
-     * @return EIP internet charge type.
+     * @return The metering method of the EIP.
      * 
      */
     private String internetChargeType;
     /**
-     * @return Public IP Address of the the EIP.
+     * @return The eip address.
      * 
      */
     private String ipAddress;
     /**
-     * @return EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     private String status;
 
     private GetEipsEip() {}
     /**
-     * @return EIP internet max bandwidth in Mbps.
+     * @return The maximum bandwidth of the EIP.
      * 
      */
     public String bandwidth() {
         return this.bandwidth;
     }
     /**
-     * @return Time of creation.
+     * @return The time when the EIP was created.
      * 
      */
     public String creationTime() {
         return this.creationTime;
     }
     /**
-     * @return (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+     * @return Indicates whether deletion protection is enabled.
      * 
      */
     public Boolean deletionProtection() {
         return this.deletionProtection;
     }
     /**
-     * @return ID of the EIP.
+     * @return The ID of the EIP.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The ID of the instance that is being bound.
+     * @return The ID of the instance with which the EIP is associated.
      * 
      */
     public String instanceId() {
         return this.instanceId;
     }
     /**
-     * @return The instance type of that the EIP is bound.
+     * @return The type of the instance with which the EIP is associated.
      * 
      */
     public String instanceType() {
         return this.instanceType;
     }
     /**
-     * @return EIP internet charge type.
+     * @return The metering method of the EIP.
      * 
      */
     public String internetChargeType() {
         return this.internetChargeType;
     }
     /**
-     * @return Public IP Address of the the EIP.
+     * @return The eip address.
      * 
      */
     public String ipAddress() {
         return this.ipAddress;
     }
     /**
-     * @return EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     public String status() {

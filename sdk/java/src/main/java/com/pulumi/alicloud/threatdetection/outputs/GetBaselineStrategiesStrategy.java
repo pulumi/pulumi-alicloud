@@ -50,12 +50,20 @@ public final class GetBaselineStrategiesStrategy {
      * 
      */
     private String id;
+    /**
+     * @return The risk sub type name of the baseline check policy.
+     * 
+     */
     private String riskSubTypeName;
     /**
      * @return The baseline check policy start time.
      * 
      */
     private String startTime;
+    /**
+     * @return The target type of the baseline check policy.
+     * 
+     */
     private String targetType;
 
     private GetBaselineStrategiesStrategy() {}
@@ -112,6 +120,10 @@ public final class GetBaselineStrategiesStrategy {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The risk sub type name of the baseline check policy.
+     * 
+     */
     public String riskSubTypeName() {
         return this.riskSubTypeName;
     }
@@ -122,6 +134,10 @@ public final class GetBaselineStrategiesStrategy {
     public String startTime() {
         return this.startTime;
     }
+    /**
+     * @return The target type of the baseline check policy.
+     * 
+     */
     public String targetType() {
         return this.targetType;
     }

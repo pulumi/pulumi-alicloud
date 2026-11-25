@@ -13,6 +13,12 @@ namespace Pulumi.AliCloud.Ots.Inputs
     public sealed class TablePrimaryKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether the primary key column is auto-incremented. Defaults to `False`. The primary key column must be of type `Integer`, cannot be the first primary key (the partition key) of the table, and only one primary key column in a table can enable `AutoIncrement`. Changing this field forces a new resource.
+        /// </summary>
+        [Input("autoIncrement")]
+        public Input<bool>? AutoIncrement { get; set; }
+
+        /// <summary>
         /// Name for primary key.
         /// </summary>
         [Input("name", required: true)]

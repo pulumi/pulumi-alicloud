@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTransitRouterRouteTableAssociationsAssociation {
+    /**
+     * @return The ID of the CEN Transit Router Route Table Association.
+     * 
+     */
     private String id;
     /**
      * @return ID of the transit router route table association.
@@ -38,6 +42,10 @@ public final class GetTransitRouterRouteTableAssociationsAssociation {
     private String transitRouterRouteTableId;
 
     private GetTransitRouterRouteTableAssociationsAssociation() {}
+    /**
+     * @return The ID of the CEN Transit Router Route Table Association.
+     * 
+     */
     public String id() {
         return this.id;
     }

@@ -35,15 +35,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ros.NewStack(ctx, "example", &ros.StackArgs{
-//				StackName:    pulumi.String("tf-testaccstack"),
-//				TemplateBody: pulumi.String("    {\n    \\t\\\"ROSTemplateFormatVersion\\\": \\\"2015-09-01\\\"\n    }\n"),
+//				StackName:    pulumi.String("tfaccstack"),
+//				TemplateBody: pulumi.String("    {\n      \\\"ROSTemplateFormatVersion\\\": \\\"2015-09-01\\\"\n    }\n"),
 //				StackPolicyBody: pulumi.String(`    {
-//	    \t\"Statement\": [{
-//	    \t\t\"Action\": \"Update:Delete\",
-//	    \t\t\"Resource\": \"*\",
-//	    \t\t\"Effect\": \"Allow\",
-//	    \t\t\"Principal\": \"*\"
-//	    \t}]
+//	      \"Statement\": [{
+//	        \"Action\": \"Update:Delete\",
+//	        \"Resource\": \"*\",
+//	        \"Effect\": \"Allow\",
+//	        \"Principal\": \"*\"
+//	      }]
 //	    }
 //
 // `),
@@ -78,7 +78,7 @@ type Stack struct {
 	DisableRollback pulumi.BoolPtrOutput `pulumi:"disableRollback"`
 	// The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
 	NotificationUrls pulumi.StringArrayOutput `pulumi:"notificationUrls"`
-	// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+	// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
 	Parameters StackParameterArrayOutput `pulumi:"parameters"`
 	// The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
 	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
@@ -155,7 +155,7 @@ type stackState struct {
 	DisableRollback *bool `pulumi:"disableRollback"`
 	// The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
 	NotificationUrls []string `pulumi:"notificationUrls"`
-	// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+	// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
 	Parameters []StackParameter `pulumi:"parameters"`
 	// The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
 	RamRoleName *string `pulumi:"ramRoleName"`
@@ -200,7 +200,7 @@ type StackState struct {
 	DisableRollback pulumi.BoolPtrInput
 	// The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
 	NotificationUrls pulumi.StringArrayInput
-	// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+	// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
 	Parameters StackParameterArrayInput
 	// The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
 	RamRoleName pulumi.StringPtrInput
@@ -255,7 +255,7 @@ type stackArgs struct {
 	DisableRollback *bool `pulumi:"disableRollback"`
 	// The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
 	NotificationUrls []string `pulumi:"notificationUrls"`
-	// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+	// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
 	Parameters []StackParameter `pulumi:"parameters"`
 	// The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
 	RamRoleName *string `pulumi:"ramRoleName"`
@@ -299,7 +299,7 @@ type StackArgs struct {
 	DisableRollback pulumi.BoolPtrInput
 	// The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
 	NotificationUrls pulumi.StringArrayInput
-	// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+	// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
 	Parameters StackParameterArrayInput
 	// The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
 	RamRoleName pulumi.StringPtrInput
@@ -440,7 +440,7 @@ func (o StackOutput) NotificationUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Stack) pulumi.StringArrayOutput { return v.NotificationUrls }).(pulumi.StringArrayOutput)
 }
 
-// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
 func (o StackOutput) Parameters() StackParameterArrayOutput {
 	return o.ApplyT(func(v *Stack) StackParameterArrayOutput { return v.Parameters }).(StackParameterArrayOutput)
 }

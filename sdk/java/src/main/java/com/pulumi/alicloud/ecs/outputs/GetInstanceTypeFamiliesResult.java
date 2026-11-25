@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceTypeFamiliesResult {
+    /**
+     * @return A list of instance type families. Each element contains the following attributes:
+     * 
+     */
     private List<GetInstanceTypeFamiliesFamily> families;
     /**
      * @return The generation of the instance type family.
@@ -36,6 +40,10 @@ public final class GetInstanceTypeFamiliesResult {
     private @Nullable String zoneId;
 
     private GetInstanceTypeFamiliesResult() {}
+    /**
+     * @return A list of instance type families. Each element contains the following attributes:
+     * 
+     */
     public List<GetInstanceTypeFamiliesFamily> families() {
         return this.families;
     }

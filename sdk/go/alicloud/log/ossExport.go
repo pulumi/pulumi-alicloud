@@ -113,7 +113,7 @@ type OssExport struct {
 	BufferSize pulumi.IntOutput `pulumi:"bufferSize"`
 	// OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
 	CompressType pulumi.StringOutput `pulumi:"compressType"`
-	// Configure columns when `contentType` is `parquet` or `orc`.
+	// Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
 	ConfigColumns OssExportConfigColumnArrayOutput `pulumi:"configColumns"`
 	// Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
 	// **According to the different format, please select the following parameters**
@@ -223,7 +223,7 @@ type ossExportState struct {
 	BufferSize *int `pulumi:"bufferSize"`
 	// OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
 	CompressType *string `pulumi:"compressType"`
-	// Configure columns when `contentType` is `parquet` or `orc`.
+	// Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
 	ConfigColumns []OssExportConfigColumn `pulumi:"configColumns"`
 	// Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
 	// **According to the different format, please select the following parameters**
@@ -277,7 +277,7 @@ type OssExportState struct {
 	BufferSize pulumi.IntPtrInput
 	// OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
 	CompressType pulumi.StringPtrInput
-	// Configure columns when `contentType` is `parquet` or `orc`.
+	// Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
 	ConfigColumns OssExportConfigColumnArrayInput
 	// Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
 	// **According to the different format, please select the following parameters**
@@ -341,7 +341,7 @@ type ossExportArgs struct {
 	BufferSize int `pulumi:"bufferSize"`
 	// OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
 	CompressType *string `pulumi:"compressType"`
-	// Configure columns when `contentType` is `parquet` or `orc`.
+	// Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
 	ConfigColumns []OssExportConfigColumn `pulumi:"configColumns"`
 	// Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
 	// **According to the different format, please select the following parameters**
@@ -396,7 +396,7 @@ type OssExportArgs struct {
 	BufferSize pulumi.IntInput
 	// OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
 	CompressType pulumi.StringPtrInput
-	// Configure columns when `contentType` is `parquet` or `orc`.
+	// Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
 	ConfigColumns OssExportConfigColumnArrayInput
 	// Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
 	// **According to the different format, please select the following parameters**
@@ -548,7 +548,7 @@ func (o OssExportOutput) CompressType() pulumi.StringOutput {
 	return o.ApplyT(func(v *OssExport) pulumi.StringOutput { return v.CompressType }).(pulumi.StringOutput)
 }
 
-// Configure columns when `contentType` is `parquet` or `orc`.
+// Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
 func (o OssExportOutput) ConfigColumns() OssExportConfigColumnArrayOutput {
 	return o.ApplyT(func(v *OssExport) OssExportConfigColumnArrayOutput { return v.ConfigColumns }).(OssExportConfigColumnArrayOutput)
 }

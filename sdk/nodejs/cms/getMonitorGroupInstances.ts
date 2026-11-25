@@ -6,6 +6,28 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.115.0.
+ *
+ * > **NOTE:** This data source is the legacy alias of `alicloud.cms.MonitorGroupInstances` and shares the same implementation.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleMonitorGroup = new alicloud.cms.MonitorGroup("example", {monitorGroupName: "tf-example-accmonitorgroup"});
+ * const example = alicloud.cms.getMonitorGroupInstancesOutput({
+ *     ids: exampleMonitorGroup.id,
+ * });
+ * export const firstCmsMonitorGroupInstances = example.apply(example => example.instances?.[0]?.instances);
+ * ```
+ */
 export function getMonitorGroupInstances(args: GetMonitorGroupInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorGroupInstancesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", {
@@ -19,8 +41,17 @@ export function getMonitorGroupInstances(args: GetMonitorGroupInstancesArgs, opt
  * A collection of arguments for invoking getMonitorGroupInstances.
  */
 export interface GetMonitorGroupInstancesArgs {
+    /**
+     * A list of Monitor Group Instances IDs.
+     */
     ids: string;
+    /**
+     * The keyword.
+     */
     keyword?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -33,10 +64,35 @@ export interface GetMonitorGroupInstancesResult {
      */
     readonly id: string;
     readonly ids: string;
+    /**
+     * Instance information added to the Cms Group.
+     */
     readonly instances: outputs.cms.GetMonitorGroupInstancesInstance[];
     readonly keyword?: string;
     readonly outputFile?: string;
 }
+/**
+ * This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.115.0.
+ *
+ * > **NOTE:** This data source is the legacy alias of `alicloud.cms.MonitorGroupInstances` and shares the same implementation.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleMonitorGroup = new alicloud.cms.MonitorGroup("example", {monitorGroupName: "tf-example-accmonitorgroup"});
+ * const example = alicloud.cms.getMonitorGroupInstancesOutput({
+ *     ids: exampleMonitorGroup.id,
+ * });
+ * export const firstCmsMonitorGroupInstances = example.apply(example => example.instances?.[0]?.instances);
+ * ```
+ */
 export function getMonitorGroupInstancesOutput(args: GetMonitorGroupInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitorGroupInstancesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", {
@@ -50,7 +106,16 @@ export function getMonitorGroupInstancesOutput(args: GetMonitorGroupInstancesOut
  * A collection of arguments for invoking getMonitorGroupInstances.
  */
 export interface GetMonitorGroupInstancesOutputArgs {
+    /**
+     * A list of Monitor Group Instances IDs.
+     */
     ids: pulumi.Input<string>;
+    /**
+     * The keyword.
+     */
     keyword?: pulumi.Input<string | undefined>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string | undefined>;
 }

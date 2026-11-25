@@ -15,37 +15,77 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetImagesPlainArgs Empty = new GetImagesPlainArgs();
 
+    /**
+     * A list of Image IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
+    /**
+     * @return A list of Image IDs.
+     * 
+     */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The image type. Valid values: `app`, `custom`, `system`.
+     * 
+     */
     @Import(name="imageType")
     private @Nullable String imageType;
 
+    /**
+     * @return The image type. Valid values: `app`, `custom`, `system`.
+     * 
+     */
     public Optional<String> imageType() {
         return Optional.ofNullable(this.imageType);
     }
 
+    /**
+     * A regex string to filter results by Image name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to filter results by Image name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * Available in v1.161.0. The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * 
+     */
     @Import(name="platform")
     private @Nullable String platform;
 
+    /**
+     * @return Available in v1.161.0. The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * 
+     */
     public Optional<String> platform() {
         return Optional.ofNullable(this.platform);
     }
@@ -78,30 +118,66 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetImagesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of Image IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable List<String> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of Image IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param imageType The image type. Valid values: `app`, `custom`, `system`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageType(@Nullable String imageType) {
             $.imageType = imageType;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Image name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param platform Available in v1.161.0. The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+         * 
+         * @return builder
+         * 
+         */
         public Builder platform(@Nullable String platform) {
             $.platform = platform;
             return this;

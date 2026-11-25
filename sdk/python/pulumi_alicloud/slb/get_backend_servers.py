@@ -93,7 +93,7 @@ def get_backend_servers(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the server load balancer backend servers related to a server load balancer..
 
-    > **NOTE:** Available in 1.53.0+
+    > **NOTE:** Available since v1.53.0.
 
     ## Example Usage
 
@@ -130,7 +130,7 @@ def get_backend_servers_output(ids: pulumi.Input[Optional[Optional[Sequence[_bui
     """
     This data source provides the server load balancer backend servers related to a server load balancer..
 
-    > **NOTE:** Available in 1.53.0+
+    > **NOTE:** Available since v1.53.0.
 
     ## Example Usage
 

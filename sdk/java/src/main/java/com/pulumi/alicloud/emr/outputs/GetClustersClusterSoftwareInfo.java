@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClustersClusterSoftwareInfo {
     /**
-     * @return Cluster type:
+     * @return Cluster type.
      * 
      */
     private String clusterType;
@@ -30,7 +30,7 @@ public final class GetClustersClusterSoftwareInfo {
 
     private GetClustersClusterSoftwareInfo() {}
     /**
-     * @return Cluster type:
+     * @return Cluster type.
      * 
      */
     public String clusterType() {

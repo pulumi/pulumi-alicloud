@@ -41,6 +41,38 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    @Import(name="accountPasswordWo")
+    private @Nullable Output<String> accountPasswordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    public Optional<Output<String>> accountPasswordWo() {
+        return Optional.ofNullable(this.accountPasswordWo);
+    }
+
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    @Import(name="accountPasswordWoVersion")
+    private @Nullable Output<Integer> accountPasswordWoVersion;
+
+    /**
+     * @return The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    public Optional<Output<Integer>> accountPasswordWoVersion() {
+        return Optional.ofNullable(this.accountPasswordWoVersion);
+    }
+
+    /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
@@ -57,6 +89,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * 
      * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      * 
      */
@@ -65,6 +98,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * 
      * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      * 
      */
@@ -545,6 +579,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * 
      * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      * 
      */
@@ -553,6 +588,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * 
      * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      * 
      */
@@ -689,6 +725,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     * 
      * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
      * 
      */
@@ -700,6 +737,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     * 
      * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
      * 
      */
@@ -818,6 +856,8 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     private ShardingInstanceArgs(ShardingInstanceArgs $) {
         this.accountPassword = $.accountPassword;
+        this.accountPasswordWo = $.accountPasswordWo;
+        this.accountPasswordWoVersion = $.accountPasswordWoVersion;
         this.autoRenew = $.autoRenew;
         this.autoRenewDuration = $.autoRenewDuration;
         this.backupInterval = $.backupInterval;
@@ -910,6 +950,50 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param accountPasswordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPasswordWo(@Nullable Output<String> accountPasswordWo) {
+            $.accountPasswordWo = accountPasswordWo;
+            return this;
+        }
+
+        /**
+         * @param accountPasswordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPasswordWo(String accountPasswordWo) {
+            return accountPasswordWo(Output.of(accountPasswordWo));
+        }
+
+        /**
+         * @param accountPasswordWoVersion The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPasswordWoVersion(@Nullable Output<Integer> accountPasswordWoVersion) {
+            $.accountPasswordWoVersion = accountPasswordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param accountPasswordWoVersion The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountPasswordWoVersion(Integer accountPasswordWoVersion) {
+            return accountPasswordWoVersion(Output.of(accountPasswordWoVersion));
+        }
+
+        /**
          * @param autoRenew Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
@@ -932,6 +1016,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+         * 
          * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
          * 
          * @return builder
@@ -944,6 +1029,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+         * 
          * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
          * 
          * @return builder
@@ -1662,6 +1748,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param restoreTime The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+         * 
          * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
          * 
          * @return builder
@@ -1674,6 +1761,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param restoreTime The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+         * 
          * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
          * 
          * @return builder
@@ -1890,6 +1978,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          * - `Open`: turn on SSL encryption.
          * - `Close`: turn off SSL encryption.
          * - `Update`: update SSL certificate.
+         * 
          * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
          * 
          * @return builder
@@ -1905,6 +1994,7 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
          * - `Open`: turn on SSL encryption.
          * - `Close`: turn off SSL encryption.
          * - `Update`: update SSL certificate.
+         * 
          * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
          * 
          * @return builder

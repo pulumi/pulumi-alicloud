@@ -48,6 +48,9 @@ export interface GetConfigsArgs {
      * A list of Config IDs.
      */
     ids?: string[];
+    /**
+     * The Request and Receive the Language of the Message Type. Valid values: `zh`, `en`.
+     */
     lang?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -113,6 +116,9 @@ export interface GetConfigsOutputArgs {
      * A list of Config IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The Request and Receive the Language of the Message Type. Valid values: `zh`, `en`.
+     */
     lang?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

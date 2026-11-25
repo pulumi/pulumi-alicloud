@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.174.0+.
+// > **NOTE:** Available since v1.174.0.
 //
 // ## Example Usage
 //
@@ -76,14 +76,17 @@ type GetRamDirectoriesArgs struct {
 
 // A collection of values returned by getRamDirectories.
 type GetRamDirectoriesResult struct {
+	// A list of Ecd Ram Directories. Each element contains the following attributes:
 	Directories []GetRamDirectoriesDirectory `pulumi:"directories"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Ram Directory names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of directory.
+	Status *string `pulumi:"status"`
 }
 
 func GetRamDirectoriesOutput(ctx *pulumi.Context, args GetRamDirectoriesOutputArgs, opts ...pulumi.InvokeOption) GetRamDirectoriesResultOutput {
@@ -122,6 +125,7 @@ func (o GetRamDirectoriesResultOutput) ToGetRamDirectoriesResultOutputWithContex
 	return o
 }
 
+// A list of Ecd Ram Directories. Each element contains the following attributes:
 func (o GetRamDirectoriesResultOutput) Directories() GetRamDirectoriesDirectoryArrayOutput {
 	return o.ApplyT(func(v GetRamDirectoriesResult) []GetRamDirectoriesDirectory { return v.Directories }).(GetRamDirectoriesDirectoryArrayOutput)
 }
@@ -139,6 +143,7 @@ func (o GetRamDirectoriesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRamDirectoriesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ram Directory names.
 func (o GetRamDirectoriesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRamDirectoriesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -147,6 +152,7 @@ func (o GetRamDirectoriesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRamDirectoriesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of directory.
 func (o GetRamDirectoriesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRamDirectoriesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

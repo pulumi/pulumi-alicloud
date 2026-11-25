@@ -111,7 +111,7 @@ def get_deploy_groups(app_id: Optional[_builtins.str] = None,
     """
     This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.82.0+
+    > **NOTE:** Available since v1.82.0.
 
     ## Example Usage
 
@@ -120,7 +120,6 @@ def get_deploy_groups(app_id: Optional[_builtins.str] = None,
     import pulumi_alicloud as alicloud
 
     groups = alicloud.edas.get_deploy_groups(app_id="xxx",
-        ids=["xxx"],
         output_file="groups.txt")
     pulumi.export("firstGroupName", groups.groups[0].group_name)
     ```
@@ -151,7 +150,7 @@ def get_deploy_groups_output(app_id: pulumi.Input[Optional[_builtins.str]] = Non
     """
     This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.82.0+
+    > **NOTE:** Available since v1.82.0.
 
     ## Example Usage
 
@@ -160,7 +159,6 @@ def get_deploy_groups_output(app_id: pulumi.Input[Optional[_builtins.str]] = Non
     import pulumi_alicloud as alicloud
 
     groups = alicloud.edas.get_deploy_groups(app_id="xxx",
-        ids=["xxx"],
         output_file="groups.txt")
     pulumi.export("firstGroupName", groups.groups[0].group_name)
     ```

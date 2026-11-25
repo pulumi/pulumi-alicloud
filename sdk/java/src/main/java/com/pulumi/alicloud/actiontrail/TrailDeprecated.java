@@ -18,11 +18,17 @@ import javax.annotation.Nullable;
 /**
  * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.actiontrail.Trail from version 1.95.0.
  * 
- * Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+ * Provides a Actiontrail Trail resource.
  * 
- * &gt; **NOTE:** Available in 1.35.0+
+ * Trail of ActionTrail. After creating a trail, you need to enable the trail through StartLogging.
+ * 
+ * For information about Actiontrail Trail and how to use it, see [What is Trail](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createtrail).
+ * 
+ * &gt; **NOTE:** Available since v1.95.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * <pre>
  * {@code
@@ -31,8 +37,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.actiontrail.TrailDeprecated;
- * import com.pulumi.alicloud.actiontrail.TrailDeprecatedArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.ram.RamFunctions;
+ * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
+ * import com.pulumi.alicloud.actiontrail.Trail;
+ * import com.pulumi.alicloud.actiontrail.TrailArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -46,13 +60,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Create a new action trail.
- *         var foo = new TrailDeprecated("foo", TrailDeprecatedArgs.builder()
- *             .name("action-trail")
- *             .eventRw("Write-test")
- *             .ossBucketName(bucket.get("id"))
- *             .roleName(attach.get("roleName"))
- *             .ossKeyPrefix("at-product-account-audit-B")
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var defaultGetAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+ *             .projectName(String.format("%s-%s", name,defaultInteger.get("result")))
+ *             .description("tf actiontrail example")
+ *             .build());
+ * 
+ *         final var defaultGetRoles = RamFunctions.getRoles(GetRolesArgs.builder()
+ *             .nameRegex("AliyunServiceRoleForActionTrail")
+ *             .build());
+ * 
+ *         var defaultTrail = new Trail("defaultTrail", TrailArgs.builder()
+ *             .trailName(name)
+ *             .slsWriteRoleArn(defaultGetRoles.roles()[0].arn())
+ *             .slsProjectArn(defaultProject.projectName().applyValue(_projectName -> String.format("acs:log:%s:%s:project/%s", default_.regions()[0].id(),defaultGetAccount.id(),_projectName)))
  *             .build());
  * 
  *     }
@@ -64,10 +97,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Action trail can be imported using the id, e.g.
+ * Actiontrail Trail can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+ * $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated example &lt;id&gt;
  * ```
  * 
  * @deprecated Resource renamed to `Trail`
@@ -76,57 +109,107 @@ import javax.annotation.Nullable;
 @Deprecated
 @ResourceType(type="alicloud:actiontrail/trailDeprecated:TrailDeprecated")
 public class TrailDeprecated extends com.pulumi.resources.CustomResource {
+    /**
+     * (Available since v1.256.0) The time when the trail was created.
+     * 
+     */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
+    /**
+     * @return (Available since v1.256.0) The time when the trail was created.
+     * 
+     */
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     * 
+     */
     @Export(name="dataEventTrailRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataEventTrailRegion;
 
+    /**
+     * @return The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     * 
+     */
     public Output<Optional<String>> dataEventTrailRegion() {
         return Codegen.optional(this.dataEventTrailRegion);
     }
     /**
-     * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+     * The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      * 
      */
     @Export(name="eventRw", refs={String.class}, tree="[0]")
     private Output<String> eventRw;
 
     /**
-     * @return Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+     * @return The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      * 
      */
     public Output<String> eventRw() {
         return this.eventRw;
     }
+    /**
+     * The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     * 
+     */
     @Export(name="eventSelectors", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eventSelectors;
 
+    /**
+     * @return The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     * 
+     */
     public Output<Optional<String>> eventSelectors() {
         return Codegen.optional(this.eventSelectors);
     }
+    /**
+     * Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+     * 
+     */
     @Export(name="isOrganizationTrail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOrganizationTrail;
 
+    /**
+     * @return Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+     * 
+     */
     public Output<Optional<Boolean>> isOrganizationTrail() {
         return Codegen.optional(this.isOrganizationTrail);
     }
+    /**
+     * The ARN of the MaxCompute project to which you want to deliver events.
+     * 
+     */
     @Export(name="maxComputeProjectArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maxComputeProjectArn;
 
+    /**
+     * @return The ARN of the MaxCompute project to which you want to deliver events.
+     * 
+     */
     public Output<Optional<String>> maxComputeProjectArn() {
         return Codegen.optional(this.maxComputeProjectArn);
     }
+    /**
+     * The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+     * 
+     */
     @Export(name="maxComputeWriteRoleArn", refs={String.class}, tree="[0]")
     private Output<String> maxComputeWriteRoleArn;
 
+    /**
+     * @return The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+     * 
+     */
     public Output<String> maxComputeWriteRoleArn() {
         return this.maxComputeWriteRoleArn;
     }
     /**
+     * Field `mnsTopicArn` has been deprecated from provider version 1.118.0.
+     * 
      * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      * 
      */
@@ -134,11 +217,15 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     @Export(name="mnsTopicArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mnsTopicArn;
 
+    /**
+     * @return Field `mnsTopicArn` has been deprecated from provider version 1.118.0.
+     * 
+     */
     public Output<Optional<String>> mnsTopicArn() {
         return Codegen.optional(this.mnsTopicArn);
     }
     /**
-     * The name of the trail to be created, which must be unique for an account.
+     * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
      * 
@@ -148,54 +235,70 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The name of the trail to be created, which must be unique for an account.
+     * @return Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+     * The OSS bucket to which the trail delivers logs.
      * 
      */
     @Export(name="ossBucketName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossBucketName;
 
     /**
-     * @return The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+     * @return The OSS bucket to which the trail delivers logs.
      * 
      */
     public Output<Optional<String>> ossBucketName() {
         return Codegen.optional(this.ossBucketName);
     }
     /**
-     * The prefix of the specified OSS bucket name. This parameter can be left empty.
+     * The prefix of the file name in the OSS bucket to which the trail delivers logs.
      * 
      */
     @Export(name="ossKeyPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossKeyPrefix;
 
     /**
-     * @return The prefix of the specified OSS bucket name. This parameter can be left empty.
+     * @return The prefix of the file name in the OSS bucket to which the trail delivers logs.
      * 
      */
     public Output<Optional<String>> ossKeyPrefix() {
         return Codegen.optional(this.ossKeyPrefix);
     }
+    /**
+     * The name of the RAM role that the user allows ActionTrail to access OSS service.
+     * 
+     */
     @Export(name="ossWriteRoleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossWriteRoleArn;
 
+    /**
+     * @return The name of the RAM role that the user allows ActionTrail to access OSS service.
+     * 
+     */
     public Output<Optional<String>> ossWriteRoleArn() {
         return Codegen.optional(this.ossWriteRoleArn);
     }
+    /**
+     * (Available since v1.256.0) The home region of the trail.
+     * 
+     */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
+    /**
+     * @return (Available since v1.256.0) The home region of the trail.
+     * 
+     */
     public Output<String> regionId() {
         return this.regionId;
     }
     /**
-     * The RAM role in ActionTrail permitted by the user.
+     * Field `roleName` has been deprecated from provider version 1.118.0.
      * 
      * @deprecated Field `roleName` has been deprecated from version 1.118.0
      * 
@@ -205,59 +308,79 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> roleName;
 
     /**
-     * @return The RAM role in ActionTrail permitted by the user.
+     * @return Field `roleName` has been deprecated from provider version 1.118.0.
      * 
      */
     public Output<Optional<String>> roleName() {
         return Codegen.optional(this.roleName);
     }
     /**
-     * The unique ARN of the Log Service project.
+     * The ARN of the Simple Log Service project to which the trail delivers logs.
      * 
      */
     @Export(name="slsProjectArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> slsProjectArn;
 
     /**
-     * @return The unique ARN of the Log Service project.
+     * @return The ARN of the Simple Log Service project to which the trail delivers logs.
      * 
      */
     public Output<Optional<String>> slsProjectArn() {
         return Codegen.optional(this.slsProjectArn);
     }
     /**
-     * The unique ARN of the Log Service role.
-     * 
-     * &gt; **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+     * The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
      * 
      */
     @Export(name="slsWriteRoleArn", refs={String.class}, tree="[0]")
     private Output<String> slsWriteRoleArn;
 
     /**
-     * @return The unique ARN of the Log Service role.
-     * 
-     * &gt; **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+     * @return The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
      * 
      */
     public Output<String> slsWriteRoleArn() {
         return this.slsWriteRoleArn;
     }
+    /**
+     * The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
+    /**
+     * The name of the trail to be created.
+     * 
+     */
     @Export(name="trailName", refs={String.class}, tree="[0]")
     private Output<String> trailName;
 
+    /**
+     * @return The name of the trail to be created.
+     * 
+     */
     public Output<String> trailName() {
         return this.trailName;
     }
+    /**
+     * The region of the trail.
+     * 
+     */
     @Export(name="trailRegion", refs={String.class}, tree="[0]")
     private Output<String> trailRegion;
 
+    /**
+     * @return The region of the trail.
+     * 
+     */
     public Output<String> trailRegion() {
         return this.trailRegion;
     }

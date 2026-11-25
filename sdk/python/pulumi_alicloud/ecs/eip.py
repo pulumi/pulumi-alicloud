@@ -47,22 +47,50 @@ class EipArgs:
         """
         The set of arguments for constructing a Eip resource.
 
-        :param pulumi.Input[_builtins.str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[_builtins.str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
-        :param pulumi.Input[_builtins.str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[_builtins.str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
-        :param pulumi.Input[_builtins.str] ip_address: The elastic ip address
-        :param pulumi.Input[_builtins.str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
-        :param pulumi.Input[_builtins.str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-               **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the eip belongs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] activity_id: The promotion code. This parameter is not required.
+        :param pulumi.Input[_builtins.str] address_name: The EIP name.
+               
+               The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] allocation_id: The ID of the EIP instance.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Valid values:
+        :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection. Valid values:
+        :param pulumi.Input[_builtins.str] description: The description of the EIP.
+        :param pulumi.Input[_builtins.str] high_definition_monitor_log_status: The status of fine-grained monitoring. Valid values:
+               - `ON`
+               - `OFF`
+        :param pulumi.Input[_builtins.str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `payment_type` instead.
+        :param pulumi.Input[_builtins.str] internet_charge_type: The metering method of the EIP. Valid values:
+               - `PayByBandwidth` (default): pay-by-bandwidth.
+               - `PayByTraffic`: pay-by-data-transfer.
+        :param pulumi.Input[_builtins.str] ip_address: The IP address of the EIP. Supports a maximum of 50 EIPs.
+        :param pulumi.Input[_builtins.str] isp: The line type. Valid values:
+               - `BGP` (default): BGP (Multi-ISP) line
+               - `BGP_PRO`: BGP (Multi-ISP) Pro line
+        :param pulumi.Input[_builtins.str] log_project: The name of the Simple Log Service (SLS) project.
+        :param pulumi.Input[_builtins.str] log_store: The name of the Logstore.
+        :param pulumi.Input[_builtins.str] mode: The association mode. Valid values:
+               - `NAT` (default): NAT mode
+               - `MULTI_BINDED`: multi-EIP-to-ENI mode
+               - `BINDED`: cut-network interface controller mode
+        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field `address_name` instead.
+        :param pulumi.Input[_builtins.str] netmode: The network type. By default, this value is set to `public`, which specifies the public network type.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the EIP. Valid values:
+               - `Subscription`: subscription
+               - `PayAsYouGo` (default): pay-as-you-go
+        :param pulumi.Input[_builtins.int] period: Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the subscription EIP. Valid values:
+               - `Month` (default)
+               - `Year`
+        :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which you want to move the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_protection_types: Security protection level.
+               - When the return is empty, the basic DDoS protection is specified.
+               - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] zone: The zone of the EIP.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if activity_id is not None:
             pulumi.set(__self__, "activity_id", activity_id)
@@ -124,6 +152,9 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter(name="activityId")
     def activity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The promotion code. This parameter is not required.
+        """
         return pulumi.get(self, "activity_id")
 
     @activity_id.setter
@@ -134,7 +165,9 @@ class EipArgs:
     @pulumi.getter(name="addressName")
     def address_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        The EIP name.
+
+        The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "address_name")
 
@@ -145,6 +178,9 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the EIP instance.
+        """
         return pulumi.get(self, "allocation_id")
 
     @allocation_id.setter
@@ -154,6 +190,9 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable automatic payment. Valid values:
+        """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
@@ -164,7 +203,7 @@ class EipArgs:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        The maximum bandwidth of the specified EIP. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -176,9 +215,7 @@ class EipArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether enable the deletion protection or not. Default value: `false`.
-        - true: Enable deletion protection.
-        - false: Disable deletion protection.
+        Specifies whether to enable deletion protection. Valid values:
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -190,7 +227,7 @@ class EipArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        The description of the EIP.
         """
         return pulumi.get(self, "description")
 
@@ -201,6 +238,11 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter(name="highDefinitionMonitorLogStatus")
     def high_definition_monitor_log_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of fine-grained monitoring. Valid values:
+        - `ON`
+        - `OFF`
+        """
         return pulumi.get(self, "high_definition_monitor_log_status")
 
     @high_definition_monitor_log_status.setter
@@ -212,7 +254,7 @@ class EipArgs:
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `payment_type` instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -224,7 +266,9 @@ class EipArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
+        The metering method of the EIP. Valid values:
+        - `PayByBandwidth` (default): pay-by-bandwidth.
+        - `PayByTraffic`: pay-by-data-transfer.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -236,7 +280,7 @@ class EipArgs:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The elastic ip address
+        The IP address of the EIP. Supports a maximum of 50 EIPs.
         """
         return pulumi.get(self, "ip_address")
 
@@ -248,7 +292,9 @@ class EipArgs:
     @pulumi.getter
     def isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+        The line type. Valid values:
+        - `BGP` (default): BGP (Multi-ISP) line
+        - `BGP_PRO`: BGP (Multi-ISP) Pro line
         """
         return pulumi.get(self, "isp")
 
@@ -259,6 +305,9 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter(name="logProject")
     def log_project(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the Simple Log Service (SLS) project.
+        """
         return pulumi.get(self, "log_project")
 
     @log_project.setter
@@ -268,6 +317,9 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter(name="logStore")
     def log_store(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the Logstore.
+        """
         return pulumi.get(self, "log_store")
 
     @log_store.setter
@@ -277,6 +329,12 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter
     def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The association mode. Valid values:
+        - `NAT` (default): NAT mode
+        - `MULTI_BINDED`: multi-EIP-to-ENI mode
+        - `BINDED`: cut-network interface controller mode
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -288,7 +346,7 @@ class EipArgs:
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        . Field 'name' has been deprecated from provider version 1.126.0. New field `address_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -299,6 +357,9 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter
     def netmode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The network type. By default, this value is set to `public`, which specifies the public network type.
+        """
         return pulumi.get(self, "netmode")
 
     @netmode.setter
@@ -309,7 +370,9 @@ class EipArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        The billing method of the EIP. Valid values:
+        - `Subscription`: subscription
+        - `PayAsYouGo` (default): pay-as-you-go
         """
         return pulumi.get(self, "payment_type")
 
@@ -321,8 +384,7 @@ class EipArgs:
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
         """
         return pulumi.get(self, "period")
 
@@ -333,6 +395,11 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The billing cycle of the subscription EIP. Valid values:
+        - `Month` (default)
+        - `Year`
+        """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
@@ -342,6 +409,9 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolId")
     def public_ip_address_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the IP address pool. The EIP is allocated from the IP address pool.
+        """
         return pulumi.get(self, "public_ip_address_pool_id")
 
     @public_ip_address_pool_id.setter
@@ -352,7 +422,7 @@ class EipArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Id of resource group which the eip belongs.
+        The ID of the resource group to which you want to move the resource.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -363,6 +433,11 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter(name="securityProtectionTypes")
     def security_protection_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Security protection level.
+        - When the return is empty, the basic DDoS protection is specified.
+        - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+        """
         return pulumi.get(self, "security_protection_types")
 
     @security_protection_types.setter
@@ -373,7 +448,7 @@ class EipArgs:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -384,6 +459,11 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter
     def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The zone of the EIP.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -424,23 +504,52 @@ class _EipState:
         """
         Input properties used for looking up and filtering Eip resources.
 
-        :param pulumi.Input[_builtins.str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[_builtins.str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
-        :param pulumi.Input[_builtins.str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[_builtins.str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
-        :param pulumi.Input[_builtins.str] ip_address: The elastic ip address
-        :param pulumi.Input[_builtins.str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
-        :param pulumi.Input[_builtins.str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-               **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the eip belongs.
-        :param pulumi.Input[_builtins.str] status: The EIP current status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] activity_id: The promotion code. This parameter is not required.
+        :param pulumi.Input[_builtins.str] address_name: The EIP name.
+               
+               The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] allocation_id: The ID of the EIP instance.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Valid values:
+        :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+        :param pulumi.Input[_builtins.str] create_time: The time when the EIP was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection. Valid values:
+        :param pulumi.Input[_builtins.str] description: The description of the EIP.
+        :param pulumi.Input[_builtins.str] high_definition_monitor_log_status: The status of fine-grained monitoring. Valid values:
+               - `ON`
+               - `OFF`
+        :param pulumi.Input[_builtins.str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `payment_type` instead.
+        :param pulumi.Input[_builtins.str] internet_charge_type: The metering method of the EIP. Valid values:
+               - `PayByBandwidth` (default): pay-by-bandwidth.
+               - `PayByTraffic`: pay-by-data-transfer.
+        :param pulumi.Input[_builtins.str] ip_address: The IP address of the EIP. Supports a maximum of 50 EIPs.
+        :param pulumi.Input[_builtins.str] isp: The line type. Valid values:
+               - `BGP` (default): BGP (Multi-ISP) line
+               - `BGP_PRO`: BGP (Multi-ISP) Pro line
+        :param pulumi.Input[_builtins.str] log_project: The name of the Simple Log Service (SLS) project.
+        :param pulumi.Input[_builtins.str] log_store: The name of the Logstore.
+        :param pulumi.Input[_builtins.str] mode: The association mode. Valid values:
+               - `NAT` (default): NAT mode
+               - `MULTI_BINDED`: multi-EIP-to-ENI mode
+               - `BINDED`: cut-network interface controller mode
+        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field `address_name` instead.
+        :param pulumi.Input[_builtins.str] netmode: The network type. By default, this value is set to `public`, which specifies the public network type.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the EIP. Valid values:
+               - `Subscription`: subscription
+               - `PayAsYouGo` (default): pay-as-you-go
+        :param pulumi.Input[_builtins.int] period: Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the subscription EIP. Valid values:
+               - `Month` (default)
+               - `Year`
+        :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which you want to move the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_protection_types: Security protection level.
+               - When the return is empty, the basic DDoS protection is specified.
+               - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+        :param pulumi.Input[_builtins.str] status: The state of the EIP.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] zone: The zone of the EIP.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if activity_id is not None:
             pulumi.set(__self__, "activity_id", activity_id)
@@ -506,6 +615,9 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="activityId")
     def activity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The promotion code. This parameter is not required.
+        """
         return pulumi.get(self, "activity_id")
 
     @activity_id.setter
@@ -516,7 +628,9 @@ class _EipState:
     @pulumi.getter(name="addressName")
     def address_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        The EIP name.
+
+        The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "address_name")
 
@@ -527,6 +641,9 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the EIP instance.
+        """
         return pulumi.get(self, "allocation_id")
 
     @allocation_id.setter
@@ -536,6 +653,9 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable automatic payment. Valid values:
+        """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
@@ -546,7 +666,7 @@ class _EipState:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        The maximum bandwidth of the specified EIP. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -557,6 +677,9 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The time when the EIP was created.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -567,9 +690,7 @@ class _EipState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether enable the deletion protection or not. Default value: `false`.
-        - true: Enable deletion protection.
-        - false: Disable deletion protection.
+        Specifies whether to enable deletion protection. Valid values:
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -581,7 +702,7 @@ class _EipState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        The description of the EIP.
         """
         return pulumi.get(self, "description")
 
@@ -592,6 +713,11 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="highDefinitionMonitorLogStatus")
     def high_definition_monitor_log_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of fine-grained monitoring. Valid values:
+        - `ON`
+        - `OFF`
+        """
         return pulumi.get(self, "high_definition_monitor_log_status")
 
     @high_definition_monitor_log_status.setter
@@ -603,7 +729,7 @@ class _EipState:
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `payment_type` instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -615,7 +741,9 @@ class _EipState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
+        The metering method of the EIP. Valid values:
+        - `PayByBandwidth` (default): pay-by-bandwidth.
+        - `PayByTraffic`: pay-by-data-transfer.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -627,7 +755,7 @@ class _EipState:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The elastic ip address
+        The IP address of the EIP. Supports a maximum of 50 EIPs.
         """
         return pulumi.get(self, "ip_address")
 
@@ -639,7 +767,9 @@ class _EipState:
     @pulumi.getter
     def isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+        The line type. Valid values:
+        - `BGP` (default): BGP (Multi-ISP) line
+        - `BGP_PRO`: BGP (Multi-ISP) Pro line
         """
         return pulumi.get(self, "isp")
 
@@ -650,6 +780,9 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="logProject")
     def log_project(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the Simple Log Service (SLS) project.
+        """
         return pulumi.get(self, "log_project")
 
     @log_project.setter
@@ -659,6 +792,9 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="logStore")
     def log_store(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the Logstore.
+        """
         return pulumi.get(self, "log_store")
 
     @log_store.setter
@@ -668,6 +804,12 @@ class _EipState:
     @_builtins.property
     @pulumi.getter
     def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The association mode. Valid values:
+        - `NAT` (default): NAT mode
+        - `MULTI_BINDED`: multi-EIP-to-ENI mode
+        - `BINDED`: cut-network interface controller mode
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -679,7 +821,7 @@ class _EipState:
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        . Field 'name' has been deprecated from provider version 1.126.0. New field `address_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -690,6 +832,9 @@ class _EipState:
     @_builtins.property
     @pulumi.getter
     def netmode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The network type. By default, this value is set to `public`, which specifies the public network type.
+        """
         return pulumi.get(self, "netmode")
 
     @netmode.setter
@@ -700,7 +845,9 @@ class _EipState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        The billing method of the EIP. Valid values:
+        - `Subscription`: subscription
+        - `PayAsYouGo` (default): pay-as-you-go
         """
         return pulumi.get(self, "payment_type")
 
@@ -712,8 +859,7 @@ class _EipState:
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
         """
         return pulumi.get(self, "period")
 
@@ -724,6 +870,11 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The billing cycle of the subscription EIP. Valid values:
+        - `Month` (default)
+        - `Year`
+        """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
@@ -733,6 +884,9 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolId")
     def public_ip_address_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the IP address pool. The EIP is allocated from the IP address pool.
+        """
         return pulumi.get(self, "public_ip_address_pool_id")
 
     @public_ip_address_pool_id.setter
@@ -743,7 +897,7 @@ class _EipState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Id of resource group which the eip belongs.
+        The ID of the resource group to which you want to move the resource.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -754,6 +908,11 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="securityProtectionTypes")
     def security_protection_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Security protection level.
+        - When the return is empty, the basic DDoS protection is specified.
+        - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+        """
         return pulumi.get(self, "security_protection_types")
 
     @security_protection_types.setter
@@ -764,7 +923,7 @@ class _EipState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The EIP current status.
+        The state of the EIP.
         """
         return pulumi.get(self, "status")
 
@@ -776,7 +935,7 @@ class _EipState:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -787,6 +946,11 @@ class _EipState:
     @_builtins.property
     @pulumi.getter
     def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The zone of the EIP.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -871,22 +1035,50 @@ class Eip(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[_builtins.str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
-        :param pulumi.Input[_builtins.str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[_builtins.str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
-        :param pulumi.Input[_builtins.str] ip_address: The elastic ip address
-        :param pulumi.Input[_builtins.str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
-        :param pulumi.Input[_builtins.str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-               **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the eip belongs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] activity_id: The promotion code. This parameter is not required.
+        :param pulumi.Input[_builtins.str] address_name: The EIP name.
+               
+               The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] allocation_id: The ID of the EIP instance.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Valid values:
+        :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection. Valid values:
+        :param pulumi.Input[_builtins.str] description: The description of the EIP.
+        :param pulumi.Input[_builtins.str] high_definition_monitor_log_status: The status of fine-grained monitoring. Valid values:
+               - `ON`
+               - `OFF`
+        :param pulumi.Input[_builtins.str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `payment_type` instead.
+        :param pulumi.Input[_builtins.str] internet_charge_type: The metering method of the EIP. Valid values:
+               - `PayByBandwidth` (default): pay-by-bandwidth.
+               - `PayByTraffic`: pay-by-data-transfer.
+        :param pulumi.Input[_builtins.str] ip_address: The IP address of the EIP. Supports a maximum of 50 EIPs.
+        :param pulumi.Input[_builtins.str] isp: The line type. Valid values:
+               - `BGP` (default): BGP (Multi-ISP) line
+               - `BGP_PRO`: BGP (Multi-ISP) Pro line
+        :param pulumi.Input[_builtins.str] log_project: The name of the Simple Log Service (SLS) project.
+        :param pulumi.Input[_builtins.str] log_store: The name of the Logstore.
+        :param pulumi.Input[_builtins.str] mode: The association mode. Valid values:
+               - `NAT` (default): NAT mode
+               - `MULTI_BINDED`: multi-EIP-to-ENI mode
+               - `BINDED`: cut-network interface controller mode
+        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field `address_name` instead.
+        :param pulumi.Input[_builtins.str] netmode: The network type. By default, this value is set to `public`, which specifies the public network type.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the EIP. Valid values:
+               - `Subscription`: subscription
+               - `PayAsYouGo` (default): pay-as-you-go
+        :param pulumi.Input[_builtins.int] period: Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the subscription EIP. Valid values:
+               - `Month` (default)
+               - `Year`
+        :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which you want to move the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_protection_types: Security protection level.
+               - When the return is empty, the basic DDoS protection is specified.
+               - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] zone: The zone of the EIP.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -1053,23 +1245,52 @@ class Eip(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[_builtins.str] bandwidth: Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
-        :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
-               - true: Enable deletion protection.
-               - false: Disable deletion protection.
-        :param pulumi.Input[_builtins.str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-        :param pulumi.Input[_builtins.str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
-        :param pulumi.Input[_builtins.str] ip_address: The elastic ip address
-        :param pulumi.Input[_builtins.str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[_builtins.str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
-        :param pulumi.Input[_builtins.str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-               **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the eip belongs.
-        :param pulumi.Input[_builtins.str] status: The EIP current status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] activity_id: The promotion code. This parameter is not required.
+        :param pulumi.Input[_builtins.str] address_name: The EIP name.
+               
+               The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] allocation_id: The ID of the EIP instance.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Valid values:
+        :param pulumi.Input[_builtins.str] bandwidth: The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+        :param pulumi.Input[_builtins.str] create_time: The time when the EIP was created.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable deletion protection. Valid values:
+        :param pulumi.Input[_builtins.str] description: The description of the EIP.
+        :param pulumi.Input[_builtins.str] high_definition_monitor_log_status: The status of fine-grained monitoring. Valid values:
+               - `ON`
+               - `OFF`
+        :param pulumi.Input[_builtins.str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `payment_type` instead.
+        :param pulumi.Input[_builtins.str] internet_charge_type: The metering method of the EIP. Valid values:
+               - `PayByBandwidth` (default): pay-by-bandwidth.
+               - `PayByTraffic`: pay-by-data-transfer.
+        :param pulumi.Input[_builtins.str] ip_address: The IP address of the EIP. Supports a maximum of 50 EIPs.
+        :param pulumi.Input[_builtins.str] isp: The line type. Valid values:
+               - `BGP` (default): BGP (Multi-ISP) line
+               - `BGP_PRO`: BGP (Multi-ISP) Pro line
+        :param pulumi.Input[_builtins.str] log_project: The name of the Simple Log Service (SLS) project.
+        :param pulumi.Input[_builtins.str] log_store: The name of the Logstore.
+        :param pulumi.Input[_builtins.str] mode: The association mode. Valid values:
+               - `NAT` (default): NAT mode
+               - `MULTI_BINDED`: multi-EIP-to-ENI mode
+               - `BINDED`: cut-network interface controller mode
+        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field `address_name` instead.
+        :param pulumi.Input[_builtins.str] netmode: The network type. By default, this value is set to `public`, which specifies the public network type.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method of the EIP. Valid values:
+               - `Subscription`: subscription
+               - `PayAsYouGo` (default): pay-as-you-go
+        :param pulumi.Input[_builtins.int] period: Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
+        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the subscription EIP. Valid values:
+               - `Month` (default)
+               - `Year`
+        :param pulumi.Input[_builtins.str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which you want to move the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_protection_types: Security protection level.
+               - When the return is empty, the basic DDoS protection is specified.
+               - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+        :param pulumi.Input[_builtins.str] status: The state of the EIP.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] zone: The zone of the EIP.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1167,46 +1388,58 @@ class Eip(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="activityId")
     def activity_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The promotion code. This parameter is not required.
+        """
         return pulumi.get(self, "activity_id")
 
     @_builtins.property
     @pulumi.getter(name="addressName")
     def address_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        The EIP name.
+
+        The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "address_name")
 
     @_builtins.property
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the EIP instance.
+        """
         return pulumi.get(self, "allocation_id")
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable automatic payment. Valid values:
+        """
         return pulumi.get(self, "auto_pay")
 
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.str]:
         """
-        Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+        The maximum bandwidth of the specified EIP. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The time when the EIP was created.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether enable the deletion protection or not. Default value: `false`.
-        - true: Enable deletion protection.
-        - false: Disable deletion protection.
+        Specifies whether to enable deletion protection. Valid values:
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1214,13 +1447,18 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        The description of the EIP.
         """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="highDefinitionMonitorLogStatus")
     def high_definition_monitor_log_status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of fine-grained monitoring. Valid values:
+        - `ON`
+        - `OFF`
+        """
         return pulumi.get(self, "high_definition_monitor_log_status")
 
     @_builtins.property
@@ -1228,7 +1466,7 @@ class Eip(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> pulumi.Output[_builtins.str]:
         """
-        (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field `payment_type` instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -1236,7 +1474,9 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
+        The metering method of the EIP. Valid values:
+        - `PayByBandwidth` (default): pay-by-bandwidth.
+        - `PayByTraffic`: pay-by-data-transfer.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -1244,7 +1484,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[_builtins.str]:
         """
-        The elastic ip address
+        The IP address of the EIP. Supports a maximum of 50 EIPs.
         """
         return pulumi.get(self, "ip_address")
 
@@ -1252,23 +1492,37 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter
     def isp(self) -> pulumi.Output[_builtins.str]:
         """
-        The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+        The line type. Valid values:
+        - `BGP` (default): BGP (Multi-ISP) line
+        - `BGP_PRO`: BGP (Multi-ISP) Pro line
         """
         return pulumi.get(self, "isp")
 
     @_builtins.property
     @pulumi.getter(name="logProject")
     def log_project(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the Simple Log Service (SLS) project.
+        """
         return pulumi.get(self, "log_project")
 
     @_builtins.property
     @pulumi.getter(name="logStore")
     def log_store(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of the Logstore.
+        """
         return pulumi.get(self, "log_store")
 
     @_builtins.property
     @pulumi.getter
     def mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The association mode. Valid values:
+        - `NAT` (default): NAT mode
+        - `MULTI_BINDED`: multi-EIP-to-ENI mode
+        - `BINDED`: cut-network interface controller mode
+        """
         return pulumi.get(self, "mode")
 
     @_builtins.property
@@ -1276,20 +1530,25 @@ class Eip(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        . Field 'name' has been deprecated from provider version 1.126.0. New field `address_name` instead.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def netmode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The network type. By default, this value is set to `public`, which specifies the public network type.
+        """
         return pulumi.get(self, "netmode")
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        The billing method of the EIP. Valid values:
+        - `Subscription`: subscription
+        - `PayAsYouGo` (default): pay-as-you-go
         """
         return pulumi.get(self, "payment_type")
 
@@ -1297,39 +1556,51 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
         """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The billing cycle of the subscription EIP. Valid values:
+        - `Month` (default)
+        - `Year`
+        """
         return pulumi.get(self, "pricing_cycle")
 
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolId")
     def public_ip_address_pool_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the IP address pool. The EIP is allocated from the IP address pool.
+        """
         return pulumi.get(self, "public_ip_address_pool_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Id of resource group which the eip belongs.
+        The ID of the resource group to which you want to move the resource.
         """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="securityProtectionTypes")
     def security_protection_types(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Security protection level.
+        - When the return is empty, the basic DDoS protection is specified.
+        - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
+        """
         return pulumi.get(self, "security_protection_types")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The EIP current status.
+        The state of the EIP.
         """
         return pulumi.get(self, "status")
 
@@ -1337,12 +1608,17 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def zone(self) -> pulumi.Output[_builtins.str]:
+        """
+        The zone of the EIP.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
         return pulumi.get(self, "zone")
 

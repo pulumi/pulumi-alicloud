@@ -64,6 +64,9 @@ class GetZnodesResult:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> _builtins.str:
+        """
+        The ID of the Cluster.
+        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
@@ -87,6 +90,9 @@ class GetZnodesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Znode names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -97,11 +103,17 @@ class GetZnodesResult:
     @_builtins.property
     @pulumi.getter
     def path(self) -> _builtins.str:
+        """
+        The Node path.
+        """
         return pulumi.get(self, "path")
 
     @_builtins.property
     @pulumi.getter
     def znodes(self) -> Sequence['outputs.GetZnodesZnodeResult']:
+        """
+        A list of Mse Znodes. Each element contains the following attributes:
+        """
         return pulumi.get(self, "znodes")
 
 
@@ -132,7 +144,7 @@ def get_znodes(accept_language: Optional[_builtins.str] = None,
     """
     This data source provides the Mse Znodes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.162.0+.
+    > **NOTE:** Available since v1.162.0.
 
     ## Example Usage
 
@@ -193,7 +205,7 @@ def get_znodes_output(accept_language: pulumi.Input[Optional[Optional[_builtins.
     """
     This data source provides the Mse Znodes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.162.0+.
+    > **NOTE:** Available since v1.162.0.
 
     ## Example Usage
 

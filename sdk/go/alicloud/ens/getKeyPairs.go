@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -69,14 +69,19 @@ type GetKeyPairsArgs struct {
 // A collection of values returned by getKeyPairs.
 type GetKeyPairsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string            `pulumi:"id"`
-	Ids         []string          `pulumi:"ids"`
-	KeyPairName *string           `pulumi:"keyPairName"`
-	NameRegex   *string           `pulumi:"nameRegex"`
-	Names       []string          `pulumi:"names"`
-	OutputFile  *string           `pulumi:"outputFile"`
-	Pairs       []GetKeyPairsPair `pulumi:"pairs"`
-	Version     string            `pulumi:"version"`
+	Id string `pulumi:"id"`
+	// A list of Key Pair IDs.
+	Ids []string `pulumi:"ids"`
+	// The name of the key pair.
+	KeyPairName *string `pulumi:"keyPairName"`
+	NameRegex   *string `pulumi:"nameRegex"`
+	// A list of Key Pair names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Ens Key Pairs. Each element contains the following attributes:
+	Pairs []GetKeyPairsPair `pulumi:"pairs"`
+	// The version number.
+	Version string `pulumi:"version"`
 }
 
 func GetKeyPairsOutput(ctx *pulumi.Context, args GetKeyPairsOutputArgs, opts ...pulumi.InvokeOption) GetKeyPairsResultOutput {
@@ -120,10 +125,12 @@ func (o GetKeyPairsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Key Pair IDs.
 func (o GetKeyPairsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The name of the key pair.
 func (o GetKeyPairsResultOutput) KeyPairName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.KeyPairName }).(pulumi.StringPtrOutput)
 }
@@ -132,6 +139,7 @@ func (o GetKeyPairsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Key Pair names.
 func (o GetKeyPairsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -140,10 +148,12 @@ func (o GetKeyPairsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ens Key Pairs. Each element contains the following attributes:
 func (o GetKeyPairsResultOutput) Pairs() GetKeyPairsPairArrayOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) []GetKeyPairsPair { return v.Pairs }).(GetKeyPairsPairArrayOutput)
 }
 
+// The version number.
 func (o GetKeyPairsResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsResult) string { return v.Version }).(pulumi.StringOutput)
 }

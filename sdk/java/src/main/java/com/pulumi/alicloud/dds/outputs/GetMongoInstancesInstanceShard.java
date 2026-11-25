@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMongoInstancesInstanceShard {
+    /**
+     * @return The instance type of the shard node.
+     * 
+     */
     private String class_;
+    /**
+     * @return The description of the shard node.
+     * 
+     */
     private String description;
+    /**
+     * @return The ID of the shard node.
+     * 
+     */
     private String nodeId;
+    /**
+     * @return The storage space of the shard node.
+     * 
+     */
     private Integer storage;
 
     private GetMongoInstancesInstanceShard() {}
+    /**
+     * @return The instance type of the shard node.
+     * 
+     */
     public String class_() {
         return this.class_;
     }
+    /**
+     * @return The description of the shard node.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The ID of the shard node.
+     * 
+     */
     public String nodeId() {
         return this.nodeId;
     }
+    /**
+     * @return The storage space of the shard node.
+     * 
+     */
     public Integer storage() {
         return this.storage;
     }

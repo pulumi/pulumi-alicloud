@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
@@ -67,7 +67,13 @@ export interface GetScimServerCredentialsArgs {
  * A collection of values returned by getScimServerCredentials.
  */
 export interface GetScimServerCredentialsResult {
+    /**
+     * A list of Cloud Sso Scim Server Credentials. Each element contains the following attributes:
+     */
     readonly credentials: outputs.cloudsso.GetScimServerCredentialsCredential[];
+    /**
+     * The ID of the Directory.
+     */
     readonly directoryId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -75,12 +81,15 @@ export interface GetScimServerCredentialsResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *

@@ -47,6 +47,9 @@ class GetVersionsResult:
     @_builtins.property
     @pulumi.getter
     def edition(self) -> Optional[_builtins.str]:
+        """
+        The edition of the ASM instance.
+        """
         return pulumi.get(self, "edition")
 
     @_builtins.property
@@ -60,6 +63,9 @@ class GetVersionsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of ASM versions. Its element formats as `<edition>:<version>`.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -70,6 +76,9 @@ class GetVersionsResult:
     @_builtins.property
     @pulumi.getter
     def versions(self) -> Sequence['outputs.GetVersionsVersionResult']:
+        """
+        A list of Service Mesh Service Meshes. Each element contains the following attributes:
+        """
         return pulumi.get(self, "versions")
 
 
@@ -93,7 +102,7 @@ def get_versions(edition: Optional[_builtins.str] = None,
     """
     This data source provides ASM available versions in the specified region.
 
-    > **NOTE:** Available in v1.161.0+.
+    > **NOTE:** Available since v1.161.0.
 
     ## Example Usage
 
@@ -111,7 +120,7 @@ def get_versions(edition: Optional[_builtins.str] = None,
     :param _builtins.str edition: The edition of the ASM instance. Valid values:
            - Default: Standard Edition
            - Pro: Professional Edition
-    :param Sequence[_builtins.str] ids: A list of ASM versions. Its element formats as `<edition>:<version>`.
+    :param Sequence[_builtins.str] ids: The ASM versions available for the ASM instance of the current edition. Its element formats as `<edition>:<version>`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -134,7 +143,7 @@ def get_versions_output(edition: pulumi.Input[Optional[Optional[_builtins.str]]]
     """
     This data source provides ASM available versions in the specified region.
 
-    > **NOTE:** Available in v1.161.0+.
+    > **NOTE:** Available since v1.161.0.
 
     ## Example Usage
 
@@ -152,7 +161,7 @@ def get_versions_output(edition: pulumi.Input[Optional[Optional[_builtins.str]]]
     :param _builtins.str edition: The edition of the ASM instance. Valid values:
            - Default: Standard Edition
            - Pro: Professional Edition
-    :param Sequence[_builtins.str] ids: A list of ASM versions. Its element formats as `<edition>:<version>`.
+    :param Sequence[_builtins.str] ids: The ASM versions available for the ASM instance of the current edition. Its element formats as `<edition>:<version>`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()

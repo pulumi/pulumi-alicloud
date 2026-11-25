@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides an available area for remote disaster recovery for RDS.
  *
- * > **NOTE:** Available in v1.193.0+.
+ * > **NOTE:** Available since v1.193.0+.
  *
  * ## Example Usage
  *
@@ -34,6 +34,9 @@ export function getCrossRegions(args?: GetCrossRegionsArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getCrossRegions.
  */
 export interface GetCrossRegionsArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -58,7 +61,7 @@ export interface GetCrossRegionsResult {
 /**
  * This data source provides an available area for remote disaster recovery for RDS.
  *
- * > **NOTE:** Available in v1.193.0+.
+ * > **NOTE:** Available since v1.193.0+.
  *
  * ## Example Usage
  *
@@ -83,5 +86,8 @@ export function getCrossRegionsOutput(args?: GetCrossRegionsOutputArgs, opts?: p
  * A collection of arguments for invoking getCrossRegions.
  */
 export interface GetCrossRegionsOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string | undefined>;
 }

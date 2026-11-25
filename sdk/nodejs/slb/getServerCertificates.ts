@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the server certificate list.
  *
+ * > **NOTE:** Available since v1.21.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -80,16 +82,18 @@ export interface GetServerCertificatesResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * The Id of resource group which the slb server certificates belongs.
+     * (Optional) The Id of resource group which the slb server certificates belongs.
      */
     readonly resourceGroupId?: string;
     /**
-     * (Available in v1.66.0+) A mapping of tags to assign to the resource.
+     * (Optional) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the server certificate list.
+ *
+ * > **NOTE:** Available since v1.21.0.
  *
  * ## Example Usage
  *

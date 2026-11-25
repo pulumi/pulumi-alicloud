@@ -86,11 +86,17 @@ class GetVirtualNodesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Virtual Node names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter
     def nodes(self) -> Sequence['outputs.GetVirtualNodesNodeResult']:
+        """
+        A list of Eci Virtual Nodes. Each element contains the following attributes:
+        """
         return pulumi.get(self, "nodes")
 
     @_builtins.property
@@ -101,31 +107,49 @@ class GetVirtualNodesResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The resource group ID.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[_builtins.str]:
+        """
+        The security group ID.
+        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The Status of the virtual node.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="virtualNodeName")
     def virtual_node_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the virtual node.
+        """
         return pulumi.get(self, "virtual_node_name")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[_builtins.str]:
+        """
+        The vswitch id.
+        """
         return pulumi.get(self, "vswitch_id")
 
 
@@ -162,7 +186,7 @@ def get_virtual_nodes(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.145.0+.
+    > **NOTE:** Available since v1.145.0.
 
     ## Example Usage
 
@@ -190,6 +214,7 @@ def get_virtual_nodes(ids: Optional[Sequence[_builtins.str]] = None,
     :param _builtins.str status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
     :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     :param _builtins.str virtual_node_name: The name of the virtual node.
+    :param _builtins.str vswitch_id: The ID of the vSwitch.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -230,7 +255,7 @@ def get_virtual_nodes_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     """
     This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.145.0+.
+    > **NOTE:** Available since v1.145.0.
 
     ## Example Usage
 
@@ -258,6 +283,7 @@ def get_virtual_nodes_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     :param _builtins.str status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
     :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     :param _builtins.str virtual_node_name: The name of the virtual node.
+    :param _builtins.str vswitch_id: The ID of the vSwitch.
     """
     __args__ = dict()
     __args__['ids'] = ids

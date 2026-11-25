@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// <summary>
         /// This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.125.0+.
+        /// &gt; **NOTE:** Available since v1.125.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// <summary>
         /// This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.125.0+.
+        /// &gt; **NOTE:** Available since v1.125.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// <summary>
         /// This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.125.0+.
+        /// &gt; **NOTE:** Available since v1.125.0.
         /// 
         /// ## Example Usage
         /// 
@@ -220,9 +220,18 @@ namespace Pulumi.AliCloud.DirectMail
         public readonly ImmutableArray<string> Ids;
         public readonly string? KeyWord;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Receivers names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Direct Mail Receiverses. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetReceiversReceiverseResult> Receiverses;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly int? Status;
 
         [OutputConstructor]

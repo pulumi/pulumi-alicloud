@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Scdn Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *
@@ -72,6 +72,9 @@ export interface GetDomainsArgs {
  * A collection of values returned by getDomains.
  */
 export interface GetDomainsResult {
+    /**
+     * A list of Scdn Domains. Each element contains the following attributes:
+     */
     readonly domains: outputs.scdn.GetDomainsDomain[];
     readonly enableDetails?: boolean;
     /**
@@ -80,15 +83,24 @@ export interface GetDomainsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Domain names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The Resource Group ID.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Scdn Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *

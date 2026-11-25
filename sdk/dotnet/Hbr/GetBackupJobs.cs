@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -332,6 +332,10 @@ namespace Pulumi.AliCloud.Hbr
     {
         [Input("filters")]
         private List<Inputs.GetBackupJobsFilterArgs>? _filters;
+
+        /// <summary>
+        /// More complex filters can be expressed using one or more `Filter` sub-blocks, which take the following arguments. See `Filter` below.
+        /// </summary>
         public List<Inputs.GetBackupJobsFilterArgs> Filters
         {
             get => _filters ?? (_filters = new List<Inputs.GetBackupJobsFilterArgs>());
@@ -384,6 +388,10 @@ namespace Pulumi.AliCloud.Hbr
     {
         [Input("filters")]
         private InputList<Inputs.GetBackupJobsFilterInputArgs>? _filters;
+
+        /// <summary>
+        /// More complex filters can be expressed using one or more `Filter` sub-blocks, which take the following arguments. See `Filter` below.
+        /// </summary>
         public InputList<Inputs.GetBackupJobsFilterInputArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetBackupJobsFilterInputArgs>());
@@ -442,10 +450,19 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Hbr Backup Jobs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackupJobsJobResult> Jobs;
         public readonly string? OutputFile;
         public readonly string? SortDirection;
+        /// <summary>
+        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+        /// </summary>
         public readonly string SourceType;
+        /// <summary>
+        /// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

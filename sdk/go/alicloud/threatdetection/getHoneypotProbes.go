@@ -13,7 +13,7 @@ import (
 
 // This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
 //
-// > **NOTE:** Available in 1.195.0+
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testAccThreatDetectionHoneypotProbe"
+//			name := "tf-exampleThreatDetectionHoneypotProbe"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -94,7 +94,8 @@ type GetHoneypotProbesArgs struct {
 	// A regex string to filter results by display name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  *string `pulumi:"outputFile"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The status of the honeypot probe.
 	ProbeStatus *string `pulumi:"probeStatus"`
 	// Probe type
 	ProbeType *string `pulumi:"probeType"`
@@ -134,7 +135,8 @@ type GetHoneypotProbesOutputArgs struct {
 	// A regex string to filter results by display name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The status of the honeypot probe.
 	ProbeStatus pulumi.StringPtrInput `pulumi:"probeStatus"`
 	// Probe type
 	ProbeType pulumi.StringPtrInput `pulumi:"probeType"`

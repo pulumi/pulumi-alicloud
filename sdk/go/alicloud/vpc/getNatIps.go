@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0+.
 //
 // ## Example Usage
 //
@@ -120,8 +120,9 @@ type GetNatIpsArgs struct {
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId string `pulumi:"natGatewayId"`
 	// NAT IP ADDRESS of the address segment.
-	NatIpCidr *string  `pulumi:"natIpCidr"`
-	NatIpIds  []string `pulumi:"natIpIds"`
+	NatIpCidr *string `pulumi:"natIpCidr"`
+	// A list of Nat Ip IDs used to filter results.
+	NatIpIds []string `pulumi:"natIpIds"`
 	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 	NatIpNames []string `pulumi:"natIpNames"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -133,17 +134,24 @@ type GetNatIpsArgs struct {
 // A collection of values returned by getNatIps.
 type GetNatIpsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string        `pulumi:"id"`
-	Ids          []string      `pulumi:"ids"`
-	Ips          []GetNatIpsIp `pulumi:"ips"`
-	NameRegex    *string       `pulumi:"nameRegex"`
-	Names        []string      `pulumi:"names"`
-	NatGatewayId string        `pulumi:"natGatewayId"`
-	NatIpCidr    *string       `pulumi:"natIpCidr"`
-	NatIpIds     []string      `pulumi:"natIpIds"`
-	NatIpNames   []string      `pulumi:"natIpNames"`
-	OutputFile   *string       `pulumi:"outputFile"`
-	Status       *string       `pulumi:"status"`
+	Id string `pulumi:"id"`
+	// A list of Nat Ip IDs.
+	Ids []string `pulumi:"ids"`
+	// A list of Vpc Nat Ips. Each element contains the following attributes:
+	Ips       []GetNatIpsIp `pulumi:"ips"`
+	NameRegex *string       `pulumi:"nameRegex"`
+	// A list of Nat Ip names.
+	Names []string `pulumi:"names"`
+	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+	NatGatewayId string `pulumi:"natGatewayId"`
+	// The CIDR block to which the NAT IP address belongs.
+	NatIpCidr *string  `pulumi:"natIpCidr"`
+	NatIpIds  []string `pulumi:"natIpIds"`
+	// The name of the NAT IP address.
+	NatIpNames []string `pulumi:"natIpNames"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
+	Status *string `pulumi:"status"`
 }
 
 func GetNatIpsOutput(ctx *pulumi.Context, args GetNatIpsOutputArgs, opts ...pulumi.InvokeOption) GetNatIpsResultOutput {
@@ -160,8 +168,9 @@ type GetNatIpsOutputArgs struct {
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
 	// NAT IP ADDRESS of the address segment.
-	NatIpCidr pulumi.StringPtrInput   `pulumi:"natIpCidr"`
-	NatIpIds  pulumi.StringArrayInput `pulumi:"natIpIds"`
+	NatIpCidr pulumi.StringPtrInput `pulumi:"natIpCidr"`
+	// A list of Nat Ip IDs used to filter results.
+	NatIpIds pulumi.StringArrayInput `pulumi:"natIpIds"`
 	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 	NatIpNames pulumi.StringArrayInput `pulumi:"natIpNames"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -194,10 +203,12 @@ func (o GetNatIpsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Nat Ip IDs.
 func (o GetNatIpsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNatIpsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Vpc Nat Ips. Each element contains the following attributes:
 func (o GetNatIpsResultOutput) Ips() GetNatIpsIpArrayOutput {
 	return o.ApplyT(func(v GetNatIpsResult) []GetNatIpsIp { return v.Ips }).(GetNatIpsIpArrayOutput)
 }
@@ -206,14 +217,17 @@ func (o GetNatIpsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatIpsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Nat Ip names.
 func (o GetNatIpsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNatIpsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
 func (o GetNatIpsResultOutput) NatGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatIpsResult) string { return v.NatGatewayId }).(pulumi.StringOutput)
 }
 
+// The CIDR block to which the NAT IP address belongs.
 func (o GetNatIpsResultOutput) NatIpCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatIpsResult) *string { return v.NatIpCidr }).(pulumi.StringPtrOutput)
 }
@@ -222,6 +236,7 @@ func (o GetNatIpsResultOutput) NatIpIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNatIpsResult) []string { return v.NatIpIds }).(pulumi.StringArrayOutput)
 }
 
+// The name of the NAT IP address.
 func (o GetNatIpsResultOutput) NatIpNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNatIpsResult) []string { return v.NatIpNames }).(pulumi.StringArrayOutput)
 }
@@ -230,6 +245,7 @@ func (o GetNatIpsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatIpsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
 func (o GetNatIpsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNatIpsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

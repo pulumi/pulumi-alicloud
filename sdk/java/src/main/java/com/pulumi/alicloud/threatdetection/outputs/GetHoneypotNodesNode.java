@@ -23,6 +23,10 @@ public final class GetHoneypotNodesNode {
      * 
      */
     private Integer availableProbeNum;
+    /**
+     * @return The creation time of the honeypot management node.
+     * 
+     */
     private String createTime;
     /**
      * @return The ID of the Honeypot management node.
@@ -44,6 +48,10 @@ public final class GetHoneypotNodesNode {
      * 
      */
     private List<String> securityGroupProbeIpLists;
+    /**
+     * @return The status of the honeypot management node.
+     * 
+     */
     private Integer status;
 
     private GetHoneypotNodesNode() {}
@@ -61,6 +69,10 @@ public final class GetHoneypotNodesNode {
     public Integer availableProbeNum() {
         return this.availableProbeNum;
     }
+    /**
+     * @return The creation time of the honeypot management node.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
@@ -92,6 +104,10 @@ public final class GetHoneypotNodesNode {
     public List<String> securityGroupProbeIpLists() {
         return this.securityGroupProbeIpLists;
     }
+    /**
+     * @return The status of the honeypot management node.
+     * 
+     */
     public Integer status() {
         return this.status;
     }

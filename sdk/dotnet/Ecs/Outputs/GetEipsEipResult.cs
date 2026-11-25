@@ -14,39 +14,39 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEipsEipResult
     {
         /// <summary>
-        /// EIP internet max bandwidth in Mbps.
+        /// The maximum bandwidth of the EIP.
         /// </summary>
         public readonly string Bandwidth;
         /// <summary>
-        /// Time of creation.
+        /// The time when the EIP was created.
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
-        /// (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+        /// Indicates whether deletion protection is enabled.
         /// </summary>
         public readonly bool DeletionProtection;
         /// <summary>
-        /// ID of the EIP.
+        /// The ID of the EIP.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of the instance that is being bound.
+        /// The ID of the instance with which the EIP is associated.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// The instance type of that the EIP is bound.
+        /// The type of the instance with which the EIP is associated.
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
-        /// EIP internet charge type.
+        /// The metering method of the EIP.
         /// </summary>
         public readonly string InternetChargeType;
         /// <summary>
-        /// Public IP Address of the the EIP.
+        /// The eip address.
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         /// </summary>
         public readonly string Status;
 

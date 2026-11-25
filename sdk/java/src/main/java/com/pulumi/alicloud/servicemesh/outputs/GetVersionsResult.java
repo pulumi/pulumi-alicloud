@@ -14,17 +14,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVersionsResult {
+    /**
+     * @return The edition of the ASM instance.
+     * 
+     */
     private @Nullable String edition;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
+     * 
+     */
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Service Mesh Service Meshes. Each element contains the following attributes:
+     * 
+     */
     private List<GetVersionsVersion> versions;
 
     private GetVersionsResult() {}
+    /**
+     * @return The edition of the ASM instance.
+     * 
+     */
     public Optional<String> edition() {
         return Optional.ofNullable(this.edition);
     }
@@ -35,12 +51,20 @@ public final class GetVersionsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Service Mesh Service Meshes. Each element contains the following attributes:
+     * 
+     */
     public List<GetVersionsVersion> versions() {
         return this.versions;
     }

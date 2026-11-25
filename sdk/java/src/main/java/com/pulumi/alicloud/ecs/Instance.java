@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var instanceType = config.get("instanceType").orElse("ecs.n4.large");
+ *         final var instanceType = config.get("instanceType").orElse("ecs.g7.large");
  *         final var imageId = config.get("imageId").orElse("ubuntu_18_04_64_20G_alibase_20190624.vhd");
  *         // Create a new ECS instance for VPC
  *         var vpc = new Network("vpc", NetworkArgs.builder()
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory("cloud_efficiency")
+ *             .availableDiskCategory("cloud_essd")
  *             .availableResourceCreation("VSwitch")
  *             .availableInstanceType(instanceType)
  *             .build());
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             .availabilityZone(default_.zones()[0].id())
  *             .securityGroups(group.stream().map(element -> element.id()).collect(toList()))
  *             .instanceType(instanceType)
- *             .systemDiskCategory("cloud_efficiency")
+ *             .systemDiskCategory("cloud_essd")
  *             .systemDiskName(name)
  *             .systemDiskDescription("test_foo_system_disk_description")
  *             .imageId(imageId)
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             .dataDisks(InstanceDataDiskArgs.builder()
  *                 .name("disk2")
  *                 .size(20)
- *                 .category("cloud_efficiency")
+ *                 .category("cloud_essd")
  *                 .description("disk2")
  *                 .encrypted(true)
  *                 .kmsKeyId(key.id())
@@ -146,6 +146,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
+    /**
+     * A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+     * 
+     * &gt; **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managedHostId` is refreshed from the response only when `managedHostId` is configured.
+     * 
+     */
+    @Export(name="additionalAttributes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> additionalAttributes;
+
+    /**
+     * @return A set of additional attributes that the provider requests when reading the instance through the `DescribeInstances` API. It only affects the data returned during `terraform refresh` and `pulumi import`, and changing it does not trigger any API call that modifies the instance. Configured values are merged into the default set of `META_OPTIONS`, `NETWORK_PRIMARY_ENI_IP`, `LOGIN_AS_NON_ROOT`, `DISK_HIGH_DENSITY_MODE` and `CPU_OPTIONS_TOPOLOGY_TYPE` that the provider always requests, so existing reads keep working. Other useful values include `DDH_CLUSTER`, `PRIVATE_DNS_OPTIONS`, `CURRENT_OS_NVME_SUPPORTED` and `MANAGED_HOST_ID`.
+     * 
+     * &gt; **NOTE:** The provider always merges its five default attributes into every `DescribeInstances` query and the API accepts at most `10` values, so at most `5` additional values can be set here. `MANAGED_HOST_ID` is requested only when configured here and makes the API return the managed host ID inside `AdditionalInfo`; the state value of `managedHostId` is refreshed from the response only when `managedHostId` is configured.
+     * 
+     */
+    public Output<Optional<List<String>>> additionalAttributes() {
+        return Codegen.optional(this.additionalAttributes);
+    }
     /**
      * Field `allocatePublicIp` has been deprecated from provider version 1.7.0. Setting  `internetMaxBandwidthOut` larger than 0 will allocate public ip for instance.
      * 
@@ -257,6 +275,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
+     * 
      * &gt; **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
      * 
      */
@@ -265,6 +284,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
+     * 
      * &gt; **NOTE:** `creditSpecification` is only supported by burstable instance families (e.g. `t5`, `t6`). For an existing or imported instance whose instance type does not support credit specification, this field is empty in the state and configuring it does not take effect; no change will be applied, which avoids the `Credit.NotFound` error from the API.
      * 
      */
@@ -722,6 +742,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+     * 
      * &gt; **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
      * 
      */
@@ -730,6 +751,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid. **NOTE:** From version 1.268.0, `keyName` can be modified. If you want to use `keyName`, We recommend you to use the resource alicloud_ecs_key_pair_attachment.
+     * 
      * &gt; **NOTE:** When modifying `keyName`, if the instance status is `Running`, the ECS instance will be rebooted; If the instance status is `Stopped`, the ECS instance status will be changed to `Running`.
      * 
      */
@@ -853,6 +875,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<InstanceMaintenanceTime>> maintenanceTime() {
         return Codegen.optional(this.maintenanceTime);
+    }
+    /**
+     * The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managedHostId` and `dedicatedHostId` parameters.
+     * 
+     * &gt; **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managedHostId` is configured.
+     * 
+     */
+    @Export(name="managedHostId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> managedHostId;
+
+    /**
+     * @return The ID of the managed host on which to create the instance, such as `mh-f2d3647ca21****`. The managed host refers to the physical machine in the intelligent fully-managed resource pool. **NOTE:** You cannot specify both the `managedHostId` and `dedicatedHostId` parameters.
+     * 
+     * &gt; **NOTE:** The managed host of an instance cannot be changed after creation. Modifying it in the configuration triggers a replacement of the instance. The API returns the managed host ID only when `additionalAttributes` contains `MANAGED_HOST_ID`, and the value is refreshed into the state only while `managedHostId` is configured.
+     * 
+     */
+    public Output<Optional<String>> managedHostId() {
+        return Codegen.optional(this.managedHostId);
     }
     /**
      * The memory size of the instance. Unit: MiB.
@@ -1434,14 +1474,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskBurstingEnabled);
     }
     /**
-     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
+     * Valid values: `all`, `localDisk`, `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`, `cloudEssdXc0`, `cloudEssdXc1`. only is used to some none I/O optimized instance. `cloudAuto` is Available since v1.184.0. `cloudEssdXc0` and `cloudEssdXc1` are Available since v2.2.0 and only supported in government cloud (政务云) regions.
      * 
      */
     @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
     /**
-     * @return Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since v1.184.0.
+     * @return Valid values: `all`, `localDisk`, `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`, `cloudEssdXc0`, `cloudEssdXc1`. only is used to some none I/O optimized instance. `cloudAuto` is Available since v1.184.0. `cloudEssdXc0` and `cloudEssdXc1` are Available since v2.2.0 and only supported in government cloud (政务云) regions.
      * 
      */
     public Output<String> systemDiskCategory() {

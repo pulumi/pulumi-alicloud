@@ -26,8 +26,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string Threshold;
         /// <summary>
-        /// The consecutive number of times for which the metric value is measured before a warn-level
-        /// alert is triggered.
+        /// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         /// </summary>
         public readonly string Times;
 

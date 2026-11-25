@@ -72,11 +72,17 @@ class GetDdosBgpIpsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        The ID of the native protection enterprise instance to be operated.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def ips(self) -> Sequence['outputs.GetDdosBgpIpsIpResult']:
+        """
+        A list of Ddos Bgp Ips. Each element contains the following attributes:
+        """
         return pulumi.get(self, "ips")
 
     @_builtins.property
@@ -102,6 +108,9 @@ class GetDdosBgpIpsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The current state of the IP address.
+        """
         return pulumi.get(self, "status")
 
 
@@ -133,7 +142,7 @@ def get_ddos_bgp_ips(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.180.0+.
+    > **NOTE:** Available since v1.180.0.
 
     ## Example Usage
 
@@ -192,7 +201,7 @@ def get_ddos_bgp_ips_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
     """
     This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.180.0+.
+    > **NOTE:** Available since v1.180.0.
 
     ## Example Usage
 

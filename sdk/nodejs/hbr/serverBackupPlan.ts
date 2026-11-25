@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.142.0.
  *
- * > **NOTE:** Deprecated since v1.249.0.
- *
  * > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
  *
  * ## Example Usage
@@ -135,7 +133,7 @@ export class ServerBackupPlan extends pulumi.CustomResource {
      */
     declare public readonly crossAccountUserId: pulumi.Output<number | undefined>;
     /**
-     * ECS server backup plan details.
+     * ECS server backup plan details. See `detail` below.
      */
     declare public readonly details: pulumi.Output<outputs.hbr.ServerBackupPlanDetail[]>;
     /**
@@ -231,7 +229,7 @@ export interface ServerBackupPlanState {
      */
     crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
-     * ECS server backup plan details.
+     * ECS server backup plan details. See `detail` below.
      */
     details?: pulumi.Input<pulumi.Input<inputs.hbr.ServerBackupPlanDetail>[] | undefined>;
     /**
@@ -274,7 +272,7 @@ export interface ServerBackupPlanArgs {
      */
     crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
-     * ECS server backup plan details.
+     * ECS server backup plan details. See `detail` below.
      */
     details: pulumi.Input<pulumi.Input<inputs.hbr.ServerBackupPlanDetail>[]>;
     /**

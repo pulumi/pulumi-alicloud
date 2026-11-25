@@ -16,16 +16,22 @@ public final class RocketMQInstanceSoftwareArgs extends com.pulumi.resources.Res
     public static final RocketMQInstanceSoftwareArgs Empty = new RocketMQInstanceSoftwareArgs();
 
     /**
-     * Upgrade time period.
+     * The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
+     * 
+     * @deprecated The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
      * 
      */
+    @Deprecated
     @Import(name="maintainTime")
     private @Nullable Output<String> maintainTime;
 
     /**
-     * @return Upgrade time period.
+     * @return The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
+     * 
+     * @deprecated The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
      * 
      */
+    @Deprecated
     public Optional<Output<String>> maintainTime() {
         return Optional.ofNullable(this.maintainTime);
     }
@@ -87,22 +93,28 @@ public final class RocketMQInstanceSoftwareArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maintainTime Upgrade time period.
+         * @param maintainTime The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
          * 
          * @return builder
          * 
+         * @deprecated The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
+         * 
          */
+        @Deprecated
         public Builder maintainTime(@Nullable Output<String> maintainTime) {
             $.maintainTime = maintainTime;
             return this;
         }
 
         /**
-         * @param maintainTime Upgrade time period.
+         * @param maintainTime The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
          * 
          * @return builder
          * 
+         * @deprecated The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
+         * 
          */
+        @Deprecated
         public Builder maintainTime(String maintainTime) {
             return maintainTime(Output.of(maintainTime));
         }

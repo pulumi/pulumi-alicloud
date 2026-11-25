@@ -32,14 +32,18 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * The name of the endpoint group.
+     * 
+     * The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="basicEndpointGroupName")
     private @Nullable Output<String> basicEndpointGroupName;
 
     /**
-     * @return The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+     * @return The name of the endpoint group.
+     * 
+     * The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> basicEndpointGroupName() {
@@ -47,14 +51,18 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+     * The description of the endpoint group.
+     * 
+     * The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+     * @return The description of the endpoint group.
+     * 
+     * The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -77,14 +85,18 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the region where you want to create the endpoint group.
+     * The ID of the region to which the endpoint group belongs.
+     * 
+     * You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
      * 
      */
     @Import(name="endpointGroupRegion", required=true)
     private Output<String> endpointGroupRegion;
 
     /**
-     * @return The ID of the region where you want to create the endpoint group.
+     * @return The ID of the region to which the endpoint group belongs.
+     * 
+     * You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
      * 
      */
     public Output<String> endpointGroupRegion() {
@@ -92,14 +104,22 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The sub address of the endpoint.
+     * The secondary address of the endpoint.
+     * 
+     * This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+     * - If you set the endpoint type to `ECS`, you can set `endpointSubAddress` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+     * - If you set the endpoint type to `ENI`, you can set `endpointSubAddress` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
      * 
      */
     @Import(name="endpointSubAddress")
     private @Nullable Output<String> endpointSubAddress;
 
     /**
-     * @return The sub address of the endpoint.
+     * @return The secondary address of the endpoint.
+     * 
+     * This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+     * - If you set the endpoint type to `ECS`, you can set `endpointSubAddress` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+     * - If you set the endpoint type to `ENI`, you can set `endpointSubAddress` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
      * 
      */
     public Optional<Output<String>> endpointSubAddress() {
@@ -107,14 +127,20 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+     * The type of the endpoint. Valid values:
+     * - `ENI`: elastic network interface (ENI).
+     * - `SLB`: Classic Load Balancer (CLB) instance.
+     * - `ECS`: Elastic Compute Service (ECS) instance.
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+     * @return The type of the endpoint. Valid values:
+     * - `ENI`: elastic network interface (ENI).
+     * - `SLB`: Classic Load Balancer (CLB) instance.
+     * - `ECS`: Elastic Compute Service (ECS) instance.
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -173,7 +199,9 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param basicEndpointGroupName The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+         * @param basicEndpointGroupName The name of the endpoint group.
+         * 
+         * The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -184,7 +212,9 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param basicEndpointGroupName The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+         * @param basicEndpointGroupName The name of the endpoint group.
+         * 
+         * The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -194,7 +224,9 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param description The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+         * @param description The description of the endpoint group.
+         * 
+         * The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -205,7 +237,9 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param description The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
+         * @param description The description of the endpoint group.
+         * 
+         * The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -236,7 +270,9 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param endpointGroupRegion The ID of the region where you want to create the endpoint group.
+         * @param endpointGroupRegion The ID of the region to which the endpoint group belongs.
+         * 
+         * You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
          * 
          * @return builder
          * 
@@ -247,7 +283,9 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param endpointGroupRegion The ID of the region where you want to create the endpoint group.
+         * @param endpointGroupRegion The ID of the region to which the endpoint group belongs.
+         * 
+         * You can call the [ListAvailableBusiRegions](https://www.alibabacloud.com/help/en/doc-detail/2253223.html) operation to query the region ID.
          * 
          * @return builder
          * 
@@ -257,7 +295,11 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param endpointSubAddress The sub address of the endpoint.
+         * @param endpointSubAddress The secondary address of the endpoint.
+         * 
+         * This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+         * - If you set the endpoint type to `ECS`, you can set `endpointSubAddress` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+         * - If you set the endpoint type to `ENI`, you can set `endpointSubAddress` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
          * 
          * @return builder
          * 
@@ -268,7 +310,11 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param endpointSubAddress The sub address of the endpoint.
+         * @param endpointSubAddress The secondary address of the endpoint.
+         * 
+         * This parameter is required only if the accelerated IP address is associated with the secondary private IP address of an ECS instance or an ENI.
+         * - If you set the endpoint type to `ECS`, you can set `endpointSubAddress` to the secondary private IP address of the primary ENI. If you leave this parameter empty, the primary private IP address of the primary ENI is used.
+         * - If you set the endpoint type to `ENI`, you can set `endpointSubAddress` to the secondary private IP address of the secondary ENI. If you leave this parameter empty, the primary private IP address of the secondary ENI is used.
          * 
          * @return builder
          * 
@@ -278,7 +324,10 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param endpointType The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+         * @param endpointType The type of the endpoint. Valid values:
+         * - `ENI`: elastic network interface (ENI).
+         * - `SLB`: Classic Load Balancer (CLB) instance.
+         * - `ECS`: Elastic Compute Service (ECS) instance.
          * 
          * @return builder
          * 
@@ -289,7 +338,10 @@ public final class BasicEndpointGroupArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param endpointType The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
+         * @param endpointType The type of the endpoint. Valid values:
+         * - `ENI`: elastic network interface (ENI).
+         * - `SLB`: Classic Load Balancer (CLB) instance.
+         * - `ECS`: Elastic Compute Service (ECS) instance.
          * 
          * @return builder
          * 

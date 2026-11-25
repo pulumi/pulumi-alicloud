@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Sag Acls available to the user.
  *
- * > **NOTE:** Available in 1.60.0+
+ * > **NOTE:** Available since v1.60.0+
  *
  * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = alicloud.sag.getAcls({
- *     ids: [defaultAlicloudSagAcls.id],
- *     nameRegex: "^tf-testAcc.*",
+ * const defaultAcl = new alicloud.sag.Acl("default", {name: "terraform-example"});
+ * const _default = alicloud.sag.getAclsOutput({
+ *     ids: [defaultAcl.id],
+ *     nameRegex: "^terraform-example",
  * });
- * const defaultAcl = new alicloud.sag.Acl("default", {name: "tf-testAccSagAclName"});
  * ```
  */
 export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
@@ -50,6 +50,9 @@ export interface GetAclsArgs {
      * A regex string to filter Sag Acl instances by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -79,7 +82,7 @@ export interface GetAclsResult {
 /**
  * This data source provides Sag Acls available to the user.
  *
- * > **NOTE:** Available in 1.60.0+
+ * > **NOTE:** Available since v1.60.0+
  *
  * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
  *
@@ -91,11 +94,11 @@ export interface GetAclsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = alicloud.sag.getAcls({
- *     ids: [defaultAlicloudSagAcls.id],
- *     nameRegex: "^tf-testAcc.*",
+ * const defaultAcl = new alicloud.sag.Acl("default", {name: "terraform-example"});
+ * const _default = alicloud.sag.getAclsOutput({
+ *     ids: [defaultAcl.id],
+ *     nameRegex: "^terraform-example",
  * });
- * const defaultAcl = new alicloud.sag.Acl("default", {name: "tf-testAccSagAclName"});
  * ```
  */
 export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclsResult> {
@@ -120,5 +123,8 @@ export interface GetAclsOutputArgs {
      * A regex string to filter Sag Acl instances by name.
      */
     nameRegex?: pulumi.Input<string | undefined>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string | undefined>;
 }

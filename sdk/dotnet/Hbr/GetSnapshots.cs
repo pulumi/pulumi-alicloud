@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Hbr
         /// <summary>
         /// This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -267,6 +267,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("instanceId")]
         public string? InstanceId { get; set; }
 
+        /// <summary>
+        /// The limit of snapshots to query.
+        /// </summary>
         [Input("limit")]
         public int? Limit { get; set; }
 
@@ -276,6 +279,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The query string used to filter snapshots.
+        /// </summary>
         [Input("query")]
         public string? Query { get; set; }
 
@@ -353,6 +359,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        /// <summary>
+        /// The limit of snapshots to query.
+        /// </summary>
         [Input("limit")]
         public Input<int>? Limit { get; set; }
 
@@ -362,6 +371,9 @@ namespace Pulumi.AliCloud.Hbr
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The query string used to filter snapshots.
+        /// </summary>
         [Input("query")]
         public Input<string>? Query { get; set; }
 
@@ -393,22 +405,46 @@ namespace Pulumi.AliCloud.Hbr
     [OutputType]
     public sealed class GetSnapshotsResult
     {
+        /// <summary>
+        /// (OSS) The name of OSS bucket.
+        /// </summary>
         public readonly string? Bucket;
+        /// <summary>
+        /// The time when the snapshot completed. UNIX time in seconds.
+        /// </summary>
         public readonly string? CompleteTime;
         public readonly string? CompleteTimeChecker;
+        /// <summary>
+        /// (NAS) File System Creation Time of Nas. Unix Time Seconds.
+        /// </summary>
         public readonly string? CreateTime;
+        /// <summary>
+        /// (NAS) The ID of NAS File system.
+        /// </summary>
         public readonly string? FileSystemId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// (ECS_FILE) The ID of ECS instance.
+        /// </summary>
         public readonly string? InstanceId;
         public readonly int? Limit;
         public readonly string? OutputFile;
         public readonly string? Query;
+        /// <summary>
+        /// A list of Hbr Snapshots. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSnapshotsSnapshotResult> Snapshots;
+        /// <summary>
+        /// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+        /// </summary>
         public readonly string SourceType;
+        /// <summary>
+        /// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+        /// </summary>
         public readonly string? Status;
         public readonly string VaultId;
 

@@ -85,6 +85,9 @@ class GetMetricRuleTemplatesResult:
     @_builtins.property
     @pulumi.getter(name="metricRuleTemplateName")
     def metric_rule_template_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the alert template.
+        """
         return pulumi.get(self, "metric_rule_template_name")
 
     @_builtins.property
@@ -95,6 +98,9 @@ class GetMetricRuleTemplatesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Metric Rule Template names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -105,11 +111,17 @@ class GetMetricRuleTemplatesResult:
     @_builtins.property
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the alert template.
+        """
         return pulumi.get(self, "template_id")
 
     @_builtins.property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetMetricRuleTemplatesTemplateResult']:
+        """
+        A list of Cms Metric Rule Templates. Each element contains the following attributes:
+        """
         return pulumi.get(self, "templates")
 
 
@@ -142,7 +154,7 @@ def get_metric_rule_templates(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -204,7 +216,7 @@ def get_metric_rule_templates_output(enable_details: pulumi.Input[Optional[Optio
     """
     This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 

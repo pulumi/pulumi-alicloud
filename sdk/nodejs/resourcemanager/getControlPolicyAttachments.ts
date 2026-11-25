@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -61,21 +61,30 @@ export interface GetControlPolicyAttachmentsArgs {
  * A collection of values returned by getControlPolicyAttachments.
  */
 export interface GetControlPolicyAttachmentsResult {
+    /**
+     * A list of Resource Manager Control Policy Attachments. Each element contains the following attributes:
+     */
     readonly attachments: outputs.resourcemanager.GetControlPolicyAttachmentsAttachment[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Control Policy Attachment IDs.
+     */
     readonly ids: string[];
     readonly language?: string;
     readonly outputFile?: string;
+    /**
+     * The type of policy.
+     */
     readonly policyType?: string;
     readonly targetId: string;
 }
 /**
  * This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *

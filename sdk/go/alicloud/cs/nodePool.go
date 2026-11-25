@@ -207,6 +207,10 @@ import (
 //				return err
 //			}
 //			// Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+//			// The management features below require the node-lifecycle-controller add-on at version
+//			// v2.3.13-b581b592 or later and the ack-node-problem-detector add-on at version 1.2.41 or later.
+//			// The service validates the installed versions and rejects the request when an add-on is
+//			// missing or too old, so install or upgrade them with alicloud_cs_kubernetes_addon first.
 //			_, err = cs.NewNodePool(ctx, "maintenance", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String("maintenance"),
 //				ClusterId:    defaultManagedKubernetes.ID(),
@@ -224,7 +228,7 @@ import (
 //					Enable:     pulumi.Bool(true),
 //					AutoRepair: pulumi.Bool(true),
 //					AutoRepairPolicy: &cs.NodePoolManagementAutoRepairPolicyArgs{
-//						RestartNode: pulumi.Bool(true),
+//						AutoRepairPolicyId: pulumi.String("r-repair-sys-comp-failure"),
 //					},
 //					AutoUpgrade: pulumi.Bool(true),
 //					AutoUpgradePolicy: &cs.NodePoolManagementAutoUpgradePolicyArgs{
@@ -642,6 +646,8 @@ type NodePool struct {
 	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
 	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	KeepInstanceName pulumi.BoolOutput `pulumi:"keepInstanceName"`
 	// The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
@@ -917,6 +923,8 @@ type nodePoolState struct {
 	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	KeepInstanceName *bool `pulumi:"keepInstanceName"`
 	// The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
 	KeyName *string `pulumi:"keyName"`
@@ -1149,6 +1157,8 @@ type NodePoolState struct {
 	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	KeepInstanceName pulumi.BoolPtrInput
 	// The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
 	KeyName pulumi.StringPtrInput
@@ -1391,6 +1401,8 @@ type nodePoolArgs struct {
 	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	KeepInstanceName *bool `pulumi:"keepInstanceName"`
 	// The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
 	KeyName *string `pulumi:"keyName"`
@@ -1620,6 +1632,8 @@ type NodePoolArgs struct {
 	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	KeepInstanceName pulumi.BoolPtrInput
 	// The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
 	KeyName pulumi.StringPtrInput
@@ -2006,6 +2020,8 @@ func (o NodePoolOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
 }
 
 // Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o NodePoolOutput) KeepInstanceName() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolOutput { return v.KeepInstanceName }).(pulumi.BoolOutput)
 }

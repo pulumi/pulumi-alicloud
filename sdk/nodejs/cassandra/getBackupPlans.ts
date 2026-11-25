@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.128.0+.
+ * > **NOTE:** Available since v1.128.0.
  *
  * > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
  *
@@ -53,19 +53,28 @@ export interface GetBackupPlansArgs {
  * A collection of values returned by getBackupPlans.
  */
 export interface GetBackupPlansResult {
+    /**
+     * The ID of the cluster for the backup.
+     */
     readonly clusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Backup Plan IDs.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Cassandra Backup Plans. Each element contains the following attributes:
+     */
     readonly plans: outputs.cassandra.GetBackupPlansPlan[];
 }
 /**
  * This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.128.0+.
+ * > **NOTE:** Available since v1.128.0.
  *
  * > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
  *

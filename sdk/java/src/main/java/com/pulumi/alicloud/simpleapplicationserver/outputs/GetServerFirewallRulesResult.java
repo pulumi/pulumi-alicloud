@@ -20,8 +20,16 @@ public final class GetServerFirewallRulesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return Alibaba Cloud simple application server instance ID.
+     * 
+     */
     private String instanceId;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Simple Application Server Firewall Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetServerFirewallRulesRule> rules;
 
     private GetServerFirewallRulesResult() {}
@@ -35,12 +43,20 @@ public final class GetServerFirewallRulesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return Alibaba Cloud simple application server instance ID.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Simple Application Server Firewall Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetServerFirewallRulesRule> rules() {
         return this.rules;
     }

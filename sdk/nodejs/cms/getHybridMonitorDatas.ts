@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.177.0+.
+ * > **NOTE:** Available since v1.177.0+.
  *
  * ## Example Usage
  *
@@ -74,6 +74,9 @@ export interface GetHybridMonitorDatasArgs {
  * A collection of values returned by getHybridMonitorDatas.
  */
 export interface GetHybridMonitorDatasResult {
+    /**
+     * A list of Cms Hybrid Monitor Datas. Each element contains the following attributes:
+     */
     readonly datas: outputs.cms.GetHybridMonitorDatasData[];
     readonly end: string;
     /**
@@ -89,7 +92,7 @@ export interface GetHybridMonitorDatasResult {
 /**
  * This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.177.0+.
+ * > **NOTE:** Available since v1.177.0+.
  *
  * ## Example Usage
  *

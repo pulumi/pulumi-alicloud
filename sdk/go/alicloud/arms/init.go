@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GrafanaWorkspace{}
 	case "alicloud:arms/integrationExporter:IntegrationExporter":
 		r = &IntegrationExporter{}
+	case "alicloud:arms/notificationPolicy:NotificationPolicy":
+		r = &NotificationPolicy{}
 	case "alicloud:arms/prometheus:Prometheus":
 		r = &Prometheus{}
 	case "alicloud:arms/prometheusAlertRule:PrometheusAlertRule":
@@ -126,6 +128,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"arms/integrationExporter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/notificationPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.171.0+.
+        /// &gt; **NOTE:** Available since v1.171.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.171.0+.
+        /// &gt; **NOTE:** Available since v1.171.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.171.0+.
+        /// &gt; **NOTE:** Available since v1.171.0.
         /// 
         /// ## Example Usage
         /// 
@@ -228,6 +228,9 @@ namespace Pulumi.AliCloud.Cms
     [OutputType]
     public sealed class GetSlsGroupsResult
     {
+        /// <summary>
+        /// A list of Cms Sls Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSlsGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -236,6 +239,9 @@ namespace Pulumi.AliCloud.Cms
         public readonly ImmutableArray<string> Ids;
         public readonly string? Keyword;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Sls Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;

@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AclEntryList {
+    /**
+     * @return The comment of the entry.
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return The CIDR blocks.
+     * 
+     */
     private @Nullable String entry;
 
     private AclEntryList() {}
+    /**
+     * @return The comment of the entry.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return The CIDR blocks.
+     * 
+     */
     public Optional<String> entry() {
         return Optional.ofNullable(this.entry);
     }

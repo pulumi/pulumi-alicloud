@@ -138,7 +138,7 @@ def get_access_rules(access_group_name: Optional[_builtins.str] = None,
     """
     This data source provides AccessRule available to the user.
 
-    > **NOTE**: Available in 1.35.0+
+    > **NOTE:** Available since v1.35.0+
 
     ## Example Usage
 
@@ -146,7 +146,7 @@ def get_access_rules(access_group_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    foo = alicloud.nas.get_access_rules(access_group_name="tf-testAccAccessGroupsdatasource",
+    foo = alicloud.nas.get_access_rules(access_group_name="tf-example",
         source_cidr_ip="168.1.1.0/16",
         rw_access="RDWR",
         user_access="no_squash")
@@ -190,7 +190,7 @@ def get_access_rules_output(access_group_name: pulumi.Input[Optional[_builtins.s
     """
     This data source provides AccessRule available to the user.
 
-    > **NOTE**: Available in 1.35.0+
+    > **NOTE:** Available since v1.35.0+
 
     ## Example Usage
 
@@ -198,7 +198,7 @@ def get_access_rules_output(access_group_name: pulumi.Input[Optional[_builtins.s
     import pulumi
     import pulumi_alicloud as alicloud
 
-    foo = alicloud.nas.get_access_rules(access_group_name="tf-testAccAccessGroupsdatasource",
+    foo = alicloud.nas.get_access_rules(access_group_name="tf-example",
         source_cidr_ip="168.1.1.0/16",
         rw_access="RDWR",
         user_access="no_squash")

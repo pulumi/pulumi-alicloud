@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
+        /// &gt; **NOTE:** Available since v1.53.0.
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
+        /// &gt; **NOTE:** Available since v1.53.0.
         /// 
         /// ## Example Usage
         /// 
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
+        /// &gt; **NOTE:** Available since v1.53.0.
         /// 
         /// ## Example Usage
         /// 
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.RocketMQ
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of group names.
+        /// A list of group IDs to filter results.
         /// </summary>
         public List<string> Ids
         {
@@ -189,6 +189,9 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// A regex string to filter results by the group name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
@@ -234,7 +237,7 @@ namespace Pulumi.AliCloud.RocketMQ
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of group names.
+        /// A list of group IDs to filter results.
         /// </summary>
         public InputList<string> Ids
         {
@@ -248,6 +251,9 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// A regex string to filter results by the group name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
@@ -296,8 +302,14 @@ namespace Pulumi.AliCloud.RocketMQ
         /// A list of group names.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// ID of the ONS Instance that owns the group.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>

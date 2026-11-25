@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNetworkInterfacesInterfaceAssociatedPublicIp {
+    /**
+     * @return The public IP address.
+     * 
+     */
     private String publicIpAddress;
 
     private GetNetworkInterfacesInterfaceAssociatedPublicIp() {}
+    /**
+     * @return The public IP address.
+     * 
+     */
     public String publicIpAddress() {
         return this.publicIpAddress;
     }

@@ -66,6 +66,9 @@ class GetConfigMapsResult:
     @_builtins.property
     @pulumi.getter
     def maps(self) -> Sequence['outputs.GetConfigMapsMapResult']:
+        """
+        A list of Sae Config Maps. Each element contains the following attributes:
+        """
         return pulumi.get(self, "maps")
 
     @_builtins.property
@@ -76,11 +79,17 @@ class GetConfigMapsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Config Map names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> _builtins.str:
+        """
+        The NamespaceId of Config Maps.
+        """
         return pulumi.get(self, "namespace_id")
 
     @_builtins.property
@@ -112,7 +121,7 @@ def get_config_maps(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Sae Config Maps of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.130.0+.
+    > **NOTE:** Available since v1.130.0.
 
     ## Example Usage
 
@@ -173,7 +182,7 @@ def get_config_maps_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtin
     """
     This data source provides the Sae Config Maps of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.130.0+.
+    > **NOTE:** Available since v1.130.0.
 
     ## Example Usage
 

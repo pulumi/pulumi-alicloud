@@ -23,8 +23,20 @@ public final class GetTemplateScratchesResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ros Template Scratches. Each element contains the following attributes. See `scratches` below.
+     * 
+     */
     private List<GetTemplateScratchesScratch> scratches;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The type of the Template Scratch.
+     * 
+     */
     private @Nullable String templateScratchType;
 
     private GetTemplateScratchesResult() {}
@@ -44,12 +56,24 @@ public final class GetTemplateScratchesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ros Template Scratches. Each element contains the following attributes. See `scratches` below.
+     * 
+     */
     public List<GetTemplateScratchesScratch> scratches() {
         return this.scratches;
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The type of the Template Scratch.
+     * 
+     */
     public Optional<String> templateScratchType() {
         return Optional.ofNullable(this.templateScratchType);
     }

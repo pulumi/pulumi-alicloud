@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.OpenSearch
         /// <summary>
         /// This data source provides the Open Search App Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.OpenSearch
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf_testacc";
+        ///     var name = config.Get("name") ?? "tf_acc";
         ///     var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("default", new()
         ///     {
         ///         AppGroupName = name,
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.OpenSearch
         /// <summary>
         /// This data source provides the Open Search App Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.OpenSearch
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf_testacc";
+        ///     var name = config.Get("name") ?? "tf_acc";
         ///     var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("default", new()
         ///     {
         ///         AppGroupName = name,
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.OpenSearch
         /// <summary>
         /// This data source provides the Open Search App Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -129,7 +129,7 @@ namespace Pulumi.AliCloud.OpenSearch
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf_testacc";
+        ///     var name = config.Get("name") ?? "tf_acc";
         ///     var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("default", new()
         ///     {
         ///         AppGroupName = name,
@@ -184,11 +184,14 @@ namespace Pulumi.AliCloud.OpenSearch
         }
 
         /// <summary>
-        /// The Instance ID.
+        /// Instance ID.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
 
+        /// <summary>
+        /// The name of AppGroup.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -205,13 +208,13 @@ namespace Pulumi.AliCloud.OpenSearch
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The Resource Group ID.
+        /// Resource Group Id.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Application type. Valid Values: `Standard`, `Enhanced`.
+        /// The Type of AppGroup. Valid values: `Standard`,`Enhanced`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -243,11 +246,14 @@ namespace Pulumi.AliCloud.OpenSearch
         }
 
         /// <summary>
-        /// The Instance ID.
+        /// Instance ID.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        /// <summary>
+        /// The name of AppGroup.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -264,13 +270,13 @@ namespace Pulumi.AliCloud.OpenSearch
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The Resource Group ID.
+        /// Resource Group Id.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Application type. Valid Values: `Standard`, `Enhanced`.
+        /// The Type of AppGroup. Valid values: `Standard`,`Enhanced`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -286,18 +292,33 @@ namespace Pulumi.AliCloud.OpenSearch
     public sealed class GetAppGroupsResult
     {
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// A list of App Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The Instance ID.
+        /// </summary>
         public readonly string? InstanceId;
         public readonly string? Name;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of App Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The Resource Group ID.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// Application type. Valid Values: `Standard`, `Enhanced`.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

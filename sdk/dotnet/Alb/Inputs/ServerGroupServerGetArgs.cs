@@ -80,7 +80,8 @@ namespace Pulumi.AliCloud.Alb.Inputs
         /// The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
         /// 
         /// &gt; **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-        /// **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+        /// 
+        /// &gt; **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }

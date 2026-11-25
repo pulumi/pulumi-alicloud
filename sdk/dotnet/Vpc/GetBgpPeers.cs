@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0.
         /// 
         /// ## Example Usage
         /// 
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0.
         /// 
         /// ## Example Usage
         /// 
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.153.0+.
+        /// &gt; **NOTE:** Available since v1.153.0.
         /// 
         /// ## Example Usage
         /// 
@@ -267,6 +267,9 @@ namespace Pulumi.AliCloud.Vpc
     [OutputType]
     public sealed class GetBgpPeersResult
     {
+        /// <summary>
+        /// The ID of the BGP group.
+        /// </summary>
         public readonly string? BgpGroupId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -274,8 +277,17 @@ namespace Pulumi.AliCloud.Vpc
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Vpc Bgp Peers. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBgpPeersPeerResult> Peers;
+        /// <summary>
+        /// The ID of the router.
+        /// </summary>
         public readonly string? RouterId;
+        /// <summary>
+        /// The status of the BGP peer.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Lindorm Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -85,18 +85,27 @@ export interface GetInstancesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Lindorm Instances. Each element contains the following attributes:
+     */
     readonly instances: outputs.lindorm.GetInstancesInstance[];
     readonly nameRegex?: string;
+    /**
+     * A list of Instance names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly queryStr?: string;
+    /**
+     * The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+     */
     readonly status?: string;
     readonly supportEngine?: number;
 }
 /**
  * This data source provides the Lindorm Instances of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

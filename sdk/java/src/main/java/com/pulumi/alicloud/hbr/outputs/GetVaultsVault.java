@@ -28,7 +28,7 @@ public final class GetVaultsVault {
      */
     private String createdTime;
     /**
-     * @return Whether to enable the deduplication function for the database backup Vault.
+     * @return (Internal use) Whether to enable the deduplication function for the database backup Vault.
      * 
      */
     private Boolean dedup;
@@ -43,17 +43,17 @@ public final class GetVaultsVault {
      */
     private String id;
     /**
-     * @return Index available.
+     * @return (Not yet open) Index available.
      * 
      */
     private Boolean indexAvailable;
     /**
-     * @return Index level.
+     * @return (Not yet open) Index level.
      * 
      */
     private String indexLevel;
     /**
-     * @return Index update time.
+     * @return (Not yet open) Index update time.
      * 
      */
     private String indexUpdateTime;
@@ -63,13 +63,7 @@ public final class GetVaultsVault {
      */
     private String latestReplicationTime;
     /**
-     * @return Billing model, possible values:
-     * * `FREE` is not billed
-     * * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
-     * * `V2` new version of metering mode
-     * * `AEGIS` Billing method for cloud security use
-     * * `UNI_BACKUP` the backup of deduplication database
-     * * `ARCHIVE` archive library.
+     * @return Billing model, possible values: `FREE` is not billed, `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items, `V2` new version of metering mode, `AEGIS` Billing method for cloud security use, `UNI_BACKUP` the backup of deduplication database, `ARCHIVE` archive library.
      * 
      */
     private String paymentType;
@@ -89,15 +83,19 @@ public final class GetVaultsVault {
      */
     private String replicationSourceVaultId;
     /**
-     * @return Warehouse-level data retention days, only valid for archive libraries.
+     * @return (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
      * 
      */
     private String retention;
     /**
-     * @return Whether to enable the backup search function.
+     * @return (Not yet open) Whether to enable the backup search function.
      * 
      */
     private Boolean searchEnabled;
+    /**
+     * @return The list of data source types supported by the vault.
+     * 
+     */
     private List<String> sourceTypes;
     /**
      * @return The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
@@ -135,7 +133,9 @@ public final class GetVaultsVault {
      */
     private String vaultStorageClass;
     /**
-     * @return The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * @return VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * - `STANDARD` - used in OSS, NAS and ECS File backup.
+     * - `OTS_BACKUP` -  used in OTS backup.
      * 
      */
     private String vaultType;
@@ -163,7 +163,7 @@ public final class GetVaultsVault {
         return this.createdTime;
     }
     /**
-     * @return Whether to enable the deduplication function for the database backup Vault.
+     * @return (Internal use) Whether to enable the deduplication function for the database backup Vault.
      * 
      */
     public Boolean dedup() {
@@ -184,21 +184,21 @@ public final class GetVaultsVault {
         return this.id;
     }
     /**
-     * @return Index available.
+     * @return (Not yet open) Index available.
      * 
      */
     public Boolean indexAvailable() {
         return this.indexAvailable;
     }
     /**
-     * @return Index level.
+     * @return (Not yet open) Index level.
      * 
      */
     public String indexLevel() {
         return this.indexLevel;
     }
     /**
-     * @return Index update time.
+     * @return (Not yet open) Index update time.
      * 
      */
     public String indexUpdateTime() {
@@ -212,13 +212,7 @@ public final class GetVaultsVault {
         return this.latestReplicationTime;
     }
     /**
-     * @return Billing model, possible values:
-     * * `FREE` is not billed
-     * * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
-     * * `V2` new version of metering mode
-     * * `AEGIS` Billing method for cloud security use
-     * * `UNI_BACKUP` the backup of deduplication database
-     * * `ARCHIVE` archive library.
+     * @return Billing model, possible values: `FREE` is not billed, `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items, `V2` new version of metering mode, `AEGIS` Billing method for cloud security use, `UNI_BACKUP` the backup of deduplication database, `ARCHIVE` archive library.
      * 
      */
     public String paymentType() {
@@ -246,19 +240,23 @@ public final class GetVaultsVault {
         return this.replicationSourceVaultId;
     }
     /**
-     * @return Warehouse-level data retention days, only valid for archive libraries.
+     * @return (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
      * 
      */
     public String retention() {
         return this.retention;
     }
     /**
-     * @return Whether to enable the backup search function.
+     * @return (Not yet open) Whether to enable the backup search function.
      * 
      */
     public Boolean searchEnabled() {
         return this.searchEnabled;
     }
+    /**
+     * @return The list of data source types supported by the vault.
+     * 
+     */
     public List<String> sourceTypes() {
         return this.sourceTypes;
     }
@@ -312,7 +310,9 @@ public final class GetVaultsVault {
         return this.vaultStorageClass;
     }
     /**
-     * @return The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * @return VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * - `STANDARD` - used in OSS, NAS and ECS File backup.
+     * - `OTS_BACKUP` -  used in OTS backup.
      * 
      */
     public String vaultType() {

@@ -14,8 +14,6 @@ namespace Pulumi.AliCloud.Adb
     /// environment in the cloud. An ADB cluster can contain multiple user-created
     /// databases.
     /// 
-    /// &gt; **NOTE:** Deprecated since v1.121.0.
-    /// 
     /// &gt; **DEPRECATED:** This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
     /// 
     /// ## Example Usage
@@ -69,6 +67,10 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
+    /// ### Removing alicloud.adb.Cluster from your configuration
+    /// 
+    /// The alicloud.adb.Cluster resource allows you to manage your adb cluster, but Terraform cannot destroy it if your cluster type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster. You can resume managing the cluster via the adb Console.
+    /// 
     /// ## Import
     /// 
     /// ADB cluster can be imported using the id, e.g.
@@ -81,89 +83,125 @@ namespace Pulumi.AliCloud.Adb
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when PayType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `PaymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int> AutoRenewPeriod { get; private set; } = null!;
 
+        /// <summary>
+        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+        /// </summary>
         [Output("computeResource")]
         public Output<string?> ComputeResource { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.93.0) The connection string of the ADB cluster.
+        /// The connection string of the cluster.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster category. Value options: `Basic`, `Cluster`.
+        /// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         /// </summary>
         [Output("dbClusterCategory")]
         public Output<string> DbClusterCategory { get; private set; } = null!;
 
+        /// <summary>
+        /// It duplicates with attribute DbNodeClass and is deprecated from 1.121.2.
+        /// </summary>
         [Output("dbClusterClass")]
         public Output<string?> DbClusterClass { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster version. Value options: `3.0`, Default to `3.0`.
+        /// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         /// </summary>
         [Output("dbClusterVersion")]
         public Output<string?> DbClusterVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The DbNodeClass of cluster node.
+        /// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         /// </summary>
         [Output("dbNodeClass")]
         public Output<string> DbNodeClass { get; private set; } = null!;
 
         /// <summary>
-        /// The DbNodeCount of cluster node.
+        /// The db node count.
         /// </summary>
         [Output("dbNodeCount")]
         public Output<int> DbNodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// The DbNodeStorage of cluster node.
+        /// The db node storage.
         /// </summary>
         [Output("dbNodeStorage")]
         public Output<int> DbNodeStorage { get; private set; } = null!;
 
         /// <summary>
-        /// The description of cluster.
+        /// The description of DBCluster.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to enable disk encryption. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
         [Output("diskEncryption")]
         public Output<bool?> DiskEncryption { get; private set; } = null!;
 
+        /// <summary>
+        /// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        /// </summary>
         [Output("diskPerformanceLevel")]
         public Output<string> DiskPerformanceLevel { get; private set; } = null!;
 
+        /// <summary>
+        /// The elastic io resource.
+        /// </summary>
         [Output("elasticIoResource")]
         public Output<int> ElasticIoResource { get; private set; } = null!;
 
+        /// <summary>
+        /// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        /// - `8Core64GB`: If you set `ElasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+        /// - `12Core96GB`: If you set `ElasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        /// - `16Core128GB`: (Available since v1.237.0)If you set `ElasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        /// </summary>
         [Output("elasticIoResourceSize")]
         public Output<string> ElasticIoResourceSize { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies whether to enable SSL encryption. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
         [Output("enableSsl")]
         public Output<bool?> EnableSsl { get; private set; } = null!;
 
+        /// <summary>
+        /// The minor version to which you want to update.
+        /// </summary>
         [Output("kernelVersion")]
         public Output<string> KernelVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// The Key Management Service (KMS) ID that is used for disk encryption. `KmsId` is valid only when `DiskEncryption` is set to `True`.
+        /// </summary>
         [Output("kmsId")]
         public Output<string?> KmsId { get; private set; } = null!;
 
         /// <summary>
-        /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        /// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         /// </summary>
         [Output("maintainTime")]
         public Output<string> MaintainTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The mode of the cluster. Valid values: `Reserver`, `Flexible`.
+        /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
 
+        /// <summary>
+        /// The modify type.
+        /// </summary>
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
 
@@ -174,13 +212,15 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> PayType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        /// The duration that you will buy DB cluster (in month). It is valid when `PaymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// 
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -197,6 +237,9 @@ namespace Pulumi.AliCloud.Adb
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
@@ -206,9 +249,15 @@ namespace Pulumi.AliCloud.Adb
         [Output("securityIps")]
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The time when to perform the update. Valid values:
+        /// </summary>
         [Output("switchMode")]
         public Output<int?> SwitchMode { get; private set; } = null!;
 
@@ -222,17 +271,20 @@ namespace Pulumi.AliCloud.Adb
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The vpc ID of the resource.
+        /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.
+        /// The vswitch id.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone to launch the DB cluster.
+        /// The zone ID of the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -284,83 +336,119 @@ namespace Pulumi.AliCloud.Adb
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when PayType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `PaymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
+        /// <summary>
+        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+        /// </summary>
         [Input("computeResource")]
         public Input<string>? ComputeResource { get; set; }
 
         /// <summary>
-        /// Cluster category. Value options: `Basic`, `Cluster`.
+        /// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         /// </summary>
         [Input("dbClusterCategory", required: true)]
         public Input<string> DbClusterCategory { get; set; } = null!;
 
+        /// <summary>
+        /// It duplicates with attribute DbNodeClass and is deprecated from 1.121.2.
+        /// </summary>
         [Input("dbClusterClass")]
         public Input<string>? DbClusterClass { get; set; }
 
         /// <summary>
-        /// Cluster version. Value options: `3.0`, Default to `3.0`.
+        /// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         /// </summary>
         [Input("dbClusterVersion")]
         public Input<string>? DbClusterVersion { get; set; }
 
         /// <summary>
-        /// The DbNodeClass of cluster node.
+        /// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
-        /// The DbNodeCount of cluster node.
+        /// The db node count.
         /// </summary>
         [Input("dbNodeCount")]
         public Input<int>? DbNodeCount { get; set; }
 
         /// <summary>
-        /// The DbNodeStorage of cluster node.
+        /// The db node storage.
         /// </summary>
         [Input("dbNodeStorage")]
         public Input<int>? DbNodeStorage { get; set; }
 
         /// <summary>
-        /// The description of cluster.
+        /// The description of DBCluster.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable disk encryption. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
         [Input("diskEncryption")]
         public Input<bool>? DiskEncryption { get; set; }
 
+        /// <summary>
+        /// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        /// </summary>
         [Input("diskPerformanceLevel")]
         public Input<string>? DiskPerformanceLevel { get; set; }
 
+        /// <summary>
+        /// The elastic io resource.
+        /// </summary>
         [Input("elasticIoResource")]
         public Input<int>? ElasticIoResource { get; set; }
 
+        /// <summary>
+        /// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        /// - `8Core64GB`: If you set `ElasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+        /// - `12Core96GB`: If you set `ElasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        /// - `16Core128GB`: (Available since v1.237.0)If you set `ElasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        /// </summary>
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable SSL encryption. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
 
+        /// <summary>
+        /// The minor version to which you want to update.
+        /// </summary>
         [Input("kernelVersion")]
         public Input<string>? KernelVersion { get; set; }
 
+        /// <summary>
+        /// The Key Management Service (KMS) ID that is used for disk encryption. `KmsId` is valid only when `DiskEncryption` is set to `True`.
+        /// </summary>
         [Input("kmsId")]
         public Input<string>? KmsId { get; set; }
 
         /// <summary>
-        /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        /// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         /// </summary>
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }
 
+        /// <summary>
+        /// The mode of the cluster. Valid values: `Reserver`, `Flexible`.
+        /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
 
+        /// <summary>
+        /// The modify type.
+        /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
 
@@ -371,13 +459,15 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        /// The duration that you will buy DB cluster (in month). It is valid when `PaymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// 
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -388,6 +478,9 @@ namespace Pulumi.AliCloud.Adb
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -403,6 +496,9 @@ namespace Pulumi.AliCloud.Adb
             set => _securityIps = value;
         }
 
+        /// <summary>
+        /// The time when to perform the update. Valid values:
+        /// </summary>
         [Input("switchMode")]
         public Input<int>? SwitchMode { get; set; }
 
@@ -422,17 +518,20 @@ namespace Pulumi.AliCloud.Adb
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The vpc ID of the resource.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.
+        /// The vswitch id.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone to launch the DB cluster.
+        /// The zone ID of the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -446,89 +545,125 @@ namespace Pulumi.AliCloud.Adb
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when PayType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `PaymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
+        /// <summary>
+        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+        /// </summary>
         [Input("computeResource")]
         public Input<string>? ComputeResource { get; set; }
 
         /// <summary>
-        /// (Available since v1.93.0) The connection string of the ADB cluster.
+        /// The connection string of the cluster.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
-        /// Cluster category. Value options: `Basic`, `Cluster`.
+        /// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         /// </summary>
         [Input("dbClusterCategory")]
         public Input<string>? DbClusterCategory { get; set; }
 
+        /// <summary>
+        /// It duplicates with attribute DbNodeClass and is deprecated from 1.121.2.
+        /// </summary>
         [Input("dbClusterClass")]
         public Input<string>? DbClusterClass { get; set; }
 
         /// <summary>
-        /// Cluster version. Value options: `3.0`, Default to `3.0`.
+        /// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         /// </summary>
         [Input("dbClusterVersion")]
         public Input<string>? DbClusterVersion { get; set; }
 
         /// <summary>
-        /// The DbNodeClass of cluster node.
+        /// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }
 
         /// <summary>
-        /// The DbNodeCount of cluster node.
+        /// The db node count.
         /// </summary>
         [Input("dbNodeCount")]
         public Input<int>? DbNodeCount { get; set; }
 
         /// <summary>
-        /// The DbNodeStorage of cluster node.
+        /// The db node storage.
         /// </summary>
         [Input("dbNodeStorage")]
         public Input<int>? DbNodeStorage { get; set; }
 
         /// <summary>
-        /// The description of cluster.
+        /// The description of DBCluster.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable disk encryption. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
         [Input("diskEncryption")]
         public Input<bool>? DiskEncryption { get; set; }
 
+        /// <summary>
+        /// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        /// </summary>
         [Input("diskPerformanceLevel")]
         public Input<string>? DiskPerformanceLevel { get; set; }
 
+        /// <summary>
+        /// The elastic io resource.
+        /// </summary>
         [Input("elasticIoResource")]
         public Input<int>? ElasticIoResource { get; set; }
 
+        /// <summary>
+        /// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        /// - `8Core64GB`: If you set `ElasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+        /// - `12Core96GB`: If you set `ElasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+        /// - `16Core128GB`: (Available since v1.237.0)If you set `ElasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+        /// </summary>
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable SSL encryption. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
 
+        /// <summary>
+        /// The minor version to which you want to update.
+        /// </summary>
         [Input("kernelVersion")]
         public Input<string>? KernelVersion { get; set; }
 
+        /// <summary>
+        /// The Key Management Service (KMS) ID that is used for disk encryption. `KmsId` is valid only when `DiskEncryption` is set to `True`.
+        /// </summary>
         [Input("kmsId")]
         public Input<string>? KmsId { get; set; }
 
         /// <summary>
-        /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        /// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         /// </summary>
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }
 
+        /// <summary>
+        /// The mode of the cluster. Valid values: `Reserver`, `Flexible`.
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        /// <summary>
+        /// The modify type.
+        /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
 
@@ -539,13 +674,15 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `PaymentType` supports updating from v1.166.0+.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy DB cluster (in month). It is valid when PayType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+        /// The duration that you will buy DB cluster (in month). It is valid when `PaymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// 
+        /// &gt; **NOTE:** The attribute `Period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -562,6 +699,9 @@ namespace Pulumi.AliCloud.Adb
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -577,9 +717,15 @@ namespace Pulumi.AliCloud.Adb
             set => _securityIps = value;
         }
 
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The time when to perform the update. Valid values:
+        /// </summary>
         [Input("switchMode")]
         public Input<int>? SwitchMode { get; set; }
 
@@ -599,17 +745,20 @@ namespace Pulumi.AliCloud.Adb
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The vpc ID of the resource.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.
+        /// The vswitch id.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The Zone to launch the DB cluster.
+        /// The zone ID of the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -86,6 +86,9 @@ export interface GetGatewaySmbUsersArgs {
  * A collection of values returned by getGatewaySmbUsers.
  */
 export interface GetGatewaySmbUsersResult {
+    /**
+     * The Gateway ID.
+     */
     readonly gatewayId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -94,12 +97,15 @@ export interface GetGatewaySmbUsersResult {
     readonly ids: string[];
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * A list of Cloud Storage Gateway SMB Users. Each element contains the following attributes:
+     */
     readonly users: outputs.cloudstoragegateway.GetGatewaySmbUsersUser[];
 }
 /**
  * This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *

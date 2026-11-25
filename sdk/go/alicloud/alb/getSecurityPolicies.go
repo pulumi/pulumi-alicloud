@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Alb Security Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -73,24 +73,30 @@ type GetSecurityPoliciesArgs struct {
 	// The name of the resource.
 	SecurityPolicyName *string `pulumi:"securityPolicyName"`
 	// The status of the resource. Valid values : `Available`, `Configuring`.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getSecurityPolicies.
 type GetSecurityPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string                      `pulumi:"id"`
-	Ids                []string                    `pulumi:"ids"`
-	NameRegex          *string                     `pulumi:"nameRegex"`
-	Names              []string                    `pulumi:"names"`
-	OutputFile         *string                     `pulumi:"outputFile"`
-	Policies           []GetSecurityPoliciesPolicy `pulumi:"policies"`
-	ResourceGroupId    *string                     `pulumi:"resourceGroupId"`
-	SecurityPolicyIds  []string                    `pulumi:"securityPolicyIds"`
-	SecurityPolicyName *string                     `pulumi:"securityPolicyName"`
-	Status             *string                     `pulumi:"status"`
-	Tags               map[string]string           `pulumi:"tags"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Security Policy names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Alb Security Policies. Each element contains the following attributes:
+	Policies []GetSecurityPoliciesPolicy `pulumi:"policies"`
+	// The ID of the resource group.
+	ResourceGroupId   *string  `pulumi:"resourceGroupId"`
+	SecurityPolicyIds []string `pulumi:"securityPolicyIds"`
+	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	SecurityPolicyName *string `pulumi:"securityPolicyName"`
+	// The status of the resource.
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 }
 
 func GetSecurityPoliciesOutput(ctx *pulumi.Context, args GetSecurityPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetSecurityPoliciesResultOutput {
@@ -114,7 +120,8 @@ type GetSecurityPoliciesOutputArgs struct {
 	SecurityPolicyName pulumi.StringPtrInput `pulumi:"securityPolicyName"`
 	// The status of the resource. Valid values : `Available`, `Configuring`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.StringMapInput `pulumi:"tags"`
+	// A mapping of tags of the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetSecurityPoliciesOutputArgs) ElementType() reflect.Type {
@@ -149,6 +156,7 @@ func (o GetSecurityPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Security Policy names.
 func (o GetSecurityPoliciesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -157,10 +165,12 @@ func (o GetSecurityPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Alb Security Policies. Each element contains the following attributes:
 func (o GetSecurityPoliciesResultOutput) Policies() GetSecurityPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) []GetSecurityPoliciesPolicy { return v.Policies }).(GetSecurityPoliciesPolicyArrayOutput)
 }
 
+// The ID of the resource group.
 func (o GetSecurityPoliciesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -169,10 +179,12 @@ func (o GetSecurityPoliciesResultOutput) SecurityPolicyIds() pulumi.StringArrayO
 	return o.ApplyT(func(v GetSecurityPoliciesResult) []string { return v.SecurityPolicyIds }).(pulumi.StringArrayOutput)
 }
 
+// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 func (o GetSecurityPoliciesResultOutput) SecurityPolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.SecurityPolicyName }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetSecurityPoliciesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecurityPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides CEN Regional Route Entries available to the user.
  *
+ * > **NOTE:** Available since v1.22.0+
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -39,6 +41,9 @@ export interface GetRegionRouteEntriesArgs {
      * ID of the CEN instance.
      */
     instanceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * ID of the region.
@@ -64,6 +69,8 @@ export interface GetRegionRouteEntriesResult {
 }
 /**
  * This data source provides CEN Regional Route Entries available to the user.
+ *
+ * > **NOTE:** Available since v1.22.0+
  *
  * ## Example Usage
  *
@@ -95,6 +102,9 @@ export interface GetRegionRouteEntriesOutputArgs {
      * ID of the CEN instance.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string | undefined>;
     /**
      * ID of the region.

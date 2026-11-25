@@ -36,8 +36,16 @@ public final class GetGroupsResult {
      * 
      */
     private List<String> ids;
+    /**
+     * @return ID of the ONS Instance that owns the group.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     /**
@@ -78,12 +86,20 @@ public final class GetGroupsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return ID of the ONS Instance that owns the group.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

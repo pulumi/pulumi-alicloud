@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesVersionMetadataRuntimeResult> Runtimes;
         /// <summary>
+        /// Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+        /// </summary>
+        public readonly string SupportPolicy;
+        /// <summary>
         /// The runtime version.
         /// </summary>
         public readonly string Version;
@@ -26,9 +30,12 @@ namespace Pulumi.AliCloud.CS.Outputs
         private GetKubernetesVersionMetadataResult(
             ImmutableArray<Outputs.GetKubernetesVersionMetadataRuntimeResult> runtimes,
 
+            string supportPolicy,
+
             string version)
         {
             Runtimes = runtimes;
+            SupportPolicy = supportPolicy;
             Version = version;
         }
     }

@@ -12,12 +12,12 @@ namespace Pulumi.AliCloud.Cassandra
     /// <summary>
     /// Provides a Cassandra cluster resource supports replica set clusters only. The Cassandra provides stable, reliable, and automatic scalable database services.
     /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-    /// You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
+    /// You can see detail product introduction in the [Cassandra product documentation](https://www.alibabacloud.com/help/product/49055.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.88.0.
     /// 
     /// &gt; **NOTE:**  The following regions support create Vpc network Cassandra cluster.
-    /// The official website mark more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
+    /// The official website mark more regions. Or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/157540.html).
     /// 
     /// &gt; **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
     /// 
@@ -108,6 +108,9 @@ namespace Pulumi.AliCloud.Cassandra
         [Output("diskType")]
         public Output<string?> DiskType { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enable public access. System default to `False`.
+        /// </summary>
         [Output("enablePublic")]
         public Output<bool?> EnablePublic { get; private set; } = null!;
 
@@ -147,6 +150,9 @@ namespace Pulumi.AliCloud.Cassandra
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
 
+        /// <summary>
+        /// The password of the cluster account.
+        /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
@@ -156,12 +162,21 @@ namespace Pulumi.AliCloud.Cassandra
         [Output("payType")]
         public Output<string> PayType { get; private set; } = null!;
 
+        /// <summary>
+        /// The purchase period of the cluster. Valid when PayType = Subscription.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
+        /// <summary>
+        /// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when PayType = Subscription.
+        /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
+        /// <summary>
+        /// The public access points of the Cassandra cluster.
+        /// </summary>
         [Output("publicPoints")]
         public Output<ImmutableArray<string>> PublicPoints { get; private set; } = null!;
 
@@ -173,6 +188,9 @@ namespace Pulumi.AliCloud.Cassandra
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the Cassandra cluster.
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
@@ -282,6 +300,9 @@ namespace Pulumi.AliCloud.Cassandra
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        /// <summary>
+        /// Whether to enable public access. System default to `False`.
+        /// </summary>
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
 
@@ -323,6 +344,10 @@ namespace Pulumi.AliCloud.Cassandra
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password of the cluster account.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -339,9 +364,15 @@ namespace Pulumi.AliCloud.Cassandra
         [Input("payType", required: true)]
         public Input<string> PayType { get; set; } = null!;
 
+        /// <summary>
+        /// The purchase period of the cluster. Valid when PayType = Subscription.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when PayType = Subscription.
+        /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
@@ -429,6 +460,9 @@ namespace Pulumi.AliCloud.Cassandra
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        /// <summary>
+        /// Whether to enable public access. System default to `False`.
+        /// </summary>
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
 
@@ -470,6 +504,10 @@ namespace Pulumi.AliCloud.Cassandra
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password of the cluster account.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -486,14 +524,24 @@ namespace Pulumi.AliCloud.Cassandra
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
+        /// <summary>
+        /// The purchase period of the cluster. Valid when PayType = Subscription.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when PayType = Subscription.
+        /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         [Input("publicPoints")]
         private InputList<string>? _publicPoints;
+
+        /// <summary>
+        /// The public access points of the Cassandra cluster.
+        /// </summary>
         public InputList<string> PublicPoints
         {
             get => _publicPoints ?? (_publicPoints = new InputList<string>());
@@ -514,6 +562,9 @@ namespace Pulumi.AliCloud.Cassandra
             set => _securityGroups = value;
         }
 
+        /// <summary>
+        /// The status of the Cassandra cluster.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

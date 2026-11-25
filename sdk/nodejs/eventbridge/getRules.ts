@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *
@@ -73,6 +73,9 @@ export interface GetRulesArgs {
  * A collection of values returned by getRules.
  */
 export interface GetRulesResult {
+    /**
+     * The name of event bus.
+     */
     readonly eventBusName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -80,16 +83,25 @@ export interface GetRulesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Rule names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly ruleNamePrefix?: string;
+    /**
+     * A list of Event Bridge Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.eventbridge.GetRulesRule[];
+    /**
+     * Rule status, either Enable or Disable.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *

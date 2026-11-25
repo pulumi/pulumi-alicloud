@@ -16,9 +16,17 @@ public final class GetBundlesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetBundlesArgs Empty = new GetBundlesArgs();
 
+    /**
+     * A list of bundle IDs used to filter the results.
+     * 
+     */
     @Import(name="bundleIds")
     private @Nullable Output<List<String>> bundleIds;
 
+    /**
+     * @return A list of bundle IDs used to filter the results.
+     * 
+     */
     public Optional<Output<List<String>>> bundleIds() {
         return Optional.ofNullable(this.bundleIds);
     }
@@ -111,15 +119,33 @@ public final class GetBundlesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetBundlesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bundleIds A list of bundle IDs used to filter the results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bundleIds(@Nullable Output<List<String>> bundleIds) {
             $.bundleIds = bundleIds;
             return this;
         }
 
+        /**
+         * @param bundleIds A list of bundle IDs used to filter the results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bundleIds(List<String> bundleIds) {
             return bundleIds(Output.of(bundleIds));
         }
 
+        /**
+         * @param bundleIds A list of bundle IDs used to filter the results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bundleIds(String... bundleIds) {
             return bundleIds(List.of(bundleIds));
         }

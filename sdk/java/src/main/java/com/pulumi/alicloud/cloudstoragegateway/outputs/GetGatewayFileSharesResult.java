@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGatewayFileSharesResult {
+    /**
+     * @return The ID of the gateway.
+     * 
+     */
     private String gatewayId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,23 @@ public final class GetGatewayFileSharesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Gateway File Share names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Cloud Storage Gateway Gateway File Shares. Each element contains the following attributes:
+     * 
+     */
     private List<GetGatewayFileSharesShare> shares;
 
     private GetGatewayFileSharesResult() {}
+    /**
+     * @return The ID of the gateway.
+     * 
+     */
     public String gatewayId() {
         return this.gatewayId;
     }
@@ -43,12 +59,20 @@ public final class GetGatewayFileSharesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Gateway File Share names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Cloud Storage Gateway Gateway File Shares. Each element contains the following attributes:
+     * 
+     */
     public List<GetGatewayFileSharesShare> shares() {
         return this.shares;
     }

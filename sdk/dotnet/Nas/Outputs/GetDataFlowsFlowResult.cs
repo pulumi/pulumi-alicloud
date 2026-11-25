@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string SourceStorage;
         /// <summary>
-        /// The status of the Data flow.
+        /// The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
         /// </summary>
         public readonly string Status;
         /// <summary>

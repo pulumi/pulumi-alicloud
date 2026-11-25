@@ -53,11 +53,17 @@ class GetDedicatedHostGroupsResult:
     @_builtins.property
     @pulumi.getter
     def engine(self) -> Optional[_builtins.str]:
+        """
+        Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        """
         return pulumi.get(self, "engine")
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetDedicatedHostGroupsGroupResult']:
+        """
+        A list of Cddc Dedicated Host Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -81,6 +87,9 @@ class GetDedicatedHostGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Dedicated Host Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -112,7 +121,7 @@ def get_dedicated_host_groups(engine: Optional[_builtins.str] = None,
     """
     This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 
@@ -156,7 +165,7 @@ def get_dedicated_host_groups_output(engine: pulumi.Input[Optional[Optional[_bui
     """
     This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.132.0+.
+    > **NOTE:** Available since v1.132.0.
 
     ## Example Usage
 

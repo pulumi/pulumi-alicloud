@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Quotas Quotas of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.115.0+.
+ * > **NOTE:** Available since v1.115.0.
  *
  * ## Example Usage
  *
@@ -47,7 +47,7 @@ export function getQuotas(args: GetQuotasArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetQuotasArgs {
     /**
-     * The dimensions.
+     * The dimensions. See `dimensions` below.
      */
     dimensions?: inputs.quotas.GetQuotasDimension[];
     /**
@@ -98,14 +98,26 @@ export interface GetQuotasResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Quota IDs.
+     */
     readonly ids: string[];
     readonly keyWord?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Quota names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly productCode: string;
+    /**
+     * The quota action code.
+     */
     readonly quotaActionCode?: string;
     readonly quotaCategory?: string;
+    /**
+     * A list of Quotas Quotas. Each element contains the following attributes:
+     */
     readonly quotas: outputs.quotas.GetQuotasQuota[];
     readonly sortField?: string;
     readonly sortOrder?: string;
@@ -113,7 +125,7 @@ export interface GetQuotasResult {
 /**
  * This data source provides the Quotas Quotas of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.115.0+.
+ * > **NOTE:** Available since v1.115.0.
  *
  * ## Example Usage
  *
@@ -151,7 +163,7 @@ export function getQuotasOutput(args: GetQuotasOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetQuotasOutputArgs {
     /**
-     * The dimensions.
+     * The dimensions. See `dimensions` below.
      */
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotasDimensionArgs>[] | undefined>;
     /**

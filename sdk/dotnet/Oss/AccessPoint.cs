@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Oss
         /// Configuration of Access Point Blocking Public Access See `PublicAccessBlockConfiguration` below.
         /// </summary>
         [Output("publicAccessBlockConfiguration")]
-        public Output<Outputs.AccessPointPublicAccessBlockConfiguration?> PublicAccessBlockConfiguration { get; private set; } = null!;
+        public Output<Outputs.AccessPointPublicAccessBlockConfiguration> PublicAccessBlockConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource

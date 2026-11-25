@@ -114,23 +114,32 @@ class GetLoadBalancersResult:
     @pulumi.getter
     def address(self) -> Optional[_builtins.str]:
         """
-        Service address of the SLB.
+        The IP address that the SLB instance uses to provide services.
         """
         return pulumi.get(self, "address")
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> Optional[_builtins.str]:
+        """
+        The address ip version.
+        """
         return pulumi.get(self, "address_ip_version")
 
     @_builtins.property
     @pulumi.getter(name="addressType")
     def address_type(self) -> Optional[_builtins.str]:
+        """
+        The address type.
+        """
         return pulumi.get(self, "address_type")
 
     @_builtins.property
     @pulumi.getter
     def balancers(self) -> Sequence['outputs.GetLoadBalancersBalancerResult']:
+        """
+        A list of SLBs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "balancers")
 
     @_builtins.property
@@ -157,16 +166,25 @@ class GetLoadBalancersResult:
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[_builtins.str]:
+        """
+        The billing method of the Internet-facing SLB instance.
+        """
         return pulumi.get(self, "internet_charge_type")
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the SLB.
+        """
         return pulumi.get(self, "load_balancer_name")
 
     @_builtins.property
     @pulumi.getter(name="masterZoneId")
     def master_zone_id(self) -> Optional[_builtins.str]:
+        """
+        Master availability zone of the SLBs.
+        """
         return pulumi.get(self, "master_zone_id")
 
     @_builtins.property
@@ -208,16 +226,25 @@ class GetLoadBalancersResult:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[_builtins.str]:
+        """
+        The payment type of the SLB.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the Elastic Compute Service (ECS) instance that is specified as a backend server of the CLB instance.
+        """
         return pulumi.get(self, "server_id")
 
     @_builtins.property
@@ -228,6 +255,9 @@ class GetLoadBalancersResult:
     @_builtins.property
     @pulumi.getter(name="slaveZoneId")
     def slave_zone_id(self) -> Optional[_builtins.str]:
+        """
+        Slave availability zone of the SLBs.
+        """
         return pulumi.get(self, "slave_zone_id")
 
     @_builtins.property
@@ -235,7 +265,7 @@ class GetLoadBalancersResult:
     @_utilities.deprecated("""Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""")
     def slbs(self) -> Sequence['outputs.GetLoadBalancersSlbResult']:
         """
-        A list of SLBs. Each element contains the following attributes:
+        **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
         """
         return pulumi.get(self, "slbs")
 
@@ -251,7 +281,7 @@ class GetLoadBalancersResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        A map of tags assigned to the SLB instance.
+        The tags of the SLB.
         """
         return pulumi.get(self, "tags")
 
@@ -346,29 +376,33 @@ def get_load_balancers(address: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.slb.LoadBalancer("default", name="sample_slb")
-    slbs_ds = alicloud.slb.get_load_balancers(name_regex="sample_slb")
-    pulumi.export("firstSlbId", slbs_ds.slbs[0].id)
+    example = alicloud.slb.get_load_balancers(name_regex="sample_slb",
+        tags={
+            "tagKey1": "tagValue1",
+            "tagKey2": "tagValue2",
+        })
+    pulumi.export("firstSlbId", example.balancers[0].id)
     ```
 
 
     :param _builtins.str address: Service address of the SLBs.
+    :param _builtins.str address_ip_version: The address ip version. Valid values `ipv4` and `ipv6`.
+    :param _builtins.str address_type: The address type of the SLB. Valid values `internet` and `intranet`.
+    :param _builtins.bool enable_details: Whether to enable details of the SLB. Default to `false`.
     :param Sequence[_builtins.str] ids: A list of SLBs IDs.
+    :param _builtins.str internet_charge_type: The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+    :param _builtins.str load_balancer_name: The name of the SLB.
+    :param _builtins.str master_zone_id: The master zone id of the SLB.
     :param _builtins.str name_regex: A regex string to filter results by SLB name.
     :param _builtins.str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str payment_type: The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
     :param _builtins.str resource_group_id: The Id of resource group which SLB belongs.
-    :param _builtins.str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+    :param _builtins.str server_id: The server ID.
+    :param _builtins.str server_intranet_address: The server intranet address.
+    :param _builtins.str slave_zone_id: The slave zone id of the SLB.
+    :param _builtins.str status: The status of the SLB. Valid values: `active`, `inactive` and `locked`.
     :param Mapping[str, _builtins.str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-           ```python
-           import pulumi
-           import pulumi_alicloud as alicloud
-           
-           tagged_instances = alicloud.slb.get_load_balancers(tags={
-               "tagKey1": "tagValue1",
-               "tagKey2": "tagValue2",
-           })
-           ```
     :param _builtins.str vpc_id: ID of the VPC linked to the SLBs.
     :param _builtins.str vswitch_id: ID of the vSwitch linked to the SLBs.
     """
@@ -460,29 +494,33 @@ def get_load_balancers_output(address: pulumi.Input[Optional[Optional[_builtins.
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.slb.LoadBalancer("default", name="sample_slb")
-    slbs_ds = alicloud.slb.get_load_balancers(name_regex="sample_slb")
-    pulumi.export("firstSlbId", slbs_ds.slbs[0].id)
+    example = alicloud.slb.get_load_balancers(name_regex="sample_slb",
+        tags={
+            "tagKey1": "tagValue1",
+            "tagKey2": "tagValue2",
+        })
+    pulumi.export("firstSlbId", example.balancers[0].id)
     ```
 
 
     :param _builtins.str address: Service address of the SLBs.
+    :param _builtins.str address_ip_version: The address ip version. Valid values `ipv4` and `ipv6`.
+    :param _builtins.str address_type: The address type of the SLB. Valid values `internet` and `intranet`.
+    :param _builtins.bool enable_details: Whether to enable details of the SLB. Default to `false`.
     :param Sequence[_builtins.str] ids: A list of SLBs IDs.
+    :param _builtins.str internet_charge_type: The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+    :param _builtins.str load_balancer_name: The name of the SLB.
+    :param _builtins.str master_zone_id: The master zone id of the SLB.
     :param _builtins.str name_regex: A regex string to filter results by SLB name.
     :param _builtins.str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str payment_type: The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
     :param _builtins.str resource_group_id: The Id of resource group which SLB belongs.
-    :param _builtins.str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
+    :param _builtins.str server_id: The server ID.
+    :param _builtins.str server_intranet_address: The server intranet address.
+    :param _builtins.str slave_zone_id: The slave zone id of the SLB.
+    :param _builtins.str status: The status of the SLB. Valid values: `active`, `inactive` and `locked`.
     :param Mapping[str, _builtins.str] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-           ```python
-           import pulumi
-           import pulumi_alicloud as alicloud
-           
-           tagged_instances = alicloud.slb.get_load_balancers(tags={
-               "tagKey1": "tagValue1",
-               "tagKey2": "tagValue2",
-           })
-           ```
     :param _builtins.str vpc_id: ID of the VPC linked to the SLBs.
     :param _builtins.str vswitch_id: ID of the vSwitch linked to the SLBs.
     """

@@ -18,7 +18,7 @@ import (
 //
 // > **NOTE:** Available since v1.212.0.
 //
-// > **NOTE:** Destroying a `Subscription` instance fails with an error since v1.294.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+// > **NOTE:** From `v2.3.0`, destroying a `Subscription` (prepaid) instance automatically unsubscribes it through the BssOpenApi `RefundInstance` API with `ImmediatelyRelease` enabled and waits for the instance to be released before clearing the Terraform state. If the refund cannot be confirmed (for example the commodity is not supported for self-service refund), the Terraform state is retained so the destroy can be retried. In versions prior to `v2.3.0` (including v1.294.0), prepaid instances are not unsubscribed on destroy; you must manually unsubscribe them in the console. A `PayAsYouGo` (postpaid) instance keeps using the RocketMQ `DeleteInstance` API.
 //
 // ## Example Usage
 //
@@ -92,9 +92,6 @@ import (
 //					pulumi.String("10.10.0.0/16"),
 //					pulumi.String("172.168.0.0/16"),
 //				},
-//				Software: &rocketmq.RocketMQInstanceSoftwareArgs{
-//					MaintainTime: pulumi.String("02:00-06:00"),
-//				},
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("example"),
@@ -152,11 +149,21 @@ type RocketMQInstance struct {
 	AutoRenewPeriodUnit pulumi.StringOutput `pulumi:"autoRenewPeriodUnit"`
 	// Commodity code
 	//
+	// Domestic station (China) values:
+	//
 	// ons_rmqsub_public_cn: Package year and month instance
 	//
 	// ons_rmqpost_public_cn: Pay-As-You-Go instance
 	//
-	// Next: Serverless instances
+	// ons_rmqsrvlesspost_public_cn: Serverless instance
+	//
+	// International station values:
+	//
+	// ons_rmqsub_public_intl: Package year and month instance
+	//
+	// ons_rmqpost_public_intl: Pay-As-You-Go instance
+	//
+	// ons_rmqsrvlesspost_public_intl: Serverless instance
 	CommodityCode pulumi.StringOutput `pulumi:"commodityCode"`
 	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -280,11 +287,21 @@ type rocketMQInstanceState struct {
 	AutoRenewPeriodUnit *string `pulumi:"autoRenewPeriodUnit"`
 	// Commodity code
 	//
+	// Domestic station (China) values:
+	//
 	// ons_rmqsub_public_cn: Package year and month instance
 	//
 	// ons_rmqpost_public_cn: Pay-As-You-Go instance
 	//
-	// Next: Serverless instances
+	// ons_rmqsrvlesspost_public_cn: Serverless instance
+	//
+	// International station values:
+	//
+	// ons_rmqsub_public_intl: Package year and month instance
+	//
+	// ons_rmqpost_public_intl: Pay-As-You-Go instance
+	//
+	// ons_rmqsrvlesspost_public_intl: Serverless instance
 	CommodityCode *string `pulumi:"commodityCode"`
 	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
@@ -364,11 +381,21 @@ type RocketMQInstanceState struct {
 	AutoRenewPeriodUnit pulumi.StringPtrInput
 	// Commodity code
 	//
+	// Domestic station (China) values:
+	//
 	// ons_rmqsub_public_cn: Package year and month instance
 	//
 	// ons_rmqpost_public_cn: Pay-As-You-Go instance
 	//
-	// Next: Serverless instances
+	// ons_rmqsrvlesspost_public_cn: Serverless instance
+	//
+	// International station values:
+	//
+	// ons_rmqsub_public_intl: Package year and month instance
+	//
+	// ons_rmqpost_public_intl: Pay-As-You-Go instance
+	//
+	// ons_rmqsrvlesspost_public_intl: Serverless instance
 	CommodityCode pulumi.StringPtrInput
 	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
@@ -458,11 +485,21 @@ type rocketMQInstanceArgs struct {
 	AutoRenewPeriodUnit *string `pulumi:"autoRenewPeriodUnit"`
 	// Commodity code
 	//
+	// Domestic station (China) values:
+	//
 	// ons_rmqsub_public_cn: Package year and month instance
 	//
 	// ons_rmqpost_public_cn: Pay-As-You-Go instance
 	//
-	// Next: Serverless instances
+	// ons_rmqsrvlesspost_public_cn: Serverless instance
+	//
+	// International station values:
+	//
+	// ons_rmqsub_public_intl: Package year and month instance
+	//
+	// ons_rmqpost_public_intl: Pay-As-You-Go instance
+	//
+	// ons_rmqsrvlesspost_public_intl: Serverless instance
 	CommodityCode *string `pulumi:"commodityCode"`
 	// The name of instance
 	InstanceName *string `pulumi:"instanceName"`
@@ -537,11 +574,21 @@ type RocketMQInstanceArgs struct {
 	AutoRenewPeriodUnit pulumi.StringPtrInput
 	// Commodity code
 	//
+	// Domestic station (China) values:
+	//
 	// ons_rmqsub_public_cn: Package year and month instance
 	//
 	// ons_rmqpost_public_cn: Pay-As-You-Go instance
 	//
-	// Next: Serverless instances
+	// ons_rmqsrvlesspost_public_cn: Serverless instance
+	//
+	// International station values:
+	//
+	// ons_rmqsub_public_intl: Package year and month instance
+	//
+	// ons_rmqpost_public_intl: Pay-As-You-Go instance
+	//
+	// ons_rmqsrvlesspost_public_intl: Serverless instance
 	CommodityCode pulumi.StringPtrInput
 	// The name of instance
 	InstanceName pulumi.StringPtrInput
@@ -713,11 +760,21 @@ func (o RocketMQInstanceOutput) AutoRenewPeriodUnit() pulumi.StringOutput {
 
 // Commodity code
 //
+// Domestic station (China) values:
+//
 // ons_rmqsub_public_cn: Package year and month instance
 //
 // ons_rmqpost_public_cn: Pay-As-You-Go instance
 //
-// Next: Serverless instances
+// ons_rmqsrvlesspost_public_cn: Serverless instance
+//
+// International station values:
+//
+// ons_rmqsub_public_intl: Package year and month instance
+//
+// ons_rmqpost_public_intl: Pay-As-You-Go instance
+//
+// ons_rmqsrvlesspost_public_intl: Serverless instance
 func (o RocketMQInstanceOutput) CommodityCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *RocketMQInstance) pulumi.StringOutput { return v.CommodityCode }).(pulumi.StringOutput)
 }

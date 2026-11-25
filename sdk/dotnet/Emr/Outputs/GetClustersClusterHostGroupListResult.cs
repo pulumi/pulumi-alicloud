@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly int DiskCount;
         /// <summary>
-        /// System disk type:
+        /// System disk type.
         /// </summary>
         public readonly string DiskType;
         /// <summary>
-        /// The current operation type of the machine Group:
+        /// The current operation type of the machine Group.
         /// </summary>
         public readonly string HostGroupChangeType;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string HostGroupName;
         /// <summary>
-        /// Role of host in cluster:
+        /// Role of host in cluster.
         /// </summary>
         public readonly string HostGroupType;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterHostGroupListNodeResult> Nodes;
         /// <summary>
-        /// Package year and month time (days).
+        /// The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
         /// </summary>
         public readonly string Period;
 

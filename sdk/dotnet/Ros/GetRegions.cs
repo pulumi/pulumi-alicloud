@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Regions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Regions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Regions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.145.0+.
+        /// &gt; **NOTE:** Available since v1.145.0.
         /// 
         /// ## Example Usage
         /// 
@@ -137,6 +137,9 @@ namespace Pulumi.AliCloud.Ros
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ros Regions. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionsRegionResult> Regions;
 
         [OutputConstructor]

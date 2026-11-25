@@ -429,7 +429,7 @@ public final class DdosFunctions {
     /**
      * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.180.0+.
+     * &gt; **NOTE:** Available since v1.180.0.
      * 
      * ## Example Usage
      * 
@@ -477,7 +477,7 @@ public final class DdosFunctions {
     /**
      * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.180.0+.
+     * &gt; **NOTE:** Available since v1.180.0.
      * 
      * ## Example Usage
      * 
@@ -525,7 +525,7 @@ public final class DdosFunctions {
     /**
      * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.180.0+.
+     * &gt; **NOTE:** Available since v1.180.0.
      * 
      * ## Example Usage
      * 
@@ -573,7 +573,7 @@ public final class DdosFunctions {
     /**
      * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.180.0+.
+     * &gt; **NOTE:** Available since v1.180.0.
      * 
      * ## Example Usage
      * 
@@ -621,7 +621,7 @@ public final class DdosFunctions {
     /**
      * This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.180.0+.
+     * &gt; **NOTE:** Available since v1.180.0.
      * 
      * ## Example Usage
      * 

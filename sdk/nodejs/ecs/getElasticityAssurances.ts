@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Ecs Elasticity Assurance available to the user.
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0
  *
  * ## Example Usage
  *
@@ -93,14 +93,14 @@ export interface GetElasticityAssurancesResult {
      */
     readonly status?: string;
     /**
-     * A mapping of tags to assign to the Capacity Reservation.
+     * (Optional) A mapping of tags to assign to the Capacity Reservation.
      */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides Ecs Elasticity Assurance available to the user.
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0
  *
  * ## Example Usage
  *

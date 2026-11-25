@@ -71,6 +71,9 @@ class GetServerBackupPlansResult:
     @_builtins.property
     @pulumi.getter
     def plans(self) -> Sequence['outputs.GetServerBackupPlansPlanResult']:
+        """
+        A list of HBR server backup plan. Each element contains the following attributes:
+        """
         return pulumi.get(self, "plans")
 
 
@@ -94,7 +97,7 @@ def get_server_backup_plans(filters: Optional[Sequence[Union['GetServerBackupPla
     """
     This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.142.0+.
+    > **NOTE:** Available since v1.142.0.
 
     ## Example Usage
 
@@ -114,7 +117,7 @@ def get_server_backup_plans(filters: Optional[Sequence[Union['GetServerBackupPla
     ```
 
 
-    :param Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict', 'outputs.GetServerBackupPlansFilterResult']] filters: The filters.
+    :param Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict', 'outputs.GetServerBackupPlansFilterResult']] filters: The filters. See `filters` below.
     :param Sequence[_builtins.str] ids: A list of Server Backup Plan IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -138,7 +141,7 @@ def get_server_backup_plans_output(filters: pulumi.Input[Optional[Optional[Seque
     """
     This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.142.0+.
+    > **NOTE:** Available since v1.142.0.
 
     ## Example Usage
 
@@ -158,7 +161,7 @@ def get_server_backup_plans_output(filters: pulumi.Input[Optional[Optional[Seque
     ```
 
 
-    :param Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict', 'outputs.GetServerBackupPlansFilterResult']] filters: The filters.
+    :param Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict', 'outputs.GetServerBackupPlansFilterResult']] filters: The filters. See `filters` below.
     :param Sequence[_builtins.str] ids: A list of Server Backup Plan IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """

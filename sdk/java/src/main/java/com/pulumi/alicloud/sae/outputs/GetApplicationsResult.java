@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationsResult {
+    /**
+     * @return Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+     * 
+     */
     private @Nullable String appName;
+    /**
+     * @return A list of Sae Applications. Each element contains the following attributes:
+     * 
+     */
     private List<GetApplicationsApplication> applications;
     private @Nullable Boolean enableDetails;
     private @Nullable String fieldType;
@@ -26,16 +34,32 @@ public final class GetApplicationsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+     * 
+     */
     private @Nullable String namespaceId;
     private @Nullable String orderBy;
     private @Nullable String outputFile;
     private @Nullable Boolean reverse;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetApplicationsResult() {}
+    /**
+     * @return Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+     * 
+     */
     public Optional<String> appName() {
         return Optional.ofNullable(this.appName);
     }
+    /**
+     * @return A list of Sae Applications. Each element contains the following attributes:
+     * 
+     */
     public List<GetApplicationsApplication> applications() {
         return this.applications;
     }
@@ -58,6 +82,10 @@ public final class GetApplicationsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+     * 
+     */
     public Optional<String> namespaceId() {
         return Optional.ofNullable(this.namespaceId);
     }
@@ -70,6 +98,10 @@ public final class GetApplicationsResult {
     public Optional<Boolean> reverse() {
         return Optional.ofNullable(this.reverse);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -82,6 +82,9 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Snapshot names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -92,16 +95,25 @@ class GetSnapshotsResult:
     @_builtins.property
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the snapshot.
+        """
         return pulumi.get(self, "snapshot_name")
 
     @_builtins.property
     @pulumi.getter
     def snapshots(self) -> Sequence['outputs.GetSnapshotsSnapshotResult']:
+        """
+        A list of Nas Snapshots. Each element contains the following attributes:
+        """
         return pulumi.get(self, "snapshots")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the snapshot.
+        """
         return pulumi.get(self, "status")
 
 
@@ -132,7 +144,7 @@ def get_snapshots(file_system_id: Optional[_builtins.str] = None,
     """
     This data source provides the Nas Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.152.0+.
+    > **NOTE:** Available since v1.152.0+.
 
     ## Example Usage
 
@@ -186,7 +198,7 @@ def get_snapshots_output(file_system_id: pulumi.Input[Optional[Optional[_builtin
     """
     This data source provides the Nas Snapshots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.152.0+.
+    > **NOTE:** Available since v1.152.0+.
 
     ## Example Usage
 

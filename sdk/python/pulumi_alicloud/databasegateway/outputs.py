@@ -36,6 +36,7 @@ class GetGatewaysGatewayResult(dict):
         """
         :param _builtins.str create_time: The creation time of Gateway.
         :param _builtins.str gateway_desc: The description of Gateway.
+        :param Sequence['GetGatewaysGatewayGatewayInstanceArgs'] gateway_instances: Gateway instance List.
         :param _builtins.str gateway_name: The name of the Gateway.
         :param _builtins.str hosts: A host of information.
         :param _builtins.str id: The ID of Gateway.
@@ -74,6 +75,9 @@ class GetGatewaysGatewayResult(dict):
     @_builtins.property
     @pulumi.getter(name="gatewayInstances")
     def gateway_instances(self) -> Sequence['outputs.GetGatewaysGatewayGatewayInstanceResult']:
+        """
+        Gateway instance List.
+        """
         return pulumi.get(self, "gateway_instances")
 
     @_builtins.property

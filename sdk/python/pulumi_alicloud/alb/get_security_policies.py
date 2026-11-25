@@ -83,6 +83,9 @@ class GetSecurityPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Security Policy names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -93,11 +96,17 @@ class GetSecurityPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetSecurityPoliciesPolicyResult']:
+        """
+        A list of Alb Security Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
@@ -108,11 +117,17 @@ class GetSecurityPoliciesResult:
     @_builtins.property
     @pulumi.getter(name="securityPolicyName")
     def security_policy_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        """
         return pulumi.get(self, "security_policy_name")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -152,7 +167,7 @@ def get_security_policies(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Alb Security Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.130.0+.
+    > **NOTE:** Available since v1.130.0.
 
     ## Example Usage
 
@@ -176,6 +191,7 @@ def get_security_policies(ids: Optional[Sequence[_builtins.str]] = None,
     :param Sequence[_builtins.str] security_policy_ids: The security policy ids.
     :param _builtins.str security_policy_name: The name of the resource.
     :param _builtins.str status: The status of the resource. Valid values : `Available`, `Configuring`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags of the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -213,7 +229,7 @@ def get_security_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[_b
     """
     This data source provides the Alb Security Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.130.0+.
+    > **NOTE:** Available since v1.130.0.
 
     ## Example Usage
 
@@ -237,6 +253,7 @@ def get_security_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[_b
     :param Sequence[_builtins.str] security_policy_ids: The security policy ids.
     :param _builtins.str security_policy_name: The name of the resource.
     :param _builtins.str status: The status of the resource. Valid values : `Available`, `Configuring`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags of the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids

@@ -152,7 +152,7 @@ def get_router_interfaces(filters: Optional[Sequence[Union['GetRouterInterfacesF
     """
     This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
 
-    > **NOTE:** Available in 1.199.0+
+    > **NOTE:** Available since v1.199.0
 
     ## Example Usage
 
@@ -166,6 +166,7 @@ def get_router_interfaces(filters: Optional[Sequence[Union['GetRouterInterfacesF
     ```
 
 
+    :param Sequence[Union['GetRouterInterfacesFilterArgs', 'GetRouterInterfacesFilterArgsDict', 'outputs.GetRouterInterfacesFilterResult']] filters: Custom filter block as described below. See `filter` below.
     :param Sequence[_builtins.str] ids: A list of Router Interface IDs.
     :param _builtins.str include_reservation_data: Does it contain renewal data. Valid values: `true`, `false`.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
@@ -204,7 +205,7 @@ def get_router_interfaces_output(filters: pulumi.Input[Optional[Optional[Sequenc
     """
     This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
 
-    > **NOTE:** Available in 1.199.0+
+    > **NOTE:** Available since v1.199.0
 
     ## Example Usage
 
@@ -218,6 +219,7 @@ def get_router_interfaces_output(filters: pulumi.Input[Optional[Optional[Sequenc
     ```
 
 
+    :param Sequence[Union['GetRouterInterfacesFilterArgs', 'GetRouterInterfacesFilterArgsDict', 'outputs.GetRouterInterfacesFilterResult']] filters: Custom filter block as described below. See `filter` below.
     :param Sequence[_builtins.str] ids: A list of Router Interface IDs.
     :param _builtins.str include_reservation_data: Does it contain renewal data. Valid values: `true`, `false`.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.

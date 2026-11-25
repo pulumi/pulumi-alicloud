@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * 
  * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
  * 
- * &gt; **NOTE:** Available in 1.78.0
+ * &gt; **NOTE:** Available since v1.78.0.
  * 
  * ## Example Usage
  * 
@@ -447,14 +447,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return this.alertName;
     }
     /**
-     * Annotations for new alert.
+     * Annotations for new alert. See `annotations` below.
      * 
      */
     @Export(name="annotations", refs={List.class,AlertAnnotation.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertAnnotation>> annotations;
 
     /**
-     * @return Annotations for new alert.
+     * @return Annotations for new alert. See `annotations` below.
      * 
      */
     public Output<Optional<List<AlertAnnotation>>> annotations() {
@@ -509,42 +509,42 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dashboard);
     }
     /**
-     * Group configuration for new alert.
+     * Group configuration for new alert. See `groupConfiguration` below.
      * 
      */
     @Export(name="groupConfiguration", refs={AlertGroupConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ AlertGroupConfiguration> groupConfiguration;
 
     /**
-     * @return Group configuration for new alert.
+     * @return Group configuration for new alert. See `groupConfiguration` below.
      * 
      */
     public Output<Optional<AlertGroupConfiguration>> groupConfiguration() {
         return Codegen.optional(this.groupConfiguration);
     }
     /**
-     * Join configuration for different queries.
+     * Join configuration for different queries. See `joinConfigurations` below.
      * 
      */
     @Export(name="joinConfigurations", refs={List.class,AlertJoinConfiguration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertJoinConfiguration>> joinConfigurations;
 
     /**
-     * @return Join configuration for different queries.
+     * @return Join configuration for different queries. See `joinConfigurations` below.
      * 
      */
     public Output<Optional<List<AlertJoinConfiguration>>> joinConfigurations() {
         return Codegen.optional(this.joinConfigurations);
     }
     /**
-     * Labels for new alert.
+     * Labels for new alert. See `labels` below.
      * 
      */
     @Export(name="labels", refs={List.class,AlertLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertLabel>> labels;
 
     /**
-     * @return Labels for new alert.
+     * @return Labels for new alert. See `labels` below.
      * 
      */
     public Output<Optional<List<AlertLabel>>> labels() {
@@ -593,7 +593,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.noDataSeverity);
     }
     /**
-     * Alarm information notification list, Deprecated from 1.161.0+.
+     * Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
      * 
      * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      * 
@@ -603,7 +603,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<AlertNotificationList>> notificationLists;
 
     /**
-     * @return Alarm information notification list, Deprecated from 1.161.0+.
+     * @return Alarm information notification list, Deprecated from 1.161.0+. See `notificationList` below.
      * 
      */
     public Output<Optional<List<AlertNotificationList>>> notificationLists() {
@@ -627,14 +627,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notifyThreshold);
     }
     /**
-     * Policy configuration for new alert.
+     * Policy configuration for new alert. See `policyConfiguration` below.
      * 
      */
     @Export(name="policyConfiguration", refs={AlertPolicyConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ AlertPolicyConfiguration> policyConfiguration;
 
     /**
-     * @return Policy configuration for new alert.
+     * @return Policy configuration for new alert. See `policyConfiguration` below.
      * 
      */
     public Output<Optional<AlertPolicyConfiguration>> policyConfiguration() {
@@ -655,28 +655,28 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return this.projectName;
     }
     /**
-     * Multiple conditions for configured alarm query.
+     * Multiple conditions for configured alarm query. See `queryList` below.
      * 
      */
     @Export(name="queryLists", refs={List.class,AlertQueryList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertQueryList>> queryLists;
 
     /**
-     * @return Multiple conditions for configured alarm query.
+     * @return Multiple conditions for configured alarm query. See `queryList` below.
      * 
      */
     public Output<Optional<List<AlertQueryList>>> queryLists() {
         return Codegen.optional(this.queryLists);
     }
     /**
-     * schedule for alert.
+     * schedule for alert. See `schedule` below.
      * 
      */
     @Export(name="schedule", refs={AlertSchedule.class}, tree="[0]")
     private Output</* @Nullable */ AlertSchedule> schedule;
 
     /**
-     * @return schedule for alert.
+     * @return schedule for alert. See `schedule` below.
      * 
      */
     public Output<Optional<AlertSchedule>> schedule() {
@@ -731,28 +731,28 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sendResolved);
     }
     /**
-     * Severity configuration for new alert.
+     * Severity configuration for new alert. See `severityConfigurations` below.
      * 
      */
     @Export(name="severityConfigurations", refs={List.class,AlertSeverityConfiguration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertSeverityConfiguration>> severityConfigurations;
 
     /**
-     * @return Severity configuration for new alert.
+     * @return Severity configuration for new alert. See `severityConfigurations` below.
      * 
      */
     public Output<Optional<List<AlertSeverityConfiguration>>> severityConfigurations() {
         return Codegen.optional(this.severityConfigurations);
     }
     /**
-     * Template configuration for alert, when `type` is `tpl`.
+     * Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
      * 
      */
     @Export(name="templateConfiguration", refs={AlertTemplateConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ AlertTemplateConfiguration> templateConfiguration;
 
     /**
-     * @return Template configuration for alert, when `type` is `tpl`.
+     * @return Template configuration for alert, when `type` is `tpl`. See `templateConfiguration` below.
      * 
      */
     public Output<Optional<AlertTemplateConfiguration>> templateConfiguration() {

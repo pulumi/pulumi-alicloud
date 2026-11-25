@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -77,7 +77,7 @@ export interface GetServerPlansArgs {
      */
     outputFile?: string;
     /**
-     * The platform of Plan supported. Valid values: ["Linux", "Windows"].
+     * Available in v1.161.0. The platform of Plan supported. Valid values: ["Linux", "Windows"].
      */
     platform?: string;
 }
@@ -86,24 +86,42 @@ export interface GetServerPlansArgs {
  * A collection of values returned by getServerPlans.
  */
 export interface GetServerPlansResult {
+    /**
+     * The peak bandwidth. Unit: Mbit/s.
+     */
     readonly bandwidth?: number;
+    /**
+     * The number of CPU cores.
+     */
     readonly core?: number;
+    /**
+     * The size of the enhanced SSD (ESSD). Unit: GB.
+     */
     readonly diskSize?: number;
+    /**
+     * The monthly data transfer quota. Unit: GB.
+     */
     readonly flow?: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The memory size. Unit: GB.
+     */
     readonly memory?: number;
     readonly outputFile?: string;
+    /**
+     * A list of Simple Application Server Plans. Each element contains the following attributes:
+     */
     readonly plans: outputs.simpleapplicationserver.GetServerPlansPlan[];
     readonly platform?: string;
 }
 /**
  * This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -171,7 +189,7 @@ export interface GetServerPlansOutputArgs {
      */
     outputFile?: pulumi.Input<string | undefined>;
     /**
-     * The platform of Plan supported. Valid values: ["Linux", "Windows"].
+     * Available in v1.161.0. The platform of Plan supported. Valid values: ["Linux", "Windows"].
      */
     platform?: pulumi.Input<string | undefined>;
 }

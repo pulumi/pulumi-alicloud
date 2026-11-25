@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
  *
- * > **NOTE:** Available in v1.198.0+.
+ * > **NOTE:** Available since v1.198.0+.
  *
  * ## Example Usage
  *
@@ -39,8 +39,7 @@ export function getCollationTimeZones(args?: GetCollationTimeZonesArgs, opts?: p
  */
 export interface GetCollationTimeZonesArgs {
     /**
-     * An array that consists of the character set collations and time zones that are available for
-     * use in ApsaraDB RDS.
+     * An array that consists of the character set collations and time zones. See `collationTimeZones` below.
      */
     collationTimeZones?: inputs.rds.GetCollationTimeZonesCollationTimeZone[];
     /**
@@ -53,18 +52,25 @@ export interface GetCollationTimeZonesArgs {
  * A collection of values returned by getCollationTimeZones.
  */
 export interface GetCollationTimeZonesResult {
+    /**
+     * An array that consists of the character set collations and time zones that are available for
+     * use in ApsaraDB RDS.
+     */
     readonly collationTimeZones?: outputs.rds.GetCollationTimeZonesCollationTimeZone[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of time zones.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
 }
 /**
  * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
  *
- * > **NOTE:** Available in v1.198.0+.
+ * > **NOTE:** Available since v1.198.0+.
  *
  * ## Example Usage
  *
@@ -94,8 +100,7 @@ export function getCollationTimeZonesOutput(args?: GetCollationTimeZonesOutputAr
  */
 export interface GetCollationTimeZonesOutputArgs {
     /**
-     * An array that consists of the character set collations and time zones that are available for
-     * use in ApsaraDB RDS.
+     * An array that consists of the character set collations and time zones. See `collationTimeZones` below.
      */
     collationTimeZones?: pulumi.Input<pulumi.Input<inputs.rds.GetCollationTimeZonesCollationTimeZoneArgs>[] | undefined>;
     /**

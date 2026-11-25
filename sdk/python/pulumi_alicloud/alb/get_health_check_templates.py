@@ -61,6 +61,9 @@ class GetHealthCheckTemplatesResult:
     @_builtins.property
     @pulumi.getter(name="healthCheckTemplateName")
     def health_check_template_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        """
         return pulumi.get(self, "health_check_template_name")
 
     @_builtins.property
@@ -84,6 +87,9 @@ class GetHealthCheckTemplatesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Health Check Template names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +100,9 @@ class GetHealthCheckTemplatesResult:
     @_builtins.property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetHealthCheckTemplatesTemplateResult']:
+        """
+        A list of Alb Health Check Templates. Each element contains the following attributes:
+        """
         return pulumi.get(self, "templates")
 
 
@@ -122,7 +131,7 @@ def get_health_check_templates(health_check_template_ids: Optional[Sequence[_bui
     """
     This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -172,7 +181,7 @@ def get_health_check_templates_output(health_check_template_ids: pulumi.Input[Op
     """
     This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 

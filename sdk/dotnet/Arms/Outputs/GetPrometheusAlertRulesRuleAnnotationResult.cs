@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Arms.Outputs
     public sealed class GetPrometheusAlertRulesRuleAnnotationResult
     {
         /// <summary>
-        /// The value of the annotation.
+        /// The name of the label.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The name of the annotation name.
+        /// The value of the label.
         /// </summary>
         public readonly string Value;
 

@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHybridMonitorDatasResult {
+    /**
+     * @return A list of Cms Hybrid Monitor Datas. Each element contains the following attributes:
+     * 
+     */
     private List<GetHybridMonitorDatasData> datas;
     private String end;
     /**
@@ -28,6 +32,10 @@ public final class GetHybridMonitorDatasResult {
     private String start;
 
     private GetHybridMonitorDatasResult() {}
+    /**
+     * @return A list of Cms Hybrid Monitor Datas. Each element contains the following attributes:
+     * 
+     */
     public List<GetHybridMonitorDatasData> datas() {
         return this.datas;
     }

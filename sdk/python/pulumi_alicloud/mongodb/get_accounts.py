@@ -47,11 +47,17 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the account.
+        """
         return pulumi.get(self, "account_name")
 
     @_builtins.property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetAccountsAccountResult']:
+        """
+        A list of Mongodb Accounts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "accounts")
 
     @_builtins.property
@@ -65,6 +71,9 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        The id of the instance to which the account belongs.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -93,7 +102,7 @@ def get_accounts(account_name: Optional[_builtins.str] = None,
     """
     This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.148.0+.
+    > **NOTE:** Available since v1.148.0.
 
     ## Example Usage
 
@@ -133,7 +142,7 @@ def get_accounts_output(account_name: pulumi.Input[Optional[Optional[_builtins.s
     """
     This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.148.0+.
+    > **NOTE:** Available since v1.148.0.
 
     ## Example Usage
 

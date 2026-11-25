@@ -35,7 +35,7 @@ public final class GetQuotaApplicationsApplication {
      */
     private Double desireValue;
     /**
-     * @return The quota dimensions.
+     * @return The quota dimensions. See `dimensions` below.
      * 
      */
     private List<GetQuotaApplicationsApplicationDimension> dimensions;
@@ -65,7 +65,7 @@ public final class GetQuotaApplicationsApplication {
      */
     private String productCode;
     /**
-     * @return The ID of quota action..
+     * @return The ID of quota action.
      * 
      */
     private String quotaActionCode;
@@ -90,7 +90,7 @@ public final class GetQuotaApplicationsApplication {
      */
     private String reason;
     /**
-     * @return The status of the quota application.
+     * @return The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
      * 
      */
     private String status;
@@ -125,7 +125,7 @@ public final class GetQuotaApplicationsApplication {
         return this.desireValue;
     }
     /**
-     * @return The quota dimensions.
+     * @return The quota dimensions. See `dimensions` below.
      * 
      */
     public List<GetQuotaApplicationsApplicationDimension> dimensions() {
@@ -167,7 +167,7 @@ public final class GetQuotaApplicationsApplication {
         return this.productCode;
     }
     /**
-     * @return The ID of quota action..
+     * @return The ID of quota action.
      * 
      */
     public String quotaActionCode() {
@@ -202,7 +202,7 @@ public final class GetQuotaApplicationsApplication {
         return this.reason;
     }
     /**
-     * @return The status of the quota application.
+     * @return The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
      * 
      */
     public String status() {

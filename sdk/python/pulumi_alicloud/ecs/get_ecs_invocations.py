@@ -59,6 +59,9 @@ class GetEcsInvocationsResult:
     @_builtins.property
     @pulumi.getter(name="commandId")
     def command_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the command.
+        """
         return pulumi.get(self, "command_id")
 
     @_builtins.property
@@ -82,11 +85,17 @@ class GetEcsInvocationsResult:
     @_builtins.property
     @pulumi.getter
     def invocations(self) -> Sequence['outputs.GetEcsInvocationsInvocationResult']:
+        """
+        A list of Ecs Invocations. Each element contains the following attributes:
+        """
         return pulumi.get(self, "invocations")
 
     @_builtins.property
     @pulumi.getter(name="invokeStatus")
     def invoke_status(self) -> Optional[_builtins.str]:
+        """
+        The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        """
         return pulumi.get(self, "invoke_status")
 
     @_builtins.property
@@ -133,7 +142,7 @@ def get_ecs_invocations(command_id: Optional[_builtins.str] = None,
     """
     This data source provides the Ecs Invocations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.168.0+.
+    > **NOTE:** Available since v1.168.0.
 
     ## Example Usage
 
@@ -186,7 +195,7 @@ def get_ecs_invocations_output(command_id: pulumi.Input[Optional[Optional[_built
     """
     This data source provides the Ecs Invocations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.168.0+.
+    > **NOTE:** Available since v1.168.0.
 
     ## Example Usage
 

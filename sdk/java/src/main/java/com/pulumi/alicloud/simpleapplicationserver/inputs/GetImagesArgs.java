@@ -16,37 +16,77 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetImagesArgs Empty = new GetImagesArgs();
 
+    /**
+     * A list of Image IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
+    /**
+     * @return A list of Image IDs.
+     * 
+     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The image type. Valid values: `app`, `custom`, `system`.
+     * 
+     */
     @Import(name="imageType")
     private @Nullable Output<String> imageType;
 
+    /**
+     * @return The image type. Valid values: `app`, `custom`, `system`.
+     * 
+     */
     public Optional<Output<String>> imageType() {
         return Optional.ofNullable(this.imageType);
     }
 
+    /**
+     * A regex string to filter results by Image name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
+    /**
+     * @return A regex string to filter results by Image name.
+     * 
+     */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * Available in v1.161.0. The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * 
+     */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
+    /**
+     * @return Available in v1.161.0. The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * 
+     */
     public Optional<Output<String>> platform() {
         return Optional.ofNullable(this.platform);
     }
@@ -79,51 +119,117 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetImagesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ids A list of Image IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of Image IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids A list of Image IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param imageType The image type. Valid values: `app`, `custom`, `system`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageType(@Nullable Output<String> imageType) {
             $.imageType = imageType;
             return this;
         }
 
+        /**
+         * @param imageType The image type. Valid values: `app`, `custom`, `system`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageType(String imageType) {
             return imageType(Output.of(imageType));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Image name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Image name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param platform Available in v1.161.0. The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+         * 
+         * @return builder
+         * 
+         */
         public Builder platform(@Nullable Output<String> platform) {
             $.platform = platform;
             return this;
         }
 
+        /**
+         * @param platform Available in v1.161.0. The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+         * 
+         * @return builder
+         * 
+         */
         public Builder platform(String platform) {
             return platform(Output.of(platform));
         }

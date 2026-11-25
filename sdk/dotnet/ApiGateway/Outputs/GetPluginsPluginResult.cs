@@ -38,15 +38,15 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string PluginId;
         /// <summary>
-        /// The name of the plug-in that you want to create.
+        /// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
         /// </summary>
         public readonly string PluginName;
         /// <summary>
-        /// The type of the plug-in.
+        /// The type of the plug-in. Valid values: `backendSignature`, `Caching`, `Cors`, `ipControl`, `jwtAuth`, `trafficControl`.
         /// </summary>
         public readonly string PluginType;
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
 

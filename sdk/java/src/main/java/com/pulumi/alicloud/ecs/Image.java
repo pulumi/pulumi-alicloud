@@ -479,6 +479,8 @@ public class Image extends com.pulumi.resources.CustomResource {
     }
     /**
      * Indicates whether the image is available. Valid values:
+     * * true: The image is available and can be used to create ECS instances.
+     * * false: The image is unavailable and cannot be used to create ECS instances.
      * 
      */
     @Export(name="usable", refs={Boolean.class}, tree="[0]")
@@ -486,6 +488,8 @@ public class Image extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Indicates whether the image is available. Valid values:
+     * * true: The image is available and can be used to create ECS instances.
+     * * false: The image is unavailable and cannot be used to create ECS instances.
      * 
      */
     public Output<Boolean> usable() {

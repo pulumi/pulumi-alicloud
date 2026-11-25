@@ -33,14 +33,14 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of Account IDs.
+     * A list of rds account IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of Account IDs.
+     * @return A list of rds account IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -142,7 +142,7 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of Account IDs.
+         * @param ids A list of rds account IDs.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of Account IDs.
+         * @param ids A list of rds account IDs.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of Account IDs.
+         * @param ids A list of rds account IDs.
          * 
          * @return builder
          * 

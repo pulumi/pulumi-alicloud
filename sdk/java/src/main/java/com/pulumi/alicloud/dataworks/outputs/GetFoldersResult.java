@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFoldersResult {
+    /**
+     * @return A list of Data Works Folders. Each element contains the following attributes:
+     * 
+     */
     private List<GetFoldersFolder> folders;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,9 +27,17 @@ public final class GetFoldersResult {
     private List<String> ids;
     private @Nullable String outputFile;
     private String parentFolderPath;
+    /**
+     * @return The ID of the project.
+     * 
+     */
     private String projectId;
 
     private GetFoldersResult() {}
+    /**
+     * @return A list of Data Works Folders. Each element contains the following attributes:
+     * 
+     */
     public List<GetFoldersFolder> folders() {
         return this.folders;
     }
@@ -45,6 +57,10 @@ public final class GetFoldersResult {
     public String parentFolderPath() {
         return this.parentFolderPath;
     }
+    /**
+     * @return The ID of the project.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }

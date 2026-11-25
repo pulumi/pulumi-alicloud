@@ -225,6 +225,112 @@ func (o WorkspaceDatasetversionLabelArrayOutput) Index(i pulumi.IntInput) Worksp
 	}).(WorkspaceDatasetversionLabelOutput)
 }
 
+type WorkspaceExperimentLabel struct {
+	// The key of the experiment label.
+	Key *string `pulumi:"key"`
+	// The value of the experiment label.
+	Value *string `pulumi:"value"`
+}
+
+// WorkspaceExperimentLabelInput is an input type that accepts WorkspaceExperimentLabelArgs and WorkspaceExperimentLabelOutput values.
+// You can construct a concrete instance of `WorkspaceExperimentLabelInput` via:
+//
+//	WorkspaceExperimentLabelArgs{...}
+type WorkspaceExperimentLabelInput interface {
+	pulumi.Input
+
+	ToWorkspaceExperimentLabelOutput() WorkspaceExperimentLabelOutput
+	ToWorkspaceExperimentLabelOutputWithContext(context.Context) WorkspaceExperimentLabelOutput
+}
+
+type WorkspaceExperimentLabelArgs struct {
+	// The key of the experiment label.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of the experiment label.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (WorkspaceExperimentLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceExperimentLabel)(nil)).Elem()
+}
+
+func (i WorkspaceExperimentLabelArgs) ToWorkspaceExperimentLabelOutput() WorkspaceExperimentLabelOutput {
+	return i.ToWorkspaceExperimentLabelOutputWithContext(context.Background())
+}
+
+func (i WorkspaceExperimentLabelArgs) ToWorkspaceExperimentLabelOutputWithContext(ctx context.Context) WorkspaceExperimentLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceExperimentLabelOutput)
+}
+
+// WorkspaceExperimentLabelArrayInput is an input type that accepts WorkspaceExperimentLabelArray and WorkspaceExperimentLabelArrayOutput values.
+// You can construct a concrete instance of `WorkspaceExperimentLabelArrayInput` via:
+//
+//	WorkspaceExperimentLabelArray{ WorkspaceExperimentLabelArgs{...} }
+type WorkspaceExperimentLabelArrayInput interface {
+	pulumi.Input
+
+	ToWorkspaceExperimentLabelArrayOutput() WorkspaceExperimentLabelArrayOutput
+	ToWorkspaceExperimentLabelArrayOutputWithContext(context.Context) WorkspaceExperimentLabelArrayOutput
+}
+
+type WorkspaceExperimentLabelArray []WorkspaceExperimentLabelInput
+
+func (WorkspaceExperimentLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkspaceExperimentLabel)(nil)).Elem()
+}
+
+func (i WorkspaceExperimentLabelArray) ToWorkspaceExperimentLabelArrayOutput() WorkspaceExperimentLabelArrayOutput {
+	return i.ToWorkspaceExperimentLabelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkspaceExperimentLabelArray) ToWorkspaceExperimentLabelArrayOutputWithContext(ctx context.Context) WorkspaceExperimentLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceExperimentLabelArrayOutput)
+}
+
+type WorkspaceExperimentLabelOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceExperimentLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceExperimentLabel)(nil)).Elem()
+}
+
+func (o WorkspaceExperimentLabelOutput) ToWorkspaceExperimentLabelOutput() WorkspaceExperimentLabelOutput {
+	return o
+}
+
+func (o WorkspaceExperimentLabelOutput) ToWorkspaceExperimentLabelOutputWithContext(ctx context.Context) WorkspaceExperimentLabelOutput {
+	return o
+}
+
+// The key of the experiment label.
+func (o WorkspaceExperimentLabelOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceExperimentLabel) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The value of the experiment label.
+func (o WorkspaceExperimentLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceExperimentLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceExperimentLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceExperimentLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkspaceExperimentLabel)(nil)).Elem()
+}
+
+func (o WorkspaceExperimentLabelArrayOutput) ToWorkspaceExperimentLabelArrayOutput() WorkspaceExperimentLabelArrayOutput {
+	return o
+}
+
+func (o WorkspaceExperimentLabelArrayOutput) ToWorkspaceExperimentLabelArrayOutputWithContext(ctx context.Context) WorkspaceExperimentLabelArrayOutput {
+	return o
+}
+
+func (o WorkspaceExperimentLabelArrayOutput) Index(i pulumi.IntInput) WorkspaceExperimentLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkspaceExperimentLabel {
+		return vs[0].([]WorkspaceExperimentLabel)[vs[1].(int)]
+	}).(WorkspaceExperimentLabelOutput)
+}
+
 type WorkspaceModelLabel struct {
 	// label key
 	Key *string `pulumi:"key"`
@@ -442,6 +548,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceDatasetLabelArrayInput)(nil)).Elem(), WorkspaceDatasetLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceDatasetversionLabelInput)(nil)).Elem(), WorkspaceDatasetversionLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceDatasetversionLabelArrayInput)(nil)).Elem(), WorkspaceDatasetversionLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceExperimentLabelInput)(nil)).Elem(), WorkspaceExperimentLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceExperimentLabelArrayInput)(nil)).Elem(), WorkspaceExperimentLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceModelLabelInput)(nil)).Elem(), WorkspaceModelLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceModelLabelArrayInput)(nil)).Elem(), WorkspaceModelLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceModelVersionLabelInput)(nil)).Elem(), WorkspaceModelVersionLabelArgs{})
@@ -450,6 +558,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkspaceDatasetLabelArrayOutput{})
 	pulumi.RegisterOutputType(WorkspaceDatasetversionLabelOutput{})
 	pulumi.RegisterOutputType(WorkspaceDatasetversionLabelArrayOutput{})
+	pulumi.RegisterOutputType(WorkspaceExperimentLabelOutput{})
+	pulumi.RegisterOutputType(WorkspaceExperimentLabelArrayOutput{})
 	pulumi.RegisterOutputType(WorkspaceModelLabelOutput{})
 	pulumi.RegisterOutputType(WorkspaceModelLabelArrayOutput{})
 	pulumi.RegisterOutputType(WorkspaceModelVersionLabelOutput{})

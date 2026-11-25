@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0.
  *
  * ## Example Usage
  *
@@ -46,6 +46,9 @@ export interface GetEcsPrefixListsArgs {
      * The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
      */
     addressFamily?: string;
+    /**
+     * Specifies whether to return detailed information about the prefix list entries. Default: false.
+     */
     enableDetails?: boolean;
     /**
      * A list of Prefix List IDs.
@@ -65,6 +68,9 @@ export interface GetEcsPrefixListsArgs {
  * A collection of values returned by getEcsPrefixLists.
  */
 export interface GetEcsPrefixListsResult {
+    /**
+     * The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+     */
     readonly addressFamily?: string;
     readonly enableDetails?: boolean;
     /**
@@ -72,15 +78,21 @@ export interface GetEcsPrefixListsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Prefix Lists. Each element contains the following attributes:
+     */
     readonly lists: outputs.ecs.GetEcsPrefixListsList[];
     readonly nameRegex?: string;
+    /**
+     * A list of Prefix List names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0.
  *
  * ## Example Usage
  *
@@ -117,6 +129,9 @@ export interface GetEcsPrefixListsOutputArgs {
      * The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
      */
     addressFamily?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to return detailed information about the prefix list entries. Default: false.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Prefix List IDs.

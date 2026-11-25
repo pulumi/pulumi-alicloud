@@ -14,9 +14,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRdsBackupsResult {
+    /**
+     * @return BackupMode.
+     * 
+     */
     private @Nullable String backupMode;
+    /**
+     * @return Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+     * * **NoStart**: Not started
+     * * **Checking**: check the backup
+     * * **Preparing**: Prepare a backup
+     * * **Waiting**: Waiting for backup
+     * * **Uploading**: Upload backup
+     * * **Finished**: Complete backup
+     * * **Failed**: backup Failed
+     * 
+     */
     private @Nullable String backupStatus;
+    /**
+     * @return A list of Rds Backups. Each element contains the following attributes:
+     * 
+     */
     private List<GetRdsBackupsBackup> backups;
+    /**
+     * @return The db instance id.
+     * 
+     */
     private String dbInstanceId;
     private @Nullable String endTime;
     /**
@@ -29,15 +52,38 @@ public final class GetRdsBackupsResult {
     private @Nullable String startTime;
 
     private GetRdsBackupsResult() {}
+    /**
+     * @return BackupMode.
+     * 
+     */
     public Optional<String> backupMode() {
         return Optional.ofNullable(this.backupMode);
     }
+    /**
+     * @return Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
+     * * **NoStart**: Not started
+     * * **Checking**: check the backup
+     * * **Preparing**: Prepare a backup
+     * * **Waiting**: Waiting for backup
+     * * **Uploading**: Upload backup
+     * * **Finished**: Complete backup
+     * * **Failed**: backup Failed
+     * 
+     */
     public Optional<String> backupStatus() {
         return Optional.ofNullable(this.backupStatus);
     }
+    /**
+     * @return A list of Rds Backups. Each element contains the following attributes:
+     * 
+     */
     public List<GetRdsBackupsBackup> backups() {
         return this.backups;
     }
+    /**
+     * @return The db instance id.
+     * 
+     */
     public String dbInstanceId() {
         return this.dbInstanceId;
     }

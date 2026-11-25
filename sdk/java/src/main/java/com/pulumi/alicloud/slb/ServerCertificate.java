@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * 
  * For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
  * 
+ * &gt; **NOTE:** Available since v1.21.0.
+ * 
  * ## Example Usage
  * 
  * * using server_certificate/private content as string example
@@ -104,6 +106,8 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:slb/serverCertificate:ServerCertificate")
 public class ServerCertificate extends com.pulumi.resources.CustomResource {
     /**
+     * Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+     * 
      * @deprecated Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
      * 
      */
@@ -111,10 +115,16 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
     @Export(name="alicloudCertifacteId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertifacteId;
 
+    /**
+     * @return Field &#39;alicloud_certifacte_id&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_id&#39; replaces it.
+     * 
+     */
     public Output<Optional<String>> alicloudCertifacteId() {
         return Codegen.optional(this.alicloudCertifacteId);
     }
     /**
+     * Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+     * 
      * @deprecated Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
      * 
      */
@@ -122,6 +132,10 @@ public class ServerCertificate extends com.pulumi.resources.CustomResource {
     @Export(name="alicloudCertifacteName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alicloudCertifacteName;
 
+    /**
+     * @return Field &#39;alicloud_certifacte_name&#39; has been deprecated from provider version 1.68.0. Use &#39;alicloud_certificate_name&#39; replaces it.
+     * 
+     */
     public Output<Optional<String>> alicloudCertifacteName() {
         return Codegen.optional(this.alicloudCertifacteName);
     }

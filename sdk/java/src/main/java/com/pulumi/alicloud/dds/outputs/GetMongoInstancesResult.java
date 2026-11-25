@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMongoInstancesResult {
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
     private @Nullable String availabilityZone;
     private @Nullable Boolean enableDetails;
     /**
@@ -24,16 +28,44 @@ public final class GetMongoInstancesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The instance type.
+     * 
+     */
     private @Nullable String instanceClass;
+    /**
+     * @return The instance architecture.
+     * 
+     */
     private @Nullable String instanceType;
+    /**
+     * @return A list of Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetMongoInstancesInstance> instances;
     private @Nullable String nameRegex;
+    /**
+     * @return (Available since v1.42.0) A list of Instance names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The instance status.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return (Available since v1.66.0) The details of the resource tags.
+     * 
+     */
     private @Nullable Map<String,String> tags;
 
     private GetMongoInstancesResult() {}
+    /**
+     * @return The zone ID of the instance.
+     * 
+     */
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
@@ -50,27 +82,51 @@ public final class GetMongoInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The instance type.
+     * 
+     */
     public Optional<String> instanceClass() {
         return Optional.ofNullable(this.instanceClass);
     }
+    /**
+     * @return The instance architecture.
+     * 
+     */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
+    /**
+     * @return A list of Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetMongoInstancesInstance> instances() {
         return this.instances;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return (Available since v1.42.0) A list of Instance names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The instance status.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return (Available since v1.66.0) The details of the resource tags.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

@@ -13,11 +13,74 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Provides a Event Bridge Service Linked Role resource.
+ * 
+ * `alicloud.eventbridge.Slr` is an alias of `alicloud.eventbridge.ServiceLinkedRole`. The two resource types share the same schema, CRUD behavior and service-linked-role lifecycle; use either name interchangeably.
+ * 
+ * For information about Event Bridge Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+ * 
+ * &gt; **NOTE:** Available since v1.129.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.eventbridge.Slr;
+ * import com.pulumi.alicloud.eventbridge.SlrArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Slr("default", SlrArgs.builder()
+ *             .productName("AliyunServiceRoleForEventBridgeSourceRocketMQ")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
+ * ## Import
+ * 
+ * Event Bridge Service Linked Role can be imported using the id, e.g.
+ * 
+ * ```sh
+ * $ pulumi import alicloud:eventbridge/slr:Slr example &lt;product_name&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="alicloud:eventbridge/slr:Slr")
 public class Slr extends com.pulumi.resources.CustomResource {
+    /**
+     * The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+     * 
+     */
     @Export(name="productName", refs={String.class}, tree="[0]")
     private Output<String> productName;
 
+    /**
+     * @return The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+     * 
+     */
     public Output<String> productName() {
         return this.productName;
     }

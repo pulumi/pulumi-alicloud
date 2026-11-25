@@ -75,9 +75,17 @@ public final class GetBaselineStrategiesPlainArgs extends com.pulumi.resources.I
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The IDs of the Baseline Strategy.
+     * 
+     */
     @Import(name="strategyIds")
     private @Nullable String strategyIds;
 
+    /**
+     * @return The IDs of the Baseline Strategy.
+     * 
+     */
     public Optional<String> strategyIds() {
         return Optional.ofNullable(this.strategyIds);
     }
@@ -164,6 +172,12 @@ public final class GetBaselineStrategiesPlainArgs extends com.pulumi.resources.I
             return this;
         }
 
+        /**
+         * @param strategyIds The IDs of the Baseline Strategy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategyIds(@Nullable String strategyIds) {
             $.strategyIds = strategyIds;
             return this;

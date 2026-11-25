@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+ * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
  *
  * > **NOTE:** Available since v1.194.0.
  *
@@ -39,6 +39,9 @@ export function getInstanceMembers(args?: GetInstanceMembersArgs, opts?: pulumi.
  * A collection of arguments for invoking getInstanceMembers.
  */
 export interface GetInstanceMembersArgs {
+    /**
+     * The current page number.
+     */
     currentPage?: string;
     /**
      * A list of Instance Member IDs.
@@ -74,7 +77,7 @@ export interface GetInstanceMembersResult {
     readonly pageSize?: number;
 }
 /**
- * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+ * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
  *
  * > **NOTE:** Available since v1.194.0.
  *
@@ -106,6 +109,9 @@ export function getInstanceMembersOutput(args?: GetInstanceMembersOutputArgs, op
  * A collection of arguments for invoking getInstanceMembers.
  */
 export interface GetInstanceMembersOutputArgs {
+    /**
+     * The current page number.
+     */
     currentPage?: pulumi.Input<string | undefined>;
     /**
      * A list of Instance Member IDs.

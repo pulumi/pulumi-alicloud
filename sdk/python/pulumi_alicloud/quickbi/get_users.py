@@ -78,6 +78,9 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
+        """
+        A list of Quick BI Users. Each element contains the following attributes:
+        """
         return pulumi.get(self, "users")
 
 
@@ -103,7 +106,7 @@ def get_users(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Quick BI Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 
@@ -146,7 +149,7 @@ def get_users_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bo
     """
     This data source provides the Quick BI Users of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.136.0+.
+    > **NOTE:** Available since v1.136.0.
 
     ## Example Usage
 

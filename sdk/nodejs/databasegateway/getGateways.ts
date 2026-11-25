@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -77,6 +77,9 @@ export interface GetGatewaysArgs {
  */
 export interface GetGatewaysResult {
     readonly enableDetails?: boolean;
+    /**
+     * A list of Database Gateway Gateways. Each element contains the following attributes:
+     */
     readonly gateways: outputs.databasegateway.GetGatewaysGateway[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -84,15 +87,21 @@ export interface GetGatewaysResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Gateway names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly searchKey?: string;
+    /**
+     * The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *

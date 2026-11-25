@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Images of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -124,18 +124,33 @@ export interface GetImagesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+     */
     readonly imageType?: string;
+    /**
+     * A list of Ecd Images. Each element contains the following attributes:
+     */
     readonly images: outputs.eds.GetImagesImage[];
     readonly nameRegex?: string;
+    /**
+     * A list of Image names.
+     */
     readonly names: string[];
+    /**
+     * The os type of the image.
+     */
     readonly osType?: string;
     readonly outputFile?: string;
+    /**
+     * The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ecd Images of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *

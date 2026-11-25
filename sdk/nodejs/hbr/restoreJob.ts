@@ -154,7 +154,7 @@ export class RestoreJob extends pulumi.CustomResource {
      */
     declare public readonly options: pulumi.Output<string | undefined>;
     /**
-     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     * The details about the Tablestore instance. See `otsDetail` below.
      */
     declare public readonly otsDetail: pulumi.Output<outputs.hbr.RestoreJobOtsDetail>;
     /**
@@ -351,7 +351,7 @@ export interface RestoreJobState {
      */
     options?: pulumi.Input<string | undefined>;
     /**
-     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     * The details about the Tablestore instance. See `otsDetail` below.
      */
     otsDetail?: pulumi.Input<inputs.hbr.RestoreJobOtsDetail | undefined>;
     /**
@@ -461,7 +461,7 @@ export interface RestoreJobArgs {
      */
     options?: pulumi.Input<string | undefined>;
     /**
-     * The details about the Tablestore instance. See the following `Block otsDetail`.
+     * The details about the Tablestore instance. See `otsDetail` below.
      */
     otsDetail?: pulumi.Input<inputs.hbr.RestoreJobOtsDetail | undefined>;
     /**

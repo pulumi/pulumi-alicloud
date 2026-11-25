@@ -50,6 +50,9 @@ class GetBindingsResult:
     @_builtins.property
     @pulumi.getter
     def bindings(self) -> Sequence['outputs.GetBindingsBindingResult']:
+        """
+        A list of Amqp Bindings. Each element contains the following attributes:
+        """
         return pulumi.get(self, "bindings")
 
     @_builtins.property
@@ -63,11 +66,17 @@ class GetBindingsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Binding IDs. Each item value formats as `<instance_id>:<virtual_host_name>:<source_exchange>:<destination_name>`.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        Instance Id.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -78,6 +87,9 @@ class GetBindingsResult:
     @_builtins.property
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> _builtins.str:
+        """
+        Virtualhost Name.
+        """
         return pulumi.get(self, "virtual_host_name")
 
 
@@ -102,7 +114,7 @@ def get_bindings(instance_id: Optional[_builtins.str] = None,
     """
     This data source provides the Amqp Bindings of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -142,7 +154,7 @@ def get_bindings_output(instance_id: pulumi.Input[Optional[_builtins.str]] = Non
     """
     This data source provides the Amqp Bindings of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 

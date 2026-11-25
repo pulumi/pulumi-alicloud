@@ -108,6 +108,7 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Domain name of the website service.
+        /// 
         /// &gt; **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         /// </summary>
         [Output("domain")]
@@ -191,6 +192,7 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Domain name of the website service.
+        /// 
         /// &gt; **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         /// </summary>
         [Input("domain", required: true)]
@@ -236,6 +238,7 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Domain name of the website service.
+        /// 
         /// &gt; **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         /// </summary>
         [Input("domain")]

@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.DatabaseGateway.Outputs
         /// The description of Gateway.
         /// </summary>
         public readonly string GatewayDesc;
+        /// <summary>
+        /// Gateway instance List.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewaysGatewayGatewayInstanceResult> GatewayInstances;
         /// <summary>
         /// The name of the Gateway.

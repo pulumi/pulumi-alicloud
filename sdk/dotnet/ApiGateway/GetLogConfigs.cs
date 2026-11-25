@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.185.0+.
+        /// &gt; **NOTE:** Available since v1.185.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.185.0+.
+        /// &gt; **NOTE:** Available since v1.185.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Log Configs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.185.0+.
+        /// &gt; **NOTE:** Available since v1.185.0.
         /// 
         /// ## Example Usage
         /// 
@@ -204,12 +204,18 @@ namespace Pulumi.AliCloud.ApiGateway
     [OutputType]
     public sealed class GetLogConfigsResult
     {
+        /// <summary>
+        /// A list of Api Gateway Log Configs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLogConfigsConfigResult> Configs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The type the of log.
+        /// </summary>
         public readonly string? LogType;
         public readonly string? OutputFile;
 

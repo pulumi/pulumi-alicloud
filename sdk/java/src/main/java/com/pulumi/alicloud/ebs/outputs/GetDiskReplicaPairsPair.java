@@ -40,6 +40,10 @@ public final class GetDiskReplicaPairsPair {
      * 
      */
     private String diskId;
+    /**
+     * @return The first ID of the Disk Replica Pair.
+     * 
+     */
     private String id;
     /**
      * @return The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
@@ -120,6 +124,10 @@ public final class GetDiskReplicaPairsPair {
     public String diskId() {
         return this.diskId;
     }
+    /**
+     * @return The first ID of the Disk Replica Pair.
+     * 
+     */
     public String id() {
         return this.id;
     }

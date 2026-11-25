@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
+        /// &gt; **NOTE:** Available since v0.1.0
+        /// 
         /// &gt; **NOTE:** If one zone is sold out, it will not be exported.
         /// 
         /// ## Example Usage
@@ -42,6 +44,8 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
+        /// &gt; **NOTE:** Available since v0.1.0
+        /// 
         /// &gt; **NOTE:** If one zone is sold out, it will not be exported.
         /// 
         /// ## Example Usage
@@ -69,6 +73,8 @@ namespace Pulumi.AliCloud
 
         /// <summary>
         /// This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// 
+        /// &gt; **NOTE:** Available since v0.1.0
         /// 
         /// &gt; **NOTE:** If one zone is sold out, it will not be exported.
         /// 
@@ -166,7 +172,7 @@ namespace Pulumi.AliCloud
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        /// Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         /// </summary>
         [Input("spotStrategy")]
         public string? SpotStrategy { get; set; }
@@ -246,7 +252,7 @@ namespace Pulumi.AliCloud
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        /// Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }

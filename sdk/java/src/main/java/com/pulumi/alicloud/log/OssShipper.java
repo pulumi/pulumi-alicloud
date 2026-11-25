@@ -155,58 +155,93 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> compressType() {
         return Codegen.optional(this.compressType);
     }
+    /**
+     * Field configuration in csv configuration format.
+     * 
+     */
     @Export(name="csvConfigColumns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> csvConfigColumns;
 
+    /**
+     * @return Field configuration in csv configuration format.
+     * 
+     */
     public Output<Optional<List<String>>> csvConfigColumns() {
         return Codegen.optional(this.csvConfigColumns);
     }
+    /**
+     * Separator configuration in csv configuration format.
+     * 
+     */
     @Export(name="csvConfigDelimiter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigDelimiter;
 
+    /**
+     * @return Separator configuration in csv configuration format.
+     * 
+     */
     public Output<Optional<String>> csvConfigDelimiter() {
         return Codegen.optional(this.csvConfigDelimiter);
     }
+    /**
+     * Indicates whether to write the field name to the CSV file, the default value is `false`.
+     * 
+     */
     @Export(name="csvConfigHeader", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> csvConfigHeader;
 
+    /**
+     * @return Indicates whether to write the field name to the CSV file, the default value is `false`.
+     * 
+     */
     public Output<Optional<Boolean>> csvConfigHeader() {
         return Codegen.optional(this.csvConfigHeader);
     }
+    /**
+     * lineFeed in csv configuration.
+     * 
+     */
     @Export(name="csvConfigLinefeed", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigLinefeed;
 
+    /**
+     * @return lineFeed in csv configuration.
+     * 
+     */
     public Output<Optional<String>> csvConfigLinefeed() {
         return Codegen.optional(this.csvConfigLinefeed);
     }
+    /**
+     * Invalid field content.
+     * 
+     */
     @Export(name="csvConfigNullidentifier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigNullidentifier;
 
+    /**
+     * @return Invalid field content.
+     * 
+     */
     public Output<Optional<String>> csvConfigNullidentifier() {
         return Codegen.optional(this.csvConfigNullidentifier);
     }
+    /**
+     * Escape character under csv configuration.
+     * 
+     */
     @Export(name="csvConfigQuote", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigQuote;
 
+    /**
+     * @return Escape character under csv configuration.
+     * 
+     */
     public Output<Optional<String>> csvConfigQuote() {
         return Codegen.optional(this.csvConfigQuote);
     }
     /**
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
-     * - format = `json`
-     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
-     * - format = `csv`
-     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
-     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
-     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-     * - format = `parquet`
-     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
-     *   `name` - (Required) The name of the key.
-     *   `type` - (Required) Type of configuration name.
      * 
      */
     @Export(name="format", refs={String.class}, tree="[0]")
@@ -215,27 +250,22 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
     /**
      * @return Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
-     * - format = `json`
-     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
-     * - format = `csv`
-     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
-     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
-     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-     * - format = `parquet`
-     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
-     *   `name` - (Required) The name of the key.
-     *   `type` - (Required) Type of configuration name.
      * 
      */
     public Output<String> format() {
         return this.format;
     }
+    /**
+     * Whether to deliver the label.
+     * 
+     */
     @Export(name="jsonEnableTag", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> jsonEnableTag;
 
+    /**
+     * @return Whether to deliver the label.
+     * 
+     */
     public Output<Optional<Boolean>> jsonEnableTag() {
         return Codegen.optional(this.jsonEnableTag);
     }
@@ -281,9 +311,17 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> ossPrefix() {
         return Codegen.optional(this.ossPrefix);
     }
+    /**
+     * Configure to use parquet storage format. See `parquetConfig` below.
+     * 
+     */
     @Export(name="parquetConfigs", refs={List.class,OssShipperParquetConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OssShipperParquetConfig>> parquetConfigs;
 
+    /**
+     * @return Configure to use parquet storage format. See `parquetConfig` below.
+     * 
+     */
     public Output<Optional<List<OssShipperParquetConfig>>> parquetConfigs() {
         return Codegen.optional(this.parquetConfigs);
     }

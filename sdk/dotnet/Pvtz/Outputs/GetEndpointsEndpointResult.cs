@@ -21,9 +21,12 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
         /// The name of the resource.
         /// </summary>
         public readonly string EndpointName;
+        /// <summary>
+        /// The ID of the Endpoint.
+        /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Ip Configs.
+        /// The Ip Configs. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEndpointsEndpointIpConfigResult> IpConfigs;
         /// <summary>

@@ -16,7 +16,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerlessInstancesResult {
+    /**
+     * @return The db instance class.
+     * 
+     */
     private @Nullable String dbInstanceClass;
+    /**
+     * @return The db instance description.
+     * 
+     */
     private @Nullable String dbInstanceDescription;
     private @Nullable Boolean enableDetails;
     /**
@@ -25,20 +33,60 @@ public final class GetServerlessInstancesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Mongodb Serverless Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetServerlessInstancesInstance> instances;
+    /**
+     * @return The network type of the instance.
+     * 
+     */
     private @Nullable String networkType;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The status of the instance.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The ID of the VPC network.
+     * 
+     */
     private @Nullable String vpcId;
+    /**
+     * @return The id of the vswitch.
+     * 
+     */
     private @Nullable String vswitchId;
+    /**
+     * @return The ID of the zone.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetServerlessInstancesResult() {}
+    /**
+     * @return The db instance class.
+     * 
+     */
     public Optional<String> dbInstanceClass() {
         return Optional.ofNullable(this.dbInstanceClass);
     }
+    /**
+     * @return The db instance description.
+     * 
+     */
     public Optional<String> dbInstanceDescription() {
         return Optional.ofNullable(this.dbInstanceDescription);
     }
@@ -55,30 +103,62 @@ public final class GetServerlessInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Mongodb Serverless Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetServerlessInstancesInstance> instances() {
         return this.instances;
     }
+    /**
+     * @return The network type of the instance.
+     * 
+     */
     public Optional<String> networkType() {
         return Optional.ofNullable(this.networkType);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The status of the instance.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The ID of the VPC network.
+     * 
+     */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
+    /**
+     * @return The id of the vswitch.
+     * 
+     */
     public Optional<String> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }
+    /**
+     * @return The ID of the zone.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

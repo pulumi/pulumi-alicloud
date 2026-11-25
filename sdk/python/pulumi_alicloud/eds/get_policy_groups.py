@@ -53,6 +53,9 @@ class GetPolicyGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetPolicyGroupsGroupResult']:
+        """
+        A list of Ecd Policy Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -76,6 +79,9 @@ class GetPolicyGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Policy Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -86,6 +92,9 @@ class GetPolicyGroupsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of policy.
+        """
         return pulumi.get(self, "status")
 
 
@@ -112,7 +121,7 @@ def get_policy_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.130.0+.
+    > **NOTE:** Available since v1.130.0.
 
     ## Example Usage
 
@@ -175,7 +184,7 @@ def get_policy_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     """
     This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.130.0+.
+    > **NOTE:** Available since v1.130.0.
 
     ## Example Usage
 

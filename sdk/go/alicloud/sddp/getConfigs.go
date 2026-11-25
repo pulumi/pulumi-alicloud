@@ -63,8 +63,9 @@ func GetConfigs(ctx *pulumi.Context, args *GetConfigsArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getConfigs.
 type GetConfigsArgs struct {
 	// A list of Config IDs.
-	Ids  []string `pulumi:"ids"`
-	Lang *string  `pulumi:"lang"`
+	Ids []string `pulumi:"ids"`
+	// The Request and Receive the Language of the Message Type. Valid values: `zh`, `en`.
+	Lang *string `pulumi:"lang"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
@@ -88,8 +89,9 @@ func GetConfigsOutput(ctx *pulumi.Context, args GetConfigsOutputArgs, opts ...pu
 // A collection of arguments for invoking getConfigs.
 type GetConfigsOutputArgs struct {
 	// A list of Config IDs.
-	Ids  pulumi.StringArrayInput `pulumi:"ids"`
-	Lang pulumi.StringPtrInput   `pulumi:"lang"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The Request and Receive the Language of the Message Type. Valid values: `zh`, `en`.
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }

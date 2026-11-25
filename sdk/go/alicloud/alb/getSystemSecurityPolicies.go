@@ -13,7 +13,7 @@ import (
 
 // This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.183.0+.
+// > **NOTE:** Available since v1.183.0.
 //
 // ## Example Usage
 //
@@ -60,8 +60,9 @@ type GetSystemSecurityPoliciesArgs struct {
 	// A list of System Security Policy IDs.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile *string           `pulumi:"outputFile"`
-	Tags       map[string]string `pulumi:"tags"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A mapping of tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getSystemSecurityPolicies.
@@ -87,7 +88,8 @@ type GetSystemSecurityPoliciesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	Tags       pulumi.StringMapInput `pulumi:"tags"`
+	// A mapping of tags of the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetSystemSecurityPoliciesOutputArgs) ElementType() reflect.Type {

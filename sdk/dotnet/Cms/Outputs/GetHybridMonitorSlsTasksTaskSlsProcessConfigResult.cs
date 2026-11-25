@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorSlsTasksTaskSlsProcessConfigResult
     {
+        /// <summary>
+        /// The extended field that specifies the result of basic operations that are performed on aggregation results.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressResult> Expresses;
         /// <summary>
         /// The conditions that are used to filter logs imported from Log Service.

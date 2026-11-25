@@ -14,19 +14,35 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetControlPolicyAttachmentsResult {
+    /**
+     * @return A list of Resource Manager Control Policy Attachments. Each element contains the following attributes:
+     * 
+     */
     private List<GetControlPolicyAttachmentsAttachment> attachments;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of Control Policy Attachment IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String language;
     private @Nullable String outputFile;
+    /**
+     * @return The type of policy.
+     * 
+     */
     private @Nullable String policyType;
     private String targetId;
 
     private GetControlPolicyAttachmentsResult() {}
+    /**
+     * @return A list of Resource Manager Control Policy Attachments. Each element contains the following attributes:
+     * 
+     */
     public List<GetControlPolicyAttachmentsAttachment> attachments() {
         return this.attachments;
     }
@@ -37,6 +53,10 @@ public final class GetControlPolicyAttachmentsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Control Policy Attachment IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
@@ -46,6 +66,10 @@ public final class GetControlPolicyAttachmentsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The type of policy.
+     * 
+     */
     public Optional<String> policyType() {
         return Optional.ofNullable(this.policyType);
     }

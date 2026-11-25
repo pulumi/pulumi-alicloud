@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         /// </summary>
         public readonly string MobileCountryCode;
         /// <summary>
-        /// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+        /// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
         /// </summary>
         public readonly string Source;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         /// </summary>
         public readonly string SourceUserId;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Frozen`, `Normal`.
         /// </summary>
         public readonly string Status;
         /// <summary>

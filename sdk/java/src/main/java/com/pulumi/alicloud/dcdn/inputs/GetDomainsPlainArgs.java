@@ -151,9 +151,17 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The security token.
+     * 
+     */
     @Import(name="securityToken")
     private @Nullable String securityToken;
 
+    /**
+     * @return The security token.
+     * 
+     */
     public Optional<String> securityToken() {
         return Optional.ofNullable(this.securityToken);
     }
@@ -316,6 +324,12 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param securityToken The security token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityToken(@Nullable String securityToken) {
             $.securityToken = securityToken;
             return this;

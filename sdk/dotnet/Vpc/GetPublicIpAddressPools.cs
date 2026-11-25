@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.186.0+.
+        /// &gt; **NOTE:** Available since v1.186.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.186.0+.
+        /// &gt; **NOTE:** Available since v1.186.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.186.0+.
+        /// &gt; **NOTE:** Available since v1.186.0.
         /// 
         /// ## Example Usage
         /// 
@@ -269,13 +269,28 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The Internet service provider.
+        /// </summary>
         public readonly string? Isp;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Public Ip Address Pool names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Vpc Public Ip Address Pools. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPublicIpAddressPoolsPoolResult> Pools;
         public readonly ImmutableArray<string> PublicIpAddressPoolIds;
+        /// <summary>
+        /// The name of the Vpc Public Ip Address Pool.
+        /// </summary>
         public readonly string? PublicIpAddressPoolName;
+        /// <summary>
+        /// The status of the Vpc Public Ip Address Pool.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

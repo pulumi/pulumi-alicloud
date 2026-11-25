@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.133.0+.
+        /// &gt; **NOTE:** Available since v1.133.0.
         /// 
         /// ## Example Usage
         /// 
@@ -184,12 +184,27 @@ namespace Pulumi.AliCloud.Ens
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Key Pair IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The name of the key pair.
+        /// </summary>
         public readonly string? KeyPairName;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Key Pair names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ens Key Pairs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKeyPairsPairResult> Pairs;
+        /// <summary>
+        /// The version number.
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

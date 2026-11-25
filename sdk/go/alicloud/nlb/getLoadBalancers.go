@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.191.0+.
+// > **NOTE:** Available since v1.191.0.
 //
 // ## Example Usage
 //
@@ -85,8 +85,9 @@ type GetLoadBalancersArgs struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
 	VpcIds []string `pulumi:"vpcIds"`
 	// The name of the zone.
@@ -95,24 +96,35 @@ type GetLoadBalancersArgs struct {
 
 // A collection of values returned by getLoadBalancers.
 type GetLoadBalancersResult struct {
-	AddressIpVersion *string                    `pulumi:"addressIpVersion"`
-	AddressType      *string                    `pulumi:"addressType"`
-	Balancers        []GetLoadBalancersBalancer `pulumi:"balancers"`
-	DnsName          *string                    `pulumi:"dnsName"`
+	// The IP version.
+	AddressIpVersion *string `pulumi:"addressIpVersion"`
+	// The type of IPv4 address used by the NLB instance.
+	AddressType *string `pulumi:"addressType"`
+	// A list of Nlb Load Balancers. Each element contains the following attributes:
+	Balancers []GetLoadBalancersBalancer `pulumi:"balancers"`
+	// The domain name of the NLB instance.
+	DnsName *string `pulumi:"dnsName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                         string            `pulumi:"id"`
-	Ids                        []string          `pulumi:"ids"`
-	Ipv6AddressType            *string           `pulumi:"ipv6AddressType"`
-	LoadBalancerBusinessStatus *string           `pulumi:"loadBalancerBusinessStatus"`
-	LoadBalancerNames          []string          `pulumi:"loadBalancerNames"`
-	NameRegex                  *string           `pulumi:"nameRegex"`
-	Names                      []string          `pulumi:"names"`
-	OutputFile                 *string           `pulumi:"outputFile"`
-	ResourceGroupId            *string           `pulumi:"resourceGroupId"`
-	Status                     *string           `pulumi:"status"`
-	Tags                       map[string]string `pulumi:"tags"`
-	VpcIds                     []string          `pulumi:"vpcIds"`
-	ZoneId                     *string           `pulumi:"zoneId"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The type of IPv6 address used by the NLB instance.
+	Ipv6AddressType *string `pulumi:"ipv6AddressType"`
+	// The business status of the NLB instance.
+	LoadBalancerBusinessStatus *string  `pulumi:"loadBalancerBusinessStatus"`
+	LoadBalancerNames          []string `pulumi:"loadBalancerNames"`
+	NameRegex                  *string  `pulumi:"nameRegex"`
+	// A list of Load Balancer names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the NLB instance.
+	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags   map[string]string `pulumi:"tags"`
+	VpcIds []string          `pulumi:"vpcIds"`
+	// The name of the zone.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs, opts ...pulumi.InvokeOption) GetLoadBalancersResultOutput {
@@ -144,7 +156,8 @@ type GetLoadBalancersOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.StringMapInput `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
 	VpcIds pulumi.StringArrayInput `pulumi:"vpcIds"`
 	// The name of the zone.
@@ -170,18 +183,22 @@ func (o GetLoadBalancersResultOutput) ToGetLoadBalancersResultOutputWithContext(
 	return o
 }
 
+// The IP version.
 func (o GetLoadBalancersResultOutput) AddressIpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.AddressIpVersion }).(pulumi.StringPtrOutput)
 }
 
+// The type of IPv4 address used by the NLB instance.
 func (o GetLoadBalancersResultOutput) AddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.AddressType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Nlb Load Balancers. Each element contains the following attributes:
 func (o GetLoadBalancersResultOutput) Balancers() GetLoadBalancersBalancerArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []GetLoadBalancersBalancer { return v.Balancers }).(GetLoadBalancersBalancerArrayOutput)
 }
 
+// The domain name of the NLB instance.
 func (o GetLoadBalancersResultOutput) DnsName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.DnsName }).(pulumi.StringPtrOutput)
 }
@@ -195,10 +212,12 @@ func (o GetLoadBalancersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The type of IPv6 address used by the NLB instance.
 func (o GetLoadBalancersResultOutput) Ipv6AddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.Ipv6AddressType }).(pulumi.StringPtrOutput)
 }
 
+// The business status of the NLB instance.
 func (o GetLoadBalancersResultOutput) LoadBalancerBusinessStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.LoadBalancerBusinessStatus }).(pulumi.StringPtrOutput)
 }
@@ -211,6 +230,7 @@ func (o GetLoadBalancersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Load Balancer names.
 func (o GetLoadBalancersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -219,14 +239,17 @@ func (o GetLoadBalancersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group.
 func (o GetLoadBalancersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the NLB instance.
 func (o GetLoadBalancersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tag of the resource.
 func (o GetLoadBalancersResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -235,6 +258,7 @@ func (o GetLoadBalancersResultOutput) VpcIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.VpcIds }).(pulumi.StringArrayOutput)
 }
 
+// The name of the zone.
 func (o GetLoadBalancersResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

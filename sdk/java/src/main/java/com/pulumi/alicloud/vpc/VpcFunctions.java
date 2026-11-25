@@ -150,7 +150,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -200,7 +200,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -250,7 +250,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -300,7 +300,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -350,7 +350,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -400,7 +400,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -450,7 +450,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.152.0+.
+     * &gt; **NOTE:** Available since v1.152.0.
      * 
      * ## Example Usage
      * 
@@ -500,7 +500,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -555,7 +555,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -610,7 +610,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -665,7 +665,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -720,7 +720,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -775,7 +775,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -830,7 +830,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -885,7 +885,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -947,7 +947,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -1009,7 +1009,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -1071,7 +1071,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -1133,7 +1133,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -1195,7 +1195,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -1257,7 +1257,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.153.0+.
+     * &gt; **NOTE:** Available since v1.153.0.
      * 
      * ## Example Usage
      * 
@@ -1319,7 +1319,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0+.
      * 
      * ## Example Usage
      * 
@@ -1349,12 +1349,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
-     *             .name("tf-testAccCommonBandwidthPackage")
-     *             .description("tf-testAcc-CommonBandwidthPackage")
+     *             .name("tf-exampleCommonBandwidthPackage")
+     *             .description("tf-exampleCommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex("^tf-testAcc.*")
+     *             .nameRegex("^tf-example.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
@@ -1362,14 +1362,6 @@ public final class VpcFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Public ip addresses Block
-     * 
-     *   The public ip addresses mapping supports the following:
-     * 
-     *   * `ipAddress`   - The address of the EIP.
-     *   * `allocationId` - The ID of the EIP instance.
-     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static Output<GetCommonBandwidthPackagesResult> getCommonBandwidthPackages() {
@@ -1378,7 +1370,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0+.
      * 
      * ## Example Usage
      * 
@@ -1408,12 +1400,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
-     *             .name("tf-testAccCommonBandwidthPackage")
-     *             .description("tf-testAcc-CommonBandwidthPackage")
+     *             .name("tf-exampleCommonBandwidthPackage")
+     *             .description("tf-exampleCommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex("^tf-testAcc.*")
+     *             .nameRegex("^tf-example.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
@@ -1421,14 +1413,6 @@ public final class VpcFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Public ip addresses Block
-     * 
-     *   The public ip addresses mapping supports the following:
-     * 
-     *   * `ipAddress`   - The address of the EIP.
-     *   * `allocationId` - The ID of the EIP instance.
-     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static CompletableFuture<GetCommonBandwidthPackagesResult> getCommonBandwidthPackagesPlain() {
@@ -1437,7 +1421,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0+.
      * 
      * ## Example Usage
      * 
@@ -1467,12 +1451,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
-     *             .name("tf-testAccCommonBandwidthPackage")
-     *             .description("tf-testAcc-CommonBandwidthPackage")
+     *             .name("tf-exampleCommonBandwidthPackage")
+     *             .description("tf-exampleCommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex("^tf-testAcc.*")
+     *             .nameRegex("^tf-example.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
@@ -1480,14 +1464,6 @@ public final class VpcFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Public ip addresses Block
-     * 
-     *   The public ip addresses mapping supports the following:
-     * 
-     *   * `ipAddress`   - The address of the EIP.
-     *   * `allocationId` - The ID of the EIP instance.
-     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static Output<GetCommonBandwidthPackagesResult> getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs args) {
@@ -1496,7 +1472,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0+.
      * 
      * ## Example Usage
      * 
@@ -1526,12 +1502,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
-     *             .name("tf-testAccCommonBandwidthPackage")
-     *             .description("tf-testAcc-CommonBandwidthPackage")
+     *             .name("tf-exampleCommonBandwidthPackage")
+     *             .description("tf-exampleCommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex("^tf-testAcc.*")
+     *             .nameRegex("^tf-example.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
@@ -1539,14 +1515,6 @@ public final class VpcFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Public ip addresses Block
-     * 
-     *   The public ip addresses mapping supports the following:
-     * 
-     *   * `ipAddress`   - The address of the EIP.
-     *   * `allocationId` - The ID of the EIP instance.
-     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static CompletableFuture<GetCommonBandwidthPackagesResult> getCommonBandwidthPackagesPlain(GetCommonBandwidthPackagesPlainArgs args) {
@@ -1555,7 +1523,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0+.
      * 
      * ## Example Usage
      * 
@@ -1585,12 +1553,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
-     *             .name("tf-testAccCommonBandwidthPackage")
-     *             .description("tf-testAcc-CommonBandwidthPackage")
+     *             .name("tf-exampleCommonBandwidthPackage")
+     *             .description("tf-exampleCommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex("^tf-testAcc.*")
+     *             .nameRegex("^tf-example.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
@@ -1598,14 +1566,6 @@ public final class VpcFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Public ip addresses Block
-     * 
-     *   The public ip addresses mapping supports the following:
-     * 
-     *   * `ipAddress`   - The address of the EIP.
-     *   * `allocationId` - The ID of the EIP instance.
-     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static Output<GetCommonBandwidthPackagesResult> getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs args, InvokeOptions options) {
@@ -1614,7 +1574,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0+.
      * 
      * ## Example Usage
      * 
@@ -1644,12 +1604,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
-     *             .name("tf-testAccCommonBandwidthPackage")
-     *             .description("tf-testAcc-CommonBandwidthPackage")
+     *             .name("tf-exampleCommonBandwidthPackage")
+     *             .description("tf-exampleCommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex("^tf-testAcc.*")
+     *             .nameRegex("^tf-example.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
@@ -1657,14 +1617,6 @@ public final class VpcFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Public ip addresses Block
-     * 
-     *   The public ip addresses mapping supports the following:
-     * 
-     *   * `ipAddress`   - The address of the EIP.
-     *   * `allocationId` - The ID of the EIP instance.
-     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static Output<GetCommonBandwidthPackagesResult> getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs args, InvokeOutputOptions options) {
@@ -1673,7 +1625,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.36.0+.
+     * &gt; **NOTE:** Available since v1.36.0+.
      * 
      * ## Example Usage
      * 
@@ -1703,12 +1655,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
-     *             .name("tf-testAccCommonBandwidthPackage")
-     *             .description("tf-testAcc-CommonBandwidthPackage")
+     *             .name("tf-exampleCommonBandwidthPackage")
+     *             .description("tf-exampleCommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex("^tf-testAcc.*")
+     *             .nameRegex("^tf-example.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
@@ -1716,14 +1668,6 @@ public final class VpcFunctions {
      * }
      * }
      * </pre>
-     * 
-     * ## Public ip addresses Block
-     * 
-     *   The public ip addresses mapping supports the following:
-     * 
-     *   * `ipAddress`   - The address of the EIP.
-     *   * `allocationId` - The ID of the EIP instance.
-     *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
      * 
      */
     public static CompletableFuture<GetCommonBandwidthPackagesResult> getCommonBandwidthPackagesPlain(GetCommonBandwidthPackagesPlainArgs args, InvokeOptions options) {
@@ -8938,7 +8882,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0+.
      * 
      * ## Example Usage
      * 
@@ -9011,7 +8955,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0+.
      * 
      * ## Example Usage
      * 
@@ -9084,7 +9028,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0+.
      * 
      * ## Example Usage
      * 
@@ -9157,7 +9101,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0+.
      * 
      * ## Example Usage
      * 
@@ -9230,7 +9174,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0+.
      * 
      * ## Example Usage
      * 
@@ -9303,7 +9247,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0+.
      * 
      * ## Example Usage
      * 
@@ -9385,7 +9329,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0+.
      * 
      * ## Example Usage
      * 
@@ -9467,7 +9411,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0+.
      * 
      * ## Example Usage
      * 
@@ -9549,7 +9493,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0+.
      * 
      * ## Example Usage
      * 
@@ -9631,7 +9575,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Nat Ips of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0+.
      * 
      * ## Example Usage
      * 
@@ -10035,6 +9979,8 @@ public final class VpcFunctions {
     /**
      * This data source provides VPCs available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.2.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -10077,6 +10023,8 @@ public final class VpcFunctions {
     }
     /**
      * This data source provides VPCs available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.2.0.
      * 
      * ## Example Usage
      * 
@@ -10121,6 +10069,8 @@ public final class VpcFunctions {
     /**
      * This data source provides VPCs available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.2.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -10163,6 +10113,8 @@ public final class VpcFunctions {
     }
     /**
      * This data source provides VPCs available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.2.0.
      * 
      * ## Example Usage
      * 
@@ -10207,6 +10159,8 @@ public final class VpcFunctions {
     /**
      * This data source provides VPCs available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.2.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -10250,6 +10204,8 @@ public final class VpcFunctions {
     /**
      * This data source provides VPCs available to the user.
      * 
+     * &gt; **NOTE:** Available since v1.2.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -10292,6 +10248,8 @@ public final class VpcFunctions {
     }
     /**
      * This data source provides VPCs available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.2.0.
      * 
      * ## Example Usage
      * 
@@ -11512,7 +11470,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0.
      * 
      * ## Example Usage
      * 
@@ -11562,7 +11520,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0.
      * 
      * ## Example Usage
      * 
@@ -11612,7 +11570,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0.
      * 
      * ## Example Usage
      * 
@@ -11662,7 +11620,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0.
      * 
      * ## Example Usage
      * 
@@ -11712,7 +11670,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0.
      * 
      * ## Example Usage
      * 
@@ -11762,7 +11720,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0.
      * 
      * ## Example Usage
      * 
@@ -11812,7 +11770,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.186.0+.
+     * &gt; **NOTE:** Available since v1.186.0.
      * 
      * ## Example Usage
      * 
@@ -16061,7 +16019,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -16114,7 +16072,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -16167,7 +16125,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -16220,7 +16178,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -16273,7 +16231,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -16326,7 +16284,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -16379,7 +16337,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -16432,7 +16390,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -16485,7 +16443,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -16538,7 +16496,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.141.0+.
+     * &gt; **NOTE:** Available since v1.141.0.
      * 
      * ## Example Usage
      * 
@@ -17333,7 +17291,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -17425,7 +17383,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -17517,7 +17475,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -17609,7 +17567,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -17701,7 +17659,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -17793,7 +17751,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -17885,7 +17843,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 

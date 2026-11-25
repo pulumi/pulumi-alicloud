@@ -471,7 +471,7 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[_builtins.str]] = Non
     :param Sequence[_builtins.str] additional_attributes: Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
     :param _builtins.str auto_snapshot_policy_id: Query cloud disks based on the automatic snapshot policy ID.
     :param _builtins.str availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-    :param _builtins.str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+    :param _builtins.str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`.
     :param _builtins.bool delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
     :param _builtins.bool delete_with_instance: Indicates whether the disk is released together with the instance.
     :param _builtins.str disk_name: The disk name.
@@ -624,7 +624,7 @@ def get_ecs_disks_output(additional_attributes: pulumi.Input[Optional[Optional[S
     :param Sequence[_builtins.str] additional_attributes: Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
     :param _builtins.str auto_snapshot_policy_id: Query cloud disks based on the automatic snapshot policy ID.
     :param _builtins.str availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-    :param _builtins.str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+    :param _builtins.str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`.
     :param _builtins.bool delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
     :param _builtins.bool delete_with_instance: Indicates whether the disk is released together with the instance.
     :param _builtins.str disk_name: The disk name.

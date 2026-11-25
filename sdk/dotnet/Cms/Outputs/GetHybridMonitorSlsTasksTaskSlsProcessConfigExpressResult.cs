@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressResult
     {
+        /// <summary>
+        /// The alias of the aggregation result.
+        /// </summary>
         public readonly string Alias;
+        /// <summary>
+        /// The extended field that specifies the result of basic operations that are performed on aggregation results.
+        /// </summary>
         public readonly string Express;
 
         [OutputConstructor]

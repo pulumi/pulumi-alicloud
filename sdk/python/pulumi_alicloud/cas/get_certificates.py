@@ -62,7 +62,7 @@ class GetCertificatesResult:
     @pulumi.getter
     def certificates(self) -> Sequence['outputs.GetCertificatesCertificateResult']:
         """
-        A list of apis. Each element contains the following attributes:
+        A list of Ssl Certificates Service Certificates. Each element contains the following attributes:
         """
         return pulumi.get(self, "certificates")
 
@@ -82,9 +82,6 @@ class GetCertificatesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        A list of cert IDs.
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -107,7 +104,7 @@ class GetCertificatesResult:
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
         """
-        A list of cert names.
+        A list of Ssl Certificates names.
         """
         return pulumi.get(self, "names")
 
@@ -147,8 +144,11 @@ def get_certificates(enable_details: Optional[_builtins.bool] = None,
     This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
 
 
-    :param Sequence[_builtins.str] ids: A list of cert IDs.
-    :param _builtins.str name_regex: A regex string to filter results by the certificate name.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[_builtins.str] ids: A list of Ssl Certificates IDs.
+    :param _builtins.str keyword: The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+    :param _builtins.str lang: The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+    :param _builtins.str name_regex: A regex string to filter results by Ssl Certificates name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     pulumi.log.warn("""get_certificates is deprecated: This resource has been deprecated in favour of getServiceCertificates""")
@@ -185,8 +185,11 @@ def get_certificates_output(enable_details: pulumi.Input[Optional[Optional[_buil
     This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
 
 
-    :param Sequence[_builtins.str] ids: A list of cert IDs.
-    :param _builtins.str name_regex: A regex string to filter results by the certificate name.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[_builtins.str] ids: A list of Ssl Certificates IDs.
+    :param _builtins.str keyword: The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+    :param _builtins.str lang: The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+    :param _builtins.str name_regex: A regex string to filter results by Ssl Certificates name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     pulumi.log.warn("""get_certificates is deprecated: This resource has been deprecated in favour of getServiceCertificates""")

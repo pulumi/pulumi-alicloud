@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *
@@ -66,6 +66,9 @@ export interface GetEndpointsArgs {
  * A collection of values returned by getEndpoints.
  */
 export interface GetEndpointsResult {
+    /**
+     * A list of Pvtz Endpoints. Each element contains the following attributes:
+     */
     readonly endpoints: outputs.pvtz.GetEndpointsEndpoint[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -73,14 +76,20 @@ export interface GetEndpointsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Endpoint names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *

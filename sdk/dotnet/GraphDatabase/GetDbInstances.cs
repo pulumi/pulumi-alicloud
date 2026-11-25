@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         /// <summary>
         /// This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         /// <summary>
         /// This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         /// <summary>
         /// This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -270,6 +270,9 @@ namespace Pulumi.AliCloud.GraphDatabase
     [OutputType]
     public sealed class GetDbInstancesResult
     {
+        /// <summary>
+        /// According to the practical example or notes.
+        /// </summary>
         public readonly string? DbInstanceDescription;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -277,8 +280,14 @@ namespace Pulumi.AliCloud.GraphDatabase
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Graph Database Db Instances. Each element contains the following attributes. See `Instances` for the optional argument block.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDbInstancesInstanceResult> Instances;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

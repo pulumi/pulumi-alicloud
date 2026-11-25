@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -192,8 +192,14 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Express Sync names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Cloud Storage Gateway Express Syncs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetExpressSyncsSyncResult> Syncs;
 
         [OutputConstructor]

@@ -121,7 +121,7 @@ def get_roles(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.86.0+.
+    > **NOTE:** Available since v1.86.0.
 
     ## Example Usage
 
@@ -163,7 +163,7 @@ def get_roles_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bo
     """
     This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.86.0+.
+    > **NOTE:** Available since v1.86.0.
 
     ## Example Usage
 

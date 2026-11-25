@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the acls in the region.
  *
+ * > **NOTE:** Available since v1.21.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,22 +20,6 @@ import * as utilities from "../utilities";
  * const sampleDs = alicloud.slb.getAcls({});
  * export const firstSlbAclId = sampleDs.then(sampleDs => sampleDs.acls?.[0]?.id);
  * ```
- *
- * ## Entry Block
- *
- * The entry mapping supports the following:
- *
- * * `entry`   - An IP addresses or CIDR blocks.
- * * `comment` - the comment of the entry.
- *
- * ## Listener Block
- *
- * The Listener mapping supports the following:
- *
- * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
- * * `frontendPort` - the listener port.
- * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
- * * `aclType`      - the type of acl (such as white/black).
  */
 export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
     args = args || {};
@@ -78,7 +64,7 @@ export interface GetAclsArgs {
  */
 export interface GetAclsResult {
     /**
-     * A list of SLB  acls. Each element contains the following attributes:
+     * A list of SLB acls. Each element contains the following attributes:
      */
     readonly acls: outputs.slb.GetAclsAcl[];
     /**
@@ -100,12 +86,14 @@ export interface GetAclsResult {
      */
     readonly resourceGroupId?: string;
     /**
-     * A mapping of tags to assign to the resource.
+     * (Optional) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides the acls in the region.
+ *
+ * > **NOTE:** Available since v1.21.0.
  *
  * ## Example Usage
  *
@@ -116,22 +104,6 @@ export interface GetAclsResult {
  * const sampleDs = alicloud.slb.getAcls({});
  * export const firstSlbAclId = sampleDs.then(sampleDs => sampleDs.acls?.[0]?.id);
  * ```
- *
- * ## Entry Block
- *
- * The entry mapping supports the following:
- *
- * * `entry`   - An IP addresses or CIDR blocks.
- * * `comment` - the comment of the entry.
- *
- * ## Listener Block
- *
- * The Listener mapping supports the following:
- *
- * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
- * * `frontendPort` - the listener port.
- * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
- * * `aclType`      - the type of acl (such as white/black).
  */
 export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclsResult> {
     args = args || {};

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -49,14 +49,20 @@ export interface GetZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of alb instance zone IDs.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of alb Instance zones. Each element contains the following attributes:
+     */
     readonly zones: outputs.alb.GetZonesZone[];
 }
 /**
  * This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

@@ -19,7 +19,7 @@ public final class ScalingConfigurationNetworkInterface {
      */
     private @Nullable String instanceType;
     /**
-     * @return The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+     * @return The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
      * 
      */
     private @Nullable Integer ipv6AddressCount;
@@ -43,7 +43,7 @@ public final class ScalingConfigurationNetworkInterface {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+     * @return The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
      * 
      */
     public Optional<Integer> ipv6AddressCount() {

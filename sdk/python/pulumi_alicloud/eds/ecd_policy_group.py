@@ -24,13 +24,18 @@ class EcdPolicyGroupArgs:
                  authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] = None,
                  authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] = None,
                  camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_types: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupClientTypeArgs']]]] = None,
                  clipboard: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_apply_admin_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_group_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
                  html_access: pulumi.Input[Optional[_builtins.str]] = None,
                  html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_communication_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  local_drive: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  recording: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
                  recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
@@ -46,13 +51,18 @@ class EcdPolicyGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
+        :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupClientTypeArgs']]] client_types: The list of client type access rules used to control which clients can access cloud desktops. See `client_types` below.
         :param pulumi.Input[_builtins.str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[_builtins.str] domain_list: The list of domain.
+        :param pulumi.Input[_builtins.str] end_user_apply_admin_coordinate: Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+        :param pulumi.Input[_builtins.str] end_user_group_coordinate: Whether to allow end users to join user groups. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
-        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+        :param pulumi.Input[_builtins.str] internet_communication_protocol: The network communication protocol. Valid values: `BOTH`, `TCP`.
+        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
         :param pulumi.Input[_builtins.str] policy_group_name: The name of policy group.
         :param pulumi.Input[_builtins.str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
+        :param pulumi.Input[_builtins.int] recording_duration: The recording duration. Valid values: `10`, `20`, `30`, `60`.
         :param pulumi.Input[_builtins.str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[_builtins.int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         :param pulumi.Input[_builtins.int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
@@ -69,20 +79,30 @@ class EcdPolicyGroupArgs:
             pulumi.set(__self__, "authorize_security_policy_rules", authorize_security_policy_rules)
         if camera_redirect is not None:
             pulumi.set(__self__, "camera_redirect", camera_redirect)
+        if client_types is not None:
+            pulumi.set(__self__, "client_types", client_types)
         if clipboard is not None:
             pulumi.set(__self__, "clipboard", clipboard)
         if domain_list is not None:
             pulumi.set(__self__, "domain_list", domain_list)
+        if end_user_apply_admin_coordinate is not None:
+            pulumi.set(__self__, "end_user_apply_admin_coordinate", end_user_apply_admin_coordinate)
+        if end_user_group_coordinate is not None:
+            pulumi.set(__self__, "end_user_group_coordinate", end_user_group_coordinate)
         if html_access is not None:
             pulumi.set(__self__, "html_access", html_access)
         if html_file_transfer is not None:
             pulumi.set(__self__, "html_file_transfer", html_file_transfer)
+        if internet_communication_protocol is not None:
+            pulumi.set(__self__, "internet_communication_protocol", internet_communication_protocol)
         if local_drive is not None:
             pulumi.set(__self__, "local_drive", local_drive)
         if policy_group_name is not None:
             pulumi.set(__self__, "policy_group_name", policy_group_name)
         if recording is not None:
             pulumi.set(__self__, "recording", recording)
+        if recording_duration is not None:
+            pulumi.set(__self__, "recording_duration", recording_duration)
         if recording_end_time is not None:
             pulumi.set(__self__, "recording_end_time", recording_end_time)
         if recording_expires is not None:
@@ -139,6 +159,18 @@ class EcdPolicyGroupArgs:
         pulumi.set(self, "camera_redirect", value)
 
     @_builtins.property
+    @pulumi.getter(name="clientTypes")
+    def client_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupClientTypeArgs']]]]:
+        """
+        The list of client type access rules used to control which clients can access cloud desktops. See `client_types` below.
+        """
+        return pulumi.get(self, "client_types")
+
+    @client_types.setter
+    def client_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupClientTypeArgs']]]]):
+        pulumi.set(self, "client_types", value)
+
+    @_builtins.property
     @pulumi.getter
     def clipboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -161,6 +193,30 @@ class EcdPolicyGroupArgs:
     @domain_list.setter
     def domain_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_list", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endUserApplyAdminCoordinate")
+    def end_user_apply_admin_coordinate(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+        """
+        return pulumi.get(self, "end_user_apply_admin_coordinate")
+
+    @end_user_apply_admin_coordinate.setter
+    def end_user_apply_admin_coordinate(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_user_apply_admin_coordinate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endUserGroupCoordinate")
+    def end_user_group_coordinate(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether to allow end users to join user groups. Valid values: `off`, `on`.
+        """
+        return pulumi.get(self, "end_user_group_coordinate")
+
+    @end_user_group_coordinate.setter
+    def end_user_group_coordinate(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_user_group_coordinate", value)
 
     @_builtins.property
     @pulumi.getter(name="htmlAccess")
@@ -187,10 +243,22 @@ class EcdPolicyGroupArgs:
         pulumi.set(self, "html_file_transfer", value)
 
     @_builtins.property
+    @pulumi.getter(name="internetCommunicationProtocol")
+    def internet_communication_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The network communication protocol. Valid values: `BOTH`, `TCP`.
+        """
+        return pulumi.get(self, "internet_communication_protocol")
+
+    @internet_communication_protocol.setter
+    def internet_communication_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "internet_communication_protocol", value)
+
+    @_builtins.property
     @pulumi.getter(name="localDrive")
     def local_drive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+        Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
         """
         return pulumi.get(self, "local_drive")
 
@@ -221,6 +289,18 @@ class EcdPolicyGroupArgs:
     @recording.setter
     def recording(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recording", value)
+
+    @_builtins.property
+    @pulumi.getter(name="recordingDuration")
+    def recording_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The recording duration. Valid values: `10`, `20`, `30`, `60`.
+        """
+        return pulumi.get(self, "recording_duration")
+
+    @recording_duration.setter
+    def recording_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "recording_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="recordingEndTime")
@@ -337,13 +417,18 @@ class _EcdPolicyGroupState:
                  authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] = None,
                  authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] = None,
                  camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_types: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupClientTypeArgs']]]] = None,
                  clipboard: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_apply_admin_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_group_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
                  html_access: pulumi.Input[Optional[_builtins.str]] = None,
                  html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_communication_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  local_drive: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  recording: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
                  recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
@@ -360,13 +445,18 @@ class _EcdPolicyGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
         :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
+        :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupClientTypeArgs']]] client_types: The list of client type access rules used to control which clients can access cloud desktops. See `client_types` below.
         :param pulumi.Input[_builtins.str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[_builtins.str] domain_list: The list of domain.
+        :param pulumi.Input[_builtins.str] end_user_apply_admin_coordinate: Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+        :param pulumi.Input[_builtins.str] end_user_group_coordinate: Whether to allow end users to join user groups. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
-        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+        :param pulumi.Input[_builtins.str] internet_communication_protocol: The network communication protocol. Valid values: `BOTH`, `TCP`.
+        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
         :param pulumi.Input[_builtins.str] policy_group_name: The name of policy group.
         :param pulumi.Input[_builtins.str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
+        :param pulumi.Input[_builtins.int] recording_duration: The recording duration. Valid values: `10`, `20`, `30`, `60`.
         :param pulumi.Input[_builtins.str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[_builtins.int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         :param pulumi.Input[_builtins.int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
@@ -384,20 +474,30 @@ class _EcdPolicyGroupState:
             pulumi.set(__self__, "authorize_security_policy_rules", authorize_security_policy_rules)
         if camera_redirect is not None:
             pulumi.set(__self__, "camera_redirect", camera_redirect)
+        if client_types is not None:
+            pulumi.set(__self__, "client_types", client_types)
         if clipboard is not None:
             pulumi.set(__self__, "clipboard", clipboard)
         if domain_list is not None:
             pulumi.set(__self__, "domain_list", domain_list)
+        if end_user_apply_admin_coordinate is not None:
+            pulumi.set(__self__, "end_user_apply_admin_coordinate", end_user_apply_admin_coordinate)
+        if end_user_group_coordinate is not None:
+            pulumi.set(__self__, "end_user_group_coordinate", end_user_group_coordinate)
         if html_access is not None:
             pulumi.set(__self__, "html_access", html_access)
         if html_file_transfer is not None:
             pulumi.set(__self__, "html_file_transfer", html_file_transfer)
+        if internet_communication_protocol is not None:
+            pulumi.set(__self__, "internet_communication_protocol", internet_communication_protocol)
         if local_drive is not None:
             pulumi.set(__self__, "local_drive", local_drive)
         if policy_group_name is not None:
             pulumi.set(__self__, "policy_group_name", policy_group_name)
         if recording is not None:
             pulumi.set(__self__, "recording", recording)
+        if recording_duration is not None:
+            pulumi.set(__self__, "recording_duration", recording_duration)
         if recording_end_time is not None:
             pulumi.set(__self__, "recording_end_time", recording_end_time)
         if recording_expires is not None:
@@ -456,6 +556,18 @@ class _EcdPolicyGroupState:
         pulumi.set(self, "camera_redirect", value)
 
     @_builtins.property
+    @pulumi.getter(name="clientTypes")
+    def client_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupClientTypeArgs']]]]:
+        """
+        The list of client type access rules used to control which clients can access cloud desktops. See `client_types` below.
+        """
+        return pulumi.get(self, "client_types")
+
+    @client_types.setter
+    def client_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupClientTypeArgs']]]]):
+        pulumi.set(self, "client_types", value)
+
+    @_builtins.property
     @pulumi.getter
     def clipboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -478,6 +590,30 @@ class _EcdPolicyGroupState:
     @domain_list.setter
     def domain_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_list", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endUserApplyAdminCoordinate")
+    def end_user_apply_admin_coordinate(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+        """
+        return pulumi.get(self, "end_user_apply_admin_coordinate")
+
+    @end_user_apply_admin_coordinate.setter
+    def end_user_apply_admin_coordinate(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_user_apply_admin_coordinate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endUserGroupCoordinate")
+    def end_user_group_coordinate(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether to allow end users to join user groups. Valid values: `off`, `on`.
+        """
+        return pulumi.get(self, "end_user_group_coordinate")
+
+    @end_user_group_coordinate.setter
+    def end_user_group_coordinate(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_user_group_coordinate", value)
 
     @_builtins.property
     @pulumi.getter(name="htmlAccess")
@@ -504,10 +640,22 @@ class _EcdPolicyGroupState:
         pulumi.set(self, "html_file_transfer", value)
 
     @_builtins.property
+    @pulumi.getter(name="internetCommunicationProtocol")
+    def internet_communication_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The network communication protocol. Valid values: `BOTH`, `TCP`.
+        """
+        return pulumi.get(self, "internet_communication_protocol")
+
+    @internet_communication_protocol.setter
+    def internet_communication_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "internet_communication_protocol", value)
+
+    @_builtins.property
     @pulumi.getter(name="localDrive")
     def local_drive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+        Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
         """
         return pulumi.get(self, "local_drive")
 
@@ -538,6 +686,18 @@ class _EcdPolicyGroupState:
     @recording.setter
     def recording(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recording", value)
+
+    @_builtins.property
+    @pulumi.getter(name="recordingDuration")
+    def recording_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The recording duration. Valid values: `10`, `20`, `30`, `60`.
+        """
+        return pulumi.get(self, "recording_duration")
+
+    @recording_duration.setter
+    def recording_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "recording_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="recordingEndTime")
@@ -669,13 +829,18 @@ class EcdPolicyGroup(pulumi.CustomResource):
                  authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]]] = None,
                  authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]]] = None,
                  camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupClientTypeArgs', 'EcdPolicyGroupClientTypeArgsDict', 'outputs.EcdPolicyGroupClientType']]]]] = None,
                  clipboard: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_apply_admin_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_group_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
                  html_access: pulumi.Input[Optional[_builtins.str]] = None,
                  html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_communication_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  local_drive: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  recording: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
                  recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
@@ -738,13 +903,18 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupClientTypeArgs', 'EcdPolicyGroupClientTypeArgsDict', 'outputs.EcdPolicyGroupClientType']]]] client_types: The list of client type access rules used to control which clients can access cloud desktops. See `client_types` below.
         :param pulumi.Input[_builtins.str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[_builtins.str] domain_list: The list of domain.
+        :param pulumi.Input[_builtins.str] end_user_apply_admin_coordinate: Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+        :param pulumi.Input[_builtins.str] end_user_group_coordinate: Whether to allow end users to join user groups. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
-        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+        :param pulumi.Input[_builtins.str] internet_communication_protocol: The network communication protocol. Valid values: `BOTH`, `TCP`.
+        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
         :param pulumi.Input[_builtins.str] policy_group_name: The name of policy group.
         :param pulumi.Input[_builtins.str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
+        :param pulumi.Input[_builtins.int] recording_duration: The recording duration. Valid values: `10`, `20`, `30`, `60`.
         :param pulumi.Input[_builtins.str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[_builtins.int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         :param pulumi.Input[_builtins.int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
@@ -826,13 +996,18 @@ class EcdPolicyGroup(pulumi.CustomResource):
                  authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]]] = None,
                  authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]]] = None,
                  camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupClientTypeArgs', 'EcdPolicyGroupClientTypeArgsDict', 'outputs.EcdPolicyGroupClientType']]]]] = None,
                  clipboard: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_apply_admin_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_group_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
                  html_access: pulumi.Input[Optional[_builtins.str]] = None,
                  html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_communication_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  local_drive: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  recording: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
                  recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
@@ -854,13 +1029,18 @@ class EcdPolicyGroup(pulumi.CustomResource):
             __props__.__dict__["authorize_access_policy_rules"] = authorize_access_policy_rules
             __props__.__dict__["authorize_security_policy_rules"] = authorize_security_policy_rules
             __props__.__dict__["camera_redirect"] = camera_redirect
+            __props__.__dict__["client_types"] = client_types
             __props__.__dict__["clipboard"] = clipboard
             __props__.__dict__["domain_list"] = domain_list
+            __props__.__dict__["end_user_apply_admin_coordinate"] = end_user_apply_admin_coordinate
+            __props__.__dict__["end_user_group_coordinate"] = end_user_group_coordinate
             __props__.__dict__["html_access"] = html_access
             __props__.__dict__["html_file_transfer"] = html_file_transfer
+            __props__.__dict__["internet_communication_protocol"] = internet_communication_protocol
             __props__.__dict__["local_drive"] = local_drive
             __props__.__dict__["policy_group_name"] = policy_group_name
             __props__.__dict__["recording"] = recording
+            __props__.__dict__["recording_duration"] = recording_duration
             __props__.__dict__["recording_end_time"] = recording_end_time
             __props__.__dict__["recording_expires"] = recording_expires
             __props__.__dict__["recording_fps"] = recording_fps
@@ -884,13 +1064,18 @@ class EcdPolicyGroup(pulumi.CustomResource):
             authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]]] = None,
             authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]]] = None,
             camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+            client_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupClientTypeArgs', 'EcdPolicyGroupClientTypeArgsDict', 'outputs.EcdPolicyGroupClientType']]]]] = None,
             clipboard: pulumi.Input[Optional[_builtins.str]] = None,
             domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+            end_user_apply_admin_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
+            end_user_group_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
             html_access: pulumi.Input[Optional[_builtins.str]] = None,
             html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_communication_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             local_drive: pulumi.Input[Optional[_builtins.str]] = None,
             policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             recording: pulumi.Input[Optional[_builtins.str]] = None,
+            recording_duration: pulumi.Input[Optional[_builtins.int]] = None,
             recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
             recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
             recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
@@ -911,13 +1096,18 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[_builtins.str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupClientTypeArgs', 'EcdPolicyGroupClientTypeArgsDict', 'outputs.EcdPolicyGroupClientType']]]] client_types: The list of client type access rules used to control which clients can access cloud desktops. See `client_types` below.
         :param pulumi.Input[_builtins.str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[_builtins.str] domain_list: The list of domain.
+        :param pulumi.Input[_builtins.str] end_user_apply_admin_coordinate: Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+        :param pulumi.Input[_builtins.str] end_user_group_coordinate: Whether to allow end users to join user groups. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
-        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+        :param pulumi.Input[_builtins.str] internet_communication_protocol: The network communication protocol. Valid values: `BOTH`, `TCP`.
+        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
         :param pulumi.Input[_builtins.str] policy_group_name: The name of policy group.
         :param pulumi.Input[_builtins.str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
+        :param pulumi.Input[_builtins.int] recording_duration: The recording duration. Valid values: `10`, `20`, `30`, `60`.
         :param pulumi.Input[_builtins.str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[_builtins.int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         :param pulumi.Input[_builtins.int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
@@ -936,13 +1126,18 @@ class EcdPolicyGroup(pulumi.CustomResource):
         __props__.__dict__["authorize_access_policy_rules"] = authorize_access_policy_rules
         __props__.__dict__["authorize_security_policy_rules"] = authorize_security_policy_rules
         __props__.__dict__["camera_redirect"] = camera_redirect
+        __props__.__dict__["client_types"] = client_types
         __props__.__dict__["clipboard"] = clipboard
         __props__.__dict__["domain_list"] = domain_list
+        __props__.__dict__["end_user_apply_admin_coordinate"] = end_user_apply_admin_coordinate
+        __props__.__dict__["end_user_group_coordinate"] = end_user_group_coordinate
         __props__.__dict__["html_access"] = html_access
         __props__.__dict__["html_file_transfer"] = html_file_transfer
+        __props__.__dict__["internet_communication_protocol"] = internet_communication_protocol
         __props__.__dict__["local_drive"] = local_drive
         __props__.__dict__["policy_group_name"] = policy_group_name
         __props__.__dict__["recording"] = recording
+        __props__.__dict__["recording_duration"] = recording_duration
         __props__.__dict__["recording_end_time"] = recording_end_time
         __props__.__dict__["recording_expires"] = recording_expires
         __props__.__dict__["recording_fps"] = recording_fps
@@ -961,13 +1156,18 @@ class EcdPolicyGroup(pulumi.CustomResource):
             authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]]] = None,
             authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict', 'outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]]] = None,
             camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+            client_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupClientTypeArgs', 'EcdPolicyGroupClientTypeArgsDict', 'outputs.EcdPolicyGroupClientType']]]]] = None,
             clipboard: pulumi.Input[Optional[_builtins.str]] = None,
             domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+            end_user_apply_admin_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
+            end_user_group_coordinate: pulumi.Input[Optional[_builtins.str]] = None,
             html_access: pulumi.Input[Optional[_builtins.str]] = None,
             html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_communication_protocol: pulumi.Input[Optional[_builtins.str]] = None,
             local_drive: pulumi.Input[Optional[_builtins.str]] = None,
             policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             recording: pulumi.Input[Optional[_builtins.str]] = None,
+            recording_duration: pulumi.Input[Optional[_builtins.int]] = None,
             recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
             recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
             recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
@@ -982,13 +1182,18 @@ class EcdPolicyGroup(pulumi.CustomResource):
         __props__["authorizeAccessPolicyRules"] = authorize_access_policy_rules
         __props__["authorizeSecurityPolicyRules"] = authorize_security_policy_rules
         __props__["cameraRedirect"] = camera_redirect
+        __props__["clientTypes"] = client_types
         __props__["clipboard"] = clipboard
         __props__["domainList"] = domain_list
+        __props__["endUserApplyAdminCoordinate"] = end_user_apply_admin_coordinate
+        __props__["endUserGroupCoordinate"] = end_user_group_coordinate
         __props__["htmlAccess"] = html_access
         __props__["htmlFileTransfer"] = html_file_transfer
+        __props__["internetCommunicationProtocol"] = internet_communication_protocol
         __props__["localDrive"] = local_drive
         __props__["policyGroupName"] = policy_group_name
         __props__["recording"] = recording
+        __props__["recordingDuration"] = recording_duration
         __props__["recordingEndTime"] = recording_end_time
         __props__["recordingExpires"] = recording_expires
         __props__["recordingFps"] = recording_fps
@@ -1026,6 +1231,14 @@ class EcdPolicyGroup(pulumi.CustomResource):
         return pulumi.get(self, "camera_redirect")
 
     @_builtins.property
+    @pulumi.getter(name="clientTypes")
+    def client_types(self) -> pulumi.Output[Optional[Sequence['outputs.EcdPolicyGroupClientType']]]:
+        """
+        The list of client type access rules used to control which clients can access cloud desktops. See `client_types` below.
+        """
+        return pulumi.get(self, "client_types")
+
+    @_builtins.property
     @pulumi.getter
     def clipboard(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1040,6 +1253,22 @@ class EcdPolicyGroup(pulumi.CustomResource):
         The list of domain.
         """
         return pulumi.get(self, "domain_list")
+
+    @_builtins.property
+    @pulumi.getter(name="endUserApplyAdminCoordinate")
+    def end_user_apply_admin_coordinate(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether to allow end users to apply for administrator assistance. Valid values: `off`, `on`.
+        """
+        return pulumi.get(self, "end_user_apply_admin_coordinate")
+
+    @_builtins.property
+    @pulumi.getter(name="endUserGroupCoordinate")
+    def end_user_group_coordinate(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether to allow end users to join user groups. Valid values: `off`, `on`.
+        """
+        return pulumi.get(self, "end_user_group_coordinate")
 
     @_builtins.property
     @pulumi.getter(name="htmlAccess")
@@ -1058,10 +1287,18 @@ class EcdPolicyGroup(pulumi.CustomResource):
         return pulumi.get(self, "html_file_transfer")
 
     @_builtins.property
+    @pulumi.getter(name="internetCommunicationProtocol")
+    def internet_communication_protocol(self) -> pulumi.Output[_builtins.str]:
+        """
+        The network communication protocol. Valid values: `BOTH`, `TCP`.
+        """
+        return pulumi.get(self, "internet_communication_protocol")
+
+    @_builtins.property
     @pulumi.getter(name="localDrive")
     def local_drive(self) -> pulumi.Output[_builtins.str]:
         """
-        Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
+        Local drive redirect policy. Valid values: `readwrite`, `off`, `read`.
         """
         return pulumi.get(self, "local_drive")
 
@@ -1080,6 +1317,14 @@ class EcdPolicyGroup(pulumi.CustomResource):
         Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         """
         return pulumi.get(self, "recording")
+
+    @_builtins.property
+    @pulumi.getter(name="recordingDuration")
+    def recording_duration(self) -> pulumi.Output[_builtins.int]:
+        """
+        The recording duration. Valid values: `10`, `20`, `30`, `60`.
+        """
+        return pulumi.get(self, "recording_duration")
 
     @_builtins.property
     @pulumi.getter(name="recordingEndTime")

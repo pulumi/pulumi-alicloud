@@ -98,16 +98,25 @@ class GetOpenApiPricingModulesResult:
     @_builtins.property
     @pulumi.getter(name="productCode")
     def product_code(self) -> _builtins.str:
+        """
+        The product code.
+        """
         return pulumi.get(self, "product_code")
 
     @_builtins.property
     @pulumi.getter(name="productType")
     def product_type(self) -> Optional[_builtins.str]:
+        """
+        The product type.
+        """
         return pulumi.get(self, "product_type")
 
     @_builtins.property
     @pulumi.getter(name="subscriptionType")
     def subscription_type(self) -> _builtins.str:
+        """
+        The subscription type.
+        """
         return pulumi.get(self, "subscription_type")
 
 
@@ -154,6 +163,7 @@ def get_open_api_pricing_modules(ids: Optional[Sequence[_builtins.str]] = None,
     ```
 
 
+    :param Sequence[_builtins.str] ids: A list of Price Module IDs.
     :param _builtins.str name_regex: A regex string to filter results by Property name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str product_code: The product code.
@@ -208,6 +218,7 @@ def get_open_api_pricing_modules_output(ids: pulumi.Input[Optional[Optional[Sequ
     ```
 
 
+    :param Sequence[_builtins.str] ids: A list of Price Module IDs.
     :param _builtins.str name_regex: A regex string to filter results by Property name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str product_code: The product code.

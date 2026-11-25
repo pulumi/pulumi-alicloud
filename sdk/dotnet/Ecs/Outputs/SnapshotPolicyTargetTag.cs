@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class SnapshotPolicyTargetTag
     {
+        /// <summary>
+        /// The key of the tag.
+        /// </summary>
         public readonly string? TagKey;
+        /// <summary>
+        /// The value of the tag.
+        /// </summary>
         public readonly string? TagValue;
 
         [OutputConstructor]

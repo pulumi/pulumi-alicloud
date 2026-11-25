@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Oos Application Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -75,8 +75,17 @@ export interface GetApplicationGroupsArgs {
  * A collection of values returned by getApplicationGroups.
  */
 export interface GetApplicationGroupsResult {
+    /**
+     * The name of the Application.
+     */
     readonly applicationName: string;
+    /**
+     * The region ID of the deployment.
+     */
     readonly deployRegionId?: string;
+    /**
+     * A list of Oos Application Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.oos.GetApplicationGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -84,13 +93,16 @@ export interface GetApplicationGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Application Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Oos Application Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *

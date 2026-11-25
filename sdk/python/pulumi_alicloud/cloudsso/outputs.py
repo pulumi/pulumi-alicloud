@@ -764,11 +764,11 @@ class GetAccessAssignmentsAssignmentResult(dict):
         :param _builtins.str id: The ID of the Access Assignment.
         :param _builtins.str principal_id: The ID of the access assignment.
         :param _builtins.str principal_name: Cloud SSO identity name.
-        :param _builtins.str principal_type: Create the identity type of the access assignment, which can be a user or a user group.
+        :param _builtins.str principal_type: Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
         :param _builtins.str target_id: The ID of the target to create the resource range.
         :param _builtins.str target_name: Task target name.
         :param _builtins.str target_path_name: The path name of the task target in the resource directory.
-        :param _builtins.str target_type: The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+        :param _builtins.str target_type: The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
         """
         pulumi.set(__self__, "access_configuration_id", access_configuration_id)
         pulumi.set(__self__, "access_configuration_name", access_configuration_name)
@@ -834,7 +834,7 @@ class GetAccessAssignmentsAssignmentResult(dict):
     @pulumi.getter(name="principalType")
     def principal_type(self) -> _builtins.str:
         """
-        Create the identity type of the access assignment, which can be a user or a user group.
+        Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
         """
         return pulumi.get(self, "principal_type")
 
@@ -866,7 +866,7 @@ class GetAccessAssignmentsAssignmentResult(dict):
     @pulumi.getter(name="targetType")
     def target_type(self) -> _builtins.str:
         """
-        The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+        The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
         """
         return pulumi.get(self, "target_type")
 
@@ -1052,7 +1052,7 @@ class GetDirectoriesDirectoryResult(dict):
                  scim_synchronization_status: _builtins.str,
                  tasks: Sequence['outputs.GetDirectoriesDirectoryTaskResult']):
         """
-        :param _builtins.str create_time: The CreateTime of the CloudSSO directory.
+        :param _builtins.str create_time: Saml identifies the creation time of the provider configuration.
         :param _builtins.str directory_id: The DirectoryId of the CloudSSO directory.
         :param _builtins.str directory_name: The name of the CloudSSO directory.
         :param _builtins.str id: The ID of the Directory.
@@ -1076,7 +1076,7 @@ class GetDirectoriesDirectoryResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        The CreateTime of the CloudSSO directory.
+        Saml identifies the creation time of the provider configuration.
         """
         return pulumi.get(self, "create_time")
 
@@ -1396,7 +1396,7 @@ class GetGroupsGroupResult(dict):
         :param _builtins.str group_id: The Group ID of the group.
         :param _builtins.str group_name: The Name of the group.
         :param _builtins.str id: The ID of the Group.
-        :param _builtins.str provision_type: The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+        :param _builtins.str provision_type: The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
@@ -1458,7 +1458,7 @@ class GetGroupsGroupResult(dict):
     @pulumi.getter(name="provisionType")
     def provision_type(self) -> _builtins.str:
         """
-        The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+        The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
         """
         return pulumi.get(self, "provision_type")
 
@@ -1811,8 +1811,8 @@ class GetUsersUserResult(dict):
         :param _builtins.str id: The ID of the User.
         :param _builtins.str last_name: The last name of user.
         :param Sequence['GetUsersUserMfaDeviceArgs'] mfa_devices: The List of MFA Device for User.
-        :param _builtins.str provision_type: ProvisionType.
-        :param _builtins.str status: User status. Valid values: `Enabled` and `Disabled`.
+        :param _builtins.str provision_type: ProvisionType. Valid values: `Manual`, `Synchronized`.
+        :param _builtins.str status: The status of user. Valid values: `Disabled`, `Enabled`.
         :param _builtins.str user_id: The User ID of the group.
         :param _builtins.str user_name: The name of user.
         """
@@ -1906,7 +1906,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="provisionType")
     def provision_type(self) -> _builtins.str:
         """
-        ProvisionType.
+        ProvisionType. Valid values: `Manual`, `Synchronized`.
         """
         return pulumi.get(self, "provision_type")
 
@@ -1914,7 +1914,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        User status. Valid values: `Enabled` and `Disabled`.
+        The status of user. Valid values: `Disabled`, `Enabled`.
         """
         return pulumi.get(self, "status")
 

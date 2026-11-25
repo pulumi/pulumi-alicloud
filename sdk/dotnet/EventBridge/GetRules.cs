@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// <summary>
         /// This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// <summary>
         /// This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// <summary>
         /// This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -228,6 +228,9 @@ namespace Pulumi.AliCloud.EventBridge
     [OutputType]
     public sealed class GetRulesResult
     {
+        /// <summary>
+        /// The name of event bus.
+        /// </summary>
         public readonly string EventBusName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -235,10 +238,19 @@ namespace Pulumi.AliCloud.EventBridge
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Rule names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? RuleNamePrefix;
+        /// <summary>
+        /// A list of Event Bridge Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleResult> Rules;
+        /// <summary>
+        /// Rule status, either Enable or Disable.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

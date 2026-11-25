@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string Phone;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Unlocked`, `Locked`.
         /// </summary>
         public readonly string Status;
 

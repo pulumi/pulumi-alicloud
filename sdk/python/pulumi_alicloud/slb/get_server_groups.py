@@ -121,6 +121,8 @@ def get_server_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the VServer groups related to a server load balancer.
 
+    > **NOTE:** Available since v1.15.0.
+
     ## Example Usage
 
     ```python
@@ -178,6 +180,8 @@ def get_server_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerGroupsResult]:
     """
     This data source provides the VServer groups related to a server load balancer.
+
+    > **NOTE:** Available since v1.15.0.
 
     ## Example Usage
 

@@ -161,7 +161,7 @@ def get_backup_policies(current_page: Optional[_builtins.int] = None,
     """
     This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.195.0+.
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -178,6 +178,7 @@ def get_backup_policies(current_page: Optional[_builtins.int] = None,
     ```
 
 
+    :param _builtins.int current_page: The page number. Must be greater than 0.
     :param Sequence[_builtins.str] ids: A list of Threat Detection Backup Policies IDs.
     :param _builtins.str machine_remark: The information that you want to use to identify the servers protected by the anti-ransomware policy. You can enter the IP address or ID of a server.
     :param _builtins.str name: The name of the anti-ransomware policy that you want to query.
@@ -221,7 +222,7 @@ def get_backup_policies_output(current_page: pulumi.Input[Optional[Optional[_bui
     """
     This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.195.0+.
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -238,6 +239,7 @@ def get_backup_policies_output(current_page: pulumi.Input[Optional[Optional[_bui
     ```
 
 
+    :param _builtins.int current_page: The page number. Must be greater than 0.
     :param Sequence[_builtins.str] ids: A list of Threat Detection Backup Policies IDs.
     :param _builtins.str machine_remark: The information that you want to use to identify the servers protected by the anti-ransomware policy. You can enter the IP address or ID of a server.
     :param _builtins.str name: The name of the anti-ransomware policy that you want to query.

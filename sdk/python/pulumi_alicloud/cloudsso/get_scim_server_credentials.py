@@ -50,11 +50,17 @@ class GetScimServerCredentialsResult:
     @_builtins.property
     @pulumi.getter
     def credentials(self) -> Sequence['outputs.GetScimServerCredentialsCredentialResult']:
+        """
+        A list of Cloud Sso Scim Server Credentials. Each element contains the following attributes:
+        """
         return pulumi.get(self, "credentials")
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> _builtins.str:
+        """
+        The ID of the Directory.
+        """
         return pulumi.get(self, "directory_id")
 
     @_builtins.property
@@ -78,6 +84,9 @@ class GetScimServerCredentialsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -103,7 +112,7 @@ def get_scim_server_credentials(directory_id: Optional[_builtins.str] = None,
     """
     This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
@@ -152,7 +161,7 @@ def get_scim_server_credentials_output(directory_id: pulumi.Input[Optional[_buil
     """
     This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.138.0+.
+    > **NOTE:** Available since v1.138.0.
 
     > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 

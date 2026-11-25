@@ -15,9 +15,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLoadBalancersResult {
+    /**
+     * @return The IP version.
+     * 
+     */
     private @Nullable String addressIpVersion;
+    /**
+     * @return The type of IPv4 address used by the NLB instance.
+     * 
+     */
     private @Nullable String addressType;
+    /**
+     * @return A list of Nlb Load Balancers. Each element contains the following attributes:
+     * 
+     */
     private List<GetLoadBalancersBalancer> balancers;
+    /**
+     * @return The domain name of the NLB instance.
+     * 
+     */
     private @Nullable String dnsName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,28 +41,72 @@ public final class GetLoadBalancersResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The type of IPv6 address used by the NLB instance.
+     * 
+     */
     private @Nullable String ipv6AddressType;
+    /**
+     * @return The business status of the NLB instance.
+     * 
+     */
     private @Nullable String loadBalancerBusinessStatus;
     private @Nullable List<String> loadBalancerNames;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Load Balancer names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The status of the NLB instance.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
     private @Nullable List<String> vpcIds;
+    /**
+     * @return The name of the zone.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetLoadBalancersResult() {}
+    /**
+     * @return The IP version.
+     * 
+     */
     public Optional<String> addressIpVersion() {
         return Optional.ofNullable(this.addressIpVersion);
     }
+    /**
+     * @return The type of IPv4 address used by the NLB instance.
+     * 
+     */
     public Optional<String> addressType() {
         return Optional.ofNullable(this.addressType);
     }
+    /**
+     * @return A list of Nlb Load Balancers. Each element contains the following attributes:
+     * 
+     */
     public List<GetLoadBalancersBalancer> balancers() {
         return this.balancers;
     }
+    /**
+     * @return The domain name of the NLB instance.
+     * 
+     */
     public Optional<String> dnsName() {
         return Optional.ofNullable(this.dnsName);
     }
@@ -60,9 +120,17 @@ public final class GetLoadBalancersResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The type of IPv6 address used by the NLB instance.
+     * 
+     */
     public Optional<String> ipv6AddressType() {
         return Optional.ofNullable(this.ipv6AddressType);
     }
+    /**
+     * @return The business status of the NLB instance.
+     * 
+     */
     public Optional<String> loadBalancerBusinessStatus() {
         return Optional.ofNullable(this.loadBalancerBusinessStatus);
     }
@@ -72,24 +140,44 @@ public final class GetLoadBalancersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Load Balancer names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The status of the NLB instance.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     public List<String> vpcIds() {
         return this.vpcIds == null ? List.of() : this.vpcIds;
     }
+    /**
+     * @return The name of the zone.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

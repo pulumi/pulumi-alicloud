@@ -3940,10 +3940,12 @@ func (o IpsecServerIpsecConfigArrayOutput) Index(i pulumi.IntInput) IpsecServerI
 }
 
 type GetConnectionsConnection struct {
+	// The creation time of the VPN connection.
 	CreateTime string `pulumi:"createTime"`
 	// Use the VPN customer gateway ID as the search key.
 	CustomerGatewayId string `pulumi:"customerGatewayId"`
-	EffectImmediately bool   `pulumi:"effectImmediately"`
+	// Whether the VPN connection takes effect immediately.
+	EffectImmediately bool `pulumi:"effectImmediately"`
 	// Wether enable Dpd detection.
 	EnableDpd bool `pulumi:"enableDpd"`
 	// enable nat traversal.
@@ -3952,9 +3954,9 @@ type GetConnectionsConnection struct {
 	EnableTunnelsBgp bool `pulumi:"enableTunnelsBgp"`
 	// ID of the VPN connection.
 	Id string `pulumi:"id"`
-	// The ikeConfig mapping supports the following:
+	// (Optional) The configurations of phase-one negotiation.
 	IkeConfigs []GetConnectionsConnectionIkeConfig `pulumi:"ikeConfigs"`
-	// The ipsecConfig mapping supports the following:
+	// (Optional) The configurations of phase-two negotiation.
 	IpsecConfigs []GetConnectionsConnectionIpsecConfig `pulumi:"ipsecConfigs"`
 	// The local subnet of the VPN connection.
 	LocalSubnet string `pulumi:"localSubnet"`
@@ -3962,12 +3964,13 @@ type GetConnectionsConnection struct {
 	Name string `pulumi:"name"`
 	// The remote subnet of the VPN connection.
 	RemoteSubnet string `pulumi:"remoteSubnet"`
-	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	// The status of the tunnel.
 	Status string `pulumi:"status"`
 	// The tunnelOptionsSpecification supports the following:
 	TunnelOptionsSpecifications []GetConnectionsConnectionTunnelOptionsSpecification `pulumi:"tunnelOptionsSpecifications"`
-	VcoHealthChecks             []GetConnectionsConnectionVcoHealthCheck             `pulumi:"vcoHealthChecks"`
-	// The vpnBgpConfig mapping supports the following:
+	// (Optional) The health check configuration information.
+	VcoHealthChecks []GetConnectionsConnectionVcoHealthCheck `pulumi:"vcoHealthChecks"`
+	// (Optional) The configuration information for BGP.
 	VpnBgpConfigs []GetConnectionsConnectionVpnBgpConfig `pulumi:"vpnBgpConfigs"`
 	// Use the VPN gateway ID as the search key.
 	VpnGatewayId string `pulumi:"vpnGatewayId"`
@@ -3985,10 +3988,12 @@ type GetConnectionsConnectionInput interface {
 }
 
 type GetConnectionsConnectionArgs struct {
+	// The creation time of the VPN connection.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Use the VPN customer gateway ID as the search key.
 	CustomerGatewayId pulumi.StringInput `pulumi:"customerGatewayId"`
-	EffectImmediately pulumi.BoolInput   `pulumi:"effectImmediately"`
+	// Whether the VPN connection takes effect immediately.
+	EffectImmediately pulumi.BoolInput `pulumi:"effectImmediately"`
 	// Wether enable Dpd detection.
 	EnableDpd pulumi.BoolInput `pulumi:"enableDpd"`
 	// enable nat traversal.
@@ -3997,9 +4002,9 @@ type GetConnectionsConnectionArgs struct {
 	EnableTunnelsBgp pulumi.BoolInput `pulumi:"enableTunnelsBgp"`
 	// ID of the VPN connection.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ikeConfig mapping supports the following:
+	// (Optional) The configurations of phase-one negotiation.
 	IkeConfigs GetConnectionsConnectionIkeConfigArrayInput `pulumi:"ikeConfigs"`
-	// The ipsecConfig mapping supports the following:
+	// (Optional) The configurations of phase-two negotiation.
 	IpsecConfigs GetConnectionsConnectionIpsecConfigArrayInput `pulumi:"ipsecConfigs"`
 	// The local subnet of the VPN connection.
 	LocalSubnet pulumi.StringInput `pulumi:"localSubnet"`
@@ -4007,12 +4012,13 @@ type GetConnectionsConnectionArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The remote subnet of the VPN connection.
 	RemoteSubnet pulumi.StringInput `pulumi:"remoteSubnet"`
-	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	// The status of the tunnel.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The tunnelOptionsSpecification supports the following:
 	TunnelOptionsSpecifications GetConnectionsConnectionTunnelOptionsSpecificationArrayInput `pulumi:"tunnelOptionsSpecifications"`
-	VcoHealthChecks             GetConnectionsConnectionVcoHealthCheckArrayInput             `pulumi:"vcoHealthChecks"`
-	// The vpnBgpConfig mapping supports the following:
+	// (Optional) The health check configuration information.
+	VcoHealthChecks GetConnectionsConnectionVcoHealthCheckArrayInput `pulumi:"vcoHealthChecks"`
+	// (Optional) The configuration information for BGP.
 	VpnBgpConfigs GetConnectionsConnectionVpnBgpConfigArrayInput `pulumi:"vpnBgpConfigs"`
 	// Use the VPN gateway ID as the search key.
 	VpnGatewayId pulumi.StringInput `pulumi:"vpnGatewayId"`
@@ -4069,6 +4075,7 @@ func (o GetConnectionsConnectionOutput) ToGetConnectionsConnectionOutputWithCont
 	return o
 }
 
+// The creation time of the VPN connection.
 func (o GetConnectionsConnectionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -4078,6 +4085,7 @@ func (o GetConnectionsConnectionOutput) CustomerGatewayId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.CustomerGatewayId }).(pulumi.StringOutput)
 }
 
+// Whether the VPN connection takes effect immediately.
 func (o GetConnectionsConnectionOutput) EffectImmediately() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) bool { return v.EffectImmediately }).(pulumi.BoolOutput)
 }
@@ -4102,12 +4110,12 @@ func (o GetConnectionsConnectionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ikeConfig mapping supports the following:
+// (Optional) The configurations of phase-one negotiation.
 func (o GetConnectionsConnectionOutput) IkeConfigs() GetConnectionsConnectionIkeConfigArrayOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) []GetConnectionsConnectionIkeConfig { return v.IkeConfigs }).(GetConnectionsConnectionIkeConfigArrayOutput)
 }
 
-// The ipsecConfig mapping supports the following:
+// (Optional) The configurations of phase-two negotiation.
 func (o GetConnectionsConnectionOutput) IpsecConfigs() GetConnectionsConnectionIpsecConfigArrayOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) []GetConnectionsConnectionIpsecConfig { return v.IpsecConfigs }).(GetConnectionsConnectionIpsecConfigArrayOutput)
 }
@@ -4127,7 +4135,7 @@ func (o GetConnectionsConnectionOutput) RemoteSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.RemoteSubnet }).(pulumi.StringOutput)
 }
 
-// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+// The status of the tunnel.
 func (o GetConnectionsConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4139,11 +4147,12 @@ func (o GetConnectionsConnectionOutput) TunnelOptionsSpecifications() GetConnect
 	}).(GetConnectionsConnectionTunnelOptionsSpecificationArrayOutput)
 }
 
+// (Optional) The health check configuration information.
 func (o GetConnectionsConnectionOutput) VcoHealthChecks() GetConnectionsConnectionVcoHealthCheckArrayOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) []GetConnectionsConnectionVcoHealthCheck { return v.VcoHealthChecks }).(GetConnectionsConnectionVcoHealthCheckArrayOutput)
 }
 
-// The vpnBgpConfig mapping supports the following:
+// (Optional) The configuration information for BGP.
 func (o GetConnectionsConnectionOutput) VpnBgpConfigs() GetConnectionsConnectionVpnBgpConfigArrayOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) []GetConnectionsConnectionVpnBgpConfig { return v.VpnBgpConfigs }).(GetConnectionsConnectionVpnBgpConfigArrayOutput)
 }
@@ -4180,13 +4189,13 @@ type GetConnectionsConnectionIkeConfig struct {
 	IkeEncAlg *string `pulumi:"ikeEncAlg"`
 	// IKE lifetime.
 	IkeLifetime *int `pulumi:"ikeLifetime"`
-	// The identification of the VPN gateway.
+	// (Optional) The identification of the VPN gateway.
 	IkeLocalId *string `pulumi:"ikeLocalId"`
 	// IKE Mode.
 	IkeMode *string `pulumi:"ikeMode"`
 	// DH Group.
 	IkePfs *string `pulumi:"ikePfs"`
-	// The identification of the customer gateway.
+	// (Optional) The identification of the customer gateway.
 	IkeRemoteId *string `pulumi:"ikeRemoteId"`
 	// IKE Version.
 	IkeVersion *string `pulumi:"ikeVersion"`
@@ -4212,13 +4221,13 @@ type GetConnectionsConnectionIkeConfigArgs struct {
 	IkeEncAlg pulumi.StringPtrInput `pulumi:"ikeEncAlg"`
 	// IKE lifetime.
 	IkeLifetime pulumi.IntPtrInput `pulumi:"ikeLifetime"`
-	// The identification of the VPN gateway.
+	// (Optional) The identification of the VPN gateway.
 	IkeLocalId pulumi.StringPtrInput `pulumi:"ikeLocalId"`
 	// IKE Mode.
 	IkeMode pulumi.StringPtrInput `pulumi:"ikeMode"`
 	// DH Group.
 	IkePfs pulumi.StringPtrInput `pulumi:"ikePfs"`
-	// The identification of the customer gateway.
+	// (Optional) The identification of the customer gateway.
 	IkeRemoteId pulumi.StringPtrInput `pulumi:"ikeRemoteId"`
 	// IKE Version.
 	IkeVersion pulumi.StringPtrInput `pulumi:"ikeVersion"`
@@ -4292,7 +4301,7 @@ func (o GetConnectionsConnectionIkeConfigOutput) IkeLifetime() pulumi.IntPtrOutp
 	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
 }
 
-// The identification of the VPN gateway.
+// (Optional) The identification of the VPN gateway.
 func (o GetConnectionsConnectionIkeConfigOutput) IkeLocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.IkeLocalId }).(pulumi.StringPtrOutput)
 }
@@ -4307,7 +4316,7 @@ func (o GetConnectionsConnectionIkeConfigOutput) IkePfs() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.IkePfs }).(pulumi.StringPtrOutput)
 }
 
-// The identification of the customer gateway.
+// (Optional) The identification of the customer gateway.
 func (o GetConnectionsConnectionIkeConfigOutput) IkeRemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.IkeRemoteId }).(pulumi.StringPtrOutput)
 }
@@ -4472,21 +4481,25 @@ type GetConnectionsConnectionTunnelOptionsSpecification struct {
 	// Wether enable Dpd detection.
 	EnableDpd bool `pulumi:"enableDpd"`
 	// enable nat traversal.
-	EnableNatTraversal bool   `pulumi:"enableNatTraversal"`
-	InternetIp         string `pulumi:"internetIp"`
+	EnableNatTraversal bool `pulumi:"enableNatTraversal"`
+	// The internet IP of the tunnel.
+	InternetIp string `pulumi:"internetIp"`
 	// The role of Tunnel.
-	Role  string `pulumi:"role"`
+	Role string `pulumi:"role"`
+	// The state of the tunnel.
 	State string `pulumi:"state"`
-	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	// The status of the tunnel.
 	Status string `pulumi:"status"`
 	// The bgp config of Tunnel.
 	TunnelBgpConfig GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig `pulumi:"tunnelBgpConfig"`
-	TunnelId        string                                                            `pulumi:"tunnelId"`
+	// The ID of the tunnel.
+	TunnelId string `pulumi:"tunnelId"`
 	// The configuration of Phase 1 negotiations in Tunnel.
 	TunnelIkeConfig GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig `pulumi:"tunnelIkeConfig"`
 	// IPsec configuration in Tunnel.
 	TunnelIpsecConfig GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig `pulumi:"tunnelIpsecConfig"`
-	ZoneNo            string                                                              `pulumi:"zoneNo"`
+	// The zone of the tunnel.
+	ZoneNo string `pulumi:"zoneNo"`
 }
 
 // GetConnectionsConnectionTunnelOptionsSpecificationInput is an input type that accepts GetConnectionsConnectionTunnelOptionsSpecificationArgs and GetConnectionsConnectionTunnelOptionsSpecificationOutput values.
@@ -4506,21 +4519,25 @@ type GetConnectionsConnectionTunnelOptionsSpecificationArgs struct {
 	// Wether enable Dpd detection.
 	EnableDpd pulumi.BoolInput `pulumi:"enableDpd"`
 	// enable nat traversal.
-	EnableNatTraversal pulumi.BoolInput   `pulumi:"enableNatTraversal"`
-	InternetIp         pulumi.StringInput `pulumi:"internetIp"`
+	EnableNatTraversal pulumi.BoolInput `pulumi:"enableNatTraversal"`
+	// The internet IP of the tunnel.
+	InternetIp pulumi.StringInput `pulumi:"internetIp"`
 	// The role of Tunnel.
-	Role  pulumi.StringInput `pulumi:"role"`
+	Role pulumi.StringInput `pulumi:"role"`
+	// The state of the tunnel.
 	State pulumi.StringInput `pulumi:"state"`
-	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	// The status of the tunnel.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The bgp config of Tunnel.
 	TunnelBgpConfig GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigInput `pulumi:"tunnelBgpConfig"`
-	TunnelId        pulumi.StringInput                                                     `pulumi:"tunnelId"`
+	// The ID of the tunnel.
+	TunnelId pulumi.StringInput `pulumi:"tunnelId"`
 	// The configuration of Phase 1 negotiations in Tunnel.
 	TunnelIkeConfig GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfigInput `pulumi:"tunnelIkeConfig"`
 	// IPsec configuration in Tunnel.
 	TunnelIpsecConfig GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfigInput `pulumi:"tunnelIpsecConfig"`
-	ZoneNo            pulumi.StringInput                                                       `pulumi:"zoneNo"`
+	// The zone of the tunnel.
+	ZoneNo pulumi.StringInput `pulumi:"zoneNo"`
 }
 
 func (GetConnectionsConnectionTunnelOptionsSpecificationArgs) ElementType() reflect.Type {
@@ -4589,6 +4606,7 @@ func (o GetConnectionsConnectionTunnelOptionsSpecificationOutput) EnableNatTrave
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecification) bool { return v.EnableNatTraversal }).(pulumi.BoolOutput)
 }
 
+// The internet IP of the tunnel.
 func (o GetConnectionsConnectionTunnelOptionsSpecificationOutput) InternetIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecification) string { return v.InternetIp }).(pulumi.StringOutput)
 }
@@ -4598,11 +4616,12 @@ func (o GetConnectionsConnectionTunnelOptionsSpecificationOutput) Role() pulumi.
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecification) string { return v.Role }).(pulumi.StringOutput)
 }
 
+// The state of the tunnel.
 func (o GetConnectionsConnectionTunnelOptionsSpecificationOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecification) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+// The status of the tunnel.
 func (o GetConnectionsConnectionTunnelOptionsSpecificationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecification) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4614,6 +4633,7 @@ func (o GetConnectionsConnectionTunnelOptionsSpecificationOutput) TunnelBgpConfi
 	}).(GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput)
 }
 
+// The ID of the tunnel.
 func (o GetConnectionsConnectionTunnelOptionsSpecificationOutput) TunnelId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecification) string { return v.TunnelId }).(pulumi.StringOutput)
 }
@@ -4632,6 +4652,7 @@ func (o GetConnectionsConnectionTunnelOptionsSpecificationOutput) TunnelIpsecCon
 	}).(GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfigOutput)
 }
 
+// The zone of the tunnel.
 func (o GetConnectionsConnectionTunnelOptionsSpecificationOutput) ZoneNo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecification) string { return v.ZoneNo }).(pulumi.StringOutput)
 }
@@ -4657,14 +4678,15 @@ func (o GetConnectionsConnectionTunnelOptionsSpecificationArrayOutput) Index(i p
 }
 
 type GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig struct {
+	// The BGP status.
 	BgpStatus string `pulumi:"bgpStatus"`
 	// Local asn.
 	LocalAsn string `pulumi:"localAsn"`
 	// Local bgp IP.
 	LocalBgpIp string `pulumi:"localBgpIp"`
-	// The counterpart autonomous system number.
+	// The peer ASN.
 	PeerAsn string `pulumi:"peerAsn"`
-	// The BGP address on the other side.
+	// The peer BGP IP.
 	PeerBgpIp string `pulumi:"peerBgpIp"`
 	// BGP Tunnel CIDR.
 	TunnelCidr string `pulumi:"tunnelCidr"`
@@ -4682,14 +4704,15 @@ type GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigInput inte
 }
 
 type GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs struct {
+	// The BGP status.
 	BgpStatus pulumi.StringInput `pulumi:"bgpStatus"`
 	// Local asn.
 	LocalAsn pulumi.StringInput `pulumi:"localAsn"`
 	// Local bgp IP.
 	LocalBgpIp pulumi.StringInput `pulumi:"localBgpIp"`
-	// The counterpart autonomous system number.
+	// The peer ASN.
 	PeerAsn pulumi.StringInput `pulumi:"peerAsn"`
-	// The BGP address on the other side.
+	// The peer BGP IP.
 	PeerBgpIp pulumi.StringInput `pulumi:"peerBgpIp"`
 	// BGP Tunnel CIDR.
 	TunnelCidr pulumi.StringInput `pulumi:"tunnelCidr"`
@@ -4721,6 +4744,7 @@ func (o GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput)
 	return o
 }
 
+// The BGP status.
 func (o GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput) BgpStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig) string { return v.BgpStatus }).(pulumi.StringOutput)
 }
@@ -4735,12 +4759,12 @@ func (o GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput)
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig) string { return v.LocalBgpIp }).(pulumi.StringOutput)
 }
 
-// The counterpart autonomous system number.
+// The peer ASN.
 func (o GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput) PeerAsn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig) string { return v.PeerAsn }).(pulumi.StringOutput)
 }
 
-// The BGP address on the other side.
+// The peer BGP IP.
 func (o GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput) PeerBgpIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig) string { return v.PeerBgpIp }).(pulumi.StringOutput)
 }
@@ -4960,17 +4984,17 @@ func (o GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfigOutpu
 }
 
 type GetConnectionsConnectionVcoHealthCheck struct {
-	// The destination ip address.
+	// (Optional) The destination ip address.
 	Dip *string `pulumi:"dip"`
-	// The health check on status. Valid values: `true`, `false`.
+	// (Optional) The health check on status. Valid values: `true`, `false`.
 	Enable *string `pulumi:"enable"`
-	// The time interval between health checks.
+	// (Optional) The time interval between health checks.
 	Interval *int `pulumi:"interval"`
-	// The number of retries for health checks issued.
+	// (Optional) The number of retries for health checks issued.
 	Retry *int `pulumi:"retry"`
-	// The source ip address.
+	// (Optional) The source ip address.
 	Sip *string `pulumi:"sip"`
-	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	// The status of the tunnel.
 	Status *string `pulumi:"status"`
 }
 
@@ -4986,17 +5010,17 @@ type GetConnectionsConnectionVcoHealthCheckInput interface {
 }
 
 type GetConnectionsConnectionVcoHealthCheckArgs struct {
-	// The destination ip address.
+	// (Optional) The destination ip address.
 	Dip pulumi.StringPtrInput `pulumi:"dip"`
-	// The health check on status. Valid values: `true`, `false`.
+	// (Optional) The health check on status. Valid values: `true`, `false`.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
-	// The time interval between health checks.
+	// (Optional) The time interval between health checks.
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// The number of retries for health checks issued.
+	// (Optional) The number of retries for health checks issued.
 	Retry pulumi.IntPtrInput `pulumi:"retry"`
-	// The source ip address.
+	// (Optional) The source ip address.
 	Sip pulumi.StringPtrInput `pulumi:"sip"`
-	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	// The status of the tunnel.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -5051,32 +5075,32 @@ func (o GetConnectionsConnectionVcoHealthCheckOutput) ToGetConnectionsConnection
 	return o
 }
 
-// The destination ip address.
+// (Optional) The destination ip address.
 func (o GetConnectionsConnectionVcoHealthCheckOutput) Dip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *string { return v.Dip }).(pulumi.StringPtrOutput)
 }
 
-// The health check on status. Valid values: `true`, `false`.
+// (Optional) The health check on status. Valid values: `true`, `false`.
 func (o GetConnectionsConnectionVcoHealthCheckOutput) Enable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *string { return v.Enable }).(pulumi.StringPtrOutput)
 }
 
-// The time interval between health checks.
+// (Optional) The time interval between health checks.
 func (o GetConnectionsConnectionVcoHealthCheckOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
-// The number of retries for health checks issued.
+// (Optional) The number of retries for health checks issued.
 func (o GetConnectionsConnectionVcoHealthCheckOutput) Retry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *int { return v.Retry }).(pulumi.IntPtrOutput)
 }
 
-// The source ip address.
+// (Optional) The source ip address.
 func (o GetConnectionsConnectionVcoHealthCheckOutput) Sip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *string { return v.Sip }).(pulumi.StringPtrOutput)
 }
 
-// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+// The status of the tunnel.
 func (o GetConnectionsConnectionVcoHealthCheckOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionVcoHealthCheck) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -5102,17 +5126,17 @@ func (o GetConnectionsConnectionVcoHealthCheckArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetConnectionsConnectionVpnBgpConfig struct {
-	// The authentication keys for BGP routing protocols.
+	// (Optional) The authentication keys for BGP routing protocols.
 	AuthKey *string `pulumi:"authKey"`
 	// Local asn.
 	LocalAsn *int `pulumi:"localAsn"`
 	// Local bgp IP.
 	LocalBgpIp *string `pulumi:"localBgpIp"`
-	// The counterpart autonomous system number.
+	// The peer ASN.
 	PeerAsn *int `pulumi:"peerAsn"`
-	// The BGP address on the other side.
+	// The peer BGP IP.
 	PeerBgpIp *string `pulumi:"peerBgpIp"`
-	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	// The status of the tunnel.
 	Status *string `pulumi:"status"`
 	// BGP Tunnel CIDR.
 	TunnelCidr *string `pulumi:"tunnelCidr"`
@@ -5130,17 +5154,17 @@ type GetConnectionsConnectionVpnBgpConfigInput interface {
 }
 
 type GetConnectionsConnectionVpnBgpConfigArgs struct {
-	// The authentication keys for BGP routing protocols.
+	// (Optional) The authentication keys for BGP routing protocols.
 	AuthKey pulumi.StringPtrInput `pulumi:"authKey"`
 	// Local asn.
 	LocalAsn pulumi.IntPtrInput `pulumi:"localAsn"`
 	// Local bgp IP.
 	LocalBgpIp pulumi.StringPtrInput `pulumi:"localBgpIp"`
-	// The counterpart autonomous system number.
+	// The peer ASN.
 	PeerAsn pulumi.IntPtrInput `pulumi:"peerAsn"`
-	// The BGP address on the other side.
+	// The peer BGP IP.
 	PeerBgpIp pulumi.StringPtrInput `pulumi:"peerBgpIp"`
-	// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+	// The status of the tunnel.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// BGP Tunnel CIDR.
 	TunnelCidr pulumi.StringPtrInput `pulumi:"tunnelCidr"`
@@ -5197,7 +5221,7 @@ func (o GetConnectionsConnectionVpnBgpConfigOutput) ToGetConnectionsConnectionVp
 	return o
 }
 
-// The authentication keys for BGP routing protocols.
+// (Optional) The authentication keys for BGP routing protocols.
 func (o GetConnectionsConnectionVpnBgpConfigOutput) AuthKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *string { return v.AuthKey }).(pulumi.StringPtrOutput)
 }
@@ -5212,17 +5236,17 @@ func (o GetConnectionsConnectionVpnBgpConfigOutput) LocalBgpIp() pulumi.StringPt
 	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *string { return v.LocalBgpIp }).(pulumi.StringPtrOutput)
 }
 
-// The counterpart autonomous system number.
+// The peer ASN.
 func (o GetConnectionsConnectionVpnBgpConfigOutput) PeerAsn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *int { return v.PeerAsn }).(pulumi.IntPtrOutput)
 }
 
-// The BGP address on the other side.
+// The peer BGP IP.
 func (o GetConnectionsConnectionVpnBgpConfigOutput) PeerBgpIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *string { return v.PeerBgpIp }).(pulumi.StringPtrOutput)
 }
 
-// The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
+// The status of the tunnel.
 func (o GetConnectionsConnectionVpnBgpConfigOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetConnectionsConnectionVpnBgpConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

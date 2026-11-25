@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// </summary>
         public readonly string AccountName;
         /// <summary>
-        /// The ID of the Dedicated host.
+        /// The ID of the host.
         /// </summary>
         public readonly string DedicatedHostId;
         /// <summary>

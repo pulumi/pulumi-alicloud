@@ -40,6 +40,7 @@ __all__ = [
     'JobStatus',
     'JobStatusFailure',
     'JobStatusRunning',
+    'VvpInstanceDefaultNamespaceResourceSpec',
     'VvpInstanceResourceSpec',
     'VvpInstanceStorage',
     'VvpInstanceStorageOss',
@@ -1259,6 +1260,54 @@ class JobStatusRunning(dict):
         Flink job status
         """
         return pulumi.get(self, "observed_flink_job_status")
+
+
+@pulumi.output_type
+class VvpInstanceDefaultNamespaceResourceSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryGb":
+            suggest = "memory_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VvpInstanceDefaultNamespaceResourceSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VvpInstanceDefaultNamespaceResourceSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VvpInstanceDefaultNamespaceResourceSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu: Optional[_builtins.int] = None,
+                 memory_gb: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int cpu: The number of CPUs.
+        :param _builtins.int memory_gb: The memory size.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory_gb is not None:
+            pulumi.set(__self__, "memory_gb", memory_gb)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[_builtins.int]:
+        """
+        The number of CPUs.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> Optional[_builtins.int]:
+        """
+        The memory size.
+        """
+        return pulumi.get(self, "memory_gb")
 
 
 @pulumi.output_type

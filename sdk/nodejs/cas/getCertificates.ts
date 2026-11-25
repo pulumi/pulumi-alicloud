@@ -30,18 +30,26 @@ export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getCertificates.
  */
 export interface GetCertificatesArgs {
+    /**
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
+     */
     enableDetails?: boolean;
     /**
-     * A list of cert IDs.
+     * A list of Ssl Certificates IDs.
      */
     ids?: string[];
+    /**
+     * The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+     */
     keyword?: string;
     /**
+     * The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+     *
      * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      */
     lang?: string;
     /**
-     * A regex string to filter results by the certificate name.
+     * A regex string to filter results by Ssl Certificates name.
      */
     nameRegex?: string;
     /**
@@ -55,7 +63,7 @@ export interface GetCertificatesArgs {
  */
 export interface GetCertificatesResult {
     /**
-     * A list of apis. Each element contains the following attributes:
+     * A list of Ssl Certificates Service Certificates. Each element contains the following attributes:
      */
     readonly certificates: outputs.cas.GetCertificatesCertificate[];
     readonly enableDetails?: boolean;
@@ -63,9 +71,6 @@ export interface GetCertificatesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of cert IDs.
-     */
     readonly ids: string[];
     readonly keyword?: string;
     /**
@@ -74,7 +79,7 @@ export interface GetCertificatesResult {
     readonly lang?: string;
     readonly nameRegex?: string;
     /**
-     * A list of cert names.
+     * A list of Ssl Certificates names.
      */
     readonly names: string[];
     readonly outputFile?: string;
@@ -103,18 +108,26 @@ export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: p
  * A collection of arguments for invoking getCertificates.
  */
 export interface GetCertificatesOutputArgs {
+    /**
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
-     * A list of cert IDs.
+     * A list of Ssl Certificates IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+     */
     keyword?: pulumi.Input<string | undefined>;
     /**
+     * The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+     *
      * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      */
     lang?: pulumi.Input<string | undefined>;
     /**
-     * A regex string to filter results by the certificate name.
+     * A regex string to filter results by Ssl Certificates name.
      */
     nameRegex?: pulumi.Input<string | undefined>;
     /**

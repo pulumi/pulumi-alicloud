@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -51,17 +51,29 @@ export interface GetAccessGroupsArgs {
      * A list of Access Group IDs.
      */
     ids?: string[];
+    /**
+     * The number of Access Groups to return.
+     */
     limit?: number;
     /**
      * A regex string to filter results by Access Group name.
      */
     nameRegex?: string;
+    /**
+     * The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+     */
     orderBy?: string;
+    /**
+     * The sort order. Valid values: `ASC`, `DESC`.
+     */
     orderType?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The start offset of the Access Groups list.
+     */
     startOffset?: number;
 }
 
@@ -69,6 +81,9 @@ export interface GetAccessGroupsArgs {
  * A collection of values returned by getAccessGroups.
  */
 export interface GetAccessGroupsResult {
+    /**
+     * A list of Dfs Access Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.dfs.GetAccessGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -77,6 +92,9 @@ export interface GetAccessGroupsResult {
     readonly ids: string[];
     readonly limit?: number;
     readonly nameRegex?: string;
+    /**
+     * A list of Access Group names.
+     */
     readonly names: string[];
     readonly orderBy?: string;
     readonly orderType?: string;
@@ -86,7 +104,7 @@ export interface GetAccessGroupsResult {
 /**
  * This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -128,16 +146,28 @@ export interface GetAccessGroupsOutputArgs {
      * A list of Access Group IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The number of Access Groups to return.
+     */
     limit?: pulumi.Input<number | undefined>;
     /**
      * A regex string to filter results by Access Group name.
      */
     nameRegex?: pulumi.Input<string | undefined>;
+    /**
+     * The field that sorts the Access Groups. Valid values: `CreateTime`, `AccessGroupName`.
+     */
     orderBy?: pulumi.Input<string | undefined>;
+    /**
+     * The sort order. Valid values: `ASC`, `DESC`.
+     */
     orderType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The start offset of the Access Groups list.
+     */
     startOffset?: pulumi.Input<number | undefined>;
 }

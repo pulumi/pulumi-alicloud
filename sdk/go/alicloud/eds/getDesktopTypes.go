@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.170.0+.
+// > **NOTE:** Available since v1.170.0.
 //
 // ## Example Usage
 //
@@ -73,16 +73,23 @@ type GetDesktopTypesArgs struct {
 
 // A collection of values returned by getDesktopTypes.
 type GetDesktopTypesResult struct {
-	CpuCount *int     `pulumi:"cpuCount"`
+	// The CPU cores.
+	CpuCount *int `pulumi:"cpuCount"`
+	// The GPU cores.
 	GpuCount *float64 `pulumi:"gpuCount"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string                `pulumi:"id"`
-	Ids                []string              `pulumi:"ids"`
-	InstanceTypeFamily *string               `pulumi:"instanceTypeFamily"`
-	MemorySize         *int                  `pulumi:"memorySize"`
-	OutputFile         *string               `pulumi:"outputFile"`
-	Status             *string               `pulumi:"status"`
-	Types              []GetDesktopTypesType `pulumi:"types"`
+	Id string `pulumi:"id"`
+	// A list of Desktop Type IDs.
+	Ids []string `pulumi:"ids"`
+	// The Specification family.
+	InstanceTypeFamily *string `pulumi:"instanceTypeFamily"`
+	// The Memory size. Unit: MiB.
+	MemorySize *int    `pulumi:"memorySize"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// A list of Ecd Desktop Types. Each element contains the following attributes:
+	Types []GetDesktopTypesType `pulumi:"types"`
 }
 
 func GetDesktopTypesOutput(ctx *pulumi.Context, args GetDesktopTypesOutputArgs, opts ...pulumi.InvokeOption) GetDesktopTypesResultOutput {
@@ -127,10 +134,12 @@ func (o GetDesktopTypesResultOutput) ToGetDesktopTypesResultOutputWithContext(ct
 	return o
 }
 
+// The CPU cores.
 func (o GetDesktopTypesResultOutput) CpuCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDesktopTypesResult) *int { return v.CpuCount }).(pulumi.IntPtrOutput)
 }
 
+// The GPU cores.
 func (o GetDesktopTypesResultOutput) GpuCount() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetDesktopTypesResult) *float64 { return v.GpuCount }).(pulumi.Float64PtrOutput)
 }
@@ -140,14 +149,17 @@ func (o GetDesktopTypesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDesktopTypesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Desktop Type IDs.
 func (o GetDesktopTypesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDesktopTypesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The Specification family.
 func (o GetDesktopTypesResultOutput) InstanceTypeFamily() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDesktopTypesResult) *string { return v.InstanceTypeFamily }).(pulumi.StringPtrOutput)
 }
 
+// The Memory size. Unit: MiB.
 func (o GetDesktopTypesResultOutput) MemorySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDesktopTypesResult) *int { return v.MemorySize }).(pulumi.IntPtrOutput)
 }
@@ -156,10 +168,12 @@ func (o GetDesktopTypesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDesktopTypesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetDesktopTypesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDesktopTypesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Desktop Types. Each element contains the following attributes:
 func (o GetDesktopTypesResultOutput) Types() GetDesktopTypesTypeArrayOutput {
 	return o.ApplyT(func(v GetDesktopTypesResult) []GetDesktopTypesType { return v.Types }).(GetDesktopTypesTypeArrayOutput)
 }

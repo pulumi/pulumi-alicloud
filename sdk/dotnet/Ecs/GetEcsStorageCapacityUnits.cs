@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.155.0+.
+        /// &gt; **NOTE:** Available since v1.155.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.155.0+.
+        /// &gt; **NOTE:** Available since v1.155.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.155.0+.
+        /// &gt; **NOTE:** Available since v1.155.0.
         /// 
         /// ## Example Usage
         /// 
@@ -204,9 +204,18 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Storage Capacity Unit names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of Storage Capacity Unit.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A list of Ecs Storage Capacity Units. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsStorageCapacityUnitsUnitResult> Units;
 
         [OutputConstructor]

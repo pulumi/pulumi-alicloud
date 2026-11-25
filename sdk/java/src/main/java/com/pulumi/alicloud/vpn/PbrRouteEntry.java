@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -168,9 +169,25 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example &lt;vpn_gateway_id&gt;:&lt;next_hop&gt;:&lt;route_source&gt;:&lt;route_dest&gt;
  * ```
  * 
+ * The four-part ID must match exactly one remote route entry. If primary/backup or other route entries share the same four-part key, the ID cannot disambiguate them and the import returns an error instead of selecting one.
+ * 
  */
 @ResourceType(type="alicloud:vpn/pbrRouteEntry:PbrRouteEntry")
 public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
+    /**
+     * The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
     /**
      * The next hop of the policy-based route.
      * 
@@ -184,6 +201,24 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      */
     public Output<String> nextHop() {
         return this.nextHop;
+    }
+    /**
+     * The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+     * 
+     * &gt; **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+     * 
+     */
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    private Output<Integer> priority;
+
+    /**
+     * @return The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+     * 
+     * &gt; **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+     * 
+     */
+    public Output<Integer> priority() {
+        return this.priority;
     }
     /**
      * Whether to issue the destination route to the VPC.

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Commands of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Commands of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Commands of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.146.0+.
+        /// &gt; **NOTE:** Available since v1.146.0.
         /// 
         /// ## Example Usage
         /// 
@@ -372,9 +372,18 @@ namespace Pulumi.AliCloud.Eds
     [OutputType]
     public sealed class GetCommandsResult
     {
+        /// <summary>
+        /// The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
+        /// </summary>
         public readonly string? CommandType;
+        /// <summary>
+        /// A list of Ecd Commands. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCommandsCommandResult> Commands;
         public readonly string? ContentEncoding;
+        /// <summary>
+        /// The desktop id of the Desktop.
+        /// </summary>
         public readonly string? DesktopId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -382,6 +391,9 @@ namespace Pulumi.AliCloud.Eds
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

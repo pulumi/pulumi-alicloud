@@ -100,14 +100,14 @@ public final class ProviderAssumeRoleWithOidcArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+     * The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
      * 
      */
     @Import(name="sessionExpiration")
     private @Nullable Output<Integer> sessionExpiration;
 
     /**
-     * @return The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+     * @return The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
      * 
      */
     public Optional<Output<Integer>> sessionExpiration() {
@@ -259,7 +259,7 @@ public final class ProviderAssumeRoleWithOidcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sessionExpiration The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+         * @param sessionExpiration The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class ProviderAssumeRoleWithOidcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sessionExpiration The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+         * @param sessionExpiration The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
          * 
          * @return builder
          * 

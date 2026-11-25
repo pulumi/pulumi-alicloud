@@ -1317,6 +1317,7 @@ class GetFoldersFolderResult(dict):
                  id: _builtins.str,
                  project_id: _builtins.str):
         """
+        :param _builtins.str folder_id: The ID of the Folder.
         :param _builtins.str folder_path: Folder Path.
         :param _builtins.str id: The Folder ID.
         :param _builtins.str project_id: The ID of the project.
@@ -1329,6 +1330,9 @@ class GetFoldersFolderResult(dict):
     @_builtins.property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> _builtins.str:
+        """
+        The ID of the Folder.
+        """
         return pulumi.get(self, "folder_id")
 
     @_builtins.property

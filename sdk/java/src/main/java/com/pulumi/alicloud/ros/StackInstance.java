@@ -148,14 +148,14 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.operationPreferences);
     }
     /**
-     * ParameterOverrides. See the following `Block parameterOverrides`.
+     * ParameterOverrides. See `parameterOverrides` below.
      * 
      */
     @Export(name="parameterOverrides", refs={List.class,StackInstanceParameterOverride.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StackInstanceParameterOverride>> parameterOverrides;
 
     /**
-     * @return ParameterOverrides. See the following `Block parameterOverrides`.
+     * @return ParameterOverrides. See `parameterOverrides` below.
      * 
      */
     public Output<Optional<List<StackInstanceParameterOverride>>> parameterOverrides() {
@@ -218,24 +218,14 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
         return this.stackInstanceRegionId;
     }
     /**
-     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-     * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-     * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-     * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-     * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-     * * The create or update operation is not complete.
+     * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-     * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-     * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-     * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-     * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-     * * The create or update operation is not complete.
+     * @return The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
      * 
      */
     public Output<String> status() {

@@ -20,11 +20,27 @@ public final class GetEcsBackupPlansResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of ECS instance.
+     * 
+     */
     private @Nullable String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Ecs backup plan names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Hbr Ecs backup plans. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsBackupPlansPlan> plans;
+    /**
+     * @return The ID of Backup vault.
+     * 
+     */
     private @Nullable String vaultId;
 
     private GetEcsBackupPlansResult() {}
@@ -38,21 +54,37 @@ public final class GetEcsBackupPlansResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of ECS instance.
+     * 
+     */
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Ecs backup plan names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Hbr Ecs backup plans. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsBackupPlansPlan> plans() {
         return this.plans;
     }
+    /**
+     * @return The ID of Backup vault.
+     * 
+     */
     public Optional<String> vaultId() {
         return Optional.ofNullable(this.vaultId);
     }

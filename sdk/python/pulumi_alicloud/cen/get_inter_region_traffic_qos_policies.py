@@ -177,7 +177,7 @@ def get_inter_region_traffic_qos_policies(ids: Optional[Sequence[_builtins.str]]
     """
     This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.195.0+.
+    > **NOTE:** Available since v1.195.0+.
 
     ## Example Usage
 
@@ -247,7 +247,7 @@ def get_inter_region_traffic_qos_policies_output(ids: pulumi.Input[Optional[Opti
     """
     This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.195.0+.
+    > **NOTE:** Available since v1.195.0+.
 
     ## Example Usage
 

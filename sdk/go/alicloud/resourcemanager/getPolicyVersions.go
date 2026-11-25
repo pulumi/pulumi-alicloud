@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
 //
-// > **NOTE:**  Available in 1.85.0+.
+// > **NOTE:** Available since v1.85.0.
 //
 // ## Example Usage
 //
@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := resourcemanager.GetPolicyVersions(ctx, &resourcemanager.GetPolicyVersionsArgs{
-//				PolicyName: "tftest",
+//				PolicyName: "tf-example",
 //				PolicyType: "Custom",
 //			}, nil)
 //			if err != nil {

@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// </summary>
         public readonly double DiskUtility;
         /// <summary>
-        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        /// Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         /// </summary>
         public readonly string Engine;
         /// <summary>
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Cddc.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The ZoneIDList of the Dedicated Host Group.
+        /// The list of zone IDs of the Dedicated Host Group.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDedicatedHostGroupsGroupZoneIdListResult> ZoneIdLists;
 

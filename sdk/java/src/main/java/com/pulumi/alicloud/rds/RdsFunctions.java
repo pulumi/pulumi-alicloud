@@ -60,7 +60,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0+.
      * 
      * ## Example Usage
      * 
@@ -106,7 +106,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0+.
      * 
      * ## Example Usage
      * 
@@ -152,7 +152,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0+.
      * 
      * ## Example Usage
      * 
@@ -198,7 +198,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0+.
      * 
      * ## Example Usage
      * 
@@ -244,7 +244,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0+.
      * 
      * ## Example Usage
      * 
@@ -290,7 +290,7 @@ public final class RdsFunctions {
     /**
      * This data source is the character set supported by querying RDS instances.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -334,7 +334,7 @@ public final class RdsFunctions {
     /**
      * This data source is the character set supported by querying RDS instances.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -378,7 +378,7 @@ public final class RdsFunctions {
     /**
      * This data source is the character set supported by querying RDS instances.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -422,7 +422,7 @@ public final class RdsFunctions {
     /**
      * This data source is the character set supported by querying RDS instances.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -466,7 +466,7 @@ public final class RdsFunctions {
     /**
      * This data source is the character set supported by querying RDS instances.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -745,7 +745,7 @@ public final class RdsFunctions {
     /**
      * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -790,7 +790,7 @@ public final class RdsFunctions {
     /**
      * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -835,7 +835,7 @@ public final class RdsFunctions {
     /**
      * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -880,7 +880,7 @@ public final class RdsFunctions {
     /**
      * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -925,7 +925,7 @@ public final class RdsFunctions {
     /**
      * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -970,7 +970,7 @@ public final class RdsFunctions {
     /**
      * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -1015,7 +1015,7 @@ public final class RdsFunctions {
     /**
      * Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
      * 
-     * &gt; **NOTE:** Available in v1.198.0+.
+     * &gt; **NOTE:** Available since v1.198.0+.
      * 
      * ## Example Usage
      * 
@@ -1060,7 +1060,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.196.0+.
+     * &gt; **NOTE:** Available since v1.196.0+.
      * 
      * ## Example Usage
      * 
@@ -1107,7 +1107,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.196.0+.
+     * &gt; **NOTE:** Available since v1.196.0+.
      * 
      * ## Example Usage
      * 
@@ -1154,7 +1154,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.196.0+.
+     * &gt; **NOTE:** Available since v1.196.0+.
      * 
      * ## Example Usage
      * 
@@ -1201,7 +1201,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.196.0+.
+     * &gt; **NOTE:** Available since v1.196.0+.
      * 
      * ## Example Usage
      * 
@@ -1248,7 +1248,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.196.0+.
+     * &gt; **NOTE:** Available since v1.196.0+.
      * 
      * ## Example Usage
      * 
@@ -1295,7 +1295,7 @@ public final class RdsFunctions {
     /**
      * This data source provides an available area for remote disaster recovery for RDS.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -1338,7 +1338,7 @@ public final class RdsFunctions {
     /**
      * This data source provides an available area for remote disaster recovery for RDS.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -1381,7 +1381,7 @@ public final class RdsFunctions {
     /**
      * This data source provides an available area for remote disaster recovery for RDS.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -1424,7 +1424,7 @@ public final class RdsFunctions {
     /**
      * This data source provides an available area for remote disaster recovery for RDS.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -1467,7 +1467,7 @@ public final class RdsFunctions {
     /**
      * This data source provides an available area for remote disaster recovery for RDS.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -1510,7 +1510,7 @@ public final class RdsFunctions {
     /**
      * This data source provides an available area for remote disaster recovery for RDS.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -1553,7 +1553,7 @@ public final class RdsFunctions {
     /**
      * This data source provides an available area for remote disaster recovery for RDS.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0+.
      * 
      * ## Example Usage
      * 
@@ -1596,7 +1596,7 @@ public final class RdsFunctions {
     /**
      * This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -1641,7 +1641,7 @@ public final class RdsFunctions {
     /**
      * This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -1686,7 +1686,7 @@ public final class RdsFunctions {
     /**
      * This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -1731,7 +1731,7 @@ public final class RdsFunctions {
     /**
      * This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -1776,7 +1776,7 @@ public final class RdsFunctions {
     /**
      * This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -2808,7 +2808,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0+.
      * 
      * ## Example Usage
      * 
@@ -2854,7 +2854,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0+.
      * 
      * ## Example Usage
      * 
@@ -2900,7 +2900,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0+.
      * 
      * ## Example Usage
      * 
@@ -2946,7 +2946,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0+.
      * 
      * ## Example Usage
      * 
@@ -2992,7 +2992,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.174.0+.
+     * &gt; **NOTE:** Available since v1.174.0+.
      * 
      * ## Example Usage
      * 
@@ -3038,7 +3038,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Backups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.149.0+.
+     * &gt; **NOTE:** Available since v1.149.0+.
      * 
      * ## Example Usage
      * 
@@ -3083,7 +3083,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Backups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.149.0+.
+     * &gt; **NOTE:** Available since v1.149.0+.
      * 
      * ## Example Usage
      * 
@@ -3128,7 +3128,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Backups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.149.0+.
+     * &gt; **NOTE:** Available since v1.149.0+.
      * 
      * ## Example Usage
      * 
@@ -3173,7 +3173,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Backups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.149.0+.
+     * &gt; **NOTE:** Available since v1.149.0+.
      * 
      * ## Example Usage
      * 
@@ -3218,7 +3218,7 @@ public final class RdsFunctions {
     /**
      * This data source provides the Rds Backups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.149.0+.
+     * &gt; **NOTE:** Available since v1.149.0+.
      * 
      * ## Example Usage
      * 
@@ -3260,24 +3260,325 @@ public final class RdsFunctions {
     public static CompletableFuture<GetRdsBackupsResult> getRdsBackupsPlain(GetRdsBackupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getRdsBackups:getRdsBackups", TypeShape.of(GetRdsBackupsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.119.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetRdsParameterGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getRdsParameterGroups(GetRdsParameterGroupsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsParameterGroupId", example.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetRdsParameterGroupsResult> getRdsParameterGroups() {
         return getRdsParameterGroups(GetRdsParameterGroupsArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.119.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetRdsParameterGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getRdsParameterGroups(GetRdsParameterGroupsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsParameterGroupId", example.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetRdsParameterGroupsResult> getRdsParameterGroupsPlain() {
         return getRdsParameterGroupsPlain(GetRdsParameterGroupsPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.119.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetRdsParameterGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getRdsParameterGroups(GetRdsParameterGroupsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsParameterGroupId", example.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetRdsParameterGroupsResult> getRdsParameterGroups(GetRdsParameterGroupsArgs args) {
         return getRdsParameterGroups(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.119.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetRdsParameterGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getRdsParameterGroups(GetRdsParameterGroupsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsParameterGroupId", example.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetRdsParameterGroupsResult> getRdsParameterGroupsPlain(GetRdsParameterGroupsPlainArgs args) {
         return getRdsParameterGroupsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.119.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetRdsParameterGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getRdsParameterGroups(GetRdsParameterGroupsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsParameterGroupId", example.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetRdsParameterGroupsResult> getRdsParameterGroups(GetRdsParameterGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", TypeShape.of(GetRdsParameterGroupsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.119.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetRdsParameterGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getRdsParameterGroups(GetRdsParameterGroupsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsParameterGroupId", example.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetRdsParameterGroupsResult> getRdsParameterGroups(GetRdsParameterGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", TypeShape.of(GetRdsParameterGroupsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.119.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetRdsParameterGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getRdsParameterGroups(GetRdsParameterGroupsArgs.builder()
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
+     *             .build());
+     * 
+     *         ctx.export("firstRdsParameterGroupId", example.groups()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetRdsParameterGroupsResult> getRdsParameterGroupsPlain(GetRdsParameterGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", TypeShape.of(GetRdsParameterGroupsResult.class), args, Utilities.withVersion(options));
     }

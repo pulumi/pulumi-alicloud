@@ -33,7 +33,7 @@ public final class GetSecurityPoliciesPolicy {
      */
     private String securityPolicyName;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Available`, `Configuring`.
      * 
      */
     private String status;
@@ -78,7 +78,7 @@ public final class GetSecurityPoliciesPolicy {
         return this.securityPolicyName;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Available`, `Configuring`.
      * 
      */
     public String status() {

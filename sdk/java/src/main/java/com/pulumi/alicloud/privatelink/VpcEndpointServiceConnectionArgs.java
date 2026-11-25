@@ -82,6 +82,21 @@ public final class VpcEndpointServiceConnectionArgs extends com.pulumi.resources
         return this.serviceId;
     }
 
+    /**
+     * The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+     * 
+     */
+    @Import(name="trafficControlMode")
+    private @Nullable Output<String> trafficControlMode;
+
+    /**
+     * @return The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+     * 
+     */
+    public Optional<Output<String>> trafficControlMode() {
+        return Optional.ofNullable(this.trafficControlMode);
+    }
+
     private VpcEndpointServiceConnectionArgs() {}
 
     private VpcEndpointServiceConnectionArgs(VpcEndpointServiceConnectionArgs $) {
@@ -89,6 +104,7 @@ public final class VpcEndpointServiceConnectionArgs extends com.pulumi.resources
         this.dryRun = $.dryRun;
         this.endpointId = $.endpointId;
         this.serviceId = $.serviceId;
+        this.trafficControlMode = $.trafficControlMode;
     }
 
     public static Builder builder() {
@@ -195,6 +211,27 @@ public final class VpcEndpointServiceConnectionArgs extends com.pulumi.resources
          */
         public Builder serviceId(String serviceId) {
             return serviceId(Output.of(serviceId));
+        }
+
+        /**
+         * @param trafficControlMode The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficControlMode(@Nullable Output<String> trafficControlMode) {
+            $.trafficControlMode = trafficControlMode;
+            return this;
+        }
+
+        /**
+         * @param trafficControlMode The traffic control mode of the endpoint connection. Valid values: `Scalability` and `BandwidthLimit`. When the value is `BandwidthLimit`, the `bandwidth` parameter takes effect and specifies the bandwidth upper limit. When the value is `Scalability`, the bandwidth is auto-elastic and the `bandwidth` parameter is ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficControlMode(String trafficControlMode) {
+            return trafficControlMode(Output.of(trafficControlMode));
         }
 
         public VpcEndpointServiceConnectionArgs build() {

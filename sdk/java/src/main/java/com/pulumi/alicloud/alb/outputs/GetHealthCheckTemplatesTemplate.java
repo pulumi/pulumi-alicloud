@@ -18,7 +18,7 @@ public final class GetHealthCheckTemplatesTemplate {
      */
     private List<String> healthCheckCodes;
     /**
-     * @return The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
+     * @return The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`0`. This default value indicates that the backend server is used for health checks.
      * 
      */
     private Integer healthCheckConnectPort;
@@ -43,7 +43,7 @@ public final class GetHealthCheckTemplatesTemplate {
      */
     private String healthCheckMethod;
     /**
-     * @return The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] {@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/) `.
+     * @return The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: `_ ; ~ ! ( )* [ ] {@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/)`.
      * 
      */
     private String healthCheckPath;
@@ -92,7 +92,7 @@ public final class GetHealthCheckTemplatesTemplate {
         return this.healthCheckCodes;
     }
     /**
-     * @return The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
+     * @return The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`0`. This default value indicates that the backend server is used for health checks.
      * 
      */
     public Integer healthCheckConnectPort() {
@@ -127,7 +127,7 @@ public final class GetHealthCheckTemplatesTemplate {
         return this.healthCheckMethod;
     }
     /**
-     * @return The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] {@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/) `.
+     * @return The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: `_ ; ~ ! ( )* [ ] {@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/)`.
      * 
      */
     public String healthCheckPath() {

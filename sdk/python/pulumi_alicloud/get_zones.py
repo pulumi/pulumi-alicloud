@@ -191,6 +191,8 @@ def get_zones(available_disk_category: Optional[_builtins.str] = None,
     """
     This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
+    > **NOTE:** Available since v0.1.0
+
     > **NOTE:** If one zone is sold out, it will not be exported.
 
     ## Example Usage
@@ -221,7 +223,7 @@ def get_zones(available_disk_category: Optional[_builtins.str] = None,
     :param _builtins.bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
     :param _builtins.str network_type: Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str spot_strategy: - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+    :param _builtins.str spot_strategy: Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     """
     __args__ = dict()
     __args__['availableDiskCategory'] = available_disk_category
@@ -268,6 +270,8 @@ def get_zones_output(available_disk_category: pulumi.Input[Optional[Optional[_bu
     """
     This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
+    > **NOTE:** Available since v0.1.0
+
     > **NOTE:** If one zone is sold out, it will not be exported.
 
     ## Example Usage
@@ -298,7 +302,7 @@ def get_zones_output(available_disk_category: pulumi.Input[Optional[Optional[_bu
     :param _builtins.bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
     :param _builtins.str network_type: Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str spot_strategy: - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+    :param _builtins.str spot_strategy: Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     """
     __args__ = dict()
     __args__['availableDiskCategory'] = available_disk_category

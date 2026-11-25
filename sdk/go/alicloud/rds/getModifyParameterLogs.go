@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.174.0+.
+// > **NOTE:** Available since v1.174.0+.
 //
 // ## Example Usage
 //
@@ -71,7 +71,8 @@ type GetModifyParameterLogsResult struct {
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	EndTime      string `pulumi:"endTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                      `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of Rds Modify Parameter Logs. Each element contains the following attributes:
 	Logs       []GetModifyParameterLogsLog `pulumi:"logs"`
 	OutputFile *string                     `pulumi:"outputFile"`
 	StartTime  string                      `pulumi:"startTime"`
@@ -126,6 +127,7 @@ func (o GetModifyParameterLogsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetModifyParameterLogsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Rds Modify Parameter Logs. Each element contains the following attributes:
 func (o GetModifyParameterLogsResultOutput) Logs() GetModifyParameterLogsLogArrayOutput {
 	return o.ApplyT(func(v GetModifyParameterLogsResult) []GetModifyParameterLogsLog { return v.Logs }).(GetModifyParameterLogsLogArrayOutput)
 }

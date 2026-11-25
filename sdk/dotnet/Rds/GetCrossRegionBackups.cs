@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.196.0+.
+        /// &gt; **NOTE:** Available since v1.196.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.196.0+.
+        /// &gt; **NOTE:** Available since v1.196.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.196.0+.
+        /// &gt; **NOTE:** Available since v1.196.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -260,8 +260,17 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetCrossRegionBackupsResult
     {
         public readonly string? BackupId;
+        /// <summary>
+        /// An array that consists of details of the cross-region data backup files:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCrossRegionBackupsBackupResult> Backups;
+        /// <summary>
+        /// The ID of the cross-region data backup file.
+        /// </summary>
         public readonly string? CrossBackupId;
+        /// <summary>
+        /// The ID of the destination region where the cross-region data backup file of the instance is stored.
+        /// </summary>
         public readonly string? CrossBackupRegion;
         public readonly string DbInstanceId;
         public readonly string? EndTime;
@@ -269,6 +278,9 @@ namespace Pulumi.AliCloud.Rds
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Cross Region Backup IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
         public readonly string? ResourceGroupId;

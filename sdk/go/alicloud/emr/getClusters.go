@@ -15,7 +15,7 @@ import (
 //
 // > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
 //
-// > **NOTE:** Available in v1.146.0+.
+// > **NOTE:** Available since v1.146.0.
 //
 // ## Example Usage
 //
@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testAccClusters"
+//			name := "tf-acc-clusters"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -287,27 +287,36 @@ type GetClustersArgs struct {
 
 // A collection of values returned by getClusters.
 type GetClustersResult struct {
-	ClusterName      *string              `pulumi:"clusterName"`
-	ClusterTypeLists []string             `pulumi:"clusterTypeLists"`
-	Clusters         []GetClustersCluster `pulumi:"clusters"`
-	CreateType       *string              `pulumi:"createType"`
-	DefaultStatus    *bool                `pulumi:"defaultStatus"`
-	DepositType      *string              `pulumi:"depositType"`
-	EnableDetails    *bool                `pulumi:"enableDetails"`
+	// The name of the associated cluster.
+	ClusterName      *string  `pulumi:"clusterName"`
+	ClusterTypeLists []string `pulumi:"clusterTypeLists"`
+	// A list of Emr Clusters. Each element contains the following attributes:
+	Clusters []GetClustersCluster `pulumi:"clusters"`
+	// How to create a cluster.
+	CreateType    *string `pulumi:"createType"`
+	DefaultStatus *bool   `pulumi:"defaultStatus"`
+	// The hosting type of the cluster.
+	DepositType   *string `pulumi:"depositType"`
+	EnableDetails *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	Ids             []string `pulumi:"ids"`
-	IsDesc          *bool    `pulumi:"isDesc"`
-	MachineType     *string  `pulumi:"machineType"`
-	NameRegex       *string  `pulumi:"nameRegex"`
+	Id string `pulumi:"id"`
+	// A list of Cluster IDs.
+	Ids    []string `pulumi:"ids"`
+	IsDesc *bool    `pulumi:"isDesc"`
+	// The host type of the cluster. The default is ECS.
+	MachineType *string `pulumi:"machineType"`
+	NameRegex   *string `pulumi:"nameRegex"`
+	// A list of Cluster names.
 	Names           []string `pulumi:"names"`
 	OutputFile      *string  `pulumi:"outputFile"`
 	PageNumber      *int     `pulumi:"pageNumber"`
 	PageSize        *int     `pulumi:"pageSize"`
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	StatusLists     []string `pulumi:"statusLists"`
-	TotalCount      int      `pulumi:"totalCount"`
-	VpcId           *string  `pulumi:"vpcId"`
+	// Total count of clusters.
+	TotalCount int `pulumi:"totalCount"`
+	// The VPC ID.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
@@ -368,6 +377,7 @@ func (o GetClustersResultOutput) ToGetClustersResultOutputWithContext(ctx contex
 	return o
 }
 
+// The name of the associated cluster.
 func (o GetClustersResultOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
@@ -376,10 +386,12 @@ func (o GetClustersResultOutput) ClusterTypeLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.ClusterTypeLists }).(pulumi.StringArrayOutput)
 }
 
+// A list of Emr Clusters. Each element contains the following attributes:
 func (o GetClustersResultOutput) Clusters() GetClustersClusterArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []GetClustersCluster { return v.Clusters }).(GetClustersClusterArrayOutput)
 }
 
+// How to create a cluster.
 func (o GetClustersResultOutput) CreateType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.CreateType }).(pulumi.StringPtrOutput)
 }
@@ -388,6 +400,7 @@ func (o GetClustersResultOutput) DefaultStatus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *bool { return v.DefaultStatus }).(pulumi.BoolPtrOutput)
 }
 
+// The hosting type of the cluster.
 func (o GetClustersResultOutput) DepositType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.DepositType }).(pulumi.StringPtrOutput)
 }
@@ -401,6 +414,7 @@ func (o GetClustersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Cluster IDs.
 func (o GetClustersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -409,6 +423,7 @@ func (o GetClustersResultOutput) IsDesc() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *bool { return v.IsDesc }).(pulumi.BoolPtrOutput)
 }
 
+// The host type of the cluster. The default is ECS.
 func (o GetClustersResultOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -417,6 +432,7 @@ func (o GetClustersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cluster names.
 func (o GetClustersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -441,10 +457,12 @@ func (o GetClustersResultOutput) StatusLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.StatusLists }).(pulumi.StringArrayOutput)
 }
 
+// Total count of clusters.
 func (o GetClustersResultOutput) TotalCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersResult) int { return v.TotalCount }).(pulumi.IntOutput)
 }
 
+// The VPC ID.
 func (o GetClustersResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }

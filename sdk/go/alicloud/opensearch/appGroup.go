@@ -16,7 +16,7 @@ import (
 //
 // For information about Open Search App Group and how to use it, see [What is App Group](https://www.aliyun.com/product/opensearch).
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -83,11 +83,11 @@ type AppGroup struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
 	OrderType pulumi.StringOutput `pulumi:"orderType"`
-	// Order cycle information. The details see Block order.
+	// Order cycle information. See `order` below.
 	Orders AppGroupOrderArrayOutput `pulumi:"orders"`
 	// The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// Quota information.  The details see Block quota.
+	// Quota information. See `quota` below.
 	Quota AppGroupQuotaOutput `pulumi:"quota"`
 	// The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -149,11 +149,11 @@ type appGroupState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
 	OrderType *string `pulumi:"orderType"`
-	// Order cycle information. The details see Block order.
+	// Order cycle information. See `order` below.
 	Orders []AppGroupOrder `pulumi:"orders"`
 	// The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	// Quota information.  The details see Block quota.
+	// Quota information. See `quota` below.
 	Quota *AppGroupQuota `pulumi:"quota"`
 	// The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
 	Status *string `pulumi:"status"`
@@ -174,11 +174,11 @@ type AppGroupState struct {
 	InstanceId pulumi.StringPtrInput
 	// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
 	OrderType pulumi.StringPtrInput
-	// Order cycle information. The details see Block order.
+	// Order cycle information. See `order` below.
 	Orders AppGroupOrderArrayInput
 	// The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
-	// Quota information.  The details see Block quota.
+	// Quota information. See `quota` below.
 	Quota AppGroupQuotaPtrInput
 	// The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
 	Status pulumi.StringPtrInput
@@ -207,11 +207,11 @@ type appGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
 	OrderType *string `pulumi:"orderType"`
-	// Order cycle information. The details see Block order.
+	// Order cycle information. See `order` below.
 	Orders []AppGroupOrder `pulumi:"orders"`
 	// The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
-	// Quota information.  The details see Block quota.
+	// Quota information. See `quota` below.
 	Quota AppGroupQuota `pulumi:"quota"`
 	// Application type. Valid Values: `standard`, `enhanced`.
 	Type string `pulumi:"type"`
@@ -229,11 +229,11 @@ type AppGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
 	OrderType pulumi.StringPtrInput
-	// Order cycle information. The details see Block order.
+	// Order cycle information. See `order` below.
 	Orders AppGroupOrderArrayInput
 	// The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
 	PaymentType pulumi.StringInput
-	// Quota information.  The details see Block quota.
+	// Quota information. See `quota` below.
 	Quota AppGroupQuotaInput
 	// Application type. Valid Values: `standard`, `enhanced`.
 	Type pulumi.StringInput
@@ -356,7 +356,7 @@ func (o AppGroupOutput) OrderType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.OrderType }).(pulumi.StringOutput)
 }
 
-// Order cycle information. The details see Block order.
+// Order cycle information. See `order` below.
 func (o AppGroupOutput) Orders() AppGroupOrderArrayOutput {
 	return o.ApplyT(func(v *AppGroup) AppGroupOrderArrayOutput { return v.Orders }).(AppGroupOrderArrayOutput)
 }
@@ -366,7 +366,7 @@ func (o AppGroupOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGroup) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Quota information.  The details see Block quota.
+// Quota information. See `quota` below.
 func (o AppGroupOutput) Quota() AppGroupQuotaOutput {
 	return o.ApplyT(func(v *AppGroup) AppGroupQuotaOutput { return v.Quota }).(AppGroupQuotaOutput)
 }

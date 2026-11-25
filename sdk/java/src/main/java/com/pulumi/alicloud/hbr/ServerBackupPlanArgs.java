@@ -66,14 +66,14 @@ public final class ServerBackupPlanArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * ECS server backup plan details.
+     * ECS server backup plan details. See `detail` below.
      * 
      */
     @Import(name="details", required=true)
     private Output<List<ServerBackupPlanDetailArgs>> details;
 
     /**
-     * @return ECS server backup plan details.
+     * @return ECS server backup plan details. See `detail` below.
      * 
      */
     public Output<List<ServerBackupPlanDetailArgs>> details() {
@@ -253,7 +253,7 @@ public final class ServerBackupPlanArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param details ECS server backup plan details.
+         * @param details ECS server backup plan details. See `detail` below.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class ServerBackupPlanArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param details ECS server backup plan details.
+         * @param details ECS server backup plan details. See `detail` below.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ServerBackupPlanArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param details ECS server backup plan details.
+         * @param details ECS server backup plan details. See `detail` below.
          * 
          * @return builder
          * 

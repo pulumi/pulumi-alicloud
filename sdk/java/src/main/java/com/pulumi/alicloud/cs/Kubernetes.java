@@ -25,7 +25,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release.
+ * &gt; **DEPRECATED:** This resource has been deprecated from version `1.276.0` and will be removed in a future release.
  * 
  * This resource will help you to manage a Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ask-cluster-1).
  * 
@@ -62,6 +62,127 @@ import javax.annotation.Nullable;
  * Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
  * 
  * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.SetintersectionArgs;
+ * import com.pulumi.std.inputs.SortArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.cs.CsFunctions;
+ * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cs.Kubernetes;
+ * import com.pulumi.alicloud.cs.KubernetesArgs;
+ * import com.pulumi.alicloud.cs.inputs.KubernetesRuntimeArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-kubernetes-example");
+ *         final var instanceType = config.get("instanceType").orElse("ecs.c6.xlarge");
+ *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+ *             .build());
+ * 
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("Instance")
+ *             .availableDiskCategory("cloud_essd")
+ *             .availableInstanceType(instanceType)
+ *             .build());
+ * 
+ *         // The zone must offer the master instance type and support the enhanced NAT gateway created by `new_nat_gateway`.
+ *         final var zoneId = StdFunctions.sort(SortArgs.builder()
+ *             .input(StdFunctions.setintersection(SetintersectionArgs.builder()
+ *                 .input(                
+ *                     default_.zones().stream().map(element -> element.id()).collect(toList()),
+ *                     enhanced.zones().stream().map(element -> element.zoneId()).collect(toList()))
+ *                 .build()).result())
+ *             .build()).result()[0];
+ * 
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status("OK")
+ *             .build());
+ * 
+ *         final var defaultGetKubernetesVersion = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
+ *             .clusterType("Kubernetes")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.1.0/24")
+ *             .zoneId(zoneId)
+ *             .build());
+ * 
+ *         var defaultKubernetes = new Kubernetes("defaultKubernetes", KubernetesArgs.builder()
+ *             .name(name)
+ *             .version(defaultGetKubernetesVersion.metadatas()[2].version())
+ *             .masterVswitchIds(            
+ *                 defaultSwitch.id(),
+ *                 defaultSwitch.id(),
+ *                 defaultSwitch.id())
+ *             .masterInstanceTypes(            
+ *                 instanceType,
+ *                 instanceType,
+ *                 instanceType)
+ *             .masterDiskCategory("cloud_essd")
+ *             .masterDiskSize(80)
+ *             .password("Yourpassword1234")
+ *             .podCidr("10.72.0.0/16")
+ *             .serviceCidr("172.18.0.0/16")
+ *             .nodeCidrMask(24)
+ *             .enableSsh(false)
+ *             .installCloudMonitor(true)
+ *             .resourceGroupId(defaultGetResourceGroups.groups()[0].id())
+ *             .deletionProtection(false)
+ *             .osType("Linux")
+ *             .platform("AliyunLinux4ContainerOptimized")
+ *             .imageId("aliyun_4_x64_20G_container_optimized_alibase_20260402.vhd")
+ *             .clusterDomain("cluster.local")
+ *             .proxyMode("ipvs")
+ *             .customSan("www.terraform.io")
+ *             .newNatGateway(true)
+ *             .slbInternetEnabled(false)
+ *             .skipSetCertificateAuthority(false)
+ *             .runtimes(KubernetesRuntimeArgs.builder()
+ *                 .name("containerd")
+ *                 .version("1.6.20")
+ *                 .build())
+ *             .tags(Map.of("Platform", "TF"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
@@ -158,7 +279,11 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
-     * *Removed params*
+     * Removed params:
+     * 
+     * The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+     * 
+     * `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
      * 
      * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
@@ -170,7 +295,11 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     /**
      * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
-     * *Removed params*
+     * Removed params:
+     * 
+     * The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+     * 
+     * `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
      * 
      */
     public Output<Optional<String>> clusterCaCert() {
@@ -434,7 +563,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     /**
      * Master node system disk auto snapshot policy.
      * 
-     * *Computed params*
+     * Computed params:
      * 
      */
     @Export(name="masterDiskSnapshotPolicyId", refs={String.class}, tree="[0]")
@@ -443,7 +572,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     /**
      * @return Master node system disk auto snapshot policy.
      * 
-     * *Computed params*
+     * Computed params:
      * 
      */
     public Output<Optional<String>> masterDiskSnapshotPolicyId() {
@@ -805,7 +934,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
-     * *Network params*
+     * Network params:
      * 
      */
     @Export(name="skipSetCertificateAuthority", refs={Boolean.class}, tree="[0]")
@@ -814,7 +943,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     /**
      * @return Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
-     * *Network params*
+     * Network params:
      * 
      */
     public Output<Optional<Boolean>> skipSetCertificateAuthority() {
@@ -854,7 +983,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      * 
-     * *Master params*
+     * Master params:
      * 
      */
     @Export(name="slbInternetEnabled", refs={Boolean.class}, tree="[0]")
@@ -866,7 +995,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      * 
-     * *Master params*
+     * Master params:
      * 
      */
     public Output<Optional<Boolean>> slbInternetEnabled() {

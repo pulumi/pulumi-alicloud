@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -47,7 +47,7 @@ export function getServerBackupPlans(args?: GetServerBackupPlansArgs, opts?: pul
  */
 export interface GetServerBackupPlansArgs {
     /**
-     * The filters.
+     * The filters. See `filters` below.
      */
     filters?: inputs.hbr.GetServerBackupPlansFilter[];
     /**
@@ -71,12 +71,15 @@ export interface GetServerBackupPlansResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of HBR server backup plan. Each element contains the following attributes:
+     */
     readonly plans: outputs.hbr.GetServerBackupPlansPlan[];
 }
 /**
  * This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -114,7 +117,7 @@ export function getServerBackupPlansOutput(args?: GetServerBackupPlansOutputArgs
  */
 export interface GetServerBackupPlansOutputArgs {
     /**
-     * The filters.
+     * The filters. See `filters` below.
      */
     filters?: pulumi.Input<pulumi.Input<inputs.hbr.GetServerBackupPlansFilterArgs>[] | undefined>;
     /**

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Example Usage
 //
@@ -100,16 +100,20 @@ type GetServerSnapshotsArgs struct {
 
 // A collection of values returned by getServerSnapshots.
 type GetServerSnapshotsResult struct {
+	// The ID of the source disk. This parameter has a value even after the source disk is released.
 	DiskId *string `pulumi:"diskId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                       `pulumi:"id"`
-	Ids        []string                     `pulumi:"ids"`
-	InstanceId *string                      `pulumi:"instanceId"`
-	NameRegex  *string                      `pulumi:"nameRegex"`
-	Names      []string                     `pulumi:"names"`
-	OutputFile *string                      `pulumi:"outputFile"`
-	Snapshots  []GetServerSnapshotsSnapshot `pulumi:"snapshots"`
-	Status     *string                      `pulumi:"status"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	InstanceId *string  `pulumi:"instanceId"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	// A list of Snapshot names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Simple Application Server Snapshots. Each element contains the following attributes:
+	Snapshots []GetServerSnapshotsSnapshot `pulumi:"snapshots"`
+	// The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
+	Status *string `pulumi:"status"`
 }
 
 func GetServerSnapshotsOutput(ctx *pulumi.Context, args GetServerSnapshotsOutputArgs, opts ...pulumi.InvokeOption) GetServerSnapshotsResultOutput {
@@ -152,6 +156,7 @@ func (o GetServerSnapshotsResultOutput) ToGetServerSnapshotsResultOutputWithCont
 	return o
 }
 
+// The ID of the source disk. This parameter has a value even after the source disk is released.
 func (o GetServerSnapshotsResultOutput) DiskId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerSnapshotsResult) *string { return v.DiskId }).(pulumi.StringPtrOutput)
 }
@@ -173,6 +178,7 @@ func (o GetServerSnapshotsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerSnapshotsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Snapshot names.
 func (o GetServerSnapshotsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerSnapshotsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -181,10 +187,12 @@ func (o GetServerSnapshotsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerSnapshotsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Simple Application Server Snapshots. Each element contains the following attributes:
 func (o GetServerSnapshotsResultOutput) Snapshots() GetServerSnapshotsSnapshotArrayOutput {
 	return o.ApplyT(func(v GetServerSnapshotsResult) []GetServerSnapshotsSnapshot { return v.Snapshots }).(GetServerSnapshotsSnapshotArrayOutput)
 }
 
+// The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
 func (o GetServerSnapshotsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerSnapshotsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

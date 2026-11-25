@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// This data source provides ASM available versions in the specified region.
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// &gt; **NOTE:** Available since v1.161.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// This data source provides ASM available versions in the specified region.
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// &gt; **NOTE:** Available since v1.161.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// This data source provides ASM available versions in the specified region.
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// &gt; **NOTE:** Available since v1.161.0.
         /// 
         /// ## Example Usage
         /// 
@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
+        /// The ASM versions available for the ASM instance of the current edition. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
         /// </summary>
         public List<string> Ids
         {
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
+        /// The ASM versions available for the ASM instance of the current edition. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
         /// </summary>
         public InputList<string> Ids
         {
@@ -181,13 +181,22 @@ namespace Pulumi.AliCloud.ServiceMesh
     [OutputType]
     public sealed class GetVersionsResult
     {
+        /// <summary>
+        /// The edition of the ASM instance.
+        /// </summary>
         public readonly string? Edition;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Service Mesh Service Meshes. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVersionsVersionResult> Versions;
 
         [OutputConstructor]

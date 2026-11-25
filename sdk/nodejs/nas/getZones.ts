@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provide  a data source to retrieve the type of zone used to create NAS file system.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0+.
  *
  * ## Example Usage
  *
@@ -62,7 +62,7 @@ export interface GetZonesResult {
 /**
  * Provide  a data source to retrieve the type of zone used to create NAS file system.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0+.
  *
  * ## Example Usage
  *

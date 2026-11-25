@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// <summary>
         /// This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// <summary>
         /// This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// <summary>
         /// This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -237,7 +237,13 @@ namespace Pulumi.AliCloud.Gpdb
     [OutputType]
     public sealed class GetAccountsResult
     {
+        /// <summary>
+        /// A list of Gpdb Accounts. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountsAccountResult> Accounts;
+        /// <summary>
+        /// The ID of the instance.
+        /// </summary>
         public readonly string DbInstanceId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -245,8 +251,14 @@ namespace Pulumi.AliCloud.Gpdb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Account names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

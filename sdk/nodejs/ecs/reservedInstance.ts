@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.65.0.
  *
+ * > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. A reserved instance cannot be released and remains valid until it expires. To remove the instance from the state only, run `terraform state rm`.
+ *
  * ## Example Usage
  *
  * ```typescript

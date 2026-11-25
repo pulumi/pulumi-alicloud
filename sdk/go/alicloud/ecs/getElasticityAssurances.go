@@ -13,7 +13,7 @@ import (
 
 // This data source provides Ecs Elasticity Assurance available to the user.
 //
-// > **NOTE:** Available in 1.196.0+
+// > **NOTE:** Available since v1.196.0
 //
 // ## Example Usage
 //
@@ -83,7 +83,7 @@ type GetElasticityAssurancesResult struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the Capacity Reservation.
+	// (Optional) A mapping of tags to assign to the Capacity Reservation.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -160,7 +160,7 @@ func (o GetElasticityAssurancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetElasticityAssurancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// A mapping of tags to assign to the Capacity Reservation.
+// (Optional) A mapping of tags to assign to the Capacity Reservation.
 func (o GetElasticityAssurancesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetElasticityAssurancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

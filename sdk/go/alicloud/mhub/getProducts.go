@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Mhub Products of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // ## Example Usage
 //
@@ -83,12 +83,14 @@ type GetProductsArgs struct {
 // A collection of values returned by getProducts.
 type GetProductsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string               `pulumi:"id"`
-	Ids        []string             `pulumi:"ids"`
-	NameRegex  *string              `pulumi:"nameRegex"`
-	Names      []string             `pulumi:"names"`
-	OutputFile *string              `pulumi:"outputFile"`
-	Products   []GetProductsProduct `pulumi:"products"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Product names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Mhub Products. Each element contains the following attributes:
+	Products []GetProductsProduct `pulumi:"products"`
 }
 
 func GetProductsOutput(ctx *pulumi.Context, args GetProductsOutputArgs, opts ...pulumi.InvokeOption) GetProductsResultOutput {
@@ -138,6 +140,7 @@ func (o GetProductsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProductsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Product names.
 func (o GetProductsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetProductsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -146,6 +149,7 @@ func (o GetProductsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProductsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Mhub Products. Each element contains the following attributes:
 func (o GetProductsResultOutput) Products() GetProductsProductArrayOutput {
 	return o.ApplyT(func(v GetProductsResult) []GetProductsProduct { return v.Products }).(GetProductsProductArrayOutput)
 }

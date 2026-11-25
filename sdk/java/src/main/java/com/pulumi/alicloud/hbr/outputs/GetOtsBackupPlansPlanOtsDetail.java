@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOtsBackupPlansPlanOtsDetail {
+    /**
+     * @return The names of the destination tables in the Tablestore instance.
+     * 
+     */
     private List<String> tableNames;
 
     private GetOtsBackupPlansPlanOtsDetail() {}
+    /**
+     * @return The names of the destination tables in the Tablestore instance.
+     * 
+     */
     public List<String> tableNames() {
         return this.tableNames;
     }

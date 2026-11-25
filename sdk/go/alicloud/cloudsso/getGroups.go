@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
@@ -83,15 +83,19 @@ type GetGroupsArgs struct {
 
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
-	DirectoryId string           `pulumi:"directoryId"`
-	Groups      []GetGroupsGroup `pulumi:"groups"`
+	// The ID of the Directory.
+	DirectoryId string `pulumi:"directoryId"`
+	// A list of Cloud Sso Groups. Each element contains the following attributes:
+	Groups []GetGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string   `pulumi:"id"`
-	Ids           []string `pulumi:"ids"`
-	NameRegex     *string  `pulumi:"nameRegex"`
-	Names         []string `pulumi:"names"`
-	OutputFile    *string  `pulumi:"outputFile"`
-	ProvisionType *string  `pulumi:"provisionType"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Group names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+	ProvisionType *string `pulumi:"provisionType"`
 }
 
 func GetGroupsOutput(ctx *pulumi.Context, args GetGroupsOutputArgs, opts ...pulumi.InvokeOption) GetGroupsResultOutput {
@@ -132,10 +136,12 @@ func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// The ID of the Directory.
 func (o GetGroupsResultOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsResult) string { return v.DirectoryId }).(pulumi.StringOutput)
 }
 
+// A list of Cloud Sso Groups. Each element contains the following attributes:
 func (o GetGroupsResultOutput) Groups() GetGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetGroupsResult) []GetGroupsGroup { return v.Groups }).(GetGroupsGroupArrayOutput)
 }
@@ -153,6 +159,7 @@ func (o GetGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Group names.
 func (o GetGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -161,6 +168,7 @@ func (o GetGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
 func (o GetGroupsResultOutput) ProvisionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupsResult) *string { return v.ProvisionType }).(pulumi.StringPtrOutput)
 }

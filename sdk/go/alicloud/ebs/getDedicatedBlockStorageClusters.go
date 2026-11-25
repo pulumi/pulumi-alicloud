@@ -13,7 +13,7 @@ import (
 
 // This data source provides Ebs Dedicated Block Storage Cluster available to the user.
 //
-// > **NOTE:** Available in 1.196.0+
+// > **NOTE:** Available since v1.196.0.
 //
 // ## Example Usage
 //

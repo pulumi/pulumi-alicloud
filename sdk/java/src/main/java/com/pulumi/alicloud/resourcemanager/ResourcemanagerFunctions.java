@@ -602,7 +602,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -648,7 +648,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -694,7 +694,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -740,7 +740,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -786,7 +786,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -832,7 +832,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -878,7 +878,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -924,7 +924,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -969,7 +969,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -1014,7 +1014,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -1059,7 +1059,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -1104,7 +1104,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -1149,7 +1149,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1194,7 +1194,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1239,7 +1239,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1284,7 +1284,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1329,7 +1329,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1374,7 +1374,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -1419,7 +1419,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.181.0+.
+     * &gt; **NOTE:** Available since v1.181.0.
      * 
      * ## Example Usage
      * 
@@ -2129,7 +2129,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -2174,7 +2174,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -2219,7 +2219,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -2264,7 +2264,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -2309,7 +2309,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -2354,7 +2354,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -2399,7 +2399,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -2738,7 +2738,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.85.0+.
+     * &gt; **NOTE:** Available since v1.85.0.
      * 
      * ## Example Usage
      * 
@@ -2765,7 +2765,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
-     *             .policyName("tftest")
+     *             .policyName("tf-example")
      *             .policyType("Custom")
      *             .build());
      * 
@@ -2782,7 +2782,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.85.0+.
+     * &gt; **NOTE:** Available since v1.85.0.
      * 
      * ## Example Usage
      * 
@@ -2809,7 +2809,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
-     *             .policyName("tftest")
+     *             .policyName("tf-example")
      *             .policyType("Custom")
      *             .build());
      * 
@@ -2826,7 +2826,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.85.0+.
+     * &gt; **NOTE:** Available since v1.85.0.
      * 
      * ## Example Usage
      * 
@@ -2853,7 +2853,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
-     *             .policyName("tftest")
+     *             .policyName("tf-example")
      *             .policyType("Custom")
      *             .build());
      * 
@@ -2870,7 +2870,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.85.0+.
+     * &gt; **NOTE:** Available since v1.85.0.
      * 
      * ## Example Usage
      * 
@@ -2897,7 +2897,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
-     *             .policyName("tftest")
+     *             .policyName("tf-example")
      *             .policyType("Custom")
      *             .build());
      * 
@@ -2914,7 +2914,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.85.0+.
+     * &gt; **NOTE:** Available since v1.85.0.
      * 
      * ## Example Usage
      * 
@@ -2941,7 +2941,7 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
-     *             .policyName("tftest")
+     *             .policyName("tf-example")
      *             .policyType("Custom")
      *             .build());
      * 
@@ -3567,7 +3567,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3614,7 +3614,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3661,7 +3661,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3708,7 +3708,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3755,7 +3755,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -3802,7 +3802,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -3845,7 +3845,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -3888,7 +3888,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -3931,7 +3931,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -3974,7 +3974,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -4017,7 +4017,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -4060,7 +4060,7 @@ public final class ResourcemanagerFunctions {
     /**
      * This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 

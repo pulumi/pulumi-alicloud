@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Iot Device Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -71,9 +71,11 @@ type GetDeviceGroupsArgs struct {
 
 // A collection of values returned by getDeviceGroups.
 type GetDeviceGroupsResult struct {
-	EnableDetails *bool                  `pulumi:"enableDetails"`
-	GroupName     *string                `pulumi:"groupName"`
-	Groups        []GetDeviceGroupsGroup `pulumi:"groups"`
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// The GroupName of the device group.
+	GroupName *string `pulumi:"groupName"`
+	// A list of Iot Device Groups. Each element contains the following attributes:
+	Groups []GetDeviceGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string   `pulumi:"id"`
 	Ids           []string `pulumi:"ids"`
@@ -129,10 +131,12 @@ func (o GetDeviceGroupsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetDeviceGroupsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// The GroupName of the device group.
 func (o GetDeviceGroupsResultOutput) GroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDeviceGroupsResult) *string { return v.GroupName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Iot Device Groups. Each element contains the following attributes:
 func (o GetDeviceGroupsResultOutput) Groups() GetDeviceGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetDeviceGroupsResult) []GetDeviceGroupsGroup { return v.Groups }).(GetDeviceGroupsGroupArrayOutput)
 }

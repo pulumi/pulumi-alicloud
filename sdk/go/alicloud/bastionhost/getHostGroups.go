@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -81,13 +81,17 @@ type GetHostGroupsArgs struct {
 
 // A collection of values returned by getHostGroups.
 type GetHostGroupsResult struct {
-	Groups        []GetHostGroupsGroup `pulumi:"groups"`
-	HostGroupName *string              `pulumi:"hostGroupName"`
+	// A list of Bastionhost Host Groups. Each element contains the following attributes:
+	Groups []GetHostGroupsGroup `pulumi:"groups"`
+	// Specify the New Host Group Name, Supports up to 128 Characters.
+	HostGroupName *string `pulumi:"hostGroupName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	InstanceId string   `pulumi:"instanceId"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// Specify the New Host Group Where the Bastion Host ID of.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Host Group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -130,10 +134,12 @@ func (o GetHostGroupsResultOutput) ToGetHostGroupsResultOutputWithContext(ctx co
 	return o
 }
 
+// A list of Bastionhost Host Groups. Each element contains the following attributes:
 func (o GetHostGroupsResultOutput) Groups() GetHostGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetHostGroupsResult) []GetHostGroupsGroup { return v.Groups }).(GetHostGroupsGroupArrayOutput)
 }
 
+// Specify the New Host Group Name, Supports up to 128 Characters.
 func (o GetHostGroupsResultOutput) HostGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostGroupsResult) *string { return v.HostGroupName }).(pulumi.StringPtrOutput)
 }
@@ -147,6 +153,7 @@ func (o GetHostGroupsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// Specify the New Host Group Where the Bastion Host ID of.
 func (o GetHostGroupsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostGroupsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -155,6 +162,7 @@ func (o GetHostGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Host Group names.
 func (o GetHostGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

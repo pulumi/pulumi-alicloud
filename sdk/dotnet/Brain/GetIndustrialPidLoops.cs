@@ -132,6 +132,9 @@ namespace Pulumi.AliCloud.Brain
 
     public sealed class GetIndustrialPidLoopsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to detail the Pid Loops. Default to `False`. When it is set to `True`, the data source will query the Pid Loop details by `GetLoop`.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -185,6 +188,9 @@ namespace Pulumi.AliCloud.Brain
 
     public sealed class GetIndustrialPidLoopsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to detail the Pid Loops. Default to `False`. When it is set to `True`, the data source will query the Pid Loop details by `GetLoop`.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -260,6 +266,9 @@ namespace Pulumi.AliCloud.Brain
         /// The name of Pid Loop.
         /// </summary>
         public readonly string? PidLoopName;
+        /// <summary>
+        /// The pid project id of Pid Loop.
+        /// </summary>
         public readonly string PidProjectId;
         /// <summary>
         /// The status of Pid Loop.

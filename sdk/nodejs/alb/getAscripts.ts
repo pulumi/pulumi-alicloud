@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Alb Ascript available to the user.
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const _default = alicloud.alb.getAscripts({
  *     ids: [defaultAlicloudAlbAscript.id],
  *     nameRegex: defaultAlicloudAlbAscript.name,
- *     ascriptName: "test",
+ *     ascriptName: "example",
  *     listenerId: listenerId,
  * });
  * export const alicloudAlbAscriptExampleId = _default.then(_default => _default.ascripts?.[0]?.id);
@@ -47,6 +47,9 @@ export interface GetAscriptsArgs {
      * Script name.
      */
     ascriptName?: string;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
     /**
      * A list of AScript IDs.
@@ -101,7 +104,7 @@ export interface GetAscriptsResult {
 /**
  * This data source provides Alb Ascript available to the user.
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -112,7 +115,7 @@ export interface GetAscriptsResult {
  * const _default = alicloud.alb.getAscripts({
  *     ids: [defaultAlicloudAlbAscript.id],
  *     nameRegex: defaultAlicloudAlbAscript.name,
- *     ascriptName: "test",
+ *     ascriptName: "example",
  *     listenerId: listenerId,
  * });
  * export const alicloudAlbAscriptExampleId = _default.then(_default => _default.ascripts?.[0]?.id);
@@ -139,6 +142,9 @@ export interface GetAscriptsOutputArgs {
      * Script name.
      */
     ascriptName?: pulumi.Input<string | undefined>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of AScript IDs.

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <summary>
         /// This data source provides the Cdn blocked regions.
         /// 
-        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// &gt; **NOTE:** Available since v1.173.0.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <summary>
         /// This data source provides the Cdn blocked regions.
         /// 
-        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// &gt; **NOTE:** Available since v1.173.0.
         /// 
         /// ## Example Usage
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <summary>
         /// This data source provides the Cdn blocked regions.
         /// 
-        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// &gt; **NOTE:** Available since v1.173.0.
         /// 
         /// ## Example Usage
         /// 
@@ -134,6 +134,9 @@ namespace Pulumi.AliCloud.Cdn
         /// </summary>
         public readonly string Id;
         public readonly string Language;
+        /// <summary>
+        /// A list of Cdn Blocked Regions. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBlockedRegionsRegionResult> Regions;
 
         [OutputConstructor]

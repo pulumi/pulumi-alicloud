@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppGroupsResult {
     private @Nullable Boolean enableDetails;
+    /**
+     * @return A list of App Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetAppGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,18 +27,38 @@ public final class GetAppGroupsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The Instance ID.
+     * 
+     */
     private @Nullable String instanceId;
     private @Nullable String name;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of App Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The Resource Group ID.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return Application type. Valid Values: `standard`, `enhanced`.
+     * 
+     */
     private @Nullable String type;
 
     private GetAppGroupsResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return A list of App Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetAppGroupsGroup> groups() {
         return this.groups;
     }
@@ -48,6 +72,10 @@ public final class GetAppGroupsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The Instance ID.
+     * 
+     */
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
@@ -57,15 +85,27 @@ public final class GetAppGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of App Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The Resource Group ID.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return Application type. Valid Values: `standard`, `enhanced`.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

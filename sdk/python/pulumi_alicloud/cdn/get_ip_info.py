@@ -52,6 +52,9 @@ class GetIpInfoResult:
     @_builtins.property
     @pulumi.getter(name="cdnIp")
     def cdn_ip(self) -> _builtins.str:
+        """
+        Whether it belongs to an Alibaba Cloud CDN node.Valid values: `True`, `False`.
+        """
         return pulumi.get(self, "cdn_ip")
 
     @_builtins.property
@@ -70,21 +73,33 @@ class GetIpInfoResult:
     @_builtins.property
     @pulumi.getter
     def isp(self) -> _builtins.str:
+        """
+        The operator's Chinese name, e.g. `电信`.
+        """
         return pulumi.get(self, "isp")
 
     @_builtins.property
     @pulumi.getter(name="ispEname")
     def isp_ename(self) -> _builtins.str:
+        """
+        The operator's English name, e.g. `telecom`.
+        """
         return pulumi.get(self, "isp_ename")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> _builtins.str:
+        """
+        Chinese name of the region, e.g. `中国-贵州省-贵阳市`.
+        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="regionEname")
     def region_ename(self) -> _builtins.str:
+        """
+        English name of the region, e.g. `China-Guizhou-guiyang`.
+        """
         return pulumi.get(self, "region_ename")
 
 
@@ -108,7 +123,7 @@ def get_ip_info(ip: Optional[_builtins.str] = None,
     """
     This data source provides the function of verifying whether an IP is a CDN node.
 
-    > **NOTE:** Available in v1.153.0+.
+    > **NOTE:** Available since v1.153.0.
 
     ## Example Usage
 
@@ -142,7 +157,7 @@ def get_ip_info_output(ip: pulumi.Input[Optional[_builtins.str]] = None,
     """
     This data source provides the function of verifying whether an IP is a CDN node.
 
-    > **NOTE:** Available in v1.153.0+.
+    > **NOTE:** Available since v1.153.0.
 
     ## Example Usage
 

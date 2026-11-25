@@ -71,21 +71,33 @@ class GetGroupMetricRulesResult:
     @_builtins.property
     @pulumi.getter
     def dimensions(self) -> Optional[_builtins.str]:
+        """
+        The dimensions that specify the resources to be associated with the alert rule.
+        """
         return pulumi.get(self, "dimensions")
 
     @_builtins.property
     @pulumi.getter(name="enableState")
     def enable_state(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether the alert rule is enabled.
+        """
         return pulumi.get(self, "enable_state")
 
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the application group.
+        """
         return pulumi.get(self, "group_id")
 
     @_builtins.property
     @pulumi.getter(name="groupMetricRuleName")
     def group_metric_rule_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the alert rule.
+        """
         return pulumi.get(self, "group_metric_rule_name")
 
     @_builtins.property
@@ -104,6 +116,9 @@ class GetGroupMetricRulesResult:
     @_builtins.property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the metric.
+        """
         return pulumi.get(self, "metric_name")
 
     @_builtins.property
@@ -114,11 +129,17 @@ class GetGroupMetricRulesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Group Metric Rule names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
     @pulumi.getter
     def namespace(self) -> Optional[_builtins.str]:
+        """
+        The namespace of the service.
+        """
         return pulumi.get(self, "namespace")
 
     @_builtins.property
@@ -129,11 +150,17 @@ class GetGroupMetricRulesResult:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetGroupMetricRulesRuleResult']:
+        """
+        A list of Cms Group Metric Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of Group Metric Rule..
+        """
         return pulumi.get(self, "status")
 
 
@@ -172,7 +199,7 @@ def get_group_metric_rules(dimensions: Optional[_builtins.str] = None,
     """
     This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.104.0+.
+    > **NOTE:** Available since v1.104.0+.
 
     ## Example Usage
 
@@ -241,7 +268,7 @@ def get_group_metric_rules_output(dimensions: pulumi.Input[Optional[Optional[_bu
     """
     This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.104.0+.
+    > **NOTE:** Available since v1.104.0+.
 
     ## Example Usage
 

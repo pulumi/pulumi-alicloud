@@ -13,99 +13,184 @@ namespace Pulumi.AliCloud.Adb.Outputs
     [OutputType]
     public sealed class GetClustersClusterResult
     {
+        /// <summary>
+        /// Auto-renewal period of an cluster, in the unit of the month.
+        /// </summary>
         public readonly int AutoRenewPeriod;
+        /// <summary>
+        /// The minor versions to which you can update the current minor version of the cluster.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterAvailableKernelVersionResult> AvailableKernelVersions;
         /// <summary>
-        /// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
+        /// The payment type of the resource.
         /// </summary>
         public readonly string ChargeType;
+        /// <summary>
+        /// The name of the service.
+        /// </summary>
         public readonly string CommodityCode;
+        /// <summary>
+        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
+        /// </summary>
         public readonly string ComputeResource;
+        /// <summary>
+        /// The endpoint of the cluster.
+        /// </summary>
         public readonly string ConnectionString;
         /// <summary>
         /// The CreateTime of the ADB cluster.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// The db cluster category.
+        /// </summary>
         public readonly string DbClusterCategory;
+        /// <summary>
+        /// The db cluster id.
+        /// </summary>
         public readonly string DbClusterId;
+        /// <summary>
+        /// The db cluster network type.
+        /// </summary>
         public readonly string DbClusterNetworkType;
+        /// <summary>
+        /// The db cluster type.
+        /// </summary>
         public readonly string DbClusterType;
+        /// <summary>
+        /// The db cluster version.
+        /// </summary>
         public readonly string DbClusterVersion;
         /// <summary>
-        /// The DBNodeClass of the ADB cluster.
+        /// The db node class.
         /// </summary>
         public readonly string DbNodeClass;
         /// <summary>
-        /// The DBNodeCount of the ADB cluster.
+        /// The db node count.
         /// </summary>
         public readonly int DbNodeCount;
         /// <summary>
-        /// The DBNodeStorage of the ADB cluster.
+        /// The db node storage.
         /// </summary>
         public readonly int DbNodeStorage;
         /// <summary>
-        /// The description of the ADB cluster.
+        /// The description of DBCluster.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The type of the disk.
+        /// </summary>
         public readonly string DiskType;
+        /// <summary>
+        /// The ID of the data synchronization task in Data Transmission Service (DTS). This parameter is valid only for analytic instances.
+        /// </summary>
         public readonly string DtsJobId;
+        /// <summary>
+        /// The elastic io resource.
+        /// </summary>
         public readonly int ElasticIoResource;
+        /// <summary>
+        /// The engine of the database.
+        /// </summary>
         public readonly string Engine;
+        /// <summary>
+        /// The engine version of the database.
+        /// </summary>
         public readonly string EngineVersion;
+        /// <summary>
+        /// The number of nodes. The node resources are used for data computing in elastic mode.
+        /// </summary>
         public readonly string ExecutorCount;
         /// <summary>
-        /// Expiration time. Pay-As-You-Go clusters never expire.
+        /// The time when the cluster expires.
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
-        /// The expired of the ADB cluster.
+        /// Indicates whether the cluster has expired.
         /// </summary>
         public readonly string Expired;
         /// <summary>
-        /// The ID of the ADB cluster.
+        /// The ID of the DBCluster.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The minor version. Example: 3.1.9.
+        /// </summary>
         public readonly string KernelVersion;
         /// <summary>
-        /// The LockMode of the ADB cluster.
+        /// The lock mode of the cluster.
         /// </summary>
         public readonly string LockMode;
+        /// <summary>
+        /// The reason why the cluster is locked.
+        /// </summary>
         public readonly string LockReason;
+        /// <summary>
+        /// The maintenance window of the cluster.
+        /// </summary>
         public readonly string MaintainTime;
+        /// <summary>
+        /// The lock mode of the cluster.
+        /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// The DBClusterNetworkType of the ADB cluster.
+        /// The db cluster network type.
         /// </summary>
         public readonly string NetworkType;
+        /// <summary>
+        /// The payment type of the resource.
+        /// </summary>
         public readonly string PaymentType;
+        /// <summary>
+        /// The port that is used to access the cluster.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
+        /// </summary>
         public readonly string RdsInstanceId;
         /// <summary>
-        /// Region ID the cluster belongs to.
+        /// The region ID  of the resource.
         /// </summary>
         public readonly string RegionId;
+        /// <summary>
+        /// The status of renewal.
+        /// </summary>
         public readonly string RenewalStatus;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string ResourceGroupId;
+        /// <summary>
+        /// List of IP addresses allowed to access all databases of an cluster.
+        /// </summary>
         public readonly ImmutableArray<string> SecurityIps;
         /// <summary>
-        /// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
+        /// The status of the resource.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
+        /// </summary>
         public readonly string StorageResource;
         /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
-        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// A map of tags assigned to the cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// The vpc cloud instance id.
+        /// </summary>
         public readonly string VpcCloudInstanceId;
         /// <summary>
-        /// ID of the VPC the cluster belongs to.
+        /// The vpc id.
         /// </summary>
         public readonly string VpcId;
+        /// <summary>
+        /// The vswitch id.
+        /// </summary>
         public readonly string VswitchId;
         /// <summary>
-        /// The ZoneId of the ADB cluster.
+        /// The zone ID  of the resource.
         /// </summary>
         public readonly string ZoneId;
 

@@ -13,7 +13,7 @@ import (
 
 // Provides a list of alarm contact owned by an Alibaba Cloud account.
 //
-// > **NOTE:** Available in v1.99.0+.
+// > **NOTE:** Available since v1.99.0+.
 //
 // ## Example Usage
 //

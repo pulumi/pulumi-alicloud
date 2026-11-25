@@ -54,6 +54,9 @@ class GetReplicationVaultRegionsResult:
     @_builtins.property
     @pulumi.getter
     def regions(self) -> Sequence['outputs.GetReplicationVaultRegionsRegionResult']:
+        """
+        A list of Ros Regions. Each element contains the following attributes:
+        """
         return pulumi.get(self, "regions")
 
 
@@ -73,7 +76,7 @@ def get_replication_vault_regions(output_file: Optional[_builtins.str] = None,
     """
     This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.152.0+.
+    > **NOTE:** Available since v1.152.0.
 
     ## Example Usage
 
@@ -104,7 +107,7 @@ def get_replication_vault_regions_output(output_file: pulumi.Input[Optional[Opti
     """
     This data source provides the HBR Replication Vault Regions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.152.0+.
+    > **NOTE:** Available since v1.152.0.
 
     ## Example Usage
 

@@ -30,10 +30,6 @@ public final class GetVpcFirewallsResult {
      */
     private List<String> ids;
     private @Nullable String lang;
-    /**
-     * @return The UID of the Alibaba Cloud member account.
-     * 
-     */
     private @Nullable String memberUid;
     private @Nullable String nameRegex;
     /**
@@ -93,10 +89,6 @@ public final class GetVpcFirewallsResult {
     public Optional<String> lang() {
         return Optional.ofNullable(this.lang);
     }
-    /**
-     * @return The UID of the Alibaba Cloud member account.
-     * 
-     */
     public Optional<String> memberUid() {
         return Optional.ofNullable(this.memberUid);
     }

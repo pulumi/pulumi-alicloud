@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // ## Example Usage
 //
@@ -82,12 +82,15 @@ type GetTrafficMirrorFilterEgressRulesArgs struct {
 // A collection of values returned by getTrafficMirrorFilterEgressRules.
 type GetTrafficMirrorFilterEgressRulesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string                                  `pulumi:"id"`
-	Ids                   []string                                `pulumi:"ids"`
-	OutputFile            *string                                 `pulumi:"outputFile"`
-	Rules                 []GetTrafficMirrorFilterEgressRulesRule `pulumi:"rules"`
-	Status                *string                                 `pulumi:"status"`
-	TrafficMirrorFilterId string                                  `pulumi:"trafficMirrorFilterId"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Vpc Traffic Mirror Filter Egress Rules. Each element contains the following attributes:
+	Rules []GetTrafficMirrorFilterEgressRulesRule `pulumi:"rules"`
+	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+	Status *string `pulumi:"status"`
+	// The ID of the filter associated with the outbound rule.
+	TrafficMirrorFilterId string `pulumi:"trafficMirrorFilterId"`
 }
 
 func GetTrafficMirrorFilterEgressRulesOutput(ctx *pulumi.Context, args GetTrafficMirrorFilterEgressRulesOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMirrorFilterEgressRulesResultOutput {
@@ -139,16 +142,19 @@ func (o GetTrafficMirrorFilterEgressRulesResultOutput) OutputFile() pulumi.Strin
 	return o.ApplyT(func(v GetTrafficMirrorFilterEgressRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Vpc Traffic Mirror Filter Egress Rules. Each element contains the following attributes:
 func (o GetTrafficMirrorFilterEgressRulesResultOutput) Rules() GetTrafficMirrorFilterEgressRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFilterEgressRulesResult) []GetTrafficMirrorFilterEgressRulesRule {
 		return v.Rules
 	}).(GetTrafficMirrorFilterEgressRulesRuleArrayOutput)
 }
 
+// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
 func (o GetTrafficMirrorFilterEgressRulesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFilterEgressRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the filter associated with the outbound rule.
 func (o GetTrafficMirrorFilterEgressRulesResultOutput) TrafficMirrorFilterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFilterEgressRulesResult) string { return v.TrafficMirrorFilterId }).(pulumi.StringOutput)
 }

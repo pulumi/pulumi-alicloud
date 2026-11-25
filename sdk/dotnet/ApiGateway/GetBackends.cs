@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.181.0+.
+        /// &gt; **NOTE:** Available since v1.181.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.181.0+.
+        /// &gt; **NOTE:** Available since v1.181.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.181.0+.
+        /// &gt; **NOTE:** Available since v1.181.0.
         /// 
         /// ## Example Usage
         /// 
@@ -180,6 +180,9 @@ namespace Pulumi.AliCloud.ApiGateway
     [OutputType]
     public sealed class GetBackendsResult
     {
+        /// <summary>
+        /// A list of Api Gateway Backends. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackendsBackendResult> Backends;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -187,6 +190,9 @@ namespace Pulumi.AliCloud.ApiGateway
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Backend names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;

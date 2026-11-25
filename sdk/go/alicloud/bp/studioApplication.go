@@ -14,7 +14,7 @@ import (
 
 // Provides a Cloud Architect Design Tools Application resource.
 //
-// For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/428263.html).
+// For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/cadt/developer-reference/api-bpstudio-2021-09-31-createapplication).
 //
 // > **NOTE:** Available since v1.192.0.
 //
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//			defaultGetInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
 //				Status: pulumi.StringRef("Running"),
 //			}, nil)
 //			if err != nil {
@@ -59,8 +59,8 @@ import (
 //				AreaId:          pulumi.String("cn-hangzhou"),
 //				Instances: bp.StudioApplicationInstanceArray{
 //					&bp.StudioApplicationInstanceArgs{
-//						Id:       pulumi.String("data.alicloud_instances.default.instances.0.id"),
-//						NodeName: pulumi.String("data.alicloud_instances.default.instances.0.name"),
+//						Id:       pulumi.String(defaultGetInstances.Instances[0].Id),
+//						NodeName: pulumi.String(defaultGetInstances.Instances[0].Name),
 //						NodeType: pulumi.String("ecs"),
 //					},
 //				},
@@ -98,7 +98,7 @@ type StudioApplication struct {
 	AreaId pulumi.StringPtrOutput `pulumi:"areaId"`
 	// The configuration of the application.
 	Configuration pulumi.StringMapOutput `pulumi:"configuration"`
-	// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+	// The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
 	Instances StudioApplicationInstanceArrayOutput `pulumi:"instances"`
 	// The id of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -152,7 +152,7 @@ type studioApplicationState struct {
 	AreaId *string `pulumi:"areaId"`
 	// The configuration of the application.
 	Configuration map[string]string `pulumi:"configuration"`
-	// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+	// The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
 	Instances []StudioApplicationInstance `pulumi:"instances"`
 	// The id of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -171,7 +171,7 @@ type StudioApplicationState struct {
 	AreaId pulumi.StringPtrInput
 	// The configuration of the application.
 	Configuration pulumi.StringMapInput
-	// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+	// The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
 	Instances StudioApplicationInstanceArrayInput
 	// The id of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -200,7 +200,7 @@ type studioApplicationArgs struct {
 	AreaId *string `pulumi:"areaId"`
 	// The configuration of the application.
 	Configuration map[string]string `pulumi:"configuration"`
-	// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+	// The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
 	Instances []StudioApplicationInstance `pulumi:"instances"`
 	// The id of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -218,7 +218,7 @@ type StudioApplicationArgs struct {
 	AreaId pulumi.StringPtrInput
 	// The configuration of the application.
 	Configuration pulumi.StringMapInput
-	// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+	// The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
 	Instances StudioApplicationInstanceArrayInput
 	// The id of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -330,7 +330,7 @@ func (o StudioApplicationOutput) Configuration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *StudioApplication) pulumi.StringMapOutput { return v.Configuration }).(pulumi.StringMapOutput)
 }
 
-// The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+// The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
 func (o StudioApplicationOutput) Instances() StudioApplicationInstanceArrayOutput {
 	return o.ApplyT(func(v *StudioApplication) StudioApplicationInstanceArrayOutput { return v.Instances }).(StudioApplicationInstanceArrayOutput)
 }

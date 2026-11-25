@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Quotas.Inputs
         public Input<int>? NoticeType { get; set; }
 
         /// <summary>
-        /// Quota calculation period.
+        /// Quota calculation period. See `Period` below.
         /// </summary>
         [Input("period")]
         public Input<Inputs.TemplateApplicationsQuotaApplicationDetailPeriodArgs>? Period { get; set; }
@@ -96,6 +96,7 @@ namespace Pulumi.AliCloud.Quotas.Inputs
 
         /// <summary>
         /// Reason for quota application.
+        /// 
         /// &gt; **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         /// </summary>
         [Input("reason")]

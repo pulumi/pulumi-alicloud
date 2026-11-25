@@ -18,6 +18,8 @@ import (
 //
 // > **NOTE:** Available since v1.224.0.
 //
+// > **NOTE:** If you maintain a narrow custom RAM policy that predates v2.3.0, `refresh` and `plan` will surface a `403 NoPermission` error from whichever supplementary action your role lacks, rather than silently leaving the computed field empty. Grant the two actions listed in RAM Permissions below — at resource level (`acs:expressconnectrouter::<accountId>:expressconnectrouter/<EcrId>`) or service level (`*`) — so refresh and plan stay green.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -60,6 +62,15 @@ import (
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
+// ## RAM Permissions
+//
+// The two read-only attributes `disabledRouteEntries` and `grantedInstances` (available since v2.3.0) are populated by the following supplementary Describe actions. Each is an independent RAM permission on the `expressconnectrouter` service and is queried on every `read`/`refresh`/`plan`:
+//
+// * `expressconnectrouter:DescribeDisabledExpressConnectRouterRouteEntries` — lists the route entries currently disabled on the ECR.
+// * `expressconnectrouter:DescribeInstanceGrantedToExpressConnectRouter` — lists the network instances granted to the ECR.
+//
+// These actions are in addition to the base resource actions (`expressconnectrouter:CreateExpressConnectRouter`, `expressconnectrouter:ModifyExpressConnectRouter`, `expressconnectrouter:DeleteExpressConnectRouter`, `expressconnectrouter:DescribeExpressConnectRouter`, etc.).
+//
 // ## Import
 //
 // Express Connect Router Express Connect Router can be imported using the id, e.g.
@@ -76,8 +87,12 @@ type RouterExpressConnectRouter struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Represents the description of the leased line gateway.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+	DisabledRouteEntries RouterExpressConnectRouterDisabledRouteEntryArrayOutput `pulumi:"disabledRouteEntries"`
 	// Name of the Gateway representing the leased line.
 	EcrName pulumi.StringPtrOutput `pulumi:"ecrName"`
+	// (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+	GrantedInstances RouterExpressConnectRouterGrantedInstanceArrayOutput `pulumi:"grantedInstances"`
 	// List of regions representing leased line gateways. See `regions` below.
 	Regions RouterExpressConnectRouterRegionArrayOutput `pulumi:"regions"`
 	// The ID of the resource group to which the ECR instance belongs.
@@ -128,8 +143,12 @@ type routerExpressConnectRouterState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Represents the description of the leased line gateway.
 	Description *string `pulumi:"description"`
+	// (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+	DisabledRouteEntries []RouterExpressConnectRouterDisabledRouteEntry `pulumi:"disabledRouteEntries"`
 	// Name of the Gateway representing the leased line.
 	EcrName *string `pulumi:"ecrName"`
+	// (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+	GrantedInstances []RouterExpressConnectRouterGrantedInstance `pulumi:"grantedInstances"`
 	// List of regions representing leased line gateways. See `regions` below.
 	Regions []RouterExpressConnectRouterRegion `pulumi:"regions"`
 	// The ID of the resource group to which the ECR instance belongs.
@@ -148,8 +167,12 @@ type RouterExpressConnectRouterState struct {
 	CreateTime pulumi.StringPtrInput
 	// Represents the description of the leased line gateway.
 	Description pulumi.StringPtrInput
+	// (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+	DisabledRouteEntries RouterExpressConnectRouterDisabledRouteEntryArrayInput
 	// Name of the Gateway representing the leased line.
 	EcrName pulumi.StringPtrInput
+	// (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+	GrantedInstances RouterExpressConnectRouterGrantedInstanceArrayInput
 	// List of regions representing leased line gateways. See `regions` below.
 	Regions RouterExpressConnectRouterRegionArrayInput
 	// The ID of the resource group to which the ECR instance belongs.
@@ -306,9 +329,23 @@ func (o RouterExpressConnectRouterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterExpressConnectRouter) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+func (o RouterExpressConnectRouterOutput) DisabledRouteEntries() RouterExpressConnectRouterDisabledRouteEntryArrayOutput {
+	return o.ApplyT(func(v *RouterExpressConnectRouter) RouterExpressConnectRouterDisabledRouteEntryArrayOutput {
+		return v.DisabledRouteEntries
+	}).(RouterExpressConnectRouterDisabledRouteEntryArrayOutput)
+}
+
 // Name of the Gateway representing the leased line.
 func (o RouterExpressConnectRouterOutput) EcrName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterExpressConnectRouter) pulumi.StringPtrOutput { return v.EcrName }).(pulumi.StringPtrOutput)
+}
+
+// (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+func (o RouterExpressConnectRouterOutput) GrantedInstances() RouterExpressConnectRouterGrantedInstanceArrayOutput {
+	return o.ApplyT(func(v *RouterExpressConnectRouter) RouterExpressConnectRouterGrantedInstanceArrayOutput {
+		return v.GrantedInstances
+	}).(RouterExpressConnectRouterGrantedInstanceArrayOutput)
 }
 
 // List of regions representing leased line gateways. See `regions` below.

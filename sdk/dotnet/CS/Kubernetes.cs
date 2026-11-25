@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// &gt; **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release.
+    /// &gt; **DEPRECATED:** This resource has been deprecated from version `1.276.0` and will be removed in a future release.
     /// 
     /// This resource will help you to manage a Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ask-cluster-1).
     /// 
@@ -47,6 +47,121 @@ namespace Pulumi.AliCloud.CS
     /// Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-kubernetes-example";
+    ///     var instanceType = config.Get("instanceType") ?? "ecs.c6.xlarge";
+    ///     var enhanced = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+    /// 
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "Instance",
+    ///         AvailableDiskCategory = "cloud_essd",
+    ///         AvailableInstanceType = instanceType,
+    ///     });
+    /// 
+    ///     // The zone must offer the master instance type and support the enhanced NAT gateway created by `new_nat_gateway`.
+    ///     var zoneId = Output.Tuple(@default, enhanced).Apply(values =&gt;
+    ///     {
+    ///         var @default = values.Item1;
+    ///         var enhanced = values.Item2;
+    ///         return Std.Setintersection.Invoke(new()
+    ///         {
+    ///             Input = new[]
+    ///             {
+    ///                 @default.Apply(getZonesResult =&gt; getZonesResult.Zones).Select(__item =&gt; __item.Id).ToList(),
+    ///                 enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones).Select(__item =&gt; __item.ZoneId).ToList(),
+    ///             },
+    ///         });
+    ///     }).Apply(invoke =&gt; Std.Sort.Invoke(new()
+    ///     {
+    ///         Input = invoke.Result,
+    ///     })).Apply(invoke =&gt; invoke.Result[0]);
+    /// 
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultGetKubernetesVersion = AliCloud.CS.GetKubernetesVersion.Invoke(new()
+    ///     {
+    ///         ClusterType = "Kubernetes",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.1.0/24",
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultKubernetes = new AliCloud.CS.Kubernetes("default", new()
+    ///     {
+    ///         Name = name,
+    ///         Version = defaultGetKubernetesVersion.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas[2]?.Version),
+    ///         MasterVswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///             defaultSwitch.Id,
+    ///             defaultSwitch.Id,
+    ///         },
+    ///         MasterInstanceTypes = new[]
+    ///         {
+    ///             instanceType,
+    ///             instanceType,
+    ///             instanceType,
+    ///         },
+    ///         MasterDiskCategory = "cloud_essd",
+    ///         MasterDiskSize = 80,
+    ///         Password = "Yourpassword1234",
+    ///         PodCidr = "10.72.0.0/16",
+    ///         ServiceCidr = "172.18.0.0/16",
+    ///         NodeCidrMask = 24,
+    ///         EnableSsh = false,
+    ///         InstallCloudMonitor = true,
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         DeletionProtection = false,
+    ///         OsType = "Linux",
+    ///         Platform = "AliyunLinux4ContainerOptimized",
+    ///         ImageId = "aliyun_4_x64_20G_container_optimized_alibase_20260402.vhd",
+    ///         ClusterDomain = "cluster.local",
+    ///         ProxyMode = "ipvs",
+    ///         CustomSan = "www.terraform.io",
+    ///         NewNatGateway = true,
+    ///         SlbInternetEnabled = false,
+    ///         SkipSetCertificateAuthority = false,
+    ///         Runtimes = new[]
+    ///         {
+    ///             new AliCloud.CS.Inputs.KubernetesRuntimeArgs
+    ///             {
+    ///                 Name = "containerd",
+    ///                 Version = "1.6.20",
+    ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Platform", "TF" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
@@ -94,7 +209,11 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// 
-        /// *Removed params*
+        /// Removed params:
+        /// 
+        /// The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+        /// 
+        /// `MasterInstanceType`, `WorkerInstanceType`, `VswitchId`, `VswitchIds`, `ForceUpdate`, `LogConfig`, `ClusterNetworkType`, `WorkerDataDiskCategory`, `WorkerDataDiskSize`, `WorkerNumbers`, `Nodes`, `ExcludeAutoscalerNodes`, `KubeConfig`, `AvailabilityZone`, `WorkerNumber`, `WorkerVswitchIds`, `WorkerInstanceTypes`, `WorkerInstanceChargeType`, `WorkerPeriod`, `WorkerPeriodUnit`, `WorkerAutoRenew`, `WorkerAutoRenewPeriod`, `WorkerDiskCategory`, `WorkerDiskSize`, `WorkerDataDisks`, `NodePortRange`, `CpuPolicy`, `UserData`, `Taints`, `WorkerDiskPerformanceLevel`, `WorkerDiskSnapshotPolicyId`
         /// </summary>
         [Output("clusterCaCert")]
         public Output<string?> ClusterCaCert { get; private set; } = null!;
@@ -210,7 +329,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Master node system disk auto snapshot policy.
         /// 
-        /// *Computed params*
+        /// Computed params:
         /// </summary>
         [Output("masterDiskSnapshotPolicyId")]
         public Output<string?> MasterDiskSnapshotPolicyId { get; private set; } = null!;
@@ -368,7 +487,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`.For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
-        /// *Network params*
+        /// Network params:
         /// </summary>
         [Output("skipSetCertificateAuthority")]
         public Output<bool?> SkipSetCertificateAuthority { get; private set; } = null!;
@@ -391,7 +510,7 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `PodVswitchIds` field and addons with `terway-eniip`.
         /// If you want to use `Flannel` as CNI network plugin, You need to specify the `PodCidr` field and addons with `Flannel`.
         /// 
-        /// *Master params*
+        /// Master params:
         /// </summary>
         [Output("slbInternetEnabled")]
         public Output<bool?> SlbInternetEnabled { get; private set; } = null!;
@@ -527,7 +646,11 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// 
-        /// *Removed params*
+        /// Removed params:
+        /// 
+        /// The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+        /// 
+        /// `MasterInstanceType`, `WorkerInstanceType`, `VswitchId`, `VswitchIds`, `ForceUpdate`, `LogConfig`, `ClusterNetworkType`, `WorkerDataDiskCategory`, `WorkerDataDiskSize`, `WorkerNumbers`, `Nodes`, `ExcludeAutoscalerNodes`, `KubeConfig`, `AvailabilityZone`, `WorkerNumber`, `WorkerVswitchIds`, `WorkerInstanceTypes`, `WorkerInstanceChargeType`, `WorkerPeriod`, `WorkerPeriodUnit`, `WorkerAutoRenew`, `WorkerAutoRenewPeriod`, `WorkerDiskCategory`, `WorkerDiskSize`, `WorkerDataDisks`, `NodePortRange`, `CpuPolicy`, `UserData`, `Taints`, `WorkerDiskPerformanceLevel`, `WorkerDiskSnapshotPolicyId`
         /// </summary>
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
@@ -649,7 +772,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Master node system disk auto snapshot policy.
         /// 
-        /// *Computed params*
+        /// Computed params:
         /// </summary>
         [Input("masterDiskSnapshotPolicyId")]
         public Input<string>? MasterDiskSnapshotPolicyId { get; set; }
@@ -841,7 +964,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`.For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
-        /// *Network params*
+        /// Network params:
         /// </summary>
         [Input("skipSetCertificateAuthority")]
         public Input<bool>? SkipSetCertificateAuthority { get; set; }
@@ -852,7 +975,7 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `PodVswitchIds` field and addons with `terway-eniip`.
         /// If you want to use `Flannel` as CNI network plugin, You need to specify the `PodCidr` field and addons with `Flannel`.
         /// 
-        /// *Master params*
+        /// Master params:
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
@@ -947,7 +1070,11 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
         /// 
-        /// *Removed params*
+        /// Removed params:
+        /// 
+        /// The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+        /// 
+        /// `MasterInstanceType`, `WorkerInstanceType`, `VswitchId`, `VswitchIds`, `ForceUpdate`, `LogConfig`, `ClusterNetworkType`, `WorkerDataDiskCategory`, `WorkerDataDiskSize`, `WorkerNumbers`, `Nodes`, `ExcludeAutoscalerNodes`, `KubeConfig`, `AvailabilityZone`, `WorkerNumber`, `WorkerVswitchIds`, `WorkerInstanceTypes`, `WorkerInstanceChargeType`, `WorkerPeriod`, `WorkerPeriodUnit`, `WorkerAutoRenew`, `WorkerAutoRenewPeriod`, `WorkerDiskCategory`, `WorkerDiskSize`, `WorkerDataDisks`, `NodePortRange`, `CpuPolicy`, `UserData`, `Taints`, `WorkerDiskPerformanceLevel`, `WorkerDiskSnapshotPolicyId`
         /// </summary>
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
@@ -1081,7 +1208,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Master node system disk auto snapshot policy.
         /// 
-        /// *Computed params*
+        /// Computed params:
         /// </summary>
         [Input("masterDiskSnapshotPolicyId")]
         public Input<string>? MasterDiskSnapshotPolicyId { get; set; }
@@ -1291,7 +1418,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Configure whether to save certificate authority data for your cluster to attribute `CertificateAuthority`.For cluster security, recommended configuration as `True`. Will be removed with attribute CertificateAuthority removed.
         /// 
-        /// *Network params*
+        /// Network params:
         /// </summary>
         [Input("skipSetCertificateAuthority")]
         public Input<bool>? SkipSetCertificateAuthority { get; set; }
@@ -1314,7 +1441,7 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `PodVswitchIds` field and addons with `terway-eniip`.
         /// If you want to use `Flannel` as CNI network plugin, You need to specify the `PodCidr` field and addons with `Flannel`.
         /// 
-        /// *Master params*
+        /// Master params:
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }

@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.91.0.
  *
+ * > **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PostPaid` by setting `paymentType = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -49,6 +51,7 @@ import * as utilities from "../utilities";
  *     saleCycle: "Month",
  * });
  * ```
+ *
  * ### Deleting alicloud.ecs.DedicatedHost or removing it from your configuration
  *
  * The alicloud.ecs.DedicatedHost resource allows you to manage paymentType = "PrePaid" dedicated host, but Terraform cannot destroy it.
@@ -162,7 +165,7 @@ export class DedicatedHost extends pulumi.CustomResource {
      */
     declare public readonly minQuantity: pulumi.Output<number | undefined>;
     /**
-     * dedicated host network parameters. contains the following attributes:
+     * Dedicated host network parameters. See `networkAttributes` below.
      */
     declare public readonly networkAttributes: pulumi.Output<outputs.ecs.DedicatedHostNetworkAttribute[] | undefined>;
     /**
@@ -317,7 +320,7 @@ export interface DedicatedHostState {
      */
     minQuantity?: pulumi.Input<number | undefined>;
     /**
-     * dedicated host network parameters. contains the following attributes:
+     * Dedicated host network parameters. See `networkAttributes` below.
      */
     networkAttributes?: pulumi.Input<pulumi.Input<inputs.ecs.DedicatedHostNetworkAttribute>[] | undefined>;
     /**
@@ -407,7 +410,7 @@ export interface DedicatedHostArgs {
      */
     minQuantity?: pulumi.Input<number | undefined>;
     /**
-     * dedicated host network parameters. contains the following attributes:
+     * Dedicated host network parameters. See `networkAttributes` below.
      */
     networkAttributes?: pulumi.Input<pulumi.Input<inputs.ecs.DedicatedHostNetworkAttribute>[] | undefined>;
     /**

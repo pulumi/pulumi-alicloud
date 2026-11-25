@@ -1389,13 +1389,47 @@ class RouteTargetGroupRouteTargetMemberListArgs:
 
 class TrafficMirrorFilterEgressRuleArgsDict(TypedDict):
     action: pulumi.Input[_builtins.str]
+    """
+    Collection strategy for outbound rules. Value:
+    - accept: collects network traffic.
+    - drop: No network traffic is collected.
+    """
     protocol: pulumi.Input[_builtins.str]
+    """
+    The type of protocol used by the outbound network traffic to be mirrored. Value:
+    - ALL: ALL agreements.
+    - ICMP: Network Control Message Protocol.
+    - TCP: Transmission Control Protocol.
+    - UDP: User Datagram Protocol.
+    """
     destination_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    DestinationCidrBlock.
+    """
     destination_port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+    > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+    """
     priority: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Priority.
+    """
     source_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The source address of the outbound rule network traffic.
+    """
     source_port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+    > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+    """
     traffic_mirror_filter_rule_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The status of the traffic mirror filter rule.
+    """
 
 @pulumi.input_type
 class TrafficMirrorFilterEgressRuleArgs:
@@ -1408,6 +1442,26 @@ class TrafficMirrorFilterEgressRuleArgs:
                  source_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
                  source_port_range: pulumi.Input[Optional[_builtins.str]] = None,
                  traffic_mirror_filter_rule_status: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: Collection strategy for outbound rules. Value:
+               - accept: collects network traffic.
+               - drop: No network traffic is collected.
+        :param pulumi.Input[_builtins.str] protocol: The type of protocol used by the outbound network traffic to be mirrored. Value:
+               - ALL: ALL agreements.
+               - ICMP: Network Control Message Protocol.
+               - TCP: Transmission Control Protocol.
+               - UDP: User Datagram Protocol.
+        :param pulumi.Input[_builtins.str] destination_cidr_block: DestinationCidrBlock.
+        :param pulumi.Input[_builtins.str] destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        :param pulumi.Input[_builtins.int] priority: Priority.
+        :param pulumi.Input[_builtins.str] source_cidr_block: The source address of the outbound rule network traffic.
+        :param pulumi.Input[_builtins.str] source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        :param pulumi.Input[_builtins.str] traffic_mirror_filter_rule_status: The status of the traffic mirror filter rule.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "protocol", protocol)
         if destination_cidr_block is not None:
@@ -1426,6 +1480,11 @@ class TrafficMirrorFilterEgressRuleArgs:
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Input[_builtins.str]:
+        """
+        Collection strategy for outbound rules. Value:
+        - accept: collects network traffic.
+        - drop: No network traffic is collected.
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -1435,6 +1494,13 @@ class TrafficMirrorFilterEgressRuleArgs:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of protocol used by the outbound network traffic to be mirrored. Value:
+        - ALL: ALL agreements.
+        - ICMP: Network Control Message Protocol.
+        - TCP: Transmission Control Protocol.
+        - UDP: User Datagram Protocol.
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1444,6 +1510,9 @@ class TrafficMirrorFilterEgressRuleArgs:
     @_builtins.property
     @pulumi.getter(name="destinationCidrBlock")
     def destination_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        DestinationCidrBlock.
+        """
         return pulumi.get(self, "destination_cidr_block")
 
     @destination_cidr_block.setter
@@ -1453,6 +1522,11 @@ class TrafficMirrorFilterEgressRuleArgs:
     @_builtins.property
     @pulumi.getter(name="destinationPortRange")
     def destination_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
         return pulumi.get(self, "destination_port_range")
 
     @destination_port_range.setter
@@ -1462,6 +1536,9 @@ class TrafficMirrorFilterEgressRuleArgs:
     @_builtins.property
     @pulumi.getter
     def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Priority.
+        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -1471,6 +1548,9 @@ class TrafficMirrorFilterEgressRuleArgs:
     @_builtins.property
     @pulumi.getter(name="sourceCidrBlock")
     def source_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The source address of the outbound rule network traffic.
+        """
         return pulumi.get(self, "source_cidr_block")
 
     @source_cidr_block.setter
@@ -1480,6 +1560,11 @@ class TrafficMirrorFilterEgressRuleArgs:
     @_builtins.property
     @pulumi.getter(name="sourcePortRange")
     def source_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
         return pulumi.get(self, "source_port_range")
 
     @source_port_range.setter
@@ -1489,6 +1574,9 @@ class TrafficMirrorFilterEgressRuleArgs:
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterRuleStatus")
     def traffic_mirror_filter_rule_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the traffic mirror filter rule.
+        """
         return pulumi.get(self, "traffic_mirror_filter_rule_status")
 
     @traffic_mirror_filter_rule_status.setter
@@ -1498,13 +1586,47 @@ class TrafficMirrorFilterEgressRuleArgs:
 
 class TrafficMirrorFilterIngressRuleArgsDict(TypedDict):
     action: pulumi.Input[_builtins.str]
+    """
+    Collection strategy for outbound rules. Value:
+    - accept: collects network traffic.
+    - drop: No network traffic is collected.
+    """
     protocol: pulumi.Input[_builtins.str]
+    """
+    The type of protocol used by the outbound network traffic to be mirrored. Value:
+    - ALL: ALL agreements.
+    - ICMP: Network Control Message Protocol.
+    - TCP: Transmission Control Protocol.
+    - UDP: User Datagram Protocol.
+    """
     destination_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The destination address of the outbound rule network traffic.
+    """
     destination_port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+    > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+    """
     priority: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
+    """
     source_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The source address of the outbound rule network traffic.
+    """
     source_port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+    > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+    """
     traffic_mirror_filter_rule_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The status of the traffic mirror filter rule.
+    """
 
 @pulumi.input_type
 class TrafficMirrorFilterIngressRuleArgs:
@@ -1517,6 +1639,26 @@ class TrafficMirrorFilterIngressRuleArgs:
                  source_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
                  source_port_range: pulumi.Input[Optional[_builtins.str]] = None,
                  traffic_mirror_filter_rule_status: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: Collection strategy for outbound rules. Value:
+               - accept: collects network traffic.
+               - drop: No network traffic is collected.
+        :param pulumi.Input[_builtins.str] protocol: The type of protocol used by the outbound network traffic to be mirrored. Value:
+               - ALL: ALL agreements.
+               - ICMP: Network Control Message Protocol.
+               - TCP: Transmission Control Protocol.
+               - UDP: User Datagram Protocol.
+        :param pulumi.Input[_builtins.str] destination_cidr_block: The destination address of the outbound rule network traffic.
+        :param pulumi.Input[_builtins.str] destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        :param pulumi.Input[_builtins.int] priority: The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
+        :param pulumi.Input[_builtins.str] source_cidr_block: The source address of the outbound rule network traffic.
+        :param pulumi.Input[_builtins.str] source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        :param pulumi.Input[_builtins.str] traffic_mirror_filter_rule_status: The status of the traffic mirror filter rule.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "protocol", protocol)
         if destination_cidr_block is not None:
@@ -1535,6 +1677,11 @@ class TrafficMirrorFilterIngressRuleArgs:
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Input[_builtins.str]:
+        """
+        Collection strategy for outbound rules. Value:
+        - accept: collects network traffic.
+        - drop: No network traffic is collected.
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -1544,6 +1691,13 @@ class TrafficMirrorFilterIngressRuleArgs:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of protocol used by the outbound network traffic to be mirrored. Value:
+        - ALL: ALL agreements.
+        - ICMP: Network Control Message Protocol.
+        - TCP: Transmission Control Protocol.
+        - UDP: User Datagram Protocol.
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1553,6 +1707,9 @@ class TrafficMirrorFilterIngressRuleArgs:
     @_builtins.property
     @pulumi.getter(name="destinationCidrBlock")
     def destination_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The destination address of the outbound rule network traffic.
+        """
         return pulumi.get(self, "destination_cidr_block")
 
     @destination_cidr_block.setter
@@ -1562,6 +1719,11 @@ class TrafficMirrorFilterIngressRuleArgs:
     @_builtins.property
     @pulumi.getter(name="destinationPortRange")
     def destination_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
         return pulumi.get(self, "destination_port_range")
 
     @destination_port_range.setter
@@ -1571,6 +1733,9 @@ class TrafficMirrorFilterIngressRuleArgs:
     @_builtins.property
     @pulumi.getter
     def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
+        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -1580,6 +1745,9 @@ class TrafficMirrorFilterIngressRuleArgs:
     @_builtins.property
     @pulumi.getter(name="sourceCidrBlock")
     def source_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The source address of the outbound rule network traffic.
+        """
         return pulumi.get(self, "source_cidr_block")
 
     @source_cidr_block.setter
@@ -1589,6 +1757,11 @@ class TrafficMirrorFilterIngressRuleArgs:
     @_builtins.property
     @pulumi.getter(name="sourcePortRange")
     def source_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
         return pulumi.get(self, "source_port_range")
 
     @source_port_range.setter
@@ -1598,6 +1771,9 @@ class TrafficMirrorFilterIngressRuleArgs:
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterRuleStatus")
     def traffic_mirror_filter_rule_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the traffic mirror filter rule.
+        """
         return pulumi.get(self, "traffic_mirror_filter_rule_status")
 
     @traffic_mirror_filter_rule_status.setter

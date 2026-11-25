@@ -3,6 +3,8 @@
 
 package com.pulumi.alicloud.expressconnect.inputs;
 
+import com.pulumi.alicloud.expressconnect.inputs.RouterExpressConnectRouterDisabledRouteEntryArgs;
+import com.pulumi.alicloud.expressconnect.inputs.RouterExpressConnectRouterGrantedInstanceArgs;
 import com.pulumi.alicloud.expressconnect.inputs.RouterExpressConnectRouterRegionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -65,6 +67,21 @@ public final class RouterExpressConnectRouterState extends com.pulumi.resources.
     }
 
     /**
+     * (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+     * 
+     */
+    @Import(name="disabledRouteEntries")
+    private @Nullable Output<List<RouterExpressConnectRouterDisabledRouteEntryArgs>> disabledRouteEntries;
+
+    /**
+     * @return (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+     * 
+     */
+    public Optional<Output<List<RouterExpressConnectRouterDisabledRouteEntryArgs>>> disabledRouteEntries() {
+        return Optional.ofNullable(this.disabledRouteEntries);
+    }
+
+    /**
      * Name of the Gateway representing the leased line.
      * 
      */
@@ -77,6 +94,21 @@ public final class RouterExpressConnectRouterState extends com.pulumi.resources.
      */
     public Optional<Output<String>> ecrName() {
         return Optional.ofNullable(this.ecrName);
+    }
+
+    /**
+     * (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+     * 
+     */
+    @Import(name="grantedInstances")
+    private @Nullable Output<List<RouterExpressConnectRouterGrantedInstanceArgs>> grantedInstances;
+
+    /**
+     * @return (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+     * 
+     */
+    public Optional<Output<List<RouterExpressConnectRouterGrantedInstanceArgs>>> grantedInstances() {
+        return Optional.ofNullable(this.grantedInstances);
     }
 
     /**
@@ -147,7 +179,9 @@ public final class RouterExpressConnectRouterState extends com.pulumi.resources.
         this.alibabaSideAsn = $.alibabaSideAsn;
         this.createTime = $.createTime;
         this.description = $.description;
+        this.disabledRouteEntries = $.disabledRouteEntries;
         this.ecrName = $.ecrName;
+        this.grantedInstances = $.grantedInstances;
         this.regions = $.regions;
         this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
@@ -236,6 +270,37 @@ public final class RouterExpressConnectRouterState extends com.pulumi.resources.
         }
 
         /**
+         * @param disabledRouteEntries (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledRouteEntries(@Nullable Output<List<RouterExpressConnectRouterDisabledRouteEntryArgs>> disabledRouteEntries) {
+            $.disabledRouteEntries = disabledRouteEntries;
+            return this;
+        }
+
+        /**
+         * @param disabledRouteEntries (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledRouteEntries(List<RouterExpressConnectRouterDisabledRouteEntryArgs> disabledRouteEntries) {
+            return disabledRouteEntries(Output.of(disabledRouteEntries));
+        }
+
+        /**
+         * @param disabledRouteEntries (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabledRouteEntries` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledRouteEntries(RouterExpressConnectRouterDisabledRouteEntryArgs... disabledRouteEntries) {
+            return disabledRouteEntries(List.of(disabledRouteEntries));
+        }
+
+        /**
          * @param ecrName Name of the Gateway representing the leased line.
          * 
          * @return builder
@@ -254,6 +319,37 @@ public final class RouterExpressConnectRouterState extends com.pulumi.resources.
          */
         public Builder ecrName(String ecrName) {
             return ecrName(Output.of(ecrName));
+        }
+
+        /**
+         * @param grantedInstances (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grantedInstances(@Nullable Output<List<RouterExpressConnectRouterGrantedInstanceArgs>> grantedInstances) {
+            $.grantedInstances = grantedInstances;
+            return this;
+        }
+
+        /**
+         * @param grantedInstances (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grantedInstances(List<RouterExpressConnectRouterGrantedInstanceArgs> grantedInstances) {
+            return grantedInstances(Output.of(grantedInstances));
+        }
+
+        /**
+         * @param grantedInstances (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `grantedInstances` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grantedInstances(RouterExpressConnectRouterGrantedInstanceArgs... grantedInstances) {
+            return grantedInstances(List.of(grantedInstances));
         }
 
         /**

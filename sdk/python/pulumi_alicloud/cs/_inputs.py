@@ -15,6 +15,18 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AutoRepairPolicyRuleArgs',
+    'AutoRepairPolicyRuleArgsDict',
+    'AutoRepairPolicyRuleIncidentArgs',
+    'AutoRepairPolicyRuleIncidentArgsDict',
+    'AutoRepairPolicyRuleRepairProcedureArgs',
+    'AutoRepairPolicyRuleRepairProcedureArgsDict',
+    'AutoRepairPolicyRuleRepairProcedureInterventionArgs',
+    'AutoRepairPolicyRuleRepairProcedureInterventionArgsDict',
+    'AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs',
+    'AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgsDict',
+    'AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs',
+    'AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgsDict',
     'EdgeKubernetesAddonArgs',
     'EdgeKubernetesAddonArgsDict',
     'EdgeKubernetesCertificateAuthorityArgs',
@@ -131,6 +143,338 @@ __all__ = [
     'ServerlessKubernetesRrsaMetadataArgsDict',
 ]
 
+class AutoRepairPolicyRuleArgsDict(TypedDict):
+    incidents: pulumi.Input[Sequence[pulumi.Input['AutoRepairPolicyRuleIncidentArgsDict']]]
+    """
+    The incidents that trigger the repair. See `incidents` below.
+    """
+    repair_procedures: pulumi.Input[Sequence[pulumi.Input['AutoRepairPolicyRuleRepairProcedureArgsDict']]]
+    """
+    The repair procedures executed in order when the incidents are detected. See `repair_procedure` below. The procedures must be a subsequence of the built-in template of the incident, and the procedures marked as required in the template must be included. A procedure cannot be repeated, and `QuarantineNode` must be listed before `Evict` and `UnquarantineNode`.
+    """
+
+@pulumi.input_type
+class AutoRepairPolicyRuleArgs:
+    def __init__(__self__, *,
+                 incidents: pulumi.Input[Sequence[pulumi.Input['AutoRepairPolicyRuleIncidentArgs']]],
+                 repair_procedures: pulumi.Input[Sequence[pulumi.Input['AutoRepairPolicyRuleRepairProcedureArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AutoRepairPolicyRuleIncidentArgs']]] incidents: The incidents that trigger the repair. See `incidents` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AutoRepairPolicyRuleRepairProcedureArgs']]] repair_procedures: The repair procedures executed in order when the incidents are detected. See `repair_procedure` below. The procedures must be a subsequence of the built-in template of the incident, and the procedures marked as required in the template must be included. A procedure cannot be repeated, and `QuarantineNode` must be listed before `Evict` and `UnquarantineNode`.
+        """
+        pulumi.set(__self__, "incidents", incidents)
+        pulumi.set(__self__, "repair_procedures", repair_procedures)
+
+    @_builtins.property
+    @pulumi.getter
+    def incidents(self) -> pulumi.Input[Sequence[pulumi.Input['AutoRepairPolicyRuleIncidentArgs']]]:
+        """
+        The incidents that trigger the repair. See `incidents` below.
+        """
+        return pulumi.get(self, "incidents")
+
+    @incidents.setter
+    def incidents(self, value: pulumi.Input[Sequence[pulumi.Input['AutoRepairPolicyRuleIncidentArgs']]]):
+        pulumi.set(self, "incidents", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repairProcedures")
+    def repair_procedures(self) -> pulumi.Input[Sequence[pulumi.Input['AutoRepairPolicyRuleRepairProcedureArgs']]]:
+        """
+        The repair procedures executed in order when the incidents are detected. See `repair_procedure` below. The procedures must be a subsequence of the built-in template of the incident, and the procedures marked as required in the template must be included. A procedure cannot be repeated, and `QuarantineNode` must be listed before `Evict` and `UnquarantineNode`.
+        """
+        return pulumi.get(self, "repair_procedures")
+
+    @repair_procedures.setter
+    def repair_procedures(self, value: pulumi.Input[Sequence[pulumi.Input['AutoRepairPolicyRuleRepairProcedureArgs']]]):
+        pulumi.set(self, "repair_procedures", value)
+
+
+class AutoRepairPolicyRuleIncidentArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the auto repair policy.
+    """
+
+@pulumi.input_type
+class AutoRepairPolicyRuleIncidentArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the auto repair policy.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the auto repair policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+class AutoRepairPolicyRuleRepairProcedureArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the auto repair policy.
+    """
+    config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The configuration of the procedure as a JSON object, for example `jsonencode({ evict_timeout = 300 })` for `Evict`. An empty value and an empty JSON object are equivalent. See the `config` key table in Repair procedure reference for the accepted keys.
+    """
+    intervention: NotRequired[pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionArgsDict']]]
+    """
+    The manual approval configuration of the procedure. See `intervention` below.
+    """
+
+@pulumi.input_type
+class AutoRepairPolicyRuleRepairProcedureArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 intervention: pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the auto repair policy.
+        :param pulumi.Input[_builtins.str] config: The configuration of the procedure as a JSON object, for example `jsonencode({ evict_timeout = 300 })` for `Evict`. An empty value and an empty JSON object are equivalent. See the `config` key table in Repair procedure reference for the accepted keys.
+        :param pulumi.Input['AutoRepairPolicyRuleRepairProcedureInterventionArgs'] intervention: The manual approval configuration of the procedure. See `intervention` below.
+        """
+        pulumi.set(__self__, "name", name)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if intervention is not None:
+            pulumi.set(__self__, "intervention", intervention)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the auto repair policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The configuration of the procedure as a JSON object, for example `jsonencode({ evict_timeout = 300 })` for `Evict`. An empty value and an empty JSON object are equivalent. See the `config` key table in Repair procedure reference for the accepted keys.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def intervention(self) -> pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionArgs']]:
+        """
+        The manual approval configuration of the procedure. See `intervention` below.
+        """
+        return pulumi.get(self, "intervention")
+
+    @intervention.setter
+    def intervention(self, value: pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionArgs']]):
+        pulumi.set(self, "intervention", value)
+
+
+class AutoRepairPolicyRuleRepairProcedureInterventionArgsDict(TypedDict):
+    approved_label: NotRequired[pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgsDict']]]
+    """
+    The label that marks the request as approved. The value must differ from the value of the inquiring label, for example `approved`. See `approved_label` below.
+
+    When manual approval is enabled, the procedure pauses after the inquiring label is written, and all subsequent procedures of the same policy wait until the approved label is written to the node.
+    """
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether manual approval is required before the procedure runs. Defaults to `false`.
+    """
+    inquiring_label: NotRequired[pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgsDict']]]
+    """
+    The label written to the node to request approval. The key identifies the procedure, for example `intervention.autorepair.node.k8s.aliyun.com/<procedure_name>`, with the `hypernode` domain for Lingjun super nodes, and the value is the inquiry value, for example `inquiring`. See `inquiring_label` below.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the auto repair policy. Valid values: `custom`, `builtin`.
+    """
+
+@pulumi.input_type
+class AutoRepairPolicyRuleRepairProcedureInterventionArgs:
+    def __init__(__self__, *,
+                 approved_label: pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs']] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inquiring_label: pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs'] approved_label: The label that marks the request as approved. The value must differ from the value of the inquiring label, for example `approved`. See `approved_label` below.
+               
+               When manual approval is enabled, the procedure pauses after the inquiring label is written, and all subsequent procedures of the same policy wait until the approved label is written to the node.
+        :param pulumi.Input[_builtins.bool] enable: Whether manual approval is required before the procedure runs. Defaults to `false`.
+        :param pulumi.Input['AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs'] inquiring_label: The label written to the node to request approval. The key identifies the procedure, for example `intervention.autorepair.node.k8s.aliyun.com/<procedure_name>`, with the `hypernode` domain for Lingjun super nodes, and the value is the inquiry value, for example `inquiring`. See `inquiring_label` below.
+        :param pulumi.Input[_builtins.str] type: The type of the auto repair policy. Valid values: `custom`, `builtin`.
+        """
+        if approved_label is not None:
+            pulumi.set(__self__, "approved_label", approved_label)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if inquiring_label is not None:
+            pulumi.set(__self__, "inquiring_label", inquiring_label)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="approvedLabel")
+    def approved_label(self) -> pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs']]:
+        """
+        The label that marks the request as approved. The value must differ from the value of the inquiring label, for example `approved`. See `approved_label` below.
+
+        When manual approval is enabled, the procedure pauses after the inquiring label is written, and all subsequent procedures of the same policy wait until the approved label is written to the node.
+        """
+        return pulumi.get(self, "approved_label")
+
+    @approved_label.setter
+    def approved_label(self, value: pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs']]):
+        pulumi.set(self, "approved_label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether manual approval is required before the procedure runs. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inquiringLabel")
+    def inquiring_label(self) -> pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs']]:
+        """
+        The label written to the node to request approval. The key identifies the procedure, for example `intervention.autorepair.node.k8s.aliyun.com/<procedure_name>`, with the `hypernode` domain for Lingjun super nodes, and the value is the inquiry value, for example `inquiring`. See `inquiring_label` below.
+        """
+        return pulumi.get(self, "inquiring_label")
+
+    @inquiring_label.setter
+    def inquiring_label(self, value: pulumi.Input[Optional['AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs']]):
+        pulumi.set(self, "inquiring_label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the auto repair policy. Valid values: `custom`, `builtin`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key of the label. Both labels must use the same key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the label. It must differ from the value of the inquiring label.
+    """
+
+@pulumi.input_type
+class AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the label. Both labels must use the same key.
+        :param pulumi.Input[_builtins.str] value: The value of the label. It must differ from the value of the inquiring label.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The key of the label. Both labels must use the same key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the label. It must differ from the value of the inquiring label.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+class AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key of the label. Both labels must use the same key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the label. It must differ from the value of the inquiring label.
+    """
+
+@pulumi.input_type
+class AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the label. Both labels must use the same key.
+        :param pulumi.Input[_builtins.str] value: The value of the label. It must differ from the value of the inquiring label.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The key of the label. Both labels must use the same key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the label. It must differ from the value of the inquiring label.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
 class EdgeKubernetesAddonArgsDict(TypedDict):
     config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -141,17 +485,6 @@ class EdgeKubernetesAddonArgsDict(TypedDict):
     Disables the automatic installation of a component. Default is `false`.
 
     The following example is the definition of addons block, The type of this field is list:
-
-    ```
-    # install nginx ingress, conflict with SLB ingress
-    addons {
-    name = "nginx-ingress-controller"
-    # use internet
-    config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-    # if use intranet, detail below.
-    # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-    }
-    ```
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -174,17 +507,6 @@ class EdgeKubernetesAddonArgs:
         :param pulumi.Input[_builtins.bool] disabled: Disables the automatic installation of a component. Default is `false`.
                
                The following example is the definition of addons block, The type of this field is list:
-               
-               ```
-               # install nginx ingress, conflict with SLB ingress
-               addons {
-               name = "nginx-ingress-controller"
-               # use internet
-               config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-               # if use intranet, detail below.
-               # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-               }
-               ```
         :param pulumi.Input[_builtins.str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         :param pulumi.Input[_builtins.str] version: It specifies the version of the component.
         """
@@ -216,17 +538,6 @@ class EdgeKubernetesAddonArgs:
         Disables the automatic installation of a component. Default is `false`.
 
         The following example is the definition of addons block, The type of this field is list:
-
-        ```
-        # install nginx ingress, conflict with SLB ingress
-        addons {
-        name = "nginx-ingress-controller"
-        # use internet
-        config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-        # if use intranet, detail below.
-        # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-        }
-        ```
         """
         return pulumi.get(self, "disabled")
 
@@ -475,13 +786,6 @@ class EdgeKubernetesRuntimeArgsDict(TypedDict):
     The version of the runtime.
 
     The following example is the definition of runtime block:
-
-    ```
-    runtime = {
-    name = "containerd"
-    version = "1.6.28"
-    }
-    ```
     """
 
 @pulumi.input_type
@@ -494,13 +798,6 @@ class EdgeKubernetesRuntimeArgs:
         :param pulumi.Input[_builtins.str] version: The version of the runtime.
                
                The following example is the definition of runtime block:
-               
-               ```
-               runtime = {
-               name = "containerd"
-               version = "1.6.28"
-               }
-               ```
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -526,13 +823,6 @@ class EdgeKubernetesRuntimeArgs:
         The version of the runtime.
 
         The following example is the definition of runtime block:
-
-        ```
-        runtime = {
-        name = "containerd"
-        version = "1.6.28"
-        }
-        ```
         """
         return pulumi.get(self, "version")
 
@@ -810,7 +1100,7 @@ class KubernetesAddonArgsDict(TypedDict):
 
     The following example is the definition of addons block, The type of this field is list:
 
-    ```
+    ```text
     # install nginx ingress, conflict with SLB ingress
     addons {
     name = "nginx-ingress-controller"
@@ -843,7 +1133,7 @@ class KubernetesAddonArgs:
                
                The following example is the definition of addons block, The type of this field is list:
                
-               ```
+               ```text
                # install nginx ingress, conflict with SLB ingress
                addons {
                name = "nginx-ingress-controller"
@@ -885,7 +1175,7 @@ class KubernetesAddonArgs:
 
         The following example is the definition of addons block, The type of this field is list:
 
-        ```
+        ```text
         # install nginx ingress, conflict with SLB ingress
         addons {
         name = "nginx-ingress-controller"
@@ -1167,7 +1457,7 @@ class KubernetesDeleteOptionArgsDict(TypedDict):
     - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
     - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 
-    ```
+    ```text
     ...
     // Specify delete_options as below when deleting cluster
     // delete SLB resources created by the Nginx Ingress Service
@@ -1206,7 +1496,7 @@ class KubernetesDeleteOptionArgs:
                - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
                - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
                
-               ```
+               ```text
                ...
                // Specify delete_options as below when deleting cluster
                // delete SLB resources created by the Nginx Ingress Service
@@ -1258,7 +1548,7 @@ class KubernetesDeleteOptionArgs:
         - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
         - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 
-        ```
+        ```text
         ...
         // Specify delete_options as below when deleting cluster
         // delete SLB resources created by the Nginx Ingress Service
@@ -1293,7 +1583,7 @@ class KubernetesDeleteOptionArgs:
 class KubernetesMasterNodeArgsDict(TypedDict):
     id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    ID of the node.
+    (Optional) The id of a node.
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1301,7 +1591,7 @@ class KubernetesMasterNodeArgsDict(TypedDict):
     """
     private_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The private IP address of node.
+    (Optional) The private ip of a node.
     """
 
 @pulumi.input_type
@@ -1311,9 +1601,9 @@ class KubernetesMasterNodeArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  private_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] id: ID of the node.
+        :param pulumi.Input[_builtins.str] id: (Optional) The id of a node.
         :param pulumi.Input[_builtins.str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
-        :param pulumi.Input[_builtins.str] private_ip: The private IP address of node.
+        :param pulumi.Input[_builtins.str] private_ip: (Optional) The private ip of a node.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -1326,7 +1616,7 @@ class KubernetesMasterNodeArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ID of the node.
+        (Optional) The id of a node.
         """
         return pulumi.get(self, "id")
 
@@ -1350,7 +1640,7 @@ class KubernetesMasterNodeArgs:
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The private IP address of node.
+        (Optional) The private ip of a node.
         """
         return pulumi.get(self, "private_ip")
 
@@ -1496,7 +1786,7 @@ class KubernetesRuntimeArgsDict(TypedDict):
 
     The following example is the definition of runtime block:
 
-    ```
+    ```text
     runtime = {
     name = "containerd"
     version = "1.6.28"
@@ -1515,7 +1805,7 @@ class KubernetesRuntimeArgs:
                
                The following example is the definition of runtime block:
                
-               ```
+               ```text
                runtime = {
                name = "containerd"
                version = "1.6.28"
@@ -1547,7 +1837,7 @@ class KubernetesRuntimeArgs:
 
         The following example is the definition of runtime block:
 
-        ```
+        ```text
         runtime = {
         name = "containerd"
         version = "1.6.28"
@@ -1580,30 +1870,25 @@ class ManagedKubernetesAddonArgsDict(TypedDict):
 
     The `main.tf`:
 
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-    import pulumi_std as std
+    ```text
+    resource "alicloud_cs_managed_kubernetes" "k8s" {
+    # ... other configuration ...
 
-    k8s = alicloud.cs.ManagedKubernetes("k8s", addons=[{
-        "name": output(std.lookup(map=entry["value"],
-            key="name",
-            default=cluster_addons).result).apply(lambda x: str(x)),
-        "config": output(std.lookup(map=entry["value"],
-            key="config",
-            default=cluster_addons).result).apply(lambda x: str(x)),
-        "version": output(std.lookup(map=entry["value"],
-            key="version",
-            default=cluster_addons).result).apply(lambda x: str(x)),
-        "disabled": output(std.lookup(map=entry["value"],
-            key="disabled",
-            default=cluster_addons).result).apply(lambda x: x == "true"),
-    } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]])
+    dynamic "addons" {
+    for_each = var.cluster_addons
+    content {
+    name     = lookup(addons.value, "name", var.cluster_addons)
+    config   = lookup(addons.value, "config", var.cluster_addons)
+    version  = lookup(addons.value, "version", var.cluster_addons)
+    disabled = lookup(addons.value, "disabled", var.cluster_addons)
+    }
+    }
+    }
     ```
 
     The `varibales.tf`:
 
-    ```
+    ```text
     # Network-flannel is required, Conflicts With Network-terway
     variable "cluster_addons" {
     description = "Addon components in kubernetes cluster"
@@ -1787,30 +2072,25 @@ class ManagedKubernetesAddonArgs:
                
                The `main.tf`:
                
-               ```python
-               import pulumi
-               import pulumi_alicloud as alicloud
-               import pulumi_std as std
+               ```text
+               resource "alicloud_cs_managed_kubernetes" "k8s" {
+               # ... other configuration ...
                
-               k8s = alicloud.cs.ManagedKubernetes("k8s", addons=[{
-                   "name": output(std.lookup(map=entry["value"],
-                       key="name",
-                       default=cluster_addons).result).apply(lambda x: str(x)),
-                   "config": output(std.lookup(map=entry["value"],
-                       key="config",
-                       default=cluster_addons).result).apply(lambda x: str(x)),
-                   "version": output(std.lookup(map=entry["value"],
-                       key="version",
-                       default=cluster_addons).result).apply(lambda x: str(x)),
-                   "disabled": output(std.lookup(map=entry["value"],
-                       key="disabled",
-                       default=cluster_addons).result).apply(lambda x: x == "true"),
-               } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]])
+               dynamic "addons" {
+               for_each = var.cluster_addons
+               content {
+               name     = lookup(addons.value, "name", var.cluster_addons)
+               config   = lookup(addons.value, "config", var.cluster_addons)
+               version  = lookup(addons.value, "version", var.cluster_addons)
+               disabled = lookup(addons.value, "disabled", var.cluster_addons)
+               }
+               }
+               }
                ```
                
                The `varibales.tf`:
                
-               ```
+               ```text
                # Network-flannel is required, Conflicts With Network-terway
                variable "cluster_addons" {
                description = "Addon components in kubernetes cluster"
@@ -2003,30 +2283,25 @@ class ManagedKubernetesAddonArgs:
 
         The `main.tf`:
 
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_std as std
+        ```text
+        resource "alicloud_cs_managed_kubernetes" "k8s" {
+        # ... other configuration ...
 
-        k8s = alicloud.cs.ManagedKubernetes("k8s", addons=[{
-            "name": output(std.lookup(map=entry["value"],
-                key="name",
-                default=cluster_addons).result).apply(lambda x: str(x)),
-            "config": output(std.lookup(map=entry["value"],
-                key="config",
-                default=cluster_addons).result).apply(lambda x: str(x)),
-            "version": output(std.lookup(map=entry["value"],
-                key="version",
-                default=cluster_addons).result).apply(lambda x: str(x)),
-            "disabled": output(std.lookup(map=entry["value"],
-                key="disabled",
-                default=cluster_addons).result).apply(lambda x: x == "true"),
-        } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]])
+        dynamic "addons" {
+        for_each = var.cluster_addons
+        content {
+        name     = lookup(addons.value, "name", var.cluster_addons)
+        config   = lookup(addons.value, "config", var.cluster_addons)
+        version  = lookup(addons.value, "version", var.cluster_addons)
+        disabled = lookup(addons.value, "disabled", var.cluster_addons)
+        }
+        }
+        }
         ```
 
         The `varibales.tf`:
 
-        ```
+        ```text
         # Network-flannel is required, Conflicts With Network-terway
         variable "cluster_addons" {
         description = "Addon components in kubernetes cluster"
@@ -2627,7 +2902,7 @@ class ManagedKubernetesDeleteOptionArgsDict(TypedDict):
     - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
     - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 
-    ```
+    ```text
     ...
     // Specify delete_options as below when deleting cluster
     // delete SLB resources created by the Nginx Ingress Service
@@ -2666,7 +2941,7 @@ class ManagedKubernetesDeleteOptionArgs:
                - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
                - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
                
-               ```
+               ```text
                ...
                // Specify delete_options as below when deleting cluster
                // delete SLB resources created by the Nginx Ingress Service
@@ -2718,7 +2993,7 @@ class ManagedKubernetesDeleteOptionArgs:
         - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
         - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 
-        ```
+        ```text
         ...
         // Specify delete_options as below when deleting cluster
         // delete SLB resources created by the Nginx Ingress Service
@@ -2768,7 +3043,8 @@ class ManagedKubernetesMaintenanceWindowArgsDict(TypedDict):
     Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
     for example:
-    ```
+
+    ```text
     maintenance_window {
     enable            = true
     maintenance_time  = "2024-10-15T12:31:00.000+08:00"
@@ -2792,7 +3068,8 @@ class ManagedKubernetesMaintenanceWindowArgs:
         :param pulumi.Input[_builtins.str] weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
                
                for example:
-               ```
+               
+               ```text
                maintenance_window {
                enable            = true
                maintenance_time  = "2024-10-15T12:31:00.000+08:00"
@@ -2853,7 +3130,8 @@ class ManagedKubernetesMaintenanceWindowArgs:
         Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
         for example:
-        ```
+
+        ```text
         maintenance_window {
         enable            = true
         maintenance_time  = "2024-10-15T12:31:00.000+08:00"
@@ -2904,7 +3182,8 @@ class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgsDict(TypedDict):
     The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 
     for example:
-    ```
+
+    ```text
     operation_policy {
     cluster_auto_upgrade {
     enabled = true
@@ -2927,7 +3206,8 @@ class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs:
         :param pulumi.Input[_builtins.str] channel: The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
                
                for example:
-               ```
+               
+               ```text
                operation_policy {
                cluster_auto_upgrade {
                enabled = true
@@ -2949,7 +3229,8 @@ class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs:
         The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 
         for example:
-        ```
+
+        ```text
         operation_policy {
         cluster_auto_upgrade {
         enabled = true
@@ -3072,7 +3353,8 @@ class ManagedKubernetesUpgradePolicyArgsDict(TypedDict):
     Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
 
     for example:
-    ```
+
+    ```text
     # Upgrade cluster version with control plane only
     version = "1.32.1-aliyun.1"
 
@@ -3092,7 +3374,8 @@ class ManagedKubernetesUpgradePolicyArgs:
         :param pulumi.Input[_builtins.bool] control_plane_only: Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
                
                for example:
-               ```
+               
+               ```text
                # Upgrade cluster version with control plane only
                version = "1.32.1-aliyun.1"
                
@@ -3113,7 +3396,8 @@ class ManagedKubernetesUpgradePolicyArgs:
         Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
 
         for example:
-        ```
+
+        ```text
         # Upgrade cluster version with control plane only
         version = "1.32.1-aliyun.1"
 
@@ -4771,7 +5055,7 @@ class NodePoolLabelArgs:
 class NodePoolManagementArgsDict(TypedDict):
     auto_repair: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `auto_repair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see cs_kubernetes_addon for installation.
+    Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resource_ids` when it is queried. Turning `auto_repair` back on makes the retained policy take effect again. When `auto_repair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See cs_kubernetes_addon for installation.
     """
     auto_repair_policy: NotRequired[pulumi.Input[Optional['NodePoolManagementAutoRepairPolicyArgsDict']]]
     """
@@ -4824,7 +5108,7 @@ class NodePoolManagementArgs:
                  surge: pulumi.Input[Optional[_builtins.int]] = None,
                  surge_percentage: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.bool] auto_repair: Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `auto_repair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see cs_kubernetes_addon for installation.
+        :param pulumi.Input[_builtins.bool] auto_repair: Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resource_ids` when it is queried. Turning `auto_repair` back on makes the retained policy take effect again. When `auto_repair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See cs_kubernetes_addon for installation.
         :param pulumi.Input['NodePoolManagementAutoRepairPolicyArgs'] auto_repair_policy: Automatic repair node policy. See `auto_repair_policy` below.
         :param pulumi.Input[_builtins.bool] auto_upgrade: Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
         :param pulumi.Input['NodePoolManagementAutoUpgradePolicyArgs'] auto_upgrade_policy: The auto update policy. See `auto_upgrade_policy` below.
@@ -4866,7 +5150,7 @@ class NodePoolManagementArgs:
     @pulumi.getter(name="autoRepair")
     def auto_repair(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `auto_repair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see cs_kubernetes_addon for installation.
+        Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resource_ids` when it is queried. Turning `auto_repair` back on makes the retained policy take effect again. When `auto_repair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See cs_kubernetes_addon for installation.
         """
         return pulumi.get(self, "auto_repair")
 
@@ -4986,6 +5270,20 @@ class NodePoolManagementArgs:
 
 
 class NodePoolManagementAutoRepairPolicyArgsDict(TypedDict):
+    auto_repair_policy_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the auto repair policy bound to the node pool. It takes precedence over `restart_node`. The value is only sent when it is non-empty: Terraform treats an empty attribute value as unset, so to suspend automatic repair set `auto_repair` to `false` instead of clearing this field. The binding is retained while auto repair is off and takes effect again when `auto_repair` is turned back on. Once a policy ID has been bound explicitly, removing the argument from the configuration does not unbind the policy. You can use `cs.AutoRepairPolicy` to create a custom policy, or reference a builtin policy returned by the `cs_get_auto_repair_policies` data source. The builtin policies are `r-repair-sys-comp-failure` (repair, restarting the node when needed) and `r-repair-sys-comp-failure-without-reboots` (repair without restarting the node). They replace the deprecated `restart_node` switch: `r-repair-sys-comp-failure` is equivalent to `restart_node = true` and `r-repair-sys-comp-failure-without-reboots` to `restart_node = false`. The policy subtype must match the node pool type (`ess` or `lingjun`).
+    """
+    max_parallel_repairing_nodes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The maximum number of nodes that can be repaired simultaneously. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]` (decimals such as `2.5%` are accepted). Defaults to `1`. An empty value is treated as unset by Terraform and is not sent.
+    """
+    max_unhealthy_nodes_threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The circuit breaker threshold for auto repair. When the number of unhealthy nodes in the node pool reaches this threshold, the node pool stops starting new repair actions. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]`. It must be greater than or equal to `max_parallel_repairing_nodes` when both are given in the same form (both a count or both a percentage). Defaults to `100%`. An empty value is treated as unset by Terraform and is not sent.
+
+    > **NOTE:** An auto repair policy can only be bound to a managed node pool of an ACK Pro cluster, and Auto mode node pools do not support auto repair policies. Binding a policy requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later; automatic fault diagnosis additionally requires `ack-node-problem-detector` at version `1.2.41` or later. The service validates the installed versions on every request and rejects requests whose add-on version is below the minimum, so install or upgrade the add-ons with cs_kubernetes_addon before enabling these features.
+    """
     restart_node: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
@@ -4994,15 +5292,71 @@ class NodePoolManagementAutoRepairPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class NodePoolManagementAutoRepairPolicyArgs:
     def __init__(__self__, *,
+                 auto_repair_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_parallel_repairing_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_unhealthy_nodes_threshold: pulumi.Input[Optional[_builtins.str]] = None,
                  restart_node: pulumi.Input[Optional[_builtins.bool]] = None):
         """
+        :param pulumi.Input[_builtins.str] auto_repair_policy_id: The ID of the auto repair policy bound to the node pool. It takes precedence over `restart_node`. The value is only sent when it is non-empty: Terraform treats an empty attribute value as unset, so to suspend automatic repair set `auto_repair` to `false` instead of clearing this field. The binding is retained while auto repair is off and takes effect again when `auto_repair` is turned back on. Once a policy ID has been bound explicitly, removing the argument from the configuration does not unbind the policy. You can use `cs.AutoRepairPolicy` to create a custom policy, or reference a builtin policy returned by the `cs_get_auto_repair_policies` data source. The builtin policies are `r-repair-sys-comp-failure` (repair, restarting the node when needed) and `r-repair-sys-comp-failure-without-reboots` (repair without restarting the node). They replace the deprecated `restart_node` switch: `r-repair-sys-comp-failure` is equivalent to `restart_node = true` and `r-repair-sys-comp-failure-without-reboots` to `restart_node = false`. The policy subtype must match the node pool type (`ess` or `lingjun`).
+        :param pulumi.Input[_builtins.str] max_parallel_repairing_nodes: The maximum number of nodes that can be repaired simultaneously. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]` (decimals such as `2.5%` are accepted). Defaults to `1`. An empty value is treated as unset by Terraform and is not sent.
+        :param pulumi.Input[_builtins.str] max_unhealthy_nodes_threshold: The circuit breaker threshold for auto repair. When the number of unhealthy nodes in the node pool reaches this threshold, the node pool stops starting new repair actions. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]`. It must be greater than or equal to `max_parallel_repairing_nodes` when both are given in the same form (both a count or both a percentage). Defaults to `100%`. An empty value is treated as unset by Terraform and is not sent.
+               
+               > **NOTE:** An auto repair policy can only be bound to a managed node pool of an ACK Pro cluster, and Auto mode node pools do not support auto repair policies. Binding a policy requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later; automatic fault diagnosis additionally requires `ack-node-problem-detector` at version `1.2.41` or later. The service validates the installed versions on every request and rejects requests whose add-on version is below the minimum, so install or upgrade the add-ons with cs_kubernetes_addon before enabling these features.
         :param pulumi.Input[_builtins.bool] restart_node: Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
         """
+        if auto_repair_policy_id is not None:
+            pulumi.set(__self__, "auto_repair_policy_id", auto_repair_policy_id)
+        if max_parallel_repairing_nodes is not None:
+            pulumi.set(__self__, "max_parallel_repairing_nodes", max_parallel_repairing_nodes)
+        if max_unhealthy_nodes_threshold is not None:
+            pulumi.set(__self__, "max_unhealthy_nodes_threshold", max_unhealthy_nodes_threshold)
+        if restart_node is not None:
+            warnings.warn("""Field 'management.auto_repair_policy.restart_node' has been deprecated from provider version 2.3.0. Use 'management.auto_repair_policy.auto_repair_policy_id' instead: set it to 'r-repair-sys-comp-failure' to replace restart_node = true, or to 'r-repair-sys-comp-failure-without-reboots' to replace restart_node = false. When both are set, auto_repair_policy_id takes precedence and restart_node is ignored.""", DeprecationWarning)
+            pulumi.log.warn("""restart_node is deprecated: Field 'management.auto_repair_policy.restart_node' has been deprecated from provider version 2.3.0. Use 'management.auto_repair_policy.auto_repair_policy_id' instead: set it to 'r-repair-sys-comp-failure' to replace restart_node = true, or to 'r-repair-sys-comp-failure-without-reboots' to replace restart_node = false. When both are set, auto_repair_policy_id takes precedence and restart_node is ignored.""")
         if restart_node is not None:
             pulumi.set(__self__, "restart_node", restart_node)
 
     @_builtins.property
+    @pulumi.getter(name="autoRepairPolicyId")
+    def auto_repair_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the auto repair policy bound to the node pool. It takes precedence over `restart_node`. The value is only sent when it is non-empty: Terraform treats an empty attribute value as unset, so to suspend automatic repair set `auto_repair` to `false` instead of clearing this field. The binding is retained while auto repair is off and takes effect again when `auto_repair` is turned back on. Once a policy ID has been bound explicitly, removing the argument from the configuration does not unbind the policy. You can use `cs.AutoRepairPolicy` to create a custom policy, or reference a builtin policy returned by the `cs_get_auto_repair_policies` data source. The builtin policies are `r-repair-sys-comp-failure` (repair, restarting the node when needed) and `r-repair-sys-comp-failure-without-reboots` (repair without restarting the node). They replace the deprecated `restart_node` switch: `r-repair-sys-comp-failure` is equivalent to `restart_node = true` and `r-repair-sys-comp-failure-without-reboots` to `restart_node = false`. The policy subtype must match the node pool type (`ess` or `lingjun`).
+        """
+        return pulumi.get(self, "auto_repair_policy_id")
+
+    @auto_repair_policy_id.setter
+    def auto_repair_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auto_repair_policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxParallelRepairingNodes")
+    def max_parallel_repairing_nodes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The maximum number of nodes that can be repaired simultaneously. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]` (decimals such as `2.5%` are accepted). Defaults to `1`. An empty value is treated as unset by Terraform and is not sent.
+        """
+        return pulumi.get(self, "max_parallel_repairing_nodes")
+
+    @max_parallel_repairing_nodes.setter
+    def max_parallel_repairing_nodes(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "max_parallel_repairing_nodes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxUnhealthyNodesThreshold")
+    def max_unhealthy_nodes_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The circuit breaker threshold for auto repair. When the number of unhealthy nodes in the node pool reaches this threshold, the node pool stops starting new repair actions. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]`. It must be greater than or equal to `max_parallel_repairing_nodes` when both are given in the same form (both a count or both a percentage). Defaults to `100%`. An empty value is treated as unset by Terraform and is not sent.
+
+        > **NOTE:** An auto repair policy can only be bound to a managed node pool of an ACK Pro cluster, and Auto mode node pools do not support auto repair policies. Binding a policy requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later; automatic fault diagnosis additionally requires `ack-node-problem-detector` at version `1.2.41` or later. The service validates the installed versions on every request and rejects requests whose add-on version is below the minimum, so install or upgrade the add-ons with cs_kubernetes_addon before enabling these features.
+        """
+        return pulumi.get(self, "max_unhealthy_nodes_threshold")
+
+    @max_unhealthy_nodes_threshold.setter
+    def max_unhealthy_nodes_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "max_unhealthy_nodes_threshold", value)
+
+    @_builtins.property
     @pulumi.getter(name="restartNode")
+    @_utilities.deprecated("""Field 'management.auto_repair_policy.restart_node' has been deprecated from provider version 2.3.0. Use 'management.auto_repair_policy.auto_repair_policy_id' instead: set it to 'r-repair-sys-comp-failure' to replace restart_node = true, or to 'r-repair-sys-comp-failure-without-reboots' to replace restart_node = false. When both are set, auto_repair_policy_id takes precedence and restart_node is ignored.""")
     def restart_node(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
@@ -5711,33 +6065,6 @@ class ServerlessKubernetesAddonArgsDict(TypedDict):
     Disables the automatic installation of a component. Default is `false`.
 
     The following example is the definition of addons block, The type of this field is list:
-
-    ```
-    # install nginx ingress, conflict with ALB ingress
-    addons {
-    name = "nginx-ingress-controller"
-    # use internet
-    config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-    # if use intranet, detail below.
-    # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-    }
-    # install ALB ingress, conflict with nginx ingress
-    addons {
-    name = "alb-ingress-controller"
-    }
-    # install metric server
-    addons {
-    name = "metrics-server"
-    }
-    # install knative
-    addons {
-    name = "knative"
-    }
-    # install prometheus
-    addons {
-    name = "arms-prometheus"
-    }
-    ```
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5760,33 +6087,6 @@ class ServerlessKubernetesAddonArgs:
         :param pulumi.Input[_builtins.bool] disabled: Disables the automatic installation of a component. Default is `false`.
                
                The following example is the definition of addons block, The type of this field is list:
-               
-               ```
-               # install nginx ingress, conflict with ALB ingress
-               addons {
-               name = "nginx-ingress-controller"
-               # use internet
-               config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-               # if use intranet, detail below.
-               # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-               }
-               # install ALB ingress, conflict with nginx ingress
-               addons {
-               name = "alb-ingress-controller"
-               }
-               # install metric server
-               addons {
-               name = "metrics-server"
-               }
-               # install knative
-               addons {
-               name = "knative"
-               }
-               # install prometheus
-               addons {
-               name = "arms-prometheus"
-               }
-               ```
         :param pulumi.Input[_builtins.str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         :param pulumi.Input[_builtins.str] version: It specifies the version of the component.
         """
@@ -5818,33 +6118,6 @@ class ServerlessKubernetesAddonArgs:
         Disables the automatic installation of a component. Default is `false`.
 
         The following example is the definition of addons block, The type of this field is list:
-
-        ```
-        # install nginx ingress, conflict with ALB ingress
-        addons {
-        name = "nginx-ingress-controller"
-        # use internet
-        config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-        # if use intranet, detail below.
-        # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
-        }
-        # install ALB ingress, conflict with nginx ingress
-        addons {
-        name = "alb-ingress-controller"
-        }
-        # install metric server
-        addons {
-        name = "metrics-server"
-        }
-        # install knative
-        addons {
-        name = "knative"
-        }
-        # install prometheus
-        addons {
-        name = "arms-prometheus"
-        }
-        ```
         """
         return pulumi.get(self, "disabled")
 
@@ -5890,35 +6163,6 @@ class ServerlessKubernetesDeleteOptionArgsDict(TypedDict):
     - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
     - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
     - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
-    ```
-    ...
-    // Specify delete_options as below when deleting cluster
-    // delete SLB resources created by the Nginx Ingress Service
-    delete_options {
-    delete_mode = "delete"
-    resource_type = "SLB"
-    }
-    // delete ALB resources created by the ALB Ingress Controller
-    delete_options {
-    delete_mode = "delete"
-    resource_type = "ALB"
-    }
-    // delete SLS Project used by the cluster logging feature
-    delete_options {
-    delete_mode = "delete"
-    resource_type = "SLS_Data"
-    }
-    // delete SLS Project used for the managed cluster control plane logs
-    delete_options {
-    delete_mode = "delete"
-    resource_type = "SLS_ControlPlane"
-    }
-    // delete PrivateZone resources created by the cluster
-    delete_options {
-    delete_mode = "delete"
-    resource_type = "PrivateZone"
-    }
-    ```
     """
 
 @pulumi.input_type
@@ -5934,35 +6178,6 @@ class ServerlessKubernetesDeleteOptionArgs:
                - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
                - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
                - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
-               ```
-               ...
-               // Specify delete_options as below when deleting cluster
-               // delete SLB resources created by the Nginx Ingress Service
-               delete_options {
-               delete_mode = "delete"
-               resource_type = "SLB"
-               }
-               // delete ALB resources created by the ALB Ingress Controller
-               delete_options {
-               delete_mode = "delete"
-               resource_type = "ALB"
-               }
-               // delete SLS Project used by the cluster logging feature
-               delete_options {
-               delete_mode = "delete"
-               resource_type = "SLS_Data"
-               }
-               // delete SLS Project used for the managed cluster control plane logs
-               delete_options {
-               delete_mode = "delete"
-               resource_type = "SLS_ControlPlane"
-               }
-               // delete PrivateZone resources created by the cluster
-               delete_options {
-               delete_mode = "delete"
-               resource_type = "PrivateZone"
-               }
-               ```
         """
         if delete_mode is not None:
             pulumi.set(__self__, "delete_mode", delete_mode)
@@ -5991,35 +6206,6 @@ class ServerlessKubernetesDeleteOptionArgs:
         - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
         - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
         - `PrivateZone`: PrivateZone resources created by the cluster, default behavior is to retain, option to delete is available.
-        ```
-        ...
-        // Specify delete_options as below when deleting cluster
-        // delete SLB resources created by the Nginx Ingress Service
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLB"
-        }
-        // delete ALB resources created by the ALB Ingress Controller
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "ALB"
-        }
-        // delete SLS Project used by the cluster logging feature
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLS_Data"
-        }
-        // delete SLS Project used for the managed cluster control plane logs
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "SLS_ControlPlane"
-        }
-        // delete PrivateZone resources created by the cluster
-        delete_options {
-        delete_mode = "delete"
-        resource_type = "PrivateZone"
-        }
-        ```
         """
         return pulumi.get(self, "resource_type")
 
@@ -6046,14 +6232,6 @@ class ServerlessKubernetesMaintenanceWindowArgsDict(TypedDict):
     Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
     for example:
-    ```
-    maintenance_window {
-    enable            = true
-    maintenance_time  = "2024-10-15T12:31:00.000+08:00"
-    duration          = "3h"
-    weekly_period     = "Monday,Friday"
-    }
-    ```
     """
 
 @pulumi.input_type
@@ -6070,14 +6248,6 @@ class ServerlessKubernetesMaintenanceWindowArgs:
         :param pulumi.Input[_builtins.str] weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
                
                for example:
-               ```
-               maintenance_window {
-               enable            = true
-               maintenance_time  = "2024-10-15T12:31:00.000+08:00"
-               duration          = "3h"
-               weekly_period     = "Monday,Friday"
-               }
-               ```
         """
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
@@ -6131,14 +6301,6 @@ class ServerlessKubernetesMaintenanceWindowArgs:
         Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
         for example:
-        ```
-        maintenance_window {
-        enable            = true
-        maintenance_time  = "2024-10-15T12:31:00.000+08:00"
-        duration          = "3h"
-        weekly_period     = "Monday,Friday"
-        }
-        ```
         """
         return pulumi.get(self, "weekly_period")
 
@@ -6182,14 +6344,6 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgsDict(TypedDict):
     The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 
     for example:
-    ```
-    operation_policy {
-    cluster_auto_upgrade {
-    enabled = true
-    channel = "stable"
-    }
-    }
-    ```
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -6205,14 +6359,6 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs:
         :param pulumi.Input[_builtins.str] channel: The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
                
                for example:
-               ```
-               operation_policy {
-               cluster_auto_upgrade {
-               enabled = true
-               channel = "stable"
-               }
-               }
-               ```
         :param pulumi.Input[_builtins.bool] enabled: Whether the RRSA feature has been enabled.
         """
         if channel is not None:
@@ -6227,14 +6373,6 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs:
         The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 
         for example:
-        ```
-        operation_policy {
-        cluster_auto_upgrade {
-        enabled = true
-        channel = "stable"
-        }
-        }
-        ```
         """
         return pulumi.get(self, "channel")
 

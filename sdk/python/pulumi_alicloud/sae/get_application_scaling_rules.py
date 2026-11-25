@@ -47,6 +47,9 @@ class GetApplicationScalingRulesResult:
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> _builtins.str:
+        """
+        The ID of the Application.
+        """
         return pulumi.get(self, "app_id")
 
     @_builtins.property
@@ -70,6 +73,9 @@ class GetApplicationScalingRulesResult:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetApplicationScalingRulesRuleResult']:
+        """
+        A list of Sae Application Scaling Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
 
@@ -93,7 +99,7 @@ def get_application_scaling_rules(app_id: Optional[_builtins.str] = None,
     """
     This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.159.0+.
+    > **NOTE:** Available since v1.159.0.
 
     ## Example Usage
 
@@ -136,7 +142,7 @@ def get_application_scaling_rules_output(app_id: pulumi.Input[Optional[_builtins
     """
     This data source provides the Sae Application Scaling Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.159.0+.
+    > **NOTE:** Available since v1.159.0.
 
     ## Example Usage
 

@@ -16,11 +16,11 @@ var _ = internal.GetEnvOrDefault
 type DomainSource struct {
 	// The address of the origin server. You can specify an IP address or a domain name.
 	SourceContent string `pulumi:"sourceContent"`
-	// The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+	// The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
 	SourcePort string `pulumi:"sourcePort"`
-	// The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+	// The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
 	SourcePriority *string `pulumi:"sourcePriority"`
-	// The type of the origin server. Valid values:
+	// The origin server type. Valid values:
 	SourceType string `pulumi:"sourceType"`
 }
 
@@ -38,11 +38,11 @@ type DomainSourceInput interface {
 type DomainSourceArgs struct {
 	// The address of the origin server. You can specify an IP address or a domain name.
 	SourceContent pulumi.StringInput `pulumi:"sourceContent"`
-	// The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+	// The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
 	SourcePort pulumi.StringInput `pulumi:"sourcePort"`
-	// The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+	// The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
 	SourcePriority pulumi.StringPtrInput `pulumi:"sourcePriority"`
-	// The type of the origin server. Valid values:
+	// The origin server type. Valid values:
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
 }
 
@@ -102,17 +102,17 @@ func (o DomainSourceOutput) SourceContent() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainSource) string { return v.SourceContent }).(pulumi.StringOutput)
 }
 
-// The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+// The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
 func (o DomainSourceOutput) SourcePort() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainSource) string { return v.SourcePort }).(pulumi.StringOutput)
 }
 
-// The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+// The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
 func (o DomainSourceOutput) SourcePriority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainSource) *string { return v.SourcePriority }).(pulumi.StringPtrOutput)
 }
 
-// The type of the origin server. Valid values:
+// The origin server type. Valid values:
 func (o DomainSourceOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainSource) string { return v.SourceType }).(pulumi.StringOutput)
 }
@@ -152,11 +152,11 @@ type GetDomainsDomain struct {
 	Id string `pulumi:"id"`
 	// Indicates whether the domain name for CDN is in a sandbox environment.
 	SandBox string `pulumi:"sandBox"`
-	// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+	// The information about the address of the origin server. Each element contains the following attributes:
 	Sources []GetDomainsDomainSource `pulumi:"sources"`
 	// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
 	SslProtocol string `pulumi:"sslProtocol"`
-	// The status of the resource.
+	// The status of the domain name. The value of this parameter is used as a condition to filter domain names.
 	Status string `pulumi:"status"`
 }
 
@@ -186,11 +186,11 @@ type GetDomainsDomainArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Indicates whether the domain name for CDN is in a sandbox environment.
 	SandBox pulumi.StringInput `pulumi:"sandBox"`
-	// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+	// The information about the address of the origin server. Each element contains the following attributes:
 	Sources GetDomainsDomainSourceArrayInput `pulumi:"sources"`
 	// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
 	SslProtocol pulumi.StringInput `pulumi:"sslProtocol"`
-	// The status of the resource.
+	// The status of the domain name. The value of this parameter is used as a condition to filter domain names.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -280,7 +280,7 @@ func (o GetDomainsDomainOutput) SandBox() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.SandBox }).(pulumi.StringOutput)
 }
 
-// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+// The information about the address of the origin server. Each element contains the following attributes:
 func (o GetDomainsDomainOutput) Sources() GetDomainsDomainSourceArrayOutput {
 	return o.ApplyT(func(v GetDomainsDomain) []GetDomainsDomainSource { return v.Sources }).(GetDomainsDomainSourceArrayOutput)
 }
@@ -290,7 +290,7 @@ func (o GetDomainsDomainOutput) SslProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.SslProtocol }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the domain name. The value of this parameter is used as a condition to filter domain names.
 func (o GetDomainsDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -316,10 +316,14 @@ func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOu
 }
 
 type GetDomainsDomainSource struct {
-	SourceContent  string `pulumi:"sourceContent"`
-	SourcePort     string `pulumi:"sourcePort"`
+	// The address of the origin server. You can specify an IP address or a domain name.
+	SourceContent string `pulumi:"sourceContent"`
+	// The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+	SourcePort string `pulumi:"sourcePort"`
+	// The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
 	SourcePriority string `pulumi:"sourcePriority"`
-	SourceType     string `pulumi:"sourceType"`
+	// The origin server type. Valid values: `ipaddr`, `domain`, `oss`.
+	SourceType string `pulumi:"sourceType"`
 }
 
 // GetDomainsDomainSourceInput is an input type that accepts GetDomainsDomainSourceArgs and GetDomainsDomainSourceOutput values.
@@ -334,10 +338,14 @@ type GetDomainsDomainSourceInput interface {
 }
 
 type GetDomainsDomainSourceArgs struct {
-	SourceContent  pulumi.StringInput `pulumi:"sourceContent"`
-	SourcePort     pulumi.StringInput `pulumi:"sourcePort"`
+	// The address of the origin server. You can specify an IP address or a domain name.
+	SourceContent pulumi.StringInput `pulumi:"sourceContent"`
+	// The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+	SourcePort pulumi.StringInput `pulumi:"sourcePort"`
+	// The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
 	SourcePriority pulumi.StringInput `pulumi:"sourcePriority"`
-	SourceType     pulumi.StringInput `pulumi:"sourceType"`
+	// The origin server type. Valid values: `ipaddr`, `domain`, `oss`.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
 }
 
 func (GetDomainsDomainSourceArgs) ElementType() reflect.Type {
@@ -391,18 +399,22 @@ func (o GetDomainsDomainSourceOutput) ToGetDomainsDomainSourceOutputWithContext(
 	return o
 }
 
+// The address of the origin server. You can specify an IP address or a domain name.
 func (o GetDomainsDomainSourceOutput) SourceContent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomainSource) string { return v.SourceContent }).(pulumi.StringOutput)
 }
 
+// The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
 func (o GetDomainsDomainSourceOutput) SourcePort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomainSource) string { return v.SourcePort }).(pulumi.StringOutput)
 }
 
+// The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
 func (o GetDomainsDomainSourceOutput) SourcePriority() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomainSource) string { return v.SourcePriority }).(pulumi.StringOutput)
 }
 
+// The origin server type. Valid values: `ipaddr`, `domain`, `oss`.
 func (o GetDomainsDomainSourceOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomainSource) string { return v.SourceType }).(pulumi.StringOutput)
 }

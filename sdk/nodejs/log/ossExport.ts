@@ -130,7 +130,7 @@ export class OssExport extends pulumi.CustomResource {
      */
     declare public readonly compressType: pulumi.Output<string>;
     /**
-     * Configure columns when `contentType` is `parquet` or `orc`.
+     * Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
      */
     declare public readonly configColumns: pulumi.Output<outputs.log.OssExportConfigColumn[] | undefined>;
     /**
@@ -334,7 +334,7 @@ export interface OssExportState {
      */
     compressType?: pulumi.Input<string | undefined>;
     /**
-     * Configure columns when `contentType` is `parquet` or `orc`.
+     * Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
      */
     configColumns?: pulumi.Input<pulumi.Input<inputs.log.OssExportConfigColumn>[] | undefined>;
     /**
@@ -441,7 +441,7 @@ export interface OssExportArgs {
      */
     compressType?: pulumi.Input<string | undefined>;
     /**
-     * Configure columns when `contentType` is `parquet` or `orc`.
+     * Configure columns when `contentType` is `parquet` or `orc`. See `configColumns` below.
      */
     configColumns?: pulumi.Input<pulumi.Input<inputs.log.OssExportConfigColumn>[] | undefined>;
     /**

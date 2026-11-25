@@ -59,11 +59,17 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the account.
+        """
         return pulumi.get(self, "account_name")
 
     @_builtins.property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetAccountsAccountResult']:
+        """
+        A list of Kvstore Accounts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "accounts")
 
     @_builtins.property
@@ -77,11 +83,17 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Account IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        The Id of instance in which account belongs.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -92,6 +104,9 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Account names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -102,6 +117,9 @@ class GetAccountsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of account.
+        """
         return pulumi.get(self, "status")
 
 
@@ -131,7 +149,7 @@ def get_accounts(account_name: Optional[_builtins.str] = None,
     """
     This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.102.0+.
+    > **NOTE:** Available since v1.102.0.
 
     ## Example Usage
 
@@ -148,6 +166,7 @@ def get_accounts(account_name: Optional[_builtins.str] = None,
 
     :param _builtins.str account_name: The name of the account.
     :param _builtins.str instance_id: The Id of instance in which account belongs.
+    :param _builtins.str name_regex: A regex string to apply to the account name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
     """
@@ -179,7 +198,7 @@ def get_accounts_output(account_name: pulumi.Input[Optional[Optional[_builtins.s
     """
     This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.102.0+.
+    > **NOTE:** Available since v1.102.0.
 
     ## Example Usage
 
@@ -196,6 +215,7 @@ def get_accounts_output(account_name: pulumi.Input[Optional[Optional[_builtins.s
 
     :param _builtins.str account_name: The name of the account.
     :param _builtins.str instance_id: The Id of instance in which account belongs.
+    :param _builtins.str name_regex: A regex string to apply to the account name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str status: The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
     """

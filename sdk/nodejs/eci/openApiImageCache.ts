@@ -6,6 +6,76 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * `alicloud.eci.OpenApiImageCache` is an alias of `alicloud.eci.ImageCache`.
+ * Both resource type names are registered against the same `ResourceEciImageCache` implementation and share an
+ * identical schema, lifecycle and acceptance coverage; they may be used interchangeably. The
+ * `alicloud.eci.OpenApiImageCache` name is retained for compatibility with the OpenAPI resource
+ * registration of the ECI service.
+ *
+ * An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about
+ * Alicloud ECI Image Cache and how to use it, see
+ * [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
+ *
+ * > **NOTE:** Available since v1.89.0.
+ *
+ * > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = alicloud.eci.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.0.0.0/8",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.1.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneIds?.[0]),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {
+ *     isp: "BGP",
+ *     addressName: name,
+ *     netmode: "public",
+ *     bandwidth: "1",
+ *     securityProtectionTypes: ["AntiDDoS_Enhanced"],
+ *     paymentType: "PayAsYouGo",
+ * });
+ * const defaultGetRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultOpenApiImageCache = new alicloud.eci.OpenApiImageCache("default", {
+ *     imageCacheName: name,
+ *     images: [defaultGetRegions.then(defaultGetRegions => `registry-vpc.${defaultGetRegions.regions?.[0]?.id}.aliyuncs.com/eci_open/nginx:alpine`)],
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     vswitchId: defaultSwitch.id,
+ *     eipInstanceId: defaultEipAddress.id,
+ * });
+ * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
+ * ## Import
+ *
+ * ECI Image Cache can be imported using the id, e.g.
+ *
+ * ```sh
+ * $ pulumi import alicloud:eci/openApiImageCache:OpenApiImageCache example abc123456
+ * ```
+ */
 export class OpenApiImageCache extends pulumi.CustomResource {
     /**
      * Get an existing OpenApiImageCache resource's state with the given name, ID, and optional extra
@@ -45,17 +115,53 @@ export class OpenApiImageCache extends pulumi.CustomResource {
         return obj['__pulumiType'] === OpenApiImageCache.__pulumiType;
     }
 
+    /**
+     * The ID of the container group job that is used to create the image cache.
+     */
     declare public /*out*/ readonly containerGroupId: pulumi.Output<string>;
+    /**
+     * The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+     */
     declare public readonly eipInstanceId: pulumi.Output<string | undefined>;
+    /**
+     * The name of the image cache.
+     */
     declare public readonly imageCacheName: pulumi.Output<string>;
+    /**
+     * The size of the image cache. Default to `20`. Unit: GiB.
+     */
     declare public readonly imageCacheSize: pulumi.Output<number | undefined>;
+    /**
+     * The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
+     */
     declare public readonly imageRegistryCredentials: pulumi.Output<outputs.eci.OpenApiImageCacheImageRegistryCredential[] | undefined>;
+    /**
+     * The images to be cached. The image name must be versioned.
+     */
     declare public readonly images: pulumi.Output<string[]>;
+    /**
+     * The ID of the resource group.
+     */
     declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
+    /**
+     * The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+     */
     declare public readonly retentionDays: pulumi.Output<number | undefined>;
+    /**
+     * The ID of the security group. You do not need to specify the same security group as the container group.
+     */
     declare public readonly securityGroupId: pulumi.Output<string>;
+    /**
+     * The status of the image cache.
+     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+     */
     declare public readonly vswitchId: pulumi.Output<string>;
+    /**
+     * The zone id to cache image.
+     */
     declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
@@ -119,17 +225,53 @@ export class OpenApiImageCache extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OpenApiImageCache resources.
  */
 export interface OpenApiImageCacheState {
+    /**
+     * The ID of the container group job that is used to create the image cache.
+     */
     containerGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+     */
     eipInstanceId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the image cache.
+     */
     imageCacheName?: pulumi.Input<string | undefined>;
+    /**
+     * The size of the image cache. Default to `20`. Unit: GiB.
+     */
     imageCacheSize?: pulumi.Input<number | undefined>;
+    /**
+     * The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
+     */
     imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.OpenApiImageCacheImageRegistryCredential>[] | undefined>;
+    /**
+     * The images to be cached. The image name must be versioned.
+     */
     images?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The ID of the resource group.
+     */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+     */
     retentionDays?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of the security group. You do not need to specify the same security group as the container group.
+     */
     securityGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The status of the image cache.
+     */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+     */
     vswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The zone id to cache image.
+     */
     zoneId?: pulumi.Input<string | undefined>;
 }
 
@@ -137,14 +279,44 @@ export interface OpenApiImageCacheState {
  * The set of arguments for constructing a OpenApiImageCache resource.
  */
 export interface OpenApiImageCacheArgs {
+    /**
+     * The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
+     */
     eipInstanceId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the image cache.
+     */
     imageCacheName: pulumi.Input<string>;
+    /**
+     * The size of the image cache. Default to `20`. Unit: GiB.
+     */
     imageCacheSize?: pulumi.Input<number | undefined>;
+    /**
+     * The Image Registry parameters about the image to be cached. See `imageRegistryCredential` below.
+     */
     imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.OpenApiImageCacheImageRegistryCredential>[] | undefined>;
+    /**
+     * The images to be cached. The image name must be versioned.
+     */
     images: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the resource group.
+     */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
+     */
     retentionDays?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of the security group. You do not need to specify the same security group as the container group.
+     */
     securityGroupId: pulumi.Input<string>;
+    /**
+     * The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
+     */
     vswitchId: pulumi.Input<string>;
+    /**
+     * The zone id to cache image.
+     */
     zoneId?: pulumi.Input<string | undefined>;
 }

@@ -40,8 +40,6 @@ public final class GetMetricRuleTemplatesTemplate {
     /**
      * @return The version of the alert template.
      * 
-     * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
-     * 
      */
     private String restVersion;
     /**
@@ -88,8 +86,6 @@ public final class GetMetricRuleTemplatesTemplate {
     }
     /**
      * @return The version of the alert template.
-     * 
-     * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
      * 
      */
     public String restVersion() {

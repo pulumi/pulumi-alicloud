@@ -234,6 +234,470 @@ func (o ApplicationParameterArrayOutput) Index(i pulumi.IntInput) ApplicationPar
 	}).(ApplicationParameterOutput)
 }
 
+type BackupPolicyAdvancedDataPolicy struct {
+	// Whether the service generated the rule.
+	AutoCreated *bool `pulumi:"autoCreated"`
+	// Backup type supplied by the service.
+	BakType *string `pulumi:"bakType"`
+	// Destination region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+	DestRegion *string `pulumi:"destRegion"`
+	// `level1`, `level2`, or `level2Cross`.
+	DestType string `pulumi:"destType"`
+	// `copy`.
+	DumpAction *string `pulumi:"dumpAction"`
+	// `dayOfWeek`, `dayOfMonth`, `dayOfYear`, or `backupInterval`; required for `crontab`.
+	FilterKey *string `pulumi:"filterKey"`
+	// `crontab` or `event`.
+	FilterType string `pulumi:"filterType"`
+	// Filter expression corresponding to `filterKey`.
+	FilterValue *string `pulumi:"filterValue"`
+	// Whether to retain only one backup per day. If omitted, the service default is used.
+	OnlyPreserveOneEachDay *bool `pulumi:"onlyPreserveOneEachDay"`
+	// Hourly preservation setting supplied by the service.
+	OnlyPreserveOneEachHour *bool `pulumi:"onlyPreserveOneEachHour"`
+	// Service-assigned rule ID. Specify it to take over and update an existing custom rule after importing the cluster policy.
+	PolicyId *string `pulumi:"policyId"`
+	// `never` or `delay`.
+	RetentionType string `pulumi:"retentionType"`
+	// Retention duration in days; required when `retentionType` is `delay`.
+	RetentionValue *string `pulumi:"retentionValue"`
+	// Source region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+	SrcRegion *string `pulumi:"srcRegion"`
+	// `db`, `level1`, `level2`, or `level2Cross`.
+	SrcType string `pulumi:"srcType"`
+	// Destination storage class.
+	StorageClass *string `pulumi:"storageClass"`
+}
+
+// BackupPolicyAdvancedDataPolicyInput is an input type that accepts BackupPolicyAdvancedDataPolicyArgs and BackupPolicyAdvancedDataPolicyOutput values.
+// You can construct a concrete instance of `BackupPolicyAdvancedDataPolicyInput` via:
+//
+//	BackupPolicyAdvancedDataPolicyArgs{...}
+type BackupPolicyAdvancedDataPolicyInput interface {
+	pulumi.Input
+
+	ToBackupPolicyAdvancedDataPolicyOutput() BackupPolicyAdvancedDataPolicyOutput
+	ToBackupPolicyAdvancedDataPolicyOutputWithContext(context.Context) BackupPolicyAdvancedDataPolicyOutput
+}
+
+type BackupPolicyAdvancedDataPolicyArgs struct {
+	// Whether the service generated the rule.
+	AutoCreated pulumi.BoolPtrInput `pulumi:"autoCreated"`
+	// Backup type supplied by the service.
+	BakType pulumi.StringPtrInput `pulumi:"bakType"`
+	// Destination region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+	DestRegion pulumi.StringPtrInput `pulumi:"destRegion"`
+	// `level1`, `level2`, or `level2Cross`.
+	DestType pulumi.StringInput `pulumi:"destType"`
+	// `copy`.
+	DumpAction pulumi.StringPtrInput `pulumi:"dumpAction"`
+	// `dayOfWeek`, `dayOfMonth`, `dayOfYear`, or `backupInterval`; required for `crontab`.
+	FilterKey pulumi.StringPtrInput `pulumi:"filterKey"`
+	// `crontab` or `event`.
+	FilterType pulumi.StringInput `pulumi:"filterType"`
+	// Filter expression corresponding to `filterKey`.
+	FilterValue pulumi.StringPtrInput `pulumi:"filterValue"`
+	// Whether to retain only one backup per day. If omitted, the service default is used.
+	OnlyPreserveOneEachDay pulumi.BoolPtrInput `pulumi:"onlyPreserveOneEachDay"`
+	// Hourly preservation setting supplied by the service.
+	OnlyPreserveOneEachHour pulumi.BoolPtrInput `pulumi:"onlyPreserveOneEachHour"`
+	// Service-assigned rule ID. Specify it to take over and update an existing custom rule after importing the cluster policy.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// `never` or `delay`.
+	RetentionType pulumi.StringInput `pulumi:"retentionType"`
+	// Retention duration in days; required when `retentionType` is `delay`.
+	RetentionValue pulumi.StringPtrInput `pulumi:"retentionValue"`
+	// Source region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+	SrcRegion pulumi.StringPtrInput `pulumi:"srcRegion"`
+	// `db`, `level1`, `level2`, or `level2Cross`.
+	SrcType pulumi.StringInput `pulumi:"srcType"`
+	// Destination storage class.
+	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
+}
+
+func (BackupPolicyAdvancedDataPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicyAdvancedDataPolicy)(nil)).Elem()
+}
+
+func (i BackupPolicyAdvancedDataPolicyArgs) ToBackupPolicyAdvancedDataPolicyOutput() BackupPolicyAdvancedDataPolicyOutput {
+	return i.ToBackupPolicyAdvancedDataPolicyOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyAdvancedDataPolicyArgs) ToBackupPolicyAdvancedDataPolicyOutputWithContext(ctx context.Context) BackupPolicyAdvancedDataPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyAdvancedDataPolicyOutput)
+}
+
+// BackupPolicyAdvancedDataPolicyArrayInput is an input type that accepts BackupPolicyAdvancedDataPolicyArray and BackupPolicyAdvancedDataPolicyArrayOutput values.
+// You can construct a concrete instance of `BackupPolicyAdvancedDataPolicyArrayInput` via:
+//
+//	BackupPolicyAdvancedDataPolicyArray{ BackupPolicyAdvancedDataPolicyArgs{...} }
+type BackupPolicyAdvancedDataPolicyArrayInput interface {
+	pulumi.Input
+
+	ToBackupPolicyAdvancedDataPolicyArrayOutput() BackupPolicyAdvancedDataPolicyArrayOutput
+	ToBackupPolicyAdvancedDataPolicyArrayOutputWithContext(context.Context) BackupPolicyAdvancedDataPolicyArrayOutput
+}
+
+type BackupPolicyAdvancedDataPolicyArray []BackupPolicyAdvancedDataPolicyInput
+
+func (BackupPolicyAdvancedDataPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPolicyAdvancedDataPolicy)(nil)).Elem()
+}
+
+func (i BackupPolicyAdvancedDataPolicyArray) ToBackupPolicyAdvancedDataPolicyArrayOutput() BackupPolicyAdvancedDataPolicyArrayOutput {
+	return i.ToBackupPolicyAdvancedDataPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyAdvancedDataPolicyArray) ToBackupPolicyAdvancedDataPolicyArrayOutputWithContext(ctx context.Context) BackupPolicyAdvancedDataPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyAdvancedDataPolicyArrayOutput)
+}
+
+type BackupPolicyAdvancedDataPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyAdvancedDataPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicyAdvancedDataPolicy)(nil)).Elem()
+}
+
+func (o BackupPolicyAdvancedDataPolicyOutput) ToBackupPolicyAdvancedDataPolicyOutput() BackupPolicyAdvancedDataPolicyOutput {
+	return o
+}
+
+func (o BackupPolicyAdvancedDataPolicyOutput) ToBackupPolicyAdvancedDataPolicyOutputWithContext(ctx context.Context) BackupPolicyAdvancedDataPolicyOutput {
+	return o
+}
+
+// Whether the service generated the rule.
+func (o BackupPolicyAdvancedDataPolicyOutput) AutoCreated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *bool { return v.AutoCreated }).(pulumi.BoolPtrOutput)
+}
+
+// Backup type supplied by the service.
+func (o BackupPolicyAdvancedDataPolicyOutput) BakType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *string { return v.BakType }).(pulumi.StringPtrOutput)
+}
+
+// Destination region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+func (o BackupPolicyAdvancedDataPolicyOutput) DestRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *string { return v.DestRegion }).(pulumi.StringPtrOutput)
+}
+
+// `level1`, `level2`, or `level2Cross`.
+func (o BackupPolicyAdvancedDataPolicyOutput) DestType() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) string { return v.DestType }).(pulumi.StringOutput)
+}
+
+// `copy`.
+func (o BackupPolicyAdvancedDataPolicyOutput) DumpAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *string { return v.DumpAction }).(pulumi.StringPtrOutput)
+}
+
+// `dayOfWeek`, `dayOfMonth`, `dayOfYear`, or `backupInterval`; required for `crontab`.
+func (o BackupPolicyAdvancedDataPolicyOutput) FilterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *string { return v.FilterKey }).(pulumi.StringPtrOutput)
+}
+
+// `crontab` or `event`.
+func (o BackupPolicyAdvancedDataPolicyOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
+// Filter expression corresponding to `filterKey`.
+func (o BackupPolicyAdvancedDataPolicyOutput) FilterValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *string { return v.FilterValue }).(pulumi.StringPtrOutput)
+}
+
+// Whether to retain only one backup per day. If omitted, the service default is used.
+func (o BackupPolicyAdvancedDataPolicyOutput) OnlyPreserveOneEachDay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *bool { return v.OnlyPreserveOneEachDay }).(pulumi.BoolPtrOutput)
+}
+
+// Hourly preservation setting supplied by the service.
+func (o BackupPolicyAdvancedDataPolicyOutput) OnlyPreserveOneEachHour() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *bool { return v.OnlyPreserveOneEachHour }).(pulumi.BoolPtrOutput)
+}
+
+// Service-assigned rule ID. Specify it to take over and update an existing custom rule after importing the cluster policy.
+func (o BackupPolicyAdvancedDataPolicyOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// `never` or `delay`.
+func (o BackupPolicyAdvancedDataPolicyOutput) RetentionType() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) string { return v.RetentionType }).(pulumi.StringOutput)
+}
+
+// Retention duration in days; required when `retentionType` is `delay`.
+func (o BackupPolicyAdvancedDataPolicyOutput) RetentionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *string { return v.RetentionValue }).(pulumi.StringPtrOutput)
+}
+
+// Source region. Defaults to the provider region for same-region rules; required explicitly for cross-region rules.
+func (o BackupPolicyAdvancedDataPolicyOutput) SrcRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *string { return v.SrcRegion }).(pulumi.StringPtrOutput)
+}
+
+// `db`, `level1`, `level2`, or `level2Cross`.
+func (o BackupPolicyAdvancedDataPolicyOutput) SrcType() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) string { return v.SrcType }).(pulumi.StringOutput)
+}
+
+// Destination storage class.
+func (o BackupPolicyAdvancedDataPolicyOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAdvancedDataPolicy) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
+}
+
+type BackupPolicyAdvancedDataPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyAdvancedDataPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPolicyAdvancedDataPolicy)(nil)).Elem()
+}
+
+func (o BackupPolicyAdvancedDataPolicyArrayOutput) ToBackupPolicyAdvancedDataPolicyArrayOutput() BackupPolicyAdvancedDataPolicyArrayOutput {
+	return o
+}
+
+func (o BackupPolicyAdvancedDataPolicyArrayOutput) ToBackupPolicyAdvancedDataPolicyArrayOutputWithContext(ctx context.Context) BackupPolicyAdvancedDataPolicyArrayOutput {
+	return o
+}
+
+func (o BackupPolicyAdvancedDataPolicyArrayOutput) Index(i pulumi.IntInput) BackupPolicyAdvancedDataPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupPolicyAdvancedDataPolicy {
+		return vs[0].([]BackupPolicyAdvancedDataPolicy)[vs[1].(int)]
+	}).(BackupPolicyAdvancedDataPolicyOutput)
+}
+
+type BackupPolicyAutoCreatedAdvancedDataPolicy struct {
+	// Whether the service generated the rule.
+	AutoCreated *bool `pulumi:"autoCreated"`
+	// Backup type.
+	BakType *string `pulumi:"bakType"`
+	// Destination region.
+	DestRegion *string `pulumi:"destRegion"`
+	// Destination type.
+	DestType *string `pulumi:"destType"`
+	// Method for converting level-1 backups to level-2 backups.
+	DumpAction *string `pulumi:"dumpAction"`
+	// Scheduling key.
+	FilterKey *string `pulumi:"filterKey"`
+	// Scheduling type.
+	FilterType *string `pulumi:"filterType"`
+	// Scheduling expression.
+	FilterValue *string `pulumi:"filterValue"`
+	// Whether only one backup is retained per day.
+	OnlyPreserveOneEachDay *bool `pulumi:"onlyPreserveOneEachDay"`
+	// Hourly preservation setting.
+	OnlyPreserveOneEachHour *bool `pulumi:"onlyPreserveOneEachHour"`
+	// Service-assigned rule ID.
+	PolicyId *string `pulumi:"policyId"`
+	// Retention period type.
+	RetentionType *string `pulumi:"retentionType"`
+	// Retention duration in days.
+	RetentionValue *string `pulumi:"retentionValue"`
+	// Source region.
+	SrcRegion *string `pulumi:"srcRegion"`
+	// Source type.
+	SrcType *string `pulumi:"srcType"`
+	// Destination storage class.
+	StorageClass *string `pulumi:"storageClass"`
+}
+
+// BackupPolicyAutoCreatedAdvancedDataPolicyInput is an input type that accepts BackupPolicyAutoCreatedAdvancedDataPolicyArgs and BackupPolicyAutoCreatedAdvancedDataPolicyOutput values.
+// You can construct a concrete instance of `BackupPolicyAutoCreatedAdvancedDataPolicyInput` via:
+//
+//	BackupPolicyAutoCreatedAdvancedDataPolicyArgs{...}
+type BackupPolicyAutoCreatedAdvancedDataPolicyInput interface {
+	pulumi.Input
+
+	ToBackupPolicyAutoCreatedAdvancedDataPolicyOutput() BackupPolicyAutoCreatedAdvancedDataPolicyOutput
+	ToBackupPolicyAutoCreatedAdvancedDataPolicyOutputWithContext(context.Context) BackupPolicyAutoCreatedAdvancedDataPolicyOutput
+}
+
+type BackupPolicyAutoCreatedAdvancedDataPolicyArgs struct {
+	// Whether the service generated the rule.
+	AutoCreated pulumi.BoolPtrInput `pulumi:"autoCreated"`
+	// Backup type.
+	BakType pulumi.StringPtrInput `pulumi:"bakType"`
+	// Destination region.
+	DestRegion pulumi.StringPtrInput `pulumi:"destRegion"`
+	// Destination type.
+	DestType pulumi.StringPtrInput `pulumi:"destType"`
+	// Method for converting level-1 backups to level-2 backups.
+	DumpAction pulumi.StringPtrInput `pulumi:"dumpAction"`
+	// Scheduling key.
+	FilterKey pulumi.StringPtrInput `pulumi:"filterKey"`
+	// Scheduling type.
+	FilterType pulumi.StringPtrInput `pulumi:"filterType"`
+	// Scheduling expression.
+	FilterValue pulumi.StringPtrInput `pulumi:"filterValue"`
+	// Whether only one backup is retained per day.
+	OnlyPreserveOneEachDay pulumi.BoolPtrInput `pulumi:"onlyPreserveOneEachDay"`
+	// Hourly preservation setting.
+	OnlyPreserveOneEachHour pulumi.BoolPtrInput `pulumi:"onlyPreserveOneEachHour"`
+	// Service-assigned rule ID.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Retention period type.
+	RetentionType pulumi.StringPtrInput `pulumi:"retentionType"`
+	// Retention duration in days.
+	RetentionValue pulumi.StringPtrInput `pulumi:"retentionValue"`
+	// Source region.
+	SrcRegion pulumi.StringPtrInput `pulumi:"srcRegion"`
+	// Source type.
+	SrcType pulumi.StringPtrInput `pulumi:"srcType"`
+	// Destination storage class.
+	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
+}
+
+func (BackupPolicyAutoCreatedAdvancedDataPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicyAutoCreatedAdvancedDataPolicy)(nil)).Elem()
+}
+
+func (i BackupPolicyAutoCreatedAdvancedDataPolicyArgs) ToBackupPolicyAutoCreatedAdvancedDataPolicyOutput() BackupPolicyAutoCreatedAdvancedDataPolicyOutput {
+	return i.ToBackupPolicyAutoCreatedAdvancedDataPolicyOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyAutoCreatedAdvancedDataPolicyArgs) ToBackupPolicyAutoCreatedAdvancedDataPolicyOutputWithContext(ctx context.Context) BackupPolicyAutoCreatedAdvancedDataPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyAutoCreatedAdvancedDataPolicyOutput)
+}
+
+// BackupPolicyAutoCreatedAdvancedDataPolicyArrayInput is an input type that accepts BackupPolicyAutoCreatedAdvancedDataPolicyArray and BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput values.
+// You can construct a concrete instance of `BackupPolicyAutoCreatedAdvancedDataPolicyArrayInput` via:
+//
+//	BackupPolicyAutoCreatedAdvancedDataPolicyArray{ BackupPolicyAutoCreatedAdvancedDataPolicyArgs{...} }
+type BackupPolicyAutoCreatedAdvancedDataPolicyArrayInput interface {
+	pulumi.Input
+
+	ToBackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput() BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput
+	ToBackupPolicyAutoCreatedAdvancedDataPolicyArrayOutputWithContext(context.Context) BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput
+}
+
+type BackupPolicyAutoCreatedAdvancedDataPolicyArray []BackupPolicyAutoCreatedAdvancedDataPolicyInput
+
+func (BackupPolicyAutoCreatedAdvancedDataPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPolicyAutoCreatedAdvancedDataPolicy)(nil)).Elem()
+}
+
+func (i BackupPolicyAutoCreatedAdvancedDataPolicyArray) ToBackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput() BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput {
+	return i.ToBackupPolicyAutoCreatedAdvancedDataPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyAutoCreatedAdvancedDataPolicyArray) ToBackupPolicyAutoCreatedAdvancedDataPolicyArrayOutputWithContext(ctx context.Context) BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput)
+}
+
+type BackupPolicyAutoCreatedAdvancedDataPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyAutoCreatedAdvancedDataPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicyAutoCreatedAdvancedDataPolicy)(nil)).Elem()
+}
+
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) ToBackupPolicyAutoCreatedAdvancedDataPolicyOutput() BackupPolicyAutoCreatedAdvancedDataPolicyOutput {
+	return o
+}
+
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) ToBackupPolicyAutoCreatedAdvancedDataPolicyOutputWithContext(ctx context.Context) BackupPolicyAutoCreatedAdvancedDataPolicyOutput {
+	return o
+}
+
+// Whether the service generated the rule.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) AutoCreated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *bool { return v.AutoCreated }).(pulumi.BoolPtrOutput)
+}
+
+// Backup type.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) BakType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.BakType }).(pulumi.StringPtrOutput)
+}
+
+// Destination region.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) DestRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.DestRegion }).(pulumi.StringPtrOutput)
+}
+
+// Destination type.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) DestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.DestType }).(pulumi.StringPtrOutput)
+}
+
+// Method for converting level-1 backups to level-2 backups.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) DumpAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.DumpAction }).(pulumi.StringPtrOutput)
+}
+
+// Scheduling key.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) FilterKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.FilterKey }).(pulumi.StringPtrOutput)
+}
+
+// Scheduling type.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) FilterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.FilterType }).(pulumi.StringPtrOutput)
+}
+
+// Scheduling expression.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) FilterValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.FilterValue }).(pulumi.StringPtrOutput)
+}
+
+// Whether only one backup is retained per day.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) OnlyPreserveOneEachDay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *bool { return v.OnlyPreserveOneEachDay }).(pulumi.BoolPtrOutput)
+}
+
+// Hourly preservation setting.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) OnlyPreserveOneEachHour() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *bool { return v.OnlyPreserveOneEachHour }).(pulumi.BoolPtrOutput)
+}
+
+// Service-assigned rule ID.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Retention period type.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) RetentionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.RetentionType }).(pulumi.StringPtrOutput)
+}
+
+// Retention duration in days.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) RetentionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.RetentionValue }).(pulumi.StringPtrOutput)
+}
+
+// Source region.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) SrcRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.SrcRegion }).(pulumi.StringPtrOutput)
+}
+
+// Source type.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) SrcType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.SrcType }).(pulumi.StringPtrOutput)
+}
+
+// Destination storage class.
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyAutoCreatedAdvancedDataPolicy) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
+}
+
+type BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPolicyAutoCreatedAdvancedDataPolicy)(nil)).Elem()
+}
+
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput) ToBackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput() BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput {
+	return o
+}
+
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput) ToBackupPolicyAutoCreatedAdvancedDataPolicyArrayOutputWithContext(ctx context.Context) BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput {
+	return o
+}
+
+func (o BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput) Index(i pulumi.IntInput) BackupPolicyAutoCreatedAdvancedDataPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupPolicyAutoCreatedAdvancedDataPolicy {
+		return vs[0].([]BackupPolicyAutoCreatedAdvancedDataPolicy)[vs[1].(int)]
+	}).(BackupPolicyAutoCreatedAdvancedDataPolicyOutput)
+}
+
 type BatchTaskTaskParam struct {
 	// The name of the skill to be installed or uninstalled. For example, `polarClaw`.
 	SkillName string `pulumi:"skillName"`
@@ -1591,6 +2055,157 @@ func (o ParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) ParameterGr
 	}).(ParameterGroupParameterOutput)
 }
 
+type PolarFsEndpointAddressItem struct {
+	// (Available since v2.1.0) The connection string.
+	ConnectionString *string `pulumi:"connectionString"`
+	// (Available since v2.1.0) The IP address.
+	IpAddress *string `pulumi:"ipAddress"`
+	// (Available since v2.1.0) The network type.
+	NetType *string `pulumi:"netType"`
+	// (Available since v2.1.0) The port.
+	Port *string `pulumi:"port"`
+	// (Available since v2.1.0) The PrivateZone connection string.
+	PrivateZoneConnectionString *string `pulumi:"privateZoneConnectionString"`
+	// The VPC ID.
+	VpcId *string `pulumi:"vpcId"`
+	// The vSwitch ID.
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// PolarFsEndpointAddressItemInput is an input type that accepts PolarFsEndpointAddressItemArgs and PolarFsEndpointAddressItemOutput values.
+// You can construct a concrete instance of `PolarFsEndpointAddressItemInput` via:
+//
+//	PolarFsEndpointAddressItemArgs{...}
+type PolarFsEndpointAddressItemInput interface {
+	pulumi.Input
+
+	ToPolarFsEndpointAddressItemOutput() PolarFsEndpointAddressItemOutput
+	ToPolarFsEndpointAddressItemOutputWithContext(context.Context) PolarFsEndpointAddressItemOutput
+}
+
+type PolarFsEndpointAddressItemArgs struct {
+	// (Available since v2.1.0) The connection string.
+	ConnectionString pulumi.StringPtrInput `pulumi:"connectionString"`
+	// (Available since v2.1.0) The IP address.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// (Available since v2.1.0) The network type.
+	NetType pulumi.StringPtrInput `pulumi:"netType"`
+	// (Available since v2.1.0) The port.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// (Available since v2.1.0) The PrivateZone connection string.
+	PrivateZoneConnectionString pulumi.StringPtrInput `pulumi:"privateZoneConnectionString"`
+	// The VPC ID.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The vSwitch ID.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (PolarFsEndpointAddressItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolarFsEndpointAddressItem)(nil)).Elem()
+}
+
+func (i PolarFsEndpointAddressItemArgs) ToPolarFsEndpointAddressItemOutput() PolarFsEndpointAddressItemOutput {
+	return i.ToPolarFsEndpointAddressItemOutputWithContext(context.Background())
+}
+
+func (i PolarFsEndpointAddressItemArgs) ToPolarFsEndpointAddressItemOutputWithContext(ctx context.Context) PolarFsEndpointAddressItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolarFsEndpointAddressItemOutput)
+}
+
+// PolarFsEndpointAddressItemArrayInput is an input type that accepts PolarFsEndpointAddressItemArray and PolarFsEndpointAddressItemArrayOutput values.
+// You can construct a concrete instance of `PolarFsEndpointAddressItemArrayInput` via:
+//
+//	PolarFsEndpointAddressItemArray{ PolarFsEndpointAddressItemArgs{...} }
+type PolarFsEndpointAddressItemArrayInput interface {
+	pulumi.Input
+
+	ToPolarFsEndpointAddressItemArrayOutput() PolarFsEndpointAddressItemArrayOutput
+	ToPolarFsEndpointAddressItemArrayOutputWithContext(context.Context) PolarFsEndpointAddressItemArrayOutput
+}
+
+type PolarFsEndpointAddressItemArray []PolarFsEndpointAddressItemInput
+
+func (PolarFsEndpointAddressItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolarFsEndpointAddressItem)(nil)).Elem()
+}
+
+func (i PolarFsEndpointAddressItemArray) ToPolarFsEndpointAddressItemArrayOutput() PolarFsEndpointAddressItemArrayOutput {
+	return i.ToPolarFsEndpointAddressItemArrayOutputWithContext(context.Background())
+}
+
+func (i PolarFsEndpointAddressItemArray) ToPolarFsEndpointAddressItemArrayOutputWithContext(ctx context.Context) PolarFsEndpointAddressItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolarFsEndpointAddressItemArrayOutput)
+}
+
+type PolarFsEndpointAddressItemOutput struct{ *pulumi.OutputState }
+
+func (PolarFsEndpointAddressItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolarFsEndpointAddressItem)(nil)).Elem()
+}
+
+func (o PolarFsEndpointAddressItemOutput) ToPolarFsEndpointAddressItemOutput() PolarFsEndpointAddressItemOutput {
+	return o
+}
+
+func (o PolarFsEndpointAddressItemOutput) ToPolarFsEndpointAddressItemOutputWithContext(ctx context.Context) PolarFsEndpointAddressItemOutput {
+	return o
+}
+
+// (Available since v2.1.0) The connection string.
+func (o PolarFsEndpointAddressItemOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolarFsEndpointAddressItem) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v2.1.0) The IP address.
+func (o PolarFsEndpointAddressItemOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolarFsEndpointAddressItem) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v2.1.0) The network type.
+func (o PolarFsEndpointAddressItemOutput) NetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolarFsEndpointAddressItem) *string { return v.NetType }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v2.1.0) The port.
+func (o PolarFsEndpointAddressItemOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolarFsEndpointAddressItem) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v2.1.0) The PrivateZone connection string.
+func (o PolarFsEndpointAddressItemOutput) PrivateZoneConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolarFsEndpointAddressItem) *string { return v.PrivateZoneConnectionString }).(pulumi.StringPtrOutput)
+}
+
+// The VPC ID.
+func (o PolarFsEndpointAddressItemOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolarFsEndpointAddressItem) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The vSwitch ID.
+func (o PolarFsEndpointAddressItemOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolarFsEndpointAddressItem) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type PolarFsEndpointAddressItemArrayOutput struct{ *pulumi.OutputState }
+
+func (PolarFsEndpointAddressItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolarFsEndpointAddressItem)(nil)).Elem()
+}
+
+func (o PolarFsEndpointAddressItemArrayOutput) ToPolarFsEndpointAddressItemArrayOutput() PolarFsEndpointAddressItemArrayOutput {
+	return o
+}
+
+func (o PolarFsEndpointAddressItemArrayOutput) ToPolarFsEndpointAddressItemArrayOutputWithContext(ctx context.Context) PolarFsEndpointAddressItemArrayOutput {
+	return o
+}
+
+func (o PolarFsEndpointAddressItemArrayOutput) Index(i pulumi.IntInput) PolarFsEndpointAddressItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolarFsEndpointAddressItem {
+		return vs[0].([]PolarFsEndpointAddressItem)[vs[1].(int)]
+	}).(PolarFsEndpointAddressItemOutput)
+}
+
 type GetAccountsAccount struct {
 	// Account description.
 	AccountDescription string `pulumi:"accountDescription"`
@@ -2844,6 +3459,1270 @@ func (o GetEndpointsEndpointAddressItemArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetEndpointsEndpointAddressItemOutput)
 }
 
+type GetGatewayBudgetPoliciesPolicy struct {
+	// The alert threshold percentage.
+	AlertThresholdPct int `pulumi:"alertThresholdPct"`
+	// Whether the alert was triggered.
+	AlertTriggered bool `pulumi:"alertTriggered"`
+	// The consumer group or consumer ID.
+	BudgetDimensionRefId string `pulumi:"budgetDimensionRefId"`
+	// The policy dimension. Valid values: `ConsumerGroup`, `Consumer`.
+	BudgetDimensionType string `pulumi:"budgetDimensionType"`
+	// The budget amount in points.
+	BudgetPoints string `pulumi:"budgetPoints"`
+	// The budget type.
+	BudgetType string `pulumi:"budgetType"`
+	// The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// Whether the budget was exceeded.
+	Exceeded string `pulumi:"exceeded"`
+	// The budget policy ID.
+	Id string `pulumi:"id"`
+	// The last modification time.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The monthly reset day.
+	ResetDayOfMonth int `pulumi:"resetDayOfMonth"`
+	// The policy status.
+	Status string `pulumi:"status"`
+	// The used points.
+	UsedPoints int `pulumi:"usedPoints"`
+}
+
+// GetGatewayBudgetPoliciesPolicyInput is an input type that accepts GetGatewayBudgetPoliciesPolicyArgs and GetGatewayBudgetPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetGatewayBudgetPoliciesPolicyInput` via:
+//
+//	GetGatewayBudgetPoliciesPolicyArgs{...}
+type GetGatewayBudgetPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetGatewayBudgetPoliciesPolicyOutput() GetGatewayBudgetPoliciesPolicyOutput
+	ToGetGatewayBudgetPoliciesPolicyOutputWithContext(context.Context) GetGatewayBudgetPoliciesPolicyOutput
+}
+
+type GetGatewayBudgetPoliciesPolicyArgs struct {
+	// The alert threshold percentage.
+	AlertThresholdPct pulumi.IntInput `pulumi:"alertThresholdPct"`
+	// Whether the alert was triggered.
+	AlertTriggered pulumi.BoolInput `pulumi:"alertTriggered"`
+	// The consumer group or consumer ID.
+	BudgetDimensionRefId pulumi.StringInput `pulumi:"budgetDimensionRefId"`
+	// The policy dimension. Valid values: `ConsumerGroup`, `Consumer`.
+	BudgetDimensionType pulumi.StringInput `pulumi:"budgetDimensionType"`
+	// The budget amount in points.
+	BudgetPoints pulumi.StringInput `pulumi:"budgetPoints"`
+	// The budget type.
+	BudgetType pulumi.StringInput `pulumi:"budgetType"`
+	// The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether the budget was exceeded.
+	Exceeded pulumi.StringInput `pulumi:"exceeded"`
+	// The budget policy ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The last modification time.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The monthly reset day.
+	ResetDayOfMonth pulumi.IntInput `pulumi:"resetDayOfMonth"`
+	// The policy status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The used points.
+	UsedPoints pulumi.IntInput `pulumi:"usedPoints"`
+}
+
+func (GetGatewayBudgetPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayBudgetPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetGatewayBudgetPoliciesPolicyArgs) ToGetGatewayBudgetPoliciesPolicyOutput() GetGatewayBudgetPoliciesPolicyOutput {
+	return i.ToGetGatewayBudgetPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetGatewayBudgetPoliciesPolicyArgs) ToGetGatewayBudgetPoliciesPolicyOutputWithContext(ctx context.Context) GetGatewayBudgetPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayBudgetPoliciesPolicyOutput)
+}
+
+// GetGatewayBudgetPoliciesPolicyArrayInput is an input type that accepts GetGatewayBudgetPoliciesPolicyArray and GetGatewayBudgetPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetGatewayBudgetPoliciesPolicyArrayInput` via:
+//
+//	GetGatewayBudgetPoliciesPolicyArray{ GetGatewayBudgetPoliciesPolicyArgs{...} }
+type GetGatewayBudgetPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayBudgetPoliciesPolicyArrayOutput() GetGatewayBudgetPoliciesPolicyArrayOutput
+	ToGetGatewayBudgetPoliciesPolicyArrayOutputWithContext(context.Context) GetGatewayBudgetPoliciesPolicyArrayOutput
+}
+
+type GetGatewayBudgetPoliciesPolicyArray []GetGatewayBudgetPoliciesPolicyInput
+
+func (GetGatewayBudgetPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayBudgetPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetGatewayBudgetPoliciesPolicyArray) ToGetGatewayBudgetPoliciesPolicyArrayOutput() GetGatewayBudgetPoliciesPolicyArrayOutput {
+	return i.ToGetGatewayBudgetPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayBudgetPoliciesPolicyArray) ToGetGatewayBudgetPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetGatewayBudgetPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayBudgetPoliciesPolicyArrayOutput)
+}
+
+type GetGatewayBudgetPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayBudgetPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayBudgetPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetGatewayBudgetPoliciesPolicyOutput) ToGetGatewayBudgetPoliciesPolicyOutput() GetGatewayBudgetPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetGatewayBudgetPoliciesPolicyOutput) ToGetGatewayBudgetPoliciesPolicyOutputWithContext(ctx context.Context) GetGatewayBudgetPoliciesPolicyOutput {
+	return o
+}
+
+// The alert threshold percentage.
+func (o GetGatewayBudgetPoliciesPolicyOutput) AlertThresholdPct() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) int { return v.AlertThresholdPct }).(pulumi.IntOutput)
+}
+
+// Whether the alert was triggered.
+func (o GetGatewayBudgetPoliciesPolicyOutput) AlertTriggered() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) bool { return v.AlertTriggered }).(pulumi.BoolOutput)
+}
+
+// The consumer group or consumer ID.
+func (o GetGatewayBudgetPoliciesPolicyOutput) BudgetDimensionRefId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) string { return v.BudgetDimensionRefId }).(pulumi.StringOutput)
+}
+
+// The policy dimension. Valid values: `ConsumerGroup`, `Consumer`.
+func (o GetGatewayBudgetPoliciesPolicyOutput) BudgetDimensionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) string { return v.BudgetDimensionType }).(pulumi.StringOutput)
+}
+
+// The budget amount in points.
+func (o GetGatewayBudgetPoliciesPolicyOutput) BudgetPoints() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) string { return v.BudgetPoints }).(pulumi.StringOutput)
+}
+
+// The budget type.
+func (o GetGatewayBudgetPoliciesPolicyOutput) BudgetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) string { return v.BudgetType }).(pulumi.StringOutput)
+}
+
+// The creation time.
+func (o GetGatewayBudgetPoliciesPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether the budget was exceeded.
+func (o GetGatewayBudgetPoliciesPolicyOutput) Exceeded() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) string { return v.Exceeded }).(pulumi.StringOutput)
+}
+
+// The budget policy ID.
+func (o GetGatewayBudgetPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last modification time.
+func (o GetGatewayBudgetPoliciesPolicyOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The monthly reset day.
+func (o GetGatewayBudgetPoliciesPolicyOutput) ResetDayOfMonth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) int { return v.ResetDayOfMonth }).(pulumi.IntOutput)
+}
+
+// The policy status.
+func (o GetGatewayBudgetPoliciesPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The used points.
+func (o GetGatewayBudgetPoliciesPolicyOutput) UsedPoints() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayBudgetPoliciesPolicy) int { return v.UsedPoints }).(pulumi.IntOutput)
+}
+
+type GetGatewayBudgetPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayBudgetPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayBudgetPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetGatewayBudgetPoliciesPolicyArrayOutput) ToGetGatewayBudgetPoliciesPolicyArrayOutput() GetGatewayBudgetPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetGatewayBudgetPoliciesPolicyArrayOutput) ToGetGatewayBudgetPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetGatewayBudgetPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetGatewayBudgetPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetGatewayBudgetPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayBudgetPoliciesPolicy {
+		return vs[0].([]GetGatewayBudgetPoliciesPolicy)[vs[1].(int)]
+	}).(GetGatewayBudgetPoliciesPolicyOutput)
+}
+
+type GetGatewayConsumerGroupsGroup struct {
+	// The models the group is allowed to access.
+	AllowedModels string `pulumi:"allowedModels"`
+	// The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The consumer group ID.
+	Id string `pulumi:"id"`
+	// Whether the group is the default group.
+	IsDefault string `pulumi:"isDefault"`
+	// The last modification time.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The consumer group name.
+	Name string `pulumi:"name"`
+	// The consumer group nickname.
+	Nickname string `pulumi:"nickname"`
+}
+
+// GetGatewayConsumerGroupsGroupInput is an input type that accepts GetGatewayConsumerGroupsGroupArgs and GetGatewayConsumerGroupsGroupOutput values.
+// You can construct a concrete instance of `GetGatewayConsumerGroupsGroupInput` via:
+//
+//	GetGatewayConsumerGroupsGroupArgs{...}
+type GetGatewayConsumerGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetGatewayConsumerGroupsGroupOutput() GetGatewayConsumerGroupsGroupOutput
+	ToGetGatewayConsumerGroupsGroupOutputWithContext(context.Context) GetGatewayConsumerGroupsGroupOutput
+}
+
+type GetGatewayConsumerGroupsGroupArgs struct {
+	// The models the group is allowed to access.
+	AllowedModels pulumi.StringInput `pulumi:"allowedModels"`
+	// The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The consumer group ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether the group is the default group.
+	IsDefault pulumi.StringInput `pulumi:"isDefault"`
+	// The last modification time.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The consumer group name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The consumer group nickname.
+	Nickname pulumi.StringInput `pulumi:"nickname"`
+}
+
+func (GetGatewayConsumerGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayConsumerGroupsGroup)(nil)).Elem()
+}
+
+func (i GetGatewayConsumerGroupsGroupArgs) ToGetGatewayConsumerGroupsGroupOutput() GetGatewayConsumerGroupsGroupOutput {
+	return i.ToGetGatewayConsumerGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetGatewayConsumerGroupsGroupArgs) ToGetGatewayConsumerGroupsGroupOutputWithContext(ctx context.Context) GetGatewayConsumerGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayConsumerGroupsGroupOutput)
+}
+
+// GetGatewayConsumerGroupsGroupArrayInput is an input type that accepts GetGatewayConsumerGroupsGroupArray and GetGatewayConsumerGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetGatewayConsumerGroupsGroupArrayInput` via:
+//
+//	GetGatewayConsumerGroupsGroupArray{ GetGatewayConsumerGroupsGroupArgs{...} }
+type GetGatewayConsumerGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayConsumerGroupsGroupArrayOutput() GetGatewayConsumerGroupsGroupArrayOutput
+	ToGetGatewayConsumerGroupsGroupArrayOutputWithContext(context.Context) GetGatewayConsumerGroupsGroupArrayOutput
+}
+
+type GetGatewayConsumerGroupsGroupArray []GetGatewayConsumerGroupsGroupInput
+
+func (GetGatewayConsumerGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayConsumerGroupsGroup)(nil)).Elem()
+}
+
+func (i GetGatewayConsumerGroupsGroupArray) ToGetGatewayConsumerGroupsGroupArrayOutput() GetGatewayConsumerGroupsGroupArrayOutput {
+	return i.ToGetGatewayConsumerGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayConsumerGroupsGroupArray) ToGetGatewayConsumerGroupsGroupArrayOutputWithContext(ctx context.Context) GetGatewayConsumerGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayConsumerGroupsGroupArrayOutput)
+}
+
+type GetGatewayConsumerGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayConsumerGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayConsumerGroupsGroup)(nil)).Elem()
+}
+
+func (o GetGatewayConsumerGroupsGroupOutput) ToGetGatewayConsumerGroupsGroupOutput() GetGatewayConsumerGroupsGroupOutput {
+	return o
+}
+
+func (o GetGatewayConsumerGroupsGroupOutput) ToGetGatewayConsumerGroupsGroupOutputWithContext(ctx context.Context) GetGatewayConsumerGroupsGroupOutput {
+	return o
+}
+
+// The models the group is allowed to access.
+func (o GetGatewayConsumerGroupsGroupOutput) AllowedModels() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumerGroupsGroup) string { return v.AllowedModels }).(pulumi.StringOutput)
+}
+
+// The creation time.
+func (o GetGatewayConsumerGroupsGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumerGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The consumer group ID.
+func (o GetGatewayConsumerGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumerGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the group is the default group.
+func (o GetGatewayConsumerGroupsGroupOutput) IsDefault() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumerGroupsGroup) string { return v.IsDefault }).(pulumi.StringOutput)
+}
+
+// The last modification time.
+func (o GetGatewayConsumerGroupsGroupOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumerGroupsGroup) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The consumer group name.
+func (o GetGatewayConsumerGroupsGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumerGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The consumer group nickname.
+func (o GetGatewayConsumerGroupsGroupOutput) Nickname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumerGroupsGroup) string { return v.Nickname }).(pulumi.StringOutput)
+}
+
+type GetGatewayConsumerGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayConsumerGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayConsumerGroupsGroup)(nil)).Elem()
+}
+
+func (o GetGatewayConsumerGroupsGroupArrayOutput) ToGetGatewayConsumerGroupsGroupArrayOutput() GetGatewayConsumerGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetGatewayConsumerGroupsGroupArrayOutput) ToGetGatewayConsumerGroupsGroupArrayOutputWithContext(ctx context.Context) GetGatewayConsumerGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetGatewayConsumerGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGatewayConsumerGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayConsumerGroupsGroup {
+		return vs[0].([]GetGatewayConsumerGroupsGroup)[vs[1].(int)]
+	}).(GetGatewayConsumerGroupsGroupOutput)
+}
+
+type GetGatewayConsumersConsumer struct {
+	// The models the consumer is allowed to access.
+	AllowedModels string `pulumi:"allowedModels"`
+	// The consumer group ID used to filter results.
+	ConsumerGroupId string `pulumi:"consumerGroupId"`
+	// The consumer group name.
+	ConsumerGroupName string `pulumi:"consumerGroupName"`
+	// The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The consumer ID.
+	Id string `pulumi:"id"`
+	// The lifetime cost count.
+	LifetimeCostCount int `pulumi:"lifetimeCostCount"`
+	// The lifetime token count.
+	LifetimeTokenCount int `pulumi:"lifetimeTokenCount"`
+	// The last modification time.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The month-to-date cost count.
+	MonthToDateCostCount int `pulumi:"monthToDateCostCount"`
+	// The month-to-date token count.
+	MonthToDateTokenCount int `pulumi:"monthToDateTokenCount"`
+	// The consumer name.
+	Name string `pulumi:"name"`
+	// The consumer nickname.
+	Nickname string `pulumi:"nickname"`
+}
+
+// GetGatewayConsumersConsumerInput is an input type that accepts GetGatewayConsumersConsumerArgs and GetGatewayConsumersConsumerOutput values.
+// You can construct a concrete instance of `GetGatewayConsumersConsumerInput` via:
+//
+//	GetGatewayConsumersConsumerArgs{...}
+type GetGatewayConsumersConsumerInput interface {
+	pulumi.Input
+
+	ToGetGatewayConsumersConsumerOutput() GetGatewayConsumersConsumerOutput
+	ToGetGatewayConsumersConsumerOutputWithContext(context.Context) GetGatewayConsumersConsumerOutput
+}
+
+type GetGatewayConsumersConsumerArgs struct {
+	// The models the consumer is allowed to access.
+	AllowedModels pulumi.StringInput `pulumi:"allowedModels"`
+	// The consumer group ID used to filter results.
+	ConsumerGroupId pulumi.StringInput `pulumi:"consumerGroupId"`
+	// The consumer group name.
+	ConsumerGroupName pulumi.StringInput `pulumi:"consumerGroupName"`
+	// The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The consumer ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The lifetime cost count.
+	LifetimeCostCount pulumi.IntInput `pulumi:"lifetimeCostCount"`
+	// The lifetime token count.
+	LifetimeTokenCount pulumi.IntInput `pulumi:"lifetimeTokenCount"`
+	// The last modification time.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The month-to-date cost count.
+	MonthToDateCostCount pulumi.IntInput `pulumi:"monthToDateCostCount"`
+	// The month-to-date token count.
+	MonthToDateTokenCount pulumi.IntInput `pulumi:"monthToDateTokenCount"`
+	// The consumer name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The consumer nickname.
+	Nickname pulumi.StringInput `pulumi:"nickname"`
+}
+
+func (GetGatewayConsumersConsumerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayConsumersConsumer)(nil)).Elem()
+}
+
+func (i GetGatewayConsumersConsumerArgs) ToGetGatewayConsumersConsumerOutput() GetGatewayConsumersConsumerOutput {
+	return i.ToGetGatewayConsumersConsumerOutputWithContext(context.Background())
+}
+
+func (i GetGatewayConsumersConsumerArgs) ToGetGatewayConsumersConsumerOutputWithContext(ctx context.Context) GetGatewayConsumersConsumerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayConsumersConsumerOutput)
+}
+
+// GetGatewayConsumersConsumerArrayInput is an input type that accepts GetGatewayConsumersConsumerArray and GetGatewayConsumersConsumerArrayOutput values.
+// You can construct a concrete instance of `GetGatewayConsumersConsumerArrayInput` via:
+//
+//	GetGatewayConsumersConsumerArray{ GetGatewayConsumersConsumerArgs{...} }
+type GetGatewayConsumersConsumerArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayConsumersConsumerArrayOutput() GetGatewayConsumersConsumerArrayOutput
+	ToGetGatewayConsumersConsumerArrayOutputWithContext(context.Context) GetGatewayConsumersConsumerArrayOutput
+}
+
+type GetGatewayConsumersConsumerArray []GetGatewayConsumersConsumerInput
+
+func (GetGatewayConsumersConsumerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayConsumersConsumer)(nil)).Elem()
+}
+
+func (i GetGatewayConsumersConsumerArray) ToGetGatewayConsumersConsumerArrayOutput() GetGatewayConsumersConsumerArrayOutput {
+	return i.ToGetGatewayConsumersConsumerArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayConsumersConsumerArray) ToGetGatewayConsumersConsumerArrayOutputWithContext(ctx context.Context) GetGatewayConsumersConsumerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayConsumersConsumerArrayOutput)
+}
+
+type GetGatewayConsumersConsumerOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayConsumersConsumerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayConsumersConsumer)(nil)).Elem()
+}
+
+func (o GetGatewayConsumersConsumerOutput) ToGetGatewayConsumersConsumerOutput() GetGatewayConsumersConsumerOutput {
+	return o
+}
+
+func (o GetGatewayConsumersConsumerOutput) ToGetGatewayConsumersConsumerOutputWithContext(ctx context.Context) GetGatewayConsumersConsumerOutput {
+	return o
+}
+
+// The models the consumer is allowed to access.
+func (o GetGatewayConsumersConsumerOutput) AllowedModels() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) string { return v.AllowedModels }).(pulumi.StringOutput)
+}
+
+// The consumer group ID used to filter results.
+func (o GetGatewayConsumersConsumerOutput) ConsumerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) string { return v.ConsumerGroupId }).(pulumi.StringOutput)
+}
+
+// The consumer group name.
+func (o GetGatewayConsumersConsumerOutput) ConsumerGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) string { return v.ConsumerGroupName }).(pulumi.StringOutput)
+}
+
+// The creation time.
+func (o GetGatewayConsumersConsumerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The consumer ID.
+func (o GetGatewayConsumersConsumerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The lifetime cost count.
+func (o GetGatewayConsumersConsumerOutput) LifetimeCostCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) int { return v.LifetimeCostCount }).(pulumi.IntOutput)
+}
+
+// The lifetime token count.
+func (o GetGatewayConsumersConsumerOutput) LifetimeTokenCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) int { return v.LifetimeTokenCount }).(pulumi.IntOutput)
+}
+
+// The last modification time.
+func (o GetGatewayConsumersConsumerOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The month-to-date cost count.
+func (o GetGatewayConsumersConsumerOutput) MonthToDateCostCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) int { return v.MonthToDateCostCount }).(pulumi.IntOutput)
+}
+
+// The month-to-date token count.
+func (o GetGatewayConsumersConsumerOutput) MonthToDateTokenCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) int { return v.MonthToDateTokenCount }).(pulumi.IntOutput)
+}
+
+// The consumer name.
+func (o GetGatewayConsumersConsumerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The consumer nickname.
+func (o GetGatewayConsumersConsumerOutput) Nickname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayConsumersConsumer) string { return v.Nickname }).(pulumi.StringOutput)
+}
+
+type GetGatewayConsumersConsumerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayConsumersConsumerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayConsumersConsumer)(nil)).Elem()
+}
+
+func (o GetGatewayConsumersConsumerArrayOutput) ToGetGatewayConsumersConsumerArrayOutput() GetGatewayConsumersConsumerArrayOutput {
+	return o
+}
+
+func (o GetGatewayConsumersConsumerArrayOutput) ToGetGatewayConsumersConsumerArrayOutputWithContext(ctx context.Context) GetGatewayConsumersConsumerArrayOutput {
+	return o
+}
+
+func (o GetGatewayConsumersConsumerArrayOutput) Index(i pulumi.IntInput) GetGatewayConsumersConsumerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayConsumersConsumer {
+		return vs[0].([]GetGatewayConsumersConsumer)[vs[1].(int)]
+	}).(GetGatewayConsumersConsumerOutput)
+}
+
+type GetGatewayCostRulesRule struct {
+	// The cached-token cost points.
+	CacheCostPointsPerMillion string `pulumi:"cacheCostPointsPerMillion"`
+	// The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The cost rule ID.
+	Id string `pulumi:"id"`
+	// The input cost points.
+	InputCostPointsPerMillion string `pulumi:"inputCostPointsPerMillion"`
+	// The model name.
+	ModelName string `pulumi:"modelName"`
+	// The model service ID.
+	ModelServiceId string `pulumi:"modelServiceId"`
+	// The last modification time.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The output cost points.
+	OutputCostPointsPerMillion string `pulumi:"outputCostPointsPerMillion"`
+}
+
+// GetGatewayCostRulesRuleInput is an input type that accepts GetGatewayCostRulesRuleArgs and GetGatewayCostRulesRuleOutput values.
+// You can construct a concrete instance of `GetGatewayCostRulesRuleInput` via:
+//
+//	GetGatewayCostRulesRuleArgs{...}
+type GetGatewayCostRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetGatewayCostRulesRuleOutput() GetGatewayCostRulesRuleOutput
+	ToGetGatewayCostRulesRuleOutputWithContext(context.Context) GetGatewayCostRulesRuleOutput
+}
+
+type GetGatewayCostRulesRuleArgs struct {
+	// The cached-token cost points.
+	CacheCostPointsPerMillion pulumi.StringInput `pulumi:"cacheCostPointsPerMillion"`
+	// The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The cost rule ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The input cost points.
+	InputCostPointsPerMillion pulumi.StringInput `pulumi:"inputCostPointsPerMillion"`
+	// The model name.
+	ModelName pulumi.StringInput `pulumi:"modelName"`
+	// The model service ID.
+	ModelServiceId pulumi.StringInput `pulumi:"modelServiceId"`
+	// The last modification time.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The output cost points.
+	OutputCostPointsPerMillion pulumi.StringInput `pulumi:"outputCostPointsPerMillion"`
+}
+
+func (GetGatewayCostRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayCostRulesRule)(nil)).Elem()
+}
+
+func (i GetGatewayCostRulesRuleArgs) ToGetGatewayCostRulesRuleOutput() GetGatewayCostRulesRuleOutput {
+	return i.ToGetGatewayCostRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetGatewayCostRulesRuleArgs) ToGetGatewayCostRulesRuleOutputWithContext(ctx context.Context) GetGatewayCostRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayCostRulesRuleOutput)
+}
+
+// GetGatewayCostRulesRuleArrayInput is an input type that accepts GetGatewayCostRulesRuleArray and GetGatewayCostRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetGatewayCostRulesRuleArrayInput` via:
+//
+//	GetGatewayCostRulesRuleArray{ GetGatewayCostRulesRuleArgs{...} }
+type GetGatewayCostRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayCostRulesRuleArrayOutput() GetGatewayCostRulesRuleArrayOutput
+	ToGetGatewayCostRulesRuleArrayOutputWithContext(context.Context) GetGatewayCostRulesRuleArrayOutput
+}
+
+type GetGatewayCostRulesRuleArray []GetGatewayCostRulesRuleInput
+
+func (GetGatewayCostRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayCostRulesRule)(nil)).Elem()
+}
+
+func (i GetGatewayCostRulesRuleArray) ToGetGatewayCostRulesRuleArrayOutput() GetGatewayCostRulesRuleArrayOutput {
+	return i.ToGetGatewayCostRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayCostRulesRuleArray) ToGetGatewayCostRulesRuleArrayOutputWithContext(ctx context.Context) GetGatewayCostRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayCostRulesRuleArrayOutput)
+}
+
+type GetGatewayCostRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayCostRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayCostRulesRule)(nil)).Elem()
+}
+
+func (o GetGatewayCostRulesRuleOutput) ToGetGatewayCostRulesRuleOutput() GetGatewayCostRulesRuleOutput {
+	return o
+}
+
+func (o GetGatewayCostRulesRuleOutput) ToGetGatewayCostRulesRuleOutputWithContext(ctx context.Context) GetGatewayCostRulesRuleOutput {
+	return o
+}
+
+// The cached-token cost points.
+func (o GetGatewayCostRulesRuleOutput) CacheCostPointsPerMillion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCostRulesRule) string { return v.CacheCostPointsPerMillion }).(pulumi.StringOutput)
+}
+
+// The creation time.
+func (o GetGatewayCostRulesRuleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCostRulesRule) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The cost rule ID.
+func (o GetGatewayCostRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCostRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The input cost points.
+func (o GetGatewayCostRulesRuleOutput) InputCostPointsPerMillion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCostRulesRule) string { return v.InputCostPointsPerMillion }).(pulumi.StringOutput)
+}
+
+// The model name.
+func (o GetGatewayCostRulesRuleOutput) ModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCostRulesRule) string { return v.ModelName }).(pulumi.StringOutput)
+}
+
+// The model service ID.
+func (o GetGatewayCostRulesRuleOutput) ModelServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCostRulesRule) string { return v.ModelServiceId }).(pulumi.StringOutput)
+}
+
+// The last modification time.
+func (o GetGatewayCostRulesRuleOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCostRulesRule) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The output cost points.
+func (o GetGatewayCostRulesRuleOutput) OutputCostPointsPerMillion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCostRulesRule) string { return v.OutputCostPointsPerMillion }).(pulumi.StringOutput)
+}
+
+type GetGatewayCostRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayCostRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayCostRulesRule)(nil)).Elem()
+}
+
+func (o GetGatewayCostRulesRuleArrayOutput) ToGetGatewayCostRulesRuleArrayOutput() GetGatewayCostRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetGatewayCostRulesRuleArrayOutput) ToGetGatewayCostRulesRuleArrayOutputWithContext(ctx context.Context) GetGatewayCostRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetGatewayCostRulesRuleArrayOutput) Index(i pulumi.IntInput) GetGatewayCostRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayCostRulesRule {
+		return vs[0].([]GetGatewayCostRulesRule)[vs[1].(int)]
+	}).(GetGatewayCostRulesRuleOutput)
+}
+
+type GetGatewayModelApisApi struct {
+	// The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The forced model.
+	ForceModel string `pulumi:"forceModel"`
+	// The model API ID.
+	Id string `pulumi:"id"`
+	// The invocation endpoint.
+	InvokeEndpoint string `pulumi:"invokeEndpoint"`
+	// The model category.
+	ModelCategory string `pulumi:"modelCategory"`
+	// The model API name.
+	Name string `pulumi:"name"`
+	// The path prefix.
+	PathPrefix string `pulumi:"pathPrefix"`
+	// The protocol.
+	Protocol string `pulumi:"protocol"`
+	// The input recording configuration.
+	RecordInput string `pulumi:"recordInput"`
+	// The output recording configuration.
+	RecordOutput string `pulumi:"recordOutput"`
+	// The routing rules as JSON.
+	RouteRules string `pulumi:"routeRules"`
+	// The status.
+	Status string `pulumi:"status"`
+}
+
+// GetGatewayModelApisApiInput is an input type that accepts GetGatewayModelApisApiArgs and GetGatewayModelApisApiOutput values.
+// You can construct a concrete instance of `GetGatewayModelApisApiInput` via:
+//
+//	GetGatewayModelApisApiArgs{...}
+type GetGatewayModelApisApiInput interface {
+	pulumi.Input
+
+	ToGetGatewayModelApisApiOutput() GetGatewayModelApisApiOutput
+	ToGetGatewayModelApisApiOutputWithContext(context.Context) GetGatewayModelApisApiOutput
+}
+
+type GetGatewayModelApisApiArgs struct {
+	// The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The forced model.
+	ForceModel pulumi.StringInput `pulumi:"forceModel"`
+	// The model API ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The invocation endpoint.
+	InvokeEndpoint pulumi.StringInput `pulumi:"invokeEndpoint"`
+	// The model category.
+	ModelCategory pulumi.StringInput `pulumi:"modelCategory"`
+	// The model API name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The path prefix.
+	PathPrefix pulumi.StringInput `pulumi:"pathPrefix"`
+	// The protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The input recording configuration.
+	RecordInput pulumi.StringInput `pulumi:"recordInput"`
+	// The output recording configuration.
+	RecordOutput pulumi.StringInput `pulumi:"recordOutput"`
+	// The routing rules as JSON.
+	RouteRules pulumi.StringInput `pulumi:"routeRules"`
+	// The status.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetGatewayModelApisApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayModelApisApi)(nil)).Elem()
+}
+
+func (i GetGatewayModelApisApiArgs) ToGetGatewayModelApisApiOutput() GetGatewayModelApisApiOutput {
+	return i.ToGetGatewayModelApisApiOutputWithContext(context.Background())
+}
+
+func (i GetGatewayModelApisApiArgs) ToGetGatewayModelApisApiOutputWithContext(ctx context.Context) GetGatewayModelApisApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayModelApisApiOutput)
+}
+
+// GetGatewayModelApisApiArrayInput is an input type that accepts GetGatewayModelApisApiArray and GetGatewayModelApisApiArrayOutput values.
+// You can construct a concrete instance of `GetGatewayModelApisApiArrayInput` via:
+//
+//	GetGatewayModelApisApiArray{ GetGatewayModelApisApiArgs{...} }
+type GetGatewayModelApisApiArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayModelApisApiArrayOutput() GetGatewayModelApisApiArrayOutput
+	ToGetGatewayModelApisApiArrayOutputWithContext(context.Context) GetGatewayModelApisApiArrayOutput
+}
+
+type GetGatewayModelApisApiArray []GetGatewayModelApisApiInput
+
+func (GetGatewayModelApisApiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayModelApisApi)(nil)).Elem()
+}
+
+func (i GetGatewayModelApisApiArray) ToGetGatewayModelApisApiArrayOutput() GetGatewayModelApisApiArrayOutput {
+	return i.ToGetGatewayModelApisApiArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayModelApisApiArray) ToGetGatewayModelApisApiArrayOutputWithContext(ctx context.Context) GetGatewayModelApisApiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayModelApisApiArrayOutput)
+}
+
+type GetGatewayModelApisApiOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayModelApisApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayModelApisApi)(nil)).Elem()
+}
+
+func (o GetGatewayModelApisApiOutput) ToGetGatewayModelApisApiOutput() GetGatewayModelApisApiOutput {
+	return o
+}
+
+func (o GetGatewayModelApisApiOutput) ToGetGatewayModelApisApiOutputWithContext(ctx context.Context) GetGatewayModelApisApiOutput {
+	return o
+}
+
+// The creation time.
+func (o GetGatewayModelApisApiOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The forced model.
+func (o GetGatewayModelApisApiOutput) ForceModel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.ForceModel }).(pulumi.StringOutput)
+}
+
+// The model API ID.
+func (o GetGatewayModelApisApiOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The invocation endpoint.
+func (o GetGatewayModelApisApiOutput) InvokeEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.InvokeEndpoint }).(pulumi.StringOutput)
+}
+
+// The model category.
+func (o GetGatewayModelApisApiOutput) ModelCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.ModelCategory }).(pulumi.StringOutput)
+}
+
+// The model API name.
+func (o GetGatewayModelApisApiOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The path prefix.
+func (o GetGatewayModelApisApiOutput) PathPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.PathPrefix }).(pulumi.StringOutput)
+}
+
+// The protocol.
+func (o GetGatewayModelApisApiOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The input recording configuration.
+func (o GetGatewayModelApisApiOutput) RecordInput() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.RecordInput }).(pulumi.StringOutput)
+}
+
+// The output recording configuration.
+func (o GetGatewayModelApisApiOutput) RecordOutput() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.RecordOutput }).(pulumi.StringOutput)
+}
+
+// The routing rules as JSON.
+func (o GetGatewayModelApisApiOutput) RouteRules() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.RouteRules }).(pulumi.StringOutput)
+}
+
+// The status.
+func (o GetGatewayModelApisApiOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelApisApi) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetGatewayModelApisApiArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayModelApisApiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayModelApisApi)(nil)).Elem()
+}
+
+func (o GetGatewayModelApisApiArrayOutput) ToGetGatewayModelApisApiArrayOutput() GetGatewayModelApisApiArrayOutput {
+	return o
+}
+
+func (o GetGatewayModelApisApiArrayOutput) ToGetGatewayModelApisApiArrayOutputWithContext(ctx context.Context) GetGatewayModelApisApiArrayOutput {
+	return o
+}
+
+func (o GetGatewayModelApisApiArrayOutput) Index(i pulumi.IntInput) GetGatewayModelApisApiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayModelApisApi {
+		return vs[0].([]GetGatewayModelApisApi)[vs[1].(int)]
+	}).(GetGatewayModelApisApiOutput)
+}
+
+type GetGatewayModelServicesService struct {
+	// The upstream service URL.
+	BaseUrl string `pulumi:"baseUrl"`
+	// The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The model service ID.
+	Id string `pulumi:"id"`
+	// The input cost points.
+	InputCostPointsPerMillion string `pulumi:"inputCostPointsPerMillion"`
+	// The model category.
+	ModelCategory string `pulumi:"modelCategory"`
+	// The model service name.
+	Name string `pulumi:"name"`
+	// The output cost points.
+	OutputCostPointsPerMillion string `pulumi:"outputCostPointsPerMillion"`
+	// The protocol.
+	Protocol string `pulumi:"protocol"`
+	// The per-request cost points.
+	RequestCostPoints string `pulumi:"requestCostPoints"`
+	// The status.
+	Status string `pulumi:"status"`
+	// The model service vendor.
+	Vendor string `pulumi:"vendor"`
+}
+
+// GetGatewayModelServicesServiceInput is an input type that accepts GetGatewayModelServicesServiceArgs and GetGatewayModelServicesServiceOutput values.
+// You can construct a concrete instance of `GetGatewayModelServicesServiceInput` via:
+//
+//	GetGatewayModelServicesServiceArgs{...}
+type GetGatewayModelServicesServiceInput interface {
+	pulumi.Input
+
+	ToGetGatewayModelServicesServiceOutput() GetGatewayModelServicesServiceOutput
+	ToGetGatewayModelServicesServiceOutputWithContext(context.Context) GetGatewayModelServicesServiceOutput
+}
+
+type GetGatewayModelServicesServiceArgs struct {
+	// The upstream service URL.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
+	// The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The model service ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The input cost points.
+	InputCostPointsPerMillion pulumi.StringInput `pulumi:"inputCostPointsPerMillion"`
+	// The model category.
+	ModelCategory pulumi.StringInput `pulumi:"modelCategory"`
+	// The model service name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The output cost points.
+	OutputCostPointsPerMillion pulumi.StringInput `pulumi:"outputCostPointsPerMillion"`
+	// The protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The per-request cost points.
+	RequestCostPoints pulumi.StringInput `pulumi:"requestCostPoints"`
+	// The status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The model service vendor.
+	Vendor pulumi.StringInput `pulumi:"vendor"`
+}
+
+func (GetGatewayModelServicesServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayModelServicesService)(nil)).Elem()
+}
+
+func (i GetGatewayModelServicesServiceArgs) ToGetGatewayModelServicesServiceOutput() GetGatewayModelServicesServiceOutput {
+	return i.ToGetGatewayModelServicesServiceOutputWithContext(context.Background())
+}
+
+func (i GetGatewayModelServicesServiceArgs) ToGetGatewayModelServicesServiceOutputWithContext(ctx context.Context) GetGatewayModelServicesServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayModelServicesServiceOutput)
+}
+
+// GetGatewayModelServicesServiceArrayInput is an input type that accepts GetGatewayModelServicesServiceArray and GetGatewayModelServicesServiceArrayOutput values.
+// You can construct a concrete instance of `GetGatewayModelServicesServiceArrayInput` via:
+//
+//	GetGatewayModelServicesServiceArray{ GetGatewayModelServicesServiceArgs{...} }
+type GetGatewayModelServicesServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayModelServicesServiceArrayOutput() GetGatewayModelServicesServiceArrayOutput
+	ToGetGatewayModelServicesServiceArrayOutputWithContext(context.Context) GetGatewayModelServicesServiceArrayOutput
+}
+
+type GetGatewayModelServicesServiceArray []GetGatewayModelServicesServiceInput
+
+func (GetGatewayModelServicesServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayModelServicesService)(nil)).Elem()
+}
+
+func (i GetGatewayModelServicesServiceArray) ToGetGatewayModelServicesServiceArrayOutput() GetGatewayModelServicesServiceArrayOutput {
+	return i.ToGetGatewayModelServicesServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayModelServicesServiceArray) ToGetGatewayModelServicesServiceArrayOutputWithContext(ctx context.Context) GetGatewayModelServicesServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayModelServicesServiceArrayOutput)
+}
+
+type GetGatewayModelServicesServiceOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayModelServicesServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayModelServicesService)(nil)).Elem()
+}
+
+func (o GetGatewayModelServicesServiceOutput) ToGetGatewayModelServicesServiceOutput() GetGatewayModelServicesServiceOutput {
+	return o
+}
+
+func (o GetGatewayModelServicesServiceOutput) ToGetGatewayModelServicesServiceOutputWithContext(ctx context.Context) GetGatewayModelServicesServiceOutput {
+	return o
+}
+
+// The upstream service URL.
+func (o GetGatewayModelServicesServiceOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.BaseUrl }).(pulumi.StringOutput)
+}
+
+// The creation time.
+func (o GetGatewayModelServicesServiceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The model service ID.
+func (o GetGatewayModelServicesServiceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The input cost points.
+func (o GetGatewayModelServicesServiceOutput) InputCostPointsPerMillion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.InputCostPointsPerMillion }).(pulumi.StringOutput)
+}
+
+// The model category.
+func (o GetGatewayModelServicesServiceOutput) ModelCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.ModelCategory }).(pulumi.StringOutput)
+}
+
+// The model service name.
+func (o GetGatewayModelServicesServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The output cost points.
+func (o GetGatewayModelServicesServiceOutput) OutputCostPointsPerMillion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.OutputCostPointsPerMillion }).(pulumi.StringOutput)
+}
+
+// The protocol.
+func (o GetGatewayModelServicesServiceOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The per-request cost points.
+func (o GetGatewayModelServicesServiceOutput) RequestCostPoints() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.RequestCostPoints }).(pulumi.StringOutput)
+}
+
+// The status.
+func (o GetGatewayModelServicesServiceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The model service vendor.
+func (o GetGatewayModelServicesServiceOutput) Vendor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayModelServicesService) string { return v.Vendor }).(pulumi.StringOutput)
+}
+
+type GetGatewayModelServicesServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayModelServicesServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayModelServicesService)(nil)).Elem()
+}
+
+func (o GetGatewayModelServicesServiceArrayOutput) ToGetGatewayModelServicesServiceArrayOutput() GetGatewayModelServicesServiceArrayOutput {
+	return o
+}
+
+func (o GetGatewayModelServicesServiceArrayOutput) ToGetGatewayModelServicesServiceArrayOutputWithContext(ctx context.Context) GetGatewayModelServicesServiceArrayOutput {
+	return o
+}
+
+func (o GetGatewayModelServicesServiceArrayOutput) Index(i pulumi.IntInput) GetGatewayModelServicesServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayModelServicesService {
+		return vs[0].([]GetGatewayModelServicesService)[vs[1].(int)]
+	}).(GetGatewayModelServicesServiceOutput)
+}
+
+type GetGatewayRateLimitPoliciesPolicy struct {
+	// The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The policy ID.
+	Id string `pulumi:"id"`
+	// The last modification time.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The policy type.
+	PolicyType string `pulumi:"policyType"`
+	// The maximum requests per minute.
+	RateLimitRpm string `pulumi:"rateLimitRpm"`
+	// The maximum tokens per minute.
+	RateLimitTpm string `pulumi:"rateLimitTpm"`
+	// The consumer group or consumer ID.
+	ScopeRefId string `pulumi:"scopeRefId"`
+	// The rate limit dimension. Valid values: `ConsumerGroup`, `Consumer`.
+	ScopeType string `pulumi:"scopeType"`
+	// The policy status.
+	Status string `pulumi:"status"`
+}
+
+// GetGatewayRateLimitPoliciesPolicyInput is an input type that accepts GetGatewayRateLimitPoliciesPolicyArgs and GetGatewayRateLimitPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetGatewayRateLimitPoliciesPolicyInput` via:
+//
+//	GetGatewayRateLimitPoliciesPolicyArgs{...}
+type GetGatewayRateLimitPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetGatewayRateLimitPoliciesPolicyOutput() GetGatewayRateLimitPoliciesPolicyOutput
+	ToGetGatewayRateLimitPoliciesPolicyOutputWithContext(context.Context) GetGatewayRateLimitPoliciesPolicyOutput
+}
+
+type GetGatewayRateLimitPoliciesPolicyArgs struct {
+	// The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The policy ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The last modification time.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The policy type.
+	PolicyType pulumi.StringInput `pulumi:"policyType"`
+	// The maximum requests per minute.
+	RateLimitRpm pulumi.StringInput `pulumi:"rateLimitRpm"`
+	// The maximum tokens per minute.
+	RateLimitTpm pulumi.StringInput `pulumi:"rateLimitTpm"`
+	// The consumer group or consumer ID.
+	ScopeRefId pulumi.StringInput `pulumi:"scopeRefId"`
+	// The rate limit dimension. Valid values: `ConsumerGroup`, `Consumer`.
+	ScopeType pulumi.StringInput `pulumi:"scopeType"`
+	// The policy status.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetGatewayRateLimitPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayRateLimitPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetGatewayRateLimitPoliciesPolicyArgs) ToGetGatewayRateLimitPoliciesPolicyOutput() GetGatewayRateLimitPoliciesPolicyOutput {
+	return i.ToGetGatewayRateLimitPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetGatewayRateLimitPoliciesPolicyArgs) ToGetGatewayRateLimitPoliciesPolicyOutputWithContext(ctx context.Context) GetGatewayRateLimitPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayRateLimitPoliciesPolicyOutput)
+}
+
+// GetGatewayRateLimitPoliciesPolicyArrayInput is an input type that accepts GetGatewayRateLimitPoliciesPolicyArray and GetGatewayRateLimitPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetGatewayRateLimitPoliciesPolicyArrayInput` via:
+//
+//	GetGatewayRateLimitPoliciesPolicyArray{ GetGatewayRateLimitPoliciesPolicyArgs{...} }
+type GetGatewayRateLimitPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayRateLimitPoliciesPolicyArrayOutput() GetGatewayRateLimitPoliciesPolicyArrayOutput
+	ToGetGatewayRateLimitPoliciesPolicyArrayOutputWithContext(context.Context) GetGatewayRateLimitPoliciesPolicyArrayOutput
+}
+
+type GetGatewayRateLimitPoliciesPolicyArray []GetGatewayRateLimitPoliciesPolicyInput
+
+func (GetGatewayRateLimitPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayRateLimitPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetGatewayRateLimitPoliciesPolicyArray) ToGetGatewayRateLimitPoliciesPolicyArrayOutput() GetGatewayRateLimitPoliciesPolicyArrayOutput {
+	return i.ToGetGatewayRateLimitPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayRateLimitPoliciesPolicyArray) ToGetGatewayRateLimitPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetGatewayRateLimitPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayRateLimitPoliciesPolicyArrayOutput)
+}
+
+type GetGatewayRateLimitPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayRateLimitPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayRateLimitPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetGatewayRateLimitPoliciesPolicyOutput) ToGetGatewayRateLimitPoliciesPolicyOutput() GetGatewayRateLimitPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetGatewayRateLimitPoliciesPolicyOutput) ToGetGatewayRateLimitPoliciesPolicyOutputWithContext(ctx context.Context) GetGatewayRateLimitPoliciesPolicyOutput {
+	return o
+}
+
+// The creation time.
+func (o GetGatewayRateLimitPoliciesPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayRateLimitPoliciesPolicy) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The policy ID.
+func (o GetGatewayRateLimitPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayRateLimitPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The last modification time.
+func (o GetGatewayRateLimitPoliciesPolicyOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayRateLimitPoliciesPolicy) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The policy type.
+func (o GetGatewayRateLimitPoliciesPolicyOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayRateLimitPoliciesPolicy) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// The maximum requests per minute.
+func (o GetGatewayRateLimitPoliciesPolicyOutput) RateLimitRpm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayRateLimitPoliciesPolicy) string { return v.RateLimitRpm }).(pulumi.StringOutput)
+}
+
+// The maximum tokens per minute.
+func (o GetGatewayRateLimitPoliciesPolicyOutput) RateLimitTpm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayRateLimitPoliciesPolicy) string { return v.RateLimitTpm }).(pulumi.StringOutput)
+}
+
+// The consumer group or consumer ID.
+func (o GetGatewayRateLimitPoliciesPolicyOutput) ScopeRefId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayRateLimitPoliciesPolicy) string { return v.ScopeRefId }).(pulumi.StringOutput)
+}
+
+// The rate limit dimension. Valid values: `ConsumerGroup`, `Consumer`.
+func (o GetGatewayRateLimitPoliciesPolicyOutput) ScopeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayRateLimitPoliciesPolicy) string { return v.ScopeType }).(pulumi.StringOutput)
+}
+
+// The policy status.
+func (o GetGatewayRateLimitPoliciesPolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayRateLimitPoliciesPolicy) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetGatewayRateLimitPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayRateLimitPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayRateLimitPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetGatewayRateLimitPoliciesPolicyArrayOutput) ToGetGatewayRateLimitPoliciesPolicyArrayOutput() GetGatewayRateLimitPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetGatewayRateLimitPoliciesPolicyArrayOutput) ToGetGatewayRateLimitPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetGatewayRateLimitPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetGatewayRateLimitPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetGatewayRateLimitPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayRateLimitPoliciesPolicy {
+		return vs[0].([]GetGatewayRateLimitPoliciesPolicy)[vs[1].(int)]
+	}).(GetGatewayRateLimitPoliciesPolicyOutput)
+}
+
 type GetGlobalDatabaseNetworksNetwork struct {
 	// The time when the Global Database Network was created. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	CreateTime string `pulumi:"createTime"`
@@ -3610,6 +5489,301 @@ func (o GetParameterGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetParamete
 	}).(GetParameterGroupsGroupOutput)
 }
 
+type GetPolarFsInstancesPolarFsInstance struct {
+	// (Available since v2.1.0) The acceleration type.
+	AccelerateType string `pulumi:"accelerateType"`
+	// (Available since v2.1.0) The accelerated storage capacity.
+	AcceleratedStorageSpace string `pulumi:"acceleratedStorageSpace"`
+	// (Available since v2.1.0) Whether acceleration is enabled.
+	AcceleratingEnable string `pulumi:"acceleratingEnable"`
+	// (Available since v2.1.0) The bandwidth.
+	Bandwidth int `pulumi:"bandwidth"`
+	// (Available since v2.1.0) The product category.
+	Category string `pulumi:"category"`
+	// (Available since v2.1.0) The creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The instance description.
+	Description string `pulumi:"description"`
+	// (Available since v2.1.0) The expiration time.
+	ExpireTime string `pulumi:"expireTime"`
+	// (Available since v2.1.0) Whether the instance has expired.
+	Expired string `pulumi:"expired"`
+	// (Available since v2.1.0) The PolarFS instance ID.
+	Id string `pulumi:"id"`
+	// (Available since v2.1.0) The PolarFS path.
+	Path string `pulumi:"path"`
+	// (Available since v2.1.0) The billing method.
+	PayType string `pulumi:"payType"`
+	// The PolarFS type.
+	PolarFsType string `pulumi:"polarFsType"`
+	// (Available since v2.1.0) The region ID.
+	RegionId string `pulumi:"regionId"`
+	// The associated PolarDB cluster ID.
+	RelativeDbClusterId string `pulumi:"relativeDbClusterId"`
+	// (Available since v2.1.0) The security group ID.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// (Available since v2.1.0) The instance status.
+	Status string `pulumi:"status"`
+	// (Available since v2.1.0) The storage capacity.
+	StorageSpace int `pulumi:"storageSpace"`
+	// (Available since v2.1.0) The storage type.
+	StorageType string `pulumi:"storageType"`
+	// A mapping of tags to assign to the query.
+	Tags map[string]string `pulumi:"tags"`
+	// (Available since v2.1.0) The VPC ID.
+	VpcId string `pulumi:"vpcId"`
+	// (Available since v2.1.0) The vSwitch ID.
+	VswitchId string `pulumi:"vswitchId"`
+	// (Available since v2.1.0) The zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetPolarFsInstancesPolarFsInstanceInput is an input type that accepts GetPolarFsInstancesPolarFsInstanceArgs and GetPolarFsInstancesPolarFsInstanceOutput values.
+// You can construct a concrete instance of `GetPolarFsInstancesPolarFsInstanceInput` via:
+//
+//	GetPolarFsInstancesPolarFsInstanceArgs{...}
+type GetPolarFsInstancesPolarFsInstanceInput interface {
+	pulumi.Input
+
+	ToGetPolarFsInstancesPolarFsInstanceOutput() GetPolarFsInstancesPolarFsInstanceOutput
+	ToGetPolarFsInstancesPolarFsInstanceOutputWithContext(context.Context) GetPolarFsInstancesPolarFsInstanceOutput
+}
+
+type GetPolarFsInstancesPolarFsInstanceArgs struct {
+	// (Available since v2.1.0) The acceleration type.
+	AccelerateType pulumi.StringInput `pulumi:"accelerateType"`
+	// (Available since v2.1.0) The accelerated storage capacity.
+	AcceleratedStorageSpace pulumi.StringInput `pulumi:"acceleratedStorageSpace"`
+	// (Available since v2.1.0) Whether acceleration is enabled.
+	AcceleratingEnable pulumi.StringInput `pulumi:"acceleratingEnable"`
+	// (Available since v2.1.0) The bandwidth.
+	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
+	// (Available since v2.1.0) The product category.
+	Category pulumi.StringInput `pulumi:"category"`
+	// (Available since v2.1.0) The creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The instance description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// (Available since v2.1.0) The expiration time.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// (Available since v2.1.0) Whether the instance has expired.
+	Expired pulumi.StringInput `pulumi:"expired"`
+	// (Available since v2.1.0) The PolarFS instance ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// (Available since v2.1.0) The PolarFS path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// (Available since v2.1.0) The billing method.
+	PayType pulumi.StringInput `pulumi:"payType"`
+	// The PolarFS type.
+	PolarFsType pulumi.StringInput `pulumi:"polarFsType"`
+	// (Available since v2.1.0) The region ID.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The associated PolarDB cluster ID.
+	RelativeDbClusterId pulumi.StringInput `pulumi:"relativeDbClusterId"`
+	// (Available since v2.1.0) The security group ID.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// (Available since v2.1.0) The instance status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// (Available since v2.1.0) The storage capacity.
+	StorageSpace pulumi.IntInput `pulumi:"storageSpace"`
+	// (Available since v2.1.0) The storage type.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+	// A mapping of tags to assign to the query.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// (Available since v2.1.0) The VPC ID.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// (Available since v2.1.0) The vSwitch ID.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// (Available since v2.1.0) The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetPolarFsInstancesPolarFsInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolarFsInstancesPolarFsInstance)(nil)).Elem()
+}
+
+func (i GetPolarFsInstancesPolarFsInstanceArgs) ToGetPolarFsInstancesPolarFsInstanceOutput() GetPolarFsInstancesPolarFsInstanceOutput {
+	return i.ToGetPolarFsInstancesPolarFsInstanceOutputWithContext(context.Background())
+}
+
+func (i GetPolarFsInstancesPolarFsInstanceArgs) ToGetPolarFsInstancesPolarFsInstanceOutputWithContext(ctx context.Context) GetPolarFsInstancesPolarFsInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolarFsInstancesPolarFsInstanceOutput)
+}
+
+// GetPolarFsInstancesPolarFsInstanceArrayInput is an input type that accepts GetPolarFsInstancesPolarFsInstanceArray and GetPolarFsInstancesPolarFsInstanceArrayOutput values.
+// You can construct a concrete instance of `GetPolarFsInstancesPolarFsInstanceArrayInput` via:
+//
+//	GetPolarFsInstancesPolarFsInstanceArray{ GetPolarFsInstancesPolarFsInstanceArgs{...} }
+type GetPolarFsInstancesPolarFsInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetPolarFsInstancesPolarFsInstanceArrayOutput() GetPolarFsInstancesPolarFsInstanceArrayOutput
+	ToGetPolarFsInstancesPolarFsInstanceArrayOutputWithContext(context.Context) GetPolarFsInstancesPolarFsInstanceArrayOutput
+}
+
+type GetPolarFsInstancesPolarFsInstanceArray []GetPolarFsInstancesPolarFsInstanceInput
+
+func (GetPolarFsInstancesPolarFsInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolarFsInstancesPolarFsInstance)(nil)).Elem()
+}
+
+func (i GetPolarFsInstancesPolarFsInstanceArray) ToGetPolarFsInstancesPolarFsInstanceArrayOutput() GetPolarFsInstancesPolarFsInstanceArrayOutput {
+	return i.ToGetPolarFsInstancesPolarFsInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolarFsInstancesPolarFsInstanceArray) ToGetPolarFsInstancesPolarFsInstanceArrayOutputWithContext(ctx context.Context) GetPolarFsInstancesPolarFsInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolarFsInstancesPolarFsInstanceArrayOutput)
+}
+
+type GetPolarFsInstancesPolarFsInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetPolarFsInstancesPolarFsInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolarFsInstancesPolarFsInstance)(nil)).Elem()
+}
+
+func (o GetPolarFsInstancesPolarFsInstanceOutput) ToGetPolarFsInstancesPolarFsInstanceOutput() GetPolarFsInstancesPolarFsInstanceOutput {
+	return o
+}
+
+func (o GetPolarFsInstancesPolarFsInstanceOutput) ToGetPolarFsInstancesPolarFsInstanceOutputWithContext(ctx context.Context) GetPolarFsInstancesPolarFsInstanceOutput {
+	return o
+}
+
+// (Available since v2.1.0) The acceleration type.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) AccelerateType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.AccelerateType }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The accelerated storage capacity.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) AcceleratedStorageSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.AcceleratedStorageSpace }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) Whether acceleration is enabled.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) AcceleratingEnable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.AcceleratingEnable }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The bandwidth.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) int { return v.Bandwidth }).(pulumi.IntOutput)
+}
+
+// (Available since v2.1.0) The product category.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The creation time.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The instance description.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The expiration time.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) Whether the instance has expired.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) Expired() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.Expired }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The PolarFS instance ID.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The PolarFS path.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The billing method.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) PayType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.PayType }).(pulumi.StringOutput)
+}
+
+// The PolarFS type.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) PolarFsType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.PolarFsType }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The region ID.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The associated PolarDB cluster ID.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) RelativeDbClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.RelativeDbClusterId }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The security group ID.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The instance status.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The storage capacity.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) StorageSpace() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) int { return v.StorageSpace }).(pulumi.IntOutput)
+}
+
+// (Available since v2.1.0) The storage type.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the query.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// (Available since v2.1.0) The VPC ID.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The vSwitch ID.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// (Available since v2.1.0) The zone ID.
+func (o GetPolarFsInstancesPolarFsInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolarFsInstancesPolarFsInstance) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetPolarFsInstancesPolarFsInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolarFsInstancesPolarFsInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolarFsInstancesPolarFsInstance)(nil)).Elem()
+}
+
+func (o GetPolarFsInstancesPolarFsInstanceArrayOutput) ToGetPolarFsInstancesPolarFsInstanceArrayOutput() GetPolarFsInstancesPolarFsInstanceArrayOutput {
+	return o
+}
+
+func (o GetPolarFsInstancesPolarFsInstanceArrayOutput) ToGetPolarFsInstancesPolarFsInstanceArrayOutputWithContext(ctx context.Context) GetPolarFsInstancesPolarFsInstanceArrayOutput {
+	return o
+}
+
+func (o GetPolarFsInstancesPolarFsInstanceArrayOutput) Index(i pulumi.IntInput) GetPolarFsInstancesPolarFsInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolarFsInstancesPolarFsInstance {
+		return vs[0].([]GetPolarFsInstancesPolarFsInstance)[vs[1].(int)]
+	}).(GetPolarFsInstancesPolarFsInstanceOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -3721,6 +5895,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationComponentArrayInput)(nil)).Elem(), ApplicationComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationParameterInput)(nil)).Elem(), ApplicationParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationParameterArrayInput)(nil)).Elem(), ApplicationParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPolicyAdvancedDataPolicyInput)(nil)).Elem(), BackupPolicyAdvancedDataPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPolicyAdvancedDataPolicyArrayInput)(nil)).Elem(), BackupPolicyAdvancedDataPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPolicyAutoCreatedAdvancedDataPolicyInput)(nil)).Elem(), BackupPolicyAutoCreatedAdvancedDataPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPolicyAutoCreatedAdvancedDataPolicyArrayInput)(nil)).Elem(), BackupPolicyAutoCreatedAdvancedDataPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchTaskTaskParamInput)(nil)).Elem(), BatchTaskTaskParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchTaskTaskParamArrayInput)(nil)).Elem(), BatchTaskTaskParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDbClusterIpArrayInput)(nil)).Elem(), ClusterDbClusterIpArrayArgs{})
@@ -3743,6 +5921,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaySecurityIpArrayArrayInput)(nil)).Elem(), GatewaySecurityIpArrayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterGroupParameterInput)(nil)).Elem(), ParameterGroupParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterGroupParameterArrayInput)(nil)).Elem(), ParameterGroupParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolarFsEndpointAddressItemInput)(nil)).Elem(), PolarFsEndpointAddressItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolarFsEndpointAddressItemArrayInput)(nil)).Elem(), PolarFsEndpointAddressItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountDatabasePrivilegeInput)(nil)).Elem(), GetAccountsAccountDatabasePrivilegeArgs{})
@@ -3759,6 +5939,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointArrayInput)(nil)).Elem(), GetEndpointsEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointAddressItemInput)(nil)).Elem(), GetEndpointsEndpointAddressItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEndpointsEndpointAddressItemArrayInput)(nil)).Elem(), GetEndpointsEndpointAddressItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayBudgetPoliciesPolicyInput)(nil)).Elem(), GetGatewayBudgetPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayBudgetPoliciesPolicyArrayInput)(nil)).Elem(), GetGatewayBudgetPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayConsumerGroupsGroupInput)(nil)).Elem(), GetGatewayConsumerGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayConsumerGroupsGroupArrayInput)(nil)).Elem(), GetGatewayConsumerGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayConsumersConsumerInput)(nil)).Elem(), GetGatewayConsumersConsumerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayConsumersConsumerArrayInput)(nil)).Elem(), GetGatewayConsumersConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCostRulesRuleInput)(nil)).Elem(), GetGatewayCostRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCostRulesRuleArrayInput)(nil)).Elem(), GetGatewayCostRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayModelApisApiInput)(nil)).Elem(), GetGatewayModelApisApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayModelApisApiArrayInput)(nil)).Elem(), GetGatewayModelApisApiArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayModelServicesServiceInput)(nil)).Elem(), GetGatewayModelServicesServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayModelServicesServiceArrayInput)(nil)).Elem(), GetGatewayModelServicesServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayRateLimitPoliciesPolicyInput)(nil)).Elem(), GetGatewayRateLimitPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayRateLimitPoliciesPolicyArrayInput)(nil)).Elem(), GetGatewayRateLimitPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalDatabaseNetworksNetworkInput)(nil)).Elem(), GetGlobalDatabaseNetworksNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalDatabaseNetworksNetworkArrayInput)(nil)).Elem(), GetGlobalDatabaseNetworksNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalDatabaseNetworksNetworkDbClusterInput)(nil)).Elem(), GetGlobalDatabaseNetworksNetworkDbClusterArgs{})
@@ -3771,12 +5965,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeClassesClassSupportedEngineAvailableResourceArrayInput)(nil)).Elem(), GetNodeClassesClassSupportedEngineAvailableResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetParameterGroupsGroupInput)(nil)).Elem(), GetParameterGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetParameterGroupsGroupArrayInput)(nil)).Elem(), GetParameterGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolarFsInstancesPolarFsInstanceInput)(nil)).Elem(), GetPolarFsInstancesPolarFsInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolarFsInstancesPolarFsInstanceArrayInput)(nil)).Elem(), GetPolarFsInstancesPolarFsInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(ApplicationComponentOutput{})
 	pulumi.RegisterOutputType(ApplicationComponentArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationParameterOutput{})
 	pulumi.RegisterOutputType(ApplicationParameterArrayOutput{})
+	pulumi.RegisterOutputType(BackupPolicyAdvancedDataPolicyOutput{})
+	pulumi.RegisterOutputType(BackupPolicyAdvancedDataPolicyArrayOutput{})
+	pulumi.RegisterOutputType(BackupPolicyAutoCreatedAdvancedDataPolicyOutput{})
+	pulumi.RegisterOutputType(BackupPolicyAutoCreatedAdvancedDataPolicyArrayOutput{})
 	pulumi.RegisterOutputType(BatchTaskTaskParamOutput{})
 	pulumi.RegisterOutputType(BatchTaskTaskParamArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDbClusterIpArrayOutput{})
@@ -3799,6 +5999,8 @@ func init() {
 	pulumi.RegisterOutputType(GatewaySecurityIpArrayArrayOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterArrayOutput{})
+	pulumi.RegisterOutputType(PolarFsEndpointAddressItemOutput{})
+	pulumi.RegisterOutputType(PolarFsEndpointAddressItemArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountDatabasePrivilegeOutput{})
@@ -3815,6 +6017,20 @@ func init() {
 	pulumi.RegisterOutputType(GetEndpointsEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointsEndpointAddressItemOutput{})
 	pulumi.RegisterOutputType(GetEndpointsEndpointAddressItemArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayBudgetPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetGatewayBudgetPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayConsumerGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetGatewayConsumerGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayConsumersConsumerOutput{})
+	pulumi.RegisterOutputType(GetGatewayConsumersConsumerArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayCostRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetGatewayCostRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayModelApisApiOutput{})
+	pulumi.RegisterOutputType(GetGatewayModelApisApiArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayModelServicesServiceOutput{})
+	pulumi.RegisterOutputType(GetGatewayModelServicesServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayRateLimitPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetGatewayRateLimitPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalDatabaseNetworksNetworkOutput{})
 	pulumi.RegisterOutputType(GetGlobalDatabaseNetworksNetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalDatabaseNetworksNetworkDbClusterOutput{})
@@ -3827,6 +6043,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetParameterGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetParameterGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetPolarFsInstancesPolarFsInstanceOutput{})
+	pulumi.RegisterOutputType(GetPolarFsInstancesPolarFsInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

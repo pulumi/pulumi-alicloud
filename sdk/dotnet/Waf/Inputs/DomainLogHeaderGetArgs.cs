@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Waf.Inputs
 
     public sealed class DomainLogHeaderGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The key of label.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// The value of label.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

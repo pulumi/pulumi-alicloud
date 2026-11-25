@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in v1.92.0+.
+// > **NOTE:** Available since v1.92.0.
 //
 // ## Example Usage
 //
@@ -92,25 +92,33 @@ type GetTemplatesArgs struct {
 
 // A collection of values returned by getTemplates.
 type GetTemplatesResult struct {
-	Category         *string `pulumi:"category"`
-	CreatedBy        *string `pulumi:"createdBy"`
+	// The category of the template.
+	Category *string `pulumi:"category"`
+	// The user who created the template.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The time when the template was created.
 	CreatedDate      *string `pulumi:"createdDate"`
 	CreatedDateAfter *string `pulumi:"createdDateAfter"`
-	HasTrigger       *bool   `pulumi:"hasTrigger"`
+	// Whether the template has a trigger.
+	HasTrigger *bool `pulumi:"hasTrigger"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of OOS Template ids. Each element in the list is same as template_name.
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
 	// (Available in v1.114.0+) A list of OOS Template names.
-	Names          []string          `pulumi:"names"`
-	OutputFile     *string           `pulumi:"outputFile"`
-	ShareType      *string           `pulumi:"shareType"`
-	SortField      *string           `pulumi:"sortField"`
-	SortOrder      *string           `pulumi:"sortOrder"`
-	Tags           map[string]string `pulumi:"tags"`
-	TemplateFormat *string           `pulumi:"templateFormat"`
-	TemplateType   *string           `pulumi:"templateType"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The sharing type of the template.
+	ShareType *string `pulumi:"shareType"`
+	SortField *string `pulumi:"sortField"`
+	SortOrder *string `pulumi:"sortOrder"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The format of the template.
+	TemplateFormat *string `pulumi:"templateFormat"`
+	// The type of the OOS Template.
+	TemplateType *string `pulumi:"templateType"`
 	// A list of OOS Templates. Each element contains the following attributes:
 	Templates []GetTemplatesTemplate `pulumi:"templates"`
 }
@@ -171,14 +179,17 @@ func (o GetTemplatesResultOutput) ToGetTemplatesResultOutputWithContext(ctx cont
 	return o
 }
 
+// The category of the template.
 func (o GetTemplatesResultOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// The user who created the template.
 func (o GetTemplatesResultOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// The time when the template was created.
 func (o GetTemplatesResultOutput) CreatedDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.CreatedDate }).(pulumi.StringPtrOutput)
 }
@@ -187,6 +198,7 @@ func (o GetTemplatesResultOutput) CreatedDateAfter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.CreatedDateAfter }).(pulumi.StringPtrOutput)
 }
 
+// Whether the template has a trigger.
 func (o GetTemplatesResultOutput) HasTrigger() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *bool { return v.HasTrigger }).(pulumi.BoolPtrOutput)
 }
@@ -214,6 +226,7 @@ func (o GetTemplatesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The sharing type of the template.
 func (o GetTemplatesResultOutput) ShareType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.ShareType }).(pulumi.StringPtrOutput)
 }
@@ -226,14 +239,17 @@ func (o GetTemplatesResultOutput) SortOrder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
 }
 
+// The tag of the resource.
 func (o GetTemplatesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetTemplatesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The format of the template.
 func (o GetTemplatesResultOutput) TemplateFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.TemplateFormat }).(pulumi.StringPtrOutput)
 }
 
+// The type of the OOS Template.
 func (o GetTemplatesResultOutput) TemplateType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.TemplateType }).(pulumi.StringPtrOutput)
 }

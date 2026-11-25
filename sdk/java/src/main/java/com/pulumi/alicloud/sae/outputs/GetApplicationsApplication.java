@@ -205,14 +205,30 @@ public final class GetApplicationsApplication {
      * 
      */
     private String readiness;
+    /**
+     * @return The region ID.
+     * 
+     */
     private String regionId;
     /**
      * @return Initial number of instances.
      * 
      */
     private Integer replicas;
+    /**
+     * @return The repo name.
+     * 
+     */
     private String repoName;
+    /**
+     * @return The repo namespace.
+     * 
+     */
     private String repoNamespace;
+    /**
+     * @return The repo origin type.
+     * 
+     */
     private String repoOriginType;
     /**
      * @return Security group ID.
@@ -225,7 +241,7 @@ public final class GetApplicationsApplication {
      */
     private String slsConfigs;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
      * 
      */
     private String status;
@@ -537,6 +553,10 @@ public final class GetApplicationsApplication {
     public String readiness() {
         return this.readiness;
     }
+    /**
+     * @return The region ID.
+     * 
+     */
     public String regionId() {
         return this.regionId;
     }
@@ -547,12 +567,24 @@ public final class GetApplicationsApplication {
     public Integer replicas() {
         return this.replicas;
     }
+    /**
+     * @return The repo name.
+     * 
+     */
     public String repoName() {
         return this.repoName;
     }
+    /**
+     * @return The repo namespace.
+     * 
+     */
     public String repoNamespace() {
         return this.repoNamespace;
     }
+    /**
+     * @return The repo origin type.
+     * 
+     */
     public String repoOriginType() {
         return this.repoOriginType;
     }
@@ -571,7 +603,7 @@ public final class GetApplicationsApplication {
         return this.slsConfigs;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
      * 
      */
     public String status() {

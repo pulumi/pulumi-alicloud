@@ -50,15 +50,15 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string RamRoleName;
         /// <summary>
-        /// The resource group ID.
+        /// The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The security group ID.
+        /// VNode itself and by VNode created (ECI) the security group used by.
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
-        /// The Status of the virtual node.
+        /// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -73,9 +73,12 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// The name of the virtual node.
         /// </summary>
         public readonly string VirtualNodeName;
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The vswitch id.
+        /// The ID of the vSwitch.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>

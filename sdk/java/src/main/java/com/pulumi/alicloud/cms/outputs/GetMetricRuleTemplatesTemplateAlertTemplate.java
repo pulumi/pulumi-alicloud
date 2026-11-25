@@ -37,6 +37,10 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplate {
      * 
      */
     private String ruleName;
+    /**
+     * @return The extended dimension options of the alert.
+     * 
+     */
     private String selector;
     /**
      * @return The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
@@ -80,6 +84,10 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplate {
     public String ruleName() {
         return this.ruleName;
     }
+    /**
+     * @return The extended dimension options of the alert.
+     * 
+     */
     public String selector() {
         return this.selector;
     }

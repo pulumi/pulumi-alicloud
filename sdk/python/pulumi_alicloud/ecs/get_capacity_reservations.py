@@ -159,7 +159,7 @@ class GetCapacityReservationsResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        A mapping of tags to assign to the Capacity Reservation.
+        (Optional) A mapping of tags to assign to the Capacity Reservation.
         """
         return pulumi.get(self, "tags")
 
@@ -199,7 +199,7 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[_built
     """
     This data source provides Ecs Capacity Reservation available to the user.
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0
 
     ## Example Usage
 
@@ -215,6 +215,7 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[_built
     ```
 
 
+    :param Sequence[_builtins.str] capacity_reservation_ids: A list of Capacity Reservation IDs.
     :param Sequence[_builtins.str] ids: A list of Capacity Reservation IDs.
     :param _builtins.str instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
@@ -267,7 +268,7 @@ def get_capacity_reservations_output(capacity_reservation_ids: pulumi.Input[Opti
     """
     This data source provides Ecs Capacity Reservation available to the user.
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0
 
     ## Example Usage
 
@@ -283,6 +284,7 @@ def get_capacity_reservations_output(capacity_reservation_ids: pulumi.Input[Opti
     ```
 
 
+    :param Sequence[_builtins.str] capacity_reservation_ids: A list of Capacity Reservation IDs.
     :param Sequence[_builtins.str] ids: A list of Capacity Reservation IDs.
     :param _builtins.str instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.

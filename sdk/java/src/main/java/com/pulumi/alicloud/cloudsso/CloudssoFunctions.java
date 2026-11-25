@@ -39,7 +39,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -89,7 +89,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -139,7 +139,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -189,7 +189,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -239,7 +239,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.193.0+.
+     * &gt; **NOTE:** Available since v1.193.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -289,7 +289,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -345,7 +345,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -401,7 +401,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -457,7 +457,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -513,7 +513,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -569,7 +569,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -621,7 +621,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -673,7 +673,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -725,7 +725,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -777,7 +777,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -829,7 +829,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -881,7 +881,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.135.0+.
+     * &gt; **NOTE:** Available since v1.135.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -933,7 +933,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -989,7 +989,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -1045,7 +1045,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -1101,7 +1101,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -1157,7 +1157,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -1213,7 +1213,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -1263,7 +1263,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -1313,7 +1313,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -1363,7 +1363,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -1413,7 +1413,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.138.0+.
+     * &gt; **NOTE:** Available since v1.138.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -2028,7 +2028,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -2098,7 +2098,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -2168,7 +2168,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -2238,7 +2238,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 
@@ -2308,7 +2308,7 @@ public final class CloudssoFunctions {
     /**
      * This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
      * 

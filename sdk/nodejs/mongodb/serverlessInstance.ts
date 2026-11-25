@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * For information about MongoDB Serverless Instance and how to use it, see [What is Serverless Instance](https://www.alibabacloud.com/help/doc-detail/26558.html).
  *
- * > **NOTE:** Deprecated since v1.214.0.
+ * > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
  *
- * > **DEPRECATED:**  This resource has been deprecated from version `1.214.0`.
+ * > **DEPRECATED:** This resource has been deprecated from v1.214.0.
  *
  * ## Example Usage
  *
@@ -158,7 +158,7 @@ export class ServerlessInstance extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * An array that consists of the information of IP whitelists.
+     * An array that consists of the information of IP whitelists. See `securityIpGroups` below.
      */
     declare public readonly securityIpGroups: pulumi.Output<outputs.mongodb.ServerlessInstanceSecurityIpGroup[] | undefined>;
     /**
@@ -323,7 +323,7 @@ export interface ServerlessInstanceState {
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * An array that consists of the information of IP whitelists.
+     * An array that consists of the information of IP whitelists. See `securityIpGroups` below.
      */
     securityIpGroups?: pulumi.Input<pulumi.Input<inputs.mongodb.ServerlessInstanceSecurityIpGroup>[] | undefined>;
     /**
@@ -407,7 +407,7 @@ export interface ServerlessInstanceArgs {
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * An array that consists of the information of IP whitelists.
+     * An array that consists of the information of IP whitelists. See `securityIpGroups` below.
      */
     securityIpGroups?: pulumi.Input<pulumi.Input<inputs.mongodb.ServerlessInstanceSecurityIpGroup>[] | undefined>;
     /**

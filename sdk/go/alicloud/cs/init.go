@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:cs/autoRepairPolicy:AutoRepairPolicy":
+		r = &AutoRepairPolicy{}
 	case "alicloud:cs/autoscalingConfig:AutoscalingConfig":
 		r = &AutoscalingConfig{}
 	case "alicloud:cs/edgeKubernetes:EdgeKubernetes":
@@ -60,6 +62,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cs/autoRepairPolicy",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cs/autoscalingConfig",

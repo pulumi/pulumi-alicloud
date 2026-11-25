@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.165.0+.
+// > **NOTE:** Available since v1.165.0.
 //
 // ## Example Usage
 //
@@ -83,13 +83,16 @@ type GetHostShareKeysArgs struct {
 type GetHostShareKeysResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                `pulumi:"id"`
-	Ids        []string              `pulumi:"ids"`
-	InstanceId string                `pulumi:"instanceId"`
-	Keys       []GetHostShareKeysKey `pulumi:"keys"`
-	NameRegex  *string               `pulumi:"nameRegex"`
-	Names      []string              `pulumi:"names"`
-	OutputFile *string               `pulumi:"outputFile"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID of the Bastion instance.
+	InstanceId string `pulumi:"instanceId"`
+	// A list of Bastionhost Host Share Keys. Each element contains the following attributes:
+	Keys      []GetHostShareKeysKey `pulumi:"keys"`
+	NameRegex *string               `pulumi:"nameRegex"`
+	// A list of Host Share Key names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
 
 func GetHostShareKeysOutput(ctx *pulumi.Context, args GetHostShareKeysOutputArgs, opts ...pulumi.InvokeOption) GetHostShareKeysResultOutput {
@@ -143,10 +146,12 @@ func (o GetHostShareKeysResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostShareKeysResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the Bastion instance.
 func (o GetHostShareKeysResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostShareKeysResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// A list of Bastionhost Host Share Keys. Each element contains the following attributes:
 func (o GetHostShareKeysResultOutput) Keys() GetHostShareKeysKeyArrayOutput {
 	return o.ApplyT(func(v GetHostShareKeysResult) []GetHostShareKeysKey { return v.Keys }).(GetHostShareKeysKeyArrayOutput)
 }
@@ -155,6 +160,7 @@ func (o GetHostShareKeysResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHostShareKeysResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Host Share Key names.
 func (o GetHostShareKeysResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostShareKeysResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

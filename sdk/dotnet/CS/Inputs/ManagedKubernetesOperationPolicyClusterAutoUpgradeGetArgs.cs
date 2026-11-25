@@ -16,7 +16,8 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// The automatic cluster upgrade channel. Valid values: `Patch`, `Stable`, `Rapid`.
         /// 
         /// for example:
-        /// ```
+        /// 
+        /// ```text
         /// operation_policy {
         /// cluster_auto_upgrade {
         /// enabled = true

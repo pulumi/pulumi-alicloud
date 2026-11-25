@@ -44,7 +44,7 @@ class AutoProvisioningGroupArgs:
         """
         The set of arguments for constructing a AutoProvisioningGroup resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]] launch_template_configs: DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]] launch_template_configs: DataDisk mappings to attach to ecs instance. See `launch_template_config` below for details.
         :param pulumi.Input[_builtins.str] launch_template_id: The ID of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[_builtins.str] total_target_capacity: The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
         :param pulumi.Input[_builtins.str] auto_provisioning_group_name: The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
@@ -107,7 +107,7 @@ class AutoProvisioningGroupArgs:
     @pulumi.getter(name="launchTemplateConfigs")
     def launch_template_configs(self) -> pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]:
         """
-        DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+        DataDisk mappings to attach to ecs instance. See `launch_template_config` below for details.
         """
         return pulumi.get(self, "launch_template_configs")
 
@@ -375,7 +375,7 @@ class _AutoProvisioningGroupState:
         :param pulumi.Input[_builtins.str] default_target_capacity_type: The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
         :param pulumi.Input[_builtins.str] description: The description of the auto provisioning group.
         :param pulumi.Input[_builtins.str] excess_capacity_termination_policy: The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
-        :param pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]] launch_template_configs: DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]] launch_template_configs: DataDisk mappings to attach to ecs instance. See `launch_template_config` below for details.
         :param pulumi.Input[_builtins.str] launch_template_id: The ID of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[_builtins.str] launch_template_version: The version of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[_builtins.float] max_spot_price: The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
@@ -496,7 +496,7 @@ class _AutoProvisioningGroupState:
     @pulumi.getter(name="launchTemplateConfigs")
     def launch_template_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]]:
         """
-        DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+        DataDisk mappings to attach to ecs instance. See `launch_template_config` below for details.
         """
         return pulumi.get(self, "launch_template_configs")
 
@@ -703,7 +703,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         """
         Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and pay_as_you_go instances to rapidly deploy clusters.
 
-        > **NOTE:** Available in 1.79.0+
+        > **NOTE:** Available since v1.79.0
 
         ## Example Usage
 
@@ -767,7 +767,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_target_capacity_type: The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
         :param pulumi.Input[_builtins.str] description: The description of the auto provisioning group.
         :param pulumi.Input[_builtins.str] excess_capacity_termination_policy: The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict', 'outputs.AutoProvisioningGroupLaunchTemplateConfig']]]] launch_template_configs: DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict', 'outputs.AutoProvisioningGroupLaunchTemplateConfig']]]] launch_template_configs: DataDisk mappings to attach to ecs instance. See `launch_template_config` below for details.
         :param pulumi.Input[_builtins.str] launch_template_id: The ID of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[_builtins.str] launch_template_version: The version of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[_builtins.float] max_spot_price: The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
@@ -792,7 +792,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         """
         Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and pay_as_you_go instances to rapidly deploy clusters.
 
-        > **NOTE:** Available in 1.79.0+
+        > **NOTE:** Available since v1.79.0
 
         ## Example Usage
 
@@ -961,7 +961,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_target_capacity_type: The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
         :param pulumi.Input[_builtins.str] description: The description of the auto provisioning group.
         :param pulumi.Input[_builtins.str] excess_capacity_termination_policy: The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict', 'outputs.AutoProvisioningGroupLaunchTemplateConfig']]]] launch_template_configs: DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict', 'outputs.AutoProvisioningGroupLaunchTemplateConfig']]]] launch_template_configs: DataDisk mappings to attach to ecs instance. See `launch_template_config` below for details.
         :param pulumi.Input[_builtins.str] launch_template_id: The ID of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[_builtins.str] launch_template_version: The version of the instance launch template associated with the auto provisioning group.
         :param pulumi.Input[_builtins.float] max_spot_price: The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
@@ -1093,7 +1093,7 @@ class AutoProvisioningGroup(pulumi.CustomResource):
     @pulumi.getter(name="launchTemplateConfigs")
     def launch_template_configs(self) -> pulumi.Output[Sequence['outputs.AutoProvisioningGroupLaunchTemplateConfig']]:
         """
-        DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+        DataDisk mappings to attach to ecs instance. See `launch_template_config` below for details.
         """
         return pulumi.get(self, "launch_template_configs")
 

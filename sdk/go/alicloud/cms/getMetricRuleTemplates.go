@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -98,15 +98,19 @@ type GetMetricRuleTemplatesArgs struct {
 type GetMetricRuleTemplatesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string                           `pulumi:"id"`
-	Ids                    []string                         `pulumi:"ids"`
-	Keyword                *string                          `pulumi:"keyword"`
-	MetricRuleTemplateName *string                          `pulumi:"metricRuleTemplateName"`
-	NameRegex              *string                          `pulumi:"nameRegex"`
-	Names                  []string                         `pulumi:"names"`
-	OutputFile             *string                          `pulumi:"outputFile"`
-	TemplateId             *string                          `pulumi:"templateId"`
-	Templates              []GetMetricRuleTemplatesTemplate `pulumi:"templates"`
+	Id      string   `pulumi:"id"`
+	Ids     []string `pulumi:"ids"`
+	Keyword *string  `pulumi:"keyword"`
+	// The name of the alert template.
+	MetricRuleTemplateName *string `pulumi:"metricRuleTemplateName"`
+	NameRegex              *string `pulumi:"nameRegex"`
+	// A list of Metric Rule Template names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the alert template.
+	TemplateId *string `pulumi:"templateId"`
+	// A list of Cms Metric Rule Templates. Each element contains the following attributes:
+	Templates []GetMetricRuleTemplatesTemplate `pulumi:"templates"`
 }
 
 func GetMetricRuleTemplatesOutput(ctx *pulumi.Context, args GetMetricRuleTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetMetricRuleTemplatesResultOutput {
@@ -168,6 +172,7 @@ func (o GetMetricRuleTemplatesResultOutput) Keyword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesResult) *string { return v.Keyword }).(pulumi.StringPtrOutput)
 }
 
+// The name of the alert template.
 func (o GetMetricRuleTemplatesResultOutput) MetricRuleTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesResult) *string { return v.MetricRuleTemplateName }).(pulumi.StringPtrOutput)
 }
@@ -176,6 +181,7 @@ func (o GetMetricRuleTemplatesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Metric Rule Template names.
 func (o GetMetricRuleTemplatesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -184,10 +190,12 @@ func (o GetMetricRuleTemplatesResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetMetricRuleTemplatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the alert template.
 func (o GetMetricRuleTemplatesResultOutput) TemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesResult) *string { return v.TemplateId }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cms Metric Rule Templates. Each element contains the following attributes:
 func (o GetMetricRuleTemplatesResultOutput) Templates() GetMetricRuleTemplatesTemplateArrayOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesResult) []GetMetricRuleTemplatesTemplate { return v.Templates }).(GetMetricRuleTemplatesTemplateArrayOutput)
 }

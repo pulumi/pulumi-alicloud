@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the FnF Executions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.149.0+.
+ * > **NOTE:** Available since v1.149.0.
  *
  * ## Example Usage
  *
@@ -76,7 +76,13 @@ export interface GetExecutionsArgs {
  */
 export interface GetExecutionsResult {
     readonly enableDetails?: boolean;
+    /**
+     * A list of Fn F Executions. Each element contains the following attributes:
+     */
     readonly executions: outputs.fnf.GetExecutionsExecution[];
+    /**
+     * The name of the flow.
+     */
     readonly flowName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -84,14 +90,20 @@ export interface GetExecutionsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Execution names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the FnF Executions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.149.0+.
+ * > **NOTE:** Available since v1.149.0.
  *
  * ## Example Usage
  *

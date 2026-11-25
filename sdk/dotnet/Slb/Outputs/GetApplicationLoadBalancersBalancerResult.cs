@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string InternetChargeType;
         /// <summary>
-        /// The listener ports and protocal of the SLB.
+        /// The listener ports and protocol of the SLB.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult> ListenerPortsAndProtocals;
         /// <summary>

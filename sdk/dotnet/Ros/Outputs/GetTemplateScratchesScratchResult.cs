@@ -30,27 +30,27 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// </summary>
         public readonly string LogicalIdStrategy;
         /// <summary>
-        /// Priority parameter.
+        /// Priority parameter. See `PreferenceParameters` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTemplateScratchesScratchPreferenceParameterResult> PreferenceParameters;
         /// <summary>
-        /// Source resource grouping.
+        /// Source resource grouping. See `SourceResourceGroup` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTemplateScratchesScratchSourceResourceGroupResult> SourceResourceGroups;
         /// <summary>
-        /// Source resource.
+        /// Source resource. See `SourceResources` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTemplateScratchesScratchSourceResourceResult> SourceResources;
         /// <summary>
-        /// The Source label list.
+        /// The Source label list. See `SourceTag` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTemplateScratchesScratchSourceTagResult> SourceTags;
         /// <summary>
-        /// A list of resource stacks associated with the resource scene.
+        /// A list of resource stacks associated with the resource scene. See `Stacks` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTemplateScratchesScratchStackResult> Stacks;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
         /// </summary>
         public readonly string TemplateScratchId;
         /// <summary>
-        /// The type of the Template Scratch.
+        /// The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
         /// </summary>
         public readonly string TemplateScratchType;
 

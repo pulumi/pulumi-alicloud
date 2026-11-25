@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -66,18 +66,33 @@ export interface GetKeyPairsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Key Pair IDs.
+     */
     readonly ids: string[];
+    /**
+     * The name of the key pair.
+     */
     readonly keyPairName?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Key Pair names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ens Key Pairs. Each element contains the following attributes:
+     */
     readonly pairs: outputs.ens.GetKeyPairsPair[];
+    /**
+     * The version number.
+     */
     readonly version: string;
 }
 /**
  * This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *

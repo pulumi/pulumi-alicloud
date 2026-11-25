@@ -17,6 +17,10 @@ import javax.annotation.Nullable;
 public final class GetInstancesResult {
     private @Nullable String appKey;
     private @Nullable Boolean enableDetails;
+    /**
+     * @return The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
+     * 
+     */
     private @Nullable String engineType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,9 +28,17 @@ public final class GetInstancesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of TSDB Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetInstancesInstance> instances;
     private @Nullable String outputFile;
     private @Nullable String queryStr;
+    /**
+     * @return Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+     * 
+     */
     private @Nullable String status;
     private @Nullable String statusList;
 
@@ -37,6 +49,10 @@ public final class GetInstancesResult {
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
+     * 
+     */
     public Optional<String> engineType() {
         return Optional.ofNullable(this.engineType);
     }
@@ -50,6 +66,10 @@ public final class GetInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of TSDB Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetInstancesInstance> instances() {
         return this.instances;
     }
@@ -59,6 +79,10 @@ public final class GetInstancesResult {
     public Optional<String> queryStr() {
         return Optional.ofNullable(this.queryStr);
     }
+    /**
+     * @return Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

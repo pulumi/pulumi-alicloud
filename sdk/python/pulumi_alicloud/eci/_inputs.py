@@ -86,6 +86,16 @@ __all__ = [
 ]
 
 class ContainerGroupAcrRegistryInfoArgsDict(TypedDict):
+    arn_service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ARN of a RAM role in the account that owns the container group. ECI assumes this role to obtain the image pull credential. On its own, it restricts which role ECI uses to pull images from an ACR Personal Edition instance, or from an ACR Enterprise Edition instance through its default domain, in the same account. To pull from an ACR Enterprise Edition instance in another account, set it together with `arn_user`. The role must trust `eci.aliyuncs.com` and be granted `AliyunSTSAssumeRoleAccess`. The value can be built with the provider-defined function `arn_build`, for example `provider::alicloud::arn_build("ram", "", "<account-id>", "role/<role-name>")`.
+    """
+    arn_user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ARN of a RAM role in the account that owns the ACR Enterprise Edition instance, used for cross-account image pulling. It must be set together with `arn_service`. The role must trust the role specified by `arn_service` and be granted image pull permissions on the instance, for example `cr:GetAuthorizationToken` and `cr:PullRepository` (the official example grants `AliyunContainerRegistryFullAccess`). When the instance is accessed through a custom domain, `instance_id` is required.
+
+    > **NOTE:** `arn_service` and `arn_user` are create-time inputs. They are retained in Terraform state after creation, but cannot be retrieved from an existing container group during import. Configuring them after import requires replacement of the container group. Review the plan before applying configuration to an imported group.
+    """
     domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
@@ -106,16 +116,26 @@ class ContainerGroupAcrRegistryInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupAcrRegistryInfoArgs:
     def __init__(__self__, *,
+                 arn_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 arn_user: pulumi.Input[Optional[_builtins.str]] = None,
                  domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] arn_service: The ARN of a RAM role in the account that owns the container group. ECI assumes this role to obtain the image pull credential. On its own, it restricts which role ECI uses to pull images from an ACR Personal Edition instance, or from an ACR Enterprise Edition instance through its default domain, in the same account. To pull from an ACR Enterprise Edition instance in another account, set it together with `arn_user`. The role must trust `eci.aliyuncs.com` and be granted `AliyunSTSAssumeRoleAccess`. The value can be built with the provider-defined function `arn_build`, for example `provider::alicloud::arn_build("ram", "", "<account-id>", "role/<role-name>")`.
+        :param pulumi.Input[_builtins.str] arn_user: The ARN of a RAM role in the account that owns the ACR Enterprise Edition instance, used for cross-account image pulling. It must be set together with `arn_service`. The role must trust the role specified by `arn_service` and be granted image pull permissions on the instance, for example `cr:GetAuthorizationToken` and `cr:PullRepository` (the official example grants `AliyunContainerRegistryFullAccess`). When the instance is accessed through a custom domain, `instance_id` is required.
+               
+               > **NOTE:** `arn_service` and `arn_user` are create-time inputs. They are retained in Terraform state after creation, but cannot be retrieved from an existing container group during import. Configuring them after import requires replacement of the container group. Review the plan before applying configuration to an imported group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domains: The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
         :param pulumi.Input[_builtins.str] instance_id: The ACR enterprise edition example ID.
         :param pulumi.Input[_builtins.str] instance_name: The name of the ACR enterprise edition instance.
         :param pulumi.Input[_builtins.str] region_id: The ACR enterprise edition instance belongs to the region.
         """
+        if arn_service is not None:
+            pulumi.set(__self__, "arn_service", arn_service)
+        if arn_user is not None:
+            pulumi.set(__self__, "arn_user", arn_user)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
         if instance_id is not None:
@@ -124,6 +144,32 @@ class ContainerGroupAcrRegistryInfoArgs:
             pulumi.set(__self__, "instance_name", instance_name)
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
+
+    @_builtins.property
+    @pulumi.getter(name="arnService")
+    def arn_service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ARN of a RAM role in the account that owns the container group. ECI assumes this role to obtain the image pull credential. On its own, it restricts which role ECI uses to pull images from an ACR Personal Edition instance, or from an ACR Enterprise Edition instance through its default domain, in the same account. To pull from an ACR Enterprise Edition instance in another account, set it together with `arn_user`. The role must trust `eci.aliyuncs.com` and be granted `AliyunSTSAssumeRoleAccess`. The value can be built with the provider-defined function `arn_build`, for example `provider::alicloud::arn_build("ram", "", "<account-id>", "role/<role-name>")`.
+        """
+        return pulumi.get(self, "arn_service")
+
+    @arn_service.setter
+    def arn_service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "arn_service", value)
+
+    @_builtins.property
+    @pulumi.getter(name="arnUser")
+    def arn_user(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ARN of a RAM role in the account that owns the ACR Enterprise Edition instance, used for cross-account image pulling. It must be set together with `arn_service`. The role must trust the role specified by `arn_service` and be granted image pull permissions on the instance, for example `cr:GetAuthorizationToken` and `cr:PullRepository` (the official example grants `AliyunContainerRegistryFullAccess`). When the instance is accessed through a custom domain, `instance_id` is required.
+
+        > **NOTE:** `arn_service` and `arn_user` are create-time inputs. They are retained in Terraform state after creation, but cannot be retrieved from an existing container group during import. Configuring them after import requires replacement of the container group. Review the plan before applying configuration to an imported group.
+        """
+        return pulumi.get(self, "arn_user")
+
+    @arn_user.setter
+    def arn_user(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "arn_user", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2091,6 +2137,7 @@ class ContainerGroupVolumeArgsDict(TypedDict):
     config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgsDict']]]]]
     """
     The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+
     > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
     """
     disk_volume_disk_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -2150,6 +2197,7 @@ class ContainerGroupVolumeArgs:
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]] config_file_volume_config_file_to_paths: The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+               
                > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
         :param pulumi.Input[_builtins.str] disk_volume_disk_id: The ID of DiskVolume.
         :param pulumi.Input[_builtins.str] disk_volume_fs_type: The system type of DiskVolume.
@@ -2190,6 +2238,7 @@ class ContainerGroupVolumeArgs:
     def config_file_volume_config_file_to_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]]:
         """
         The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
+
         > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
         """
         return pulumi.get(self, "config_file_volume_config_file_to_paths")
@@ -2432,8 +2481,17 @@ class ImageCacheImageRegistryCredentialArgs:
 
 class OpenApiImageCacheImageRegistryCredentialArgsDict(TypedDict):
     password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The password of the Image Registry.
+    """
     server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The address of Image Registry without `http://` or `https://`.
+    """
     user_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The user name of Image Registry.
+    """
 
 @pulumi.input_type
 class OpenApiImageCacheImageRegistryCredentialArgs:
@@ -2441,6 +2499,11 @@ class OpenApiImageCacheImageRegistryCredentialArgs:
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  server: pulumi.Input[Optional[_builtins.str]] = None,
                  user_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] password: The password of the Image Registry.
+        :param pulumi.Input[_builtins.str] server: The address of Image Registry without `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] user_name: The user name of Image Registry.
+        """
         if password is not None:
             pulumi.set(__self__, "password", password)
         if server is not None:
@@ -2451,6 +2514,9 @@ class OpenApiImageCacheImageRegistryCredentialArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password of the Image Registry.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -2460,6 +2526,9 @@ class OpenApiImageCacheImageRegistryCredentialArgs:
     @_builtins.property
     @pulumi.getter
     def server(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The address of Image Registry without `http://` or `https://`.
+        """
         return pulumi.get(self, "server")
 
     @server.setter
@@ -2469,6 +2538,9 @@ class OpenApiImageCacheImageRegistryCredentialArgs:
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The user name of Image Registry.
+        """
         return pulumi.get(self, "user_name")
 
     @user_name.setter

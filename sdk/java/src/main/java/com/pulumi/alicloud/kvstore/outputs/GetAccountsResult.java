@@ -14,24 +14,56 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountsResult {
+    /**
+     * @return The name of the account.
+     * 
+     */
     private @Nullable String accountName;
+    /**
+     * @return A list of Kvstore Accounts. Each element contains the following attributes:
+     * 
+     */
     private List<GetAccountsAccount> accounts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of Account IDs.
+     * 
+     */
     private List<String> ids;
+    /**
+     * @return The Id of instance in which account belongs.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Account names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of account.
+     * 
+     */
     private @Nullable String status;
 
     private GetAccountsResult() {}
+    /**
+     * @return The name of the account.
+     * 
+     */
     public Optional<String> accountName() {
         return Optional.ofNullable(this.accountName);
     }
+    /**
+     * @return A list of Kvstore Accounts. Each element contains the following attributes:
+     * 
+     */
     public List<GetAccountsAccount> accounts() {
         return this.accounts;
     }
@@ -42,21 +74,37 @@ public final class GetAccountsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Account IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The Id of instance in which account belongs.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Account names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of account.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

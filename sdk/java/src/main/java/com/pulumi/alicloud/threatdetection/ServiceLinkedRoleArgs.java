@@ -16,14 +16,30 @@ public final class ServiceLinkedRoleArgs extends com.pulumi.resources.ResourceAr
     public static final ServiceLinkedRoleArgs Empty = new ServiceLinkedRoleArgs();
 
     /**
-     * The name of the service linked role.
+     * The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+     * - `AliyunServiceRoleForSas`
+     * - `AliyunServiceRoleForSasCspm`
+     * - `AliyunServiceRoleForSasAgentless`
+     * - `AliyunServiceRoleForOssMfd`
+     * - `AliyunServiceRoleForAntiRansomwareMssp`
+     * - `AliyunServiceRoleForSasSecllm`
+     * - `AliyunServiceRoleForSasAI`
+     * - `AliyunLogETLRole`
      * 
      */
     @Import(name="serviceLinkedRole")
     private @Nullable Output<String> serviceLinkedRole;
 
     /**
-     * @return The name of the service linked role.
+     * @return The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+     * - `AliyunServiceRoleForSas`
+     * - `AliyunServiceRoleForSasCspm`
+     * - `AliyunServiceRoleForSasAgentless`
+     * - `AliyunServiceRoleForOssMfd`
+     * - `AliyunServiceRoleForAntiRansomwareMssp`
+     * - `AliyunServiceRoleForSasSecllm`
+     * - `AliyunServiceRoleForSasAI`
+     * - `AliyunLogETLRole`
      * 
      */
     public Optional<Output<String>> serviceLinkedRole() {
@@ -55,7 +71,15 @@ public final class ServiceLinkedRoleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceLinkedRole The name of the service linked role.
+         * @param serviceLinkedRole The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+         * - `AliyunServiceRoleForSas`
+         * - `AliyunServiceRoleForSasCspm`
+         * - `AliyunServiceRoleForSasAgentless`
+         * - `AliyunServiceRoleForOssMfd`
+         * - `AliyunServiceRoleForAntiRansomwareMssp`
+         * - `AliyunServiceRoleForSasSecllm`
+         * - `AliyunServiceRoleForSasAI`
+         * - `AliyunLogETLRole`
          * 
          * @return builder
          * 
@@ -66,7 +90,15 @@ public final class ServiceLinkedRoleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceLinkedRole The name of the service linked role.
+         * @param serviceLinkedRole The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+         * - `AliyunServiceRoleForSas`
+         * - `AliyunServiceRoleForSasCspm`
+         * - `AliyunServiceRoleForSasAgentless`
+         * - `AliyunServiceRoleForOssMfd`
+         * - `AliyunServiceRoleForAntiRansomwareMssp`
+         * - `AliyunServiceRoleForSasSecllm`
+         * - `AliyunServiceRoleForSasAI`
+         * - `AliyunLogETLRole`
          * 
          * @return builder
          * 

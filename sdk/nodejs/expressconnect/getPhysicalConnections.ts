@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -71,6 +71,9 @@ export interface GetPhysicalConnectionsArgs {
  * A collection of values returned by getPhysicalConnections.
  */
 export interface GetPhysicalConnectionsResult {
+    /**
+     * A list of Express Connect Physical Connections. Each element contains the following attributes:
+     */
     readonly connections: outputs.expressconnect.GetPhysicalConnectionsConnection[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -79,14 +82,20 @@ export interface GetPhysicalConnectionsResult {
     readonly ids: string[];
     readonly includeReservationData?: boolean;
     readonly nameRegex?: string;
+    /**
+     * A list of Physical Connection names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Resources on Behalf of a State of the Resource Attribute Field.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

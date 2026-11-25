@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides the Cms Monitor Group Instanceses of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available since v1.115.0.
+//
+// > **NOTE:** This data source is the legacy alias of `cms.MonitorGroupInstances` and shares the same implementation.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleMonitorGroup, err := cms.NewMonitorGroup(ctx, "example", &cms.MonitorGroupArgs{
+//				MonitorGroupName: pulumi.String("tf-example-accmonitorgroup"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example := cms.LookupMonitorGroupInstancesOutput(ctx, cms.GetMonitorGroupInstancesOutputArgs{
+//				Ids: exampleMonitorGroup.ID(),
+//			}, nil)
+//			ctx.Export("firstCmsMonitorGroupInstances", example.ApplyT(func(example cms.GetMonitorGroupInstancesResult) ([]cms.GetMonitorGroupInstancesInstanceInstance, error) {
+//				return example.Instances[0].Instances.([]cms.GetMonitorGroupInstancesInstanceInstance), nil
+//			}).(pulumi.ArrayOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupMonitorGroupInstances(ctx *pulumi.Context, args *LookupMonitorGroupInstancesArgs, opts ...pulumi.InvokeOption) (*LookupMonitorGroupInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitorGroupInstancesResult
@@ -23,16 +62,20 @@ func LookupMonitorGroupInstances(ctx *pulumi.Context, args *LookupMonitorGroupIn
 
 // A collection of arguments for invoking getMonitorGroupInstances.
 type LookupMonitorGroupInstancesArgs struct {
-	Ids        string  `pulumi:"ids"`
-	Keyword    *string `pulumi:"keyword"`
+	// A list of Monitor Group Instances IDs.
+	Ids string `pulumi:"ids"`
+	// The keyword.
+	Keyword *string `pulumi:"keyword"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getMonitorGroupInstances.
 type LookupMonitorGroupInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                             `pulumi:"id"`
-	Ids        string                             `pulumi:"ids"`
+	Id  string `pulumi:"id"`
+	Ids string `pulumi:"ids"`
+	// Instance information added to the Cms Group.
 	Instances  []GetMonitorGroupInstancesInstance `pulumi:"instances"`
 	Keyword    *string                            `pulumi:"keyword"`
 	OutputFile *string                            `pulumi:"outputFile"`
@@ -45,8 +88,11 @@ func LookupMonitorGroupInstancesOutput(ctx *pulumi.Context, args LookupMonitorGr
 
 // A collection of arguments for invoking getMonitorGroupInstances.
 type LookupMonitorGroupInstancesOutputArgs struct {
-	Ids        pulumi.StringInput    `pulumi:"ids"`
-	Keyword    pulumi.StringPtrInput `pulumi:"keyword"`
+	// A list of Monitor Group Instances IDs.
+	Ids pulumi.StringInput `pulumi:"ids"`
+	// The keyword.
+	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
@@ -78,6 +124,7 @@ func (o LookupMonitorGroupInstancesResultOutput) Ids() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMonitorGroupInstancesResult) string { return v.Ids }).(pulumi.StringOutput)
 }
 
+// Instance information added to the Cms Group.
 func (o LookupMonitorGroupInstancesResultOutput) Instances() GetMonitorGroupInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v LookupMonitorGroupInstancesResult) []GetMonitorGroupInstancesInstance { return v.Instances }).(GetMonitorGroupInstancesInstanceArrayOutput)
 }

@@ -59,7 +59,7 @@ export function getQuotaApplications(args: GetQuotaApplicationsArgs, opts?: pulu
  */
 export interface GetQuotaApplicationsArgs {
     /**
-     * The quota dimensions.
+     * The quota dimensions. See `dimensions` below.
      */
     dimensions?: inputs.quotas.GetQuotaApplicationsDimension[];
     /**
@@ -70,6 +70,9 @@ export interface GetQuotaApplicationsArgs {
      * A list of Application Info IDs.
      */
     ids?: string[];
+    /**
+     * The key word.
+     */
     keyWord?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -97,7 +100,13 @@ export interface GetQuotaApplicationsArgs {
  * A collection of values returned by getQuotaApplications.
  */
 export interface GetQuotaApplicationsResult {
+    /**
+     * A list of Quotas Quota Applications. Each element contains the following attributes:
+     */
     readonly applications: outputs.quotas.GetQuotaApplicationsApplication[];
+    /**
+     * The quota dimensions. See `dimensions` below.
+     */
     readonly dimensions?: outputs.quotas.GetQuotaApplicationsDimension[];
     readonly enableDetails?: boolean;
     /**
@@ -107,9 +116,18 @@ export interface GetQuotaApplicationsResult {
     readonly ids: string[];
     readonly keyWord?: string;
     readonly outputFile?: string;
+    /**
+     * The product code.
+     */
     readonly productCode: string;
+    /**
+     * The ID of quota action.
+     */
     readonly quotaActionCode?: string;
     readonly quotaCategory?: string;
+    /**
+     * The status of the quota application.
+     */
     readonly status?: string;
 }
 /**
@@ -165,7 +183,7 @@ export function getQuotaApplicationsOutput(args: GetQuotaApplicationsOutputArgs,
  */
 export interface GetQuotaApplicationsOutputArgs {
     /**
-     * The quota dimensions.
+     * The quota dimensions. See `dimensions` below.
      */
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotaApplicationsDimensionArgs>[] | undefined>;
     /**
@@ -176,6 +194,9 @@ export interface GetQuotaApplicationsOutputArgs {
      * A list of Application Info IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The key word.
+     */
     keyWord?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

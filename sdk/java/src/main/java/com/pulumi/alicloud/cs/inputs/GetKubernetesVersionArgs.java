@@ -61,12 +61,28 @@ public final class GetKubernetesVersionArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.profile);
     }
 
+    /**
+     * Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+     * 
+     */
+    @Import(name="supportPolicy")
+    private @Nullable Output<String> supportPolicy;
+
+    /**
+     * @return Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+     * 
+     */
+    public Optional<Output<String>> supportPolicy() {
+        return Optional.ofNullable(this.supportPolicy);
+    }
+
     private GetKubernetesVersionArgs() {}
 
     private GetKubernetesVersionArgs(GetKubernetesVersionArgs $) {
         this.clusterType = $.clusterType;
         this.kubernetesVersion = $.kubernetesVersion;
         this.profile = $.profile;
+        this.supportPolicy = $.supportPolicy;
     }
 
     public static Builder builder() {
@@ -148,6 +164,27 @@ public final class GetKubernetesVersionArgs extends com.pulumi.resources.InvokeA
          */
         public Builder profile(String profile) {
             return profile(Output.of(profile));
+        }
+
+        /**
+         * @param supportPolicy Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportPolicy(@Nullable Output<String> supportPolicy) {
+            $.supportPolicy = supportPolicy;
+            return this;
+        }
+
+        /**
+         * @param supportPolicy Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportPolicy(String supportPolicy) {
+            return supportPolicy(Output.of(supportPolicy));
         }
 
         public GetKubernetesVersionArgs build() {

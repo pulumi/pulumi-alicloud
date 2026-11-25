@@ -6,6 +6,7 @@ package com.pulumi.alicloud.realtimecompute;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.realtimecompute.VvpInstanceArgs;
 import com.pulumi.alicloud.realtimecompute.inputs.VvpInstanceState;
+import com.pulumi.alicloud.realtimecompute.outputs.VvpInstanceDefaultNamespaceResourceSpec;
 import com.pulumi.alicloud.realtimecompute.outputs.VvpInstanceResourceSpec;
 import com.pulumi.alicloud.realtimecompute.outputs.VvpInstanceStorage;
 import com.pulumi.core.Output;
@@ -22,9 +23,11 @@ import javax.annotation.Nullable;
 /**
  * Provides a Realtime Compute Vvp Instance resource.
  * 
- * For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+ * For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://api.aliyun.com/api/foasconsole/2021-10-28/CreateInstance?RegionId=cn-hangzhou).
  * 
  * &gt; **NOTE:** Available since v1.214.0.
+ * 
+ * &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
  * 
  * ## Example Usage
  * 
@@ -102,7 +105,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .vvpInstanceName(String.format("%s-%s", name,defaultInteger.get("result")))
  *             .vpcId(defaultGetNetworks.ids()[0])
- *             .zoneId(zoneId)
  *             .vswitchIds(defaultGetSwitches.ids()[0])
  *             .paymentType("PayAsYouGo")
  *             .build());
@@ -158,6 +160,20 @@ public class VvpInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+     * 
+     */
+    @Export(name="defaultNamespaceResourceSpec", refs={VvpInstanceDefaultNamespaceResourceSpec.class}, tree="[0]")
+    private Output</* @Nullable */ VvpInstanceDefaultNamespaceResourceSpec> defaultNamespaceResourceSpec;
+
+    /**
+     * @return The default namespace resource configuration. See `defaultNamespaceResourceSpec` below.
+     * 
+     */
+    public Output<Optional<VvpInstanceDefaultNamespaceResourceSpec>> defaultNamespaceResourceSpec() {
+        return Codegen.optional(this.defaultNamespaceResourceSpec);
     }
     /**
      * The number of subscription periods. If the payment type is PRE, this parameter is required.
@@ -356,14 +372,17 @@ public class VvpInstance extends com.pulumi.resources.CustomResource {
         return this.vvpInstanceName;
     }
     /**
-     * The zone ID of the resource.
+     * The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
+     * 
+     * @deprecated Field `zoneId` has been deprecated from version 2.3.0.
      * 
      */
+    @Deprecated
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID of the resource.
+     * @return The zone ID of the resource. Field `zoneId` has been deprecated from version 2.3.0.
      * 
      */
     public Output<String> zoneId() {

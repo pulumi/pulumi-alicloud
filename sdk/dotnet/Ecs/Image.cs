@@ -266,6 +266,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Indicates whether the image is available. Valid values:
+        /// * true: The image is available and can be used to create ECS instances.
+        /// * false: The image is unavailable and cannot be used to create ECS instances.
         /// </summary>
         [Output("usable")]
         public Output<bool> Usable { get; private set; } = null!;
@@ -622,6 +624,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Indicates whether the image is available. Valid values:
+        /// * true: The image is available and can be used to create ECS instances.
+        /// * false: The image is unavailable and cannot be used to create ECS instances.
         /// </summary>
         [Input("usable")]
         public Input<bool>? Usable { get; set; }

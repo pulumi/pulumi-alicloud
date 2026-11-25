@@ -13,6 +13,844 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AutoRepairPolicyRule struct {
+	// The incidents that trigger the repair. See `incidents` below.
+	Incidents []AutoRepairPolicyRuleIncident `pulumi:"incidents"`
+	// The repair procedures executed in order when the incidents are detected. See `repairProcedure` below. The procedures must be a subsequence of the built-in template of the incident, and the procedures marked as required in the template must be included. A procedure cannot be repeated, and `QuarantineNode` must be listed before `Evict` and `UnquarantineNode`.
+	RepairProcedures []AutoRepairPolicyRuleRepairProcedure `pulumi:"repairProcedures"`
+}
+
+// AutoRepairPolicyRuleInput is an input type that accepts AutoRepairPolicyRuleArgs and AutoRepairPolicyRuleOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleInput` via:
+//
+//	AutoRepairPolicyRuleArgs{...}
+type AutoRepairPolicyRuleInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleOutput() AutoRepairPolicyRuleOutput
+	ToAutoRepairPolicyRuleOutputWithContext(context.Context) AutoRepairPolicyRuleOutput
+}
+
+type AutoRepairPolicyRuleArgs struct {
+	// The incidents that trigger the repair. See `incidents` below.
+	Incidents AutoRepairPolicyRuleIncidentArrayInput `pulumi:"incidents"`
+	// The repair procedures executed in order when the incidents are detected. See `repairProcedure` below. The procedures must be a subsequence of the built-in template of the incident, and the procedures marked as required in the template must be included. A procedure cannot be repeated, and `QuarantineNode` must be listed before `Evict` and `UnquarantineNode`.
+	RepairProcedures AutoRepairPolicyRuleRepairProcedureArrayInput `pulumi:"repairProcedures"`
+}
+
+func (AutoRepairPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRule)(nil)).Elem()
+}
+
+func (i AutoRepairPolicyRuleArgs) ToAutoRepairPolicyRuleOutput() AutoRepairPolicyRuleOutput {
+	return i.ToAutoRepairPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleArgs) ToAutoRepairPolicyRuleOutputWithContext(ctx context.Context) AutoRepairPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleOutput)
+}
+
+// AutoRepairPolicyRuleArrayInput is an input type that accepts AutoRepairPolicyRuleArray and AutoRepairPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleArrayInput` via:
+//
+//	AutoRepairPolicyRuleArray{ AutoRepairPolicyRuleArgs{...} }
+type AutoRepairPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleArrayOutput() AutoRepairPolicyRuleArrayOutput
+	ToAutoRepairPolicyRuleArrayOutputWithContext(context.Context) AutoRepairPolicyRuleArrayOutput
+}
+
+type AutoRepairPolicyRuleArray []AutoRepairPolicyRuleInput
+
+func (AutoRepairPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoRepairPolicyRule)(nil)).Elem()
+}
+
+func (i AutoRepairPolicyRuleArray) ToAutoRepairPolicyRuleArrayOutput() AutoRepairPolicyRuleArrayOutput {
+	return i.ToAutoRepairPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleArray) ToAutoRepairPolicyRuleArrayOutputWithContext(ctx context.Context) AutoRepairPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleArrayOutput)
+}
+
+type AutoRepairPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRule)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleOutput) ToAutoRepairPolicyRuleOutput() AutoRepairPolicyRuleOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleOutput) ToAutoRepairPolicyRuleOutputWithContext(ctx context.Context) AutoRepairPolicyRuleOutput {
+	return o
+}
+
+// The incidents that trigger the repair. See `incidents` below.
+func (o AutoRepairPolicyRuleOutput) Incidents() AutoRepairPolicyRuleIncidentArrayOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRule) []AutoRepairPolicyRuleIncident { return v.Incidents }).(AutoRepairPolicyRuleIncidentArrayOutput)
+}
+
+// The repair procedures executed in order when the incidents are detected. See `repairProcedure` below. The procedures must be a subsequence of the built-in template of the incident, and the procedures marked as required in the template must be included. A procedure cannot be repeated, and `QuarantineNode` must be listed before `Evict` and `UnquarantineNode`.
+func (o AutoRepairPolicyRuleOutput) RepairProcedures() AutoRepairPolicyRuleRepairProcedureArrayOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRule) []AutoRepairPolicyRuleRepairProcedure { return v.RepairProcedures }).(AutoRepairPolicyRuleRepairProcedureArrayOutput)
+}
+
+type AutoRepairPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoRepairPolicyRule)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleArrayOutput) ToAutoRepairPolicyRuleArrayOutput() AutoRepairPolicyRuleArrayOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleArrayOutput) ToAutoRepairPolicyRuleArrayOutputWithContext(ctx context.Context) AutoRepairPolicyRuleArrayOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleArrayOutput) Index(i pulumi.IntInput) AutoRepairPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoRepairPolicyRule {
+		return vs[0].([]AutoRepairPolicyRule)[vs[1].(int)]
+	}).(AutoRepairPolicyRuleOutput)
+}
+
+type AutoRepairPolicyRuleIncident struct {
+	// The name of the auto repair policy.
+	Name string `pulumi:"name"`
+}
+
+// AutoRepairPolicyRuleIncidentInput is an input type that accepts AutoRepairPolicyRuleIncidentArgs and AutoRepairPolicyRuleIncidentOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleIncidentInput` via:
+//
+//	AutoRepairPolicyRuleIncidentArgs{...}
+type AutoRepairPolicyRuleIncidentInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleIncidentOutput() AutoRepairPolicyRuleIncidentOutput
+	ToAutoRepairPolicyRuleIncidentOutputWithContext(context.Context) AutoRepairPolicyRuleIncidentOutput
+}
+
+type AutoRepairPolicyRuleIncidentArgs struct {
+	// The name of the auto repair policy.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AutoRepairPolicyRuleIncidentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRuleIncident)(nil)).Elem()
+}
+
+func (i AutoRepairPolicyRuleIncidentArgs) ToAutoRepairPolicyRuleIncidentOutput() AutoRepairPolicyRuleIncidentOutput {
+	return i.ToAutoRepairPolicyRuleIncidentOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleIncidentArgs) ToAutoRepairPolicyRuleIncidentOutputWithContext(ctx context.Context) AutoRepairPolicyRuleIncidentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleIncidentOutput)
+}
+
+// AutoRepairPolicyRuleIncidentArrayInput is an input type that accepts AutoRepairPolicyRuleIncidentArray and AutoRepairPolicyRuleIncidentArrayOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleIncidentArrayInput` via:
+//
+//	AutoRepairPolicyRuleIncidentArray{ AutoRepairPolicyRuleIncidentArgs{...} }
+type AutoRepairPolicyRuleIncidentArrayInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleIncidentArrayOutput() AutoRepairPolicyRuleIncidentArrayOutput
+	ToAutoRepairPolicyRuleIncidentArrayOutputWithContext(context.Context) AutoRepairPolicyRuleIncidentArrayOutput
+}
+
+type AutoRepairPolicyRuleIncidentArray []AutoRepairPolicyRuleIncidentInput
+
+func (AutoRepairPolicyRuleIncidentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoRepairPolicyRuleIncident)(nil)).Elem()
+}
+
+func (i AutoRepairPolicyRuleIncidentArray) ToAutoRepairPolicyRuleIncidentArrayOutput() AutoRepairPolicyRuleIncidentArrayOutput {
+	return i.ToAutoRepairPolicyRuleIncidentArrayOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleIncidentArray) ToAutoRepairPolicyRuleIncidentArrayOutputWithContext(ctx context.Context) AutoRepairPolicyRuleIncidentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleIncidentArrayOutput)
+}
+
+type AutoRepairPolicyRuleIncidentOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleIncidentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRuleIncident)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleIncidentOutput) ToAutoRepairPolicyRuleIncidentOutput() AutoRepairPolicyRuleIncidentOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleIncidentOutput) ToAutoRepairPolicyRuleIncidentOutputWithContext(ctx context.Context) AutoRepairPolicyRuleIncidentOutput {
+	return o
+}
+
+// The name of the auto repair policy.
+func (o AutoRepairPolicyRuleIncidentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleIncident) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AutoRepairPolicyRuleIncidentArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleIncidentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoRepairPolicyRuleIncident)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleIncidentArrayOutput) ToAutoRepairPolicyRuleIncidentArrayOutput() AutoRepairPolicyRuleIncidentArrayOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleIncidentArrayOutput) ToAutoRepairPolicyRuleIncidentArrayOutputWithContext(ctx context.Context) AutoRepairPolicyRuleIncidentArrayOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleIncidentArrayOutput) Index(i pulumi.IntInput) AutoRepairPolicyRuleIncidentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoRepairPolicyRuleIncident {
+		return vs[0].([]AutoRepairPolicyRuleIncident)[vs[1].(int)]
+	}).(AutoRepairPolicyRuleIncidentOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedure struct {
+	// The configuration of the procedure as a JSON object, for example `jsonencode({ evictTimeout = 300 })` for `Evict`. An empty value and an empty JSON object are equivalent. See the `config` key table in Repair procedure reference for the accepted keys.
+	Config *string `pulumi:"config"`
+	// The manual approval configuration of the procedure. See `intervention` below.
+	Intervention *AutoRepairPolicyRuleRepairProcedureIntervention `pulumi:"intervention"`
+	// The name of the auto repair policy.
+	Name string `pulumi:"name"`
+}
+
+// AutoRepairPolicyRuleRepairProcedureInput is an input type that accepts AutoRepairPolicyRuleRepairProcedureArgs and AutoRepairPolicyRuleRepairProcedureOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleRepairProcedureInput` via:
+//
+//	AutoRepairPolicyRuleRepairProcedureArgs{...}
+type AutoRepairPolicyRuleRepairProcedureInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleRepairProcedureOutput() AutoRepairPolicyRuleRepairProcedureOutput
+	ToAutoRepairPolicyRuleRepairProcedureOutputWithContext(context.Context) AutoRepairPolicyRuleRepairProcedureOutput
+}
+
+type AutoRepairPolicyRuleRepairProcedureArgs struct {
+	// The configuration of the procedure as a JSON object, for example `jsonencode({ evictTimeout = 300 })` for `Evict`. An empty value and an empty JSON object are equivalent. See the `config` key table in Repair procedure reference for the accepted keys.
+	Config pulumi.StringPtrInput `pulumi:"config"`
+	// The manual approval configuration of the procedure. See `intervention` below.
+	Intervention AutoRepairPolicyRuleRepairProcedureInterventionPtrInput `pulumi:"intervention"`
+	// The name of the auto repair policy.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AutoRepairPolicyRuleRepairProcedureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedure)(nil)).Elem()
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureArgs) ToAutoRepairPolicyRuleRepairProcedureOutput() AutoRepairPolicyRuleRepairProcedureOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureArgs) ToAutoRepairPolicyRuleRepairProcedureOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureOutput)
+}
+
+// AutoRepairPolicyRuleRepairProcedureArrayInput is an input type that accepts AutoRepairPolicyRuleRepairProcedureArray and AutoRepairPolicyRuleRepairProcedureArrayOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleRepairProcedureArrayInput` via:
+//
+//	AutoRepairPolicyRuleRepairProcedureArray{ AutoRepairPolicyRuleRepairProcedureArgs{...} }
+type AutoRepairPolicyRuleRepairProcedureArrayInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleRepairProcedureArrayOutput() AutoRepairPolicyRuleRepairProcedureArrayOutput
+	ToAutoRepairPolicyRuleRepairProcedureArrayOutputWithContext(context.Context) AutoRepairPolicyRuleRepairProcedureArrayOutput
+}
+
+type AutoRepairPolicyRuleRepairProcedureArray []AutoRepairPolicyRuleRepairProcedureInput
+
+func (AutoRepairPolicyRuleRepairProcedureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoRepairPolicyRuleRepairProcedure)(nil)).Elem()
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureArray) ToAutoRepairPolicyRuleRepairProcedureArrayOutput() AutoRepairPolicyRuleRepairProcedureArrayOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureArrayOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureArray) ToAutoRepairPolicyRuleRepairProcedureArrayOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureArrayOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleRepairProcedureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedure)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureOutput) ToAutoRepairPolicyRuleRepairProcedureOutput() AutoRepairPolicyRuleRepairProcedureOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureOutput) ToAutoRepairPolicyRuleRepairProcedureOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureOutput {
+	return o
+}
+
+// The configuration of the procedure as a JSON object, for example `jsonencode({ evictTimeout = 300 })` for `Evict`. An empty value and an empty JSON object are equivalent. See the `config` key table in Repair procedure reference for the accepted keys.
+func (o AutoRepairPolicyRuleRepairProcedureOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedure) *string { return v.Config }).(pulumi.StringPtrOutput)
+}
+
+// The manual approval configuration of the procedure. See `intervention` below.
+func (o AutoRepairPolicyRuleRepairProcedureOutput) Intervention() AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedure) *AutoRepairPolicyRuleRepairProcedureIntervention {
+		return v.Intervention
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput)
+}
+
+// The name of the auto repair policy.
+func (o AutoRepairPolicyRuleRepairProcedureOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedure) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleRepairProcedureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoRepairPolicyRuleRepairProcedure)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureArrayOutput) ToAutoRepairPolicyRuleRepairProcedureArrayOutput() AutoRepairPolicyRuleRepairProcedureArrayOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureArrayOutput) ToAutoRepairPolicyRuleRepairProcedureArrayOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureArrayOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureArrayOutput) Index(i pulumi.IntInput) AutoRepairPolicyRuleRepairProcedureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoRepairPolicyRuleRepairProcedure {
+		return vs[0].([]AutoRepairPolicyRuleRepairProcedure)[vs[1].(int)]
+	}).(AutoRepairPolicyRuleRepairProcedureOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureIntervention struct {
+	// The label that marks the request as approved. The value must differ from the value of the inquiring label, for example `approved`. See `approvedLabel` below.
+	//
+	// When manual approval is enabled, the procedure pauses after the inquiring label is written, and all subsequent procedures of the same policy wait until the approved label is written to the node.
+	ApprovedLabel *AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel `pulumi:"approvedLabel"`
+	// Whether manual approval is required before the procedure runs. Defaults to `false`.
+	Enable *bool `pulumi:"enable"`
+	// The label written to the node to request approval. The key identifies the procedure, for example `intervention.autorepair.node.k8s.aliyun.com/<procedure_name>`, with the `hypernode` domain for Lingjun super nodes, and the value is the inquiry value, for example `inquiring`. See `inquiringLabel` below.
+	InquiringLabel *AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel `pulumi:"inquiringLabel"`
+	// The type of the auto repair policy. Valid values: `custom`, `builtin`.
+	Type *string `pulumi:"type"`
+}
+
+// AutoRepairPolicyRuleRepairProcedureInterventionInput is an input type that accepts AutoRepairPolicyRuleRepairProcedureInterventionArgs and AutoRepairPolicyRuleRepairProcedureInterventionOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleRepairProcedureInterventionInput` via:
+//
+//	AutoRepairPolicyRuleRepairProcedureInterventionArgs{...}
+type AutoRepairPolicyRuleRepairProcedureInterventionInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleRepairProcedureInterventionOutput() AutoRepairPolicyRuleRepairProcedureInterventionOutput
+	ToAutoRepairPolicyRuleRepairProcedureInterventionOutputWithContext(context.Context) AutoRepairPolicyRuleRepairProcedureInterventionOutput
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionArgs struct {
+	// The label that marks the request as approved. The value must differ from the value of the inquiring label, for example `approved`. See `approvedLabel` below.
+	//
+	// When manual approval is enabled, the procedure pauses after the inquiring label is written, and all subsequent procedures of the same policy wait until the approved label is written to the node.
+	ApprovedLabel AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrInput `pulumi:"approvedLabel"`
+	// Whether manual approval is required before the procedure runs. Defaults to `false`.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// The label written to the node to request approval. The key identifies the procedure, for example `intervention.autorepair.node.k8s.aliyun.com/<procedure_name>`, with the `hypernode` domain for Lingjun super nodes, and the value is the inquiry value, for example `inquiring`. See `inquiringLabel` below.
+	InquiringLabel AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrInput `pulumi:"inquiringLabel"`
+	// The type of the auto repair policy. Valid values: `custom`, `builtin`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AutoRepairPolicyRuleRepairProcedureInterventionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureIntervention)(nil)).Elem()
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionOutput() AutoRepairPolicyRuleRepairProcedureInterventionOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureInterventionOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureInterventionOutput)
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureInterventionOutput).ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutputWithContext(ctx)
+}
+
+// AutoRepairPolicyRuleRepairProcedureInterventionPtrInput is an input type that accepts AutoRepairPolicyRuleRepairProcedureInterventionArgs, AutoRepairPolicyRuleRepairProcedureInterventionPtr and AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleRepairProcedureInterventionPtrInput` via:
+//
+//	        AutoRepairPolicyRuleRepairProcedureInterventionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutoRepairPolicyRuleRepairProcedureInterventionPtrInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput
+	ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutputWithContext(context.Context) AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput
+}
+
+type autoRepairPolicyRuleRepairProcedureInterventionPtrType AutoRepairPolicyRuleRepairProcedureInterventionArgs
+
+func AutoRepairPolicyRuleRepairProcedureInterventionPtr(v *AutoRepairPolicyRuleRepairProcedureInterventionArgs) AutoRepairPolicyRuleRepairProcedureInterventionPtrInput {
+	return (*autoRepairPolicyRuleRepairProcedureInterventionPtrType)(v)
+}
+
+func (*autoRepairPolicyRuleRepairProcedureInterventionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoRepairPolicyRuleRepairProcedureIntervention)(nil)).Elem()
+}
+
+func (i *autoRepairPolicyRuleRepairProcedureInterventionPtrType) ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutputWithContext(context.Background())
+}
+
+func (i *autoRepairPolicyRuleRepairProcedureInterventionPtrType) ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleRepairProcedureInterventionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureIntervention)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionOutput() AutoRepairPolicyRuleRepairProcedureInterventionOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput {
+	return o.ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutputWithContext(context.Background())
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoRepairPolicyRuleRepairProcedureIntervention) *AutoRepairPolicyRuleRepairProcedureIntervention {
+		return &v
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput)
+}
+
+// The label that marks the request as approved. The value must differ from the value of the inquiring label, for example `approved`. See `approvedLabel` below.
+//
+// When manual approval is enabled, the procedure pauses after the inquiring label is written, and all subsequent procedures of the same policy wait until the approved label is written to the node.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionOutput) ApprovedLabel() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedureIntervention) *AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel {
+		return v.ApprovedLabel
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput)
+}
+
+// Whether manual approval is required before the procedure runs. Defaults to `false`.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedureIntervention) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// The label written to the node to request approval. The key identifies the procedure, for example `intervention.autorepair.node.k8s.aliyun.com/<procedure_name>`, with the `hypernode` domain for Lingjun super nodes, and the value is the inquiry value, for example `inquiring`. See `inquiringLabel` below.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionOutput) InquiringLabel() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedureIntervention) *AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel {
+		return v.InquiringLabel
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput)
+}
+
+// The type of the auto repair policy. Valid values: `custom`, `builtin`.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedureIntervention) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoRepairPolicyRuleRepairProcedureIntervention)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput) Elem() AutoRepairPolicyRuleRepairProcedureInterventionOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureIntervention) AutoRepairPolicyRuleRepairProcedureIntervention {
+		if v != nil {
+			return *v
+		}
+		var ret AutoRepairPolicyRuleRepairProcedureIntervention
+		return ret
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionOutput)
+}
+
+// The label that marks the request as approved. The value must differ from the value of the inquiring label, for example `approved`. See `approvedLabel` below.
+//
+// When manual approval is enabled, the procedure pauses after the inquiring label is written, and all subsequent procedures of the same policy wait until the approved label is written to the node.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput) ApprovedLabel() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureIntervention) *AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel {
+		if v == nil {
+			return nil
+		}
+		return v.ApprovedLabel
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput)
+}
+
+// Whether manual approval is required before the procedure runs. Defaults to `false`.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureIntervention) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The label written to the node to request approval. The key identifies the procedure, for example `intervention.autorepair.node.k8s.aliyun.com/<procedure_name>`, with the `hypernode` domain for Lingjun super nodes, and the value is the inquiry value, for example `inquiring`. See `inquiringLabel` below.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput) InquiringLabel() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureIntervention) *AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel {
+		if v == nil {
+			return nil
+		}
+		return v.InquiringLabel
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput)
+}
+
+// The type of the auto repair policy. Valid values: `custom`, `builtin`.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureIntervention) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel struct {
+	// The key of the label. Both labels must use the same key.
+	Key string `pulumi:"key"`
+	// The value of the label. It must differ from the value of the inquiring label.
+	Value string `pulumi:"value"`
+}
+
+// AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelInput is an input type that accepts AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs and AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelInput` via:
+//
+//	AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs{...}
+type AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput
+	ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutputWithContext(context.Context) AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs struct {
+	// The key of the label. Both labels must use the same key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the label. It must differ from the value of the inquiring label.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel)(nil)).Elem()
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput)
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput).ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutputWithContext(ctx)
+}
+
+// AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrInput is an input type that accepts AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs, AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtr and AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrInput` via:
+//
+//	        AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput
+	ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutputWithContext(context.Context) AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput
+}
+
+type autoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrType AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs
+
+func AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtr(v *AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs) AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrInput {
+	return (*autoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrType)(v)
+}
+
+func (*autoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel)(nil)).Elem()
+}
+
+func (i *autoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrType) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutputWithContext(context.Background())
+}
+
+func (i *autoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrType) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput {
+	return o.ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutputWithContext(context.Background())
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel) *AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel {
+		return &v
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput)
+}
+
+// The key of the label. Both labels must use the same key.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the label. It must differ from the value of the inquiring label.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput) Elem() AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel) AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel {
+		if v != nil {
+			return *v
+		}
+		var ret AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel
+		return ret
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput)
+}
+
+// The key of the label. Both labels must use the same key.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the label. It must differ from the value of the inquiring label.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel struct {
+	// The key of the label. Both labels must use the same key.
+	Key string `pulumi:"key"`
+	// The value of the label. It must differ from the value of the inquiring label.
+	Value string `pulumi:"value"`
+}
+
+// AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelInput is an input type that accepts AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs and AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelInput` via:
+//
+//	AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs{...}
+type AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput
+	ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutputWithContext(context.Context) AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs struct {
+	// The key of the label. Both labels must use the same key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the label. It must differ from the value of the inquiring label.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel)(nil)).Elem()
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput)
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutputWithContext(context.Background())
+}
+
+func (i AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput).ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutputWithContext(ctx)
+}
+
+// AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrInput is an input type that accepts AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs, AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtr and AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput values.
+// You can construct a concrete instance of `AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrInput` via:
+//
+//	        AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrInput interface {
+	pulumi.Input
+
+	ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput
+	ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutputWithContext(context.Context) AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput
+}
+
+type autoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrType AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs
+
+func AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtr(v *AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs) AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrInput {
+	return (*autoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrType)(v)
+}
+
+func (*autoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel)(nil)).Elem()
+}
+
+func (i *autoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrType) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput {
+	return i.ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutputWithContext(context.Background())
+}
+
+func (i *autoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrType) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput {
+	return o.ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutputWithContext(context.Background())
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel) *AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel {
+		return &v
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput)
+}
+
+// The key of the label. Both labels must use the same key.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the label. It must differ from the value of the inquiring label.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel)(nil)).Elem()
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput) ToAutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutputWithContext(ctx context.Context) AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput {
+	return o
+}
+
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput) Elem() AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel) AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel {
+		if v != nil {
+			return *v
+		}
+		var ret AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel
+		return ret
+	}).(AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput)
+}
+
+// The key of the label. Both labels must use the same key.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the label. It must differ from the value of the inquiring label.
+func (o AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 type EdgeKubernetesAddon struct {
 	// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 	Config *string `pulumi:"config"`
@@ -1537,11 +2375,11 @@ func (o KubernetesDeleteOptionArrayOutput) Index(i pulumi.IntInput) KubernetesDe
 }
 
 type KubernetesMasterNode struct {
-	// ID of the node.
+	// (Optional) The id of a node.
 	Id *string `pulumi:"id"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
-	// The private IP address of node.
+	// (Optional) The private ip of a node.
 	PrivateIp *string `pulumi:"privateIp"`
 }
 
@@ -1557,11 +2395,11 @@ type KubernetesMasterNodeInput interface {
 }
 
 type KubernetesMasterNodeArgs struct {
-	// ID of the node.
+	// (Optional) The id of a node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The private IP address of node.
+	// (Optional) The private ip of a node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
 }
 
@@ -1616,7 +2454,7 @@ func (o KubernetesMasterNodeOutput) ToKubernetesMasterNodeOutputWithContext(ctx 
 	return o
 }
 
-// ID of the node.
+// (Optional) The id of a node.
 func (o KubernetesMasterNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -1626,7 +2464,7 @@ func (o KubernetesMasterNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The private IP address of node.
+// (Optional) The private ip of a node.
 func (o KubernetesMasterNodeOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
@@ -6255,7 +7093,7 @@ func (o NodePoolLabelArrayOutput) Index(i pulumi.IntInput) NodePoolLabelOutput {
 }
 
 type NodePoolManagement struct {
-	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
+	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resourceIds` when it is queried. Turning `autoRepair` back on makes the retained policy take effect again. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See csKubernetesAddon for installation.
 	AutoRepair *bool `pulumi:"autoRepair"`
 	// Automatic repair node policy. See `autoRepairPolicy` below.
 	AutoRepairPolicy *NodePoolManagementAutoRepairPolicy `pulumi:"autoRepairPolicy"`
@@ -6293,7 +7131,7 @@ type NodePoolManagementInput interface {
 }
 
 type NodePoolManagementArgs struct {
-	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
+	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resourceIds` when it is queried. Turning `autoRepair` back on makes the retained policy take effect again. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See csKubernetesAddon for installation.
 	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
 	// Automatic repair node policy. See `autoRepairPolicy` below.
 	AutoRepairPolicy NodePoolManagementAutoRepairPolicyPtrInput `pulumi:"autoRepairPolicy"`
@@ -6396,7 +7234,7 @@ func (o NodePoolManagementOutput) ToNodePoolManagementPtrOutputWithContext(ctx c
 	}).(NodePoolManagementPtrOutput)
 }
 
-// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
+// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resourceIds` when it is queried. Turning `autoRepair` back on makes the retained policy take effect again. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See csKubernetesAddon for installation.
 func (o NodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
@@ -6474,7 +7312,7 @@ func (o NodePoolManagementPtrOutput) Elem() NodePoolManagementOutput {
 	}).(NodePoolManagementOutput)
 }
 
-// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` and `ack-node-problem-detector` addons to be installed; see csKubernetesAddon for installation.
+// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired. Setting it to `false` suspends automatic repair without clearing the bound policy: `auto_repair_policy.auto_repair_policy_id` is retained, the policy just stops taking effect, and the policy no longer reports this node pool in `resourceIds` when it is queried. Turning `autoRepair` back on makes the retained policy take effect again. When `autoRepair` is `true`, this feature requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later and the `ack-node-problem-detector` add-on at version `1.2.41` or later; the service validates the installed versions and the error message contains the required minimum when an add-on is missing or too old. See csKubernetesAddon for installation.
 func (o NodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagement) *bool {
 		if v == nil {
@@ -6579,7 +7417,17 @@ func (o NodePoolManagementPtrOutput) SurgePercentage() pulumi.IntPtrOutput {
 }
 
 type NodePoolManagementAutoRepairPolicy struct {
+	// The ID of the auto repair policy bound to the node pool. It takes precedence over `restartNode`. The value is only sent when it is non-empty: Terraform treats an empty attribute value as unset, so to suspend automatic repair set `autoRepair` to `false` instead of clearing this field. The binding is retained while auto repair is off and takes effect again when `autoRepair` is turned back on. Once a policy ID has been bound explicitly, removing the argument from the configuration does not unbind the policy. You can use `cs.AutoRepairPolicy` to create a custom policy, or reference a builtin policy returned by the `cs.getAutoRepairPolicies` data source. The builtin policies are `r-repair-sys-comp-failure` (repair, restarting the node when needed) and `r-repair-sys-comp-failure-without-reboots` (repair without restarting the node). They replace the deprecated `restartNode` switch: `r-repair-sys-comp-failure` is equivalent to `restartNode = true` and `r-repair-sys-comp-failure-without-reboots` to `restartNode = false`. The policy subtype must match the node pool type (`ess` or `lingjun`).
+	AutoRepairPolicyId *string `pulumi:"autoRepairPolicyId"`
+	// The maximum number of nodes that can be repaired simultaneously. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]` (decimals such as `2.5%` are accepted). Defaults to `1`. An empty value is treated as unset by Terraform and is not sent.
+	MaxParallelRepairingNodes *string `pulumi:"maxParallelRepairingNodes"`
+	// The circuit breaker threshold for auto repair. When the number of unhealthy nodes in the node pool reaches this threshold, the node pool stops starting new repair actions. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]`. It must be greater than or equal to `maxParallelRepairingNodes` when both are given in the same form (both a count or both a percentage). Defaults to `100%`. An empty value is treated as unset by Terraform and is not sent.
+	//
+	// > **NOTE:** An auto repair policy can only be bound to a managed node pool of an ACK Pro cluster, and Auto mode node pools do not support auto repair policies. Binding a policy requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later; automatic fault diagnosis additionally requires `ack-node-problem-detector` at version `1.2.41` or later. The service validates the installed versions on every request and rejects requests whose add-on version is below the minimum, so install or upgrade the add-ons with csKubernetesAddon before enabling these features.
+	MaxUnhealthyNodesThreshold *string `pulumi:"maxUnhealthyNodesThreshold"`
 	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	//
+	// Deprecated: Field 'management.auto_repair_policy.restart_node' has been deprecated from provider version 2.3.0. Use 'management.auto_repair_policy.auto_repair_policy_id' instead: set it to 'r-repair-sys-comp-failure' to replace restartNode = true, or to 'r-repair-sys-comp-failure-without-reboots' to replace restartNode = false. When both are set, autoRepairPolicyId takes precedence and restartNode is ignored.
 	RestartNode *bool `pulumi:"restartNode"`
 }
 
@@ -6595,7 +7443,17 @@ type NodePoolManagementAutoRepairPolicyInput interface {
 }
 
 type NodePoolManagementAutoRepairPolicyArgs struct {
+	// The ID of the auto repair policy bound to the node pool. It takes precedence over `restartNode`. The value is only sent when it is non-empty: Terraform treats an empty attribute value as unset, so to suspend automatic repair set `autoRepair` to `false` instead of clearing this field. The binding is retained while auto repair is off and takes effect again when `autoRepair` is turned back on. Once a policy ID has been bound explicitly, removing the argument from the configuration does not unbind the policy. You can use `cs.AutoRepairPolicy` to create a custom policy, or reference a builtin policy returned by the `cs.getAutoRepairPolicies` data source. The builtin policies are `r-repair-sys-comp-failure` (repair, restarting the node when needed) and `r-repair-sys-comp-failure-without-reboots` (repair without restarting the node). They replace the deprecated `restartNode` switch: `r-repair-sys-comp-failure` is equivalent to `restartNode = true` and `r-repair-sys-comp-failure-without-reboots` to `restartNode = false`. The policy subtype must match the node pool type (`ess` or `lingjun`).
+	AutoRepairPolicyId pulumi.StringPtrInput `pulumi:"autoRepairPolicyId"`
+	// The maximum number of nodes that can be repaired simultaneously. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]` (decimals such as `2.5%` are accepted). Defaults to `1`. An empty value is treated as unset by Terraform and is not sent.
+	MaxParallelRepairingNodes pulumi.StringPtrInput `pulumi:"maxParallelRepairingNodes"`
+	// The circuit breaker threshold for auto repair. When the number of unhealthy nodes in the node pool reaches this threshold, the node pool stops starting new repair actions. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]`. It must be greater than or equal to `maxParallelRepairingNodes` when both are given in the same form (both a count or both a percentage). Defaults to `100%`. An empty value is treated as unset by Terraform and is not sent.
+	//
+	// > **NOTE:** An auto repair policy can only be bound to a managed node pool of an ACK Pro cluster, and Auto mode node pools do not support auto repair policies. Binding a policy requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later; automatic fault diagnosis additionally requires `ack-node-problem-detector` at version `1.2.41` or later. The service validates the installed versions on every request and rejects requests whose add-on version is below the minimum, so install or upgrade the add-ons with csKubernetesAddon before enabling these features.
+	MaxUnhealthyNodesThreshold pulumi.StringPtrInput `pulumi:"maxUnhealthyNodesThreshold"`
 	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	//
+	// Deprecated: Field 'management.auto_repair_policy.restart_node' has been deprecated from provider version 2.3.0. Use 'management.auto_repair_policy.auto_repair_policy_id' instead: set it to 'r-repair-sys-comp-failure' to replace restartNode = true, or to 'r-repair-sys-comp-failure-without-reboots' to replace restartNode = false. When both are set, autoRepairPolicyId takes precedence and restartNode is ignored.
 	RestartNode pulumi.BoolPtrInput `pulumi:"restartNode"`
 }
 
@@ -6676,7 +7534,26 @@ func (o NodePoolManagementAutoRepairPolicyOutput) ToNodePoolManagementAutoRepair
 	}).(NodePoolManagementAutoRepairPolicyPtrOutput)
 }
 
+// The ID of the auto repair policy bound to the node pool. It takes precedence over `restartNode`. The value is only sent when it is non-empty: Terraform treats an empty attribute value as unset, so to suspend automatic repair set `autoRepair` to `false` instead of clearing this field. The binding is retained while auto repair is off and takes effect again when `autoRepair` is turned back on. Once a policy ID has been bound explicitly, removing the argument from the configuration does not unbind the policy. You can use `cs.AutoRepairPolicy` to create a custom policy, or reference a builtin policy returned by the `cs.getAutoRepairPolicies` data source. The builtin policies are `r-repair-sys-comp-failure` (repair, restarting the node when needed) and `r-repair-sys-comp-failure-without-reboots` (repair without restarting the node). They replace the deprecated `restartNode` switch: `r-repair-sys-comp-failure` is equivalent to `restartNode = true` and `r-repair-sys-comp-failure-without-reboots` to `restartNode = false`. The policy subtype must match the node pool type (`ess` or `lingjun`).
+func (o NodePoolManagementAutoRepairPolicyOutput) AutoRepairPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolManagementAutoRepairPolicy) *string { return v.AutoRepairPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of nodes that can be repaired simultaneously. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]` (decimals such as `2.5%` are accepted). Defaults to `1`. An empty value is treated as unset by Terraform and is not sent.
+func (o NodePoolManagementAutoRepairPolicyOutput) MaxParallelRepairingNodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolManagementAutoRepairPolicy) *string { return v.MaxParallelRepairingNodes }).(pulumi.StringPtrOutput)
+}
+
+// The circuit breaker threshold for auto repair. When the number of unhealthy nodes in the node pool reaches this threshold, the node pool stops starting new repair actions. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]`. It must be greater than or equal to `maxParallelRepairingNodes` when both are given in the same form (both a count or both a percentage). Defaults to `100%`. An empty value is treated as unset by Terraform and is not sent.
+//
+// > **NOTE:** An auto repair policy can only be bound to a managed node pool of an ACK Pro cluster, and Auto mode node pools do not support auto repair policies. Binding a policy requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later; automatic fault diagnosis additionally requires `ack-node-problem-detector` at version `1.2.41` or later. The service validates the installed versions on every request and rejects requests whose add-on version is below the minimum, so install or upgrade the add-ons with csKubernetesAddon before enabling these features.
+func (o NodePoolManagementAutoRepairPolicyOutput) MaxUnhealthyNodesThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolManagementAutoRepairPolicy) *string { return v.MaxUnhealthyNodesThreshold }).(pulumi.StringPtrOutput)
+}
+
 // Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+//
+// Deprecated: Field 'management.auto_repair_policy.restart_node' has been deprecated from provider version 2.3.0. Use 'management.auto_repair_policy.auto_repair_policy_id' instead: set it to 'r-repair-sys-comp-failure' to replace restartNode = true, or to 'r-repair-sys-comp-failure-without-reboots' to replace restartNode = false. When both are set, autoRepairPolicyId takes precedence and restartNode is ignored.
 func (o NodePoolManagementAutoRepairPolicyOutput) RestartNode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagementAutoRepairPolicy) *bool { return v.RestartNode }).(pulumi.BoolPtrOutput)
 }
@@ -6705,7 +7582,41 @@ func (o NodePoolManagementAutoRepairPolicyPtrOutput) Elem() NodePoolManagementAu
 	}).(NodePoolManagementAutoRepairPolicyOutput)
 }
 
+// The ID of the auto repair policy bound to the node pool. It takes precedence over `restartNode`. The value is only sent when it is non-empty: Terraform treats an empty attribute value as unset, so to suspend automatic repair set `autoRepair` to `false` instead of clearing this field. The binding is retained while auto repair is off and takes effect again when `autoRepair` is turned back on. Once a policy ID has been bound explicitly, removing the argument from the configuration does not unbind the policy. You can use `cs.AutoRepairPolicy` to create a custom policy, or reference a builtin policy returned by the `cs.getAutoRepairPolicies` data source. The builtin policies are `r-repair-sys-comp-failure` (repair, restarting the node when needed) and `r-repair-sys-comp-failure-without-reboots` (repair without restarting the node). They replace the deprecated `restartNode` switch: `r-repair-sys-comp-failure` is equivalent to `restartNode = true` and `r-repair-sys-comp-failure-without-reboots` to `restartNode = false`. The policy subtype must match the node pool type (`ess` or `lingjun`).
+func (o NodePoolManagementAutoRepairPolicyPtrOutput) AutoRepairPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagementAutoRepairPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoRepairPolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of nodes that can be repaired simultaneously. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]` (decimals such as `2.5%` are accepted). Defaults to `1`. An empty value is treated as unset by Terraform and is not sent.
+func (o NodePoolManagementAutoRepairPolicyPtrOutput) MaxParallelRepairingNodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagementAutoRepairPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParallelRepairingNodes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The circuit breaker threshold for auto repair. When the number of unhealthy nodes in the node pool reaches this threshold, the node pool stops starting new repair actions. Valid values: an integer in the range of `1` to `100000`, or a percentage in the range of `(0%, 100%]`. It must be greater than or equal to `maxParallelRepairingNodes` when both are given in the same form (both a count or both a percentage). Defaults to `100%`. An empty value is treated as unset by Terraform and is not sent.
+//
+// > **NOTE:** An auto repair policy can only be bound to a managed node pool of an ACK Pro cluster, and Auto mode node pools do not support auto repair policies. Binding a policy requires the `node-lifecycle-controller` add-on at version `v2.3.13-b581b592` or later; automatic fault diagnosis additionally requires `ack-node-problem-detector` at version `1.2.41` or later. The service validates the installed versions on every request and rejects requests whose add-on version is below the minimum, so install or upgrade the add-ons with csKubernetesAddon before enabling these features.
+func (o NodePoolManagementAutoRepairPolicyPtrOutput) MaxUnhealthyNodesThreshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagementAutoRepairPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnhealthyNodesThreshold
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+//
+// Deprecated: Field 'management.auto_repair_policy.restart_node' has been deprecated from provider version 2.3.0. Use 'management.auto_repair_policy.auto_repair_policy_id' instead: set it to 'r-repair-sys-comp-failure' to replace restartNode = true, or to 'r-repair-sys-comp-failure-without-reboots' to replace restartNode = false. When both are set, autoRepairPolicyId takes precedence and restartNode is ignored.
 func (o NodePoolManagementAutoRepairPolicyPtrOutput) RestartNode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagementAutoRepairPolicy) *bool {
 		if v == nil {
@@ -9310,6 +10221,166 @@ func (o ServerlessKubernetesRrsaMetadataPtrOutput) RrsaOidcIssuerUrl() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAutoRepairPoliciesPolicy struct {
+	// The ID of the auto repair policy, in the format of `<cluster_id>:<policy_id>`.
+	Id string `pulumi:"id"`
+	// The name of the auto repair policy.
+	Name string `pulumi:"name"`
+	// The ID of the auto repair policy.
+	PolicyId string `pulumi:"policyId"`
+	// The IDs of the node pools that the policy is bound to.
+	ResourceIds []string `pulumi:"resourceIds"`
+	// The subtype of the node pool that the policy applies to. Valid values: `ess`, `lingjun`. Builtin policies that cover several node pool types match every one of them.
+	ResourceSubType string `pulumi:"resourceSubType"`
+	// The type of the resource that the policy applies to.
+	ResourceType string `pulumi:"resourceType"`
+	// The repair rules of the policy, in JSON format.
+	Rules string `pulumi:"rules"`
+	// The type of the auto repair policy. Valid values: `custom`, `builtin`.
+	Type string `pulumi:"type"`
+}
+
+// GetAutoRepairPoliciesPolicyInput is an input type that accepts GetAutoRepairPoliciesPolicyArgs and GetAutoRepairPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetAutoRepairPoliciesPolicyInput` via:
+//
+//	GetAutoRepairPoliciesPolicyArgs{...}
+type GetAutoRepairPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetAutoRepairPoliciesPolicyOutput() GetAutoRepairPoliciesPolicyOutput
+	ToGetAutoRepairPoliciesPolicyOutputWithContext(context.Context) GetAutoRepairPoliciesPolicyOutput
+}
+
+type GetAutoRepairPoliciesPolicyArgs struct {
+	// The ID of the auto repair policy, in the format of `<cluster_id>:<policy_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the auto repair policy.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the auto repair policy.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// The IDs of the node pools that the policy is bound to.
+	ResourceIds pulumi.StringArrayInput `pulumi:"resourceIds"`
+	// The subtype of the node pool that the policy applies to. Valid values: `ess`, `lingjun`. Builtin policies that cover several node pool types match every one of them.
+	ResourceSubType pulumi.StringInput `pulumi:"resourceSubType"`
+	// The type of the resource that the policy applies to.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The repair rules of the policy, in JSON format.
+	Rules pulumi.StringInput `pulumi:"rules"`
+	// The type of the auto repair policy. Valid values: `custom`, `builtin`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAutoRepairPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoRepairPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetAutoRepairPoliciesPolicyArgs) ToGetAutoRepairPoliciesPolicyOutput() GetAutoRepairPoliciesPolicyOutput {
+	return i.ToGetAutoRepairPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetAutoRepairPoliciesPolicyArgs) ToGetAutoRepairPoliciesPolicyOutputWithContext(ctx context.Context) GetAutoRepairPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutoRepairPoliciesPolicyOutput)
+}
+
+// GetAutoRepairPoliciesPolicyArrayInput is an input type that accepts GetAutoRepairPoliciesPolicyArray and GetAutoRepairPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetAutoRepairPoliciesPolicyArrayInput` via:
+//
+//	GetAutoRepairPoliciesPolicyArray{ GetAutoRepairPoliciesPolicyArgs{...} }
+type GetAutoRepairPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetAutoRepairPoliciesPolicyArrayOutput() GetAutoRepairPoliciesPolicyArrayOutput
+	ToGetAutoRepairPoliciesPolicyArrayOutputWithContext(context.Context) GetAutoRepairPoliciesPolicyArrayOutput
+}
+
+type GetAutoRepairPoliciesPolicyArray []GetAutoRepairPoliciesPolicyInput
+
+func (GetAutoRepairPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutoRepairPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetAutoRepairPoliciesPolicyArray) ToGetAutoRepairPoliciesPolicyArrayOutput() GetAutoRepairPoliciesPolicyArrayOutput {
+	return i.ToGetAutoRepairPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetAutoRepairPoliciesPolicyArray) ToGetAutoRepairPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetAutoRepairPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutoRepairPoliciesPolicyArrayOutput)
+}
+
+type GetAutoRepairPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetAutoRepairPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoRepairPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetAutoRepairPoliciesPolicyOutput) ToGetAutoRepairPoliciesPolicyOutput() GetAutoRepairPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetAutoRepairPoliciesPolicyOutput) ToGetAutoRepairPoliciesPolicyOutputWithContext(ctx context.Context) GetAutoRepairPoliciesPolicyOutput {
+	return o
+}
+
+// The ID of the auto repair policy, in the format of `<cluster_id>:<policy_id>`.
+func (o GetAutoRepairPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoRepairPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the auto repair policy.
+func (o GetAutoRepairPoliciesPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoRepairPoliciesPolicy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the auto repair policy.
+func (o GetAutoRepairPoliciesPolicyOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoRepairPoliciesPolicy) string { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// The IDs of the node pools that the policy is bound to.
+func (o GetAutoRepairPoliciesPolicyOutput) ResourceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutoRepairPoliciesPolicy) []string { return v.ResourceIds }).(pulumi.StringArrayOutput)
+}
+
+// The subtype of the node pool that the policy applies to. Valid values: `ess`, `lingjun`. Builtin policies that cover several node pool types match every one of them.
+func (o GetAutoRepairPoliciesPolicyOutput) ResourceSubType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoRepairPoliciesPolicy) string { return v.ResourceSubType }).(pulumi.StringOutput)
+}
+
+// The type of the resource that the policy applies to.
+func (o GetAutoRepairPoliciesPolicyOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoRepairPoliciesPolicy) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The repair rules of the policy, in JSON format.
+func (o GetAutoRepairPoliciesPolicyOutput) Rules() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoRepairPoliciesPolicy) string { return v.Rules }).(pulumi.StringOutput)
+}
+
+// The type of the auto repair policy. Valid values: `custom`, `builtin`.
+func (o GetAutoRepairPoliciesPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoRepairPoliciesPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAutoRepairPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAutoRepairPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutoRepairPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetAutoRepairPoliciesPolicyArrayOutput) ToGetAutoRepairPoliciesPolicyArrayOutput() GetAutoRepairPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetAutoRepairPoliciesPolicyArrayOutput) ToGetAutoRepairPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetAutoRepairPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetAutoRepairPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetAutoRepairPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutoRepairPoliciesPolicy {
+		return vs[0].([]GetAutoRepairPoliciesPolicy)[vs[1].(int)]
+	}).(GetAutoRepairPoliciesPolicyOutput)
+}
+
 type GetClusterCredentialCertificateAuthority struct {
 	// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kube config file for your cluster.
 	ClientCert string `pulumi:"clientCert"`
@@ -9448,6 +10519,8 @@ type GetClustersCluster struct {
 	// - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
 	// - `ExternalKubernetes`: registered clusters.
 	ClusterType string `pulumi:"clusterType"`
+	// (Available since v2.3.0) **NOTE:** This field is only available when `enableDetails` is `true`. The connection information of the cluster.
+	Connections []GetClustersClusterConnection `pulumi:"connections"`
 	// The current version of the cluster.
 	CurrentVersion string `pulumi:"currentVersion"`
 	// Cluster deletion protection prevents accidental deletion of the cluster through the console or API.
@@ -9526,6 +10599,8 @@ type GetClustersClusterArgs struct {
 	// - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
 	// - `ExternalKubernetes`: registered clusters.
 	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// (Available since v2.3.0) **NOTE:** This field is only available when `enableDetails` is `true`. The connection information of the cluster.
+	Connections GetClustersClusterConnectionArrayInput `pulumi:"connections"`
 	// The current version of the cluster.
 	CurrentVersion pulumi.StringInput `pulumi:"currentVersion"`
 	// Cluster deletion protection prevents accidental deletion of the cluster through the console or API.
@@ -9659,6 +10734,11 @@ func (o GetClustersClusterOutput) ClusterSpec() pulumi.StringOutput {
 // - `ExternalKubernetes`: registered clusters.
 func (o GetClustersClusterOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// (Available since v2.3.0) **NOTE:** This field is only available when `enableDetails` is `true`. The connection information of the cluster.
+func (o GetClustersClusterOutput) Connections() GetClustersClusterConnectionArrayOutput {
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterConnection { return v.Connections }).(GetClustersClusterConnectionArrayOutput)
 }
 
 // The current version of the cluster.
@@ -9830,6 +10910,130 @@ func (o GetClustersClusterAutoModeOutput) ToGetClustersClusterAutoModeOutputWith
 // Whether to enable cluster automatic upgrade.
 func (o GetClustersClusterAutoModeOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClustersClusterAutoMode) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClustersClusterConnection struct {
+	// The public API Server endpoint of the cluster.
+	ApiServerInternet string `pulumi:"apiServerInternet"`
+	// The internal API Server endpoint of the cluster.
+	ApiServerIntranet string `pulumi:"apiServerIntranet"`
+	// The public IP address of the master node.
+	MasterPublicIp string `pulumi:"masterPublicIp"`
+	// The service domain of the cluster.
+	ServiceDomain string `pulumi:"serviceDomain"`
+}
+
+// GetClustersClusterConnectionInput is an input type that accepts GetClustersClusterConnectionArgs and GetClustersClusterConnectionOutput values.
+// You can construct a concrete instance of `GetClustersClusterConnectionInput` via:
+//
+//	GetClustersClusterConnectionArgs{...}
+type GetClustersClusterConnectionInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterConnectionOutput() GetClustersClusterConnectionOutput
+	ToGetClustersClusterConnectionOutputWithContext(context.Context) GetClustersClusterConnectionOutput
+}
+
+type GetClustersClusterConnectionArgs struct {
+	// The public API Server endpoint of the cluster.
+	ApiServerInternet pulumi.StringInput `pulumi:"apiServerInternet"`
+	// The internal API Server endpoint of the cluster.
+	ApiServerIntranet pulumi.StringInput `pulumi:"apiServerIntranet"`
+	// The public IP address of the master node.
+	MasterPublicIp pulumi.StringInput `pulumi:"masterPublicIp"`
+	// The service domain of the cluster.
+	ServiceDomain pulumi.StringInput `pulumi:"serviceDomain"`
+}
+
+func (GetClustersClusterConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterConnection)(nil)).Elem()
+}
+
+func (i GetClustersClusterConnectionArgs) ToGetClustersClusterConnectionOutput() GetClustersClusterConnectionOutput {
+	return i.ToGetClustersClusterConnectionOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterConnectionArgs) ToGetClustersClusterConnectionOutputWithContext(ctx context.Context) GetClustersClusterConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterConnectionOutput)
+}
+
+// GetClustersClusterConnectionArrayInput is an input type that accepts GetClustersClusterConnectionArray and GetClustersClusterConnectionArrayOutput values.
+// You can construct a concrete instance of `GetClustersClusterConnectionArrayInput` via:
+//
+//	GetClustersClusterConnectionArray{ GetClustersClusterConnectionArgs{...} }
+type GetClustersClusterConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetClustersClusterConnectionArrayOutput() GetClustersClusterConnectionArrayOutput
+	ToGetClustersClusterConnectionArrayOutputWithContext(context.Context) GetClustersClusterConnectionArrayOutput
+}
+
+type GetClustersClusterConnectionArray []GetClustersClusterConnectionInput
+
+func (GetClustersClusterConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterConnection)(nil)).Elem()
+}
+
+func (i GetClustersClusterConnectionArray) ToGetClustersClusterConnectionArrayOutput() GetClustersClusterConnectionArrayOutput {
+	return i.ToGetClustersClusterConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetClustersClusterConnectionArray) ToGetClustersClusterConnectionArrayOutputWithContext(ctx context.Context) GetClustersClusterConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterConnectionArrayOutput)
+}
+
+type GetClustersClusterConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClustersClusterConnection)(nil)).Elem()
+}
+
+func (o GetClustersClusterConnectionOutput) ToGetClustersClusterConnectionOutput() GetClustersClusterConnectionOutput {
+	return o
+}
+
+func (o GetClustersClusterConnectionOutput) ToGetClustersClusterConnectionOutputWithContext(ctx context.Context) GetClustersClusterConnectionOutput {
+	return o
+}
+
+// The public API Server endpoint of the cluster.
+func (o GetClustersClusterConnectionOutput) ApiServerInternet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterConnection) string { return v.ApiServerInternet }).(pulumi.StringOutput)
+}
+
+// The internal API Server endpoint of the cluster.
+func (o GetClustersClusterConnectionOutput) ApiServerIntranet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterConnection) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
+}
+
+// The public IP address of the master node.
+func (o GetClustersClusterConnectionOutput) MasterPublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterConnection) string { return v.MasterPublicIp }).(pulumi.StringOutput)
+}
+
+// The service domain of the cluster.
+func (o GetClustersClusterConnectionOutput) ServiceDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClustersClusterConnection) string { return v.ServiceDomain }).(pulumi.StringOutput)
+}
+
+type GetClustersClusterConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClustersClusterConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClustersClusterConnection)(nil)).Elem()
+}
+
+func (o GetClustersClusterConnectionArrayOutput) ToGetClustersClusterConnectionArrayOutput() GetClustersClusterConnectionArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterConnectionArrayOutput) ToGetClustersClusterConnectionArrayOutputWithContext(ctx context.Context) GetClustersClusterConnectionArrayOutput {
+	return o
+}
+
+func (o GetClustersClusterConnectionArrayOutput) Index(i pulumi.IntInput) GetClustersClusterConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterConnection {
+		return vs[0].([]GetClustersClusterConnection)[vs[1].(int)]
+	}).(GetClustersClusterConnectionOutput)
 }
 
 type GetClustersClusterMaintenanceWindow struct {
@@ -10038,7 +11242,7 @@ func (o GetClustersClusterOperationPolicyClusterAutoUpgradeOutput) Enabled() pul
 type GetEdgeKubernetesClustersCluster struct {
 	// The ID of availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// A list of kubernetes cluster connection information.
 	Connections []GetEdgeKubernetesClustersClusterConnection `pulumi:"connections"`
 	// ID of the node.
 	Id string `pulumi:"id"`
@@ -10050,7 +11254,7 @@ type GetEdgeKubernetesClustersCluster struct {
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes []GetEdgeKubernetesClustersClusterWorkerNode `pulumi:"workerNodes"`
 }
 
@@ -10068,7 +11272,7 @@ type GetEdgeKubernetesClustersClusterInput interface {
 type GetEdgeKubernetesClustersClusterArgs struct {
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// A list of kubernetes cluster connection information.
 	Connections GetEdgeKubernetesClustersClusterConnectionArrayInput `pulumi:"connections"`
 	// ID of the node.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -10080,7 +11284,7 @@ type GetEdgeKubernetesClustersClusterArgs struct {
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes GetEdgeKubernetesClustersClusterWorkerNodeArrayInput `pulumi:"workerNodes"`
 }
 
@@ -10140,7 +11344,7 @@ func (o GetEdgeKubernetesClustersClusterOutput) AvailabilityZone() pulumi.String
 	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// A list of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+// A list of kubernetes cluster connection information.
 func (o GetEdgeKubernetesClustersClusterOutput) Connections() GetEdgeKubernetesClustersClusterConnectionArrayOutput {
 	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) []GetEdgeKubernetesClustersClusterConnection {
 		return v.Connections
@@ -10172,7 +11376,7 @@ func (o GetEdgeKubernetesClustersClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+// List of cluster worker nodes.
 func (o GetEdgeKubernetesClustersClusterOutput) WorkerNodes() GetEdgeKubernetesClustersClusterWorkerNodeArrayOutput {
 	return o.ApplyT(func(v GetEdgeKubernetesClustersCluster) []GetEdgeKubernetesClustersClusterWorkerNode {
 		return v.WorkerNodes
@@ -13829,6 +15033,8 @@ func (o GetKubernetesPermissionPermissionArrayOutput) Index(i pulumi.IntInput) G
 type GetKubernetesVersionMetadata struct {
 	// The list of supported runtime.
 	Runtimes []GetKubernetesVersionMetadataRuntime `pulumi:"runtimes"`
+	// Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+	SupportPolicy string `pulumi:"supportPolicy"`
 	// The runtime version.
 	Version string `pulumi:"version"`
 }
@@ -13847,6 +15053,8 @@ type GetKubernetesVersionMetadataInput interface {
 type GetKubernetesVersionMetadataArgs struct {
 	// The list of supported runtime.
 	Runtimes GetKubernetesVersionMetadataRuntimeArrayInput `pulumi:"runtimes"`
+	// Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+	SupportPolicy pulumi.StringInput `pulumi:"supportPolicy"`
 	// The runtime version.
 	Version pulumi.StringInput `pulumi:"version"`
 }
@@ -13905,6 +15113,11 @@ func (o GetKubernetesVersionMetadataOutput) ToGetKubernetesVersionMetadataOutput
 // The list of supported runtime.
 func (o GetKubernetesVersionMetadataOutput) Runtimes() GetKubernetesVersionMetadataRuntimeArrayOutput {
 	return o.ApplyT(func(v GetKubernetesVersionMetadata) []GetKubernetesVersionMetadataRuntime { return v.Runtimes }).(GetKubernetesVersionMetadataRuntimeArrayOutput)
+}
+
+// Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+func (o GetKubernetesVersionMetadataOutput) SupportPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesVersionMetadata) string { return v.SupportPolicy }).(pulumi.StringOutput)
 }
 
 // The runtime version.
@@ -15708,6 +16921,18 @@ func (o GetServerlessKubernetesClustersClusterConnectionArrayOutput) Index(i pul
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleInput)(nil)).Elem(), AutoRepairPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleArrayInput)(nil)).Elem(), AutoRepairPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleIncidentInput)(nil)).Elem(), AutoRepairPolicyRuleIncidentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleIncidentArrayInput)(nil)).Elem(), AutoRepairPolicyRuleIncidentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInput)(nil)).Elem(), AutoRepairPolicyRuleRepairProcedureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureArrayInput)(nil)).Elem(), AutoRepairPolicyRuleRepairProcedureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInterventionInput)(nil)).Elem(), AutoRepairPolicyRuleRepairProcedureInterventionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInterventionPtrInput)(nil)).Elem(), AutoRepairPolicyRuleRepairProcedureInterventionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelInput)(nil)).Elem(), AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrInput)(nil)).Elem(), AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelInput)(nil)).Elem(), AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrInput)(nil)).Elem(), AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesAddonInput)(nil)).Elem(), EdgeKubernetesAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesAddonArrayInput)(nil)).Elem(), EdgeKubernetesAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeKubernetesCertificateAuthorityInput)(nil)).Elem(), EdgeKubernetesCertificateAuthorityArgs{})
@@ -15822,11 +17047,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrInput)(nil)).Elem(), ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoRepairPoliciesPolicyInput)(nil)).Elem(), GetAutoRepairPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoRepairPoliciesPolicyArrayInput)(nil)).Elem(), GetAutoRepairPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCredentialCertificateAuthorityInput)(nil)).Elem(), GetClusterCredentialCertificateAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCredentialCertificateAuthorityArrayInput)(nil)).Elem(), GetClusterCredentialCertificateAuthorityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterAutoModeInput)(nil)).Elem(), GetClustersClusterAutoModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterConnectionInput)(nil)).Elem(), GetClustersClusterConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterConnectionArrayInput)(nil)).Elem(), GetClustersClusterConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterMaintenanceWindowInput)(nil)).Elem(), GetClustersClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterOperationPolicyInput)(nil)).Elem(), GetClustersClusterOperationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterOperationPolicyClusterAutoUpgradeInput)(nil)).Elem(), GetClustersClusterOperationPolicyClusterAutoUpgradeArgs{})
@@ -15896,6 +17125,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterArrayInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnectionInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnectionArrayInput)(nil)).Elem(), GetServerlessKubernetesClustersClusterConnectionArray{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleIncidentOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleIncidentArrayOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleRepairProcedureOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleRepairProcedureArrayOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleRepairProcedureInterventionOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleRepairProcedureInterventionPtrOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleRepairProcedureInterventionApprovedLabelPtrOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelOutput{})
+	pulumi.RegisterOutputType(AutoRepairPolicyRuleRepairProcedureInterventionInquiringLabelPtrOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(EdgeKubernetesCertificateAuthorityOutput{})
@@ -16010,11 +17251,15 @@ func init() {
 	pulumi.RegisterOutputType(ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GetAutoRepairPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetAutoRepairPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterCredentialCertificateAuthorityOutput{})
 	pulumi.RegisterOutputType(GetClusterCredentialCertificateAuthorityArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterAutoModeOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterConnectionOutput{})
+	pulumi.RegisterOutputType(GetClustersClusterConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOperationPolicyOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOperationPolicyClusterAutoUpgradeOutput{})

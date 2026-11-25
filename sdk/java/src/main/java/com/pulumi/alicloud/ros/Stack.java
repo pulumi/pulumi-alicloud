@@ -53,20 +53,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var example = new Stack("example", StackArgs.builder()
- *             .stackName("tf-testaccstack")
+ *             .stackName("tfaccstack")
  *             .templateBody("""
  *     }{{@code
- *     }&#92;{@code t}&#92;{@code "ROSTemplateFormatVersion}&#92;{@code ": }&#92;{@code "2015-09-01}&#92;{@code "
+ *       }&#92;{@code "ROSTemplateFormatVersion}&#92;{@code ": }&#92;{@code "2015-09-01}&#92;{@code "
  *     }}{@code
  *             """)
  *             .stackPolicyBody("""
  *     }{{@code
- *     }&#92;{@code t}&#92;{@code "Statement}&#92;{@code ": [}{{@code
- *     }&#92;{@code t}&#92;{@code t}&#92;{@code "Action}&#92;{@code ": }&#92;{@code "Update:Delete}&#92;{@code ",
- *     }&#92;{@code t}&#92;{@code t}&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
- *     }&#92;{@code t}&#92;{@code t}&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
- *     }&#92;{@code t}&#92;{@code t}&#92;{@code "Principal}&#92;{@code ": }&#92;{@code "*}&#92;{@code "
- *     }&#92;{@code t}}{@code ]
+ *       }&#92;{@code "Statement}&#92;{@code ": [}{{@code
+ *         }&#92;{@code "Action}&#92;{@code ": }&#92;{@code "Update:Delete}&#92;{@code ",
+ *         }&#92;{@code "Resource}&#92;{@code ": }&#92;{@code "*}&#92;{@code ",
+ *         }&#92;{@code "Effect}&#92;{@code ": }&#92;{@code "Allow}&#92;{@code ",
+ *         }&#92;{@code "Principal}&#92;{@code ": }&#92;{@code "*}&#92;{@code "
+ *       }}{@code ]
  *     }}{@code
  *             """)
  *             .build());
@@ -146,14 +146,14 @@ public class Stack extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notificationUrls);
     }
     /**
-     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
      * 
      */
     @Export(name="parameters", refs={List.class,StackParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StackParameter>> parameters;
 
     /**
-     * @return The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+     * @return The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `parameters` below.
      * 
      */
     public Output<Optional<List<StackParameter>>> parameters() {

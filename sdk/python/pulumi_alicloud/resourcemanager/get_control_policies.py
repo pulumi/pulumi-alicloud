@@ -87,6 +87,9 @@ class GetControlPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Control Policy names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -97,11 +100,17 @@ class GetControlPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetControlPoliciesPolicyResult']:
+        """
+        A list of Resource Manager Control Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
     @_builtins.property
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[_builtins.str]:
+        """
+        The type of policy.
+        """
         return pulumi.get(self, "policy_type")
 
 
@@ -132,7 +141,7 @@ def get_control_policies(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0.
 
     ## Example Usage
 
@@ -185,7 +194,7 @@ def get_control_policies_output(enable_details: pulumi.Input[Optional[Optional[_
     """
     This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0.
 
     ## Example Usage
 

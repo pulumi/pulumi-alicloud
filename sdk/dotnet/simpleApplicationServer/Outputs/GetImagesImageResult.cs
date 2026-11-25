@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.simpleApplicationServer.Outputs
         /// </summary>
         public readonly string ImageName;
         /// <summary>
-        /// The type of the image. Valid values: `App`, `Custom`, `System`.
+        /// The image type. Valid values: `App`, `Custom`, `System`.
         /// </summary>
         public readonly string ImageType;
         /// <summary>
-        /// The platform of Plan supported.
+        /// Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
         /// </summary>
         public readonly string Platform;
 

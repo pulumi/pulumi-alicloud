@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSnapshotsResult {
+    /**
+     * @return The ID of the cloud desktop to which the snapshot belongs.
+     * 
+     */
     private @Nullable String desktopId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,12 +26,28 @@ public final class GetSnapshotsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Snapshot names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the snapshot.
+     * 
+     */
     private @Nullable String snapshotId;
+    /**
+     * @return A list of Ecd Snapshots. Each element contains the following attributes:
+     * 
+     */
     private List<GetSnapshotsSnapshot> snapshots;
 
     private GetSnapshotsResult() {}
+    /**
+     * @return The ID of the cloud desktop to which the snapshot belongs.
+     * 
+     */
     public Optional<String> desktopId() {
         return Optional.ofNullable(this.desktopId);
     }
@@ -44,15 +64,27 @@ public final class GetSnapshotsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Snapshot names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the snapshot.
+     * 
+     */
     public Optional<String> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }
+    /**
+     * @return A list of Ecd Snapshots. Each element contains the following attributes:
+     * 
+     */
     public List<GetSnapshotsSnapshot> snapshots() {
         return this.snapshots;
     }

@@ -66,6 +66,9 @@ class GetQuotaAlarmsResult:
     @_builtins.property
     @pulumi.getter
     def alarms(self) -> Sequence['outputs.GetQuotaAlarmsAlarmResult']:
+        """
+        A list of Quotas Quota Alarms. Each element contains the following attributes:
+        """
         return pulumi.get(self, "alarms")
 
     @_builtins.property
@@ -94,6 +97,9 @@ class GetQuotaAlarmsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Quota Alarm names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -104,21 +110,33 @@ class GetQuotaAlarmsResult:
     @_builtins.property
     @pulumi.getter(name="productCode")
     def product_code(self) -> Optional[_builtins.str]:
+        """
+        The Product Code.
+        """
         return pulumi.get(self, "product_code")
 
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
     def quota_action_code(self) -> Optional[_builtins.str]:
+        """
+        The Quota Action Code.
+        """
         return pulumi.get(self, "quota_action_code")
 
     @_builtins.property
     @pulumi.getter(name="quotaAlarmName")
     def quota_alarm_name(self) -> Optional[_builtins.str]:
+        """
+        The name of Quota Alarm.
+        """
         return pulumi.get(self, "quota_alarm_name")
 
     @_builtins.property
     @pulumi.getter(name="quotaDimensions")
     def quota_dimensions(self) -> Optional[Sequence['outputs.GetQuotaAlarmsQuotaDimensionResult']]:
+        """
+        The Quota Dimensions. See `quota_dimensions` below.
+        """
         return pulumi.get(self, "quota_dimensions")
 
 
@@ -153,7 +171,7 @@ def get_quota_alarms(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.116.0+.
+    > **NOTE:** Available since v1.116.0.
 
     ## Example Usage
 
@@ -176,7 +194,7 @@ def get_quota_alarms(enable_details: Optional[_builtins.bool] = None,
     :param _builtins.str product_code: The Product Code.
     :param _builtins.str quota_action_code: The Quota Action Code.
     :param _builtins.str quota_alarm_name: The name of Quota Alarm.
-    :param Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict', 'outputs.GetQuotaAlarmsQuotaDimensionResult']] quota_dimensions: The Quota Dimensions.
+    :param Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict', 'outputs.GetQuotaAlarmsQuotaDimensionResult']] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -214,7 +232,7 @@ def get_quota_alarms_output(enable_details: pulumi.Input[Optional[Optional[_buil
     """
     This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.116.0+.
+    > **NOTE:** Available since v1.116.0.
 
     ## Example Usage
 
@@ -237,7 +255,7 @@ def get_quota_alarms_output(enable_details: pulumi.Input[Optional[Optional[_buil
     :param _builtins.str product_code: The Product Code.
     :param _builtins.str quota_action_code: The Quota Action Code.
     :param _builtins.str quota_alarm_name: The name of Quota Alarm.
-    :param Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict', 'outputs.GetQuotaAlarmsQuotaDimensionResult']] quota_dimensions: The Quota Dimensions.
+    :param Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict', 'outputs.GetQuotaAlarmsQuotaDimensionResult']] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

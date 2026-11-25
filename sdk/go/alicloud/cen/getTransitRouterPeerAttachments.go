@@ -13,7 +13,7 @@ import (
 
 // This data source provides CEN Transit Router peer attachments available to the user.
 //
-// > **NOTE:** Available in 1.128.0+
+// > **NOTE:** Available since v1.128.0+
 //
 // ## Example Usage
 //
@@ -71,6 +71,7 @@ type GetTransitRouterPeerAttachmentsArgs struct {
 
 // A collection of values returned by getTransitRouterPeerAttachments.
 type GetTransitRouterPeerAttachmentsResult struct {
+	// A list of CEN Transit Router peer Attachments. Each element contains the following attributes:
 	Attachments []GetTransitRouterPeerAttachmentsAttachment `pulumi:"attachments"`
 	CenId       string                                      `pulumi:"cenId"`
 	// The provider-assigned unique ID for this managed resource.
@@ -131,6 +132,7 @@ func (o GetTransitRouterPeerAttachmentsResultOutput) ToGetTransitRouterPeerAttac
 	return o
 }
 
+// A list of CEN Transit Router peer Attachments. Each element contains the following attributes:
 func (o GetTransitRouterPeerAttachmentsResultOutput) Attachments() GetTransitRouterPeerAttachmentsAttachmentArrayOutput {
 	return o.ApplyT(func(v GetTransitRouterPeerAttachmentsResult) []GetTransitRouterPeerAttachmentsAttachment {
 		return v.Attachments

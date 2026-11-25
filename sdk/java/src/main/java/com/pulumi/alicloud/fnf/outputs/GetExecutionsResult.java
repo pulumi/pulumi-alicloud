@@ -16,7 +16,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetExecutionsResult {
     private @Nullable Boolean enableDetails;
+    /**
+     * @return A list of Fn F Executions. Each element contains the following attributes:
+     * 
+     */
     private List<GetExecutionsExecution> executions;
+    /**
+     * @return The name of the flow.
+     * 
+     */
     private String flowName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,17 +33,33 @@ public final class GetExecutionsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Execution names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
 
     private GetExecutionsResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return A list of Fn F Executions. Each element contains the following attributes:
+     * 
+     */
     public List<GetExecutionsExecution> executions() {
         return this.executions;
     }
+    /**
+     * @return The name of the flow.
+     * 
+     */
     public String flowName() {
         return this.flowName;
     }
@@ -52,12 +76,20 @@ public final class GetExecutionsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Execution names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.179.0+.
+// > **NOTE:** Available since v1.179.0+.
 //
 // ## Example Usage
 //
@@ -72,14 +72,16 @@ type GetHybridMonitorSlsTasksArgs struct {
 // A collection of values returned by getHybridMonitorSlsTasks.
 type GetHybridMonitorSlsTasksResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                         `pulumi:"id"`
-	Ids        []string                       `pulumi:"ids"`
-	Keyword    *string                        `pulumi:"keyword"`
-	Namespace  *string                        `pulumi:"namespace"`
-	OutputFile *string                        `pulumi:"outputFile"`
-	PageNumber *int                           `pulumi:"pageNumber"`
-	PageSize   *int                           `pulumi:"pageSize"`
-	Tasks      []GetHybridMonitorSlsTasksTask `pulumi:"tasks"`
+	Id      string   `pulumi:"id"`
+	Ids     []string `pulumi:"ids"`
+	Keyword *string  `pulumi:"keyword"`
+	// The namespace to which the host belongs.
+	Namespace  *string `pulumi:"namespace"`
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
+	// A list of Cms Hybrid Monitor Sls Tasks. Each element contains the following attributes:
+	Tasks []GetHybridMonitorSlsTasksTask `pulumi:"tasks"`
 }
 
 func GetHybridMonitorSlsTasksOutput(ctx *pulumi.Context, args GetHybridMonitorSlsTasksOutputArgs, opts ...pulumi.InvokeOption) GetHybridMonitorSlsTasksResultOutput {
@@ -133,6 +135,7 @@ func (o GetHybridMonitorSlsTasksResultOutput) Keyword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksResult) *string { return v.Keyword }).(pulumi.StringPtrOutput)
 }
 
+// The namespace to which the host belongs.
 func (o GetHybridMonitorSlsTasksResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -149,6 +152,7 @@ func (o GetHybridMonitorSlsTasksResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// A list of Cms Hybrid Monitor Sls Tasks. Each element contains the following attributes:
 func (o GetHybridMonitorSlsTasksResultOutput) Tasks() GetHybridMonitorSlsTasksTaskArrayOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksResult) []GetHybridMonitorSlsTasksTask { return v.Tasks }).(GetHybridMonitorSlsTasksTaskArrayOutput)
 }

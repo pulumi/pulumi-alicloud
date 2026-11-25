@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
  *
+ * > **NOTE:** Available since v1.9.0
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -48,6 +50,9 @@ export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.In
  * A collection of arguments for invoking getSecurityGroups.
  */
 export interface GetSecurityGroupsArgs {
+    /**
+     * Default to true. Set it to false to only output `id` in the `groups` block.
+     */
     enableDetails?: boolean;
     /**
      * A list of Security Group IDs.
@@ -69,6 +74,7 @@ export interface GetSecurityGroupsArgs {
     resourceGroupId?: string;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
@@ -118,7 +124,7 @@ export interface GetSecurityGroupsResult {
      */
     readonly resourceGroupId?: string;
     /**
-     * A map of tags assigned to the ECS instance.
+     * (Optional) A map of tags assigned to the ECS instance.
      */
     readonly tags?: {[key: string]: string};
     readonly totalCount: number;
@@ -129,6 +135,8 @@ export interface GetSecurityGroupsResult {
 }
 /**
  * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available since v1.9.0
  *
  * ## Example Usage
  *
@@ -169,6 +177,9 @@ export function getSecurityGroupsOutput(args?: GetSecurityGroupsOutputArgs, opts
  * A collection of arguments for invoking getSecurityGroups.
  */
 export interface GetSecurityGroupsOutputArgs {
+    /**
+     * Default to true. Set it to false to only output `id` in the `groups` block.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Security Group IDs.
@@ -190,6 +201,7 @@ export interface GetSecurityGroupsOutputArgs {
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";

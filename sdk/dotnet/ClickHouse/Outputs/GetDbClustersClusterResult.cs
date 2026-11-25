@@ -49,6 +49,9 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
         /// The DBCluster description.
         /// </summary>
         public readonly string DbClusterDescription;
+        /// <summary>
+        /// The ID of the DBCluster.
+        /// </summary>
         public readonly string DbClusterId;
         /// <summary>
         /// The DBCluster network type.
@@ -91,7 +94,7 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
-        /// The ID of the DBCluster.
+        /// The DBCluster id.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -131,7 +134,7 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDbClustersClusterScaleOutStatusResult> ScaleOutStatuses;
         /// <summary>
-        /// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+        /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * > **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
  *
- * This data source provides a list of action trail of the current Alibaba Cloud user.
+ * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available since v1.95.0.
  *
  * ## Example Usage
  *
@@ -17,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const trails = alicloud.actiontrail.getTrailsDeprecated({
+ * const _default = alicloud.actiontrail.getTrails({
  *     nameRegex: "tf-testacc-actiontrail",
  * });
- * export const firstTrailName = trails.then(trails => trails.actiontrails?.[0]?.name);
+ * export const trailName = _default.then(_default => _default.trails?.[0]?.id);
  * ```
  */
 /** @deprecated DataSource has been renamed to `getTrails` */
@@ -42,17 +44,29 @@ export function getTrailsDeprecated(args?: GetTrailsDeprecatedArgs, opts?: pulum
  * A collection of arguments for invoking getTrailsDeprecated.
  */
 export interface GetTrailsDeprecatedArgs {
+    /**
+     * A list of ActionTrail Trail IDs. It is the same as trail name.
+     */
     ids?: string[];
+    /**
+     * Whether to show organization tracking. Default to `false`.
+     */
     includeOrganizationTrail?: boolean;
+    /**
+     * Whether to show shadow tracking. Default to `false`.
+     */
     includeShadowTrails?: boolean;
     /**
-     * A regex string to filter results action trail name.
+     * A regex string to filter results by trail name.
      */
     nameRegex?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+     */
     status?: string;
 }
 
@@ -61,7 +75,7 @@ export interface GetTrailsDeprecatedArgs {
  */
 export interface GetTrailsDeprecatedResult {
     /**
-     * A list of actiontrails. Each element contains the following attributes:
+     * (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
      *
      * @deprecated Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.
      */
@@ -70,6 +84,9 @@ export interface GetTrailsDeprecatedResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of ActionTrail Trail ids. It is the same as trail name.
+     */
     readonly ids: string[];
     readonly includeOrganizationTrail?: boolean;
     readonly includeShadowTrails?: boolean;
@@ -79,13 +96,21 @@ export interface GetTrailsDeprecatedResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the ActionTrail Trail.
+     */
     readonly status?: string;
+    /**
+     * A list of ActionTrail Trails. Each element contains the following attributes:
+     */
     readonly trails: outputs.actiontrail.GetTrailsDeprecatedTrail[];
 }
 /**
  * > **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
  *
- * This data source provides a list of action trail of the current Alibaba Cloud user.
+ * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:** Available since v1.95.0.
  *
  * ## Example Usage
  *
@@ -93,10 +118,10 @@ export interface GetTrailsDeprecatedResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const trails = alicloud.actiontrail.getTrailsDeprecated({
+ * const _default = alicloud.actiontrail.getTrails({
  *     nameRegex: "tf-testacc-actiontrail",
  * });
- * export const firstTrailName = trails.then(trails => trails.actiontrails?.[0]?.name);
+ * export const trailName = _default.then(_default => _default.trails?.[0]?.id);
  * ```
  */
 /** @deprecated DataSource has been renamed to `getTrails` */
@@ -118,16 +143,28 @@ export function getTrailsDeprecatedOutput(args?: GetTrailsDeprecatedOutputArgs, 
  * A collection of arguments for invoking getTrailsDeprecated.
  */
 export interface GetTrailsDeprecatedOutputArgs {
+    /**
+     * A list of ActionTrail Trail IDs. It is the same as trail name.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether to show organization tracking. Default to `false`.
+     */
     includeOrganizationTrail?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to show shadow tracking. Default to `false`.
+     */
     includeShadowTrails?: pulumi.Input<boolean | undefined>;
     /**
-     * A regex string to filter results action trail name.
+     * A regex string to filter results by trail name.
      */
     nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+     */
     status?: pulumi.Input<string | undefined>;
 }

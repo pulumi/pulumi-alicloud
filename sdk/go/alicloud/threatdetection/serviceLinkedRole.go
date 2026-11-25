@@ -19,6 +19,10 @@ import (
 //
 // > **NOTE:** Available since v1.283.0.
 //
+// > **NOTE:** This resource refuses to adopt a service linked role that already exists, for example one created by the Security Center console or by another tool. Creation fails with the import command to run instead of taking the existing role into state, so that a later `terraform destroy` never deletes a role that Terraform did not create. When importing a role other than `AliyunServiceRoleForSas`, keep `serviceLinkedRole` in the configuration with that same name; because the argument has a default, omitting it plans a replacement of the imported role.
+//
+// > **NOTE:** Upgrading from v1.283.0-v2.1.0: if `serviceLinkedRole` was omitted from the configuration, the state entry stores an id that is not a role name. The first apply after upgrading replaces the resource and fails with an import hint. Run the printed `pulumi import` command; if it reports that the resource is already managed by Terraform, run `terraform state rm <ADDRESS>` and then import again.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -61,8 +65,16 @@ type ServiceLinkedRole struct {
 
 	// Whether the service linked role exists.
 	RoleStatus pulumi.BoolOutput `pulumi:"roleStatus"`
-	// The name of the service linked role.
-	ServiceLinkedRole pulumi.StringOutput `pulumi:"serviceLinkedRole"`
+	// The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+	// - `AliyunServiceRoleForSas`
+	// - `AliyunServiceRoleForSasCspm`
+	// - `AliyunServiceRoleForSasAgentless`
+	// - `AliyunServiceRoleForOssMfd`
+	// - `AliyunServiceRoleForAntiRansomwareMssp`
+	// - `AliyunServiceRoleForSasSecllm`
+	// - `AliyunServiceRoleForSasAI`
+	// - `AliyunLogETLRole`
+	ServiceLinkedRole pulumi.StringPtrOutput `pulumi:"serviceLinkedRole"`
 }
 
 // NewServiceLinkedRole registers a new resource with the given unique name, arguments, and options.
@@ -97,14 +109,30 @@ func GetServiceLinkedRole(ctx *pulumi.Context,
 type serviceLinkedRoleState struct {
 	// Whether the service linked role exists.
 	RoleStatus *bool `pulumi:"roleStatus"`
-	// The name of the service linked role.
+	// The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+	// - `AliyunServiceRoleForSas`
+	// - `AliyunServiceRoleForSasCspm`
+	// - `AliyunServiceRoleForSasAgentless`
+	// - `AliyunServiceRoleForOssMfd`
+	// - `AliyunServiceRoleForAntiRansomwareMssp`
+	// - `AliyunServiceRoleForSasSecllm`
+	// - `AliyunServiceRoleForSasAI`
+	// - `AliyunLogETLRole`
 	ServiceLinkedRole *string `pulumi:"serviceLinkedRole"`
 }
 
 type ServiceLinkedRoleState struct {
 	// Whether the service linked role exists.
 	RoleStatus pulumi.BoolPtrInput
-	// The name of the service linked role.
+	// The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+	// - `AliyunServiceRoleForSas`
+	// - `AliyunServiceRoleForSasCspm`
+	// - `AliyunServiceRoleForSasAgentless`
+	// - `AliyunServiceRoleForOssMfd`
+	// - `AliyunServiceRoleForAntiRansomwareMssp`
+	// - `AliyunServiceRoleForSasSecllm`
+	// - `AliyunServiceRoleForSasAI`
+	// - `AliyunLogETLRole`
 	ServiceLinkedRole pulumi.StringPtrInput
 }
 
@@ -119,13 +147,29 @@ func ServiceLinkedRoleExists(ctx *pulumi.Context,
 }
 
 type serviceLinkedRoleArgs struct {
-	// The name of the service linked role.
+	// The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+	// - `AliyunServiceRoleForSas`
+	// - `AliyunServiceRoleForSasCspm`
+	// - `AliyunServiceRoleForSasAgentless`
+	// - `AliyunServiceRoleForOssMfd`
+	// - `AliyunServiceRoleForAntiRansomwareMssp`
+	// - `AliyunServiceRoleForSasSecllm`
+	// - `AliyunServiceRoleForSasAI`
+	// - `AliyunLogETLRole`
 	ServiceLinkedRole *string `pulumi:"serviceLinkedRole"`
 }
 
 // The set of arguments for constructing a ServiceLinkedRole resource.
 type ServiceLinkedRoleArgs struct {
-	// The name of the service linked role.
+	// The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+	// - `AliyunServiceRoleForSas`
+	// - `AliyunServiceRoleForSasCspm`
+	// - `AliyunServiceRoleForSasAgentless`
+	// - `AliyunServiceRoleForOssMfd`
+	// - `AliyunServiceRoleForAntiRansomwareMssp`
+	// - `AliyunServiceRoleForSasSecllm`
+	// - `AliyunServiceRoleForSasAI`
+	// - `AliyunLogETLRole`
 	ServiceLinkedRole pulumi.StringPtrInput
 }
 
@@ -221,9 +265,17 @@ func (o ServiceLinkedRoleOutput) RoleStatus() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.BoolOutput { return v.RoleStatus }).(pulumi.BoolOutput)
 }
 
-// The name of the service linked role.
-func (o ServiceLinkedRoleOutput) ServiceLinkedRole() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.StringOutput { return v.ServiceLinkedRole }).(pulumi.StringOutput)
+// The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+// - `AliyunServiceRoleForSas`
+// - `AliyunServiceRoleForSasCspm`
+// - `AliyunServiceRoleForSasAgentless`
+// - `AliyunServiceRoleForOssMfd`
+// - `AliyunServiceRoleForAntiRansomwareMssp`
+// - `AliyunServiceRoleForSasSecllm`
+// - `AliyunServiceRoleForSasAI`
+// - `AliyunLogETLRole`
+func (o ServiceLinkedRoleOutput) ServiceLinkedRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceLinkedRole) pulumi.StringPtrOutput { return v.ServiceLinkedRole }).(pulumi.StringPtrOutput)
 }
 
 type ServiceLinkedRoleArrayOutput struct{ *pulumi.OutputState }

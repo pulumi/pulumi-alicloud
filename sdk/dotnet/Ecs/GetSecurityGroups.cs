@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// &gt; **NOTE:** Available since v1.9.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -52,6 +54,8 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// &gt; **NOTE:** Available since v1.9.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -89,6 +93,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available since v1.9.0
         /// 
         /// ## Example Usage
         /// 
@@ -129,6 +135,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class GetSecurityGroupsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to true. Set it to false to only output `Id` in the `Groups` block.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -173,6 +182,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -213,6 +223,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class GetSecurityGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to true. Set it to false to only output `Id` in the `Groups` block.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -257,6 +270,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -325,7 +339,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string? ResourceGroupId;
         /// <summary>
-        /// A map of tags assigned to the ECS instance.
+        /// (Optional) A map of tags assigned to the ECS instance.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         public readonly int TotalCount;

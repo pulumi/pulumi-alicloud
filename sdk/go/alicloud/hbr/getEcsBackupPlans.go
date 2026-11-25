@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr EcsBackupPlans of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -70,14 +70,18 @@ type GetEcsBackupPlansArgs struct {
 // A collection of values returned by getEcsBackupPlans.
 type GetEcsBackupPlansResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                  `pulumi:"id"`
-	Ids        []string                `pulumi:"ids"`
-	InstanceId *string                 `pulumi:"instanceId"`
-	NameRegex  *string                 `pulumi:"nameRegex"`
-	Names      []string                `pulumi:"names"`
-	OutputFile *string                 `pulumi:"outputFile"`
-	Plans      []GetEcsBackupPlansPlan `pulumi:"plans"`
-	VaultId    *string                 `pulumi:"vaultId"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID of ECS instance.
+	InstanceId *string `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Ecs backup plan names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Hbr Ecs backup plans. Each element contains the following attributes:
+	Plans []GetEcsBackupPlansPlan `pulumi:"plans"`
+	// The ID of Backup vault.
+	VaultId *string `pulumi:"vaultId"`
 }
 
 func GetEcsBackupPlansOutput(ctx *pulumi.Context, args GetEcsBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetEcsBackupPlansResultOutput {
@@ -127,6 +131,7 @@ func (o GetEcsBackupPlansResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID of ECS instance.
 func (o GetEcsBackupPlansResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
@@ -135,6 +140,7 @@ func (o GetEcsBackupPlansResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecs backup plan names.
 func (o GetEcsBackupPlansResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -143,10 +149,12 @@ func (o GetEcsBackupPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Hbr Ecs backup plans. Each element contains the following attributes:
 func (o GetEcsBackupPlansResultOutput) Plans() GetEcsBackupPlansPlanArrayOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansResult) []GetEcsBackupPlansPlan { return v.Plans }).(GetEcsBackupPlansPlanArrayOutput)
 }
 
+// The ID of Backup vault.
 func (o GetEcsBackupPlansResultOutput) VaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansResult) *string { return v.VaultId }).(pulumi.StringPtrOutput)
 }

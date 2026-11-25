@@ -225,11 +225,15 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// ## Import
     /// 
-    /// DTS Synchronization Job can be imported using the id, e.g.
+    /// DTS Synchronization Job can be imported using its canonical `DtsJobId`, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example &lt;id&gt;
+    /// $ pulumi import alicloud:dts/synchronizationJob:SynchronizationJob example &lt;DtsJobId&gt;
     /// ```
+    /// 
+    /// The import ID must exactly match `DtsJobId` returned by `DescribeDtsJobDetail`. A DTS instance ID (`DtsInstanceID`) is not a job ID, even if the detail API accepts it as a lookup key. Import rejects a different or missing job identity and does not automatically bind to another task.
+    /// 
+    /// If existing state contains an instance ID, first back up the state and verify the intended job in DTS. Remove only the incorrect local state binding with `terraform state rm`, then explicitly import the verified `DtsJobId`. Do not delete the cloud job to correct its state binding. If the original job has been deleted or rebuilt, verify the replacement separately before importing it.
     /// </summary>
     [AliCloudResourceType("alicloud:dts/synchronizationJob:SynchronizationJob")]
     public partial class SynchronizationJob : global::Pulumi.CustomResource
@@ -296,6 +300,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// </summary>
         [Output("destSecondaryVswitchId")]
         public Output<string?> DestSecondaryVswitchId { get; private set; } = null!;
@@ -383,12 +389,6 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The environment label of the DTS instance. The value is: **normal**, **online**.
-        /// 
-        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-        /// 
-        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-        /// 
-        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `InstanceClass`, you must also modify the property `InstanceClass` of it's instance to keep them consistent.
         /// </summary>
         [Output("dtsBisLabel")]
         public Output<string?> DtsBisLabel { get; private set; } = null!;
@@ -418,7 +418,9 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> ErrorPhone { get; private set; } = null!;
 
         /// <summary>
-        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        /// The instance class. Valid values: `Xmicro`, `Micro`, `Small`, `Medium`, `Large`, `Xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+        /// 
+        /// &gt; **NOTE:** `InstanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `Large` or above, the target class cannot be lower than `Medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `alicloud.dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
         /// </summary>
         [Output("instanceClass")]
         public Output<string> InstanceClass { get; private set; } = null!;
@@ -538,6 +540,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        /// 
+        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -662,6 +666,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// </summary>
         [Input("destSecondaryVswitchId")]
         public Input<string>? DestSecondaryVswitchId { get; set; }
@@ -749,12 +755,6 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The environment label of the DTS instance. The value is: **normal**, **online**.
-        /// 
-        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-        /// 
-        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-        /// 
-        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `InstanceClass`, you must also modify the property `InstanceClass` of it's instance to keep them consistent.
         /// </summary>
         [Input("dtsBisLabel")]
         public Input<string>? DtsBisLabel { get; set; }
@@ -784,7 +784,9 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? ErrorPhone { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        /// The instance class. Valid values: `Xmicro`, `Micro`, `Small`, `Medium`, `Large`, `Xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+        /// 
+        /// &gt; **NOTE:** `InstanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `Large` or above, the target class cannot be lower than `Medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `alicloud.dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -904,6 +906,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        /// 
+        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -990,6 +994,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// </summary>
         [Input("destSecondaryVswitchId")]
         public Input<string>? DestSecondaryVswitchId { get; set; }
@@ -1077,12 +1083,6 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The environment label of the DTS instance. The value is: **normal**, **online**.
-        /// 
-        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
-        /// 
-        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
-        /// 
-        /// &gt; **NOTE:** If you want to upgrade the synchronization job specifications by the property `InstanceClass`, you must also modify the property `InstanceClass` of it's instance to keep them consistent.
         /// </summary>
         [Input("dtsBisLabel")]
         public Input<string>? DtsBisLabel { get; set; }
@@ -1112,7 +1112,9 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? ErrorPhone { get; set; }
 
         /// <summary>
-        /// The instance class. Valid values: `Large`, `Medium`, `Micro`, `Small`, `Xlarge`, `Xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        /// The instance class. Valid values: `Xmicro`, `Micro`, `Small`, `Medium`, `Large`, `Xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. Upgrades take effect directly; downgrades are a restricted capability, see the note below.
+        /// 
+        /// &gt; **NOTE:** `InstanceClass` is applied through `TransferInstanceClass`, which is called only when the configured class differs from the class reported by the service. Downgrading is restricted: it is supported only for synchronization instances that have entered the incremental synchronization stage, are running, paused or failed, and are of class `Large` or above, the target class cannot be lower than `Medium`, and the account must be granted downgrade permission first; otherwise the request fails with `DTS.Msg.TransferInstanceClass.NoPermission` (see [Downgrade the specifications of an instance](https://help.aliyun.com/zh/dts/user-guide/downgrade-a-dts-instance) and the [DTS FAQ](https://help.aliyun.com/zh/dts/support/performance-and-specification-issues)). The job uses the class of its bound `alicloud.dts.SynchronizationInstance`; when the class changes here, keep the configuration of that instance consistent with the resulting class, because the instance resource does not change the class of an existing instance.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -1232,6 +1234,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        /// 
+        /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

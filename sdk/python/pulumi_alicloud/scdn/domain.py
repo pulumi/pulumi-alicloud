@@ -33,9 +33,9 @@ class DomainArgs:
         The set of arguments for constructing a Domain resource.
 
         :param pulumi.Input[_builtins.str] domain_name: The name of domain.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: the Origin Server Information. See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The Origin Server Information. See `sources` below for details.
         :param pulumi.Input[_builtins.str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]] cert_infos: Certificate Information. See the following `Block cert_infos`.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]] cert_infos: Certificate Information. See `cert_infos` below for details.
         :param pulumi.Input[_builtins.str] check_url: The health check url.
         :param pulumi.Input[_builtins.str] force_set: Whether to set certificate forcibly.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group id.
@@ -75,7 +75,7 @@ class DomainArgs:
     @pulumi.getter
     def sources(self) -> pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]:
         """
-        the Origin Server Information. See the following `Block sources`.
+        The Origin Server Information. See `sources` below for details.
         """
         return pulumi.get(self, "sources")
 
@@ -100,7 +100,7 @@ class DomainArgs:
     @pulumi.getter(name="certInfos")
     def cert_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainCertInfoArgs']]]]:
         """
-        Certificate Information. See the following `Block cert_infos`.
+        Certificate Information. See `cert_infos` below for details.
         """
         return pulumi.get(self, "cert_infos")
 
@@ -172,12 +172,12 @@ class _DomainState:
         Input properties used for looking up and filtering Domain resources.
 
         :param pulumi.Input[_builtins.str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]] cert_infos: Certificate Information. See the following `Block cert_infos`.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]] cert_infos: Certificate Information. See `cert_infos` below for details.
         :param pulumi.Input[_builtins.str] check_url: The health check url.
         :param pulumi.Input[_builtins.str] domain_name: The name of domain.
         :param pulumi.Input[_builtins.str] force_set: Whether to set certificate forcibly.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group id.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: the Origin Server Information. See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The Origin Server Information. See `sources` below for details.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `offline`, `online`.
         """
         if biz_name is not None:
@@ -217,7 +217,7 @@ class _DomainState:
     @pulumi.getter(name="certInfos")
     def cert_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainCertInfoArgs']]]]:
         """
-        Certificate Information. See the following `Block cert_infos`.
+        Certificate Information. See `cert_infos` below for details.
         """
         return pulumi.get(self, "cert_infos")
 
@@ -277,7 +277,7 @@ class _DomainState:
     @pulumi.getter
     def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainSourceArgs']]]]:
         """
-        the Origin Server Information. See the following `Block sources`.
+        The Origin Server Information. See `sources` below for details.
         """
         return pulumi.get(self, "sources")
 
@@ -316,7 +316,7 @@ class Domain(pulumi.CustomResource):
         """
         Provides a SCDN Domain resource.
 
-        For information about SCDN Domain and how to use it, see [What is Domain](https://help.aliyun.com/document_detail/63672.html).
+        For information about SCDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/doc-detail/63672.html).
 
         > **NOTE:** Available since v1.131.0.
 
@@ -357,12 +357,12 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict', 'outputs.DomainCertInfo']]]] cert_infos: Certificate Information. See the following `Block cert_infos`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict', 'outputs.DomainCertInfo']]]] cert_infos: Certificate Information. See `cert_infos` below for details.
         :param pulumi.Input[_builtins.str] check_url: The health check url.
         :param pulumi.Input[_builtins.str] domain_name: The name of domain.
         :param pulumi.Input[_builtins.str] force_set: Whether to set certificate forcibly.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group id.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: the Origin Server Information. See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: The Origin Server Information. See `sources` below for details.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `offline`, `online`.
         """
         ...
@@ -374,7 +374,7 @@ class Domain(pulumi.CustomResource):
         """
         Provides a SCDN Domain resource.
 
-        For information about SCDN Domain and how to use it, see [What is Domain](https://help.aliyun.com/document_detail/63672.html).
+        For information about SCDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/doc-detail/63672.html).
 
         > **NOTE:** Available since v1.131.0.
 
@@ -482,12 +482,12 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] biz_name: Attribute perm has been deprecated and suggest removing it from your template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict', 'outputs.DomainCertInfo']]]] cert_infos: Certificate Information. See the following `Block cert_infos`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict', 'outputs.DomainCertInfo']]]] cert_infos: Certificate Information. See `cert_infos` below for details.
         :param pulumi.Input[_builtins.str] check_url: The health check url.
         :param pulumi.Input[_builtins.str] domain_name: The name of domain.
         :param pulumi.Input[_builtins.str] force_set: Whether to set certificate forcibly.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group id.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: the Origin Server Information. See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict', 'outputs.DomainSource']]]] sources: The Origin Server Information. See `sources` below for details.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `offline`, `online`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -539,7 +539,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="certInfos")
     def cert_infos(self) -> pulumi.Output[Optional[Sequence['outputs.DomainCertInfo']]]:
         """
-        Certificate Information. See the following `Block cert_infos`.
+        Certificate Information. See `cert_infos` below for details.
         """
         return pulumi.get(self, "cert_infos")
 
@@ -579,7 +579,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def sources(self) -> pulumi.Output[Sequence['outputs.DomainSource']]:
         """
-        the Origin Server Information. See the following `Block sources`.
+        The Origin Server Information. See `sources` below for details.
         """
         return pulumi.get(self, "sources")
 

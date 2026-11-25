@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// <summary>
         /// This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0+
         /// 
         /// ## Example Usage
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// <summary>
         /// This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0+
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// <summary>
         /// This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0+
         /// 
         /// ## Example Usage
         /// 
@@ -108,6 +108,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
 
     public sealed class GetProductVersionsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -149,6 +152,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
 
     public sealed class GetProductVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -207,11 +213,17 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Product ID.
+        /// </summary>
         public readonly string ProductId;
         /// <summary>
         /// A list of Product Version Entries. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProductVersionsProductVersionResult> ProductVersions;
+        /// <summary>
+        /// (Deprecated since v1.197.0) A list of Product Version Entries. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProductVersionsVersionResult> Versions;
 
         [OutputConstructor]

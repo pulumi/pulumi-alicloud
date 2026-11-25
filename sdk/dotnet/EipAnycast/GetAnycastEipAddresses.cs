@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.EipAnycast
         /// <summary>
         /// This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.EipAnycast
         /// <summary>
         /// This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.EipAnycast
         /// <summary>
         /// This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.113.0+.
+        /// &gt; **NOTE:** Available since v1.113.0.
         /// 
         /// ## Example Usage
         /// 
@@ -297,22 +297,49 @@ namespace Pulumi.AliCloud.EipAnycast
     [OutputType]
     public sealed class GetAnycastEipAddressesResult
     {
+        /// <summary>
+        /// A list of Eipanycast Anycast Eip Addresses. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAnycastEipAddressesAddressResult> Addresses;
+        /// <summary>
+        /// Anycast EIP instance name.
+        /// </summary>
         public readonly string? AnycastEipAddressName;
         public readonly ImmutableArray<string> BindInstanceIds;
+        /// <summary>
+        /// The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
+        /// </summary>
         public readonly string? BusinessStatus;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
+        /// </summary>
         public readonly string? InternetChargeType;
+        /// <summary>
+        /// Anycast EIP instance IP address.
+        /// </summary>
         public readonly string? IpAddress;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Anycast Eip Address names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+        /// </summary>
         public readonly string? PaymentType;
+        /// <summary>
+        /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+        /// </summary>
         public readonly string? ServiceLocation;
+        /// <summary>
+        /// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

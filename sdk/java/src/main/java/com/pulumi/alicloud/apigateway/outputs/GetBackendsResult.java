@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackendsResult {
+    /**
+     * @return A list of Api Gateway Backends. Each element contains the following attributes:
+     * 
+     */
     private List<GetBackendsBackend> backends;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,12 +27,20 @@ public final class GetBackendsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Backend names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
 
     private GetBackendsResult() {}
+    /**
+     * @return A list of Api Gateway Backends. Each element contains the following attributes:
+     * 
+     */
     public List<GetBackendsBackend> backends() {
         return this.backends;
     }
@@ -45,6 +57,10 @@ public final class GetBackendsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Backend names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

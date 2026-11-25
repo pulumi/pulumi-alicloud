@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.173.0+.
+ * > **NOTE:** Available since v1.173.0+.
  *
  * ## Example Usage
  *
@@ -50,6 +50,9 @@ export function getTrafficMarkingPolicies(args: GetTrafficMarkingPoliciesArgs, o
  * A collection of arguments for invoking getTrafficMarkingPolicies.
  */
 export interface GetTrafficMarkingPoliciesArgs {
+    /**
+     * The traffic marking policy description.
+     */
     description?: string;
     /**
      * A list of Traffic Marking Policy IDs.
@@ -77,6 +80,9 @@ export interface GetTrafficMarkingPoliciesArgs {
  * A collection of values returned by getTrafficMarkingPolicies.
  */
 export interface GetTrafficMarkingPoliciesResult {
+    /**
+     * The description of the Traffic Marking Policy.
+     */
     readonly description?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -84,16 +90,28 @@ export interface GetTrafficMarkingPoliciesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Traffic Marking Policy names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Cen Traffic Marking Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.cen.GetTrafficMarkingPoliciesPolicy[];
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
+    /**
+     * The ID of the transit router.
+     */
     readonly transitRouterId: string;
 }
 /**
  * This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.173.0+.
+ * > **NOTE:** Available since v1.173.0+.
  *
  * ## Example Usage
  *
@@ -134,6 +152,9 @@ export function getTrafficMarkingPoliciesOutput(args: GetTrafficMarkingPoliciesO
  * A collection of arguments for invoking getTrafficMarkingPolicies.
  */
 export interface GetTrafficMarkingPoliciesOutputArgs {
+    /**
+     * The traffic marking policy description.
+     */
     description?: pulumi.Input<string | undefined>;
     /**
      * A list of Traffic Marking Policy IDs.

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Desktops of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,28 +28,54 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform_example";
+        ///     var @default = AliCloud.Eds.GetImages.Invoke(new()
+        ///     {
+        ///         ImageType = "SYSTEM",
+        ///         OsType = "Windows",
+        ///         DesktopInstanceType = "eds.hf.4c8g",
+        ///     });
+        /// 
+        ///     var defaultGetDesktopTypes = AliCloud.Eds.GetDesktopTypes.Invoke(new()
+        ///     {
+        ///         InstanceTypeFamily = "eds.hf",
+        ///         CpuCount = 4,
+        ///         MemorySize = 8192,
+        ///     });
+        /// 
         ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///         DesktopAccessType = "Internet",
-        ///         OfficeSiteName = "your_office_site_name",
+        ///         OfficeSiteName = name,
         ///     });
         /// 
-        ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     var defaultBundle = new AliCloud.Eds.Bundle("default", new()
         ///     {
-        ///         BundleType = "SYSTEM",
+        ///         DesktopType = defaultGetDesktopTypes.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Ids[0]),
+        ///         ImageId = @default.Apply(@default =&gt; @default.Apply(getImagesResult =&gt; getImagesResult.Ids[0])),
+        ///         UserDiskSizeGibs = new[]
+        ///         {
+        ///             110,
+        ///         },
+        ///         RootDiskSizeGib = 120,
+        ///         RootDiskPerformanceLevel = "PL1",
+        ///         UserDiskPerformanceLevel = "PL1",
+        ///         BundleName = name,
+        ///         Description = name,
         ///     });
         /// 
         ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("default", new()
         ///     {
-        ///         PolicyGroupName = "your_policy_group_name",
+        ///         PolicyGroupName = name,
         ///         Clipboard = "readwrite",
         ///         LocalDrive = "read",
         ///         AuthorizeAccessPolicyRules = new[]
         ///         {
         ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
         ///             {
-        ///                 Description = "example_value",
+        ///                 Description = name,
         ///                 CidrIp = "1.2.3.4/24",
         ///             },
         ///         },
@@ -59,7 +85,7 @@ namespace Pulumi.AliCloud.Eds
         ///             {
         ///                 Type = "inflow",
         ///                 Policy = "accept",
-        ///                 Description = "example_value",
+        ///                 Description = name,
         ///                 PortRange = "80/80",
         ///                 IpProtocol = "TCP",
         ///                 Priority = "1",
@@ -70,18 +96,16 @@ namespace Pulumi.AliCloud.Eds
         /// 
         ///     var defaultUser = new AliCloud.Eds.User("default", new()
         ///     {
-        ///         EndUserId = "your_end_user_id",
-        ///         Email = "your_email",
-        ///         Phone = "your_phone",
-        ///         Password = "your_password",
+        ///         EndUserId = name,
+        ///         Email = $"{name}@aaa.com",
         ///     });
         /// 
         ///     var defaultDesktop = new AliCloud.Eds.Desktop("default", new()
         ///     {
         ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
         ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
-        ///         BundleId = @default.Apply(@default =&gt; @default.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id)),
-        ///         DesktopName = "your_desktop_name",
+        ///         BundleId = defaultBundle.Id,
+        ///         DesktopName = name,
         ///         EndUserIds = new[]
         ///         {
         ///             defaultUser.Id,
@@ -96,15 +120,9 @@ namespace Pulumi.AliCloud.Eds
         ///         },
         ///     });
         /// 
-        ///     var nameRegex = AliCloud.Eds.GetDesktops.Invoke(new()
-        ///     {
-        ///         NameRegex = defaultDesktop.DesktopName,
-        ///     });
-        /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ecdDesktopId1"] = ids.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
-        ///         ["ecdDesktopId2"] = nameRegex.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
+        ///         ["ecdDesktopsId0"] = ids.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -115,7 +133,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Desktops of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -129,28 +147,54 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform_example";
+        ///     var @default = AliCloud.Eds.GetImages.Invoke(new()
+        ///     {
+        ///         ImageType = "SYSTEM",
+        ///         OsType = "Windows",
+        ///         DesktopInstanceType = "eds.hf.4c8g",
+        ///     });
+        /// 
+        ///     var defaultGetDesktopTypes = AliCloud.Eds.GetDesktopTypes.Invoke(new()
+        ///     {
+        ///         InstanceTypeFamily = "eds.hf",
+        ///         CpuCount = 4,
+        ///         MemorySize = 8192,
+        ///     });
+        /// 
         ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///         DesktopAccessType = "Internet",
-        ///         OfficeSiteName = "your_office_site_name",
+        ///         OfficeSiteName = name,
         ///     });
         /// 
-        ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     var defaultBundle = new AliCloud.Eds.Bundle("default", new()
         ///     {
-        ///         BundleType = "SYSTEM",
+        ///         DesktopType = defaultGetDesktopTypes.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Ids[0]),
+        ///         ImageId = @default.Apply(@default =&gt; @default.Apply(getImagesResult =&gt; getImagesResult.Ids[0])),
+        ///         UserDiskSizeGibs = new[]
+        ///         {
+        ///             110,
+        ///         },
+        ///         RootDiskSizeGib = 120,
+        ///         RootDiskPerformanceLevel = "PL1",
+        ///         UserDiskPerformanceLevel = "PL1",
+        ///         BundleName = name,
+        ///         Description = name,
         ///     });
         /// 
         ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("default", new()
         ///     {
-        ///         PolicyGroupName = "your_policy_group_name",
+        ///         PolicyGroupName = name,
         ///         Clipboard = "readwrite",
         ///         LocalDrive = "read",
         ///         AuthorizeAccessPolicyRules = new[]
         ///         {
         ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
         ///             {
-        ///                 Description = "example_value",
+        ///                 Description = name,
         ///                 CidrIp = "1.2.3.4/24",
         ///             },
         ///         },
@@ -160,7 +204,7 @@ namespace Pulumi.AliCloud.Eds
         ///             {
         ///                 Type = "inflow",
         ///                 Policy = "accept",
-        ///                 Description = "example_value",
+        ///                 Description = name,
         ///                 PortRange = "80/80",
         ///                 IpProtocol = "TCP",
         ///                 Priority = "1",
@@ -171,18 +215,16 @@ namespace Pulumi.AliCloud.Eds
         /// 
         ///     var defaultUser = new AliCloud.Eds.User("default", new()
         ///     {
-        ///         EndUserId = "your_end_user_id",
-        ///         Email = "your_email",
-        ///         Phone = "your_phone",
-        ///         Password = "your_password",
+        ///         EndUserId = name,
+        ///         Email = $"{name}@aaa.com",
         ///     });
         /// 
         ///     var defaultDesktop = new AliCloud.Eds.Desktop("default", new()
         ///     {
         ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
         ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
-        ///         BundleId = @default.Apply(@default =&gt; @default.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id)),
-        ///         DesktopName = "your_desktop_name",
+        ///         BundleId = defaultBundle.Id,
+        ///         DesktopName = name,
         ///         EndUserIds = new[]
         ///         {
         ///             defaultUser.Id,
@@ -197,15 +239,9 @@ namespace Pulumi.AliCloud.Eds
         ///         },
         ///     });
         /// 
-        ///     var nameRegex = AliCloud.Eds.GetDesktops.Invoke(new()
-        ///     {
-        ///         NameRegex = defaultDesktop.DesktopName,
-        ///     });
-        /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ecdDesktopId1"] = ids.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
-        ///         ["ecdDesktopId2"] = nameRegex.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
+        ///         ["ecdDesktopsId0"] = ids.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -216,7 +252,7 @@ namespace Pulumi.AliCloud.Eds
         /// <summary>
         /// This data source provides the Ecd Desktops of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.144.0+.
+        /// &gt; **NOTE:** Available since v1.144.0.
         /// 
         /// ## Example Usage
         /// 
@@ -230,28 +266,54 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform_example";
+        ///     var @default = AliCloud.Eds.GetImages.Invoke(new()
+        ///     {
+        ///         ImageType = "SYSTEM",
+        ///         OsType = "Windows",
+        ///         DesktopInstanceType = "eds.hf.4c8g",
+        ///     });
+        /// 
+        ///     var defaultGetDesktopTypes = AliCloud.Eds.GetDesktopTypes.Invoke(new()
+        ///     {
+        ///         InstanceTypeFamily = "eds.hf",
+        ///         CpuCount = 4,
+        ///         MemorySize = 8192,
+        ///     });
+        /// 
         ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///         DesktopAccessType = "Internet",
-        ///         OfficeSiteName = "your_office_site_name",
+        ///         OfficeSiteName = name,
         ///     });
         /// 
-        ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     var defaultBundle = new AliCloud.Eds.Bundle("default", new()
         ///     {
-        ///         BundleType = "SYSTEM",
+        ///         DesktopType = defaultGetDesktopTypes.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Ids[0]),
+        ///         ImageId = @default.Apply(@default =&gt; @default.Apply(getImagesResult =&gt; getImagesResult.Ids[0])),
+        ///         UserDiskSizeGibs = new[]
+        ///         {
+        ///             110,
+        ///         },
+        ///         RootDiskSizeGib = 120,
+        ///         RootDiskPerformanceLevel = "PL1",
+        ///         UserDiskPerformanceLevel = "PL1",
+        ///         BundleName = name,
+        ///         Description = name,
         ///     });
         /// 
         ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("default", new()
         ///     {
-        ///         PolicyGroupName = "your_policy_group_name",
+        ///         PolicyGroupName = name,
         ///         Clipboard = "readwrite",
         ///         LocalDrive = "read",
         ///         AuthorizeAccessPolicyRules = new[]
         ///         {
         ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
         ///             {
-        ///                 Description = "example_value",
+        ///                 Description = name,
         ///                 CidrIp = "1.2.3.4/24",
         ///             },
         ///         },
@@ -261,7 +323,7 @@ namespace Pulumi.AliCloud.Eds
         ///             {
         ///                 Type = "inflow",
         ///                 Policy = "accept",
-        ///                 Description = "example_value",
+        ///                 Description = name,
         ///                 PortRange = "80/80",
         ///                 IpProtocol = "TCP",
         ///                 Priority = "1",
@@ -272,18 +334,16 @@ namespace Pulumi.AliCloud.Eds
         /// 
         ///     var defaultUser = new AliCloud.Eds.User("default", new()
         ///     {
-        ///         EndUserId = "your_end_user_id",
-        ///         Email = "your_email",
-        ///         Phone = "your_phone",
-        ///         Password = "your_password",
+        ///         EndUserId = name,
+        ///         Email = $"{name}@aaa.com",
         ///     });
         /// 
         ///     var defaultDesktop = new AliCloud.Eds.Desktop("default", new()
         ///     {
         ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
         ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
-        ///         BundleId = @default.Apply(@default =&gt; @default.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id)),
-        ///         DesktopName = "your_desktop_name",
+        ///         BundleId = defaultBundle.Id,
+        ///         DesktopName = name,
         ///         EndUserIds = new[]
         ///         {
         ///             defaultUser.Id,
@@ -298,15 +358,9 @@ namespace Pulumi.AliCloud.Eds
         ///         },
         ///     });
         /// 
-        ///     var nameRegex = AliCloud.Eds.GetDesktops.Invoke(new()
-        ///     {
-        ///         NameRegex = defaultDesktop.DesktopName,
-        ///     });
-        /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ecdDesktopId1"] = ids.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
-        ///         ["ecdDesktopId2"] = nameRegex.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
+        ///         ["ecdDesktopsId0"] = ids.Apply(getDesktopsResult =&gt; getDesktopsResult.Desktops[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -319,13 +373,17 @@ namespace Pulumi.AliCloud.Eds
     public sealed class GetDesktopsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The desktop name.
+        /// The cloud desktop name.
         /// </summary>
         [Input("desktopName")]
         public string? DesktopName { get; set; }
 
         [Input("endUserIds")]
         private List<string>? _endUserIds;
+
+        /// <summary>
+        /// The authorized users of the cloud desktop.
+        /// </summary>
         public List<string> EndUserIds
         {
             get => _endUserIds ?? (_endUserIds = new List<string>());
@@ -363,13 +421,13 @@ namespace Pulumi.AliCloud.Eds
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The policy group id of the Desktop.
+        /// The cloud desktop policy ID.
         /// </summary>
         [Input("policyGroupId")]
         public string? PolicyGroupId { get; set; }
 
         /// <summary>
-        /// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+        /// The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -383,13 +441,17 @@ namespace Pulumi.AliCloud.Eds
     public sealed class GetDesktopsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The desktop name.
+        /// The cloud desktop name.
         /// </summary>
         [Input("desktopName")]
         public Input<string>? DesktopName { get; set; }
 
         [Input("endUserIds")]
         private InputList<string>? _endUserIds;
+
+        /// <summary>
+        /// The authorized users of the cloud desktop.
+        /// </summary>
         public InputList<string> EndUserIds
         {
             get => _endUserIds ?? (_endUserIds = new InputList<string>());
@@ -427,13 +489,13 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The policy group id of the Desktop.
+        /// The cloud desktop policy ID.
         /// </summary>
         [Input("policyGroupId")]
         public Input<string>? PolicyGroupId { get; set; }
 
         /// <summary>
-        /// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
+        /// The cloud desktop status. Valid values: `Starting`, `Pending`, `Running`, `Rebuilding`, `Stopping`, `Stopped`, `Deleted`, `Expired`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -448,8 +510,17 @@ namespace Pulumi.AliCloud.Eds
     [OutputType]
     public sealed class GetDesktopsResult
     {
+        /// <summary>
+        /// The cloud desktop name.
+        /// </summary>
         public readonly string? DesktopName;
+        /// <summary>
+        /// A list of Ecd Desktops. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDesktopsDesktopResult> Desktops;
+        /// <summary>
+        /// The IDs of the authorized users of the cloud desktop.
+        /// </summary>
         public readonly ImmutableArray<string> EndUserIds;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -457,10 +528,19 @@ namespace Pulumi.AliCloud.Eds
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Desktop names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OfficeSiteId;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The cloud desktop policy ID.
+        /// </summary>
         public readonly string? PolicyGroupId;
+        /// <summary>
+        /// The cloud desktop status.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

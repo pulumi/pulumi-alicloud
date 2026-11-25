@@ -42,11 +42,11 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly bool BootstrapFailed;
         /// <summary>
-        /// The first ID of the resource.
+        /// The ID of the associated cluster.
         /// </summary>
         public readonly string ClusterId;
         /// <summary>
-        /// The ClusterName.
+        /// The cluster name.
         /// </summary>
         public readonly string ClusterName;
         /// <summary>
@@ -54,15 +54,15 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string CreateResource;
         /// <summary>
-        /// The creation time of the resource.
+        /// Creation time.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// How to create a cluster.
+        /// How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
         /// </summary>
         public readonly string CreateType;
         /// <summary>
-        /// The hosting type of the cluster.
+        /// The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
         /// </summary>
         public readonly string DepositType;
         /// <summary>
@@ -70,13 +70,16 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly bool EasEnable;
         /// <summary>
-        /// The expiration time of the cluster.
+        /// Timeout time.
         /// </summary>
         public readonly string ExpiredTime;
         /// <summary>
         /// Additional information for Stack.
         /// </summary>
         public readonly string ExtraInfo;
+        /// <summary>
+        /// Whether the cluster has an uncompleted order.
+        /// </summary>
         public readonly bool HasUncompletedOrder;
         /// <summary>
         /// High availability cluster.
@@ -90,6 +93,9 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// Machine pool information.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterHostPoolInfoResult> HostPoolInfos;
+        /// <summary>
+        /// The ID of the Cluster.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the image used to create the cluster.
@@ -100,11 +106,11 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly bool LocalMetaDb;
         /// <summary>
-        /// The host type of the cluster. The default is ECS.
+        /// The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
         /// </summary>
         public readonly string MachineType;
         /// <summary>
-        /// Metadata type:
+        /// Metadata type.
         /// </summary>
         public readonly string MetaStoreType;
         /// <summary>
@@ -116,7 +122,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        /// The package year and month time of the machine group. The Valid Values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
         /// </summary>
         public readonly int Period;
         /// <summary>
@@ -124,7 +130,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterRelateClusterInfoResult> RelateClusterInfos;
         /// <summary>
-        /// Whether to allow disk expansion:
+        /// Whether to allow disk expansion.
         /// </summary>
         public readonly bool ResizeDiskEnable;
         /// <summary>

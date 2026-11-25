@@ -13,6 +13,8 @@ import (
 
 // This data source provides the server certificate list.
 //
+// > **NOTE:** Available since v1.21.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -73,9 +75,9 @@ type GetServerCertificatesResult struct {
 	// A list of SLB server certificates names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// The Id of resource group which the slb server certificates belongs.
+	// (Optional) The Id of resource group which the slb server certificates belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// (Available in v1.66.0+) A mapping of tags to assign to the resource.
+	// (Optional) A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -145,12 +147,12 @@ func (o GetServerCertificatesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerCertificatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// The Id of resource group which the slb server certificates belongs.
+// (Optional) The Id of resource group which the slb server certificates belongs.
 func (o GetServerCertificatesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerCertificatesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// (Available in v1.66.0+) A mapping of tags to assign to the resource.
+// (Optional) A mapping of tags to assign to the resource.
 func (o GetServerCertificatesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServerCertificatesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

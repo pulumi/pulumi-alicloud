@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.160.0+.
+// > **NOTE:** Available since v1.160.0.
 //
 // ## Example Usage
 //
@@ -96,17 +96,23 @@ type GetEcsSnapshotGroupsArgs struct {
 
 // A collection of values returned by getEcsSnapshotGroups.
 type GetEcsSnapshotGroupsResult struct {
+	// A list of Ecs Snapshot Groups. Each element contains the following attributes:
 	Groups []GetEcsSnapshotGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string            `pulumi:"id"`
-	Ids               []string          `pulumi:"ids"`
-	InstanceId        *string           `pulumi:"instanceId"`
-	NameRegex         *string           `pulumi:"nameRegex"`
-	Names             []string          `pulumi:"names"`
-	OutputFile        *string           `pulumi:"outputFile"`
-	SnapshotGroupName *string           `pulumi:"snapshotGroupName"`
-	Status            *string           `pulumi:"status"`
-	Tags              map[string]string `pulumi:"tags"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The ID of the instance.
+	InstanceId *string `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Snapshot Group names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The name of the snapshot-consistent group.
+	SnapshotGroupName *string `pulumi:"snapshotGroupName"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// (Optional) List of label key-value pairs.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetEcsSnapshotGroupsOutput(ctx *pulumi.Context, args GetEcsSnapshotGroupsOutputArgs, opts ...pulumi.InvokeOption) GetEcsSnapshotGroupsResultOutput {
@@ -151,6 +157,7 @@ func (o GetEcsSnapshotGroupsResultOutput) ToGetEcsSnapshotGroupsResultOutputWith
 	return o
 }
 
+// A list of Ecs Snapshot Groups. Each element contains the following attributes:
 func (o GetEcsSnapshotGroupsResultOutput) Groups() GetEcsSnapshotGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) []GetEcsSnapshotGroupsGroup { return v.Groups }).(GetEcsSnapshotGroupsGroupArrayOutput)
 }
@@ -164,6 +171,7 @@ func (o GetEcsSnapshotGroupsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the instance.
 func (o GetEcsSnapshotGroupsResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
@@ -172,6 +180,7 @@ func (o GetEcsSnapshotGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Snapshot Group names.
 func (o GetEcsSnapshotGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -180,14 +189,17 @@ func (o GetEcsSnapshotGroupsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The name of the snapshot-consistent group.
 func (o GetEcsSnapshotGroupsResultOutput) SnapshotGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) *string { return v.SnapshotGroupName }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetEcsSnapshotGroupsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// (Optional) List of label key-value pairs.
 func (o GetEcsSnapshotGroupsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsSnapshotGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

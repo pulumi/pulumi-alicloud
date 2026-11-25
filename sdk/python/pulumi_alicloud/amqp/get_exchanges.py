@@ -56,6 +56,9 @@ class GetExchangesResult:
     @_builtins.property
     @pulumi.getter
     def exchanges(self) -> Sequence['outputs.GetExchangesExchangeResult']:
+        """
+        A list of Amqp Exchanges. Each element contains the following attributes:
+        """
         return pulumi.get(self, "exchanges")
 
     @_builtins.property
@@ -74,6 +77,9 @@ class GetExchangesResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        The ID of the instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -84,6 +90,9 @@ class GetExchangesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Exchange names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -94,6 +103,9 @@ class GetExchangesResult:
     @_builtins.property
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> _builtins.str:
+        """
+        The name of virtual host where an exchange resides.
+        """
         return pulumi.get(self, "virtual_host_name")
 
 
@@ -122,7 +134,7 @@ def get_exchanges(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.128.0+.
+    > **NOTE:** Available since v1.128.0.
 
     ## Example Usage
 
@@ -179,7 +191,7 @@ def get_exchanges_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
     """
     This data source provides the Amqp Exchanges of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.128.0+.
+    > **NOTE:** Available since v1.128.0.
 
     ## Example Usage
 

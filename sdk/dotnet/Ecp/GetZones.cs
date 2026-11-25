@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the available zones with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the available zones with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the available zones with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.158.0+.
+        /// &gt; **NOTE:** Available since v1.158.0.
         /// 
         /// ## Example Usage
         /// 
@@ -137,6 +137,9 @@ namespace Pulumi.AliCloud.Ecp
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of availability zone information collection.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
 
         [OutputConstructor]

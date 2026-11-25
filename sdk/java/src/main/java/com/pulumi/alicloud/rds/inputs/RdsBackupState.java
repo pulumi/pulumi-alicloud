@@ -33,6 +33,21 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+     * 
+     */
+    @Import(name="backupJobId")
+    private @Nullable Output<String> backupJobId;
+
+    /**
+     * @return (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+     * 
+     */
+    public Optional<Output<String>> backupJobId() {
+        return Optional.ofNullable(this.backupJobId);
+    }
+
+    /**
      * The backup type. Valid values:
      * * `Logical`: logical backup (supported only for MySQL)
      * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
@@ -205,6 +220,7 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
 
     private RdsBackupState(RdsBackupState $) {
         this.backupId = $.backupId;
+        this.backupJobId = $.backupJobId;
         this.backupMethod = $.backupMethod;
         this.backupRetentionPeriod = $.backupRetentionPeriod;
         this.backupStrategy = $.backupStrategy;
@@ -253,6 +269,27 @@ public final class RdsBackupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backupId(String backupId) {
             return backupId(Output.of(backupId));
+        }
+
+        /**
+         * @param backupJobId (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupJobId(@Nullable Output<String> backupJobId) {
+            $.backupJobId = backupJobId;
+            return this;
+        }
+
+        /**
+         * @param backupJobId (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupJobId(String backupJobId) {
+            return backupJobId(Output.of(backupJobId));
         }
 
         /**

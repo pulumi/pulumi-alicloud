@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public static class GetInstanceMembers
     {
         /// <summary>
-        /// This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+        /// This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
         /// 
         /// &gt; **NOTE:** Available since v1.194.0.
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.CloudFirewall
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceMembersResult>("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", args ?? new GetInstanceMembersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+        /// This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
         /// 
         /// &gt; **NOTE:** Available since v1.194.0.
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.CloudFirewall
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceMembersResult>("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", args ?? new GetInstanceMembersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+        /// This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
         /// 
         /// &gt; **NOTE:** Available since v1.194.0.
         /// 
@@ -114,6 +114,9 @@ namespace Pulumi.AliCloud.CloudFirewall
 
     public sealed class GetInstanceMembersArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The current page number.
+        /// </summary>
         [Input("currentPage")]
         public string? CurrentPage { get; set; }
 
@@ -149,6 +152,9 @@ namespace Pulumi.AliCloud.CloudFirewall
 
     public sealed class GetInstanceMembersInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The current page number.
+        /// </summary>
         [Input("currentPage")]
         public Input<string>? CurrentPage { get; set; }
 

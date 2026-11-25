@@ -50,6 +50,9 @@ class GetStateConfigurationsResult:
     @_builtins.property
     @pulumi.getter
     def configurations(self) -> Sequence['outputs.GetStateConfigurationsConfigurationResult']:
+        """
+        A list of Oos State Configurations. Each element contains the following attributes:
+        """
         return pulumi.get(self, "configurations")
 
     @_builtins.property
@@ -73,11 +76,17 @@ class GetStateConfigurationsResult:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The tag of the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -103,7 +112,7 @@ def get_state_configurations(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Oos State Configurations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
 
     ## Example Usage
 
@@ -146,7 +155,7 @@ def get_state_configurations_output(ids: pulumi.Input[Optional[Optional[Sequence
     """
     This data source provides the Oos State Configurations of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
 
     ## Example Usage
 

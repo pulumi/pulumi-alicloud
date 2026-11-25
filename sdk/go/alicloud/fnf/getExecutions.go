@@ -13,7 +13,7 @@ import (
 
 // This data source provides the FnF Executions of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.149.0+.
+// > **NOTE:** Available since v1.149.0.
 //
 // ## Example Usage
 //
@@ -75,16 +75,20 @@ type GetExecutionsArgs struct {
 
 // A collection of values returned by getExecutions.
 type GetExecutionsResult struct {
-	EnableDetails *bool                    `pulumi:"enableDetails"`
-	Executions    []GetExecutionsExecution `pulumi:"executions"`
-	FlowName      string                   `pulumi:"flowName"`
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of Fn F Executions. Each element contains the following attributes:
+	Executions []GetExecutionsExecution `pulumi:"executions"`
+	// The name of the flow.
+	FlowName string `pulumi:"flowName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Execution names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetExecutionsOutput(ctx *pulumi.Context, args GetExecutionsOutputArgs, opts ...pulumi.InvokeOption) GetExecutionsResultOutput {
@@ -131,10 +135,12 @@ func (o GetExecutionsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// A list of Fn F Executions. Each element contains the following attributes:
 func (o GetExecutionsResultOutput) Executions() GetExecutionsExecutionArrayOutput {
 	return o.ApplyT(func(v GetExecutionsResult) []GetExecutionsExecution { return v.Executions }).(GetExecutionsExecutionArrayOutput)
 }
 
+// The name of the flow.
 func (o GetExecutionsResultOutput) FlowName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExecutionsResult) string { return v.FlowName }).(pulumi.StringOutput)
 }
@@ -152,6 +158,7 @@ func (o GetExecutionsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Execution names.
 func (o GetExecutionsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetExecutionsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -160,6 +167,7 @@ func (o GetExecutionsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetExecutionsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

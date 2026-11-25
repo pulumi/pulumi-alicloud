@@ -54,6 +54,9 @@ class GetBlockedRegionsResult:
     @_builtins.property
     @pulumi.getter
     def regions(self) -> Sequence['outputs.GetBlockedRegionsRegionResult']:
+        """
+        A list of Cdn Blocked Regions. Each element contains the following attributes:
+        """
         return pulumi.get(self, "regions")
 
 
@@ -73,7 +76,7 @@ def get_blocked_regions(language: Optional[_builtins.str] = None,
     """
     This data source provides the Cdn blocked regions.
 
-    > **NOTE:** Available in v1.173.0+.
+    > **NOTE:** Available since v1.173.0.
 
     ## Example Usage
 
@@ -103,7 +106,7 @@ def get_blocked_regions_output(language: pulumi.Input[Optional[_builtins.str]] =
     """
     This data source provides the Cdn blocked regions.
 
-    > **NOTE:** Available in v1.173.0+.
+    > **NOTE:** Available since v1.173.0.
 
     ## Example Usage
 

@@ -28,7 +28,7 @@ public final class GetConnectionsConnectionIkeConfig {
      */
     private @Nullable Integer ikeLifetime;
     /**
-     * @return The identification of the VPN gateway.
+     * @return (Optional) The identification of the VPN gateway.
      * 
      */
     private @Nullable String ikeLocalId;
@@ -43,7 +43,7 @@ public final class GetConnectionsConnectionIkeConfig {
      */
     private @Nullable String ikePfs;
     /**
-     * @return The identification of the customer gateway.
+     * @return (Optional) The identification of the customer gateway.
      * 
      */
     private @Nullable String ikeRemoteId;
@@ -81,7 +81,7 @@ public final class GetConnectionsConnectionIkeConfig {
         return Optional.ofNullable(this.ikeLifetime);
     }
     /**
-     * @return The identification of the VPN gateway.
+     * @return (Optional) The identification of the VPN gateway.
      * 
      */
     public Optional<String> ikeLocalId() {
@@ -102,7 +102,7 @@ public final class GetConnectionsConnectionIkeConfig {
         return Optional.ofNullable(this.ikePfs);
     }
     /**
-     * @return The identification of the customer gateway.
+     * @return (Optional) The identification of the customer gateway.
      * 
      */
     public Optional<String> ikeRemoteId() {

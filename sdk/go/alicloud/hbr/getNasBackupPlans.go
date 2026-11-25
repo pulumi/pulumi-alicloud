@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // ## Example Usage
 //
@@ -69,15 +69,19 @@ type GetNasBackupPlansArgs struct {
 
 // A collection of values returned by getNasBackupPlans.
 type GetNasBackupPlansResult struct {
+	// The File System ID of Nas.
 	FileSystemId *string `pulumi:"fileSystemId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                  `pulumi:"id"`
-	Ids        []string                `pulumi:"ids"`
-	NameRegex  *string                 `pulumi:"nameRegex"`
-	Names      []string                `pulumi:"names"`
-	OutputFile *string                 `pulumi:"outputFile"`
-	Plans      []GetNasBackupPlansPlan `pulumi:"plans"`
-	VaultId    *string                 `pulumi:"vaultId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of NasBackupPlan names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Hbr NasBackupPlans. Each element contains the following attributes:
+	Plans []GetNasBackupPlansPlan `pulumi:"plans"`
+	// The ID of backup vault.
+	VaultId *string `pulumi:"vaultId"`
 }
 
 func GetNasBackupPlansOutput(ctx *pulumi.Context, args GetNasBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetNasBackupPlansResultOutput {
@@ -118,6 +122,7 @@ func (o GetNasBackupPlansResultOutput) ToGetNasBackupPlansResultOutputWithContex
 	return o
 }
 
+// The File System ID of Nas.
 func (o GetNasBackupPlansResultOutput) FileSystemId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNasBackupPlansResult) *string { return v.FileSystemId }).(pulumi.StringPtrOutput)
 }
@@ -135,6 +140,7 @@ func (o GetNasBackupPlansResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNasBackupPlansResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of NasBackupPlan names.
 func (o GetNasBackupPlansResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNasBackupPlansResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -143,10 +149,12 @@ func (o GetNasBackupPlansResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNasBackupPlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Hbr NasBackupPlans. Each element contains the following attributes:
 func (o GetNasBackupPlansResultOutput) Plans() GetNasBackupPlansPlanArrayOutput {
 	return o.ApplyT(func(v GetNasBackupPlansResult) []GetNasBackupPlansPlan { return v.Plans }).(GetNasBackupPlansPlanArrayOutput)
 }
 
+// The ID of backup vault.
 func (o GetNasBackupPlansResultOutput) VaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNasBackupPlansResult) *string { return v.VaultId }).(pulumi.StringPtrOutput)
 }

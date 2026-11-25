@@ -13,16 +13,13 @@ namespace Pulumi.AliCloud.Scdn.Inputs
     public sealed class DomainCertInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If You Enable HTTPS Here Certificate Name.
+        /// The certificate name when HTTPS is enabled.
         /// </summary>
         [Input("certName")]
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// Certificate Type. Value Range:
-        /// * upload: Certificate
-        /// * cas: Certificate Authority Certificate.
-        /// * free: Free Certificate.
+        /// Certificate Type. Valid values:
         /// </summary>
         [Input("certType")]
         public Input<string>? CertType { get; set; }
@@ -31,7 +28,7 @@ namespace Pulumi.AliCloud.Scdn.Inputs
         private Input<string>? _sslPri;
 
         /// <summary>
-        /// Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+        /// Private Key. Required when uploading a certificate.
         /// </summary>
         public Input<string>? SslPri
         {
@@ -44,13 +41,13 @@ namespace Pulumi.AliCloud.Scdn.Inputs
         }
 
         /// <summary>
-        /// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `On`, `Off`.
+        /// Whether to enable SSL certificate. Valid values: `On`, `Off`.
         /// </summary>
         [Input("sslProtocol")]
         public Input<string>? SslProtocol { get; set; }
 
         /// <summary>
-        /// If You Enable HTTPS Here Key.
+        /// The public key when HTTPS is enabled.
         /// </summary>
         [Input("sslPub")]
         public Input<string>? SslPub { get; set; }

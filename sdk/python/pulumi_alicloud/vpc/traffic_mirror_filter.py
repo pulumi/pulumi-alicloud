@@ -34,8 +34,8 @@ class TrafficMirrorFilterArgs:
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
                - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
-        :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
-        :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]] egress_rules: Information about the outbound rule. See `egress_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]] ingress_rules: Inward direction rule information. See `ingress_rules` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
         :param pulumi.Input[_builtins.str] traffic_mirror_filter_description: The description of the TrafficMirrorFilter.
@@ -74,7 +74,7 @@ class TrafficMirrorFilterArgs:
     @pulumi.getter(name="egressRules")
     def egress_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]]:
         """
-        Information about the outbound rule. See the following `Block EgressRules`.
+        Information about the outbound rule. See `egress_rules` below.
         """
         return pulumi.get(self, "egress_rules")
 
@@ -86,7 +86,7 @@ class TrafficMirrorFilterArgs:
     @pulumi.getter(name="ingressRules")
     def ingress_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]]:
         """
-        Inward direction rule information. See the following `Block IngressRules`.
+        Inward direction rule information. See `ingress_rules` below.
         """
         return pulumi.get(self, "ingress_rules")
 
@@ -160,8 +160,8 @@ class _TrafficMirrorFilterState:
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
                - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
-        :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
-        :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]] egress_rules: Information about the outbound rule. See `egress_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]] ingress_rules: Inward direction rule information. See `ingress_rules` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
@@ -203,7 +203,7 @@ class _TrafficMirrorFilterState:
     @pulumi.getter(name="egressRules")
     def egress_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]]:
         """
-        Information about the outbound rule. See the following `Block EgressRules`.
+        Information about the outbound rule. See `egress_rules` below.
         """
         return pulumi.get(self, "egress_rules")
 
@@ -215,7 +215,7 @@ class _TrafficMirrorFilterState:
     @pulumi.getter(name="ingressRules")
     def ingress_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]]:
         """
-        Inward direction rule information. See the following `Block IngressRules`.
+        Inward direction rule information. See `ingress_rules` below.
         """
         return pulumi.get(self, "ingress_rules")
 
@@ -318,10 +318,10 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default3i_xhoa = alicloud.resourcemanager.ResourceGroup("default3iXhoa",
-            display_name="testname03",
+            display_name="example03",
             resource_group_name=name)
         defaultd_nz2qk = alicloud.resourcemanager.ResourceGroup("defaultdNz2qk",
-            display_name="testname04",
+            display_name="example04",
             resource_group_name=f"{name}1")
         default = alicloud.vpc.TrafficMirrorFilter("default",
             traffic_mirror_filter_description="test",
@@ -363,8 +363,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
                - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict', 'outputs.TrafficMirrorFilterEgressRule']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict', 'outputs.TrafficMirrorFilterIngressRule']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict', 'outputs.TrafficMirrorFilterEgressRule']]]] egress_rules: Information about the outbound rule. See `egress_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict', 'outputs.TrafficMirrorFilterIngressRule']]]] ingress_rules: Inward direction rule information. See `ingress_rules` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
         :param pulumi.Input[_builtins.str] traffic_mirror_filter_description: The description of the TrafficMirrorFilter.
@@ -396,10 +396,10 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default3i_xhoa = alicloud.resourcemanager.ResourceGroup("default3iXhoa",
-            display_name="testname03",
+            display_name="example03",
             resource_group_name=name)
         defaultd_nz2qk = alicloud.resourcemanager.ResourceGroup("defaultdNz2qk",
-            display_name="testname04",
+            display_name="example04",
             resource_group_name=f"{name}1")
         default = alicloud.vpc.TrafficMirrorFilter("default",
             traffic_mirror_filter_description="test",
@@ -503,8 +503,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
                - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict', 'outputs.TrafficMirrorFilterEgressRule']]]] egress_rules: Information about the outbound rule. See the following `Block EgressRules`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict', 'outputs.TrafficMirrorFilterIngressRule']]]] ingress_rules: Inward direction rule information. See the following `Block IngressRules`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict', 'outputs.TrafficMirrorFilterEgressRule']]]] egress_rules: Information about the outbound rule. See `egress_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict', 'outputs.TrafficMirrorFilterIngressRule']]]] ingress_rules: Inward direction rule information. See `ingress_rules` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of this resource.
@@ -561,7 +561,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
     @pulumi.getter(name="egressRules")
     def egress_rules(self) -> pulumi.Output[Sequence['outputs.TrafficMirrorFilterEgressRule']]:
         """
-        Information about the outbound rule. See the following `Block EgressRules`.
+        Information about the outbound rule. See `egress_rules` below.
         """
         return pulumi.get(self, "egress_rules")
 
@@ -569,7 +569,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
     @pulumi.getter(name="ingressRules")
     def ingress_rules(self) -> pulumi.Output[Sequence['outputs.TrafficMirrorFilterIngressRule']]:
         """
-        Inward direction rule information. See the following `Block IngressRules`.
+        Inward direction rule information. See `ingress_rules` below.
         """
         return pulumi.get(self, "ingress_rules")
 

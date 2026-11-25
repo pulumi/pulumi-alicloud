@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Quotas
         /// <summary>
         /// This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// &gt; **NOTE:** Available since v1.116.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Quotas
         /// <summary>
         /// This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// &gt; **NOTE:** Available since v1.116.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Quotas
         /// <summary>
         /// This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// &gt; **NOTE:** Available since v1.116.0.
         /// 
         /// ## Example Usage
         /// 
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Quotas
         private List<Inputs.GetQuotaAlarmsQuotaDimensionArgs>? _quotaDimensions;
 
         /// <summary>
-        /// The Quota Dimensions.
+        /// The Quota Dimensions. See `QuotaDimensions` below.
         /// </summary>
         public List<Inputs.GetQuotaAlarmsQuotaDimensionArgs> QuotaDimensions
         {
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.GetQuotaAlarmsQuotaDimensionInputArgs>? _quotaDimensions;
 
         /// <summary>
-        /// The Quota Dimensions.
+        /// The Quota Dimensions. See `QuotaDimensions` below.
         /// </summary>
         public InputList<Inputs.GetQuotaAlarmsQuotaDimensionInputArgs> QuotaDimensions
         {
@@ -261,6 +261,9 @@ namespace Pulumi.AliCloud.Quotas
     [OutputType]
     public sealed class GetQuotaAlarmsResult
     {
+        /// <summary>
+        /// A list of Quotas Quota Alarms. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetQuotaAlarmsAlarmResult> Alarms;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -269,11 +272,26 @@ namespace Pulumi.AliCloud.Quotas
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Quota Alarm names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The Product Code.
+        /// </summary>
         public readonly string? ProductCode;
+        /// <summary>
+        /// The Quota Action Code.
+        /// </summary>
         public readonly string? QuotaActionCode;
+        /// <summary>
+        /// The name of Quota Alarm.
+        /// </summary>
         public readonly string? QuotaAlarmName;
+        /// <summary>
+        /// The Quota Dimensions. See `QuotaDimensions` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetQuotaAlarmsQuotaDimensionResult> QuotaDimensions;
 
         [OutputConstructor]

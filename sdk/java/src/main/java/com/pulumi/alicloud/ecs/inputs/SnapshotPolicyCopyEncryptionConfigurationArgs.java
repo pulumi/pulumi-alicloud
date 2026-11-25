@@ -16,16 +16,32 @@ public final class SnapshotPolicyCopyEncryptionConfigurationArgs extends com.pul
 
     public static final SnapshotPolicyCopyEncryptionConfigurationArgs Empty = new SnapshotPolicyCopyEncryptionConfigurationArgs();
 
+    /**
+     * Whether to encrypt the snapshot.
+     * 
+     */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
+    /**
+     * @return Whether to encrypt the snapshot.
+     * 
+     */
     public Optional<Output<Boolean>> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
 
+    /**
+     * The KMS key ID used for encryption.
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
+    /**
+     * @return The KMS key ID used for encryption.
+     * 
+     */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
@@ -55,20 +71,44 @@ public final class SnapshotPolicyCopyEncryptionConfigurationArgs extends com.pul
             $ = new SnapshotPolicyCopyEncryptionConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param encrypted Whether to encrypt the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encrypted(@Nullable Output<Boolean> encrypted) {
             $.encrypted = encrypted;
             return this;
         }
 
+        /**
+         * @param encrypted Whether to encrypt the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder encrypted(Boolean encrypted) {
             return encrypted(Output.of(encrypted));
         }
 
+        /**
+         * @param kmsKeyId The KMS key ID used for encryption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
+        /**
+         * @param kmsKeyId The KMS key ID used for encryption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
         }

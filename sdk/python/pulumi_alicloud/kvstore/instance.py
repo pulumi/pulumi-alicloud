@@ -21,6 +21,7 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
+                 additional_bandwidths: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAdditionalBandwidthArgs']]]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -29,6 +30,7 @@ class InstanceArgs:
                  backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_time: pulumi.Input[Optional[_builtins.str]] = None,
                  bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_burst: pulumi.Input[Optional[_builtins.bool]] = None,
                  business_info: pulumi.Input[Optional[_builtins.str]] = None,
                  capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -46,6 +48,7 @@ class InstanceArgs:
                  force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -60,6 +63,8 @@ class InstanceArgs:
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -89,6 +94,7 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
 
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAdditionalBandwidthArgs']]] additional_bandwidths: The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additional_bandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Specifies whether to use a coupon. Default value: `false`.
@@ -97,6 +103,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: Backup period.
         :param pulumi.Input[_builtins.str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
         :param pulumi.Input[_builtins.int] bandwidth: The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+        :param pulumi.Input[_builtins.bool] bandwidth_burst: Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
         :param pulumi.Input[_builtins.str] business_info: The ID of the event or the business information.
         :param pulumi.Input[_builtins.int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
@@ -117,6 +124,15 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] force_upgrade: Specifies whether to forcibly change the type. Default value: `true`.
         :param pulumi.Input[_builtins.bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[_builtins.str] global_instance_id: The ID of distributed cache.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         :param pulumi.Input[_builtins.str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
@@ -134,6 +150,9 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         :param pulumi.Input[_builtins.str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         :param pulumi.Input[_builtins.str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[_builtins.int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -146,6 +165,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+               
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[_builtins.str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -153,8 +173,10 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+               
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               
                > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -167,6 +189,8 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.str] zone_id: The ID of the zone.
         """
+        if additional_bandwidths is not None:
+            pulumi.set(__self__, "additional_bandwidths", additional_bandwidths)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
@@ -186,6 +210,8 @@ class InstanceArgs:
             pulumi.set(__self__, "backup_time", backup_time)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if bandwidth_burst is not None:
+            pulumi.set(__self__, "bandwidth_burst", bandwidth_burst)
         if business_info is not None:
             pulumi.set(__self__, "business_info", business_info)
         if capacity is not None:
@@ -226,6 +252,8 @@ class InstanceArgs:
             pulumi.set(__self__, "global_instance", global_instance)
         if global_instance_id is not None:
             pulumi.set(__self__, "global_instance_id", global_instance_id)
+        if global_security_group_lists is not None:
+            pulumi.set(__self__, "global_security_group_lists", global_security_group_lists)
         if instance_charge_type is not None:
             warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
@@ -263,6 +291,10 @@ class InstanceArgs:
             pulumi.set(__self__, "parameters", parameters)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -315,6 +347,18 @@ class InstanceArgs:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalBandwidths")
+    def additional_bandwidths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAdditionalBandwidthArgs']]]]:
+        """
+        The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additional_bandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+        """
+        return pulumi.get(self, "additional_bandwidths")
+
+    @additional_bandwidths.setter
+    def additional_bandwidths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAdditionalBandwidthArgs']]]]):
+        pulumi.set(self, "additional_bandwidths", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
@@ -412,6 +456,18 @@ class InstanceArgs:
     @bandwidth.setter
     def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bandwidthBurst")
+    def bandwidth_burst(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+        """
+        return pulumi.get(self, "bandwidth_burst")
+
+    @bandwidth_burst.setter
+    def bandwidth_burst(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "bandwidth_burst", value)
 
     @_builtins.property
     @pulumi.getter(name="businessInfo")
@@ -623,6 +679,26 @@ class InstanceArgs:
         pulumi.set(self, "global_instance_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of Global Security Group Ids.
+
+        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+
+        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+
+        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+
+        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+        """
+        return pulumi.get(self, "global_security_group_lists")
+
+    @global_security_group_lists.setter
+    def global_security_group_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "global_security_group_lists", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceChargeType")
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
@@ -797,6 +873,31 @@ class InstanceArgs:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -933,6 +1034,7 @@ class InstanceArgs:
     def secondary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+
         > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         """
         return pulumi.get(self, "secondary_zone_id")
@@ -1006,6 +1108,7 @@ class InstanceArgs:
     def slave_read_only_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+
         > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         """
         return pulumi.get(self, "slave_read_only_count")
@@ -1019,6 +1122,7 @@ class InstanceArgs:
     def slave_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+
         > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         """
         return pulumi.get(self, "slave_replica_count")
@@ -1118,6 +1222,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 additional_bandwidths: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAdditionalBandwidthArgs']]]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1126,7 +1231,10 @@ class _InstanceState:
                  backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_time: pulumi.Input[Optional[_builtins.str]] = None,
                  bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_burst: pulumi.Input[Optional[_builtins.bool]] = None,
                  business_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_download_url: pulumi.Input[Optional[_builtins.str]] = None,
                  capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1146,6 +1254,7 @@ class _InstanceState:
                  force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1160,6 +1269,8 @@ class _InstanceState:
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1182,6 +1293,7 @@ class _InstanceState:
                  slave_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  srcdb_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_expired_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tde_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1191,6 +1303,7 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAdditionalBandwidthArgs']]] additional_bandwidths: The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additional_bandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Specifies whether to use a coupon. Default value: `false`.
@@ -1199,19 +1312,14 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: Backup period.
         :param pulumi.Input[_builtins.str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
         :param pulumi.Input[_builtins.int] bandwidth: The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+        :param pulumi.Input[_builtins.bool] bandwidth_burst: Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
         :param pulumi.Input[_builtins.str] business_info: The ID of the event or the business information.
+        :param pulumi.Input[_builtins.str] ca_cert_common_name: The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        :param pulumi.Input[_builtins.str] ca_cert_download_url: The download URL of the CA certificate. This attribute is populated when `ssl_enable` is set to `Enable`.
         :param pulumi.Input[_builtins.int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[_builtins.str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[_builtins.str] connection_string: Indicates whether the address is a private endpoint.
-               
-               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-               
-               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-               
-               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-               
-               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[_builtins.str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[_builtins.str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -1230,6 +1338,15 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] force_upgrade: Specifies whether to forcibly change the type. Default value: `true`.
         :param pulumi.Input[_builtins.bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[_builtins.str] global_instance_id: The ID of distributed cache.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         :param pulumi.Input[_builtins.str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
@@ -1247,6 +1364,9 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         :param pulumi.Input[_builtins.str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         :param pulumi.Input[_builtins.str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[_builtins.int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -1260,6 +1380,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+               
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[_builtins.str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -1267,12 +1388,15 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+               
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               
                > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
+        :param pulumi.Input[_builtins.str] ssl_expired_time: The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
         :param pulumi.Input[_builtins.str] status: The status of KVStore DBInstance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
@@ -1282,6 +1406,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.str] zone_id: The ID of the zone.
         """
+        if additional_bandwidths is not None:
+            pulumi.set(__self__, "additional_bandwidths", additional_bandwidths)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
@@ -1301,8 +1427,14 @@ class _InstanceState:
             pulumi.set(__self__, "backup_time", backup_time)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if bandwidth_burst is not None:
+            pulumi.set(__self__, "bandwidth_burst", bandwidth_burst)
         if business_info is not None:
             pulumi.set(__self__, "business_info", business_info)
+        if ca_cert_common_name is not None:
+            pulumi.set(__self__, "ca_cert_common_name", ca_cert_common_name)
+        if ca_cert_download_url is not None:
+            pulumi.set(__self__, "ca_cert_download_url", ca_cert_download_url)
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
         if config is not None:
@@ -1350,6 +1482,8 @@ class _InstanceState:
             pulumi.set(__self__, "global_instance", global_instance)
         if global_instance_id is not None:
             pulumi.set(__self__, "global_instance_id", global_instance_id)
+        if global_security_group_lists is not None:
+            pulumi.set(__self__, "global_security_group_lists", global_security_group_lists)
         if instance_charge_type is not None:
             warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
@@ -1387,6 +1521,10 @@ class _InstanceState:
             pulumi.set(__self__, "parameters", parameters)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -1431,6 +1569,8 @@ class _InstanceState:
             pulumi.set(__self__, "srcdb_instance_id", srcdb_instance_id)
         if ssl_enable is not None:
             pulumi.set(__self__, "ssl_enable", ssl_enable)
+        if ssl_expired_time is not None:
+            pulumi.set(__self__, "ssl_expired_time", ssl_expired_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -1443,6 +1583,18 @@ class _InstanceState:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalBandwidths")
+    def additional_bandwidths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAdditionalBandwidthArgs']]]]:
+        """
+        The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additional_bandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+        """
+        return pulumi.get(self, "additional_bandwidths")
+
+    @additional_bandwidths.setter
+    def additional_bandwidths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAdditionalBandwidthArgs']]]]):
+        pulumi.set(self, "additional_bandwidths", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
@@ -1542,6 +1694,18 @@ class _InstanceState:
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
+    @pulumi.getter(name="bandwidthBurst")
+    def bandwidth_burst(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+        """
+        return pulumi.get(self, "bandwidth_burst")
+
+    @bandwidth_burst.setter
+    def bandwidth_burst(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "bandwidth_burst", value)
+
+    @_builtins.property
     @pulumi.getter(name="businessInfo")
     def business_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1552,6 +1716,30 @@ class _InstanceState:
     @business_info.setter
     def business_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertCommonName")
+    def ca_cert_common_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ca_cert_common_name")
+
+    @ca_cert_common_name.setter
+    def ca_cert_common_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ca_cert_common_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertDownloadUrl")
+    def ca_cert_download_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The download URL of the CA certificate. This attribute is populated when `ssl_enable` is set to `Enable`.
+        """
+        return pulumi.get(self, "ca_cert_download_url")
+
+    @ca_cert_download_url.setter
+    def ca_cert_download_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ca_cert_download_url", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1595,14 +1783,6 @@ class _InstanceState:
     def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the address is a private endpoint.
-
-        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-
-        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-
-        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-
-        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         return pulumi.get(self, "connection_string")
 
@@ -1796,6 +1976,26 @@ class _InstanceState:
         pulumi.set(self, "global_instance_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of Global Security Group Ids.
+
+        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+
+        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+
+        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+
+        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+        """
+        return pulumi.get(self, "global_security_group_lists")
+
+    @global_security_group_lists.setter
+    def global_security_group_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "global_security_group_lists", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceChargeType")
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
@@ -1970,6 +2170,31 @@ class _InstanceState:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -2118,6 +2343,7 @@ class _InstanceState:
     def secondary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+
         > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         """
         return pulumi.get(self, "secondary_zone_id")
@@ -2191,6 +2417,7 @@ class _InstanceState:
     def slave_read_only_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+
         > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         """
         return pulumi.get(self, "slave_read_only_count")
@@ -2204,6 +2431,7 @@ class _InstanceState:
     def slave_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+
         > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         """
         return pulumi.get(self, "slave_replica_count")
@@ -2236,6 +2464,18 @@ class _InstanceState:
     @ssl_enable.setter
     def ssl_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslExpiredTime")
+    def ssl_expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ssl_expired_time")
+
+    @ssl_expired_time.setter
+    def ssl_expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_expired_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2318,6 +2558,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_bandwidths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceAdditionalBandwidthArgs', 'InstanceAdditionalBandwidthArgsDict', 'outputs.InstanceAdditionalBandwidth']]]]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2326,6 +2567,7 @@ class Instance(pulumi.CustomResource):
                  backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_time: pulumi.Input[Optional[_builtins.str]] = None,
                  bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_burst: pulumi.Input[Optional[_builtins.bool]] = None,
                  business_info: pulumi.Input[Optional[_builtins.str]] = None,
                  capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2343,6 +2585,7 @@ class Instance(pulumi.CustomResource):
                  force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2357,6 +2600,8 @@ class Instance(pulumi.CustomResource):
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2391,6 +2636,8 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Destroying a `PrePaid` instance fails with an error since v1.294.0. To destroy it, convert the instance to `PostPaid` by setting `payment_type = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
 
+        > **NOTE:** Refreshing a `Redis` type instance calls the `DescribeRoleZoneInfo` operation to read the additional bandwidth purchased for its data shards, so the RAM policy used by Terraform must allow `kvstore:DescribeRoleZoneInfo` in addition to the instance query permissions.
+
         ## Example Usage
 
         Basic Usage
@@ -2463,7 +2710,7 @@ class Instance(pulumi.CustomResource):
             config={
                 "appendonly": "no",
                 "lazyfree-lazy-eviction": "no",
-                "EvictionPolicy": "volatile-lru",
+                "maxmemory-policy": "volatile-lru",
             },
             tags={
                 "Created": "TF",
@@ -2510,7 +2757,7 @@ class Instance(pulumi.CustomResource):
             config={
                 "appendonly": "yes",
                 "lazyfree-lazy-eviction": "yes",
-                "EvictionPolicy": "volatile-lru",
+                "maxmemory-policy": "volatile-lru",
             },
             tags={
                 "Created": "TF",
@@ -2531,6 +2778,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAdditionalBandwidthArgs', 'InstanceAdditionalBandwidthArgsDict', 'outputs.InstanceAdditionalBandwidth']]]] additional_bandwidths: The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additional_bandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Specifies whether to use a coupon. Default value: `false`.
@@ -2539,6 +2787,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: Backup period.
         :param pulumi.Input[_builtins.str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
         :param pulumi.Input[_builtins.int] bandwidth: The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+        :param pulumi.Input[_builtins.bool] bandwidth_burst: Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
         :param pulumi.Input[_builtins.str] business_info: The ID of the event or the business information.
         :param pulumi.Input[_builtins.int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
@@ -2559,6 +2808,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_upgrade: Specifies whether to forcibly change the type. Default value: `true`.
         :param pulumi.Input[_builtins.bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[_builtins.str] global_instance_id: The ID of distributed cache.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         :param pulumi.Input[_builtins.str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
@@ -2576,6 +2834,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         :param pulumi.Input[_builtins.str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         :param pulumi.Input[_builtins.str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[_builtins.int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -2588,6 +2849,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+               
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[_builtins.str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -2595,8 +2857,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+               
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               
                > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -2622,6 +2886,8 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Destroying a `PrePaid` instance fails with an error since v1.294.0. To destroy it, convert the instance to `PostPaid` by setting `payment_type = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
 
+        > **NOTE:** Refreshing a `Redis` type instance calls the `DescribeRoleZoneInfo` operation to read the additional bandwidth purchased for its data shards, so the RAM policy used by Terraform must allow `kvstore:DescribeRoleZoneInfo` in addition to the instance query permissions.
+
         ## Example Usage
 
         Basic Usage
@@ -2694,7 +2960,7 @@ class Instance(pulumi.CustomResource):
             config={
                 "appendonly": "no",
                 "lazyfree-lazy-eviction": "no",
-                "EvictionPolicy": "volatile-lru",
+                "maxmemory-policy": "volatile-lru",
             },
             tags={
                 "Created": "TF",
@@ -2741,7 +3007,7 @@ class Instance(pulumi.CustomResource):
             config={
                 "appendonly": "yes",
                 "lazyfree-lazy-eviction": "yes",
-                "EvictionPolicy": "volatile-lru",
+                "maxmemory-policy": "volatile-lru",
             },
             tags={
                 "Created": "TF",
@@ -2775,6 +3041,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 additional_bandwidths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceAdditionalBandwidthArgs', 'InstanceAdditionalBandwidthArgsDict', 'outputs.InstanceAdditionalBandwidth']]]]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2783,6 +3050,7 @@ class Instance(pulumi.CustomResource):
                  backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_time: pulumi.Input[Optional[_builtins.str]] = None,
                  bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_burst: pulumi.Input[Optional[_builtins.bool]] = None,
                  business_info: pulumi.Input[Optional[_builtins.str]] = None,
                  capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2800,6 +3068,7 @@ class Instance(pulumi.CustomResource):
                  force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2814,6 +3083,8 @@ class Instance(pulumi.CustomResource):
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2849,6 +3120,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["additional_bandwidths"] = additional_bandwidths
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["auto_use_coupon"] = auto_use_coupon
@@ -2857,6 +3129,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["backup_periods"] = backup_periods
             __props__.__dict__["backup_time"] = backup_time
             __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["bandwidth_burst"] = bandwidth_burst
             __props__.__dict__["business_info"] = business_info
             __props__.__dict__["capacity"] = capacity
             __props__.__dict__["config"] = config
@@ -2874,6 +3147,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["force_upgrade"] = force_upgrade
             __props__.__dict__["global_instance"] = global_instance
             __props__.__dict__["global_instance_id"] = global_instance_id
+            __props__.__dict__["global_security_group_lists"] = global_security_group_lists
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["instance_class"] = instance_class
             __props__.__dict__["instance_name"] = instance_name
@@ -2888,6 +3162,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["order_type"] = order_type
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
+            __props__.__dict__["password_wo_version"] = password_wo_version
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["port"] = port
@@ -2914,12 +3190,15 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["vpc_auth_mode"] = vpc_auth_mode
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["ca_cert_common_name"] = None
+            __props__.__dict__["ca_cert_download_url"] = None
             __props__.__dict__["connection_domain"] = None
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["qps"] = None
+            __props__.__dict__["ssl_expired_time"] = None
             __props__.__dict__["status"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'alicloud:kvstore/instance:Instance',
@@ -2931,6 +3210,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            additional_bandwidths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceAdditionalBandwidthArgs', 'InstanceAdditionalBandwidthArgsDict', 'outputs.InstanceAdditionalBandwidth']]]]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
             auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2939,7 +3219,10 @@ class Instance(pulumi.CustomResource):
             backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_time: pulumi.Input[Optional[_builtins.str]] = None,
             bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_burst: pulumi.Input[Optional[_builtins.bool]] = None,
             business_info: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert_common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert_download_url: pulumi.Input[Optional[_builtins.str]] = None,
             capacity: pulumi.Input[Optional[_builtins.int]] = None,
             config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2959,6 +3242,7 @@ class Instance(pulumi.CustomResource):
             force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
             global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
             global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
             instance_class: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2973,6 +3257,8 @@ class Instance(pulumi.CustomResource):
             order_type: pulumi.Input[Optional[_builtins.str]] = None,
             parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2995,6 +3281,7 @@ class Instance(pulumi.CustomResource):
             slave_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
             srcdb_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_expired_time: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             tde_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3008,6 +3295,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAdditionalBandwidthArgs', 'InstanceAdditionalBandwidthArgsDict', 'outputs.InstanceAdditionalBandwidth']]]] additional_bandwidths: The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additional_bandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Specifies whether to use a coupon. Default value: `false`.
@@ -3016,19 +3304,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: Backup period.
         :param pulumi.Input[_builtins.str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
         :param pulumi.Input[_builtins.int] bandwidth: The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+        :param pulumi.Input[_builtins.bool] bandwidth_burst: Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
         :param pulumi.Input[_builtins.str] business_info: The ID of the event or the business information.
+        :param pulumi.Input[_builtins.str] ca_cert_common_name: The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        :param pulumi.Input[_builtins.str] ca_cert_download_url: The download URL of the CA certificate. This attribute is populated when `ssl_enable` is set to `Enable`.
         :param pulumi.Input[_builtins.int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[_builtins.str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[_builtins.str] connection_string: Indicates whether the address is a private endpoint.
-               
-               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-               
-               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-               
-               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-               
-               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[_builtins.str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[_builtins.str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
@@ -3047,6 +3330,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_upgrade: Specifies whether to forcibly change the type. Default value: `true`.
         :param pulumi.Input[_builtins.bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[_builtins.str] global_instance_id: The ID of distributed cache.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] global_security_group_lists: The list of Global Security Group Ids.
+               
+               > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+               
+               > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+               
+               > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+               
+               > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         :param pulumi.Input[_builtins.str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         :param pulumi.Input[_builtins.str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
@@ -3064,6 +3356,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] order_type: Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]] parameters: It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         :param pulumi.Input[_builtins.str] password: The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
         :param pulumi.Input[_builtins.str] period: The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
         :param pulumi.Input[_builtins.int] port: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -3077,6 +3372,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+               
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[_builtins.str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -3084,12 +3380,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ips: The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+               
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               
                > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
+        :param pulumi.Input[_builtins.str] ssl_expired_time: The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
         :param pulumi.Input[_builtins.str] status: The status of KVStore DBInstance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE. Valid values: `Enabled`.
@@ -3103,6 +3402,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["additional_bandwidths"] = additional_bandwidths
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["auto_use_coupon"] = auto_use_coupon
@@ -3111,7 +3411,10 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["backup_periods"] = backup_periods
         __props__.__dict__["backup_time"] = backup_time
         __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["bandwidth_burst"] = bandwidth_burst
         __props__.__dict__["business_info"] = business_info
+        __props__.__dict__["ca_cert_common_name"] = ca_cert_common_name
+        __props__.__dict__["ca_cert_download_url"] = ca_cert_download_url
         __props__.__dict__["capacity"] = capacity
         __props__.__dict__["config"] = config
         __props__.__dict__["connection_domain"] = connection_domain
@@ -3131,6 +3434,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["force_upgrade"] = force_upgrade
         __props__.__dict__["global_instance"] = global_instance
         __props__.__dict__["global_instance_id"] = global_instance_id
+        __props__.__dict__["global_security_group_lists"] = global_security_group_lists
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["instance_class"] = instance_class
         __props__.__dict__["instance_name"] = instance_name
@@ -3145,6 +3449,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["order_type"] = order_type
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_wo"] = password_wo
+        __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
@@ -3167,6 +3473,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["slave_replica_count"] = slave_replica_count
         __props__.__dict__["srcdb_instance_id"] = srcdb_instance_id
         __props__.__dict__["ssl_enable"] = ssl_enable
+        __props__.__dict__["ssl_expired_time"] = ssl_expired_time
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tde_status"] = tde_status
@@ -3178,6 +3485,7 @@ class Instance(pulumi.CustomResource):
     @staticmethod
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            additional_bandwidths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceAdditionalBandwidthArgs', 'InstanceAdditionalBandwidthArgsDict', 'outputs.InstanceAdditionalBandwidth']]]]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
             auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3186,7 +3494,10 @@ class Instance(pulumi.CustomResource):
             backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_time: pulumi.Input[Optional[_builtins.str]] = None,
             bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_burst: pulumi.Input[Optional[_builtins.bool]] = None,
             business_info: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert_common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert_download_url: pulumi.Input[Optional[_builtins.str]] = None,
             capacity: pulumi.Input[Optional[_builtins.int]] = None,
             config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3206,6 +3517,7 @@ class Instance(pulumi.CustomResource):
             force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
             global_instance: pulumi.Input[Optional[_builtins.bool]] = None,
             global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
             instance_class: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3220,6 +3532,8 @@ class Instance(pulumi.CustomResource):
             order_type: pulumi.Input[Optional[_builtins.str]] = None,
             parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict', 'outputs.InstanceParameter']]]]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3242,6 +3556,7 @@ class Instance(pulumi.CustomResource):
             slave_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
             srcdb_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_expired_time: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             tde_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3249,6 +3564,7 @@ class Instance(pulumi.CustomResource):
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
+        __props__["additionalBandwidths"] = additional_bandwidths
         __props__["autoRenew"] = auto_renew
         __props__["autoRenewPeriod"] = auto_renew_period
         __props__["autoUseCoupon"] = auto_use_coupon
@@ -3257,7 +3573,10 @@ class Instance(pulumi.CustomResource):
         __props__["backupPeriods"] = backup_periods
         __props__["backupTime"] = backup_time
         __props__["bandwidth"] = bandwidth
+        __props__["bandwidthBurst"] = bandwidth_burst
         __props__["businessInfo"] = business_info
+        __props__["caCertCommonName"] = ca_cert_common_name
+        __props__["caCertDownloadUrl"] = ca_cert_download_url
         __props__["capacity"] = capacity
         __props__["config"] = config
         __props__["connectionDomain"] = connection_domain
@@ -3277,6 +3596,7 @@ class Instance(pulumi.CustomResource):
         __props__["forceUpgrade"] = force_upgrade
         __props__["globalInstance"] = global_instance
         __props__["globalInstanceId"] = global_instance_id
+        __props__["globalSecurityGroupLists"] = global_security_group_lists
         __props__["instanceChargeType"] = instance_charge_type
         __props__["instanceClass"] = instance_class
         __props__["instanceName"] = instance_name
@@ -3291,6 +3611,8 @@ class Instance(pulumi.CustomResource):
         __props__["orderType"] = order_type
         __props__["parameters"] = parameters
         __props__["password"] = password
+        __props__["passwordWo"] = password_wo
+        __props__["passwordWoVersion"] = password_wo_version
         __props__["paymentType"] = payment_type
         __props__["period"] = period
         __props__["port"] = port
@@ -3313,6 +3635,7 @@ class Instance(pulumi.CustomResource):
         __props__["slaveReplicaCount"] = slave_replica_count
         __props__["srcdbInstanceId"] = srcdb_instance_id
         __props__["sslEnable"] = ssl_enable
+        __props__["sslExpiredTime"] = ssl_expired_time
         __props__["status"] = status
         __props__["tags"] = tags
         __props__["tdeStatus"] = tde_status
@@ -3320,6 +3643,14 @@ class Instance(pulumi.CustomResource):
         __props__["vswitchId"] = vswitch_id
         __props__["zoneId"] = zone_id
         return pulumi.runtime.exists_resource(None, 'alicloud:kvstore/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
+    @_builtins.property
+    @pulumi.getter(name="additionalBandwidths")
+    def additional_bandwidths(self) -> pulumi.Output[Sequence['outputs.InstanceAdditionalBandwidth']]:
+        """
+        The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additional_bandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+        """
+        return pulumi.get(self, "additional_bandwidths")
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
@@ -3387,12 +3718,36 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
+    @pulumi.getter(name="bandwidthBurst")
+    def bandwidth_burst(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+        """
+        return pulumi.get(self, "bandwidth_burst")
+
+    @_builtins.property
     @pulumi.getter(name="businessInfo")
     def business_info(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the event or the business information.
         """
         return pulumi.get(self, "business_info")
+
+    @_builtins.property
+    @pulumi.getter(name="caCertCommonName")
+    def ca_cert_common_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ca_cert_common_name")
+
+    @_builtins.property
+    @pulumi.getter(name="caCertDownloadUrl")
+    def ca_cert_download_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        The download URL of the CA certificate. This attribute is populated when `ssl_enable` is set to `Enable`.
+        """
+        return pulumi.get(self, "ca_cert_download_url")
 
     @_builtins.property
     @pulumi.getter
@@ -3424,14 +3779,6 @@ class Instance(pulumi.CustomResource):
     def connection_string(self) -> pulumi.Output[_builtins.str]:
         """
         Indicates whether the address is a private endpoint.
-
-        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-
-        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
-
-        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-
-        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
         """
         return pulumi.get(self, "connection_string")
 
@@ -3561,6 +3908,22 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "global_instance_id")
 
     @_builtins.property
+    @pulumi.getter(name="globalSecurityGroupLists")
+    def global_security_group_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The list of Global Security Group Ids.
+
+        > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+
+        > **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+
+        > **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+
+        > **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+        """
+        return pulumi.get(self, "global_security_group_lists")
+
+    @_builtins.property
     @pulumi.getter(name="instanceChargeType")
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
     def instance_charge_type(self) -> pulumi.Output[_builtins.str]:
@@ -3679,6 +4042,23 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "password")
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
@@ -3779,6 +4159,7 @@ class Instance(pulumi.CustomResource):
     def secondary_zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+
         > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         """
         return pulumi.get(self, "secondary_zone_id")
@@ -3828,6 +4209,7 @@ class Instance(pulumi.CustomResource):
     def slave_read_only_count(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+
         > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         """
         return pulumi.get(self, "slave_read_only_count")
@@ -3837,6 +4219,7 @@ class Instance(pulumi.CustomResource):
     def slave_replica_count(self) -> pulumi.Output[_builtins.int]:
         """
         The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+
         > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         """
         return pulumi.get(self, "slave_replica_count")
@@ -3857,6 +4240,14 @@ class Instance(pulumi.CustomResource):
         **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
         """
         return pulumi.get(self, "ssl_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="sslExpiredTime")
+    def ssl_expired_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        """
+        return pulumi.get(self, "ssl_expired_time")
 
     @_builtins.property
     @pulumi.getter

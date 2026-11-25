@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMonitorGroupInstancesInstanceInstance {
+    /**
+     * @return The category of instance.
+     * 
+     */
     private String category;
+    /**
+     * @return The id of instance.
+     * 
+     */
     private String instanceId;
+    /**
+     * @return The name of instance.
+     * 
+     */
     private String instanceName;
+    /**
+     * @return The region id of instance.
+     * 
+     */
     private String regionId;
 
     private GetMonitorGroupInstancesInstanceInstance() {}
+    /**
+     * @return The category of instance.
+     * 
+     */
     public String category() {
         return this.category;
     }
+    /**
+     * @return The id of instance.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return The name of instance.
+     * 
+     */
     public String instanceName() {
         return this.instanceName;
     }
+    /**
+     * @return The region id of instance.
+     * 
+     */
     public String regionId() {
         return this.regionId;
     }

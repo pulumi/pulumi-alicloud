@@ -39,7 +39,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -93,7 +93,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -147,7 +147,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -201,7 +201,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -255,7 +255,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.142.0+.
+     * &gt; **NOTE:** Available since v1.142.0.
      * 
      * ## Example Usage
      * 
@@ -1324,7 +1324,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.189.0+.
+     * &gt; **NOTE:** Available since v1.189.0.
      * 
      * ## Example Usage
      * 
@@ -1376,7 +1376,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.189.0+.
+     * &gt; **NOTE:** Available since v1.189.0.
      * 
      * ## Example Usage
      * 
@@ -1428,7 +1428,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.189.0+.
+     * &gt; **NOTE:** Available since v1.189.0.
      * 
      * ## Example Usage
      * 
@@ -1480,7 +1480,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.189.0+.
+     * &gt; **NOTE:** Available since v1.189.0.
      * 
      * ## Example Usage
      * 
@@ -1532,7 +1532,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.189.0+.
+     * &gt; **NOTE:** Available since v1.189.0.
      * 
      * ## Example Usage
      * 
@@ -1584,7 +1584,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.47.0+
+     * &gt; **NOTE:** Available since v1.47.0.
      * 
      * ## Example Usage
      * 
@@ -1628,7 +1628,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.47.0+
+     * &gt; **NOTE:** Available since v1.47.0.
      * 
      * ## Example Usage
      * 
@@ -1672,7 +1672,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.47.0+
+     * &gt; **NOTE:** Available since v1.47.0.
      * 
      * ## Example Usage
      * 
@@ -1716,7 +1716,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.47.0+
+     * &gt; **NOTE:** Available since v1.47.0.
      * 
      * ## Example Usage
      * 
@@ -1760,7 +1760,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.47.0+
+     * &gt; **NOTE:** Available since v1.47.0.
      * 
      * ## Example Usage
      * 
@@ -1804,7 +1804,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.47.0+
+     * &gt; **NOTE:** Available since v1.47.0.
      * 
      * ## Example Usage
      * 
@@ -1848,7 +1848,7 @@ public final class GpdbFunctions {
     /**
      * This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.47.0+
+     * &gt; **NOTE:** Available since v1.47.0.
      * 
      * ## Example Usage
      * 

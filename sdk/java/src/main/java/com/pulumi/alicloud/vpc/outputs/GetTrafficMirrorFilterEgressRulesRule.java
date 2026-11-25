@@ -57,7 +57,7 @@ public final class GetTrafficMirrorFilterEgressRulesRule {
      */
     private String status;
     /**
-     * @return The ID of the filter associated with the outbound rule.
+     * @return The ID of the Traffic Mirror Filter.
      * 
      */
     private String trafficMirrorFilterId;
@@ -132,7 +132,7 @@ public final class GetTrafficMirrorFilterEgressRulesRule {
         return this.status;
     }
     /**
-     * @return The ID of the filter associated with the outbound rule.
+     * @return The ID of the Traffic Mirror Filter.
      * 
      */
     public String trafficMirrorFilterId() {

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Inputs
         private InputList<Inputs.HoneypotProbeHoneypotBindListBindPortListGetArgs>? _bindPortLists;
 
         /// <summary>
-        /// List of listening ports.See the following `Block BindPortList`.
+        /// List of listening ports.See the following `BindPortList` below.
         /// </summary>
         public InputList<Inputs.HoneypotProbeHoneypotBindListBindPortListGetArgs> BindPortLists
         {

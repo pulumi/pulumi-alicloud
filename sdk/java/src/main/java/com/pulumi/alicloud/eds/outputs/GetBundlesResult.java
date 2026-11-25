@@ -14,8 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBundlesResult {
+    /**
+     * @return The bundle id of the bundle.
+     * 
+     */
     private List<String> bundleIds;
+    /**
+     * @return The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+     * 
+     */
     private @Nullable String bundleType;
+    /**
+     * @return A list of Ecd Bundle. Each element contains the following attributes:
+     * 
+     */
     private List<GetBundlesBundle> bundles;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,16 +36,32 @@ public final class GetBundlesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Bundle names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetBundlesResult() {}
+    /**
+     * @return The bundle id of the bundle.
+     * 
+     */
     public List<String> bundleIds() {
         return this.bundleIds;
     }
+    /**
+     * @return The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+     * 
+     */
     public Optional<String> bundleType() {
         return Optional.ofNullable(this.bundleType);
     }
+    /**
+     * @return A list of Ecd Bundle. Each element contains the following attributes:
+     * 
+     */
     public List<GetBundlesBundle> bundles() {
         return this.bundles;
     }
@@ -50,6 +78,10 @@ public final class GetBundlesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Bundle names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

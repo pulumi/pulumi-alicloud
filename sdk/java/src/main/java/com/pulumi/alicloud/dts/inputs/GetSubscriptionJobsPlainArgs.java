@@ -17,9 +17,17 @@ public final class GetSubscriptionJobsPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetSubscriptionJobsPlainArgs Empty = new GetSubscriptionJobsPlainArgs();
 
+    /**
+     * Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -84,9 +92,17 @@ public final class GetSubscriptionJobsPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * A mapping of tags to filter results.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Map<String,String> tags;
 
+    /**
+     * @return A mapping of tags to filter results.
+     * 
+     */
     public Optional<Map<String,String>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -120,6 +136,12 @@ public final class GetSubscriptionJobsPlainArgs extends com.pulumi.resources.Inv
             $ = new GetSubscriptionJobsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;
@@ -179,6 +201,12 @@ public final class GetSubscriptionJobsPlainArgs extends com.pulumi.resources.Inv
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to filter results.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Map<String,String> tags) {
             $.tags = tags;
             return this;

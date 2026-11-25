@@ -43,6 +43,10 @@ public final class GetOtsBackupPlansPlan {
      * 
      */
     private String otsBackupPlanName;
+    /**
+     * @return The details about the Tablestore instance.
+     * 
+     */
     private List<GetOtsBackupPlansPlanOtsDetail> otsDetails;
     /**
      * @return The Backup retention days, the minimum is 1.
@@ -51,7 +55,7 @@ public final class GetOtsBackupPlansPlan {
     private String retention;
     /**
      * @return The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-     * * `startTime` Backup start time, UNIX time seconds.
+     * - `startTime` Backup start time, UNIX time seconds.
      * 
      */
     private String schedule;
@@ -62,12 +66,11 @@ public final class GetOtsBackupPlansPlan {
     private String sourceType;
     /**
      * @return The update time of the backup plan. UNIX time in seconds.
-     * *ots_detail - The details about the Tablestore instance.
      * 
      */
     private String updatedTime;
     /**
-     * @return The ID of backup vault.
+     * @return The ID of backup vault the OtsBackupPlan used.
      * 
      */
     private String vaultId;
@@ -115,6 +118,10 @@ public final class GetOtsBackupPlansPlan {
     public String otsBackupPlanName() {
         return this.otsBackupPlanName;
     }
+    /**
+     * @return The details about the Tablestore instance.
+     * 
+     */
     public List<GetOtsBackupPlansPlanOtsDetail> otsDetails() {
         return this.otsDetails;
     }
@@ -127,7 +134,7 @@ public final class GetOtsBackupPlansPlan {
     }
     /**
      * @return The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-     * * `startTime` Backup start time, UNIX time seconds.
+     * - `startTime` Backup start time, UNIX time seconds.
      * 
      */
     public String schedule() {
@@ -142,14 +149,13 @@ public final class GetOtsBackupPlansPlan {
     }
     /**
      * @return The update time of the backup plan. UNIX time in seconds.
-     * *ots_detail - The details about the Tablestore instance.
      * 
      */
     public String updatedTime() {
         return this.updatedTime;
     }
     /**
-     * @return The ID of backup vault.
+     * @return The ID of backup vault the OtsBackupPlan used.
      * 
      */
     public String vaultId() {

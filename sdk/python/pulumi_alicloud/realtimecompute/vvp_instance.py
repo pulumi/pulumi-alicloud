@@ -26,15 +26,16 @@ class VvpInstanceArgs:
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  vvp_instance_name: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str],
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_namespace_resource_spec: pulumi.Input[Optional['VvpInstanceDefaultNamespaceResourceSpecArgs']] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
                  renew_status: pulumi.Input[Optional[_builtins.str]] = None,
                  renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_spec: pulumi.Input[Optional['VvpInstanceResourceSpecArgs']] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VvpInstance resource.
 
@@ -43,8 +44,8 @@ class VvpInstanceArgs:
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Virtual Switch ID.
         :param pulumi.Input[_builtins.str] vvp_instance_name: The name of the workspace.
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
+        :param pulumi.Input['VvpInstanceDefaultNamespaceResourceSpecArgs'] default_namespace_resource_spec: The default namespace resource configuration. See `default_namespace_resource_spec` below.
         :param pulumi.Input[_builtins.int] duration: The number of subscription periods. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] renew_status: The renewal status of the subscription instance. It only takes effect when `payment_type = "Subscription"`. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
@@ -52,15 +53,17 @@ class VvpInstanceArgs:
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group to which the newly purchased instance belongs.
         :param pulumi.Input['VvpInstanceResourceSpecArgs'] resource_spec: Resource specifications. See `resource_spec` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of the resource.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource. Field `zone_id` has been deprecated from version 2.3.0.
         """
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "storage", storage)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         pulumi.set(__self__, "vvp_instance_name", vvp_instance_name)
-        pulumi.set(__self__, "zone_id", zone_id)
         if auto_renew_duration is not None:
             pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
+        if default_namespace_resource_spec is not None:
+            pulumi.set(__self__, "default_namespace_resource_spec", default_namespace_resource_spec)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if pricing_cycle is not None:
@@ -75,6 +78,11 @@ class VvpInstanceArgs:
             pulumi.set(__self__, "resource_spec", resource_spec)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if zone_id is not None:
+            warnings.warn("""Field `zone_id` has been deprecated from version 2.3.0.""", DeprecationWarning)
+            pulumi.log.warn("""zone_id is deprecated: Field `zone_id` has been deprecated from version 2.3.0.""")
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
@@ -137,18 +145,6 @@ class VvpInstanceArgs:
         pulumi.set(self, "vvp_instance_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The zone ID of the resource.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "zone_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -159,6 +155,18 @@ class VvpInstanceArgs:
     @auto_renew_duration.setter
     def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultNamespaceResourceSpec")
+    def default_namespace_resource_spec(self) -> pulumi.Input[Optional['VvpInstanceDefaultNamespaceResourceSpecArgs']]:
+        """
+        The default namespace resource configuration. See `default_namespace_resource_spec` below.
+        """
+        return pulumi.get(self, "default_namespace_resource_spec")
+
+    @default_namespace_resource_spec.setter
+    def default_namespace_resource_spec(self, value: pulumi.Input[Optional['VvpInstanceDefaultNamespaceResourceSpecArgs']]):
+        pulumi.set(self, "default_namespace_resource_spec", value)
 
     @_builtins.property
     @pulumi.getter
@@ -244,12 +252,26 @@ class VvpInstanceArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    @_utilities.deprecated("""Field `zone_id` has been deprecated from version 2.3.0.""")
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The zone ID of the resource. Field `zone_id` has been deprecated from version 2.3.0.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class _VvpInstanceState:
     def __init__(__self__, *,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_namespace_resource_spec: pulumi.Input[Optional['VvpInstanceDefaultNamespaceResourceSpecArgs']] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
@@ -270,6 +292,7 @@ class _VvpInstanceState:
 
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
+        :param pulumi.Input['VvpInstanceDefaultNamespaceResourceSpecArgs'] default_namespace_resource_spec: The default namespace resource configuration. See `default_namespace_resource_spec` below.
         :param pulumi.Input[_builtins.int] duration: The number of subscription periods. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
@@ -284,12 +307,14 @@ class _VvpInstanceState:
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Virtual Switch ID.
         :param pulumi.Input[_builtins.str] vvp_instance_name: The name of the workspace.
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource. Field `zone_id` has been deprecated from version 2.3.0.
         """
         if auto_renew_duration is not None:
             pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if default_namespace_resource_spec is not None:
+            pulumi.set(__self__, "default_namespace_resource_spec", default_namespace_resource_spec)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if payment_type is not None:
@@ -319,6 +344,9 @@ class _VvpInstanceState:
         if vvp_instance_name is not None:
             pulumi.set(__self__, "vvp_instance_name", vvp_instance_name)
         if zone_id is not None:
+            warnings.warn("""Field `zone_id` has been deprecated from version 2.3.0.""", DeprecationWarning)
+            pulumi.log.warn("""zone_id is deprecated: Field `zone_id` has been deprecated from version 2.3.0.""")
+        if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
@@ -344,6 +372,18 @@ class _VvpInstanceState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultNamespaceResourceSpec")
+    def default_namespace_resource_spec(self) -> pulumi.Input[Optional['VvpInstanceDefaultNamespaceResourceSpecArgs']]:
+        """
+        The default namespace resource configuration. See `default_namespace_resource_spec` below.
+        """
+        return pulumi.get(self, "default_namespace_resource_spec")
+
+    @default_namespace_resource_spec.setter
+    def default_namespace_resource_spec(self, value: pulumi.Input[Optional['VvpInstanceDefaultNamespaceResourceSpecArgs']]):
+        pulumi.set(self, "default_namespace_resource_spec", value)
 
     @_builtins.property
     @pulumi.getter
@@ -515,9 +555,10 @@ class _VvpInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
+    @_utilities.deprecated("""Field `zone_id` has been deprecated from version 2.3.0.""")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone ID of the resource.
+        The zone ID of the resource. Field `zone_id` has been deprecated from version 2.3.0.
         """
         return pulumi.get(self, "zone_id")
 
@@ -533,6 +574,7 @@ class VvpInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_namespace_resource_spec: pulumi.Input[Optional[Union['VvpInstanceDefaultNamespaceResourceSpecArgs', 'VvpInstanceDefaultNamespaceResourceSpecArgsDict', 'outputs.VvpInstanceDefaultNamespaceResourceSpec']]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
@@ -550,9 +592,11 @@ class VvpInstance(pulumi.CustomResource):
         """
         Provides a Realtime Compute Vvp Instance resource.
 
-        For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+        For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://api.aliyun.com/api/foasconsole/2021-10-28/CreateInstance?RegionId=cn-hangzhou).
 
         > **NOTE:** Available since v1.214.0.
+
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         ## Example Usage
 
@@ -587,7 +631,6 @@ class VvpInstance(pulumi.CustomResource):
             },
             vvp_instance_name=f"{name}-{default_integer['result']}",
             vpc_id=default_get_networks.ids[0],
-            zone_id=zone_id,
             vswitch_ids=[default_get_switches.ids[0]],
             payment_type="PayAsYouGo")
         ```
@@ -612,6 +655,7 @@ class VvpInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
+        :param pulumi.Input[Union['VvpInstanceDefaultNamespaceResourceSpecArgs', 'VvpInstanceDefaultNamespaceResourceSpecArgsDict', 'outputs.VvpInstanceDefaultNamespaceResourceSpec']] default_namespace_resource_spec: The default namespace resource configuration. See `default_namespace_resource_spec` below.
         :param pulumi.Input[_builtins.int] duration: The number of subscription periods. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
@@ -624,7 +668,7 @@ class VvpInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Virtual Switch ID.
         :param pulumi.Input[_builtins.str] vvp_instance_name: The name of the workspace.
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource. Field `zone_id` has been deprecated from version 2.3.0.
         """
         ...
     @overload
@@ -635,9 +679,11 @@ class VvpInstance(pulumi.CustomResource):
         """
         Provides a Realtime Compute Vvp Instance resource.
 
-        For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+        For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://api.aliyun.com/api/foasconsole/2021-10-28/CreateInstance?RegionId=cn-hangzhou).
 
         > **NOTE:** Available since v1.214.0.
+
+        > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
 
         ## Example Usage
 
@@ -672,7 +718,6 @@ class VvpInstance(pulumi.CustomResource):
             },
             vvp_instance_name=f"{name}-{default_integer['result']}",
             vpc_id=default_get_networks.ids[0],
-            zone_id=zone_id,
             vswitch_ids=[default_get_switches.ids[0]],
             payment_type="PayAsYouGo")
         ```
@@ -710,6 +755,7 @@ class VvpInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_namespace_resource_spec: pulumi.Input[Optional[Union['VvpInstanceDefaultNamespaceResourceSpecArgs', 'VvpInstanceDefaultNamespaceResourceSpecArgsDict', 'outputs.VvpInstanceDefaultNamespaceResourceSpec']]] = None,
                  duration: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
@@ -733,6 +779,7 @@ class VvpInstance(pulumi.CustomResource):
             __props__ = VvpInstanceArgs.__new__(VvpInstanceArgs)
 
             __props__.__dict__["auto_renew_duration"] = auto_renew_duration
+            __props__.__dict__["default_namespace_resource_spec"] = default_namespace_resource_spec
             __props__.__dict__["duration"] = duration
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
@@ -755,8 +802,6 @@ class VvpInstance(pulumi.CustomResource):
             if vvp_instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'vvp_instance_name'")
             __props__.__dict__["vvp_instance_name"] = vvp_instance_name
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["resource_id"] = None
@@ -773,6 +818,7 @@ class VvpInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            default_namespace_resource_spec: pulumi.Input[Optional[Union['VvpInstanceDefaultNamespaceResourceSpecArgs', 'VvpInstanceDefaultNamespaceResourceSpecArgsDict', 'outputs.VvpInstanceDefaultNamespaceResourceSpec']]] = None,
             duration: pulumi.Input[Optional[_builtins.int]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
@@ -797,6 +843,7 @@ class VvpInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_renew_duration: The auto-renewal period of the subscription instance. It only takes effect when `payment_type = "Subscription"` and `renew_status = "AutoRenewal"`. Valid values: `1`, `2`, `3`, `6`, `12`. The unit is specified by `renewal_duration_unit`.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
+        :param pulumi.Input[Union['VvpInstanceDefaultNamespaceResourceSpecArgs', 'VvpInstanceDefaultNamespaceResourceSpecArgsDict', 'outputs.VvpInstanceDefaultNamespaceResourceSpec']] default_namespace_resource_spec: The default namespace resource configuration. See `default_namespace_resource_spec` below.
         :param pulumi.Input[_builtins.int] duration: The number of subscription periods. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
@@ -811,7 +858,7 @@ class VvpInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Virtual Switch ID.
         :param pulumi.Input[_builtins.str] vvp_instance_name: The name of the workspace.
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the resource. Field `zone_id` has been deprecated from version 2.3.0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -819,6 +866,7 @@ class VvpInstance(pulumi.CustomResource):
 
         __props__.__dict__["auto_renew_duration"] = auto_renew_duration
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["default_namespace_resource_spec"] = default_namespace_resource_spec
         __props__.__dict__["duration"] = duration
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["pricing_cycle"] = pricing_cycle
@@ -841,6 +889,7 @@ class VvpInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            default_namespace_resource_spec: pulumi.Input[Optional[Union['VvpInstanceDefaultNamespaceResourceSpecArgs', 'VvpInstanceDefaultNamespaceResourceSpecArgsDict', 'outputs.VvpInstanceDefaultNamespaceResourceSpec']]] = None,
             duration: pulumi.Input[Optional[_builtins.int]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
@@ -859,6 +908,7 @@ class VvpInstance(pulumi.CustomResource):
         __props__: dict = {}
         __props__["autoRenewDuration"] = auto_renew_duration
         __props__["createTime"] = create_time
+        __props__["defaultNamespaceResourceSpec"] = default_namespace_resource_spec
         __props__["duration"] = duration
         __props__["paymentType"] = payment_type
         __props__["pricingCycle"] = pricing_cycle
@@ -891,6 +941,14 @@ class VvpInstance(pulumi.CustomResource):
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultNamespaceResourceSpec")
+    def default_namespace_resource_spec(self) -> pulumi.Output[Optional['outputs.VvpInstanceDefaultNamespaceResourceSpec']]:
+        """
+        The default namespace resource configuration. See `default_namespace_resource_spec` below.
+        """
+        return pulumi.get(self, "default_namespace_resource_spec")
 
     @_builtins.property
     @pulumi.getter
@@ -1006,9 +1064,10 @@ class VvpInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
+    @_utilities.deprecated("""Field `zone_id` has been deprecated from version 2.3.0.""")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The zone ID of the resource.
+        The zone ID of the resource. Field `zone_id` has been deprecated from version 2.3.0.
         """
         return pulumi.get(self, "zone_id")
 

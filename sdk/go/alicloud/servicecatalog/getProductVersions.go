@@ -13,7 +13,7 @@ import (
 
 // This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
 //
-// > **NOTE:** Available in 1.196.0+
+// > **NOTE:** Available since v1.196.0+
 //
 // ## Example Usage
 //
@@ -54,6 +54,7 @@ func GetProductVersions(ctx *pulumi.Context, args *GetProductVersionsArgs, opts 
 
 // A collection of arguments for invoking getProductVersions.
 type GetProductVersionsArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Product Version IDs.
 	Ids []string `pulumi:"ids"`
@@ -76,9 +77,12 @@ type GetProductVersionsResult struct {
 	// A list of name of Product Versions.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	ProductId  string   `pulumi:"productId"`
+	// Product ID.
+	ProductId string `pulumi:"productId"`
 	// A list of Product Version Entries. Each element contains the following attributes:
 	ProductVersions []GetProductVersionsProductVersion `pulumi:"productVersions"`
+	// (Deprecated since v1.197.0) A list of Product Version Entries. Each element contains the following attributes:
+	//
 	// Deprecated: Field 'versions' has been deprecated from provider version 1.197.0.
 	Versions []GetProductVersionsVersion `pulumi:"versions"`
 }
@@ -90,6 +94,7 @@ func GetProductVersionsOutput(ctx *pulumi.Context, args GetProductVersionsOutput
 
 // A collection of arguments for invoking getProductVersions.
 type GetProductVersionsOutputArgs struct {
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Product Version IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -147,6 +152,7 @@ func (o GetProductVersionsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProductVersionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Product ID.
 func (o GetProductVersionsResultOutput) ProductId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProductVersionsResult) string { return v.ProductId }).(pulumi.StringOutput)
 }
@@ -156,6 +162,8 @@ func (o GetProductVersionsResultOutput) ProductVersions() GetProductVersionsProd
 	return o.ApplyT(func(v GetProductVersionsResult) []GetProductVersionsProductVersion { return v.ProductVersions }).(GetProductVersionsProductVersionArrayOutput)
 }
 
+// (Deprecated since v1.197.0) A list of Product Version Entries. Each element contains the following attributes:
+//
 // Deprecated: Field 'versions' has been deprecated from provider version 1.197.0.
 func (o GetProductVersionsResultOutput) Versions() GetProductVersionsVersionArrayOutput {
 	return o.ApplyT(func(v GetProductVersionsResult) []GetProductVersionsVersion { return v.Versions }).(GetProductVersionsVersionArrayOutput)

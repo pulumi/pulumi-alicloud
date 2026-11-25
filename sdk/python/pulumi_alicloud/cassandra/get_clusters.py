@@ -96,7 +96,7 @@ class GetClustersResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        A mapping of tags to assign to the resource.
+        (Optional) A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -125,7 +125,7 @@ def get_clusters(ids: Optional[Sequence[_builtins.str]] = None,
     The `cassandra_get_clusters` data source provides a collection of Cassandra clusters available in Alicloud account.
     Filters support regular expression for the cluster name, ids or tags.
 
-    > **NOTE:**  Available in 1.88.0+.
+    > **NOTE:** Available since v1.88.0.
 
     > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 
@@ -169,7 +169,7 @@ def get_clusters_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
     The `cassandra_get_clusters` data source provides a collection of Cassandra clusters available in Alicloud account.
     Filters support regular expression for the cluster name, ids or tags.
 
-    > **NOTE:**  Available in 1.88.0+.
+    > **NOTE:** Available since v1.88.0.
 
     > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 

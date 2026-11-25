@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+.
+        /// &gt; **NOTE:** Available since v1.132.0.
         /// 
         /// ## Example Usage
         /// 
@@ -231,6 +231,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     [OutputType]
     public sealed class GetGatewaysResult
     {
+        /// <summary>
+        /// A list of Cloud Storage Gateway Gateways. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewaysGatewayResult> Gateways;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -238,11 +241,20 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Gateway names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// gateway status.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// storage bundle id.
+        /// </summary>
         public readonly string StorageBundleId;
         public readonly int TotalCount;
 

@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertGroupConfiguration {
+    /**
+     * @return Group configuration&#39;s fields list when type is custom.
+     * 
+     */
     private @Nullable List<String> fields;
     /**
      * @return Group configuration type, including no_group, labels_auto, custom.
@@ -20,6 +24,10 @@ public final class AlertGroupConfiguration {
     private String type;
 
     private AlertGroupConfiguration() {}
+    /**
+     * @return Group configuration&#39;s fields list when type is custom.
+     * 
+     */
     public List<String> fields() {
         return this.fields == null ? List.of() : this.fields;
     }

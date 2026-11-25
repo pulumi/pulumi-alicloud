@@ -14,9 +14,17 @@ public final class SlrArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SlrArgs Empty = new SlrArgs();
 
+    /**
+     * The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+     * 
+     */
     @Import(name="productName", required=true)
     private Output<String> productName;
 
+    /**
+     * @return The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+     * 
+     */
     public Output<String> productName() {
         return this.productName;
     }
@@ -45,11 +53,23 @@ public final class SlrArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SlrArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param productName The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+         * 
+         * @return builder
+         * 
+         */
         public Builder productName(Output<String> productName) {
             $.productName = productName;
             return this;
         }
 
+        /**
+         * @param productName The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+         * 
+         * @return builder
+         * 
+         */
         public Builder productName(String productName) {
             return productName(Output.of(productName));
         }

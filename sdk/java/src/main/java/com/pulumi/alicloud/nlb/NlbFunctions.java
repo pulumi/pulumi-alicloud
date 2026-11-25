@@ -348,7 +348,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -398,7 +398,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -448,7 +448,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -498,7 +498,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -548,7 +548,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -598,7 +598,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -648,7 +648,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -698,7 +698,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -747,7 +747,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -796,7 +796,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -845,7 +845,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -894,7 +894,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -943,7 +943,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -992,7 +992,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+.
+     * &gt; **NOTE:** Available since v1.187.0.
      * 
      * ## Example Usage
      * 
@@ -1699,7 +1699,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -1743,7 +1743,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -1787,7 +1787,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -1831,7 +1831,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -1875,7 +1875,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -1919,7 +1919,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 
@@ -1963,7 +1963,7 @@ public final class NlbFunctions {
     /**
      * This data source provides the available zones with the Network Load Balancer (NLB) Instance of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.191.0+.
+     * &gt; **NOTE:** Available since v1.191.0.
      * 
      * ## Example Usage
      * 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class KubernetesMasterNode
     {
         /// <summary>
-        /// ID of the node.
+        /// (Optional) The id of a node.
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The private IP address of node.
+        /// (Optional) The private ip of a node.
         /// </summary>
         public readonly string? PrivateIp;
 

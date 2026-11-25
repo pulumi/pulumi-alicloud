@@ -39,6 +39,7 @@ class InstanceArgs:
                  enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_node_configuration: pulumi.Input[Optional['InstanceIndexNodeConfigurationArgs']] = None,
                  instance_category: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  kibana_configuration: pulumi.Input[Optional['InstanceKibanaConfigurationArgs']] = None,
@@ -53,6 +54,8 @@ class InstanceArgs:
                  master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -61,6 +64,7 @@ class InstanceArgs:
                  renew_status: pulumi.Input[Optional[_builtins.str]] = None,
                  renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_node_configuration: pulumi.Input[Optional['InstanceSearchNodeConfigurationArgs']] = None,
                  setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -112,6 +116,7 @@ class InstanceArgs:
                - false (default): No.
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input['InstanceIndexNodeConfigurationArgs'] index_node_configuration: Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `index_node_configuration` below.
         :param pulumi.Input[_builtins.str] instance_category: Edition type:
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -132,12 +137,17 @@ class InstanceArgs:
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
                - `PayAsYouGo`: Pay-as-you-go
                - `Subscription`: Subscription
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+               
+               > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         :param pulumi.Input[_builtins.str] renew_status: The renewal status. Valid values:
                - AutoRenewal: Auto-renewal.
@@ -148,7 +158,8 @@ class InstanceArgs:
                - Y: Year.
                
                > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
+        :param pulumi.Input['InstanceSearchNodeConfigurationArgs'] search_node_configuration: Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `search_node_configuration` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
         :param pulumi.Input[_builtins.str] update_strategy: Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
@@ -225,6 +236,8 @@ class InstanceArgs:
             pulumi.set(__self__, "enable_public", enable_public)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if index_node_configuration is not None:
+            pulumi.set(__self__, "index_node_configuration", index_node_configuration)
         if instance_category is not None:
             pulumi.set(__self__, "instance_category", instance_category)
         if instance_charge_type is not None:
@@ -265,6 +278,10 @@ class InstanceArgs:
             pulumi.set(__self__, "order_action_type", order_action_type)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -281,6 +298,8 @@ class InstanceArgs:
             pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if search_node_configuration is not None:
+            pulumi.set(__self__, "search_node_configuration", search_node_configuration)
         if setting_config is not None:
             pulumi.set(__self__, "setting_config", setting_config)
         if tags is not None:
@@ -562,6 +581,18 @@ class InstanceArgs:
         pulumi.set(self, "force", value)
 
     @_builtins.property
+    @pulumi.getter(name="indexNodeConfiguration")
+    def index_node_configuration(self) -> pulumi.Input[Optional['InstanceIndexNodeConfigurationArgs']]:
+        """
+        Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `index_node_configuration` below.
+        """
+        return pulumi.get(self, "index_node_configuration")
+
+    @index_node_configuration.setter
+    def index_node_configuration(self, value: pulumi.Input[Optional['InstanceIndexNodeConfigurationArgs']]):
+        pulumi.set(self, "index_node_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceCategory")
     def instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -740,6 +771,31 @@ class InstanceArgs:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -782,6 +838,8 @@ class InstanceArgs:
     def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access protocol. Supported protocols: HTTP and HTTPS.
+
+        > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         """
         return pulumi.get(self, "protocol")
 
@@ -836,13 +894,25 @@ class InstanceArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group to which the instance belongs.
+        The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
     def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="searchNodeConfiguration")
+    def search_node_configuration(self) -> pulumi.Input[Optional['InstanceSearchNodeConfigurationArgs']]:
+        """
+        Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `search_node_configuration` below.
+        """
+        return pulumi.get(self, "search_node_configuration")
+
+    @search_node_configuration.setter
+    def search_node_configuration(self, value: pulumi.Input[Optional['InstanceSearchNodeConfigurationArgs']]):
+        pulumi.set(self, "search_node_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="settingConfig")
@@ -999,6 +1069,7 @@ class _InstanceState:
                  enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_node_configuration: pulumi.Input[Optional['InstanceIndexNodeConfigurationArgs']] = None,
                  instance_category: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  kibana_configuration: pulumi.Input[Optional['InstanceKibanaConfigurationArgs']] = None,
@@ -1016,6 +1087,8 @@ class _InstanceState:
                  master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1027,6 +1100,7 @@ class _InstanceState:
                  renew_status: pulumi.Input[Optional[_builtins.str]] = None,
                  renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_node_configuration: pulumi.Input[Optional['InstanceSearchNodeConfigurationArgs']] = None,
                  setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1072,6 +1146,7 @@ class _InstanceState:
                - false (default): No.
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input['InstanceIndexNodeConfigurationArgs'] index_node_configuration: Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `index_node_configuration` below.
         :param pulumi.Input[_builtins.str] instance_category: Edition type:
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -1095,6 +1170,9 @@ class _InstanceState:
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
                - `PayAsYouGo`: Pay-as-you-go
                - `Subscription`: Subscription
@@ -1102,6 +1180,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+               
+               > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         :param pulumi.Input[_builtins.str] public_domain: The public endpoint of the instance.
         :param pulumi.Input[_builtins.int] public_port: The public access port of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
@@ -1114,7 +1194,8 @@ class _InstanceState:
                - Y: Year.
                
                > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
+        :param pulumi.Input['InstanceSearchNodeConfigurationArgs'] search_node_configuration: Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `search_node_configuration` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
         :param pulumi.Input[_builtins.str] status: The status of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
@@ -1208,6 +1289,8 @@ class _InstanceState:
             pulumi.set(__self__, "enable_public", enable_public)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if index_node_configuration is not None:
+            pulumi.set(__self__, "index_node_configuration", index_node_configuration)
         if instance_category is not None:
             pulumi.set(__self__, "instance_category", instance_category)
         if instance_charge_type is not None:
@@ -1254,6 +1337,10 @@ class _InstanceState:
             pulumi.set(__self__, "order_action_type", order_action_type)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -1276,6 +1363,8 @@ class _InstanceState:
             pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if search_node_configuration is not None:
+            pulumi.set(__self__, "search_node_configuration", search_node_configuration)
         if setting_config is not None:
             pulumi.set(__self__, "setting_config", setting_config)
         if status is not None:
@@ -1565,6 +1654,18 @@ class _InstanceState:
         pulumi.set(self, "force", value)
 
     @_builtins.property
+    @pulumi.getter(name="indexNodeConfiguration")
+    def index_node_configuration(self) -> pulumi.Input[Optional['InstanceIndexNodeConfigurationArgs']]:
+        """
+        Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `index_node_configuration` below.
+        """
+        return pulumi.get(self, "index_node_configuration")
+
+    @index_node_configuration.setter
+    def index_node_configuration(self, value: pulumi.Input[Optional['InstanceIndexNodeConfigurationArgs']]):
+        pulumi.set(self, "index_node_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceCategory")
     def instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1779,6 +1880,31 @@ class _InstanceState:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1833,6 +1959,8 @@ class _InstanceState:
     def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access protocol. Supported protocols: HTTP and HTTPS.
+
+        > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         """
         return pulumi.get(self, "protocol")
 
@@ -1911,13 +2039,25 @@ class _InstanceState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group to which the instance belongs.
+        The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
     def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="searchNodeConfiguration")
+    def search_node_configuration(self) -> pulumi.Input[Optional['InstanceSearchNodeConfigurationArgs']]:
+        """
+        Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `search_node_configuration` below.
+        """
+        return pulumi.get(self, "search_node_configuration")
+
+    @search_node_configuration.setter
+    def search_node_configuration(self, value: pulumi.Input[Optional['InstanceSearchNodeConfigurationArgs']]):
+        pulumi.set(self, "search_node_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="settingConfig")
@@ -2120,6 +2260,7 @@ class Instance(pulumi.CustomResource):
                  enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_node_configuration: pulumi.Input[Optional[Union['InstanceIndexNodeConfigurationArgs', 'InstanceIndexNodeConfigurationArgsDict', 'outputs.InstanceIndexNodeConfiguration']]] = None,
                  instance_category: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict', 'outputs.InstanceKibanaConfiguration']]] = None,
@@ -2134,6 +2275,8 @@ class Instance(pulumi.CustomResource):
                  master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2142,6 +2285,7 @@ class Instance(pulumi.CustomResource):
                  renew_status: pulumi.Input[Optional[_builtins.str]] = None,
                  renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_node_configuration: pulumi.Input[Optional[Union['InstanceSearchNodeConfigurationArgs', 'InstanceSearchNodeConfigurationArgsDict', 'outputs.InstanceSearchNodeConfiguration']]] = None,
                  setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2240,6 +2384,7 @@ class Instance(pulumi.CustomResource):
                - false (default): No.
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[Union['InstanceIndexNodeConfigurationArgs', 'InstanceIndexNodeConfigurationArgsDict', 'outputs.InstanceIndexNodeConfiguration']] index_node_configuration: Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `index_node_configuration` below.
         :param pulumi.Input[_builtins.str] instance_category: Edition type:
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -2260,12 +2405,17 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
                - `PayAsYouGo`: Pay-as-you-go
                - `Subscription`: Subscription
         :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+               
+               > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         :param pulumi.Input[_builtins.str] renew_status: The renewal status. Valid values:
                - AutoRenewal: Auto-renewal.
@@ -2276,7 +2426,8 @@ class Instance(pulumi.CustomResource):
                - Y: Year.
                
                > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
+        :param pulumi.Input[Union['InstanceSearchNodeConfigurationArgs', 'InstanceSearchNodeConfigurationArgsDict', 'outputs.InstanceSearchNodeConfiguration']] search_node_configuration: Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `search_node_configuration` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
         :param pulumi.Input[_builtins.str] update_strategy: Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
@@ -2401,6 +2552,7 @@ class Instance(pulumi.CustomResource):
                  enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_node_configuration: pulumi.Input[Optional[Union['InstanceIndexNodeConfigurationArgs', 'InstanceIndexNodeConfigurationArgsDict', 'outputs.InstanceIndexNodeConfiguration']]] = None,
                  instance_category: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict', 'outputs.InstanceKibanaConfiguration']]] = None,
@@ -2415,6 +2567,8 @@ class Instance(pulumi.CustomResource):
                  master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2423,6 +2577,7 @@ class Instance(pulumi.CustomResource):
                  renew_status: pulumi.Input[Optional[_builtins.str]] = None,
                  renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_node_configuration: pulumi.Input[Optional[Union['InstanceSearchNodeConfigurationArgs', 'InstanceSearchNodeConfigurationArgsDict', 'outputs.InstanceSearchNodeConfiguration']]] = None,
                  setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2460,6 +2615,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_kibana_public_network"] = enable_kibana_public_network
             __props__.__dict__["enable_public"] = enable_public
             __props__.__dict__["force"] = force
+            __props__.__dict__["index_node_configuration"] = index_node_configuration
             __props__.__dict__["instance_category"] = instance_category
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["kibana_configuration"] = kibana_configuration
@@ -2474,6 +2630,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["master_node_spec"] = master_node_spec
             __props__.__dict__["order_action_type"] = order_action_type
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
+            __props__.__dict__["password_wo_version"] = password_wo_version
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["private_whitelists"] = private_whitelists
@@ -2482,6 +2640,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["renew_status"] = renew_status
             __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["search_node_configuration"] = search_node_configuration
             __props__.__dict__["setting_config"] = setting_config
             __props__.__dict__["tags"] = tags
             __props__.__dict__["update_strategy"] = update_strategy
@@ -2508,7 +2667,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["public_domain"] = None
             __props__.__dict__["public_port"] = None
             __props__.__dict__["status"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'alicloud:elasticsearch/instance:Instance',
@@ -2539,6 +2698,7 @@ class Instance(pulumi.CustomResource):
             enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
+            index_node_configuration: pulumi.Input[Optional[Union['InstanceIndexNodeConfigurationArgs', 'InstanceIndexNodeConfigurationArgsDict', 'outputs.InstanceIndexNodeConfiguration']]] = None,
             instance_category: pulumi.Input[Optional[_builtins.str]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
             kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict', 'outputs.InstanceKibanaConfiguration']]] = None,
@@ -2556,6 +2716,8 @@ class Instance(pulumi.CustomResource):
             master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
             order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2567,6 +2729,7 @@ class Instance(pulumi.CustomResource):
             renew_status: pulumi.Input[Optional[_builtins.str]] = None,
             renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            search_node_configuration: pulumi.Input[Optional[Union['InstanceSearchNodeConfigurationArgs', 'InstanceSearchNodeConfigurationArgsDict', 'outputs.InstanceSearchNodeConfiguration']]] = None,
             setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2616,6 +2779,7 @@ class Instance(pulumi.CustomResource):
                - false (default): No.
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[Union['InstanceIndexNodeConfigurationArgs', 'InstanceIndexNodeConfigurationArgsDict', 'outputs.InstanceIndexNodeConfiguration']] index_node_configuration: Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `index_node_configuration` below.
         :param pulumi.Input[_builtins.str] instance_category: Edition type:
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
@@ -2639,6 +2803,9 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         :param pulumi.Input[_builtins.str] password: The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        :param pulumi.Input[_builtins.int] password_wo_version: The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the instance. Supported values:
                - `PayAsYouGo`: Pay-as-you-go
                - `Subscription`: Subscription
@@ -2646,6 +2813,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         :param pulumi.Input[_builtins.str] protocol: The access protocol. Supported protocols: HTTP and HTTPS.
+               
+               > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         :param pulumi.Input[_builtins.str] public_domain: The public endpoint of the instance.
         :param pulumi.Input[_builtins.int] public_port: The public access port of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
@@ -2658,7 +2827,8 @@ class Instance(pulumi.CustomResource):
                - Y: Year.
                
                > **NOTE:**  This parameter is required when RenewalStatus is set to AutoRenewal.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
+        :param pulumi.Input[Union['InstanceSearchNodeConfigurationArgs', 'InstanceSearchNodeConfigurationArgsDict', 'outputs.InstanceSearchNodeConfiguration']] search_node_configuration: Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `search_node_configuration` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: YML configuration file settings for the instance.
         :param pulumi.Input[_builtins.str] status: The status of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Instance tag group.
@@ -2713,6 +2883,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["enable_kibana_public_network"] = enable_kibana_public_network
         __props__.__dict__["enable_public"] = enable_public
         __props__.__dict__["force"] = force
+        __props__.__dict__["index_node_configuration"] = index_node_configuration
         __props__.__dict__["instance_category"] = instance_category
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["kibana_configuration"] = kibana_configuration
@@ -2730,6 +2901,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["master_node_spec"] = master_node_spec
         __props__.__dict__["order_action_type"] = order_action_type
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_wo"] = password_wo
+        __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
@@ -2741,6 +2914,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["renew_status"] = renew_status
         __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["search_node_configuration"] = search_node_configuration
         __props__.__dict__["setting_config"] = setting_config
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -2778,6 +2952,7 @@ class Instance(pulumi.CustomResource):
             enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
+            index_node_configuration: pulumi.Input[Optional[Union['InstanceIndexNodeConfigurationArgs', 'InstanceIndexNodeConfigurationArgsDict', 'outputs.InstanceIndexNodeConfiguration']]] = None,
             instance_category: pulumi.Input[Optional[_builtins.str]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
             kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict', 'outputs.InstanceKibanaConfiguration']]] = None,
@@ -2795,6 +2970,8 @@ class Instance(pulumi.CustomResource):
             master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
             order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2806,6 +2983,7 @@ class Instance(pulumi.CustomResource):
             renew_status: pulumi.Input[Optional[_builtins.str]] = None,
             renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            search_node_configuration: pulumi.Input[Optional[Union['InstanceSearchNodeConfigurationArgs', 'InstanceSearchNodeConfigurationArgsDict', 'outputs.InstanceSearchNodeConfiguration']]] = None,
             setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2839,6 +3017,7 @@ class Instance(pulumi.CustomResource):
         __props__["enableKibanaPublicNetwork"] = enable_kibana_public_network
         __props__["enablePublic"] = enable_public
         __props__["force"] = force
+        __props__["indexNodeConfiguration"] = index_node_configuration
         __props__["instanceCategory"] = instance_category
         __props__["instanceChargeType"] = instance_charge_type
         __props__["kibanaConfiguration"] = kibana_configuration
@@ -2856,6 +3035,8 @@ class Instance(pulumi.CustomResource):
         __props__["masterNodeSpec"] = master_node_spec
         __props__["orderActionType"] = order_action_type
         __props__["password"] = password
+        __props__["passwordWo"] = password_wo
+        __props__["passwordWoVersion"] = password_wo_version
         __props__["paymentType"] = payment_type
         __props__["period"] = period
         __props__["port"] = port
@@ -2867,6 +3048,7 @@ class Instance(pulumi.CustomResource):
         __props__["renewStatus"] = renew_status
         __props__["renewalDurationUnit"] = renewal_duration_unit
         __props__["resourceGroupId"] = resource_group_id
+        __props__["searchNodeConfiguration"] = search_node_configuration
         __props__["settingConfig"] = setting_config
         __props__["status"] = status
         __props__["tags"] = tags
@@ -3053,6 +3235,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "force")
 
     @_builtins.property
+    @pulumi.getter(name="indexNodeConfiguration")
+    def index_node_configuration(self) -> pulumi.Output['outputs.InstanceIndexNodeConfiguration']:
+        """
+        Configuration of index nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `index_node_configuration` below.
+        """
+        return pulumi.get(self, "index_node_configuration")
+
+    @_builtins.property
     @pulumi.getter(name="instanceCategory")
     def instance_category(self) -> pulumi.Output[_builtins.str]:
         """
@@ -3199,6 +3389,23 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "password")
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only password of the account. It is only sent to the server when the resource is created or the `password_wo_version` changes and is never stored in the state or plan.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `password_wo` changes.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
@@ -3237,6 +3444,8 @@ class Instance(pulumi.CustomResource):
     def protocol(self) -> pulumi.Output[_builtins.str]:
         """
         The access protocol. Supported protocols: HTTP and HTTPS.
+
+        > **NOTE:** For instances of version 7.10 and earlier (region-dependent for 7.10), setting `protocol` to `HTTPS` requires dedicated coordinating nodes. Without them, the creation fails with the `HttpsNeedClientNode` error, and coordinating nodes purchased on these versions cannot be disabled or removed afterwards. Set `client_node_configuration` (or the deprecated `client_node_spec` and `client_node_amount`) together with `protocol` on affected versions. Instances of version 7.16 and later do not require coordinating nodes for `HTTPS`. For more information, see [FAQ about Alibaba Cloud Elasticsearch clusters](https://www.alibabacloud.com/help/en/es/support/faq-about-alibaba-cloud-elasticsearch-clusters).
         """
         return pulumi.get(self, "protocol")
 
@@ -3291,9 +3500,17 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the resource group to which the instance belongs.
+        The ID of the resource group to which the instance belongs. Updating this field moves the instance to the target resource group via ResourceManager MoveResources.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="searchNodeConfiguration")
+    def search_node_configuration(self) -> pulumi.Output['outputs.InstanceSearchNodeConfiguration']:
+        """
+        Configuration of search (query) nodes for the Elasticsearch cluster. Search (query) and index nodes are supported only on Elasticsearch `9.99` instances and cannot coexist with data nodes, cold nodes, or coordinator nodes; a `9.99` instance is composed of these node roles and they are set at creation. **Note: The `spec` parameter is immutable after resource creation.** See `search_node_configuration` below.
+        """
+        return pulumi.get(self, "search_node_configuration")
 
     @_builtins.property
     @pulumi.getter(name="settingConfig")

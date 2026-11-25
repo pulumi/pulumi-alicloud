@@ -165,13 +165,25 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds ":2}.
         /// </summary>
         public readonly string Readiness;
+        /// <summary>
+        /// The region ID.
+        /// </summary>
         public readonly string RegionId;
         /// <summary>
         /// Initial number of instances.
         /// </summary>
         public readonly int Replicas;
+        /// <summary>
+        /// The repo name.
+        /// </summary>
         public readonly string RepoName;
+        /// <summary>
+        /// The repo namespace.
+        /// </summary>
         public readonly string RepoNamespace;
+        /// <summary>
+        /// The repo origin type.
+        /// </summary>
         public readonly string RepoOriginType;
         /// <summary>
         /// Security group ID.
@@ -182,7 +194,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string SlsConfigs;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
         /// </summary>
         public readonly string Status;
         /// <summary>

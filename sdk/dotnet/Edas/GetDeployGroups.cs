@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Edas
         /// <summary>
         /// This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.82.0+
+        /// &gt; **NOTE:** Available since v1.82.0.
         /// 
         /// ## Example Usage
         /// 
@@ -29,10 +29,6 @@ namespace Pulumi.AliCloud.Edas
         ///     var groups = AliCloud.Edas.GetDeployGroups.Invoke(new()
         ///     {
         ///         AppId = "xxx",
-        ///         Ids = new[]
-        ///         {
-        ///             "xxx",
-        ///         },
         ///         OutputFile = "groups.txt",
         ///     });
         /// 
@@ -49,7 +45,7 @@ namespace Pulumi.AliCloud.Edas
         /// <summary>
         /// This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.82.0+
+        /// &gt; **NOTE:** Available since v1.82.0.
         /// 
         /// ## Example Usage
         /// 
@@ -64,10 +60,6 @@ namespace Pulumi.AliCloud.Edas
         ///     var groups = AliCloud.Edas.GetDeployGroups.Invoke(new()
         ///     {
         ///         AppId = "xxx",
-        ///         Ids = new[]
-        ///         {
-        ///             "xxx",
-        ///         },
         ///         OutputFile = "groups.txt",
         ///     });
         /// 
@@ -84,7 +76,7 @@ namespace Pulumi.AliCloud.Edas
         /// <summary>
         /// This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.82.0+
+        /// &gt; **NOTE:** Available since v1.82.0.
         /// 
         /// ## Example Usage
         /// 
@@ -99,10 +91,6 @@ namespace Pulumi.AliCloud.Edas
         ///     var groups = AliCloud.Edas.GetDeployGroups.Invoke(new()
         ///     {
         ///         AppId = "xxx",
-        ///         Ids = new[]
-        ///         {
-        ///             "xxx",
-        ///         },
         ///         OutputFile = "groups.txt",
         ///     });
         /// 

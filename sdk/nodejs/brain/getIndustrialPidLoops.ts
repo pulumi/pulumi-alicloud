@@ -46,6 +46,9 @@ export function getIndustrialPidLoops(args: GetIndustrialPidLoopsArgs, opts?: pu
  * A collection of arguments for invoking getIndustrialPidLoops.
  */
 export interface GetIndustrialPidLoopsArgs {
+    /**
+     * Whether to detail the Pid Loops. Default to `false`. When it is set to `true`, the data source will query the Pid Loop details by `GetLoop`.
+     */
     enableDetails?: boolean;
     /**
      * A list of Pid Loop IDs.
@@ -97,6 +100,9 @@ export interface GetIndustrialPidLoopsResult {
      * The name of Pid Loop.
      */
     readonly pidLoopName?: string;
+    /**
+     * The pid project id of Pid Loop.
+     */
     readonly pidProjectId: string;
     /**
      * The status of Pid Loop.
@@ -143,6 +149,9 @@ export function getIndustrialPidLoopsOutput(args: GetIndustrialPidLoopsOutputArg
  * A collection of arguments for invoking getIndustrialPidLoops.
  */
 export interface GetIndustrialPidLoopsOutputArgs {
+    /**
+     * Whether to detail the Pid Loops. Default to `false`. When it is set to `true`, the data source will query the Pid Loop details by `GetLoop`.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Pid Loop IDs.

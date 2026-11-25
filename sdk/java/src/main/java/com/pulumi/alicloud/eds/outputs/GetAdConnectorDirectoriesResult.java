@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAdConnectorDirectoriesResult {
+    /**
+     * @return A list of Ecd Ad Connector Directories. Each element contains the following attributes:
+     * 
+     */
     private List<GetAdConnectorDirectoriesDirectory> directories;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,23 @@ public final class GetAdConnectorDirectoriesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Ecd Ad Connector Directory names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of directory.
+     * 
+     */
     private @Nullable String status;
 
     private GetAdConnectorDirectoriesResult() {}
+    /**
+     * @return A list of Ecd Ad Connector Directories. Each element contains the following attributes:
+     * 
+     */
     public List<GetAdConnectorDirectoriesDirectory> directories() {
         return this.directories;
     }
@@ -43,12 +59,20 @@ public final class GetAdConnectorDirectoriesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Ecd Ad Connector Directory names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of directory.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

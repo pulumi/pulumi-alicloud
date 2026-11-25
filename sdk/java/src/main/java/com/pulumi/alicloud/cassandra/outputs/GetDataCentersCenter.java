@@ -21,6 +21,10 @@ public final class GetDataCentersCenter {
      * 
      */
     private String commodityInstance;
+    /**
+     * @return The created time of the dataCenter.
+     * 
+     */
     private String createdTime;
     /**
      * @return The id of the Cassandra dataCenter.
@@ -103,6 +107,10 @@ public final class GetDataCentersCenter {
     public String commodityInstance() {
         return this.commodityInstance;
     }
+    /**
+     * @return The created time of the dataCenter.
+     * 
+     */
     public String createdTime() {
         return this.createdTime;
     }

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Scdn.Inputs
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
-        /// The source status. Valid values: online, offline.
+        /// The source status. Valid values: `Online`, `Offline`.
         /// </summary>
         [Input("enabled")]
         public Input<string>? Enabled { get; set; }
@@ -37,10 +37,7 @@ namespace Pulumi.AliCloud.Scdn.Inputs
         public Input<string> Priority { get; set; } = null!;
 
         /// <summary>
-        /// The Origin Server Type. Valid Values:
-        /// * ipaddr: IP Source Station
-        /// * domain: the Domain Name
-        /// * oss: OSS Bucket as a Source Station.
+        /// The Origin Server Type. Valid values:
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

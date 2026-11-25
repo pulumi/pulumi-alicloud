@@ -14,14 +14,14 @@ import (
 
 // Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services.
 // It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-// You can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).
+// You can see detail product introduction in the [Cassandra product documentation](https://www.alibabacloud.com/help/product/49055.htm).
 //
 // > **NOTE:** Available since v1.88.0.
 //
 // > **NOTE:**  Create a cassandra dataCenter need a clusterId,so need create a cassandra cluster first.
 //
 // > **NOTE:**  The following regions support create Vpc network Cassandra cluster.
-// The official website mark  more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
+// The official website mark more regions. Or you can call [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/157540.html).
 //
 // > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
 //
@@ -101,7 +101,8 @@ type DataCenter struct {
 	// Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
 	// Cassandra cluster id of dataCenter-2 belongs to.
-	ClusterId    pulumi.StringOutput `pulumi:"clusterId"`
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// The ID of the Cassandra dataCenter.
 	DataCenterId pulumi.StringOutput `pulumi:"dataCenterId"`
 	// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
 	DataCenterName pulumi.StringPtrOutput `pulumi:"dataCenterName"`
@@ -110,18 +111,23 @@ type DataCenter struct {
 	// - 80-GB increments.
 	DiskSize pulumi.IntPtrOutput `pulumi:"diskSize"`
 	// The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
-	DiskType     pulumi.StringPtrOutput `pulumi:"diskType"`
-	EnablePublic pulumi.BoolPtrOutput   `pulumi:"enablePublic"`
+	DiskType pulumi.StringPtrOutput `pulumi:"diskType"`
+	// Whether to enable public access. System default to `false`.
+	EnablePublic pulumi.BoolPtrOutput `pulumi:"enablePublic"`
 	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The node count of Cassandra dataCenter-2, default to 2.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
 	// The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
-	PayType      pulumi.StringOutput      `pulumi:"payType"`
-	Period       pulumi.IntPtrOutput      `pulumi:"period"`
-	PeriodUnit   pulumi.StringPtrOutput   `pulumi:"periodUnit"`
+	PayType pulumi.StringOutput `pulumi:"payType"`
+	// The purchase period of the dataCenter. Valid when payType = Subscription.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
+	// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
+	// The public access points of the Cassandra dataCenter.
 	PublicPoints pulumi.StringArrayOutput `pulumi:"publicPoints"`
-	Status       pulumi.StringOutput      `pulumi:"status"`
+	// The status of the Cassandra dataCenter.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
 	//
 	// > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
@@ -180,7 +186,8 @@ type dataCenterState struct {
 	// Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// Cassandra cluster id of dataCenter-2 belongs to.
-	ClusterId    *string `pulumi:"clusterId"`
+	ClusterId *string `pulumi:"clusterId"`
+	// The ID of the Cassandra dataCenter.
 	DataCenterId *string `pulumi:"dataCenterId"`
 	// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
 	DataCenterName *string `pulumi:"dataCenterName"`
@@ -189,18 +196,23 @@ type dataCenterState struct {
 	// - 80-GB increments.
 	DiskSize *int `pulumi:"diskSize"`
 	// The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
-	DiskType     *string `pulumi:"diskType"`
-	EnablePublic *bool   `pulumi:"enablePublic"`
+	DiskType *string `pulumi:"diskType"`
+	// Whether to enable public access. System default to `false`.
+	EnablePublic *bool `pulumi:"enablePublic"`
 	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
 	InstanceType *string `pulumi:"instanceType"`
 	// The node count of Cassandra dataCenter-2, default to 2.
 	NodeCount *int `pulumi:"nodeCount"`
 	// The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
-	PayType      *string  `pulumi:"payType"`
-	Period       *int     `pulumi:"period"`
-	PeriodUnit   *string  `pulumi:"periodUnit"`
+	PayType *string `pulumi:"payType"`
+	// The purchase period of the dataCenter. Valid when payType = Subscription.
+	Period *int `pulumi:"period"`
+	// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+	PeriodUnit *string `pulumi:"periodUnit"`
+	// The public access points of the Cassandra dataCenter.
 	PublicPoints []string `pulumi:"publicPoints"`
-	Status       *string  `pulumi:"status"`
+	// The status of the Cassandra dataCenter.
+	Status *string `pulumi:"status"`
 	// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
 	//
 	// > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
@@ -215,7 +227,8 @@ type DataCenterState struct {
 	// Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
 	AutoRenewPeriod pulumi.IntPtrInput
 	// Cassandra cluster id of dataCenter-2 belongs to.
-	ClusterId    pulumi.StringPtrInput
+	ClusterId pulumi.StringPtrInput
+	// The ID of the Cassandra dataCenter.
 	DataCenterId pulumi.StringPtrInput
 	// Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
 	DataCenterName pulumi.StringPtrInput
@@ -224,18 +237,23 @@ type DataCenterState struct {
 	// - 80-GB increments.
 	DiskSize pulumi.IntPtrInput
 	// The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
-	DiskType     pulumi.StringPtrInput
+	DiskType pulumi.StringPtrInput
+	// Whether to enable public access. System default to `false`.
 	EnablePublic pulumi.BoolPtrInput
 	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
 	InstanceType pulumi.StringPtrInput
 	// The node count of Cassandra dataCenter-2, default to 2.
 	NodeCount pulumi.IntPtrInput
 	// The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
-	PayType      pulumi.StringPtrInput
-	Period       pulumi.IntPtrInput
-	PeriodUnit   pulumi.StringPtrInput
+	PayType pulumi.StringPtrInput
+	// The purchase period of the dataCenter. Valid when payType = Subscription.
+	Period pulumi.IntPtrInput
+	// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
+	PeriodUnit pulumi.StringPtrInput
+	// The public access points of the Cassandra dataCenter.
 	PublicPoints pulumi.StringArrayInput
-	Status       pulumi.StringPtrInput
+	// The status of the Cassandra dataCenter.
+	Status pulumi.StringPtrInput
 	// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
 	//
 	// > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
@@ -268,15 +286,18 @@ type dataCenterArgs struct {
 	// - 80-GB increments.
 	DiskSize *int `pulumi:"diskSize"`
 	// The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
-	DiskType     *string `pulumi:"diskType"`
-	EnablePublic *bool   `pulumi:"enablePublic"`
+	DiskType *string `pulumi:"diskType"`
+	// Whether to enable public access. System default to `false`.
+	EnablePublic *bool `pulumi:"enablePublic"`
 	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
 	InstanceType string `pulumi:"instanceType"`
 	// The node count of Cassandra dataCenter-2, default to 2.
 	NodeCount int `pulumi:"nodeCount"`
 	// The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
-	PayType    string  `pulumi:"payType"`
-	Period     *int    `pulumi:"period"`
+	PayType string `pulumi:"payType"`
+	// The purchase period of the dataCenter. Valid when payType = Subscription.
+	Period *int `pulumi:"period"`
+	// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
 	//
@@ -301,15 +322,18 @@ type DataCenterArgs struct {
 	// - 80-GB increments.
 	DiskSize pulumi.IntPtrInput
 	// The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
-	DiskType     pulumi.StringPtrInput
+	DiskType pulumi.StringPtrInput
+	// Whether to enable public access. System default to `false`.
 	EnablePublic pulumi.BoolPtrInput
 	// Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
 	InstanceType pulumi.StringInput
 	// The node count of Cassandra dataCenter-2, default to 2.
 	NodeCount pulumi.IntInput
 	// The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
-	PayType    pulumi.StringInput
-	Period     pulumi.IntPtrInput
+	PayType pulumi.StringInput
+	// The purchase period of the dataCenter. Valid when payType = Subscription.
+	Period pulumi.IntPtrInput
+	// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
 	PeriodUnit pulumi.StringPtrInput
 	// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
 	//
@@ -421,6 +445,7 @@ func (o DataCenterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The ID of the Cassandra dataCenter.
 func (o DataCenterOutput) DataCenterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.DataCenterId }).(pulumi.StringOutput)
 }
@@ -442,6 +467,7 @@ func (o DataCenterOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataCenter) pulumi.StringPtrOutput { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable public access. System default to `false`.
 func (o DataCenterOutput) EnablePublic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DataCenter) pulumi.BoolPtrOutput { return v.EnablePublic }).(pulumi.BoolPtrOutput)
 }
@@ -461,18 +487,22 @@ func (o DataCenterOutput) PayType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.PayType }).(pulumi.StringOutput)
 }
 
+// The purchase period of the dataCenter. Valid when payType = Subscription.
 func (o DataCenterOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DataCenter) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
+// The unit of the purchase period. Valid values are `Month`, `Year`. Valid when payType = Subscription.
 func (o DataCenterOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataCenter) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
+// The public access points of the Cassandra dataCenter.
 func (o DataCenterOutput) PublicPoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DataCenter) pulumi.StringArrayOutput { return v.PublicPoints }).(pulumi.StringArrayOutput)
 }
 
+// The status of the Cassandra dataCenter.
 func (o DataCenterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

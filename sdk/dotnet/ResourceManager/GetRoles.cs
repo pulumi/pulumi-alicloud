@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// <summary>
         /// This data source provides the Resource Manager Roles of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.86.0+.
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 

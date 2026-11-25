@@ -9,9 +9,51 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.EventBridge
 {
+    /// <summary>
+    /// Provides a Event Bridge Service Linked Role resource.
+    /// 
+    /// `alicloud.eventbridge.Slr` is an alias of `alicloud.eventbridge.ServiceLinkedRole`. The two resource types share the same schema, CRUD behavior and service-linked-role lifecycle; use either name interchangeably.
+    /// 
+    /// For information about Event Bridge Service Linked Role and how to use it, see [What is Service Linked Role](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+    /// 
+    /// &gt; **NOTE:** Available since v1.129.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.EventBridge.Slr("default", new()
+    ///     {
+    ///         ProductName = "AliyunServiceRoleForEventBridgeSourceRocketMQ",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
+    /// ## Import
+    /// 
+    /// Event Bridge Service Linked Role can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:eventbridge/slr:Slr example &lt;product_name&gt;
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:eventbridge/slr:Slr")]
     public partial class Slr : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+        /// </summary>
         [Output("productName")]
         public Output<string> ProductName { get; private set; } = null!;
 
@@ -61,6 +103,9 @@ namespace Pulumi.AliCloud.EventBridge
 
     public sealed class SlrArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+        /// </summary>
         [Input("productName", required: true)]
         public Input<string> ProductName { get; set; } = null!;
 
@@ -72,6 +117,9 @@ namespace Pulumi.AliCloud.EventBridge
 
     public sealed class SlrState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
+        /// </summary>
         [Input("productName")]
         public Input<string>? ProductName { get; set; }
 

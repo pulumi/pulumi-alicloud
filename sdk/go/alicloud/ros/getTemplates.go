@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ros Templates of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.108.0+.
+// > **NOTE:** Available since v1.108.0.
 //
 // ## Example Usage
 //
@@ -78,15 +78,20 @@ type GetTemplatesArgs struct {
 type GetTemplatesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                 `pulumi:"id"`
-	Ids          []string               `pulumi:"ids"`
-	NameRegex    *string                `pulumi:"nameRegex"`
-	Names        []string               `pulumi:"names"`
-	OutputFile   *string                `pulumi:"outputFile"`
-	ShareType    *string                `pulumi:"shareType"`
-	Tags         map[string]string      `pulumi:"tags"`
-	TemplateName *string                `pulumi:"templateName"`
-	Templates    []GetTemplatesTemplate `pulumi:"templates"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Template names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Share Type.
+	ShareType *string `pulumi:"shareType"`
+	// Tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
+	TemplateName *string `pulumi:"templateName"`
+	// A list of Ros Templates. Each element contains the following attributes:
+	Templates []GetTemplatesTemplate `pulumi:"templates"`
 }
 
 func GetTemplatesOutput(ctx *pulumi.Context, args GetTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetTemplatesResultOutput {
@@ -148,6 +153,7 @@ func (o GetTemplatesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Template names.
 func (o GetTemplatesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTemplatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -156,18 +162,22 @@ func (o GetTemplatesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Share Type.
 func (o GetTemplatesResultOutput) ShareType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.ShareType }).(pulumi.StringPtrOutput)
 }
 
+// Tags.
 func (o GetTemplatesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetTemplatesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
 func (o GetTemplatesResultOutput) TemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTemplatesResult) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ros Templates. Each element contains the following attributes:
 func (o GetTemplatesResultOutput) Templates() GetTemplatesTemplateArrayOutput {
 	return o.ApplyT(func(v GetTemplatesResult) []GetTemplatesTemplate { return v.Templates }).(GetTemplatesTemplateArrayOutput)
 }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Simple Application Server Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.135.0+.
+// > **NOTE:** Available since v1.135.0.
 //
 // ## Example Usage
 //
@@ -79,14 +79,18 @@ type GetInstancesArgs struct {
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                 `pulumi:"id"`
-	Ids         []string               `pulumi:"ids"`
-	Instances   []GetInstancesInstance `pulumi:"instances"`
-	NameRegex   *string                `pulumi:"nameRegex"`
-	Names       []string               `pulumi:"names"`
-	OutputFile  *string                `pulumi:"outputFile"`
-	PaymentType *string                `pulumi:"paymentType"`
-	Status      *string                `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Simple Application Server Instances. Each element contains the following attributes:
+	Instances []GetInstancesInstance `pulumi:"instances"`
+	NameRegex *string                `pulumi:"nameRegex"`
+	// A list of Instance names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The billing method of the simple application server.
+	PaymentType *string `pulumi:"paymentType"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -136,6 +140,7 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Simple Application Server Instances. Each element contains the following attributes:
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
@@ -144,6 +149,7 @@ func (o GetInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Instance names.
 func (o GetInstancesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -152,10 +158,12 @@ func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The billing method of the simple application server.
 func (o GetInstancesResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -32,14 +32,30 @@ public final class ServiceLinkedRoleState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the service linked role.
+     * The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+     * - `AliyunServiceRoleForSas`
+     * - `AliyunServiceRoleForSasCspm`
+     * - `AliyunServiceRoleForSasAgentless`
+     * - `AliyunServiceRoleForOssMfd`
+     * - `AliyunServiceRoleForAntiRansomwareMssp`
+     * - `AliyunServiceRoleForSasSecllm`
+     * - `AliyunServiceRoleForSasAI`
+     * - `AliyunLogETLRole`
      * 
      */
     @Import(name="serviceLinkedRole")
     private @Nullable Output<String> serviceLinkedRole;
 
     /**
-     * @return The name of the service linked role.
+     * @return The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+     * - `AliyunServiceRoleForSas`
+     * - `AliyunServiceRoleForSasCspm`
+     * - `AliyunServiceRoleForSasAgentless`
+     * - `AliyunServiceRoleForOssMfd`
+     * - `AliyunServiceRoleForAntiRansomwareMssp`
+     * - `AliyunServiceRoleForSasSecllm`
+     * - `AliyunServiceRoleForSasAI`
+     * - `AliyunLogETLRole`
      * 
      */
     public Optional<Output<String>> serviceLinkedRole() {
@@ -93,7 +109,15 @@ public final class ServiceLinkedRoleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceLinkedRole The name of the service linked role.
+         * @param serviceLinkedRole The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+         * - `AliyunServiceRoleForSas`
+         * - `AliyunServiceRoleForSasCspm`
+         * - `AliyunServiceRoleForSasAgentless`
+         * - `AliyunServiceRoleForOssMfd`
+         * - `AliyunServiceRoleForAntiRansomwareMssp`
+         * - `AliyunServiceRoleForSasSecllm`
+         * - `AliyunServiceRoleForSasAI`
+         * - `AliyunLogETLRole`
          * 
          * @return builder
          * 
@@ -104,7 +128,15 @@ public final class ServiceLinkedRoleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceLinkedRole The name of the service linked role.
+         * @param serviceLinkedRole The name of the service linked role. Defaults to `AliyunServiceRoleForSas`. Valid values:
+         * - `AliyunServiceRoleForSas`
+         * - `AliyunServiceRoleForSasCspm`
+         * - `AliyunServiceRoleForSasAgentless`
+         * - `AliyunServiceRoleForOssMfd`
+         * - `AliyunServiceRoleForAntiRansomwareMssp`
+         * - `AliyunServiceRoleForSasSecllm`
+         * - `AliyunServiceRoleForSasAI`
+         * - `AliyunLogETLRole`
          * 
          * @return builder
          * 

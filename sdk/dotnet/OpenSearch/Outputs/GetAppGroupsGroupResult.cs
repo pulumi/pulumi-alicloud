@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         /// </summary>
         public readonly int FirstRankAlgoDeploymentId;
         /// <summary>
-        /// Whether the quota status is under approval. Valid status:
+        /// Whether the quota status is under approval. Valid values: `0` (normal), `1` (Approving).
         /// </summary>
         public readonly int HasPendingQuotaReviewTask;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Instance ID.
+        /// Instance ID.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         /// </summary>
         public readonly string ProcessingOrderId;
         /// <summary>
-        /// Whether the production is completed. Valid values:
+        /// Whether the production is completed. Valid values: `0` (producing), `1` (completed).
         /// </summary>
         public readonly int Produced;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppGroupsGroupQuotaResult> Quotas;
         /// <summary>
-        /// The Resource Group ID.
+        /// Resource Group Id.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         /// </summary>
         public readonly int SwitchedTime;
         /// <summary>
-        /// Application type. Valid Values: `Standard`, `Enhanced`.
+        /// The Type of AppGroup. Valid values: `Standard`,`Enhanced`.
         /// </summary>
         public readonly string Type;
 

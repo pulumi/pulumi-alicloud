@@ -75,6 +75,9 @@ class GetHanaInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetHanaInstancesInstanceResult']:
+        """
+        A list of Hbr Hana Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -85,6 +88,9 @@ class GetHanaInstancesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Hbr Hana Instance names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -105,11 +111,17 @@ class GetHanaInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the SAP HANA instance.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the backup vault.
+        """
         return pulumi.get(self, "vault_id")
 
 
@@ -142,7 +154,7 @@ def get_hana_instances(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.178.0+.
+    > **NOTE:** Available since v1.178.0.
 
     ## Example Usage
 
@@ -200,7 +212,7 @@ def get_hana_instances_output(ids: pulumi.Input[Optional[Optional[Sequence[_buil
     """
     This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.178.0+.
+    > **NOTE:** Available since v1.178.0.
 
     ## Example Usage
 

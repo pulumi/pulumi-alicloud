@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CS
     public static class GetEdgeKubernetesClusters
     {
         /// <summary>
-        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
         /// 
         /// This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.CS
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEdgeKubernetesClustersResult>("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args ?? new GetEdgeKubernetesClustersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
         /// 
         /// This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.CS
             => global::Pulumi.Deployment.Instance.Invoke<GetEdgeKubernetesClustersResult>("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", args ?? new GetEdgeKubernetesClustersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **DEPRECATION NOTICE:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.getClusters` instead.
         /// 
         /// This data source provides a list Container Service Edge Kubernetes Clusters on Alibaba Cloud.
         /// 
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetEdgeKubernetesClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Boolean, false by default, only `Id` and `Name` are exported. Set to true if more details are needed, e.g., `MasterDiskCategory`, `SlbInternetEnabled`, `Connections`. See full list in attributes.
+        /// Boolean, false by default, only `Id` and `Name` are exported. Set to true if more details are needed, e.g., `VpcId`, `SecurityGroupId`, `Connections`. See full list in attributes.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetEdgeKubernetesClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Boolean, false by default, only `Id` and `Name` are exported. Set to true if more details are needed, e.g., `MasterDiskCategory`, `SlbInternetEnabled`, `Connections`. See full list in attributes.
+        /// Boolean, false by default, only `Id` and `Name` are exported. Set to true if more details are needed, e.g., `VpcId`, `SecurityGroupId`, `Connections`. See full list in attributes.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetEdgeKubernetesClustersResult
     {
         /// <summary>
-        /// A list of matched Kubernetes clusters. Each element contains the following attributes:
+        /// A list of matched Kubernetes clusters.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEdgeKubernetesClustersClusterResult> Clusters;
         public readonly bool? EnableDetails;

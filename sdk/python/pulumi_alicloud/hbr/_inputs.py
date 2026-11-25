@@ -75,15 +75,15 @@ class OtsBackupPlanOtsDetailArgs:
 class OtsBackupPlanRuleArgsDict(TypedDict):
     backup_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Backup type. Valid values: `COMPLETE`.
+    The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
     """
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+    Whether to disable the backup task. Valid values: true, false.
     """
     retention: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Backup retention days, the minimum is 1.
+    Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
     """
     rule_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -91,7 +91,7 @@ class OtsBackupPlanRuleArgsDict(TypedDict):
     """
     schedule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+    Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
     - `startTime` Backup start time, UNIX time seconds.
     """
 
@@ -104,11 +104,11 @@ class OtsBackupPlanRuleArgs:
                  rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
-        :param pulumi.Input[_builtins.bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
-        :param pulumi.Input[_builtins.str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[_builtins.str] backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[_builtins.bool] disabled: Whether to disable the backup task. Valid values: true, false.
+        :param pulumi.Input[_builtins.str] retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[_builtins.str] rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
-        :param pulumi.Input[_builtins.str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        :param pulumi.Input[_builtins.str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
                - `startTime` Backup start time, UNIX time seconds.
         """
         if backup_type is not None:
@@ -126,7 +126,7 @@ class OtsBackupPlanRuleArgs:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Backup type. Valid values: `COMPLETE`.
+        The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -138,7 +138,7 @@ class OtsBackupPlanRuleArgs:
     @pulumi.getter
     def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        Whether to disable the backup task. Valid values: true, false.
         """
         return pulumi.get(self, "disabled")
 
@@ -150,7 +150,7 @@ class OtsBackupPlanRuleArgs:
     @pulumi.getter
     def retention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Backup retention days, the minimum is 1.
+        Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "retention")
 
@@ -174,7 +174,7 @@ class OtsBackupPlanRuleArgs:
     @pulumi.getter
     def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while source_type equals `OTS_TABLE`.
         - `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")

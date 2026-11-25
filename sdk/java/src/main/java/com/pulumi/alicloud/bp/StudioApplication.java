@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Architect Design Tools Application resource.
  * 
- * For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://help.aliyun.com/document_detail/428263.html).
+ * For information about Cloud Architect Design Tools Application and how to use it, see [What is Application](https://www.alibabacloud.com/help/en/cadt/developer-reference/api-bpstudio-2021-09-31-createapplication).
  * 
  * &gt; **NOTE:** Available since v1.192.0.
  * 
@@ -70,8 +70,8 @@ import javax.annotation.Nullable;
  *             .resourceGroupId(default_.groups()[0].id())
  *             .areaId("cn-hangzhou")
  *             .instances(StudioApplicationInstanceArgs.builder()
- *                 .id("data.alicloud_instances.default.instances.0.id")
- *                 .nodeName("data.alicloud_instances.default.instances.0.name")
+ *                 .id(defaultGetInstances.instances()[0].id())
+ *                 .nodeName(defaultGetInstances.instances()[0].name())
  *                 .nodeType("ecs")
  *                 .build())
  *             .configuration(Map.of("enableMonitor", "1"))
@@ -139,14 +139,14 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.configuration);
     }
     /**
-     * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+     * The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
      * 
      */
     @Export(name="instances", refs={List.class,StudioApplicationInstance.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StudioApplicationInstance>> instances;
 
     /**
-     * @return The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
+     * @return The instance list. Support the creation of instances in the existing vpc under the application. See `instances` below.
      * 
      */
     public Output<Optional<List<StudioApplicationInstance>>> instances() {

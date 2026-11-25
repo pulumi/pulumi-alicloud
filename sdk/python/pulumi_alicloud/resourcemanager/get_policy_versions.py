@@ -119,7 +119,7 @@ def get_policy_versions(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.85.0+.
+    > **NOTE:** Available since v1.85.0.
 
     ## Example Usage
 
@@ -127,7 +127,7 @@ def get_policy_versions(enable_details: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.resourcemanager.get_policy_versions(policy_name="tftest",
+    default = alicloud.resourcemanager.get_policy_versions(policy_name="tf-example",
         policy_type="Custom")
     pulumi.export("firstPolicyVersionId", default.versions[0].id)
     ```
@@ -165,7 +165,7 @@ def get_policy_versions_output(enable_details: pulumi.Input[Optional[Optional[_b
     """
     This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.85.0+.
+    > **NOTE:** Available since v1.85.0.
 
     ## Example Usage
 
@@ -173,7 +173,7 @@ def get_policy_versions_output(enable_details: pulumi.Input[Optional[Optional[_b
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.resourcemanager.get_policy_versions(policy_name="tftest",
+    default = alicloud.resourcemanager.get_policy_versions(policy_name="tf-example",
         policy_type="Custom")
     pulumi.export("firstPolicyVersionId", default.versions[0].id)
     ```

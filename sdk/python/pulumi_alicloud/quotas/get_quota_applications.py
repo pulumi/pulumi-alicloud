@@ -66,11 +66,17 @@ class GetQuotaApplicationsResult:
     @_builtins.property
     @pulumi.getter
     def applications(self) -> Sequence['outputs.GetQuotaApplicationsApplicationResult']:
+        """
+        A list of Quotas Quota Applications. Each element contains the following attributes:
+        """
         return pulumi.get(self, "applications")
 
     @_builtins.property
     @pulumi.getter
     def dimensions(self) -> Optional[Sequence['outputs.GetQuotaApplicationsDimensionResult']]:
+        """
+        The quota dimensions. See `dimensions` below.
+        """
         return pulumi.get(self, "dimensions")
 
     @_builtins.property
@@ -104,11 +110,17 @@ class GetQuotaApplicationsResult:
     @_builtins.property
     @pulumi.getter(name="productCode")
     def product_code(self) -> _builtins.str:
+        """
+        The product code.
+        """
         return pulumi.get(self, "product_code")
 
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
     def quota_action_code(self) -> Optional[_builtins.str]:
+        """
+        The ID of quota action.
+        """
         return pulumi.get(self, "quota_action_code")
 
     @_builtins.property
@@ -119,6 +131,9 @@ class GetQuotaApplicationsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the quota application.
+        """
         return pulumi.get(self, "status")
 
 
@@ -182,9 +197,10 @@ def get_quota_applications(dimensions: Optional[Sequence[Union['GetQuotaApplicat
     ```
 
 
-    :param Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict', 'outputs.GetQuotaApplicationsDimensionResult']] dimensions: The quota dimensions.
+    :param Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict', 'outputs.GetQuotaApplicationsDimensionResult']] dimensions: The quota dimensions. See `dimensions` below.
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Application Info IDs.
+    :param _builtins.str key_word: The key word.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str product_code: The product code.
     :param _builtins.str quota_action_code: The ID of quota action.
@@ -257,9 +273,10 @@ def get_quota_applications_output(dimensions: pulumi.Input[Optional[Optional[Seq
     ```
 
 
-    :param Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict', 'outputs.GetQuotaApplicationsDimensionResult']] dimensions: The quota dimensions.
+    :param Sequence[Union['GetQuotaApplicationsDimensionArgs', 'GetQuotaApplicationsDimensionArgsDict', 'outputs.GetQuotaApplicationsDimensionResult']] dimensions: The quota dimensions. See `dimensions` below.
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Application Info IDs.
+    :param _builtins.str key_word: The key word.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str product_code: The product code.
     :param _builtins.str quota_action_code: The ID of quota action.

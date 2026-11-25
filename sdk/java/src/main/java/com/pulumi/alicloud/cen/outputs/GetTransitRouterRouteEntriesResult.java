@@ -36,13 +36,13 @@ public final class GetTransitRouterRouteEntriesResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
-    private @Nullable String status;
-    private @Nullable List<String> transitRouterRouteEntryIds;
-    private @Nullable List<String> transitRouterRouteEntryNames;
     /**
      * @return The status of the route entry in CEN.
      * 
      */
+    private @Nullable String status;
+    private @Nullable List<String> transitRouterRouteEntryIds;
+    private @Nullable List<String> transitRouterRouteEntryNames;
     private @Nullable String transitRouterRouteEntryStatus;
     private String transitRouterRouteTableId;
 
@@ -81,6 +81,10 @@ public final class GetTransitRouterRouteEntriesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the route entry in CEN.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
@@ -90,10 +94,6 @@ public final class GetTransitRouterRouteEntriesResult {
     public List<String> transitRouterRouteEntryNames() {
         return this.transitRouterRouteEntryNames == null ? List.of() : this.transitRouterRouteEntryNames;
     }
-    /**
-     * @return The status of the route entry in CEN.
-     * 
-     */
     public Optional<String> transitRouterRouteEntryStatus() {
         return Optional.ofNullable(this.transitRouterRouteEntryStatus);
     }

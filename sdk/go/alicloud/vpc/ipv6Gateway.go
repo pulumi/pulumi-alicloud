@@ -37,33 +37,33 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testacc-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
-//				Description: pulumi.String("tf-testacc"),
+//				Description: pulumi.String("terraform-example"),
 //				EnableIpv6:  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("tf-testacc-ipv6gateway503"),
+//				DisplayName:       pulumi.String("terraform-example-ipv6gateway503"),
 //				ResourceGroupName: pulumi.Sprintf("%v1", name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = resourcemanager.NewResourceGroup(ctx, "changeRg", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String("tf-testacc-ipv6gateway311"),
+//				DisplayName:       pulumi.String("terraform-example-ipv6gateway311"),
 //				ResourceGroupName: pulumi.Sprintf("%v2", name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
-//				Description:     pulumi.String("test"),
+//				Description:     pulumi.String("terraform-example"),
 //				Ipv6GatewayName: pulumi.String(name),
 //				VpcId:           defaultVpc.ID(),
 //				ResourceGroupId: defaultRg.ID(),
@@ -93,7 +93,7 @@ type Ipv6Gateway struct {
 	BusinessStatus pulumi.StringOutput `pulumi:"businessStatus"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+	// The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The expiration time of IPv6 gateway.
 	ExpiredTime pulumi.StringOutput `pulumi:"expiredTime"`
@@ -101,7 +101,7 @@ type Ipv6Gateway struct {
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// Resource primary key attribute field.
 	Ipv6GatewayId pulumi.StringOutput `pulumi:"ipv6GatewayId"`
-	// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+	// The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	Ipv6GatewayName pulumi.StringPtrOutput `pulumi:"ipv6GatewayName"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -154,7 +154,7 @@ type ipv6GatewayState struct {
 	BusinessStatus *string `pulumi:"businessStatus"`
 	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
-	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+	// The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// The expiration time of IPv6 gateway.
 	ExpiredTime *string `pulumi:"expiredTime"`
@@ -162,7 +162,7 @@ type ipv6GatewayState struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Resource primary key attribute field.
 	Ipv6GatewayId *string `pulumi:"ipv6GatewayId"`
-	// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+	// The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	Ipv6GatewayName *string `pulumi:"ipv6GatewayName"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -183,7 +183,7 @@ type Ipv6GatewayState struct {
 	BusinessStatus pulumi.StringPtrInput
 	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
-	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+	// The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// The expiration time of IPv6 gateway.
 	ExpiredTime pulumi.StringPtrInput
@@ -191,7 +191,7 @@ type Ipv6GatewayState struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// Resource primary key attribute field.
 	Ipv6GatewayId pulumi.StringPtrInput
-	// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+	// The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	Ipv6GatewayName pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -218,9 +218,9 @@ func Ipv6GatewayExists(ctx *pulumi.Context,
 }
 
 type ipv6GatewayArgs struct {
-	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+	// The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+	// The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	Ipv6GatewayName *string `pulumi:"ipv6GatewayName"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -236,9 +236,9 @@ type ipv6GatewayArgs struct {
 
 // The set of arguments for constructing a Ipv6Gateway resource.
 type Ipv6GatewayArgs struct {
-	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+	// The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+	// The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	Ipv6GatewayName pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -349,7 +349,7 @@ func (o Ipv6GatewayOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+// The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 func (o Ipv6GatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -369,7 +369,7 @@ func (o Ipv6GatewayOutput) Ipv6GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.Ipv6GatewayId }).(pulumi.StringOutput)
 }
 
-// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+// The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
 func (o Ipv6GatewayOutput) Ipv6GatewayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringPtrOutput { return v.Ipv6GatewayName }).(pulumi.StringPtrOutput)
 }

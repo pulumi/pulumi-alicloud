@@ -42,6 +42,9 @@ export function getOpenApiPricingModules(args: GetOpenApiPricingModulesArgs, opt
  * A collection of arguments for invoking getOpenApiPricingModules.
  */
 export interface GetOpenApiPricingModulesArgs {
+    /**
+     * A list of Price Module IDs.
+     */
     ids?: string[];
     /**
      * A regex string to filter results by Property name.
@@ -86,8 +89,17 @@ export interface GetOpenApiPricingModulesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The product code.
+     */
     readonly productCode: string;
+    /**
+     * The product type.
+     */
     readonly productType?: string;
+    /**
+     * The subscription type.
+     */
     readonly subscriptionType: string;
 }
 /**
@@ -126,6 +138,9 @@ export function getOpenApiPricingModulesOutput(args: GetOpenApiPricingModulesOut
  * A collection of arguments for invoking getOpenApiPricingModules.
  */
 export interface GetOpenApiPricingModulesOutputArgs {
+    /**
+     * A list of Price Module IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Property name.

@@ -34,6 +34,10 @@ public final class GetProductVersionsResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Product ID.
+     * 
+     */
     private String productId;
     /**
      * @return A list of Product Version Entries. Each element contains the following attributes:
@@ -41,6 +45,8 @@ public final class GetProductVersionsResult {
      */
     private List<GetProductVersionsProductVersion> productVersions;
     /**
+     * @return (Deprecated since v1.197.0) A list of Product Version Entries. Each element contains the following attributes:
+     * 
      * @deprecated Field &#39;versions&#39; has been deprecated from provider version 1.197.0.
      * 
      */
@@ -78,6 +84,10 @@ public final class GetProductVersionsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Product ID.
+     * 
+     */
     public String productId() {
         return this.productId;
     }
@@ -89,6 +99,8 @@ public final class GetProductVersionsResult {
         return this.productVersions;
     }
     /**
+     * @return (Deprecated since v1.197.0) A list of Product Version Entries. Each element contains the following attributes:
+     * 
      * @deprecated Field &#39;versions&#39; has been deprecated from provider version 1.197.0.
      * 
      */

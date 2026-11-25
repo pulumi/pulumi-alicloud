@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides the Rds Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Rds
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of Account IDs.
+        /// A list of rds account IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of Account IDs.
+        /// A list of rds account IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -204,16 +204,28 @@ namespace Pulumi.AliCloud.Rds
     [OutputType]
     public sealed class GetAccountsResult
     {
+        /// <summary>
+        /// A list of Rds Accounts. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountsAccountResult> Accounts;
         public readonly string DbInstanceId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Account IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Account names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

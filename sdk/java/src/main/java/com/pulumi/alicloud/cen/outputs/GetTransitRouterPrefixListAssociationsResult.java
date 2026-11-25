@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTransitRouterPrefixListAssociationsResult {
+    /**
+     * @return A list of Cen Transit Router Prefix List Associations. Each element contains the following attributes:
+     * 
+     */
     private List<GetTransitRouterPrefixListAssociationsAssociation> associations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,15 +27,39 @@ public final class GetTransitRouterPrefixListAssociationsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the Alibaba Cloud account to which the prefix list belongs.
+     * 
+     */
     private @Nullable Integer ownerUid;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The ID of the prefix list.
+     * 
+     */
     private @Nullable String prefixListId;
+    /**
+     * @return The status of the prefix list.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The ID of the transit router.
+     * 
+     */
     private String transitRouterId;
+    /**
+     * @return The ID of the route table of the transit router.
+     * 
+     */
     private String transitRouterTableId;
 
     private GetTransitRouterPrefixListAssociationsResult() {}
+    /**
+     * @return A list of Cen Transit Router Prefix List Associations. Each element contains the following attributes:
+     * 
+     */
     public List<GetTransitRouterPrefixListAssociationsAssociation> associations() {
         return this.associations;
     }
@@ -48,6 +76,10 @@ public final class GetTransitRouterPrefixListAssociationsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the Alibaba Cloud account to which the prefix list belongs.
+     * 
+     */
     public Optional<Integer> ownerUid() {
         return Optional.ofNullable(this.ownerUid);
     }
@@ -57,15 +89,31 @@ public final class GetTransitRouterPrefixListAssociationsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The ID of the prefix list.
+     * 
+     */
     public Optional<String> prefixListId() {
         return Optional.ofNullable(this.prefixListId);
     }
+    /**
+     * @return The status of the prefix list.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The ID of the transit router.
+     * 
+     */
     public String transitRouterId() {
         return this.transitRouterId;
     }
+    /**
+     * @return The ID of the route table of the transit router.
+     * 
+     */
     public String transitRouterTableId() {
         return this.transitRouterTableId;
     }

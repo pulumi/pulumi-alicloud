@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleRdsAccount = new RdsAccount("exampleRdsAccount", RdsAccountArgs.builder()
  *             .dbInstanceId(exampleInstance.id())
- *             .accountName("test_mysql")
+ *             .accountName("example_mysql")
  *             .accountPassword("N1cetest")
  *             .build());
  * 
@@ -173,11 +173,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DTS Subscription Job can be imported using the id, e.g.
+ * DTS Subscription Job can be imported using its canonical `DtsJobId`, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example &lt;id&gt;
+ * $ pulumi import alicloud:dts/subscriptionJob:SubscriptionJob example &lt;DtsJobId&gt;
  * ```
+ * 
+ * The import ID must exactly match `DtsJobId` returned by `DescribeDtsJobDetail`. A DTS instance ID (`DtsInstanceID`) is not a job ID, even if the detail API accepts it as a lookup key. Import rejects a different or missing job identity and does not automatically bind to another task.
+ * 
+ * If existing state contains an instance ID, first back up the state and verify the intended job in DTS. Remove only the incorrect local state binding with `terraform state rm`, then explicitly import the verified `DtsJobId`. Do not delete the cloud job to correct its state binding. If the original job has been deleted or rebuilt, verify the replacement separately before importing it.
  * 
  */
 @ResourceType(type="alicloud:dts/subscriptionJob:SubscriptionJob")
@@ -587,6 +591,20 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sourceEndpointRole() {
         return Codegen.optional(this.sourceEndpointRole);
+    }
+    /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+     * 
+     */
+    @Export(name="sourceEndpointSsl", refs={String.class}, tree="[0]")
+    private Output<String> sourceEndpointSsl;
+
+    /**
+     * @return The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS. When `1` is configured and the source instance is an ApsaraDB RDS for MySQL instance, the SSL encryption feature of the source RDS instance must be enabled in advance, otherwise the task precheck fails and the task cannot be started.
+     * 
+     */
+    public Output<String> sourceEndpointSsl() {
+        return this.sourceEndpointSsl;
     }
     /**
      * The username of source database instance account.

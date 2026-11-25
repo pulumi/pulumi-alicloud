@@ -30,18 +30,18 @@ namespace Pulumi.AliCloud.Ros
     /// {
     ///     var example = new AliCloud.Ros.Stack("example", new()
     ///     {
-    ///         StackName = "tf-testaccstack",
+    ///         StackName = "tfaccstack",
     ///         TemplateBody = @"    {
-    ///     \t\""ROSTemplateFormatVersion\"": \""2015-09-01\""
+    ///       \""ROSTemplateFormatVersion\"": \""2015-09-01\""
     ///     }
     /// ",
     ///         StackPolicyBody = @"    {
-    ///     \t\""Statement\"": [{
-    ///     \t\t\""Action\"": \""Update:Delete\"",
-    ///     \t\t\""Resource\"": \""*\"",
-    ///     \t\t\""Effect\"": \""Allow\"",
-    ///     \t\t\""Principal\"": \""*\""
-    ///     \t}]
+    ///       \""Statement\"": [{
+    ///         \""Action\"": \""Update:Delete\"",
+    ///         \""Resource\"": \""*\"",
+    ///         \""Effect\"": \""Allow\"",
+    ///         \""Principal\"": \""*\""
+    ///       }]
     ///     }
     /// ",
     ///     });
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Ros
         public Output<ImmutableArray<string>> NotificationUrls { get; private set; } = null!;
 
         /// <summary>
-        /// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        /// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.StackParameter>> Parameters { get; private set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.StackParameterArgs>? _parameters;
 
         /// <summary>
-        /// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        /// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `Parameters` below.
         /// </summary>
         public InputList<Inputs.StackParameterArgs> Parameters
         {
@@ -420,7 +420,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.StackParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        /// The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template. See `Parameters` below.
         /// </summary>
         public InputList<Inputs.StackParameterGetArgs> Parameters
         {

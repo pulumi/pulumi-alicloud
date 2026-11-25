@@ -27,7 +27,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Container Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -72,7 +72,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Container Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -117,7 +117,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Container Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -162,7 +162,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Container Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -207,7 +207,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Container Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -252,7 +252,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Container Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -297,7 +297,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Container Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.111.0+.
+     * &gt; **NOTE:** Available since v1.111.0.
      * 
      * ## Example Usage
      * 
@@ -342,7 +342,7 @@ public final class EciFunctions {
     /**
      * Provides a collection of ECI Image Cache to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.90.0+.
+     * &gt; **NOTE:** Available since v1.90.0.
      * 
      * ## Example Usage
      * 
@@ -363,17 +363,17 @@ public final class EciFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *            .ids("imc-bp1ef0dyp7ldhb1d****")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
+     *             .build());
      * 
-     *        ctx.export("imageCache", example.caches()[0].id());
-     *    }
+     *         ctx.export("imageCache", example.caches()[0].id());
+     *     }
      * }
      * }
      * </pre>
@@ -385,7 +385,7 @@ public final class EciFunctions {
     /**
      * Provides a collection of ECI Image Cache to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.90.0+.
+     * &gt; **NOTE:** Available since v1.90.0.
      * 
      * ## Example Usage
      * 
@@ -406,17 +406,17 @@ public final class EciFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *            .ids("imc-bp1ef0dyp7ldhb1d****")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
+     *             .build());
      * 
-     *        ctx.export("imageCache", example.caches()[0].id());
-     *    }
+     *         ctx.export("imageCache", example.caches()[0].id());
+     *     }
      * }
      * }
      * </pre>
@@ -428,7 +428,7 @@ public final class EciFunctions {
     /**
      * Provides a collection of ECI Image Cache to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.90.0+.
+     * &gt; **NOTE:** Available since v1.90.0.
      * 
      * ## Example Usage
      * 
@@ -449,17 +449,17 @@ public final class EciFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *            .ids("imc-bp1ef0dyp7ldhb1d****")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
+     *             .build());
      * 
-     *        ctx.export("imageCache", example.caches()[0].id());
-     *    }
+     *         ctx.export("imageCache", example.caches()[0].id());
+     *     }
      * }
      * }
      * </pre>
@@ -471,7 +471,7 @@ public final class EciFunctions {
     /**
      * Provides a collection of ECI Image Cache to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.90.0+.
+     * &gt; **NOTE:** Available since v1.90.0.
      * 
      * ## Example Usage
      * 
@@ -492,17 +492,17 @@ public final class EciFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *            .ids("imc-bp1ef0dyp7ldhb1d****")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
+     *             .build());
      * 
-     *        ctx.export("imageCache", example.caches()[0].id());
-     *    }
+     *         ctx.export("imageCache", example.caches()[0].id());
+     *     }
      * }
      * }
      * </pre>
@@ -514,7 +514,7 @@ public final class EciFunctions {
     /**
      * Provides a collection of ECI Image Cache to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.90.0+.
+     * &gt; **NOTE:** Available since v1.90.0.
      * 
      * ## Example Usage
      * 
@@ -535,17 +535,17 @@ public final class EciFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *            .ids("imc-bp1ef0dyp7ldhb1d****")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
+     *             .build());
      * 
-     *        ctx.export("imageCache", example.caches()[0].id());
-     *    }
+     *         ctx.export("imageCache", example.caches()[0].id());
+     *     }
      * }
      * }
      * </pre>
@@ -557,7 +557,7 @@ public final class EciFunctions {
     /**
      * Provides a collection of ECI Image Cache to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.90.0+.
+     * &gt; **NOTE:** Available since v1.90.0.
      * 
      * ## Example Usage
      * 
@@ -578,17 +578,17 @@ public final class EciFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *            .ids("imc-bp1ef0dyp7ldhb1d****")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
+     *             .build());
      * 
-     *        ctx.export("imageCache", example.caches()[0].id());
-     *    }
+     *         ctx.export("imageCache", example.caches()[0].id());
+     *     }
      * }
      * }
      * </pre>
@@ -600,7 +600,7 @@ public final class EciFunctions {
     /**
      * Provides a collection of ECI Image Cache to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.90.0+.
+     * &gt; **NOTE:** Available since v1.90.0.
      * 
      * ## Example Usage
      * 
@@ -621,17 +621,17 @@ public final class EciFunctions {
      * import java.nio.file.Paths;
      * 
      * public class App {
-     *    public static void main(String[] args) {
-     *        Pulumi.run(App::stack);
-     *    }
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     *    public static void stack(Context ctx) {
-     *        final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *            .ids("imc-bp1ef0dyp7ldhb1d****")
-     *            .build());
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
+     *             .build());
      * 
-     *        ctx.export("imageCache", example.caches()[0].id());
-     *    }
+     *         ctx.export("imageCache", example.caches()[0].id());
+     *     }
      * }
      * }
      * </pre>
@@ -643,7 +643,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -695,7 +695,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -747,7 +747,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -799,7 +799,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -851,7 +851,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -903,7 +903,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 
@@ -955,7 +955,7 @@ public final class EciFunctions {
     /**
      * This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.145.0+.
+     * &gt; **NOTE:** Available since v1.145.0.
      * 
      * ## Example Usage
      * 

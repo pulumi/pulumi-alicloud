@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     /// &gt; **NOTE:** Available since v1.224.0.
     /// 
+    /// &gt; **NOTE:** If you maintain a narrow custom RAM policy that predates v2.3.0, `Refresh` and `Plan` will surface a `403 NoPermission` error from whichever supplementary action your role lacks, rather than silently leaving the computed field empty. Grant the two actions listed in RAM Permissions below — at resource level (`acs:expressconnectrouter::&lt;accountId&gt;:expressconnectrouter/&lt;EcrId&gt;`) or service level (`*`) — so refresh and plan stay green.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -45,6 +47,15 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// You can resume managing the subscription instance via the AlibabaCloud Console.
     /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
+    /// ## RAM Permissions
+    /// 
+    /// The two read-only attributes `DisabledRouteEntries` and `GrantedInstances` (available since v2.3.0) are populated by the following supplementary Describe actions. Each is an independent RAM permission on the `Expressconnectrouter` service and is queried on every `Read`/`Refresh`/`Plan`:
+    /// 
+    /// * `expressconnectrouter:DescribeDisabledExpressConnectRouterRouteEntries` — lists the route entries currently disabled on the ECR.
+    /// * `expressconnectrouter:DescribeInstanceGrantedToExpressConnectRouter` — lists the network instances granted to the ECR.
+    /// 
+    /// These actions are in addition to the base resource actions (`expressconnectrouter:CreateExpressConnectRouter`, `expressconnectrouter:ModifyExpressConnectRouter`, `expressconnectrouter:DeleteExpressConnectRouter`, `expressconnectrouter:DescribeExpressConnectRouter`, etc.).
     /// 
     /// ## Import
     /// 
@@ -76,10 +87,22 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `DisabledRouteEntries` below.
+        /// </summary>
+        [Output("disabledRouteEntries")]
+        public Output<ImmutableArray<Outputs.RouterExpressConnectRouterDisabledRouteEntry>> DisabledRouteEntries { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the Gateway representing the leased line.
         /// </summary>
         [Output("ecrName")]
         public Output<string?> EcrName { get; private set; } = null!;
+
+        /// <summary>
+        /// (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `GrantedInstances` below.
+        /// </summary>
+        [Output("grantedInstances")]
+        public Output<ImmutableArray<Outputs.RouterExpressConnectRouterGrantedInstance>> GrantedInstances { get; private set; } = null!;
 
         /// <summary>
         /// List of regions representing leased line gateways. See `Regions` below.
@@ -227,11 +250,35 @@ namespace Pulumi.AliCloud.ExpressConnect
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("disabledRouteEntries")]
+        private InputList<Inputs.RouterExpressConnectRouterDisabledRouteEntryGetArgs>? _disabledRouteEntries;
+
+        /// <summary>
+        /// (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `DisabledRouteEntries` below.
+        /// </summary>
+        public InputList<Inputs.RouterExpressConnectRouterDisabledRouteEntryGetArgs> DisabledRouteEntries
+        {
+            get => _disabledRouteEntries ?? (_disabledRouteEntries = new InputList<Inputs.RouterExpressConnectRouterDisabledRouteEntryGetArgs>());
+            set => _disabledRouteEntries = value;
+        }
+
         /// <summary>
         /// Name of the Gateway representing the leased line.
         /// </summary>
         [Input("ecrName")]
         public Input<string>? EcrName { get; set; }
+
+        [Input("grantedInstances")]
+        private InputList<Inputs.RouterExpressConnectRouterGrantedInstanceGetArgs>? _grantedInstances;
+
+        /// <summary>
+        /// (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `GrantedInstances` below.
+        /// </summary>
+        public InputList<Inputs.RouterExpressConnectRouterGrantedInstanceGetArgs> GrantedInstances
+        {
+            get => _grantedInstances ?? (_grantedInstances = new InputList<Inputs.RouterExpressConnectRouterGrantedInstanceGetArgs>());
+            set => _grantedInstances = value;
+        }
 
         [Input("regions")]
         private InputList<Inputs.RouterExpressConnectRouterRegionGetArgs>? _regions;

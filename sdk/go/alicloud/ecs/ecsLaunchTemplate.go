@@ -42,12 +42,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
 //				Owners:    pulumi.StringRef("system"),
@@ -85,7 +79,7 @@ import (
 //				HostName:                    pulumi.String("terraform-example"),
 //				InstanceChargeType:          pulumi.String("PrePaid"),
 //				InstanceName:                pulumi.String("terraform-example"),
-//				InstanceType:                pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				InstanceType:                pulumi.String("ecs.s6-c1m1.small"),
 //				InternetChargeType:          pulumi.String("PayByBandwidth"),
 //				InternetMaxBandwidthIn:      pulumi.Int(5),
 //				InternetMaxBandwidthOut:     pulumi.Int(5),

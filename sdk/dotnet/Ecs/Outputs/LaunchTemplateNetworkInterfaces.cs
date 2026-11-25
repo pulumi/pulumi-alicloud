@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class LaunchTemplateNetworkInterfaces
     {
+        /// <summary>
+        /// Whether to release the ENI when the instance is released.
+        /// </summary>
         public readonly bool? DeleteOnRelease;
         /// <summary>
         /// The ENI description.

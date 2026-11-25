@@ -13,7 +13,7 @@ import (
 
 // This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.158.0+.
+// > **NOTE:** Available since v1.158.0.
 //
 // ## Example Usage
 //
@@ -60,7 +60,8 @@ type GetInstanceTypesArgs struct {
 // A collection of values returned by getInstanceTypes.
 type GetInstanceTypesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id            string                         `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of ecp Instance types. Each element contains the following attributes:
 	InstanceTypes []GetInstanceTypesInstanceType `pulumi:"instanceTypes"`
 	OutputFile    *string                        `pulumi:"outputFile"`
 }
@@ -100,6 +101,7 @@ func (o GetInstanceTypesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of ecp Instance types. Each element contains the following attributes:
 func (o GetInstanceTypesResultOutput) InstanceTypes() GetInstanceTypesInstanceTypeArrayOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) []GetInstanceTypesInstanceType { return v.InstanceTypes }).(GetInstanceTypesInstanceTypeArrayOutput)
 }

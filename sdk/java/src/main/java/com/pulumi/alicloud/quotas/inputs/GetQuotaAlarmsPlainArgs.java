@@ -123,14 +123,14 @@ public final class GetQuotaAlarmsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The Quota Dimensions.
+     * The Quota Dimensions. See `quotaDimensions` below.
      * 
      */
     @Import(name="quotaDimensions")
     private @Nullable List<GetQuotaAlarmsQuotaDimension> quotaDimensions;
 
     /**
-     * @return The Quota Dimensions.
+     * @return The Quota Dimensions. See `quotaDimensions` below.
      * 
      */
     public Optional<List<GetQuotaAlarmsQuotaDimension>> quotaDimensions() {
@@ -256,7 +256,7 @@ public final class GetQuotaAlarmsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param quotaDimensions The Quota Dimensions.
+         * @param quotaDimensions The Quota Dimensions. See `quotaDimensions` below.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class GetQuotaAlarmsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param quotaDimensions The Quota Dimensions.
+         * @param quotaDimensions The Quota Dimensions. See `quotaDimensions` below.
          * 
          * @return builder
          * 

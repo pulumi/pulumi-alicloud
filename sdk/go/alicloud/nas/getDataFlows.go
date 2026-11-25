@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Nas Data Flows of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.153.0+.
+// > **NOTE:** Available since v1.153.0+.
 //
 // ## Example Usage
 //
@@ -79,13 +79,16 @@ type GetDataFlowsArgs struct {
 
 // A collection of values returned by getDataFlows.
 type GetDataFlowsResult struct {
-	FileSystemId string             `pulumi:"fileSystemId"`
-	Flows        []GetDataFlowsFlow `pulumi:"flows"`
+	// The ID of the file system.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// A list of Nas Data Flows. Each element contains the following attributes:
+	Flows []GetDataFlowsFlow `pulumi:"flows"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the Data flow.
+	Status *string `pulumi:"status"`
 }
 
 func GetDataFlowsOutput(ctx *pulumi.Context, args GetDataFlowsOutputArgs, opts ...pulumi.InvokeOption) GetDataFlowsResultOutput {
@@ -124,10 +127,12 @@ func (o GetDataFlowsResultOutput) ToGetDataFlowsResultOutputWithContext(ctx cont
 	return o
 }
 
+// The ID of the file system.
 func (o GetDataFlowsResultOutput) FileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataFlowsResult) string { return v.FileSystemId }).(pulumi.StringOutput)
 }
 
+// A list of Nas Data Flows. Each element contains the following attributes:
 func (o GetDataFlowsResultOutput) Flows() GetDataFlowsFlowArrayOutput {
 	return o.ApplyT(func(v GetDataFlowsResult) []GetDataFlowsFlow { return v.Flows }).(GetDataFlowsFlowArrayOutput)
 }
@@ -145,6 +150,7 @@ func (o GetDataFlowsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDataFlowsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the Data flow.
 func (o GetDataFlowsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDataFlowsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

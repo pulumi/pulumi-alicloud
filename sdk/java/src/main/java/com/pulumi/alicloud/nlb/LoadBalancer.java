@@ -136,7 +136,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.nlb.LoadBalancerArgs;
  * import com.pulumi.alicloud.nlb.inputs.LoadBalancerZoneMappingArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -200,9 +199,7 @@ import javax.annotation.Nullable;
  *                     .vswitchId(vsw.get(1).id())
  *                     .zoneId(zone[1])
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(default_)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -21,13 +21,29 @@ public final class GetHanaInstancesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Hbr Hana Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetHanaInstancesInstance> instances;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Hbr Hana Instance names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The status of the SAP HANA instance.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The ID of the backup vault.
+     * 
+     */
     private @Nullable String vaultId;
 
     private GetHanaInstancesResult() {}
@@ -41,12 +57,20 @@ public final class GetHanaInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Hbr Hana Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetHanaInstancesInstance> instances() {
         return this.instances;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Hbr Hana Instance names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -59,9 +83,17 @@ public final class GetHanaInstancesResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The status of the SAP HANA instance.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The ID of the backup vault.
+     * 
+     */
     public Optional<String> vaultId() {
         return Optional.ofNullable(this.vaultId);
     }

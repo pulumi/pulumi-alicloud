@@ -15,11 +15,13 @@ var _ = internal.GetEnvOrDefault
 
 type GetIndustrialPidLoopsLoop struct {
 	// The ID of the Pid Loop.
-	Id                   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The configuration of Pid Loop.
 	PidLoopConfiguration string `pulumi:"pidLoopConfiguration"`
 	// The dcs type of Pid Loop.
 	PidLoopDcsType string `pulumi:"pidLoopDcsType"`
-	PidLoopDesc    string `pulumi:"pidLoopDesc"`
+	// The description of Pid Loop.
+	PidLoopDesc string `pulumi:"pidLoopDesc"`
 	// The ID of the Pid Loop.
 	PidLoopId string `pulumi:"pidLoopId"`
 	// Whether is crucial Pid Loop.
@@ -47,11 +49,13 @@ type GetIndustrialPidLoopsLoopInput interface {
 
 type GetIndustrialPidLoopsLoopArgs struct {
 	// The ID of the Pid Loop.
-	Id                   pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The configuration of Pid Loop.
 	PidLoopConfiguration pulumi.StringInput `pulumi:"pidLoopConfiguration"`
 	// The dcs type of Pid Loop.
 	PidLoopDcsType pulumi.StringInput `pulumi:"pidLoopDcsType"`
-	PidLoopDesc    pulumi.StringInput `pulumi:"pidLoopDesc"`
+	// The description of Pid Loop.
+	PidLoopDesc pulumi.StringInput `pulumi:"pidLoopDesc"`
 	// The ID of the Pid Loop.
 	PidLoopId pulumi.StringInput `pulumi:"pidLoopId"`
 	// Whether is crucial Pid Loop.
@@ -122,6 +126,7 @@ func (o GetIndustrialPidLoopsLoopOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The configuration of Pid Loop.
 func (o GetIndustrialPidLoopsLoopOutput) PidLoopConfiguration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.PidLoopConfiguration }).(pulumi.StringOutput)
 }
@@ -131,6 +136,7 @@ func (o GetIndustrialPidLoopsLoopOutput) PidLoopDcsType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.PidLoopDcsType }).(pulumi.StringOutput)
 }
 
+// The description of Pid Loop.
 func (o GetIndustrialPidLoopsLoopOutput) PidLoopDesc() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIndustrialPidLoopsLoop) string { return v.PidLoopDesc }).(pulumi.StringOutput)
 }

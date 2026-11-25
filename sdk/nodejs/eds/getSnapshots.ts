@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.169.0+.
+ * > **NOTE:** Available since v1.169.0.
  *
  * ## Example Usage
  *
@@ -65,6 +65,9 @@ export interface GetSnapshotsArgs {
  * A collection of values returned by getSnapshots.
  */
 export interface GetSnapshotsResult {
+    /**
+     * The ID of the cloud desktop to which the snapshot belongs.
+     */
     readonly desktopId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -72,15 +75,24 @@ export interface GetSnapshotsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Snapshot names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the snapshot.
+     */
     readonly snapshotId?: string;
+    /**
+     * A list of Ecd Snapshots. Each element contains the following attributes:
+     */
     readonly snapshots: outputs.eds.GetSnapshotsSnapshot[];
 }
 /**
  * This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.169.0+.
+ * > **NOTE:** Available since v1.169.0.
  *
  * ## Example Usage
  *

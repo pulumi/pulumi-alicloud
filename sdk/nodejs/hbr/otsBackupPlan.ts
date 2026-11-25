@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.163.0.
  *
- * > **NOTE:** Deprecated since v1.249.0.
- *
  * > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
  *
  * ## Example Usage
@@ -56,20 +54,20 @@ import * as utilities from "../utilities";
  * });
  * const defaultRole = new alicloud.ram.Role("default", {
  *     name: "hbrexamplerole",
- *     document: `\\t\\t{
- * \\t\\t\\t\\"Statement\\": [
- * \\t\\t\\t{
- * \\t\\t\\t\\t\\"Action\\": \\"sts:AssumeRole\\",
- * \\t\\t\\t\\t\\"Effect\\": \\"Allow\\",
- * \\t\\t\\t\\t\\"Principal\\": {
- * \\t\\t\\t\\t\\t\\"Service\\": [
- * \\t\\t\\t\\t\\t\\t\\"crossbackup.hbr.aliyuncs.com\\"
- * \\t\\t\\t\\t\\t]
- * \\t\\t\\t\\t}
- * \\t\\t\\t}
- * \\t\\t\\t],
- *   \\t\\t\\t\\"Version\\": \\"1\\"
- * \\t\\t}
+ *     document: `    {
+ *       \\"Statement\\": [
+ *       {
+ *         \\"Action\\": \\"sts:AssumeRole\\",
+ *         \\"Effect\\": \\"Allow\\",
+ *         \\"Principal\\": {
+ *           \\"Service\\": [
+ *             \\"crossbackup.hbr.aliyuncs.com\\"
+ *           ]
+ *         }
+ *       }
+ *       ],
+ *         \\"Version\\": \\"1\\"
+ *     }
  * `,
  *     force: true,
  * });
@@ -174,7 +172,7 @@ export class OtsBackupPlan extends pulumi.CustomResource {
      */
     declare public readonly otsBackupPlanName: pulumi.Output<string>;
     /**
-     * The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     declare public readonly otsDetails: pulumi.Output<outputs.hbr.OtsBackupPlanOtsDetail[] | undefined>;
     /**
@@ -182,7 +180,7 @@ export class OtsBackupPlan extends pulumi.CustomResource {
      */
     declare public readonly retention: pulumi.Output<string>;
     /**
-     * The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     declare public readonly rules: pulumi.Output<outputs.hbr.OtsBackupPlanRule[] | undefined>;
     /**
@@ -284,7 +282,7 @@ export interface OtsBackupPlanState {
      */
     otsBackupPlanName?: pulumi.Input<string | undefined>;
     /**
-     * The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     otsDetails?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanOtsDetail>[] | undefined>;
     /**
@@ -292,7 +290,7 @@ export interface OtsBackupPlanState {
      */
     retention?: pulumi.Input<string | undefined>;
     /**
-     * The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanRule>[] | undefined>;
     /**
@@ -341,7 +339,7 @@ export interface OtsBackupPlanArgs {
      */
     otsBackupPlanName: pulumi.Input<string>;
     /**
-     * The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * The details about the Table store instance. See `otsDetail` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     otsDetails?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanOtsDetail>[] | undefined>;
     /**
@@ -349,7 +347,7 @@ export interface OtsBackupPlanArgs {
      */
     retention: pulumi.Input<string>;
     /**
-     * The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
+     * The backup plan rule. See `rules` below. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanRule>[] | undefined>;
     /**

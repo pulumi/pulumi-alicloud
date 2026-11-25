@@ -56,6 +56,9 @@ class GetInstanceTypeFamiliesResult:
     @_builtins.property
     @pulumi.getter
     def families(self) -> Sequence['outputs.GetInstanceTypeFamiliesFamilyResult']:
+        """
+        A list of instance type families. Each element contains the following attributes:
+        """
         return pulumi.get(self, "families")
 
     @_builtins.property
@@ -128,7 +131,7 @@ def get_instance_type_families(generation: Optional[_builtins.str] = None,
     """
     This data source provides the ECS instance type families of Alibaba Cloud.
 
-    > **NOTE:** Available in 1.54.0+
+    > **NOTE:** Available since v1.54.0
 
     ## Example Usage
 
@@ -175,7 +178,7 @@ def get_instance_type_families_output(generation: pulumi.Input[Optional[Optional
     """
     This data source provides the ECS instance type families of Alibaba Cloud.
 
-    > **NOTE:** Available in 1.54.0+
+    > **NOTE:** Available since v1.54.0
 
     ## Example Usage
 

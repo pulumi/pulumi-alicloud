@@ -71,6 +71,9 @@ class GetHostEcsLevelInfosResult:
     @_builtins.property
     @pulumi.getter
     def infos(self) -> Sequence['outputs.GetHostEcsLevelInfosInfoResult']:
+        """
+        A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "infos")
 
     @_builtins.property
@@ -113,7 +116,7 @@ def get_host_ecs_level_infos(db_type: Optional[_builtins.str] = None,
     """
     This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
 
 
     :param _builtins.str db_type: The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.
@@ -148,7 +151,7 @@ def get_host_ecs_level_infos_output(db_type: pulumi.Input[Optional[_builtins.str
     """
     This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
 
 
     :param _builtins.str db_type: The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.

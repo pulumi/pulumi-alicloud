@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>

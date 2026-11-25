@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in 1.53.0+
+// > **NOTE:** Available since v1.53.0.
 //
 // ## Example Usage
 //
@@ -83,11 +83,12 @@ type GetGroupsArgs struct {
 	GroupIdRegex *string `pulumi:"groupIdRegex"`
 	// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
 	GroupType *string `pulumi:"groupType"`
-	// A list of group names.
+	// A list of group IDs to filter results.
 	Ids []string `pulumi:"ids"`
 	// ID of the ONS Instance that owns the groups.
-	InstanceId string  `pulumi:"instanceId"`
-	NameRegex  *string `pulumi:"nameRegex"`
+	InstanceId string `pulumi:"instanceId"`
+	// A regex string to filter results by the group name.
+	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
@@ -104,9 +105,11 @@ type GetGroupsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of group names.
-	Ids        []string `pulumi:"ids"`
-	InstanceId string   `pulumi:"instanceId"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Ids []string `pulumi:"ids"`
+	// ID of the ONS Instance that owns the group.
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of group names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons group.
@@ -124,11 +127,12 @@ type GetGroupsOutputArgs struct {
 	GroupIdRegex pulumi.StringPtrInput `pulumi:"groupIdRegex"`
 	// Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
 	GroupType pulumi.StringPtrInput `pulumi:"groupType"`
-	// A list of group names.
+	// A list of group IDs to filter results.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// ID of the ONS Instance that owns the groups.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A regex string to filter results by the group name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
@@ -178,6 +182,7 @@ func (o GetGroupsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// ID of the ONS Instance that owns the group.
 func (o GetGroupsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -186,6 +191,7 @@ func (o GetGroupsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of group names.
 func (o GetGroupsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGroupsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

@@ -53,6 +53,9 @@ class GetControlPolicyAttachmentsResult:
     @_builtins.property
     @pulumi.getter
     def attachments(self) -> Sequence['outputs.GetControlPolicyAttachmentsAttachmentResult']:
+        """
+        A list of Resource Manager Control Policy Attachments. Each element contains the following attributes:
+        """
         return pulumi.get(self, "attachments")
 
     @_builtins.property
@@ -66,6 +69,9 @@ class GetControlPolicyAttachmentsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Control Policy Attachment IDs.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -81,6 +87,9 @@ class GetControlPolicyAttachmentsResult:
     @_builtins.property
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[_builtins.str]:
+        """
+        The type of policy.
+        """
         return pulumi.get(self, "policy_type")
 
     @_builtins.property
@@ -112,7 +121,7 @@ def get_control_policy_attachments(language: Optional[_builtins.str] = None,
     """
     This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0.
 
     ## Example Usage
 
@@ -156,7 +165,7 @@ def get_control_policy_attachments_output(language: pulumi.Input[Optional[Option
     """
     This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0.
 
     ## Example Usage
 

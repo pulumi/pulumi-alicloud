@@ -41,7 +41,7 @@ class StackInstanceArgs:
                * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
                * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
                * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
-        :param pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
+        :param pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]] parameter_overrides: ParameterOverrides. See `parameter_overrides` below.
         :param pulumi.Input[_builtins.bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[_builtins.str] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
@@ -127,7 +127,7 @@ class StackInstanceArgs:
     @pulumi.getter(name="parameterOverrides")
     def parameter_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]]:
         """
-        ParameterOverrides. See the following `Block parameter_overrides`.
+        ParameterOverrides. See `parameter_overrides` below.
         """
         return pulumi.get(self, "parameter_overrides")
 
@@ -181,17 +181,12 @@ class _StackInstanceState:
                * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
                * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
                * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
-        :param pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
+        :param pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]] parameter_overrides: ParameterOverrides. See `parameter_overrides` below.
         :param pulumi.Input[_builtins.bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group.
         :param pulumi.Input[_builtins.str] stack_instance_account_id: The account to which the stack instance belongs.
         :param pulumi.Input[_builtins.str] stack_instance_region_id: The region of the stack instance.
-        :param pulumi.Input[_builtins.str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-               * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-               * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-               * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-               * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-               * The create or update operation is not complete.
+        :param pulumi.Input[_builtins.str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
         :param pulumi.Input[_builtins.str] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
         if operation_description is not None:
@@ -245,7 +240,7 @@ class _StackInstanceState:
     @pulumi.getter(name="parameterOverrides")
     def parameter_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]]:
         """
-        ParameterOverrides. See the following `Block parameter_overrides`.
+        ParameterOverrides. See `parameter_overrides` below.
         """
         return pulumi.get(self, "parameter_overrides")
 
@@ -305,12 +300,7 @@ class _StackInstanceState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-        * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-        * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-        * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-        * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-        * The create or update operation is not complete.
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
         """
         return pulumi.get(self, "status")
 
@@ -414,7 +404,7 @@ class StackInstance(pulumi.CustomResource):
                * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
                * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
                * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict', 'outputs.StackInstanceParameterOverride']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict', 'outputs.StackInstanceParameterOverride']]]] parameter_overrides: ParameterOverrides. See `parameter_overrides` below.
         :param pulumi.Input[_builtins.bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group.
         :param pulumi.Input[_builtins.str] stack_instance_account_id: The account to which the stack instance belongs.
@@ -568,17 +558,12 @@ class StackInstance(pulumi.CustomResource):
                * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
                * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
                * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict', 'outputs.StackInstanceParameterOverride']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict', 'outputs.StackInstanceParameterOverride']]]] parameter_overrides: ParameterOverrides. See `parameter_overrides` below.
         :param pulumi.Input[_builtins.bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group.
         :param pulumi.Input[_builtins.str] stack_instance_account_id: The account to which the stack instance belongs.
         :param pulumi.Input[_builtins.str] stack_instance_region_id: The region of the stack instance.
-        :param pulumi.Input[_builtins.str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-               * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-               * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-               * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-               * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-               * The create or update operation is not complete.
+        :param pulumi.Input[_builtins.str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
         :param pulumi.Input[_builtins.str] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -644,7 +629,7 @@ class StackInstance(pulumi.CustomResource):
     @pulumi.getter(name="parameterOverrides")
     def parameter_overrides(self) -> pulumi.Output[Optional[Sequence['outputs.StackInstanceParameterOverride']]]:
         """
-        ParameterOverrides. See the following `Block parameter_overrides`.
+        ParameterOverrides. See `parameter_overrides` below.
         """
         return pulumi.get(self, "parameter_overrides")
 
@@ -684,12 +669,7 @@ class StackInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-        * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
-        * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
-        * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
-        * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
-        * The create or update operation is not complete.
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
         """
         return pulumi.get(self, "status")
 

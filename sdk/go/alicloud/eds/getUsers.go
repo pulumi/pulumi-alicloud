@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -73,11 +73,13 @@ type GetUsersArgs struct {
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string         `pulumi:"id"`
-	Ids        []string       `pulumi:"ids"`
-	OutputFile *string        `pulumi:"outputFile"`
-	Status     *string        `pulumi:"status"`
-	Users      []GetUsersUser `pulumi:"users"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// A list of Ecd Users. Each element contains the following attributes:
+	Users []GetUsersUser `pulumi:"users"`
 }
 
 func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
@@ -127,10 +129,12 @@ func (o GetUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetUsersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Users. Each element contains the following attributes:
 func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
 }

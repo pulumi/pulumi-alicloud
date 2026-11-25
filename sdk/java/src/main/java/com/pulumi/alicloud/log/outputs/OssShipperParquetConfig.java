@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class OssShipperParquetConfig {
+    /**
+     * @return The name of the key.
+     * 
+     */
     private String name;
+    /**
+     * @return Type of configuration name.
+     * 
+     */
     private String type;
 
     private OssShipperParquetConfig() {}
+    /**
+     * @return The name of the key.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Type of configuration name.
+     * 
+     */
     public String type() {
         return this.type;
     }

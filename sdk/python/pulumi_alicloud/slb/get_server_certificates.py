@@ -99,7 +99,7 @@ class GetServerCertificatesResult:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
         """
-        The Id of resource group which the slb server certificates belongs.
+        (Optional) The Id of resource group which the slb server certificates belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -107,7 +107,7 @@ class GetServerCertificatesResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        (Available in v1.66.0+) A mapping of tags to assign to the resource.
+        (Optional) A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -136,6 +136,8 @@ def get_server_certificates(ids: Optional[Sequence[_builtins.str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerCertificatesResult:
     """
     This data source provides the server certificate list.
+
+    > **NOTE:** Available since v1.21.0.
 
     ## Example Usage
 
@@ -180,6 +182,8 @@ def get_server_certificates_output(ids: pulumi.Input[Optional[Optional[Sequence[
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerCertificatesResult]:
     """
     This data source provides the server certificate list.
+
+    > **NOTE:** Available since v1.21.0.
 
     ## Example Usage
 

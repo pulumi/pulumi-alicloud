@@ -14,18 +14,38 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBindingsResult {
+    /**
+     * @return A list of Amqp Bindings. Each element contains the following attributes:
+     * 
+     */
     private List<GetBindingsBinding> bindings;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of Binding IDs. Each item value formats as `&lt;instance_id&gt;:&lt;virtual_host_name&gt;:&lt;source_exchange&gt;:&lt;destination_name&gt;`.
+     * 
+     */
     private List<String> ids;
+    /**
+     * @return Instance Id.
+     * 
+     */
     private String instanceId;
     private @Nullable String outputFile;
+    /**
+     * @return Virtualhost Name.
+     * 
+     */
     private String virtualHostName;
 
     private GetBindingsResult() {}
+    /**
+     * @return A list of Amqp Bindings. Each element contains the following attributes:
+     * 
+     */
     public List<GetBindingsBinding> bindings() {
         return this.bindings;
     }
@@ -36,15 +56,27 @@ public final class GetBindingsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Binding IDs. Each item value formats as `&lt;instance_id&gt;:&lt;virtual_host_name&gt;:&lt;source_exchange&gt;:&lt;destination_name&gt;`.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return Instance Id.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Virtualhost Name.
+     * 
+     */
     public String virtualHostName() {
         return this.virtualHostName;
     }

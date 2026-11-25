@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string SecurityPolicyId;
         /// <summary>
-        /// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        /// The name of the resource.
         /// </summary>
         public readonly string SecurityPolicyName;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values : `Available`, `Configuring`.
         /// </summary>
         public readonly string Status;
         /// <summary>

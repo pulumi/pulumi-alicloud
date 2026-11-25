@@ -19,9 +19,13 @@ public final class GetInstancesInstance {
      * 
      */
     private String availabilityZone;
+    /**
+     * @return The billing method of the instance.
+     * 
+     */
     private String chargeType;
     /**
-     * @return The connection string of the instance.
+     * @return The endpoint of the instance.
      * 
      */
     private String connectionString;
@@ -35,6 +39,10 @@ public final class GetInstancesInstance {
      * 
      */
     private String createTime;
+    /**
+     * @return The time when the instance was created.
+     * 
+     */
     private String creationTime;
     /**
      * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
@@ -137,17 +145,17 @@ public final class GetInstancesInstance {
      */
     private String storageType;
     /**
-     * @return The tags of the instance.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
     /**
-     * @return The ID of the VPC。.
+     * @return The ID of the VPC.
      * 
      */
     private String vpcId;
     /**
-     * @return The vswitch id.
+     * @return Used to retrieve instances belong to specified `vswitch` resources.
      * 
      */
     private String vswitchId;
@@ -165,11 +173,15 @@ public final class GetInstancesInstance {
     public String availabilityZone() {
         return this.availabilityZone;
     }
+    /**
+     * @return The billing method of the instance.
+     * 
+     */
     public String chargeType() {
         return this.chargeType;
     }
     /**
-     * @return The connection string of the instance.
+     * @return The endpoint of the instance.
      * 
      */
     public String connectionString() {
@@ -189,6 +201,10 @@ public final class GetInstancesInstance {
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return The time when the instance was created.
+     * 
+     */
     public String creationTime() {
         return this.creationTime;
     }
@@ -333,21 +349,21 @@ public final class GetInstancesInstance {
         return this.storageType;
     }
     /**
-     * @return The tags of the instance.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
     /**
-     * @return The ID of the VPC。.
+     * @return The ID of the VPC.
      * 
      */
     public String vpcId() {
         return this.vpcId;
     }
     /**
-     * @return The vswitch id.
+     * @return Used to retrieve instances belong to specified `vswitch` resources.
      * 
      */
     public String vswitchId() {

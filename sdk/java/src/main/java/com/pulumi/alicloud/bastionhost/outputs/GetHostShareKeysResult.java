@@ -22,9 +22,21 @@ public final class GetHostShareKeysResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of the Bastion instance.
+     * 
+     */
     private String instanceId;
+    /**
+     * @return A list of Bastionhost Host Share Keys. Each element contains the following attributes:
+     * 
+     */
     private List<GetHostShareKeysKey> keys;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Host Share Key names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
@@ -42,15 +54,27 @@ public final class GetHostShareKeysResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of the Bastion instance.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return A list of Bastionhost Host Share Keys. Each element contains the following attributes:
+     * 
+     */
     public List<GetHostShareKeysKey> keys() {
         return this.keys;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Host Share Key names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

@@ -18,9 +18,17 @@ public final class GetTopicsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetTopicsPlainArgs Empty = new GetTopicsPlainArgs();
 
+    /**
+     * Default to `false`. Set it to true can output more details.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to true can output more details.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -129,6 +137,12 @@ public final class GetTopicsPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetTopicsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to true can output more details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;

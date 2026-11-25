@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.193.0+.
+// > **NOTE:** Available since v1.193.0+.
 //
 // ## Example Usage
 //
@@ -80,15 +80,19 @@ type GetTransitRouterCidrsArgs struct {
 
 // A collection of values returned by getTransitRouterCidrs.
 type GetTransitRouterCidrsResult struct {
+	// A list of Cen Transit Router Cidrs. Each element contains the following attributes:
 	Cidrs []GetTransitRouterCidrsCidr `pulumi:"cidrs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string   `pulumi:"id"`
-	Ids                 []string `pulumi:"ids"`
-	NameRegex           *string  `pulumi:"nameRegex"`
-	Names               []string `pulumi:"names"`
-	OutputFile          *string  `pulumi:"outputFile"`
-	TransitRouterCidrId *string  `pulumi:"transitRouterCidrId"`
-	TransitRouterId     string   `pulumi:"transitRouterId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Transit Router Cidr names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the transit router cidr.
+	TransitRouterCidrId *string `pulumi:"transitRouterCidrId"`
+	// The ID of the transit router.
+	TransitRouterId string `pulumi:"transitRouterId"`
 }
 
 func GetTransitRouterCidrsOutput(ctx *pulumi.Context, args GetTransitRouterCidrsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterCidrsResultOutput {
@@ -129,6 +133,7 @@ func (o GetTransitRouterCidrsResultOutput) ToGetTransitRouterCidrsResultOutputWi
 	return o
 }
 
+// A list of Cen Transit Router Cidrs. Each element contains the following attributes:
 func (o GetTransitRouterCidrsResultOutput) Cidrs() GetTransitRouterCidrsCidrArrayOutput {
 	return o.ApplyT(func(v GetTransitRouterCidrsResult) []GetTransitRouterCidrsCidr { return v.Cidrs }).(GetTransitRouterCidrsCidrArrayOutput)
 }
@@ -146,6 +151,7 @@ func (o GetTransitRouterCidrsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterCidrsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Transit Router Cidr names.
 func (o GetTransitRouterCidrsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTransitRouterCidrsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -154,10 +160,12 @@ func (o GetTransitRouterCidrsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterCidrsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the transit router cidr.
 func (o GetTransitRouterCidrsResultOutput) TransitRouterCidrId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterCidrsResult) *string { return v.TransitRouterCidrId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the transit router.
 func (o GetTransitRouterCidrsResultOutput) TransitRouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterCidrsResult) string { return v.TransitRouterId }).(pulumi.StringOutput)
 }

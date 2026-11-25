@@ -41,7 +41,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.56.0+
+     * &gt; **NOTE:** Available since v1.56.0.
      * 
      * ## Example Usage
      * 
@@ -86,7 +86,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.56.0+
+     * &gt; **NOTE:** Available since v1.56.0.
      * 
      * ## Example Usage
      * 
@@ -131,7 +131,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.56.0+
+     * &gt; **NOTE:** Available since v1.56.0.
      * 
      * ## Example Usage
      * 
@@ -176,7 +176,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.56.0+
+     * &gt; **NOTE:** Available since v1.56.0.
      * 
      * ## Example Usage
      * 
@@ -221,7 +221,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.56.0+
+     * &gt; **NOTE:** Available since v1.56.0.
      * 
      * ## Example Usage
      * 
@@ -560,7 +560,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -611,7 +611,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -662,7 +662,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -713,7 +713,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -764,7 +764,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -815,7 +815,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -866,7 +866,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.139.0+.
+     * &gt; **NOTE:** Available since v1.139.0.
      * 
      * ## Example Usage
      * 
@@ -917,7 +917,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0.
      * 
      * ## Example Usage
      * 
@@ -995,7 +995,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0.
      * 
      * ## Example Usage
      * 
@@ -1073,7 +1073,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0.
      * 
      * ## Example Usage
      * 
@@ -1151,7 +1151,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0.
      * 
      * ## Example Usage
      * 
@@ -1229,7 +1229,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0.
      * 
      * ## Example Usage
      * 
@@ -1307,7 +1307,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0.
      * 
      * ## Example Usage
      * 
@@ -1385,7 +1385,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.59.0+
+     * &gt; **NOTE:** Available since v1.59.0.
      * 
      * ## Example Usage
      * 
@@ -2218,7 +2218,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.56.0+
+     * &gt; **NOTE:** Available since v1.56.0.
      * 
      * ## Example Usage
      * 
@@ -2263,7 +2263,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.56.0+
+     * &gt; **NOTE:** Available since v1.56.0.
      * 
      * ## Example Usage
      * 
@@ -2308,7 +2308,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.56.0+
+     * &gt; **NOTE:** Available since v1.56.0.
      * 
      * ## Example Usage
      * 
@@ -2353,7 +2353,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.56.0+
+     * &gt; **NOTE:** Available since v1.56.0.
      * 
      * ## Example Usage
      * 
@@ -2398,7 +2398,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.56.0+
+     * &gt; **NOTE:** Available since v1.56.0.
      * 
      * ## Example Usage
      * 
@@ -2443,7 +2443,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.95.0+
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2486,7 +2486,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.95.0+
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2529,7 +2529,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.95.0+
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2572,7 +2572,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.95.0+
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2615,7 +2615,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.95.0+
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2658,7 +2658,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.95.0+
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2701,7 +2701,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.95.0+
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2744,7 +2744,9 @@ public final class ActiontrailFunctions {
     /**
      * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
      * 
-     * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2756,7 +2758,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2770,11 +2772,11 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
      *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
      * }
@@ -2790,7 +2792,9 @@ public final class ActiontrailFunctions {
     /**
      * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
      * 
-     * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2802,7 +2806,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2816,11 +2820,11 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
      *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
      * }
@@ -2836,7 +2840,9 @@ public final class ActiontrailFunctions {
     /**
      * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
      * 
-     * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2848,7 +2854,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2862,11 +2868,11 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
      *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
      * }
@@ -2882,7 +2888,9 @@ public final class ActiontrailFunctions {
     /**
      * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
      * 
-     * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2894,7 +2902,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2908,11 +2916,11 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
      *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
      * }
@@ -2928,7 +2936,9 @@ public final class ActiontrailFunctions {
     /**
      * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
      * 
-     * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2940,7 +2950,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2954,11 +2964,11 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
      *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
      * }
@@ -2974,7 +2984,9 @@ public final class ActiontrailFunctions {
     /**
      * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
      * 
-     * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -2986,7 +2998,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3000,11 +3012,11 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
      *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
      * }
@@ -3020,7 +3032,9 @@ public final class ActiontrailFunctions {
     /**
      * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
      * 
-     * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.95.0.
      * 
      * ## Example Usage
      * 
@@ -3032,7 +3046,7 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3046,11 +3060,11 @@ public final class ActiontrailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
      *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
      * }

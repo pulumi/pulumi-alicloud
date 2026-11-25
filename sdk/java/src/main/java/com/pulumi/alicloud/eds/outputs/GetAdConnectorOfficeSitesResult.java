@@ -21,9 +21,21 @@ public final class GetAdConnectorOfficeSitesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Ad Connector Office Site names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ecd Ad Connector Office Sites. Each element contains the following attributes:
+     * 
+     */
     private List<GetAdConnectorOfficeSitesSite> sites;
+    /**
+     * @return The workspace status.
+     * 
+     */
     private @Nullable String status;
 
     private GetAdConnectorOfficeSitesResult() {}
@@ -40,15 +52,27 @@ public final class GetAdConnectorOfficeSitesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Ad Connector Office Site names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ecd Ad Connector Office Sites. Each element contains the following attributes:
+     * 
+     */
     public List<GetAdConnectorOfficeSitesSite> sites() {
         return this.sites;
     }
+    /**
+     * @return The workspace status.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         /// </summary>
         public readonly ImmutableArray<string> Dscps;
+        /// <summary>
+        /// The ID of the Inter Region Traffic Qos Queue.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The description information of the traffic scheduling policy.

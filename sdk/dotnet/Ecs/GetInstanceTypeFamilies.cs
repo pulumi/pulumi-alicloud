@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the ECS instance type families of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in 1.54.0+
+        /// &gt; **NOTE:** Available since v1.54.0
         /// 
         /// ## Example Usage
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the ECS instance type families of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in 1.54.0+
+        /// &gt; **NOTE:** Available since v1.54.0
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the ECS instance type families of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in 1.54.0+
+        /// &gt; **NOTE:** Available since v1.54.0
         /// 
         /// ## Example Usage
         /// 
@@ -186,6 +186,9 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetInstanceTypeFamiliesResult
     {
+        /// <summary>
+        /// A list of instance type families. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypeFamiliesFamilyResult> Families;
         /// <summary>
         /// The generation of the instance type family.

@@ -22,13 +22,16 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of ECS instances that has been bound this key pair.
+        /// A list of ECS instances bound to this key pair.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKeyPairsKeyPairInstanceResult> Instances;
         /// <summary>
-        /// Name of the key pair.
+        /// The key name.
         /// </summary>
         public readonly string KeyName;
+        /// <summary>
+        /// Name of the key pair.
+        /// </summary>
         public readonly string KeyPairName;
         /// <summary>
         /// The Id of resource group which the key pair belongs.

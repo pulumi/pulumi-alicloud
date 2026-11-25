@@ -71,6 +71,9 @@ class GetEcsStorageCapacityUnitsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Storage Capacity Unit names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -81,11 +84,17 @@ class GetEcsStorageCapacityUnitsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of Storage Capacity Unit.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def units(self) -> Sequence['outputs.GetEcsStorageCapacityUnitsUnitResult']:
+        """
+        A list of Ecs Storage Capacity Units. Each element contains the following attributes:
+        """
         return pulumi.get(self, "units")
 
 
@@ -112,7 +121,7 @@ def get_ecs_storage_capacity_units(ids: Optional[Sequence[_builtins.str]] = None
     """
     This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.155.0+.
+    > **NOTE:** Available since v1.155.0.
 
     ## Example Usage
 
@@ -158,7 +167,7 @@ def get_ecs_storage_capacity_units_output(ids: pulumi.Input[Optional[Optional[Se
     """
     This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.155.0+.
+    > **NOTE:** Available since v1.155.0.
 
     ## Example Usage
 

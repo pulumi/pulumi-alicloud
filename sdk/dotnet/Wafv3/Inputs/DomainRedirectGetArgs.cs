@@ -12,6 +12,18 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
 
     public sealed class DomainRedirectGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("backendPorts")]
+        private InputList<Inputs.DomainRedirectBackendPortGetArgs>? _backendPorts;
+
+        /// <summary>
+        /// The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `Listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `BackendPorts` below.
+        /// </summary>
+        public InputList<Inputs.DomainRedirectBackendPortGetArgs> BackendPorts
+        {
+            get => _backendPorts ?? (_backendPorts = new InputList<Inputs.DomainRedirectBackendPortGetArgs>());
+            set => _backendPorts = value;
+        }
+
         [Input("backends")]
         private InputList<string>? _backends;
 
@@ -94,6 +106,7 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
 
         /// <summary>
         /// The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+        /// 
         /// &gt; **NOTE:** This parameter is supported only by the Ultimate edition.
         /// </summary>
         [Input("maxBodySize")]

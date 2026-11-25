@@ -33,11 +33,15 @@ public final class GetBaselineStrategiesResult {
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
-     * @return A list of name of Baseline Strategys.
+     * @return A list of name of Baseline Strategies.
      * 
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Baseline Strategy Entries. Each element contains the following attributes:
+     * 
+     */
     private List<GetBaselineStrategiesStrategy> strategies;
     private @Nullable String strategyIds;
 
@@ -69,7 +73,7 @@ public final class GetBaselineStrategiesResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of name of Baseline Strategys.
+     * @return A list of name of Baseline Strategies.
      * 
      */
     public List<String> names() {
@@ -78,6 +82,10 @@ public final class GetBaselineStrategiesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Baseline Strategy Entries. Each element contains the following attributes:
+     * 
+     */
     public List<GetBaselineStrategiesStrategy> strategies() {
         return this.strategies;
     }

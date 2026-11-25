@@ -324,6 +324,7 @@ class GetDbClustersClusterResult(dict):
         :param _builtins.str create_time: The creation time of the resource.
         :param Sequence['GetDbClustersClusterDbClusterAccessWhiteListArgs'] db_cluster_access_white_lists: The db cluster access white list.
         :param _builtins.str db_cluster_description: The DBCluster description.
+        :param _builtins.str db_cluster_id: The ID of the DBCluster.
         :param _builtins.str db_cluster_network_type: The DBCluster network type.
         :param _builtins.str db_cluster_type: The DBCluster type.
         :param _builtins.str db_node_class: The node class of the DBCluster.
@@ -334,7 +335,7 @@ class GetDbClustersClusterResult(dict):
         :param _builtins.str engine: The Engine of the DBCluster.
         :param _builtins.str engine_version: The engine version of the DBCluster.
         :param _builtins.str expire_time: The expiration time of the DBCluster.
-        :param _builtins.str id: The ID of the DBCluster.
+        :param _builtins.str id: The DBCluster id.
         :param _builtins.str is_expired: If the instance has expired.
         :param _builtins.str lock_mode: The lock mode of the DBCluster.
         :param _builtins.str lock_reason: Lock reason of the DBCluster.
@@ -344,7 +345,7 @@ class GetDbClustersClusterResult(dict):
         :param _builtins.str public_connection_string: A public IP address for the connection.
         :param _builtins.str public_port: Public network port.
         :param Sequence['GetDbClustersClusterScaleOutStatusArgs'] scale_out_statuses: Scale state.
-        :param _builtins.str status: The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+        :param _builtins.str status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
         :param _builtins.str storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param _builtins.int support_backup: Support fallback scheme.
         :param _builtins.bool support_https_port: The system supports http port number.
@@ -469,6 +470,9 @@ class GetDbClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> _builtins.str:
+        """
+        The ID of the DBCluster.
+        """
         return pulumi.get(self, "db_cluster_id")
 
     @_builtins.property
@@ -555,7 +559,7 @@ class GetDbClustersClusterResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of the DBCluster.
+        The DBCluster id.
         """
         return pulumi.get(self, "id")
 
@@ -635,7 +639,7 @@ class GetDbClustersClusterResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+        The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
         """
         return pulumi.get(self, "status")
 
@@ -768,7 +772,7 @@ class GetRegionsRegionResult(dict):
                  region_id: _builtins.str,
                  zone_ids: Sequence['outputs.GetRegionsRegionZoneIdResult']):
         """
-        :param _builtins.str region_id: The Region ID.
+        :param _builtins.str region_id: You can use specified region_id to find the region and available zones information that supports ClickHouse.
         :param Sequence['GetRegionsRegionZoneIdArgs'] zone_ids: A list of available zone ids in the region_id.
         """
         pulumi.set(__self__, "region_id", region_id)
@@ -778,7 +782,7 @@ class GetRegionsRegionResult(dict):
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
         """
-        The Region ID.
+        You can use specified region_id to find the region and available zones information that supports ClickHouse.
         """
         return pulumi.get(self, "region_id")
 

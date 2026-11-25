@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides Express Connect Virtual Physical Connection available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides Express Connect Virtual Physical Connection available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// This data source provides Express Connect Virtual Physical Connection available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0
         /// 
         /// ## Example Usage
         /// 
@@ -147,6 +147,9 @@ namespace Pulumi.AliCloud.ExpressConnect
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Whether the virtual physical connection is confirmed.
+        /// </summary>
         [Input("isConfirmed")]
         public bool? IsConfirmed { get; set; }
 
@@ -236,6 +239,9 @@ namespace Pulumi.AliCloud.ExpressConnect
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Whether the virtual physical connection is confirmed.
+        /// </summary>
         [Input("isConfirmed")]
         public Input<bool>? IsConfirmed { get; set; }
 

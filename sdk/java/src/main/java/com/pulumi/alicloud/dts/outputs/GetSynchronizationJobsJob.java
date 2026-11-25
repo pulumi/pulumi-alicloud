@@ -16,6 +16,10 @@ public final class GetSynchronizationJobsJob {
      * 
      */
     private String checkpoint;
+    /**
+     * @return The creation time of synchronization job.
+     * 
+     */
     private String createTime;
     /**
      * @return Whether to execute DTS supports schema migration, full data migration, or full-data initialization.
@@ -77,13 +81,25 @@ public final class GetSynchronizationJobsJob {
      * 
      */
     private String destinationEndpointUserName;
+    /**
+     * @return The ID of synchronization instance.
+     * 
+     */
     private String dtsInstanceId;
+    /**
+     * @return The ID of synchronization job.
+     * 
+     */
     private String dtsJobId;
     /**
      * @return The name of synchronization job.
      * 
      */
     private String dtsJobName;
+    /**
+     * @return The expiration time. Formatting with yyyy-MM-ddTHH:mm:ssZ(UTC time).
+     * 
+     */
     private String expireTime;
     /**
      * @return The ID of synchronizing instance. It&#39;s the ID of resource `alicloud.dts.SynchronizationInstance`.
@@ -146,7 +162,7 @@ public final class GetSynchronizationJobsJob {
      */
     private String sourceEndpointUserName;
     /**
-     * @return The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+     * @return The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
      * 
      */
     private String status;
@@ -169,6 +185,10 @@ public final class GetSynchronizationJobsJob {
     public String checkpoint() {
         return this.checkpoint;
     }
+    /**
+     * @return The creation time of synchronization job.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
@@ -256,9 +276,17 @@ public final class GetSynchronizationJobsJob {
     public String destinationEndpointUserName() {
         return this.destinationEndpointUserName;
     }
+    /**
+     * @return The ID of synchronization instance.
+     * 
+     */
     public String dtsInstanceId() {
         return this.dtsInstanceId;
     }
+    /**
+     * @return The ID of synchronization job.
+     * 
+     */
     public String dtsJobId() {
         return this.dtsJobId;
     }
@@ -269,6 +297,10 @@ public final class GetSynchronizationJobsJob {
     public String dtsJobName() {
         return this.dtsJobName;
     }
+    /**
+     * @return The expiration time. Formatting with yyyy-MM-ddTHH:mm:ssZ(UTC time).
+     * 
+     */
     public String expireTime() {
         return this.expireTime;
     }
@@ -357,7 +389,7 @@ public final class GetSynchronizationJobsJob {
         return this.sourceEndpointUserName;
     }
     /**
-     * @return The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+     * @return The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
      * 
      */
     public String status() {

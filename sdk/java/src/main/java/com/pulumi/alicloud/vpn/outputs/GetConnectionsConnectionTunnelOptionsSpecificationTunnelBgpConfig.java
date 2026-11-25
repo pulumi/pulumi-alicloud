@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig {
+    /**
+     * @return The BGP status.
+     * 
+     */
     private String bgpStatus;
     /**
      * @return Local asn.
@@ -22,12 +26,12 @@ public final class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpCo
      */
     private String localBgpIp;
     /**
-     * @return The counterpart autonomous system number.
+     * @return The peer ASN.
      * 
      */
     private String peerAsn;
     /**
-     * @return The BGP address on the other side.
+     * @return The peer BGP IP.
      * 
      */
     private String peerBgpIp;
@@ -38,6 +42,10 @@ public final class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpCo
     private String tunnelCidr;
 
     private GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig() {}
+    /**
+     * @return The BGP status.
+     * 
+     */
     public String bgpStatus() {
         return this.bgpStatus;
     }
@@ -56,14 +64,14 @@ public final class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpCo
         return this.localBgpIp;
     }
     /**
-     * @return The counterpart autonomous system number.
+     * @return The peer ASN.
      * 
      */
     public String peerAsn() {
         return this.peerAsn;
     }
     /**
-     * @return The BGP address on the other side.
+     * @return The peer BGP IP.
      * 
      */
     public String peerBgpIp() {

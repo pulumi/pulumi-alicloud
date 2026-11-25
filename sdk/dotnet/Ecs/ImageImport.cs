@@ -146,6 +146,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        /// 
         /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `Platform` is `Ubuntu`.
         /// </summary>
         [Output("platform")]
@@ -253,6 +254,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        /// 
         /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `Platform` is `Ubuntu`.
         /// </summary>
         [Input("platform")]
@@ -322,6 +324,7 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        /// 
         /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `Platform` is `Ubuntu`.
         /// </summary>
         [Input("platform")]

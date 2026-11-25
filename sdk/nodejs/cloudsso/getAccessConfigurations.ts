@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
@@ -77,7 +77,13 @@ export interface GetAccessConfigurationsArgs {
  * A collection of values returned by getAccessConfigurations.
  */
 export interface GetAccessConfigurationsResult {
+    /**
+     * A list of Cloud Sso Access Configurations. Each element contains the following attributes:
+     */
     readonly configurations: outputs.cloudsso.GetAccessConfigurationsConfiguration[];
+    /**
+     * The ID of the Directory.
+     */
     readonly directoryId: string;
     readonly enableDetails?: boolean;
     /**
@@ -86,13 +92,16 @@ export interface GetAccessConfigurationsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Access Configuration names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Cloud Sso Access Configurations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_testacc";
+ * const name = config.get("name") || "tf_acc";
  * const defaultAppGroup = new alicloud.opensearch.AppGroup("default", {
  *     appGroupName: name,
  *     paymentType: "PayAsYouGo",
@@ -65,9 +65,12 @@ export interface GetAppGroupsArgs {
      */
     ids?: string[];
     /**
-     * The Instance ID.
+     * Instance ID.
      */
     instanceId?: string;
+    /**
+     * The name of AppGroup.
+     */
     name?: string;
     /**
      * A regex string to filter results by App Group name.
@@ -78,11 +81,11 @@ export interface GetAppGroupsArgs {
      */
     outputFile?: string;
     /**
-     * The Resource Group ID.
+     * Resource Group Id.
      */
     resourceGroupId?: string;
     /**
-     * Application type. Valid Values: `standard`, `enhanced`.
+     * The Type of AppGroup. Valid values: `standard`,`enhanced`.
      */
     type?: string;
 }
@@ -92,24 +95,39 @@ export interface GetAppGroupsArgs {
  */
 export interface GetAppGroupsResult {
     readonly enableDetails?: boolean;
+    /**
+     * A list of App Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.opensearch.GetAppGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The Instance ID.
+     */
     readonly instanceId?: string;
     readonly name?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of App Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The Resource Group ID.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * Application type. Valid Values: `standard`, `enhanced`.
+     */
     readonly type?: string;
 }
 /**
  * This data source provides the Open Search App Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -120,7 +138,7 @@ export interface GetAppGroupsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_testacc";
+ * const name = config.get("name") || "tf_acc";
  * const defaultAppGroup = new alicloud.opensearch.AppGroup("default", {
  *     appGroupName: name,
  *     paymentType: "PayAsYouGo",
@@ -165,9 +183,12 @@ export interface GetAppGroupsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Instance ID.
+     * Instance ID.
      */
     instanceId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of AppGroup.
+     */
     name?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by App Group name.
@@ -178,11 +199,11 @@ export interface GetAppGroupsOutputArgs {
      */
     outputFile?: pulumi.Input<string | undefined>;
     /**
-     * The Resource Group ID.
+     * Resource Group Id.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * Application type. Valid Values: `standard`, `enhanced`.
+     * The Type of AppGroup. Valid values: `standard`,`enhanced`.
      */
     type?: pulumi.Input<string | undefined>;
 }

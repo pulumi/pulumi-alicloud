@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StudioApplicationInstance {
     /**
-     * @return The resource ID in terraform of Application.
+     * @return The id of the instance.
      * 
      */
     private @Nullable String id;
@@ -29,7 +29,7 @@ public final class StudioApplicationInstance {
 
     private StudioApplicationInstance() {}
     /**
-     * @return The resource ID in terraform of Application.
+     * @return The id of the instance.
      * 
      */
     public Optional<String> id() {

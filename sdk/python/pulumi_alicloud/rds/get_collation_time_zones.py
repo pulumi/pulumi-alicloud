@@ -45,6 +45,10 @@ class GetCollationTimeZonesResult:
     @_builtins.property
     @pulumi.getter(name="collationTimeZones")
     def collation_time_zones(self) -> Optional[Sequence['outputs.GetCollationTimeZonesCollationTimeZoneResult']]:
+        """
+        An array that consists of the character set collations and time zones that are available for
+        use in ApsaraDB RDS.
+        """
         return pulumi.get(self, "collation_time_zones")
 
     @_builtins.property
@@ -58,6 +62,9 @@ class GetCollationTimeZonesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of time zones.
+        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -84,7 +91,7 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[Union['GetC
     """
     Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
 
-    > **NOTE:** Available in v1.198.0+.
+    > **NOTE:** Available since v1.198.0+.
 
     ## Example Usage
 
@@ -99,8 +106,7 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[Union['GetC
     ```
 
 
-    :param Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict', 'outputs.GetCollationTimeZonesCollationTimeZoneResult']] collation_time_zones: An array that consists of the character set collations and time zones that are available for
-           use in ApsaraDB RDS.
+    :param Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict', 'outputs.GetCollationTimeZonesCollationTimeZoneResult']] collation_time_zones: An array that consists of the character set collations and time zones. See `collation_time_zones` below.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi up`).
     """
     __args__ = dict()
@@ -120,7 +126,7 @@ def get_collation_time_zones_output(collation_time_zones: pulumi.Input[Optional[
     """
     Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
 
-    > **NOTE:** Available in v1.198.0+.
+    > **NOTE:** Available since v1.198.0+.
 
     ## Example Usage
 
@@ -135,8 +141,7 @@ def get_collation_time_zones_output(collation_time_zones: pulumi.Input[Optional[
     ```
 
 
-    :param Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict', 'outputs.GetCollationTimeZonesCollationTimeZoneResult']] collation_time_zones: An array that consists of the character set collations and time zones that are available for
-           use in ApsaraDB RDS.
+    :param Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict', 'outputs.GetCollationTimeZonesCollationTimeZoneResult']] collation_time_zones: An array that consists of the character set collations and time zones. See `collation_time_zones` below.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi up`).
     """
     __args__ = dict()

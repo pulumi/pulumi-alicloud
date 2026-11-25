@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.163.0+.
+ * > **NOTE:** Available since v1.163.0.
  *
  * ## Example Usage
  *
@@ -78,17 +78,26 @@ export interface GetOtsBackupPlansResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of OtsBackupPlan names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly planId?: string;
     readonly planName?: string;
+    /**
+     * A list of Hbr OtsBackupPlans. Each element contains the following attributes:
+     */
     readonly plans: outputs.hbr.GetOtsBackupPlansPlan[];
+    /**
+     * The ID of backup vault.
+     */
     readonly vaultId?: string;
 }
 /**
  * This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.163.0+.
+ * > **NOTE:** Available since v1.163.0.
  *
  * ## Example Usage
  *

@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.Redis
     /// 
     /// &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v1.294.0. To destroy it, convert the instance to `PayAsYouGo` by setting `PaymentType = "PayAsYouGo"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
     /// 
+    /// &gt; **NOTE:** Refreshing an instance calls the `DescribeRoleZoneInfo` operation to read the additional bandwidth purchased for its data shards, so the RAM policy used by Terraform must allow `kvstore:DescribeRoleZoneInfo` in addition to the instance query permissions.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -58,8 +60,7 @@ namespace Pulumi.AliCloud.Redis
     /// 
     ///     var defaultTairInstance = new AliCloud.Redis.TairInstance("default", new()
     ///     {
-    ///         PaymentType = "Subscription",
-    ///         Period = 1,
+    ///         PaymentType = "PayAsYouGo",
     ///         InstanceType = "tair_rdb",
     ///         ZoneId = zoneId,
     ///         InstanceClass = "tair.rdb.2g",
@@ -86,6 +87,12 @@ namespace Pulumi.AliCloud.Redis
     public partial class TairInstance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `Bandwidth` of the instance. See `AdditionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `Bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+        /// </summary>
+        [Output("additionalBandwidths")]
+        public Output<ImmutableArray<Outputs.TairInstanceAdditionalBandwidth>> AdditionalBandwidths { get; private set; } = null!;
+
+        /// <summary>
         /// The architecture of the instance.  cluster, standard, rwsplit.
         /// </summary>
         [Output("architectureType")]
@@ -110,6 +117,24 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Output("backupId")]
         public Output<string?> BackupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is write-only and cannot be read back; Terraform keeps the configured value in the state.
+        /// </summary>
+        [Output("bandwidthBurst")]
+        public Output<bool?> BandwidthBurst { get; private set; } = null!;
+
+        /// <summary>
+        /// The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Output("caCertCommonName")]
+        public Output<string> CaCertCommonName { get; private set; } = null!;
+
+        /// <summary>
+        /// The download URL of the CA certificate. This attribute is populated when `SslEnabled` is set to `Enable`.
+        /// </summary>
+        [Output("caCertDownloadUrl")]
+        public Output<string> CaCertDownloadUrl { get; private set; } = null!;
 
         /// <summary>
         /// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
@@ -251,19 +276,19 @@ namespace Pulumi.AliCloud.Redis
         public Output<string> NodeType { get; private set; } = null!;
 
         /// <summary>
-        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;, valid values: yes, no. The default value is no.
         /// </summary>
         [Output("paramNoLooseSentinelEnabled")]
         public Output<string> ParamNoLooseSentinelEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+        /// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see &lt;https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;
         /// </summary>
         [Output("paramNoLooseSentinelPasswordFreeAccess")]
         public Output<string> ParamNoLooseSentinelPasswordFreeAccess { get; private set; } = null!;
 
         /// <summary>
-        /// After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        /// After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See &lt;https://help.aliyun.com/zh/redis/user-guide/parameter-support&gt; for details
         /// </summary>
         [Output("paramNoLooseSentinelPasswordFreeCommands")]
         public Output<string> ParamNoLooseSentinelPasswordFreeCommands { get; private set; } = null!;
@@ -271,19 +296,19 @@ namespace Pulumi.AliCloud.Redis
         /// <summary>
         /// The value is semisync or async. The default value is async.
         /// 
-        /// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        /// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
         /// </summary>
         [Output("paramReplMode")]
         public Output<string> ParamReplMode { get; private set; } = null!;
 
         /// <summary>
-        /// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        /// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
         /// </summary>
         [Output("paramSemisyncReplTimeout")]
         public Output<string> ParamSemisyncReplTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+        /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;. The value is 0 or 1. The default value is 0.
         /// </summary>
         [Output("paramSentinelCompatEnable")]
         public Output<string> ParamSentinelCompatEnable { get; private set; } = null!;
@@ -293,6 +318,19 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `PasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        [Output("passwordWo")]
+        public Output<string?> PasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `PasswordWo` changes.
+        /// </summary>
+        [Output("passwordWoVersion")]
+        public Output<int?> PasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
@@ -333,6 +371,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of replica nodes in the primary zone. This parameter is available only when you create a cloud-native cluster instance in the multi-replica mode. Valid values: `1` to `4`. If you create a multi-zone instance, you can use this parameter together with the `SlaveReplicaCount` parameter to customize the numbers of replica nodes in the primary and secondary zones. The sum of the values of this parameter and the `SlaveReplicaCount` parameter cannot exceed `4`. Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes.
+        /// </summary>
+        [Output("replicaCount")]
+        public Output<int> ReplicaCount { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group to which the instance belongs.
@@ -391,6 +435,12 @@ namespace Pulumi.AliCloud.Redis
         public Output<int?> SlaveReadOnlyCount { get; private set; } = null!;
 
         /// <summary>
+        /// The number of replica nodes in the secondary zone. If you create a multi-zone instance, the sum of the values of this parameter and the `ReplicaCount` parameter cannot exceed `4`. The value `0` is not supported in this configuration: `CreateTairInstance` rejects it with `InvalidParameter`, and `ModifyInstanceSpec` rejects it with `SlaveReplicaCountCanNotBeZero` (the API suggests `MigrateToOtherZone` instead). Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes in the secondary zone.
+        /// </summary>
+        [Output("slaveReplicaCount")]
+        public Output<int> SlaveReplicaCount { get; private set; } = null!;
+
+        /// <summary>
         /// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
         /// </summary>
         [Output("srcDbInstanceId")]
@@ -401,6 +451,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Output("sslEnabled")]
         public Output<string> SslEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Output("sslExpiredTime")]
+        public Output<string> SslExpiredTime { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource
@@ -421,7 +477,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> StoragePerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Different specifications have different value ranges. When the InstanceType value is TairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        /// Different specifications have different value ranges. When the InstanceType value is TairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see &lt;https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type&gt;. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         /// </summary>
         [Output("storageSizeGb")]
         public Output<int> StorageSizeGb { get; private set; } = null!;
@@ -502,6 +558,7 @@ namespace Pulumi.AliCloud.Redis
                 AdditionalSecretOutputs =
                 {
                     "password",
+                    "passwordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -526,6 +583,18 @@ namespace Pulumi.AliCloud.Redis
 
     public sealed class TairInstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalBandwidths")]
+        private InputList<Inputs.TairInstanceAdditionalBandwidthArgs>? _additionalBandwidths;
+
+        /// <summary>
+        /// The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `Bandwidth` of the instance. See `AdditionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `Bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+        /// </summary>
+        public InputList<Inputs.TairInstanceAdditionalBandwidthArgs> AdditionalBandwidths
+        {
+            get => _additionalBandwidths ?? (_additionalBandwidths = new InputList<Inputs.TairInstanceAdditionalBandwidthArgs>());
+            set => _additionalBandwidths = value;
+        }
+
         /// <summary>
         /// Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         /// </summary>
@@ -545,6 +614,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is write-only and cannot be read back; Terraform keeps the configured value in the state.
+        /// </summary>
+        [Input("bandwidthBurst")]
+        public Input<bool>? BandwidthBurst { get; set; }
 
         /// <summary>
         /// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
@@ -668,19 +743,19 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;, valid values: yes, no. The default value is no.
         /// </summary>
         [Input("paramNoLooseSentinelEnabled")]
         public Input<string>? ParamNoLooseSentinelEnabled { get; set; }
 
         /// <summary>
-        /// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+        /// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see &lt;https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;
         /// </summary>
         [Input("paramNoLooseSentinelPasswordFreeAccess")]
         public Input<string>? ParamNoLooseSentinelPasswordFreeAccess { get; set; }
 
         /// <summary>
-        /// After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        /// After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See &lt;https://help.aliyun.com/zh/redis/user-guide/parameter-support&gt; for details
         /// </summary>
         [Input("paramNoLooseSentinelPasswordFreeCommands")]
         public Input<string>? ParamNoLooseSentinelPasswordFreeCommands { get; set; }
@@ -688,19 +763,19 @@ namespace Pulumi.AliCloud.Redis
         /// <summary>
         /// The value is semisync or async. The default value is async.
         /// 
-        /// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        /// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
         /// </summary>
         [Input("paramReplMode")]
         public Input<string>? ParamReplMode { get; set; }
 
         /// <summary>
-        /// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        /// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
         /// </summary>
         [Input("paramSemisyncReplTimeout")]
         public Input<string>? ParamSemisyncReplTimeout { get; set; }
 
         /// <summary>
-        /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+        /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;. The value is 0 or 1. The default value is 0.
         /// </summary>
         [Input("paramSentinelCompatEnable")]
         public Input<string>? ParamSentinelCompatEnable { get; set; }
@@ -720,6 +795,29 @@ namespace Pulumi.AliCloud.Redis
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `PasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `PasswordWo` changes.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
@@ -754,6 +852,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("recoverConfigMode")]
         public Input<string>? RecoverConfigMode { get; set; }
+
+        /// <summary>
+        /// The number of replica nodes in the primary zone. This parameter is available only when you create a cloud-native cluster instance in the multi-replica mode. Valid values: `1` to `4`. If you create a multi-zone instance, you can use this parameter together with the `SlaveReplicaCount` parameter to customize the numbers of replica nodes in the primary and secondary zones. The sum of the values of this parameter and the `SlaveReplicaCount` parameter cannot exceed `4`. Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes.
+        /// </summary>
+        [Input("replicaCount")]
+        public Input<int>? ReplicaCount { get; set; }
 
         /// <summary>
         /// The ID of the resource group to which the instance belongs.
@@ -812,6 +916,12 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? SlaveReadOnlyCount { get; set; }
 
         /// <summary>
+        /// The number of replica nodes in the secondary zone. If you create a multi-zone instance, the sum of the values of this parameter and the `ReplicaCount` parameter cannot exceed `4`. The value `0` is not supported in this configuration: `CreateTairInstance` rejects it with `InvalidParameter`, and `ModifyInstanceSpec` rejects it with `SlaveReplicaCountCanNotBeZero` (the API suggests `MigrateToOtherZone` instead). Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes in the secondary zone.
+        /// </summary>
+        [Input("slaveReplicaCount")]
+        public Input<int>? SlaveReplicaCount { get; set; }
+
+        /// <summary>
         /// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
         /// </summary>
         [Input("srcDbInstanceId")]
@@ -836,7 +946,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? StoragePerformanceLevel { get; set; }
 
         /// <summary>
-        /// Different specifications have different value ranges. When the InstanceType value is TairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        /// Different specifications have different value ranges. When the InstanceType value is TairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see &lt;https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type&gt;. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         /// </summary>
         [Input("storageSizeGb")]
         public Input<int>? StorageSizeGb { get; set; }
@@ -899,6 +1009,18 @@ namespace Pulumi.AliCloud.Redis
 
     public sealed class TairInstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("additionalBandwidths")]
+        private InputList<Inputs.TairInstanceAdditionalBandwidthGetArgs>? _additionalBandwidths;
+
+        /// <summary>
+        /// The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `Bandwidth` of the instance. See `AdditionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `Bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+        /// </summary>
+        public InputList<Inputs.TairInstanceAdditionalBandwidthGetArgs> AdditionalBandwidths
+        {
+            get => _additionalBandwidths ?? (_additionalBandwidths = new InputList<Inputs.TairInstanceAdditionalBandwidthGetArgs>());
+            set => _additionalBandwidths = value;
+        }
+
         /// <summary>
         /// The architecture of the instance.  cluster, standard, rwsplit.
         /// </summary>
@@ -924,6 +1046,24 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is write-only and cannot be read back; Terraform keeps the configured value in the state.
+        /// </summary>
+        [Input("bandwidthBurst")]
+        public Input<bool>? BandwidthBurst { get; set; }
+
+        /// <summary>
+        /// The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Input("caCertCommonName")]
+        public Input<string>? CaCertCommonName { get; set; }
+
+        /// <summary>
+        /// The download URL of the CA certificate. This attribute is populated when `SslEnabled` is set to `Enable`.
+        /// </summary>
+        [Input("caCertDownloadUrl")]
+        public Input<string>? CaCertDownloadUrl { get; set; }
 
         /// <summary>
         /// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
@@ -1071,19 +1211,19 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
+        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;, valid values: yes, no. The default value is no.
         /// </summary>
         [Input("paramNoLooseSentinelEnabled")]
         public Input<string>? ParamNoLooseSentinelEnabled { get; set; }
 
         /// <summary>
-        /// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+        /// Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see &lt;https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;
         /// </summary>
         [Input("paramNoLooseSentinelPasswordFreeAccess")]
         public Input<string>? ParamNoLooseSentinelPasswordFreeAccess { get; set; }
 
         /// <summary>
-        /// After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See https://help.aliyun.com/zh/redis/user-guide/parameter-support for details
+        /// After sentinel mode and the# no_loose_sentinel-password-free-access parameter are enabled, you can use this parameter to add additional secret-free command lists (empty by default). After setting, you can execute the corresponding command on any connection without secret, please operate carefully. Commands are written in lowercase letters, and multiple commands are separated by commas (,). See &lt;https://help.aliyun.com/zh/redis/user-guide/parameter-support&gt; for details
         /// </summary>
         [Input("paramNoLooseSentinelPasswordFreeCommands")]
         public Input<string>? ParamNoLooseSentinelPasswordFreeCommands { get; set; }
@@ -1091,19 +1231,19 @@ namespace Pulumi.AliCloud.Redis
         /// <summary>
         /// The value is semisync or async. The default value is async.
         /// 
-        /// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        /// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
         /// </summary>
         [Input("paramReplMode")]
         public Input<string>? ParamReplMode { get; set; }
 
         /// <summary>
-        /// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
+        /// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: &lt;https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance&gt;.
         /// </summary>
         [Input("paramSemisyncReplTimeout")]
         public Input<string>? ParamSemisyncReplTimeout { get; set; }
 
         /// <summary>
-        /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+        /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see &lt;https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance&gt;. The value is 0 or 1. The default value is 0.
         /// </summary>
         [Input("paramSentinelCompatEnable")]
         public Input<string>? ParamSentinelCompatEnable { get; set; }
@@ -1123,6 +1263,29 @@ namespace Pulumi.AliCloud.Redis
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only password of the account. It is only sent to the server when the resource is created or the `PasswordWoVersion` changes and is never stored in the state or plan.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `PasswordWo` changes.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
@@ -1163,6 +1326,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The number of replica nodes in the primary zone. This parameter is available only when you create a cloud-native cluster instance in the multi-replica mode. Valid values: `1` to `4`. If you create a multi-zone instance, you can use this parameter together with the `SlaveReplicaCount` parameter to customize the numbers of replica nodes in the primary and secondary zones. The sum of the values of this parameter and the `SlaveReplicaCount` parameter cannot exceed `4`. Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes.
+        /// </summary>
+        [Input("replicaCount")]
+        public Input<int>? ReplicaCount { get; set; }
 
         /// <summary>
         /// The ID of the resource group to which the instance belongs.
@@ -1221,6 +1390,12 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? SlaveReadOnlyCount { get; set; }
 
         /// <summary>
+        /// The number of replica nodes in the secondary zone. If you create a multi-zone instance, the sum of the values of this parameter and the `ReplicaCount` parameter cannot exceed `4`. The value `0` is not supported in this configuration: `CreateTairInstance` rejects it with `InvalidParameter`, and `ModifyInstanceSpec` rejects it with `SlaveReplicaCountCanNotBeZero` (the API suggests `MigrateToOtherZone` instead). Removing this parameter from the configuration keeps the current value instead of resetting it; set a new value explicitly to change the number of replica nodes in the secondary zone.
+        /// </summary>
+        [Input("slaveReplicaCount")]
+        public Input<int>? SlaveReplicaCount { get; set; }
+
+        /// <summary>
         /// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
         /// </summary>
         [Input("srcDbInstanceId")]
@@ -1231,6 +1406,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("sslEnabled")]
         public Input<string>? SslEnabled { get; set; }
+
+        /// <summary>
+        /// The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+        /// </summary>
+        [Input("sslExpiredTime")]
+        public Input<string>? SslExpiredTime { get; set; }
 
         /// <summary>
         /// The status of the resource
@@ -1251,7 +1432,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? StoragePerformanceLevel { get; set; }
 
         /// <summary>
-        /// Different specifications have different value ranges. When the InstanceType value is TairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
+        /// Different specifications have different value ranges. When the InstanceType value is TairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see &lt;https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type&gt;. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         /// </summary>
         [Input("storageSizeGb")]
         public Input<int>? StorageSizeGb { get; set; }

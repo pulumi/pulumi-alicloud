@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetResolverZonesZone {
     /**
-     * @return The status of the Zone.
+     * @return The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
      * 
      */
     private String status;
@@ -23,7 +23,7 @@ public final class GetResolverZonesZone {
 
     private GetResolverZonesZone() {}
     /**
-     * @return The status of the Zone.
+     * @return The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
      * 
      */
     public String status() {

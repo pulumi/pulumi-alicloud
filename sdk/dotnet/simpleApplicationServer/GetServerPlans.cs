@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The platform of Plan supported. Valid values: ["Linux", "Windows"].
+        /// Available in v1.161.0. The platform of Plan supported. Valid values: ["Linux", "Windows"].
         /// </summary>
         [Input("platform")]
         public string? Platform { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The platform of Plan supported. Valid values: ["Linux", "Windows"].
+        /// Available in v1.161.0. The platform of Plan supported. Valid values: ["Linux", "Windows"].
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -249,17 +249,35 @@ namespace Pulumi.AliCloud.simpleApplicationServer
     [OutputType]
     public sealed class GetServerPlansResult
     {
+        /// <summary>
+        /// The peak bandwidth. Unit: Mbit/s.
+        /// </summary>
         public readonly int? Bandwidth;
+        /// <summary>
+        /// The number of CPU cores.
+        /// </summary>
         public readonly int? Core;
+        /// <summary>
+        /// The size of the enhanced SSD (ESSD). Unit: GB.
+        /// </summary>
         public readonly int? DiskSize;
+        /// <summary>
+        /// The monthly data transfer quota. Unit: GB.
+        /// </summary>
         public readonly int? Flow;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The memory size. Unit: GB.
+        /// </summary>
         public readonly double? Memory;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Simple Application Server Plans. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServerPlansPlanResult> Plans;
         public readonly string? Platform;
 

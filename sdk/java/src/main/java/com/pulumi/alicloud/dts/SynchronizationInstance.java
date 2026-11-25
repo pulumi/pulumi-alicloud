@@ -83,18 +83,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dts/synchronizationInstance:SynchronizationInstance")
 public class SynchronizationInstance extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to automatically renew when it expires. Valid values: `true`, `false`.
+     * Whether to automatically renew the instance when it expires. Valid values: `true`, `false`. This argument only takes effect when `paymentType` is `Subscription`; for `PayAsYouGo` instances it is ignored and not set by the provider. When `paymentType` is `Subscription`, the provider reads the actual renewal status from BSS on every refresh, including refreshes of instances whose configuration does not set `autoPay`, so the RAM user needs `bss:DescribeInstances`; if that lookup fails, the resource read fails. Setting it to `true` switches the instance to `AutoRenewal` and, when an existing instance is updated, requires `paymentDuration` and `paymentDurationUnit` to define the renewal period. In this case `paymentDuration` must be `1`, `2`, `3`, `6`, or `12`, and `paymentDurationUnit` must be `Month` or `Year`; these values can differ from the purchase duration accepted when the instance is created, where the renewal setting is passed through `AutoPay`. Setting it to `false` switches the instance to `ManualRenewal`, so the instance is retained but is not renewed automatically at expiry. BSS reports three renewal states (`AutoRenewal`, `ManualRenewal` and `NotRenewal`); `autoPay` is read as `false` for both `ManualRenewal` and `NotRenewal`, so the two states are not distinguishable in the state. The renewal setting is sent to BSS only when `autoPay` changes: because an instance in `NotRenewal` is already read as `false`, adding `autoPay = &#34;false&#34;` to its configuration produces no change and does not trigger an update, so the instance is still released at expiry. To retain such an instance, set `autoPay = &#34;true&#34;` first and then back to `false`, or change the renewal setting in the console. The renewal period is applied when `autoPay` is set or changed; changing only `paymentDuration` or `paymentDurationUnit` on an existing instance does not update the renewal setting. Changing `autoPay` on an existing subscription instance updates its auto-renew setting in place. The RAM user must be granted `bss:ModifyPrepaidInstanceAutoRenew` to change the setting and `bss:DescribeInstances` to read it back. For an existing subscription instance whose configuration already sets `autoPay`, the next apply reconciles the instance with the configured value, which can overwrite a renewal setting changed in the console.
      * 
      */
     @Export(name="autoPay", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> autoPay;
+    private Output<String> autoPay;
 
     /**
-     * @return Whether to automatically renew when it expires. Valid values: `true`, `false`.
+     * @return Whether to automatically renew the instance when it expires. Valid values: `true`, `false`. This argument only takes effect when `paymentType` is `Subscription`; for `PayAsYouGo` instances it is ignored and not set by the provider. When `paymentType` is `Subscription`, the provider reads the actual renewal status from BSS on every refresh, including refreshes of instances whose configuration does not set `autoPay`, so the RAM user needs `bss:DescribeInstances`; if that lookup fails, the resource read fails. Setting it to `true` switches the instance to `AutoRenewal` and, when an existing instance is updated, requires `paymentDuration` and `paymentDurationUnit` to define the renewal period. In this case `paymentDuration` must be `1`, `2`, `3`, `6`, or `12`, and `paymentDurationUnit` must be `Month` or `Year`; these values can differ from the purchase duration accepted when the instance is created, where the renewal setting is passed through `AutoPay`. Setting it to `false` switches the instance to `ManualRenewal`, so the instance is retained but is not renewed automatically at expiry. BSS reports three renewal states (`AutoRenewal`, `ManualRenewal` and `NotRenewal`); `autoPay` is read as `false` for both `ManualRenewal` and `NotRenewal`, so the two states are not distinguishable in the state. The renewal setting is sent to BSS only when `autoPay` changes: because an instance in `NotRenewal` is already read as `false`, adding `autoPay = &#34;false&#34;` to its configuration produces no change and does not trigger an update, so the instance is still released at expiry. To retain such an instance, set `autoPay = &#34;true&#34;` first and then back to `false`, or change the renewal setting in the console. The renewal period is applied when `autoPay` is set or changed; changing only `paymentDuration` or `paymentDurationUnit` on an existing instance does not update the renewal setting. Changing `autoPay` on an existing subscription instance updates its auto-renew setting in place. The RAM user must be granted `bss:ModifyPrepaidInstanceAutoRenew` to change the setting and `bss:DescribeInstances` to read it back. For an existing subscription instance whose configuration already sets `autoPay`, the next apply reconciles the instance with the configured value, which can overwrite a renewal setting changed in the console.
      * 
      */
-    public Output<Optional<String>> autoPay() {
-        return Codegen.optional(this.autoPay);
+    public Output<String> autoPay() {
+        return this.autoPay;
     }
     /**
      * Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
@@ -167,14 +167,14 @@ public class SynchronizationInstance extends com.pulumi.resources.CustomResource
         return this.destinationEndpointRegion;
     }
     /**
-     * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+     * The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `alicloud.dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
      * 
      */
     @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output<String> instanceClass;
 
     /**
-     * @return The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+     * @return The instance class. Valid values: `xmicro`, `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`, `4xlarge`, `6xlarge`, `8xlarge`. **Note: The parameter is immutable after resource creation.** The class is applied only when the instance is created; this resource does not change the class of an existing instance, and an update to this argument is not applied. To upgrade the class of the synchronization instance, change `instanceClass` on the corresponding `alicloud.dts.SynchronizationJob`, and keep this argument consistent with the resulting class.
      * 
      */
     public Output<String> instanceClass() {

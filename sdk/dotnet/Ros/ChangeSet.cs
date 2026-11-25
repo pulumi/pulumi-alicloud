@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Ros
         public Output<ImmutableArray<string>> NotificationUrls { get; private set; } = null!;
 
         /// <summary>
-        /// Parameters.
+        /// Parameters. See `Parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ChangeSetParameter>> Parameters { get; private set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.ChangeSetParameterArgs>? _parameters;
 
         /// <summary>
-        /// Parameters.
+        /// Parameters. See `Parameters` below.
         /// </summary>
         public InputList<Inputs.ChangeSetParameterArgs> Parameters
         {
@@ -388,7 +388,7 @@ namespace Pulumi.AliCloud.Ros
         private InputList<Inputs.ChangeSetParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Parameters.
+        /// Parameters. See `Parameters` below.
         /// </summary>
         public InputList<Inputs.ChangeSetParameterGetArgs> Parameters
         {

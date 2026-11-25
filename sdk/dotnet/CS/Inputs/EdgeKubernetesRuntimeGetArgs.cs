@@ -22,13 +22,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// The version of the runtime.
         /// 
         /// The following example is the definition of runtime block:
-        /// 
-        /// ```
-        /// runtime = {
-        /// name = "containerd"
-        /// version = "1.6.28"
-        /// }
-        /// ```
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

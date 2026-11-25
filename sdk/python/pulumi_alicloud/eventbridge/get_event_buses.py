@@ -56,6 +56,9 @@ class GetEventBusesResult:
     @_builtins.property
     @pulumi.getter
     def buses(self) -> Sequence['outputs.GetEventBusesBusResult']:
+        """
+        A list of Event Bridge Event Buses. Each element contains the following attributes:
+        """
         return pulumi.get(self, "buses")
 
     @_builtins.property
@@ -89,6 +92,9 @@ class GetEventBusesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Event Bus names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -122,7 +128,7 @@ def get_event_buses(event_bus_type: Optional[_builtins.str] = None,
     """
     This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 
@@ -172,7 +178,7 @@ def get_event_buses_output(event_bus_type: pulumi.Input[Optional[Optional[_built
     """
     This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.129.0+.
+    > **NOTE:** Available since v1.129.0.
 
     ## Example Usage
 

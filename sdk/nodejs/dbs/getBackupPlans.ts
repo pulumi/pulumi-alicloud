@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.185.0+.
+ * > **NOTE:** Available since v1.185.0.
  *
  * ## Example Usage
  *
@@ -78,6 +78,9 @@ export interface GetBackupPlansArgs {
  * A collection of values returned by getBackupPlans.
  */
 export interface GetBackupPlansResult {
+    /**
+     * The name of the resource.
+     */
     readonly backupPlanName?: string;
     readonly enableDetails?: boolean;
     /**
@@ -86,17 +89,26 @@ export interface GetBackupPlansResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Backup Plan names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * A list of Dbs Backup Plans. Each element contains the following attributes:
+     */
     readonly plans: outputs.dbs.GetBackupPlansPlan[];
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.185.0+.
+ * > **NOTE:** Available since v1.185.0.
  *
  * ## Example Usage
  *

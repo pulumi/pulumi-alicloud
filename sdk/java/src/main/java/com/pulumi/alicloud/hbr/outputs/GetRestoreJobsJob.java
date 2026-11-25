@@ -41,6 +41,10 @@ public final class GetRestoreJobsJob {
      * 
      */
     private String createTime;
+    /**
+     * @return The error file of the recovery task.
+     * 
+     */
     private String errorFile;
     /**
      * @return The error message of recovery task execution.
@@ -72,6 +76,10 @@ public final class GetRestoreJobsJob {
      * 
      */
     private String options;
+    /**
+     * @return The parent ID of the restore job.
+     * 
+     */
     private String parentId;
     /**
      * @return The recovery progress.
@@ -84,7 +92,7 @@ public final class GetRestoreJobsJob {
      */
     private String restoreJobId;
     /**
-     * @return The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * @return The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
      * 
      */
     private String restoreType;
@@ -109,24 +117,32 @@ public final class GetRestoreJobsJob {
      */
     private String startTime;
     /**
-     * @return The status of restore job.
+     * @return The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
      * 
      */
     private String status;
     /**
-     * @return The name of target ofo OSS bucket.
+     * @return The name of target OSS bucket.
      * 
      */
     private String targetBucket;
+    /**
+     * @return The target client ID.
+     * 
+     */
     private String targetClientId;
     /**
      * @return The creation time of destination file system.
      * 
      */
     private String targetCreateTime;
+    /**
+     * @return The target data source ID.
+     * 
+     */
     private String targetDataSourceId;
     /**
-     * @return The ID of destination file system.
+     * @return Valid while sourceType equals `NAS`. The list of destination File System IDs.
      * 
      */
     private String targetFileSystemId;
@@ -151,7 +167,7 @@ public final class GetRestoreJobsJob {
      */
     private String updatedTime;
     /**
-     * @return The ID of backup vault.
+     * @return The list of backup vault IDs.
      * 
      */
     private String vaultId;
@@ -199,6 +215,10 @@ public final class GetRestoreJobsJob {
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return The error file of the recovery task.
+     * 
+     */
     public String errorFile() {
         return this.errorFile;
     }
@@ -244,6 +264,10 @@ public final class GetRestoreJobsJob {
     public String options() {
         return this.options;
     }
+    /**
+     * @return The parent ID of the restore job.
+     * 
+     */
     public String parentId() {
         return this.parentId;
     }
@@ -262,7 +286,7 @@ public final class GetRestoreJobsJob {
         return this.restoreJobId;
     }
     /**
-     * @return The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * @return The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
      * 
      */
     public String restoreType() {
@@ -297,19 +321,23 @@ public final class GetRestoreJobsJob {
         return this.startTime;
     }
     /**
-     * @return The status of restore job.
+     * @return The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The name of target ofo OSS bucket.
+     * @return The name of target OSS bucket.
      * 
      */
     public String targetBucket() {
         return this.targetBucket;
     }
+    /**
+     * @return The target client ID.
+     * 
+     */
     public String targetClientId() {
         return this.targetClientId;
     }
@@ -320,11 +348,15 @@ public final class GetRestoreJobsJob {
     public String targetCreateTime() {
         return this.targetCreateTime;
     }
+    /**
+     * @return The target data source ID.
+     * 
+     */
     public String targetDataSourceId() {
         return this.targetDataSourceId;
     }
     /**
-     * @return The ID of destination file system.
+     * @return Valid while sourceType equals `NAS`. The list of destination File System IDs.
      * 
      */
     public String targetFileSystemId() {
@@ -359,7 +391,7 @@ public final class GetRestoreJobsJob {
         return this.updatedTime;
     }
     /**
-     * @return The ID of backup vault.
+     * @return The list of backup vault IDs.
      * 
      */
     public String vaultId() {

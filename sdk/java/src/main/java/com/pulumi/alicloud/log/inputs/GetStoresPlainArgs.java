@@ -61,9 +61,17 @@ public final class GetStoresPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The name of the log project.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return The name of the log project.
+     * 
+     */
     public String project() {
         return this.project;
     }
@@ -138,6 +146,12 @@ public final class GetStoresPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param project The name of the log project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;

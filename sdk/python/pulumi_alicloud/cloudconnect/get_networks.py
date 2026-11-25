@@ -111,7 +111,7 @@ def get_networks(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides Cloud Connect Networks available to the user.
 
-    > **NOTE:** Available in 1.59.0+
+    > **NOTE:** Available since v1.59.0+
 
     > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -121,18 +121,19 @@ def get_networks(ids: Optional[Sequence[_builtins.str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cloudconnect.get_networks(ids=[default_alicloud_cloud_connect_networks["id"]],
-        name_regex="^tf-testAcc.*")
     default_network = alicloud.cloudconnect.Network("default",
-        name="tf-testAccCloudConnectNetworkName",
-        description="tf-testAccCloudConnectNetworkDescription",
+        name="terraform-example",
+        description="terraform-example",
         cidr_block="192.168.0.0/24",
         is_default=True)
+    default = alicloud.cloudconnect.get_networks_output(ids=[default_network.id],
+        name_regex="^terraform-example")
     ```
 
 
     :param Sequence[_builtins.str] ids: A list of CCN instances IDs.
     :param _builtins.str name_regex: A regex string to filter CCN instances by name.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -155,7 +156,7 @@ def get_networks_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
     """
     This data source provides Cloud Connect Networks available to the user.
 
-    > **NOTE:** Available in 1.59.0+
+    > **NOTE:** Available since v1.59.0+
 
     > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
@@ -165,18 +166,19 @@ def get_networks_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cloudconnect.get_networks(ids=[default_alicloud_cloud_connect_networks["id"]],
-        name_regex="^tf-testAcc.*")
     default_network = alicloud.cloudconnect.Network("default",
-        name="tf-testAccCloudConnectNetworkName",
-        description="tf-testAccCloudConnectNetworkDescription",
+        name="terraform-example",
+        description="terraform-example",
         cidr_block="192.168.0.0/24",
         is_default=True)
+    default = alicloud.cloudconnect.get_networks_output(ids=[default_network.id],
+        name_regex="^terraform-example")
     ```
 
 
     :param Sequence[_builtins.str] ids: A list of CCN instances IDs.
     :param _builtins.str name_regex: A regex string to filter CCN instances by name.
+    :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids

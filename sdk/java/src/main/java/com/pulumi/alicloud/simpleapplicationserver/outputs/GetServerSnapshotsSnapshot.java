@@ -16,7 +16,7 @@ public final class GetServerSnapshotsSnapshot {
      */
     private String createTime;
     /**
-     * @return The ID of the source disk. This parameter has a value even after the source disk is released.
+     * @return The ID of the disk.
      * 
      */
     private String diskId;
@@ -65,7 +65,7 @@ public final class GetServerSnapshotsSnapshot {
         return this.createTime;
     }
     /**
-     * @return The ID of the source disk. This parameter has a value even after the source disk is released.
+     * @return The ID of the disk.
      * 
      */
     public String diskId() {

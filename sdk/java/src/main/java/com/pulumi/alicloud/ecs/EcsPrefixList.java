@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Prefix List and how to use it, see [What is Prefix List.](https://www.alibabacloud.com/help/en/doc-detail/207969.html).
  * 
- * &gt; **NOTE:** Available in v1.152.0+.
+ * &gt; **NOTE:** Available since v1.152.0.
  * 
  * ## Example Usage
  * 
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         var default_ = new EcsPrefixList("default", EcsPrefixListArgs.builder()
  *             .addressFamily("IPv4")
  *             .maxEntries(2)
- *             .prefixListName("tftest")
+ *             .prefixListName("tfexample")
  *             .description("description")
  *             .entries(EcsPrefixListEntryArgs.builder()
  *                 .cidr("192.168.0.0/24")
@@ -109,14 +109,14 @@ public class EcsPrefixList extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The Entry. The details see Block `entry`.
+     * The Entry. See `entry` below.
      * 
      */
     @Export(name="entries", refs={List.class,EcsPrefixListEntry.class}, tree="[0,1]")
     private Output<List<EcsPrefixListEntry>> entries;
 
     /**
-     * @return The Entry. The details see Block `entry`.
+     * @return The Entry. See `entry` below.
      * 
      */
     public Output<List<EcsPrefixListEntry>> entries() {

@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
  * 
- * &gt; **NOTE:** Deprecated since v1.120.0.
+ * &gt; **DEPRECATED:** This resource has been deprecated from v1.120.0.
  * 
  * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsSnapshot from version 1.120.0.
  * 
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()
  *             .diskId(instance_attachment.get("diskId"))
- *             .name("test-snapshot")
+ *             .name("demo-snapshot")
  *             .description("this snapshot is created for testing")
  *             .tags(Map.of("version", "1.2"))
  *             .build());
@@ -75,21 +75,45 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/snapshot:Snapshot")
 public class Snapshot extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether the snapshot is available.
+     * 
+     */
     @Export(name="available", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> available;
 
+    /**
+     * @return Whether the snapshot is available.
+     * 
+     */
     public Output<Boolean> available() {
         return this.available;
     }
+    /**
+     * The category of the snapshot. Valid values: `standard`, `flash`.
+     * 
+     */
     @Export(name="category", refs={String.class}, tree="[0]")
     private Output<String> category;
 
+    /**
+     * @return The category of the snapshot. Valid values: `standard`, `flash`.
+     * 
+     */
     public Output<String> category() {
         return this.category;
     }
+    /**
+     * The creation time of the snapshot.
+     * 
+     */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
+    /**
+     * @return The creation time of the snapshot.
+     * 
+     */
     public Output<String> createTime() {
         return this.createTime;
     }
@@ -121,13 +145,23 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     public Output<String> diskId() {
         return this.diskId;
     }
+    /**
+     * Whether to force delete the snapshot.
+     * 
+     */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
+    /**
+     * @return Whether to force delete the snapshot.
+     * 
+     */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
+     * Deprecated.
+     * 
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
@@ -135,10 +169,16 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     @Export(name="instantAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> instantAccess;
 
+    /**
+     * @return Deprecated.
+     * 
+     */
     public Output<Optional<Boolean>> instantAccess() {
         return Codegen.optional(this.instantAccess);
     }
     /**
+     * Deprecated.
+     * 
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
@@ -146,11 +186,15 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     @Export(name="instantAccessRetentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instantAccessRetentionDays;
 
+    /**
+     * @return Deprecated.
+     * 
+     */
     public Output<Optional<Integer>> instantAccessRetentionDays() {
         return Codegen.optional(this.instantAccessRetentionDays);
     }
     /**
-     * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      * 
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
@@ -161,16 +205,24 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * @return The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The region ID of the snapshot.
+     * 
+     */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
+    /**
+     * @return The region ID of the snapshot.
+     * 
+     */
     public Output<String> regionId() {
         return this.regionId;
     }
@@ -188,21 +240,45 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
+    /**
+     * The retention days of the snapshot.
+     * 
+     */
     @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionDays;
 
+    /**
+     * @return The retention days of the snapshot.
+     * 
+     */
     public Output<Optional<Integer>> retentionDays() {
         return Codegen.optional(this.retentionDays);
     }
+    /**
+     * The name of the snapshot.
+     * 
+     */
     @Export(name="snapshotName", refs={String.class}, tree="[0]")
     private Output<String> snapshotName;
 
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     public Output<String> snapshotName() {
         return this.snapshotName;
     }
+    /**
+     * The status of the snapshot.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return The status of the snapshot.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
@@ -220,9 +296,17 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+     * 
+     */
     @Export(name="waitUntil", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> waitUntil;
 
+    /**
+     * @return Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+     * 
+     */
     public Output<Optional<String>> waitUntil() {
         return Codegen.optional(this.waitUntil);
     }

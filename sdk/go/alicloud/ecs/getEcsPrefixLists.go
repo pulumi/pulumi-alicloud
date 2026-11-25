@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Prefix Lists of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.152.0+.
+// > **NOTE:** Available since v1.152.0.
 //
 // ## Example Usage
 //
@@ -60,7 +60,8 @@ func GetEcsPrefixLists(ctx *pulumi.Context, args *GetEcsPrefixListsArgs, opts ..
 type GetEcsPrefixListsArgs struct {
 	// The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
 	AddressFamily *string `pulumi:"addressFamily"`
-	EnableDetails *bool   `pulumi:"enableDetails"`
+	// Specifies whether to return detailed information about the prefix list entries. Default: false.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Prefix List IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by `prefixListName`.
@@ -71,15 +72,18 @@ type GetEcsPrefixListsArgs struct {
 
 // A collection of values returned by getEcsPrefixLists.
 type GetEcsPrefixListsResult struct {
+	// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
 	AddressFamily *string `pulumi:"addressFamily"`
 	EnableDetails *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                  `pulumi:"id"`
-	Ids        []string                `pulumi:"ids"`
-	Lists      []GetEcsPrefixListsList `pulumi:"lists"`
-	NameRegex  *string                 `pulumi:"nameRegex"`
-	Names      []string                `pulumi:"names"`
-	OutputFile *string                 `pulumi:"outputFile"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Prefix Lists. Each element contains the following attributes:
+	Lists     []GetEcsPrefixListsList `pulumi:"lists"`
+	NameRegex *string                 `pulumi:"nameRegex"`
+	// A list of Prefix List names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
 
 func GetEcsPrefixListsOutput(ctx *pulumi.Context, args GetEcsPrefixListsOutputArgs, opts ...pulumi.InvokeOption) GetEcsPrefixListsResultOutput {
@@ -91,7 +95,8 @@ func GetEcsPrefixListsOutput(ctx *pulumi.Context, args GetEcsPrefixListsOutputAr
 type GetEcsPrefixListsOutputArgs struct {
 	// The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
 	AddressFamily pulumi.StringPtrInput `pulumi:"addressFamily"`
-	EnableDetails pulumi.BoolPtrInput   `pulumi:"enableDetails"`
+	// Specifies whether to return detailed information about the prefix list entries. Default: false.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Prefix List IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by `prefixListName`.
@@ -119,6 +124,7 @@ func (o GetEcsPrefixListsResultOutput) ToGetEcsPrefixListsResultOutputWithContex
 	return o
 }
 
+// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
 func (o GetEcsPrefixListsResultOutput) AddressFamily() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsResult) *string { return v.AddressFamily }).(pulumi.StringPtrOutput)
 }
@@ -136,6 +142,7 @@ func (o GetEcsPrefixListsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Prefix Lists. Each element contains the following attributes:
 func (o GetEcsPrefixListsResultOutput) Lists() GetEcsPrefixListsListArrayOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsResult) []GetEcsPrefixListsList { return v.Lists }).(GetEcsPrefixListsListArrayOutput)
 }
@@ -144,6 +151,7 @@ func (o GetEcsPrefixListsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Prefix List names.
 func (o GetEcsPrefixListsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsPrefixListsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

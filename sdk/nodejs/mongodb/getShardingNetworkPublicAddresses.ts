@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.149.0+.
+ * > **NOTE:** Available since v1.149.0.
  *
  * ## Example Usage
  *
@@ -63,20 +63,32 @@ export interface GetShardingNetworkPublicAddressesArgs {
  * A collection of values returned by getShardingNetworkPublicAddresses.
  */
 export interface GetShardingNetworkPublicAddressesResult {
+    /**
+     * A list of Mongodb Sharding Network Addresses. Each element contains the following attributes:
+     */
     readonly addresses: outputs.mongodb.GetShardingNetworkPublicAddressesAddress[];
+    /**
+     * The db instance id.
+     */
     readonly dbInstanceId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
+     */
     readonly nodeId?: string;
     readonly outputFile?: string;
+    /**
+     * The role of the node.
+     */
     readonly role?: string;
 }
 /**
  * This data source provides the Mongodb Sharding Network Public Addresses of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.149.0+.
+ * > **NOTE:** Available since v1.149.0.
  *
  * ## Example Usage
  *

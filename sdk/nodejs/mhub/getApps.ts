@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Mhub Apps of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.mhub.App("default", {
  *     appName: name,
  *     productId: defaultAlicloudMhubProduct.id,
- *     packageName: "com.test.android",
+ *     packageName: "com.example.android",
  *     type: "2",
  * });
  * const ids = alicloud.mhub.getApps({});
@@ -81,6 +81,9 @@ export interface GetAppsArgs {
  * A collection of values returned by getApps.
  */
 export interface GetAppsResult {
+    /**
+     * A list of Mhub Apps. Each element contains the following attributes:
+     */
     readonly apps: outputs.mhub.GetAppsApp[];
     readonly enableDetails?: boolean;
     /**
@@ -89,15 +92,21 @@ export interface GetAppsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of App names.
+     */
     readonly names: string[];
     readonly osType?: string;
     readonly outputFile?: string;
+    /**
+     * The ID of the Product.
+     */
     readonly productId: string;
 }
 /**
  * This data source provides the Mhub Apps of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -112,7 +121,7 @@ export interface GetAppsResult {
  * const _default = new alicloud.mhub.App("default", {
  *     appName: name,
  *     productId: defaultAlicloudMhubProduct.id,
- *     packageName: "com.test.android",
+ *     packageName: "com.example.android",
  *     type: "2",
  * });
  * const ids = alicloud.mhub.getApps({});

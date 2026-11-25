@@ -23,6 +23,8 @@ class RouterVpcAssociationArgs:
                  ecr_id: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allowed_prefixes_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_owner_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RouterVpcAssociation resource.
@@ -30,8 +32,11 @@ class RouterVpcAssociationArgs:
         :param pulumi.Input[_builtins.str] association_region_id: The region ID of the resource to be associated.
         :param pulumi.Input[_builtins.str] ecr_id: The ECR ID.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowed_prefixes_mode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowed_prefixes_mode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
+        :param pulumi.Input[_builtins.str] allowed_prefixes_mode: The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowed_prefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowed_prefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowed_prefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+        :param pulumi.Input[_builtins.str] description: The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
         :param pulumi.Input[_builtins.int] vpc_owner_id: The ID of the Alibaba Cloud account that owns the VPC.
+               
                > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         pulumi.set(__self__, "association_region_id", association_region_id)
@@ -39,6 +44,10 @@ class RouterVpcAssociationArgs:
         pulumi.set(__self__, "vpc_id", vpc_id)
         if allowed_prefixes is not None:
             pulumi.set(__self__, "allowed_prefixes", allowed_prefixes)
+        if allowed_prefixes_mode is not None:
+            pulumi.set(__self__, "allowed_prefixes_mode", allowed_prefixes_mode)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if vpc_owner_id is not None:
             pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
 
@@ -82,7 +91,7 @@ class RouterVpcAssociationArgs:
     @pulumi.getter(name="allowedPrefixes")
     def allowed_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of allowed route prefixes.
+        The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowed_prefixes_mode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowed_prefixes_mode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
         """
         return pulumi.get(self, "allowed_prefixes")
 
@@ -91,10 +100,35 @@ class RouterVpcAssociationArgs:
         pulumi.set(self, "allowed_prefixes", value)
 
     @_builtins.property
+    @pulumi.getter(name="allowedPrefixesMode")
+    def allowed_prefixes_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowed_prefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowed_prefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowed_prefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+        """
+        return pulumi.get(self, "allowed_prefixes_mode")
+
+    @allowed_prefixes_mode.setter
+    def allowed_prefixes_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "allowed_prefixes_mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcOwnerId")
     def vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account that owns the VPC.
+
         > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         return pulumi.get(self, "vpc_owner_id")
@@ -108,9 +142,11 @@ class RouterVpcAssociationArgs:
 class _RouterVpcAssociationState:
     def __init__(__self__, *,
                  allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allowed_prefixes_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  association_id: pulumi.Input[Optional[_builtins.str]] = None,
                  association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -118,24 +154,31 @@ class _RouterVpcAssociationState:
         """
         Input properties used for looking up and filtering RouterVpcAssociation resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowed_prefixes_mode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowed_prefixes_mode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
+        :param pulumi.Input[_builtins.str] allowed_prefixes_mode: The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowed_prefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowed_prefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowed_prefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
         :param pulumi.Input[_builtins.str] association_id: The ID of the association between the ECR and the VPC.
         :param pulumi.Input[_builtins.str] association_region_id: The region ID of the resource to be associated.
         :param pulumi.Input[_builtins.str] create_time: The time when the association was created.
+        :param pulumi.Input[_builtins.str] description: The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
         :param pulumi.Input[_builtins.str] ecr_id: The ECR ID.
         :param pulumi.Input[_builtins.str] status: The deployment state of the associated resource.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.int] vpc_owner_id: The ID of the Alibaba Cloud account that owns the VPC.
+               
                > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         if allowed_prefixes is not None:
             pulumi.set(__self__, "allowed_prefixes", allowed_prefixes)
+        if allowed_prefixes_mode is not None:
+            pulumi.set(__self__, "allowed_prefixes_mode", allowed_prefixes_mode)
         if association_id is not None:
             pulumi.set(__self__, "association_id", association_id)
         if association_region_id is not None:
             pulumi.set(__self__, "association_region_id", association_region_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if ecr_id is not None:
             pulumi.set(__self__, "ecr_id", ecr_id)
         if status is not None:
@@ -149,13 +192,25 @@ class _RouterVpcAssociationState:
     @pulumi.getter(name="allowedPrefixes")
     def allowed_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of allowed route prefixes.
+        The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowed_prefixes_mode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowed_prefixes_mode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
         """
         return pulumi.get(self, "allowed_prefixes")
 
     @allowed_prefixes.setter
     def allowed_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_prefixes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPrefixesMode")
+    def allowed_prefixes_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowed_prefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowed_prefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowed_prefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+        """
+        return pulumi.get(self, "allowed_prefixes_mode")
+
+    @allowed_prefixes_mode.setter
+    def allowed_prefixes_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "allowed_prefixes_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="associationId")
@@ -192,6 +247,18 @@ class _RouterVpcAssociationState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ecrId")
@@ -234,6 +301,7 @@ class _RouterVpcAssociationState:
     def vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account that owns the VPC.
+
         > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         return pulumi.get(self, "vpc_owner_id")
@@ -250,7 +318,9 @@ class RouterVpcAssociation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allowed_prefixes_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -274,7 +344,9 @@ class RouterVpcAssociation(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default8q_at_d6 = alicloud.vpc.Network("default8qAtD6", cidr_block="172.16.0.0/16")
+        default8q_at_d6 = alicloud.vpc.Network("default8qAtD6",
+            cidr_block="172.16.0.0/16",
+            vpc_name=name)
         default_m9_yx_gw = alicloud.expressconnect.RouterExpressConnectRouter("defaultM9YxGW", alibaba_side_asn=65533)
         current = alicloud.get_account()
         default = alicloud.expressconnect.RouterVpcAssociation("default",
@@ -285,9 +357,11 @@ class RouterVpcAssociation(pulumi.CustomResource):
                 "172.16.2.0/24",
                 "172.16.1.0/24",
             ],
+            allowed_prefixes_mode="MatchMode",
             vpc_owner_id=output(current.id).apply(lambda x: int(x)),
             association_region_id="cn-hangzhou",
-            vpc_id=default8q_at_d6.id)
+            vpc_id=default8q_at_d6.id,
+            description="test")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -303,11 +377,14 @@ class RouterVpcAssociation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowed_prefixes_mode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowed_prefixes_mode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
+        :param pulumi.Input[_builtins.str] allowed_prefixes_mode: The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowed_prefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowed_prefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowed_prefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
         :param pulumi.Input[_builtins.str] association_region_id: The region ID of the resource to be associated.
+        :param pulumi.Input[_builtins.str] description: The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
         :param pulumi.Input[_builtins.str] ecr_id: The ECR ID.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.int] vpc_owner_id: The ID of the Alibaba Cloud account that owns the VPC.
+               
                > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         ...
@@ -335,7 +412,9 @@ class RouterVpcAssociation(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default8q_at_d6 = alicloud.vpc.Network("default8qAtD6", cidr_block="172.16.0.0/16")
+        default8q_at_d6 = alicloud.vpc.Network("default8qAtD6",
+            cidr_block="172.16.0.0/16",
+            vpc_name=name)
         default_m9_yx_gw = alicloud.expressconnect.RouterExpressConnectRouter("defaultM9YxGW", alibaba_side_asn=65533)
         current = alicloud.get_account()
         default = alicloud.expressconnect.RouterVpcAssociation("default",
@@ -346,9 +425,11 @@ class RouterVpcAssociation(pulumi.CustomResource):
                 "172.16.2.0/24",
                 "172.16.1.0/24",
             ],
+            allowed_prefixes_mode="MatchMode",
             vpc_owner_id=output(current.id).apply(lambda x: int(x)),
             association_region_id="cn-hangzhou",
-            vpc_id=default8q_at_d6.id)
+            vpc_id=default8q_at_d6.id,
+            description="test")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -378,7 +459,9 @@ class RouterVpcAssociation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allowed_prefixes_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -392,9 +475,11 @@ class RouterVpcAssociation(pulumi.CustomResource):
             __props__ = RouterVpcAssociationArgs.__new__(RouterVpcAssociationArgs)
 
             __props__.__dict__["allowed_prefixes"] = allowed_prefixes
+            __props__.__dict__["allowed_prefixes_mode"] = allowed_prefixes_mode
             if association_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'association_region_id'")
             __props__.__dict__["association_region_id"] = association_region_id
+            __props__.__dict__["description"] = description
             if ecr_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ecr_id'")
             __props__.__dict__["ecr_id"] = ecr_id
@@ -416,9 +501,11 @@ class RouterVpcAssociation(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allowed_prefixes_mode: pulumi.Input[Optional[_builtins.str]] = None,
             association_id: pulumi.Input[Optional[_builtins.str]] = None,
             association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
             ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -430,14 +517,17 @@ class RouterVpcAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_prefixes: The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowed_prefixes_mode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowed_prefixes_mode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
+        :param pulumi.Input[_builtins.str] allowed_prefixes_mode: The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowed_prefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowed_prefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowed_prefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
         :param pulumi.Input[_builtins.str] association_id: The ID of the association between the ECR and the VPC.
         :param pulumi.Input[_builtins.str] association_region_id: The region ID of the resource to be associated.
         :param pulumi.Input[_builtins.str] create_time: The time when the association was created.
+        :param pulumi.Input[_builtins.str] description: The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
         :param pulumi.Input[_builtins.str] ecr_id: The ECR ID.
         :param pulumi.Input[_builtins.str] status: The deployment state of the associated resource.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.int] vpc_owner_id: The ID of the Alibaba Cloud account that owns the VPC.
+               
                > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -445,9 +535,11 @@ class RouterVpcAssociation(pulumi.CustomResource):
         __props__ = _RouterVpcAssociationState.__new__(_RouterVpcAssociationState)
 
         __props__.__dict__["allowed_prefixes"] = allowed_prefixes
+        __props__.__dict__["allowed_prefixes_mode"] = allowed_prefixes_mode
         __props__.__dict__["association_id"] = association_id
         __props__.__dict__["association_region_id"] = association_region_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
         __props__.__dict__["ecr_id"] = ecr_id
         __props__.__dict__["status"] = status
         __props__.__dict__["vpc_id"] = vpc_id
@@ -458,18 +550,22 @@ class RouterVpcAssociation(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allowed_prefixes_mode: pulumi.Input[Optional[_builtins.str]] = None,
             association_id: pulumi.Input[Optional[_builtins.str]] = None,
             association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
             ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_owner_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["allowedPrefixes"] = allowed_prefixes
+        __props__["allowedPrefixesMode"] = allowed_prefixes_mode
         __props__["associationId"] = association_id
         __props__["associationRegionId"] = association_region_id
         __props__["createTime"] = create_time
+        __props__["description"] = description
         __props__["ecrId"] = ecr_id
         __props__["status"] = status
         __props__["vpcId"] = vpc_id
@@ -478,11 +574,19 @@ class RouterVpcAssociation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="allowedPrefixes")
-    def allowed_prefixes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def allowed_prefixes(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of allowed route prefixes.
+        The list of allowed route prefixes. The provider compares prefix members without regard to their order, so reordering the same prefixes produces no diff; membership and multiplicity changes still produce a diff. An explicitly configured empty list is accepted for backward compatibility. Without a non-empty `allowed_prefixes_mode`, the RPC form encoding omits `AllowedPrefixes` for both an empty list and an omitted argument; neither form is guaranteed to clear remote prefixes. For an existing association whose state contains non-empty prefixes, omitting this argument or configuring an empty list preserves the stored prefixes only when the current configuration also contains a known, non-empty `allowed_prefixes_mode`, including when only the mode changes. If the mode is also omitted or empty, the legacy request behavior applies and the stored prefixes are not guaranteed to be preserved or cleared.
         """
         return pulumi.get(self, "allowed_prefixes")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPrefixesMode")
+    def allowed_prefixes_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The prefix route mode. Valid values: `MatchMode`, `IncrementalMode`. `MatchMode` publishes only the configured route prefixes and withdraws all detail routes published before. `IncrementalMode` publishes the configured route prefixes and withdraws only the detail routes published before that fall within the configured prefixes, while the other published detail routes are kept. When it is omitted, the mode returned by the service is stored in state, and that stored mode is sent again with any later non-empty `allowed_prefixes` update so the applied mode is preserved without relying on a server-side default. The provider always sends the mode together with a non-empty prefix list. Creating an association with a non-empty mode but without a non-empty `allowed_prefixes` list is rejected at plan time. For an existing association with stored non-empty prefixes and a known, non-empty configured mode, omitting `allowed_prefixes` or configuring an empty list makes the provider echo those stored prefixes with the mode; this supports a mode-only update without clearing prefix membership. If the configured mode is unknown during planning, the planned prefixes remain unknown until apply, when the resolved mode determines whether this echo path applies. An empty string is treated as unset. Available since v2.3.0.
+        """
+        return pulumi.get(self, "allowed_prefixes_mode")
 
     @_builtins.property
     @pulumi.getter(name="associationId")
@@ -507,6 +611,14 @@ class RouterVpcAssociation(pulumi.CustomResource):
         The time when the association was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The description of the association. The length is 0 to 128 characters. An explicit empty string clears the description. Omitting the argument at creation leaves the description unset; removing it after it has been set also clears it, because the provider then sends an empty description. Available since v2.3.0.
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="ecrId")
@@ -537,6 +649,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
     def vpc_owner_id(self) -> pulumi.Output[_builtins.int]:
         """
         The ID of the Alibaba Cloud account that owns the VPC.
+
         > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
         """
         return pulumi.get(self, "vpc_owner_id")

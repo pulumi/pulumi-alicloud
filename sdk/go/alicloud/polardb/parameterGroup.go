@@ -91,9 +91,11 @@ type ParameterGroup struct {
 	// Details about the parameters. See `parameters` below.
 	//
 	// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+	Parameters ParameterGroupParameterArrayOutput `pulumi:"parameters"`
+	// The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Parameters ParameterGroupParameterArrayOutput `pulumi:"parameters"`
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 }
 
 // NewParameterGroup registers a new resource with the given unique name, arguments, and options.
@@ -159,9 +161,11 @@ type parameterGroupState struct {
 	// Details about the parameters. See `parameters` below.
 	//
 	// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+	Parameters []ParameterGroupParameter `pulumi:"parameters"`
+	// The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
 
 type ParameterGroupState struct {
@@ -189,9 +193,11 @@ type ParameterGroupState struct {
 	// Details about the parameters. See `parameters` below.
 	//
 	// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+	Parameters ParameterGroupParameterArrayInput
+	// The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Parameters ParameterGroupParameterArrayInput
+	ResourceGroupId pulumi.StringPtrInput
 }
 
 func (ParameterGroupState) ElementType() reflect.Type {
@@ -227,9 +233,11 @@ type parameterGroupArgs struct {
 	// Details about the parameters. See `parameters` below.
 	//
 	// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+	Parameters []ParameterGroupParameter `pulumi:"parameters"`
+	// The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
 
 // The set of arguments for constructing a ParameterGroup resource.
@@ -256,9 +264,11 @@ type ParameterGroupArgs struct {
 	// Details about the parameters. See `parameters` below.
 	//
 	// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+	Parameters ParameterGroupParameterArrayInput
+	// The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
-	Parameters ParameterGroupParameterArrayInput
+	ResourceGroupId pulumi.StringPtrInput
 }
 
 func (ParameterGroupArgs) ElementType() reflect.Type {
@@ -390,10 +400,15 @@ func (o ParameterGroupOutput) ParameterGroupName() pulumi.StringOutput {
 // Details about the parameters. See `parameters` below.
 //
 // > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-//
-// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o ParameterGroupOutput) Parameters() ParameterGroupParameterArrayOutput {
 	return o.ApplyT(func(v *ParameterGroup) ParameterGroupParameterArrayOutput { return v.Parameters }).(ParameterGroupParameterArrayOutput)
+}
+
+// The ID of the resource group in which to create the parameter template. You can use the ID of an `resourcemanager.ResourceGroup` resource, for example, `alicloud_resource_manager_resource_group.example.id`. This argument is only used when creating the parameter template. The PolarDB API does not return it, so it cannot be read back or used to detect drift, and importing an existing parameter template does not restore it. Configuring it for an imported parameter template forces a replacement.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
+func (o ParameterGroupOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ParameterGroup) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
 type ParameterGroupArrayOutput struct{ *pulumi.OutputState }

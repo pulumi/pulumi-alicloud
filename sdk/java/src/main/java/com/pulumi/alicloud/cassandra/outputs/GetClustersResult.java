@@ -38,7 +38,7 @@ public final class GetClustersResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return (Optional) A mapping of tags to assign to the resource.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -79,7 +79,7 @@ public final class GetClustersResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return (Optional) A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {

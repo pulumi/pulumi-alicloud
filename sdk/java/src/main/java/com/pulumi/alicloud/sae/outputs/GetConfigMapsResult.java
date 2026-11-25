@@ -20,9 +20,21 @@ public final class GetConfigMapsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Sae Config Maps. Each element contains the following attributes:
+     * 
+     */
     private List<GetConfigMapsMap> maps;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Config Map names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return The NamespaceId of Config Maps.
+     * 
+     */
     private String namespaceId;
     private @Nullable String outputFile;
 
@@ -37,15 +49,27 @@ public final class GetConfigMapsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Sae Config Maps. Each element contains the following attributes:
+     * 
+     */
     public List<GetConfigMapsMap> maps() {
         return this.maps;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Config Map names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return The NamespaceId of Config Maps.
+     * 
+     */
     public String namespaceId() {
         return this.namespaceId;
     }

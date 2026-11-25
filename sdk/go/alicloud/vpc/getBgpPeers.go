@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.153.0+.
+// > **NOTE:** Available since v1.153.0.
 //
 // ## Example Usage
 //
@@ -93,14 +93,18 @@ type GetBgpPeersArgs struct {
 
 // A collection of values returned by getBgpPeers.
 type GetBgpPeersResult struct {
+	// The ID of the BGP group.
 	BgpGroupId *string `pulumi:"bgpGroupId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string            `pulumi:"id"`
-	Ids        []string          `pulumi:"ids"`
-	OutputFile *string           `pulumi:"outputFile"`
-	Peers      []GetBgpPeersPeer `pulumi:"peers"`
-	RouterId   *string           `pulumi:"routerId"`
-	Status     *string           `pulumi:"status"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Vpc Bgp Peers. Each element contains the following attributes:
+	Peers []GetBgpPeersPeer `pulumi:"peers"`
+	// The ID of the router.
+	RouterId *string `pulumi:"routerId"`
+	// The status of the BGP peer.
+	Status *string `pulumi:"status"`
 }
 
 func GetBgpPeersOutput(ctx *pulumi.Context, args GetBgpPeersOutputArgs, opts ...pulumi.InvokeOption) GetBgpPeersResultOutput {
@@ -141,6 +145,7 @@ func (o GetBgpPeersResultOutput) ToGetBgpPeersResultOutputWithContext(ctx contex
 	return o
 }
 
+// The ID of the BGP group.
 func (o GetBgpPeersResultOutput) BgpGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpPeersResult) *string { return v.BgpGroupId }).(pulumi.StringPtrOutput)
 }
@@ -158,14 +163,17 @@ func (o GetBgpPeersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpPeersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Vpc Bgp Peers. Each element contains the following attributes:
 func (o GetBgpPeersResultOutput) Peers() GetBgpPeersPeerArrayOutput {
 	return o.ApplyT(func(v GetBgpPeersResult) []GetBgpPeersPeer { return v.Peers }).(GetBgpPeersPeerArrayOutput)
 }
 
+// The ID of the router.
 func (o GetBgpPeersResultOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpPeersResult) *string { return v.RouterId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the BGP peer.
 func (o GetBgpPeersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBgpPeersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

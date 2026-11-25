@@ -14,26 +14,46 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GetMongoInstancesInstance struct {
-	AvailabilityZone string                                  `pulumi:"availabilityZone"`
-	ChargeType       string                                  `pulumi:"chargeType"`
-	CreationTime     string                                  `pulumi:"creationTime"`
-	Engine           string                                  `pulumi:"engine"`
-	EngineVersion    string                                  `pulumi:"engineVersion"`
-	ExpirationTime   string                                  `pulumi:"expirationTime"`
-	Id               string                                  `pulumi:"id"`
-	InstanceClass    string                                  `pulumi:"instanceClass"`
-	InstanceType     string                                  `pulumi:"instanceType"`
-	LockMode         string                                  `pulumi:"lockMode"`
-	Mongos           []GetMongoInstancesInstanceMongo        `pulumi:"mongos"`
-	Name             string                                  `pulumi:"name"`
-	NetworkType      string                                  `pulumi:"networkType"`
-	RegionId         string                                  `pulumi:"regionId"`
-	Replication      string                                  `pulumi:"replication"`
-	RestoreRanges    []GetMongoInstancesInstanceRestoreRange `pulumi:"restoreRanges"`
-	Shards           []GetMongoInstancesInstanceShard        `pulumi:"shards"`
-	Status           string                                  `pulumi:"status"`
-	Storage          int                                     `pulumi:"storage"`
-	Tags             map[string]string                       `pulumi:"tags"`
+	// The zone ID.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// The billing method of the instance.
+	ChargeType string `pulumi:"chargeType"`
+	// The time when the instance was created.
+	CreationTime string `pulumi:"creationTime"`
+	// The database engine.
+	Engine string `pulumi:"engine"`
+	// The database engine version.
+	EngineVersion string `pulumi:"engineVersion"`
+	// The time when the instance expires.
+	ExpirationTime string `pulumi:"expirationTime"`
+	// The instance ID.
+	Id string `pulumi:"id"`
+	// The instance type.
+	InstanceClass string `pulumi:"instanceClass"`
+	// The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+	InstanceType string `pulumi:"instanceType"`
+	// The lock status of the instance.
+	LockMode string `pulumi:"lockMode"`
+	// The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
+	Mongos []GetMongoInstancesInstanceMongo `pulumi:"mongos"`
+	// The name of the instance.
+	Name string `pulumi:"name"`
+	// The network type of the instance.
+	NetworkType string `pulumi:"networkType"`
+	// The region ID of the instance.
+	RegionId string `pulumi:"regionId"`
+	// The number of nodes in the instance.
+	Replication string `pulumi:"replication"`
+	// (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
+	RestoreRanges []GetMongoInstancesInstanceRestoreRange `pulumi:"restoreRanges"`
+	// The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
+	Shards []GetMongoInstancesInstanceShard `pulumi:"shards"`
+	// The instance status.
+	Status string `pulumi:"status"`
+	// The storage space of the shard node.
+	Storage int `pulumi:"storage"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // GetMongoInstancesInstanceInput is an input type that accepts GetMongoInstancesInstanceArgs and GetMongoInstancesInstanceOutput values.
@@ -48,26 +68,46 @@ type GetMongoInstancesInstanceInput interface {
 }
 
 type GetMongoInstancesInstanceArgs struct {
-	AvailabilityZone pulumi.StringInput                              `pulumi:"availabilityZone"`
-	ChargeType       pulumi.StringInput                              `pulumi:"chargeType"`
-	CreationTime     pulumi.StringInput                              `pulumi:"creationTime"`
-	Engine           pulumi.StringInput                              `pulumi:"engine"`
-	EngineVersion    pulumi.StringInput                              `pulumi:"engineVersion"`
-	ExpirationTime   pulumi.StringInput                              `pulumi:"expirationTime"`
-	Id               pulumi.StringInput                              `pulumi:"id"`
-	InstanceClass    pulumi.StringInput                              `pulumi:"instanceClass"`
-	InstanceType     pulumi.StringInput                              `pulumi:"instanceType"`
-	LockMode         pulumi.StringInput                              `pulumi:"lockMode"`
-	Mongos           GetMongoInstancesInstanceMongoArrayInput        `pulumi:"mongos"`
-	Name             pulumi.StringInput                              `pulumi:"name"`
-	NetworkType      pulumi.StringInput                              `pulumi:"networkType"`
-	RegionId         pulumi.StringInput                              `pulumi:"regionId"`
-	Replication      pulumi.StringInput                              `pulumi:"replication"`
-	RestoreRanges    GetMongoInstancesInstanceRestoreRangeArrayInput `pulumi:"restoreRanges"`
-	Shards           GetMongoInstancesInstanceShardArrayInput        `pulumi:"shards"`
-	Status           pulumi.StringInput                              `pulumi:"status"`
-	Storage          pulumi.IntInput                                 `pulumi:"storage"`
-	Tags             pulumi.StringMapInput                           `pulumi:"tags"`
+	// The zone ID.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// The billing method of the instance.
+	ChargeType pulumi.StringInput `pulumi:"chargeType"`
+	// The time when the instance was created.
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// The database engine.
+	Engine pulumi.StringInput `pulumi:"engine"`
+	// The database engine version.
+	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
+	// The time when the instance expires.
+	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
+	// The instance ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The instance type.
+	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
+	// The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The lock status of the instance.
+	LockMode pulumi.StringInput `pulumi:"lockMode"`
+	// The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
+	Mongos GetMongoInstancesInstanceMongoArrayInput `pulumi:"mongos"`
+	// The name of the instance.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network type of the instance.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The region ID of the instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The number of nodes in the instance.
+	Replication pulumi.StringInput `pulumi:"replication"`
+	// (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
+	RestoreRanges GetMongoInstancesInstanceRestoreRangeArrayInput `pulumi:"restoreRanges"`
+	// The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
+	Shards GetMongoInstancesInstanceShardArrayInput `pulumi:"shards"`
+	// The instance status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The storage space of the shard node.
+	Storage pulumi.IntInput `pulumi:"storage"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetMongoInstancesInstanceArgs) ElementType() reflect.Type {
@@ -121,82 +161,102 @@ func (o GetMongoInstancesInstanceOutput) ToGetMongoInstancesInstanceOutputWithCo
 	return o
 }
 
+// The zone ID.
 func (o GetMongoInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The billing method of the instance.
 func (o GetMongoInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
+// The time when the instance was created.
 func (o GetMongoInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// The database engine.
 func (o GetMongoInstancesInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
 }
 
+// The database engine version.
 func (o GetMongoInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
+// The time when the instance expires.
 func (o GetMongoInstancesInstanceOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
+// The instance ID.
 func (o GetMongoInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The instance type.
 func (o GetMongoInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
+// The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
 func (o GetMongoInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// The lock status of the instance.
 func (o GetMongoInstancesInstanceOutput) LockMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.LockMode }).(pulumi.StringOutput)
 }
 
+// The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
 func (o GetMongoInstancesInstanceOutput) Mongos() GetMongoInstancesInstanceMongoArrayOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) []GetMongoInstancesInstanceMongo { return v.Mongos }).(GetMongoInstancesInstanceMongoArrayOutput)
 }
 
+// The name of the instance.
 func (o GetMongoInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The network type of the instance.
 func (o GetMongoInstancesInstanceOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
+// The region ID of the instance.
 func (o GetMongoInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
+// The number of nodes in the instance.
 func (o GetMongoInstancesInstanceOutput) Replication() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Replication }).(pulumi.StringOutput)
 }
 
+// (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
 func (o GetMongoInstancesInstanceOutput) RestoreRanges() GetMongoInstancesInstanceRestoreRangeArrayOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) []GetMongoInstancesInstanceRestoreRange { return v.RestoreRanges }).(GetMongoInstancesInstanceRestoreRangeArrayOutput)
 }
 
+// The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
 func (o GetMongoInstancesInstanceOutput) Shards() GetMongoInstancesInstanceShardArrayOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) []GetMongoInstancesInstanceShard { return v.Shards }).(GetMongoInstancesInstanceShardArrayOutput)
 }
 
+// The instance status.
 func (o GetMongoInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The storage space of the shard node.
 func (o GetMongoInstancesInstanceOutput) Storage() pulumi.IntOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) int { return v.Storage }).(pulumi.IntOutput)
 }
 
+// A mapping of tags to assign to the resource.
 func (o GetMongoInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -222,9 +282,12 @@ func (o GetMongoInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetMongoI
 }
 
 type GetMongoInstancesInstanceMongo struct {
-	Class       string `pulumi:"class"`
+	// The instance type of the shard node.
+	Class string `pulumi:"class"`
+	// The description of the shard node.
 	Description string `pulumi:"description"`
-	NodeId      string `pulumi:"nodeId"`
+	// The ID of the shard node.
+	NodeId string `pulumi:"nodeId"`
 }
 
 // GetMongoInstancesInstanceMongoInput is an input type that accepts GetMongoInstancesInstanceMongoArgs and GetMongoInstancesInstanceMongoOutput values.
@@ -239,9 +302,12 @@ type GetMongoInstancesInstanceMongoInput interface {
 }
 
 type GetMongoInstancesInstanceMongoArgs struct {
-	Class       pulumi.StringInput `pulumi:"class"`
+	// The instance type of the shard node.
+	Class pulumi.StringInput `pulumi:"class"`
+	// The description of the shard node.
 	Description pulumi.StringInput `pulumi:"description"`
-	NodeId      pulumi.StringInput `pulumi:"nodeId"`
+	// The ID of the shard node.
+	NodeId pulumi.StringInput `pulumi:"nodeId"`
 }
 
 func (GetMongoInstancesInstanceMongoArgs) ElementType() reflect.Type {
@@ -295,14 +361,17 @@ func (o GetMongoInstancesInstanceMongoOutput) ToGetMongoInstancesInstanceMongoOu
 	return o
 }
 
+// The instance type of the shard node.
 func (o GetMongoInstancesInstanceMongoOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstanceMongo) string { return v.Class }).(pulumi.StringOutput)
 }
 
+// The description of the shard node.
 func (o GetMongoInstancesInstanceMongoOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstanceMongo) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The ID of the shard node.
 func (o GetMongoInstancesInstanceMongoOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstanceMongo) string { return v.NodeId }).(pulumi.StringOutput)
 }
@@ -328,9 +397,12 @@ func (o GetMongoInstancesInstanceMongoArrayOutput) Index(i pulumi.IntInput) GetM
 }
 
 type GetMongoInstancesInstanceRestoreRange struct {
+	// The beginning of the recoverable time range.
 	RestoreBeginTime string `pulumi:"restoreBeginTime"`
-	RestoreEndTime   string `pulumi:"restoreEndTime"`
-	RestoreType      string `pulumi:"restoreType"`
+	// The end of the recoverable time range.
+	RestoreEndTime string `pulumi:"restoreEndTime"`
+	// The restoration method.
+	RestoreType string `pulumi:"restoreType"`
 }
 
 // GetMongoInstancesInstanceRestoreRangeInput is an input type that accepts GetMongoInstancesInstanceRestoreRangeArgs and GetMongoInstancesInstanceRestoreRangeOutput values.
@@ -345,9 +417,12 @@ type GetMongoInstancesInstanceRestoreRangeInput interface {
 }
 
 type GetMongoInstancesInstanceRestoreRangeArgs struct {
+	// The beginning of the recoverable time range.
 	RestoreBeginTime pulumi.StringInput `pulumi:"restoreBeginTime"`
-	RestoreEndTime   pulumi.StringInput `pulumi:"restoreEndTime"`
-	RestoreType      pulumi.StringInput `pulumi:"restoreType"`
+	// The end of the recoverable time range.
+	RestoreEndTime pulumi.StringInput `pulumi:"restoreEndTime"`
+	// The restoration method.
+	RestoreType pulumi.StringInput `pulumi:"restoreType"`
 }
 
 func (GetMongoInstancesInstanceRestoreRangeArgs) ElementType() reflect.Type {
@@ -401,14 +476,17 @@ func (o GetMongoInstancesInstanceRestoreRangeOutput) ToGetMongoInstancesInstance
 	return o
 }
 
+// The beginning of the recoverable time range.
 func (o GetMongoInstancesInstanceRestoreRangeOutput) RestoreBeginTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstanceRestoreRange) string { return v.RestoreBeginTime }).(pulumi.StringOutput)
 }
 
+// The end of the recoverable time range.
 func (o GetMongoInstancesInstanceRestoreRangeOutput) RestoreEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstanceRestoreRange) string { return v.RestoreEndTime }).(pulumi.StringOutput)
 }
 
+// The restoration method.
 func (o GetMongoInstancesInstanceRestoreRangeOutput) RestoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstanceRestoreRange) string { return v.RestoreType }).(pulumi.StringOutput)
 }
@@ -434,10 +512,14 @@ func (o GetMongoInstancesInstanceRestoreRangeArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetMongoInstancesInstanceShard struct {
-	Class       string `pulumi:"class"`
+	// The instance type of the shard node.
+	Class string `pulumi:"class"`
+	// The description of the shard node.
 	Description string `pulumi:"description"`
-	NodeId      string `pulumi:"nodeId"`
-	Storage     int    `pulumi:"storage"`
+	// The ID of the shard node.
+	NodeId string `pulumi:"nodeId"`
+	// The storage space of the shard node.
+	Storage int `pulumi:"storage"`
 }
 
 // GetMongoInstancesInstanceShardInput is an input type that accepts GetMongoInstancesInstanceShardArgs and GetMongoInstancesInstanceShardOutput values.
@@ -452,10 +534,14 @@ type GetMongoInstancesInstanceShardInput interface {
 }
 
 type GetMongoInstancesInstanceShardArgs struct {
-	Class       pulumi.StringInput `pulumi:"class"`
+	// The instance type of the shard node.
+	Class pulumi.StringInput `pulumi:"class"`
+	// The description of the shard node.
 	Description pulumi.StringInput `pulumi:"description"`
-	NodeId      pulumi.StringInput `pulumi:"nodeId"`
-	Storage     pulumi.IntInput    `pulumi:"storage"`
+	// The ID of the shard node.
+	NodeId pulumi.StringInput `pulumi:"nodeId"`
+	// The storage space of the shard node.
+	Storage pulumi.IntInput `pulumi:"storage"`
 }
 
 func (GetMongoInstancesInstanceShardArgs) ElementType() reflect.Type {
@@ -509,18 +595,22 @@ func (o GetMongoInstancesInstanceShardOutput) ToGetMongoInstancesInstanceShardOu
 	return o
 }
 
+// The instance type of the shard node.
 func (o GetMongoInstancesInstanceShardOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstanceShard) string { return v.Class }).(pulumi.StringOutput)
 }
 
+// The description of the shard node.
 func (o GetMongoInstancesInstanceShardOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstanceShard) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The ID of the shard node.
 func (o GetMongoInstancesInstanceShardOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstanceShard) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
+// The storage space of the shard node.
 func (o GetMongoInstancesInstanceShardOutput) Storage() pulumi.IntOutput {
 	return o.ApplyT(func(v GetMongoInstancesInstanceShard) int { return v.Storage }).(pulumi.IntOutput)
 }

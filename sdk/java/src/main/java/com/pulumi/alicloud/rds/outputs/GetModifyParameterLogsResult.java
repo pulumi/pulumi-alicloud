@@ -21,6 +21,10 @@ public final class GetModifyParameterLogsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Rds Modify Parameter Logs. Each element contains the following attributes:
+     * 
+     */
     private List<GetModifyParameterLogsLog> logs;
     private @Nullable String outputFile;
     private String startTime;
@@ -39,6 +43,10 @@ public final class GetModifyParameterLogsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Rds Modify Parameter Logs. Each element contains the following attributes:
+     * 
+     */
     public List<GetModifyParameterLogsLog> logs() {
         return this.logs;
     }

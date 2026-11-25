@@ -19,12 +19,32 @@ public final class GetKeyPairsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Key Pair IDs.
+     * 
+     */
     private List<String> ids;
+    /**
+     * @return The name of the key pair.
+     * 
+     */
     private @Nullable String keyPairName;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Key Pair names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Ens Key Pairs. Each element contains the following attributes:
+     * 
+     */
     private List<GetKeyPairsPair> pairs;
+    /**
+     * @return The version number.
+     * 
+     */
     private String version;
 
     private GetKeyPairsResult() {}
@@ -35,24 +55,44 @@ public final class GetKeyPairsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Key Pair IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The name of the key pair.
+     * 
+     */
     public Optional<String> keyPairName() {
         return Optional.ofNullable(this.keyPairName);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Key Pair names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Ens Key Pairs. Each element contains the following attributes:
+     * 
+     */
     public List<GetKeyPairsPair> pairs() {
         return this.pairs;
     }
+    /**
+     * @return The version number.
+     * 
+     */
     public String version() {
         return this.version;
     }

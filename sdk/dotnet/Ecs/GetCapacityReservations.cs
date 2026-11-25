@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides Ecs Capacity Reservation available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides Ecs Capacity Reservation available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides Ecs Capacity Reservation available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0
         /// 
         /// ## Example Usage
         /// 
@@ -125,6 +125,10 @@ namespace Pulumi.AliCloud.Ecs
     {
         [Input("capacityReservationIds")]
         private List<string>? _capacityReservationIds;
+
+        /// <summary>
+        /// A list of Capacity Reservation IDs.
+        /// </summary>
         public List<string> CapacityReservationIds
         {
             get => _capacityReservationIds ?? (_capacityReservationIds = new List<string>());
@@ -207,6 +211,10 @@ namespace Pulumi.AliCloud.Ecs
     {
         [Input("capacityReservationIds")]
         private InputList<string>? _capacityReservationIds;
+
+        /// <summary>
+        /// A list of Capacity Reservation IDs.
+        /// </summary>
         public InputList<string> CapacityReservationIds
         {
             get => _capacityReservationIds ?? (_capacityReservationIds = new InputList<string>());
@@ -329,7 +337,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// A mapping of tags to assign to the Capacity Reservation.
+        /// (Optional) A mapping of tags to assign to the Capacity Reservation.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 

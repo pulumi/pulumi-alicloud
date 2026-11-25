@@ -11,12 +11,153 @@ namespace Pulumi.AliCloud.Quotas
 {
     public static class GetApplicationInfos
     {
+        /// <summary>
+        /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.117.0.
+        /// 
+        /// This is an alias of `alicloud.quotas.getQuotaApplications`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultQuotaApplication = new AliCloud.Quotas.QuotaApplication("default", new()
+        ///     {
+        ///         ProductCode = "vpc",
+        ///         NoticeType = 3,
+        ///         EffectiveTime = "2023-05-22T16:00:00Z",
+        ///         ExpireTime = "2024-09-15T00:08:32Z",
+        ///         DesireValue = 1.0,
+        ///         Reason = "",
+        ///         QuotaActionCode = "vpc_whitelist/ha_vip_whitelist",
+        ///         AuditMode = "Sync",
+        ///         EnvLanguage = "zh",
+        ///         QuotaCategory = "WhiteListLabel",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Quotas.GetApplicationInfos.Invoke(new()
+        ///     {
+        ///         ProductCode = "vpc",
+        ///         EnableDetails = true,
+        ///         QuotaCategory = defaultQuotaApplication.QuotaCategory,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultQuotaApplication.Id,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetApplicationInfosResult> InvokeAsync(GetApplicationInfosArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.117.0.
+        /// 
+        /// This is an alias of `alicloud.quotas.getQuotaApplications`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultQuotaApplication = new AliCloud.Quotas.QuotaApplication("default", new()
+        ///     {
+        ///         ProductCode = "vpc",
+        ///         NoticeType = 3,
+        ///         EffectiveTime = "2023-05-22T16:00:00Z",
+        ///         ExpireTime = "2024-09-15T00:08:32Z",
+        ///         DesireValue = 1.0,
+        ///         Reason = "",
+        ///         QuotaActionCode = "vpc_whitelist/ha_vip_whitelist",
+        ///         AuditMode = "Sync",
+        ///         EnvLanguage = "zh",
+        ///         QuotaCategory = "WhiteListLabel",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Quotas.GetApplicationInfos.Invoke(new()
+        ///     {
+        ///         ProductCode = "vpc",
+        ///         EnableDetails = true,
+        ///         QuotaCategory = defaultQuotaApplication.QuotaCategory,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultQuotaApplication.Id,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetApplicationInfosResult> Invoke(GetApplicationInfosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.117.0.
+        /// 
+        /// This is an alias of `alicloud.quotas.getQuotaApplications`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultQuotaApplication = new AliCloud.Quotas.QuotaApplication("default", new()
+        ///     {
+        ///         ProductCode = "vpc",
+        ///         NoticeType = 3,
+        ///         EffectiveTime = "2023-05-22T16:00:00Z",
+        ///         ExpireTime = "2024-09-15T00:08:32Z",
+        ///         DesireValue = 1.0,
+        ///         Reason = "",
+        ///         QuotaActionCode = "vpc_whitelist/ha_vip_whitelist",
+        ///         AuditMode = "Sync",
+        ///         EnvLanguage = "zh",
+        ///         QuotaCategory = "WhiteListLabel",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Quotas.GetApplicationInfos.Invoke(new()
+        ///     {
+        ///         ProductCode = "vpc",
+        ///         EnableDetails = true,
+        ///         QuotaCategory = defaultQuotaApplication.QuotaCategory,
+        ///         Ids = new[]
+        ///         {
+        ///             defaultQuotaApplication.Id,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetApplicationInfosResult> Invoke(GetApplicationInfosInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationInfosResult>("alicloud:quotas/getApplicationInfos:getApplicationInfos", args ?? new GetApplicationInfosInvokeArgs(), options.WithDefaults());
     }
@@ -26,38 +167,67 @@ namespace Pulumi.AliCloud.Quotas
     {
         [Input("dimensions")]
         private List<Inputs.GetApplicationInfosDimensionArgs>? _dimensions;
+
+        /// <summary>
+        /// The quota dimensions. See `Dimensions` below.
+        /// </summary>
         public List<Inputs.GetApplicationInfosDimensionArgs> Dimensions
         {
             get => _dimensions ?? (_dimensions = new List<Inputs.GetApplicationInfosDimensionArgs>());
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of Application Info IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The key word.
+        /// </summary>
         [Input("keyWord")]
         public string? KeyWord { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The product code.
+        /// </summary>
         [Input("productCode", required: true)]
         public string ProductCode { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of quota action.
+        /// </summary>
         [Input("quotaActionCode")]
         public string? QuotaActionCode { get; set; }
 
+        /// <summary>
+        /// The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+        /// </summary>
         [Input("quotaCategory")]
         public string? QuotaCategory { get; set; }
 
+        /// <summary>
+        /// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
@@ -71,38 +241,67 @@ namespace Pulumi.AliCloud.Quotas
     {
         [Input("dimensions")]
         private InputList<Inputs.GetApplicationInfosDimensionInputArgs>? _dimensions;
+
+        /// <summary>
+        /// The quota dimensions. See `Dimensions` below.
+        /// </summary>
         public InputList<Inputs.GetApplicationInfosDimensionInputArgs> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputList<Inputs.GetApplicationInfosDimensionInputArgs>());
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Application Info IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The key word.
+        /// </summary>
         [Input("keyWord")]
         public Input<string>? KeyWord { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The product code.
+        /// </summary>
         [Input("productCode", required: true)]
         public Input<string> ProductCode { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of quota action.
+        /// </summary>
         [Input("quotaActionCode")]
         public Input<string>? QuotaActionCode { get; set; }
 
+        /// <summary>
+        /// The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+        /// </summary>
         [Input("quotaCategory")]
         public Input<string>? QuotaCategory { get; set; }
 
+        /// <summary>
+        /// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -116,7 +315,13 @@ namespace Pulumi.AliCloud.Quotas
     [OutputType]
     public sealed class GetApplicationInfosResult
     {
+        /// <summary>
+        /// A list of Quotas Quota Applications. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationInfosApplicationResult> Applications;
+        /// <summary>
+        /// The quota dimensions. See `Dimensions` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationInfosDimensionResult> Dimensions;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -126,9 +331,18 @@ namespace Pulumi.AliCloud.Quotas
         public readonly ImmutableArray<string> Ids;
         public readonly string? KeyWord;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The product code.
+        /// </summary>
         public readonly string ProductCode;
+        /// <summary>
+        /// The ID of quota action.
+        /// </summary>
         public readonly string? QuotaActionCode;
         public readonly string? QuotaCategory;
+        /// <summary>
+        /// The status of the quota application.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

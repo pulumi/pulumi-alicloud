@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the acls in the region.
         /// 
+        /// &gt; **NOTE:** Available since v1.21.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -32,22 +34,6 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// 
-        /// ## Entry Block
-        /// 
-        /// The entry mapping supports the following:
-        /// 
-        /// * `Entry`   - An IP addresses or CIDR blocks.
-        /// * `Comment` - the comment of the entry.
-        /// 
-        /// ## Listener Block
-        /// 
-        /// The Listener mapping supports the following:
-        /// 
-        /// * `LoadBalancerId` - the id of load balancer instance, the listener belongs to.
-        /// * `FrontendPort` - the listener port.
-        /// * `Protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-        /// * `AclType`      - the type of acl (such as white/black).
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithDefaults());
@@ -55,6 +41,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the acls in the region.
         /// 
+        /// &gt; **NOTE:** Available since v1.21.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -73,22 +61,6 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// 
-        /// ## Entry Block
-        /// 
-        /// The entry mapping supports the following:
-        /// 
-        /// * `Entry`   - An IP addresses or CIDR blocks.
-        /// * `Comment` - the comment of the entry.
-        /// 
-        /// ## Listener Block
-        /// 
-        /// The Listener mapping supports the following:
-        /// 
-        /// * `LoadBalancerId` - the id of load balancer instance, the listener belongs to.
-        /// * `FrontendPort` - the listener port.
-        /// * `Protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-        /// * `AclType`      - the type of acl (such as white/black).
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
@@ -96,6 +68,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the acls in the region.
         /// 
+        /// &gt; **NOTE:** Available since v1.21.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -114,22 +88,6 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// 
-        /// ## Entry Block
-        /// 
-        /// The entry mapping supports the following:
-        /// 
-        /// * `Entry`   - An IP addresses or CIDR blocks.
-        /// * `Comment` - the comment of the entry.
-        /// 
-        /// ## Listener Block
-        /// 
-        /// The Listener mapping supports the following:
-        /// 
-        /// * `LoadBalancerId` - the id of load balancer instance, the listener belongs to.
-        /// * `FrontendPort` - the listener port.
-        /// * `Protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-        /// * `AclType`      - the type of acl (such as white/black).
         /// </summary>
         public static Output<GetAclsResult> Invoke(GetAclsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsInvokeArgs(), options.WithDefaults());
@@ -241,7 +199,7 @@ namespace Pulumi.AliCloud.Slb
     public sealed class GetAclsResult
     {
         /// <summary>
-        /// A list of SLB  acls. Each element contains the following attributes:
+        /// A list of SLB acls. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclsAclResult> Acls;
         /// <summary>
@@ -263,7 +221,7 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public readonly string? ResourceGroupId;
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// (Optional) A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 

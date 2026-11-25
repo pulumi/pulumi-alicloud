@@ -47,6 +47,7 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * 
      * &gt; **NOTE:** From version 1.227.1, `order` must be set.
      * 
      */
@@ -55,6 +56,7 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * 
      * &gt; **NOTE:** From version 1.227.1, `order` must be set.
      * 
      */
@@ -132,6 +134,7 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param order The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+         * 
          * &gt; **NOTE:** From version 1.227.1, `order` must be set.
          * 
          * @return builder
@@ -144,6 +147,7 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param order The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+         * 
          * &gt; **NOTE:** From version 1.227.1, `order` must be set.
          * 
          * @return builder

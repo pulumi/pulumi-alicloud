@@ -14,7 +14,7 @@ import (
 
 // Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and payAsYouGo instances to rapidly deploy clusters.
 //
-// > **NOTE:** Available in 1.79.0+
+// > **NOTE:** Available since v1.79.0
 //
 // ## Example Usage
 //
@@ -130,7 +130,7 @@ type AutoProvisioningGroup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
 	ExcessCapacityTerminationPolicy pulumi.StringPtrOutput `pulumi:"excessCapacityTerminationPolicy"`
-	// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+	// DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
 	LaunchTemplateConfigs AutoProvisioningGroupLaunchTemplateConfigArrayOutput `pulumi:"launchTemplateConfigs"`
 	// The ID of the instance launch template associated with the auto provisioning group.
 	LaunchTemplateId pulumi.StringOutput `pulumi:"launchTemplateId"`
@@ -211,7 +211,7 @@ type autoProvisioningGroupState struct {
 	Description *string `pulumi:"description"`
 	// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
 	ExcessCapacityTerminationPolicy *string `pulumi:"excessCapacityTerminationPolicy"`
-	// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+	// DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
 	LaunchTemplateConfigs []AutoProvisioningGroupLaunchTemplateConfig `pulumi:"launchTemplateConfigs"`
 	// The ID of the instance launch template associated with the auto provisioning group.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
@@ -254,7 +254,7 @@ type AutoProvisioningGroupState struct {
 	Description pulumi.StringPtrInput
 	// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
 	ExcessCapacityTerminationPolicy pulumi.StringPtrInput
-	// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+	// DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
 	LaunchTemplateConfigs AutoProvisioningGroupLaunchTemplateConfigArrayInput
 	// The ID of the instance launch template associated with the auto provisioning group.
 	LaunchTemplateId pulumi.StringPtrInput
@@ -307,7 +307,7 @@ type autoProvisioningGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
 	ExcessCapacityTerminationPolicy *string `pulumi:"excessCapacityTerminationPolicy"`
-	// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+	// DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
 	LaunchTemplateConfigs []AutoProvisioningGroupLaunchTemplateConfig `pulumi:"launchTemplateConfigs"`
 	// The ID of the instance launch template associated with the auto provisioning group.
 	LaunchTemplateId string `pulumi:"launchTemplateId"`
@@ -351,7 +351,7 @@ type AutoProvisioningGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
 	ExcessCapacityTerminationPolicy pulumi.StringPtrInput
-	// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+	// DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
 	LaunchTemplateConfigs AutoProvisioningGroupLaunchTemplateConfigArrayInput
 	// The ID of the instance launch template associated with the auto provisioning group.
 	LaunchTemplateId pulumi.StringInput
@@ -495,7 +495,7 @@ func (o AutoProvisioningGroupOutput) ExcessCapacityTerminationPolicy() pulumi.St
 	return o.ApplyT(func(v *AutoProvisioningGroup) pulumi.StringPtrOutput { return v.ExcessCapacityTerminationPolicy }).(pulumi.StringPtrOutput)
 }
 
-// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+// DataDisk mappings to attach to ecs instance. See `launchTemplateConfig` below for details.
 func (o AutoProvisioningGroupOutput) LaunchTemplateConfigs() AutoProvisioningGroupLaunchTemplateConfigArrayOutput {
 	return o.ApplyT(func(v *AutoProvisioningGroup) AutoProvisioningGroupLaunchTemplateConfigArrayOutput {
 		return v.LaunchTemplateConfigs

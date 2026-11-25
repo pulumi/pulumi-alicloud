@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Bastionhost Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *
@@ -100,27 +100,54 @@ export interface GetUsersArgs {
  * A collection of values returned by getUsers.
  */
 export interface GetUsersResult {
+    /**
+     * Specify the New Created the User's Display Name. Supports up to 128 Characters.
+     */
     readonly displayName?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * You Want to Query the User the Bastion Host ID of.
+     */
     readonly instanceId: string;
+    /**
+     * Specify the New of the User That Created a Different Mobile Phone Number from Your.
+     */
     readonly mobile?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of User names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+     */
     readonly source?: string;
+    /**
+     * Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+     */
     readonly sourceUserId?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
+    /**
+     * Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+     */
     readonly userName?: string;
+    /**
+     * A list of Bastionhost Users. Each element contains the following attributes:
+     */
     readonly users: outputs.bastionhost.GetUsersUser[];
 }
 /**
  * This data source provides the Bastionhost Users of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Example Usage
  *

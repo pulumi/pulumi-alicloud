@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly bool IsDefault;
         /// <summary>
-        /// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+        /// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         /// </summary>
         public readonly string NatGatewayId;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string NatIp;
         /// <summary>
-        /// The CIDR block to which the NAT IP address belongs.
+        /// NAT IP ADDRESS of the address segment.
         /// </summary>
         public readonly string NatIpCidr;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string NatIpId;
         /// <summary>
-        /// The name of the NAT IP address.
+        /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         /// </summary>
         public readonly string NatIpName;
         /// <summary>

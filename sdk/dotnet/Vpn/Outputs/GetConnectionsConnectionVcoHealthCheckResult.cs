@@ -14,27 +14,27 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetConnectionsConnectionVcoHealthCheckResult
     {
         /// <summary>
-        /// The destination ip address.
+        /// (Optional) The destination ip address.
         /// </summary>
         public readonly string? Dip;
         /// <summary>
-        /// The health check on status. Valid values: `True`, `False`.
+        /// (Optional) The health check on status. Valid values: `True`, `False`.
         /// </summary>
         public readonly string? Enable;
         /// <summary>
-        /// The time interval between health checks.
+        /// (Optional) The time interval between health checks.
         /// </summary>
         public readonly int? Interval;
         /// <summary>
-        /// The number of retries for health checks issued.
+        /// (Optional) The number of retries for health checks issued.
         /// </summary>
         public readonly int? Retry;
         /// <summary>
-        /// The source ip address.
+        /// (Optional) The source ip address.
         /// </summary>
         public readonly string? Sip;
         /// <summary>
-        /// The negotiation status of the BGP routing protocol. Valid values: `Success`, `False`.
+        /// The status of the tunnel.
         /// </summary>
         public readonly string? Status;
 

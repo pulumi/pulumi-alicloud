@@ -30,9 +30,17 @@ public final class GetConfigsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The Request and Receive the Language of the Message Type. Valid values: `zh`, `en`.
+     * 
+     */
     @Import(name="lang")
     private @Nullable String lang;
 
+    /**
+     * @return The Request and Receive the Language of the Message Type. Valid values: `zh`, `en`.
+     * 
+     */
     public Optional<String> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -99,6 +107,12 @@ public final class GetConfigsPlainArgs extends com.pulumi.resources.InvokeArgs {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param lang The Request and Receive the Language of the Message Type. Valid values: `zh`, `en`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lang(@Nullable String lang) {
             $.lang = lang;
             return this;

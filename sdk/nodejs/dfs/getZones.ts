@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *
@@ -49,12 +49,15 @@ export interface GetZonesResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * A list of HDFS Zones And Configurations. Each element contains the following attributes:
+     */
     readonly zones: outputs.dfs.GetZonesZone[];
 }
 /**
  * This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *

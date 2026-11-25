@@ -16,7 +16,7 @@ public final class GetLogConfigsConfig {
      */
     private String id;
     /**
-     * @return The type the of log.
+     * @return The type the of log. Valid values: `PROVIDER`.
      * 
      */
     private String logType;
@@ -45,7 +45,7 @@ public final class GetLogConfigsConfig {
         return this.id;
     }
     /**
-     * @return The type the of log.
+     * @return The type the of log. Valid values: `PROVIDER`.
      * 
      */
     public String logType() {

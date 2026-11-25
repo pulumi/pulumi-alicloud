@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountsResult {
+    /**
+     * @return A list of Gpdb Accounts. Each element contains the following attributes:
+     * 
+     */
     private List<GetAccountsAccount> accounts;
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     private String dbInstanceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,14 +31,30 @@ public final class GetAccountsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Account names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+     * 
+     */
     private @Nullable String status;
 
     private GetAccountsResult() {}
+    /**
+     * @return A list of Gpdb Accounts. Each element contains the following attributes:
+     * 
+     */
     public List<GetAccountsAccount> accounts() {
         return this.accounts;
     }
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     public String dbInstanceId() {
         return this.dbInstanceId;
     }
@@ -47,12 +71,20 @@ public final class GetAccountsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Account names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

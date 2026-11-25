@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.196.0+.
+// > **NOTE:** Available since v1.196.0+.
 //
 // ## Example Usage
 //
@@ -81,14 +81,18 @@ type GetCrossRegionBackupsArgs struct {
 
 // A collection of values returned by getCrossRegionBackups.
 type GetCrossRegionBackupsResult struct {
-	BackupId          *string                       `pulumi:"backupId"`
-	Backups           []GetCrossRegionBackupsBackup `pulumi:"backups"`
-	CrossBackupId     *string                       `pulumi:"crossBackupId"`
-	CrossBackupRegion *string                       `pulumi:"crossBackupRegion"`
-	DbInstanceId      string                        `pulumi:"dbInstanceId"`
-	EndTime           *string                       `pulumi:"endTime"`
+	BackupId *string `pulumi:"backupId"`
+	// An array that consists of details of the cross-region data backup files:
+	Backups []GetCrossRegionBackupsBackup `pulumi:"backups"`
+	// The ID of the cross-region data backup file.
+	CrossBackupId *string `pulumi:"crossBackupId"`
+	// The ID of the destination region where the cross-region data backup file of the instance is stored.
+	CrossBackupRegion *string `pulumi:"crossBackupRegion"`
+	DbInstanceId      string  `pulumi:"dbInstanceId"`
+	EndTime           *string `pulumi:"endTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of Cross Region Backup IDs.
 	Ids             []string `pulumi:"ids"`
 	OutputFile      *string  `pulumi:"outputFile"`
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
@@ -147,14 +151,17 @@ func (o GetCrossRegionBackupsResultOutput) BackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCrossRegionBackupsResult) *string { return v.BackupId }).(pulumi.StringPtrOutput)
 }
 
+// An array that consists of details of the cross-region data backup files:
 func (o GetCrossRegionBackupsResultOutput) Backups() GetCrossRegionBackupsBackupArrayOutput {
 	return o.ApplyT(func(v GetCrossRegionBackupsResult) []GetCrossRegionBackupsBackup { return v.Backups }).(GetCrossRegionBackupsBackupArrayOutput)
 }
 
+// The ID of the cross-region data backup file.
 func (o GetCrossRegionBackupsResultOutput) CrossBackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCrossRegionBackupsResult) *string { return v.CrossBackupId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the destination region where the cross-region data backup file of the instance is stored.
 func (o GetCrossRegionBackupsResultOutput) CrossBackupRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCrossRegionBackupsResult) *string { return v.CrossBackupRegion }).(pulumi.StringPtrOutput)
 }
@@ -172,6 +179,7 @@ func (o GetCrossRegionBackupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCrossRegionBackupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Cross Region Backup IDs.
 func (o GetCrossRegionBackupsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCrossRegionBackupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

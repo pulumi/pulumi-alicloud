@@ -452,12 +452,16 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Import(name="keepInstanceName")
     private @Nullable Output<Boolean> keepInstanceName;
 
     /**
      * @return Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<Boolean>> keepInstanceName() {
@@ -2091,6 +2095,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param keepInstanceName Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -2101,6 +2107,8 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param keepInstanceName Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

@@ -50,6 +50,9 @@ class GetGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetGroupsGroupResult']:
+        """
+        A list of Security Center Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -73,6 +76,9 @@ class GetGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -102,7 +108,7 @@ def get_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Security Center Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 
@@ -142,7 +148,7 @@ def get_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     """
     This data source provides the Security Center Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.133.0+.
+    > **NOTE:** Available since v1.133.0.
 
     ## Example Usage
 

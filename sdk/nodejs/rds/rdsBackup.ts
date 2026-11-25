@@ -86,6 +86,10 @@ export class RdsBackup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly backupId: pulumi.Output<string>;
     /**
+     * (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+     */
+    declare public /*out*/ readonly backupJobId: pulumi.Output<string>;
+    /**
      * The backup type. Valid values:
      * * `Logical`: logical backup (supported only for MySQL)
      * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
@@ -153,6 +157,7 @@ export class RdsBackup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RdsBackupState | undefined;
             resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["backupJobId"] = state?.backupJobId;
             resourceInputs["backupMethod"] = state?.backupMethod;
             resourceInputs["backupRetentionPeriod"] = state?.backupRetentionPeriod;
             resourceInputs["backupStrategy"] = state?.backupStrategy;
@@ -175,6 +180,7 @@ export class RdsBackup extends pulumi.CustomResource {
             resourceInputs["dbName"] = args?.dbName;
             resourceInputs["removeFromState"] = args?.removeFromState;
             resourceInputs["backupId"] = undefined /*out*/;
+            resourceInputs["backupJobId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["storeStatus"] = undefined /*out*/;
         }
@@ -191,6 +197,10 @@ export interface RdsBackupState {
      * The backup set ID.
      */
     backupId?: pulumi.Input<string | undefined>;
+    /**
+     * (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+     */
+    backupJobId?: pulumi.Input<string | undefined>;
     /**
      * The backup type. Valid values:
      * * `Logical`: logical backup (supported only for MySQL)

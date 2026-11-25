@@ -23,6 +23,10 @@ public final class GetTopicsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return ID of the ONS Instance that owns the topic.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
     /**
@@ -56,6 +60,10 @@ public final class GetTopicsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return ID of the ONS Instance that owns the topic.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }

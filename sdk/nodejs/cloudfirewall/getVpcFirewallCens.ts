@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     cenId: "cen-cjok7uyb5w2b27573v",
  *     memberUid: "1415189284827022",
  *     status: "closed",
- *     vpcFirewallName: "tf-test",
+ *     vpcFirewallName: "tf-example",
  * });
  * export const alicloudCloudFirewallVpcFirewallCenExampleId = _default.then(_default => _default.cens?.[0]?.id);
  * ```
@@ -110,12 +110,9 @@ export interface GetVpcFirewallCensResult {
      */
     readonly ids: string[];
     readonly lang?: string;
-    /**
-     * The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-     */
     readonly memberUid?: string;
     /**
-     * The ID of the VPC instance that created the VPC firewall.
+     * The ID of the network instance.
      */
     readonly networkInstanceId?: string;
     readonly outputFile?: string;
@@ -150,7 +147,7 @@ export interface GetVpcFirewallCensResult {
  *     cenId: "cen-cjok7uyb5w2b27573v",
  *     memberUid: "1415189284827022",
  *     status: "closed",
- *     vpcFirewallName: "tf-test",
+ *     vpcFirewallName: "tf-example",
  * });
  * export const alicloudCloudFirewallVpcFirewallCenExampleId = _default.then(_default => _default.cens?.[0]?.id);
  * ```

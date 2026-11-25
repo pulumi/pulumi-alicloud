@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Mse Gateways of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.157.0+.
+// > **NOTE:** Available since v1.157.0.
 //
 // ## Example Usage
 //
@@ -89,17 +89,22 @@ type GetGatewaysArgs struct {
 
 // A collection of values returned by getGateways.
 type GetGatewaysResult struct {
-	EnableDetails *bool                `pulumi:"enableDetails"`
-	GatewayName   *string              `pulumi:"gatewayName"`
-	Gateways      []GetGatewaysGateway `pulumi:"gateways"`
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// The name of the Gateway.
+	GatewayName *string `pulumi:"gatewayName"`
+	// A list of Mse Gateways. Each element contains the following attributes:
+	Gateways []GetGatewaysGateway `pulumi:"gateways"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Gateway names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
-	VpcId      *string  `pulumi:"vpcId"`
+	// The status of the gateway.
+	Status *string `pulumi:"status"`
+	// The ID of the vpc.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 func GetGatewaysOutput(ctx *pulumi.Context, args GetGatewaysOutputArgs, opts ...pulumi.InvokeOption) GetGatewaysResultOutput {
@@ -148,10 +153,12 @@ func (o GetGatewaysResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the Gateway.
 func (o GetGatewaysResultOutput) GatewayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.GatewayName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Mse Gateways. Each element contains the following attributes:
 func (o GetGatewaysResultOutput) Gateways() GetGatewaysGatewayArrayOutput {
 	return o.ApplyT(func(v GetGatewaysResult) []GetGatewaysGateway { return v.Gateways }).(GetGatewaysGatewayArrayOutput)
 }
@@ -169,6 +176,7 @@ func (o GetGatewaysResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Gateway names.
 func (o GetGatewaysResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGatewaysResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -177,10 +185,12 @@ func (o GetGatewaysResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the gateway.
 func (o GetGatewaysResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the vpc.
 func (o GetGatewaysResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }

@@ -13,14 +13,30 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVpcFirewallCensCenLocalVpc {
+    /**
+     * @return The ID of the attachment.
+     * 
+     */
     private String attachmentId;
+    /**
+     * @return The name of the attachment.
+     * 
+     */
     private String attachmentName;
     /**
      * @return The list of network segments protected by the VPC firewall.
      * 
      */
     private List<String> defendCidrLists;
+    /**
+     * @return The list of ENIs.
+     * 
+     */
     private List<GetVpcFirewallCensCenLocalVpcEniList> eniLists;
+    /**
+     * @return The ID of the vSwitch specified when the routing mode is manual mode.
+     * 
+     */
     private String manualVswitchId;
     /**
      * @return The ID of the VPC instance that created the VPC firewall.
@@ -33,7 +49,7 @@ public final class GetVpcFirewallCensCenLocalVpc {
      */
     private String networkInstanceName;
     /**
-     * @return The type of the network instance. Value: **VPC * *.
+     * @return The type of the network instance. Value: **VPC**.
      * 
      */
     private String networkInstanceType;
@@ -57,6 +73,10 @@ public final class GetVpcFirewallCensCenLocalVpc {
      * 
      */
     private String supportManualMode;
+    /**
+     * @return The ID of the transit router.
+     * 
+     */
     private String transitRouterId;
     /**
      * @return The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
@@ -80,9 +100,17 @@ public final class GetVpcFirewallCensCenLocalVpc {
     private String vpcName;
 
     private GetVpcFirewallCensCenLocalVpc() {}
+    /**
+     * @return The ID of the attachment.
+     * 
+     */
     public String attachmentId() {
         return this.attachmentId;
     }
+    /**
+     * @return The name of the attachment.
+     * 
+     */
     public String attachmentName() {
         return this.attachmentName;
     }
@@ -93,9 +121,17 @@ public final class GetVpcFirewallCensCenLocalVpc {
     public List<String> defendCidrLists() {
         return this.defendCidrLists;
     }
+    /**
+     * @return The list of ENIs.
+     * 
+     */
     public List<GetVpcFirewallCensCenLocalVpcEniList> eniLists() {
         return this.eniLists;
     }
+    /**
+     * @return The ID of the vSwitch specified when the routing mode is manual mode.
+     * 
+     */
     public String manualVswitchId() {
         return this.manualVswitchId;
     }
@@ -114,7 +150,7 @@ public final class GetVpcFirewallCensCenLocalVpc {
         return this.networkInstanceName;
     }
     /**
-     * @return The type of the network instance. Value: **VPC * *.
+     * @return The type of the network instance. Value: **VPC**.
      * 
      */
     public String networkInstanceType() {
@@ -148,6 +184,10 @@ public final class GetVpcFirewallCensCenLocalVpc {
     public String supportManualMode() {
         return this.supportManualMode;
     }
+    /**
+     * @return The ID of the transit router.
+     * 
+     */
     public String transitRouterId() {
         return this.transitRouterId;
     }

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.FNF.Outputs
         /// </summary>
         public readonly string StartedTime;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
         /// </summary>
         public readonly string Status;
         /// <summary>

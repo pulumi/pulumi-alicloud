@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.144.0+.
+// > **NOTE:** Available since v1.144.0.
 //
 // ## Example Usage
 //
@@ -71,12 +71,14 @@ type GetExpressSyncsArgs struct {
 // A collection of values returned by getExpressSyncs.
 type GetExpressSyncsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                `pulumi:"id"`
-	Ids        []string              `pulumi:"ids"`
-	NameRegex  *string               `pulumi:"nameRegex"`
-	Names      []string              `pulumi:"names"`
-	OutputFile *string               `pulumi:"outputFile"`
-	Syncs      []GetExpressSyncsSync `pulumi:"syncs"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Express Sync names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Cloud Storage Gateway Express Syncs. Each element contains the following attributes:
+	Syncs []GetExpressSyncsSync `pulumi:"syncs"`
 }
 
 func GetExpressSyncsOutput(ctx *pulumi.Context, args GetExpressSyncsOutputArgs, opts ...pulumi.InvokeOption) GetExpressSyncsResultOutput {
@@ -126,6 +128,7 @@ func (o GetExpressSyncsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExpressSyncsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Express Sync names.
 func (o GetExpressSyncsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetExpressSyncsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -134,6 +137,7 @@ func (o GetExpressSyncsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExpressSyncsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cloud Storage Gateway Express Syncs. Each element contains the following attributes:
 func (o GetExpressSyncsResultOutput) Syncs() GetExpressSyncsSyncArrayOutput {
 	return o.ApplyT(func(v GetExpressSyncsResult) []GetExpressSyncsSync { return v.Syncs }).(GetExpressSyncsSyncArrayOutput)
 }

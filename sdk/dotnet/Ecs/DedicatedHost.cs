@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available since v1.91.0.
     /// 
+    /// &gt; **NOTE:** Destroying a `PrePaid` instance fails with an error since v2.1.0. To destroy it, convert the instance to `PostPaid` by setting `PaymentType = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -68,6 +70,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// });
     /// ```
+    /// 
     /// ### Deleting alicloud.ecs.DedicatedHost or removing it from your configuration
     /// 
     /// The alicloud.ecs.DedicatedHost resource allows you to manage PaymentType = "PrePaid" dedicated host, but Terraform cannot destroy it.
@@ -173,7 +176,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int?> MinQuantity { get; private set; } = null!;
 
         /// <summary>
-        /// dedicated host network parameters. contains the following attributes:
+        /// Dedicated host network parameters. See `NetworkAttributes` below.
         /// </summary>
         [Output("networkAttributes")]
         public Output<ImmutableArray<Outputs.DedicatedHostNetworkAttribute>> NetworkAttributes { get; private set; } = null!;
@@ -348,7 +351,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.DedicatedHostNetworkAttributeArgs>? _networkAttributes;
 
         /// <summary>
-        /// dedicated host network parameters. contains the following attributes:
+        /// Dedicated host network parameters. See `NetworkAttributes` below.
         /// </summary>
         public InputList<Inputs.DedicatedHostNetworkAttributeArgs> NetworkAttributes
         {
@@ -488,7 +491,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.DedicatedHostNetworkAttributeGetArgs>? _networkAttributes;
 
         /// <summary>
-        /// dedicated host network parameters. contains the following attributes:
+        /// Dedicated host network parameters. See `NetworkAttributes` below.
         /// </summary>
         public InputList<Inputs.DedicatedHostNetworkAttributeGetArgs> NetworkAttributes
         {

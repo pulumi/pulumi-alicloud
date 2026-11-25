@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0.
  *
  * ## Example Usage
  *
@@ -82,6 +82,9 @@ export interface GetBgpPeersArgs {
  * A collection of values returned by getBgpPeers.
  */
 export interface GetBgpPeersResult {
+    /**
+     * The ID of the BGP group.
+     */
     readonly bgpGroupId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -89,14 +92,23 @@ export interface GetBgpPeersResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Vpc Bgp Peers. Each element contains the following attributes:
+     */
     readonly peers: outputs.vpc.GetBgpPeersPeer[];
+    /**
+     * The ID of the router.
+     */
     readonly routerId?: string;
+    /**
+     * The status of the BGP peer.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0.
  *
  * ## Example Usage
  *

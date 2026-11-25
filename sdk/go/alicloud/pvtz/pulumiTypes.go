@@ -566,8 +566,9 @@ type GetEndpointsEndpoint struct {
 	CreateTime string `pulumi:"createTime"`
 	// The name of the resource.
 	EndpointName string `pulumi:"endpointName"`
-	Id           string `pulumi:"id"`
-	// The Ip Configs.
+	// The ID of the Endpoint.
+	Id string `pulumi:"id"`
+	// The Ip Configs. Each element contains the following attributes:
 	IpConfigs []GetEndpointsEndpointIpConfig `pulumi:"ipConfigs"`
 	// The ID of the Security Group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
@@ -597,8 +598,9 @@ type GetEndpointsEndpointArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The name of the resource.
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
-	Id           pulumi.StringInput `pulumi:"id"`
-	// The Ip Configs.
+	// The ID of the Endpoint.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Ip Configs. Each element contains the following attributes:
 	IpConfigs GetEndpointsEndpointIpConfigArrayInput `pulumi:"ipConfigs"`
 	// The ID of the Security Group.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
@@ -673,11 +675,12 @@ func (o GetEndpointsEndpointOutput) EndpointName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.EndpointName }).(pulumi.StringOutput)
 }
 
+// The ID of the Endpoint.
 func (o GetEndpointsEndpointOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Ip Configs.
+// The Ip Configs. Each element contains the following attributes:
 func (o GetEndpointsEndpointOutput) IpConfigs() GetEndpointsEndpointIpConfigArrayOutput {
 	return o.ApplyT(func(v GetEndpointsEndpoint) []GetEndpointsEndpointIpConfig { return v.IpConfigs }).(GetEndpointsEndpointIpConfigArrayOutput)
 }
@@ -852,7 +855,7 @@ func (o GetEndpointsEndpointIpConfigArrayOutput) Index(i pulumi.IntInput) GetEnd
 }
 
 type GetResolverZonesZone struct {
-	// The status of the Zone.
+	// The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
 	Status string `pulumi:"status"`
 	// The zone ID.
 	ZoneId string `pulumi:"zoneId"`
@@ -870,7 +873,7 @@ type GetResolverZonesZoneInput interface {
 }
 
 type GetResolverZonesZoneArgs struct {
-	// The status of the Zone.
+	// The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The zone ID.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -927,7 +930,7 @@ func (o GetResolverZonesZoneOutput) ToGetResolverZonesZoneOutputWithContext(ctx 
 	return o
 }
 
-// The status of the Zone.
+// The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
 func (o GetResolverZonesZoneOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResolverZonesZone) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -958,15 +961,16 @@ func (o GetResolverZonesZoneArrayOutput) Index(i pulumi.IntInput) GetResolverZon
 }
 
 type GetRulesRule struct {
-	// The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
+	// The List of the VPC. Each element contains the following attributes:
 	BindVpcs []GetRulesRuleBindVpc `pulumi:"bindVpcs"`
 	// The creation time of the resource.
 	CreateTime string `pulumi:"createTime"`
 	// The ID of the Endpoint.
 	EndpointId string `pulumi:"endpointId"`
 	// The Name of the Endpoint.
-	EndpointName string                  `pulumi:"endpointName"`
-	ForwardIps   []GetRulesRuleForwardIp `pulumi:"forwardIps"`
+	EndpointName string `pulumi:"endpointName"`
+	// Forwarding targets. Each element contains the following attributes:
+	ForwardIps []GetRulesRuleForwardIp `pulumi:"forwardIps"`
 	// The ID of the Rule.
 	Id string `pulumi:"id"`
 	// The first ID of the resource.
@@ -991,15 +995,16 @@ type GetRulesRuleInput interface {
 }
 
 type GetRulesRuleArgs struct {
-	// The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
+	// The List of the VPC. Each element contains the following attributes:
 	BindVpcs GetRulesRuleBindVpcArrayInput `pulumi:"bindVpcs"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The ID of the Endpoint.
 	EndpointId pulumi.StringInput `pulumi:"endpointId"`
 	// The Name of the Endpoint.
-	EndpointName pulumi.StringInput              `pulumi:"endpointName"`
-	ForwardIps   GetRulesRuleForwardIpArrayInput `pulumi:"forwardIps"`
+	EndpointName pulumi.StringInput `pulumi:"endpointName"`
+	// Forwarding targets. Each element contains the following attributes:
+	ForwardIps GetRulesRuleForwardIpArrayInput `pulumi:"forwardIps"`
 	// The ID of the Rule.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The first ID of the resource.
@@ -1063,7 +1068,7 @@ func (o GetRulesRuleOutput) ToGetRulesRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The List of the VPC. See the following `Block bindVpcs`. **NOTE:** Available in v1.158.0+.
+// The List of the VPC. Each element contains the following attributes:
 func (o GetRulesRuleOutput) BindVpcs() GetRulesRuleBindVpcArrayOutput {
 	return o.ApplyT(func(v GetRulesRule) []GetRulesRuleBindVpc { return v.BindVpcs }).(GetRulesRuleBindVpcArrayOutput)
 }
@@ -1083,6 +1088,7 @@ func (o GetRulesRuleOutput) EndpointName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRule) string { return v.EndpointName }).(pulumi.StringOutput)
 }
 
+// Forwarding targets. Each element contains the following attributes:
 func (o GetRulesRuleOutput) ForwardIps() GetRulesRuleForwardIpArrayOutput {
 	return o.ApplyT(func(v GetRulesRule) []GetRulesRuleForwardIp { return v.ForwardIps }).(GetRulesRuleForwardIpArrayOutput)
 }
@@ -1257,8 +1263,10 @@ func (o GetRulesRuleBindVpcArrayOutput) Index(i pulumi.IntInput) GetRulesRuleBin
 }
 
 type GetRulesRuleForwardIp struct {
-	Ip   string `pulumi:"ip"`
-	Port int    `pulumi:"port"`
+	// The ip of the forwarding destination.
+	Ip string `pulumi:"ip"`
+	// The port of the forwarding destination.
+	Port int `pulumi:"port"`
 }
 
 // GetRulesRuleForwardIpInput is an input type that accepts GetRulesRuleForwardIpArgs and GetRulesRuleForwardIpOutput values.
@@ -1273,8 +1281,10 @@ type GetRulesRuleForwardIpInput interface {
 }
 
 type GetRulesRuleForwardIpArgs struct {
-	Ip   pulumi.StringInput `pulumi:"ip"`
-	Port pulumi.IntInput    `pulumi:"port"`
+	// The ip of the forwarding destination.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The port of the forwarding destination.
+	Port pulumi.IntInput `pulumi:"port"`
 }
 
 func (GetRulesRuleForwardIpArgs) ElementType() reflect.Type {
@@ -1328,10 +1338,12 @@ func (o GetRulesRuleForwardIpOutput) ToGetRulesRuleForwardIpOutputWithContext(ct
 	return o
 }
 
+// The ip of the forwarding destination.
 func (o GetRulesRuleForwardIpOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleForwardIp) string { return v.Ip }).(pulumi.StringOutput)
 }
 
+// The port of the forwarding destination.
 func (o GetRulesRuleForwardIpOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRulesRuleForwardIp) int { return v.Port }).(pulumi.IntOutput)
 }

@@ -626,7 +626,7 @@ class RocketMQInstanceSoftware(dict):
                  software_version: Optional[_builtins.str] = None,
                  upgrade_method: Optional[_builtins.str] = None):
         """
-        :param _builtins.str maintain_time: Upgrade time period.
+        :param _builtins.str maintain_time: The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
         :param _builtins.str software_version: Software version.
         :param _builtins.str upgrade_method: Upgrade method.
         """
@@ -639,9 +639,10 @@ class RocketMQInstanceSoftware(dict):
 
     @_builtins.property
     @pulumi.getter(name="maintainTime")
+    @_utilities.deprecated("""The RocketMQ API has deprecated maintainTime. Remove maintain_time from configuration; existing state remains readable.""")
     def maintain_time(self) -> Optional[_builtins.str]:
         """
-        Upgrade time period.
+        The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
         """
         return pulumi.get(self, "maintain_time")
 

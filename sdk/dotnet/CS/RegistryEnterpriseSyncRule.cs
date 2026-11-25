@@ -191,6 +191,7 @@ namespace Pulumi.AliCloud.CS
         /// The synchronization scope. Valid values:
         /// - `REPO`: Encrypts or decrypts data.
         /// - `NAMESPACE`: Generates or verifies a digital signature.
+        /// 
         /// &gt; **NOTE:** From version 1.240.0, `SyncScope` can be set.
         /// </summary>
         [Output("syncScope")]
@@ -320,6 +321,7 @@ namespace Pulumi.AliCloud.CS
         /// The synchronization scope. Valid values:
         /// - `REPO`: Encrypts or decrypts data.
         /// - `NAMESPACE`: Generates or verifies a digital signature.
+        /// 
         /// &gt; **NOTE:** From version 1.240.0, `SyncScope` can be set.
         /// </summary>
         [Input("syncScope")]
@@ -441,6 +443,7 @@ namespace Pulumi.AliCloud.CS
         /// The synchronization scope. Valid values:
         /// - `REPO`: Encrypts or decrypts data.
         /// - `NAMESPACE`: Generates or verifies a digital signature.
+        /// 
         /// &gt; **NOTE:** From version 1.240.0, `SyncScope` can be set.
         /// </summary>
         [Input("syncScope")]

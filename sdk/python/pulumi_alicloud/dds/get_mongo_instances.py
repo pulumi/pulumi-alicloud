@@ -68,6 +68,9 @@ class GetMongoInstancesResult:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        The zone ID of the instance.
+        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
@@ -91,16 +94,25 @@ class GetMongoInstancesResult:
     @_builtins.property
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[_builtins.str]:
+        """
+        The instance type.
+        """
         return pulumi.get(self, "instance_class")
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[_builtins.str]:
+        """
+        The instance architecture.
+        """
         return pulumi.get(self, "instance_type")
 
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetMongoInstancesInstanceResult']:
+        """
+        A list of Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -111,6 +123,9 @@ class GetMongoInstancesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        (Available since v1.42.0) A list of Instance names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -121,11 +136,17 @@ class GetMongoInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The instance status.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Available since v1.66.0) The details of the resource tags.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -160,7 +181,51 @@ def get_mongo_instances(availability_zone: Optional[_builtins.str] = None,
                         tags: Optional[Mapping[str, _builtins.str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMongoInstancesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.13.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.mongodb.get_zones()
+    default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=default.zones[0].id)
+    default_get_security_groups = alicloud.ecs.get_security_groups(vpc_id=default_get_networks.ids[0])
+    default_instance = alicloud.mongodb.Instance("default",
+        engine_version="4.4",
+        db_instance_class="mdb.shard.2x.xlarge.d",
+        db_instance_storage=20,
+        vswitch_id=default_get_switches.ids[0],
+        name=name,
+        tags={
+            "Created": "TF",
+            "For": "Instance",
+        })
+    ids = alicloud.dds.get_mongo_instances_output(ids=[default_instance.id])
+    pulumi.export("mongodbInstancesId0", ids.instances[0].id)
+    ```
+
+
+    :param _builtins.str availability_zone: The zone ID.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[_builtins.str] ids: A list of Instance IDs.
+    :param _builtins.str instance_class: The instance type.
+    :param _builtins.str instance_type: The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+    :param _builtins.str name_regex: A regex string to filter results by Instance name.
+    :param _builtins.str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
+    :param _builtins.str status: The instance status.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -199,7 +264,51 @@ def get_mongo_instances_output(availability_zone: pulumi.Input[Optional[Optional
                                tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMongoInstancesResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the MongoDB Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.13.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.mongodb.get_zones()
+    default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=default.zones[0].id)
+    default_get_security_groups = alicloud.ecs.get_security_groups(vpc_id=default_get_networks.ids[0])
+    default_instance = alicloud.mongodb.Instance("default",
+        engine_version="4.4",
+        db_instance_class="mdb.shard.2x.xlarge.d",
+        db_instance_storage=20,
+        vswitch_id=default_get_switches.ids[0],
+        name=name,
+        tags={
+            "Created": "TF",
+            "For": "Instance",
+        })
+    ids = alicloud.dds.get_mongo_instances_output(ids=[default_instance.id])
+    pulumi.export("mongodbInstancesId0", ids.instances[0].id)
+    ```
+
+
+    :param _builtins.str availability_zone: The zone ID.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[_builtins.str] ids: A list of Instance IDs.
+    :param _builtins.str instance_class: The instance type.
+    :param _builtins.str instance_type: The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+    :param _builtins.str name_regex: A regex string to filter results by Instance name.
+    :param _builtins.str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
+    :param _builtins.str status: The instance status.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Sae Ingresses of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.137.0+.
+// > **NOTE:** Available since v1.137.0.
 //
 // ## Example Usage
 //
@@ -157,11 +157,13 @@ type GetIngressesArgs struct {
 type GetIngressesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                `pulumi:"id"`
-	Ids         []string              `pulumi:"ids"`
-	Ingresses   []GetIngressesIngress `pulumi:"ingresses"`
-	NamespaceId string                `pulumi:"namespaceId"`
-	OutputFile  *string               `pulumi:"outputFile"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Sae Ingresses. Each element contains the following attributes:
+	Ingresses []GetIngressesIngress `pulumi:"ingresses"`
+	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+	NamespaceId string  `pulumi:"namespaceId"`
+	OutputFile  *string `pulumi:"outputFile"`
 }
 
 func GetIngressesOutput(ctx *pulumi.Context, args GetIngressesOutputArgs, opts ...pulumi.InvokeOption) GetIngressesResultOutput {
@@ -213,10 +215,12 @@ func (o GetIngressesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetIngressesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Sae Ingresses. Each element contains the following attributes:
 func (o GetIngressesResultOutput) Ingresses() GetIngressesIngressArrayOutput {
 	return o.ApplyT(func(v GetIngressesResult) []GetIngressesIngress { return v.Ingresses }).(GetIngressesIngressArrayOutput)
 }
 
+// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
 func (o GetIngressesResultOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIngressesResult) string { return v.NamespaceId }).(pulumi.StringOutput)
 }

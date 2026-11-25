@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.104.0+.
+ * > **NOTE:** Available since v1.104.0+.
  *
  * ## Example Usage
  *
@@ -93,27 +93,54 @@ export interface GetGroupMetricRulesArgs {
  * A collection of values returned by getGroupMetricRules.
  */
 export interface GetGroupMetricRulesResult {
+    /**
+     * The dimensions that specify the resources to be associated with the alert rule.
+     */
     readonly dimensions?: string;
+    /**
+     * Indicates whether the alert rule is enabled.
+     */
     readonly enableState?: boolean;
+    /**
+     * The ID of the application group.
+     */
     readonly groupId?: string;
+    /**
+     * The name of the alert rule.
+     */
     readonly groupMetricRuleName?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The name of the metric.
+     */
     readonly metricName?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Group Metric Rule names.
+     */
     readonly names: string[];
+    /**
+     * The namespace of the service.
+     */
     readonly namespace?: string;
     readonly outputFile?: string;
+    /**
+     * A list of Cms Group Metric Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.cms.GetGroupMetricRulesRule[];
+    /**
+     * The status of Group Metric Rule..
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.104.0+.
+ * > **NOTE:** Available since v1.104.0+.
  *
  * ## Example Usage
  *

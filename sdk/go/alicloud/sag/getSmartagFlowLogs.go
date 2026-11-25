@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.168.0+.
+// > **NOTE:** Available since v1.168.0+
 //
 // ## Example Usage
 //
@@ -80,17 +80,21 @@ type GetSmartagFlowLogsArgs struct {
 
 // A collection of values returned by getSmartagFlowLogs.
 type GetSmartagFlowLogsResult struct {
+	// The description of the flow log.
 	Description *string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                  `pulumi:"id"`
-	Ids        []string                `pulumi:"ids"`
-	Logs       []GetSmartagFlowLogsLog `pulumi:"logs"`
-	NameRegex  *string                 `pulumi:"nameRegex"`
-	Names      []string                `pulumi:"names"`
-	OutputFile *string                 `pulumi:"outputFile"`
-	PageNumber *int                    `pulumi:"pageNumber"`
-	PageSize   *int                    `pulumi:"pageSize"`
-	Status     *string                 `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Smartag Flow Logs. Each element contains the following attributes:
+	Logs      []GetSmartagFlowLogsLog `pulumi:"logs"`
+	NameRegex *string                 `pulumi:"nameRegex"`
+	// A list of Flow Log names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
+	Status *string `pulumi:"status"`
 }
 
 func GetSmartagFlowLogsOutput(ctx *pulumi.Context, args GetSmartagFlowLogsOutputArgs, opts ...pulumi.InvokeOption) GetSmartagFlowLogsResultOutput {
@@ -133,6 +137,7 @@ func (o GetSmartagFlowLogsResultOutput) ToGetSmartagFlowLogsResultOutputWithCont
 	return o
 }
 
+// The description of the flow log.
 func (o GetSmartagFlowLogsResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSmartagFlowLogsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -146,6 +151,7 @@ func (o GetSmartagFlowLogsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSmartagFlowLogsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Smartag Flow Logs. Each element contains the following attributes:
 func (o GetSmartagFlowLogsResultOutput) Logs() GetSmartagFlowLogsLogArrayOutput {
 	return o.ApplyT(func(v GetSmartagFlowLogsResult) []GetSmartagFlowLogsLog { return v.Logs }).(GetSmartagFlowLogsLogArrayOutput)
 }
@@ -154,6 +160,7 @@ func (o GetSmartagFlowLogsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSmartagFlowLogsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Flow Log names.
 func (o GetSmartagFlowLogsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSmartagFlowLogsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -170,6 +177,7 @@ func (o GetSmartagFlowLogsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetSmartagFlowLogsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
 func (o GetSmartagFlowLogsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSmartagFlowLogsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

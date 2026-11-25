@@ -64,7 +64,7 @@ public final class GetAppGroupsGroup {
      */
     private Integer firstRankAlgoDeploymentId;
     /**
-     * @return Whether the quota status is under approval. Valid status:
+     * @return Whether the quota status is under approval. Valid values: `0` (normal), `1` (Approving).
      * 
      */
     private Integer hasPendingQuotaReviewTask;
@@ -74,7 +74,7 @@ public final class GetAppGroupsGroup {
      */
     private String id;
     /**
-     * @return The Instance ID.
+     * @return Instance ID.
      * 
      */
     private String instanceId;
@@ -104,7 +104,7 @@ public final class GetAppGroupsGroup {
      */
     private String processingOrderId;
     /**
-     * @return Whether the production is completed. Valid values:
+     * @return Whether the production is completed. Valid values: `0` (producing), `1` (completed).
      * 
      */
     private Integer produced;
@@ -119,7 +119,7 @@ public final class GetAppGroupsGroup {
      */
     private List<GetAppGroupsGroupQuota> quotas;
     /**
-     * @return The Resource Group ID.
+     * @return Resource Group Id.
      * 
      */
     private String resourceGroupId;
@@ -139,7 +139,7 @@ public final class GetAppGroupsGroup {
      */
     private Integer switchedTime;
     /**
-     * @return Application type. Valid Values: `standard`, `enhanced`.
+     * @return The Type of AppGroup. Valid values: `standard`,`enhanced`.
      * 
      */
     private String type;
@@ -216,7 +216,7 @@ public final class GetAppGroupsGroup {
         return this.firstRankAlgoDeploymentId;
     }
     /**
-     * @return Whether the quota status is under approval. Valid status:
+     * @return Whether the quota status is under approval. Valid values: `0` (normal), `1` (Approving).
      * 
      */
     public Integer hasPendingQuotaReviewTask() {
@@ -230,7 +230,7 @@ public final class GetAppGroupsGroup {
         return this.id;
     }
     /**
-     * @return The Instance ID.
+     * @return Instance ID.
      * 
      */
     public String instanceId() {
@@ -272,7 +272,7 @@ public final class GetAppGroupsGroup {
         return this.processingOrderId;
     }
     /**
-     * @return Whether the production is completed. Valid values:
+     * @return Whether the production is completed. Valid values: `0` (producing), `1` (completed).
      * 
      */
     public Integer produced() {
@@ -293,7 +293,7 @@ public final class GetAppGroupsGroup {
         return this.quotas;
     }
     /**
-     * @return The Resource Group ID.
+     * @return Resource Group Id.
      * 
      */
     public String resourceGroupId() {
@@ -321,7 +321,7 @@ public final class GetAppGroupsGroup {
         return this.switchedTime;
     }
     /**
-     * @return Application type. Valid Values: `standard`, `enhanced`.
+     * @return The Type of AppGroup. Valid values: `standard`,`enhanced`.
      * 
      */
     public String type() {

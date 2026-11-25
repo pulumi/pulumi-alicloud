@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // ## Example Usage
 //
@@ -53,6 +53,7 @@ func GetSubscriptionJobs(ctx *pulumi.Context, args *GetSubscriptionJobsArgs, opt
 
 // A collection of arguments for invoking getSubscriptionJobs.
 type GetSubscriptionJobsArgs struct {
+	// Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Subscription Job IDs.
 	Ids []string `pulumi:"ids"`
@@ -61,22 +62,28 @@ type GetSubscriptionJobsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to filter results.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getSubscriptionJobs.
 type GetSubscriptionJobsResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                   `pulumi:"id"`
-	Ids        []string                 `pulumi:"ids"`
-	Jobs       []GetSubscriptionJobsJob `pulumi:"jobs"`
-	NameRegex  *string                  `pulumi:"nameRegex"`
-	Names      []string                 `pulumi:"names"`
-	OutputFile *string                  `pulumi:"outputFile"`
-	Status     *string                  `pulumi:"status"`
-	Tags       map[string]string        `pulumi:"tags"`
+	Id string `pulumi:"id"`
+	// A list of Subscription Job IDs.
+	Ids []string `pulumi:"ids"`
+	// A list of Dts Subscription Jobs. Each element contains the following attributes:
+	Jobs      []GetSubscriptionJobsJob `pulumi:"jobs"`
+	NameRegex *string                  `pulumi:"nameRegex"`
+	// A list of Subscription Job names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetSubscriptionJobsOutput(ctx *pulumi.Context, args GetSubscriptionJobsOutputArgs, opts ...pulumi.InvokeOption) GetSubscriptionJobsResultOutput {
@@ -86,6 +93,7 @@ func GetSubscriptionJobsOutput(ctx *pulumi.Context, args GetSubscriptionJobsOutp
 
 // A collection of arguments for invoking getSubscriptionJobs.
 type GetSubscriptionJobsOutputArgs struct {
+	// Default to `false`. Set it to `true` to fetch detailed attributes for each subscription job, including `sourceEndpointOwnerId`, `sourceEndpointRole`, `subscriptionDataTypeDdl` and `subscriptionDataTypeDml`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Subscription Job IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -95,7 +103,8 @@ type GetSubscriptionJobsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.StringMapInput `pulumi:"tags"`
+	// A mapping of tags to filter results.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetSubscriptionJobsOutputArgs) ElementType() reflect.Type {
@@ -126,10 +135,12 @@ func (o GetSubscriptionJobsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Subscription Job IDs.
 func (o GetSubscriptionJobsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Dts Subscription Jobs. Each element contains the following attributes:
 func (o GetSubscriptionJobsResultOutput) Jobs() GetSubscriptionJobsJobArrayOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsResult) []GetSubscriptionJobsJob { return v.Jobs }).(GetSubscriptionJobsJobArrayOutput)
 }
@@ -138,6 +149,7 @@ func (o GetSubscriptionJobsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Subscription Job names.
 func (o GetSubscriptionJobsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -146,10 +158,12 @@ func (o GetSubscriptionJobsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
 func (o GetSubscriptionJobsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tag of the resource.
 func (o GetSubscriptionJobsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSubscriptionJobsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

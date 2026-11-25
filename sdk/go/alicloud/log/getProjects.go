@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Log Projects of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.126.0+.
+// > **NOTE:** Available since v1.126.0.
 //
 // ## Example Usage
 //
@@ -70,13 +70,16 @@ type GetProjectsArgs struct {
 // A collection of values returned by getProjects.
 type GetProjectsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string               `pulumi:"id"`
-	Ids        []string             `pulumi:"ids"`
-	NameRegex  *string              `pulumi:"nameRegex"`
-	Names      []string             `pulumi:"names"`
-	OutputFile *string              `pulumi:"outputFile"`
-	Projects   []GetProjectsProject `pulumi:"projects"`
-	Status     *string              `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of project names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Log Project. Each element contains the following attributes:
+	Projects []GetProjectsProject `pulumi:"projects"`
+	// The status of project.
+	Status *string `pulumi:"status"`
 }
 
 func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...pulumi.InvokeOption) GetProjectsResultOutput {
@@ -128,6 +131,7 @@ func (o GetProjectsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of project names.
 func (o GetProjectsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetProjectsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -136,10 +140,12 @@ func (o GetProjectsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Log Project. Each element contains the following attributes:
 func (o GetProjectsResultOutput) Projects() GetProjectsProjectArrayOutput {
 	return o.ApplyT(func(v GetProjectsResult) []GetProjectsProject { return v.Projects }).(GetProjectsProjectArrayOutput)
 }
 
+// The status of project.
 func (o GetProjectsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -98,7 +98,11 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
-     * *Removed params*
+     * Removed params:
+     * 
+     * The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+     * 
+     * `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
      * 
      * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
@@ -110,7 +114,11 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
-     * *Removed params*
+     * Removed params:
+     * 
+     * The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+     * 
+     * `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
      * 
      * @deprecated Field &#39;cluster_ca_cert&#39; has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource &#39;alicloud_cs_cluster_credential&#39; is recommended to manage cluster&#39;s kubeconfig, you can also save the &#39;certificate_authority.cluster_cert&#39; attribute content of new DataSource &#39;alicloud_cs_cluster_credential&#39; to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      * 
@@ -384,7 +392,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Master node system disk auto snapshot policy.
      * 
-     * *Computed params*
+     * Computed params:
      * 
      */
     @Import(name="masterDiskSnapshotPolicyId")
@@ -393,7 +401,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Master node system disk auto snapshot policy.
      * 
-     * *Computed params*
+     * Computed params:
      * 
      */
     public Optional<Output<String>> masterDiskSnapshotPolicyId() {
@@ -754,7 +762,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
-     * *Network params*
+     * Network params:
      * 
      */
     @Import(name="skipSetCertificateAuthority")
@@ -763,7 +771,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      * 
-     * *Network params*
+     * Network params:
      * 
      */
     public Optional<Output<Boolean>> skipSetCertificateAuthority() {
@@ -776,7 +784,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
      * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      * 
-     * *Master params*
+     * Master params:
      * 
      */
     @Import(name="slbInternetEnabled")
@@ -788,7 +796,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
      * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      * 
-     * *Master params*
+     * Master params:
      * 
      */
     public Optional<Output<Boolean>> slbInternetEnabled() {
@@ -1049,7 +1057,11 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param clusterCaCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
          * 
-         * *Removed params*
+         * Removed params:
+         * 
+         * The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+         * 
+         * `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
          * 
          * @return builder
          * 
@@ -1065,7 +1077,11 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param clusterCaCert From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
          * 
-         * *Removed params*
+         * Removed params:
+         * 
+         * The following parameters have been removed from the resource. Use `alicloud.cs.NodePool` to manage worker nodes instead.
+         * 
+         * `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
          * 
          * @return builder
          * 
@@ -1453,7 +1469,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param masterDiskSnapshotPolicyId Master node system disk auto snapshot policy.
          * 
-         * *Computed params*
+         * Computed params:
          * 
          * @return builder
          * 
@@ -1466,7 +1482,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param masterDiskSnapshotPolicyId Master node system disk auto snapshot policy.
          * 
-         * *Computed params*
+         * Computed params:
          * 
          * @return builder
          * 
@@ -2027,7 +2043,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
-         * *Network params*
+         * Network params:
          * 
          * @return builder
          * 
@@ -2040,7 +2056,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param skipSetCertificateAuthority Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
          * 
-         * *Network params*
+         * Network params:
          * 
          * @return builder
          * 
@@ -2055,7 +2071,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
          * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
          * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
          * 
-         * *Master params*
+         * Master params:
          * 
          * @return builder
          * 
@@ -2071,7 +2087,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
          * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
          * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
          * 
-         * *Master params*
+         * Master params:
          * 
          * @return builder
          * 

@@ -36,7 +36,7 @@ class ProvisionedProductArgs:
         :param pulumi.Input[_builtins.str] product_version_id: Product version ID.
         :param pulumi.Input[_builtins.str] provisioned_product_name: The name of the instance.The length is 1~128 characters.
         :param pulumi.Input[_builtins.str] stack_region_id: The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]] parameters: Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        :param pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]] parameters: Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
         :param pulumi.Input[_builtins.str] portfolio_id: Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
         :param pulumi.Input[_builtins.str] provisioned_product_id: The ID of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
@@ -106,7 +106,7 @@ class ProvisionedProductArgs:
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]]:
         """
-        Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -186,7 +186,7 @@ class _ProvisionedProductState:
         :param pulumi.Input[Sequence[pulumi.Input['ProvisionedProductOutputArgs']]] outputs: The output value of the template.
         :param pulumi.Input[_builtins.str] owner_principal_id: The RAM entity ID of the owner
         :param pulumi.Input[_builtins.str] owner_principal_type: The RAM entity type of the owner
-        :param pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]] parameters: Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        :param pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]] parameters: Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
         :param pulumi.Input[_builtins.str] portfolio_id: Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
         :param pulumi.Input[_builtins.str] product_id: Product ID.
         :param pulumi.Input[_builtins.str] product_name: The name of the product
@@ -335,7 +335,7 @@ class _ProvisionedProductState:
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]]:
         """
-        Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -545,7 +545,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testAccServiceCatalogProvisionedProduct"
+            name = "tf-accServiceCatalogProvisionedProduct"
         default = alicloud.servicecatalog.ProvisionedProduct("default",
             provisioned_product_name=name,
             stack_region_id="cn-hangzhou",
@@ -574,7 +574,7 @@ class ProvisionedProduct(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict', 'outputs.ProvisionedProductParameter']]]] parameters: Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict', 'outputs.ProvisionedProductParameter']]]] parameters: Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
         :param pulumi.Input[_builtins.str] portfolio_id: Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
         :param pulumi.Input[_builtins.str] product_id: Product ID.
         :param pulumi.Input[_builtins.str] product_version_id: Product version ID.
@@ -607,7 +607,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testAccServiceCatalogProvisionedProduct"
+            name = "tf-accServiceCatalogProvisionedProduct"
         default = alicloud.servicecatalog.ProvisionedProduct("default",
             provisioned_product_name=name,
             stack_region_id="cn-hangzhou",
@@ -742,7 +742,7 @@ class ProvisionedProduct(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductOutputArgs', 'ProvisionedProductOutputArgsDict', 'outputs.ProvisionedProductOutput']]]] outputs: The output value of the template.
         :param pulumi.Input[_builtins.str] owner_principal_id: The RAM entity ID of the owner
         :param pulumi.Input[_builtins.str] owner_principal_type: The RAM entity type of the owner
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict', 'outputs.ProvisionedProductParameter']]]] parameters: Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict', 'outputs.ProvisionedProductParameter']]]] parameters: Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
         :param pulumi.Input[_builtins.str] portfolio_id: Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
         :param pulumi.Input[_builtins.str] product_id: Product ID.
         :param pulumi.Input[_builtins.str] product_name: The name of the product
@@ -896,7 +896,7 @@ class ProvisionedProduct(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[Sequence['outputs.ProvisionedProductParameter']]]:
         """
-        Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
+        Template parameters entered by the user.The maximum value of N is 200.See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 

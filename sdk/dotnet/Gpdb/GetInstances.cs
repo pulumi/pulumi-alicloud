@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// <summary>
         /// This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.47.0+
+        /// &gt; **NOTE:** Available since v1.47.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// <summary>
         /// This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.47.0+
+        /// &gt; **NOTE:** Available since v1.47.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// <summary>
         /// This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.47.0+
+        /// &gt; **NOTE:** Available since v1.47.0.
         /// 
         /// ## Example Usage
         /// 
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Gpdb
         private List<string>? _ids;
 
         /// <summary>
-        /// The ids list of AnalyticDB for PostgreSQL instances.
+        /// A list of DB Instance IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -176,6 +176,10 @@ namespace Pulumi.AliCloud.Gpdb
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -230,7 +234,7 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<string>? _ids;
 
         /// <summary>
-        /// The ids list of AnalyticDB for PostgreSQL instances.
+        /// A list of DB Instance IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -270,6 +274,10 @@ namespace Pulumi.AliCloud.Gpdb
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -292,24 +300,51 @@ namespace Pulumi.AliCloud.Gpdb
     [OutputType]
     public sealed class GetInstancesResult
     {
+        /// <summary>
+        /// The ID of the availability zone.
+        /// </summary>
         public readonly string? AvailabilityZone;
         public readonly string? DbInstanceCategories;
         public readonly string? DbInstanceModes;
+        /// <summary>
+        /// The description of the instance.
+        /// </summary>
         public readonly string? Description;
         public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ids list of AnalyticDB for PostgreSQL instances.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The network type of the instance.
+        /// </summary>
         public readonly string? InstanceNetworkType;
+        /// <summary>
+        /// A list of Gpdb Db Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
+        /// <summary>
+        /// The names list of AnalyticDB for PostgreSQL instance.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tags of the instance.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The vswitch id.
+        /// </summary>
         public readonly string? VswitchId;
 
         [OutputConstructor]

@@ -19,14 +19,14 @@ public final class BackendServerState extends com.pulumi.resources.ResourceArgs 
     public static final BackendServerState Empty = new BackendServerState();
 
     /**
-     * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+     * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
      * 
      */
     @Import(name="backendServers")
     private @Nullable Output<List<BackendServerBackendServerArgs>> backendServers;
 
     /**
-     * @return A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+     * @return A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
      * 
      */
     public Optional<Output<List<BackendServerBackendServerArgs>>> backendServers() {
@@ -90,7 +90,7 @@ public final class BackendServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backendServers A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+         * @param backendServers A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class BackendServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backendServers A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+         * @param backendServers A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class BackendServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backendServers A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
+         * @param backendServers A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows. See `backendServers` below.
          * 
          * @return builder
          * 

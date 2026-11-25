@@ -54,7 +54,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -104,7 +104,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -154,7 +154,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -204,7 +204,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -254,7 +254,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -304,7 +304,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -354,7 +354,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Access Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -942,7 +942,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -992,7 +992,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1042,7 +1042,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1092,7 +1092,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1142,7 +1142,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1192,7 +1192,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1242,7 +1242,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.132.0+.
+     * &gt; **NOTE:** Available since v1.132.0.
      * 
      * ## Example Usage
      * 
@@ -1973,7 +1973,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
-     * &gt; **NOTE:** Available in 1.199.0+
+     * &gt; **NOTE:** Available since v1.199.0
      * 
      * ## Example Usage
      * 
@@ -2017,7 +2017,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
-     * &gt; **NOTE:** Available in 1.199.0+
+     * &gt; **NOTE:** Available since v1.199.0
      * 
      * ## Example Usage
      * 
@@ -2061,7 +2061,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
-     * &gt; **NOTE:** Available in 1.199.0+
+     * &gt; **NOTE:** Available since v1.199.0
      * 
      * ## Example Usage
      * 
@@ -2105,7 +2105,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
-     * &gt; **NOTE:** Available in 1.199.0+
+     * &gt; **NOTE:** Available since v1.199.0
      * 
      * ## Example Usage
      * 
@@ -2149,7 +2149,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
-     * &gt; **NOTE:** Available in 1.199.0+
+     * &gt; **NOTE:** Available since v1.199.0
      * 
      * ## Example Usage
      * 
@@ -2193,7 +2193,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
-     * &gt; **NOTE:** Available in 1.199.0+
+     * &gt; **NOTE:** Available since v1.199.0
      * 
      * ## Example Usage
      * 
@@ -2237,7 +2237,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
-     * &gt; **NOTE:** Available in 1.199.0+
+     * &gt; **NOTE:** Available since v1.199.0
      * 
      * ## Example Usage
      * 
@@ -4329,7 +4329,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Express Connect Virtual Physical Connection available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -4376,7 +4376,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Express Connect Virtual Physical Connection available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -4423,7 +4423,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Express Connect Virtual Physical Connection available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -4470,7 +4470,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Express Connect Virtual Physical Connection available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -4517,7 +4517,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Express Connect Virtual Physical Connection available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -4564,7 +4564,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Express Connect Virtual Physical Connection available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 
@@ -4611,7 +4611,7 @@ public final class ExpressconnectFunctions {
     /**
      * This data source provides Express Connect Virtual Physical Connection available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0
      * 
      * ## Example Usage
      * 

@@ -14,9 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertContactGroupsResult {
+    /**
+     * @return The name of the resource.
+     * 
+     */
     private @Nullable String alertContactGroupName;
     private @Nullable String contactId;
     private @Nullable String contactName;
+    /**
+     * @return A list of Arms Alert Contact Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetAlertContactGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,10 +33,18 @@ public final class GetAlertContactGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Alert Contact Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetAlertContactGroupsResult() {}
+    /**
+     * @return The name of the resource.
+     * 
+     */
     public Optional<String> alertContactGroupName() {
         return Optional.ofNullable(this.alertContactGroupName);
     }
@@ -38,6 +54,10 @@ public final class GetAlertContactGroupsResult {
     public Optional<String> contactName() {
         return Optional.ofNullable(this.contactName);
     }
+    /**
+     * @return A list of Arms Alert Contact Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetAlertContactGroupsGroup> groups() {
         return this.groups;
     }
@@ -54,6 +74,10 @@ public final class GetAlertContactGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Alert Contact Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

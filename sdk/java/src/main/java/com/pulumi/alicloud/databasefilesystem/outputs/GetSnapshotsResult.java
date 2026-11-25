@@ -21,9 +21,21 @@ public final class GetSnapshotsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Snapshot names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Dbfs Snapshots. Each element contains the following attributes:
+     * 
+     */
     private List<GetSnapshotsSnapshot> snapshots;
+    /**
+     * @return The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+     * 
+     */
     private @Nullable String status;
 
     private GetSnapshotsResult() {}
@@ -40,15 +52,27 @@ public final class GetSnapshotsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Snapshot names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Dbfs Snapshots. Each element contains the following attributes:
+     * 
+     */
     public List<GetSnapshotsSnapshot> snapshots() {
         return this.snapshots;
     }
+    /**
+     * @return The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

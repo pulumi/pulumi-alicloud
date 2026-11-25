@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+// This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
 //
 // > **NOTE:** Available since v1.194.0.
 //
@@ -35,7 +35,7 @@ import (
 //				},
 //				MemberUid:       pulumi.StringRef("1415189284827022"),
 //				Status:          pulumi.StringRef("closed"),
-//				VpcFirewallName: pulumi.StringRef("tf-test"),
+//				VpcFirewallName: pulumi.StringRef("tf-example"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -68,7 +68,7 @@ type GetVpcFirewallsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The region ID of the peer VPC.
+	// The region ID.
 	RegionNo *string `pulumi:"regionNo"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
@@ -76,7 +76,7 @@ type GetVpcFirewallsArgs struct {
 	VpcFirewallId *string `pulumi:"vpcFirewallId"`
 	// The name of the VPC firewall instance.
 	VpcFirewallName *string `pulumi:"vpcFirewallName"`
-	// The ID of the peer VPC instance.
+	// The ID of the VPC instance.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -87,11 +87,10 @@ type GetVpcFirewallsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Vpc Firewall IDs.
-	Ids  []string `pulumi:"ids"`
-	Lang *string  `pulumi:"lang"`
-	// The UID of the Alibaba Cloud member account.
-	MemberUid *string `pulumi:"memberUid"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	Lang      *string  `pulumi:"lang"`
+	MemberUid *string  `pulumi:"memberUid"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of name of Vpc Firewalls.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -124,7 +123,7 @@ type GetVpcFirewallsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The region ID of the peer VPC.
+	// The region ID.
 	RegionNo pulumi.StringPtrInput `pulumi:"regionNo"`
 	// The status of the resource
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -132,7 +131,7 @@ type GetVpcFirewallsOutputArgs struct {
 	VpcFirewallId pulumi.StringPtrInput `pulumi:"vpcFirewallId"`
 	// The name of the VPC firewall instance.
 	VpcFirewallName pulumi.StringPtrInput `pulumi:"vpcFirewallName"`
-	// The ID of the peer VPC instance.
+	// The ID of the VPC instance.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
@@ -174,7 +173,6 @@ func (o GetVpcFirewallsResultOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallsResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-// The UID of the Alibaba Cloud member account.
 func (o GetVpcFirewallsResultOutput) MemberUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcFirewallsResult) *string { return v.MemberUid }).(pulumi.StringPtrOutput)
 }

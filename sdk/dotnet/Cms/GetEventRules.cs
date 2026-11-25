@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Event Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.182.0+.
+        /// &gt; **NOTE:** Available since v1.182.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Event Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.182.0+.
+        /// &gt; **NOTE:** Available since v1.182.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Event Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.182.0+.
+        /// &gt; **NOTE:** Available since v1.182.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -247,11 +247,20 @@ namespace Pulumi.AliCloud.Cms
         public readonly ImmutableArray<string> Ids;
         public readonly string? NamePrefix;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Event Rule names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// A list of Cms Event Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEventRulesRuleResult> Rules;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

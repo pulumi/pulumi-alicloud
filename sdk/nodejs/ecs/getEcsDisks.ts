@@ -93,7 +93,7 @@ export interface GetEcsDisksArgs {
      */
     availabilityZone?: string;
     /**
-     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
      */
     category?: string;
     /**
@@ -395,7 +395,7 @@ export interface GetEcsDisksOutputArgs {
      */
     availabilityZone?: pulumi.Input<string | undefined>;
     /**
-     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
      */
     category?: pulumi.Input<string | undefined>;
     /**

@@ -131,7 +131,7 @@ public final class GetPhysicalConnectionsConnection {
      */
     private String spec;
     /**
-     * @return Resources on Behalf of a State of the Resource Attribute Field.
+     * @return Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
      * 
      */
     private String status;
@@ -311,7 +311,7 @@ public final class GetPhysicalConnectionsConnection {
         return this.spec;
     }
     /**
-     * @return Resources on Behalf of a State of the Resource Attribute Field.
+     * @return Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
      * 
      */
     public String status() {

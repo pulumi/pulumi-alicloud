@@ -41,7 +41,7 @@ public final class GetAccountsAccount {
      */
     private String instanceId;
     /**
-     * @return The status of account.
+     * @return The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `&#34;Available` `Unavailable`
      * 
      */
     private String status;
@@ -90,7 +90,7 @@ public final class GetAccountsAccount {
         return this.instanceId;
     }
     /**
-     * @return The status of account.
+     * @return The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `&#34;Available` `Unavailable`
      * 
      */
     public String status() {

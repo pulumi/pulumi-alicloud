@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BackupType;
         /// <summary>
-        /// The name of OSS bucket.
+        /// The bucket name of OSS. While SourceType equals `OSS`, this parameter must be set.
         /// </summary>
         public readonly string Bucket;
         /// <summary>
@@ -38,24 +38,27 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BytesTotal;
         /// <summary>
-        /// The ID of ECS backup client.
+        /// (ECS_FILE) The ID of ECS backup client.
         /// </summary>
         public readonly string ClientId;
         /// <summary>
-        /// The time when the snapshot completed. UNIX time in seconds.
+        /// Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `CompleteTimeChecker` equals `BETWEEN`, this field should be formatted such as `"2021-08-20T14:17:15CST,2021-08-26T14:17:15CST"`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
         /// </summary>
         public readonly string CompleteTime;
         /// <summary>
-        /// File System Creation Time of Nas. Unix Time Seconds.
+        /// File system creation timestamp of Nas. While SourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// Snapshot creation time. UNIX time in seconds.
         /// </summary>
         public readonly string CreatedTime;
+        /// <summary>
+        /// The error file of the snapshot.
+        /// </summary>
         public readonly string ErrorFile;
         /// <summary>
-        /// The ID of NAS File system.
+        /// The File System ID of Nas. While SourceType equals `NAS`, this parameter must be set.
         /// </summary>
         public readonly string FileSystemId;
         /// <summary>
@@ -63,7 +66,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of ECS instance.
+        /// The ID of ECS instance. The ecs backup client must have been installed on the host. While SourceType equals `ECS_FILE`, this parameter must be set.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
@@ -83,11 +86,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string ParentSnapshotHash;
         /// <summary>
-        /// Backup Path.
+        /// (ECS_FILE, NAS) Backup Path.
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// Backup file prefix.
+        /// (OSS) Backup file prefix.
         /// </summary>
         public readonly string Prefix;
         /// <summary>
@@ -103,7 +106,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string SnapshotId;
         /// <summary>
-        /// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+        /// Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
         /// </summary>
         public readonly string SourceType;
         /// <summary>
@@ -111,7 +114,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string StartTime;
         /// <summary>
-        /// The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+        /// The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
         /// </summary>
         public readonly string Status;
         /// <summary>

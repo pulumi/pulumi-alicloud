@@ -18,28 +18,14 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
     public static final LaunchTemplateSystemDiskArgs Empty = new LaunchTemplateSystemDiskArgs();
 
     /**
-     * The category of the disk:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
-     * 
-     * Default to `cloudEfficiency`.
+     * The category of the system disk.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The category of the disk:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
-     * 
-     * Default to `cloudEfficiency`.
+     * @return The category of the system disk.
      * 
      */
     public Optional<Output<String>> category() {
@@ -47,18 +33,14 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-     * 
-     * Default to true
+     * Whether to release the system disk when the instance is released. Default to `true`.
      * 
      */
     @Import(name="deleteWithInstance")
     private @Nullable Output<Boolean> deleteWithInstance;
 
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-     * 
-     * Default to true
+     * @return Whether to release the system disk when the instance is released. Default to `true`.
      * 
      */
     public Optional<Output<Boolean>> deleteWithInstance() {
@@ -66,14 +48,14 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * System disk description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return System disk description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -81,79 +63,89 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Encrypted the data in this disk.
-     * 
-     * Default to false
+     * Whether the system disk is encrypted.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
     /**
-     * @return Encrypted the data in this disk.
-     * 
-     * Default to false
+     * @return Whether the system disk is encrypted.
      * 
      */
     public Optional<Output<Boolean>> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
 
+    /**
+     * The Iops.
+     * 
+     */
     @Import(name="iops")
     private @Nullable Output<String> iops;
 
+    /**
+     * @return The Iops.
+     * 
+     */
     public Optional<Output<String>> iops() {
         return Optional.ofNullable(this.iops);
     }
 
+    /**
+     * The ID of the KMS key to use for the system disk.
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
+    /**
+     * @return The ID of the KMS key to use for the system disk.
+     * 
+     */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
 
     /**
-     * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * System disk name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+     * @return System disk name.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The performance level of the ESSD used as the system disk.
+     * 
+     */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
+    /**
+     * @return The performance level of the ESSD used as the system disk.
+     * 
+     */
     public Optional<Output<String>> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
 
     /**
-     * The size of the data disk.
-     * - cloud：[5, 2000]
-     * - cloud_efficiency：[20, 32768]
-     * - cloud_ssd：[20, 32768]
-     * - cloud_essd：[20, 32768]
-     * - ephemeral_ssd: [5, 800]
+     * Size of the system disk, measured in GB.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return The size of the data disk.
-     * - cloud：[5, 2000]
-     * - cloud_efficiency：[20, 32768]
-     * - cloud_ssd：[20, 32768]
-     * - cloud_essd：[20, 32768]
-     * - ephemeral_ssd: [5, 800]
+     * @return Size of the system disk, measured in GB.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -193,14 +185,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param category The category of the disk:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
-         * 
-         * Default to `cloudEfficiency`.
+         * @param category The category of the system disk.
          * 
          * @return builder
          * 
@@ -211,14 +196,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param category The category of the disk:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
-         * 
-         * Default to `cloudEfficiency`.
+         * @param category The category of the system disk.
          * 
          * @return builder
          * 
@@ -228,9 +206,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-         * 
-         * Default to true
+         * @param deleteWithInstance Whether to release the system disk when the instance is released. Default to `true`.
          * 
          * @return builder
          * 
@@ -241,9 +217,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-         * 
-         * Default to true
+         * @param deleteWithInstance Whether to release the system disk when the instance is released. Default to `true`.
          * 
          * @return builder
          * 
@@ -253,7 +227,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+         * @param description System disk description.
          * 
          * @return builder
          * 
@@ -264,7 +238,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+         * @param description System disk description.
          * 
          * @return builder
          * 
@@ -274,9 +248,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param encrypted Encrypted the data in this disk.
-         * 
-         * Default to false
+         * @param encrypted Whether the system disk is encrypted.
          * 
          * @return builder
          * 
@@ -287,9 +259,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param encrypted Encrypted the data in this disk.
-         * 
-         * Default to false
+         * @param encrypted Whether the system disk is encrypted.
          * 
          * @return builder
          * 
@@ -298,26 +268,50 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
             return encrypted(Output.of(encrypted));
         }
 
+        /**
+         * @param iops The Iops.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iops(@Nullable Output<String> iops) {
             $.iops = iops;
             return this;
         }
 
+        /**
+         * @param iops The Iops.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iops(String iops) {
             return iops(Output.of(iops));
         }
 
+        /**
+         * @param kmsKeyId The ID of the KMS key to use for the system disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
+        /**
+         * @param kmsKeyId The ID of the KMS key to use for the system disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
         }
 
         /**
-         * @param name Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+         * @param name System disk name.
          * 
          * @return builder
          * 
@@ -328,7 +322,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
+         * @param name System disk name.
          * 
          * @return builder
          * 
@@ -337,22 +331,29 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
             return name(Output.of(name));
         }
 
+        /**
+         * @param performanceLevel The performance level of the ESSD used as the system disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder performanceLevel(@Nullable Output<String> performanceLevel) {
             $.performanceLevel = performanceLevel;
             return this;
         }
 
+        /**
+         * @param performanceLevel The performance level of the ESSD used as the system disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder performanceLevel(String performanceLevel) {
             return performanceLevel(Output.of(performanceLevel));
         }
 
         /**
-         * @param size The size of the data disk.
-         * - cloud：[5, 2000]
-         * - cloud_efficiency：[20, 32768]
-         * - cloud_ssd：[20, 32768]
-         * - cloud_essd：[20, 32768]
-         * - ephemeral_ssd: [5, 800]
+         * @param size Size of the system disk, measured in GB.
          * 
          * @return builder
          * 
@@ -363,12 +364,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param size The size of the data disk.
-         * - cloud：[5, 2000]
-         * - cloud_efficiency：[20, 32768]
-         * - cloud_ssd：[20, 32768]
-         * - cloud_essd：[20, 32768]
-         * - ephemeral_ssd: [5, 800]
+         * @param size Size of the system disk, measured in GB.
          * 
          * @return builder
          * 

@@ -29,12 +29,15 @@ type NetworkInterfaceAttachment struct {
 	pulumi.CustomResourceState
 
 	// The instance ID to attach.
-	InstanceId       pulumi.StringOutput `pulumi:"instanceId"`
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The index of the network card.
 	NetworkCardIndex pulumi.IntPtrOutput `pulumi:"networkCardIndex"`
 	// The ENI ID to attach.
-	NetworkInterfaceId               pulumi.StringOutput    `pulumi:"networkInterfaceId"`
-	TrunkNetworkInstanceId           pulumi.StringPtrOutput `pulumi:"trunkNetworkInstanceId"`
-	WaitForNetworkConfigurationReady pulumi.BoolPtrOutput   `pulumi:"waitForNetworkConfigurationReady"`
+	NetworkInterfaceId pulumi.StringOutput `pulumi:"networkInterfaceId"`
+	// The ID of the trunk network instance.
+	TrunkNetworkInstanceId pulumi.StringPtrOutput `pulumi:"trunkNetworkInstanceId"`
+	// Whether to wait for the network configuration to be ready.
+	WaitForNetworkConfigurationReady pulumi.BoolPtrOutput `pulumi:"waitForNetworkConfigurationReady"`
 }
 
 // NewNetworkInterfaceAttachment registers a new resource with the given unique name, arguments, and options.
@@ -74,21 +77,27 @@ func GetNetworkInterfaceAttachment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering NetworkInterfaceAttachment resources.
 type networkInterfaceAttachmentState struct {
 	// The instance ID to attach.
-	InstanceId       *string `pulumi:"instanceId"`
-	NetworkCardIndex *int    `pulumi:"networkCardIndex"`
+	InstanceId *string `pulumi:"instanceId"`
+	// The index of the network card.
+	NetworkCardIndex *int `pulumi:"networkCardIndex"`
 	// The ENI ID to attach.
-	NetworkInterfaceId               *string `pulumi:"networkInterfaceId"`
-	TrunkNetworkInstanceId           *string `pulumi:"trunkNetworkInstanceId"`
-	WaitForNetworkConfigurationReady *bool   `pulumi:"waitForNetworkConfigurationReady"`
+	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
+	// The ID of the trunk network instance.
+	TrunkNetworkInstanceId *string `pulumi:"trunkNetworkInstanceId"`
+	// Whether to wait for the network configuration to be ready.
+	WaitForNetworkConfigurationReady *bool `pulumi:"waitForNetworkConfigurationReady"`
 }
 
 type NetworkInterfaceAttachmentState struct {
 	// The instance ID to attach.
-	InstanceId       pulumi.StringPtrInput
+	InstanceId pulumi.StringPtrInput
+	// The index of the network card.
 	NetworkCardIndex pulumi.IntPtrInput
 	// The ENI ID to attach.
-	NetworkInterfaceId               pulumi.StringPtrInput
-	TrunkNetworkInstanceId           pulumi.StringPtrInput
+	NetworkInterfaceId pulumi.StringPtrInput
+	// The ID of the trunk network instance.
+	TrunkNetworkInstanceId pulumi.StringPtrInput
+	// Whether to wait for the network configuration to be ready.
 	WaitForNetworkConfigurationReady pulumi.BoolPtrInput
 }
 
@@ -104,22 +113,28 @@ func NetworkInterfaceAttachmentExists(ctx *pulumi.Context,
 
 type networkInterfaceAttachmentArgs struct {
 	// The instance ID to attach.
-	InstanceId       string `pulumi:"instanceId"`
-	NetworkCardIndex *int   `pulumi:"networkCardIndex"`
+	InstanceId string `pulumi:"instanceId"`
+	// The index of the network card.
+	NetworkCardIndex *int `pulumi:"networkCardIndex"`
 	// The ENI ID to attach.
-	NetworkInterfaceId               string  `pulumi:"networkInterfaceId"`
-	TrunkNetworkInstanceId           *string `pulumi:"trunkNetworkInstanceId"`
-	WaitForNetworkConfigurationReady *bool   `pulumi:"waitForNetworkConfigurationReady"`
+	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
+	// The ID of the trunk network instance.
+	TrunkNetworkInstanceId *string `pulumi:"trunkNetworkInstanceId"`
+	// Whether to wait for the network configuration to be ready.
+	WaitForNetworkConfigurationReady *bool `pulumi:"waitForNetworkConfigurationReady"`
 }
 
 // The set of arguments for constructing a NetworkInterfaceAttachment resource.
 type NetworkInterfaceAttachmentArgs struct {
 	// The instance ID to attach.
-	InstanceId       pulumi.StringInput
+	InstanceId pulumi.StringInput
+	// The index of the network card.
 	NetworkCardIndex pulumi.IntPtrInput
 	// The ENI ID to attach.
-	NetworkInterfaceId               pulumi.StringInput
-	TrunkNetworkInstanceId           pulumi.StringPtrInput
+	NetworkInterfaceId pulumi.StringInput
+	// The ID of the trunk network instance.
+	TrunkNetworkInstanceId pulumi.StringPtrInput
+	// Whether to wait for the network configuration to be ready.
 	WaitForNetworkConfigurationReady pulumi.BoolPtrInput
 }
 
@@ -215,6 +230,7 @@ func (o NetworkInterfaceAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The index of the network card.
 func (o NetworkInterfaceAttachmentOutput) NetworkCardIndex() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.IntPtrOutput { return v.NetworkCardIndex }).(pulumi.IntPtrOutput)
 }
@@ -224,10 +240,12 @@ func (o NetworkInterfaceAttachmentOutput) NetworkInterfaceId() pulumi.StringOutp
 	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.StringOutput { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }
 
+// The ID of the trunk network instance.
 func (o NetworkInterfaceAttachmentOutput) TrunkNetworkInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.StringPtrOutput { return v.TrunkNetworkInstanceId }).(pulumi.StringPtrOutput)
 }
 
+// Whether to wait for the network configuration to be ready.
 func (o NetworkInterfaceAttachmentOutput) WaitForNetworkConfigurationReady() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.BoolPtrOutput { return v.WaitForNetworkConfigurationReady }).(pulumi.BoolPtrOutput)
 }

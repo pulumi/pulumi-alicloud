@@ -71,6 +71,9 @@ class GetStoresResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of store names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -86,6 +89,9 @@ class GetStoresResult:
     @_builtins.property
     @pulumi.getter
     def stores(self) -> Sequence['outputs.GetStoresStoreResult']:
+        """
+        A list of Log Stores. Each element contains the following attributes:
+        """
         return pulumi.get(self, "stores")
 
 
@@ -112,7 +118,7 @@ def get_stores(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Log Stores of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.126.0+.
+    > **NOTE:** Available since v1.126.0.
 
     ## Example Usage
 
@@ -131,6 +137,7 @@ def get_stores(ids: Optional[Sequence[_builtins.str]] = None,
     :param Sequence[_builtins.str] ids: A list of store IDs.
     :param _builtins.str name_regex: A regex string to filter results by store name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str project: The name of the log project.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -156,7 +163,7 @@ def get_stores_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     """
     This data source provides the Log Stores of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.126.0+.
+    > **NOTE:** Available since v1.126.0.
 
     ## Example Usage
 
@@ -175,6 +182,7 @@ def get_stores_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str
     :param Sequence[_builtins.str] ids: A list of store IDs.
     :param _builtins.str name_regex: A regex string to filter results by store name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str project: The name of the log project.
     """
     __args__ = dict()
     __args__['ids'] = ids

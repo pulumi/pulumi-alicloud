@@ -26,7 +26,7 @@ public final class GetDelegatedAdministratorsAdministrator {
      */
     private String id;
     /**
-     * @return The identity of the trusted service.
+     * @return The identification of the trusted service.
      * 
      */
     private String servicePrincipal;
@@ -54,7 +54,7 @@ public final class GetDelegatedAdministratorsAdministrator {
         return this.id;
     }
     /**
-     * @return The identity of the trusted service.
+     * @return The identification of the trusted service.
      * 
      */
     public String servicePrincipal() {

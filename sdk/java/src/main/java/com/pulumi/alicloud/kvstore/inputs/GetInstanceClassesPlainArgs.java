@@ -212,9 +212,17 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.shardNumber);
     }
 
+    /**
+     * The field used to sort the returned instance classes. Valid values: `Price`.
+     * 
+     */
     @Import(name="sortedBy")
     private @Nullable String sortedBy;
 
+    /**
+     * @return The field used to sort the returned instance classes. Valid values: `Price`.
+     * 
+     */
     public Optional<String> sortedBy() {
         return Optional.ofNullable(this.sortedBy);
     }
@@ -433,6 +441,12 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param sortedBy The field used to sort the returned instance classes. Valid values: `Price`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortedBy(@Nullable String sortedBy) {
             $.sortedBy = sortedBy;
             return this;

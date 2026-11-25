@@ -19,65 +19,137 @@ public final class GetApplicationInfosArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetApplicationInfosArgs Empty = new GetApplicationInfosArgs();
 
+    /**
+     * The quota dimensions. See `dimensions` below.
+     * 
+     */
     @Import(name="dimensions")
     private @Nullable Output<List<GetApplicationInfosDimensionArgs>> dimensions;
 
+    /**
+     * @return The quota dimensions. See `dimensions` below.
+     * 
+     */
     public Optional<Output<List<GetApplicationInfosDimensionArgs>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
 
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
 
+    /**
+     * A list of Application Info IDs.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
+    /**
+     * @return A list of Application Info IDs.
+     * 
+     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * The key word.
+     * 
+     */
     @Import(name="keyWord")
     private @Nullable Output<String> keyWord;
 
+    /**
+     * @return The key word.
+     * 
+     */
     public Optional<Output<String>> keyWord() {
         return Optional.ofNullable(this.keyWord);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The product code.
+     * 
+     */
     @Import(name="productCode", required=true)
     private Output<String> productCode;
 
+    /**
+     * @return The product code.
+     * 
+     */
     public Output<String> productCode() {
         return this.productCode;
     }
 
+    /**
+     * The ID of quota action.
+     * 
+     */
     @Import(name="quotaActionCode")
     private @Nullable Output<String> quotaActionCode;
 
+    /**
+     * @return The ID of quota action.
+     * 
+     */
     public Optional<Output<String>> quotaActionCode() {
         return Optional.ofNullable(this.quotaActionCode);
     }
 
+    /**
+     * The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+     * 
+     */
     @Import(name="quotaCategory")
     private @Nullable Output<String> quotaCategory;
 
+    /**
+     * @return The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+     * 
+     */
     public Optional<Output<String>> quotaCategory() {
         return Optional.ofNullable(this.quotaCategory);
     }
 
+    /**
+     * The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -114,91 +186,211 @@ public final class GetApplicationInfosArgs extends com.pulumi.resources.InvokeAr
             $ = new GetApplicationInfosArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dimensions The quota dimensions. See `dimensions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(@Nullable Output<List<GetApplicationInfosDimensionArgs>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
 
+        /**
+         * @param dimensions The quota dimensions. See `dimensions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(List<GetApplicationInfosDimensionArgs> dimensions) {
             return dimensions(Output.of(dimensions));
         }
 
+        /**
+         * @param dimensions The quota dimensions. See `dimensions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(GetApplicationInfosDimensionArgs... dimensions) {
             return dimensions(List.of(dimensions));
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }
 
+        /**
+         * @param ids A list of Application Info IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids A list of Application Info IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids A list of Application Info IDs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
 
+        /**
+         * @param keyWord The key word.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyWord(@Nullable Output<String> keyWord) {
             $.keyWord = keyWord;
             return this;
         }
 
+        /**
+         * @param keyWord The key word.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyWord(String keyWord) {
             return keyWord(Output.of(keyWord));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param productCode The product code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productCode(Output<String> productCode) {
             $.productCode = productCode;
             return this;
         }
 
+        /**
+         * @param productCode The product code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productCode(String productCode) {
             return productCode(Output.of(productCode));
         }
 
+        /**
+         * @param quotaActionCode The ID of quota action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quotaActionCode(@Nullable Output<String> quotaActionCode) {
             $.quotaActionCode = quotaActionCode;
             return this;
         }
 
+        /**
+         * @param quotaActionCode The ID of quota action.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quotaActionCode(String quotaActionCode) {
             return quotaActionCode(Output.of(quotaActionCode));
         }
 
+        /**
+         * @param quotaCategory The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quotaCategory(@Nullable Output<String> quotaCategory) {
             $.quotaCategory = quotaCategory;
             return this;
         }
 
+        /**
+         * @param quotaCategory The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder quotaCategory(String quotaCategory) {
             return quotaCategory(Output.of(quotaCategory));
         }
 
+        /**
+         * @param status The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

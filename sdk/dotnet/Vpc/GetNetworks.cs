@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides VPCs available to the user.
         /// 
+        /// &gt; **NOTE:** Available since v1.2.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -44,6 +46,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides VPCs available to the user.
         /// 
+        /// &gt; **NOTE:** Available since v1.2.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -73,6 +77,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// This data source provides VPCs available to the user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.2.0.
         /// 
         /// ## Example Usage
         /// 
@@ -357,6 +363,9 @@ namespace Pulumi.AliCloud.Vpc
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The ID of the resource group to which the VPC belongs.
+        /// </summary>
         public readonly string? ResourceGroupId;
         /// <summary>
         /// Status of the VPC.

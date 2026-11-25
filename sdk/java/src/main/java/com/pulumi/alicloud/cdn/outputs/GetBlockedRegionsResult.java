@@ -18,6 +18,10 @@ public final class GetBlockedRegionsResult {
      */
     private String id;
     private String language;
+    /**
+     * @return A list of Cdn Blocked Regions. Each element contains the following attributes:
+     * 
+     */
     private List<GetBlockedRegionsRegion> regions;
 
     private GetBlockedRegionsResult() {}
@@ -31,6 +35,10 @@ public final class GetBlockedRegionsResult {
     public String language() {
         return this.language;
     }
+    /**
+     * @return A list of Cdn Blocked Regions. Each element contains the following attributes:
+     * 
+     */
     public List<GetBlockedRegionsRegion> regions() {
         return this.regions;
     }

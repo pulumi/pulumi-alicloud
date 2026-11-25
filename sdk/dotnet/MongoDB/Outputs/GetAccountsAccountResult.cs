@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string AccountDescription;
         /// <summary>
-        /// The name of the account.
+        /// The name of the account. Valid values: `Root`.
         /// </summary>
         public readonly string AccountName;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The id of the instance to which the account belongs.
+        /// The ID of the instance.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>

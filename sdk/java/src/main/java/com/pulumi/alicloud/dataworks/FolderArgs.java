@@ -46,9 +46,17 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * The project identifier.
+     * 
+     */
     @Import(name="projectIdentifier")
     private @Nullable Output<String> projectIdentifier;
 
+    /**
+     * @return The project identifier.
+     * 
+     */
     public Optional<Output<String>> projectIdentifier() {
         return Optional.ofNullable(this.projectIdentifier);
     }
@@ -121,11 +129,23 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param projectIdentifier The project identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectIdentifier(@Nullable Output<String> projectIdentifier) {
             $.projectIdentifier = projectIdentifier;
             return this;
         }
 
+        /**
+         * @param projectIdentifier The project identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectIdentifier(String projectIdentifier) {
             return projectIdentifier(Output.of(projectIdentifier));
         }

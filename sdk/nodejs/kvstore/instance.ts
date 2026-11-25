@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Destroying a `PrePaid` instance fails with an error since v1.294.0. To destroy it, convert the instance to `PostPaid` by setting `paymentType = "PostPaid"` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
  *
+ * > **NOTE:** Refreshing a `Redis` type instance calls the `DescribeRoleZoneInfo` operation to read the additional bandwidth purchased for its data shards, so the RAM policy used by Terraform must allow `kvstore:DescribeRoleZoneInfo` in addition to the instance query permissions.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -94,7 +96,7 @@ import * as utilities from "../utilities";
  *     config: {
  *         appendonly: "no",
  *         "lazyfree-lazy-eviction": "no",
- *         EvictionPolicy: "volatile-lru",
+ *         "maxmemory-policy": "volatile-lru",
  *     },
  *     tags: {
  *         Created: "TF",
@@ -146,7 +148,7 @@ import * as utilities from "../utilities";
  *     config: {
  *         appendonly: "yes",
  *         "lazyfree-lazy-eviction": "yes",
- *         EvictionPolicy: "volatile-lru",
+ *         "maxmemory-policy": "volatile-lru",
  *     },
  *     tags: {
  *         Created: "TF",
@@ -205,6 +207,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+     */
+    declare public readonly additionalBandwidths: pulumi.Output<outputs.kvstore.InstanceAdditionalBandwidth[]>;
+    /**
      * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      */
     declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
@@ -239,9 +245,21 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly bandwidth: pulumi.Output<number>;
     /**
+     * Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+     */
+    declare public readonly bandwidthBurst: pulumi.Output<boolean | undefined>;
+    /**
      * The ID of the event or the business information.
      */
     declare public readonly businessInfo: pulumi.Output<string | undefined>;
+    /**
+     * The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    declare public /*out*/ readonly caCertCommonName: pulumi.Output<string>;
+    /**
+     * The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+     */
+    declare public /*out*/ readonly caCertDownloadUrl: pulumi.Output<string>;
     /**
      * The storage capacity of the KVStore DBInstance. Unit: MB.
      */
@@ -256,14 +274,6 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly connectionDomain: pulumi.Output<string>;
     /**
      * Indicates whether the address is a private endpoint.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -336,6 +346,18 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly globalInstanceId: pulumi.Output<string | undefined>;
     /**
+     * The list of Global Security Group Ids.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     */
+    declare public readonly globalSecurityGroupLists: pulumi.Output<string[] | undefined>;
+    /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
@@ -401,6 +423,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly password: pulumi.Output<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     */
+    declare public readonly passwordWo: pulumi.Output<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     */
+    declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
+    /**
      * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      */
     declare public readonly paymentType: pulumi.Output<string>;
@@ -450,6 +481,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly roleArn: pulumi.Output<string>;
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     *
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     declare public readonly secondaryZoneId: pulumi.Output<string | undefined>;
@@ -475,11 +507,13 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly shardCount: pulumi.Output<number>;
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     *
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
     declare public readonly slaveReadOnlyCount: pulumi.Output<number | undefined>;
     /**
      * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     *
      * > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      */
     declare public readonly slaveReplicaCount: pulumi.Output<number>;
@@ -492,6 +526,10 @@ export class Instance extends pulumi.CustomResource {
      * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
     declare public readonly sslEnable: pulumi.Output<string>;
+    /**
+     * The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    declare public /*out*/ readonly sslExpiredTime: pulumi.Output<string>;
     /**
      * The status of KVStore DBInstance.
      */
@@ -532,6 +570,7 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["additionalBandwidths"] = state?.additionalBandwidths;
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
             resourceInputs["autoUseCoupon"] = state?.autoUseCoupon;
@@ -540,7 +579,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupPeriods"] = state?.backupPeriods;
             resourceInputs["backupTime"] = state?.backupTime;
             resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["bandwidthBurst"] = state?.bandwidthBurst;
             resourceInputs["businessInfo"] = state?.businessInfo;
+            resourceInputs["caCertCommonName"] = state?.caCertCommonName;
+            resourceInputs["caCertDownloadUrl"] = state?.caCertDownloadUrl;
             resourceInputs["capacity"] = state?.capacity;
             resourceInputs["config"] = state?.config;
             resourceInputs["connectionDomain"] = state?.connectionDomain;
@@ -560,6 +602,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["forceUpgrade"] = state?.forceUpgrade;
             resourceInputs["globalInstance"] = state?.globalInstance;
             resourceInputs["globalInstanceId"] = state?.globalInstanceId;
+            resourceInputs["globalSecurityGroupLists"] = state?.globalSecurityGroupLists;
             resourceInputs["instanceChargeType"] = state?.instanceChargeType;
             resourceInputs["instanceClass"] = state?.instanceClass;
             resourceInputs["instanceName"] = state?.instanceName;
@@ -574,6 +617,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["orderType"] = state?.orderType;
             resourceInputs["parameters"] = state?.parameters;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWo"] = state?.passwordWo;
+            resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["period"] = state?.period;
             resourceInputs["port"] = state?.port;
@@ -596,6 +641,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["slaveReplicaCount"] = state?.slaveReplicaCount;
             resourceInputs["srcdbInstanceId"] = state?.srcdbInstanceId;
             resourceInputs["sslEnable"] = state?.sslEnable;
+            resourceInputs["sslExpiredTime"] = state?.sslExpiredTime;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tdeStatus"] = state?.tdeStatus;
@@ -604,6 +650,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
+            resourceInputs["additionalBandwidths"] = args?.additionalBandwidths;
             resourceInputs["autoRenew"] = args?.autoRenew;
             resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
             resourceInputs["autoUseCoupon"] = args?.autoUseCoupon;
@@ -612,6 +659,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupPeriods"] = args?.backupPeriods;
             resourceInputs["backupTime"] = args?.backupTime;
             resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["bandwidthBurst"] = args?.bandwidthBurst;
             resourceInputs["businessInfo"] = args?.businessInfo;
             resourceInputs["capacity"] = args?.capacity;
             resourceInputs["config"] = args?.config;
@@ -629,6 +677,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["forceUpgrade"] = args?.forceUpgrade;
             resourceInputs["globalInstance"] = args?.globalInstance;
             resourceInputs["globalInstanceId"] = args?.globalInstanceId;
+            resourceInputs["globalSecurityGroupLists"] = args?.globalSecurityGroupLists;
             resourceInputs["instanceChargeType"] = args?.instanceChargeType;
             resourceInputs["instanceClass"] = args?.instanceClass;
             resourceInputs["instanceName"] = args?.instanceName;
@@ -643,6 +692,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["orderType"] = args?.orderType;
             resourceInputs["parameters"] = args?.parameters;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
+            resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["period"] = args?.period;
             resourceInputs["port"] = args?.port;
@@ -669,14 +720,17 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["vpcAuthMode"] = args?.vpcAuthMode;
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["caCertCommonName"] = undefined /*out*/;
+            resourceInputs["caCertDownloadUrl"] = undefined /*out*/;
             resourceInputs["connectionDomain"] = undefined /*out*/;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["qps"] = undefined /*out*/;
+            resourceInputs["sslExpiredTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "passwordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
@@ -686,6 +740,10 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+     */
+    additionalBandwidths?: pulumi.Input<pulumi.Input<inputs.kvstore.InstanceAdditionalBandwidth>[] | undefined>;
     /**
      * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      */
@@ -721,9 +779,21 @@ export interface InstanceState {
      */
     bandwidth?: pulumi.Input<number | undefined>;
     /**
+     * Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+     */
+    bandwidthBurst?: pulumi.Input<boolean | undefined>;
+    /**
      * The ID of the event or the business information.
      */
     businessInfo?: pulumi.Input<string | undefined>;
+    /**
+     * The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    caCertCommonName?: pulumi.Input<string | undefined>;
+    /**
+     * The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+     */
+    caCertDownloadUrl?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of the KVStore DBInstance. Unit: MB.
      */
@@ -738,14 +808,6 @@ export interface InstanceState {
     connectionDomain?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the address is a private endpoint.
-     *
-     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     *
-     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     *
-     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     *
-     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -818,6 +880,18 @@ export interface InstanceState {
      */
     globalInstanceId?: pulumi.Input<string | undefined>;
     /**
+     * The list of Global Security Group Ids.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     */
+    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
@@ -883,6 +957,15 @@ export interface InstanceState {
      */
     password?: pulumi.Input<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     */
+    passwordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     */
+    passwordWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      */
     paymentType?: pulumi.Input<string | undefined>;
@@ -932,6 +1015,7 @@ export interface InstanceState {
     roleArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     *
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     secondaryZoneId?: pulumi.Input<string | undefined>;
@@ -957,11 +1041,13 @@ export interface InstanceState {
     shardCount?: pulumi.Input<number | undefined>;
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     *
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
     slaveReadOnlyCount?: pulumi.Input<number | undefined>;
     /**
      * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     *
      * > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      */
     slaveReplicaCount?: pulumi.Input<number | undefined>;
@@ -974,6 +1060,10 @@ export interface InstanceState {
      * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
     sslEnable?: pulumi.Input<string | undefined>;
+    /**
+     * The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     */
+    sslExpiredTime?: pulumi.Input<string | undefined>;
     /**
      * The status of KVStore DBInstance.
      */
@@ -1006,6 +1096,10 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node's `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+     */
+    additionalBandwidths?: pulumi.Input<pulumi.Input<inputs.kvstore.InstanceAdditionalBandwidth>[] | undefined>;
     /**
      * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      */
@@ -1040,6 +1134,10 @@ export interface InstanceArgs {
      * The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
      */
     bandwidth?: pulumi.Input<number | undefined>;
+    /**
+     * Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+     */
+    bandwidthBurst?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the event or the business information.
      */
@@ -1116,6 +1214,18 @@ export interface InstanceArgs {
      */
     globalInstanceId?: pulumi.Input<string | undefined>;
     /**
+     * The list of Global Security Group Ids.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     */
+    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
@@ -1181,6 +1291,15 @@ export interface InstanceArgs {
      */
     password?: pulumi.Input<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     */
+    passwordWo?: pulumi.Input<string | undefined>;
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     */
+    passwordWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      */
     paymentType?: pulumi.Input<string | undefined>;
@@ -1226,6 +1345,7 @@ export interface InstanceArgs {
     roleArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     *
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     secondaryZoneId?: pulumi.Input<string | undefined>;
@@ -1251,11 +1371,13 @@ export interface InstanceArgs {
     shardCount?: pulumi.Input<number | undefined>;
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     *
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
     slaveReadOnlyCount?: pulumi.Input<number | undefined>;
     /**
      * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     *
      * > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      */
     slaveReplicaCount?: pulumi.Input<number | undefined>;

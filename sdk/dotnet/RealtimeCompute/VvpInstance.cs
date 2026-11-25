@@ -12,9 +12,11 @@ namespace Pulumi.AliCloud.RealtimeCompute
     /// <summary>
     /// Provides a Realtime Compute Vvp Instance resource.
     /// 
-    /// For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://next.api.alibabacloud.com/api/foasconsole/2019-06-01/CreateInstance).
+    /// For information about Realtime Compute Vvp Instance and how to use it, see [What is Vvp Instance](https://api.aliyun.com/api/foasconsole/2021-10-28/CreateInstance?RegionId=cn-hangzhou).
     /// 
     /// &gt; **NOTE:** Available since v1.214.0.
+    /// 
+    /// &gt; **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
     /// 
     /// ## Example Usage
     /// 
@@ -75,7 +77,6 @@ namespace Pulumi.AliCloud.RealtimeCompute
     ///         },
     ///         VvpInstanceName = $"{name}-{defaultInteger.Result}",
     ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = zoneId,
     ///         VswitchIds = new[]
     ///         {
     ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
@@ -116,6 +117,12 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The default namespace resource configuration. See `DefaultNamespaceResourceSpec` below.
+        /// </summary>
+        [Output("defaultNamespaceResourceSpec")]
+        public Output<Outputs.VvpInstanceDefaultNamespaceResourceSpec?> DefaultNamespaceResourceSpec { get; private set; } = null!;
 
         /// <summary>
         /// The number of subscription periods. If the payment type is PRE, this parameter is required.
@@ -202,7 +209,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         public Output<string> VvpInstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID of the resource.
+        /// The zone ID of the resource. Field `ZoneId` has been deprecated from version 2.3.0.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -258,6 +265,12 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
+
+        /// <summary>
+        /// The default namespace resource configuration. See `DefaultNamespaceResourceSpec` below.
+        /// </summary>
+        [Input("defaultNamespaceResourceSpec")]
+        public Input<Inputs.VvpInstanceDefaultNamespaceResourceSpecArgs>? DefaultNamespaceResourceSpec { get; set; }
 
         /// <summary>
         /// The number of subscription periods. If the payment type is PRE, this parameter is required.
@@ -344,10 +357,10 @@ namespace Pulumi.AliCloud.RealtimeCompute
         public Input<string> VvpInstanceName { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID of the resource.
+        /// The zone ID of the resource. Field `ZoneId` has been deprecated from version 2.3.0.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public VvpInstanceArgs()
         {
@@ -368,6 +381,12 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The default namespace resource configuration. See `DefaultNamespaceResourceSpec` below.
+        /// </summary>
+        [Input("defaultNamespaceResourceSpec")]
+        public Input<Inputs.VvpInstanceDefaultNamespaceResourceSpecGetArgs>? DefaultNamespaceResourceSpec { get; set; }
 
         /// <summary>
         /// The number of subscription periods. If the payment type is PRE, this parameter is required.
@@ -466,7 +485,7 @@ namespace Pulumi.AliCloud.RealtimeCompute
         public Input<string>? VvpInstanceName { get; set; }
 
         /// <summary>
-        /// The zone ID of the resource.
+        /// The zone ID of the resource. Field `ZoneId` has been deprecated from version 2.3.0.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

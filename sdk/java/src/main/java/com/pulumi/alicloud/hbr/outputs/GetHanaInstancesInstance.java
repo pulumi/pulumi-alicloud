@@ -48,7 +48,11 @@ public final class GetHanaInstancesInstance {
      */
     private String resourceGroupId;
     /**
-     * @return The status of the SAP HANA instance.
+     * @return The status of the SAP HANA instance. Valid values:
+     * - `INITIALIZING`: The instance is being initialized.
+     * - `INITIALIZED`: The instance is registered.
+     * - `INVALID_HANA_NODE`: The instance is invalid.
+     * - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
      * 
      */
     private String status;
@@ -73,7 +77,7 @@ public final class GetHanaInstancesInstance {
      */
     private Boolean validateCertificate;
     /**
-     * @return The ID of the backup vault.
+     * @return The id of the vault.
      * 
      */
     private String vaultId;
@@ -129,7 +133,11 @@ public final class GetHanaInstancesInstance {
         return this.resourceGroupId;
     }
     /**
-     * @return The status of the SAP HANA instance.
+     * @return The status of the SAP HANA instance. Valid values:
+     * - `INITIALIZING`: The instance is being initialized.
+     * - `INITIALIZED`: The instance is registered.
+     * - `INVALID_HANA_NODE`: The instance is invalid.
+     * - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
      * 
      */
     public String status() {
@@ -164,7 +172,7 @@ public final class GetHanaInstancesInstance {
         return this.validateCertificate;
     }
     /**
-     * @return The ID of the backup vault.
+     * @return The id of the vault.
      * 
      */
     public String vaultId() {

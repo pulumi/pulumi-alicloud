@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.104.0+.
+// > **NOTE:** Available since v1.104.0+.
 //
 // ## Example Usage
 //
@@ -82,20 +82,29 @@ type GetGroupMetricRulesArgs struct {
 
 // A collection of values returned by getGroupMetricRules.
 type GetGroupMetricRulesResult struct {
-	Dimensions          *string `pulumi:"dimensions"`
-	EnableState         *bool   `pulumi:"enableState"`
-	GroupId             *string `pulumi:"groupId"`
+	// The dimensions that specify the resources to be associated with the alert rule.
+	Dimensions *string `pulumi:"dimensions"`
+	// Indicates whether the alert rule is enabled.
+	EnableState *bool `pulumi:"enableState"`
+	// The ID of the application group.
+	GroupId *string `pulumi:"groupId"`
+	// The name of the alert rule.
 	GroupMetricRuleName *string `pulumi:"groupMetricRuleName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                    `pulumi:"id"`
-	Ids        []string                  `pulumi:"ids"`
-	MetricName *string                   `pulumi:"metricName"`
-	NameRegex  *string                   `pulumi:"nameRegex"`
-	Names      []string                  `pulumi:"names"`
-	Namespace  *string                   `pulumi:"namespace"`
-	OutputFile *string                   `pulumi:"outputFile"`
-	Rules      []GetGroupMetricRulesRule `pulumi:"rules"`
-	Status     *string                   `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The name of the metric.
+	MetricName *string `pulumi:"metricName"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	// A list of Group Metric Rule names.
+	Names []string `pulumi:"names"`
+	// The namespace of the service.
+	Namespace  *string `pulumi:"namespace"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Cms Group Metric Rules. Each element contains the following attributes:
+	Rules []GetGroupMetricRulesRule `pulumi:"rules"`
+	// The status of Group Metric Rule..
+	Status *string `pulumi:"status"`
 }
 
 func GetGroupMetricRulesOutput(ctx *pulumi.Context, args GetGroupMetricRulesOutputArgs, opts ...pulumi.InvokeOption) GetGroupMetricRulesResultOutput {
@@ -146,18 +155,22 @@ func (o GetGroupMetricRulesResultOutput) ToGetGroupMetricRulesResultOutputWithCo
 	return o
 }
 
+// The dimensions that specify the resources to be associated with the alert rule.
 func (o GetGroupMetricRulesResultOutput) Dimensions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.Dimensions }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the alert rule is enabled.
 func (o GetGroupMetricRulesResultOutput) EnableState() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) *bool { return v.EnableState }).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the application group.
 func (o GetGroupMetricRulesResultOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the alert rule.
 func (o GetGroupMetricRulesResultOutput) GroupMetricRuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.GroupMetricRuleName }).(pulumi.StringPtrOutput)
 }
@@ -171,6 +184,7 @@ func (o GetGroupMetricRulesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The name of the metric.
 func (o GetGroupMetricRulesResultOutput) MetricName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.MetricName }).(pulumi.StringPtrOutput)
 }
@@ -179,10 +193,12 @@ func (o GetGroupMetricRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Group Metric Rule names.
 func (o GetGroupMetricRulesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// The namespace of the service.
 func (o GetGroupMetricRulesResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -191,10 +207,12 @@ func (o GetGroupMetricRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cms Group Metric Rules. Each element contains the following attributes:
 func (o GetGroupMetricRulesResultOutput) Rules() GetGroupMetricRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) []GetGroupMetricRulesRule { return v.Rules }).(GetGroupMetricRulesRuleArrayOutput)
 }
 
+// The status of Group Metric Rule..
 func (o GetGroupMetricRulesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

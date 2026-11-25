@@ -72,6 +72,9 @@ class GetEcsNetworkInterfacePermissionsResult:
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> _builtins.str:
+        """
+        The ID of the network interface.
+        """
         return pulumi.get(self, "network_interface_id")
 
     @_builtins.property
@@ -92,11 +95,17 @@ class GetEcsNetworkInterfacePermissionsResult:
     @_builtins.property
     @pulumi.getter
     def permissions(self) -> Sequence['outputs.GetEcsNetworkInterfacePermissionsPermissionResult']:
+        """
+        A list of Ecs Network Interface Permissions. Each element contains the following attributes:
+        """
         return pulumi.get(self, "permissions")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The Status of the Network Interface Permissions.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -132,7 +141,7 @@ def get_ecs_network_interface_permissions(ids: Optional[Sequence[_builtins.str]]
     """
     This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.166.0+.
+    > **NOTE:** Available since v1.166.0.
 
     ## Example Usage
 
@@ -183,7 +192,7 @@ def get_ecs_network_interface_permissions_output(ids: pulumi.Input[Optional[Opti
     """
     This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.166.0+.
+    > **NOTE:** Available since v1.166.0.
 
     ## Example Usage
 

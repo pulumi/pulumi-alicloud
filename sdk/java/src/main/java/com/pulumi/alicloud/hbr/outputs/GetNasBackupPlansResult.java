@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNasBackupPlansResult {
+    /**
+     * @return The File System ID of Nas.
+     * 
+     */
     private @Nullable String fileSystemId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,12 +26,28 @@ public final class GetNasBackupPlansResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of NasBackupPlan names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Hbr NasBackupPlans. Each element contains the following attributes:
+     * 
+     */
     private List<GetNasBackupPlansPlan> plans;
+    /**
+     * @return The ID of backup vault.
+     * 
+     */
     private @Nullable String vaultId;
 
     private GetNasBackupPlansResult() {}
+    /**
+     * @return The File System ID of Nas.
+     * 
+     */
     public Optional<String> fileSystemId() {
         return Optional.ofNullable(this.fileSystemId);
     }
@@ -44,15 +64,27 @@ public final class GetNasBackupPlansResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of NasBackupPlan names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Hbr NasBackupPlans. Each element contains the following attributes:
+     * 
+     */
     public List<GetNasBackupPlansPlan> plans() {
         return this.plans;
     }
+    /**
+     * @return The ID of backup vault.
+     * 
+     */
     public Optional<String> vaultId() {
         return Optional.ofNullable(this.vaultId);
     }

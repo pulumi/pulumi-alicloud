@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly int MaxIops;
         /// <summary>
-        /// The network type of the instance.
+        /// The network type of the instance. Valid values: `Classic` or `VPC`.
         /// </summary>
         public readonly string NetworkType;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerlessInstancesInstanceSecurityIpGroupResult> SecurityIpGroups;
         /// <summary>
-        /// The status of the instance.
+        /// The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `Released`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string StorageEngine;
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>

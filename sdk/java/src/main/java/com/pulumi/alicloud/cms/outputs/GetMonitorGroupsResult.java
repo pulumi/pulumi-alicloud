@@ -16,7 +16,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMonitorGroupsResult {
+    /**
+     * @return The ID of the tag rule.
+     * 
+     */
     private @Nullable String dynamicTagRuleId;
+    /**
+     * @return A list of Cms Monitor Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetMonitorGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -26,18 +34,42 @@ public final class GetMonitorGroupsResult {
     private List<String> ids;
     private @Nullable Boolean includeTemplateHistory;
     private @Nullable String keyword;
+    /**
+     * @return The name of the application group.
+     * 
+     */
     private @Nullable String monitorGroupName;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Monitor Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Boolean selectContactGroups;
+    /**
+     * @return A map of tags assigned to the Cms Monitor Group.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The type of the application group.
+     * 
+     */
     private @Nullable String type;
 
     private GetMonitorGroupsResult() {}
+    /**
+     * @return The ID of the tag rule.
+     * 
+     */
     public Optional<String> dynamicTagRuleId() {
         return Optional.ofNullable(this.dynamicTagRuleId);
     }
+    /**
+     * @return A list of Cms Monitor Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetMonitorGroupsGroup> groups() {
         return this.groups;
     }
@@ -57,12 +89,20 @@ public final class GetMonitorGroupsResult {
     public Optional<String> keyword() {
         return Optional.ofNullable(this.keyword);
     }
+    /**
+     * @return The name of the application group.
+     * 
+     */
     public Optional<String> monitorGroupName() {
         return Optional.ofNullable(this.monitorGroupName);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Monitor Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -72,9 +112,17 @@ public final class GetMonitorGroupsResult {
     public Optional<Boolean> selectContactGroups() {
         return Optional.ofNullable(this.selectContactGroups);
     }
+    /**
+     * @return A map of tags assigned to the Cms Monitor Group.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The type of the application group.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

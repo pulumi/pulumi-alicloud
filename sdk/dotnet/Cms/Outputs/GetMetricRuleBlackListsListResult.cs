@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// The end timestamp of the alert blacklist policy.Unit: milliseconds.
         /// </summary>
         public readonly string EnableStartTime;
+        /// <summary>
+        /// The ID of the Metric Rule Black List.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The list of instances of cloud services specified in the alert blacklist policy.

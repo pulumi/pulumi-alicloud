@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.53.0+
+ * > **NOTE:** Available since v1.53.0.
  *
  * ## Example Usage
  *
@@ -54,6 +54,9 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getTopics.
  */
 export interface GetTopicsArgs {
+    /**
+     * Default to `false`. Set it to true can output more details.
+     */
     enableDetails?: boolean;
     /**
      * A list of topic IDs to filter results.
@@ -87,6 +90,9 @@ export interface GetTopicsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * ID of the ONS Instance that owns the topic.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
     /**
@@ -106,7 +112,7 @@ export interface GetTopicsResult {
 /**
  * This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.53.0+
+ * > **NOTE:** Available since v1.53.0.
  *
  * ## Example Usage
  *
@@ -151,6 +157,9 @@ export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getTopics.
  */
 export interface GetTopicsOutputArgs {
+    /**
+     * Default to `false`. Set it to true can output more details.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of topic IDs to filter results.

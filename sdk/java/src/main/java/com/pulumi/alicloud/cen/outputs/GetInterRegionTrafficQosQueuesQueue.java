@@ -17,6 +17,10 @@ public final class GetInterRegionTrafficQosQueuesQueue {
      * 
      */
     private List<String> dscps;
+    /**
+     * @return The ID of the Inter Region Traffic Qos Queue.
+     * 
+     */
     private String id;
     /**
      * @return The description information of the traffic scheduling policy.
@@ -57,6 +61,10 @@ public final class GetInterRegionTrafficQosQueuesQueue {
     public List<String> dscps() {
         return this.dscps;
     }
+    /**
+     * @return The ID of the Inter Region Traffic Qos Queue.
+     * 
+     */
     public String id() {
         return this.id;
     }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.36.0+.
+        /// &gt; **NOTE:** Available since v1.36.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -29,13 +29,13 @@ namespace Pulumi.AliCloud.Vpc
         ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("foo", new()
         ///     {
         ///         Bandwidth = "2",
-        ///         Name = "tf-testAccCommonBandwidthPackage",
-        ///         Description = "tf-testAcc-CommonBandwidthPackage",
+        ///         Name = "tf-exampleCommonBandwidthPackage",
+        ///         Description = "tf-exampleCommonBandwidthPackage",
         ///     });
         /// 
         ///     var foo = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
         ///     {
-        ///         NameRegex = "^tf-testAcc.*",
+        ///         NameRegex = "^tf-example.*",
         ///         Ids = new[]
         ///         {
         ///             fooCommonBandwithPackage.Id,
@@ -44,14 +44,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// 
-        /// ## Public ip addresses Block
-        /// 
-        ///   The public ip addresses mapping supports the following:
-        /// 
-        ///   * `IpAddress`   - The address of the EIP.
-        ///   * `AllocationId` - The ID of the EIP instance.
-        ///   * `BandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
         /// </summary>
         public static Task<GetCommonBandwidthPackagesResult> InvokeAsync(GetCommonBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesArgs(), options.WithDefaults());
@@ -59,7 +51,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.36.0+.
+        /// &gt; **NOTE:** Available since v1.36.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -74,13 +66,13 @@ namespace Pulumi.AliCloud.Vpc
         ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("foo", new()
         ///     {
         ///         Bandwidth = "2",
-        ///         Name = "tf-testAccCommonBandwidthPackage",
-        ///         Description = "tf-testAcc-CommonBandwidthPackage",
+        ///         Name = "tf-exampleCommonBandwidthPackage",
+        ///         Description = "tf-exampleCommonBandwidthPackage",
         ///     });
         /// 
         ///     var foo = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
         ///     {
-        ///         NameRegex = "^tf-testAcc.*",
+        ///         NameRegex = "^tf-example.*",
         ///         Ids = new[]
         ///         {
         ///             fooCommonBandwithPackage.Id,
@@ -89,14 +81,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// 
-        /// ## Public ip addresses Block
-        /// 
-        ///   The public ip addresses mapping supports the following:
-        /// 
-        ///   * `IpAddress`   - The address of the EIP.
-        ///   * `AllocationId` - The ID of the EIP instance.
-        ///   * `BandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
         /// </summary>
         public static Output<GetCommonBandwidthPackagesResult> Invoke(GetCommonBandwidthPackagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesInvokeArgs(), options.WithDefaults());
@@ -104,7 +88,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.36.0+.
+        /// &gt; **NOTE:** Available since v1.36.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -119,13 +103,13 @@ namespace Pulumi.AliCloud.Vpc
         ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("foo", new()
         ///     {
         ///         Bandwidth = "2",
-        ///         Name = "tf-testAccCommonBandwidthPackage",
-        ///         Description = "tf-testAcc-CommonBandwidthPackage",
+        ///         Name = "tf-exampleCommonBandwidthPackage",
+        ///         Description = "tf-exampleCommonBandwidthPackage",
         ///     });
         /// 
         ///     var foo = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
         ///     {
-        ///         NameRegex = "^tf-testAcc.*",
+        ///         NameRegex = "^tf-example.*",
         ///         Ids = new[]
         ///         {
         ///             fooCommonBandwithPackage.Id,
@@ -134,14 +118,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// 
-        /// ## Public ip addresses Block
-        /// 
-        ///   The public ip addresses mapping supports the following:
-        /// 
-        ///   * `IpAddress`   - The address of the EIP.
-        ///   * `AllocationId` - The ID of the EIP instance.
-        ///   * `BandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
         /// </summary>
         public static Output<GetCommonBandwidthPackagesResult> Invoke(GetCommonBandwidthPackagesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? new GetCommonBandwidthPackagesInvokeArgs(), options.WithDefaults());

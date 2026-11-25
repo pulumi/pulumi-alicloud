@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetNetworkInterfacesInterfaceResult
     {
+        /// <summary>
+        /// The associated public IP.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkInterfacesInterfaceAssociatedPublicIpResult> AssociatedPublicIps;
         /// <summary>
         /// Creation time of the ENI.
@@ -27,59 +30,95 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// ID of the instance that the ENI is attached to.
+        /// The ECS instance ID that the ENI is attached to.
         /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// A list of IPv6 addresses.
+        /// </summary>
         public readonly ImmutableArray<string> Ipv6Sets;
         /// <summary>
         /// MAC address of the ENI.
         /// </summary>
         public readonly string Mac;
         /// <summary>
-        /// Name of the ENI.
+        /// The name of the ENIs. Deprecated; use `NetworkInterfaceName` instead.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The ID of the ENI.
+        /// </summary>
         public readonly string NetworkInterfaceId;
+        /// <summary>
+        /// The name of the ENI.
+        /// </summary>
         public readonly string NetworkInterfaceName;
+        /// <summary>
+        /// The traffic mode.
+        /// </summary>
         public readonly string NetworkInterfaceTrafficMode;
+        /// <summary>
+        /// The owner ID.
+        /// </summary>
         public readonly string OwnerId;
+        /// <summary>
+        /// The primary private IP address of the ENI.
+        /// </summary>
         public readonly string PrimaryIpAddress;
         /// <summary>
-        /// Primary private IP of the ENI.
+        /// The primary private IP address of the ENI. Deprecated; use `PrimaryIpAddress` instead.
         /// </summary>
         public readonly string PrivateIp;
+        /// <summary>
+        /// A list of private IP addresses.
+        /// </summary>
         public readonly ImmutableArray<string> PrivateIpAddresses;
         /// <summary>
         /// A list of secondary private IP address that is assigned to the ENI.
         /// </summary>
         public readonly ImmutableArray<string> PrivateIps;
+        /// <summary>
+        /// The queue number.
+        /// </summary>
         public readonly int QueueNumber;
         /// <summary>
-        /// The Id of resource group.
+        /// The Id of resource group which the network interface belongs.
         /// </summary>
         public readonly string ResourceGroupId;
+        /// <summary>
+        /// A list of security group IDs.
+        /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
         /// A list of security group that the ENI belongs to.
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroups;
+        /// <summary>
+        /// The service ID.
+        /// </summary>
         public readonly int ServiceId;
+        /// <summary>
+        /// Whether the ENI is service managed.
+        /// </summary>
         public readonly bool ServiceManaged;
         /// <summary>
-        /// Current status of the ENI.
+        /// The status of the ENI.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// A map of tags assigned to the ENI.
+        /// A map of tags assigned to ENIs.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// The type of ENIs, Only support for "Primary" or "Secondary".
+        /// </summary>
         public readonly string Type;
         /// <summary>
-        /// ID of the VPC that the ENI belongs to.
+        /// The VPC ID linked to ENIs.
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// ID of the vSwitch that the ENI is linked to.
+        /// The vSwitch ID linked to ENIs.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>

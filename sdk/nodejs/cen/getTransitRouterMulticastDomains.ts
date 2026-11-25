@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0+.
  *
  * ## Example Usage
  *
@@ -108,7 +108,7 @@ export interface GetTransitRouterMulticastDomainsResult {
 /**
  * This data source provides the Cen Transit Router Multicast Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0+.
  *
  * ## Example Usage
  *

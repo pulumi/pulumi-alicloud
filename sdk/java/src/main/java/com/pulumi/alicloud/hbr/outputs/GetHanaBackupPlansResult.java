@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHanaBackupPlansResult {
+    /**
+     * @return The ID of the SAP HANA instance.
+     * 
+     */
     private String clusterId;
+    /**
+     * @return The name of the database.
+     * 
+     */
     private @Nullable String databaseName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,17 +32,37 @@ public final class GetHanaBackupPlansResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Hbr Hana Backup Plan names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return A list of Hbr Hana Backup Plans. Each element contains the following attributes:
+     * 
+     */
     private List<GetHanaBackupPlansPlan> plans;
+    /**
+     * @return The ID of the backup vault.
+     * 
+     */
     private @Nullable String vaultId;
 
     private GetHanaBackupPlansResult() {}
+    /**
+     * @return The ID of the SAP HANA instance.
+     * 
+     */
     public String clusterId() {
         return this.clusterId;
     }
+    /**
+     * @return The name of the database.
+     * 
+     */
     public Optional<String> databaseName() {
         return Optional.ofNullable(this.databaseName);
     }
@@ -51,6 +79,10 @@ public final class GetHanaBackupPlansResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Hbr Hana Backup Plan names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -63,9 +95,17 @@ public final class GetHanaBackupPlansResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return A list of Hbr Hana Backup Plans. Each element contains the following attributes:
+     * 
+     */
     public List<GetHanaBackupPlansPlan> plans() {
         return this.plans;
     }
+    /**
+     * @return The ID of the backup vault.
+     * 
+     */
     public Optional<String> vaultId() {
         return Optional.ofNullable(this.vaultId);
     }

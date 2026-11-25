@@ -20,6 +20,10 @@ public final class GetSubnetsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Subnet IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
@@ -79,6 +83,10 @@ public final class GetSubnetsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Subnet IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }

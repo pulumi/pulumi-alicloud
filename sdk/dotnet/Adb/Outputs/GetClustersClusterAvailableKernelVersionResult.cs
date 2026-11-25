@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Adb.Outputs
     [OutputType]
     public sealed class GetClustersClusterAvailableKernelVersionResult
     {
+        /// <summary>
+        /// The maintenance expiration time of the version
+        /// </summary>
         public readonly string ExpireDate;
+        /// <summary>
+        /// The minor version. Example: 3.1.9.
+        /// </summary>
         public readonly string KernelVersion;
+        /// <summary>
+        /// The time when the minor version was released.
+        /// </summary>
         public readonly string ReleaseDate;
 
         [OutputConstructor]

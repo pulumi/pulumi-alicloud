@@ -19,77 +19,109 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
 
     public static final EipState Empty = new EipState();
 
+    /**
+     * The promotion code. This parameter is not required.
+     * 
+     */
     @Import(name="activityId")
     private @Nullable Output<String> activityId;
 
+    /**
+     * @return The promotion code. This parameter is not required.
+     * 
+     */
     public Optional<Output<String>> activityId() {
         return Optional.ofNullable(this.activityId);
     }
 
     /**
-     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The EIP name.
+     * 
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
      * 
      */
     @Import(name="addressName")
     private @Nullable Output<String> addressName;
 
     /**
-     * @return The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * @return The EIP name.
+     * 
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> addressName() {
         return Optional.ofNullable(this.addressName);
     }
 
+    /**
+     * The ID of the EIP instance.
+     * 
+     */
     @Import(name="allocationId")
     private @Nullable Output<String> allocationId;
 
+    /**
+     * @return The ID of the EIP instance.
+     * 
+     */
     public Optional<Output<String>> allocationId() {
         return Optional.ofNullable(this.allocationId);
     }
 
+    /**
+     * Specifies whether to enable automatic payment. Valid values:
+     * 
+     */
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
+    /**
+     * @return Specifies whether to enable automatic payment. Valid values:
+     * 
+     */
     public Optional<Output<Boolean>> autoPay() {
         return Optional.ofNullable(this.autoPay);
     }
 
     /**
-     * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+     * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<String> bandwidth;
 
     /**
-     * @return Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+     * @return The maximum bandwidth of the specified EIP. Unit: Mbit/s.
      * 
      */
     public Optional<Output<String>> bandwidth() {
         return Optional.ofNullable(this.bandwidth);
     }
 
+    /**
+     * The time when the EIP was created.
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return The time when the EIP was created.
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
+     * Specifies whether to enable deletion protection. Valid values:
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether enable the deletion protection or not. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
+     * @return Specifies whether to enable deletion protection. Valid values:
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -97,29 +129,41 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * The description of the EIP.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * @return The description of the EIP.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
+     * 
+     */
     @Import(name="highDefinitionMonitorLogStatus")
     private @Nullable Output<String> highDefinitionMonitorLogStatus;
 
+    /**
+     * @return The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
+     * 
+     */
     public Optional<Output<String>> highDefinitionMonitorLogStatus() {
         return Optional.ofNullable(this.highDefinitionMonitorLogStatus);
     }
 
     /**
-     * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
+     * . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field `paymentType` instead.
      * 
      * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
@@ -129,7 +173,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
+     * @return . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field `paymentType` instead.
      * 
      * @deprecated Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
@@ -140,14 +184,18 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only &#34;PayByBandwidth&#34; when `instanceChargeType` is PrePaid.
+     * The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only &#34;PayByBandwidth&#34; when `instanceChargeType` is PrePaid.
+     * @return The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -155,14 +203,14 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The elastic ip address
+     * The IP address of the EIP. Supports a maximum of 50 EIPs.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The elastic ip address
+     * @return The IP address of the EIP. Supports a maximum of 50 EIPs.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -170,43 +218,77 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line
      * 
      */
     @Import(name="isp")
     private @Nullable Output<String> isp;
 
     /**
-     * @return The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+     * @return The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line
      * 
      */
     public Optional<Output<String>> isp() {
         return Optional.ofNullable(this.isp);
     }
 
+    /**
+     * The name of the Simple Log Service (SLS) project.
+     * 
+     */
     @Import(name="logProject")
     private @Nullable Output<String> logProject;
 
+    /**
+     * @return The name of the Simple Log Service (SLS) project.
+     * 
+     */
     public Optional<Output<String>> logProject() {
         return Optional.ofNullable(this.logProject);
     }
 
+    /**
+     * The name of the Logstore.
+     * 
+     */
     @Import(name="logStore")
     private @Nullable Output<String> logStore;
 
+    /**
+     * @return The name of the Logstore.
+     * 
+     */
     public Optional<Output<String>> logStore() {
         return Optional.ofNullable(this.logStore);
     }
 
+    /**
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
+     * 
+     */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
+    /**
+     * @return The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
+     * 
+     */
     public Optional<Output<String>> mode() {
         return Optional.ofNullable(this.mode);
     }
 
     /**
-     * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field `addressName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
@@ -216,7 +298,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field `addressName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
@@ -226,22 +308,34 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The network type. By default, this value is set to `public`, which specifies the public network type.
+     * 
+     */
     @Import(name="netmode")
     private @Nullable Output<String> netmode;
 
+    /**
+     * @return The network type. By default, this value is set to `public`, which specifies the public network type.
+     * 
+     */
     public Optional<Output<String>> netmode() {
         return Optional.ofNullable(this.netmode);
     }
 
     /**
-     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * @return The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -249,67 +343,97 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
-     * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
-     * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * @return Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      * 
      */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
 
+    /**
+     * The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     * 
+     */
     @Import(name="pricingCycle")
     private @Nullable Output<String> pricingCycle;
 
+    /**
+     * @return The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     * 
+     */
     public Optional<Output<String>> pricingCycle() {
         return Optional.ofNullable(this.pricingCycle);
     }
 
+    /**
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool.
+     * 
+     */
     @Import(name="publicIpAddressPoolId")
     private @Nullable Output<String> publicIpAddressPoolId;
 
+    /**
+     * @return The ID of the IP address pool. The EIP is allocated from the IP address pool.
+     * 
+     */
     public Optional<Output<String>> publicIpAddressPoolId() {
         return Optional.ofNullable(this.publicIpAddressPoolId);
     }
 
     /**
-     * The Id of resource group which the eip belongs.
+     * The ID of the resource group to which you want to move the resource.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the eip belongs.
+     * @return The ID of the resource group to which you want to move the resource.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * Security protection level.
+     * - When the return is empty, the basic DDoS protection is specified.
+     * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+     * 
+     */
     @Import(name="securityProtectionTypes")
     private @Nullable Output<List<String>> securityProtectionTypes;
 
+    /**
+     * @return Security protection level.
+     * - When the return is empty, the basic DDoS protection is specified.
+     * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+     * 
+     */
     public Optional<Output<List<String>>> securityProtectionTypes() {
         return Optional.ofNullable(this.securityProtectionTypes);
     }
 
     /**
-     * The EIP current status.
+     * The state of the EIP.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The EIP current status.
+     * @return The state of the EIP.
      * 
      */
     public Optional<Output<String>> status() {
@@ -317,23 +441,35 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The zone of the EIP.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
+    /**
+     * @return The zone of the EIP.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     public Optional<Output<String>> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -388,17 +524,31 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             $ = new EipState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param activityId The promotion code. This parameter is not required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activityId(@Nullable Output<String> activityId) {
             $.activityId = activityId;
             return this;
         }
 
+        /**
+         * @param activityId The promotion code. This parameter is not required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activityId(String activityId) {
             return activityId(Output.of(activityId));
         }
 
         /**
-         * @param addressName The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+         * @param addressName The EIP name.
+         * 
+         * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -409,7 +559,9 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressName The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+         * @param addressName The EIP name.
+         * 
+         * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (&#92;_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -418,26 +570,50 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             return addressName(Output.of(addressName));
         }
 
+        /**
+         * @param allocationId The ID of the EIP instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allocationId(@Nullable Output<String> allocationId) {
             $.allocationId = allocationId;
             return this;
         }
 
+        /**
+         * @param allocationId The ID of the EIP instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allocationId(String allocationId) {
             return allocationId(Output.of(allocationId));
         }
 
+        /**
+         * @param autoPay Specifies whether to enable automatic payment. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoPay(@Nullable Output<Boolean> autoPay) {
             $.autoPay = autoPay;
             return this;
         }
 
+        /**
+         * @param autoPay Specifies whether to enable automatic payment. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoPay(Boolean autoPay) {
             return autoPay(Output.of(autoPay));
         }
 
         /**
-         * @param bandwidth Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+         * @param bandwidth The maximum bandwidth of the specified EIP. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -448,7 +624,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
+         * @param bandwidth The maximum bandwidth of the specified EIP. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -457,19 +633,29 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             return bandwidth(Output.of(bandwidth));
         }
 
+        /**
+         * @param createTime The time when the EIP was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime The time when the EIP was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 
         /**
-         * @param deletionProtection Whether enable the deletion protection or not. Default value: `false`.
-         * - true: Enable deletion protection.
-         * - false: Disable deletion protection.
+         * @param deletionProtection Specifies whether to enable deletion protection. Valid values:
          * 
          * @return builder
          * 
@@ -480,9 +666,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether enable the deletion protection or not. Default value: `false`.
-         * - true: Enable deletion protection.
-         * - false: Disable deletion protection.
+         * @param deletionProtection Specifies whether to enable deletion protection. Valid values:
          * 
          * @return builder
          * 
@@ -492,7 +676,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+         * @param description The description of the EIP.
          * 
          * @return builder
          * 
@@ -503,7 +687,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+         * @param description The description of the EIP.
          * 
          * @return builder
          * 
@@ -512,17 +696,33 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param highDefinitionMonitorLogStatus The status of fine-grained monitoring. Valid values:
+         * - `ON`
+         * - `OFF`
+         * 
+         * @return builder
+         * 
+         */
         public Builder highDefinitionMonitorLogStatus(@Nullable Output<String> highDefinitionMonitorLogStatus) {
             $.highDefinitionMonitorLogStatus = highDefinitionMonitorLogStatus;
             return this;
         }
 
+        /**
+         * @param highDefinitionMonitorLogStatus The status of fine-grained monitoring. Valid values:
+         * - `ON`
+         * - `OFF`
+         * 
+         * @return builder
+         * 
+         */
         public Builder highDefinitionMonitorLogStatus(String highDefinitionMonitorLogStatus) {
             return highDefinitionMonitorLogStatus(Output.of(highDefinitionMonitorLogStatus));
         }
 
         /**
-         * @param instanceChargeType (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
+         * @param instanceChargeType . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field `paymentType` instead.
          * 
          * @return builder
          * 
@@ -536,7 +736,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
+         * @param instanceChargeType . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field `paymentType` instead.
          * 
          * @return builder
          * 
@@ -549,7 +749,9 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only &#34;PayByBandwidth&#34; when `instanceChargeType` is PrePaid.
+         * @param internetChargeType The metering method of the EIP. Valid values:
+         * - `PayByBandwidth` (default): pay-by-bandwidth.
+         * - `PayByTraffic`: pay-by-data-transfer.
          * 
          * @return builder
          * 
@@ -560,7 +762,9 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only &#34;PayByBandwidth&#34; when `instanceChargeType` is PrePaid.
+         * @param internetChargeType The metering method of the EIP. Valid values:
+         * - `PayByBandwidth` (default): pay-by-bandwidth.
+         * - `PayByTraffic`: pay-by-data-transfer.
          * 
          * @return builder
          * 
@@ -570,7 +774,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The elastic ip address
+         * @param ipAddress The IP address of the EIP. Supports a maximum of 50 EIPs.
          * 
          * @return builder
          * 
@@ -581,7 +785,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The elastic ip address
+         * @param ipAddress The IP address of the EIP. Supports a maximum of 50 EIPs.
          * 
          * @return builder
          * 
@@ -591,7 +795,9 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isp The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+         * @param isp The line type. Valid values:
+         * - `BGP` (default): BGP (Multi-ISP) line
+         * - `BGP_PRO`: BGP (Multi-ISP) Pro line
          * 
          * @return builder
          * 
@@ -602,7 +808,9 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isp The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+         * @param isp The line type. Valid values:
+         * - `BGP` (default): BGP (Multi-ISP) line
+         * - `BGP_PRO`: BGP (Multi-ISP) Pro line
          * 
          * @return builder
          * 
@@ -611,35 +819,77 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             return isp(Output.of(isp));
         }
 
+        /**
+         * @param logProject The name of the Simple Log Service (SLS) project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logProject(@Nullable Output<String> logProject) {
             $.logProject = logProject;
             return this;
         }
 
+        /**
+         * @param logProject The name of the Simple Log Service (SLS) project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logProject(String logProject) {
             return logProject(Output.of(logProject));
         }
 
+        /**
+         * @param logStore The name of the Logstore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logStore(@Nullable Output<String> logStore) {
             $.logStore = logStore;
             return this;
         }
 
+        /**
+         * @param logStore The name of the Logstore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logStore(String logStore) {
             return logStore(Output.of(logStore));
         }
 
+        /**
+         * @param mode The association mode. Valid values:
+         * - `NAT` (default): NAT mode
+         * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+         * - `BINDED`: cut-network interface controller mode
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(@Nullable Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode The association mode. Valid values:
+         * - `NAT` (default): NAT mode
+         * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+         * - `BINDED`: cut-network interface controller mode
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }
 
         /**
-         * @param name It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field `addressName` instead.
          * 
          * @return builder
          * 
@@ -653,7 +903,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field `addressName` instead.
          * 
          * @return builder
          * 
@@ -665,17 +915,31 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param netmode The network type. By default, this value is set to `public`, which specifies the public network type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmode(@Nullable Output<String> netmode) {
             $.netmode = netmode;
             return this;
         }
 
+        /**
+         * @param netmode The network type. By default, this value is set to `public`, which specifies the public network type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmode(String netmode) {
             return netmode(Output.of(netmode));
         }
 
         /**
-         * @param paymentType The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+         * @param paymentType The billing method of the EIP. Valid values:
+         * - `Subscription`: subscription
+         * - `PayAsYouGo` (default): pay-as-you-go
          * 
          * @return builder
          * 
@@ -686,7 +950,9 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+         * @param paymentType The billing method of the EIP. Valid values:
+         * - `Subscription`: subscription
+         * - `PayAsYouGo` (default): pay-as-you-go
          * 
          * @return builder
          * 
@@ -696,8 +962,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
-         * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         * @param period Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
          * 
          * @return builder
          * 
@@ -708,8 +973,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
-         * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         * @param period Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
          * 
          * @return builder
          * 
@@ -718,26 +982,54 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             return period(Output.of(period));
         }
 
+        /**
+         * @param pricingCycle The billing cycle of the subscription EIP. Valid values:
+         * - `Month` (default)
+         * - `Year`
+         * 
+         * @return builder
+         * 
+         */
         public Builder pricingCycle(@Nullable Output<String> pricingCycle) {
             $.pricingCycle = pricingCycle;
             return this;
         }
 
+        /**
+         * @param pricingCycle The billing cycle of the subscription EIP. Valid values:
+         * - `Month` (default)
+         * - `Year`
+         * 
+         * @return builder
+         * 
+         */
         public Builder pricingCycle(String pricingCycle) {
             return pricingCycle(Output.of(pricingCycle));
         }
 
+        /**
+         * @param publicIpAddressPoolId The ID of the IP address pool. The EIP is allocated from the IP address pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicIpAddressPoolId(@Nullable Output<String> publicIpAddressPoolId) {
             $.publicIpAddressPoolId = publicIpAddressPoolId;
             return this;
         }
 
+        /**
+         * @param publicIpAddressPoolId The ID of the IP address pool. The EIP is allocated from the IP address pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicIpAddressPoolId(String publicIpAddressPoolId) {
             return publicIpAddressPoolId(Output.of(publicIpAddressPoolId));
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the eip belongs.
+         * @param resourceGroupId The ID of the resource group to which you want to move the resource.
          * 
          * @return builder
          * 
@@ -748,7 +1040,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the eip belongs.
+         * @param resourceGroupId The ID of the resource group to which you want to move the resource.
          * 
          * @return builder
          * 
@@ -757,21 +1049,45 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param securityProtectionTypes Security protection level.
+         * - When the return is empty, the basic DDoS protection is specified.
+         * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityProtectionTypes(@Nullable Output<List<String>> securityProtectionTypes) {
             $.securityProtectionTypes = securityProtectionTypes;
             return this;
         }
 
+        /**
+         * @param securityProtectionTypes Security protection level.
+         * - When the return is empty, the basic DDoS protection is specified.
+         * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityProtectionTypes(List<String> securityProtectionTypes) {
             return securityProtectionTypes(Output.of(securityProtectionTypes));
         }
 
+        /**
+         * @param securityProtectionTypes Security protection level.
+         * - When the return is empty, the basic DDoS protection is specified.
+         * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityProtectionTypes(String... securityProtectionTypes) {
             return securityProtectionTypes(List.of(securityProtectionTypes));
         }
 
         /**
-         * @param status The EIP current status.
+         * @param status The state of the EIP.
          * 
          * @return builder
          * 
@@ -782,7 +1098,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The EIP current status.
+         * @param status The state of the EIP.
          * 
          * @return builder
          * 
@@ -792,7 +1108,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -803,7 +1119,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -812,11 +1128,27 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param zone The zone of the EIP.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(@Nullable Output<String> zone) {
             $.zone = zone;
             return this;
         }
 
+        /**
+         * @param zone The zone of the EIP.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(String zone) {
             return zone(Output.of(zone));
         }

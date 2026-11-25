@@ -1486,11 +1486,11 @@ type GetUsersUser struct {
 	Mobile string `pulumi:"mobile"`
 	// Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
 	MobileCountryCode string `pulumi:"mobileCountryCode"`
-	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
 	Source string `pulumi:"source"`
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
 	SourceUserId string `pulumi:"sourceUserId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Frozen`, `Normal`.
 	Status string `pulumi:"status"`
 	// The User ID.
 	UserId string `pulumi:"userId"`
@@ -1524,11 +1524,11 @@ type GetUsersUserArgs struct {
 	Mobile pulumi.StringInput `pulumi:"mobile"`
 	// Specify the New Create User Mobile Phone Number of the International Domain Name. The Default Value Is the CN Value: CN: Mainland China (+86) HK: hong Kong, China (+852) Mo: Macau, China (+853) TW: Taiwan, China (+886) ru: Russian (+7) SG: Singapore (+65) My: malaysia (+60) ID: Indonesia (+62) De: Germany (+49) AU: Australia (+61) US: United States (+1) AE: dubai (+971) JP: Japan (+81) Introducing the Long-Range GB: United Kingdom (+44) in: India (+91) KR: South Korea (+82) Ph: philippines (+63) Ch: Switzerland (+41) Se: Sweden (+46).
 	MobileCountryCode pulumi.StringInput `pulumi:"mobileCountryCode"`
-	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
 	Source pulumi.StringInput `pulumi:"source"`
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
 	SourceUserId pulumi.StringInput `pulumi:"sourceUserId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Frozen`, `Normal`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The User ID.
 	UserId pulumi.StringInput `pulumi:"userId"`
@@ -1622,7 +1622,7 @@ func (o GetUsersUserOutput) MobileCountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.MobileCountryCode }).(pulumi.StringOutput)
 }
 
-// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
 func (o GetUsersUserOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Source }).(pulumi.StringOutput)
 }
@@ -1632,7 +1632,7 @@ func (o GetUsersUserOutput) SourceUserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.SourceUserId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Frozen`, `Normal`.
 func (o GetUsersUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Status }).(pulumi.StringOutput)
 }

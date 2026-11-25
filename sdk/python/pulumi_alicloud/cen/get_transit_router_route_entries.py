@@ -107,6 +107,9 @@ class GetTransitRouterRouteEntriesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the route entry in CEN.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -122,9 +125,6 @@ class GetTransitRouterRouteEntriesResult:
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryStatus")
     def transit_router_route_entry_status(self) -> Optional[_builtins.str]:
-        """
-        The status of the route entry in CEN.
-        """
         return pulumi.get(self, "transit_router_route_entry_status")
 
     @_builtins.property
@@ -162,13 +162,25 @@ def get_transit_router_route_entries(ids: Optional[Sequence[_builtins.str]] = No
                                      transit_router_route_table_id: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitRouterRouteEntriesResult:
     """
-    This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+    This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
 
-    > **NOTE:** Available in 1.126.0+
+    > **NOTE:** Available since v1.126.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    entry = alicloud.cen.get_transit_router_route_entries(transit_router_route_table_id="vtb-*********")
+    pulumi.export("transitRouterRouteEntryDestinationCidrBlock", transit_router_route_entries[0]["transitRouterRouteEntryDestinationCidrBlock"])
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of CEN Transit Router Route Entry IDs.
+    :param _builtins.str name_regex: A regex string to filter results by transit router route entry name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str status: The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
     :param Sequence[_builtins.str] transit_router_route_entry_ids: A list of ID of the cen transit router route entry.
     :param Sequence[_builtins.str] transit_router_route_entry_names: A list of name of the cen transit router route entry.
     :param _builtins.str transit_router_route_entry_status: The status of the resource.Valid values `Creating`, `Active` and `Deleting`.
@@ -208,13 +220,25 @@ def get_transit_router_route_entries_output(ids: pulumi.Input[Optional[Optional[
                                             transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterRouteEntriesResult]:
     """
-    This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+    This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
 
-    > **NOTE:** Available in 1.126.0+
+    > **NOTE:** Available since v1.126.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    entry = alicloud.cen.get_transit_router_route_entries(transit_router_route_table_id="vtb-*********")
+    pulumi.export("transitRouterRouteEntryDestinationCidrBlock", transit_router_route_entries[0]["transitRouterRouteEntryDestinationCidrBlock"])
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of CEN Transit Router Route Entry IDs.
+    :param _builtins.str name_regex: A regex string to filter results by transit router route entry name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str status: The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
     :param Sequence[_builtins.str] transit_router_route_entry_ids: A list of ID of the cen transit router route entry.
     :param Sequence[_builtins.str] transit_router_route_entry_names: A list of name of the cen transit router route entry.
     :param _builtins.str transit_router_route_entry_status: The status of the resource.Valid values `Creating`, `Active` and `Deleting`.

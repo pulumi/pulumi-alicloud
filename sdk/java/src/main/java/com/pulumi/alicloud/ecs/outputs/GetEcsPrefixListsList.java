@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetEcsPrefixListsList {
     /**
-     * @return The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+     * @return The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
      * 
      */
     private String addressFamily;
@@ -29,10 +29,14 @@ public final class GetEcsPrefixListsList {
      */
     private String createTime;
     /**
-     * @return The description of the prefix list.
+     * @return The description of the entry.
      * 
      */
     private String description;
+    /**
+     * @return The entries of the prefix list.
+     * 
+     */
     private List<GetEcsPrefixListsListEntry> entries;
     /**
      * @return The ID of the prefix list.
@@ -57,7 +61,7 @@ public final class GetEcsPrefixListsList {
 
     private GetEcsPrefixListsList() {}
     /**
-     * @return The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+     * @return The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
      * 
      */
     public String addressFamily() {
@@ -78,12 +82,16 @@ public final class GetEcsPrefixListsList {
         return this.createTime;
     }
     /**
-     * @return The description of the prefix list.
+     * @return The description of the entry.
      * 
      */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The entries of the prefix list.
+     * 
+     */
     public List<GetEcsPrefixListsListEntry> entries() {
         return this.entries;
     }

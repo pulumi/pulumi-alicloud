@@ -53,6 +53,9 @@ class GetGatewayFileSharesResult:
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> _builtins.str:
+        """
+        The ID of the gateway.
+        """
         return pulumi.get(self, "gateway_id")
 
     @_builtins.property
@@ -76,6 +79,9 @@ class GetGatewayFileSharesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Gateway File Share names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -86,6 +92,9 @@ class GetGatewayFileSharesResult:
     @_builtins.property
     @pulumi.getter
     def shares(self) -> Sequence['outputs.GetGatewayFileSharesShareResult']:
+        """
+        A list of Cloud Storage Gateway Gateway File Shares. Each element contains the following attributes:
+        """
         return pulumi.get(self, "shares")
 
 
@@ -112,7 +121,7 @@ def get_gateway_file_shares(gateway_id: Optional[_builtins.str] = None,
     """
     This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 
@@ -163,7 +172,7 @@ def get_gateway_file_shares_output(gateway_id: pulumi.Input[Optional[_builtins.s
     """
     This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 

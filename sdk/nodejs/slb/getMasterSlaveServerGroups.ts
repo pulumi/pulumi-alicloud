@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the master slave server groups related to a server load balancer.
  *
- * > **NOTE:** Available in 1.54.0+
+ * > **NOTE:** Available since v1.54.0.
  */
 export function getMasterSlaveServerGroups(args: GetMasterSlaveServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetMasterSlaveServerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,7 +70,7 @@ export interface GetMasterSlaveServerGroupsResult {
 /**
  * This data source provides the master slave server groups related to a server load balancer.
  *
- * > **NOTE:** Available in 1.54.0+
+ * > **NOTE:** Available since v1.54.0.
  */
 export function getMasterSlaveServerGroupsOutput(args: GetMasterSlaveServerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMasterSlaveServerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

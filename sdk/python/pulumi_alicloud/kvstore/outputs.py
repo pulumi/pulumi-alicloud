@@ -15,6 +15,7 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'InstanceAdditionalBandwidth',
     'InstanceParameter',
     'GetAccountsAccountResult',
     'GetConnectionsConnectionResult',
@@ -23,6 +24,54 @@ __all__ = [
     'GetInstancesInstanceResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class InstanceAdditionalBandwidth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeId":
+            suggest = "node_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAdditionalBandwidth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAdditionalBandwidth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAdditionalBandwidth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bandwidth: Optional[_builtins.int] = None,
+                 node_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int bandwidth: The additional bandwidth to add. Unit: MB/s. Must be set in every `additional_bandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+        :param _builtins.str node_id: The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on [cluster](https://www.alibabacloud.com/help/en/redis/user-guide/cluster-instances) and [read/write splitting](https://www.alibabacloud.com/help/en/redis/user-guide/read-write-splitting-based-on-proxy-nodes) instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+        """
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[_builtins.int]:
+        """
+        The additional bandwidth to add. Unit: MB/s. Must be set in every `additional_bandwidth` block; a block without it is rejected. Valid values: non-negative integers. The maximum value is 6 times the default bandwidth of the instance (or shard) specification, capped at 192 MB/s. Set to `0` to release the additional bandwidth purchased for the shard.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[_builtins.str]:
+        """
+        The data shard whose bandwidth is adjusted. Use the shard node name (`r-xxx-db-0`, the `InsName` reported by the `DescribeRoleZoneInfo` operation) or its full topology ID (`r-xxx-db-0#123456`); a suffix such as `db-0` is also accepted when exactly one data shard of the instance ends with it. Required on [cluster](https://www.alibabacloud.com/help/en/redis/user-guide/cluster-instances) and [read/write splitting](https://www.alibabacloud.com/help/en/redis/user-guide/read-write-splitting-based-on-proxy-nodes) instances, and each data shard can be configured at most once. A standard instance takes `bandwidth` alone and must leave this argument unset, because `EnableAdditionalBandwidth` only accepts `NodeId` for the cluster and read/write splitting architectures.
+        """
+        return pulumi.get(self, "node_id")
+
 
 @pulumi.output_type
 class InstanceParameter(dict):
@@ -74,7 +123,7 @@ class GetAccountsAccountResult(dict):
         :param _builtins.str description: The description of account.
         :param _builtins.str id: The ID of the Account.
         :param _builtins.str instance_id: The Id of instance in which account belongs.
-        :param _builtins.str status: The status of account.
+        :param _builtins.str status: The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_privilege", account_privilege)
@@ -136,7 +185,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of account.
+        The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
         """
         return pulumi.get(self, "status")
 
@@ -159,6 +208,8 @@ class GetConnectionsConnectionResult(dict):
         :param _builtins.str connection_string: The connection string of the instance.
         :param _builtins.str db_instance_net_type: The network type of the instance.
         :param _builtins.str expired_time: The expiration time of the classic network address.
+        :param _builtins.str id: The ID of the instance.
+        :param _builtins.str instance_id: The ID of the instance.
         :param _builtins.str ip_address: The IP address of the instance.
         :param _builtins.str port: The port number of the instance.
         :param _builtins.str upgradeable: The remaining validity period of the endpoint of the classic network.
@@ -205,11 +256,17 @@ class GetConnectionsConnectionResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the instance.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        The ID of the instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -268,6 +325,7 @@ class GetInstanceClassesClassResult(dict):
                  price: _builtins.str):
         """
         :param _builtins.str instance_class: KVStore available instance class.
+        :param _builtins.str price: The price of the instance class.
         """
         pulumi.set(__self__, "instance_class", instance_class)
         pulumi.set(__self__, "price", price)
@@ -283,6 +341,9 @@ class GetInstanceClassesClassResult(dict):
     @_builtins.property
     @pulumi.getter
     def price(self) -> _builtins.str:
+        """
+        The price of the instance class.
+        """
         return pulumi.get(self, "price")
 
 

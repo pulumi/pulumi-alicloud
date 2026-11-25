@@ -25,7 +25,7 @@ public final class InstanceDataDisk {
      */
     private @Nullable Boolean burstingEnabled;
     /**
-     * @return The category of the disk. Default value: `cloudEfficiency`. Valid values:
+     * @return The category of the disk. Defaults to `cloudEfficiency`. Valid values:
      * 
      */
     private @Nullable String category;
@@ -106,7 +106,7 @@ public final class InstanceDataDisk {
         return Optional.ofNullable(this.burstingEnabled);
     }
     /**
-     * @return The category of the disk. Default value: `cloudEfficiency`. Valid values:
+     * @return The category of the disk. Defaults to `cloudEfficiency`. Valid values:
      * 
      */
     public Optional<String> category() {

@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetTrafficMirrorSessionsSession {
     /**
-     * @return Indicates whether traffic mirror sessions are enabled. default to `false`.
+     * @return Specifies whether to enable traffic mirror sessions. default to `false`.
      * 
      */
     private Boolean enabled;
@@ -29,7 +29,7 @@ public final class GetTrafficMirrorSessionsSession {
      */
     private Integer packetLength;
     /**
-     * @return The priority of the traffic mirror session. A smaller value indicates a higher priority.
+     * @return The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      * 
      */
     private Integer priority;
@@ -59,7 +59,7 @@ public final class GetTrafficMirrorSessionsSession {
      */
     private String trafficMirrorSessionId;
     /**
-     * @return The name of the traffic mirror session.
+     * @return The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     private String trafficMirrorSessionName;
@@ -86,7 +86,7 @@ public final class GetTrafficMirrorSessionsSession {
 
     private GetTrafficMirrorSessionsSession() {}
     /**
-     * @return Indicates whether traffic mirror sessions are enabled. default to `false`.
+     * @return Specifies whether to enable traffic mirror sessions. default to `false`.
      * 
      */
     public Boolean enabled() {
@@ -107,7 +107,7 @@ public final class GetTrafficMirrorSessionsSession {
         return this.packetLength;
     }
     /**
-     * @return The priority of the traffic mirror session. A smaller value indicates a higher priority.
+     * @return The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      * 
      */
     public Integer priority() {
@@ -149,7 +149,7 @@ public final class GetTrafficMirrorSessionsSession {
         return this.trafficMirrorSessionId;
     }
     /**
-     * @return The name of the traffic mirror session.
+     * @return The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     public String trafficMirrorSessionName() {

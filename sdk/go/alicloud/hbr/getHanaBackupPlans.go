@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.179.0+.
+// > **NOTE:** Available since v1.179.0.
 //
 // ## Example Usage
 //
@@ -59,6 +59,7 @@ func GetHanaBackupPlans(ctx *pulumi.Context, args *GetHanaBackupPlansArgs, opts 
 
 // A collection of arguments for invoking getHanaBackupPlans.
 type GetHanaBackupPlansArgs struct {
+	// The ID of the SAP HANA instance.
 	ClusterId string `pulumi:"clusterId"`
 	// The name of the database.
 	DatabaseName *string `pulumi:"databaseName"`
@@ -76,18 +77,23 @@ type GetHanaBackupPlansArgs struct {
 
 // A collection of values returned by getHanaBackupPlans.
 type GetHanaBackupPlansResult struct {
-	ClusterId    string  `pulumi:"clusterId"`
+	// The ID of the SAP HANA instance.
+	ClusterId string `pulumi:"clusterId"`
+	// The name of the database.
 	DatabaseName *string `pulumi:"databaseName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                   `pulumi:"id"`
-	Ids        []string                 `pulumi:"ids"`
-	NameRegex  *string                  `pulumi:"nameRegex"`
-	Names      []string                 `pulumi:"names"`
-	OutputFile *string                  `pulumi:"outputFile"`
-	PageNumber *int                     `pulumi:"pageNumber"`
-	PageSize   *int                     `pulumi:"pageSize"`
-	Plans      []GetHanaBackupPlansPlan `pulumi:"plans"`
-	VaultId    *string                  `pulumi:"vaultId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Hbr Hana Backup Plan names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// A list of Hbr Hana Backup Plans. Each element contains the following attributes:
+	Plans []GetHanaBackupPlansPlan `pulumi:"plans"`
+	// The ID of the backup vault.
+	VaultId *string `pulumi:"vaultId"`
 }
 
 func GetHanaBackupPlansOutput(ctx *pulumi.Context, args GetHanaBackupPlansOutputArgs, opts ...pulumi.InvokeOption) GetHanaBackupPlansResultOutput {
@@ -97,6 +103,7 @@ func GetHanaBackupPlansOutput(ctx *pulumi.Context, args GetHanaBackupPlansOutput
 
 // A collection of arguments for invoking getHanaBackupPlans.
 type GetHanaBackupPlansOutputArgs struct {
+	// The ID of the SAP HANA instance.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The name of the database.
 	DatabaseName pulumi.StringPtrInput `pulumi:"databaseName"`
@@ -131,10 +138,12 @@ func (o GetHanaBackupPlansResultOutput) ToGetHanaBackupPlansResultOutputWithCont
 	return o
 }
 
+// The ID of the SAP HANA instance.
 func (o GetHanaBackupPlansResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHanaBackupPlansResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The name of the database.
 func (o GetHanaBackupPlansResultOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHanaBackupPlansResult) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
 }
@@ -152,6 +161,7 @@ func (o GetHanaBackupPlansResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHanaBackupPlansResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Hbr Hana Backup Plan names.
 func (o GetHanaBackupPlansResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHanaBackupPlansResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -168,10 +178,12 @@ func (o GetHanaBackupPlansResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetHanaBackupPlansResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// A list of Hbr Hana Backup Plans. Each element contains the following attributes:
 func (o GetHanaBackupPlansResultOutput) Plans() GetHanaBackupPlansPlanArrayOutput {
 	return o.ApplyT(func(v GetHanaBackupPlansResult) []GetHanaBackupPlansPlan { return v.Plans }).(GetHanaBackupPlansPlanArrayOutput)
 }
 
+// The ID of the backup vault.
 func (o GetHanaBackupPlansResultOutput) VaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHanaBackupPlansResult) *string { return v.VaultId }).(pulumi.StringPtrOutput)
 }

@@ -68,6 +68,9 @@ class GetModifyParameterLogsResult:
     @_builtins.property
     @pulumi.getter
     def logs(self) -> Sequence['outputs.GetModifyParameterLogsLogResult']:
+        """
+        A list of Rds Modify Parameter Logs. Each element contains the following attributes:
+        """
         return pulumi.get(self, "logs")
 
     @_builtins.property
@@ -103,7 +106,7 @@ def get_modify_parameter_logs(db_instance_id: Optional[_builtins.str] = None,
     """
     This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.174.0+.
+    > **NOTE:** Available since v1.174.0+.
 
     ## Example Usage
 
@@ -147,7 +150,7 @@ def get_modify_parameter_logs_output(db_instance_id: pulumi.Input[Optional[_buil
     """
     This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.174.0+.
+    > **NOTE:** Available since v1.174.0+.
 
     ## Example Usage
 

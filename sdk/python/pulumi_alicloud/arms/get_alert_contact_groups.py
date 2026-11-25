@@ -59,6 +59,9 @@ class GetAlertContactGroupsResult:
     @_builtins.property
     @pulumi.getter(name="alertContactGroupName")
     def alert_contact_group_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the resource.
+        """
         return pulumi.get(self, "alert_contact_group_name")
 
     @_builtins.property
@@ -74,6 +77,9 @@ class GetAlertContactGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetAlertContactGroupsGroupResult']:
+        """
+        A list of Arms Alert Contact Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -97,6 +103,9 @@ class GetAlertContactGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Alert Contact Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -132,7 +141,7 @@ def get_alert_contact_groups(alert_contact_group_name: Optional[_builtins.str] =
     """
     This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.131.0+.
+    > **NOTE:** Available since v1.131.0.
 
     ## Example Usage
 
@@ -184,7 +193,7 @@ def get_alert_contact_groups_output(alert_contact_group_name: pulumi.Input[Optio
     """
     This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.131.0+.
+    > **NOTE:** Available since v1.131.0.
 
     ## Example Usage
 

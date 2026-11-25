@@ -952,8 +952,7 @@ class LoadBalancer(pulumi.CustomResource):
                     "vswitch_id": vsw[1].id,
                     "zone_id": zone[1],
                 },
-            ],
-            opts = pulumi.ResourceOptions(depends_on=[default]))
+            ])
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -1123,8 +1122,7 @@ class LoadBalancer(pulumi.CustomResource):
                     "vswitch_id": vsw[1].id,
                     "zone_id": zone[1],
                 },
-            ],
-            opts = pulumi.ResourceOptions(depends_on=[default]))
+            ])
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES

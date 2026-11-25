@@ -27,6 +27,7 @@ class FolderArgs:
 
         :param pulumi.Input[_builtins.str] folder_path: Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
+        :param pulumi.Input[_builtins.str] project_identifier: The project identifier.
         """
         pulumi.set(__self__, "folder_path", folder_path)
         if project_id is not None:
@@ -61,6 +62,9 @@ class FolderArgs:
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
     def project_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The project identifier.
+        """
         return pulumi.get(self, "project_identifier")
 
     @project_identifier.setter
@@ -78,8 +82,10 @@ class _FolderState:
         """
         Input properties used for looking up and filtering Folder resources.
 
+        :param pulumi.Input[_builtins.str] folder_id: The ID of the Folder.
         :param pulumi.Input[_builtins.str] folder_path: Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
+        :param pulumi.Input[_builtins.str] project_identifier: The project identifier.
         """
         if folder_id is not None:
             pulumi.set(__self__, "folder_id", folder_id)
@@ -93,6 +99,9 @@ class _FolderState:
     @_builtins.property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the Folder.
+        """
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
@@ -126,6 +135,9 @@ class _FolderState:
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
     def project_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The project identifier.
+        """
         return pulumi.get(self, "project_identifier")
 
     @project_identifier.setter
@@ -146,9 +158,9 @@ class Folder(pulumi.CustomResource):
         """
         Provides a Data Works Folder resource.
 
-        For information about Data Works Folder and how to use it, see [What is Folder](https://help.aliyun.com/document_detail/173940.html).
+        For information about Data Works Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/doc-detail/173940.html).
 
-        > **NOTE:** Available in v1.131.0+.
+        > **NOTE:** Available since v1.131.0.
 
         ## Example Usage
 
@@ -178,6 +190,7 @@ class Folder(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] folder_path: Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
+        :param pulumi.Input[_builtins.str] project_identifier: The project identifier.
         """
         ...
     @overload
@@ -188,9 +201,9 @@ class Folder(pulumi.CustomResource):
         """
         Provides a Data Works Folder resource.
 
-        For information about Data Works Folder and how to use it, see [What is Folder](https://help.aliyun.com/document_detail/173940.html).
+        For information about Data Works Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/doc-detail/173940.html).
 
-        > **NOTE:** Available in v1.131.0+.
+        > **NOTE:** Available since v1.131.0.
 
         ## Example Usage
 
@@ -270,8 +283,10 @@ class Folder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] folder_id: The ID of the Folder.
         :param pulumi.Input[_builtins.str] folder_path: Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
+        :param pulumi.Input[_builtins.str] project_identifier: The project identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -300,6 +315,9 @@ class Folder(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="folderId")
     def folder_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the Folder.
+        """
         return pulumi.get(self, "folder_id")
 
     @_builtins.property
@@ -321,5 +339,8 @@ class Folder(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
     def project_identifier(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The project identifier.
+        """
         return pulumi.get(self, "project_identifier")
 

@@ -16,7 +16,7 @@ import (
 //
 // For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 //
-// > **NOTE:** Deprecated since v1.120.0.
+// > **DEPRECATED:** This resource has been deprecated from v1.120.0.
 //
 // > **DEPRECATED:** This resource has been renamed to ecs.EcsSnapshot from version 1.120.0.
 //
@@ -36,7 +36,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewSnapshot(ctx, "snapshot", &ecs.SnapshotArgs{
 //				DiskId:      pulumi.Any(instance_attachment.DiskId),
-//				Name:        pulumi.String("test-snapshot"),
+//				Name:        pulumi.String("demo-snapshot"),
 //				Description: pulumi.String("this snapshot is created for testing"),
 //				Tags: pulumi.StringMap{
 //					"version": pulumi.String("1.2"),
@@ -63,31 +63,44 @@ import (
 type Snapshot struct {
 	pulumi.CustomResourceState
 
-	Available  pulumi.BoolOutput   `pulumi:"available"`
-	Category   pulumi.StringOutput `pulumi:"category"`
+	// Whether the snapshot is available.
+	Available pulumi.BoolOutput `pulumi:"available"`
+	// The category of the snapshot. Valid values: `standard`, `flash`.
+	Category pulumi.StringOutput `pulumi:"category"`
+	// The creation time of the snapshot.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The source disk ID.
-	DiskId pulumi.StringOutput  `pulumi:"diskId"`
-	Force  pulumi.BoolPtrOutput `pulumi:"force"`
+	DiskId pulumi.StringOutput `pulumi:"diskId"`
+	// Whether to force delete the snapshot.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
+	// Deprecated.
+	//
 	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 	InstantAccess pulumi.BoolPtrOutput `pulumi:"instantAccess"`
+	// Deprecated.
+	//
 	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays pulumi.IntPtrOutput `pulumi:"instantAccessRetentionDays"`
-	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
-	Name     pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The region ID of the snapshot.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	RetentionDays   pulumi.IntPtrOutput    `pulumi:"retentionDays"`
-	SnapshotName    pulumi.StringOutput    `pulumi:"snapshotName"`
-	Status          pulumi.StringOutput    `pulumi:"status"`
+	// The retention days of the snapshot.
+	RetentionDays pulumi.IntPtrOutput `pulumi:"retentionDays"`
+	// The name of the snapshot.
+	SnapshotName pulumi.StringOutput `pulumi:"snapshotName"`
+	// The status of the snapshot.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags      pulumi.StringMapOutput `pulumi:"tags"`
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
 	WaitUntil pulumi.StringPtrOutput `pulumi:"waitUntil"`
 }
 
@@ -124,60 +137,86 @@ func GetSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Snapshot resources.
 type snapshotState struct {
-	Available  *bool   `pulumi:"available"`
-	Category   *string `pulumi:"category"`
+	// Whether the snapshot is available.
+	Available *bool `pulumi:"available"`
+	// The category of the snapshot. Valid values: `standard`, `flash`.
+	Category *string `pulumi:"category"`
+	// The creation time of the snapshot.
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
 	// The source disk ID.
 	DiskId *string `pulumi:"diskId"`
-	Force  *bool   `pulumi:"force"`
+	// Whether to force delete the snapshot.
+	Force *bool `pulumi:"force"`
+	// Deprecated.
+	//
 	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 	InstantAccess *bool `pulumi:"instantAccess"`
+	// Deprecated.
+	//
 	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays *int `pulumi:"instantAccessRetentionDays"`
-	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
-	Name     *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The region ID of the snapshot.
 	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	RetentionDays   *int    `pulumi:"retentionDays"`
-	SnapshotName    *string `pulumi:"snapshotName"`
-	Status          *string `pulumi:"status"`
+	// The retention days of the snapshot.
+	RetentionDays *int `pulumi:"retentionDays"`
+	// The name of the snapshot.
+	SnapshotName *string `pulumi:"snapshotName"`
+	// The status of the snapshot.
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags      map[string]string `pulumi:"tags"`
-	WaitUntil *string           `pulumi:"waitUntil"`
+	Tags map[string]string `pulumi:"tags"`
+	// Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+	WaitUntil *string `pulumi:"waitUntil"`
 }
 
 type SnapshotState struct {
-	Available  pulumi.BoolPtrInput
-	Category   pulumi.StringPtrInput
+	// Whether the snapshot is available.
+	Available pulumi.BoolPtrInput
+	// The category of the snapshot. Valid values: `standard`, `flash`.
+	Category pulumi.StringPtrInput
+	// The creation time of the snapshot.
 	CreateTime pulumi.StringPtrInput
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
 	// The source disk ID.
 	DiskId pulumi.StringPtrInput
-	Force  pulumi.BoolPtrInput
+	// Whether to force delete the snapshot.
+	Force pulumi.BoolPtrInput
+	// Deprecated.
+	//
 	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 	InstantAccess pulumi.BoolPtrInput
+	// Deprecated.
+	//
 	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays pulumi.IntPtrInput
-	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
-	Name     pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The region ID of the snapshot.
 	RegionId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	RetentionDays   pulumi.IntPtrInput
-	SnapshotName    pulumi.StringPtrInput
-	Status          pulumi.StringPtrInput
+	// The retention days of the snapshot.
+	RetentionDays pulumi.IntPtrInput
+	// The name of the snapshot.
+	SnapshotName pulumi.StringPtrInput
+	// The status of the snapshot.
+	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags      pulumi.StringMapInput
+	Tags pulumi.StringMapInput
+	// Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
 	WaitUntil pulumi.StringPtrInput
 }
 
@@ -192,53 +231,71 @@ func SnapshotExists(ctx *pulumi.Context,
 }
 
 type snapshotArgs struct {
+	// The category of the snapshot. Valid values: `standard`, `flash`.
 	Category *string `pulumi:"category"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
 	// The source disk ID.
 	DiskId string `pulumi:"diskId"`
-	Force  *bool  `pulumi:"force"`
+	// Whether to force delete the snapshot.
+	Force *bool `pulumi:"force"`
+	// Deprecated.
+	//
 	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 	InstantAccess *bool `pulumi:"instantAccess"`
+	// Deprecated.
+	//
 	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays *int `pulumi:"instantAccessRetentionDays"`
-	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name *string `pulumi:"name"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	RetentionDays   *int    `pulumi:"retentionDays"`
-	SnapshotName    *string `pulumi:"snapshotName"`
+	// The retention days of the snapshot.
+	RetentionDays *int `pulumi:"retentionDays"`
+	// The name of the snapshot.
+	SnapshotName *string `pulumi:"snapshotName"`
 	// A mapping of tags to assign to the resource.
-	Tags      map[string]string `pulumi:"tags"`
-	WaitUntil *string           `pulumi:"waitUntil"`
+	Tags map[string]string `pulumi:"tags"`
+	// Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+	WaitUntil *string `pulumi:"waitUntil"`
 }
 
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
+	// The category of the snapshot. Valid values: `standard`, `flash`.
 	Category pulumi.StringPtrInput
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
 	// The source disk ID.
 	DiskId pulumi.StringInput
-	Force  pulumi.BoolPtrInput
+	// Whether to force delete the snapshot.
+	Force pulumi.BoolPtrInput
+	// Deprecated.
+	//
 	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 	InstantAccess pulumi.BoolPtrInput
+	// Deprecated.
+	//
 	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays pulumi.IntPtrInput
-	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	RetentionDays   pulumi.IntPtrInput
-	SnapshotName    pulumi.StringPtrInput
+	// The retention days of the snapshot.
+	RetentionDays pulumi.IntPtrInput
+	// The name of the snapshot.
+	SnapshotName pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
-	Tags      pulumi.StringMapInput
+	Tags pulumi.StringMapInput
+	// Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
 	WaitUntil pulumi.StringPtrInput
 }
 
@@ -329,14 +386,17 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
+// Whether the snapshot is available.
 func (o SnapshotOutput) Available() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.BoolOutput { return v.Available }).(pulumi.BoolOutput)
 }
 
+// The category of the snapshot. Valid values: `standard`, `flash`.
 func (o SnapshotOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
 
+// The creation time of the snapshot.
 func (o SnapshotOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -351,21 +411,26 @@ func (o SnapshotOutput) DiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
 }
 
+// Whether to force delete the snapshot.
 func (o SnapshotOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated.
+//
 // Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 func (o SnapshotOutput) InstantAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.BoolPtrOutput { return v.InstantAccess }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated.
+//
 // Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 func (o SnapshotOutput) InstantAccessRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntPtrOutput { return v.InstantAccessRetentionDays }).(pulumi.IntPtrOutput)
 }
 
-// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+// The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 // It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 //
 // Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
@@ -373,6 +438,7 @@ func (o SnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The region ID of the snapshot.
 func (o SnapshotOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -382,14 +448,17 @@ func (o SnapshotOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The retention days of the snapshot.
 func (o SnapshotOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntPtrOutput { return v.RetentionDays }).(pulumi.IntPtrOutput)
 }
 
+// The name of the snapshot.
 func (o SnapshotOutput) SnapshotName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SnapshotName }).(pulumi.StringOutput)
 }
 
+// The status of the snapshot.
 func (o SnapshotOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -399,6 +468,7 @@ func (o SnapshotOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
 func (o SnapshotOutput) WaitUntil() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.WaitUntil }).(pulumi.StringPtrOutput)
 }

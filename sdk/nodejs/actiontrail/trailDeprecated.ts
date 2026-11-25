@@ -7,23 +7,44 @@ import * as utilities from "../utilities";
 /**
  * > **DEPRECATED:**  This resource has been renamed to alicloud.actiontrail.Trail from version 1.95.0.
  *
- * Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+ * Provides a Actiontrail Trail resource.
  *
- * > **NOTE:** Available in 1.35.0+
+ * Trail of ActionTrail. After creating a trail, you need to enable the trail through StartLogging.
+ *
+ * For information about Actiontrail Trail and how to use it, see [What is Trail](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createtrail).
+ *
+ * > **NOTE:** Available since v1.95.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * // Create a new action trail.
- * const foo = new alicloud.actiontrail.TrailDeprecated("foo", {
- *     name: "action-trail",
- *     eventRw: "Write-test",
- *     ossBucketName: bucket.id,
- *     roleName: attach.roleName,
- *     ossKeyPrefix: "at-product-account-audit-B",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultGetAccount = alicloud.getAccount({});
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultProject = new alicloud.log.Project("default", {
+ *     projectName: `${name}-${defaultInteger.result}`,
+ *     description: "tf actiontrail example",
+ * });
+ * const defaultGetRoles = alicloud.ram.getRoles({
+ *     nameRegex: "AliyunServiceRoleForActionTrail",
+ * });
+ * const defaultTrail = new alicloud.actiontrail.Trail("default", {
+ *     trailName: name,
+ *     slsWriteRoleArn: defaultGetRoles.then(defaultGetRoles => defaultGetRoles.roles?.[0]?.arn),
+ *     slsProjectArn: pulumi.all([_default, defaultGetAccount, defaultProject.projectName]).apply(([_default, defaultGetAccount, projectName]) => `acs:log:${_default.regions?.[0]?.id}:${defaultGetAccount.id}:project/${projectName}`),
  * });
  * ```
  *
@@ -31,10 +52,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Action trail can be imported using the id, e.g.
+ * Actiontrail Trail can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated foo abc12345678
+ * $ pulumi import alicloud:actiontrail/trailDeprecated:TrailDeprecated example <id>
  * ```
  *
  * @deprecated Resource renamed to `Trail`
@@ -79,54 +100,87 @@ export class TrailDeprecated extends pulumi.CustomResource {
         return obj['__pulumiType'] === TrailDeprecated.__pulumiType;
     }
 
+    /**
+     * (Available since v1.256.0) The time when the trail was created.
+     */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     */
     declare public readonly dataEventTrailRegion: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+     * The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      */
     declare public readonly eventRw: pulumi.Output<string>;
+    /**
+     * The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     */
     declare public readonly eventSelectors: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+     */
     declare public readonly isOrganizationTrail: pulumi.Output<boolean | undefined>;
+    /**
+     * The ARN of the MaxCompute project to which you want to deliver events.
+     */
     declare public readonly maxComputeProjectArn: pulumi.Output<string | undefined>;
+    /**
+     * The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+     */
     declare public readonly maxComputeWriteRoleArn: pulumi.Output<string>;
     /**
+     * Field `mnsTopicArn` has been deprecated from provider version 1.118.0.
+     *
      * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      */
     declare public readonly mnsTopicArn: pulumi.Output<string | undefined>;
     /**
-     * The name of the trail to be created, which must be unique for an account.
+     * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+     * The OSS bucket to which the trail delivers logs.
      */
     declare public readonly ossBucketName: pulumi.Output<string | undefined>;
     /**
-     * The prefix of the specified OSS bucket name. This parameter can be left empty.
+     * The prefix of the file name in the OSS bucket to which the trail delivers logs.
      */
     declare public readonly ossKeyPrefix: pulumi.Output<string | undefined>;
+    /**
+     * The name of the RAM role that the user allows ActionTrail to access OSS service.
+     */
     declare public readonly ossWriteRoleArn: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.256.0) The home region of the trail.
+     */
     declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
-     * The RAM role in ActionTrail permitted by the user.
+     * Field `roleName` has been deprecated from provider version 1.118.0.
      *
      * @deprecated Field `roleName` has been deprecated from version 1.118.0
      */
     declare public readonly roleName: pulumi.Output<string | undefined>;
     /**
-     * The unique ARN of the Log Service project.
+     * The ARN of the Simple Log Service project to which the trail delivers logs.
      */
     declare public readonly slsProjectArn: pulumi.Output<string | undefined>;
     /**
-     * The unique ARN of the Log Service role.
-     *
-     * > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+     * The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
      */
     declare public readonly slsWriteRoleArn: pulumi.Output<string>;
+    /**
+     * The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+     */
     declare public readonly status: pulumi.Output<string>;
+    /**
+     * The name of the trail to be created.
+     */
     declare public readonly trailName: pulumi.Output<string>;
+    /**
+     * The region of the trail.
+     */
     declare public readonly trailRegion: pulumi.Output<string>;
 
     /**
@@ -195,54 +249,87 @@ export class TrailDeprecated extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TrailDeprecated resources.
  */
 export interface TrailDeprecatedState {
+    /**
+     * (Available since v1.256.0) The time when the trail was created.
+     */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     */
     dataEventTrailRegion?: pulumi.Input<string | undefined>;
     /**
-     * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+     * The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      */
     eventRw?: pulumi.Input<string | undefined>;
+    /**
+     * The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     */
     eventSelectors?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+     */
     isOrganizationTrail?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ARN of the MaxCompute project to which you want to deliver events.
+     */
     maxComputeProjectArn?: pulumi.Input<string | undefined>;
+    /**
+     * The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+     */
     maxComputeWriteRoleArn?: pulumi.Input<string | undefined>;
     /**
+     * Field `mnsTopicArn` has been deprecated from provider version 1.118.0.
+     *
      * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      */
     mnsTopicArn?: pulumi.Input<string | undefined>;
     /**
-     * The name of the trail to be created, which must be unique for an account.
+     * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+     * The OSS bucket to which the trail delivers logs.
      */
     ossBucketName?: pulumi.Input<string | undefined>;
     /**
-     * The prefix of the specified OSS bucket name. This parameter can be left empty.
+     * The prefix of the file name in the OSS bucket to which the trail delivers logs.
      */
     ossKeyPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the RAM role that the user allows ActionTrail to access OSS service.
+     */
     ossWriteRoleArn?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.256.0) The home region of the trail.
+     */
     regionId?: pulumi.Input<string | undefined>;
     /**
-     * The RAM role in ActionTrail permitted by the user.
+     * Field `roleName` has been deprecated from provider version 1.118.0.
      *
      * @deprecated Field `roleName` has been deprecated from version 1.118.0
      */
     roleName?: pulumi.Input<string | undefined>;
     /**
-     * The unique ARN of the Log Service project.
+     * The ARN of the Simple Log Service project to which the trail delivers logs.
      */
     slsProjectArn?: pulumi.Input<string | undefined>;
     /**
-     * The unique ARN of the Log Service role.
-     *
-     * > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+     * The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
      */
     slsWriteRoleArn?: pulumi.Input<string | undefined>;
+    /**
+     * The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+     */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the trail to be created.
+     */
     trailName?: pulumi.Input<string | undefined>;
+    /**
+     * The region of the trail.
+     */
     trailRegion?: pulumi.Input<string | undefined>;
 }
 
@@ -250,51 +337,78 @@ export interface TrailDeprecatedState {
  * The set of arguments for constructing a TrailDeprecated resource.
  */
 export interface TrailDeprecatedArgs {
+    /**
+     * The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     */
     dataEventTrailRegion?: pulumi.Input<string | undefined>;
     /**
-     * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
+     * The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      */
     eventRw?: pulumi.Input<string | undefined>;
+    /**
+     * The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     */
     eventSelectors?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
+     */
     isOrganizationTrail?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ARN of the MaxCompute project to which you want to deliver events.
+     */
     maxComputeProjectArn?: pulumi.Input<string | undefined>;
+    /**
+     * The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+     */
     maxComputeWriteRoleArn?: pulumi.Input<string | undefined>;
     /**
+     * Field `mnsTopicArn` has been deprecated from provider version 1.118.0.
+     *
      * @deprecated Field `mnsTopicArn` has been deprecated from version 1.118.0
      */
     mnsTopicArn?: pulumi.Input<string | undefined>;
     /**
-     * The name of the trail to be created, which must be unique for an account.
+     * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
+     * The OSS bucket to which the trail delivers logs.
      */
     ossBucketName?: pulumi.Input<string | undefined>;
     /**
-     * The prefix of the specified OSS bucket name. This parameter can be left empty.
+     * The prefix of the file name in the OSS bucket to which the trail delivers logs.
      */
     ossKeyPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the RAM role that the user allows ActionTrail to access OSS service.
+     */
     ossWriteRoleArn?: pulumi.Input<string | undefined>;
     /**
-     * The RAM role in ActionTrail permitted by the user.
+     * Field `roleName` has been deprecated from provider version 1.118.0.
      *
      * @deprecated Field `roleName` has been deprecated from version 1.118.0
      */
     roleName?: pulumi.Input<string | undefined>;
     /**
-     * The unique ARN of the Log Service project.
+     * The ARN of the Simple Log Service project to which the trail delivers logs.
      */
     slsProjectArn?: pulumi.Input<string | undefined>;
     /**
-     * The unique ARN of the Log Service role.
-     *
-     * > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
+     * The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
      */
     slsWriteRoleArn?: pulumi.Input<string | undefined>;
+    /**
+     * The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
+     */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the trail to be created.
+     */
     trailName?: pulumi.Input<string | undefined>;
+    /**
+     * The region of the trail.
+     */
     trailRegion?: pulumi.Input<string | undefined>;
 }

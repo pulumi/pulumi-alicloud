@@ -190,6 +190,10 @@ namespace Pulumi.AliCloud.CS
     ///     });
     /// 
     ///     // Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
+    ///     // The management features below require the node-lifecycle-controller add-on at version
+    ///     // v2.3.13-b581b592 or later and the ack-node-problem-detector add-on at version 1.2.41 or later.
+    ///     // The service validates the installed versions and rejects the request when an add-on is
+    ///     // missing or too old, so install or upgrade them with alicloud_cs_kubernetes_addon first.
     ///     var maintenance = new AliCloud.CS.NodePool("maintenance", new()
     ///     {
     ///         NodePoolName = "maintenance",
@@ -212,7 +216,7 @@ namespace Pulumi.AliCloud.CS
     ///             AutoRepair = true,
     ///             AutoRepairPolicy = new AliCloud.CS.Inputs.NodePoolManagementAutoRepairPolicyArgs
     ///             {
-    ///                 RestartNode = true,
+    ///                 AutoRepairPolicyId = "r-repair-sys-comp-failure",
     ///             },
     ///             AutoUpgrade = true,
     ///             AutoUpgradePolicy = new AliCloud.CS.Inputs.NodePoolManagementAutoUpgradePolicyArgs
@@ -1142,6 +1146,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `True`.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("keepInstanceName")]
         public Output<bool> KeepInstanceName { get; private set; } = null!;
@@ -1768,6 +1774,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `True`.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("keepInstanceName")]
         public Input<bool>? KeepInstanceName { get; set; }
@@ -2413,6 +2421,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `True`.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("keepInstanceName")]
         public Input<bool>? KeepInstanceName { get; set; }

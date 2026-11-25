@@ -82,13 +82,13 @@ type TemplateScratch struct {
 	ExecutionMode pulumi.StringPtrOutput `pulumi:"executionMode"`
 	// Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
 	LogicalIdStrategy pulumi.StringOutput `pulumi:"logicalIdStrategy"`
-	// Priority parameter. See the following `Block preferenceParameters`.
+	// Priority parameter. See `preferenceParameters` below.
 	PreferenceParameters TemplateScratchPreferenceParameterArrayOutput `pulumi:"preferenceParameters"`
-	// Source resource grouping. See the following `Block sourceResourceGroup`.
+	// Source resource grouping. See `sourceResourceGroup` below.
 	SourceResourceGroup TemplateScratchSourceResourceGroupPtrOutput `pulumi:"sourceResourceGroup"`
-	// Source resource. See the following `Block sourceResources`.
+	// Source resource. See `sourceResources` below.
 	SourceResources TemplateScratchSourceResourceArrayOutput `pulumi:"sourceResources"`
-	// Source tag. See the following `Block sourceTag`.
+	// Source tag. See `sourceTag` below.
 	SourceTag TemplateScratchSourceTagPtrOutput `pulumi:"sourceTag"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -135,13 +135,13 @@ type templateScratchState struct {
 	ExecutionMode *string `pulumi:"executionMode"`
 	// Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
 	LogicalIdStrategy *string `pulumi:"logicalIdStrategy"`
-	// Priority parameter. See the following `Block preferenceParameters`.
+	// Priority parameter. See `preferenceParameters` below.
 	PreferenceParameters []TemplateScratchPreferenceParameter `pulumi:"preferenceParameters"`
-	// Source resource grouping. See the following `Block sourceResourceGroup`.
+	// Source resource grouping. See `sourceResourceGroup` below.
 	SourceResourceGroup *TemplateScratchSourceResourceGroup `pulumi:"sourceResourceGroup"`
-	// Source resource. See the following `Block sourceResources`.
+	// Source resource. See `sourceResources` below.
 	SourceResources []TemplateScratchSourceResource `pulumi:"sourceResources"`
-	// Source tag. See the following `Block sourceTag`.
+	// Source tag. See `sourceTag` below.
 	SourceTag *TemplateScratchSourceTag `pulumi:"sourceTag"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
@@ -156,13 +156,13 @@ type TemplateScratchState struct {
 	ExecutionMode pulumi.StringPtrInput
 	// Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
 	LogicalIdStrategy pulumi.StringPtrInput
-	// Priority parameter. See the following `Block preferenceParameters`.
+	// Priority parameter. See `preferenceParameters` below.
 	PreferenceParameters TemplateScratchPreferenceParameterArrayInput
-	// Source resource grouping. See the following `Block sourceResourceGroup`.
+	// Source resource grouping. See `sourceResourceGroup` below.
 	SourceResourceGroup TemplateScratchSourceResourceGroupPtrInput
-	// Source resource. See the following `Block sourceResources`.
+	// Source resource. See `sourceResources` below.
 	SourceResources TemplateScratchSourceResourceArrayInput
-	// Source tag. See the following `Block sourceTag`.
+	// Source tag. See `sourceTag` below.
 	SourceTag TemplateScratchSourceTagPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
@@ -187,13 +187,13 @@ type templateScratchArgs struct {
 	ExecutionMode *string `pulumi:"executionMode"`
 	// Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
 	LogicalIdStrategy *string `pulumi:"logicalIdStrategy"`
-	// Priority parameter. See the following `Block preferenceParameters`.
+	// Priority parameter. See `preferenceParameters` below.
 	PreferenceParameters []TemplateScratchPreferenceParameter `pulumi:"preferenceParameters"`
-	// Source resource grouping. See the following `Block sourceResourceGroup`.
+	// Source resource grouping. See `sourceResourceGroup` below.
 	SourceResourceGroup *TemplateScratchSourceResourceGroup `pulumi:"sourceResourceGroup"`
-	// Source resource. See the following `Block sourceResources`.
+	// Source resource. See `sourceResources` below.
 	SourceResources []TemplateScratchSourceResource `pulumi:"sourceResources"`
-	// Source tag. See the following `Block sourceTag`.
+	// Source tag. See `sourceTag` below.
 	SourceTag *TemplateScratchSourceTag `pulumi:"sourceTag"`
 	// The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
 	TemplateScratchType string `pulumi:"templateScratchType"`
@@ -207,13 +207,13 @@ type TemplateScratchArgs struct {
 	ExecutionMode pulumi.StringPtrInput
 	// Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
 	LogicalIdStrategy pulumi.StringPtrInput
-	// Priority parameter. See the following `Block preferenceParameters`.
+	// Priority parameter. See `preferenceParameters` below.
 	PreferenceParameters TemplateScratchPreferenceParameterArrayInput
-	// Source resource grouping. See the following `Block sourceResourceGroup`.
+	// Source resource grouping. See `sourceResourceGroup` below.
 	SourceResourceGroup TemplateScratchSourceResourceGroupPtrInput
-	// Source resource. See the following `Block sourceResources`.
+	// Source resource. See `sourceResources` below.
 	SourceResources TemplateScratchSourceResourceArrayInput
-	// Source tag. See the following `Block sourceTag`.
+	// Source tag. See `sourceTag` below.
 	SourceTag TemplateScratchSourceTagPtrInput
 	// The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
 	TemplateScratchType pulumi.StringInput
@@ -321,22 +321,22 @@ func (o TemplateScratchOutput) LogicalIdStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *TemplateScratch) pulumi.StringOutput { return v.LogicalIdStrategy }).(pulumi.StringOutput)
 }
 
-// Priority parameter. See the following `Block preferenceParameters`.
+// Priority parameter. See `preferenceParameters` below.
 func (o TemplateScratchOutput) PreferenceParameters() TemplateScratchPreferenceParameterArrayOutput {
 	return o.ApplyT(func(v *TemplateScratch) TemplateScratchPreferenceParameterArrayOutput { return v.PreferenceParameters }).(TemplateScratchPreferenceParameterArrayOutput)
 }
 
-// Source resource grouping. See the following `Block sourceResourceGroup`.
+// Source resource grouping. See `sourceResourceGroup` below.
 func (o TemplateScratchOutput) SourceResourceGroup() TemplateScratchSourceResourceGroupPtrOutput {
 	return o.ApplyT(func(v *TemplateScratch) TemplateScratchSourceResourceGroupPtrOutput { return v.SourceResourceGroup }).(TemplateScratchSourceResourceGroupPtrOutput)
 }
 
-// Source resource. See the following `Block sourceResources`.
+// Source resource. See `sourceResources` below.
 func (o TemplateScratchOutput) SourceResources() TemplateScratchSourceResourceArrayOutput {
 	return o.ApplyT(func(v *TemplateScratch) TemplateScratchSourceResourceArrayOutput { return v.SourceResources }).(TemplateScratchSourceResourceArrayOutput)
 }
 
-// Source tag. See the following `Block sourceTag`.
+// Source tag. See `sourceTag` below.
 func (o TemplateScratchOutput) SourceTag() TemplateScratchSourceTagPtrOutput {
 	return o.ApplyT(func(v *TemplateScratch) TemplateScratchSourceTagPtrOutput { return v.SourceTag }).(TemplateScratchSourceTagPtrOutput)
 }

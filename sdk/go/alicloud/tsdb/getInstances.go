@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.112.0+.
+// > **NOTE:** Available since v1.112.0.
 //
 // ## Example Usage
 //
@@ -79,15 +79,18 @@ type GetInstancesArgs struct {
 type GetInstancesResult struct {
 	AppKey        *string `pulumi:"appKey"`
 	EnableDetails *bool   `pulumi:"enableDetails"`
-	EngineType    *string `pulumi:"engineType"`
+	// The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
+	EngineType *string `pulumi:"engineType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of TSDB Instances. Each element contains the following attributes:
 	Instances  []GetInstancesInstance `pulumi:"instances"`
 	OutputFile *string                `pulumi:"outputFile"`
 	QueryStr   *string                `pulumi:"queryStr"`
-	Status     *string                `pulumi:"status"`
-	StatusList *string                `pulumi:"statusList"`
+	// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+	Status     *string `pulumi:"status"`
+	StatusList *string `pulumi:"statusList"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -142,6 +145,7 @@ func (o GetInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// The engine type of instance. Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
 func (o GetInstancesResultOutput) EngineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.EngineType }).(pulumi.StringPtrOutput)
 }
@@ -155,6 +159,7 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of TSDB Instances. Each element contains the following attributes:
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
@@ -167,6 +172,7 @@ func (o GetInstancesResultOutput) QueryStr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.QueryStr }).(pulumi.StringPtrOutput)
 }
 
+// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

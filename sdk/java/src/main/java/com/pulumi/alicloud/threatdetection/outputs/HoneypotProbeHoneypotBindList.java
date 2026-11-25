@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HoneypotProbeHoneypotBindList {
     /**
-     * @return List of listening ports.See the following `Block BindPortList`.
+     * @return List of listening ports.See the following `bindPortList` below.
      * 
      */
     private @Nullable List<HoneypotProbeHoneypotBindListBindPortList> bindPortLists;
@@ -26,7 +26,7 @@ public final class HoneypotProbeHoneypotBindList {
 
     private HoneypotProbeHoneypotBindList() {}
     /**
-     * @return List of listening ports.See the following `Block BindPortList`.
+     * @return List of listening ports.See the following `bindPortList` below.
      * 
      */
     public List<HoneypotProbeHoneypotBindListBindPortList> bindPortLists() {

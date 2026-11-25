@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Hbr Vaults of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *
@@ -75,16 +75,28 @@ export interface GetVaultsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of vault names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
+     */
     readonly status?: string;
+    /**
+     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     */
     readonly vaultType?: string;
+    /**
+     * A list of Hbr vaults. Each element contains the following attributes:
+     */
     readonly vaults: outputs.hbr.GetVaultsVault[];
 }
 /**
  * This data source provides the Hbr Vaults of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.129.0+.
+ * > **NOTE:** Available since v1.129.0.
  *
  * ## Example Usage
  *

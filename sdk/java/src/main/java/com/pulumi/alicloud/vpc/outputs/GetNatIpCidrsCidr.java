@@ -27,7 +27,7 @@ public final class GetNatIpCidrsCidr {
      */
     private Boolean isDefault;
     /**
-     * @return The ID of the VPC NAT gateway.
+     * @return NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
      * 
      */
     private String natGatewayId;
@@ -37,7 +37,7 @@ public final class GetNatIpCidrsCidr {
      */
     private String natIpCidr;
     /**
-     * @return NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+     * @return NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the `http://` Or `https://` at the beginning.
      * 
      */
     private String natIpCidrDescription;
@@ -47,12 +47,12 @@ public final class GetNatIpCidrsCidr {
      */
     private String natIpCidrId;
     /**
-     * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * @return The name of the CIDR block that you want to query. Support up to `20`.
      * 
      */
     private String natIpCidrName;
     /**
-     * @return The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+     * @return The status of the NAT IP address. Valid values:`Available`.
      * 
      */
     private String status;
@@ -80,7 +80,7 @@ public final class GetNatIpCidrsCidr {
         return this.isDefault;
     }
     /**
-     * @return The ID of the VPC NAT gateway.
+     * @return NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
      * 
      */
     public String natGatewayId() {
@@ -94,7 +94,7 @@ public final class GetNatIpCidrsCidr {
         return this.natIpCidr;
     }
     /**
-     * @return NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
+     * @return NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the `http://` Or `https://` at the beginning.
      * 
      */
     public String natIpCidrDescription() {
@@ -108,14 +108,14 @@ public final class GetNatIpCidrsCidr {
         return this.natIpCidrId;
     }
     /**
-     * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * @return The name of the CIDR block that you want to query. Support up to `20`.
      * 
      */
     public String natIpCidrName() {
         return this.natIpCidrName;
     }
     /**
-     * @return The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+     * @return The status of the NAT IP address. Valid values:`Available`.
      * 
      */
     public String status() {

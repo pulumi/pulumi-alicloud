@@ -3910,7 +3910,7 @@ class GetFunctionsFunctionResult(dict):
         :param _builtins.str name: Function name.
         :param _builtins.str runtime: Function runtime. The list of possible values is [available here](https://www.alibabacloud.com/help/doc-detail/52077.htm).
         :param _builtins.int timeout: Maximum amount of time the function can run in seconds.
-        :param 'GetFunctionsFunctionCustomContainerConfigArgs' custom_container_config: The configuration for custom container runtime. It contains following attributes:
+        :param 'GetFunctionsFunctionCustomContainerConfigArgs' custom_container_config: (Optional, MaxItems: 1) The configuration for custom container runtime. The data source Read backfills this block from the server response when the function uses a custom container; it contains the following attributes:
         """
         pulumi.set(__self__, "ca_port", ca_port)
         pulumi.set(__self__, "code_checksum", code_checksum)
@@ -4072,7 +4072,7 @@ class GetFunctionsFunctionResult(dict):
     @pulumi.getter(name="customContainerConfig")
     def custom_container_config(self) -> Optional['outputs.GetFunctionsFunctionCustomContainerConfigResult']:
         """
-        The configuration for custom container runtime. It contains following attributes:
+        (Optional, MaxItems: 1) The configuration for custom container runtime. The data source Read backfills this block from the server response when the function uses a custom container; it contains the following attributes:
         """
         return pulumi.get(self, "custom_container_config")
 

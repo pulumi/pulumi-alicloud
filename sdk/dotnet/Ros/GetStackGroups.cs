@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.107.0+.
+        /// &gt; **NOTE:** Available since v1.107.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.107.0+.
+        /// &gt; **NOTE:** Available since v1.107.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// This data source provides the Ros Stack Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.107.0+.
+        /// &gt; **NOTE:** Available since v1.107.0.
         /// 
         /// ## Example Usage
         /// 
@@ -214,6 +214,9 @@ namespace Pulumi.AliCloud.Ros
     public sealed class GetStackGroupsResult
     {
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// A list of Ros Stack Groups. Each element contains the following attributes. See `Groups` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetStackGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -221,8 +224,14 @@ namespace Pulumi.AliCloud.Ros
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Stack Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of Stack Group.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

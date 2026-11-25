@@ -53,9 +53,17 @@ public final class GetVirtualPhysicalConnectionsPlainArgs extends com.pulumi.res
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Whether the virtual physical connection is confirmed.
+     * 
+     */
     @Import(name="isConfirmed")
     private @Nullable Boolean isConfirmed;
 
+    /**
+     * @return Whether the virtual physical connection is confirmed.
+     * 
+     */
     public Optional<Boolean> isConfirmed() {
         return Optional.ofNullable(this.isConfirmed);
     }
@@ -239,6 +247,12 @@ public final class GetVirtualPhysicalConnectionsPlainArgs extends com.pulumi.res
             return ids(List.of(ids));
         }
 
+        /**
+         * @param isConfirmed Whether the virtual physical connection is confirmed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isConfirmed(@Nullable Boolean isConfirmed) {
             $.isConfirmed = isConfirmed;
             return this;

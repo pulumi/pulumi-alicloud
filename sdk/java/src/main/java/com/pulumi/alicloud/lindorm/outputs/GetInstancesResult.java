@@ -23,11 +23,23 @@ public final class GetInstancesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Lindorm Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetInstancesInstance> instances;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Instance names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable String queryStr;
+    /**
+     * @return The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+     * 
+     */
     private @Nullable String status;
     private @Nullable Integer supportEngine;
 
@@ -45,12 +57,20 @@ public final class GetInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Lindorm Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetInstancesInstance> instances() {
         return this.instances;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Instance names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -60,6 +80,10 @@ public final class GetInstancesResult {
     public Optional<String> queryStr() {
         return Optional.ofNullable(this.queryStr);
     }
+    /**
+     * @return The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

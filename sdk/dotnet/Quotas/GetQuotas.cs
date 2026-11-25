@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Quotas
         /// <summary>
         /// This data source provides the Quotas Quotas of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.115.0+.
+        /// &gt; **NOTE:** Available since v1.115.0.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.Quotas
         /// <summary>
         /// This data source provides the Quotas Quotas of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.115.0+.
+        /// &gt; **NOTE:** Available since v1.115.0.
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Quotas
         /// <summary>
         /// This data source provides the Quotas Quotas of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.115.0+.
+        /// &gt; **NOTE:** Available since v1.115.0.
         /// 
         /// ## Example Usage
         /// 
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Quotas
         private List<Inputs.GetQuotasDimensionArgs>? _dimensions;
 
         /// <summary>
-        /// The dimensions.
+        /// The dimensions. See `Dimensions` below.
         /// </summary>
         public List<Inputs.GetQuotasDimensionArgs> Dimensions
         {
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.GetQuotasDimensionInputArgs>? _dimensions;
 
         /// <summary>
-        /// The dimensions.
+        /// The dimensions. See `Dimensions` below.
         /// </summary>
         public InputList<Inputs.GetQuotasDimensionInputArgs> Dimensions
         {
@@ -270,14 +270,26 @@ namespace Pulumi.AliCloud.Quotas
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Quota IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? KeyWord;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Quota names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string ProductCode;
+        /// <summary>
+        /// The quota action code.
+        /// </summary>
         public readonly string? QuotaActionCode;
         public readonly string? QuotaCategory;
+        /// <summary>
+        /// A list of Quotas Quotas. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetQuotasQuotaResult> Quotas;
         public readonly string? SortField;
         public readonly string? SortOrder;

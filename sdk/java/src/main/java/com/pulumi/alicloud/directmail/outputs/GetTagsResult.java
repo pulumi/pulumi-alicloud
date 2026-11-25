@@ -21,8 +21,16 @@ public final class GetTagsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Tag names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Direct Mail Tags. Each element contains the following attributes:
+     * 
+     */
     private List<GetTagsTag> tags;
 
     private GetTagsResult() {}
@@ -39,12 +47,20 @@ public final class GetTagsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Tag names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Direct Mail Tags. Each element contains the following attributes:
+     * 
+     */
     public List<GetTagsTag> tags() {
         return this.tags;
     }

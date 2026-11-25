@@ -16,85 +16,245 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMongoInstancesInstance {
+    /**
+     * @return The zone ID.
+     * 
+     */
     private String availabilityZone;
+    /**
+     * @return The billing method of the instance.
+     * 
+     */
     private String chargeType;
+    /**
+     * @return The time when the instance was created.
+     * 
+     */
     private String creationTime;
+    /**
+     * @return The database engine.
+     * 
+     */
     private String engine;
+    /**
+     * @return The database engine version.
+     * 
+     */
     private String engineVersion;
+    /**
+     * @return The time when the instance expires.
+     * 
+     */
     private String expirationTime;
+    /**
+     * @return The instance ID.
+     * 
+     */
     private String id;
+    /**
+     * @return The instance type.
+     * 
+     */
     private String instanceClass;
+    /**
+     * @return The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+     * 
+     */
     private String instanceType;
+    /**
+     * @return The lock status of the instance.
+     * 
+     */
     private String lockMode;
+    /**
+     * @return The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
+     * 
+     */
     private List<GetMongoInstancesInstanceMongo> mongos;
+    /**
+     * @return The name of the instance.
+     * 
+     */
     private String name;
+    /**
+     * @return The network type of the instance.
+     * 
+     */
     private String networkType;
+    /**
+     * @return The region ID of the instance.
+     * 
+     */
     private String regionId;
+    /**
+     * @return The number of nodes in the instance.
+     * 
+     */
     private String replication;
+    /**
+     * @return (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
+     * 
+     */
     private List<GetMongoInstancesInstanceRestoreRange> restoreRanges;
+    /**
+     * @return The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
+     * 
+     */
     private List<GetMongoInstancesInstanceShard> shards;
+    /**
+     * @return The instance status.
+     * 
+     */
     private String status;
+    /**
+     * @return The storage space of the shard node.
+     * 
+     */
     private Integer storage;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     private Map<String,String> tags;
 
     private GetMongoInstancesInstance() {}
+    /**
+     * @return The zone ID.
+     * 
+     */
     public String availabilityZone() {
         return this.availabilityZone;
     }
+    /**
+     * @return The billing method of the instance.
+     * 
+     */
     public String chargeType() {
         return this.chargeType;
     }
+    /**
+     * @return The time when the instance was created.
+     * 
+     */
     public String creationTime() {
         return this.creationTime;
     }
+    /**
+     * @return The database engine.
+     * 
+     */
     public String engine() {
         return this.engine;
     }
+    /**
+     * @return The database engine version.
+     * 
+     */
     public String engineVersion() {
         return this.engineVersion;
     }
+    /**
+     * @return The time when the instance expires.
+     * 
+     */
     public String expirationTime() {
         return this.expirationTime;
     }
+    /**
+     * @return The instance ID.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The instance type.
+     * 
+     */
     public String instanceClass() {
         return this.instanceClass;
     }
+    /**
+     * @return The instance architecture. Default value: `replicate`. Valid values: `replicate`, `sharding`.
+     * 
+     */
     public String instanceType() {
         return this.instanceType;
     }
+    /**
+     * @return The lock status of the instance.
+     * 
+     */
     public String lockMode() {
         return this.lockMode;
     }
+    /**
+     * @return The mongo nodes of the instance. **Note:** `mongos` takes effect only if `instanceType` is set to `sharding`.
+     * 
+     */
     public List<GetMongoInstancesInstanceMongo> mongos() {
         return this.mongos;
     }
+    /**
+     * @return The name of the instance.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The network type of the instance.
+     * 
+     */
     public String networkType() {
         return this.networkType;
     }
+    /**
+     * @return The region ID of the instance.
+     * 
+     */
     public String regionId() {
         return this.regionId;
     }
+    /**
+     * @return The number of nodes in the instance.
+     * 
+     */
     public String replication() {
         return this.replication;
     }
+    /**
+     * @return (Available since v1.271.0) A list of time ranges available for point-in-time recovery. **Note:** `restoreRanges` takes effect only if `enableDetails` is set to `true`.
+     * 
+     */
     public List<GetMongoInstancesInstanceRestoreRange> restoreRanges() {
         return this.restoreRanges;
     }
+    /**
+     * @return The information of the shard node. **Note:** `shards` takes effect only if `instanceType` is set to `sharding`.
+     * 
+     */
     public List<GetMongoInstancesInstanceShard> shards() {
         return this.shards;
     }
+    /**
+     * @return The instance status.
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return The storage space of the shard node.
+     * 
+     */
     public Integer storage() {
         return this.storage;
     }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags;
     }

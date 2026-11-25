@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The type the of log.
+        /// The type the of log. Valid values: `PROVIDER`.
         /// </summary>
         public readonly string LogType;
         /// <summary>

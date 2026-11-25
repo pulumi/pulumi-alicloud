@@ -171,7 +171,7 @@ def get_portfolios(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
 
-    > **NOTE:** Available in 1.204.0+
+    > **NOTE:** Available since v1.204.0+
 
     ## Example Usage
 
@@ -232,7 +232,7 @@ def get_portfolios_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins
     """
     This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
 
-    > **NOTE:** Available in 1.204.0+
+    > **NOTE:** Available since v1.204.0+
 
     ## Example Usage
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.59.0+
+        /// &gt; **NOTE:** Available since v1.59.0.
         /// 
         /// ## Example Usage
         /// 
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.59.0+
+        /// &gt; **NOTE:** Available since v1.59.0.
         /// 
         /// ## Example Usage
         /// 
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.59.0+
+        /// &gt; **NOTE:** Available since v1.59.0.
         /// 
         /// ## Example Usage
         /// 
@@ -198,6 +198,9 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetInstancesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -233,6 +236,9 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class GetInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -280,7 +286,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// A list of instances. Each element contains the following attributes:
+        /// A list of instances. Each element contains the following attributes. See `Instances` for the optional argument block.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;

@@ -19,16 +19,52 @@ public final class GetRestoreJobsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of restore job IDs.
+     * 
+     */
     private List<String> ids;
+    /**
+     * @return A list of Hbr restore jobs. Each element contains the following attributes:
+     * 
+     */
     private List<GetRestoreJobsJob> jobs;
     private @Nullable String outputFile;
     private @Nullable List<String> restoreIds;
+    /**
+     * @return The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * 
+     */
     private String restoreType;
+    /**
+     * @return The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`, `UDM_ECS_ROLLBACK`.
+     * 
+     */
     private @Nullable List<String> sourceTypes;
+    /**
+     * @return The status of restore job.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The name of target ofo OSS bucket.
+     * 
+     */
     private @Nullable List<String> targetBuckets;
+    /**
+     * @return The ID of destination file system.
+     * 
+     */
     private @Nullable List<String> targetFileSystemIds;
+    /**
+     * @return The ID of target ECS instance.
+     * 
+     */
     private @Nullable List<String> targetInstanceIds;
+    /**
+     * @return The ID of backup vault.
+     * 
+     */
     private @Nullable List<String> vaultIds;
 
     private GetRestoreJobsResult() {}
@@ -39,9 +75,17 @@ public final class GetRestoreJobsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of restore job IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Hbr restore jobs. Each element contains the following attributes:
+     * 
+     */
     public List<GetRestoreJobsJob> jobs() {
         return this.jobs;
     }
@@ -51,24 +95,52 @@ public final class GetRestoreJobsResult {
     public List<String> restoreIds() {
         return this.restoreIds == null ? List.of() : this.restoreIds;
     }
+    /**
+     * @return The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * 
+     */
     public String restoreType() {
         return this.restoreType;
     }
+    /**
+     * @return The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`, `UDM_ECS_ROLLBACK`.
+     * 
+     */
     public List<String> sourceTypes() {
         return this.sourceTypes == null ? List.of() : this.sourceTypes;
     }
+    /**
+     * @return The status of restore job.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The name of target ofo OSS bucket.
+     * 
+     */
     public List<String> targetBuckets() {
         return this.targetBuckets == null ? List.of() : this.targetBuckets;
     }
+    /**
+     * @return The ID of destination file system.
+     * 
+     */
     public List<String> targetFileSystemIds() {
         return this.targetFileSystemIds == null ? List.of() : this.targetFileSystemIds;
     }
+    /**
+     * @return The ID of target ECS instance.
+     * 
+     */
     public List<String> targetInstanceIds() {
         return this.targetInstanceIds == null ? List.of() : this.targetInstanceIds;
     }
+    /**
+     * @return The ID of backup vault.
+     * 
+     */
     public List<String> vaultIds() {
         return this.vaultIds == null ? List.of() : this.vaultIds;
     }

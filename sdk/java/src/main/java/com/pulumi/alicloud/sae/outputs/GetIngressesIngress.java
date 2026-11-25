@@ -42,7 +42,7 @@ public final class GetIngressesIngress {
      */
     private Integer listenerPort;
     /**
-     * @return The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+     * @return The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      * 
      */
     private String namespaceId;
@@ -96,7 +96,7 @@ public final class GetIngressesIngress {
         return this.listenerPort;
     }
     /**
-     * @return The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+     * @return The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      * 
      */
     public String namespaceId() {

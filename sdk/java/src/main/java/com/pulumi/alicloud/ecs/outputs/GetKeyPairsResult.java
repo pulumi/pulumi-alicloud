@@ -28,7 +28,7 @@ public final class GetKeyPairsResult {
     private String id;
     private List<String> ids;
     /**
-     * @return A list of key pairs. Each element contains the following attributes:
+     * @return (Deprecated) A list of key pairs. Each element contains the following attributes:
      * 
      * @deprecated Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      * 
@@ -42,6 +42,10 @@ public final class GetKeyPairsResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of key pairs. Each element contains the following attributes:
+     * 
+     */
     private List<GetKeyPairsPair> pairs;
     /**
      * @return The Id of resource group.
@@ -49,7 +53,7 @@ public final class GetKeyPairsResult {
      */
     private @Nullable String resourceGroupId;
     /**
-     * @return (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
+     * @return A map of tags assigned to the key pair.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -73,7 +77,7 @@ public final class GetKeyPairsResult {
         return this.ids;
     }
     /**
-     * @return A list of key pairs. Each element contains the following attributes:
+     * @return (Deprecated) A list of key pairs. Each element contains the following attributes:
      * 
      * @deprecated Field `keyPairs` has been deprecated from provider version 1.121.0. New field `pairs` instead.
      * 
@@ -95,6 +99,10 @@ public final class GetKeyPairsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of key pairs. Each element contains the following attributes:
+     * 
+     */
     public List<GetKeyPairsPair> pairs() {
         return this.pairs;
     }
@@ -106,7 +114,7 @@ public final class GetKeyPairsResult {
         return Optional.ofNullable(this.resourceGroupId);
     }
     /**
-     * @return (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
+     * @return A map of tags assigned to the key pair.
      * 
      */
     public Map<String,String> tags() {

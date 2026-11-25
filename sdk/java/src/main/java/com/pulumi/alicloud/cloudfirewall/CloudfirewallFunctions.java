@@ -676,7 +676,7 @@ public final class CloudfirewallFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", TypeShape.of(GetControlPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -719,7 +719,7 @@ public final class CloudfirewallFunctions {
         return getInstanceMembers(GetInstanceMembersArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -762,7 +762,7 @@ public final class CloudfirewallFunctions {
         return getInstanceMembersPlain(GetInstanceMembersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -805,7 +805,7 @@ public final class CloudfirewallFunctions {
         return getInstanceMembers(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -848,7 +848,7 @@ public final class CloudfirewallFunctions {
         return getInstanceMembersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -891,7 +891,7 @@ public final class CloudfirewallFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", TypeShape.of(GetInstanceMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -934,7 +934,7 @@ public final class CloudfirewallFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", TypeShape.of(GetInstanceMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)
+     * This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://www.alibabacloud.com/help/doc-detail/261237.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -3698,7 +3698,7 @@ public final class CloudfirewallFunctions {
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
@@ -3745,7 +3745,7 @@ public final class CloudfirewallFunctions {
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
@@ -3792,7 +3792,7 @@ public final class CloudfirewallFunctions {
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
@@ -3839,7 +3839,7 @@ public final class CloudfirewallFunctions {
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
@@ -3886,7 +3886,7 @@ public final class CloudfirewallFunctions {
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
@@ -3933,7 +3933,7 @@ public final class CloudfirewallFunctions {
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
@@ -3980,7 +3980,7 @@ public final class CloudfirewallFunctions {
      *             .cenId("cen-cjok7uyb5w2b27573v")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
@@ -4234,7 +4234,7 @@ public final class CloudfirewallFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies", TypeShape.of(GetVpcFirewallControlPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -4266,7 +4266,7 @@ public final class CloudfirewallFunctions {
      *             .ids("id-example")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
@@ -4280,7 +4280,7 @@ public final class CloudfirewallFunctions {
         return getVpcFirewalls(GetVpcFirewallsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -4312,7 +4312,7 @@ public final class CloudfirewallFunctions {
      *             .ids("id-example")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
@@ -4326,7 +4326,7 @@ public final class CloudfirewallFunctions {
         return getVpcFirewallsPlain(GetVpcFirewallsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -4358,7 +4358,7 @@ public final class CloudfirewallFunctions {
      *             .ids("id-example")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
@@ -4372,7 +4372,7 @@ public final class CloudfirewallFunctions {
         return getVpcFirewalls(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -4404,7 +4404,7 @@ public final class CloudfirewallFunctions {
      *             .ids("id-example")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
@@ -4418,7 +4418,7 @@ public final class CloudfirewallFunctions {
         return getVpcFirewallsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -4450,7 +4450,7 @@ public final class CloudfirewallFunctions {
      *             .ids("id-example")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
@@ -4464,7 +4464,7 @@ public final class CloudfirewallFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls", TypeShape.of(GetVpcFirewallsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -4496,7 +4496,7 @@ public final class CloudfirewallFunctions {
      *             .ids("id-example")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
@@ -4510,7 +4510,7 @@ public final class CloudfirewallFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls", TypeShape.of(GetVpcFirewallsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+     * This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
      * 
      * &gt; **NOTE:** Available since v1.194.0.
      * 
@@ -4542,7 +4542,7 @@ public final class CloudfirewallFunctions {
      *             .ids("id-example")
      *             .memberUid("1415189284827022")
      *             .status("closed")
-     *             .vpcFirewallName("tf-test")
+     *             .vpcFirewallName("tf-example")
      *             .build());
      * 
      *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());

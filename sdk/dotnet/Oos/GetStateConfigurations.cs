@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos State Configurations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos State Configurations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos State Configurations of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -192,6 +192,9 @@ namespace Pulumi.AliCloud.Oos
     [OutputType]
     public sealed class GetStateConfigurationsResult
     {
+        /// <summary>
+        /// A list of Oos State Configurations. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetStateConfigurationsConfigurationResult> Configurations;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -199,7 +202,13 @@ namespace Pulumi.AliCloud.Oos
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

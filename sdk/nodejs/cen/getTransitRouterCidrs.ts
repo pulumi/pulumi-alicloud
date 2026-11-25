@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.193.0+.
+ * > **NOTE:** Available since v1.193.0+.
  *
  * ## Example Usage
  *
@@ -72,6 +72,9 @@ export interface GetTransitRouterCidrsArgs {
  * A collection of values returned by getTransitRouterCidrs.
  */
 export interface GetTransitRouterCidrsResult {
+    /**
+     * A list of Cen Transit Router Cidrs. Each element contains the following attributes:
+     */
     readonly cidrs: outputs.cen.GetTransitRouterCidrsCidr[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -79,15 +82,24 @@ export interface GetTransitRouterCidrsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Transit Router Cidr names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the transit router cidr.
+     */
     readonly transitRouterCidrId?: string;
+    /**
+     * The ID of the transit router.
+     */
     readonly transitRouterId: string;
 }
 /**
  * This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.193.0+.
+ * > **NOTE:** Available since v1.193.0+.
  *
  * ## Example Usage
  *

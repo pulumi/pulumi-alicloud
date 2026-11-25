@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source is the character set supported by querying RDS instances.
         /// 
-        /// &gt; **NOTE:** Available in v1.198.0+.
+        /// &gt; **NOTE:** Available since v1.198.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source is the character set supported by querying RDS instances.
         /// 
-        /// &gt; **NOTE:** Available in v1.198.0+.
+        /// &gt; **NOTE:** Available since v1.198.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source is the character set supported by querying RDS instances.
         /// 
-        /// &gt; **NOTE:** Available in v1.198.0+.
+        /// &gt; **NOTE:** Available since v1.198.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -114,6 +114,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("engine", required: true)]
         public string Engine { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -131,6 +134,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
@@ -149,6 +155,9 @@ namespace Pulumi.AliCloud.Rds
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The list of supported character sets.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

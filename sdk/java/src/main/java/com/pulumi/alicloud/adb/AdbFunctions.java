@@ -31,11 +31,11 @@ public final class AdbFunctions {
      * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
      * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
      * 
-     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-     * 
-     * &gt; **NOTE:** Available in v1.71.0+.
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -53,20 +53,19 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
+     * public class App {
+     *     public static void main(String[] args) {
      *         Pulumi.run(App::stack);
-     *     }}{@code
+     *     }
      * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
-     *             .status("Running")
+     *     public static void stack(Context ctx) {
+     *         final var example = AdbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }}{@code
-     * }}{@code
+     *         ctx.export("firstAdbClusterId", example.clusters()[0].id());
+     *     }
+     * }
      * }
      * </pre>
      * 
@@ -78,11 +77,11 @@ public final class AdbFunctions {
      * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
      * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
      * 
-     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-     * 
-     * &gt; **NOTE:** Available in v1.71.0+.
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -100,20 +99,19 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
+     * public class App {
+     *     public static void main(String[] args) {
      *         Pulumi.run(App::stack);
-     *     }}{@code
+     *     }
      * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
-     *             .status("Running")
+     *     public static void stack(Context ctx) {
+     *         final var example = AdbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }}{@code
-     * }}{@code
+     *         ctx.export("firstAdbClusterId", example.clusters()[0].id());
+     *     }
+     * }
      * }
      * </pre>
      * 
@@ -125,11 +123,11 @@ public final class AdbFunctions {
      * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
      * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
      * 
-     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-     * 
-     * &gt; **NOTE:** Available in v1.71.0+.
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -147,20 +145,19 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
+     * public class App {
+     *     public static void main(String[] args) {
      *         Pulumi.run(App::stack);
-     *     }}{@code
+     *     }
      * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
-     *             .status("Running")
+     *     public static void stack(Context ctx) {
+     *         final var example = AdbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }}{@code
-     * }}{@code
+     *         ctx.export("firstAdbClusterId", example.clusters()[0].id());
+     *     }
+     * }
      * }
      * </pre>
      * 
@@ -172,11 +169,11 @@ public final class AdbFunctions {
      * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
      * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
      * 
-     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-     * 
-     * &gt; **NOTE:** Available in v1.71.0+.
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -194,20 +191,19 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
+     * public class App {
+     *     public static void main(String[] args) {
      *         Pulumi.run(App::stack);
-     *     }}{@code
+     *     }
      * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
-     *             .status("Running")
+     *     public static void stack(Context ctx) {
+     *         final var example = AdbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }}{@code
-     * }}{@code
+     *         ctx.export("firstAdbClusterId", example.clusters()[0].id());
+     *     }
+     * }
      * }
      * </pre>
      * 
@@ -219,11 +215,11 @@ public final class AdbFunctions {
      * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
      * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
      * 
-     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-     * 
-     * &gt; **NOTE:** Available in v1.71.0+.
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -241,20 +237,19 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
+     * public class App {
+     *     public static void main(String[] args) {
      *         Pulumi.run(App::stack);
-     *     }}{@code
+     *     }
      * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
-     *             .status("Running")
+     *     public static void stack(Context ctx) {
+     *         final var example = AdbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }}{@code
-     * }}{@code
+     *         ctx.export("firstAdbClusterId", example.clusters()[0].id());
+     *     }
+     * }
      * }
      * </pre>
      * 
@@ -266,11 +261,11 @@ public final class AdbFunctions {
      * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
      * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
      * 
-     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-     * 
-     * &gt; **NOTE:** Available in v1.71.0+.
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -288,20 +283,19 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
+     * public class App {
+     *     public static void main(String[] args) {
      *         Pulumi.run(App::stack);
-     *     }}{@code
+     *     }
      * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
-     *             .status("Running")
+     *     public static void stack(Context ctx) {
+     *         final var example = AdbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }}{@code
-     * }}{@code
+     *         ctx.export("firstAdbClusterId", example.clusters()[0].id());
+     *     }
+     * }
      * }
      * </pre>
      * 
@@ -313,11 +307,11 @@ public final class AdbFunctions {
      * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
      * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
      * 
-     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
-     * 
-     * &gt; **NOTE:** Available in v1.71.0+.
+     * &gt; **DEPRECATED:** This data source has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -335,20 +329,19 @@ public final class AdbFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App }{{@code
-     *     public static void main(String[] args) }{{@code
+     * public class App {
+     *     public static void main(String[] args) {
      *         Pulumi.run(App::stack);
-     *     }}{@code
+     *     }
      * 
-     *     public static void stack(Context ctx) }{{@code
-     *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex("am-}&#92;&#92;{@code w+")
-     *             .status("Running")
+     *     public static void stack(Context ctx) {
+     *         final var example = AdbFunctions.getClusters(GetClustersArgs.builder()
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
-     *     }}{@code
-     * }}{@code
+     *         ctx.export("firstAdbClusterId", example.clusters()[0].id());
+     *     }
+     * }
      * }
      * </pre>
      * 

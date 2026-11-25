@@ -13,7 +13,7 @@ import (
 
 // This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
 //
-// > **NOTE:** Available in 1.195.0+
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -41,14 +41,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = threatdetection.GetBaselineStrategiesOutput(ctx, threatdetection.GetBaselineStrategiesOutputArgs{
+//			_default := threatdetection.GetBaselineStrategiesOutput(ctx, threatdetection.GetBaselineStrategiesOutputArgs{
 //				Ids: pulumi.StringArray{
 //					defaultBaselineStrategy.ID(),
 //				},
 //				NameRegex:  defaultBaselineStrategy.Name,
 //				CustomType: pulumi.String("custom"),
 //			}, nil)
-//			ctx.Export("alicloudThreatDetectionBaselineStrategyExampleId", pulumi.Any(defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id))
+//			ctx.Export("alicloudThreatDetectionBaselineStrategyExampleId", _default.ApplyT(func(_default threatdetection.GetBaselineStrategiesResult) (*string, error) {
+//				return _default.Strategies[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -73,7 +75,8 @@ type GetBaselineStrategiesArgs struct {
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  *string `pulumi:"outputFile"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The IDs of the Baseline Strategy.
 	StrategyIds *string `pulumi:"strategyIds"`
 }
 
@@ -88,9 +91,10 @@ type GetBaselineStrategiesResult struct {
 	// A list of Baseline Strategy IDs.
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
-	// A list of name of Baseline Strategys.
-	Names       []string                        `pulumi:"names"`
-	OutputFile  *string                         `pulumi:"outputFile"`
+	// A list of name of Baseline Strategies.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Baseline Strategy Entries. Each element contains the following attributes:
 	Strategies  []GetBaselineStrategiesStrategy `pulumi:"strategies"`
 	StrategyIds *string                         `pulumi:"strategyIds"`
 }
@@ -109,7 +113,8 @@ type GetBaselineStrategiesOutputArgs struct {
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The IDs of the Baseline Strategy.
 	StrategyIds pulumi.StringPtrInput `pulumi:"strategyIds"`
 }
 
@@ -153,7 +158,7 @@ func (o GetBaselineStrategiesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBaselineStrategiesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of name of Baseline Strategys.
+// A list of name of Baseline Strategies.
 func (o GetBaselineStrategiesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBaselineStrategiesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -162,6 +167,7 @@ func (o GetBaselineStrategiesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBaselineStrategiesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Baseline Strategy Entries. Each element contains the following attributes:
 func (o GetBaselineStrategiesResultOutput) Strategies() GetBaselineStrategiesStrategyArrayOutput {
 	return o.ApplyT(func(v GetBaselineStrategiesResult) []GetBaselineStrategiesStrategy { return v.Strategies }).(GetBaselineStrategiesStrategyArrayOutput)
 }

@@ -113,14 +113,7 @@ class AppGroupQuota(dict):
         """
         :param _builtins.int compute_resource: Computing resources. Unit: LCU.
         :param _builtins.int doc_size: Storage Size. Unit: GB.
-        :param _builtins.str spec: Specification. Valid values:
-               * `opensearch.share.junior`: Entry-level.
-               * `opensearch.share.common`: Shared universal.
-               * `opensearch.share.compute`: Shared computing.
-               * `opensearch.share.storage`: Shared storage type.
-               * `opensearch.private.common`: Exclusive universal type.
-               * `opensearch.private.compute`: Exclusive computing type.
-               * `opensearch.private.storage`: Exclusive storage type
+        :param _builtins.str spec: Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
         :param _builtins.int qps: Search request. Unit: times/second.
         """
         pulumi.set(__self__, "compute_resource", compute_resource)
@@ -149,14 +142,7 @@ class AppGroupQuota(dict):
     @pulumi.getter
     def spec(self) -> _builtins.str:
         """
-        Specification. Valid values:
-        * `opensearch.share.junior`: Entry-level.
-        * `opensearch.share.common`: Shared universal.
-        * `opensearch.share.compute`: Shared computing.
-        * `opensearch.share.storage`: Shared storage type.
-        * `opensearch.private.common`: Exclusive universal type.
-        * `opensearch.private.compute`: Exclusive computing type.
-        * `opensearch.private.storage`: Exclusive storage type
+        Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
         """
         return pulumi.get(self, "spec")
 
@@ -209,22 +195,22 @@ class GetAppGroupsGroupResult(dict):
         :param _builtins.str domain: Domain name.
         :param _builtins.str expire_on: Expiration Time.
         :param _builtins.int first_rank_algo_deployment_id: Coarse deployment ID.
-        :param _builtins.int has_pending_quota_review_task: Whether the quota status is under approval. Valid status:
+        :param _builtins.int has_pending_quota_review_task: Whether the quota status is under approval. Valid values: `0` (normal), `1` (Approving).
         :param _builtins.str id: The resource ID in terraform of App Group. It is the same as `app_group_name`.
-        :param _builtins.str instance_id: The Instance ID.
+        :param _builtins.str instance_id: Instance ID.
         :param _builtins.str lock_mode: Locked state. Valid status: `Unlock`,`LockByExpiration`,`ManualLock`.
         :param _builtins.int locked_by_expiration: Instance is automatically locked after expiration.
         :param _builtins.str payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
         :param _builtins.int pending_second_rank_algo_deployment_id: Refine deployment ID in deployment.
         :param _builtins.str processing_order_id: Unfinished order number.
-        :param _builtins.int produced: Whether the production is completed. Valid values:
+        :param _builtins.int produced: Whether the production is completed. Valid values: `0` (producing), `1` (completed).
         :param _builtins.str project_id: The Project ID.
         :param Sequence['GetAppGroupsGroupQuotaArgs'] quotas: Quota information.
-        :param _builtins.str resource_group_id: The Resource Group ID.
+        :param _builtins.str resource_group_id: Resource Group Id.
         :param _builtins.int second_rank_algo_deployment_id: Refine deployment ID.
         :param _builtins.str status: The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
         :param _builtins.int switched_time: The Switched time.
-        :param _builtins.str type: Application type. Valid Values: `standard`, `enhanced`.
+        :param _builtins.str type: The Type of AppGroup. Valid values: `standard`,`enhanced`.
         """
         pulumi.set(__self__, "app_group_id", app_group_id)
         pulumi.set(__self__, "app_group_name", app_group_name)
@@ -337,7 +323,7 @@ class GetAppGroupsGroupResult(dict):
     @pulumi.getter(name="hasPendingQuotaReviewTask")
     def has_pending_quota_review_task(self) -> _builtins.int:
         """
-        Whether the quota status is under approval. Valid status:
+        Whether the quota status is under approval. Valid values: `0` (normal), `1` (Approving).
         """
         return pulumi.get(self, "has_pending_quota_review_task")
 
@@ -353,7 +339,7 @@ class GetAppGroupsGroupResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        The Instance ID.
+        Instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -401,7 +387,7 @@ class GetAppGroupsGroupResult(dict):
     @pulumi.getter
     def produced(self) -> _builtins.int:
         """
-        Whether the production is completed. Valid values:
+        Whether the production is completed. Valid values: `0` (producing), `1` (completed).
         """
         return pulumi.get(self, "produced")
 
@@ -425,7 +411,7 @@ class GetAppGroupsGroupResult(dict):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> _builtins.str:
         """
-        The Resource Group ID.
+        Resource Group Id.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -457,7 +443,7 @@ class GetAppGroupsGroupResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Application type. Valid Values: `standard`, `enhanced`.
+        The Type of AppGroup. Valid values: `standard`,`enhanced`.
         """
         return pulumi.get(self, "type")
 
@@ -471,14 +457,7 @@ class GetAppGroupsGroupQuotaResult(dict):
         """
         :param _builtins.str compute_resource: Computing resources. Unit: LCU.
         :param _builtins.str doc_size: Storage Size. Unit: GB.
-        :param _builtins.str spec: Specification. Valid values:
-               * `opensearch.share.junior`: Entry-level.
-               * `opensearch.share.common`: Shared universal.
-               * `opensearch.share.compute`: Shared computing.
-               * `opensearch.share.storage`: Shared storage type.
-               * `opensearch.private.common`: Exclusive universal type.
-               * `opensearch.private.compute`: Exclusive computing type.
-               * `opensearch.private.storage`: Exclusive storage type
+        :param _builtins.str spec: Specification.
         """
         pulumi.set(__self__, "compute_resource", compute_resource)
         pulumi.set(__self__, "doc_size", doc_size)
@@ -504,14 +483,7 @@ class GetAppGroupsGroupQuotaResult(dict):
     @pulumi.getter
     def spec(self) -> _builtins.str:
         """
-        Specification. Valid values:
-        * `opensearch.share.junior`: Entry-level.
-        * `opensearch.share.common`: Shared universal.
-        * `opensearch.share.compute`: Shared computing.
-        * `opensearch.share.storage`: Shared storage type.
-        * `opensearch.private.common`: Exclusive universal type.
-        * `opensearch.private.compute`: Exclusive computing type.
-        * `opensearch.private.storage`: Exclusive storage type
+        Specification.
         """
         return pulumi.get(self, "spec")
 

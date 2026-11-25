@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// <summary>
         /// This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.189.0+.
+        /// &gt; **NOTE:** Available since v1.189.0.
         /// 
         /// ## Example Usage
         /// 
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// <summary>
         /// This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.189.0+.
+        /// &gt; **NOTE:** Available since v1.189.0.
         /// 
         /// ## Example Usage
         /// 
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// <summary>
         /// This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.189.0+.
+        /// &gt; **NOTE:** Available since v1.189.0.
         /// 
         /// ## Example Usage
         /// 
@@ -265,11 +265,26 @@ namespace Pulumi.AliCloud.Gpdb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of DB Instance Plan names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+        /// </summary>
         public readonly string? PlanScheduleType;
+        /// <summary>
+        /// The type of the Plan. Valid values: `PauseResume`, `Resize`.
+        /// </summary>
         public readonly string? PlanType;
+        /// <summary>
+        /// A list of Gpdb Db Instance Plans. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDbInstancePlansPlanResult> Plans;
+        /// <summary>
+        /// The Status of the Plan.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

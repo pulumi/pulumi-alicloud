@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionsRegion {
     /**
-     * @return The Region ID.
+     * @return You can use specified regionId to find the region and available zones information that supports ClickHouse.
      * 
      */
     private String regionId;
@@ -25,7 +25,7 @@ public final class GetRegionsRegion {
 
     private GetRegionsRegion() {}
     /**
-     * @return The Region ID.
+     * @return You can use specified regionId to find the region and available zones information that supports ClickHouse.
      * 
      */
     public String regionId() {

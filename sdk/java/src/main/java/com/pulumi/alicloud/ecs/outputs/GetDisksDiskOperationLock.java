@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDisksDiskOperationLock {
+    /**
+     * @return The reason of the operation lock.
+     * 
+     */
     private String lockReason;
 
     private GetDisksDiskOperationLock() {}
+    /**
+     * @return The reason of the operation lock.
+     * 
+     */
     public String lockReason() {
         return this.lockReason;
     }

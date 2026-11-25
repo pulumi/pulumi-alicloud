@@ -13,6 +13,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSnapshotsSnapshot {
+    /**
+     * @return The category of the snapshot. Valid values: `flash`, `standard`.
+     * 
+     */
     private String category;
     /**
      * @return Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
@@ -24,9 +28,13 @@ public final class GetSnapshotsSnapshot {
      * 
      */
     private String description;
+    /**
+     * @return The source disk ID.
+     * 
+     */
     private String diskId;
     /**
-     * @return Whether the snapshot is encrypted or not.
+     * @return Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * 
      */
     private Boolean encrypted;
@@ -35,7 +43,15 @@ public final class GetSnapshotsSnapshot {
      * 
      */
     private String id;
+    /**
+     * @return Whether instant access is enabled.
+     * 
+     */
     private Boolean instantAccess;
+    /**
+     * @return The retention days of instant access.
+     * 
+     */
     private Integer instantAccessRetentionDays;
     /**
      * @return Name of the snapshot.
@@ -57,15 +73,35 @@ public final class GetSnapshotsSnapshot {
      * 
      */
     private Integer remainTime;
+    /**
+     * @return The resource group ID.
+     * 
+     */
     private String resourceGroupId;
     /**
      * @return The number of days that an automatic snapshot retains in the console for your instance.
      * 
      */
     private Integer retentionDays;
+    /**
+     * @return The ID of the snapshot.
+     * 
+     */
     private String snapshotId;
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     private String snapshotName;
+    /**
+     * @return The SN of the snapshot.
+     * 
+     */
     private String snapshotSn;
+    /**
+     * @return The type of the snapshot. Valid values: `auto`, `user`, `all`.
+     * 
+     */
     private String snapshotType;
     /**
      * @return Source disk ID, which is retained after the source disk of the snapshot is deleted.
@@ -78,29 +114,54 @@ public final class GetSnapshotsSnapshot {
      */
     private String sourceDiskSize;
     /**
-     * @return Source disk attribute. Value range: `System`,`Data`.
+     * @return The type of source disk:
+     * * System: The snapshots are created for system disks.
+     * * Data: The snapshots are created for data disks.
      * 
      */
     private String sourceDiskType;
+    /**
+     * @return The source storage type.
+     * 
+     */
     private String sourceStorageType;
     /**
-     * @return The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+     * @return The specified snapshot status. Default value: `all`. Optional values:
+     * * progressing: The snapshots are being created.
+     * * accomplished: The snapshots are ready to use.
+     * * failed: The snapshot creation failed.
+     * * all: All status.
      * 
      */
     private String status;
     /**
-     * @return A map of tags assigned to the snapshot.
+     * @return A map of tags assigned to snapshots.
      * 
      */
     private Map<String,String> tags;
+    /**
+     * @return The snapshot category. Default value: `all`. Optional values:
+     * * auto: Auto snapshots.
+     * * user: Manual snapshots.
+     * * all: Auto and manual snapshots.
+     * 
+     */
     private String type;
     /**
-     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+     * @return The usage of the snapshot:
+     * * image: The snapshots are used to create custom images.
+     * * disk: The snapshots are used to CreateDisk.
+     * * mage_disk: The snapshots are used to create custom images and data disks.
+     * * none: The snapshots are not used yet.
      * 
      */
     private String usage;
 
     private GetSnapshotsSnapshot() {}
+    /**
+     * @return The category of the snapshot. Valid values: `flash`, `standard`.
+     * 
+     */
     public String category() {
         return this.category;
     }
@@ -118,11 +179,15 @@ public final class GetSnapshotsSnapshot {
     public String description() {
         return this.description;
     }
+    /**
+     * @return The source disk ID.
+     * 
+     */
     public String diskId() {
         return this.diskId;
     }
     /**
-     * @return Whether the snapshot is encrypted or not.
+     * @return Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
      * 
      */
     public Boolean encrypted() {
@@ -135,9 +200,17 @@ public final class GetSnapshotsSnapshot {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Whether instant access is enabled.
+     * 
+     */
     public Boolean instantAccess() {
         return this.instantAccess;
     }
+    /**
+     * @return The retention days of instant access.
+     * 
+     */
     public Integer instantAccessRetentionDays() {
         return this.instantAccessRetentionDays;
     }
@@ -169,6 +242,10 @@ public final class GetSnapshotsSnapshot {
     public Integer remainTime() {
         return this.remainTime;
     }
+    /**
+     * @return The resource group ID.
+     * 
+     */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
@@ -179,15 +256,31 @@ public final class GetSnapshotsSnapshot {
     public Integer retentionDays() {
         return this.retentionDays;
     }
+    /**
+     * @return The ID of the snapshot.
+     * 
+     */
     public String snapshotId() {
         return this.snapshotId;
     }
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     public String snapshotName() {
         return this.snapshotName;
     }
+    /**
+     * @return The SN of the snapshot.
+     * 
+     */
     public String snapshotSn() {
         return this.snapshotSn;
     }
+    /**
+     * @return The type of the snapshot. Valid values: `auto`, `user`, `all`.
+     * 
+     */
     public String snapshotType() {
         return this.snapshotType;
     }
@@ -206,34 +299,55 @@ public final class GetSnapshotsSnapshot {
         return this.sourceDiskSize;
     }
     /**
-     * @return Source disk attribute. Value range: `System`,`Data`.
+     * @return The type of source disk:
+     * * System: The snapshots are created for system disks.
+     * * Data: The snapshots are created for data disks.
      * 
      */
     public String sourceDiskType() {
         return this.sourceDiskType;
     }
+    /**
+     * @return The source storage type.
+     * 
+     */
     public String sourceStorageType() {
         return this.sourceStorageType;
     }
     /**
-     * @return The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+     * @return The specified snapshot status. Default value: `all`. Optional values:
+     * * progressing: The snapshots are being created.
+     * * accomplished: The snapshots are ready to use.
+     * * failed: The snapshot creation failed.
+     * * all: All status.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return A map of tags assigned to the snapshot.
+     * @return A map of tags assigned to snapshots.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
+    /**
+     * @return The snapshot category. Default value: `all`. Optional values:
+     * * auto: Auto snapshots.
+     * * user: Manual snapshots.
+     * * all: Auto and manual snapshots.
+     * 
+     */
     public String type() {
         return this.type;
     }
     /**
-     * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
+     * @return The usage of the snapshot:
+     * * image: The snapshots are used to create custom images.
+     * * disk: The snapshots are used to CreateDisk.
+     * * mage_disk: The snapshots are used to create custom images and data disks.
+     * * none: The snapshots are not used yet.
      * 
      */
     public String usage() {

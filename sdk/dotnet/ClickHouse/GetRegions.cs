@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House Regions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House Regions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House Regions of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -174,7 +174,13 @@ namespace Pulumi.AliCloud.ClickHouse
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The Region ID.
+        /// </summary>
         public readonly string? RegionId;
+        /// <summary>
+        /// A list of Click House Regions. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionsRegionResult> Regions;
 
         [OutputConstructor]

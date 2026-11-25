@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Arms
         /// <summary>
         /// This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Arms
         /// <summary>
         /// This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Arms
         /// <summary>
         /// This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -165,6 +165,9 @@ namespace Pulumi.AliCloud.Arms
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Match expressions used to filter Prometheus alert rules.
+        /// </summary>
         [Input("matchExpressions")]
         public string? MatchExpressions { get; set; }
 
@@ -218,6 +221,9 @@ namespace Pulumi.AliCloud.Arms
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Match expressions used to filter Prometheus alert rules.
+        /// </summary>
         [Input("matchExpressions")]
         public Input<string>? MatchExpressions { get; set; }
 
@@ -255,6 +261,9 @@ namespace Pulumi.AliCloud.Arms
     [OutputType]
     public sealed class GetPrometheusAlertRulesResult
     {
+        /// <summary>
+        /// The ID of the cluster.
+        /// </summary>
         public readonly string ClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -263,10 +272,22 @@ namespace Pulumi.AliCloud.Arms
         public readonly ImmutableArray<string> Ids;
         public readonly string? MatchExpressions;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Prometheus Alert Rule names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Arms Prometheus Alert Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPrometheusAlertRulesRuleResult> Rules;
+        /// <summary>
+        /// The status of the resource. Valid values: `0`, `1` (0=off,1=open).
+        /// </summary>
         public readonly int? Status;
+        /// <summary>
+        /// The type of the alert rule.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// <summary>
         /// This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.142.0+.
+        /// &gt; **NOTE:** Available since v1.142.0.
         /// 
         /// ## Example Usage
         /// 
@@ -309,6 +309,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     [OutputType]
     public sealed class GetGatewaySmbUsersResult
     {
+        /// <summary>
+        /// The Gateway ID.
+        /// </summary>
         public readonly string GatewayId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -317,6 +320,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Cloud Storage Gateway SMB Users. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewaySmbUsersUserResult> Users;
 
         [OutputConstructor]

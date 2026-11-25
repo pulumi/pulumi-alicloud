@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci
         /// <summary>
         /// This data source provides the Eci Container Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Eci
         /// <summary>
         /// This data source provides the Eci Container Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Eci
         /// <summary>
         /// This data source provides the Eci Container Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.111.0+.
+        /// &gt; **NOTE:** Available since v1.111.0.
         /// 
         /// ## Example Usage
         /// 
@@ -176,6 +176,10 @@ namespace Pulumi.AliCloud.Eci
 
         [Input("tags")]
         private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public Dictionary<string, string> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, string>());
@@ -188,6 +192,9 @@ namespace Pulumi.AliCloud.Eci
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
 
+        /// <summary>
+        /// Whether to return container group events.
+        /// </summary>
         [Input("withEvent")]
         public bool? WithEvent { get; set; }
 
@@ -261,6 +268,10 @@ namespace Pulumi.AliCloud.Eci
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -273,6 +284,9 @@ namespace Pulumi.AliCloud.Eci
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
+        /// <summary>
+        /// Whether to return container group events.
+        /// </summary>
         [Input("withEvent")]
         public Input<bool>? WithEvent { get; set; }
 
@@ -292,8 +306,14 @@ namespace Pulumi.AliCloud.Eci
     [OutputType]
     public sealed class GetContainerGroupsResult
     {
+        /// <summary>
+        /// The name of ContainerGroup.
+        /// </summary>
         public readonly string? ContainerGroupName;
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// A list of Eci Container Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetContainerGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -302,13 +322,31 @@ namespace Pulumi.AliCloud.Eci
         public readonly ImmutableArray<string> Ids;
         public readonly int? Limit;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Container Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The status of container.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The vswitch id.
+        /// </summary>
         public readonly string? VswitchId;
         public readonly bool? WithEvent;
+        /// <summary>
+        /// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+        /// </summary>
         public readonly string? ZoneId;
 
         [OutputConstructor]

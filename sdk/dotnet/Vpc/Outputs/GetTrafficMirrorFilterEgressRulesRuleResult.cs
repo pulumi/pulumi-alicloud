@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The ID of the filter associated with the outbound rule.
+        /// The ID of the Traffic Mirror Filter.
         /// </summary>
         public readonly string TrafficMirrorFilterId;
         /// <summary>

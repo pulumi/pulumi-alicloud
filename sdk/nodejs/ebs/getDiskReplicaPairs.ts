@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Ebs Disk Replica Pair available to the user.
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
  *
@@ -79,7 +79,7 @@ export interface GetDiskReplicaPairsResult {
 /**
  * This data source provides Ebs Disk Replica Pair available to the user.
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
  *

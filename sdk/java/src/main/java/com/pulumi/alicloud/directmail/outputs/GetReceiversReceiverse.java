@@ -42,7 +42,7 @@ public final class GetReceiversReceiverse {
      */
     private String receiversName;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
      * 
      */
     private Integer status;
@@ -91,7 +91,7 @@ public final class GetReceiversReceiverse {
         return this.receiversName;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
      * 
      */
     public Integer status() {

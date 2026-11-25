@@ -805,9 +805,9 @@ type GetGatewaysGateway struct {
 	SlbLists []GetGatewaysGatewaySlbList `pulumi:"slbLists"`
 	// Gateway Node Specifications.
 	Spec string `pulumi:"spec"`
-	// The status of the gateway.
+	// The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
 	Status string `pulumi:"status"`
-	// The ID of the vpc.
+	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the vswitch.
 	VswitchId string `pulumi:"vswitchId"`
@@ -841,9 +841,9 @@ type GetGatewaysGatewayArgs struct {
 	SlbLists GetGatewaysGatewaySlbListArrayInput `pulumi:"slbLists"`
 	// Gateway Node Specifications.
 	Spec pulumi.StringInput `pulumi:"spec"`
-	// The status of the gateway.
+	// The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The ID of the vpc.
+	// The ID of the VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of the vswitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
@@ -940,12 +940,12 @@ func (o GetGatewaysGatewayOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Spec }).(pulumi.StringOutput)
 }
 
-// The status of the gateway.
+// The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
 func (o GetGatewaysGatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the vpc.
+// The ID of the VPC.
 func (o GetGatewaysGatewayOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.VpcId }).(pulumi.StringOutput)
 }

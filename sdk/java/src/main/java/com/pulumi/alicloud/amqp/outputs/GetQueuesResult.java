@@ -20,11 +20,27 @@ public final class GetQueuesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     private String instanceId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Queue names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Amqp Queues. Each element contains the following attributes:
+     * 
+     */
     private List<GetQueuesQueue> queues;
+    /**
+     * @return The name of the virtual host.
+     * 
+     */
     private String virtualHostName;
 
     private GetQueuesResult() {}
@@ -38,21 +54,37 @@ public final class GetQueuesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Queue names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Amqp Queues. Each element contains the following attributes:
+     * 
+     */
     public List<GetQueuesQueue> queues() {
         return this.queues;
     }
+    /**
+     * @return The name of the virtual host.
+     * 
+     */
     public String virtualHostName() {
         return this.virtualHostName;
     }

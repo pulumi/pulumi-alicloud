@@ -52,14 +52,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     public static final ErEnvConfArgs Empty = new ErEnvConfArgs();
 
     /**
-     * The configuration of a presetCanaryAnhui environment. See `staging` below.
+     * The configuration of a presetCanaryAnhui environment. See `presetCanaryAnhui` below.
      * 
      */
     @Import(name="presetCanaryAnhui")
     private @Nullable Output<ErEnvConfPresetCanaryAnhuiArgs> presetCanaryAnhui;
 
     /**
-     * @return The configuration of a presetCanaryAnhui environment. See `staging` below.
+     * @return The configuration of a presetCanaryAnhui environment. See `presetCanaryAnhui` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryAnhuiArgs>> presetCanaryAnhui() {
@@ -67,14 +67,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryBeijing environment. See `staging` below.
+     * The configuration of a presetCanaryBeijing environment. See `presetCanaryBeijing` below.
      * 
      */
     @Import(name="presetCanaryBeijing")
     private @Nullable Output<ErEnvConfPresetCanaryBeijingArgs> presetCanaryBeijing;
 
     /**
-     * @return The configuration of a presetCanaryBeijing environment. See `staging` below.
+     * @return The configuration of a presetCanaryBeijing environment. See `presetCanaryBeijing` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryBeijingArgs>> presetCanaryBeijing() {
@@ -82,14 +82,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryChongqing environment. See `staging` below.
+     * The configuration of a presetCanaryChongqing environment. See `presetCanaryChongqing` below.
      * 
      */
     @Import(name="presetCanaryChongqing")
     private @Nullable Output<ErEnvConfPresetCanaryChongqingArgs> presetCanaryChongqing;
 
     /**
-     * @return The configuration of a presetCanaryChongqing environment. See `staging` below.
+     * @return The configuration of a presetCanaryChongqing environment. See `presetCanaryChongqing` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryChongqingArgs>> presetCanaryChongqing() {
@@ -97,14 +97,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryFujian environment. See `staging` below.
+     * The configuration of a presetCanaryFujian environment. See `presetCanaryFujian` below.
      * 
      */
     @Import(name="presetCanaryFujian")
     private @Nullable Output<ErEnvConfPresetCanaryFujianArgs> presetCanaryFujian;
 
     /**
-     * @return The configuration of a presetCanaryFujian environment. See `staging` below.
+     * @return The configuration of a presetCanaryFujian environment. See `presetCanaryFujian` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryFujianArgs>> presetCanaryFujian() {
@@ -112,14 +112,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryGansu environment. See `staging` below.
+     * The configuration of a presetCanaryGansu environment. See `presetCanaryGansu` below.
      * 
      */
     @Import(name="presetCanaryGansu")
     private @Nullable Output<ErEnvConfPresetCanaryGansuArgs> presetCanaryGansu;
 
     /**
-     * @return The configuration of a presetCanaryGansu environment. See `staging` below.
+     * @return The configuration of a presetCanaryGansu environment. See `presetCanaryGansu` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryGansuArgs>> presetCanaryGansu() {
@@ -127,14 +127,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryGuangdong environment. See `staging` below.
+     * The configuration of a presetCanaryGuangdong environment. See `presetCanaryGuangdong` below.
      * 
      */
     @Import(name="presetCanaryGuangdong")
     private @Nullable Output<ErEnvConfPresetCanaryGuangdongArgs> presetCanaryGuangdong;
 
     /**
-     * @return The configuration of a presetCanaryGuangdong environment. See `staging` below.
+     * @return The configuration of a presetCanaryGuangdong environment. See `presetCanaryGuangdong` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryGuangdongArgs>> presetCanaryGuangdong() {
@@ -142,14 +142,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryGuangxi environment. See `staging` below.
+     * The configuration of a presetCanaryGuangxi environment. See `presetCanaryGuangxi` below.
      * 
      */
     @Import(name="presetCanaryGuangxi")
     private @Nullable Output<ErEnvConfPresetCanaryGuangxiArgs> presetCanaryGuangxi;
 
     /**
-     * @return The configuration of a presetCanaryGuangxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryGuangxi environment. See `presetCanaryGuangxi` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryGuangxiArgs>> presetCanaryGuangxi() {
@@ -157,14 +157,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryGuizhou environment. See `staging` below.
+     * The configuration of a presetCanaryGuizhou environment. See `presetCanaryGuizhou` below.
      * 
      */
     @Import(name="presetCanaryGuizhou")
     private @Nullable Output<ErEnvConfPresetCanaryGuizhouArgs> presetCanaryGuizhou;
 
     /**
-     * @return The configuration of a presetCanaryGuizhou environment. See `staging` below.
+     * @return The configuration of a presetCanaryGuizhou environment. See `presetCanaryGuizhou` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryGuizhouArgs>> presetCanaryGuizhou() {
@@ -172,14 +172,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryHainan environment. See `staging` below.
+     * The configuration of a presetCanaryHainan environment. See `presetCanaryHainan` below.
      * 
      */
     @Import(name="presetCanaryHainan")
     private @Nullable Output<ErEnvConfPresetCanaryHainanArgs> presetCanaryHainan;
 
     /**
-     * @return The configuration of a presetCanaryHainan environment. See `staging` below.
+     * @return The configuration of a presetCanaryHainan environment. See `presetCanaryHainan` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryHainanArgs>> presetCanaryHainan() {
@@ -187,14 +187,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryHebei environment. See `staging` below.
+     * The configuration of a presetCanaryHebei environment. See `presetCanaryHebei` below.
      * 
      */
     @Import(name="presetCanaryHebei")
     private @Nullable Output<ErEnvConfPresetCanaryHebeiArgs> presetCanaryHebei;
 
     /**
-     * @return The configuration of a presetCanaryHebei environment. See `staging` below.
+     * @return The configuration of a presetCanaryHebei environment. See `presetCanaryHebei` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryHebeiArgs>> presetCanaryHebei() {
@@ -202,14 +202,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+     * The configuration of a presetCanaryHeilongjiang environment. See `presetCanaryHeilongjiang` below.
      * 
      */
     @Import(name="presetCanaryHeilongjiang")
     private @Nullable Output<ErEnvConfPresetCanaryHeilongjiangArgs> presetCanaryHeilongjiang;
 
     /**
-     * @return The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+     * @return The configuration of a presetCanaryHeilongjiang environment. See `presetCanaryHeilongjiang` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryHeilongjiangArgs>> presetCanaryHeilongjiang() {
@@ -217,14 +217,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryHenan environment. See `staging` below.
+     * The configuration of a presetCanaryHenan environment. See `presetCanaryHenan` below.
      * 
      */
     @Import(name="presetCanaryHenan")
     private @Nullable Output<ErEnvConfPresetCanaryHenanArgs> presetCanaryHenan;
 
     /**
-     * @return The configuration of a presetCanaryHenan environment. See `staging` below.
+     * @return The configuration of a presetCanaryHenan environment. See `presetCanaryHenan` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryHenanArgs>> presetCanaryHenan() {
@@ -232,14 +232,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryHongKong environment. See `staging` below.
+     * The configuration of a presetCanaryHongKong environment. See `presetCanaryHongKong` below.
      * 
      */
     @Import(name="presetCanaryHongKong")
     private @Nullable Output<ErEnvConfPresetCanaryHongKongArgs> presetCanaryHongKong;
 
     /**
-     * @return The configuration of a presetCanaryHongKong environment. See `staging` below.
+     * @return The configuration of a presetCanaryHongKong environment. See `presetCanaryHongKong` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryHongKongArgs>> presetCanaryHongKong() {
@@ -247,14 +247,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryHubei environment. See `staging` below.
+     * The configuration of a presetCanaryHubei environment. See `presetCanaryHubei` below.
      * 
      */
     @Import(name="presetCanaryHubei")
     private @Nullable Output<ErEnvConfPresetCanaryHubeiArgs> presetCanaryHubei;
 
     /**
-     * @return The configuration of a presetCanaryHubei environment. See `staging` below.
+     * @return The configuration of a presetCanaryHubei environment. See `presetCanaryHubei` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryHubeiArgs>> presetCanaryHubei() {
@@ -262,14 +262,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryHunan environment. See `staging` below.
+     * The configuration of a presetCanaryHunan environment. See `presetCanaryHunan` below.
      * 
      */
     @Import(name="presetCanaryHunan")
     private @Nullable Output<ErEnvConfPresetCanaryHunanArgs> presetCanaryHunan;
 
     /**
-     * @return The configuration of a presetCanaryHunan environment. See `staging` below.
+     * @return The configuration of a presetCanaryHunan environment. See `presetCanaryHunan` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryHunanArgs>> presetCanaryHunan() {
@@ -277,14 +277,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryJiangsu environment. See `staging` below.
+     * The configuration of a presetCanaryJiangsu environment. See `presetCanaryJiangsu` below.
      * 
      */
     @Import(name="presetCanaryJiangsu")
     private @Nullable Output<ErEnvConfPresetCanaryJiangsuArgs> presetCanaryJiangsu;
 
     /**
-     * @return The configuration of a presetCanaryJiangsu environment. See `staging` below.
+     * @return The configuration of a presetCanaryJiangsu environment. See `presetCanaryJiangsu` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryJiangsuArgs>> presetCanaryJiangsu() {
@@ -292,14 +292,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryJiangxi environment. See `staging` below.
+     * The configuration of a presetCanaryJiangxi environment. See `presetCanaryJiangxi` below.
      * 
      */
     @Import(name="presetCanaryJiangxi")
     private @Nullable Output<ErEnvConfPresetCanaryJiangxiArgs> presetCanaryJiangxi;
 
     /**
-     * @return The configuration of a presetCanaryJiangxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryJiangxi environment. See `presetCanaryJiangxi` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryJiangxiArgs>> presetCanaryJiangxi() {
@@ -307,14 +307,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryJilin environment. See `staging` below.
+     * The configuration of a presetCanaryJilin environment. See `presetCanaryJilin` below.
      * 
      */
     @Import(name="presetCanaryJilin")
     private @Nullable Output<ErEnvConfPresetCanaryJilinArgs> presetCanaryJilin;
 
     /**
-     * @return The configuration of a presetCanaryJilin environment. See `staging` below.
+     * @return The configuration of a presetCanaryJilin environment. See `presetCanaryJilin` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryJilinArgs>> presetCanaryJilin() {
@@ -322,14 +322,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryLiaoning environment. See `staging` below.
+     * The configuration of a presetCanaryLiaoning environment. See `presetCanaryLiaoning` below.
      * 
      */
     @Import(name="presetCanaryLiaoning")
     private @Nullable Output<ErEnvConfPresetCanaryLiaoningArgs> presetCanaryLiaoning;
 
     /**
-     * @return The configuration of a presetCanaryLiaoning environment. See `staging` below.
+     * @return The configuration of a presetCanaryLiaoning environment. See `presetCanaryLiaoning` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryLiaoningArgs>> presetCanaryLiaoning() {
@@ -337,14 +337,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryMacau environment. See `staging` below.
+     * The configuration of a presetCanaryMacau environment. See `presetCanaryMacau` below.
      * 
      */
     @Import(name="presetCanaryMacau")
     private @Nullable Output<ErEnvConfPresetCanaryMacauArgs> presetCanaryMacau;
 
     /**
-     * @return The configuration of a presetCanaryMacau environment. See `staging` below.
+     * @return The configuration of a presetCanaryMacau environment. See `presetCanaryMacau` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryMacauArgs>> presetCanaryMacau() {
@@ -352,14 +352,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+     * The configuration of a presetCanaryNeimenggu environment. See `presetCanaryNeimenggu` below.
      * 
      */
     @Import(name="presetCanaryNeimenggu")
     private @Nullable Output<ErEnvConfPresetCanaryNeimengguArgs> presetCanaryNeimenggu;
 
     /**
-     * @return The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+     * @return The configuration of a presetCanaryNeimenggu environment. See `presetCanaryNeimenggu` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryNeimengguArgs>> presetCanaryNeimenggu() {
@@ -367,14 +367,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryNingxia environment. See `staging` below.
+     * The configuration of a presetCanaryNingxia environment. See `presetCanaryNingxia` below.
      * 
      */
     @Import(name="presetCanaryNingxia")
     private @Nullable Output<ErEnvConfPresetCanaryNingxiaArgs> presetCanaryNingxia;
 
     /**
-     * @return The configuration of a presetCanaryNingxia environment. See `staging` below.
+     * @return The configuration of a presetCanaryNingxia environment. See `presetCanaryNingxia` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryNingxiaArgs>> presetCanaryNingxia() {
@@ -382,14 +382,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryOverseas environment. See `staging` below.
+     * The configuration of a presetCanaryOverseas environment. See `presetCanaryOverseas` below.
      * 
      */
     @Import(name="presetCanaryOverseas")
     private @Nullable Output<ErEnvConfPresetCanaryOverseasArgs> presetCanaryOverseas;
 
     /**
-     * @return The configuration of a presetCanaryOverseas environment. See `staging` below.
+     * @return The configuration of a presetCanaryOverseas environment. See `presetCanaryOverseas` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryOverseasArgs>> presetCanaryOverseas() {
@@ -397,14 +397,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryQinghai environment. See `staging` below.
+     * The configuration of a presetCanaryQinghai environment. See `presetCanaryQinghai` below.
      * 
      */
     @Import(name="presetCanaryQinghai")
     private @Nullable Output<ErEnvConfPresetCanaryQinghaiArgs> presetCanaryQinghai;
 
     /**
-     * @return The configuration of a presetCanaryQinghai environment. See `staging` below.
+     * @return The configuration of a presetCanaryQinghai environment. See `presetCanaryQinghai` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryQinghaiArgs>> presetCanaryQinghai() {
@@ -412,14 +412,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryShaanxi environment. See `staging` below.
+     * The configuration of a presetCanaryShaanxi environment. See `presetCanaryShaanxi` below.
      * 
      */
     @Import(name="presetCanaryShaanxi")
     private @Nullable Output<ErEnvConfPresetCanaryShaanxiArgs> presetCanaryShaanxi;
 
     /**
-     * @return The configuration of a presetCanaryShaanxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryShaanxi environment. See `presetCanaryShaanxi` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryShaanxiArgs>> presetCanaryShaanxi() {
@@ -427,14 +427,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryShandong environment. See `staging` below.
+     * The configuration of a presetCanaryShandong environment. See `presetCanaryShandong` below.
      * 
      */
     @Import(name="presetCanaryShandong")
     private @Nullable Output<ErEnvConfPresetCanaryShandongArgs> presetCanaryShandong;
 
     /**
-     * @return The configuration of a presetCanaryShandong environment. See `staging` below.
+     * @return The configuration of a presetCanaryShandong environment. See `presetCanaryShandong` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryShandongArgs>> presetCanaryShandong() {
@@ -442,14 +442,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryShanghai environment. See `staging` below.
+     * The configuration of a presetCanaryShanghai environment. See `presetCanaryShanghai` below.
      * 
      */
     @Import(name="presetCanaryShanghai")
     private @Nullable Output<ErEnvConfPresetCanaryShanghaiArgs> presetCanaryShanghai;
 
     /**
-     * @return The configuration of a presetCanaryShanghai environment. See `staging` below.
+     * @return The configuration of a presetCanaryShanghai environment. See `presetCanaryShanghai` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryShanghaiArgs>> presetCanaryShanghai() {
@@ -457,14 +457,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryShanxi environment. See `staging` below.
+     * The configuration of a presetCanaryShanxi environment. See `presetCanaryShanxi` below.
      * 
      */
     @Import(name="presetCanaryShanxi")
     private @Nullable Output<ErEnvConfPresetCanaryShanxiArgs> presetCanaryShanxi;
 
     /**
-     * @return The configuration of a presetCanaryShanxi environment. See `staging` below.
+     * @return The configuration of a presetCanaryShanxi environment. See `presetCanaryShanxi` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryShanxiArgs>> presetCanaryShanxi() {
@@ -472,14 +472,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanarySichuan environment. See `staging` below.
+     * The configuration of a presetCanarySichuan environment. See `presetCanarySichuan` below.
      * 
      */
     @Import(name="presetCanarySichuan")
     private @Nullable Output<ErEnvConfPresetCanarySichuanArgs> presetCanarySichuan;
 
     /**
-     * @return The configuration of a presetCanarySichuan environment. See `staging` below.
+     * @return The configuration of a presetCanarySichuan environment. See `presetCanarySichuan` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanarySichuanArgs>> presetCanarySichuan() {
@@ -487,14 +487,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryTaiwan environment. See `staging` below.
+     * The configuration of a presetCanaryTaiwan environment. See `presetCanaryTaiwan` below.
      * 
      */
     @Import(name="presetCanaryTaiwan")
     private @Nullable Output<ErEnvConfPresetCanaryTaiwanArgs> presetCanaryTaiwan;
 
     /**
-     * @return The configuration of a presetCanaryTaiwan environment. See `staging` below.
+     * @return The configuration of a presetCanaryTaiwan environment. See `presetCanaryTaiwan` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryTaiwanArgs>> presetCanaryTaiwan() {
@@ -502,14 +502,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryTianjin environment. See `staging` below.
+     * The configuration of a presetCanaryTianjin environment. See `presetCanaryTianjin` below.
      * 
      */
     @Import(name="presetCanaryTianjin")
     private @Nullable Output<ErEnvConfPresetCanaryTianjinArgs> presetCanaryTianjin;
 
     /**
-     * @return The configuration of a presetCanaryTianjin environment. See `staging` below.
+     * @return The configuration of a presetCanaryTianjin environment. See `presetCanaryTianjin` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryTianjinArgs>> presetCanaryTianjin() {
@@ -517,14 +517,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryXinjiang environment. See `staging` below.
+     * The configuration of a presetCanaryXinjiang environment. See `presetCanaryXinjiang` below.
      * 
      */
     @Import(name="presetCanaryXinjiang")
     private @Nullable Output<ErEnvConfPresetCanaryXinjiangArgs> presetCanaryXinjiang;
 
     /**
-     * @return The configuration of a presetCanaryXinjiang environment. See `staging` below.
+     * @return The configuration of a presetCanaryXinjiang environment. See `presetCanaryXinjiang` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryXinjiangArgs>> presetCanaryXinjiang() {
@@ -532,14 +532,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryXizang environment. See `staging` below.
+     * The configuration of a presetCanaryXizang environment. See `presetCanaryXizang` below.
      * 
      */
     @Import(name="presetCanaryXizang")
     private @Nullable Output<ErEnvConfPresetCanaryXizangArgs> presetCanaryXizang;
 
     /**
-     * @return The configuration of a presetCanaryXizang environment. See `staging` below.
+     * @return The configuration of a presetCanaryXizang environment. See `presetCanaryXizang` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryXizangArgs>> presetCanaryXizang() {
@@ -547,14 +547,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryYunnan environment. See `staging` below.
+     * The configuration of a presetCanaryYunnan environment. See `presetCanaryYunnan` below.
      * 
      */
     @Import(name="presetCanaryYunnan")
     private @Nullable Output<ErEnvConfPresetCanaryYunnanArgs> presetCanaryYunnan;
 
     /**
-     * @return The configuration of a presetCanaryYunnan environment. See `staging` below.
+     * @return The configuration of a presetCanaryYunnan environment. See `presetCanaryYunnan` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryYunnanArgs>> presetCanaryYunnan() {
@@ -562,14 +562,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a presetCanaryZhejiang environment. See `staging` below.
+     * The configuration of a presetCanaryZhejiang environment. See `presetCanaryZhejiang` below.
      * 
      */
     @Import(name="presetCanaryZhejiang")
     private @Nullable Output<ErEnvConfPresetCanaryZhejiangArgs> presetCanaryZhejiang;
 
     /**
-     * @return The configuration of a presetCanaryZhejiang environment. See `staging` below.
+     * @return The configuration of a presetCanaryZhejiang environment. See `presetCanaryZhejiang` below.
      * 
      */
     public Optional<Output<ErEnvConfPresetCanaryZhejiangArgs>> presetCanaryZhejiang() {
@@ -577,14 +577,14 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of a production environment. See `staging` below.
+     * The configuration of a production environment. See `production` below.
      * 
      */
     @Import(name="production")
     private @Nullable Output<ErEnvConfProductionArgs> production;
 
     /**
-     * @return The configuration of a production environment. See `staging` below.
+     * @return The configuration of a production environment. See `production` below.
      * 
      */
     public Optional<Output<ErEnvConfProductionArgs>> production() {
@@ -667,7 +667,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryAnhui The configuration of a presetCanaryAnhui environment. See `staging` below.
+         * @param presetCanaryAnhui The configuration of a presetCanaryAnhui environment. See `presetCanaryAnhui` below.
          * 
          * @return builder
          * 
@@ -678,7 +678,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryAnhui The configuration of a presetCanaryAnhui environment. See `staging` below.
+         * @param presetCanaryAnhui The configuration of a presetCanaryAnhui environment. See `presetCanaryAnhui` below.
          * 
          * @return builder
          * 
@@ -688,7 +688,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryBeijing The configuration of a presetCanaryBeijing environment. See `staging` below.
+         * @param presetCanaryBeijing The configuration of a presetCanaryBeijing environment. See `presetCanaryBeijing` below.
          * 
          * @return builder
          * 
@@ -699,7 +699,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryBeijing The configuration of a presetCanaryBeijing environment. See `staging` below.
+         * @param presetCanaryBeijing The configuration of a presetCanaryBeijing environment. See `presetCanaryBeijing` below.
          * 
          * @return builder
          * 
@@ -709,7 +709,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryChongqing The configuration of a presetCanaryChongqing environment. See `staging` below.
+         * @param presetCanaryChongqing The configuration of a presetCanaryChongqing environment. See `presetCanaryChongqing` below.
          * 
          * @return builder
          * 
@@ -720,7 +720,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryChongqing The configuration of a presetCanaryChongqing environment. See `staging` below.
+         * @param presetCanaryChongqing The configuration of a presetCanaryChongqing environment. See `presetCanaryChongqing` below.
          * 
          * @return builder
          * 
@@ -730,7 +730,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryFujian The configuration of a presetCanaryFujian environment. See `staging` below.
+         * @param presetCanaryFujian The configuration of a presetCanaryFujian environment. See `presetCanaryFujian` below.
          * 
          * @return builder
          * 
@@ -741,7 +741,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryFujian The configuration of a presetCanaryFujian environment. See `staging` below.
+         * @param presetCanaryFujian The configuration of a presetCanaryFujian environment. See `presetCanaryFujian` below.
          * 
          * @return builder
          * 
@@ -751,7 +751,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryGansu The configuration of a presetCanaryGansu environment. See `staging` below.
+         * @param presetCanaryGansu The configuration of a presetCanaryGansu environment. See `presetCanaryGansu` below.
          * 
          * @return builder
          * 
@@ -762,7 +762,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryGansu The configuration of a presetCanaryGansu environment. See `staging` below.
+         * @param presetCanaryGansu The configuration of a presetCanaryGansu environment. See `presetCanaryGansu` below.
          * 
          * @return builder
          * 
@@ -772,7 +772,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryGuangdong The configuration of a presetCanaryGuangdong environment. See `staging` below.
+         * @param presetCanaryGuangdong The configuration of a presetCanaryGuangdong environment. See `presetCanaryGuangdong` below.
          * 
          * @return builder
          * 
@@ -783,7 +783,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryGuangdong The configuration of a presetCanaryGuangdong environment. See `staging` below.
+         * @param presetCanaryGuangdong The configuration of a presetCanaryGuangdong environment. See `presetCanaryGuangdong` below.
          * 
          * @return builder
          * 
@@ -793,7 +793,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryGuangxi The configuration of a presetCanaryGuangxi environment. See `staging` below.
+         * @param presetCanaryGuangxi The configuration of a presetCanaryGuangxi environment. See `presetCanaryGuangxi` below.
          * 
          * @return builder
          * 
@@ -804,7 +804,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryGuangxi The configuration of a presetCanaryGuangxi environment. See `staging` below.
+         * @param presetCanaryGuangxi The configuration of a presetCanaryGuangxi environment. See `presetCanaryGuangxi` below.
          * 
          * @return builder
          * 
@@ -814,7 +814,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryGuizhou The configuration of a presetCanaryGuizhou environment. See `staging` below.
+         * @param presetCanaryGuizhou The configuration of a presetCanaryGuizhou environment. See `presetCanaryGuizhou` below.
          * 
          * @return builder
          * 
@@ -825,7 +825,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryGuizhou The configuration of a presetCanaryGuizhou environment. See `staging` below.
+         * @param presetCanaryGuizhou The configuration of a presetCanaryGuizhou environment. See `presetCanaryGuizhou` below.
          * 
          * @return builder
          * 
@@ -835,7 +835,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHainan The configuration of a presetCanaryHainan environment. See `staging` below.
+         * @param presetCanaryHainan The configuration of a presetCanaryHainan environment. See `presetCanaryHainan` below.
          * 
          * @return builder
          * 
@@ -846,7 +846,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHainan The configuration of a presetCanaryHainan environment. See `staging` below.
+         * @param presetCanaryHainan The configuration of a presetCanaryHainan environment. See `presetCanaryHainan` below.
          * 
          * @return builder
          * 
@@ -856,7 +856,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHebei The configuration of a presetCanaryHebei environment. See `staging` below.
+         * @param presetCanaryHebei The configuration of a presetCanaryHebei environment. See `presetCanaryHebei` below.
          * 
          * @return builder
          * 
@@ -867,7 +867,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHebei The configuration of a presetCanaryHebei environment. See `staging` below.
+         * @param presetCanaryHebei The configuration of a presetCanaryHebei environment. See `presetCanaryHebei` below.
          * 
          * @return builder
          * 
@@ -877,7 +877,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHeilongjiang The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+         * @param presetCanaryHeilongjiang The configuration of a presetCanaryHeilongjiang environment. See `presetCanaryHeilongjiang` below.
          * 
          * @return builder
          * 
@@ -888,7 +888,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHeilongjiang The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+         * @param presetCanaryHeilongjiang The configuration of a presetCanaryHeilongjiang environment. See `presetCanaryHeilongjiang` below.
          * 
          * @return builder
          * 
@@ -898,7 +898,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHenan The configuration of a presetCanaryHenan environment. See `staging` below.
+         * @param presetCanaryHenan The configuration of a presetCanaryHenan environment. See `presetCanaryHenan` below.
          * 
          * @return builder
          * 
@@ -909,7 +909,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHenan The configuration of a presetCanaryHenan environment. See `staging` below.
+         * @param presetCanaryHenan The configuration of a presetCanaryHenan environment. See `presetCanaryHenan` below.
          * 
          * @return builder
          * 
@@ -919,7 +919,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHongKong The configuration of a presetCanaryHongKong environment. See `staging` below.
+         * @param presetCanaryHongKong The configuration of a presetCanaryHongKong environment. See `presetCanaryHongKong` below.
          * 
          * @return builder
          * 
@@ -930,7 +930,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHongKong The configuration of a presetCanaryHongKong environment. See `staging` below.
+         * @param presetCanaryHongKong The configuration of a presetCanaryHongKong environment. See `presetCanaryHongKong` below.
          * 
          * @return builder
          * 
@@ -940,7 +940,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHubei The configuration of a presetCanaryHubei environment. See `staging` below.
+         * @param presetCanaryHubei The configuration of a presetCanaryHubei environment. See `presetCanaryHubei` below.
          * 
          * @return builder
          * 
@@ -951,7 +951,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHubei The configuration of a presetCanaryHubei environment. See `staging` below.
+         * @param presetCanaryHubei The configuration of a presetCanaryHubei environment. See `presetCanaryHubei` below.
          * 
          * @return builder
          * 
@@ -961,7 +961,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHunan The configuration of a presetCanaryHunan environment. See `staging` below.
+         * @param presetCanaryHunan The configuration of a presetCanaryHunan environment. See `presetCanaryHunan` below.
          * 
          * @return builder
          * 
@@ -972,7 +972,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryHunan The configuration of a presetCanaryHunan environment. See `staging` below.
+         * @param presetCanaryHunan The configuration of a presetCanaryHunan environment. See `presetCanaryHunan` below.
          * 
          * @return builder
          * 
@@ -982,7 +982,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryJiangsu The configuration of a presetCanaryJiangsu environment. See `staging` below.
+         * @param presetCanaryJiangsu The configuration of a presetCanaryJiangsu environment. See `presetCanaryJiangsu` below.
          * 
          * @return builder
          * 
@@ -993,7 +993,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryJiangsu The configuration of a presetCanaryJiangsu environment. See `staging` below.
+         * @param presetCanaryJiangsu The configuration of a presetCanaryJiangsu environment. See `presetCanaryJiangsu` below.
          * 
          * @return builder
          * 
@@ -1003,7 +1003,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryJiangxi The configuration of a presetCanaryJiangxi environment. See `staging` below.
+         * @param presetCanaryJiangxi The configuration of a presetCanaryJiangxi environment. See `presetCanaryJiangxi` below.
          * 
          * @return builder
          * 
@@ -1014,7 +1014,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryJiangxi The configuration of a presetCanaryJiangxi environment. See `staging` below.
+         * @param presetCanaryJiangxi The configuration of a presetCanaryJiangxi environment. See `presetCanaryJiangxi` below.
          * 
          * @return builder
          * 
@@ -1024,7 +1024,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryJilin The configuration of a presetCanaryJilin environment. See `staging` below.
+         * @param presetCanaryJilin The configuration of a presetCanaryJilin environment. See `presetCanaryJilin` below.
          * 
          * @return builder
          * 
@@ -1035,7 +1035,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryJilin The configuration of a presetCanaryJilin environment. See `staging` below.
+         * @param presetCanaryJilin The configuration of a presetCanaryJilin environment. See `presetCanaryJilin` below.
          * 
          * @return builder
          * 
@@ -1045,7 +1045,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryLiaoning The configuration of a presetCanaryLiaoning environment. See `staging` below.
+         * @param presetCanaryLiaoning The configuration of a presetCanaryLiaoning environment. See `presetCanaryLiaoning` below.
          * 
          * @return builder
          * 
@@ -1056,7 +1056,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryLiaoning The configuration of a presetCanaryLiaoning environment. See `staging` below.
+         * @param presetCanaryLiaoning The configuration of a presetCanaryLiaoning environment. See `presetCanaryLiaoning` below.
          * 
          * @return builder
          * 
@@ -1066,7 +1066,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryMacau The configuration of a presetCanaryMacau environment. See `staging` below.
+         * @param presetCanaryMacau The configuration of a presetCanaryMacau environment. See `presetCanaryMacau` below.
          * 
          * @return builder
          * 
@@ -1077,7 +1077,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryMacau The configuration of a presetCanaryMacau environment. See `staging` below.
+         * @param presetCanaryMacau The configuration of a presetCanaryMacau environment. See `presetCanaryMacau` below.
          * 
          * @return builder
          * 
@@ -1087,7 +1087,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryNeimenggu The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+         * @param presetCanaryNeimenggu The configuration of a presetCanaryNeimenggu environment. See `presetCanaryNeimenggu` below.
          * 
          * @return builder
          * 
@@ -1098,7 +1098,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryNeimenggu The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+         * @param presetCanaryNeimenggu The configuration of a presetCanaryNeimenggu environment. See `presetCanaryNeimenggu` below.
          * 
          * @return builder
          * 
@@ -1108,7 +1108,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryNingxia The configuration of a presetCanaryNingxia environment. See `staging` below.
+         * @param presetCanaryNingxia The configuration of a presetCanaryNingxia environment. See `presetCanaryNingxia` below.
          * 
          * @return builder
          * 
@@ -1119,7 +1119,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryNingxia The configuration of a presetCanaryNingxia environment. See `staging` below.
+         * @param presetCanaryNingxia The configuration of a presetCanaryNingxia environment. See `presetCanaryNingxia` below.
          * 
          * @return builder
          * 
@@ -1129,7 +1129,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryOverseas The configuration of a presetCanaryOverseas environment. See `staging` below.
+         * @param presetCanaryOverseas The configuration of a presetCanaryOverseas environment. See `presetCanaryOverseas` below.
          * 
          * @return builder
          * 
@@ -1140,7 +1140,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryOverseas The configuration of a presetCanaryOverseas environment. See `staging` below.
+         * @param presetCanaryOverseas The configuration of a presetCanaryOverseas environment. See `presetCanaryOverseas` below.
          * 
          * @return builder
          * 
@@ -1150,7 +1150,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryQinghai The configuration of a presetCanaryQinghai environment. See `staging` below.
+         * @param presetCanaryQinghai The configuration of a presetCanaryQinghai environment. See `presetCanaryQinghai` below.
          * 
          * @return builder
          * 
@@ -1161,7 +1161,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryQinghai The configuration of a presetCanaryQinghai environment. See `staging` below.
+         * @param presetCanaryQinghai The configuration of a presetCanaryQinghai environment. See `presetCanaryQinghai` below.
          * 
          * @return builder
          * 
@@ -1171,7 +1171,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryShaanxi The configuration of a presetCanaryShaanxi environment. See `staging` below.
+         * @param presetCanaryShaanxi The configuration of a presetCanaryShaanxi environment. See `presetCanaryShaanxi` below.
          * 
          * @return builder
          * 
@@ -1182,7 +1182,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryShaanxi The configuration of a presetCanaryShaanxi environment. See `staging` below.
+         * @param presetCanaryShaanxi The configuration of a presetCanaryShaanxi environment. See `presetCanaryShaanxi` below.
          * 
          * @return builder
          * 
@@ -1192,7 +1192,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryShandong The configuration of a presetCanaryShandong environment. See `staging` below.
+         * @param presetCanaryShandong The configuration of a presetCanaryShandong environment. See `presetCanaryShandong` below.
          * 
          * @return builder
          * 
@@ -1203,7 +1203,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryShandong The configuration of a presetCanaryShandong environment. See `staging` below.
+         * @param presetCanaryShandong The configuration of a presetCanaryShandong environment. See `presetCanaryShandong` below.
          * 
          * @return builder
          * 
@@ -1213,7 +1213,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryShanghai The configuration of a presetCanaryShanghai environment. See `staging` below.
+         * @param presetCanaryShanghai The configuration of a presetCanaryShanghai environment. See `presetCanaryShanghai` below.
          * 
          * @return builder
          * 
@@ -1224,7 +1224,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryShanghai The configuration of a presetCanaryShanghai environment. See `staging` below.
+         * @param presetCanaryShanghai The configuration of a presetCanaryShanghai environment. See `presetCanaryShanghai` below.
          * 
          * @return builder
          * 
@@ -1234,7 +1234,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryShanxi The configuration of a presetCanaryShanxi environment. See `staging` below.
+         * @param presetCanaryShanxi The configuration of a presetCanaryShanxi environment. See `presetCanaryShanxi` below.
          * 
          * @return builder
          * 
@@ -1245,7 +1245,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryShanxi The configuration of a presetCanaryShanxi environment. See `staging` below.
+         * @param presetCanaryShanxi The configuration of a presetCanaryShanxi environment. See `presetCanaryShanxi` below.
          * 
          * @return builder
          * 
@@ -1255,7 +1255,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanarySichuan The configuration of a presetCanarySichuan environment. See `staging` below.
+         * @param presetCanarySichuan The configuration of a presetCanarySichuan environment. See `presetCanarySichuan` below.
          * 
          * @return builder
          * 
@@ -1266,7 +1266,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanarySichuan The configuration of a presetCanarySichuan environment. See `staging` below.
+         * @param presetCanarySichuan The configuration of a presetCanarySichuan environment. See `presetCanarySichuan` below.
          * 
          * @return builder
          * 
@@ -1276,7 +1276,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryTaiwan The configuration of a presetCanaryTaiwan environment. See `staging` below.
+         * @param presetCanaryTaiwan The configuration of a presetCanaryTaiwan environment. See `presetCanaryTaiwan` below.
          * 
          * @return builder
          * 
@@ -1287,7 +1287,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryTaiwan The configuration of a presetCanaryTaiwan environment. See `staging` below.
+         * @param presetCanaryTaiwan The configuration of a presetCanaryTaiwan environment. See `presetCanaryTaiwan` below.
          * 
          * @return builder
          * 
@@ -1297,7 +1297,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryTianjin The configuration of a presetCanaryTianjin environment. See `staging` below.
+         * @param presetCanaryTianjin The configuration of a presetCanaryTianjin environment. See `presetCanaryTianjin` below.
          * 
          * @return builder
          * 
@@ -1308,7 +1308,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryTianjin The configuration of a presetCanaryTianjin environment. See `staging` below.
+         * @param presetCanaryTianjin The configuration of a presetCanaryTianjin environment. See `presetCanaryTianjin` below.
          * 
          * @return builder
          * 
@@ -1318,7 +1318,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryXinjiang The configuration of a presetCanaryXinjiang environment. See `staging` below.
+         * @param presetCanaryXinjiang The configuration of a presetCanaryXinjiang environment. See `presetCanaryXinjiang` below.
          * 
          * @return builder
          * 
@@ -1329,7 +1329,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryXinjiang The configuration of a presetCanaryXinjiang environment. See `staging` below.
+         * @param presetCanaryXinjiang The configuration of a presetCanaryXinjiang environment. See `presetCanaryXinjiang` below.
          * 
          * @return builder
          * 
@@ -1339,7 +1339,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryXizang The configuration of a presetCanaryXizang environment. See `staging` below.
+         * @param presetCanaryXizang The configuration of a presetCanaryXizang environment. See `presetCanaryXizang` below.
          * 
          * @return builder
          * 
@@ -1350,7 +1350,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryXizang The configuration of a presetCanaryXizang environment. See `staging` below.
+         * @param presetCanaryXizang The configuration of a presetCanaryXizang environment. See `presetCanaryXizang` below.
          * 
          * @return builder
          * 
@@ -1360,7 +1360,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryYunnan The configuration of a presetCanaryYunnan environment. See `staging` below.
+         * @param presetCanaryYunnan The configuration of a presetCanaryYunnan environment. See `presetCanaryYunnan` below.
          * 
          * @return builder
          * 
@@ -1371,7 +1371,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryYunnan The configuration of a presetCanaryYunnan environment. See `staging` below.
+         * @param presetCanaryYunnan The configuration of a presetCanaryYunnan environment. See `presetCanaryYunnan` below.
          * 
          * @return builder
          * 
@@ -1381,7 +1381,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryZhejiang The configuration of a presetCanaryZhejiang environment. See `staging` below.
+         * @param presetCanaryZhejiang The configuration of a presetCanaryZhejiang environment. See `presetCanaryZhejiang` below.
          * 
          * @return builder
          * 
@@ -1392,7 +1392,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param presetCanaryZhejiang The configuration of a presetCanaryZhejiang environment. See `staging` below.
+         * @param presetCanaryZhejiang The configuration of a presetCanaryZhejiang environment. See `presetCanaryZhejiang` below.
          * 
          * @return builder
          * 
@@ -1402,7 +1402,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param production The configuration of a production environment. See `staging` below.
+         * @param production The configuration of a production environment. See `production` below.
          * 
          * @return builder
          * 
@@ -1413,7 +1413,7 @@ public final class ErEnvConfArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param production The configuration of a production environment. See `staging` below.
+         * @param production The configuration of a production environment. See `production` below.
          * 
          * @return builder
          * 

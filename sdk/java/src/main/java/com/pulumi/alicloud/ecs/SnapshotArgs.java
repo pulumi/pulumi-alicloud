@@ -19,9 +19,17 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SnapshotArgs Empty = new SnapshotArgs();
 
+    /**
+     * The category of the snapshot. Valid values: `standard`, `flash`.
+     * 
+     */
     @Import(name="category")
     private @Nullable Output<String> category;
 
+    /**
+     * @return The category of the snapshot. Valid values: `standard`, `flash`.
+     * 
+     */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
     }
@@ -56,14 +64,24 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         return this.diskId;
     }
 
+    /**
+     * Whether to force delete the snapshot.
+     * 
+     */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
+    /**
+     * @return Whether to force delete the snapshot.
+     * 
+     */
     public Optional<Output<Boolean>> force() {
         return Optional.ofNullable(this.force);
     }
 
     /**
+     * Deprecated.
+     * 
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
@@ -72,6 +90,8 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> instantAccess;
 
     /**
+     * @return Deprecated.
+     * 
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      * 
      */
@@ -81,6 +101,8 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Deprecated.
+     * 
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
@@ -89,6 +111,8 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> instantAccessRetentionDays;
 
     /**
+     * @return Deprecated.
+     * 
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      * 
      */
@@ -98,7 +122,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      * 
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
@@ -109,7 +133,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * @return The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      * 
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
@@ -135,16 +159,32 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * The retention days of the snapshot.
+     * 
+     */
     @Import(name="retentionDays")
     private @Nullable Output<Integer> retentionDays;
 
+    /**
+     * @return The retention days of the snapshot.
+     * 
+     */
     public Optional<Output<Integer>> retentionDays() {
         return Optional.ofNullable(this.retentionDays);
     }
 
+    /**
+     * The name of the snapshot.
+     * 
+     */
     @Import(name="snapshotName")
     private @Nullable Output<String> snapshotName;
 
+    /**
+     * @return The name of the snapshot.
+     * 
+     */
     public Optional<Output<String>> snapshotName() {
         return Optional.ofNullable(this.snapshotName);
     }
@@ -164,9 +204,17 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+     * 
+     */
     @Import(name="waitUntil")
     private @Nullable Output<String> waitUntil;
 
+    /**
+     * @return Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+     * 
+     */
     public Optional<Output<String>> waitUntil() {
         return Optional.ofNullable(this.waitUntil);
     }
@@ -206,11 +254,23 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SnapshotArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param category The category of the snapshot. Valid values: `standard`, `flash`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder category(@Nullable Output<String> category) {
             $.category = category;
             return this;
         }
 
+        /**
+         * @param category The category of the snapshot. Valid values: `standard`, `flash`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder category(String category) {
             return category(Output.of(category));
         }
@@ -257,16 +317,30 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
             return diskId(Output.of(diskId));
         }
 
+        /**
+         * @param force Whether to force delete the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder force(@Nullable Output<Boolean> force) {
             $.force = force;
             return this;
         }
 
+        /**
+         * @param force Whether to force delete the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder force(Boolean force) {
             return force(Output.of(force));
         }
 
         /**
+         * @param instantAccess Deprecated.
+         * 
          * @return builder
          * 
          * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
@@ -279,6 +353,8 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param instantAccess Deprecated.
+         * 
          * @return builder
          * 
          * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
@@ -290,6 +366,8 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param instantAccessRetentionDays Deprecated.
+         * 
          * @return builder
          * 
          * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
@@ -302,6 +380,8 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param instantAccessRetentionDays Deprecated.
+         * 
          * @return builder
          * 
          * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
@@ -313,7 +393,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+         * @param name The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
          * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
          * 
          * @return builder
@@ -328,7 +408,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+         * @param name The name of the snapshot to be created. Deprecated, use `snapshotName` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
          * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
          * 
          * @return builder
@@ -362,20 +442,44 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param retentionDays The retention days of the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionDays(@Nullable Output<Integer> retentionDays) {
             $.retentionDays = retentionDays;
             return this;
         }
 
+        /**
+         * @param retentionDays The retention days of the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionDays(Integer retentionDays) {
             return retentionDays(Output.of(retentionDays));
         }
 
+        /**
+         * @param snapshotName The name of the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotName(@Nullable Output<String> snapshotName) {
             $.snapshotName = snapshotName;
             return this;
         }
 
+        /**
+         * @param snapshotName The name of the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotName(String snapshotName) {
             return snapshotName(Output.of(snapshotName));
         }
@@ -401,11 +505,23 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param waitUntil Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitUntil(@Nullable Output<String> waitUntil) {
             $.waitUntil = waitUntil;
             return this;
         }
 
+        /**
+         * @param waitUntil Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitUntil(String waitUntil) {
             return waitUntil(Output.of(waitUntil));
         }

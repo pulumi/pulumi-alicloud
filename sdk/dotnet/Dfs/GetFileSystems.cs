@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dfs
         /// <summary>
         /// This data source provides the Dfs File Systems of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Dfs
         /// <summary>
         /// This data source provides the Dfs File Systems of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Dfs
         /// <summary>
         /// This data source provides the Dfs File Systems of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -210,8 +210,14 @@ namespace Pulumi.AliCloud.Dfs
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of File System names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Dfs File Systems. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFileSystemsSystemResult> Systems;
 
         [OutputConstructor]

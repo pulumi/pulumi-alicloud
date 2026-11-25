@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Market product item details of Alibaba Cloud.
  *
- * > **NOTE:** Available in 1.69.0+
+ * > **NOTE:** Available since v1.69.0+
  *
  * ## Example Usage
  *
@@ -65,7 +65,7 @@ export interface GetProductResult {
 /**
  * This data source provides the Market product item details of Alibaba Cloud.
  *
- * > **NOTE:** Available in 1.69.0+
+ * > **NOTE:** Available since v1.69.0+
  *
  * ## Example Usage
  *

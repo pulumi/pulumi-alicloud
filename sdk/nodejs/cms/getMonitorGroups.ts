@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
  *
  * ## Example Usage
  *
@@ -79,6 +79,9 @@ export interface GetMonitorGroupsArgs {
      * The select contact groups.
      */
     selectContactGroups?: boolean;
+    /**
+     * A mapping of tags to filter the Cms Monitor Group.
+     */
     tags?: {[key: string]: string};
     /**
      * The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
@@ -90,7 +93,13 @@ export interface GetMonitorGroupsArgs {
  * A collection of values returned by getMonitorGroups.
  */
 export interface GetMonitorGroupsResult {
+    /**
+     * The ID of the tag rule.
+     */
     readonly dynamicTagRuleId?: string;
+    /**
+     * A list of Cms Monitor Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.cms.GetMonitorGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -99,18 +108,30 @@ export interface GetMonitorGroupsResult {
     readonly ids: string[];
     readonly includeTemplateHistory?: boolean;
     readonly keyword?: string;
+    /**
+     * The name of the application group.
+     */
     readonly monitorGroupName?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Monitor Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly selectContactGroups?: boolean;
+    /**
+     * A map of tags assigned to the Cms Monitor Group.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The type of the application group.
+     */
     readonly type?: string;
 }
 /**
  * This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
  *
  * ## Example Usage
  *
@@ -180,6 +201,9 @@ export interface GetMonitorGroupsOutputArgs {
      * The select contact groups.
      */
     selectContactGroups?: pulumi.Input<boolean | undefined>;
+    /**
+     * A mapping of tags to filter the Cms Monitor Group.
+     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.

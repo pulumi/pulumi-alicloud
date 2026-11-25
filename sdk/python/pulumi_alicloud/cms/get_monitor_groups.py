@@ -71,11 +71,17 @@ class GetMonitorGroupsResult:
     @_builtins.property
     @pulumi.getter(name="dynamicTagRuleId")
     def dynamic_tag_rule_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the tag rule.
+        """
         return pulumi.get(self, "dynamic_tag_rule_id")
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetMonitorGroupsGroupResult']:
+        """
+        A list of Cms Monitor Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -104,6 +110,9 @@ class GetMonitorGroupsResult:
     @_builtins.property
     @pulumi.getter(name="monitorGroupName")
     def monitor_group_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the application group.
+        """
         return pulumi.get(self, "monitor_group_name")
 
     @_builtins.property
@@ -114,6 +123,9 @@ class GetMonitorGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Monitor Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -129,11 +141,17 @@ class GetMonitorGroupsResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A map of tags assigned to the Cms Monitor Group.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
+        """
+        The type of the application group.
+        """
         return pulumi.get(self, "type")
 
 
@@ -172,7 +190,7 @@ def get_monitor_groups(dynamic_tag_rule_id: Optional[_builtins.str] = None,
     """
     This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
 
     ## Example Usage
 
@@ -196,6 +214,7 @@ def get_monitor_groups(dynamic_tag_rule_id: Optional[_builtins.str] = None,
     :param _builtins.str name_regex: A regex string to filter results by Monitor Group name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.bool select_contact_groups: The select contact groups.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to filter the Cms Monitor Group.
     :param _builtins.str type: The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
     """
     __args__ = dict()
@@ -240,7 +259,7 @@ def get_monitor_groups_output(dynamic_tag_rule_id: pulumi.Input[Optional[Optiona
     """
     This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.113.0+.
+    > **NOTE:** Available since v1.113.0.
 
     ## Example Usage
 
@@ -264,6 +283,7 @@ def get_monitor_groups_output(dynamic_tag_rule_id: pulumi.Input[Optional[Optiona
     :param _builtins.str name_regex: A regex string to filter results by Monitor Group name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.bool select_contact_groups: The select contact groups.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to filter the Cms Monitor Group.
     :param _builtins.str type: The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
     """
     __args__ = dict()

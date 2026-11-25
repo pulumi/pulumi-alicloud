@@ -37,6 +37,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         /// </summary>
         public readonly string OtsBackupPlanName;
+        /// <summary>
+        /// The details about the Tablestore instance.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOtsBackupPlansPlanOtsDetailResult> OtsDetails;
         /// <summary>
         /// The Backup retention days, the minimum is 1.
@@ -44,7 +47,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string Retention;
         /// <summary>
         /// The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
-        /// * `startTime` Backup start time, UNIX time seconds.
+        /// - `startTime` Backup start time, UNIX time seconds.
         /// </summary>
         public readonly string Schedule;
         /// <summary>
@@ -53,11 +56,10 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string SourceType;
         /// <summary>
         /// The update time of the backup plan. UNIX time in seconds.
-        /// *ots_detail - The details about the Tablestore instance.
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// The ID of backup vault.
+        /// The ID of backup vault the OtsBackupPlan used.
         /// </summary>
         public readonly string VaultId;
 

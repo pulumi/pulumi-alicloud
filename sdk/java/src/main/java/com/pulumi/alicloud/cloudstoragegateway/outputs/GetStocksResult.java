@@ -21,6 +21,10 @@ public final class GetStocksResult {
      */
     private String id;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Cloud Storage Gateway Stocks. Each element contains the following attributes:
+     * 
+     */
     private List<GetStocksStock> stocks;
 
     private GetStocksResult() {}
@@ -37,6 +41,10 @@ public final class GetStocksResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Cloud Storage Gateway Stocks. Each element contains the following attributes:
+     * 
+     */
     public List<GetStocksStock> stocks() {
         return this.stocks;
     }

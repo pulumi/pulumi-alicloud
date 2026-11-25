@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Hbr.Inputs
     public sealed class OtsBackupPlanRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup type. Valid values: `COMPLETE`.
+        /// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `True`, `False`. Default values: `False`.
+        /// Whether to disable the backup task. Valid values: true, false.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Backup retention days, the minimum is 1.
+        /// Backup retention days, the minimum is 1. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered. **Note:** Required while SourceType equals `OTS_TABLE`.
         /// - `startTime` Backup start time, UNIX time seconds.
         /// </summary>
         [Input("schedule")]

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the domain extensions associated with a server load balancer listener.
         /// 
-        /// &gt; **NOTE:** Available in 1.60.0+
+        /// &gt; **NOTE:** Available since v1.60.0
         /// 
         /// ## Example Usage
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the domain extensions associated with a server load balancer listener.
         /// 
-        /// &gt; **NOTE:** Available in 1.60.0+
+        /// &gt; **NOTE:** Available since v1.60.0
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the domain extensions associated with a server load balancer listener.
         /// 
-        /// &gt; **NOTE:** Available in 1.60.0+
+        /// &gt; **NOTE:** Available since v1.60.0
         /// 
         /// ## Example Usage
         /// 
@@ -132,6 +132,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("loadBalancerId", required: true)]
         public string LoadBalancerId { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -167,6 +170,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("loadBalancerId", required: true)]
         public Input<string> LoadBalancerId { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

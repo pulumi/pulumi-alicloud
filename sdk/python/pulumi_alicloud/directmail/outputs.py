@@ -13,13 +13,368 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'ConfigSetValidationOption',
+    'DedicatedIpPoolIp',
+    'GetConfigSetsSetResult',
+    'GetConfigSetsSetValidationOptionResult',
+    'GetDedicatedIpPoolsPoolResult',
+    'GetDedicatedIpPoolsPoolIpResult',
     'GetDomainsDomainResult',
     'GetMailAddressesAddressResult',
     'GetReceiversReceiverseResult',
     'GetTagsTagResult',
 ]
+
+@pulumi.output_type
+class ConfigSetValidationOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forbiddenStatusLists":
+            suggest = "forbidden_status_lists"
+        elif key == "forbiddenSubStatusLists":
+            suggest = "forbidden_sub_status_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigSetValidationOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigSetValidationOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigSetValidationOption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 forbidden_status_lists: Optional[Sequence[_builtins.str]] = None,
+                 forbidden_sub_status_lists: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.bool enabled: Whether the address validation feature is enabled. true: enabled (the BASIC_ONLY mode of the ValidateEmail API). false: disabled.
+        :param Sequence[_builtins.str] forbidden_status_lists: The list of address validation main statuses to block. Before sending, the system pre-validates the recipient address; messages whose validation main status matches this list are rejected. Valid values: `INVALID`, `CATCH_ALL`, `DO_NOT_MAIL`, `UNKNOWN`.
+        :param Sequence[_builtins.str] forbidden_sub_status_lists: The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses. Takes effect as a union with ForbiddenStatusList (a hit in either list blocks the message). Valid values: `NO_DNS_ENTRIES`, `MISSPELLED`, `DOES_NOT_ACCEPT_MAIL`, `MAILBOX_NOT_EXISTS`, `SYSTEM_ERROR`, `MX_FORWARD`, `SYNTAX_INVALID`, `ROLE_ACCOUNT`, `SMTP_CONNECT_FAILED`, `DISABLED`, `UNSPECIFIED`, `IP_UNROUTABLE`, `GRAY_LIST`, `MAILBOX_FULL`, `DISPOSABLE`, `TIMEOUT_EXCEEDED`.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if forbidden_status_lists is not None:
+            pulumi.set(__self__, "forbidden_status_lists", forbidden_status_lists)
+        if forbidden_sub_status_lists is not None:
+            pulumi.set(__self__, "forbidden_sub_status_lists", forbidden_sub_status_lists)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the address validation feature is enabled. true: enabled (the BASIC_ONLY mode of the ValidateEmail API). false: disabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="forbiddenStatusLists")
+    def forbidden_status_lists(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of address validation main statuses to block. Before sending, the system pre-validates the recipient address; messages whose validation main status matches this list are rejected. Valid values: `INVALID`, `CATCH_ALL`, `DO_NOT_MAIL`, `UNKNOWN`.
+        """
+        return pulumi.get(self, "forbidden_status_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="forbiddenSubStatusLists")
+    def forbidden_sub_status_lists(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses. Takes effect as a union with ForbiddenStatusList (a hit in either list blocks the message). Valid values: `NO_DNS_ENTRIES`, `MISSPELLED`, `DOES_NOT_ACCEPT_MAIL`, `MAILBOX_NOT_EXISTS`, `SYSTEM_ERROR`, `MX_FORWARD`, `SYNTAX_INVALID`, `ROLE_ACCOUNT`, `SMTP_CONNECT_FAILED`, `DISABLED`, `UNSPECIFIED`, `IP_UNROUTABLE`, `GRAY_LIST`, `MAILBOX_FULL`, `DISPOSABLE`, `TIMEOUT_EXCEEDED`.
+        """
+        return pulumi.get(self, "forbidden_sub_status_lists")
+
+
+@pulumi.output_type
+class DedicatedIpPoolIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "zoneId":
+            suggest = "zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DedicatedIpPoolIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DedicatedIpPoolIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DedicatedIpPoolIp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None,
+                 ip: Optional[_builtins.str] = None,
+                 zone_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+        :param _builtins.str ip: (Computed, String, Available since v2.2.0) The IP address.
+        :param _builtins.str zone_id: (Computed, String, Available since v2.2.0) The zone ID.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        (Computed, String, Available since v2.2.0) The IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[_builtins.str]:
+        """
+        (Computed, String, Available since v2.2.0) The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetConfigSetsSetResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 ip_pool_id: _builtins.str,
+                 ip_pool_name: _builtins.str,
+                 is_public_channel_backoff: _builtins.bool,
+                 name: _builtins.str,
+                 validation_options: Sequence['outputs.GetConfigSetsSetValidationOptionResult']):
+        """
+        :param _builtins.str description: (Computed, String, Available since v2.2.0) The description of the configuration set.
+        :param _builtins.str id: (Computed, String, Available since v2.2.0) The ID of the configuration set.
+        :param _builtins.str ip_pool_id: (Computed, String, Available since v2.2.0) The ID of the associated IP pool.
+        :param _builtins.str ip_pool_name: (Computed, String, Available since v2.2.0) The name of the associated IP pool.
+        :param _builtins.bool is_public_channel_backoff: (Computed, Bool, Available since v2.2.0) Whether to fall back to the public channel when the associated dedicated IP pool has problems.
+        :param _builtins.str name: (Computed, String, Available since v2.2.0) The name of the configuration set.
+        :param Sequence['GetConfigSetsSetValidationOptionArgs'] validation_options: (Computed, List, Available since v2.2.0) Address validation options:
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_pool_id", ip_pool_id)
+        pulumi.set(__self__, "ip_pool_name", ip_pool_name)
+        pulumi.set(__self__, "is_public_channel_backoff", is_public_channel_backoff)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "validation_options", validation_options)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The description of the configuration set.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The ID of the configuration set.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipPoolId")
+    def ip_pool_id(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The ID of the associated IP pool.
+        """
+        return pulumi.get(self, "ip_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipPoolName")
+    def ip_pool_name(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The name of the associated IP pool.
+        """
+        return pulumi.get(self, "ip_pool_name")
+
+    @_builtins.property
+    @pulumi.getter(name="isPublicChannelBackoff")
+    def is_public_channel_backoff(self) -> _builtins.bool:
+        """
+        (Computed, Bool, Available since v2.2.0) Whether to fall back to the public channel when the associated dedicated IP pool has problems.
+        """
+        return pulumi.get(self, "is_public_channel_backoff")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The name of the configuration set.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="validationOptions")
+    def validation_options(self) -> Sequence['outputs.GetConfigSetsSetValidationOptionResult']:
+        """
+        (Computed, List, Available since v2.2.0) Address validation options:
+        """
+        return pulumi.get(self, "validation_options")
+
+
+@pulumi.output_type
+class GetConfigSetsSetValidationOptionResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 forbidden_status_lists: Sequence[_builtins.str],
+                 forbidden_sub_status_lists: Sequence[_builtins.str]):
+        """
+        :param _builtins.bool enabled: (Computed, Bool, Available since v2.2.0) Whether the address validation feature is enabled.
+        :param Sequence[_builtins.str] forbidden_status_lists: (Computed, List, Available since v2.2.0) The list of address validation main statuses to block.
+        :param Sequence[_builtins.str] forbidden_sub_status_lists: (Computed, List, Available since v2.2.0) The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "forbidden_status_lists", forbidden_status_lists)
+        pulumi.set(__self__, "forbidden_sub_status_lists", forbidden_sub_status_lists)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        (Computed, Bool, Available since v2.2.0) Whether the address validation feature is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="forbiddenStatusLists")
+    def forbidden_status_lists(self) -> Sequence[_builtins.str]:
+        """
+        (Computed, List, Available since v2.2.0) The list of address validation main statuses to block.
+        """
+        return pulumi.get(self, "forbidden_status_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="forbiddenSubStatusLists")
+    def forbidden_sub_status_lists(self) -> Sequence[_builtins.str]:
+        """
+        (Computed, List, Available since v2.2.0) The list of address validation sub-statuses to block, providing finer-grained interception control than the main statuses.
+        """
+        return pulumi.get(self, "forbidden_sub_status_lists")
+
+
+@pulumi.output_type
+class GetDedicatedIpPoolsPoolResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 id: _builtins.str,
+                 ip_count: _builtins.int,
+                 ips: Sequence['outputs.GetDedicatedIpPoolsPoolIpResult'],
+                 name: _builtins.str):
+        """
+        :param _builtins.str create_time: (Computed, String, Available since v2.2.0) The creation time.
+        :param _builtins.str id: (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+        :param _builtins.int ip_count: (Computed, Int, Available since v2.2.0) The number of source IP addresses.
+        :param Sequence['GetDedicatedIpPoolsPoolIpArgs'] ips: (Computed, List, Available since v2.2.0) The list of IP addresses in the pool:
+        :param _builtins.str name: (Computed, String, Available since v2.2.0) The name of the IP pool.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_count", ip_count)
+        pulumi.set(__self__, "ips", ips)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipCount")
+    def ip_count(self) -> _builtins.int:
+        """
+        (Computed, Int, Available since v2.2.0) The number of source IP addresses.
+        """
+        return pulumi.get(self, "ip_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def ips(self) -> Sequence['outputs.GetDedicatedIpPoolsPoolIpResult']:
+        """
+        (Computed, List, Available since v2.2.0) The list of IP addresses in the pool:
+        """
+        return pulumi.get(self, "ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The name of the IP pool.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetDedicatedIpPoolsPoolIpResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 ip: _builtins.str,
+                 zone_id: _builtins.str):
+        """
+        :param _builtins.str id: (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+        :param _builtins.str ip: (Computed, String, Available since v2.2.0) The IP address.
+        :param _builtins.str zone_id: (Computed, String, Available since v2.2.0) The zone ID.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The ID of the purchased instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> _builtins.str:
+        """
+        (Computed, String, Available since v2.2.0) The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
 
 @pulumi.output_type
 class GetDomainsDomainResult(dict):
@@ -375,7 +730,7 @@ class GetMailAddressesAddressResult(dict):
         :param _builtins.str month_req_count: Months amount.
         :param _builtins.str reply_address: Return address.
         :param _builtins.str reply_status: If using STMP address status.
-        :param _builtins.str sendtype: Account type.
+        :param _builtins.str sendtype: Account type. Valid values: `batch`, `trigger`.
         :param _builtins.str status: Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
         """
         pulumi.set(__self__, "account_name", account_name)
@@ -484,7 +839,7 @@ class GetMailAddressesAddressResult(dict):
     @pulumi.getter
     def sendtype(self) -> _builtins.str:
         """
-        Account type.
+        Account type. Valid values: `batch`, `trigger`.
         """
         return pulumi.get(self, "sendtype")
 
@@ -514,7 +869,7 @@ class GetReceiversReceiverseResult(dict):
         :param _builtins.str receivers_alias: The Receivers Alias.
         :param _builtins.str receivers_id: The first ID of the resource.
         :param _builtins.str receivers_name: The name of the resource.
-        :param _builtins.int status: The status of the resource.
+        :param _builtins.int status: The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
@@ -576,7 +931,7 @@ class GetReceiversReceiverseResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.int:
         """
-        The status of the resource.
+        The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
         """
         return pulumi.get(self, "status")
 

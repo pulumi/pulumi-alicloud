@@ -41,6 +41,9 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// Description of the CEN Bandwidth Package.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The expiration time of the CEN Bandwidth Package.
+        /// </summary>
         public readonly string ExpiredTime;
         /// <summary>
         /// Region ID of the interconnected regions.

@@ -162,7 +162,7 @@ import (
 //				}
 //				vsw = append(vsw, __res)
 //			}
-//			_default, err := vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
+//			_, err = vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
 //				Ipv6GatewayName: pulumi.String(name),
 //				VpcId:           vpc2.ID(),
 //			})
@@ -191,9 +191,7 @@ import (
 //						ZoneId:    pulumi.Any(zone[1]),
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				_default,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -18,7 +18,7 @@ public final class ScdnFunctions {
     /**
      * This data source provides the Scdn Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 
@@ -63,7 +63,7 @@ public final class ScdnFunctions {
     /**
      * This data source provides the Scdn Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 
@@ -108,7 +108,7 @@ public final class ScdnFunctions {
     /**
      * This data source provides the Scdn Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 
@@ -153,7 +153,7 @@ public final class ScdnFunctions {
     /**
      * This data source provides the Scdn Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 
@@ -198,7 +198,7 @@ public final class ScdnFunctions {
     /**
      * This data source provides the Scdn Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 
@@ -243,7 +243,7 @@ public final class ScdnFunctions {
     /**
      * This data source provides the Scdn Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 
@@ -288,7 +288,7 @@ public final class ScdnFunctions {
     /**
      * This data source provides the Scdn Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.131.0+.
+     * &gt; **NOTE:** Available since v1.131.0.
      * 
      * ## Example Usage
      * 

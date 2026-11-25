@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// &gt; **NOTE:** Available since v1.142.0.
     /// 
-    /// &gt; **NOTE:** Deprecated since v1.249.0.
-    /// 
     /// &gt; **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
     /// 
     /// ## Example Usage
@@ -136,7 +134,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<int?> CrossAccountUserId { get; private set; } = null!;
 
         /// <summary>
-        /// ECS server backup plan details.
+        /// ECS server backup plan details. See `Detail` below.
         /// </summary>
         [Output("details")]
         public Output<ImmutableArray<Outputs.ServerBackupPlanDetail>> Details { get; private set; } = null!;
@@ -240,7 +238,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.ServerBackupPlanDetailArgs>? _details;
 
         /// <summary>
-        /// ECS server backup plan details.
+        /// ECS server backup plan details. See `Detail` below.
         /// </summary>
         public InputList<Inputs.ServerBackupPlanDetailArgs> Details
         {
@@ -309,7 +307,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<Inputs.ServerBackupPlanDetailGetArgs>? _details;
 
         /// <summary>
-        /// ECS server backup plan details.
+        /// ECS server backup plan details. See `Detail` below.
         /// </summary>
         public InputList<Inputs.ServerBackupPlanDetailGetArgs> Details
         {

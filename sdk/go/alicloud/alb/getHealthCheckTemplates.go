@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -78,15 +78,18 @@ type GetHealthCheckTemplatesArgs struct {
 
 // A collection of values returned by getHealthCheckTemplates.
 type GetHealthCheckTemplatesResult struct {
-	HealthCheckTemplateIds  []string `pulumi:"healthCheckTemplateIds"`
-	HealthCheckTemplateName *string  `pulumi:"healthCheckTemplateName"`
+	HealthCheckTemplateIds []string `pulumi:"healthCheckTemplateIds"`
+	// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	HealthCheckTemplateName *string `pulumi:"healthCheckTemplateName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                            `pulumi:"id"`
-	Ids        []string                          `pulumi:"ids"`
-	NameRegex  *string                           `pulumi:"nameRegex"`
-	Names      []string                          `pulumi:"names"`
-	OutputFile *string                           `pulumi:"outputFile"`
-	Templates  []GetHealthCheckTemplatesTemplate `pulumi:"templates"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Health Check Template names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Alb Health Check Templates. Each element contains the following attributes:
+	Templates []GetHealthCheckTemplatesTemplate `pulumi:"templates"`
 }
 
 func GetHealthCheckTemplatesOutput(ctx *pulumi.Context, args GetHealthCheckTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetHealthCheckTemplatesResultOutput {
@@ -131,6 +134,7 @@ func (o GetHealthCheckTemplatesResultOutput) HealthCheckTemplateIds() pulumi.Str
 	return o.ApplyT(func(v GetHealthCheckTemplatesResult) []string { return v.HealthCheckTemplateIds }).(pulumi.StringArrayOutput)
 }
 
+// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 func (o GetHealthCheckTemplatesResultOutput) HealthCheckTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHealthCheckTemplatesResult) *string { return v.HealthCheckTemplateName }).(pulumi.StringPtrOutput)
 }
@@ -148,6 +152,7 @@ func (o GetHealthCheckTemplatesResultOutput) NameRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetHealthCheckTemplatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Health Check Template names.
 func (o GetHealthCheckTemplatesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHealthCheckTemplatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -156,6 +161,7 @@ func (o GetHealthCheckTemplatesResultOutput) OutputFile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetHealthCheckTemplatesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Alb Health Check Templates. Each element contains the following attributes:
 func (o GetHealthCheckTemplatesResultOutput) Templates() GetHealthCheckTemplatesTemplateArrayOutput {
 	return o.ApplyT(func(v GetHealthCheckTemplatesResult) []GetHealthCheckTemplatesTemplate { return v.Templates }).(GetHealthCheckTemplatesTemplateArrayOutput)
 }

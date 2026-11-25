@@ -626,8 +626,8 @@ class GetGatewaysGatewayResult(dict):
         :param _builtins.str replica: Number of Gateway Nodes.
         :param Sequence['GetGatewaysGatewaySlbListArgs'] slb_lists: A list of gateway Slb.
         :param _builtins.str spec: Gateway Node Specifications.
-        :param _builtins.str status: The status of the gateway.
-        :param _builtins.str vpc_id: The ID of the vpc.
+        :param _builtins.str status: The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
+        :param _builtins.str vpc_id: The ID of the VPC.
         :param _builtins.str vswitch_id: The ID of the vswitch.
         """
         pulumi.set(__self__, "backup_vswitch_id", backup_vswitch_id)
@@ -710,7 +710,7 @@ class GetGatewaysGatewayResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the gateway.
+        The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
         """
         return pulumi.get(self, "status")
 
@@ -718,7 +718,7 @@ class GetGatewaysGatewayResult(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
         """
-        The ID of the vpc.
+        The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 

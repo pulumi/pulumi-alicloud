@@ -16,45 +16,174 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * &gt; **DEPRECATED:** `alicloud.ecs.CopyImage` is a deprecated alias of alicloud_image_copy. Use `alicloud.ecs.ImageCopy` instead. The two resources share the same schema and backend `CopyImage` API; this page is retained only for backward compatibility and will be removed in a future release.
+ * 
+ * Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).
+ * 
+ * For information about image copy and how to use it, see [CopyImage](https://www.alibabacloud.com/help/doc-detail/25538.html).
+ * 
+ * &gt; **NOTE:** You can only copy the custom image when it is in the Available state.
+ * 
+ * &gt; **NOTE:** You can only copy the image belonging to your Alibaba Cloud account. Images cannot be copied from one account to another.
+ * 
+ * &gt; **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
+ * 
+ * &gt; **NOTE:** Available since v1.66.0.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.Image;
+ * import com.pulumi.alicloud.ecs.ImageArgs;
+ * import com.pulumi.alicloud.ecs.CopyImage;
+ * import com.pulumi.alicloud.ecs.CopyImageArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Image("default", ImageArgs.builder()
+ *             .instanceId(defaultAlicloudInstance.get("id"))
+ *             .imageName("terraform-example")
+ *             .description("terraform-example")
+ *             .build());
+ * 
+ *         var defaultCopyImage = new CopyImage("defaultCopyImage", CopyImageArgs.builder()
+ *             .sourceImageId(default_.id())
+ *             .sourceRegionId("cn-hangzhou")
+ *             .imageName("terraform-example")
+ *             .description("terraform-example")
+ *             .tags(Map.of("FinanceDept", "FinanceDeptJoshua"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
+ * ## Import
+ * 
+ * Image can be imported using the id, e.g.
+ * 
+ * ```sh
+ * $ pulumi import alicloud:ecs/copyImage:CopyImage default m-uf66871ape***yg1q***
+ * ```
+ * 
+ */
 @ResourceType(type="alicloud:ecs/copyImage:CopyImage")
 public class CopyImage extends com.pulumi.resources.CustomResource {
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     @Export(name="deleteAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteAutoSnapshot;
 
+    /**
+     * @return Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     public Output<Optional<Boolean>> deleteAutoSnapshot() {
         return Codegen.optional(this.deleteAutoSnapshot);
     }
+    /**
+     * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Indicates whether to encrypt the image.
+     * 
+     */
     @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> encrypted;
 
+    /**
+     * @return Indicates whether to encrypt the image.
+     * 
+     */
     public Output<Optional<Boolean>> encrypted() {
         return Codegen.optional(this.encrypted);
     }
+    /**
+     * Indicates whether to force delete the custom image, Default is `false`.
+     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     * 
+     */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
+    /**
+     * @return Indicates whether to force delete the custom image, Default is `false`.
+     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     * 
+     */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
+    /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     * 
+     */
     @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output<String> imageName;
 
+    /**
+     * @return The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     * 
+     */
     public Output<String> imageName() {
         return this.imageName;
     }
+    /**
+     * Key ID used to encrypt the image.
+     * 
+     */
     @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
 
+    /**
+     * @return Key ID used to encrypt the image.
+     * 
+     */
     public Output<Optional<String>> kmsKeyId() {
         return Codegen.optional(this.kmsKeyId);
     }
     /**
+     * Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+     * 
      * @deprecated Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `imageName` instead.
      * 
      */
@@ -62,24 +191,52 @@ public class CopyImage extends com.pulumi.resources.CustomResource {
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Attribute &#39;name&#39; has been deprecated, please use `imageName` instead.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The source image ID.
+     * 
+     */
     @Export(name="sourceImageId", refs={String.class}, tree="[0]")
     private Output<String> sourceImageId;
 
+    /**
+     * @return The source image ID.
+     * 
+     */
     public Output<String> sourceImageId() {
         return this.sourceImageId;
     }
+    /**
+     * The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+     * 
+     */
     @Export(name="sourceRegionId", refs={String.class}, tree="[0]")
     private Output<String> sourceRegionId;
 
+    /**
+     * @return The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+     * 
+     */
     public Output<String> sourceRegionId() {
         return this.sourceRegionId;
     }
+    /**
+     * The tag value of an image. The value of N ranges from 1 to 20.
+     * 
+     */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
+    /**
+     * @return The tag value of an image. The value of N ranges from 1 to 20.
+     * 
+     */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
         /// 
-        /// &gt; **NOTE:** Available in 1.194.0+
+        /// &gt; **NOTE:** Available since v1.194.0+
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
         /// 
-        /// &gt; **NOTE:** Available in 1.194.0+
+        /// &gt; **NOTE:** Available since v1.194.0+
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
         /// 
-        /// &gt; **NOTE:** Available in 1.194.0+
+        /// &gt; **NOTE:** Available since v1.194.0+
         /// 
         /// ## Example Usage
         /// 
@@ -156,6 +156,9 @@ namespace Pulumi.AliCloud.Cms
         [Input("namespace")]
         public string? Namespace { get; set; }
 
+        /// <summary>
+        /// The order of the Metric Rule Black List.
+        /// </summary>
         [Input("order")]
         public int? Order { get; set; }
 
@@ -215,6 +218,9 @@ namespace Pulumi.AliCloud.Cms
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        /// <summary>
+        /// The order of the Metric Rule Black List.
+        /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }
 

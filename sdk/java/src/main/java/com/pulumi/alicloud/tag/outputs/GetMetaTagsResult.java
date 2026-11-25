@@ -19,8 +19,16 @@ public final class GetMetaTagsResult {
      * 
      */
     private String id;
+    /**
+     * @return The name of the key.
+     * 
+     */
     private @Nullable String keyName;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Meta Tags. Each element contains the following attributes:
+     * 
+     */
     private List<GetMetaTagsTag> tags;
 
     private GetMetaTagsResult() {}
@@ -31,12 +39,20 @@ public final class GetMetaTagsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the key.
+     * 
+     */
     public Optional<String> keyName() {
         return Optional.ofNullable(this.keyName);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Meta Tags. Each element contains the following attributes:
+     * 
+     */
     public List<GetMetaTagsTag> tags() {
         return this.tags;
     }

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release.
+// > **DEPRECATED:** This resource has been deprecated from version `1.276.0` and will be removed in a future release.
 //
 // This resource will help you to manage a Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ask-cluster-1).
 //
@@ -50,6 +50,131 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf-kubernetes-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// instanceType := "ecs.c6.xlarge";
+// if param := cfg.Get("instanceType"); param != ""{
+// instanceType = param
+// }
+// enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableResourceCreation: pulumi.StringRef("Instance"),
+// AvailableDiskCategory: pulumi.StringRef("cloud_essd"),
+// AvailableInstanceType: pulumi.StringRef(instanceType),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// // The zone must offer the master instance type and support the enhanced NAT gateway created by `new_nat_gateway`.
+// zoneId := std.Sort(ctx, &std.SortArgs{
+// Input: std.Setintersection(ctx, std.SetintersectionArgs{
+// Input: [][]*string{
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:19,14-33),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:19,35-59),
+// },
+// }, nil).Result,
+// }, nil).Result[0];
+// defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+// Status: pulumi.StringRef("OK"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetKubernetesVersion, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
+// ClusterType: "Kubernetes",
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("192.168.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("192.168.1.0/24"),
+// ZoneId: pulumi.String(zoneId),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = cs.NewKubernetes(ctx, "default", &cs.KubernetesArgs{
+// Name: pulumi.String(name),
+// Version: pulumi.String(defaultGetKubernetesVersion.Metadatas[2].Version),
+// MasterVswitchIds: pulumi.StringArray{
+// defaultSwitch.ID(),
+// defaultSwitch.ID(),
+// defaultSwitch.ID(),
+// },
+// MasterInstanceTypes: pulumi.StringArray{
+// pulumi.String(instanceType),
+// pulumi.String(instanceType),
+// pulumi.String(instanceType),
+// },
+// MasterDiskCategory: pulumi.String("cloud_essd"),
+// MasterDiskSize: pulumi.Int(80),
+// Password: pulumi.String("Yourpassword1234"),
+// PodCidr: pulumi.String("10.72.0.0/16"),
+// ServiceCidr: pulumi.String("172.18.0.0/16"),
+// NodeCidrMask: pulumi.Int(24),
+// EnableSsh: pulumi.Bool(false),
+// InstallCloudMonitor: pulumi.Bool(true),
+// ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
+// DeletionProtection: pulumi.Bool(false),
+// OsType: pulumi.String("Linux"),
+// Platform: pulumi.String("AliyunLinux4ContainerOptimized"),
+// ImageId: pulumi.String("aliyun_4_x64_20G_container_optimized_alibase_20260402.vhd"),
+// ClusterDomain: pulumi.String("cluster.local"),
+// ProxyMode: pulumi.String("ipvs"),
+// CustomSan: pulumi.String("www.terraform.io"),
+// NewNatGateway: pulumi.Bool(true),
+// SlbInternetEnabled: pulumi.Bool(false),
+// SkipSetCertificateAuthority: pulumi.Bool(false),
+// Runtimes: cs.KubernetesRuntimeArray{
+// &cs.KubernetesRuntimeArgs{
+// Name: pulumi.String("containerd"),
+// Version: pulumi.String("1.6.20"),
+// },
+// },
+// Tags: pulumi.StringMap{
+// "Platform": pulumi.String("TF"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
@@ -80,7 +205,11 @@ type Kubernetes struct {
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	//
-	// *Removed params*
+	// Removed params:
+	//
+	// The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+	//
+	// `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
@@ -124,7 +253,7 @@ type Kubernetes struct {
 	MasterDiskSize pulumi.IntPtrOutput `pulumi:"masterDiskSize"`
 	// Master node system disk auto snapshot policy.
 	//
-	// *Computed params*
+	// Computed params:
 	MasterDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"masterDiskSnapshotPolicyId"`
 	// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
 	MasterInstanceChargeType pulumi.StringPtrOutput `pulumi:"masterInstanceChargeType"`
@@ -180,7 +309,7 @@ type Kubernetes struct {
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
-	// *Network params*
+	// Network params:
 	SkipSetCertificateAuthority pulumi.BoolPtrOutput `pulumi:"skipSetCertificateAuthority"`
 	// The ID of APIServer load balancer.
 	SlbId pulumi.StringOutput `pulumi:"slbId"`
@@ -191,7 +320,7 @@ type Kubernetes struct {
 	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
 	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 	//
-	// *Master params*
+	// Master params:
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringOutput `pulumi:"slbIntranet"`
@@ -270,7 +399,11 @@ type kubernetesState struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	//
-	// *Removed params*
+	// Removed params:
+	//
+	// The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+	//
+	// `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
@@ -314,7 +447,7 @@ type kubernetesState struct {
 	MasterDiskSize *int `pulumi:"masterDiskSize"`
 	// Master node system disk auto snapshot policy.
 	//
-	// *Computed params*
+	// Computed params:
 	MasterDiskSnapshotPolicyId *string `pulumi:"masterDiskSnapshotPolicyId"`
 	// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
 	MasterInstanceChargeType *string `pulumi:"masterInstanceChargeType"`
@@ -370,7 +503,7 @@ type kubernetesState struct {
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
-	// *Network params*
+	// Network params:
 	SkipSetCertificateAuthority *bool `pulumi:"skipSetCertificateAuthority"`
 	// The ID of APIServer load balancer.
 	SlbId *string `pulumi:"slbId"`
@@ -381,7 +514,7 @@ type kubernetesState struct {
 	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
 	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 	//
-	// *Master params*
+	// Master params:
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet *string `pulumi:"slbIntranet"`
@@ -418,7 +551,11 @@ type KubernetesState struct {
 	ClientKey pulumi.StringPtrInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	//
-	// *Removed params*
+	// Removed params:
+	//
+	// The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+	//
+	// `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrInput
@@ -462,7 +599,7 @@ type KubernetesState struct {
 	MasterDiskSize pulumi.IntPtrInput
 	// Master node system disk auto snapshot policy.
 	//
-	// *Computed params*
+	// Computed params:
 	MasterDiskSnapshotPolicyId pulumi.StringPtrInput
 	// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
 	MasterInstanceChargeType pulumi.StringPtrInput
@@ -518,7 +655,7 @@ type KubernetesState struct {
 	ServiceCidr pulumi.StringPtrInput
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
-	// *Network params*
+	// Network params:
 	SkipSetCertificateAuthority pulumi.BoolPtrInput
 	// The ID of APIServer load balancer.
 	SlbId pulumi.StringPtrInput
@@ -529,7 +666,7 @@ type KubernetesState struct {
 	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
 	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 	//
-	// *Master params*
+	// Master params:
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringPtrInput
@@ -572,7 +709,11 @@ type kubernetesArgs struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	//
-	// *Removed params*
+	// Removed params:
+	//
+	// The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+	//
+	// `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
@@ -614,7 +755,7 @@ type kubernetesArgs struct {
 	MasterDiskSize *int `pulumi:"masterDiskSize"`
 	// Master node system disk auto snapshot policy.
 	//
-	// *Computed params*
+	// Computed params:
 	MasterDiskSnapshotPolicyId *string `pulumi:"masterDiskSnapshotPolicyId"`
 	// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
 	MasterInstanceChargeType *string `pulumi:"masterInstanceChargeType"`
@@ -666,14 +807,14 @@ type kubernetesArgs struct {
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
-	// *Network params*
+	// Network params:
 	SkipSetCertificateAuthority *bool `pulumi:"skipSetCertificateAuthority"`
 	// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
 	//
 	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
 	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 	//
-	// *Master params*
+	// Master params:
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags map[string]string `pulumi:"tags"`
@@ -701,7 +842,11 @@ type KubernetesArgs struct {
 	ClientKey pulumi.StringPtrInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	//
-	// *Removed params*
+	// Removed params:
+	//
+	// The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+	//
+	// `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
 	//
 	// Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 	ClusterCaCert pulumi.StringPtrInput
@@ -743,7 +888,7 @@ type KubernetesArgs struct {
 	MasterDiskSize pulumi.IntPtrInput
 	// Master node system disk auto snapshot policy.
 	//
-	// *Computed params*
+	// Computed params:
 	MasterDiskSnapshotPolicyId pulumi.StringPtrInput
 	// Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
 	MasterInstanceChargeType pulumi.StringPtrInput
@@ -795,14 +940,14 @@ type KubernetesArgs struct {
 	ServiceCidr pulumi.StringPtrInput
 	// Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 	//
-	// *Network params*
+	// Network params:
 	SkipSetCertificateAuthority pulumi.BoolPtrInput
 	// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
 	//
 	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
 	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 	//
-	// *Master params*
+	// Master params:
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
 	Tags pulumi.StringMapInput
@@ -934,7 +1079,11 @@ func (o KubernetesOutput) ClientKey() pulumi.StringPtrOutput {
 
 // From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 //
-// *Removed params*
+// Removed params:
+//
+// The following parameters have been removed from the resource. Use `cs.NodePool` to manage worker nodes instead.
+//
+// `masterInstanceType`, `workerInstanceType`, `vswitchId`, `vswitchIds`, `forceUpdate`, `logConfig`, `clusterNetworkType`, `workerDataDiskCategory`, `workerDataDiskSize`, `workerNumbers`, `nodes`, `excludeAutoscalerNodes`, `kubeConfig`, `availabilityZone`, `workerNumber`, `workerVswitchIds`, `workerInstanceTypes`, `workerInstanceChargeType`, `workerPeriod`, `workerPeriodUnit`, `workerAutoRenew`, `workerAutoRenewPeriod`, `workerDiskCategory`, `workerDiskSize`, `workerDataDisks`, `nodePortRange`, `cpuPolicy`, `userData`, `taints`, `workerDiskPerformanceLevel`, `workerDiskSnapshotPolicyId`
 //
 // Deprecated: Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 func (o KubernetesOutput) ClusterCaCert() pulumi.StringPtrOutput {
@@ -1035,7 +1184,7 @@ func (o KubernetesOutput) MasterDiskSize() pulumi.IntPtrOutput {
 
 // Master node system disk auto snapshot policy.
 //
-// *Computed params*
+// Computed params:
 func (o KubernetesOutput) MasterDiskSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.MasterDiskSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -1169,7 +1318,7 @@ func (o KubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
 
 // Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
 //
-// *Network params*
+// Network params:
 func (o KubernetesOutput) SkipSetCertificateAuthority() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.BoolPtrOutput { return v.SkipSetCertificateAuthority }).(pulumi.BoolPtrOutput)
 }
@@ -1189,7 +1338,7 @@ func (o KubernetesOutput) SlbInternet() pulumi.StringOutput {
 // > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
 // If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 //
-// *Master params*
+// Master params:
 func (o KubernetesOutput) SlbInternetEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.BoolPtrOutput { return v.SlbInternetEnabled }).(pulumi.BoolPtrOutput)
 }

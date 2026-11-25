@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * The `alicloud.hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
  * Filters support regular expression for the instance name, ids or availability_zone.
  *
- * > **NOTE:**  Available in 1.67.0+
+ * > **NOTE:** Available since v1.67.0.
  *
  * ## Example Usage
  *
@@ -86,7 +86,7 @@ export interface GetInstancesResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * A mapping of tags to assign to the resource.
+     * (Optional) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: string};
 }
@@ -94,7 +94,7 @@ export interface GetInstancesResult {
  * The `alicloud.hbase.getInstances` data source provides a collection of HBase instances available in Alicloud account.
  * Filters support regular expression for the instance name, ids or availability_zone.
  *
- * > **NOTE:**  Available in 1.67.0+
+ * > **NOTE:** Available since v1.67.0.
  *
  * ## Example Usage
  *

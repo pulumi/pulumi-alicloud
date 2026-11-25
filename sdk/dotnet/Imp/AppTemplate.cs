@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Imp
     /// <summary>
     /// Provides a Apsara Agile Live (IMP) App Template resource.
     /// 
-    /// For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://help.aliyun.com/document_detail/270121.html).
+    /// For information about Apsara Agile Live (IMP) App Template and how to use it, see [What is App Template](https://www.alibabacloud.com/help/doc-detail/270121.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.137.0+.
+    /// &gt; **NOTE:** Available since v1.137.0.
     /// 
     /// ## Example Usage
     /// 
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Imp
         public Output<ImmutableArray<string>> ComponentLists { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration list. It have several default configs after the resource is created. See the following `Block ConfigList`.
+        /// Configuration list. It have several default configs after the resource is created. See `ConfigList` below.
         /// </summary>
         [Output("configLists")]
         public Output<ImmutableArray<Outputs.AppTemplateConfigList>> ConfigLists { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Imp
         private InputList<Inputs.AppTemplateConfigListArgs>? _configLists;
 
         /// <summary>
-        /// Configuration list. It have several default configs after the resource is created. See the following `Block ConfigList`.
+        /// Configuration list. It have several default configs after the resource is created. See `ConfigList` below.
         /// </summary>
         public InputList<Inputs.AppTemplateConfigListArgs> ConfigLists
         {
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.Imp
         private InputList<Inputs.AppTemplateConfigListGetArgs>? _configLists;
 
         /// <summary>
-        /// Configuration list. It have several default configs after the resource is created. See the following `Block ConfigList`.
+        /// Configuration list. It have several default configs after the resource is created. See `ConfigList` below.
         /// </summary>
         public InputList<Inputs.AppTemplateConfigListGetArgs> ConfigLists
         {

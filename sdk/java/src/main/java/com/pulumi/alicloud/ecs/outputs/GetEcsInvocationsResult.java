@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsInvocationsResult {
+    /**
+     * @return The ID of the command.
+     * 
+     */
     private @Nullable String commandId;
     private @Nullable String contentEncoding;
     /**
@@ -23,13 +27,25 @@ public final class GetEcsInvocationsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Ecs Invocations. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsInvocationsInvocation> invocations;
+    /**
+     * @return The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+     * 
+     */
     private @Nullable String invokeStatus;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
 
     private GetEcsInvocationsResult() {}
+    /**
+     * @return The ID of the command.
+     * 
+     */
     public Optional<String> commandId() {
         return Optional.ofNullable(this.commandId);
     }
@@ -46,9 +62,17 @@ public final class GetEcsInvocationsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Ecs Invocations. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsInvocationsInvocation> invocations() {
         return this.invocations;
     }
+    /**
+     * @return The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+     * 
+     */
     public Optional<String> invokeStatus() {
         return Optional.ofNullable(this.invokeStatus);
     }

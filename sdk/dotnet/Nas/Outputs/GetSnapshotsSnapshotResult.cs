@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// </summary>
         public readonly string SourceFileSystemVersion;
         /// <summary>
-        /// The status of the snapshot.
+        /// Status. Valid values: `Accomplished`, `Failed`, `Progressing`.
         /// </summary>
         public readonly string Status;
 

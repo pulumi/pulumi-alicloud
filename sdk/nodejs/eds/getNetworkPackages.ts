@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -72,13 +72,19 @@ export interface GetNetworkPackagesResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Ecd Network Packages. Each element contains the following attributes:
+     */
     readonly packages: outputs.eds.GetNetworkPackagesPackage[];
+    /**
+     * The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *

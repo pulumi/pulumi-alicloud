@@ -28,6 +28,7 @@ class GetNetworksNetworkResult(dict):
                  name: _builtins.str):
         """
         :param _builtins.str cidr_block: CidrBlock of the CCN instance.
+        :param _builtins.str description: The description of the CCN instance.
         :param _builtins.str id: ID of the CCN instance.
         :param _builtins.bool is_default: IsDefault of the CCN instance.
         :param _builtins.str name: Name of the CCN instance.
@@ -49,6 +50,9 @@ class GetNetworksNetworkResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        The description of the CCN instance.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property

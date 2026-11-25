@@ -47,6 +47,9 @@ class GetAccessRulesResult:
     @_builtins.property
     @pulumi.getter(name="accessGroupId")
     def access_group_id(self) -> _builtins.str:
+        """
+        The resource ID of the Access Group.
+        """
         return pulumi.get(self, "access_group_id")
 
     @_builtins.property
@@ -70,6 +73,9 @@ class GetAccessRulesResult:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetAccessRulesRuleResult']:
+        """
+        A list of Dfs Access Rules. Each element contains the following attributes:
+        """
         return pulumi.get(self, "rules")
 
 
@@ -93,7 +99,7 @@ def get_access_rules(access_group_id: Optional[_builtins.str] = None,
     """
     This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 
@@ -136,7 +142,7 @@ def get_access_rules_output(access_group_id: pulumi.Input[Optional[_builtins.str
     """
     This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 

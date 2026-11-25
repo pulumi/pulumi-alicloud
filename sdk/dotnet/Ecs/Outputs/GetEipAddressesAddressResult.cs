@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEipAddressesAddressResult
     {
         /// <summary>
-        /// The name of the EIP.
+        /// The eip name.
         /// </summary>
         public readonly string AddressName;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AvailableRegions;
         /// <summary>
-        /// The maximum bandwidth of the EIP. Unit: Mbit/s.
+        /// The maximum bandwidth of the EIP.
         /// </summary>
         public readonly string Bandwidth;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string HdMonitorStatus;
         /// <summary>
-        /// The ID of the Address.
+        /// The ID of the EIP.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -86,11 +86,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string InternetChargeType;
         /// <summary>
-        /// The IP address of the EIP.
+        /// The eip address.
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// The Internet service provider (ISP).
+        /// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
         /// </summary>
         public readonly string Isp;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<string> OperationLocks;
         /// <summary>
-        /// The billing method of the EIP.
+        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
@@ -126,15 +126,17 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly bool SecondLimited;
         /// <summary>
-        /// The IDs of the contiguous EIPs.
+        /// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
         /// </summary>
         public readonly string SegmentInstanceId;
         /// <summary>
-        /// The status of the EIP.
+        /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
 

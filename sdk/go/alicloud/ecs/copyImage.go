@@ -12,20 +12,98 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** `ecs.CopyImage` is a deprecated alias of alicloud_image_copy. Use `ecs.ImageCopy` instead. The two resources share the same schema and backend `CopyImage` API; this page is retained only for backward compatibility and will be removed in a future release.
+//
+// Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).
+//
+// For information about image copy and how to use it, see [CopyImage](https://www.alibabacloud.com/help/doc-detail/25538.html).
+//
+// > **NOTE:** You can only copy the custom image when it is in the Available state.
+//
+// > **NOTE:** You can only copy the image belonging to your Alibaba Cloud account. Images cannot be copied from one account to another.
+//
+// > **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
+//
+// > **NOTE:** Available since v1.66.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := ecs.NewImage(ctx, "default", &ecs.ImageArgs{
+//				InstanceId:  pulumi.Any(defaultAlicloudInstance.Id),
+//				ImageName:   pulumi.String("terraform-example"),
+//				Description: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewCopyImage(ctx, "default", &ecs.CopyImageArgs{
+//				SourceImageId:  _default.ID(),
+//				SourceRegionId: pulumi.String("cn-hangzhou"),
+//				ImageName:      pulumi.String("terraform-example"),
+//				Description:    pulumi.String("terraform-example"),
+//				Tags: pulumi.StringMap{
+//					"FinanceDept": pulumi.String("FinanceDeptJoshua"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
+// ## Import
+//
+// Image can be imported using the id, e.g.
+//
+// ```sh
+// $ pulumi import alicloud:ecs/copyImage:CopyImage default m-uf66871ape***yg1q***
+// ```
 type CopyImage struct {
 	pulumi.CustomResourceState
 
-	DeleteAutoSnapshot pulumi.BoolPtrOutput   `pulumi:"deleteAutoSnapshot"`
-	Description        pulumi.StringPtrOutput `pulumi:"description"`
-	Encrypted          pulumi.BoolPtrOutput   `pulumi:"encrypted"`
-	Force              pulumi.BoolPtrOutput   `pulumi:"force"`
-	ImageName          pulumi.StringOutput    `pulumi:"imageName"`
-	KmsKeyId           pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	DeleteAutoSnapshot pulumi.BoolPtrOutput `pulumi:"deleteAutoSnapshot"`
+	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Indicates whether to encrypt the image.
+	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
+	// Indicates whether to force delete the custom image, Default is `false`.
+	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
+	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	ImageName pulumi.StringOutput `pulumi:"imageName"`
+	// Key ID used to encrypt the image.
+	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	// Attribute 'name' has been deprecated, please use `imageName` instead.
+	//
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
-	Name           pulumi.StringOutput    `pulumi:"name"`
-	SourceImageId  pulumi.StringOutput    `pulumi:"sourceImageId"`
-	SourceRegionId pulumi.StringOutput    `pulumi:"sourceRegionId"`
-	Tags           pulumi.StringMapOutput `pulumi:"tags"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The source image ID.
+	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
+	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+	SourceRegionId pulumi.StringOutput `pulumi:"sourceRegionId"`
+	// The tag value of an image. The value of N ranges from 1 to 20.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewCopyImage registers a new resource with the given unique name, arguments, and options.
@@ -64,31 +142,61 @@ func GetCopyImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CopyImage resources.
 type copyImageState struct {
-	DeleteAutoSnapshot *bool   `pulumi:"deleteAutoSnapshot"`
-	Description        *string `pulumi:"description"`
-	Encrypted          *bool   `pulumi:"encrypted"`
-	Force              *bool   `pulumi:"force"`
-	ImageName          *string `pulumi:"imageName"`
-	KmsKeyId           *string `pulumi:"kmsKeyId"`
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
+	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+	Description *string `pulumi:"description"`
+	// Indicates whether to encrypt the image.
+	Encrypted *bool `pulumi:"encrypted"`
+	// Indicates whether to force delete the custom image, Default is `false`.
+	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+	Force *bool `pulumi:"force"`
+	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	ImageName *string `pulumi:"imageName"`
+	// Key ID used to encrypt the image.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// Attribute 'name' has been deprecated, please use `imageName` instead.
+	//
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
-	Name           *string           `pulumi:"name"`
-	SourceImageId  *string           `pulumi:"sourceImageId"`
-	SourceRegionId *string           `pulumi:"sourceRegionId"`
-	Tags           map[string]string `pulumi:"tags"`
+	Name *string `pulumi:"name"`
+	// The source image ID.
+	SourceImageId *string `pulumi:"sourceImageId"`
+	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+	SourceRegionId *string `pulumi:"sourceRegionId"`
+	// The tag value of an image. The value of N ranges from 1 to 20.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type CopyImageState struct {
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	DeleteAutoSnapshot pulumi.BoolPtrInput
-	Description        pulumi.StringPtrInput
-	Encrypted          pulumi.BoolPtrInput
-	Force              pulumi.BoolPtrInput
-	ImageName          pulumi.StringPtrInput
-	KmsKeyId           pulumi.StringPtrInput
+	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+	Description pulumi.StringPtrInput
+	// Indicates whether to encrypt the image.
+	Encrypted pulumi.BoolPtrInput
+	// Indicates whether to force delete the custom image, Default is `false`.
+	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+	Force pulumi.BoolPtrInput
+	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	ImageName pulumi.StringPtrInput
+	// Key ID used to encrypt the image.
+	KmsKeyId pulumi.StringPtrInput
+	// Attribute 'name' has been deprecated, please use `imageName` instead.
+	//
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
-	Name           pulumi.StringPtrInput
-	SourceImageId  pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The source image ID.
+	SourceImageId pulumi.StringPtrInput
+	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
 	SourceRegionId pulumi.StringPtrInput
-	Tags           pulumi.StringMapInput
+	// The tag value of an image. The value of N ranges from 1 to 20.
+	Tags pulumi.StringMapInput
 }
 
 func (CopyImageState) ElementType() reflect.Type {
@@ -102,32 +210,62 @@ func CopyImageExists(ctx *pulumi.Context,
 }
 
 type copyImageArgs struct {
-	DeleteAutoSnapshot *bool   `pulumi:"deleteAutoSnapshot"`
-	Description        *string `pulumi:"description"`
-	Encrypted          *bool   `pulumi:"encrypted"`
-	Force              *bool   `pulumi:"force"`
-	ImageName          *string `pulumi:"imageName"`
-	KmsKeyId           *string `pulumi:"kmsKeyId"`
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
+	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+	Description *string `pulumi:"description"`
+	// Indicates whether to encrypt the image.
+	Encrypted *bool `pulumi:"encrypted"`
+	// Indicates whether to force delete the custom image, Default is `false`.
+	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+	Force *bool `pulumi:"force"`
+	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	ImageName *string `pulumi:"imageName"`
+	// Key ID used to encrypt the image.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// Attribute 'name' has been deprecated, please use `imageName` instead.
+	//
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
-	Name           *string           `pulumi:"name"`
-	SourceImageId  string            `pulumi:"sourceImageId"`
-	SourceRegionId string            `pulumi:"sourceRegionId"`
-	Tags           map[string]string `pulumi:"tags"`
+	Name *string `pulumi:"name"`
+	// The source image ID.
+	SourceImageId string `pulumi:"sourceImageId"`
+	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
+	SourceRegionId string `pulumi:"sourceRegionId"`
+	// The tag value of an image. The value of N ranges from 1 to 20.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a CopyImage resource.
 type CopyImageArgs struct {
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	DeleteAutoSnapshot pulumi.BoolPtrInput
-	Description        pulumi.StringPtrInput
-	Encrypted          pulumi.BoolPtrInput
-	Force              pulumi.BoolPtrInput
-	ImageName          pulumi.StringPtrInput
-	KmsKeyId           pulumi.StringPtrInput
+	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+	Description pulumi.StringPtrInput
+	// Indicates whether to encrypt the image.
+	Encrypted pulumi.BoolPtrInput
+	// Indicates whether to force delete the custom image, Default is `false`.
+	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+	Force pulumi.BoolPtrInput
+	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	ImageName pulumi.StringPtrInput
+	// Key ID used to encrypt the image.
+	KmsKeyId pulumi.StringPtrInput
+	// Attribute 'name' has been deprecated, please use `imageName` instead.
+	//
 	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
-	Name           pulumi.StringPtrInput
-	SourceImageId  pulumi.StringInput
+	Name pulumi.StringPtrInput
+	// The source image ID.
+	SourceImageId pulumi.StringInput
+	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
 	SourceRegionId pulumi.StringInput
-	Tags           pulumi.StringMapInput
+	// The tag value of an image. The value of N ranges from 1 to 20.
+	Tags pulumi.StringMapInput
 }
 
 func (CopyImageArgs) ElementType() reflect.Type {
@@ -217,43 +355,58 @@ func (o CopyImageOutput) ToCopyImageOutputWithContext(ctx context.Context) CopyI
 	return o
 }
 
+// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o CopyImageOutput) DeleteAutoSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.BoolPtrOutput { return v.DeleteAutoSnapshot }).(pulumi.BoolPtrOutput)
 }
 
+// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
 func (o CopyImageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether to encrypt the image.
 func (o CopyImageOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether to force delete the custom image, Default is `false`.
+// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
+// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 func (o CopyImageOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
+// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
 func (o CopyImageOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.StringOutput { return v.ImageName }).(pulumi.StringOutput)
 }
 
+// Key ID used to encrypt the image.
 func (o CopyImageOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
+// Attribute 'name' has been deprecated, please use `imageName` instead.
+//
 // Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 func (o CopyImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The source image ID.
 func (o CopyImageOutput) SourceImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.StringOutput { return v.SourceImageId }).(pulumi.StringOutput)
 }
 
+// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
 func (o CopyImageOutput) SourceRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.StringOutput { return v.SourceRegionId }).(pulumi.StringOutput)
 }
 
+// The tag value of an image. The value of N ranges from 1 to 20.
 func (o CopyImageOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

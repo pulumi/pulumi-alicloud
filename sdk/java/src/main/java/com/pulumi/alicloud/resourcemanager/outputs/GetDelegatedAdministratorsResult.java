@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDelegatedAdministratorsResult {
+    /**
+     * @return A list of Resource Manager Delegated Administrators. Each element contains the following attributes:
+     * 
+     */
     private List<GetDelegatedAdministratorsAdministrator> administrators;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,9 +29,17 @@ public final class GetDelegatedAdministratorsResult {
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The identity of the trusted service.
+     * 
+     */
     private @Nullable String servicePrincipal;
 
     private GetDelegatedAdministratorsResult() {}
+    /**
+     * @return A list of Resource Manager Delegated Administrators. Each element contains the following attributes:
+     * 
+     */
     public List<GetDelegatedAdministratorsAdministrator> administrators() {
         return this.administrators;
     }
@@ -50,6 +62,10 @@ public final class GetDelegatedAdministratorsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The identity of the trusted service.
+     * 
+     */
     public Optional<String> servicePrincipal() {
         return Optional.ofNullable(this.servicePrincipal);
     }

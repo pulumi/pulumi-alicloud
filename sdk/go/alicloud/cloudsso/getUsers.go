@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cloud Sso Users of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
@@ -109,17 +109,22 @@ type GetUsersArgs struct {
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
+	// The ID of the Directory.
 	DirectoryId   string `pulumi:"directoryId"`
 	EnableDetails *bool  `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string         `pulumi:"id"`
-	Ids           []string       `pulumi:"ids"`
-	NameRegex     *string        `pulumi:"nameRegex"`
-	Names         []string       `pulumi:"names"`
-	OutputFile    *string        `pulumi:"outputFile"`
-	ProvisionType *string        `pulumi:"provisionType"`
-	Status        *string        `pulumi:"status"`
-	Users         []GetUsersUser `pulumi:"users"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of User names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// ProvisionType.
+	ProvisionType *string `pulumi:"provisionType"`
+	// User status. Valid values: `Enabled` and `Disabled`.
+	Status *string `pulumi:"status"`
+	// A list of Cloud Sso Users. Each element contains the following attributes:
+	Users []GetUsersUser `pulumi:"users"`
 }
 
 func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
@@ -164,6 +169,7 @@ func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The ID of the Directory.
 func (o GetUsersResultOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersResult) string { return v.DirectoryId }).(pulumi.StringOutput)
 }
@@ -185,6 +191,7 @@ func (o GetUsersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of User names.
 func (o GetUsersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -193,14 +200,17 @@ func (o GetUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// ProvisionType.
 func (o GetUsersResultOutput) ProvisionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.ProvisionType }).(pulumi.StringPtrOutput)
 }
 
+// User status. Valid values: `Enabled` and `Disabled`.
 func (o GetUsersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cloud Sso Users. Each element contains the following attributes:
 func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
 }

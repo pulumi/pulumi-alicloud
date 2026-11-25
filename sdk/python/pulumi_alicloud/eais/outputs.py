@@ -69,7 +69,7 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str id: The ID of the Instance.
         :param _builtins.str instance_id: The ID of the resource.
         :param _builtins.str instance_name: The name of the resource.
-        :param _builtins.str instance_type: The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        :param _builtins.str instance_type: EAIS instance type. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         :param _builtins.str status: The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
         :param _builtins.str zone_id: The ID of the region to which the EAIS instance belongs.
         """
@@ -135,7 +135,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> _builtins.str:
         """
-        The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        EAIS instance type. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         """
         return pulumi.get(self, "instance_type")
 

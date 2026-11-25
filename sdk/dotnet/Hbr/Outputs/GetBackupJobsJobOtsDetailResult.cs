@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     [OutputType]
     public sealed class GetBackupJobsJobOtsDetailResult
     {
+        /// <summary>
+        /// The names of the destination tables in the Tablestore instance.
+        /// </summary>
         public readonly ImmutableArray<string> TableNames;
 
         [OutputConstructor]

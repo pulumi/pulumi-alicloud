@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Log.Outputs
     [OutputType]
     public sealed class AlertGroupConfiguration
     {
+        /// <summary>
+        /// Group configuration's fields list when type is custom.
+        /// </summary>
         public readonly ImmutableArray<string> Fields;
         /// <summary>
         /// Group configuration type, including no_group, labels_auto, custom.

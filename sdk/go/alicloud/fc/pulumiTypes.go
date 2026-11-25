@@ -10660,7 +10660,7 @@ type GetFunctionsFunction struct {
 	CodeSize int `pulumi:"codeSize"`
 	// Function creation time.
 	CreationTime string `pulumi:"creationTime"`
-	// The configuration for custom container runtime. It contains following attributes:
+	// (Optional, MaxItems: 1) The configuration for custom container runtime. The data source Read backfills this block from the server response when the function uses a custom container; it contains the following attributes:
 	CustomContainerConfig *GetFunctionsFunctionCustomContainerConfig `pulumi:"customContainerConfig"`
 	// Function description.
 	Description string `pulumi:"description"`
@@ -10710,7 +10710,7 @@ type GetFunctionsFunctionArgs struct {
 	CodeSize pulumi.IntInput `pulumi:"codeSize"`
 	// Function creation time.
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// The configuration for custom container runtime. It contains following attributes:
+	// (Optional, MaxItems: 1) The configuration for custom container runtime. The data source Read backfills this block from the server response when the function uses a custom container; it contains the following attributes:
 	CustomContainerConfig GetFunctionsFunctionCustomContainerConfigPtrInput `pulumi:"customContainerConfig"`
 	// Function description.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -10811,7 +10811,7 @@ func (o GetFunctionsFunctionOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// The configuration for custom container runtime. It contains following attributes:
+// (Optional, MaxItems: 1) The configuration for custom container runtime. The data source Read backfills this block from the server response when the function uses a custom container; it contains the following attributes:
 func (o GetFunctionsFunctionOutput) CustomContainerConfig() GetFunctionsFunctionCustomContainerConfigPtrOutput {
 	return o.ApplyT(func(v GetFunctionsFunction) *GetFunctionsFunctionCustomContainerConfig {
 		return v.CustomContainerConfig

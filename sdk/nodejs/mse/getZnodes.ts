@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Mse Znodes of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.162.0+.
+ * > **NOTE:** Available since v1.162.0.
  *
  * ## Example Usage
  *
@@ -83,6 +83,9 @@ export interface GetZnodesArgs {
  */
 export interface GetZnodesResult {
     readonly acceptLanguage?: string;
+    /**
+     * The ID of the Cluster.
+     */
     readonly clusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -90,15 +93,24 @@ export interface GetZnodesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Znode names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The Node path.
+     */
     readonly path: string;
+    /**
+     * A list of Mse Znodes. Each element contains the following attributes:
+     */
     readonly znodes: outputs.mse.GetZnodesZnode[];
 }
 /**
  * This data source provides the Mse Znodes of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.162.0+.
+ * > **NOTE:** Available since v1.162.0.
  *
  * ## Example Usage
  *

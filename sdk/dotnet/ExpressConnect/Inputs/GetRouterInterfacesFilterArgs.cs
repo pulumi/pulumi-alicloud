@@ -12,11 +12,18 @@ namespace Pulumi.AliCloud.ExpressConnect.Inputs
 
     public sealed class GetRouterInterfacesFilterInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The key of the field to filter by.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// Set of values that are accepted for the given field.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

@@ -43,6 +43,8 @@ __all__ = [
     'DomainListenArgsDict',
     'DomainRedirectArgs',
     'DomainRedirectArgsDict',
+    'DomainRedirectBackendPortArgs',
+    'DomainRedirectBackendPortArgsDict',
     'DomainRedirectRequestHeaderArgs',
     'DomainRedirectRequestHeaderArgsDict',
 ]
@@ -2023,6 +2025,10 @@ class DomainRedirectArgsDict(TypedDict):
     """
     The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
     """
+    backend_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DomainRedirectBackendPortArgsDict']]]]]
+    """
+    The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backend_ports` below.
+    """
     backends: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
@@ -2070,6 +2076,7 @@ class DomainRedirectArgsDict(TypedDict):
     max_body_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+
     > **NOTE:** This parameter is supported only by the Ultimate edition.
     """
     read_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
@@ -2108,6 +2115,7 @@ class DomainRedirectArgsDict(TypedDict):
 class DomainRedirectArgs:
     def __init__(__self__, *,
                  loadbalance: pulumi.Input[_builtins.str],
+                 backend_ports: pulumi.Input[Optional[Sequence[pulumi.Input['DomainRedirectBackendPortArgs']]]] = None,
                  backends: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_backends: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2127,6 +2135,7 @@ class DomainRedirectArgs:
                  xff_proto: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] loadbalance: The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input['DomainRedirectBackendPortArgs']]] backend_ports: The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backend_ports` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backends: The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
                
                - If you specify IP addresses, specify the value in the **\\["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
@@ -2145,6 +2154,7 @@ class DomainRedirectArgs:
                
                > **NOTE:**  How long the multiplexed long connection is idle and then released.
         :param pulumi.Input[_builtins.int] max_body_size: The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+               
                > **NOTE:** This parameter is supported only by the Ultimate edition.
         :param pulumi.Input[_builtins.int] read_timeout: The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
         :param pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgs']]] request_headers: The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
@@ -2158,6 +2168,8 @@ class DomainRedirectArgs:
         :param pulumi.Input[_builtins.bool] xff_proto: Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
         """
         pulumi.set(__self__, "loadbalance", loadbalance)
+        if backend_ports is not None:
+            pulumi.set(__self__, "backend_ports", backend_ports)
         if backends is not None:
             pulumi.set(__self__, "backends", backends)
         if backup_backends is not None:
@@ -2204,6 +2216,18 @@ class DomainRedirectArgs:
     @loadbalance.setter
     def loadbalance(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "loadbalance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backendPorts")
+    def backend_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainRedirectBackendPortArgs']]]]:
+        """
+        The custom port configurations that map listening ports to back-to-source ports. Each item contains the listening port, back-to-source port, and protocol; all three fields must be set together. If this parameter is not specified when the domain is created, the back-to-source port is the same as the listening port. Once configured, the value is read back from the server, so removing it from the configuration does not restore the default mapping; to reset a mapping, set the back-to-source port to the same value as the listening port. When an existing state does not contain this attribute, the provider omits the parameter instead of sending an empty list; mappings configured outside Terraform are read back on refresh and resent on later updates. When this parameter is configured, every listening port in `listen` must have a mapping; the API rejects partial mappings (`Waf.Pullin.BackendPortNotMatched`). See `backend_ports` below.
+        """
+        return pulumi.get(self, "backend_ports")
+
+    @backend_ports.setter
+    def backend_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainRedirectBackendPortArgs']]]]):
+        pulumi.set(self, "backend_ports", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2326,6 +2350,7 @@ class DomainRedirectArgs:
     def max_body_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size of a request body. Valid values: `2` to `10`. Default value: `2`. Unit: GB.
+
         > **NOTE:** This parameter is supported only by the Ultimate edition.
         """
         return pulumi.get(self, "max_body_size")
@@ -2420,6 +2445,75 @@ class DomainRedirectArgs:
     @xff_proto.setter
     def xff_proto(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "xff_proto", value)
+
+
+class DomainRedirectBackendPortArgsDict(TypedDict):
+    backend_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The back-to-source port. Valid values: `1` to `65535`. Required together with `listen_port` and `protocol`.
+    """
+    listen_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The listening port. Valid values: `1` to `65535`. Required together with `backend_port` and `protocol`.
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The protocol type. Valid values: `http` and `https`. Required together with `listen_port` and `backend_port`.
+    """
+
+@pulumi.input_type
+class DomainRedirectBackendPortArgs:
+    def __init__(__self__, *,
+                 backend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listen_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] backend_port: The back-to-source port. Valid values: `1` to `65535`. Required together with `listen_port` and `protocol`.
+        :param pulumi.Input[_builtins.int] listen_port: The listening port. Valid values: `1` to `65535`. Required together with `backend_port` and `protocol`.
+        :param pulumi.Input[_builtins.str] protocol: The protocol type. Valid values: `http` and `https`. Required together with `listen_port` and `backend_port`.
+        """
+        if backend_port is not None:
+            pulumi.set(__self__, "backend_port", backend_port)
+        if listen_port is not None:
+            pulumi.set(__self__, "listen_port", listen_port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter(name="backendPort")
+    def backend_port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The back-to-source port. Valid values: `1` to `65535`. Required together with `listen_port` and `protocol`.
+        """
+        return pulumi.get(self, "backend_port")
+
+    @backend_port.setter
+    def backend_port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "backend_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="listenPort")
+    def listen_port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The listening port. Valid values: `1` to `65535`. Required together with `backend_port` and `protocol`.
+        """
+        return pulumi.get(self, "listen_port")
+
+    @listen_port.setter
+    def listen_port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "listen_port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The protocol type. Valid values: `http` and `https`. Required together with `listen_port` and `backend_port`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
 
 
 class DomainRedirectRequestHeaderArgsDict(TypedDict):

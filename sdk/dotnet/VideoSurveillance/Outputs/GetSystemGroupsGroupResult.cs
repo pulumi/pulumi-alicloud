@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.VideoSurveillance.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The use of the access protocol support `Gb28181`,`Rtmp`(Real Time Messaging Protocol).
+        /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `Gb28181`, `Rtmp`.
         /// </summary>
         public readonly string InProtocol;
         /// <summary>

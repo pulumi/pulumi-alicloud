@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Arms
         /// <summary>
         /// This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Arms
         /// <summary>
         /// This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Arms
         /// <summary>
         /// This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.129.0+.
+        /// &gt; **NOTE:** Available since v1.129.0.
         /// 
         /// ## Example Usage
         /// 
@@ -222,8 +222,17 @@ namespace Pulumi.AliCloud.Arms
     [OutputType]
     public sealed class GetAlertContactsResult
     {
+        /// <summary>
+        /// The name of the alert contact.
+        /// </summary>
         public readonly string? AlertContactName;
+        /// <summary>
+        /// A list of Arms Alert Contacts. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAlertContactsContactResult> Contacts;
+        /// <summary>
+        /// The email address of the alert contact.
+        /// </summary>
         public readonly string? Email;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -231,8 +240,14 @@ namespace Pulumi.AliCloud.Arms
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Alert Contact names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The mobile number of the alert contact.
+        /// </summary>
         public readonly string? PhoneNum;
 
         [OutputConstructor]

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -93,8 +93,14 @@ export interface GetEcsDedicatedHostClustersArgs {
  * A collection of values returned by getEcsDedicatedHostClusters.
  */
 export interface GetEcsDedicatedHostClustersResult {
+    /**
+     * A list of Ecs Dedicated Host Clusters. Each element contains the following attributes:
+     */
     readonly clusters: outputs.ecs.GetEcsDedicatedHostClustersCluster[];
     readonly dedicatedHostClusterIds?: string[];
+    /**
+     * The name of the dedicated host cluster.
+     */
     readonly dedicatedHostClusterName?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -102,15 +108,24 @@ export interface GetEcsDedicatedHostClustersResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Dedicated Host Cluster names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The zone ID of the dedicated host cluster.
+     */
     readonly zoneId?: string;
 }
 /**
  * This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *

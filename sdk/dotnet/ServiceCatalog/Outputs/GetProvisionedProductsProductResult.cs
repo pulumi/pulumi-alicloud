@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
         /// The creation time of the product instance
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// The ID of the provisioned product.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the last instance operation task
@@ -30,6 +33,9 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
         /// The ID of the last task
         /// </summary>
         public readonly string LastTaskId;
+        /// <summary>
+        /// The output value of the template.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProvisionedProductsProductOutputResult> Outputs;
         /// <summary>
         /// The RAM entity ID of the owner
@@ -39,9 +45,12 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
         /// The RAM entity type of the owner
         /// </summary>
         public readonly string OwnerPrincipalType;
+        /// <summary>
+        /// The template parameters entered by the user.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProvisionedProductsProductParameterResult> Parameters;
         /// <summary>
-        /// Product mix ID.&gt; When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+        /// Product mix ID.
         /// </summary>
         public readonly string PortfolioId;
         /// <summary>
@@ -69,11 +78,11 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
         /// </summary>
         public readonly string ProvisionedProductId;
         /// <summary>
-        /// The name of the instance.The length is 1~128 characters.
+        /// The name of the instance.
         /// </summary>
         public readonly string ProvisionedProductName;
         /// <summary>
-        /// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+        /// Instance type.
         /// </summary>
         public readonly string ProvisionedProductType;
         /// <summary>
@@ -81,7 +90,7 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
         /// </summary>
         public readonly string StackId;
         /// <summary>
-        /// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+        /// The ID of the region to which the resource stack belongs.
         /// </summary>
         public readonly string StackRegionId;
         /// <summary>
@@ -92,7 +101,10 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
         /// The status message of the product instance
         /// </summary>
         public readonly string StatusMessage;
-        public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// A mapping of tags of the provisioned product.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetProvisionedProductsProductResult(
@@ -140,7 +152,7 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
 
             string statusMessage,
 
-            ImmutableDictionary<string, string>? tags)
+            ImmutableDictionary<string, string> tags)
         {
             CreateTime = createTime;
             Id = id;

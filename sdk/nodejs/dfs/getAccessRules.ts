@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *
@@ -60,6 +60,9 @@ export interface GetAccessRulesArgs {
  * A collection of values returned by getAccessRules.
  */
 export interface GetAccessRulesResult {
+    /**
+     * The resource ID of the Access Group.
+     */
     readonly accessGroupId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -67,12 +70,15 @@ export interface GetAccessRulesResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Dfs Access Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.dfs.GetAccessRulesRule[];
 }
 /**
  * This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *

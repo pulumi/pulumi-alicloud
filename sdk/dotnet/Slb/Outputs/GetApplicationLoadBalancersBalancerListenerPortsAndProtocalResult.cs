@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly int ListenerPort;
         /// <summary>
-        /// The listener protoal.
+        /// The listener protocol.
         /// </summary>
         public readonly string ListenerProtocal;
 

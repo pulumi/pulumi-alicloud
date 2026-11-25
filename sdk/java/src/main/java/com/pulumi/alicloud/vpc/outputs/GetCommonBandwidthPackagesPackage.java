@@ -80,7 +80,7 @@ public final class GetCommonBandwidthPackagesPackage {
      */
     private String paymentType;
     /**
-     * @return Public ip addresses that in the Common Bandwidth Pakcage.
+     * @return The publicIpAddresses mapping supports the following:
      * 
      */
     private List<GetCommonBandwidthPackagesPackagePublicIpAddress> publicIpAddresses;
@@ -218,7 +218,7 @@ public final class GetCommonBandwidthPackagesPackage {
         return this.paymentType;
     }
     /**
-     * @return Public ip addresses that in the Common Bandwidth Pakcage.
+     * @return The publicIpAddresses mapping supports the following:
      * 
      */
     public List<GetCommonBandwidthPackagesPackagePublicIpAddress> publicIpAddresses() {

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the ECS instance type families of Alibaba Cloud.
 //
-// > **NOTE:** Available in 1.54.0+
+// > **NOTE:** Available since v1.54.0
 //
 // ## Example Usage
 //
@@ -68,6 +68,7 @@ type GetInstanceTypeFamiliesArgs struct {
 
 // A collection of values returned by getInstanceTypeFamilies.
 type GetInstanceTypeFamiliesResult struct {
+	// A list of instance type families. Each element contains the following attributes:
 	Families []GetInstanceTypeFamiliesFamily `pulumi:"families"`
 	// The generation of the instance type family.
 	Generation *string `pulumi:"generation"`
@@ -119,6 +120,7 @@ func (o GetInstanceTypeFamiliesResultOutput) ToGetInstanceTypeFamiliesResultOutp
 	return o
 }
 
+// A list of instance type families. Each element contains the following attributes:
 func (o GetInstanceTypeFamiliesResultOutput) Families() GetInstanceTypeFamiliesFamilyArrayOutput {
 	return o.ApplyT(func(v GetInstanceTypeFamiliesResult) []GetInstanceTypeFamiliesFamily { return v.Families }).(GetInstanceTypeFamiliesFamilyArrayOutput)
 }

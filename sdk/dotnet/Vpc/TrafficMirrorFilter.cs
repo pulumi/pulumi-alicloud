@@ -32,13 +32,13 @@ namespace Pulumi.AliCloud.Vpc
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var default3iXhoa = new AliCloud.ResourceManager.ResourceGroup("default3iXhoa", new()
     ///     {
-    ///         DisplayName = "testname03",
+    ///         DisplayName = "example03",
     ///         ResourceGroupName = name,
     ///     });
     /// 
     ///     var defaultdNz2qk = new AliCloud.ResourceManager.ResourceGroup("defaultdNz2qk", new()
     ///     {
-    ///         DisplayName = "testname04",
+    ///         DisplayName = "example04",
     ///         ResourceGroupName = $"{name}1",
     ///     });
     /// 
@@ -100,13 +100,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Information about the outbound rule. See the following `Block EgressRules`.
+        /// Information about the outbound rule. See `EgressRules` below.
         /// </summary>
         [Output("egressRules")]
         public Output<ImmutableArray<Outputs.TrafficMirrorFilterEgressRule>> EgressRules { get; private set; } = null!;
 
         /// <summary>
-        /// Inward direction rule information. See the following `Block IngressRules`.
+        /// Inward direction rule information. See `IngressRules` below.
         /// </summary>
         [Output("ingressRules")]
         public Output<ImmutableArray<Outputs.TrafficMirrorFilterIngressRule>> IngressRules { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.TrafficMirrorFilterEgressRuleArgs>? _egressRules;
 
         /// <summary>
-        /// Information about the outbound rule. See the following `Block EgressRules`.
+        /// Information about the outbound rule. See `EgressRules` below.
         /// </summary>
         public InputList<Inputs.TrafficMirrorFilterEgressRuleArgs> EgressRules
         {
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.TrafficMirrorFilterIngressRuleArgs>? _ingressRules;
 
         /// <summary>
-        /// Inward direction rule information. See the following `Block IngressRules`.
+        /// Inward direction rule information. See `IngressRules` below.
         /// </summary>
         public InputList<Inputs.TrafficMirrorFilterIngressRuleArgs> IngressRules
         {
@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.TrafficMirrorFilterEgressRuleGetArgs>? _egressRules;
 
         /// <summary>
-        /// Information about the outbound rule. See the following `Block EgressRules`.
+        /// Information about the outbound rule. See `EgressRules` below.
         /// </summary>
         public InputList<Inputs.TrafficMirrorFilterEgressRuleGetArgs> EgressRules
         {
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.TrafficMirrorFilterIngressRuleGetArgs>? _ingressRules;
 
         /// <summary>
-        /// Inward direction rule information. See the following `Block IngressRules`.
+        /// Inward direction rule information. See `IngressRules` below.
         /// </summary>
         public InputList<Inputs.TrafficMirrorFilterIngressRuleGetArgs> IngressRules
         {

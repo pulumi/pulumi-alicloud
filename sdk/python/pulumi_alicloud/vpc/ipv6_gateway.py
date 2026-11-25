@@ -29,8 +29,8 @@ class Ipv6GatewayArgs:
         The set of arguments for constructing a Ipv6Gateway resource.
 
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
-        :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
-        :param pulumi.Input[_builtins.str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[_builtins.str] spec: IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags for the resource.
@@ -66,7 +66,7 @@ class Ipv6GatewayArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -78,7 +78,7 @@ class Ipv6GatewayArgs:
     @pulumi.getter(name="ipv6GatewayName")
     def ipv6_gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "ipv6_gateway_name")
 
@@ -144,11 +144,11 @@ class _Ipv6GatewayState:
 
         :param pulumi.Input[_builtins.str] business_status: The status of the IPv6 gateway.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] expired_time: The expiration time of IPv6 gateway.
         :param pulumi.Input[_builtins.str] instance_charge_type: The charge type of IPv6 gateway.
         :param pulumi.Input[_builtins.str] ipv6_gateway_id: Resource primary key attribute field.
-        :param pulumi.Input[_builtins.str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[_builtins.str] spec: IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: Available, Pending and Deleting.
@@ -211,7 +211,7 @@ class _Ipv6GatewayState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -259,7 +259,7 @@ class _Ipv6GatewayState:
     @pulumi.getter(name="ipv6GatewayName")
     def ipv6_gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "ipv6_gateway_name")
 
@@ -360,18 +360,18 @@ class Ipv6Gateway(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc-example"
+            name = "terraform-example"
         default_vpc = alicloud.vpc.Network("defaultVpc",
-            description="tf-testacc",
+            description="terraform-example",
             enable_ipv6=True)
         default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-testacc-ipv6gateway503",
+            display_name="terraform-example-ipv6gateway503",
             resource_group_name=f"{name}1")
         change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-ipv6gateway311",
+            display_name="terraform-example-ipv6gateway311",
             resource_group_name=f"{name}2")
         default = alicloud.vpc.Ipv6Gateway("default",
-            description="test",
+            description="terraform-example",
             ipv6_gateway_name=name,
             vpc_id=default_vpc.id,
             resource_group_id=default_rg.id)
@@ -390,8 +390,8 @@ class Ipv6Gateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
-        :param pulumi.Input[_builtins.str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[_builtins.str] spec: IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags for the resource.
@@ -421,18 +421,18 @@ class Ipv6Gateway(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testacc-example"
+            name = "terraform-example"
         default_vpc = alicloud.vpc.Network("defaultVpc",
-            description="tf-testacc",
+            description="terraform-example",
             enable_ipv6=True)
         default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
-            display_name="tf-testacc-ipv6gateway503",
+            display_name="terraform-example-ipv6gateway503",
             resource_group_name=f"{name}1")
         change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
-            display_name="tf-testacc-ipv6gateway311",
+            display_name="terraform-example-ipv6gateway311",
             resource_group_name=f"{name}2")
         default = alicloud.vpc.Ipv6Gateway("default",
-            description="test",
+            description="terraform-example",
             ipv6_gateway_name=name,
             vpc_id=default_vpc.id,
             resource_group_id=default_rg.id)
@@ -524,11 +524,11 @@ class Ipv6Gateway(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] business_status: The status of the IPv6 gateway.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] description: The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] expired_time: The expiration time of IPv6 gateway.
         :param pulumi.Input[_builtins.str] instance_charge_type: The charge type of IPv6 gateway.
         :param pulumi.Input[_builtins.str] ipv6_gateway_id: Resource primary key attribute field.
-        :param pulumi.Input[_builtins.str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[_builtins.str] spec: IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: Available, Pending and Deleting.
@@ -603,7 +603,7 @@ class Ipv6Gateway(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        The description of the IPv6 gateway. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -635,7 +635,7 @@ class Ipv6Gateway(pulumi.CustomResource):
     @pulumi.getter(name="ipv6GatewayName")
     def ipv6_gateway_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        The name of the IPv6 gateway. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "ipv6_gateway_name")
 

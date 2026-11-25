@@ -33,7 +33,7 @@ public final class GetAppTemplatesTemplate {
      */
     private List<String> componentLists;
     /**
-     * @return List of config.
+     * @return List of config. Each element contains the following attributes:
      * 
      */
     private List<GetAppTemplatesTemplateConfigList> configLists;
@@ -68,7 +68,7 @@ public final class GetAppTemplatesTemplate {
      */
     private String standardRoomInfo;
     /**
-     * @return Application template usage status.
+     * @return Application template usage status. Valid values: [&#34;attached&#34;, &#34;unattached&#34;].
      * 
      */
     private String status;
@@ -103,7 +103,7 @@ public final class GetAppTemplatesTemplate {
         return this.componentLists;
     }
     /**
-     * @return List of config.
+     * @return List of config. Each element contains the following attributes:
      * 
      */
     public List<GetAppTemplatesTemplateConfigList> configLists() {
@@ -152,7 +152,7 @@ public final class GetAppTemplatesTemplate {
         return this.standardRoomInfo;
     }
     /**
-     * @return Application template usage status.
+     * @return Application template usage status. Valid values: [&#34;attached&#34;, &#34;unattached&#34;].
      * 
      */
     public String status() {

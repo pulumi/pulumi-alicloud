@@ -32,14 +32,14 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+     * The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
      * 
      */
     @Import(name="sourcePort", required=true)
     private Output<String> sourcePort;
 
     /**
-     * @return The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+     * @return The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
      * 
      */
     public Output<String> sourcePort() {
@@ -47,14 +47,14 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+     * The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
      * 
      */
     @Import(name="sourcePriority")
     private @Nullable Output<String> sourcePriority;
 
     /**
-     * @return The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+     * @return The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
      * 
      */
     public Optional<Output<String>> sourcePriority() {
@@ -62,14 +62,14 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the origin server. Valid values:
+     * The origin server type. Valid values:
      * 
      */
     @Import(name="sourceType", required=true)
     private Output<String> sourceType;
 
     /**
-     * @return The type of the origin server. Valid values:
+     * @return The origin server type. Valid values:
      * 
      */
     public Output<String> sourceType() {
@@ -125,7 +125,7 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourcePort The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+         * @param sourcePort The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourcePort The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+         * @param sourcePort The port number. You can specify port 443 or 80. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourcePriority The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+         * @param sourcePriority The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourcePriority The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+         * @param sourcePriority The priority of the origin server if multiple origin servers are specified. Valid values: `20`, `30`. Default value: `20`. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceType The type of the origin server. Valid values:
+         * @param sourceType The origin server type. Valid values:
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceType The type of the origin server. Valid values:
+         * @param sourceType The origin server type. Valid values:
          * 
          * @return builder
          * 

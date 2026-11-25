@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     public sealed class GetResolverZonesZoneResult
     {
         /// <summary>
-        /// The status of the Zone.
+        /// The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
         /// </summary>
         public readonly string Status;
         /// <summary>

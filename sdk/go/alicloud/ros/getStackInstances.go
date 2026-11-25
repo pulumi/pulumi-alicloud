@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ros Stack Instances of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.145.0+.
+// > **NOTE:** Available since v1.145.0.
 //
 // ## Example Usage
 //
@@ -112,14 +112,19 @@ type LookupStackInstancesArgs struct {
 type LookupStackInstancesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string                      `pulumi:"id"`
-	Ids                    []string                    `pulumi:"ids"`
-	Instances              []GetStackInstancesInstance `pulumi:"instances"`
-	OutputFile             *string                     `pulumi:"outputFile"`
-	StackGroupName         string                      `pulumi:"stackGroupName"`
-	StackInstanceAccountId *string                     `pulumi:"stackInstanceAccountId"`
-	StackInstanceRegionId  *string                     `pulumi:"stackInstanceRegionId"`
-	Status                 *string                     `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Ros Stack Instances. Each element contains the following attributes:
+	Instances  []GetStackInstancesInstance `pulumi:"instances"`
+	OutputFile *string                     `pulumi:"outputFile"`
+	// The name of the stack group.
+	StackGroupName string `pulumi:"stackGroupName"`
+	// The account to which the stack instance belongs.
+	StackInstanceAccountId *string `pulumi:"stackInstanceAccountId"`
+	// The region of the stack instance.
+	StackInstanceRegionId *string `pulumi:"stackInstanceRegionId"`
+	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
+	Status *string `pulumi:"status"`
 }
 
 func LookupStackInstancesOutput(ctx *pulumi.Context, args LookupStackInstancesOutputArgs, opts ...pulumi.InvokeOption) LookupStackInstancesResultOutput {
@@ -182,6 +187,7 @@ func (o LookupStackInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupStackInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Ros Stack Instances. Each element contains the following attributes:
 func (o LookupStackInstancesResultOutput) Instances() GetStackInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v LookupStackInstancesResult) []GetStackInstancesInstance { return v.Instances }).(GetStackInstancesInstanceArrayOutput)
 }
@@ -190,18 +196,22 @@ func (o LookupStackInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStackInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The name of the stack group.
 func (o LookupStackInstancesResultOutput) StackGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStackInstancesResult) string { return v.StackGroupName }).(pulumi.StringOutput)
 }
 
+// The account to which the stack instance belongs.
 func (o LookupStackInstancesResultOutput) StackInstanceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStackInstancesResult) *string { return v.StackInstanceAccountId }).(pulumi.StringPtrOutput)
 }
 
+// The region of the stack instance.
 func (o LookupStackInstancesResultOutput) StackInstanceRegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStackInstancesResult) *string { return v.StackInstanceRegionId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. `CURRENT` means the stack corresponding to the stack instance is up to date with the stack group. `OUTDATED` means the stack corresponding to the stack instance is not up to date with the stack group, which may be caused by: stack creation failures when CreateStackInstances is called; stack update failures or partial updates when UpdateStackInstances or UpdateStackGroup is called; or the create or update operation is not complete.
 func (o LookupStackInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStackInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

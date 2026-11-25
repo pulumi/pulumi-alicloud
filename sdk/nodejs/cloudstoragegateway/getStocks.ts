@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *
@@ -58,12 +58,15 @@ export interface GetStocksResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * A list of Cloud Storage Gateway Stocks. Each element contains the following attributes:
+     */
     readonly stocks: outputs.cloudstoragegateway.GetStocksStock[];
 }
 /**
  * This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.144.0+.
+ * > **NOTE:** Available since v1.144.0.
  *
  * ## Example Usage
  *

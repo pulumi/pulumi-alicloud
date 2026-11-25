@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string Address;
         /// <summary>
-        /// SLB creation time.
+        /// The creation time of the SLB.
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
@@ -26,15 +26,15 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// SLB addressType: internet if `True`, intranet if `False`. Must be `False` when `NetworkType` is `Vpc`.
+        /// Whether the SLB is internet-facing.
         /// </summary>
         public readonly bool Internet;
         /// <summary>
-        /// Master availability zone of the SLBs.
+        /// Master availability zone of the SLB.
         /// </summary>
         public readonly string MasterAvailabilityZone;
         /// <summary>
-        /// SLB name.
+        /// The name of the SLB.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -46,34 +46,15 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// Slave availability zone of the SLBs.
+        /// Slave availability zone of the SLB.
         /// </summary>
         public readonly string SlaveAvailabilityZone;
         /// <summary>
-        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
+        /// The status of the SLB. Valid values: `Active`, `Inactive` and `Locked`.
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// A map of tags assigned to the SLB instances. The `Tags` can have a maximum of 5 tag. It must be in the format:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var taggedInstances = AliCloud.Slb.GetLoadBalancers.Invoke(new()
-        ///     {
-        ///         Tags = 
-        ///         {
-        ///             { "tagKey1", "tagValue1" },
-        ///             { "tagKey2", "tagValue2" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>

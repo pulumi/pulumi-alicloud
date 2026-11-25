@@ -19,6 +19,8 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
     public static final SubnetState Empty = new SubnetState();
 
     /**
+     * Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+     * 
      * @deprecated Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
      * 
      */
@@ -27,6 +29,8 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> availabilityZone;
 
     /**
+     * @return Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+     * 
      * @deprecated Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
      * 
      */
@@ -35,56 +39,120 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.availabilityZone);
     }
 
+    /**
+     * The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * 
+     */
     @Import(name="cidrBlock")
     private @Nullable Output<String> cidrBlock;
 
+    /**
+     * @return The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * 
+     */
     public Optional<Output<String>> cidrBlock() {
         return Optional.ofNullable(this.cidrBlock);
     }
 
+    /**
+     * The creation time of the VSwitch.
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return The creation time of the VSwitch.
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Whether the IPv6 function is enabled in the switch. Value:
+     * 
+     */
     @Import(name="enableIpv6")
     private @Nullable Output<Boolean> enableIpv6;
 
+    /**
+     * @return Whether the IPv6 function is enabled in the switch. Value:
+     * 
+     */
     public Optional<Output<Boolean>> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
     }
 
+    /**
+     * The IPv6 CIDR block of the VSwitch.
+     * 
+     */
     @Import(name="ipv6CidrBlock")
     private @Nullable Output<String> ipv6CidrBlock;
 
+    /**
+     * @return The IPv6 CIDR block of the VSwitch.
+     * 
+     */
     public Optional<Output<String>> ipv6CidrBlock() {
         return Optional.ofNullable(this.ipv6CidrBlock);
     }
 
+    /**
+     * The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+     * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+     * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+     * - When the VPC IPv6 address mask is `60`: `0` to `15`.
+     * 
+     */
     @Import(name="ipv6CidrBlockMask")
     private @Nullable Output<Integer> ipv6CidrBlockMask;
 
+    /**
+     * @return The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+     * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+     * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+     * - When the VPC IPv6 address mask is `60`: `0` to `15`.
+     * 
+     */
     public Optional<Output<Integer>> ipv6CidrBlockMask() {
         return Optional.ofNullable(this.ipv6CidrBlockMask);
     }
 
+    /**
+     * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     * 
+     */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
+    /**
+     * @return Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     * 
+     */
     public Optional<Output<Boolean>> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
 
     /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+     * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
      * 
      */
@@ -93,6 +161,8 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
+     * @return Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+     * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
      * 
      */
@@ -101,44 +171,96 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The status of the resource.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The tags of VSwitch.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
+    /**
+     * @return The tags of VSwitch.
+     * 
+     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+     * 
+     */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
+    /**
+     * @return The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+     * 
+     */
     public Optional<Output<String>> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
 
+    /**
+     * The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     @Import(name="vpcIpv6CidrBlock")
     private @Nullable Output<String> vpcIpv6CidrBlock;
 
+    /**
+     * @return The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
     public Optional<Output<String>> vpcIpv6CidrBlock() {
         return Optional.ofNullable(this.vpcIpv6CidrBlock);
     }
 
+    /**
+     * The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
     @Import(name="vswitchName")
     private @Nullable Output<String> vswitchName;
 
+    /**
+     * @return The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
     public Optional<Output<String>> vswitchName() {
         return Optional.ofNullable(this.vswitchName);
     }
 
+    /**
+     * The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+     * 
+     */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
+    /**
+     * @return The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+     * 
+     */
     public Optional<Output<String>> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
@@ -182,6 +304,8 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param availabilityZone Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
@@ -194,6 +318,8 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param availabilityZone Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
@@ -204,70 +330,162 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
             return availabilityZone(Output.of(availabilityZone));
         }
 
+        /**
+         * @param cidrBlock The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlock(@Nullable Output<String> cidrBlock) {
             $.cidrBlock = cidrBlock;
             return this;
         }
 
+        /**
+         * @param cidrBlock The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlock(String cidrBlock) {
             return cidrBlock(Output.of(cidrBlock));
         }
 
+        /**
+         * @param createTime The creation time of the VSwitch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime The creation time of the VSwitch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param description The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param enableIpv6 Whether the IPv6 function is enabled in the switch. Value:
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableIpv6(@Nullable Output<Boolean> enableIpv6) {
             $.enableIpv6 = enableIpv6;
             return this;
         }
 
+        /**
+         * @param enableIpv6 Whether the IPv6 function is enabled in the switch. Value:
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableIpv6(Boolean enableIpv6) {
             return enableIpv6(Output.of(enableIpv6));
         }
 
+        /**
+         * @param ipv6CidrBlock The IPv6 CIDR block of the VSwitch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6CidrBlock(@Nullable Output<String> ipv6CidrBlock) {
             $.ipv6CidrBlock = ipv6CidrBlock;
             return this;
         }
 
+        /**
+         * @param ipv6CidrBlock The IPv6 CIDR block of the VSwitch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6CidrBlock(String ipv6CidrBlock) {
             return ipv6CidrBlock(Output.of(ipv6CidrBlock));
         }
 
+        /**
+         * @param ipv6CidrBlockMask The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+         * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+         * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+         * - When the VPC IPv6 address mask is `60`: `0` to `15`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6CidrBlockMask(@Nullable Output<Integer> ipv6CidrBlockMask) {
             $.ipv6CidrBlockMask = ipv6CidrBlockMask;
             return this;
         }
 
+        /**
+         * @param ipv6CidrBlockMask The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+         * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+         * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+         * - When the VPC IPv6 address mask is `60`: `0` to `15`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6CidrBlockMask(Integer ipv6CidrBlockMask) {
             return ipv6CidrBlockMask(Output.of(ipv6CidrBlockMask));
         }
 
+        /**
+         * @param isDefault Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDefault(@Nullable Output<Boolean> isDefault) {
             $.isDefault = isDefault;
             return this;
         }
 
+        /**
+         * @param isDefault Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
         }
 
         /**
+         * @param name Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -280,6 +498,8 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param name Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+         * 
          * @return builder
          * 
          * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -290,56 +510,132 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param status The status of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
 
+        /**
+         * @param tags The tags of VSwitch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags The tags of VSwitch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param vpcId The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(@Nullable Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }
 
+        /**
+         * @param vpcIpv6CidrBlock The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcIpv6CidrBlock(@Nullable Output<String> vpcIpv6CidrBlock) {
             $.vpcIpv6CidrBlock = vpcIpv6CidrBlock;
             return this;
         }
 
+        /**
+         * @param vpcIpv6CidrBlock The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcIpv6CidrBlock(String vpcIpv6CidrBlock) {
             return vpcIpv6CidrBlock(Output.of(vpcIpv6CidrBlock));
         }
 
+        /**
+         * @param vswitchName The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vswitchName(@Nullable Output<String> vswitchName) {
             $.vswitchName = vswitchName;
             return this;
         }
 
+        /**
+         * @param vswitchName The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vswitchName(String vswitchName) {
             return vswitchName(Output.of(vswitchName));
         }
 
+        /**
+         * @param zoneId The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
+        /**
+         * @param zoneId The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
         }

@@ -86,24 +86,24 @@ export class ScheduledTask extends pulumi.CustomResource {
      */
     declare public readonly minValue: pulumi.Output<number | undefined>;
     /**
-     * Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+     * Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
      * The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
      */
     declare public readonly recurrenceEndTime: pulumi.Output<string>;
     /**
      * Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-     * - Daily: The scheduled task is executed once every specified number of days.
-     * - Weekly: The scheduled task is executed on each specified day of a week.
-     * - Monthly: The scheduled task is executed on each specified day of a month.
-     * - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+     * - `Daily`: The scheduled task is executed once every specified number of days.
+     * - `Weekly`: The scheduled task is executed on each specified day of a week.
+     * - `Monthly`: The scheduled task is executed on each specified day of a month.
+     * - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
      */
     declare public readonly recurrenceType: pulumi.Output<string>;
     /**
      * Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-     * - Daily: You can enter one value. Valid values: 1 to 31.
-     * - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-     * - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-     * - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+     * - `Daily`: You can enter one value. Valid values: `1-31`.
+     * - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+     * - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+     * - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
      */
     declare public readonly recurrenceValue: pulumi.Output<string>;
     /**
@@ -202,24 +202,24 @@ export interface ScheduledTaskState {
      */
     minValue?: pulumi.Input<number | undefined>;
     /**
-     * Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+     * Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
      * The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
      */
     recurrenceEndTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-     * - Daily: The scheduled task is executed once every specified number of days.
-     * - Weekly: The scheduled task is executed on each specified day of a week.
-     * - Monthly: The scheduled task is executed on each specified day of a month.
-     * - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+     * - `Daily`: The scheduled task is executed once every specified number of days.
+     * - `Weekly`: The scheduled task is executed on each specified day of a week.
+     * - `Monthly`: The scheduled task is executed on each specified day of a month.
+     * - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
      */
     recurrenceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-     * - Daily: You can enter one value. Valid values: 1 to 31.
-     * - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-     * - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-     * - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+     * - `Daily`: You can enter one value. Valid values: `1-31`.
+     * - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+     * - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+     * - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
      */
     recurrenceValue?: pulumi.Input<string | undefined>;
     /**
@@ -272,24 +272,24 @@ export interface ScheduledTaskArgs {
      */
     minValue?: pulumi.Input<number | undefined>;
     /**
-     * Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+     * Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
      * The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
      */
     recurrenceEndTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
-     * - Daily: The scheduled task is executed once every specified number of days.
-     * - Weekly: The scheduled task is executed on each specified day of a week.
-     * - Monthly: The scheduled task is executed on each specified day of a month.
-     * - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
+     * - `Daily`: The scheduled task is executed once every specified number of days.
+     * - `Weekly`: The scheduled task is executed on each specified day of a week.
+     * - `Monthly`: The scheduled task is executed on each specified day of a month.
+     * - `Cron`: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
      */
     recurrenceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrenceType`
-     * - Daily: You can enter one value. Valid values: 1 to 31.
-     * - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
-     * - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
-     * - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
+     * - `Daily`: You can enter one value. Valid values: `1-31`.
+     * - `Weekly`: You can enter multiple values and separate them with commas (,). For example, the values `0-6` correspond to the days of the week in sequence from Sunday to Saturday.
+     * - `Monthly`: You can enter two values in `A-B` format. Valid values of `A` and `B`: `1-31`. The value of `B` must be greater than or equal to the value of `A`.
+     * - `Cron`: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
      */
     recurrenceValue?: pulumi.Input<string | undefined>;
     /**

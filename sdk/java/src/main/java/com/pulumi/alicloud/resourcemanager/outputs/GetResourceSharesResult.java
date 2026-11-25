@@ -21,11 +21,31 @@ public final class GetResourceSharesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Resource Share names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The name of resource share.
+     * 
+     */
     private @Nullable String resourceShareName;
+    /**
+     * @return The owner of resource share.
+     * 
+     */
     private String resourceShareOwner;
+    /**
+     * @return A list of Resource Manager Resource Shares. Each element contains the following attributes:
+     * 
+     */
     private List<GetResourceSharesShare> shares;
+    /**
+     * @return The status of resource share.
+     * 
+     */
     private @Nullable String status;
 
     private GetResourceSharesResult() {}
@@ -42,21 +62,41 @@ public final class GetResourceSharesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Resource Share names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The name of resource share.
+     * 
+     */
     public Optional<String> resourceShareName() {
         return Optional.ofNullable(this.resourceShareName);
     }
+    /**
+     * @return The owner of resource share.
+     * 
+     */
     public String resourceShareOwner() {
         return this.resourceShareOwner;
     }
+    /**
+     * @return A list of Resource Manager Resource Shares. Each element contains the following attributes:
+     * 
+     */
     public List<GetResourceSharesShare> shares() {
         return this.shares;
     }
+    /**
+     * @return The status of resource share.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -4709,7 +4709,7 @@ type GetInstancesInstance struct {
 	Id string `pulumi:"id"`
 	// The first ID of the resource.
 	InstanceId string `pulumi:"instanceId"`
-	// The payment type of the resource. Valid values: `Subscription`.
+	// The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType string `pulumi:"paymentType"`
 	// Automatic renewal period unit. Valid values: `Month`,`Year`.
 	RenewalDurationUnit string `pulumi:"renewalDurationUnit"`
@@ -4739,7 +4739,7 @@ type GetInstancesInstanceArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The first ID of the resource.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// The payment type of the resource. Valid values: `Subscription`.
+	// The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// Automatic renewal period unit. Valid values: `Month`,`Year`.
 	RenewalDurationUnit pulumi.StringInput `pulumi:"renewalDurationUnit"`
@@ -4820,7 +4820,7 @@ func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The payment type of the resource. Valid values: `Subscription`.
+// The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
 func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -5724,17 +5724,21 @@ func (o GetVpcFirewallCensCenArrayOutput) Index(i pulumi.IntInput) GetVpcFirewal
 }
 
 type GetVpcFirewallCensCenLocalVpc struct {
-	AttachmentId   string `pulumi:"attachmentId"`
+	// The ID of the attachment.
+	AttachmentId string `pulumi:"attachmentId"`
+	// The name of the attachment.
 	AttachmentName string `pulumi:"attachmentName"`
 	// The list of network segments protected by the VPC firewall.
-	DefendCidrLists []string                               `pulumi:"defendCidrLists"`
-	EniLists        []GetVpcFirewallCensCenLocalVpcEniList `pulumi:"eniLists"`
-	ManualVswitchId string                                 `pulumi:"manualVswitchId"`
+	DefendCidrLists []string `pulumi:"defendCidrLists"`
+	// The list of ENIs.
+	EniLists []GetVpcFirewallCensCenLocalVpcEniList `pulumi:"eniLists"`
+	// The ID of the vSwitch specified when the routing mode is manual mode.
+	ManualVswitchId string `pulumi:"manualVswitchId"`
 	// The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId string `pulumi:"networkInstanceId"`
 	// The name of the network instance.
 	NetworkInstanceName string `pulumi:"networkInstanceName"`
-	// The type of the network instance. Value: **VPC * *.
+	// The type of the network instance. Value: **VPC**.
 	NetworkInstanceType string `pulumi:"networkInstanceType"`
 	// The UID of the Alibaba Cloud account to which the VPC belongs.
 	OwnerId string `pulumi:"ownerId"`
@@ -5744,7 +5748,8 @@ type GetVpcFirewallCensCenLocalVpc struct {
 	RouteMode string `pulumi:"routeMode"`
 	// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
 	SupportManualMode string `pulumi:"supportManualMode"`
-	TransitRouterId   string `pulumi:"transitRouterId"`
+	// The ID of the transit router.
+	TransitRouterId string `pulumi:"transitRouterId"`
 	// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
 	TransitRouterType string `pulumi:"transitRouterType"`
 	// The VPC network segment list.
@@ -5767,17 +5772,21 @@ type GetVpcFirewallCensCenLocalVpcInput interface {
 }
 
 type GetVpcFirewallCensCenLocalVpcArgs struct {
-	AttachmentId   pulumi.StringInput `pulumi:"attachmentId"`
+	// The ID of the attachment.
+	AttachmentId pulumi.StringInput `pulumi:"attachmentId"`
+	// The name of the attachment.
 	AttachmentName pulumi.StringInput `pulumi:"attachmentName"`
 	// The list of network segments protected by the VPC firewall.
-	DefendCidrLists pulumi.StringArrayInput                        `pulumi:"defendCidrLists"`
-	EniLists        GetVpcFirewallCensCenLocalVpcEniListArrayInput `pulumi:"eniLists"`
-	ManualVswitchId pulumi.StringInput                             `pulumi:"manualVswitchId"`
+	DefendCidrLists pulumi.StringArrayInput `pulumi:"defendCidrLists"`
+	// The list of ENIs.
+	EniLists GetVpcFirewallCensCenLocalVpcEniListArrayInput `pulumi:"eniLists"`
+	// The ID of the vSwitch specified when the routing mode is manual mode.
+	ManualVswitchId pulumi.StringInput `pulumi:"manualVswitchId"`
 	// The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId pulumi.StringInput `pulumi:"networkInstanceId"`
 	// The name of the network instance.
 	NetworkInstanceName pulumi.StringInput `pulumi:"networkInstanceName"`
-	// The type of the network instance. Value: **VPC * *.
+	// The type of the network instance. Value: **VPC**.
 	NetworkInstanceType pulumi.StringInput `pulumi:"networkInstanceType"`
 	// The UID of the Alibaba Cloud account to which the VPC belongs.
 	OwnerId pulumi.StringInput `pulumi:"ownerId"`
@@ -5787,7 +5796,8 @@ type GetVpcFirewallCensCenLocalVpcArgs struct {
 	RouteMode pulumi.StringInput `pulumi:"routeMode"`
 	// Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
 	SupportManualMode pulumi.StringInput `pulumi:"supportManualMode"`
-	TransitRouterId   pulumi.StringInput `pulumi:"transitRouterId"`
+	// The ID of the transit router.
+	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
 	// The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
 	TransitRouterType pulumi.StringInput `pulumi:"transitRouterType"`
 	// The VPC network segment list.
@@ -5849,10 +5859,12 @@ func (o GetVpcFirewallCensCenLocalVpcOutput) ToGetVpcFirewallCensCenLocalVpcOutp
 	return o
 }
 
+// The ID of the attachment.
 func (o GetVpcFirewallCensCenLocalVpcOutput) AttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.AttachmentId }).(pulumi.StringOutput)
 }
 
+// The name of the attachment.
 func (o GetVpcFirewallCensCenLocalVpcOutput) AttachmentName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.AttachmentName }).(pulumi.StringOutput)
 }
@@ -5862,10 +5874,12 @@ func (o GetVpcFirewallCensCenLocalVpcOutput) DefendCidrLists() pulumi.StringArra
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) []string { return v.DefendCidrLists }).(pulumi.StringArrayOutput)
 }
 
+// The list of ENIs.
 func (o GetVpcFirewallCensCenLocalVpcOutput) EniLists() GetVpcFirewallCensCenLocalVpcEniListArrayOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) []GetVpcFirewallCensCenLocalVpcEniList { return v.EniLists }).(GetVpcFirewallCensCenLocalVpcEniListArrayOutput)
 }
 
+// The ID of the vSwitch specified when the routing mode is manual mode.
 func (o GetVpcFirewallCensCenLocalVpcOutput) ManualVswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.ManualVswitchId }).(pulumi.StringOutput)
 }
@@ -5880,7 +5894,7 @@ func (o GetVpcFirewallCensCenLocalVpcOutput) NetworkInstanceName() pulumi.String
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.NetworkInstanceName }).(pulumi.StringOutput)
 }
 
-// The type of the network instance. Value: **VPC * *.
+// The type of the network instance. Value: **VPC**.
 func (o GetVpcFirewallCensCenLocalVpcOutput) NetworkInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.NetworkInstanceType }).(pulumi.StringOutput)
 }
@@ -5905,6 +5919,7 @@ func (o GetVpcFirewallCensCenLocalVpcOutput) SupportManualMode() pulumi.StringOu
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.SupportManualMode }).(pulumi.StringOutput)
 }
 
+// The ID of the transit router.
 func (o GetVpcFirewallCensCenLocalVpcOutput) TransitRouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.TransitRouterId }).(pulumi.StringOutput)
 }
@@ -5952,7 +5967,9 @@ func (o GetVpcFirewallCensCenLocalVpcArrayOutput) Index(i pulumi.IntInput) GetVp
 }
 
 type GetVpcFirewallCensCenLocalVpcEniList struct {
-	EniId               string `pulumi:"eniId"`
+	// The ID of the ENI.
+	EniId string `pulumi:"eniId"`
+	// The private IP address of the ENI.
 	EniPrivateIpAddress string `pulumi:"eniPrivateIpAddress"`
 }
 
@@ -5968,7 +5985,9 @@ type GetVpcFirewallCensCenLocalVpcEniListInput interface {
 }
 
 type GetVpcFirewallCensCenLocalVpcEniListArgs struct {
-	EniId               pulumi.StringInput `pulumi:"eniId"`
+	// The ID of the ENI.
+	EniId pulumi.StringInput `pulumi:"eniId"`
+	// The private IP address of the ENI.
 	EniPrivateIpAddress pulumi.StringInput `pulumi:"eniPrivateIpAddress"`
 }
 
@@ -6023,10 +6042,12 @@ func (o GetVpcFirewallCensCenLocalVpcEniListOutput) ToGetVpcFirewallCensCenLocal
 	return o
 }
 
+// The ID of the ENI.
 func (o GetVpcFirewallCensCenLocalVpcEniListOutput) EniId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpcEniList) string { return v.EniId }).(pulumi.StringOutput)
 }
 
+// The private IP address of the ENI.
 func (o GetVpcFirewallCensCenLocalVpcEniListOutput) EniPrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpcEniList) string { return v.EniPrivateIpAddress }).(pulumi.StringOutput)
 }
@@ -6751,14 +6772,17 @@ func (o GetVpcFirewallsFirewallArrayOutput) Index(i pulumi.IntInput) GetVpcFirew
 }
 
 type GetVpcFirewallsFirewallLocalVpc struct {
-	EniId               string `pulumi:"eniId"`
+	// The ID of the ENI.
+	EniId string `pulumi:"eniId"`
+	// The private IP address of the ENI.
 	EniPrivateIpAddress string `pulumi:"eniPrivateIpAddress"`
 	// The network segment list of the local VPC.
 	LocalVpcCidrTableLists []GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList `pulumi:"localVpcCidrTableLists"`
-	// The region ID of the peer VPC.
-	RegionNo          string `pulumi:"regionNo"`
+	// The region ID.
+	RegionNo string `pulumi:"regionNo"`
+	// The ID of the router interface.
 	RouterInterfaceId string `pulumi:"routerInterfaceId"`
-	// The ID of the peer VPC instance.
+	// The ID of the VPC instance.
 	VpcId string `pulumi:"vpcId"`
 	// The instance name of the peer VPC.
 	VpcName string `pulumi:"vpcName"`
@@ -6776,14 +6800,17 @@ type GetVpcFirewallsFirewallLocalVpcInput interface {
 }
 
 type GetVpcFirewallsFirewallLocalVpcArgs struct {
-	EniId               pulumi.StringInput `pulumi:"eniId"`
+	// The ID of the ENI.
+	EniId pulumi.StringInput `pulumi:"eniId"`
+	// The private IP address of the ENI.
 	EniPrivateIpAddress pulumi.StringInput `pulumi:"eniPrivateIpAddress"`
 	// The network segment list of the local VPC.
 	LocalVpcCidrTableLists GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayInput `pulumi:"localVpcCidrTableLists"`
-	// The region ID of the peer VPC.
-	RegionNo          pulumi.StringInput `pulumi:"regionNo"`
+	// The region ID.
+	RegionNo pulumi.StringInput `pulumi:"regionNo"`
+	// The ID of the router interface.
 	RouterInterfaceId pulumi.StringInput `pulumi:"routerInterfaceId"`
-	// The ID of the peer VPC instance.
+	// The ID of the VPC instance.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The instance name of the peer VPC.
 	VpcName pulumi.StringInput `pulumi:"vpcName"`
@@ -6840,10 +6867,12 @@ func (o GetVpcFirewallsFirewallLocalVpcOutput) ToGetVpcFirewallsFirewallLocalVpc
 	return o
 }
 
+// The ID of the ENI.
 func (o GetVpcFirewallsFirewallLocalVpcOutput) EniId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.EniId }).(pulumi.StringOutput)
 }
 
+// The private IP address of the ENI.
 func (o GetVpcFirewallsFirewallLocalVpcOutput) EniPrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.EniPrivateIpAddress }).(pulumi.StringOutput)
 }
@@ -6855,16 +6884,17 @@ func (o GetVpcFirewallsFirewallLocalVpcOutput) LocalVpcCidrTableLists() GetVpcFi
 	}).(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListArrayOutput)
 }
 
-// The region ID of the peer VPC.
+// The region ID.
 func (o GetVpcFirewallsFirewallLocalVpcOutput) RegionNo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.RegionNo }).(pulumi.StringOutput)
 }
 
+// The ID of the router interface.
 func (o GetVpcFirewallsFirewallLocalVpcOutput) RouterInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.RouterInterfaceId }).(pulumi.StringOutput)
 }
 
-// The ID of the peer VPC instance.
+// The ID of the VPC instance.
 func (o GetVpcFirewallsFirewallLocalVpcOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewallLocalVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -7113,14 +7143,17 @@ func (o GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListA
 }
 
 type GetVpcFirewallsFirewallPeerVpc struct {
-	EniId               string `pulumi:"eniId"`
+	// The ID of the ENI.
+	EniId string `pulumi:"eniId"`
+	// The private IP address of the ENI.
 	EniPrivateIpAddress string `pulumi:"eniPrivateIpAddress"`
 	// The network segment list of the peer VPC.
 	PeerVpcCidrTableLists []GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableList `pulumi:"peerVpcCidrTableLists"`
-	// The region ID of the peer VPC.
-	RegionNo          string `pulumi:"regionNo"`
+	// The region ID.
+	RegionNo string `pulumi:"regionNo"`
+	// The ID of the router interface.
 	RouterInterfaceId string `pulumi:"routerInterfaceId"`
-	// The ID of the peer VPC instance.
+	// The ID of the VPC instance.
 	VpcId string `pulumi:"vpcId"`
 	// The instance name of the peer VPC.
 	VpcName string `pulumi:"vpcName"`
@@ -7138,14 +7171,17 @@ type GetVpcFirewallsFirewallPeerVpcInput interface {
 }
 
 type GetVpcFirewallsFirewallPeerVpcArgs struct {
-	EniId               pulumi.StringInput `pulumi:"eniId"`
+	// The ID of the ENI.
+	EniId pulumi.StringInput `pulumi:"eniId"`
+	// The private IP address of the ENI.
 	EniPrivateIpAddress pulumi.StringInput `pulumi:"eniPrivateIpAddress"`
 	// The network segment list of the peer VPC.
 	PeerVpcCidrTableLists GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayInput `pulumi:"peerVpcCidrTableLists"`
-	// The region ID of the peer VPC.
-	RegionNo          pulumi.StringInput `pulumi:"regionNo"`
+	// The region ID.
+	RegionNo pulumi.StringInput `pulumi:"regionNo"`
+	// The ID of the router interface.
 	RouterInterfaceId pulumi.StringInput `pulumi:"routerInterfaceId"`
-	// The ID of the peer VPC instance.
+	// The ID of the VPC instance.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The instance name of the peer VPC.
 	VpcName pulumi.StringInput `pulumi:"vpcName"`
@@ -7202,10 +7238,12 @@ func (o GetVpcFirewallsFirewallPeerVpcOutput) ToGetVpcFirewallsFirewallPeerVpcOu
 	return o
 }
 
+// The ID of the ENI.
 func (o GetVpcFirewallsFirewallPeerVpcOutput) EniId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.EniId }).(pulumi.StringOutput)
 }
 
+// The private IP address of the ENI.
 func (o GetVpcFirewallsFirewallPeerVpcOutput) EniPrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.EniPrivateIpAddress }).(pulumi.StringOutput)
 }
@@ -7217,16 +7255,17 @@ func (o GetVpcFirewallsFirewallPeerVpcOutput) PeerVpcCidrTableLists() GetVpcFire
 	}).(GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayOutput)
 }
 
-// The region ID of the peer VPC.
+// The region ID.
 func (o GetVpcFirewallsFirewallPeerVpcOutput) RegionNo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.RegionNo }).(pulumi.StringOutput)
 }
 
+// The ID of the router interface.
 func (o GetVpcFirewallsFirewallPeerVpcOutput) RouterInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.RouterInterfaceId }).(pulumi.StringOutput)
 }
 
-// The ID of the peer VPC instance.
+// The ID of the VPC instance.
 func (o GetVpcFirewallsFirewallPeerVpcOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewallPeerVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }

@@ -4954,7 +4954,9 @@ func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClust
 }
 
 type GetClustersClusterTag struct {
-	Key   string `pulumi:"key"`
+	// The key of the tag.
+	Key string `pulumi:"key"`
+	// The value of the tag.
 	Value string `pulumi:"value"`
 }
 
@@ -4970,7 +4972,9 @@ type GetClustersClusterTagInput interface {
 }
 
 type GetClustersClusterTagArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// The key of the tag.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the tag.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -5025,10 +5029,12 @@ func (o GetClustersClusterTagOutput) ToGetClustersClusterTagOutputWithContext(ct
 	return o
 }
 
+// The key of the tag.
 func (o GetClustersClusterTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The value of the tag.
 func (o GetClustersClusterTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterTag) string { return v.Value }).(pulumi.StringOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Ecp
         /// <summary>
         /// This data source provides the Ecp Key Pairs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -203,10 +203,19 @@ namespace Pulumi.AliCloud.Ecp
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The Private Key of the Fingerprint.
+        /// </summary>
         public readonly string? KeyPairFingerPrint;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Key Pair names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ecp Key Pairs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKeyPairsPairResult> Pairs;
 
         [OutputConstructor]

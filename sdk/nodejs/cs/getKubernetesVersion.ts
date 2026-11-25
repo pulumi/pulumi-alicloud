@@ -64,6 +64,19 @@ import * as utilities from "../utilities";
  * });
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
+ *
+ * ### Query extended support versions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const extended = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "ManagedKubernetes",
+ *     profile: "Default",
+ *     supportPolicy: "Extended",
+ * });
+ * ```
  */
 export function getKubernetesVersion(args: GetKubernetesVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,6 +84,7 @@ export function getKubernetesVersion(args: GetKubernetesVersionArgs, opts?: pulu
         "clusterType": args.clusterType,
         "kubernetesVersion": args.kubernetesVersion,
         "profile": args.profile,
+        "supportPolicy": args.supportPolicy,
     }, opts);
 }
 
@@ -90,6 +104,10 @@ export interface GetKubernetesVersionArgs {
      * The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
      */
     profile?: string;
+    /**
+     * Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+     */
+    supportPolicy?: string;
 }
 
 /**
@@ -103,10 +121,14 @@ export interface GetKubernetesVersionResult {
     readonly id: string;
     readonly kubernetesVersion?: string;
     /**
-     * A list of metadata of kubernetes version.
+     * A Set of Kubernetes version metadata.
      */
     readonly metadatas: outputs.cs.GetKubernetesVersionMetadata[];
     readonly profile?: string;
+    /**
+     * (Available since v2.3.0) The support policy required by the version (`Standard` or `Extended`).
+     */
+    readonly supportPolicy?: string;
 }
 /**
  * This data source provides the details of the Kubernetes version supported by ACK.
@@ -166,6 +188,19 @@ export interface GetKubernetesVersionResult {
  * });
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
+ *
+ * ### Query extended support versions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const extended = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "ManagedKubernetes",
+ *     profile: "Default",
+ *     supportPolicy: "Extended",
+ * });
+ * ```
  */
 export function getKubernetesVersionOutput(args: GetKubernetesVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -173,6 +208,7 @@ export function getKubernetesVersionOutput(args: GetKubernetesVersionOutputArgs,
         "clusterType": args.clusterType,
         "kubernetesVersion": args.kubernetesVersion,
         "profile": args.profile,
+        "supportPolicy": args.supportPolicy,
     }, opts);
 }
 
@@ -192,4 +228,8 @@ export interface GetKubernetesVersionOutputArgs {
      * The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
      */
     profile?: pulumi.Input<string | undefined>;
+    /**
+     * Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+     */
+    supportPolicy?: pulumi.Input<string | undefined>;
 }

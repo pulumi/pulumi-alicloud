@@ -35,11 +35,18 @@ class SnapshotArgs:
         The set of arguments for constructing a Snapshot resource.
 
         :param pulumi.Input[_builtins.str] disk_id: The source disk ID.
+        :param pulumi.Input[_builtins.str] category: The category of the snapshot. Valid values: `standard`, `flash`.
         :param pulumi.Input[_builtins.str] description: Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[_builtins.str] name: The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.bool] force: Whether to force delete the snapshot.
+        :param pulumi.Input[_builtins.bool] instant_access: Deprecated.
+        :param pulumi.Input[_builtins.int] instant_access_retention_days: Deprecated.
+        :param pulumi.Input[_builtins.str] name: The name of the snapshot to be created. Deprecated, use `snapshot_name` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
                It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.int] retention_days: The retention days of the snapshot.
+        :param pulumi.Input[_builtins.str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] wait_until: Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
         """
         pulumi.set(__self__, "disk_id", disk_id)
         if category is not None:
@@ -89,6 +96,9 @@ class SnapshotArgs:
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The category of the snapshot. Valid values: `standard`, `flash`.
+        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -110,6 +120,9 @@ class SnapshotArgs:
     @_builtins.property
     @pulumi.getter
     def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to force delete the snapshot.
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -120,6 +133,9 @@ class SnapshotArgs:
     @pulumi.getter(name="instantAccess")
     @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
     def instant_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Deprecated.
+        """
         return pulumi.get(self, "instant_access")
 
     @instant_access.setter
@@ -130,6 +146,9 @@ class SnapshotArgs:
     @pulumi.getter(name="instantAccessRetentionDays")
     @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
     def instant_access_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Deprecated.
+        """
         return pulumi.get(self, "instant_access_retention_days")
 
     @instant_access_retention_days.setter
@@ -141,7 +160,7 @@ class SnapshotArgs:
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        The name of the snapshot to be created. Deprecated, use `snapshot_name` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         """
         return pulumi.get(self, "name")
@@ -165,6 +184,9 @@ class SnapshotArgs:
     @_builtins.property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retention days of the snapshot.
+        """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
@@ -174,6 +196,9 @@ class SnapshotArgs:
     @_builtins.property
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the snapshot.
+        """
         return pulumi.get(self, "snapshot_name")
 
     @snapshot_name.setter
@@ -195,6 +220,9 @@ class SnapshotArgs:
     @_builtins.property
     @pulumi.getter(name="waitUntil")
     def wait_until(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+        """
         return pulumi.get(self, "wait_until")
 
     @wait_until.setter
@@ -224,12 +252,23 @@ class _SnapshotState:
         """
         Input properties used for looking up and filtering Snapshot resources.
 
+        :param pulumi.Input[_builtins.bool] available: Whether the snapshot is available.
+        :param pulumi.Input[_builtins.str] category: The category of the snapshot. Valid values: `standard`, `flash`.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the snapshot.
         :param pulumi.Input[_builtins.str] description: Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[_builtins.str] disk_id: The source disk ID.
-        :param pulumi.Input[_builtins.str] name: The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.bool] force: Whether to force delete the snapshot.
+        :param pulumi.Input[_builtins.bool] instant_access: Deprecated.
+        :param pulumi.Input[_builtins.int] instant_access_retention_days: Deprecated.
+        :param pulumi.Input[_builtins.str] name: The name of the snapshot to be created. Deprecated, use `snapshot_name` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
                It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the snapshot.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.int] retention_days: The retention days of the snapshot.
+        :param pulumi.Input[_builtins.str] snapshot_name: The name of the snapshot.
+        :param pulumi.Input[_builtins.str] status: The status of the snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] wait_until: Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
         """
         if available is not None:
             pulumi.set(__self__, "available", available)
@@ -276,6 +315,9 @@ class _SnapshotState:
     @_builtins.property
     @pulumi.getter
     def available(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the snapshot is available.
+        """
         return pulumi.get(self, "available")
 
     @available.setter
@@ -285,6 +327,9 @@ class _SnapshotState:
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The category of the snapshot. Valid values: `standard`, `flash`.
+        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -294,6 +339,9 @@ class _SnapshotState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The creation time of the snapshot.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -327,6 +375,9 @@ class _SnapshotState:
     @_builtins.property
     @pulumi.getter
     def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to force delete the snapshot.
+        """
         return pulumi.get(self, "force")
 
     @force.setter
@@ -337,6 +388,9 @@ class _SnapshotState:
     @pulumi.getter(name="instantAccess")
     @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
     def instant_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Deprecated.
+        """
         return pulumi.get(self, "instant_access")
 
     @instant_access.setter
@@ -347,6 +401,9 @@ class _SnapshotState:
     @pulumi.getter(name="instantAccessRetentionDays")
     @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
     def instant_access_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Deprecated.
+        """
         return pulumi.get(self, "instant_access_retention_days")
 
     @instant_access_retention_days.setter
@@ -358,7 +415,7 @@ class _SnapshotState:
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        The name of the snapshot to be created. Deprecated, use `snapshot_name` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         """
         return pulumi.get(self, "name")
@@ -370,6 +427,9 @@ class _SnapshotState:
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region ID of the snapshot.
+        """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
@@ -391,6 +451,9 @@ class _SnapshotState:
     @_builtins.property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retention days of the snapshot.
+        """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
@@ -400,6 +463,9 @@ class _SnapshotState:
     @_builtins.property
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the snapshot.
+        """
         return pulumi.get(self, "snapshot_name")
 
     @snapshot_name.setter
@@ -409,6 +475,9 @@ class _SnapshotState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the snapshot.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -430,6 +499,9 @@ class _SnapshotState:
     @_builtins.property
     @pulumi.getter(name="waitUntil")
     def wait_until(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+        """
         return pulumi.get(self, "wait_until")
 
     @wait_until.setter
@@ -461,7 +533,7 @@ class Snapshot(pulumi.CustomResource):
 
         For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 
-        > **NOTE:** Deprecated since v1.120.0.
+        > **DEPRECATED:** This resource has been deprecated from v1.120.0.
 
         > **DEPRECATED:** This resource has been renamed to ecs.EcsSnapshot from version 1.120.0.
 
@@ -473,7 +545,7 @@ class Snapshot(pulumi.CustomResource):
 
         snapshot = alicloud.ecs.Snapshot("snapshot",
             disk_id=instance_attachment["diskId"],
-            name="test-snapshot",
+            name="demo-snapshot",
             description="this snapshot is created for testing",
             tags={
                 "version": "1.2",
@@ -493,12 +565,19 @@ class Snapshot(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] category: The category of the snapshot. Valid values: `standard`, `flash`.
         :param pulumi.Input[_builtins.str] description: Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[_builtins.str] disk_id: The source disk ID.
-        :param pulumi.Input[_builtins.str] name: The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.bool] force: Whether to force delete the snapshot.
+        :param pulumi.Input[_builtins.bool] instant_access: Deprecated.
+        :param pulumi.Input[_builtins.int] instant_access_retention_days: Deprecated.
+        :param pulumi.Input[_builtins.str] name: The name of the snapshot to be created. Deprecated, use `snapshot_name` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
                It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.int] retention_days: The retention days of the snapshot.
+        :param pulumi.Input[_builtins.str] snapshot_name: The name of the snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] wait_until: Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
         """
         ...
     @overload
@@ -511,7 +590,7 @@ class Snapshot(pulumi.CustomResource):
 
         For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 
-        > **NOTE:** Deprecated since v1.120.0.
+        > **DEPRECATED:** This resource has been deprecated from v1.120.0.
 
         > **DEPRECATED:** This resource has been renamed to ecs.EcsSnapshot from version 1.120.0.
 
@@ -523,7 +602,7 @@ class Snapshot(pulumi.CustomResource):
 
         snapshot = alicloud.ecs.Snapshot("snapshot",
             disk_id=instance_attachment["diskId"],
-            name="test-snapshot",
+            name="demo-snapshot",
             description="this snapshot is created for testing",
             tags={
                 "version": "1.2",
@@ -628,12 +707,23 @@ class Snapshot(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] available: Whether the snapshot is available.
+        :param pulumi.Input[_builtins.str] category: The category of the snapshot. Valid values: `standard`, `flash`.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the snapshot.
         :param pulumi.Input[_builtins.str] description: Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[_builtins.str] disk_id: The source disk ID.
-        :param pulumi.Input[_builtins.str] name: The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.bool] force: Whether to force delete the snapshot.
+        :param pulumi.Input[_builtins.bool] instant_access: Deprecated.
+        :param pulumi.Input[_builtins.int] instant_access_retention_days: Deprecated.
+        :param pulumi.Input[_builtins.str] name: The name of the snapshot to be created. Deprecated, use `snapshot_name` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
                It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the snapshot.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.int] retention_days: The retention days of the snapshot.
+        :param pulumi.Input[_builtins.str] snapshot_name: The name of the snapshot.
+        :param pulumi.Input[_builtins.str] status: The status of the snapshot.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] wait_until: Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -698,16 +788,25 @@ class Snapshot(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def available(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the snapshot is available.
+        """
         return pulumi.get(self, "available")
 
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Output[_builtins.str]:
+        """
+        The category of the snapshot. Valid values: `standard`, `flash`.
+        """
         return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The creation time of the snapshot.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
@@ -729,18 +828,27 @@ class Snapshot(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to force delete the snapshot.
+        """
         return pulumi.get(self, "force")
 
     @_builtins.property
     @pulumi.getter(name="instantAccess")
     @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
     def instant_access(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Deprecated.
+        """
         return pulumi.get(self, "instant_access")
 
     @_builtins.property
     @pulumi.getter(name="instantAccessRetentionDays")
     @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
     def instant_access_retention_days(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Deprecated.
+        """
         return pulumi.get(self, "instant_access_retention_days")
 
     @_builtins.property
@@ -748,7 +856,7 @@ class Snapshot(pulumi.CustomResource):
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        The name of the snapshot to be created. Deprecated, use `snapshot_name` instead. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
         """
         return pulumi.get(self, "name")
@@ -756,6 +864,9 @@ class Snapshot(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The region ID of the snapshot.
+        """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
@@ -769,16 +880,25 @@ class Snapshot(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The retention days of the snapshot.
+        """
         return pulumi.get(self, "retention_days")
 
     @_builtins.property
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the snapshot.
+        """
         return pulumi.get(self, "snapshot_name")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the snapshot.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -792,5 +912,8 @@ class Snapshot(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="waitUntil")
     def wait_until(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Wait until the snapshot reaches the specified state. Valid values: `accomplished`, `available`.
+        """
         return pulumi.get(self, "wait_until")
 

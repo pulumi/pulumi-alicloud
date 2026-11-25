@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Data Works Folder resource.
  * 
- * For information about Data Works Folder and how to use it, see [What is Folder](https://help.aliyun.com/document_detail/173940.html).
+ * For information about Data Works Folder and how to use it, see [What is Folder](https://www.alibabacloud.com/help/doc-detail/173940.html).
  * 
- * &gt; **NOTE:** Available in v1.131.0+.
+ * &gt; **NOTE:** Available since v1.131.0.
  * 
  * ## Example Usage
  * 
@@ -70,9 +70,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:dataworks/folder:Folder")
 public class Folder extends com.pulumi.resources.CustomResource {
+    /**
+     * The ID of the Folder.
+     * 
+     */
     @Export(name="folderId", refs={String.class}, tree="[0]")
     private Output<String> folderId;
 
+    /**
+     * @return The ID of the Folder.
+     * 
+     */
     public Output<String> folderId() {
         return this.folderId;
     }
@@ -104,9 +112,17 @@ public class Folder extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
+    /**
+     * The project identifier.
+     * 
+     */
     @Export(name="projectIdentifier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectIdentifier;
 
+    /**
+     * @return The project identifier.
+     * 
+     */
     public Output<Optional<String>> projectIdentifier() {
         return Codegen.optional(this.projectIdentifier);
     }

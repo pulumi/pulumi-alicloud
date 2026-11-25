@@ -139,6 +139,36 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountPassword);
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    @Export(name="accountPasswordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accountPasswordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `accountPasswordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    public Output<Optional<String>> accountPasswordWo() {
+        return Codegen.optional(this.accountPasswordWo);
+    }
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    @Export(name="accountPasswordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> accountPasswordWoVersion;
+
+    /**
+     * @return The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `accountPasswordWo` changes.
+     * 
+     */
+    public Output<Optional<Integer>> accountPasswordWoVersion() {
+        return Codegen.optional(this.accountPasswordWoVersion);
+    }
+    /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
@@ -154,6 +184,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * 
      * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      * 
      */
@@ -162,6 +193,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`.
+     * 
      * &gt; **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      * 
      */
@@ -496,6 +528,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * 
      * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
@@ -504,6 +537,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+     * 
      * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
@@ -540,6 +574,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The network type of the instance. Valid values: `VPC`.
+     * 
      * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      * 
      */
@@ -548,6 +583,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The network type of the instance. Valid values: `VPC`.
+     * 
      * &gt; **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      * 
      */
@@ -558,6 +594,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
+     * 
      * &gt; **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      * 
      */
@@ -568,6 +605,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
+     * 
      * &gt; **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      * 
      */
@@ -688,6 +726,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * 
      * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      * 
      */
@@ -696,6 +735,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+     * 
      * &gt; **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      * 
      */
@@ -823,6 +863,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     * 
      * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
      * 
      */
@@ -834,6 +875,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - `Open`: turn on SSL encryption.
      * - `Close`: turn off SSL encryption.
      * - `Update`: update SSL certificate.
+     * 
      * &gt; **NOTE:** Once `sslAction` is set, it isn&#39;t allowed to be removed from the Terraform code.
      * 
      */
@@ -1011,7 +1053,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "accountPassword"
+                "accountPassword",
+                "accountPasswordWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

@@ -16,9 +16,17 @@ public final class GetSynchronizationJobsPlainArgs extends com.pulumi.resources.
 
     public static final GetSynchronizationJobsPlainArgs Empty = new GetSynchronizationJobsPlainArgs();
 
+    /**
+     * Default to `false`. Set it to `true` to fetch detailed attributes for each synchronization job, including `sourceEndpointOwnerId` and `sourceEndpointRole`.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to `true` to fetch detailed attributes for each synchronization job, including `sourceEndpointOwnerId` and `sourceEndpointRole`.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -111,6 +119,12 @@ public final class GetSynchronizationJobsPlainArgs extends com.pulumi.resources.
             $ = new GetSynchronizationJobsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` to fetch detailed attributes for each synchronization job, including `sourceEndpointOwnerId` and `sourceEndpointRole`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;

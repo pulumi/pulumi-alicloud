@@ -13,62 +13,55 @@ namespace Pulumi.AliCloud.Ecs.Inputs
     public sealed class LaunchTemplateSystemDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The category of the disk:
-        /// - cloud: Basic cloud disk.
-        /// - cloud_efficiency: Ultra cloud disk.
-        /// - cloud_ssd: SSD cloud Disks.
-        /// - ephemeral_ssd: local SSD Disks
-        /// - cloud_essd: ESSD cloud Disks.
-        /// 
-        /// Default to `CloudEfficiency`.
+        /// The category of the system disk.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, CloudSsd and CloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-        /// 
-        /// Default to true
+        /// Whether to release the system disk when the instance is released. Default to `True`.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
 
         /// <summary>
-        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        /// System disk description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Encrypted the data in this disk.
-        /// 
-        /// Default to false
+        /// Whether the system disk is encrypted.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
+        /// <summary>
+        /// The Iops.
+        /// </summary>
         [Input("iops")]
         public Input<string>? Iops { get; set; }
 
+        /// <summary>
+        /// The ID of the KMS key to use for the system disk.
+        /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        /// System disk name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The performance level of the ESSD used as the system disk.
+        /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// The size of the data disk.
-        /// - cloud：[5, 2000]
-        /// - cloud_efficiency：[20, 32768]
-        /// - cloud_ssd：[20, 32768]
-        /// - cloud_essd：[20, 32768]
-        /// - ephemeral_ssd: [5, 800]
+        /// Size of the system disk, measured in GB.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

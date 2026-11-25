@@ -39,8 +39,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string DataNetworkType;
         /// <summary>
         /// The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
-        /// * `USE_CONTROL_PROXY` (Default, the same with control plane)
-        /// * `CUSTOM` (Custom configuration items for the HTTP protocol).
+        /// - `USE_CONTROL_PROXY` (Default, the same with control plane)
+        /// - `CUSTOM` (Custom configuration items for the HTTP protocol).
         /// </summary>
         public readonly string DataProxySetting;
         /// <summary>
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string ProxyUser;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
         /// </summary>
         public readonly string Status;
         /// <summary>

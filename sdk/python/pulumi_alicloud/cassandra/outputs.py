@@ -134,6 +134,7 @@ class GetClustersClusterResult(dict):
         """
         :param _builtins.str cluster_id: The ID of the Cassandra cluster.
         :param _builtins.str cluster_name: The name of the Cassandra cluster.
+        :param _builtins.str created_time: The created time of the cluster.
         :param _builtins.int data_center_count: The count of data centers
         :param _builtins.str expire_time: The expire time of the cluster.
         :param _builtins.str id: The ID of the Cassandra cluster.
@@ -177,6 +178,9 @@ class GetClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="createdTime")
     def created_time(self) -> _builtins.str:
+        """
+        The created time of the cluster.
+        """
         return pulumi.get(self, "created_time")
 
     @_builtins.property
@@ -274,6 +278,7 @@ class GetDataCentersCenterResult(dict):
         """
         :param _builtins.str cluster_id: The cluster id of dataCenters belongs to.
         :param _builtins.str commodity_instance: The commodity ID of the Cassandra dataCenter.
+        :param _builtins.str created_time: The created time of the dataCenter.
         :param _builtins.str data_center_id: The id of the Cassandra dataCenter.
         :param _builtins.str data_center_name: The name of the Cassandra dataCenter.
         :param _builtins.int disk_size: One node disk size, unit:GB.
@@ -324,6 +329,9 @@ class GetDataCentersCenterResult(dict):
     @_builtins.property
     @pulumi.getter(name="createdTime")
     def created_time(self) -> _builtins.str:
+        """
+        The created time of the dataCenter.
+        """
         return pulumi.get(self, "created_time")
 
     @_builtins.property

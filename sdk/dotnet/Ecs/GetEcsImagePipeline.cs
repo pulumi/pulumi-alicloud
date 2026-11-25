@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.163.0+.
+        /// &gt; **NOTE:** Available since v1.163.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.163.0+.
+        /// &gt; **NOTE:** Available since v1.163.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Image Pipelines of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.163.0+.
+        /// &gt; **NOTE:** Available since v1.163.0.
         /// 
         /// ## Example Usage
         /// 
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Ecs
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of Image Pipeline ids.
+        /// A list of Image Pipeline IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of Image Pipeline ids.
+        /// A list of Image Pipeline IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -256,13 +256,31 @@ namespace Pulumi.AliCloud.Ecs
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Image Pipeline ids.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The name of the image template.
+        /// </summary>
         public readonly string? Name;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Image Pipeline names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Ecs Image Pipelines. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsImagePipelinePipelineResult> Pipelines;
+        /// <summary>
+        /// The ID of the resource group to which the image template belongs.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// (Optional) A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

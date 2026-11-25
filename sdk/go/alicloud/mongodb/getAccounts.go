@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Mongodb Accounts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.148.0+.
+// > **NOTE:** Available since v1.148.0.
 //
 // ## Example Usage
 //
@@ -66,10 +66,13 @@ type GetAccountsArgs struct {
 
 // A collection of values returned by getAccounts.
 type GetAccountsResult struct {
-	AccountName *string              `pulumi:"accountName"`
-	Accounts    []GetAccountsAccount `pulumi:"accounts"`
+	// The name of the account.
+	AccountName *string `pulumi:"accountName"`
+	// A list of Mongodb Accounts. Each element contains the following attributes:
+	Accounts []GetAccountsAccount `pulumi:"accounts"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The id of the instance to which the account belongs.
 	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`
 }
@@ -108,10 +111,12 @@ func (o GetAccountsResultOutput) ToGetAccountsResultOutputWithContext(ctx contex
 	return o
 }
 
+// The name of the account.
 func (o GetAccountsResultOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountsResult) *string { return v.AccountName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Mongodb Accounts. Each element contains the following attributes:
 func (o GetAccountsResultOutput) Accounts() GetAccountsAccountArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []GetAccountsAccount { return v.Accounts }).(GetAccountsAccountArrayOutput)
 }
@@ -121,6 +126,7 @@ func (o GetAccountsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The id of the instance to which the account belongs.
 func (o GetAccountsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }

@@ -32,14 +32,14 @@ public final class NetworkAclAttachmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * List of the resources associated with the network acl. The details see Block Resources.
+     * List of the resources associated with the network acl. See `resources` below.
      * 
      */
     @Import(name="resources", required=true)
     private Output<List<NetworkAclAttachmentResourceArgs>> resources;
 
     /**
-     * @return List of the resources associated with the network acl. The details see Block Resources.
+     * @return List of the resources associated with the network acl. See `resources` below.
      * 
      */
     public Output<List<NetworkAclAttachmentResourceArgs>> resources() {
@@ -93,7 +93,7 @@ public final class NetworkAclAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resources List of the resources associated with the network acl. The details see Block Resources.
+         * @param resources List of the resources associated with the network acl. See `resources` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class NetworkAclAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resources List of the resources associated with the network acl. The details see Block Resources.
+         * @param resources List of the resources associated with the network acl. See `resources` below.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class NetworkAclAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resources List of the resources associated with the network acl. The details see Block Resources.
+         * @param resources List of the resources associated with the network acl. See `resources` below.
          * 
          * @return builder
          * 

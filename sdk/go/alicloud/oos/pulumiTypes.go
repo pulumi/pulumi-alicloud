@@ -202,7 +202,7 @@ type GetApplicationsApplication struct {
 	Id string `pulumi:"id"`
 	// The ID of the resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The Updated time of the application.
 	UpdateTime string `pulumi:"updateTime"`
@@ -230,7 +230,7 @@ type GetApplicationsApplicationArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The Updated time of the application.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
@@ -312,7 +312,7 @@ func (o GetApplicationsApplicationOutput) ResourceGroupId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetApplicationsApplication) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// A mapping of tags to assign to the resource.
 func (o GetApplicationsApplicationOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -864,13 +864,13 @@ type GetPatchBaselinesBaseline struct {
 	Id string `pulumi:"id"`
 	// Whether it is the default patch baseline.
 	IsDefault bool `pulumi:"isDefault"`
-	// Operating system type.
+	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 	OperationSystem string `pulumi:"operationSystem"`
 	// Patch baseline ID.
 	PatchBaselineId string `pulumi:"patchBaselineId"`
 	// The name of the patch baseline.
 	PatchBaselineName string `pulumi:"patchBaselineName"`
-	// Patch baseline sharing type.
+	// Patch baseline sharing type. Valid values: `Private`, `Public`.
 	ShareType string `pulumi:"shareType"`
 	// The user who updated the patch baselines.
 	UpdatedBy string `pulumi:"updatedBy"`
@@ -902,13 +902,13 @@ type GetPatchBaselinesBaselineArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Whether it is the default patch baseline.
 	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
-	// Operating system type.
+	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 	OperationSystem pulumi.StringInput `pulumi:"operationSystem"`
 	// Patch baseline ID.
 	PatchBaselineId pulumi.StringInput `pulumi:"patchBaselineId"`
 	// The name of the patch baseline.
 	PatchBaselineName pulumi.StringInput `pulumi:"patchBaselineName"`
-	// Patch baseline sharing type.
+	// Patch baseline sharing type. Valid values: `Private`, `Public`.
 	ShareType pulumi.StringInput `pulumi:"shareType"`
 	// The user who updated the patch baselines.
 	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
@@ -997,7 +997,7 @@ func (o GetPatchBaselinesBaselineOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPatchBaselinesBaseline) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
-// Operating system type.
+// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 func (o GetPatchBaselinesBaselineOutput) OperationSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.OperationSystem }).(pulumi.StringOutput)
 }
@@ -1012,7 +1012,7 @@ func (o GetPatchBaselinesBaselineOutput) PatchBaselineName() pulumi.StringOutput
 	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.PatchBaselineName }).(pulumi.StringOutput)
 }
 
-// Patch baseline sharing type.
+// Patch baseline sharing type. Valid values: `Private`, `Public`.
 func (o GetPatchBaselinesBaselineOutput) ShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPatchBaselinesBaseline) string { return v.ShareType }).(pulumi.StringOutput)
 }

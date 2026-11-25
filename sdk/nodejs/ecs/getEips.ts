@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const eipsDs = alicloud.ecs.getEips({});
- * export const firstEipId = eipsDs.then(eipsDs => eipsDs.eips?.[0]?.id);
+ * export const firstEipId = eipsDs.then(eipsDs => eipsDs.addresses?.[0]?.id);
  * ```
  */
 /** @deprecated This function has been deprecated in favour of the getEipAddresses function */
@@ -52,45 +52,80 @@ export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getEips.
  */
 export interface GetEipsArgs {
+    /**
+     * The eip name.
+     */
     addressName?: string;
+    /**
+     * The associated instance id.
+     */
     associatedInstanceId?: string;
+    /**
+     * The associated instance type.
+     */
     associatedInstanceType?: string;
+    /**
+     * The dry run.
+     */
     dryRun?: boolean;
+    /**
+     * Default to `true`. Set it to `false` can hide the `tags` to output.
+     */
     enableDetails?: boolean;
     /**
-     * A list of EIP IDs.
+     * A list of Address IDs.
      */
     ids?: string[];
+    /**
+     * The include reservation data.
+     */
     includeReservationData?: boolean;
     /**
-     * Public IP Address of the the EIP.
+     * The eip address.
      */
     ipAddress?: string;
     /**
-     * A list of EIP public IP addresses.
+     * Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
      *
      * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
     ipAddresses?: string[];
+    /**
+     * The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+     */
     isp?: string;
+    /**
+     * The lock reason.
+     */
     lockReason?: string;
+    /**
+     * A regex string to filter results by Address name.
+     */
     nameRegex?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+     */
     paymentType?: string;
     /**
-     * The Id of resource group which the eips belongs.
+     * The ID of the resource group.
      */
     resourceGroupId?: string;
+    /**
+     * The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+     */
     segmentInstanceId?: string;
     /**
-     * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      */
     status?: string;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     tags?: {[key: string]: string};
 }
@@ -99,13 +134,19 @@ export interface GetEipsArgs {
  * A collection of values returned by getEips.
  */
 export interface GetEipsResult {
+    /**
+     * The name of the EIP.
+     */
     readonly addressName?: string;
+    /**
+     * A list of Eip Addresses. Each element contains the following attributes:
+     */
     readonly addresses: outputs.ecs.GetEipsAddress[];
     readonly associatedInstanceId?: string;
     readonly associatedInstanceType?: string;
     readonly dryRun?: boolean;
     /**
-     * A list of EIPs. Each element contains the following attributes:
+     * (Deprecated since v1.126.0) A list of EIPs. This field has been deprecated. Please use `addresses` instead. Each element contains the following attributes:
      *
      * @deprecated Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.
      */
@@ -115,37 +156,46 @@ export interface GetEipsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * (Optional) A list of EIP IDs.
-     */
     readonly ids: string[];
     readonly includeReservationData?: boolean;
     /**
-     * Public IP Address of the the EIP.
+     * The IP address of the EIP.
      */
     readonly ipAddress?: string;
     /**
      * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
     readonly ipAddresses?: string[];
+    /**
+     * The Internet service provider (ISP).
+     */
     readonly isp?: string;
     readonly lockReason?: string;
     readonly nameRegex?: string;
     /**
-     * (Optional) A list of EIP names.
+     * A list of Address names.
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The billing method of the EIP.
+     */
     readonly paymentType?: string;
     /**
-     * The Id of resource group which the eips belongs.
+     * The ID of the resource group.
      */
     readonly resourceGroupId?: string;
+    /**
+     * The IDs of the contiguous EIPs.
+     */
     readonly segmentInstanceId?: string;
     /**
-     * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     * The status of the EIP.
      */
     readonly status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: {[key: string]: string};
 }
 /**
@@ -160,7 +210,7 @@ export interface GetEipsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const eipsDs = alicloud.ecs.getEips({});
- * export const firstEipId = eipsDs.then(eipsDs => eipsDs.eips?.[0]?.id);
+ * export const firstEipId = eipsDs.then(eipsDs => eipsDs.addresses?.[0]?.id);
  * ```
  */
 /** @deprecated This function has been deprecated in favour of the getEipAddresses function */
@@ -194,45 +244,80 @@ export function getEipsOutput(args?: GetEipsOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getEips.
  */
 export interface GetEipsOutputArgs {
+    /**
+     * The eip name.
+     */
     addressName?: pulumi.Input<string | undefined>;
+    /**
+     * The associated instance id.
+     */
     associatedInstanceId?: pulumi.Input<string | undefined>;
+    /**
+     * The associated instance type.
+     */
     associatedInstanceType?: pulumi.Input<string | undefined>;
+    /**
+     * The dry run.
+     */
     dryRun?: pulumi.Input<boolean | undefined>;
+    /**
+     * Default to `true`. Set it to `false` can hide the `tags` to output.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
-     * A list of EIP IDs.
+     * A list of Address IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The include reservation data.
+     */
     includeReservationData?: pulumi.Input<boolean | undefined>;
     /**
-     * Public IP Address of the the EIP.
+     * The eip address.
      */
     ipAddress?: pulumi.Input<string | undefined>;
     /**
-     * A list of EIP public IP addresses.
+     * Field `ipAddresses` has been deprecated. Please use `ipAddress` instead.
      *
      * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
     ipAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+     */
     isp?: pulumi.Input<string | undefined>;
+    /**
+     * The lock reason.
+     */
     lockReason?: pulumi.Input<string | undefined>;
+    /**
+     * A regex string to filter results by Address name.
+     */
     nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+     */
     paymentType?: pulumi.Input<string | undefined>;
     /**
-     * The Id of resource group which the eips belongs.
+     * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+     */
     segmentInstanceId?: pulumi.Input<string | undefined>;
     /**
-     * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+     * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      */
     status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

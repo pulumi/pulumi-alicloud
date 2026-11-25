@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // ## Example Usage
 //
@@ -116,6 +116,7 @@ func GetBackupJobs(ctx *pulumi.Context, args *GetBackupJobsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getBackupJobs.
 type GetBackupJobsArgs struct {
+	// More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
 	Filters []GetBackupJobsFilter `pulumi:"filters"`
 	// A list of Backup Job IDs.
 	Ids []string `pulumi:"ids"`
@@ -133,13 +134,16 @@ type GetBackupJobsArgs struct {
 type GetBackupJobsResult struct {
 	Filters []GetBackupJobsFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string             `pulumi:"id"`
-	Ids           []string           `pulumi:"ids"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Hbr Backup Jobs. Each element contains the following attributes:
 	Jobs          []GetBackupJobsJob `pulumi:"jobs"`
 	OutputFile    *string            `pulumi:"outputFile"`
 	SortDirection *string            `pulumi:"sortDirection"`
-	SourceType    string             `pulumi:"sourceType"`
-	Status        *string            `pulumi:"status"`
+	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+	SourceType string `pulumi:"sourceType"`
+	// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+	Status *string `pulumi:"status"`
 }
 
 func GetBackupJobsOutput(ctx *pulumi.Context, args GetBackupJobsOutputArgs, opts ...pulumi.InvokeOption) GetBackupJobsResultOutput {
@@ -149,6 +153,7 @@ func GetBackupJobsOutput(ctx *pulumi.Context, args GetBackupJobsOutputArgs, opts
 
 // A collection of arguments for invoking getBackupJobs.
 type GetBackupJobsOutputArgs struct {
+	// More complex filters can be expressed using one or more `filter` sub-blocks, which take the following arguments. See `filter` below.
 	Filters GetBackupJobsFilterArrayInput `pulumi:"filters"`
 	// A list of Backup Job IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -194,6 +199,7 @@ func (o GetBackupJobsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackupJobsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Hbr Backup Jobs. Each element contains the following attributes:
 func (o GetBackupJobsResultOutput) Jobs() GetBackupJobsJobArrayOutput {
 	return o.ApplyT(func(v GetBackupJobsResult) []GetBackupJobsJob { return v.Jobs }).(GetBackupJobsJobArrayOutput)
 }
@@ -206,10 +212,12 @@ func (o GetBackupJobsResultOutput) SortDirection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupJobsResult) *string { return v.SortDirection }).(pulumi.StringPtrOutput)
 }
 
+// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
 func (o GetBackupJobsResultOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupJobsResult) string { return v.SourceType }).(pulumi.StringOutput)
 }
 
+// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
 func (o GetBackupJobsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupJobsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

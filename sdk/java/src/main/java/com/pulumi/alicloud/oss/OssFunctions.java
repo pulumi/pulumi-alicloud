@@ -446,6 +446,8 @@ public final class OssFunctions {
     /**
      * This data source provides the objects of an OSS bucket.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -487,6 +489,8 @@ public final class OssFunctions {
     }
     /**
      * This data source provides the objects of an OSS bucket.
+     * 
+     * &gt; **NOTE:** Available since v1.17.0.
      * 
      * ## Example Usage
      * 
@@ -530,6 +534,8 @@ public final class OssFunctions {
     /**
      * This data source provides the objects of an OSS bucket.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -572,6 +578,8 @@ public final class OssFunctions {
     /**
      * This data source provides the objects of an OSS bucket.
      * 
+     * &gt; **NOTE:** Available since v1.17.0.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -613,6 +621,8 @@ public final class OssFunctions {
     }
     /**
      * This data source provides the objects of an OSS bucket.
+     * 
+     * &gt; **NOTE:** Available since v1.17.0.
      * 
      * ## Example Usage
      * 
@@ -1908,7 +1918,7 @@ public final class OssFunctions {
     /**
      * This data source provides the ots tables of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -1956,7 +1966,7 @@ public final class OssFunctions {
     /**
      * This data source provides the ots tables of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -2004,7 +2014,7 @@ public final class OssFunctions {
     /**
      * This data source provides the ots tables of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -2052,7 +2062,7 @@ public final class OssFunctions {
     /**
      * This data source provides the ots tables of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 
@@ -2100,7 +2110,7 @@ public final class OssFunctions {
     /**
      * This data source provides the ots tables of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.40.0+.
+     * &gt; **NOTE:** Available since v1.40.0.
      * 
      * ## Example Usage
      * 

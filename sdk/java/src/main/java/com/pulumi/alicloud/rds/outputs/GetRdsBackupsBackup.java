@@ -44,7 +44,7 @@ public final class GetRdsBackupsBackup {
      */
     private String backupMethod;
     /**
-     * @return BackupMode.
+     * @return BackupMode. Valid values: `Automated` and `Manual`.
      * 
      */
     private String backupMode;
@@ -59,14 +59,7 @@ public final class GetRdsBackupsBackup {
      */
     private String backupStartTime;
     /**
-     * @return Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-     * * **NoStart**: Not started
-     * * **Checking**: check the backup
-     * * **Preparing**: Prepare a backup
-     * * **Waiting**: Waiting for backup
-     * * **Uploading**: Upload backup
-     * * **Finished**: Complete backup
-     * * **Failed**: backup Failed
+     * @return Backup task status. Valid values: `Automated` and `Manual`.
      * 
      */
     private String backupStatus;
@@ -181,7 +174,7 @@ public final class GetRdsBackupsBackup {
         return this.backupMethod;
     }
     /**
-     * @return BackupMode.
+     * @return BackupMode. Valid values: `Automated` and `Manual`.
      * 
      */
     public String backupMode() {
@@ -202,14 +195,7 @@ public final class GetRdsBackupsBackup {
         return this.backupStartTime;
     }
     /**
-     * @return Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-     * * **NoStart**: Not started
-     * * **Checking**: check the backup
-     * * **Preparing**: Prepare a backup
-     * * **Waiting**: Waiting for backup
-     * * **Uploading**: Upload backup
-     * * **Finished**: Complete backup
-     * * **Failed**: backup Failed
+     * @return Backup task status. Valid values: `Automated` and `Manual`.
      * 
      */
     public String backupStatus() {

@@ -100,9 +100,6 @@ class GetVpcFirewallsResult:
     @_builtins.property
     @pulumi.getter(name="memberUid")
     def member_uid(self) -> Optional[_builtins.str]:
-        """
-        The UID of the Alibaba Cloud member account.
-        """
         return pulumi.get(self, "member_uid")
 
     @_builtins.property
@@ -197,7 +194,7 @@ def get_vpc_firewalls(ids: Optional[Sequence[_builtins.str]] = None,
                       vpc_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcFirewallsResult:
     """
-    This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+    This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
 
     > **NOTE:** Available since v1.194.0.
 
@@ -210,7 +207,7 @@ def get_vpc_firewalls(ids: Optional[Sequence[_builtins.str]] = None,
     default = alicloud.cloudfirewall.get_vpc_firewalls(ids=["id-example"],
         member_uid="1415189284827022",
         status="closed",
-        vpc_firewall_name="tf-test")
+        vpc_firewall_name="tf-example")
     pulumi.export("alicloudCfwVpcFirewallExampleId", default.firewalls[0].id)
     ```
 
@@ -220,11 +217,11 @@ def get_vpc_firewalls(ids: Optional[Sequence[_builtins.str]] = None,
     :param _builtins.str member_uid: The UID of the Alibaba Cloud member account.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str region_no: The region ID of the peer VPC.
+    :param _builtins.str region_no: The region ID.
     :param _builtins.str status: The status of the resource
     :param _builtins.str vpc_firewall_id: The ID of the VPC firewall instance.
     :param _builtins.str vpc_firewall_name: The name of the VPC firewall instance.
-    :param _builtins.str vpc_id: The ID of the peer VPC instance.
+    :param _builtins.str vpc_id: The ID of the VPC instance.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -266,7 +263,7 @@ def get_vpc_firewalls_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
                              vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcFirewallsResult]:
     """
-    This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
+    This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://www.alibabacloud.com/help/doc-detail/342932.htm)
 
     > **NOTE:** Available since v1.194.0.
 
@@ -279,7 +276,7 @@ def get_vpc_firewalls_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     default = alicloud.cloudfirewall.get_vpc_firewalls(ids=["id-example"],
         member_uid="1415189284827022",
         status="closed",
-        vpc_firewall_name="tf-test")
+        vpc_firewall_name="tf-example")
     pulumi.export("alicloudCfwVpcFirewallExampleId", default.firewalls[0].id)
     ```
 
@@ -289,11 +286,11 @@ def get_vpc_firewalls_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     :param _builtins.str member_uid: The UID of the Alibaba Cloud member account.
     :param _builtins.str name_regex: A regex string to filter results by Group Metric Rule name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str region_no: The region ID of the peer VPC.
+    :param _builtins.str region_no: The region ID.
     :param _builtins.str status: The status of the resource
     :param _builtins.str vpc_firewall_id: The ID of the VPC firewall instance.
     :param _builtins.str vpc_firewall_name: The name of the VPC firewall instance.
-    :param _builtins.str vpc_id: The ID of the peer VPC instance.
+    :param _builtins.str vpc_id: The ID of the VPC instance.
     """
     __args__ = dict()
     __args__['ids'] = ids

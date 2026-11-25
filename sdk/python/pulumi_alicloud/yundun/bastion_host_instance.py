@@ -41,6 +41,41 @@ class BastionHostInstanceArgs:
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BastionHostInstance resource.
+
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               
+               > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+               
+               - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+               - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+        :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[_builtins.str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: security group IDs configured to Bastionhost.
+               **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+               So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
+        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+               
+               ->**NOTE:** From version 1.251.0, `storage` can be modified.
+        :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
+        :param pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
+        :param pulumi.Input[_builtins.bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
+        :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
+               
+               > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+        :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+               - `M`: months.
+               - `Y`: years.
+        :param pulumi.Input[_builtins.str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "description", description)
@@ -75,6 +110,14 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[_builtins.str]:
+        """
+        The bandwidth of Cloud Bastionhost instance.
+
+        > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+
+        - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+        """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
@@ -84,6 +127,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[_builtins.str]:
+        """
+        Description of the instance. This name can have a string of 1 to 63 characters.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -93,6 +139,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="licenseCode")
     def license_code(self) -> pulumi.Input[_builtins.str]:
+        """
+        The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        """
         return pulumi.get(self, "license_code")
 
     @license_code.setter
@@ -102,6 +151,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="planCode")
     def plan_code(self) -> pulumi.Input[_builtins.str]:
+        """
+        The plan code of Cloud Bastionhost instance. Valid values:
+        """
         return pulumi.get(self, "plan_code")
 
     @plan_code.setter
@@ -111,6 +163,12 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        security group IDs configured to Bastionhost.
+        **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+        So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -120,6 +178,11 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def storage(self) -> pulumi.Input[_builtins.str]:
+        """
+        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+
+        ->**NOTE:** From version 1.251.0, `storage` can be modified.
+        """
         return pulumi.get(self, "storage")
 
     @storage.setter
@@ -129,6 +192,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        VSwitch ID configured to Bastionhost.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -138,6 +204,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="adAuthServers")
     def ad_auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]:
+        """
+        The AD auth server of the Instance. See `ad_auth_server` below.
+        """
         return pulumi.get(self, "ad_auth_servers")
 
     @ad_auth_servers.setter
@@ -147,6 +216,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="enablePublicAccess")
     def enable_public_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        """
         return pulumi.get(self, "enable_public_access")
 
     @enable_public_access.setter
@@ -156,6 +228,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="ldapAuthServers")
     def ldap_auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]:
+        """
+        The LDAP auth server of the Instance. See `ldap_auth_server` below.
+        """
         return pulumi.get(self, "ldap_auth_servers")
 
     @ldap_auth_servers.setter
@@ -165,6 +240,11 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -174,6 +254,11 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="publicWhiteLists")
     def public_white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The public IP address that you want to add to the whitelist.
+
+        > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+        """
         return pulumi.get(self, "public_white_lists")
 
     @public_white_lists.setter
@@ -183,6 +268,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        """
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
@@ -192,6 +280,11 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        - `M`: months.
+        - `Y`: years.
+        """
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
@@ -201,6 +294,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
@@ -210,6 +306,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -219,6 +318,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="slaveVswitchId")
     def slave_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Slave VSwitch ID configured to Bastionhost.
+        """
         return pulumi.get(self, "slave_vswitch_id")
 
     @slave_vswitch_id.setter
@@ -228,6 +330,9 @@ class BastionHostInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -258,6 +363,41 @@ class _BastionHostInstanceState:
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BastionHostInstance resources.
+
+        :param pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               
+               > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+               
+               - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+               - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+        :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[_builtins.bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
+        :param pulumi.Input[_builtins.str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
+               
+               > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+        :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+               - `M`: months.
+               - `Y`: years.
+        :param pulumi.Input[_builtins.str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: security group IDs configured to Bastionhost.
+               **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+               So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
+        :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
+        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+               
+               ->**NOTE:** From version 1.251.0, `storage` can be modified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
         if ad_auth_servers is not None:
             pulumi.set(__self__, "ad_auth_servers", ad_auth_servers)
@@ -299,6 +439,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="adAuthServers")
     def ad_auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]:
+        """
+        The AD auth server of the Instance. See `ad_auth_server` below.
+        """
         return pulumi.get(self, "ad_auth_servers")
 
     @ad_auth_servers.setter
@@ -308,6 +451,14 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The bandwidth of Cloud Bastionhost instance.
+
+        > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+
+        - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+        """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
@@ -317,6 +468,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of the instance. This name can have a string of 1 to 63 characters.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -326,6 +480,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="enablePublicAccess")
     def enable_public_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        """
         return pulumi.get(self, "enable_public_access")
 
     @enable_public_access.setter
@@ -335,6 +492,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="ldapAuthServers")
     def ldap_auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]:
+        """
+        The LDAP auth server of the Instance. See `ldap_auth_server` below.
+        """
         return pulumi.get(self, "ldap_auth_servers")
 
     @ldap_auth_servers.setter
@@ -344,6 +504,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="licenseCode")
     def license_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        """
         return pulumi.get(self, "license_code")
 
     @license_code.setter
@@ -353,6 +516,11 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -362,6 +530,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="planCode")
     def plan_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The plan code of Cloud Bastionhost instance. Valid values:
+        """
         return pulumi.get(self, "plan_code")
 
     @plan_code.setter
@@ -371,6 +542,11 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="publicWhiteLists")
     def public_white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The public IP address that you want to add to the whitelist.
+
+        > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+        """
         return pulumi.get(self, "public_white_lists")
 
     @public_white_lists.setter
@@ -380,6 +556,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        """
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
@@ -389,6 +568,11 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        - `M`: months.
+        - `Y`: years.
+        """
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
@@ -398,6 +582,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
@@ -407,6 +594,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -416,6 +606,12 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        security group IDs configured to Bastionhost.
+        **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+        So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -425,6 +621,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="slaveVswitchId")
     def slave_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Slave VSwitch ID configured to Bastionhost.
+        """
         return pulumi.get(self, "slave_vswitch_id")
 
     @slave_vswitch_id.setter
@@ -434,6 +633,11 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter
     def storage(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+
+        ->**NOTE:** From version 1.251.0, `storage` can be modified.
+        """
         return pulumi.get(self, "storage")
 
     @storage.setter
@@ -443,6 +647,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -452,6 +659,9 @@ class _BastionHostInstanceState:
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        VSwitch ID configured to Bastionhost.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -485,10 +695,155 @@ class BastionHostInstance(pulumi.CustomResource):
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a BastionHostInstance resource with the given unique name, props, and options.
+        > **NOTE:** `yundun.BastionHostInstance` has been deprecated since v1.132.0 and renamed to `bastionhost.Instance`. Use `bastionhost.Instance` instead.
+
+        Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
+        For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
+
+        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+
+        > **NOTE:** Available since v1.132.0.
+
+        > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="10.4.0.0/16")
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
+        default_bastion_host_instance = alicloud.yundun.BastionHostInstance("default",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_get_switches.ids[0],
+            security_group_ids=[default_security_group.id])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="10.4.0.0/16")
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
+        default_bastion_host_instance = alicloud.yundun.BastionHostInstance("default",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            security_group_ids=[default_security_group.id],
+            vswitch_id=default_get_switches.ids[0],
+            ad_auth_servers=[{
+                "server": "192.168.1.1",
+                "standby_server": "192.168.1.3",
+                "port": 80,
+                "domain": "domain",
+                "account": "cn=Manager,dc=test,dc=com",
+                "password": "YouPassword123",
+                "filter": "objectClass=person",
+                "name_mapping": "nameAttr",
+                "email_mapping": "emailAttr",
+                "mobile_mapping": "mobileAttr",
+                "is_ssl": False,
+                "base_dn": "dc=test,dc=com",
+            }],
+            ldap_auth_servers=[{
+                "server": "192.168.1.1",
+                "standby_server": "192.168.1.3",
+                "port": 80,
+                "login_name_mapping": "uid",
+                "account": "cn=Manager,dc=test,dc=com",
+                "password": "YouPassword123",
+                "filter": "objectClass=person",
+                "name_mapping": "nameAttr",
+                "email_mapping": "emailAttr",
+                "mobile_mapping": "mobileAttr",
+                "is_ssl": False,
+                "base_dn": "dc=test,dc=com",
+            }])
+        ```
+
+        ### Deleting `yundun.BastionHostInstance` or removing it from your configuration
+
+        The `yundun.BastionHostInstance` resource allows you to manage bastionhost instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration
+        will remove it from your state file and management, but will not destroy the bastionhost instance.
+        You can resume managing the subscription bastionhost instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Import
+
+        Yundun_bastionhost instance can be imported using the id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BastionHostInstanceAdAuthServerArgs', 'BastionHostInstanceAdAuthServerArgsDict', 'outputs.BastionHostInstanceAdAuthServer']]]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               
+               > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+               
+               - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+               - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+        :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[_builtins.bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BastionHostInstanceLdapAuthServerArgs', 'BastionHostInstanceLdapAuthServerArgsDict', 'outputs.BastionHostInstanceLdapAuthServer']]]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
+        :param pulumi.Input[_builtins.str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
+               
+               > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+        :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+               - `M`: months.
+               - `Y`: years.
+        :param pulumi.Input[_builtins.str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: security group IDs configured to Bastionhost.
+               **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+               So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
+        :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
+        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+               
+               ->**NOTE:** From version 1.251.0, `storage` can be modified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
         ...
     @overload
@@ -497,7 +852,118 @@ class BastionHostInstance(pulumi.CustomResource):
                  args: BastionHostInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a BastionHostInstance resource with the given unique name, props, and options.
+        > **NOTE:** `yundun.BastionHostInstance` has been deprecated since v1.132.0 and renamed to `bastionhost.Instance`. Use `bastionhost.Instance` instead.
+
+        Cloud Bastion Host instance resource ("Yundun_bastionhost" is the short term of this product).
+        For information about Resource Manager Resource Directory and how to use it, see [What is Bastionhost](https://www.alibabacloud.com/help/en/doc-detail/52922.htm).
+
+        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
+
+        > **NOTE:** Available since v1.132.0.
+
+        > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="10.4.0.0/16")
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
+        default_bastion_host_instance = alicloud.yundun.BastionHostInstance("default",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            vswitch_id=default_get_switches.ids[0],
+            security_group_ids=[default_security_group.id])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="10.4.0.0/16")
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
+        default_bastion_host_instance = alicloud.yundun.BastionHostInstance("default",
+            description=name,
+            license_code="bhah_ent_50_asset",
+            plan_code="cloudbastion",
+            storage="5",
+            bandwidth="5",
+            period=1,
+            security_group_ids=[default_security_group.id],
+            vswitch_id=default_get_switches.ids[0],
+            ad_auth_servers=[{
+                "server": "192.168.1.1",
+                "standby_server": "192.168.1.3",
+                "port": 80,
+                "domain": "domain",
+                "account": "cn=Manager,dc=test,dc=com",
+                "password": "YouPassword123",
+                "filter": "objectClass=person",
+                "name_mapping": "nameAttr",
+                "email_mapping": "emailAttr",
+                "mobile_mapping": "mobileAttr",
+                "is_ssl": False,
+                "base_dn": "dc=test,dc=com",
+            }],
+            ldap_auth_servers=[{
+                "server": "192.168.1.1",
+                "standby_server": "192.168.1.3",
+                "port": 80,
+                "login_name_mapping": "uid",
+                "account": "cn=Manager,dc=test,dc=com",
+                "password": "YouPassword123",
+                "filter": "objectClass=person",
+                "name_mapping": "nameAttr",
+                "email_mapping": "emailAttr",
+                "mobile_mapping": "mobileAttr",
+                "is_ssl": False,
+                "base_dn": "dc=test,dc=com",
+            }])
+        ```
+
+        ### Deleting `yundun.BastionHostInstance` or removing it from your configuration
+
+        The `yundun.BastionHostInstance` resource allows you to manage bastionhost instance, but Terraform cannot destroy it.
+        Deleting the subscription resource or removing it from your configuration
+        will remove it from your state file and management, but will not destroy the bastionhost instance.
+        You can resume managing the subscription bastionhost instance via the AlibabaCloud Console.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Import
+
+        Yundun_bastionhost instance can be imported using the id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:yundun/bastionHostInstance:BastionHostInstance example bastionhost-exampe123456
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param BastionHostInstanceArgs args: The arguments to use to populate this resource's properties.
@@ -608,6 +1074,40 @@ class BastionHostInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BastionHostInstanceAdAuthServerArgs', 'BastionHostInstanceAdAuthServerArgsDict', 'outputs.BastionHostInstanceAdAuthServer']]]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               
+               > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+               
+               - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+               - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+        :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
+        :param pulumi.Input[_builtins.bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BastionHostInstanceLdapAuthServerArgs', 'BastionHostInstanceLdapAuthServerArgsDict', 'outputs.BastionHostInstanceLdapAuthServer']]]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
+        :param pulumi.Input[_builtins.str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[_builtins.int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_white_lists: The public IP address that you want to add to the whitelist.
+               
+               > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+        :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        :param pulumi.Input[_builtins.str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+               - `M`: months.
+               - `Y`: years.
+        :param pulumi.Input[_builtins.str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: security group IDs configured to Bastionhost.
+               **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+               So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
+        :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
+        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+               
+               ->**NOTE:** From version 1.251.0, `storage` can be modified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -678,90 +1178,160 @@ class BastionHostInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="adAuthServers")
     def ad_auth_servers(self) -> pulumi.Output[Sequence['outputs.BastionHostInstanceAdAuthServer']]:
+        """
+        The AD auth server of the Instance. See `ad_auth_server` below.
+        """
         return pulumi.get(self, "ad_auth_servers")
 
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.str]:
+        """
+        The bandwidth of Cloud Bastionhost instance.
+
+        > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+
+        - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
+        """
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
+        """
+        Description of the instance. This name can have a string of 1 to 63 characters.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enablePublicAccess")
     def enable_public_access(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
+        """
         return pulumi.get(self, "enable_public_access")
 
     @_builtins.property
     @pulumi.getter(name="ldapAuthServers")
     def ldap_auth_servers(self) -> pulumi.Output[Sequence['outputs.BastionHostInstanceLdapAuthServer']]:
+        """
+        The LDAP auth server of the Instance. See `ldap_auth_server` below.
+        """
         return pulumi.get(self, "ldap_auth_servers")
 
     @_builtins.property
     @pulumi.getter(name="licenseCode")
     def license_code(self) -> pulumi.Output[_builtins.str]:
+        """
+        The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        """
         return pulumi.get(self, "license_code")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="planCode")
     def plan_code(self) -> pulumi.Output[_builtins.str]:
+        """
+        The plan code of Cloud Bastionhost instance. Valid values:
+        """
         return pulumi.get(self, "plan_code")
 
     @_builtins.property
     @pulumi.getter(name="publicWhiteLists")
     def public_white_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The public IP address that you want to add to the whitelist.
+
+        > **NOTE:** You can utilize the generic Terraform resource lifecycle configuration block with `ad_auth_server` or `ldap_auth_server` to configure auth server, then ignore any changes to that `password` caused externally (e.g. Application Autoscaling).
+        """
         return pulumi.get(self, "public_white_lists")
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
+        """
         return pulumi.get(self, "renew_period")
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        - `M`: months.
+        - `Y`: years.
+        """
         return pulumi.get(self, "renewal_period_unit")
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Output[_builtins.str]:
+        """
+        Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
+        """
         return pulumi.get(self, "renewal_status")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        security group IDs configured to Bastionhost.
+        **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+        So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @_builtins.property
     @pulumi.getter(name="slaveVswitchId")
     def slave_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Slave VSwitch ID configured to Bastionhost.
+        """
         return pulumi.get(self, "slave_vswitch_id")
 
     @_builtins.property
     @pulumi.getter
     def storage(self) -> pulumi.Output[_builtins.str]:
+        """
+        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+
+        ->**NOTE:** From version 1.251.0, `storage` can be modified.
+        """
         return pulumi.get(self, "storage")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        VSwitch ID configured to Bastionhost.
+        """
         return pulumi.get(self, "vswitch_id")
 

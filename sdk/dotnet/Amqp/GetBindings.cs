@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Bindings of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Bindings of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// This data source provides the Amqp Bindings of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -156,14 +156,26 @@ namespace Pulumi.AliCloud.Amqp
     [OutputType]
     public sealed class GetBindingsResult
     {
+        /// <summary>
+        /// A list of Amqp Bindings. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBindingsBindingResult> Bindings;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Binding IDs. Each item value formats as `&lt;instance_id&gt;:&lt;virtual_host_name&gt;:&lt;source_exchange&gt;:&lt;destination_name&gt;`.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// Instance Id.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Virtualhost Name.
+        /// </summary>
         public readonly string VirtualHostName;
 
         [OutputConstructor]

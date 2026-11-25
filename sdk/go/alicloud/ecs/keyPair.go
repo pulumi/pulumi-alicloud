@@ -32,14 +32,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewKeyPair(ctx, "basic", &ecs.KeyPairArgs{
-//				KeyName: pulumi.String("terraform-test-key-pair"),
+//				KeyName: pulumi.String("terraform-demo-key-pair"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Using name prefix to build key pair
 //			_, err = ecs.NewKeyPair(ctx, "prefix", &ecs.KeyPairArgs{
-//				KeyNamePrefix: pulumi.String("terraform-test-key-pair-prefix"),
+//				KeyNamePrefix: pulumi.String("terraform-demo-key-pair-prefix"),
 //			})
 //			if err != nil {
 //				return err
@@ -70,22 +70,26 @@ import (
 type KeyPair struct {
 	pulumi.CustomResourceState
 
-	CreateTime  pulumi.StringOutput `pulumi:"createTime"`
+	// The creation time of the key pair.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The finger print of the key pair.
 	FingerPrint pulumi.StringOutput `pulumi:"fingerPrint"`
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrOutput `pulumi:"keyFile"`
-	// The key pair's name. It is the only in one Alicloud account.
+	// The key pair's name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
 	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName pulumi.StringOutput `pulumi:"keyName"`
 	// The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix pulumi.StringPtrOutput `pulumi:"keyNamePrefix"`
-	KeyPairName   pulumi.StringOutput    `pulumi:"keyPairName"`
+	// The key pair's name. It is the only in one Alicloud account.
+	KeyPairName pulumi.StringOutput `pulumi:"keyPairName"`
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
+	//
 	// > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
@@ -120,43 +124,51 @@ func GetKeyPair(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyPair resources.
 type keyPairState struct {
-	CreateTime  *string `pulumi:"createTime"`
+	// The creation time of the key pair.
+	CreateTime *string `pulumi:"createTime"`
+	// The finger print of the key pair.
 	FingerPrint *string `pulumi:"fingerPrint"`
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile *string `pulumi:"keyFile"`
-	// The key pair's name. It is the only in one Alicloud account.
+	// The key pair's name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
 	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName *string `pulumi:"keyName"`
 	// The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
-	KeyPairName   *string `pulumi:"keyPairName"`
+	// The key pair's name. It is the only in one Alicloud account.
+	KeyPairName *string `pulumi:"keyPairName"`
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
+	//
 	// > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 type KeyPairState struct {
-	CreateTime  pulumi.StringPtrInput
+	// The creation time of the key pair.
+	CreateTime pulumi.StringPtrInput
+	// The finger print of the key pair.
 	FingerPrint pulumi.StringPtrInput
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrInput
-	// The key pair's name. It is the only in one Alicloud account.
+	// The key pair's name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
 	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName pulumi.StringPtrInput
 	// The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix pulumi.StringPtrInput
-	KeyPairName   pulumi.StringPtrInput
+	// The key pair's name. It is the only in one Alicloud account.
+	KeyPairName pulumi.StringPtrInput
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
 	// > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 	Tags pulumi.StringMapInput
 }
@@ -174,18 +186,20 @@ func KeyPairExists(ctx *pulumi.Context,
 type keyPairArgs struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile *string `pulumi:"keyFile"`
-	// The key pair's name. It is the only in one Alicloud account.
+	// The key pair's name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
 	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName *string `pulumi:"keyName"`
 	// The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
-	KeyPairName   *string `pulumi:"keyPairName"`
+	// The key pair's name. It is the only in one Alicloud account.
+	KeyPairName *string `pulumi:"keyPairName"`
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
+	//
 	// > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -194,18 +208,20 @@ type keyPairArgs struct {
 type KeyPairArgs struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrInput
-	// The key pair's name. It is the only in one Alicloud account.
+	// The key pair's name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
 	//
 	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName pulumi.StringPtrInput
 	// The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix pulumi.StringPtrInput
-	KeyPairName   pulumi.StringPtrInput
+	// The key pair's name. It is the only in one Alicloud account.
+	KeyPairName pulumi.StringPtrInput
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
 	// > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 	Tags pulumi.StringMapInput
 }
@@ -297,10 +313,12 @@ func (o KeyPairOutput) ToKeyPairOutputWithContext(ctx context.Context) KeyPairOu
 	return o
 }
 
+// The creation time of the key pair.
 func (o KeyPairOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyPair) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The finger print of the key pair.
 func (o KeyPairOutput) FingerPrint() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyPair) pulumi.StringOutput { return v.FingerPrint }).(pulumi.StringOutput)
 }
@@ -310,7 +328,7 @@ func (o KeyPairOutput) KeyFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyPair) pulumi.StringPtrOutput { return v.KeyFile }).(pulumi.StringPtrOutput)
 }
 
-// The key pair's name. It is the only in one Alicloud account.
+// The key pair's name. It is the only in one Alicloud account. Deprecated, use `keyPairName` instead.
 //
 // Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 func (o KeyPairOutput) KeyName() pulumi.StringOutput {
@@ -322,6 +340,7 @@ func (o KeyPairOutput) KeyNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyPair) pulumi.StringPtrOutput { return v.KeyNamePrefix }).(pulumi.StringPtrOutput)
 }
 
+// The key pair's name. It is the only in one Alicloud account.
 func (o KeyPairOutput) KeyPairName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyPair) pulumi.StringOutput { return v.KeyPairName }).(pulumi.StringOutput)
 }
@@ -337,6 +356,7 @@ func (o KeyPairOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
+//
 // > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
 func (o KeyPairOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *KeyPair) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)

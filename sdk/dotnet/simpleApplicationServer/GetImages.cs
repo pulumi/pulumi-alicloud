@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -39,14 +39,6 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `Ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
-        /// * `ImageType` - (Optional, ForceNew) The image type. Valid values: `App`, `Custom`, `System`.
-        /// * `NameRegex` - (Optional, ForceNew) A regex string to filter results by Image name.
-        /// * `Platform` - (Available in v1.161.0) The platform of Image supported. Valid values: ["Linux", "Windows"].
-        /// * `OutputFile` - (Optional) File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:simpleapplicationserver/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
@@ -54,7 +46,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -79,14 +71,6 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `Ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
-        /// * `ImageType` - (Optional, ForceNew) The image type. Valid values: `App`, `Custom`, `System`.
-        /// * `NameRegex` - (Optional, ForceNew) A regex string to filter results by Image name.
-        /// * `Platform` - (Available in v1.161.0) The platform of Image supported. Valid values: ["Linux", "Windows"].
-        /// * `OutputFile` - (Optional) File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:simpleapplicationserver/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
@@ -94,7 +78,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.135.0+.
+        /// &gt; **NOTE:** Available since v1.135.0.
         /// 
         /// ## Example Usage
         /// 
@@ -119,14 +103,6 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `Ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
-        /// * `ImageType` - (Optional, ForceNew) The image type. Valid values: `App`, `Custom`, `System`.
-        /// * `NameRegex` - (Optional, ForceNew) A regex string to filter results by Image name.
-        /// * `Platform` - (Available in v1.161.0) The platform of Image supported. Valid values: ["Linux", "Windows"].
-        /// * `OutputFile` - (Optional) File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:simpleapplicationserver/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
@@ -137,21 +113,37 @@ namespace Pulumi.AliCloud.simpleApplicationServer
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of Image IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The image type. Valid values: `App`, `Custom`, `System`.
+        /// </summary>
         [Input("imageType")]
         public string? ImageType { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by Image name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
+        /// </summary>
         [Input("platform")]
         public string? Platform { get; set; }
 
@@ -165,21 +157,37 @@ namespace Pulumi.AliCloud.simpleApplicationServer
     {
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Image IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The image type. Valid values: `App`, `Custom`, `System`.
+        /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by Image name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// Available in v1.161.0. The platform of Image supported. Valid values: ["Linux", "Windows"].
+        /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
 
@@ -198,11 +206,23 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The type of the image. Valid values: `App`, `Custom`, `System`.
+        /// </summary>
         public readonly string? ImageType;
+        /// <summary>
+        /// A list of Simple Application Server Images. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of  Image names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// (Available in v1.161.0) The platform of Plan supported.
+        /// </summary>
         public readonly string? Platform;
 
         [OutputConstructor]

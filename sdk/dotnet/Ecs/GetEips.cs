@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEipId"] = eipsDs.Apply(getEipsResult =&gt; getEipsResult.Eips[0]?.Id),
+        ///         ["firstEipId"] = eipsDs.Apply(getEipsResult =&gt; getEipsResult.Addresses[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEipId"] = eipsDs.Apply(getEipsResult =&gt; getEipsResult.Eips[0]?.Id),
+        ///         ["firstEipId"] = eipsDs.Apply(getEipsResult =&gt; getEipsResult.Addresses[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstEipId"] = eipsDs.Apply(getEipsResult =&gt; getEipsResult.Eips[0]?.Id),
+        ///         ["firstEipId"] = eipsDs.Apply(getEipsResult =&gt; getEipsResult.Addresses[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -97,18 +97,33 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class GetEipsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The eip name.
+        /// </summary>
         [Input("addressName")]
         public string? AddressName { get; set; }
 
+        /// <summary>
+        /// The associated instance id.
+        /// </summary>
         [Input("associatedInstanceId")]
         public string? AssociatedInstanceId { get; set; }
 
+        /// <summary>
+        /// The associated instance type.
+        /// </summary>
         [Input("associatedInstanceType")]
         public string? AssociatedInstanceType { get; set; }
 
+        /// <summary>
+        /// The dry run.
+        /// </summary>
         [Input("dryRun")]
         public bool? DryRun { get; set; }
 
+        /// <summary>
+        /// Default to `True`. Set it to `False` can hide the `Tags` to output.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -116,7 +131,7 @@ namespace Pulumi.AliCloud.Ecs
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of EIP IDs.
+        /// A list of Address IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -124,11 +139,14 @@ namespace Pulumi.AliCloud.Ecs
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The include reservation data.
+        /// </summary>
         [Input("includeReservationData")]
         public bool? IncludeReservationData { get; set; }
 
         /// <summary>
-        /// Public IP Address of the the EIP.
+        /// The eip address.
         /// </summary>
         [Input("ipAddress")]
         public string? IpAddress { get; set; }
@@ -137,7 +155,7 @@ namespace Pulumi.AliCloud.Ecs
         private List<string>? _ipAddresses;
 
         /// <summary>
-        /// A list of EIP public IP addresses.
+        /// Field `IpAddresses` has been deprecated. Please use `IpAddress` instead.
         /// </summary>
         [Obsolete(@"Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.")]
         public List<string> IpAddresses
@@ -146,12 +164,21 @@ namespace Pulumi.AliCloud.Ecs
             set => _ipAddresses = value;
         }
 
+        /// <summary>
+        /// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+        /// </summary>
         [Input("isp")]
         public string? Isp { get; set; }
 
+        /// <summary>
+        /// The lock reason.
+        /// </summary>
         [Input("lockReason")]
         public string? LockReason { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by Address name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
@@ -161,20 +188,26 @@ namespace Pulumi.AliCloud.Ecs
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+        /// </summary>
         [Input("paymentType")]
         public string? PaymentType { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the eips belongs.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+        /// </summary>
         [Input("segmentInstanceId")]
         public string? SegmentInstanceId { get; set; }
 
         /// <summary>
-        /// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -184,6 +217,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -199,18 +234,33 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class GetEipsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The eip name.
+        /// </summary>
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
 
+        /// <summary>
+        /// The associated instance id.
+        /// </summary>
         [Input("associatedInstanceId")]
         public Input<string>? AssociatedInstanceId { get; set; }
 
+        /// <summary>
+        /// The associated instance type.
+        /// </summary>
         [Input("associatedInstanceType")]
         public Input<string>? AssociatedInstanceType { get; set; }
 
+        /// <summary>
+        /// The dry run.
+        /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        /// <summary>
+        /// Default to `True`. Set it to `False` can hide the `Tags` to output.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
@@ -218,7 +268,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of EIP IDs.
+        /// A list of Address IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -226,11 +276,14 @@ namespace Pulumi.AliCloud.Ecs
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The include reservation data.
+        /// </summary>
         [Input("includeReservationData")]
         public Input<bool>? IncludeReservationData { get; set; }
 
         /// <summary>
-        /// Public IP Address of the the EIP.
+        /// The eip address.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -239,7 +292,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _ipAddresses;
 
         /// <summary>
-        /// A list of EIP public IP addresses.
+        /// Field `IpAddresses` has been deprecated. Please use `IpAddress` instead.
         /// </summary>
         [Obsolete(@"Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.")]
         public InputList<string> IpAddresses
@@ -248,12 +301,21 @@ namespace Pulumi.AliCloud.Ecs
             set => _ipAddresses = value;
         }
 
+        /// <summary>
+        /// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+        /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
 
+        /// <summary>
+        /// The lock reason.
+        /// </summary>
         [Input("lockReason")]
         public Input<string>? LockReason { get; set; }
 
+        /// <summary>
+        /// A regex string to filter results by Address name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
@@ -263,20 +325,26 @@ namespace Pulumi.AliCloud.Ecs
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+        /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the eips belongs.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+        /// </summary>
         [Input("segmentInstanceId")]
         public Input<string>? SegmentInstanceId { get; set; }
 
         /// <summary>
-        /// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -286,6 +354,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputMap<string> Tags
         {
@@ -303,13 +373,19 @@ namespace Pulumi.AliCloud.Ecs
     [OutputType]
     public sealed class GetEipsResult
     {
+        /// <summary>
+        /// The name of the EIP.
+        /// </summary>
         public readonly string? AddressName;
+        /// <summary>
+        /// A list of Eip Addresses. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEipsAddressResult> Addresses;
         public readonly string? AssociatedInstanceId;
         public readonly string? AssociatedInstanceType;
         public readonly bool? DryRun;
         /// <summary>
-        /// A list of EIPs. Each element contains the following attributes:
+        /// (Deprecated since v1.126.0) A list of EIPs. This field has been deprecated. Please use `Addresses` instead. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEipsEipResult> Eips;
         public readonly bool? EnableDetails;
@@ -317,34 +393,43 @@ namespace Pulumi.AliCloud.Ecs
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// (Optional) A list of EIP IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly bool? IncludeReservationData;
         /// <summary>
-        /// Public IP Address of the the EIP.
+        /// The IP address of the EIP.
         /// </summary>
         public readonly string? IpAddress;
         public readonly ImmutableArray<string> IpAddresses;
+        /// <summary>
+        /// The Internet service provider (ISP).
+        /// </summary>
         public readonly string? Isp;
         public readonly string? LockReason;
         public readonly string? NameRegex;
         /// <summary>
-        /// (Optional) A list of EIP names.
+        /// A list of Address names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The billing method of the EIP.
+        /// </summary>
         public readonly string? PaymentType;
         /// <summary>
-        /// The Id of resource group which the eips belongs.
+        /// The ID of the resource group.
         /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The IDs of the contiguous EIPs.
+        /// </summary>
         public readonly string? SegmentInstanceId;
         /// <summary>
-        /// EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        /// The status of the EIP.
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]

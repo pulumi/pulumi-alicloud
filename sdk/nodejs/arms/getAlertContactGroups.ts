@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *
@@ -72,9 +72,15 @@ export interface GetAlertContactGroupsArgs {
  * A collection of values returned by getAlertContactGroups.
  */
 export interface GetAlertContactGroupsResult {
+    /**
+     * The name of the resource.
+     */
     readonly alertContactGroupName?: string;
     readonly contactId?: string;
     readonly contactName?: string;
+    /**
+     * A list of Arms Alert Contact Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.arms.GetAlertContactGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -82,13 +88,16 @@ export interface GetAlertContactGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Alert Contact Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *

@@ -143,7 +143,7 @@ type GetDbInstancesInstance struct {
 	DbInstanceDescription string `pulumi:"dbInstanceDescription"`
 	// The ID of the instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`
-	// IP ADDRESS whitelist for the instance group list.
+	// IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
 	DbInstanceIpArrays []GetDbInstancesInstanceDbInstanceIpArray `pulumi:"dbInstanceIpArrays"`
 	// Instance memory, which is measured in MB.
 	DbInstanceMemory string `pulumi:"dbInstanceMemory"`
@@ -187,7 +187,7 @@ type GetDbInstancesInstance struct {
 	PublicPort int `pulumi:"publicPort"`
 	// The array of the readonly db instances.
 	ReadOnlyDbInstanceIds []string `pulumi:"readOnlyDbInstanceIds"`
-	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
 	Status string `pulumi:"status"`
 	// The vpc id of the db instance.
 	VpcId string `pulumi:"vpcId"`
@@ -223,7 +223,7 @@ type GetDbInstancesInstanceArgs struct {
 	DbInstanceDescription pulumi.StringInput `pulumi:"dbInstanceDescription"`
 	// The ID of the instance.
 	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
-	// IP ADDRESS whitelist for the instance group list.
+	// IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
 	DbInstanceIpArrays GetDbInstancesInstanceDbInstanceIpArrayArrayInput `pulumi:"dbInstanceIpArrays"`
 	// Instance memory, which is measured in MB.
 	DbInstanceMemory pulumi.StringInput `pulumi:"dbInstanceMemory"`
@@ -267,7 +267,7 @@ type GetDbInstancesInstanceArgs struct {
 	PublicPort pulumi.IntInput `pulumi:"publicPort"`
 	// The array of the readonly db instances.
 	ReadOnlyDbInstanceIds pulumi.StringArrayInput `pulumi:"readOnlyDbInstanceIds"`
-	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+	// Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The vpc id of the db instance.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -363,7 +363,7 @@ func (o GetDbInstancesInstanceOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbInstancesInstance) string { return v.DbInstanceId }).(pulumi.StringOutput)
 }
 
-// IP ADDRESS whitelist for the instance group list.
+// IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
 func (o GetDbInstancesInstanceOutput) DbInstanceIpArrays() GetDbInstancesInstanceDbInstanceIpArrayArrayOutput {
 	return o.ApplyT(func(v GetDbInstancesInstance) []GetDbInstancesInstanceDbInstanceIpArray { return v.DbInstanceIpArrays }).(GetDbInstancesInstanceDbInstanceIpArrayArrayOutput)
 }
@@ -473,7 +473,7 @@ func (o GetDbInstancesInstanceOutput) ReadOnlyDbInstanceIds() pulumi.StringArray
 	return o.ApplyT(func(v GetDbInstancesInstance) []string { return v.ReadOnlyDbInstanceIds }).(pulumi.StringArrayOutput)
 }
 
-// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+// Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
 func (o GetDbInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }

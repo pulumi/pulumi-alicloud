@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Imp
         /// <summary>
         /// This data source provides the Imp App Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Imp
         /// <summary>
         /// This data source provides the Imp App Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Imp
         /// <summary>
         /// This data source provides the Imp App Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.137.0+.
+        /// &gt; **NOTE:** Available since v1.137.0.
         /// 
         /// ## Example Usage
         /// 
@@ -204,9 +204,18 @@ namespace Pulumi.AliCloud.Imp
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of App Template names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Application template usage status.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A list of Imp App Templates. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppTemplatesTemplateResult> Templates;
 
         [OutputConstructor]

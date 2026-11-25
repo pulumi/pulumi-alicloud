@@ -148,8 +148,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Cloud Firewall Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The payment type of the resource. Valid values: `Subscription`.
+        /// </summary>
         public readonly string? PaymentType;
 
         [OutputConstructor]

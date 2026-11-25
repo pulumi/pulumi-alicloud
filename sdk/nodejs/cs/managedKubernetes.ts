@@ -363,6 +363,24 @@ import * as utilities from "../utilities";
  *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  *
+ * ### Extended version support
+ *
+ * Set `supportPolicy = "Extended"` on an ACK Pro cluster to enable extended version support. The same argument can be added to an existing cluster to update its policy without recreating it.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const extended = alicloud.cs.getKubernetesVersion({
+ *     clusterType: "ManagedKubernetes",
+ *     profile: "Default",
+ *     supportPolicy: "Extended",
+ *     kubernetesVersion: kubernetesVersion,
+ * });
+ * ```
+ *
+ * Query results depend on ACK's current version lifecycle and regional availability. Use the exact version you intend to deploy rather than a fixed index into the metadata list.
+ *
  * ## Import
  *
  * Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -446,8 +464,6 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     declare public readonly clientKey: pulumi.Output<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-     *
-     * *Removed params*
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
@@ -629,6 +645,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly slbIntranet: pulumi.Output<string>;
     /**
+     * Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+     */
+    declare public readonly supportPolicy: pulumi.Output<string>;
+    /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
@@ -646,7 +666,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      *
      * > **NOTE:** This parameter only applies during resource update.
      *
-     * *Network params*
+     * Network params
      */
     declare public readonly upgradePolicy: pulumi.Output<outputs.cs.ManagedKubernetesUpgradePolicy | undefined>;
     /**
@@ -745,6 +765,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["slbInternet"] = state?.slbInternet;
             resourceInputs["slbInternetEnabled"] = state?.slbInternetEnabled;
             resourceInputs["slbIntranet"] = state?.slbIntranet;
+            resourceInputs["supportPolicy"] = state?.supportPolicy;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["timezone"] = state?.timezone;
             resourceInputs["upgradePolicy"] = state?.upgradePolicy;
@@ -796,6 +817,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["serviceCidr"] = args?.serviceCidr;
             resourceInputs["skipSetCertificateAuthority"] = args?.skipSetCertificateAuthority;
             resourceInputs["slbInternetEnabled"] = args?.slbInternetEnabled;
+            resourceInputs["supportPolicy"] = args?.supportPolicy;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["timezone"] = args?.timezone;
             resourceInputs["upgradePolicy"] = args?.upgradePolicy;
@@ -859,8 +881,6 @@ export interface ManagedKubernetesState {
     clientKey?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-     *
-     * *Removed params*
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
@@ -1042,6 +1062,10 @@ export interface ManagedKubernetesState {
      */
     slbIntranet?: pulumi.Input<string | undefined>;
     /**
+     * Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+     */
+    supportPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -1059,7 +1083,7 @@ export interface ManagedKubernetesState {
      *
      * > **NOTE:** This parameter only applies during resource update.
      *
-     * *Network params*
+     * Network params
      */
     upgradePolicy?: pulumi.Input<inputs.cs.ManagedKubernetesUpgradePolicy | undefined>;
     /**
@@ -1134,8 +1158,6 @@ export interface ManagedKubernetesArgs {
     clientKey?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
-     *
-     * *Removed params*
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
@@ -1293,6 +1315,10 @@ export interface ManagedKubernetesArgs {
      */
     slbInternetEnabled?: pulumi.Input<boolean | undefined>;
     /**
+     * Kubernetes version support policy. Valid values: `Standard` and `Extended`. `Extended` is available only for ACK Pro clusters using the Default profile. When omitted during creation, ACK chooses its configured default; Terraform reads the effective value from the cluster. Existing clusters can change the policy without recreation. ACK validates whether disabling extended support is allowed for the current version. Enabling this policy may incur extended support charges when the version enters its extended support period.
+     */
+    supportPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -1310,7 +1336,7 @@ export interface ManagedKubernetesArgs {
      *
      * > **NOTE:** This parameter only applies during resource update.
      *
-     * *Network params*
+     * Network params
      */
     upgradePolicy?: pulumi.Input<inputs.cs.ManagedKubernetesUpgradePolicy | undefined>;
     /**

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Mhub
         /// <summary>
         /// This data source provides the Mhub Products of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Mhub
         /// <summary>
         /// This data source provides the Mhub Products of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Mhub
         /// <summary>
         /// This data source provides the Mhub Products of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// 
         /// ## Example Usage
         /// 
@@ -213,8 +213,14 @@ namespace Pulumi.AliCloud.Mhub
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Product names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Mhub Products. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProductsProductResult> Products;
 
         [OutputConstructor]

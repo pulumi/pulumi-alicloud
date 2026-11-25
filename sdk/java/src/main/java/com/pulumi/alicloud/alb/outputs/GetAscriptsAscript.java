@@ -38,12 +38,20 @@ public final class GetAscriptsAscript {
      * 
      */
     private List<GetAscriptsAscriptExtAttribute> extAttributes;
+    /**
+     * @return The ID of the AScript.
+     * 
+     */
     private String id;
     /**
      * @return Listener ID of script attribution
      * 
      */
     private String listenerId;
+    /**
+     * @return The ID of the load balancer to which the listener belongs.
+     * 
+     */
     private String loadBalancerId;
     /**
      * @return Script execution location.
@@ -97,6 +105,10 @@ public final class GetAscriptsAscript {
     public List<GetAscriptsAscriptExtAttribute> extAttributes() {
         return this.extAttributes;
     }
+    /**
+     * @return The ID of the AScript.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -107,6 +119,10 @@ public final class GetAscriptsAscript {
     public String listenerId() {
         return this.listenerId;
     }
+    /**
+     * @return The ID of the load balancer to which the listener belongs.
+     * 
+     */
     public String loadBalancerId() {
         return this.loadBalancerId;
     }

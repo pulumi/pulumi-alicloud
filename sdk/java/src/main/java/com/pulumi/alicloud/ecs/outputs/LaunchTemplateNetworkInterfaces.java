@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LaunchTemplateNetworkInterfaces {
+    /**
+     * @return Whether to release the ENI when the instance is released.
+     * 
+     */
     private @Nullable Boolean deleteOnRelease;
     /**
      * @return The ENI description.
@@ -40,6 +44,10 @@ public final class LaunchTemplateNetworkInterfaces {
     private @Nullable String vswitchId;
 
     private LaunchTemplateNetworkInterfaces() {}
+    /**
+     * @return Whether to release the ENI when the instance is released.
+     * 
+     */
     public Optional<Boolean> deleteOnRelease() {
         return Optional.ofNullable(this.deleteOnRelease);
     }

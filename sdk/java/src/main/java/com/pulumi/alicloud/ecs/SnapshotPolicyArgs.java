@@ -22,43 +22,83 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final SnapshotPolicyArgs Empty = new SnapshotPolicyArgs();
 
+    /**
+     * The association type of the automatic snapshot policy.
+     * 
+     */
     @Import(name="associationType")
     private @Nullable Output<String> associationType;
 
+    /**
+     * @return The association type of the automatic snapshot policy.
+     * 
+     */
     public Optional<Output<String>> associationType() {
         return Optional.ofNullable(this.associationType);
     }
 
+    /**
+     * The name of the snapshot policy.
+     * 
+     */
     @Import(name="autoSnapshotPolicyName")
     private @Nullable Output<String> autoSnapshotPolicyName;
 
+    /**
+     * @return The name of the snapshot policy.
+     * 
+     */
     public Optional<Output<String>> autoSnapshotPolicyName() {
         return Optional.ofNullable(this.autoSnapshotPolicyName);
     }
 
+    /**
+     * The retention period of cross-region copied snapshots. Unit: days.
+     * 
+     */
     @Import(name="copiedSnapshotsRetentionDays")
     private @Nullable Output<Integer> copiedSnapshotsRetentionDays;
 
+    /**
+     * @return The retention period of cross-region copied snapshots. Unit: days.
+     * 
+     */
     public Optional<Output<Integer>> copiedSnapshotsRetentionDays() {
         return Optional.ofNullable(this.copiedSnapshotsRetentionDays);
     }
 
+    /**
+     * The encryption configuration for cross-region copy. See `copyEncryptionConfiguration` below.
+     * 
+     */
     @Import(name="copyEncryptionConfiguration")
     private @Nullable Output<SnapshotPolicyCopyEncryptionConfigurationArgs> copyEncryptionConfiguration;
 
+    /**
+     * @return The encryption configuration for cross-region copy. See `copyEncryptionConfiguration` below.
+     * 
+     */
     public Optional<Output<SnapshotPolicyCopyEncryptionConfigurationArgs>> copyEncryptionConfiguration() {
         return Optional.ofNullable(this.copyEncryptionConfiguration);
     }
 
+    /**
+     * Specifies whether to enable cross-region copy.
+     * 
+     */
     @Import(name="enableCrossRegionCopy")
     private @Nullable Output<Boolean> enableCrossRegionCopy;
 
+    /**
+     * @return Specifies whether to enable cross-region copy.
+     * 
+     */
     public Optional<Output<Boolean>> enableCrossRegionCopy() {
         return Optional.ofNullable(this.enableCrossRegionCopy);
     }
 
     /**
-     * The snapshot policy name.
+     * The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `autoSnapshotPolicyName` instead.
      * 
      * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
@@ -68,7 +108,7 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> name;
 
     /**
-     * @return The snapshot policy name.
+     * @return The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `autoSnapshotPolicyName` instead.
      * 
      * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
@@ -97,9 +137,17 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
         return this.repeatWeekdays;
     }
 
+    /**
+     * The ID of the resource group to which the snapshot policy belongs.
+     * 
+     */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group to which the snapshot policy belongs.
+     * 
+     */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
@@ -127,23 +175,47 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
         return this.retentionDays;
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The target regions for cross-region copy.
+     * 
+     */
     @Import(name="targetCopyRegions")
     private @Nullable Output<List<String>> targetCopyRegions;
 
+    /**
+     * @return The target regions for cross-region copy.
+     * 
+     */
     public Optional<Output<List<String>>> targetCopyRegions() {
         return Optional.ofNullable(this.targetCopyRegions);
     }
 
+    /**
+     * The tags to be added to the snapshot. See `targetTags` below.
+     * 
+     */
     @Import(name="targetTags")
     private @Nullable Output<List<SnapshotPolicyTargetTagArgs>> targetTags;
 
+    /**
+     * @return The tags to be added to the snapshot. See `targetTags` below.
+     * 
+     */
     public Optional<Output<List<SnapshotPolicyTargetTagArgs>>> targetTags() {
         return Optional.ofNullable(this.targetTags);
     }
@@ -203,53 +275,113 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
             $ = new SnapshotPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param associationType The association type of the automatic snapshot policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associationType(@Nullable Output<String> associationType) {
             $.associationType = associationType;
             return this;
         }
 
+        /**
+         * @param associationType The association type of the automatic snapshot policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder associationType(String associationType) {
             return associationType(Output.of(associationType));
         }
 
+        /**
+         * @param autoSnapshotPolicyName The name of the snapshot policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoSnapshotPolicyName(@Nullable Output<String> autoSnapshotPolicyName) {
             $.autoSnapshotPolicyName = autoSnapshotPolicyName;
             return this;
         }
 
+        /**
+         * @param autoSnapshotPolicyName The name of the snapshot policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoSnapshotPolicyName(String autoSnapshotPolicyName) {
             return autoSnapshotPolicyName(Output.of(autoSnapshotPolicyName));
         }
 
+        /**
+         * @param copiedSnapshotsRetentionDays The retention period of cross-region copied snapshots. Unit: days.
+         * 
+         * @return builder
+         * 
+         */
         public Builder copiedSnapshotsRetentionDays(@Nullable Output<Integer> copiedSnapshotsRetentionDays) {
             $.copiedSnapshotsRetentionDays = copiedSnapshotsRetentionDays;
             return this;
         }
 
+        /**
+         * @param copiedSnapshotsRetentionDays The retention period of cross-region copied snapshots. Unit: days.
+         * 
+         * @return builder
+         * 
+         */
         public Builder copiedSnapshotsRetentionDays(Integer copiedSnapshotsRetentionDays) {
             return copiedSnapshotsRetentionDays(Output.of(copiedSnapshotsRetentionDays));
         }
 
+        /**
+         * @param copyEncryptionConfiguration The encryption configuration for cross-region copy. See `copyEncryptionConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder copyEncryptionConfiguration(@Nullable Output<SnapshotPolicyCopyEncryptionConfigurationArgs> copyEncryptionConfiguration) {
             $.copyEncryptionConfiguration = copyEncryptionConfiguration;
             return this;
         }
 
+        /**
+         * @param copyEncryptionConfiguration The encryption configuration for cross-region copy. See `copyEncryptionConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder copyEncryptionConfiguration(SnapshotPolicyCopyEncryptionConfigurationArgs copyEncryptionConfiguration) {
             return copyEncryptionConfiguration(Output.of(copyEncryptionConfiguration));
         }
 
+        /**
+         * @param enableCrossRegionCopy Specifies whether to enable cross-region copy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableCrossRegionCopy(@Nullable Output<Boolean> enableCrossRegionCopy) {
             $.enableCrossRegionCopy = enableCrossRegionCopy;
             return this;
         }
 
+        /**
+         * @param enableCrossRegionCopy Specifies whether to enable cross-region copy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableCrossRegionCopy(Boolean enableCrossRegionCopy) {
             return enableCrossRegionCopy(Output.of(enableCrossRegionCopy));
         }
 
         /**
-         * @param name The snapshot policy name.
+         * @param name The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `autoSnapshotPolicyName` instead.
          * 
          * @return builder
          * 
@@ -263,7 +395,7 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The snapshot policy name.
+         * @param name The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `autoSnapshotPolicyName` instead.
          * 
          * @return builder
          * 
@@ -312,11 +444,23 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
             return repeatWeekdays(List.of(repeatWeekdays));
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group to which the snapshot policy belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group to which the snapshot policy belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }
@@ -350,37 +494,85 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
             return retentionDays(Output.of(retentionDays));
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param targetCopyRegions The target regions for cross-region copy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetCopyRegions(@Nullable Output<List<String>> targetCopyRegions) {
             $.targetCopyRegions = targetCopyRegions;
             return this;
         }
 
+        /**
+         * @param targetCopyRegions The target regions for cross-region copy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetCopyRegions(List<String> targetCopyRegions) {
             return targetCopyRegions(Output.of(targetCopyRegions));
         }
 
+        /**
+         * @param targetCopyRegions The target regions for cross-region copy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetCopyRegions(String... targetCopyRegions) {
             return targetCopyRegions(List.of(targetCopyRegions));
         }
 
+        /**
+         * @param targetTags The tags to be added to the snapshot. See `targetTags` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetTags(@Nullable Output<List<SnapshotPolicyTargetTagArgs>> targetTags) {
             $.targetTags = targetTags;
             return this;
         }
 
+        /**
+         * @param targetTags The tags to be added to the snapshot. See `targetTags` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetTags(List<SnapshotPolicyTargetTagArgs> targetTags) {
             return targetTags(Output.of(targetTags));
         }
 
+        /**
+         * @param targetTags The tags to be added to the snapshot. See `targetTags` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetTags(SnapshotPolicyTargetTagArgs... targetTags) {
             return targetTags(List.of(targetTags));
         }

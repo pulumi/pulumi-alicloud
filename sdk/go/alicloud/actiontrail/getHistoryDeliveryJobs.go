@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.139.0+.
+// > **NOTE:** Available since v1.139.0.
 //
 // ## Example Usage
 //
@@ -67,6 +67,7 @@ func GetHistoryDeliveryJobs(ctx *pulumi.Context, args *GetHistoryDeliveryJobsArg
 
 // A collection of arguments for invoking getHistoryDeliveryJobs.
 type GetHistoryDeliveryJobsArgs struct {
+	// Whether to enable details for the jobs. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of History Delivery Job IDs.
 	Ids []string `pulumi:"ids"`
@@ -80,11 +81,13 @@ type GetHistoryDeliveryJobsArgs struct {
 type GetHistoryDeliveryJobsResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                      `pulumi:"id"`
-	Ids        []string                    `pulumi:"ids"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Actiontrail History Delivery Jobs. Each element contains the following attributes:
 	Jobs       []GetHistoryDeliveryJobsJob `pulumi:"jobs"`
 	OutputFile *string                     `pulumi:"outputFile"`
-	Status     *int                        `pulumi:"status"`
+	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+	Status *int `pulumi:"status"`
 }
 
 func GetHistoryDeliveryJobsOutput(ctx *pulumi.Context, args GetHistoryDeliveryJobsOutputArgs, opts ...pulumi.InvokeOption) GetHistoryDeliveryJobsResultOutput {
@@ -94,6 +97,7 @@ func GetHistoryDeliveryJobsOutput(ctx *pulumi.Context, args GetHistoryDeliveryJo
 
 // A collection of arguments for invoking getHistoryDeliveryJobs.
 type GetHistoryDeliveryJobsOutputArgs struct {
+	// Whether to enable details for the jobs. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of History Delivery Job IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -135,6 +139,7 @@ func (o GetHistoryDeliveryJobsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHistoryDeliveryJobsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Actiontrail History Delivery Jobs. Each element contains the following attributes:
 func (o GetHistoryDeliveryJobsResultOutput) Jobs() GetHistoryDeliveryJobsJobArrayOutput {
 	return o.ApplyT(func(v GetHistoryDeliveryJobsResult) []GetHistoryDeliveryJobsJob { return v.Jobs }).(GetHistoryDeliveryJobsJobArrayOutput)
 }
@@ -143,6 +148,7 @@ func (o GetHistoryDeliveryJobsResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetHistoryDeliveryJobsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
 func (o GetHistoryDeliveryJobsResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetHistoryDeliveryJobsResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }

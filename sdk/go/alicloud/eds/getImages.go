@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecd Images of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.146.0+.
+// > **NOTE:** Available since v1.146.0.
 //
 // ## Example Usage
 //
@@ -138,15 +138,20 @@ type GetImagesArgs struct {
 type GetImagesResult struct {
 	DesktopInstanceType *string `pulumi:"desktopInstanceType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string           `pulumi:"id"`
-	Ids        []string         `pulumi:"ids"`
-	ImageType  *string          `pulumi:"imageType"`
-	Images     []GetImagesImage `pulumi:"images"`
-	NameRegex  *string          `pulumi:"nameRegex"`
-	Names      []string         `pulumi:"names"`
-	OsType     *string          `pulumi:"osType"`
-	OutputFile *string          `pulumi:"outputFile"`
-	Status     *string          `pulumi:"status"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
+	ImageType *string `pulumi:"imageType"`
+	// A list of Ecd Images. Each element contains the following attributes:
+	Images    []GetImagesImage `pulumi:"images"`
+	NameRegex *string          `pulumi:"nameRegex"`
+	// A list of Image names.
+	Names []string `pulumi:"names"`
+	// The os type of the image.
+	OsType     *string `pulumi:"osType"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
+	Status *string `pulumi:"status"`
 }
 
 func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulumi.InvokeOption) GetImagesResultOutput {
@@ -204,10 +209,12 @@ func (o GetImagesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
 func (o GetImagesResultOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecd Images. Each element contains the following attributes:
 func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
 }
@@ -216,10 +223,12 @@ func (o GetImagesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Image names.
 func (o GetImagesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// The os type of the image.
 func (o GetImagesResultOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
@@ -228,6 +237,7 @@ func (o GetImagesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
 func (o GetImagesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImagesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

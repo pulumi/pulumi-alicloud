@@ -22,7 +22,15 @@ public final class GetIngressesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Sae Ingresses. Each element contains the following attributes:
+     * 
+     */
     private List<GetIngressesIngress> ingresses;
+    /**
+     * @return The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+     * 
+     */
     private String namespaceId;
     private @Nullable String outputFile;
 
@@ -40,9 +48,17 @@ public final class GetIngressesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Sae Ingresses. Each element contains the following attributes:
+     * 
+     */
     public List<GetIngressesIngress> ingresses() {
         return this.ingresses;
     }
+    /**
+     * @return The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+     * 
+     */
     public String namespaceId() {
         return this.namespaceId;
     }

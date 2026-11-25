@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
         /// 
         /// ## Example Usage
         /// 
@@ -153,12 +153,18 @@ namespace Pulumi.AliCloud.ClickHouse
     [OutputType]
     public sealed class GetBackupPoliciesResult
     {
+        /// <summary>
+        /// The db cluster id.
+        /// </summary>
         public readonly string DbClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Click House Backup Policies. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackupPoliciesPolicyResult> Policies;
 
         [OutputConstructor]

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
 //
-// > **NOTE:**  Available in 1.47.0+
+// > **NOTE:** Available since v1.47.0.
 //
 // ## Example Usage
 //
@@ -63,7 +63,7 @@ type GetInstancesArgs struct {
 	Description *string `pulumi:"description"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// The ids list of AnalyticDB for PostgreSQL instances.
+	// A list of DB Instance IDs.
 	Ids []string `pulumi:"ids"`
 	// The network type of the instance.
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
@@ -74,31 +74,41 @@ type GetInstancesArgs struct {
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
+	// The ID of the availability zone.
 	AvailabilityZone     *string `pulumi:"availabilityZone"`
 	DbInstanceCategories *string `pulumi:"dbInstanceCategories"`
 	DbInstanceModes      *string `pulumi:"dbInstanceModes"`
-	Description          *string `pulumi:"description"`
-	EnableDetails        *bool   `pulumi:"enableDetails"`
+	// The description of the instance.
+	Description   *string `pulumi:"description"`
+	EnableDetails *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string                 `pulumi:"id"`
-	Ids                 []string               `pulumi:"ids"`
-	InstanceNetworkType *string                `pulumi:"instanceNetworkType"`
-	Instances           []GetInstancesInstance `pulumi:"instances"`
-	NameRegex           *string                `pulumi:"nameRegex"`
-	Names               []string               `pulumi:"names"`
-	OutputFile          *string                `pulumi:"outputFile"`
-	ResourceGroupId     *string                `pulumi:"resourceGroupId"`
-	Status              *string                `pulumi:"status"`
-	Tags                map[string]string      `pulumi:"tags"`
-	VswitchId           *string                `pulumi:"vswitchId"`
+	Id string `pulumi:"id"`
+	// The ids list of AnalyticDB for PostgreSQL instances.
+	Ids []string `pulumi:"ids"`
+	// The network type of the instance.
+	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
+	// A list of Gpdb Db Instances. Each element contains the following attributes:
+	Instances []GetInstancesInstance `pulumi:"instances"`
+	NameRegex *string                `pulumi:"nameRegex"`
+	// The names list of AnalyticDB for PostgreSQL instance.
+	Names           []string `pulumi:"names"`
+	OutputFile      *string  `pulumi:"outputFile"`
+	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+	Status *string `pulumi:"status"`
+	// The tags of the instance.
+	Tags map[string]string `pulumi:"tags"`
+	// The vswitch id.
+	VswitchId *string `pulumi:"vswitchId"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -118,7 +128,7 @@ type GetInstancesOutputArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// The ids list of AnalyticDB for PostgreSQL instances.
+	// A list of DB Instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The network type of the instance.
 	InstanceNetworkType pulumi.StringPtrInput `pulumi:"instanceNetworkType"`
@@ -130,7 +140,8 @@ type GetInstancesOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.StringMapInput `pulumi:"tags"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
@@ -154,6 +165,7 @@ func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx cont
 	return o
 }
 
+// The ID of the availability zone.
 func (o GetInstancesResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
@@ -166,6 +178,7 @@ func (o GetInstancesResultOutput) DbInstanceModes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.DbInstanceModes }).(pulumi.StringPtrOutput)
 }
 
+// The description of the instance.
 func (o GetInstancesResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -179,14 +192,17 @@ func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ids list of AnalyticDB for PostgreSQL instances.
 func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The network type of the instance.
 func (o GetInstancesResultOutput) InstanceNetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceNetworkType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Gpdb Db Instances. Each element contains the following attributes:
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
@@ -195,6 +211,7 @@ func (o GetInstancesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// The names list of AnalyticDB for PostgreSQL instance.
 func (o GetInstancesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -207,14 +224,17 @@ func (o GetInstancesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the instance.
 func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The vswitch id.
 func (o GetInstancesResultOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

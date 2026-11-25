@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -48,6 +48,9 @@ export function getBackupPolicies(args?: GetBackupPoliciesArgs, opts?: pulumi.In
  * A collection of arguments for invoking getBackupPolicies.
  */
 export interface GetBackupPoliciesArgs {
+    /**
+     * The page number. Must be greater than 0.
+     */
     currentPage?: number;
     /**
      * A list of Threat Detection Backup Policies IDs.
@@ -107,7 +110,7 @@ export interface GetBackupPoliciesResult {
 /**
  * This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -146,6 +149,9 @@ export function getBackupPoliciesOutput(args?: GetBackupPoliciesOutputArgs, opts
  * A collection of arguments for invoking getBackupPolicies.
  */
 export interface GetBackupPoliciesOutputArgs {
+    /**
+     * The page number. Must be greater than 0.
+     */
     currentPage?: pulumi.Input<number | undefined>;
     /**
      * A list of Threat Detection Backup Policies IDs.

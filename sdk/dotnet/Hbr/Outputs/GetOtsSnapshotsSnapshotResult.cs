@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string SourceType;
         /// <summary>
-        /// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        /// The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
         /// </summary>
         public readonly string StartTime;
         /// <summary>

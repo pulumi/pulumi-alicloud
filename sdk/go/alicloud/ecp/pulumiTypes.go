@@ -19,7 +19,8 @@ type GetInstanceTypesInstanceType struct {
 	// The default resolution of the current instance type.
 	DefaultResolution string `pulumi:"defaultResolution"`
 	// The list of available instance type.
-	InstanceType       string `pulumi:"instanceType"`
+	InstanceType string `pulumi:"instanceType"`
+	// The family of the current instance type.
 	InstanceTypeFamily string `pulumi:"instanceTypeFamily"`
 	// The name of the current instance type.
 	Name string `pulumi:"name"`
@@ -44,7 +45,8 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	// The default resolution of the current instance type.
 	DefaultResolution pulumi.StringInput `pulumi:"defaultResolution"`
 	// The list of available instance type.
-	InstanceType       pulumi.StringInput `pulumi:"instanceType"`
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The family of the current instance type.
 	InstanceTypeFamily pulumi.StringInput `pulumi:"instanceTypeFamily"`
 	// The name of the current instance type.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -118,6 +120,7 @@ func (o GetInstanceTypesInstanceTypeOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// The family of the current instance type.
 func (o GetInstanceTypesInstanceTypeOutput) InstanceTypeFamily() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.InstanceTypeFamily }).(pulumi.StringOutput)
 }
@@ -161,25 +164,30 @@ type GetInstancesInstance struct {
 	ImageId string `pulumi:"imageId"`
 	// InstanceId.
 	InstanceId string `pulumi:"instanceId"`
-	// Instance Name.
+	// The name of the instance. It must be 2 to 128 characters in length and must start with an
+	// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+	// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+	// the instance.
 	InstanceName string `pulumi:"instanceName"`
 	// Instance Type.
 	InstanceType string `pulumi:"instanceType"`
-	// The Key Name.
+	// The name of the key pair of the mobile phone instance.
 	KeyPairName string `pulumi:"keyPairName"`
 	// The payment type.Valid values: `PayAsYouGo`,`Subscription`
 	PaymentType string `pulumi:"paymentType"`
-	// Resolution.
+	// The selected resolution for the cloud mobile phone instance.
 	Resolution string `pulumi:"resolution"`
 	// Security Group ID.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// Instance Status.
+	// Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+	// .
 	Status string `pulumi:"status"`
 	// VNC login address.
 	VncUrl string `pulumi:"vncUrl"`
 	// The vswitch id.
 	VswitchId string `pulumi:"vswitchId"`
-	ZoneId    string `pulumi:"zoneId"`
+	// The zone ID of the ECP instance.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -202,25 +210,30 @@ type GetInstancesInstanceArgs struct {
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// InstanceId.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Instance Name.
+	// The name of the instance. It must be 2 to 128 characters in length and must start with an
+	// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+	// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+	// the instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
 	// Instance Type.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// The Key Name.
+	// The name of the key pair of the mobile phone instance.
 	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
 	// The payment type.Valid values: `PayAsYouGo`,`Subscription`
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// Resolution.
+	// The selected resolution for the cloud mobile phone instance.
 	Resolution pulumi.StringInput `pulumi:"resolution"`
 	// Security Group ID.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// Instance Status.
+	// Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+	// .
 	Status pulumi.StringInput `pulumi:"status"`
 	// VNC login address.
 	VncUrl pulumi.StringInput `pulumi:"vncUrl"`
 	// The vswitch id.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	ZoneId    pulumi.StringInput `pulumi:"zoneId"`
+	// The zone ID of the ECP instance.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -294,7 +307,10 @@ func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Instance Name.
+// The name of the instance. It must be 2 to 128 characters in length and must start with an
+// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+// the instance.
 func (o GetInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
@@ -304,7 +320,7 @@ func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The Key Name.
+// The name of the key pair of the mobile phone instance.
 func (o GetInstancesInstanceOutput) KeyPairName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.KeyPairName }).(pulumi.StringOutput)
 }
@@ -314,7 +330,7 @@ func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Resolution.
+// The selected resolution for the cloud mobile phone instance.
 func (o GetInstancesInstanceOutput) Resolution() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Resolution }).(pulumi.StringOutput)
 }
@@ -324,7 +340,8 @@ func (o GetInstancesInstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Instance Status.
+// Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+// .
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -339,6 +356,7 @@ func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
+// The zone ID of the ECP instance.
 func (o GetInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
 }

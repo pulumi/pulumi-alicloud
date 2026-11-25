@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRdsParameterGroupsResult {
     private @Nullable Boolean enableDetails;
+    /**
+     * @return A list of Rds Parameter Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetRdsParameterGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,6 +28,10 @@ public final class GetRdsParameterGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Parameter Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
@@ -31,6 +39,10 @@ public final class GetRdsParameterGroupsResult {
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return A list of Rds Parameter Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetRdsParameterGroupsGroup> groups() {
         return this.groups;
     }
@@ -47,6 +59,10 @@ public final class GetRdsParameterGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Parameter Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

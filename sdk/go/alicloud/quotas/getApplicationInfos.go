@@ -11,6 +11,56 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available since v1.117.0.
+//
+// This is an alias of `quotas.getQuotaApplications`.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/quotas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultQuotaApplication, err := quotas.NewQuotaApplication(ctx, "default", &quotas.QuotaApplicationArgs{
+//				ProductCode:     pulumi.String("vpc"),
+//				NoticeType:      pulumi.Int(3),
+//				EffectiveTime:   pulumi.String("2023-05-22T16:00:00Z"),
+//				ExpireTime:      pulumi.String("2024-09-15T00:08:32Z"),
+//				DesireValue:     pulumi.Float64(1),
+//				Reason:          pulumi.String(""),
+//				QuotaActionCode: pulumi.String("vpc_whitelist/ha_vip_whitelist"),
+//				AuditMode:       pulumi.String("Sync"),
+//				EnvLanguage:     pulumi.String("zh"),
+//				QuotaCategory:   pulumi.String("WhiteListLabel"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = quotas.GetApplicationInfosOutput(ctx, quotas.GetApplicationInfosOutputArgs{
+//				ProductCode:   pulumi.String("vpc"),
+//				EnableDetails: pulumi.Bool(true),
+//				QuotaCategory: defaultQuotaApplication.QuotaCategory,
+//				Ids: pulumi.StringArray{
+//					defaultQuotaApplication.ID(),
+//				},
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetApplicationInfos(ctx *pulumi.Context, args *GetApplicationInfosArgs, opts ...pulumi.InvokeOption) (*GetApplicationInfosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationInfosResult
@@ -23,31 +73,45 @@ func GetApplicationInfos(ctx *pulumi.Context, args *GetApplicationInfosArgs, opt
 
 // A collection of arguments for invoking getApplicationInfos.
 type GetApplicationInfosArgs struct {
-	Dimensions      []GetApplicationInfosDimension `pulumi:"dimensions"`
-	EnableDetails   *bool                          `pulumi:"enableDetails"`
-	Ids             []string                       `pulumi:"ids"`
-	KeyWord         *string                        `pulumi:"keyWord"`
-	OutputFile      *string                        `pulumi:"outputFile"`
-	ProductCode     string                         `pulumi:"productCode"`
-	QuotaActionCode *string                        `pulumi:"quotaActionCode"`
-	QuotaCategory   *string                        `pulumi:"quotaCategory"`
-	Status          *string                        `pulumi:"status"`
+	// The quota dimensions. See `dimensions` below.
+	Dimensions []GetApplicationInfosDimension `pulumi:"dimensions"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of Application Info IDs.
+	Ids []string `pulumi:"ids"`
+	// The key word.
+	KeyWord *string `pulumi:"keyWord"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	// The product code.
+	ProductCode string `pulumi:"productCode"`
+	// The ID of quota action.
+	QuotaActionCode *string `pulumi:"quotaActionCode"`
+	// The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+	QuotaCategory *string `pulumi:"quotaCategory"`
+	// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getApplicationInfos.
 type GetApplicationInfosResult struct {
-	Applications  []GetApplicationInfosApplication `pulumi:"applications"`
-	Dimensions    []GetApplicationInfosDimension   `pulumi:"dimensions"`
-	EnableDetails *bool                            `pulumi:"enableDetails"`
+	// A list of Quotas Quota Applications. Each element contains the following attributes:
+	Applications []GetApplicationInfosApplication `pulumi:"applications"`
+	// The quota dimensions. See `dimensions` below.
+	Dimensions    []GetApplicationInfosDimension `pulumi:"dimensions"`
+	EnableDetails *bool                          `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	Ids             []string `pulumi:"ids"`
-	KeyWord         *string  `pulumi:"keyWord"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	ProductCode     string   `pulumi:"productCode"`
-	QuotaActionCode *string  `pulumi:"quotaActionCode"`
-	QuotaCategory   *string  `pulumi:"quotaCategory"`
-	Status          *string  `pulumi:"status"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	KeyWord    *string  `pulumi:"keyWord"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The product code.
+	ProductCode string `pulumi:"productCode"`
+	// The ID of quota action.
+	QuotaActionCode *string `pulumi:"quotaActionCode"`
+	QuotaCategory   *string `pulumi:"quotaCategory"`
+	// The status of the quota application.
+	Status *string `pulumi:"status"`
 }
 
 func GetApplicationInfosOutput(ctx *pulumi.Context, args GetApplicationInfosOutputArgs, opts ...pulumi.InvokeOption) GetApplicationInfosResultOutput {
@@ -57,15 +121,24 @@ func GetApplicationInfosOutput(ctx *pulumi.Context, args GetApplicationInfosOutp
 
 // A collection of arguments for invoking getApplicationInfos.
 type GetApplicationInfosOutputArgs struct {
-	Dimensions      GetApplicationInfosDimensionArrayInput `pulumi:"dimensions"`
-	EnableDetails   pulumi.BoolPtrInput                    `pulumi:"enableDetails"`
-	Ids             pulumi.StringArrayInput                `pulumi:"ids"`
-	KeyWord         pulumi.StringPtrInput                  `pulumi:"keyWord"`
-	OutputFile      pulumi.StringPtrInput                  `pulumi:"outputFile"`
-	ProductCode     pulumi.StringInput                     `pulumi:"productCode"`
-	QuotaActionCode pulumi.StringPtrInput                  `pulumi:"quotaActionCode"`
-	QuotaCategory   pulumi.StringPtrInput                  `pulumi:"quotaCategory"`
-	Status          pulumi.StringPtrInput                  `pulumi:"status"`
+	// The quota dimensions. See `dimensions` below.
+	Dimensions GetApplicationInfosDimensionArrayInput `pulumi:"dimensions"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of Application Info IDs.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The key word.
+	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The product code.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// The ID of quota action.
+	QuotaActionCode pulumi.StringPtrInput `pulumi:"quotaActionCode"`
+	// The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+	QuotaCategory pulumi.StringPtrInput `pulumi:"quotaCategory"`
+	// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetApplicationInfosOutputArgs) ElementType() reflect.Type {
@@ -87,10 +160,12 @@ func (o GetApplicationInfosResultOutput) ToGetApplicationInfosResultOutputWithCo
 	return o
 }
 
+// A list of Quotas Quota Applications. Each element contains the following attributes:
 func (o GetApplicationInfosResultOutput) Applications() GetApplicationInfosApplicationArrayOutput {
 	return o.ApplyT(func(v GetApplicationInfosResult) []GetApplicationInfosApplication { return v.Applications }).(GetApplicationInfosApplicationArrayOutput)
 }
 
+// The quota dimensions. See `dimensions` below.
 func (o GetApplicationInfosResultOutput) Dimensions() GetApplicationInfosDimensionArrayOutput {
 	return o.ApplyT(func(v GetApplicationInfosResult) []GetApplicationInfosDimension { return v.Dimensions }).(GetApplicationInfosDimensionArrayOutput)
 }
@@ -116,10 +191,12 @@ func (o GetApplicationInfosResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationInfosResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The product code.
 func (o GetApplicationInfosResultOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationInfosResult) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
+// The ID of quota action.
 func (o GetApplicationInfosResultOutput) QuotaActionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationInfosResult) *string { return v.QuotaActionCode }).(pulumi.StringPtrOutput)
 }
@@ -128,6 +205,7 @@ func (o GetApplicationInfosResultOutput) QuotaCategory() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetApplicationInfosResult) *string { return v.QuotaCategory }).(pulumi.StringPtrOutput)
 }
 
+// The status of the quota application.
 func (o GetApplicationInfosResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationInfosResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

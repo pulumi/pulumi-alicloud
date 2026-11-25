@@ -128,6 +128,34 @@ import (
 //	}
 //
 // ```
+//
+// ### Query extended support versions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
+//				ClusterType:   "ManagedKubernetes",
+//				Profile:       pulumi.StringRef("Default"),
+//				SupportPolicy: pulumi.StringRef("Extended"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetKubernetesVersion(ctx *pulumi.Context, args *GetKubernetesVersionArgs, opts ...pulumi.InvokeOption) (*GetKubernetesVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesVersionResult
@@ -146,6 +174,8 @@ type GetKubernetesVersionArgs struct {
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
 	Profile *string `pulumi:"profile"`
+	// Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+	SupportPolicy *string `pulumi:"supportPolicy"`
 }
 
 // A collection of values returned by getKubernetesVersion.
@@ -154,9 +184,11 @@ type GetKubernetesVersionResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                string  `pulumi:"id"`
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
-	// A list of metadata of kubernetes version.
+	// A Set of Kubernetes version metadata.
 	Metadatas []GetKubernetesVersionMetadata `pulumi:"metadatas"`
 	Profile   *string                        `pulumi:"profile"`
+	// (Available since v2.3.0) The support policy required by the version (`Standard` or `Extended`).
+	SupportPolicy *string `pulumi:"supportPolicy"`
 }
 
 func GetKubernetesVersionOutput(ctx *pulumi.Context, args GetKubernetesVersionOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesVersionResultOutput {
@@ -172,6 +204,8 @@ type GetKubernetesVersionOutputArgs struct {
 	KubernetesVersion pulumi.StringPtrInput `pulumi:"kubernetesVersion"`
 	// The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
+	// Version support policy used to filter metadata. Valid values: `Standard` and `Extended`. When omitted, ACK uses the Standard view. Use `Extended` to query extended support versions for ACK Pro clusters using the Default profile. Independent ACS and Edge version lines are not controlled by this policy.
+	SupportPolicy pulumi.StringPtrInput `pulumi:"supportPolicy"`
 }
 
 func (GetKubernetesVersionOutputArgs) ElementType() reflect.Type {
@@ -206,13 +240,18 @@ func (o GetKubernetesVersionResultOutput) KubernetesVersion() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetKubernetesVersionResult) *string { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
 }
 
-// A list of metadata of kubernetes version.
+// A Set of Kubernetes version metadata.
 func (o GetKubernetesVersionResultOutput) Metadatas() GetKubernetesVersionMetadataArrayOutput {
 	return o.ApplyT(func(v GetKubernetesVersionResult) []GetKubernetesVersionMetadata { return v.Metadatas }).(GetKubernetesVersionMetadataArrayOutput)
 }
 
 func (o GetKubernetesVersionResultOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKubernetesVersionResult) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v2.3.0) The support policy required by the version (`Standard` or `Extended`).
+func (o GetKubernetesVersionResultOutput) SupportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKubernetesVersionResult) *string { return v.SupportPolicy }).(pulumi.StringPtrOutput)
 }
 
 func init() {

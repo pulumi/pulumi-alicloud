@@ -106,44 +106,52 @@ namespace Pulumi.AliCloud.Log
         [Output("compressType")]
         public Output<string?> CompressType { get; private set; } = null!;
 
+        /// <summary>
+        /// Field configuration in csv configuration format.
+        /// </summary>
         [Output("csvConfigColumns")]
         public Output<ImmutableArray<string>> CsvConfigColumns { get; private set; } = null!;
 
+        /// <summary>
+        /// Separator configuration in csv configuration format.
+        /// </summary>
         [Output("csvConfigDelimiter")]
         public Output<string?> CsvConfigDelimiter { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether to write the field name to the CSV file, the default value is `False`.
+        /// </summary>
         [Output("csvConfigHeader")]
         public Output<bool?> CsvConfigHeader { get; private set; } = null!;
 
+        /// <summary>
+        /// lineFeed in csv configuration.
+        /// </summary>
         [Output("csvConfigLinefeed")]
         public Output<string?> CsvConfigLinefeed { get; private set; } = null!;
 
+        /// <summary>
+        /// Invalid field content.
+        /// </summary>
         [Output("csvConfigNullidentifier")]
         public Output<string?> CsvConfigNullidentifier { get; private set; } = null!;
 
+        /// <summary>
+        /// Escape character under csv configuration.
+        /// </summary>
         [Output("csvConfigQuote")]
         public Output<string?> CsvConfigQuote { get; private set; } = null!;
 
         /// <summary>
         /// Storage format, only supports three types: `Json`, `Parquet`, `Csv`.
         /// **According to the different format, please select the following parameters**
-        /// - format = `Json`
-        ///   `JsonEnableTag` - (Optional) Whether to deliver the label.
-        /// - format = `Csv`
-        ///   `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-        ///   `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
-        ///   `CsvConfigNullidentifier` - (Optional) Invalid field content.
-        ///   `CsvConfigQuote` - (Optional) Escape character under csv configuration.
-        ///   `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
-        ///   `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-        /// - format = `Parquet`
-        ///   `ParquetConfig` - (Optional) Configure to use parquet storage format.
-        ///   `Name` - (Required) The name of the key.
-        ///   `Type` - (Required) Type of configuration name.
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to deliver the label.
+        /// </summary>
         [Output("jsonEnableTag")]
         public Output<bool?> JsonEnableTag { get; private set; } = null!;
 
@@ -165,6 +173,9 @@ namespace Pulumi.AliCloud.Log
         [Output("ossPrefix")]
         public Output<string?> OssPrefix { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure to use parquet storage format. See `ParquetConfig` below.
+        /// </summary>
         [Output("parquetConfigs")]
         public Output<ImmutableArray<Outputs.OssShipperParquetConfig>> ParquetConfigs { get; private set; } = null!;
 
@@ -258,47 +269,56 @@ namespace Pulumi.AliCloud.Log
 
         [Input("csvConfigColumns")]
         private InputList<string>? _csvConfigColumns;
+
+        /// <summary>
+        /// Field configuration in csv configuration format.
+        /// </summary>
         public InputList<string> CsvConfigColumns
         {
             get => _csvConfigColumns ?? (_csvConfigColumns = new InputList<string>());
             set => _csvConfigColumns = value;
         }
 
+        /// <summary>
+        /// Separator configuration in csv configuration format.
+        /// </summary>
         [Input("csvConfigDelimiter")]
         public Input<string>? CsvConfigDelimiter { get; set; }
 
+        /// <summary>
+        /// Indicates whether to write the field name to the CSV file, the default value is `False`.
+        /// </summary>
         [Input("csvConfigHeader")]
         public Input<bool>? CsvConfigHeader { get; set; }
 
+        /// <summary>
+        /// lineFeed in csv configuration.
+        /// </summary>
         [Input("csvConfigLinefeed")]
         public Input<string>? CsvConfigLinefeed { get; set; }
 
+        /// <summary>
+        /// Invalid field content.
+        /// </summary>
         [Input("csvConfigNullidentifier")]
         public Input<string>? CsvConfigNullidentifier { get; set; }
 
+        /// <summary>
+        /// Escape character under csv configuration.
+        /// </summary>
         [Input("csvConfigQuote")]
         public Input<string>? CsvConfigQuote { get; set; }
 
         /// <summary>
         /// Storage format, only supports three types: `Json`, `Parquet`, `Csv`.
         /// **According to the different format, please select the following parameters**
-        /// - format = `Json`
-        ///   `JsonEnableTag` - (Optional) Whether to deliver the label.
-        /// - format = `Csv`
-        ///   `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-        ///   `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
-        ///   `CsvConfigNullidentifier` - (Optional) Invalid field content.
-        ///   `CsvConfigQuote` - (Optional) Escape character under csv configuration.
-        ///   `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
-        ///   `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-        /// - format = `Parquet`
-        ///   `ParquetConfig` - (Optional) Configure to use parquet storage format.
-        ///   `Name` - (Required) The name of the key.
-        ///   `Type` - (Required) Type of configuration name.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to deliver the label.
+        /// </summary>
         [Input("jsonEnableTag")]
         public Input<bool>? JsonEnableTag { get; set; }
 
@@ -322,6 +342,10 @@ namespace Pulumi.AliCloud.Log
 
         [Input("parquetConfigs")]
         private InputList<Inputs.OssShipperParquetConfigArgs>? _parquetConfigs;
+
+        /// <summary>
+        /// Configure to use parquet storage format. See `ParquetConfig` below.
+        /// </summary>
         public InputList<Inputs.OssShipperParquetConfigArgs> ParquetConfigs
         {
             get => _parquetConfigs ?? (_parquetConfigs = new InputList<Inputs.OssShipperParquetConfigArgs>());
@@ -380,47 +404,56 @@ namespace Pulumi.AliCloud.Log
 
         [Input("csvConfigColumns")]
         private InputList<string>? _csvConfigColumns;
+
+        /// <summary>
+        /// Field configuration in csv configuration format.
+        /// </summary>
         public InputList<string> CsvConfigColumns
         {
             get => _csvConfigColumns ?? (_csvConfigColumns = new InputList<string>());
             set => _csvConfigColumns = value;
         }
 
+        /// <summary>
+        /// Separator configuration in csv configuration format.
+        /// </summary>
         [Input("csvConfigDelimiter")]
         public Input<string>? CsvConfigDelimiter { get; set; }
 
+        /// <summary>
+        /// Indicates whether to write the field name to the CSV file, the default value is `False`.
+        /// </summary>
         [Input("csvConfigHeader")]
         public Input<bool>? CsvConfigHeader { get; set; }
 
+        /// <summary>
+        /// lineFeed in csv configuration.
+        /// </summary>
         [Input("csvConfigLinefeed")]
         public Input<string>? CsvConfigLinefeed { get; set; }
 
+        /// <summary>
+        /// Invalid field content.
+        /// </summary>
         [Input("csvConfigNullidentifier")]
         public Input<string>? CsvConfigNullidentifier { get; set; }
 
+        /// <summary>
+        /// Escape character under csv configuration.
+        /// </summary>
         [Input("csvConfigQuote")]
         public Input<string>? CsvConfigQuote { get; set; }
 
         /// <summary>
         /// Storage format, only supports three types: `Json`, `Parquet`, `Csv`.
         /// **According to the different format, please select the following parameters**
-        /// - format = `Json`
-        ///   `JsonEnableTag` - (Optional) Whether to deliver the label.
-        /// - format = `Csv`
-        ///   `CsvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-        ///   `CsvConfigColumns` - (Optional) Field configuration in csv configuration format.
-        ///   `CsvConfigNullidentifier` - (Optional) Invalid field content.
-        ///   `CsvConfigQuote` - (Optional) Escape character under csv configuration.
-        ///   `CsvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `False`.
-        ///   `CsvConfigLinefeed` - (Optional) lineFeed in csv configuration.
-        /// - format = `Parquet`
-        ///   `ParquetConfig` - (Optional) Configure to use parquet storage format.
-        ///   `Name` - (Required) The name of the key.
-        ///   `Type` - (Required) Type of configuration name.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
 
+        /// <summary>
+        /// Whether to deliver the label.
+        /// </summary>
         [Input("jsonEnableTag")]
         public Input<bool>? JsonEnableTag { get; set; }
 
@@ -444,6 +477,10 @@ namespace Pulumi.AliCloud.Log
 
         [Input("parquetConfigs")]
         private InputList<Inputs.OssShipperParquetConfigGetArgs>? _parquetConfigs;
+
+        /// <summary>
+        /// Configure to use parquet storage format. See `ParquetConfig` below.
+        /// </summary>
         public InputList<Inputs.OssShipperParquetConfigGetArgs> ParquetConfigs
         {
             get => _parquetConfigs ?? (_parquetConfigs = new InputList<Inputs.OssShipperParquetConfigGetArgs>());

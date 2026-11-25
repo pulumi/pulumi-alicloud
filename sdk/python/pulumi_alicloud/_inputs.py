@@ -1088,7 +1088,7 @@ class ProviderAssumeRoleWithOidcArgsDict(TypedDict):
     """
     session_expiration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+    The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
     """
 
 @pulumi.input_type
@@ -1107,7 +1107,7 @@ class ProviderAssumeRoleWithOidcArgs:
         :param pulumi.Input[_builtins.str] oidc_token_file: The file path of OIDC token that is issued by the external IdP.
         :param pulumi.Input[_builtins.str] policy: The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
         :param pulumi.Input[_builtins.str] role_session_name: The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
-        :param pulumi.Input[_builtins.int] session_expiration: The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+        :param pulumi.Input[_builtins.int] session_expiration: The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
         """
         pulumi.set(__self__, "oidc_provider_arn", oidc_provider_arn)
         pulumi.set(__self__, "role_arn", role_arn)
@@ -1195,7 +1195,7 @@ class ProviderAssumeRoleWithOidcArgs:
     @pulumi.getter(name="sessionExpiration")
     def session_expiration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+        The validity period of the STS token. Unit: seconds. Valid value range: 900 to 3600. Default value: 3600.
         """
         return pulumi.get(self, "session_expiration")
 

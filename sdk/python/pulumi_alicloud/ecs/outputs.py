@@ -1541,7 +1541,7 @@ class InstanceDataDisk(dict):
                - ephemeral_ssd: [5, 800]
         :param _builtins.str auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param _builtins.bool bursting_enabled: Specifies whether to enable the performance burst feature for the system disk. Valid values:
-        :param _builtins.str category: The category of the disk. Default value: `cloud_efficiency`. Valid values:
+        :param _builtins.str category: The category of the disk. Defaults to `cloud_efficiency`. Valid values:
         :param _builtins.bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         :param _builtins.str description: The description of the data disk.
         :param _builtins.str device: The mount point of the data disk.
@@ -1616,7 +1616,7 @@ class InstanceDataDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[_builtins.str]:
         """
-        The category of the disk. Default value: `cloud_efficiency`. Valid values:
+        The category of the disk. Defaults to `cloud_efficiency`. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -1945,29 +1945,16 @@ class LaunchTemplateDataDisk(dict):
                  size: Optional[_builtins.int] = None,
                  snapshot_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str category: The category of the disk:
-               - cloud: Basic cloud disk.
-               - cloud_efficiency: Ultra cloud disk.
-               - cloud_ssd: SSD cloud Disks.
-               - ephemeral_ssd: local SSD Disks
-               - cloud_essd: ESSD cloud Disks.
-               
-               Default to `cloud_efficiency`.
-        :param _builtins.bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-               
-               Default to true
+        :param _builtins.str category: The category of the disk.
+        :param _builtins.bool delete_with_instance: Delete this data disk when the instance is destroyed. Default to `true`.
         :param _builtins.str description: The description of the data disk.
-        :param _builtins.bool encrypted: Encrypted the data in this disk.
-               
-               Default to false
+        :param _builtins.str device: The mount point of the data disk.
+        :param _builtins.bool encrypted: Encrypted the data in this disk. Default to `false`.
+        :param _builtins.str kms_key_id: The ID of the KMS key used for the data disk.
         :param _builtins.str name: The name of the data disk.
+        :param _builtins.str performance_level: The performance level of the ESSD used as the data disk.
         :param _builtins.int size: The size of the data disk.
-               - cloud：[5, 2000]
-               - cloud_efficiency：[20, 32768]
-               - cloud_ssd：[20, 32768]
-               - cloud_essd：[20, 32768]
-               - ephemeral_ssd: [5, 800]
-        :param _builtins.str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        :param _builtins.str snapshot_id: The snapshot ID used to initialize the data disk.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -1994,14 +1981,7 @@ class LaunchTemplateDataDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[_builtins.str]:
         """
-        The category of the disk:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
-
-        Default to `cloud_efficiency`.
+        The category of the disk.
         """
         return pulumi.get(self, "category")
 
@@ -2009,9 +1989,7 @@ class LaunchTemplateDataDisk(dict):
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[_builtins.bool]:
         """
-        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-
-        Default to true
+        Delete this data disk when the instance is destroyed. Default to `true`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -2026,21 +2004,25 @@ class LaunchTemplateDataDisk(dict):
     @_builtins.property
     @pulumi.getter
     def device(self) -> Optional[_builtins.str]:
+        """
+        The mount point of the data disk.
+        """
         return pulumi.get(self, "device")
 
     @_builtins.property
     @pulumi.getter
     def encrypted(self) -> Optional[_builtins.bool]:
         """
-        Encrypted the data in this disk.
-
-        Default to false
+        Encrypted the data in this disk. Default to `false`.
         """
         return pulumi.get(self, "encrypted")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the KMS key used for the data disk.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
@@ -2054,6 +2036,9 @@ class LaunchTemplateDataDisk(dict):
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[_builtins.str]:
+        """
+        The performance level of the ESSD used as the data disk.
+        """
         return pulumi.get(self, "performance_level")
 
     @_builtins.property
@@ -2061,11 +2046,6 @@ class LaunchTemplateDataDisk(dict):
     def size(self) -> Optional[_builtins.int]:
         """
         The size of the data disk.
-        - cloud：[5, 2000]
-        - cloud_efficiency：[20, 32768]
-        - cloud_ssd：[20, 32768]
-        - cloud_essd：[20, 32768]
-        - ephemeral_ssd: [5, 800]
         """
         return pulumi.get(self, "size")
 
@@ -2073,7 +2053,7 @@ class LaunchTemplateDataDisk(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[_builtins.str]:
         """
-        The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+        The snapshot ID used to initialize the data disk.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -2099,12 +2079,18 @@ class LaunchTemplateImageOptions(dict):
 
     def __init__(__self__, *,
                  login_as_non_root: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool login_as_non_root: Whether the instance that uses the image supports logons of the ecs-user user.
+        """
         if login_as_non_root is not None:
             pulumi.set(__self__, "login_as_non_root", login_as_non_root)
 
     @_builtins.property
     @pulumi.getter(name="loginAsNonRoot")
     def login_as_non_root(self) -> Optional[_builtins.bool]:
+        """
+        Whether the instance that uses the image supports logons of the ecs-user user.
+        """
         return pulumi.get(self, "login_as_non_root")
 
 
@@ -2141,6 +2127,7 @@ class LaunchTemplateNetworkInterfaces(dict):
                  security_group_id: Optional[_builtins.str] = None,
                  vswitch_id: Optional[_builtins.str] = None):
         """
+        :param _builtins.bool delete_on_release: Whether to release the ENI when the instance is released.
         :param _builtins.str description: The ENI description.
         :param _builtins.str name: ENI name.
         :param _builtins.str primary_ip: The primary private IP address of the ENI.
@@ -2163,6 +2150,9 @@ class LaunchTemplateNetworkInterfaces(dict):
     @_builtins.property
     @pulumi.getter(name="deleteOnRelease")
     def delete_on_release(self) -> Optional[_builtins.bool]:
+        """
+        Whether to release the ENI when the instance is released.
+        """
         return pulumi.get(self, "delete_on_release")
 
     @_builtins.property
@@ -2240,28 +2230,15 @@ class LaunchTemplateSystemDisk(dict):
                  performance_level: Optional[_builtins.str] = None,
                  size: Optional[_builtins.int] = None):
         """
-        :param _builtins.str category: The category of the disk:
-               - cloud: Basic cloud disk.
-               - cloud_efficiency: Ultra cloud disk.
-               - cloud_ssd: SSD cloud Disks.
-               - ephemeral_ssd: local SSD Disks
-               - cloud_essd: ESSD cloud Disks.
-               
-               Default to `cloud_efficiency`.
-        :param _builtins.bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-               
-               Default to true
-        :param _builtins.str description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-        :param _builtins.bool encrypted: Encrypted the data in this disk.
-               
-               Default to false
-        :param _builtins.str name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-        :param _builtins.int size: The size of the data disk.
-               - cloud：[5, 2000]
-               - cloud_efficiency：[20, 32768]
-               - cloud_ssd：[20, 32768]
-               - cloud_essd：[20, 32768]
-               - ephemeral_ssd: [5, 800]
+        :param _builtins.str category: The category of the system disk.
+        :param _builtins.bool delete_with_instance: Whether to release the system disk when the instance is released. Default to `true`.
+        :param _builtins.str description: System disk description.
+        :param _builtins.bool encrypted: Whether the system disk is encrypted.
+        :param _builtins.str iops: The Iops.
+        :param _builtins.str kms_key_id: The ID of the KMS key to use for the system disk.
+        :param _builtins.str name: System disk name.
+        :param _builtins.str performance_level: The performance level of the ESSD used as the system disk.
+        :param _builtins.int size: Size of the system disk, measured in GB.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -2286,14 +2263,7 @@ class LaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[_builtins.str]:
         """
-        The category of the disk:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
-
-        Default to `cloud_efficiency`.
+        The category of the system disk.
         """
         return pulumi.get(self, "category")
 
@@ -2301,9 +2271,7 @@ class LaunchTemplateSystemDisk(dict):
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[_builtins.bool]:
         """
-        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-
-        Default to true
+        Whether to release the system disk when the instance is released. Default to `true`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -2311,7 +2279,7 @@ class LaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        System disk description.
         """
         return pulumi.get(self, "description")
 
@@ -2319,45 +2287,47 @@ class LaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def encrypted(self) -> Optional[_builtins.bool]:
         """
-        Encrypted the data in this disk.
-
-        Default to false
+        Whether the system disk is encrypted.
         """
         return pulumi.get(self, "encrypted")
 
     @_builtins.property
     @pulumi.getter
     def iops(self) -> Optional[_builtins.str]:
+        """
+        The Iops.
+        """
         return pulumi.get(self, "iops")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the KMS key to use for the system disk.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
+        System disk name.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[_builtins.str]:
+        """
+        The performance level of the ESSD used as the system disk.
+        """
         return pulumi.get(self, "performance_level")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
         """
-        The size of the data disk.
-        - cloud：[5, 2000]
-        - cloud_efficiency：[20, 32768]
-        - cloud_ssd：[20, 32768]
-        - cloud_essd：[20, 32768]
-        - ephemeral_ssd: [5, 800]
+        Size of the system disk, measured in GB.
         """
         return pulumi.get(self, "size")
 
@@ -2420,6 +2390,10 @@ class SnapshotPolicyCopyEncryptionConfiguration(dict):
     def __init__(__self__, *,
                  encrypted: Optional[_builtins.bool] = None,
                  kms_key_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool encrypted: Whether to encrypt the snapshot.
+        :param _builtins.str kms_key_id: The KMS key ID used for encryption.
+        """
         if encrypted is not None:
             pulumi.set(__self__, "encrypted", encrypted)
         if kms_key_id is not None:
@@ -2428,11 +2402,17 @@ class SnapshotPolicyCopyEncryptionConfiguration(dict):
     @_builtins.property
     @pulumi.getter
     def encrypted(self) -> Optional[_builtins.bool]:
+        """
+        Whether to encrypt the snapshot.
+        """
         return pulumi.get(self, "encrypted")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[_builtins.str]:
+        """
+        The KMS key ID used for encryption.
+        """
         return pulumi.get(self, "kms_key_id")
 
 
@@ -2460,6 +2440,10 @@ class SnapshotPolicyTargetTag(dict):
     def __init__(__self__, *,
                  tag_key: Optional[_builtins.str] = None,
                  tag_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str tag_key: The key of the tag.
+        :param _builtins.str tag_value: The value of the tag.
+        """
         if tag_key is not None:
             pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
@@ -2468,11 +2452,17 @@ class SnapshotPolicyTargetTag(dict):
     @_builtins.property
     @pulumi.getter(name="tagKey")
     def tag_key(self) -> Optional[_builtins.str]:
+        """
+        The key of the tag.
+        """
         return pulumi.get(self, "tag_key")
 
     @_builtins.property
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> Optional[_builtins.str]:
+        """
+        The value of the tag.
+        """
         return pulumi.get(self, "tag_value")
 
 
@@ -3063,10 +3053,10 @@ class GetCommandsCommandResult(dict):
         :param _builtins.str description: The description of command.
         :param _builtins.bool enable_parameter: Specifies whether to use custom parameters in the command to be created.
         :param _builtins.str id: The ID of the Command.
-        :param _builtins.str name: The name of the command
+        :param _builtins.str name: The name of the command.
         :param Sequence[_builtins.str] parameter_names: A list of custom parameter names which are parsed from the command content specified when the command was being created.
         :param _builtins.int timeout: The timeout period that is specified for the command to be run on ECS instances.
-        :param _builtins.str type: The command type.
+        :param _builtins.str type: The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
         :param _builtins.str working_dir: The execution path of the command in the ECS instance.
         """
         pulumi.set(__self__, "command_content", command_content)
@@ -3124,7 +3114,7 @@ class GetCommandsCommandResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the command
+        The name of the command.
         """
         return pulumi.get(self, "name")
 
@@ -3148,7 +3138,7 @@ class GetCommandsCommandResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The command type.
+        The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
         """
         return pulumi.get(self, "type")
 
@@ -3744,24 +3734,46 @@ class GetDisksDiskResult(dict):
                  type: _builtins.str,
                  zone_id: _builtins.str):
         """
-        :param _builtins.str attached_time: Disk attachment time.
-        :param _builtins.str availability_zone: Availability zone of the disk.
-        :param _builtins.str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
+        :param _builtins.str attached_time: The attached time.
+        :param _builtins.str auto_snapshot_policy_id: The ID of the automatic snapshot policy.
+        :param _builtins.str availability_zone: The availability zone. Deprecated; use `zone_id` instead.
+        :param _builtins.str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, and `cloud_regional_disk_auto` (Regional ESSD).
         :param _builtins.str creation_time: Disk creation time.
+        :param _builtins.bool delete_auto_snapshot: Whether to delete the automatic snapshot.
+        :param _builtins.bool delete_with_instance: Whether to delete the disk with the instance.
         :param _builtins.str description: Disk description.
         :param _builtins.str detached_time: Disk detachment time.
+        :param _builtins.str device: The device name.
+        :param _builtins.str disk_id: The ID of the disk.
+        :param _builtins.str disk_name: The name of the disk.
+        :param _builtins.str disk_type: Disk type. Valid values: `system`, `data`, `all`.
+        :param _builtins.bool enable_auto_snapshot: Whether to enable the automatic snapshot.
+        :param _builtins.bool enable_automated_snapshot_policy: Whether to enable the automated snapshot policy.
         :param _builtins.str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
         :param _builtins.str expiration_time: Disk expiration time.
+        :param _builtins.str expired_time: The expired time of the disk.
         :param _builtins.str id: ID of the disk.
         :param _builtins.str image_id: ID of the image from which the disk is created. It is null unless the disk is created using an image.
         :param _builtins.str instance_id: Filter the results by the specified ECS instance ID.
+        :param _builtins.int iops: The IOPS of the disk.
+        :param _builtins.int iops_read: The read IOPS.
+        :param _builtins.int iops_write: The write IOPS.
+        :param _builtins.str kms_key_id: The KMS key ID.
+        :param _builtins.int mount_instance_num: The number of mounted instances.
+        :param Sequence['GetDisksDiskMountInstanceArgs'] mount_instances: A list of mounted instances.
         :param _builtins.str name: Disk name.
+        :param Sequence['GetDisksDiskOperationLockArgs'] operation_locks: Operation locks. See `operation_locks` below.
+        :param _builtins.str payment_type: The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+        :param _builtins.str performance_level: The performance level of the ESSD.
+        :param _builtins.bool portable: Whether the disk is portable.
+        :param _builtins.str product_code: The product code.
         :param _builtins.str region_id: Region ID the disk belongs to.
         :param _builtins.str resource_group_id: The Id of resource group which the disk belongs.
         :param _builtins.int size: Disk size in GiB.
-        :param _builtins.str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
-        :param _builtins.str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+        :param _builtins.str snapshot_id: The snapshot ID.
+        :param _builtins.str status: The status of the disk.
         :param Mapping[str, _builtins.str] tags: A map of tags assigned to the disks. It must be in the format:
+               
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -3772,6 +3784,7 @@ class GetDisksDiskResult(dict):
                })
                ```
         :param _builtins.str type: Disk type. Possible values: `system` and `data`.
+        :param _builtins.str zone_id: The zone ID.
         """
         pulumi.set(__self__, "attached_time", attached_time)
         pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -3819,20 +3832,23 @@ class GetDisksDiskResult(dict):
     @pulumi.getter(name="attachedTime")
     def attached_time(self) -> _builtins.str:
         """
-        Disk attachment time.
+        The attached time.
         """
         return pulumi.get(self, "attached_time")
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> _builtins.str:
+        """
+        The ID of the automatic snapshot policy.
+        """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
         """
-        Availability zone of the disk.
+        The availability zone. Deprecated; use `zone_id` instead.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -3840,7 +3856,7 @@ class GetDisksDiskResult(dict):
     @pulumi.getter
     def category(self) -> _builtins.str:
         """
-        Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk), `cloud_essd_entry`.
+        Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, and `cloud_regional_disk_auto` (Regional ESSD).
         """
         return pulumi.get(self, "category")
 
@@ -3855,11 +3871,17 @@ class GetDisksDiskResult(dict):
     @_builtins.property
     @pulumi.getter(name="deleteAutoSnapshot")
     def delete_auto_snapshot(self) -> _builtins.bool:
+        """
+        Whether to delete the automatic snapshot.
+        """
         return pulumi.get(self, "delete_auto_snapshot")
 
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> _builtins.bool:
+        """
+        Whether to delete the disk with the instance.
+        """
         return pulumi.get(self, "delete_with_instance")
 
     @_builtins.property
@@ -3881,31 +3903,49 @@ class GetDisksDiskResult(dict):
     @_builtins.property
     @pulumi.getter
     def device(self) -> _builtins.str:
+        """
+        The device name.
+        """
         return pulumi.get(self, "device")
 
     @_builtins.property
     @pulumi.getter(name="diskId")
     def disk_id(self) -> _builtins.str:
+        """
+        The ID of the disk.
+        """
         return pulumi.get(self, "disk_id")
 
     @_builtins.property
     @pulumi.getter(name="diskName")
     def disk_name(self) -> _builtins.str:
+        """
+        The name of the disk.
+        """
         return pulumi.get(self, "disk_name")
 
     @_builtins.property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> _builtins.str:
+        """
+        Disk type. Valid values: `system`, `data`, `all`.
+        """
         return pulumi.get(self, "disk_type")
 
     @_builtins.property
     @pulumi.getter(name="enableAutoSnapshot")
     def enable_auto_snapshot(self) -> _builtins.bool:
+        """
+        Whether to enable the automatic snapshot.
+        """
         return pulumi.get(self, "enable_auto_snapshot")
 
     @_builtins.property
     @pulumi.getter(name="enableAutomatedSnapshotPolicy")
     def enable_automated_snapshot_policy(self) -> _builtins.bool:
+        """
+        Whether to enable the automated snapshot policy.
+        """
         return pulumi.get(self, "enable_automated_snapshot_policy")
 
     @_builtins.property
@@ -3927,6 +3967,9 @@ class GetDisksDiskResult(dict):
     @_builtins.property
     @pulumi.getter(name="expiredTime")
     def expired_time(self) -> _builtins.str:
+        """
+        The expired time of the disk.
+        """
         return pulumi.get(self, "expired_time")
 
     @_builtins.property
@@ -3956,31 +3999,49 @@ class GetDisksDiskResult(dict):
     @_builtins.property
     @pulumi.getter
     def iops(self) -> _builtins.int:
+        """
+        The IOPS of the disk.
+        """
         return pulumi.get(self, "iops")
 
     @_builtins.property
     @pulumi.getter(name="iopsRead")
     def iops_read(self) -> _builtins.int:
+        """
+        The read IOPS.
+        """
         return pulumi.get(self, "iops_read")
 
     @_builtins.property
     @pulumi.getter(name="iopsWrite")
     def iops_write(self) -> _builtins.int:
+        """
+        The write IOPS.
+        """
         return pulumi.get(self, "iops_write")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> _builtins.str:
+        """
+        The KMS key ID.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter(name="mountInstanceNum")
     def mount_instance_num(self) -> _builtins.int:
+        """
+        The number of mounted instances.
+        """
         return pulumi.get(self, "mount_instance_num")
 
     @_builtins.property
     @pulumi.getter(name="mountInstances")
     def mount_instances(self) -> Sequence['outputs.GetDisksDiskMountInstanceResult']:
+        """
+        A list of mounted instances.
+        """
         return pulumi.get(self, "mount_instances")
 
     @_builtins.property
@@ -3994,26 +4055,41 @@ class GetDisksDiskResult(dict):
     @_builtins.property
     @pulumi.getter(name="operationLocks")
     def operation_locks(self) -> Sequence['outputs.GetDisksDiskOperationLockResult']:
+        """
+        Operation locks. See `operation_locks` below.
+        """
         return pulumi.get(self, "operation_locks")
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> _builtins.str:
+        """
+        The payment type. Valid values: `PayAsYouGo`, `Subscription`.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> _builtins.str:
+        """
+        The performance level of the ESSD.
+        """
         return pulumi.get(self, "performance_level")
 
     @_builtins.property
     @pulumi.getter
     def portable(self) -> _builtins.bool:
+        """
+        Whether the disk is portable.
+        """
         return pulumi.get(self, "portable")
 
     @_builtins.property
     @pulumi.getter(name="productCode")
     def product_code(self) -> _builtins.str:
+        """
+        The product code.
+        """
         return pulumi.get(self, "product_code")
 
     @_builtins.property
@@ -4044,7 +4120,7 @@ class GetDisksDiskResult(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> _builtins.str:
         """
-        Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        The snapshot ID.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -4052,7 +4128,7 @@ class GetDisksDiskResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
+        The status of the disk.
         """
         return pulumi.get(self, "status")
 
@@ -4061,6 +4137,7 @@ class GetDisksDiskResult(dict):
     def tags(self) -> Mapping[str, _builtins.str]:
         """
         A map of tags assigned to the disks. It must be in the format:
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -4084,6 +4161,9 @@ class GetDisksDiskResult(dict):
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
+        """
+        The zone ID.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -4094,7 +4174,8 @@ class GetDisksDiskMountInstanceResult(dict):
                  device: _builtins.str,
                  instance_id: _builtins.str):
         """
-        :param _builtins.str attached_time: Disk attachment time.
+        :param _builtins.str attached_time: The attached time.
+        :param _builtins.str device: The device name.
         :param _builtins.str instance_id: Filter the results by the specified ECS instance ID.
         """
         pulumi.set(__self__, "attached_time", attached_time)
@@ -4105,13 +4186,16 @@ class GetDisksDiskMountInstanceResult(dict):
     @pulumi.getter(name="attachedTime")
     def attached_time(self) -> _builtins.str:
         """
-        Disk attachment time.
+        The attached time.
         """
         return pulumi.get(self, "attached_time")
 
     @_builtins.property
     @pulumi.getter
     def device(self) -> _builtins.str:
+        """
+        The device name.
+        """
         return pulumi.get(self, "device")
 
     @_builtins.property
@@ -4127,11 +4211,17 @@ class GetDisksDiskMountInstanceResult(dict):
 class GetDisksDiskOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: _builtins.str):
+        """
+        :param _builtins.str lock_reason: The reason of the operation lock.
+        """
         pulumi.set(__self__, "lock_reason", lock_reason)
 
     @_builtins.property
     @pulumi.getter(name="lockReason")
     def lock_reason(self) -> _builtins.str:
+        """
+        The reason of the operation lock.
+        """
         return pulumi.get(self, "lock_reason")
 
 
@@ -4139,12 +4229,18 @@ class GetDisksDiskOperationLockResult(dict):
 class GetDisksOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str lock_reason: The reason of the operation lock.
+        """
         if lock_reason is not None:
             pulumi.set(__self__, "lock_reason", lock_reason)
 
     @_builtins.property
     @pulumi.getter(name="lockReason")
     def lock_reason(self) -> Optional[_builtins.str]:
+        """
+        The reason of the operation lock.
+        """
         return pulumi.get(self, "lock_reason")
 
 
@@ -4379,7 +4475,7 @@ class GetEcsDeploymentSetsSetResult(dict):
         :param _builtins.str id: The ID of the Deployment Set.
         :param _builtins.int instance_amount: The number of instances in the deployment set.
         :param Sequence[_builtins.str] instance_ids: The IDs of the instances in the deployment set.
-        :param _builtins.str strategy: The deployment strategy.
+        :param _builtins.str strategy: The deployment strategy. Valid values: `Availability`.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "deployment_set_id", deployment_set_id)
@@ -4468,7 +4564,7 @@ class GetEcsDeploymentSetsSetResult(dict):
     @pulumi.getter
     def strategy(self) -> _builtins.str:
         """
-        The deployment strategy.
+        The deployment strategy. Valid values: `Availability`.
         """
         return pulumi.get(self, "strategy")
 
@@ -4521,7 +4617,7 @@ class GetEcsDisksDiskResult(dict):
         :param _builtins.str attached_time: A mount of time.
         :param _builtins.str auto_snapshot_policy_id: Query cloud disks based on the automatic snapshot policy ID.
         :param _builtins.str availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param _builtins.str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+        :param _builtins.str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`.
         :param _builtins.str creation_time: Disk creation time.
         :param _builtins.bool delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
         :param _builtins.bool delete_with_instance: Indicates whether the disk is released together with the instance.
@@ -4630,7 +4726,7 @@ class GetEcsDisksDiskResult(dict):
     @pulumi.getter
     def category(self) -> _builtins.str:
         """
-        Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
+        Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`, `cloud_regional_disk_auto`.
         """
         return pulumi.get(self, "category")
 
@@ -5029,11 +5125,13 @@ class GetEcsImageComponentsComponentResult(dict):
         :param _builtins.str description: The description of the image component.
         :param _builtins.str id: The ID of the Image Component.
         :param _builtins.str image_component_id: The ID of the image component.
-        :param _builtins.str image_component_name: The name of the image component.
-        :param _builtins.str owner: The type of the image component.
+        :param _builtins.str image_component_name: The name of the component.
+        :param _builtins.str owner: Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+               - SELF: The custom image component you created.
+               - ALIYUN: System components provided by Alibaba Cloud.
         :param _builtins.str resource_group_id: The ID of the resource group.
         :param _builtins.str system_type: The operating system type supported by the image component.
-        :param Mapping[str, _builtins.str] tags: List of label key-value pairs.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "component_type", component_type)
         pulumi.set(__self__, "content", content)
@@ -5099,7 +5197,7 @@ class GetEcsImageComponentsComponentResult(dict):
     @pulumi.getter(name="imageComponentName")
     def image_component_name(self) -> _builtins.str:
         """
-        The name of the image component.
+        The name of the component.
         """
         return pulumi.get(self, "image_component_name")
 
@@ -5107,7 +5205,9 @@ class GetEcsImageComponentsComponentResult(dict):
     @pulumi.getter
     def owner(self) -> _builtins.str:
         """
-        The type of the image component.
+        Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+        - SELF: The custom image component you created.
+        - ALIYUN: System components provided by Alibaba Cloud.
         """
         return pulumi.get(self, "owner")
 
@@ -5131,7 +5231,7 @@ class GetEcsImageComponentsComponentResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        List of label key-value pairs.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -5362,16 +5462,16 @@ class GetEcsInvocationsInvocationResult(dict):
                  username: _builtins.str):
         """
         :param _builtins.str command_content: The Base64-encoded command content.
-        :param _builtins.str command_id: The ID of the command.
+        :param _builtins.str command_id: The execution ID of the command.
         :param _builtins.str command_name: The name of the command.
         :param _builtins.str command_type: The type of the command.
         :param _builtins.str create_time: The creation time of the resource.
         :param _builtins.str frequency: The schedule on which the recurring execution of the command takes place. For information about the value specifications, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
         :param _builtins.str id: The ID of the Invocation.
         :param _builtins.str invocation_id: The ID of the Invocation.
-        :param _builtins.str invocation_status: The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
+        :param _builtins.str invocation_status: The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
         :param Sequence['GetEcsInvocationsInvocationInvokeInstanceArgs'] invoke_instances: Execute target instance set type.
-        :param _builtins.str invoke_status: The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        :param _builtins.str invoke_status: The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
         :param _builtins.str parameters: The custom parameters in the command.
         :param _builtins.str repeat_mode: Indicates the execution mode of the command.
         :param _builtins.bool timed: Indicates whether the commands are to be automatically run.
@@ -5405,7 +5505,7 @@ class GetEcsInvocationsInvocationResult(dict):
     @pulumi.getter(name="commandId")
     def command_id(self) -> _builtins.str:
         """
-        The ID of the command.
+        The execution ID of the command.
         """
         return pulumi.get(self, "command_id")
 
@@ -5461,7 +5561,7 @@ class GetEcsInvocationsInvocationResult(dict):
     @pulumi.getter(name="invocationStatus")
     def invocation_status(self) -> _builtins.str:
         """
-        The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
+        The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
         """
         return pulumi.get(self, "invocation_status")
 
@@ -5477,7 +5577,7 @@ class GetEcsInvocationsInvocationResult(dict):
     @pulumi.getter(name="invokeStatus")
     def invoke_status(self) -> _builtins.str:
         """
-        The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
         """
         return pulumi.get(self, "invoke_status")
 
@@ -5535,18 +5635,18 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
         """
         :param _builtins.str creation_time: The start time of the execution.
         :param _builtins.int dropped: The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
+        :param _builtins.str error_code: The code that indicates why the command failed to be sent or run.
         :param _builtins.str error_info: Details about the reason why the command failed to be sent or run.
         :param _builtins.int exit_code: The exit code of the execution.
         :param _builtins.str finish_time: The end time of the execution.
         :param _builtins.str instance_id: The ID of the instance.
+        :param _builtins.str instance_invoke_status: **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
         :param _builtins.str invocation_status: The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
         :param _builtins.str output: The output of the command.
         :param _builtins.int repeats: The number of times that the command is run on the instance.
         :param _builtins.str start_time: The time when the command started to be run on the instance.
         :param _builtins.str stop_time: The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
         :param _builtins.bool timed: Indicates whether the commands are to be automatically run.
-               * `error_code	` - The code that indicates why the command failed to be sent or run.
-               * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
         :param _builtins.str update_time: The time when the execution state was updated.
         """
         pulumi.set(__self__, "creation_time", creation_time)
@@ -5584,6 +5684,9 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="errorCode")
     def error_code(self) -> _builtins.str:
+        """
+        The code that indicates why the command failed to be sent or run.
+        """
         return pulumi.get(self, "error_code")
 
     @_builtins.property
@@ -5621,6 +5724,9 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="instanceInvokeStatus")
     def instance_invoke_status(self) -> _builtins.str:
+        """
+        **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        """
         return pulumi.get(self, "instance_invoke_status")
 
     @_builtins.property
@@ -5668,8 +5774,6 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
     def timed(self) -> _builtins.bool:
         """
         Indicates whether the commands are to be automatically run.
-        * `error_code	` - The code that indicates why the command failed to be sent or run.
-        * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
         """
         return pulumi.get(self, "timed")
 
@@ -6899,7 +7003,7 @@ class GetEcsNetworkInterfacePermissionsPermissionResult(dict):
         :param _builtins.str network_interface_permission_id: The ID of the Network Interface Permissions.
         :param _builtins.str permission: The permissions of the Network Interface.
         :param _builtins.str service_name: Alibaba Cloud service name.
-        :param _builtins.str status: The Status of the Network Interface Permissions.
+        :param _builtins.str status: The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "id", id)
@@ -6961,7 +7065,7 @@ class GetEcsNetworkInterfacePermissionsPermissionResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The Status of the Network Interface Permissions.
+        The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
         """
         return pulumi.get(self, "status")
 
@@ -7312,10 +7416,11 @@ class GetEcsPrefixListsListResult(dict):
                  prefix_list_id: _builtins.str,
                  prefix_list_name: _builtins.str):
         """
-        :param _builtins.str address_family: The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+        :param _builtins.str address_family: The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
         :param _builtins.int association_count: The amount of associated resources.
         :param _builtins.str create_time: The time when the prefix list was created.
-        :param _builtins.str description: The description of the prefix list.
+        :param _builtins.str description: The description of the entry.
+        :param Sequence['GetEcsPrefixListsListEntryArgs'] entries: The entries of the prefix list.
         :param _builtins.str id: The ID of the prefix list.
         :param _builtins.int max_entries: The maximum number of entries that the prefix list supports.
         :param _builtins.str prefix_list_id: The ID of the prefix list.
@@ -7335,7 +7440,7 @@ class GetEcsPrefixListsListResult(dict):
     @pulumi.getter(name="addressFamily")
     def address_family(self) -> _builtins.str:
         """
-        The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+        The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
         """
         return pulumi.get(self, "address_family")
 
@@ -7359,13 +7464,16 @@ class GetEcsPrefixListsListResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the prefix list.
+        The description of the entry.
         """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def entries(self) -> Sequence['outputs.GetEcsPrefixListsListEntryResult']:
+        """
+        The entries of the prefix list.
+        """
         return pulumi.get(self, "entries")
 
     @_builtins.property
@@ -7407,7 +7515,8 @@ class GetEcsPrefixListsListEntryResult(dict):
                  cidr: _builtins.str,
                  description: _builtins.str):
         """
-        :param _builtins.str description: The description of the prefix list.
+        :param _builtins.str cidr: The CIDR block of the entry.
+        :param _builtins.str description: The description of the entry.
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "description", description)
@@ -7415,13 +7524,16 @@ class GetEcsPrefixListsListEntryResult(dict):
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> _builtins.str:
+        """
+        The CIDR block of the entry.
+        """
         return pulumi.get(self, "cidr")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the prefix list.
+        The description of the entry.
         """
         return pulumi.get(self, "description")
 
@@ -7444,8 +7556,8 @@ class GetEcsSnapshotGroupsGroupResult(dict):
         :param _builtins.str resource_group_id: The ID of the resource group to which the snapshot consistency group belongs.
         :param _builtins.str snapshot_group_id: The first ID of the resource.
         :param _builtins.str snapshot_group_name: The name of the snapshot-consistent group.
-        :param _builtins.str status: The status of the resource.
-        :param Mapping[str, _builtins.str] tags: List of label key-value pairs.
+        :param _builtins.str status: The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the snapshot group.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -7509,7 +7621,7 @@ class GetEcsSnapshotGroupsGroupResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
         """
         return pulumi.get(self, "status")
 
@@ -7517,7 +7629,7 @@ class GetEcsSnapshotGroupsGroupResult(dict):
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        List of label key-value pairs.
+        A mapping of tags to assign to the snapshot group.
         """
         return pulumi.get(self, "tags")
 
@@ -7836,7 +7948,7 @@ class GetEcsStorageCapacityUnitsUnitResult(dict):
         :param _builtins.str expired_time: The time when the Storage Capacity Unit expires.
         :param _builtins.str id: The ID of the Storage Capacity Unit.
         :param _builtins.str start_time: The effective time of the Storage Capacity Unit.
-        :param _builtins.str status: The status of Storage Capacity Unit.
+        :param _builtins.str status: The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
         :param _builtins.str storage_capacity_unit_id: The ID of Storage Capacity Unit.
         :param _builtins.str storage_capacity_unit_name: The name of the Storage Capacity Unit.
         """
@@ -7911,7 +8023,7 @@ class GetEcsStorageCapacityUnitsUnitResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of Storage Capacity Unit.
+        The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
         """
         return pulumi.get(self, "status")
 
@@ -7967,10 +8079,10 @@ class GetEipAddressesAddressResult(dict):
                  status: _builtins.str,
                  tags: Mapping[str, _builtins.str]):
         """
-        :param _builtins.str address_name: The name of the EIP.
+        :param _builtins.str address_name: The eip name.
         :param _builtins.str allocation_id: The ID of the EIP.
         :param Sequence[_builtins.str] available_regions: The ID of the region to which the EIP belongs.
-        :param _builtins.str bandwidth: The maximum bandwidth of the EIP. Unit: Mbit/s.
+        :param _builtins.str bandwidth: The maximum bandwidth of the EIP.
         :param _builtins.str bandwidth_package_bandwidth: The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
         :param _builtins.str bandwidth_package_id: The ID of the EIP bandwidth plan.
         :param _builtins.str bandwidth_package_type: The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
@@ -7980,24 +8092,26 @@ class GetEipAddressesAddressResult(dict):
         :param _builtins.str expired_time: The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
         :param _builtins.str has_reservation_data: Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
         :param _builtins.str hd_monitor_status: Indicates whether fine-grained monitoring is enabled for the EIP.
-        :param _builtins.str id: The ID of the Address.
+        :param _builtins.str id: The ID of the EIP.
         :param _builtins.str instance_id: The ID of the instance with which the EIP is associated.
         :param _builtins.str instance_region_id: The region ID of the associated resource.
         :param _builtins.str instance_type: The type of the instance with which the EIP is associated.
         :param _builtins.str internet_charge_type: The metering method of the EIP.
-        :param _builtins.str ip_address: The IP address of the EIP.
-        :param _builtins.str isp: The Internet service provider (ISP).
+        :param _builtins.str ip_address: The eip address.
+        :param _builtins.str isp: The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
         :param Sequence[_builtins.str] operation_locks: The details about the locked EIP.
-        :param _builtins.str payment_type: The billing method of the EIP.
+        :param _builtins.str payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
         :param _builtins.str reservation_active_time: The time when the renewal takes effect.
         :param _builtins.str reservation_bandwidth: The bandwidth after the renewal takes effect.
         :param _builtins.str reservation_internet_charge_type: The metering method of the renewal.
         :param _builtins.str reservation_order_type: The type of the renewal order.
         :param _builtins.str resource_group_id: The ID of the resource group.
         :param _builtins.bool second_limited: Indicates whether level-2 throttling is configured.
-        :param _builtins.str segment_instance_id: The IDs of the contiguous EIPs.
-        :param _builtins.str status: The status of the EIP.
+        :param _builtins.str segment_instance_id: The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+        :param _builtins.str status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         pulumi.set(__self__, "address_name", address_name)
         pulumi.set(__self__, "allocation_id", allocation_id)
@@ -8035,7 +8149,7 @@ class GetEipAddressesAddressResult(dict):
     @pulumi.getter(name="addressName")
     def address_name(self) -> _builtins.str:
         """
-        The name of the EIP.
+        The eip name.
         """
         return pulumi.get(self, "address_name")
 
@@ -8059,7 +8173,7 @@ class GetEipAddressesAddressResult(dict):
     @pulumi.getter
     def bandwidth(self) -> _builtins.str:
         """
-        The maximum bandwidth of the EIP. Unit: Mbit/s.
+        The maximum bandwidth of the EIP.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -8139,7 +8253,7 @@ class GetEipAddressesAddressResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of the Address.
+        The ID of the EIP.
         """
         return pulumi.get(self, "id")
 
@@ -8179,7 +8293,7 @@ class GetEipAddressesAddressResult(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> _builtins.str:
         """
-        The IP address of the EIP.
+        The eip address.
         """
         return pulumi.get(self, "ip_address")
 
@@ -8187,7 +8301,7 @@ class GetEipAddressesAddressResult(dict):
     @pulumi.getter
     def isp(self) -> _builtins.str:
         """
-        The Internet service provider (ISP).
+        The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
         """
         return pulumi.get(self, "isp")
 
@@ -8203,7 +8317,7 @@ class GetEipAddressesAddressResult(dict):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> _builtins.str:
         """
-        The billing method of the EIP.
+        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -8259,7 +8373,7 @@ class GetEipAddressesAddressResult(dict):
     @pulumi.getter(name="segmentInstanceId")
     def segment_instance_id(self) -> _builtins.str:
         """
-        The IDs of the contiguous EIPs.
+        The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
         """
         return pulumi.get(self, "segment_instance_id")
 
@@ -8267,7 +8381,7 @@ class GetEipAddressesAddressResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the EIP.
+        The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         """
         return pulumi.get(self, "status")
 
@@ -8276,6 +8390,8 @@ class GetEipAddressesAddressResult(dict):
     def tags(self) -> Mapping[str, _builtins.str]:
         """
         A mapping of tags to assign to the resource.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "tags")
 
@@ -8293,9 +8409,10 @@ class GetEipAddressesEipResult(dict):
                  ip_address: _builtins.str,
                  status: _builtins.str):
         """
-        :param _builtins.str bandwidth: The maximum bandwidth of the EIP. Unit: Mbit/s.
+        :param _builtins.str bandwidth: The maximum bandwidth of the EIP.
+        :param _builtins.str creation_time: The time when the EIP was created.
         :param _builtins.bool deletion_protection: Indicates whether deletion protection is enabled.
-        :param _builtins.str id: The ID of the Address.
+        :param _builtins.str id: The ID of the EIP.
         :param _builtins.str instance_id: The ID of the instance with which the EIP is associated.
         :param _builtins.str instance_type: The type of the instance with which the EIP is associated.
         :param _builtins.str internet_charge_type: The metering method of the EIP.
@@ -8316,13 +8433,16 @@ class GetEipAddressesEipResult(dict):
     @pulumi.getter
     def bandwidth(self) -> _builtins.str:
         """
-        The maximum bandwidth of the EIP. Unit: Mbit/s.
+        The maximum bandwidth of the EIP.
         """
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> _builtins.str:
+        """
+        The time when the EIP was created.
+        """
         return pulumi.get(self, "creation_time")
 
     @_builtins.property
@@ -8337,7 +8457,7 @@ class GetEipAddressesEipResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of the Address.
+        The ID of the EIP.
         """
         return pulumi.get(self, "id")
 
@@ -8417,16 +8537,39 @@ class GetEipsAddressResult(dict):
                  status: _builtins.str,
                  tags: Mapping[str, _builtins.str]):
         """
-        :param _builtins.str bandwidth: EIP internet max bandwidth in Mbps.
-        :param _builtins.bool deletion_protection: (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
-        :param _builtins.str id: ID of the EIP.
-        :param _builtins.str instance_id: The ID of the instance that is being bound.
-        :param _builtins.str instance_type: The instance type of that the EIP is bound.
-        :param _builtins.str internet_charge_type: EIP internet charge type.
-        :param _builtins.str ip_address: Public IP Address of the the EIP.
-        :param _builtins.str resource_group_id: The Id of resource group which the eips belongs.
-        :param _builtins.str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        :param _builtins.str address_name: The eip name.
+        :param _builtins.str allocation_id: The ID of the EIP.
+        :param Sequence[_builtins.str] available_regions: The ID of the region to which the EIP belongs.
+        :param _builtins.str bandwidth: The maximum bandwidth of the EIP.
+        :param _builtins.str bandwidth_package_bandwidth: The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
+        :param _builtins.str bandwidth_package_id: The ID of the EIP bandwidth plan.
+        :param _builtins.str bandwidth_package_type: The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+        :param _builtins.str create_time: The time when the EIP was created.
+        :param _builtins.bool deletion_protection: Indicates whether deletion protection is enabled.
+        :param _builtins.str description: The description of the EIP.
+        :param _builtins.str expired_time: The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+        :param _builtins.str has_reservation_data: Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
+        :param _builtins.str hd_monitor_status: Indicates whether fine-grained monitoring is enabled for the EIP.
+        :param _builtins.str id: The ID of the EIP.
+        :param _builtins.str instance_id: The ID of the instance with which the EIP is associated.
+        :param _builtins.str instance_region_id: The region ID of the associated resource.
+        :param _builtins.str instance_type: The type of the instance with which the EIP is associated.
+        :param _builtins.str internet_charge_type: The metering method of the EIP.
+        :param _builtins.str ip_address: The eip address.
+        :param _builtins.str isp: The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+        :param Sequence[_builtins.str] operation_locks: The details about the locked EIP.
+        :param _builtins.str payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+        :param _builtins.str reservation_active_time: The time when the renewal takes effect.
+        :param _builtins.str reservation_bandwidth: The bandwidth after the renewal takes effect.
+        :param _builtins.str reservation_internet_charge_type: The metering method of the renewal.
+        :param _builtins.str reservation_order_type: The type of the renewal order.
+        :param _builtins.str resource_group_id: The ID of the resource group.
+        :param _builtins.bool second_limited: Indicates whether level-2 throttling is configured.
+        :param _builtins.str segment_instance_id: The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+        :param _builtins.str status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         pulumi.set(__self__, "address_name", address_name)
         pulumi.set(__self__, "allocation_id", allocation_id)
@@ -8463,79 +8606,112 @@ class GetEipsAddressResult(dict):
     @_builtins.property
     @pulumi.getter(name="addressName")
     def address_name(self) -> _builtins.str:
+        """
+        The eip name.
+        """
         return pulumi.get(self, "address_name")
 
     @_builtins.property
     @pulumi.getter(name="allocationId")
     def allocation_id(self) -> _builtins.str:
+        """
+        The ID of the EIP.
+        """
         return pulumi.get(self, "allocation_id")
 
     @_builtins.property
     @pulumi.getter(name="availableRegions")
     def available_regions(self) -> Sequence[_builtins.str]:
+        """
+        The ID of the region to which the EIP belongs.
+        """
         return pulumi.get(self, "available_regions")
 
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> _builtins.str:
         """
-        EIP internet max bandwidth in Mbps.
+        The maximum bandwidth of the EIP.
         """
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageBandwidth")
     def bandwidth_package_bandwidth(self) -> _builtins.str:
+        """
+        The bandwidth value of the EIP bandwidth plan with which the EIP is associated.
+        """
         return pulumi.get(self, "bandwidth_package_bandwidth")
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> _builtins.str:
+        """
+        The ID of the EIP bandwidth plan.
+        """
         return pulumi.get(self, "bandwidth_package_id")
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageType")
     def bandwidth_package_type(self) -> _builtins.str:
+        """
+        The type of the bandwidth. Only CommonBandwidthPackage (an EIP bandwidth plan) is returned.
+        """
         return pulumi.get(self, "bandwidth_package_type")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
+        """
+        The time when the EIP was created.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
         """
-        (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+        Indicates whether deletion protection is enabled.
         """
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        The description of the EIP.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="expiredTime")
     def expired_time(self) -> _builtins.str:
+        """
+        The expiration date. The time follows the ISO 8601 standard and is displayed in UTC. Format: YYYY-MM-DDThh:mmZ.
+        """
         return pulumi.get(self, "expired_time")
 
     @_builtins.property
     @pulumi.getter(name="hasReservationData")
     def has_reservation_data(self) -> _builtins.str:
+        """
+        Indicates whether renewal data is included. This parameter returns true only when the parameter IncludeReservationData is set to true, and some orders have not taken effect.
+        """
         return pulumi.get(self, "has_reservation_data")
 
     @_builtins.property
     @pulumi.getter(name="hdMonitorStatus")
     def hd_monitor_status(self) -> _builtins.str:
+        """
+        Indicates whether fine-grained monitoring is enabled for the EIP.
+        """
         return pulumi.get(self, "hd_monitor_status")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of the EIP.
+        The ID of the EIP.
         """
         return pulumi.get(self, "id")
 
@@ -8543,20 +8719,23 @@ class GetEipsAddressResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        The ID of the instance that is being bound.
+        The ID of the instance with which the EIP is associated.
         """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="instanceRegionId")
     def instance_region_id(self) -> _builtins.str:
+        """
+        The region ID of the associated resource.
+        """
         return pulumi.get(self, "instance_region_id")
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> _builtins.str:
         """
-        The instance type of that the EIP is bound.
+        The type of the instance with which the EIP is associated.
         """
         return pulumi.get(self, "instance_type")
 
@@ -8564,7 +8743,7 @@ class GetEipsAddressResult(dict):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> _builtins.str:
         """
-        EIP internet charge type.
+        The metering method of the EIP.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -8572,68 +8751,95 @@ class GetEipsAddressResult(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> _builtins.str:
         """
-        Public IP Address of the the EIP.
+        The eip address.
         """
         return pulumi.get(self, "ip_address")
 
     @_builtins.property
     @pulumi.getter
     def isp(self) -> _builtins.str:
+        """
+        The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
+        """
         return pulumi.get(self, "isp")
 
     @_builtins.property
     @pulumi.getter(name="operationLocks")
     def operation_locks(self) -> Sequence[_builtins.str]:
+        """
+        The details about the locked EIP.
+        """
         return pulumi.get(self, "operation_locks")
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> _builtins.str:
+        """
+        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter(name="reservationActiveTime")
     def reservation_active_time(self) -> _builtins.str:
+        """
+        The time when the renewal takes effect.
+        """
         return pulumi.get(self, "reservation_active_time")
 
     @_builtins.property
     @pulumi.getter(name="reservationBandwidth")
     def reservation_bandwidth(self) -> _builtins.str:
+        """
+        The bandwidth after the renewal takes effect.
+        """
         return pulumi.get(self, "reservation_bandwidth")
 
     @_builtins.property
     @pulumi.getter(name="reservationInternetChargeType")
     def reservation_internet_charge_type(self) -> _builtins.str:
+        """
+        The metering method of the renewal.
+        """
         return pulumi.get(self, "reservation_internet_charge_type")
 
     @_builtins.property
     @pulumi.getter(name="reservationOrderType")
     def reservation_order_type(self) -> _builtins.str:
+        """
+        The type of the renewal order.
+        """
         return pulumi.get(self, "reservation_order_type")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> _builtins.str:
         """
-        The Id of resource group which the eips belongs.
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="secondLimited")
     def second_limited(self) -> _builtins.bool:
+        """
+        Indicates whether level-2 throttling is configured.
+        """
         return pulumi.get(self, "second_limited")
 
     @_builtins.property
     @pulumi.getter(name="segmentInstanceId")
     def segment_instance_id(self) -> _builtins.str:
+        """
+        The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+        """
         return pulumi.get(self, "segment_instance_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         """
         return pulumi.get(self, "status")
 
@@ -8642,6 +8848,8 @@ class GetEipsAddressResult(dict):
     def tags(self) -> Mapping[str, _builtins.str]:
         """
         A mapping of tags to assign to the resource.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "tags")
 
@@ -8659,15 +8867,15 @@ class GetEipsEipResult(dict):
                  ip_address: _builtins.str,
                  status: _builtins.str):
         """
-        :param _builtins.str bandwidth: EIP internet max bandwidth in Mbps.
-        :param _builtins.str creation_time: Time of creation.
-        :param _builtins.bool deletion_protection: (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
-        :param _builtins.str id: ID of the EIP.
-        :param _builtins.str instance_id: The ID of the instance that is being bound.
-        :param _builtins.str instance_type: The instance type of that the EIP is bound.
-        :param _builtins.str internet_charge_type: EIP internet charge type.
-        :param _builtins.str ip_address: Public IP Address of the the EIP.
-        :param _builtins.str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        :param _builtins.str bandwidth: The maximum bandwidth of the EIP.
+        :param _builtins.str creation_time: The time when the EIP was created.
+        :param _builtins.bool deletion_protection: Indicates whether deletion protection is enabled.
+        :param _builtins.str id: The ID of the EIP.
+        :param _builtins.str instance_id: The ID of the instance with which the EIP is associated.
+        :param _builtins.str instance_type: The type of the instance with which the EIP is associated.
+        :param _builtins.str internet_charge_type: The metering method of the EIP.
+        :param _builtins.str ip_address: The eip address.
+        :param _builtins.str status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -8683,7 +8891,7 @@ class GetEipsEipResult(dict):
     @pulumi.getter
     def bandwidth(self) -> _builtins.str:
         """
-        EIP internet max bandwidth in Mbps.
+        The maximum bandwidth of the EIP.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -8691,7 +8899,7 @@ class GetEipsEipResult(dict):
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> _builtins.str:
         """
-        Time of creation.
+        The time when the EIP was created.
         """
         return pulumi.get(self, "creation_time")
 
@@ -8699,7 +8907,7 @@ class GetEipsEipResult(dict):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
         """
-        (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
+        Indicates whether deletion protection is enabled.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -8707,7 +8915,7 @@ class GetEipsEipResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of the EIP.
+        The ID of the EIP.
         """
         return pulumi.get(self, "id")
 
@@ -8715,7 +8923,7 @@ class GetEipsEipResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        The ID of the instance that is being bound.
+        The ID of the instance with which the EIP is associated.
         """
         return pulumi.get(self, "instance_id")
 
@@ -8723,7 +8931,7 @@ class GetEipsEipResult(dict):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> _builtins.str:
         """
-        The instance type of that the EIP is bound.
+        The type of the instance with which the EIP is associated.
         """
         return pulumi.get(self, "instance_type")
 
@@ -8731,7 +8939,7 @@ class GetEipsEipResult(dict):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> _builtins.str:
         """
-        EIP internet charge type.
+        The metering method of the EIP.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -8739,7 +8947,7 @@ class GetEipsEipResult(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> _builtins.str:
         """
-        Public IP Address of the the EIP.
+        The eip address.
         """
         return pulumi.get(self, "ip_address")
 
@@ -8747,7 +8955,7 @@ class GetEipsEipResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
+        The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         """
         return pulumi.get(self, "status")
 
@@ -9069,19 +9277,24 @@ class GetImagesImageResult(dict):
         :param _builtins.str architecture: The image architecture. Valid values: `i386`, `x86_64`, `arm64`.
         :param _builtins.str creation_time: The creation time.
         :param _builtins.str description: The description of the image.
-        :param Sequence['GetImagesImageDiskDeviceMappingArgs'] disk_device_mappings: A `disk_device_mappings` block as defined below. Description of the system with disks and snapshots under the image.
+        :param Sequence['GetImagesImageDiskDeviceMappingArgs'] disk_device_mappings: A list of disk device mappings. Each element contains the following attributes:
         :param _builtins.str id: The ID of the image.
         :param _builtins.str image_id: The ID of the image.
         :param _builtins.str image_owner_alias: The alias of the image owner.
         :param _builtins.str image_version: Version of the image.
+        :param _builtins.bool is_copied: Whether the image is copied.
+        :param _builtins.str is_self_shared: Whether the image is shared by the current user.
         :param _builtins.bool is_subscribed: Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
         :param _builtins.bool is_support_io_optimized: Specifies whether the image can be used on I/O optimized instances.
+        :param _builtins.str name: The name of the image.
         :param _builtins.str os_name: The display Chinese name of the OS.
         :param _builtins.str os_name_en: The english name of the OS.
         :param _builtins.str os_type: The operating system type of the image. Valid values: `windows` and `linux`.
+        :param _builtins.str platform: The platform of the image.
         :param _builtins.str product_code: The product code of the image on the image market.
         :param _builtins.str progress: Progress of image creation, presented in percentages.
         :param _builtins.int size: The size of the created disk.
+        :param _builtins.str state: The state of the image.
         :param _builtins.str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
                - `Creating`: The image is being created.
                - `Waiting`: The image is waiting to be processed.
@@ -9146,7 +9359,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter(name="diskDeviceMappings")
     def disk_device_mappings(self) -> Sequence['outputs.GetImagesImageDiskDeviceMappingResult']:
         """
-        A `disk_device_mappings` block as defined below. Description of the system with disks and snapshots under the image.
+        A list of disk device mappings. Each element contains the following attributes:
         """
         return pulumi.get(self, "disk_device_mappings")
 
@@ -9185,11 +9398,17 @@ class GetImagesImageResult(dict):
     @_builtins.property
     @pulumi.getter(name="isCopied")
     def is_copied(self) -> _builtins.bool:
+        """
+        Whether the image is copied.
+        """
         return pulumi.get(self, "is_copied")
 
     @_builtins.property
     @pulumi.getter(name="isSelfShared")
     def is_self_shared(self) -> _builtins.str:
+        """
+        Whether the image is shared by the current user.
+        """
         return pulumi.get(self, "is_self_shared")
 
     @_builtins.property
@@ -9211,6 +9430,9 @@ class GetImagesImageResult(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        The name of the image.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -9240,6 +9462,9 @@ class GetImagesImageResult(dict):
     @_builtins.property
     @pulumi.getter
     def platform(self) -> _builtins.str:
+        """
+        The platform of the image.
+        """
         return pulumi.get(self, "platform")
 
     @_builtins.property
@@ -9269,6 +9494,9 @@ class GetImagesImageResult(dict):
     @_builtins.property
     @pulumi.getter
     def state(self) -> _builtins.str:
+        """
+        The state of the image.
+        """
         return pulumi.get(self, "state")
 
     @_builtins.property
@@ -10060,8 +10288,9 @@ class GetKeyPairsKeyPairResult(dict):
         """
         :param _builtins.str finger_print: A finger print used to retrieve specified key pair.
         :param _builtins.str id: ID of the key pair.
-        :param Sequence['GetKeyPairsKeyPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
-        :param _builtins.str key_name: Name of the key pair.
+        :param Sequence['GetKeyPairsKeyPairInstanceArgs'] instances: A list of ECS instances bound to this key pair.
+        :param _builtins.str key_name: The key name.
+        :param _builtins.str key_pair_name: Name of the key pair.
         :param _builtins.str resource_group_id: The Id of resource group which the key pair belongs.
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         """
@@ -10093,7 +10322,7 @@ class GetKeyPairsKeyPairResult(dict):
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetKeyPairsKeyPairInstanceResult']:
         """
-        A list of ECS instances that has been bound this key pair.
+        A list of ECS instances bound to this key pair.
         """
         return pulumi.get(self, "instances")
 
@@ -10101,13 +10330,16 @@ class GetKeyPairsKeyPairResult(dict):
     @pulumi.getter(name="keyName")
     def key_name(self) -> _builtins.str:
         """
-        Name of the key pair.
+        The key name.
         """
         return pulumi.get(self, "key_name")
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> _builtins.str:
+        """
+        Name of the key pair.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @_builtins.property
@@ -10143,13 +10375,18 @@ class GetKeyPairsKeyPairInstanceResult(dict):
                  status: _builtins.str,
                  vswitch_id: _builtins.str):
         """
-        :param _builtins.str availability_zone: The ID of the availability zone where the ECS instance is located.
+        :param _builtins.str availability_zone: The availability zone ID.
+        :param _builtins.str description: Description of the ECS instance.
+        :param _builtins.str image_id: The image ID.
         :param _builtins.str instance_id: The ID of the ECS instance.
         :param _builtins.str instance_name: The name of the ECS instance.
-        :param _builtins.str key_name: Name of the key pair.
-        :param _builtins.str private_ip: The private IP address of the ECS instance.
-        :param _builtins.str public_ip: The public IP address or EIP of the ECS instance.
-        :param _builtins.str vswitch_id: The ID of the vSwitch attached to the ECS instance.
+        :param _builtins.str instance_type: The instance type.
+        :param _builtins.str key_name: The key name.
+        :param _builtins.str private_ip: The private IP address.
+        :param _builtins.str public_ip: The public IP address.
+        :param _builtins.str region_id: The region ID.
+        :param _builtins.str status: The status of the ECS instance.
+        :param _builtins.str vswitch_id: The vSwitch ID.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "description", description)
@@ -10168,18 +10405,24 @@ class GetKeyPairsKeyPairInstanceResult(dict):
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
         """
-        The ID of the availability zone where the ECS instance is located.
+        The availability zone ID.
         """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Description of the ECS instance.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> _builtins.str:
+        """
+        The image ID.
+        """
         return pulumi.get(self, "image_id")
 
     @_builtins.property
@@ -10201,13 +10444,16 @@ class GetKeyPairsKeyPairInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> _builtins.str:
+        """
+        The instance type.
+        """
         return pulumi.get(self, "instance_type")
 
     @_builtins.property
     @pulumi.getter(name="keyName")
     def key_name(self) -> _builtins.str:
         """
-        Name of the key pair.
+        The key name.
         """
         return pulumi.get(self, "key_name")
 
@@ -10215,7 +10461,7 @@ class GetKeyPairsKeyPairInstanceResult(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> _builtins.str:
         """
-        The private IP address of the ECS instance.
+        The private IP address.
         """
         return pulumi.get(self, "private_ip")
 
@@ -10223,25 +10469,31 @@ class GetKeyPairsKeyPairInstanceResult(dict):
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> _builtins.str:
         """
-        The public IP address or EIP of the ECS instance.
+        The public IP address.
         """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
+        """
+        The region ID.
+        """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
+        """
+        The status of the ECS instance.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> _builtins.str:
         """
-        The ID of the vSwitch attached to the ECS instance.
+        The vSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -10259,8 +10511,9 @@ class GetKeyPairsPairResult(dict):
         """
         :param _builtins.str finger_print: A finger print used to retrieve specified key pair.
         :param _builtins.str id: ID of the key pair.
-        :param Sequence['GetKeyPairsPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
-        :param _builtins.str key_name: Name of the key pair.
+        :param Sequence['GetKeyPairsPairInstanceArgs'] instances: A list of ECS instances bound to this key pair.
+        :param _builtins.str key_name: The key name.
+        :param _builtins.str key_pair_name: Name of the key pair.
         :param _builtins.str resource_group_id: The Id of resource group which the key pair belongs.
         :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         """
@@ -10292,7 +10545,7 @@ class GetKeyPairsPairResult(dict):
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetKeyPairsPairInstanceResult']:
         """
-        A list of ECS instances that has been bound this key pair.
+        A list of ECS instances bound to this key pair.
         """
         return pulumi.get(self, "instances")
 
@@ -10300,13 +10553,16 @@ class GetKeyPairsPairResult(dict):
     @pulumi.getter(name="keyName")
     def key_name(self) -> _builtins.str:
         """
-        Name of the key pair.
+        The key name.
         """
         return pulumi.get(self, "key_name")
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> _builtins.str:
+        """
+        Name of the key pair.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @_builtins.property
@@ -10342,13 +10598,18 @@ class GetKeyPairsPairInstanceResult(dict):
                  status: _builtins.str,
                  vswitch_id: _builtins.str):
         """
-        :param _builtins.str availability_zone: The ID of the availability zone where the ECS instance is located.
+        :param _builtins.str availability_zone: The availability zone ID.
+        :param _builtins.str description: Description of the ECS instance.
+        :param _builtins.str image_id: The image ID.
         :param _builtins.str instance_id: The ID of the ECS instance.
         :param _builtins.str instance_name: The name of the ECS instance.
-        :param _builtins.str key_name: Name of the key pair.
-        :param _builtins.str private_ip: The private IP address of the ECS instance.
-        :param _builtins.str public_ip: The public IP address or EIP of the ECS instance.
-        :param _builtins.str vswitch_id: The ID of the vSwitch attached to the ECS instance.
+        :param _builtins.str instance_type: The instance type.
+        :param _builtins.str key_name: The key name.
+        :param _builtins.str private_ip: The private IP address.
+        :param _builtins.str public_ip: The public IP address.
+        :param _builtins.str region_id: The region ID.
+        :param _builtins.str status: The status of the ECS instance.
+        :param _builtins.str vswitch_id: The vSwitch ID.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "description", description)
@@ -10367,18 +10628,24 @@ class GetKeyPairsPairInstanceResult(dict):
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
         """
-        The ID of the availability zone where the ECS instance is located.
+        The availability zone ID.
         """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Description of the ECS instance.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> _builtins.str:
+        """
+        The image ID.
+        """
         return pulumi.get(self, "image_id")
 
     @_builtins.property
@@ -10400,13 +10667,16 @@ class GetKeyPairsPairInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> _builtins.str:
+        """
+        The instance type.
+        """
         return pulumi.get(self, "instance_type")
 
     @_builtins.property
     @pulumi.getter(name="keyName")
     def key_name(self) -> _builtins.str:
         """
-        Name of the key pair.
+        The key name.
         """
         return pulumi.get(self, "key_name")
 
@@ -10414,7 +10684,7 @@ class GetKeyPairsPairInstanceResult(dict):
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> _builtins.str:
         """
-        The private IP address of the ECS instance.
+        The private IP address.
         """
         return pulumi.get(self, "private_ip")
 
@@ -10422,25 +10692,31 @@ class GetKeyPairsPairInstanceResult(dict):
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> _builtins.str:
         """
-        The public IP address or EIP of the ECS instance.
+        The public IP address.
         """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
+        """
+        The region ID.
+        """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
+        """
+        The status of the ECS instance.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> _builtins.str:
         """
-        The ID of the vSwitch attached to the ECS instance.
+        The vSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -10477,20 +10753,33 @@ class GetNetworkInterfacesInterfaceResult(dict):
                  vswitch_id: _builtins.str,
                  zone_id: _builtins.str):
         """
+        :param Sequence['GetNetworkInterfacesInterfaceAssociatedPublicIpArgs'] associated_public_ips: The associated public IP.
         :param _builtins.str creation_time: Creation time of the ENI.
         :param _builtins.str description: Description of the ENI.
         :param _builtins.str id: ID of the ENI.
-        :param _builtins.str instance_id: ID of the instance that the ENI is attached to.
+        :param _builtins.str instance_id: The ECS instance ID that the ENI is attached to.
+        :param Sequence[_builtins.str] ipv6_sets: A list of IPv6 addresses.
         :param _builtins.str mac: MAC address of the ENI.
-        :param _builtins.str name: Name of the ENI.
-        :param _builtins.str private_ip: Primary private IP of the ENI.
+        :param _builtins.str name: The name of the ENIs. Deprecated; use `network_interface_name` instead.
+        :param _builtins.str network_interface_id: The ID of the ENI.
+        :param _builtins.str network_interface_name: The name of the ENI.
+        :param _builtins.str network_interface_traffic_mode: The traffic mode.
+        :param _builtins.str owner_id: The owner ID.
+        :param _builtins.str primary_ip_address: The primary private IP address of the ENI.
+        :param _builtins.str private_ip: The primary private IP address of the ENI. Deprecated; use `primary_ip_address` instead.
+        :param Sequence[_builtins.str] private_ip_addresses: A list of private IP addresses.
         :param Sequence[_builtins.str] private_ips: A list of secondary private IP address that is assigned to the ENI.
-        :param _builtins.str resource_group_id: The Id of resource group.
+        :param _builtins.int queue_number: The queue number.
+        :param _builtins.str resource_group_id: The Id of resource group which the network interface belongs.
+        :param Sequence[_builtins.str] security_group_ids: A list of security group IDs.
         :param Sequence[_builtins.str] security_groups: A list of security group that the ENI belongs to.
-        :param _builtins.str status: Current status of the ENI.
-        :param Mapping[str, _builtins.str] tags: A map of tags assigned to the ENI.
-        :param _builtins.str vpc_id: ID of the VPC that the ENI belongs to.
-        :param _builtins.str vswitch_id: ID of the vSwitch that the ENI is linked to.
+        :param _builtins.int service_id: The service ID.
+        :param _builtins.bool service_managed: Whether the ENI is service managed.
+        :param _builtins.str status: The status of the ENI.
+        :param Mapping[str, _builtins.str] tags: A map of tags assigned to ENIs.
+        :param _builtins.str type: The type of ENIs, Only support for "Primary" or "Secondary".
+        :param _builtins.str vpc_id: The VPC ID linked to ENIs.
+        :param _builtins.str vswitch_id: The vSwitch ID linked to ENIs.
         :param _builtins.str zone_id: ID of the availability zone that the ENI belongs to.
         """
         pulumi.set(__self__, "associated_public_ips", associated_public_ips)
@@ -10525,6 +10814,9 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @_builtins.property
     @pulumi.getter(name="associatedPublicIps")
     def associated_public_ips(self) -> Sequence['outputs.GetNetworkInterfacesInterfaceAssociatedPublicIpResult']:
+        """
+        The associated public IP.
+        """
         return pulumi.get(self, "associated_public_ips")
 
     @_builtins.property
@@ -10555,13 +10847,16 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        ID of the instance that the ENI is attached to.
+        The ECS instance ID that the ENI is attached to.
         """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="ipv6Sets")
     def ipv6_sets(self) -> Sequence[_builtins.str]:
+        """
+        A list of IPv6 addresses.
+        """
         return pulumi.get(self, "ipv6_sets")
 
     @_builtins.property
@@ -10576,46 +10871,64 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the ENI.
+        The name of the ENIs. Deprecated; use `network_interface_name` instead.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> _builtins.str:
+        """
+        The ID of the ENI.
+        """
         return pulumi.get(self, "network_interface_id")
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceName")
     def network_interface_name(self) -> _builtins.str:
+        """
+        The name of the ENI.
+        """
         return pulumi.get(self, "network_interface_name")
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceTrafficMode")
     def network_interface_traffic_mode(self) -> _builtins.str:
+        """
+        The traffic mode.
+        """
         return pulumi.get(self, "network_interface_traffic_mode")
 
     @_builtins.property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> _builtins.str:
+        """
+        The owner ID.
+        """
         return pulumi.get(self, "owner_id")
 
     @_builtins.property
     @pulumi.getter(name="primaryIpAddress")
     def primary_ip_address(self) -> _builtins.str:
+        """
+        The primary private IP address of the ENI.
+        """
         return pulumi.get(self, "primary_ip_address")
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> _builtins.str:
         """
-        Primary private IP of the ENI.
+        The primary private IP address of the ENI. Deprecated; use `primary_ip_address` instead.
         """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddresses")
     def private_ip_addresses(self) -> Sequence[_builtins.str]:
+        """
+        A list of private IP addresses.
+        """
         return pulumi.get(self, "private_ip_addresses")
 
     @_builtins.property
@@ -10629,19 +10942,25 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @_builtins.property
     @pulumi.getter(name="queueNumber")
     def queue_number(self) -> _builtins.int:
+        """
+        The queue number.
+        """
         return pulumi.get(self, "queue_number")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> _builtins.str:
         """
-        The Id of resource group.
+        The Id of resource group which the network interface belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of security group IDs.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @_builtins.property
@@ -10655,18 +10974,24 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @_builtins.property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> _builtins.int:
+        """
+        The service ID.
+        """
         return pulumi.get(self, "service_id")
 
     @_builtins.property
     @pulumi.getter(name="serviceManaged")
     def service_managed(self) -> _builtins.bool:
+        """
+        Whether the ENI is service managed.
+        """
         return pulumi.get(self, "service_managed")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Current status of the ENI.
+        The status of the ENI.
         """
         return pulumi.get(self, "status")
 
@@ -10674,20 +10999,23 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        A map of tags assigned to the ENI.
+        A map of tags assigned to ENIs.
         """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        The type of ENIs, Only support for "Primary" or "Secondary".
+        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
         """
-        ID of the VPC that the ENI belongs to.
+        The VPC ID linked to ENIs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -10695,7 +11023,7 @@ class GetNetworkInterfacesInterfaceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> _builtins.str:
         """
-        ID of the vSwitch that the ENI is linked to.
+        The vSwitch ID linked to ENIs.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -10712,11 +11040,17 @@ class GetNetworkInterfacesInterfaceResult(dict):
 class GetNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
     def __init__(__self__, *,
                  public_ip_address: _builtins.str):
+        """
+        :param _builtins.str public_ip_address: The public IP address.
+        """
         pulumi.set(__self__, "public_ip_address", public_ip_address)
 
     @_builtins.property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> _builtins.str:
+        """
+        The public IP address.
+        """
         return pulumi.get(self, "public_ip_address")
 
 
@@ -10892,6 +11226,7 @@ class GetSecurityGroupsGroupResult(dict):
         :param _builtins.str security_group_type: The type of the security group.
         :param _builtins.str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
         :param Mapping[str, _builtins.str] tags: A map of tags assigned to the ECS instances. It must be in the format:
+               
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -10982,6 +11317,7 @@ class GetSecurityGroupsGroupResult(dict):
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -11025,21 +11361,45 @@ class GetSnapshotsSnapshotResult(dict):
                  type: _builtins.str,
                  usage: _builtins.str):
         """
+        :param _builtins.str category: The category of the snapshot. Valid values: `flash`, `standard`.
         :param _builtins.str creation_time: Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
         :param _builtins.str description: Description of the snapshot.
-        :param _builtins.bool encrypted: Whether the snapshot is encrypted or not.
+        :param _builtins.str disk_id: The source disk ID.
+        :param _builtins.bool encrypted: Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
         :param _builtins.str id: ID of the snapshot.
+        :param _builtins.bool instant_access: Whether instant access is enabled.
+        :param _builtins.int instant_access_retention_days: The retention days of instant access.
         :param _builtins.str name: Name of the snapshot.
         :param _builtins.str product_code: Product code on the image market place.
         :param _builtins.str progress: Progress of snapshot creation, presented in percentage.
         :param _builtins.int remain_time: The remaining time of a snapshot creation task, in seconds.
+        :param _builtins.str resource_group_id: The resource group ID.
         :param _builtins.int retention_days: The number of days that an automatic snapshot retains in the console for your instance.
+        :param _builtins.str snapshot_id: The ID of the snapshot.
+        :param _builtins.str snapshot_name: The name of the snapshot.
+        :param _builtins.str snapshot_sn: The SN of the snapshot.
+        :param _builtins.str snapshot_type: The type of the snapshot. Valid values: `auto`, `user`, `all`.
         :param _builtins.str source_disk_id: Source disk ID, which is retained after the source disk of the snapshot is deleted.
         :param _builtins.str source_disk_size: Size of the source disk, measured in GB.
-        :param _builtins.str source_disk_type: Source disk attribute. Value range: `System`,`Data`.
-        :param _builtins.str status: The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
-        :param Mapping[str, _builtins.str] tags: A map of tags assigned to the snapshot.
-        :param _builtins.str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+        :param _builtins.str source_disk_type: The type of source disk:
+               * System: The snapshots are created for system disks.
+               * Data: The snapshots are created for data disks.
+        :param _builtins.str source_storage_type: The source storage type.
+        :param _builtins.str status: The specified snapshot status. Default value: `all`. Optional values:
+               * progressing: The snapshots are being created.
+               * accomplished: The snapshots are ready to use.
+               * failed: The snapshot creation failed.
+               * all: All status.
+        :param Mapping[str, _builtins.str] tags: A map of tags assigned to snapshots.
+        :param _builtins.str type: The snapshot category. Default value: `all`. Optional values:
+               * auto: Auto snapshots.
+               * user: Manual snapshots.
+               * all: Auto and manual snapshots.
+        :param _builtins.str usage: The usage of the snapshot:
+               * image: The snapshots are used to create custom images.
+               * disk: The snapshots are used to CreateDisk.
+               * mage_disk: The snapshots are used to create custom images and data disks.
+               * none: The snapshots are not used yet.
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -11071,6 +11431,9 @@ class GetSnapshotsSnapshotResult(dict):
     @_builtins.property
     @pulumi.getter
     def category(self) -> _builtins.str:
+        """
+        The category of the snapshot. Valid values: `flash`, `standard`.
+        """
         return pulumi.get(self, "category")
 
     @_builtins.property
@@ -11092,13 +11455,16 @@ class GetSnapshotsSnapshotResult(dict):
     @_builtins.property
     @pulumi.getter(name="diskId")
     def disk_id(self) -> _builtins.str:
+        """
+        The source disk ID.
+        """
         return pulumi.get(self, "disk_id")
 
     @_builtins.property
     @pulumi.getter
     def encrypted(self) -> _builtins.bool:
         """
-        Whether the snapshot is encrypted or not.
+        Queries the encrypted snapshots. Optional values: `true`: Encrypted snapshots. `false`: No encryption attribute limit. Default value: `false`.
         """
         return pulumi.get(self, "encrypted")
 
@@ -11113,11 +11479,17 @@ class GetSnapshotsSnapshotResult(dict):
     @_builtins.property
     @pulumi.getter(name="instantAccess")
     def instant_access(self) -> _builtins.bool:
+        """
+        Whether instant access is enabled.
+        """
         return pulumi.get(self, "instant_access")
 
     @_builtins.property
     @pulumi.getter(name="instantAccessRetentionDays")
     def instant_access_retention_days(self) -> _builtins.int:
+        """
+        The retention days of instant access.
+        """
         return pulumi.get(self, "instant_access_retention_days")
 
     @_builtins.property
@@ -11155,6 +11527,9 @@ class GetSnapshotsSnapshotResult(dict):
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> _builtins.str:
+        """
+        The resource group ID.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
@@ -11168,21 +11543,33 @@ class GetSnapshotsSnapshotResult(dict):
     @_builtins.property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> _builtins.str:
+        """
+        The ID of the snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @_builtins.property
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> _builtins.str:
+        """
+        The name of the snapshot.
+        """
         return pulumi.get(self, "snapshot_name")
 
     @_builtins.property
     @pulumi.getter(name="snapshotSn")
     def snapshot_sn(self) -> _builtins.str:
+        """
+        The SN of the snapshot.
+        """
         return pulumi.get(self, "snapshot_sn")
 
     @_builtins.property
     @pulumi.getter(name="snapshotType")
     def snapshot_type(self) -> _builtins.str:
+        """
+        The type of the snapshot. Valid values: `auto`, `user`, `all`.
+        """
         return pulumi.get(self, "snapshot_type")
 
     @_builtins.property
@@ -11205,20 +11592,29 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="sourceDiskType")
     def source_disk_type(self) -> _builtins.str:
         """
-        Source disk attribute. Value range: `System`,`Data`.
+        The type of source disk:
+        * System: The snapshots are created for system disks.
+        * Data: The snapshots are created for data disks.
         """
         return pulumi.get(self, "source_disk_type")
 
     @_builtins.property
     @pulumi.getter(name="sourceStorageType")
     def source_storage_type(self) -> _builtins.str:
+        """
+        The source storage type.
+        """
         return pulumi.get(self, "source_storage_type")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
+        The specified snapshot status. Default value: `all`. Optional values:
+        * progressing: The snapshots are being created.
+        * accomplished: The snapshots are ready to use.
+        * failed: The snapshot creation failed.
+        * all: All status.
         """
         return pulumi.get(self, "status")
 
@@ -11226,20 +11622,30 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        A map of tags assigned to the snapshot.
+        A map of tags assigned to snapshots.
         """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        The snapshot category. Default value: `all`. Optional values:
+        * auto: Auto snapshots.
+        * user: Manual snapshots.
+        * all: Auto and manual snapshots.
+        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def usage(self) -> _builtins.str:
         """
-        Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
+        The usage of the snapshot:
+        * image: The snapshots are used to create custom images.
+        * disk: The snapshots are used to CreateDisk.
+        * mage_disk: The snapshots are used to create custom images and data disks.
+        * none: The snapshots are not used yet.
         """
         return pulumi.get(self, "usage")
 

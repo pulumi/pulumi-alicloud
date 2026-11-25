@@ -89,7 +89,7 @@ def get_connections(ids: Optional[_builtins.str] = None,
     """
     This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
 
-    > **NOTE:** Available in v1.101.0+.
+    > **NOTE:** Available since v1.101.0.
 
     ## Example Usage
 
@@ -123,7 +123,7 @@ def get_connections_output(ids: pulumi.Input[Optional[_builtins.str]] = None,
     """
     This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
 
-    > **NOTE:** Available in v1.101.0+.
+    > **NOTE:** Available since v1.101.0.
 
     ## Example Usage
 

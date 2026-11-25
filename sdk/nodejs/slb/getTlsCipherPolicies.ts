@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *
@@ -86,16 +86,28 @@ export interface GetTlsCipherPoliciesResult {
     readonly ids: string[];
     readonly includeListener?: boolean;
     readonly nameRegex?: string;
+    /**
+     * A list of Tls Cipher Policy names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Slb Tls Cipher Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.slb.GetTlsCipherPoliciesPolicy[];
+    /**
+     * TLS policy instance state.
+     */
     readonly status?: string;
+    /**
+     * TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
+     */
     readonly tlsCipherPolicyName?: string;
 }
 /**
  * This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.135.0+.
+ * > **NOTE:** Available since v1.135.0.
  *
  * ## Example Usage
  *

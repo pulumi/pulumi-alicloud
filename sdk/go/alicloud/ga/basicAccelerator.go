@@ -17,6 +17,8 @@ import (
 //
 // > **NOTE:** Available since v1.194.0.
 //
+// > **NOTE:** Destroying a `Subscription` instance fails with an error since v2.1.0. To destroy it, unsubscribe the instance in the Alibaba Cloud console or wait for it to expire. To remove the instance from the state only, run `terraform state rm`.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -34,13 +36,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
-//				Duration:             pulumi.Int(1),
-//				PricingCycle:         pulumi.String("Month"),
+//				PaymentType:          pulumi.String("PayAsYouGo"),
 //				BasicAcceleratorName: pulumi.String("tf-example-value"),
 //				Description:          pulumi.String("tf-example-value"),
-//				BandwidthBillingType: pulumi.String("BandwidthPackage"),
-//				AutoPay:              pulumi.Bool(true),
-//				AutoUseCoupon:        pulumi.String("true"),
+//				BandwidthBillingType: pulumi.String("CDT"),
 //			})
 //			if err != nil {
 //				return err

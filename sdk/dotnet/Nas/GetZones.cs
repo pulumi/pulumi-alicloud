@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// Provide  a data source to retrieve the type of zone used to create NAS file system.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// Provide  a data source to retrieve the type of zone used to create NAS file system.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// Provide  a data source to retrieve the type of zone used to create NAS file system.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0+.
         /// 
         /// ## Example Usage
         /// 

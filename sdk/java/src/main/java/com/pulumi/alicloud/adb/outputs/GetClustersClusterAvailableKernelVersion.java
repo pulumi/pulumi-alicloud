@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClustersClusterAvailableKernelVersion {
+    /**
+     * @return The maintenance expiration time of the version
+     * 
+     */
     private String expireDate;
+    /**
+     * @return The minor version. Example: 3.1.9.
+     * 
+     */
     private String kernelVersion;
+    /**
+     * @return The time when the minor version was released.
+     * 
+     */
     private String releaseDate;
 
     private GetClustersClusterAvailableKernelVersion() {}
+    /**
+     * @return The maintenance expiration time of the version
+     * 
+     */
     public String expireDate() {
         return this.expireDate;
     }
+    /**
+     * @return The minor version. Example: 3.1.9.
+     * 
+     */
     public String kernelVersion() {
         return this.kernelVersion;
     }
+    /**
+     * @return The time when the minor version was released.
+     * 
+     */
     public String releaseDate() {
         return this.releaseDate;
     }

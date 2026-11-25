@@ -17,12 +17,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetLoadBalancersBalancer {
     /**
-     * @return The IP version.
+     * @return The IP version. Valid values: `ipv4`, `DualStack`.
      * 
      */
     private String addressIpVersion;
     /**
-     * @return The type of IPv4 address used by the NLB instance.
+     * @return The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      * 
      */
     private String addressType;
@@ -52,12 +52,12 @@ public final class GetLoadBalancersBalancer {
      */
     private String id;
     /**
-     * @return The type of IPv6 address used by the NLB instance.
+     * @return The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      * 
      */
     private String ipv6AddressType;
     /**
-     * @return The business status of the NLB instance.
+     * @return The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
      * 
      */
     private String loadBalancerBusinessStatus;
@@ -92,12 +92,12 @@ public final class GetLoadBalancersBalancer {
      */
     private List<String> securityGroupIds;
     /**
-     * @return The status of the NLB instance.
+     * @return The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      * 
      */
     private String status;
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -114,14 +114,14 @@ public final class GetLoadBalancersBalancer {
 
     private GetLoadBalancersBalancer() {}
     /**
-     * @return The IP version.
+     * @return The IP version. Valid values: `ipv4`, `DualStack`.
      * 
      */
     public String addressIpVersion() {
         return this.addressIpVersion;
     }
     /**
-     * @return The type of IPv4 address used by the NLB instance.
+     * @return The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      * 
      */
     public String addressType() {
@@ -163,14 +163,14 @@ public final class GetLoadBalancersBalancer {
         return this.id;
     }
     /**
-     * @return The type of IPv6 address used by the NLB instance.
+     * @return The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      * 
      */
     public String ipv6AddressType() {
         return this.ipv6AddressType;
     }
     /**
-     * @return The business status of the NLB instance.
+     * @return The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
      * 
      */
     public String loadBalancerBusinessStatus() {
@@ -219,14 +219,14 @@ public final class GetLoadBalancersBalancer {
         return this.securityGroupIds;
     }
     /**
-     * @return The status of the NLB instance.
+     * @return The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {

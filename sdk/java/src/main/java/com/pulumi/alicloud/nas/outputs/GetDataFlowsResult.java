@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDataFlowsResult {
+    /**
+     * @return The ID of the file system.
+     * 
+     */
     private String fileSystemId;
+    /**
+     * @return A list of Nas Data Flows. Each element contains the following attributes:
+     * 
+     */
     private List<GetDataFlowsFlow> flows;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,12 +31,24 @@ public final class GetDataFlowsResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the Data flow.
+     * 
+     */
     private @Nullable String status;
 
     private GetDataFlowsResult() {}
+    /**
+     * @return The ID of the file system.
+     * 
+     */
     public String fileSystemId() {
         return this.fileSystemId;
     }
+    /**
+     * @return A list of Nas Data Flows. Each element contains the following attributes:
+     * 
+     */
     public List<GetDataFlowsFlow> flows() {
         return this.flows;
     }
@@ -45,6 +65,10 @@ public final class GetDataFlowsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the Data flow.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

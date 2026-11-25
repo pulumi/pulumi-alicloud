@@ -200,6 +200,9 @@ namespace Pulumi.AliCloud.PrivateLink
         /// The ID of the Vpc Endpoint.
         /// </summary>
         public readonly string? EndpointId;
+        /// <summary>
+        /// The owner ID of the endpoint.
+        /// </summary>
         public readonly int? EndpointOwnerId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

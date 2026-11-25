@@ -20,6 +20,10 @@ public final class GetMonitorGroupInstancesResult {
      */
     private String id;
     private String ids;
+    /**
+     * @return Instance information added to the Cms Group.
+     * 
+     */
     private List<GetMonitorGroupInstancesInstance> instances;
     private @Nullable String keyword;
     private @Nullable String outputFile;
@@ -35,6 +39,10 @@ public final class GetMonitorGroupInstancesResult {
     public String ids() {
         return this.ids;
     }
+    /**
+     * @return Instance information added to the Cms Group.
+     * 
+     */
     public List<GetMonitorGroupInstancesInstance> instances() {
         return this.instances;
     }

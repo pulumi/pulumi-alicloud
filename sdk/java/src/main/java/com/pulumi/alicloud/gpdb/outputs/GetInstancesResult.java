@@ -16,9 +16,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesResult {
+    /**
+     * @return The ID of the availability zone.
+     * 
+     */
     private @Nullable String availabilityZone;
     private @Nullable String dbInstanceCategories;
     private @Nullable String dbInstanceModes;
+    /**
+     * @return The description of the instance.
+     * 
+     */
     private @Nullable String description;
     private @Nullable Boolean enableDetails;
     /**
@@ -26,18 +34,50 @@ public final class GetInstancesResult {
      * 
      */
     private String id;
+    /**
+     * @return The ids list of AnalyticDB for PostgreSQL instances.
+     * 
+     */
     private List<String> ids;
+    /**
+     * @return The network type of the instance.
+     * 
+     */
     private @Nullable String instanceNetworkType;
+    /**
+     * @return A list of Gpdb Db Instances. Each element contains the following attributes:
+     * 
+     */
     private List<GetInstancesInstance> instances;
     private @Nullable String nameRegex;
+    /**
+     * @return The names list of AnalyticDB for PostgreSQL instance.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable String resourceGroupId;
+    /**
+     * @return The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tags of the instance.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The vswitch id.
+     * 
+     */
     private @Nullable String vswitchId;
 
     private GetInstancesResult() {}
+    /**
+     * @return The ID of the availability zone.
+     * 
+     */
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
@@ -47,6 +87,10 @@ public final class GetInstancesResult {
     public Optional<String> dbInstanceModes() {
         return Optional.ofNullable(this.dbInstanceModes);
     }
+    /**
+     * @return The description of the instance.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -60,18 +104,34 @@ public final class GetInstancesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The ids list of AnalyticDB for PostgreSQL instances.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The network type of the instance.
+     * 
+     */
     public Optional<String> instanceNetworkType() {
         return Optional.ofNullable(this.instanceNetworkType);
     }
+    /**
+     * @return A list of Gpdb Db Instances. Each element contains the following attributes:
+     * 
+     */
     public List<GetInstancesInstance> instances() {
         return this.instances;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return The names list of AnalyticDB for PostgreSQL instance.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -81,12 +141,24 @@ public final class GetInstancesResult {
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tags of the instance.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The vswitch id.
+     * 
+     */
     public Optional<String> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }

@@ -1133,7 +1133,8 @@ type GetDedicatedBlockStorageClustersCluster struct {
 	Description string `pulumi:"description"`
 	// The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
 	ExpiredTime string `pulumi:"expiredTime"`
-	Id          string `pulumi:"id"`
+	// The first ID of the Dedicated Block Storage Cluster.
+	Id string `pulumi:"id"`
 	// Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.> Only valid in SupportedCategory = cloud_essd.
 	PerformanceLevel string `pulumi:"performanceLevel"`
 	// The ID of the resource group
@@ -1180,7 +1181,8 @@ type GetDedicatedBlockStorageClustersClusterArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
 	ExpiredTime pulumi.StringInput `pulumi:"expiredTime"`
-	Id          pulumi.StringInput `pulumi:"id"`
+	// The first ID of the Dedicated Block Storage Cluster.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.> Only valid in SupportedCategory = cloud_essd.
 	PerformanceLevel pulumi.StringInput `pulumi:"performanceLevel"`
 	// The ID of the resource group
@@ -1290,6 +1292,7 @@ func (o GetDedicatedBlockStorageClustersClusterOutput) ExpiredTime() pulumi.Stri
 	return o.ApplyT(func(v GetDedicatedBlockStorageClustersCluster) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
+// The first ID of the Dedicated Block Storage Cluster.
 func (o GetDedicatedBlockStorageClustersClusterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedBlockStorageClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1608,7 +1611,8 @@ type GetDiskReplicaPairsPair struct {
 	DestinationZoneId string `pulumi:"destinationZoneId"`
 	// The ID of the primary disk.
 	DiskId string `pulumi:"diskId"`
-	Id     string `pulumi:"id"`
+	// The first ID of the Disk Replica Pair.
+	Id string `pulumi:"id"`
 	// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
 	PairName string `pulumi:"pairName"`
 	// The payment type of the resource.
@@ -1649,7 +1653,8 @@ type GetDiskReplicaPairsPairArgs struct {
 	DestinationZoneId pulumi.StringInput `pulumi:"destinationZoneId"`
 	// The ID of the primary disk.
 	DiskId pulumi.StringInput `pulumi:"diskId"`
-	Id     pulumi.StringInput `pulumi:"id"`
+	// The first ID of the Disk Replica Pair.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
 	PairName pulumi.StringInput `pulumi:"pairName"`
 	// The payment type of the resource.
@@ -1747,6 +1752,7 @@ func (o GetDiskReplicaPairsPairOutput) DiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskReplicaPairsPair) string { return v.DiskId }).(pulumi.StringOutput)
 }
 
+// The first ID of the Disk Replica Pair.
 func (o GetDiskReplicaPairsPairOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskReplicaPairsPair) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1807,7 +1813,7 @@ func (o GetDiskReplicaPairsPairArrayOutput) Index(i pulumi.IntInput) GetDiskRepl
 }
 
 type GetRegionsRegion struct {
-	// The ID of the region.
+	// A list of Disk Replica Group IDs.
 	RegionId string `pulumi:"regionId"`
 	// A list of Ebs Zones.
 	Zones []GetRegionsRegionZone `pulumi:"zones"`
@@ -1825,7 +1831,7 @@ type GetRegionsRegionInput interface {
 }
 
 type GetRegionsRegionArgs struct {
-	// The ID of the region.
+	// A list of Disk Replica Group IDs.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// A list of Ebs Zones.
 	Zones GetRegionsRegionZoneArrayInput `pulumi:"zones"`
@@ -1882,7 +1888,7 @@ func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.
 	return o
 }
 
-// The ID of the region.
+// A list of Disk Replica Group IDs.
 func (o GetRegionsRegionOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsRegion) string { return v.RegionId }).(pulumi.StringOutput)
 }

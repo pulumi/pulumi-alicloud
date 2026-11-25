@@ -135,14 +135,7 @@ type AppGroupQuota struct {
 	DocSize int `pulumi:"docSize"`
 	// Search request. Unit: times/second.
 	Qps *int `pulumi:"qps"`
-	// Specification. Valid values:
-	// * `opensearch.share.junior`: Entry-level.
-	// * `opensearch.share.common`: Shared universal.
-	// * `opensearch.share.compute`: Shared computing.
-	// * `opensearch.share.storage`: Shared storage type.
-	// * `opensearch.private.common`: Exclusive universal type.
-	// * `opensearch.private.compute`: Exclusive computing type.
-	// * `opensearch.private.storage`: Exclusive storage type
+	// Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
 	Spec string `pulumi:"spec"`
 }
 
@@ -164,14 +157,7 @@ type AppGroupQuotaArgs struct {
 	DocSize pulumi.IntInput `pulumi:"docSize"`
 	// Search request. Unit: times/second.
 	Qps pulumi.IntPtrInput `pulumi:"qps"`
-	// Specification. Valid values:
-	// * `opensearch.share.junior`: Entry-level.
-	// * `opensearch.share.common`: Shared universal.
-	// * `opensearch.share.compute`: Shared computing.
-	// * `opensearch.share.storage`: Shared storage type.
-	// * `opensearch.private.common`: Exclusive universal type.
-	// * `opensearch.private.compute`: Exclusive computing type.
-	// * `opensearch.private.storage`: Exclusive storage type
+	// Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
 	Spec pulumi.StringInput `pulumi:"spec"`
 }
 
@@ -267,14 +253,7 @@ func (o AppGroupQuotaOutput) Qps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppGroupQuota) *int { return v.Qps }).(pulumi.IntPtrOutput)
 }
 
-// Specification. Valid values:
-// * `opensearch.share.junior`: Entry-level.
-// * `opensearch.share.common`: Shared universal.
-// * `opensearch.share.compute`: Shared computing.
-// * `opensearch.share.storage`: Shared storage type.
-// * `opensearch.private.common`: Exclusive universal type.
-// * `opensearch.private.compute`: Exclusive computing type.
-// * `opensearch.private.storage`: Exclusive storage type
+// Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
 func (o AppGroupQuotaOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v AppGroupQuota) string { return v.Spec }).(pulumi.StringOutput)
 }
@@ -333,14 +312,7 @@ func (o AppGroupQuotaPtrOutput) Qps() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specification. Valid values:
-// * `opensearch.share.junior`: Entry-level.
-// * `opensearch.share.common`: Shared universal.
-// * `opensearch.share.compute`: Shared computing.
-// * `opensearch.share.storage`: Shared storage type.
-// * `opensearch.private.common`: Exclusive universal type.
-// * `opensearch.private.compute`: Exclusive computing type.
-// * `opensearch.private.storage`: Exclusive storage type
+// Specification. Valid values: `opensearch.share.junior` (Entry-level), `opensearch.share.common` (Shared universal), `opensearch.share.compute` (Shared computing), `opensearch.share.storage` (Shared storage type), `opensearch.private.common` (Exclusive universal type), `opensearch.private.compute` (Exclusive computing type), `opensearch.private.storage` (Exclusive storage type).
 func (o AppGroupQuotaPtrOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGroupQuota) *string {
 		if v == nil {
@@ -371,11 +343,11 @@ type GetAppGroupsGroup struct {
 	ExpireOn string `pulumi:"expireOn"`
 	// Coarse deployment ID.
 	FirstRankAlgoDeploymentId int `pulumi:"firstRankAlgoDeploymentId"`
-	// Whether the quota status is under approval. Valid status:
+	// Whether the quota status is under approval. Valid values: `0` (normal), `1` (Approving).
 	HasPendingQuotaReviewTask int `pulumi:"hasPendingQuotaReviewTask"`
 	// The resource ID in terraform of App Group. It is the same as `appGroupName`.
 	Id string `pulumi:"id"`
-	// The Instance ID.
+	// Instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// Locked state. Valid status: `Unlock`,`LockByExpiration`,`ManualLock`.
 	LockMode string `pulumi:"lockMode"`
@@ -387,13 +359,13 @@ type GetAppGroupsGroup struct {
 	PendingSecondRankAlgoDeploymentId int `pulumi:"pendingSecondRankAlgoDeploymentId"`
 	// Unfinished order number.
 	ProcessingOrderId string `pulumi:"processingOrderId"`
-	// Whether the production is completed. Valid values:
+	// Whether the production is completed. Valid values: `0` (producing), `1` (completed).
 	Produced int `pulumi:"produced"`
 	// The Project ID.
 	ProjectId string `pulumi:"projectId"`
 	// Quota information.
 	Quotas []GetAppGroupsGroupQuota `pulumi:"quotas"`
-	// The Resource Group ID.
+	// Resource Group Id.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// Refine deployment ID.
 	SecondRankAlgoDeploymentId int `pulumi:"secondRankAlgoDeploymentId"`
@@ -401,7 +373,7 @@ type GetAppGroupsGroup struct {
 	Status string `pulumi:"status"`
 	// The Switched time.
 	SwitchedTime int `pulumi:"switchedTime"`
-	// Application type. Valid Values: `standard`, `enhanced`.
+	// The Type of AppGroup. Valid values: `standard`,`enhanced`.
 	Type string `pulumi:"type"`
 }
 
@@ -437,11 +409,11 @@ type GetAppGroupsGroupArgs struct {
 	ExpireOn pulumi.StringInput `pulumi:"expireOn"`
 	// Coarse deployment ID.
 	FirstRankAlgoDeploymentId pulumi.IntInput `pulumi:"firstRankAlgoDeploymentId"`
-	// Whether the quota status is under approval. Valid status:
+	// Whether the quota status is under approval. Valid values: `0` (normal), `1` (Approving).
 	HasPendingQuotaReviewTask pulumi.IntInput `pulumi:"hasPendingQuotaReviewTask"`
 	// The resource ID in terraform of App Group. It is the same as `appGroupName`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Instance ID.
+	// Instance ID.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// Locked state. Valid status: `Unlock`,`LockByExpiration`,`ManualLock`.
 	LockMode pulumi.StringInput `pulumi:"lockMode"`
@@ -453,13 +425,13 @@ type GetAppGroupsGroupArgs struct {
 	PendingSecondRankAlgoDeploymentId pulumi.IntInput `pulumi:"pendingSecondRankAlgoDeploymentId"`
 	// Unfinished order number.
 	ProcessingOrderId pulumi.StringInput `pulumi:"processingOrderId"`
-	// Whether the production is completed. Valid values:
+	// Whether the production is completed. Valid values: `0` (producing), `1` (completed).
 	Produced pulumi.IntInput `pulumi:"produced"`
 	// The Project ID.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Quota information.
 	Quotas GetAppGroupsGroupQuotaArrayInput `pulumi:"quotas"`
-	// The Resource Group ID.
+	// Resource Group Id.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// Refine deployment ID.
 	SecondRankAlgoDeploymentId pulumi.IntInput `pulumi:"secondRankAlgoDeploymentId"`
@@ -467,7 +439,7 @@ type GetAppGroupsGroupArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 	// The Switched time.
 	SwitchedTime pulumi.IntInput `pulumi:"switchedTime"`
-	// Application type. Valid Values: `standard`, `enhanced`.
+	// The Type of AppGroup. Valid values: `standard`,`enhanced`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -572,7 +544,7 @@ func (o GetAppGroupsGroupOutput) FirstRankAlgoDeploymentId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) int { return v.FirstRankAlgoDeploymentId }).(pulumi.IntOutput)
 }
 
-// Whether the quota status is under approval. Valid status:
+// Whether the quota status is under approval. Valid values: `0` (normal), `1` (Approving).
 func (o GetAppGroupsGroupOutput) HasPendingQuotaReviewTask() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) int { return v.HasPendingQuotaReviewTask }).(pulumi.IntOutput)
 }
@@ -582,7 +554,7 @@ func (o GetAppGroupsGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Instance ID.
+// Instance ID.
 func (o GetAppGroupsGroupOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -612,7 +584,7 @@ func (o GetAppGroupsGroupOutput) ProcessingOrderId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) string { return v.ProcessingOrderId }).(pulumi.StringOutput)
 }
 
-// Whether the production is completed. Valid values:
+// Whether the production is completed. Valid values: `0` (producing), `1` (completed).
 func (o GetAppGroupsGroupOutput) Produced() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) int { return v.Produced }).(pulumi.IntOutput)
 }
@@ -627,7 +599,7 @@ func (o GetAppGroupsGroupOutput) Quotas() GetAppGroupsGroupQuotaArrayOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) []GetAppGroupsGroupQuota { return v.Quotas }).(GetAppGroupsGroupQuotaArrayOutput)
 }
 
-// The Resource Group ID.
+// Resource Group Id.
 func (o GetAppGroupsGroupOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -647,7 +619,7 @@ func (o GetAppGroupsGroupOutput) SwitchedTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) int { return v.SwitchedTime }).(pulumi.IntOutput)
 }
 
-// Application type. Valid Values: `standard`, `enhanced`.
+// The Type of AppGroup. Valid values: `standard`,`enhanced`.
 func (o GetAppGroupsGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppGroupsGroup) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -677,14 +649,7 @@ type GetAppGroupsGroupQuota struct {
 	ComputeResource string `pulumi:"computeResource"`
 	// Storage Size. Unit: GB.
 	DocSize string `pulumi:"docSize"`
-	// Specification. Valid values:
-	// * `opensearch.share.junior`: Entry-level.
-	// * `opensearch.share.common`: Shared universal.
-	// * `opensearch.share.compute`: Shared computing.
-	// * `opensearch.share.storage`: Shared storage type.
-	// * `opensearch.private.common`: Exclusive universal type.
-	// * `opensearch.private.compute`: Exclusive computing type.
-	// * `opensearch.private.storage`: Exclusive storage type
+	// Specification.
 	Spec string `pulumi:"spec"`
 }
 
@@ -704,14 +669,7 @@ type GetAppGroupsGroupQuotaArgs struct {
 	ComputeResource pulumi.StringInput `pulumi:"computeResource"`
 	// Storage Size. Unit: GB.
 	DocSize pulumi.StringInput `pulumi:"docSize"`
-	// Specification. Valid values:
-	// * `opensearch.share.junior`: Entry-level.
-	// * `opensearch.share.common`: Shared universal.
-	// * `opensearch.share.compute`: Shared computing.
-	// * `opensearch.share.storage`: Shared storage type.
-	// * `opensearch.private.common`: Exclusive universal type.
-	// * `opensearch.private.compute`: Exclusive computing type.
-	// * `opensearch.private.storage`: Exclusive storage type
+	// Specification.
 	Spec pulumi.StringInput `pulumi:"spec"`
 }
 
@@ -776,14 +734,7 @@ func (o GetAppGroupsGroupQuotaOutput) DocSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppGroupsGroupQuota) string { return v.DocSize }).(pulumi.StringOutput)
 }
 
-// Specification. Valid values:
-// * `opensearch.share.junior`: Entry-level.
-// * `opensearch.share.common`: Shared universal.
-// * `opensearch.share.compute`: Shared computing.
-// * `opensearch.share.storage`: Shared storage type.
-// * `opensearch.private.common`: Exclusive universal type.
-// * `opensearch.private.compute`: Exclusive computing type.
-// * `opensearch.private.storage`: Exclusive storage type
+// Specification.
 func (o GetAppGroupsGroupQuotaOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppGroupsGroupQuota) string { return v.Spec }).(pulumi.StringOutput)
 }

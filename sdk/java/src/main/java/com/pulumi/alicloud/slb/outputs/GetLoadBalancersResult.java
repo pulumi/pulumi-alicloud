@@ -19,12 +19,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetLoadBalancersResult {
     /**
-     * @return Service address of the SLB.
+     * @return The IP address that the SLB instance uses to provide services.
      * 
      */
     private @Nullable String address;
+    /**
+     * @return The address ip version.
+     * 
+     */
     private @Nullable String addressIpVersion;
+    /**
+     * @return The address type.
+     * 
+     */
     private @Nullable String addressType;
+    /**
+     * @return A list of SLBs. Each element contains the following attributes:
+     * 
+     */
     private List<GetLoadBalancersBalancer> balancers;
     private @Nullable Boolean enableDetails;
     /**
@@ -37,8 +49,20 @@ public final class GetLoadBalancersResult {
      * 
      */
     private List<String> ids;
+    /**
+     * @return The billing method of the Internet-facing SLB instance.
+     * 
+     */
     private @Nullable String internetChargeType;
+    /**
+     * @return The name of the SLB.
+     * 
+     */
     private @Nullable String loadBalancerName;
+    /**
+     * @return Master availability zone of the SLBs.
+     * 
+     */
     private @Nullable String masterZoneId;
     private @Nullable String nameRegex;
     /**
@@ -54,13 +78,29 @@ public final class GetLoadBalancersResult {
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The payment type of the SLB.
+     * 
+     */
     private @Nullable String paymentType;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The ID of the Elastic Compute Service (ECS) instance that is specified as a backend server of the CLB instance.
+     * 
+     */
     private @Nullable String serverId;
     private @Nullable String serverIntranetAddress;
+    /**
+     * @return Slave availability zone of the SLBs.
+     * 
+     */
     private @Nullable String slaveZoneId;
     /**
-     * @return A list of SLBs. Each element contains the following attributes:
+     * @return **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
      * 
      * @deprecated Field &#39;slbs&#39; has deprecated from v1.123.1 and replace by &#39;balancers&#39;.
      * 
@@ -73,7 +113,7 @@ public final class GetLoadBalancersResult {
      */
     private @Nullable String status;
     /**
-     * @return A map of tags assigned to the SLB instance.
+     * @return The tags of the SLB.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -91,18 +131,30 @@ public final class GetLoadBalancersResult {
 
     private GetLoadBalancersResult() {}
     /**
-     * @return Service address of the SLB.
+     * @return The IP address that the SLB instance uses to provide services.
      * 
      */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
+    /**
+     * @return The address ip version.
+     * 
+     */
     public Optional<String> addressIpVersion() {
         return Optional.ofNullable(this.addressIpVersion);
     }
+    /**
+     * @return The address type.
+     * 
+     */
     public Optional<String> addressType() {
         return Optional.ofNullable(this.addressType);
     }
+    /**
+     * @return A list of SLBs. Each element contains the following attributes:
+     * 
+     */
     public List<GetLoadBalancersBalancer> balancers() {
         return this.balancers;
     }
@@ -123,12 +175,24 @@ public final class GetLoadBalancersResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The billing method of the Internet-facing SLB instance.
+     * 
+     */
     public Optional<String> internetChargeType() {
         return Optional.ofNullable(this.internetChargeType);
     }
+    /**
+     * @return The name of the SLB.
+     * 
+     */
     public Optional<String> loadBalancerName() {
         return Optional.ofNullable(this.loadBalancerName);
     }
+    /**
+     * @return Master availability zone of the SLBs.
+     * 
+     */
     public Optional<String> masterZoneId() {
         return Optional.ofNullable(this.masterZoneId);
     }
@@ -158,23 +222,39 @@ public final class GetLoadBalancersResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The payment type of the SLB.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The ID of the Elastic Compute Service (ECS) instance that is specified as a backend server of the CLB instance.
+     * 
+     */
     public Optional<String> serverId() {
         return Optional.ofNullable(this.serverId);
     }
     public Optional<String> serverIntranetAddress() {
         return Optional.ofNullable(this.serverIntranetAddress);
     }
+    /**
+     * @return Slave availability zone of the SLBs.
+     * 
+     */
     public Optional<String> slaveZoneId() {
         return Optional.ofNullable(this.slaveZoneId);
     }
     /**
-     * @return A list of SLBs. Each element contains the following attributes:
+     * @return **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
      * 
      * @deprecated Field &#39;slbs&#39; has deprecated from v1.123.1 and replace by &#39;balancers&#39;.
      * 
@@ -191,7 +271,7 @@ public final class GetLoadBalancersResult {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return A map of tags assigned to the SLB instance.
+     * @return The tags of the SLB.
      * 
      */
     public Map<String,String> tags() {

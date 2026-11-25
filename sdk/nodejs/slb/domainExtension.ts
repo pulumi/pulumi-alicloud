@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
  * Please refer to the [documentation](https://www.alibabacloud.com/help/doc-detail/85956.htm?spm=a2c63.p38356.b99.40.1c881563Co8p6w) for details.
  *
- * > **NOTE:** Available in 1.60.0+
+ * > **NOTE:** Available since v1.60.0
  *
  * > **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
  *
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     vswitchId: domainExtensionSwitch.id,
  * });
  * const domainExtensionServerCertificate = new alicloud.slb.ServerCertificate("domain_extension", {
- *     name: "tf-testAccSlbServerCertificate",
+ *     name: "terraform-example-slb-domain-extension",
  *     serverCertificate: `-----BEGIN CERTIFICATE-----
  * MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
  * bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
@@ -109,7 +109,7 @@ import * as utilities from "../utilities";
  * });
  * const example1 = new alicloud.slb.DomainExtension("example1", {
  *     loadBalancerId: instance.id,
- *     frontendPort: https.frontendPort,
+ *     listenerPort: https.frontendPort,
  *     domain: "www.test.com",
  *     serverCertificateId: domainExtensionServerCertificate.id,
  * });
@@ -173,9 +173,15 @@ export class DomainExtension extends pulumi.CustomResource {
      */
     declare public readonly domain: pulumi.Output<string>;
     /**
-     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+     *
+     * @deprecated Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.
      */
     declare public readonly frontendPort: pulumi.Output<number>;
+    /**
+     * The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+     */
+    declare public readonly listenerPort: pulumi.Output<number>;
     /**
      * The ID of the SLB instance.
      */
@@ -201,15 +207,13 @@ export class DomainExtension extends pulumi.CustomResource {
             resourceInputs["deleteProtectionValidation"] = state?.deleteProtectionValidation;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["frontendPort"] = state?.frontendPort;
+            resourceInputs["listenerPort"] = state?.listenerPort;
             resourceInputs["loadBalancerId"] = state?.loadBalancerId;
             resourceInputs["serverCertificateId"] = state?.serverCertificateId;
         } else {
             const args = argsOrState as DomainExtensionArgs | undefined;
             if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
-            }
-            if (args?.frontendPort === undefined && !opts.urn) {
-                throw new Error("Missing required property 'frontendPort'");
             }
             if (args?.loadBalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
@@ -220,6 +224,7 @@ export class DomainExtension extends pulumi.CustomResource {
             resourceInputs["deleteProtectionValidation"] = args?.deleteProtectionValidation;
             resourceInputs["domain"] = args?.domain;
             resourceInputs["frontendPort"] = args?.frontendPort;
+            resourceInputs["listenerPort"] = args?.listenerPort;
             resourceInputs["loadBalancerId"] = args?.loadBalancerId;
             resourceInputs["serverCertificateId"] = args?.serverCertificateId;
         }
@@ -241,9 +246,15 @@ export interface DomainExtensionState {
      */
     domain?: pulumi.Input<string | undefined>;
     /**
-     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+     *
+     * @deprecated Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.
      */
     frontendPort?: pulumi.Input<number | undefined>;
+    /**
+     * The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+     */
+    listenerPort?: pulumi.Input<number | undefined>;
     /**
      * The ID of the SLB instance.
      */
@@ -267,9 +278,15 @@ export interface DomainExtensionArgs {
      */
     domain: pulumi.Input<string>;
     /**
-     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
+     * The frontend port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. It has been deprecated from provider version 2.3.0, use `listenerPort` instead. Exactly one of `listenerPort` or `frontendPort` must be specified.
+     *
+     * @deprecated Field 'frontend_port' has been deprecated from provider version 2.3.0. New field 'listener_port' instead.
      */
-    frontendPort: pulumi.Input<number>;
+    frontendPort?: pulumi.Input<number | undefined>;
+    /**
+     * The listener port used by the HTTPS listener of the SLB instance. Valid values: `1` to `65535`. Exactly one of `listenerPort` or `frontendPort` must be specified; the constraint is enforced at plan time.
+     */
+    listenerPort?: pulumi.Input<number | undefined>;
     /**
      * The ID of the SLB instance.
      */

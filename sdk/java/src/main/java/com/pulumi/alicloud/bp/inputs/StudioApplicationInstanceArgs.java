@@ -16,14 +16,14 @@ public final class StudioApplicationInstanceArgs extends com.pulumi.resources.Re
     public static final StudioApplicationInstanceArgs Empty = new StudioApplicationInstanceArgs();
 
     /**
-     * The resource ID in terraform of Application.
+     * The id of the instance.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The resource ID in terraform of Application.
+     * @return The id of the instance.
      * 
      */
     public Optional<Output<String>> id() {
@@ -87,7 +87,7 @@ public final class StudioApplicationInstanceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param id The resource ID in terraform of Application.
+         * @param id The id of the instance.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class StudioApplicationInstanceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param id The resource ID in terraform of Application.
+         * @param id The id of the instance.
          * 
          * @return builder
          * 

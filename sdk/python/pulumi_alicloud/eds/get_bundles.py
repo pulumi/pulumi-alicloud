@@ -56,16 +56,25 @@ class GetBundlesResult:
     @_builtins.property
     @pulumi.getter(name="bundleIds")
     def bundle_ids(self) -> Sequence[_builtins.str]:
+        """
+        The bundle id of the bundle.
+        """
         return pulumi.get(self, "bundle_ids")
 
     @_builtins.property
     @pulumi.getter(name="bundleType")
     def bundle_type(self) -> Optional[_builtins.str]:
+        """
+        The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
+        """
         return pulumi.get(self, "bundle_type")
 
     @_builtins.property
     @pulumi.getter
     def bundles(self) -> Sequence['outputs.GetBundlesBundleResult']:
+        """
+        A list of Ecd Bundle. Each element contains the following attributes:
+        """
         return pulumi.get(self, "bundles")
 
     @_builtins.property
@@ -89,6 +98,9 @@ class GetBundlesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Bundle names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -122,7 +134,7 @@ def get_bundles(bundle_ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Ecd bundles of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 
@@ -136,6 +148,7 @@ def get_bundles(bundle_ids: Optional[Sequence[_builtins.str]] = None,
     ```
 
 
+    :param Sequence[_builtins.str] bundle_ids: A list of bundle IDs used to filter the results.
     :param _builtins.str bundle_type: The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
     :param Sequence[_builtins.str] ids: A list of Bundle IDs.
     :param _builtins.str name_regex: A regex string to filter results by Bundle name.
@@ -168,7 +181,7 @@ def get_bundles_output(bundle_ids: pulumi.Input[Optional[Optional[Sequence[_buil
     """
     This data source provides the Ecd bundles of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.143.0+.
+    > **NOTE:** Available since v1.143.0.
 
     ## Example Usage
 
@@ -182,6 +195,7 @@ def get_bundles_output(bundle_ids: pulumi.Input[Optional[Optional[Sequence[_buil
     ```
 
 
+    :param Sequence[_builtins.str] bundle_ids: A list of bundle IDs used to filter the results.
     :param _builtins.str bundle_type: The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
     :param Sequence[_builtins.str] ids: A list of Bundle IDs.
     :param _builtins.str name_regex: A regex string to filter results by Bundle name.

@@ -16,7 +16,15 @@ public final class GetTrailsDeprecatedActiontrail {
      * 
      */
     private String eventRw;
+    /**
+     * @return The id of the ActionTrail Trail. It is the same as trail name.
+     * 
+     */
     private String id;
+    /**
+     * @return Indicates whether the trail is a multi-account trail.
+     * 
+     */
     private Boolean isOrganizationTrail;
     /**
      * @return The name of the specified OSS bucket.
@@ -28,6 +36,10 @@ public final class GetTrailsDeprecatedActiontrail {
      * 
      */
     private String ossKeyPrefix;
+    /**
+     * @return The RAM role ARN that ActionTrail assumes to access the OSS bucket.
+     * 
+     */
     private String ossWriteRoleArn;
     /**
      * @return The unique ARN of the Log Service project.
@@ -39,8 +51,20 @@ public final class GetTrailsDeprecatedActiontrail {
      * 
      */
     private String slsWriteRoleArn;
+    /**
+     * @return Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+     * 
+     */
     private String status;
+    /**
+     * @return The name of the ActionTrail Trail.
+     * 
+     */
     private String trailName;
+    /**
+     * @return The regions to which the trail is applied.
+     * 
+     */
     private String trailRegion;
 
     private GetTrailsDeprecatedActiontrail() {}
@@ -51,9 +75,17 @@ public final class GetTrailsDeprecatedActiontrail {
     public String eventRw() {
         return this.eventRw;
     }
+    /**
+     * @return The id of the ActionTrail Trail. It is the same as trail name.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Indicates whether the trail is a multi-account trail.
+     * 
+     */
     public Boolean isOrganizationTrail() {
         return this.isOrganizationTrail;
     }
@@ -71,6 +103,10 @@ public final class GetTrailsDeprecatedActiontrail {
     public String ossKeyPrefix() {
         return this.ossKeyPrefix;
     }
+    /**
+     * @return The RAM role ARN that ActionTrail assumes to access the OSS bucket.
+     * 
+     */
     public String ossWriteRoleArn() {
         return this.ossWriteRoleArn;
     }
@@ -88,12 +124,24 @@ public final class GetTrailsDeprecatedActiontrail {
     public String slsWriteRoleArn() {
         return this.slsWriteRoleArn;
     }
+    /**
+     * @return Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return The name of the ActionTrail Trail.
+     * 
+     */
     public String trailName() {
         return this.trailName;
     }
+    /**
+     * @return The regions to which the trail is applied.
+     * 
+     */
     public String trailRegion() {
         return this.trailRegion;
     }

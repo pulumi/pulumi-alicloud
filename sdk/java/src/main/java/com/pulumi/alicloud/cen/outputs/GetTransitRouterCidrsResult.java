@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTransitRouterCidrsResult {
+    /**
+     * @return A list of Cen Transit Router Cidrs. Each element contains the following attributes:
+     * 
+     */
     private List<GetTransitRouterCidrsCidr> cidrs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,12 +26,28 @@ public final class GetTransitRouterCidrsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Transit Router Cidr names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The ID of the transit router cidr.
+     * 
+     */
     private @Nullable String transitRouterCidrId;
+    /**
+     * @return The ID of the transit router.
+     * 
+     */
     private String transitRouterId;
 
     private GetTransitRouterCidrsResult() {}
+    /**
+     * @return A list of Cen Transit Router Cidrs. Each element contains the following attributes:
+     * 
+     */
     public List<GetTransitRouterCidrsCidr> cidrs() {
         return this.cidrs;
     }
@@ -44,15 +64,27 @@ public final class GetTransitRouterCidrsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Transit Router Cidr names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The ID of the transit router cidr.
+     * 
+     */
     public Optional<String> transitRouterCidrId() {
         return Optional.ofNullable(this.transitRouterCidrId);
     }
+    /**
+     * @return The ID of the transit router.
+     * 
+     */
     public String transitRouterId() {
         return this.transitRouterId;
     }

@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string StartTime;
         /// <summary>
-        /// The status of Storage Capacity Unit.
+        /// The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
         /// </summary>
         public readonly string Status;
         /// <summary>

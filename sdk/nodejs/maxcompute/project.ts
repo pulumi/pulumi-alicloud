@@ -108,6 +108,9 @@ export class Project extends pulumi.CustomResource {
      * Project owner
      */
     declare public /*out*/ readonly owner: pulumi.Output<string>;
+    /**
+     * The product type of the MaxCompute project.
+     */
     declare public readonly productType: pulumi.Output<string | undefined>;
     /**
      * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
@@ -224,6 +227,9 @@ export interface ProjectState {
      * Project owner
      */
     owner?: pulumi.Input<string | undefined>;
+    /**
+     * The product type of the MaxCompute project.
+     */
     productType?: pulumi.Input<string | undefined>;
     /**
      * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
@@ -282,6 +288,9 @@ export interface ProjectArgs {
      * > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      */
     isLogical?: pulumi.Input<string | undefined>;
+    /**
+     * The product type of the MaxCompute project.
+     */
     productType?: pulumi.Input<string | undefined>;
     /**
      * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.

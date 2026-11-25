@@ -13,6 +13,8 @@ import (
 
 // This data source provides the acls in the region.
 //
+// > **NOTE:** Available since v1.21.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -37,22 +39,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Entry Block
-//
-// The entry mapping supports the following:
-//
-// * `entry`   - An IP addresses or CIDR blocks.
-// * `comment` - the comment of the entry.
-//
-// ## Listener Block
-//
-// The Listener mapping supports the following:
-//
-// * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
-// * `frontendPort` - the listener port.
-// * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-// * `aclType`      - the type of acl (such as white/black).
 func GetAcls(ctx *pulumi.Context, args *GetAclsArgs, opts ...pulumi.InvokeOption) (*GetAclsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAclsResult
@@ -79,7 +65,7 @@ type GetAclsArgs struct {
 
 // A collection of values returned by getAcls.
 type GetAclsResult struct {
-	// A list of SLB  acls. Each element contains the following attributes:
+	// A list of SLB acls. Each element contains the following attributes:
 	Acls []GetAclsAcl `pulumi:"acls"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -91,7 +77,7 @@ type GetAclsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// Resource group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// A mapping of tags to assign to the resource.
+	// (Optional) A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -133,7 +119,7 @@ func (o GetAclsResultOutput) ToGetAclsResultOutputWithContext(ctx context.Contex
 	return o
 }
 
-// A list of SLB  acls. Each element contains the following attributes:
+// A list of SLB acls. Each element contains the following attributes:
 func (o GetAclsResultOutput) Acls() GetAclsAclArrayOutput {
 	return o.ApplyT(func(v GetAclsResult) []GetAclsAcl { return v.Acls }).(GetAclsAclArrayOutput)
 }
@@ -166,7 +152,7 @@ func (o GetAclsResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclsResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// (Optional) A mapping of tags to assign to the resource.
 func (o GetAclsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetAclsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

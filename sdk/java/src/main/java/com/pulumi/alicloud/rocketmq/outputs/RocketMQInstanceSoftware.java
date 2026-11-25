@@ -12,9 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RocketMQInstanceSoftware {
     /**
-     * @return Upgrade time period.
+     * @return The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
+     * 
+     * @deprecated The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
      * 
      */
+    @Deprecated
     private @Nullable String maintainTime;
     /**
      * @return Software version.
@@ -29,9 +32,12 @@ public final class RocketMQInstanceSoftware {
 
     private RocketMQInstanceSoftware() {}
     /**
-     * @return Upgrade time period.
+     * @return The RocketMQ API has deprecated this maintenance-window setting. Omit it from new configurations; existing state remains readable. See [GetInstance](https://help.aliyun.com/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-getinstance).
+     * 
+     * @deprecated The RocketMQ API has deprecated maintainTime. Remove maintainTime from configuration; existing state remains readable.
      * 
      */
+    @Deprecated
     public Optional<String> maintainTime() {
         return Optional.ofNullable(this.maintainTime);
     }

@@ -50,11 +50,11 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserMfaDeviceResult> MfaDevices;
         /// <summary>
-        /// ProvisionType.
+        /// ProvisionType. Valid values: `Manual`, `Synchronized`.
         /// </summary>
         public readonly string ProvisionType;
         /// <summary>
-        /// User status. Valid values: `Enabled` and `Disabled`.
+        /// The status of user. Valid values: `Disabled`, `Enabled`.
         /// </summary>
         public readonly string Status;
         /// <summary>

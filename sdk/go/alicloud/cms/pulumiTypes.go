@@ -13,6 +13,643 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AddonReleaseEntityRules struct {
+	// A collection of entity types.
+	EntityTypes []string `pulumi:"entityTypes"`
+	// The property matching rules. See `fieldRules` below.
+	FieldRules []AddonReleaseEntityRulesFieldRule `pulumi:"fieldRules"`
+	// A collection of instance IDs.
+	InstanceIds []string `pulumi:"instanceIds"`
+	// A collection of IP address matching rules. See `ipMatchRule` below.
+	IpMatchRule *AddonReleaseEntityRulesIpMatchRule `pulumi:"ipMatchRule"`
+	// A collection of region IDs.
+	RegionIds []string `pulumi:"regionIds"`
+	// The resource group ID.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The tag-based service discovery rules. See `tags` below.
+	Tags []AddonReleaseEntityRulesTag `pulumi:"tags"`
+}
+
+// AddonReleaseEntityRulesInput is an input type that accepts AddonReleaseEntityRulesArgs and AddonReleaseEntityRulesOutput values.
+// You can construct a concrete instance of `AddonReleaseEntityRulesInput` via:
+//
+//	AddonReleaseEntityRulesArgs{...}
+type AddonReleaseEntityRulesInput interface {
+	pulumi.Input
+
+	ToAddonReleaseEntityRulesOutput() AddonReleaseEntityRulesOutput
+	ToAddonReleaseEntityRulesOutputWithContext(context.Context) AddonReleaseEntityRulesOutput
+}
+
+type AddonReleaseEntityRulesArgs struct {
+	// A collection of entity types.
+	EntityTypes pulumi.StringArrayInput `pulumi:"entityTypes"`
+	// The property matching rules. See `fieldRules` below.
+	FieldRules AddonReleaseEntityRulesFieldRuleArrayInput `pulumi:"fieldRules"`
+	// A collection of instance IDs.
+	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
+	// A collection of IP address matching rules. See `ipMatchRule` below.
+	IpMatchRule AddonReleaseEntityRulesIpMatchRulePtrInput `pulumi:"ipMatchRule"`
+	// A collection of region IDs.
+	RegionIds pulumi.StringArrayInput `pulumi:"regionIds"`
+	// The resource group ID.
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The tag-based service discovery rules. See `tags` below.
+	Tags AddonReleaseEntityRulesTagArrayInput `pulumi:"tags"`
+}
+
+func (AddonReleaseEntityRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonReleaseEntityRules)(nil)).Elem()
+}
+
+func (i AddonReleaseEntityRulesArgs) ToAddonReleaseEntityRulesOutput() AddonReleaseEntityRulesOutput {
+	return i.ToAddonReleaseEntityRulesOutputWithContext(context.Background())
+}
+
+func (i AddonReleaseEntityRulesArgs) ToAddonReleaseEntityRulesOutputWithContext(ctx context.Context) AddonReleaseEntityRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonReleaseEntityRulesOutput)
+}
+
+func (i AddonReleaseEntityRulesArgs) ToAddonReleaseEntityRulesPtrOutput() AddonReleaseEntityRulesPtrOutput {
+	return i.ToAddonReleaseEntityRulesPtrOutputWithContext(context.Background())
+}
+
+func (i AddonReleaseEntityRulesArgs) ToAddonReleaseEntityRulesPtrOutputWithContext(ctx context.Context) AddonReleaseEntityRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonReleaseEntityRulesOutput).ToAddonReleaseEntityRulesPtrOutputWithContext(ctx)
+}
+
+// AddonReleaseEntityRulesPtrInput is an input type that accepts AddonReleaseEntityRulesArgs, AddonReleaseEntityRulesPtr and AddonReleaseEntityRulesPtrOutput values.
+// You can construct a concrete instance of `AddonReleaseEntityRulesPtrInput` via:
+//
+//	        AddonReleaseEntityRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonReleaseEntityRulesPtrInput interface {
+	pulumi.Input
+
+	ToAddonReleaseEntityRulesPtrOutput() AddonReleaseEntityRulesPtrOutput
+	ToAddonReleaseEntityRulesPtrOutputWithContext(context.Context) AddonReleaseEntityRulesPtrOutput
+}
+
+type addonReleaseEntityRulesPtrType AddonReleaseEntityRulesArgs
+
+func AddonReleaseEntityRulesPtr(v *AddonReleaseEntityRulesArgs) AddonReleaseEntityRulesPtrInput {
+	return (*addonReleaseEntityRulesPtrType)(v)
+}
+
+func (*addonReleaseEntityRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonReleaseEntityRules)(nil)).Elem()
+}
+
+func (i *addonReleaseEntityRulesPtrType) ToAddonReleaseEntityRulesPtrOutput() AddonReleaseEntityRulesPtrOutput {
+	return i.ToAddonReleaseEntityRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *addonReleaseEntityRulesPtrType) ToAddonReleaseEntityRulesPtrOutputWithContext(ctx context.Context) AddonReleaseEntityRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonReleaseEntityRulesPtrOutput)
+}
+
+type AddonReleaseEntityRulesOutput struct{ *pulumi.OutputState }
+
+func (AddonReleaseEntityRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonReleaseEntityRules)(nil)).Elem()
+}
+
+func (o AddonReleaseEntityRulesOutput) ToAddonReleaseEntityRulesOutput() AddonReleaseEntityRulesOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesOutput) ToAddonReleaseEntityRulesOutputWithContext(ctx context.Context) AddonReleaseEntityRulesOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesOutput) ToAddonReleaseEntityRulesPtrOutput() AddonReleaseEntityRulesPtrOutput {
+	return o.ToAddonReleaseEntityRulesPtrOutputWithContext(context.Background())
+}
+
+func (o AddonReleaseEntityRulesOutput) ToAddonReleaseEntityRulesPtrOutputWithContext(ctx context.Context) AddonReleaseEntityRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonReleaseEntityRules) *AddonReleaseEntityRules {
+		return &v
+	}).(AddonReleaseEntityRulesPtrOutput)
+}
+
+// A collection of entity types.
+func (o AddonReleaseEntityRulesOutput) EntityTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRules) []string { return v.EntityTypes }).(pulumi.StringArrayOutput)
+}
+
+// The property matching rules. See `fieldRules` below.
+func (o AddonReleaseEntityRulesOutput) FieldRules() AddonReleaseEntityRulesFieldRuleArrayOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRules) []AddonReleaseEntityRulesFieldRule { return v.FieldRules }).(AddonReleaseEntityRulesFieldRuleArrayOutput)
+}
+
+// A collection of instance IDs.
+func (o AddonReleaseEntityRulesOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRules) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// A collection of IP address matching rules. See `ipMatchRule` below.
+func (o AddonReleaseEntityRulesOutput) IpMatchRule() AddonReleaseEntityRulesIpMatchRulePtrOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRules) *AddonReleaseEntityRulesIpMatchRule { return v.IpMatchRule }).(AddonReleaseEntityRulesIpMatchRulePtrOutput)
+}
+
+// A collection of region IDs.
+func (o AddonReleaseEntityRulesOutput) RegionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRules) []string { return v.RegionIds }).(pulumi.StringArrayOutput)
+}
+
+// The resource group ID.
+func (o AddonReleaseEntityRulesOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRules) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The tag-based service discovery rules. See `tags` below.
+func (o AddonReleaseEntityRulesOutput) Tags() AddonReleaseEntityRulesTagArrayOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRules) []AddonReleaseEntityRulesTag { return v.Tags }).(AddonReleaseEntityRulesTagArrayOutput)
+}
+
+type AddonReleaseEntityRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (AddonReleaseEntityRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonReleaseEntityRules)(nil)).Elem()
+}
+
+func (o AddonReleaseEntityRulesPtrOutput) ToAddonReleaseEntityRulesPtrOutput() AddonReleaseEntityRulesPtrOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesPtrOutput) ToAddonReleaseEntityRulesPtrOutputWithContext(ctx context.Context) AddonReleaseEntityRulesPtrOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesPtrOutput) Elem() AddonReleaseEntityRulesOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRules) AddonReleaseEntityRules {
+		if v != nil {
+			return *v
+		}
+		var ret AddonReleaseEntityRules
+		return ret
+	}).(AddonReleaseEntityRulesOutput)
+}
+
+// A collection of entity types.
+func (o AddonReleaseEntityRulesPtrOutput) EntityTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRules) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The property matching rules. See `fieldRules` below.
+func (o AddonReleaseEntityRulesPtrOutput) FieldRules() AddonReleaseEntityRulesFieldRuleArrayOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRules) []AddonReleaseEntityRulesFieldRule {
+		if v == nil {
+			return nil
+		}
+		return v.FieldRules
+	}).(AddonReleaseEntityRulesFieldRuleArrayOutput)
+}
+
+// A collection of instance IDs.
+func (o AddonReleaseEntityRulesPtrOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRules) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// A collection of IP address matching rules. See `ipMatchRule` below.
+func (o AddonReleaseEntityRulesPtrOutput) IpMatchRule() AddonReleaseEntityRulesIpMatchRulePtrOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRules) *AddonReleaseEntityRulesIpMatchRule {
+		if v == nil {
+			return nil
+		}
+		return v.IpMatchRule
+	}).(AddonReleaseEntityRulesIpMatchRulePtrOutput)
+}
+
+// A collection of region IDs.
+func (o AddonReleaseEntityRulesPtrOutput) RegionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRules) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The resource group ID.
+func (o AddonReleaseEntityRulesPtrOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRules) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tag-based service discovery rules. See `tags` below.
+func (o AddonReleaseEntityRulesPtrOutput) Tags() AddonReleaseEntityRulesTagArrayOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRules) []AddonReleaseEntityRulesTag {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(AddonReleaseEntityRulesTagArrayOutput)
+}
+
+type AddonReleaseEntityRulesFieldRule struct {
+	// The key of the property.
+	FieldKey *string `pulumi:"fieldKey"`
+	// A collection of property values.
+	FieldValues []string `pulumi:"fieldValues"`
+	// The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+	Op *string `pulumi:"op"`
+}
+
+// AddonReleaseEntityRulesFieldRuleInput is an input type that accepts AddonReleaseEntityRulesFieldRuleArgs and AddonReleaseEntityRulesFieldRuleOutput values.
+// You can construct a concrete instance of `AddonReleaseEntityRulesFieldRuleInput` via:
+//
+//	AddonReleaseEntityRulesFieldRuleArgs{...}
+type AddonReleaseEntityRulesFieldRuleInput interface {
+	pulumi.Input
+
+	ToAddonReleaseEntityRulesFieldRuleOutput() AddonReleaseEntityRulesFieldRuleOutput
+	ToAddonReleaseEntityRulesFieldRuleOutputWithContext(context.Context) AddonReleaseEntityRulesFieldRuleOutput
+}
+
+type AddonReleaseEntityRulesFieldRuleArgs struct {
+	// The key of the property.
+	FieldKey pulumi.StringPtrInput `pulumi:"fieldKey"`
+	// A collection of property values.
+	FieldValues pulumi.StringArrayInput `pulumi:"fieldValues"`
+	// The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+	Op pulumi.StringPtrInput `pulumi:"op"`
+}
+
+func (AddonReleaseEntityRulesFieldRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonReleaseEntityRulesFieldRule)(nil)).Elem()
+}
+
+func (i AddonReleaseEntityRulesFieldRuleArgs) ToAddonReleaseEntityRulesFieldRuleOutput() AddonReleaseEntityRulesFieldRuleOutput {
+	return i.ToAddonReleaseEntityRulesFieldRuleOutputWithContext(context.Background())
+}
+
+func (i AddonReleaseEntityRulesFieldRuleArgs) ToAddonReleaseEntityRulesFieldRuleOutputWithContext(ctx context.Context) AddonReleaseEntityRulesFieldRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonReleaseEntityRulesFieldRuleOutput)
+}
+
+// AddonReleaseEntityRulesFieldRuleArrayInput is an input type that accepts AddonReleaseEntityRulesFieldRuleArray and AddonReleaseEntityRulesFieldRuleArrayOutput values.
+// You can construct a concrete instance of `AddonReleaseEntityRulesFieldRuleArrayInput` via:
+//
+//	AddonReleaseEntityRulesFieldRuleArray{ AddonReleaseEntityRulesFieldRuleArgs{...} }
+type AddonReleaseEntityRulesFieldRuleArrayInput interface {
+	pulumi.Input
+
+	ToAddonReleaseEntityRulesFieldRuleArrayOutput() AddonReleaseEntityRulesFieldRuleArrayOutput
+	ToAddonReleaseEntityRulesFieldRuleArrayOutputWithContext(context.Context) AddonReleaseEntityRulesFieldRuleArrayOutput
+}
+
+type AddonReleaseEntityRulesFieldRuleArray []AddonReleaseEntityRulesFieldRuleInput
+
+func (AddonReleaseEntityRulesFieldRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddonReleaseEntityRulesFieldRule)(nil)).Elem()
+}
+
+func (i AddonReleaseEntityRulesFieldRuleArray) ToAddonReleaseEntityRulesFieldRuleArrayOutput() AddonReleaseEntityRulesFieldRuleArrayOutput {
+	return i.ToAddonReleaseEntityRulesFieldRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AddonReleaseEntityRulesFieldRuleArray) ToAddonReleaseEntityRulesFieldRuleArrayOutputWithContext(ctx context.Context) AddonReleaseEntityRulesFieldRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonReleaseEntityRulesFieldRuleArrayOutput)
+}
+
+type AddonReleaseEntityRulesFieldRuleOutput struct{ *pulumi.OutputState }
+
+func (AddonReleaseEntityRulesFieldRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonReleaseEntityRulesFieldRule)(nil)).Elem()
+}
+
+func (o AddonReleaseEntityRulesFieldRuleOutput) ToAddonReleaseEntityRulesFieldRuleOutput() AddonReleaseEntityRulesFieldRuleOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesFieldRuleOutput) ToAddonReleaseEntityRulesFieldRuleOutputWithContext(ctx context.Context) AddonReleaseEntityRulesFieldRuleOutput {
+	return o
+}
+
+// The key of the property.
+func (o AddonReleaseEntityRulesFieldRuleOutput) FieldKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRulesFieldRule) *string { return v.FieldKey }).(pulumi.StringPtrOutput)
+}
+
+// A collection of property values.
+func (o AddonReleaseEntityRulesFieldRuleOutput) FieldValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRulesFieldRule) []string { return v.FieldValues }).(pulumi.StringArrayOutput)
+}
+
+// The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+func (o AddonReleaseEntityRulesFieldRuleOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRulesFieldRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+type AddonReleaseEntityRulesFieldRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AddonReleaseEntityRulesFieldRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddonReleaseEntityRulesFieldRule)(nil)).Elem()
+}
+
+func (o AddonReleaseEntityRulesFieldRuleArrayOutput) ToAddonReleaseEntityRulesFieldRuleArrayOutput() AddonReleaseEntityRulesFieldRuleArrayOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesFieldRuleArrayOutput) ToAddonReleaseEntityRulesFieldRuleArrayOutputWithContext(ctx context.Context) AddonReleaseEntityRulesFieldRuleArrayOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesFieldRuleArrayOutput) Index(i pulumi.IntInput) AddonReleaseEntityRulesFieldRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddonReleaseEntityRulesFieldRule {
+		return vs[0].([]AddonReleaseEntityRulesFieldRule)[vs[1].(int)]
+	}).(AddonReleaseEntityRulesFieldRuleOutput)
+}
+
+type AddonReleaseEntityRulesIpMatchRule struct {
+	// The CIDR block to match against.
+	IpCidr *string `pulumi:"ipCidr"`
+	// The key of the IP address field.
+	IpFieldKey *string `pulumi:"ipFieldKey"`
+}
+
+// AddonReleaseEntityRulesIpMatchRuleInput is an input type that accepts AddonReleaseEntityRulesIpMatchRuleArgs and AddonReleaseEntityRulesIpMatchRuleOutput values.
+// You can construct a concrete instance of `AddonReleaseEntityRulesIpMatchRuleInput` via:
+//
+//	AddonReleaseEntityRulesIpMatchRuleArgs{...}
+type AddonReleaseEntityRulesIpMatchRuleInput interface {
+	pulumi.Input
+
+	ToAddonReleaseEntityRulesIpMatchRuleOutput() AddonReleaseEntityRulesIpMatchRuleOutput
+	ToAddonReleaseEntityRulesIpMatchRuleOutputWithContext(context.Context) AddonReleaseEntityRulesIpMatchRuleOutput
+}
+
+type AddonReleaseEntityRulesIpMatchRuleArgs struct {
+	// The CIDR block to match against.
+	IpCidr pulumi.StringPtrInput `pulumi:"ipCidr"`
+	// The key of the IP address field.
+	IpFieldKey pulumi.StringPtrInput `pulumi:"ipFieldKey"`
+}
+
+func (AddonReleaseEntityRulesIpMatchRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonReleaseEntityRulesIpMatchRule)(nil)).Elem()
+}
+
+func (i AddonReleaseEntityRulesIpMatchRuleArgs) ToAddonReleaseEntityRulesIpMatchRuleOutput() AddonReleaseEntityRulesIpMatchRuleOutput {
+	return i.ToAddonReleaseEntityRulesIpMatchRuleOutputWithContext(context.Background())
+}
+
+func (i AddonReleaseEntityRulesIpMatchRuleArgs) ToAddonReleaseEntityRulesIpMatchRuleOutputWithContext(ctx context.Context) AddonReleaseEntityRulesIpMatchRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonReleaseEntityRulesIpMatchRuleOutput)
+}
+
+func (i AddonReleaseEntityRulesIpMatchRuleArgs) ToAddonReleaseEntityRulesIpMatchRulePtrOutput() AddonReleaseEntityRulesIpMatchRulePtrOutput {
+	return i.ToAddonReleaseEntityRulesIpMatchRulePtrOutputWithContext(context.Background())
+}
+
+func (i AddonReleaseEntityRulesIpMatchRuleArgs) ToAddonReleaseEntityRulesIpMatchRulePtrOutputWithContext(ctx context.Context) AddonReleaseEntityRulesIpMatchRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonReleaseEntityRulesIpMatchRuleOutput).ToAddonReleaseEntityRulesIpMatchRulePtrOutputWithContext(ctx)
+}
+
+// AddonReleaseEntityRulesIpMatchRulePtrInput is an input type that accepts AddonReleaseEntityRulesIpMatchRuleArgs, AddonReleaseEntityRulesIpMatchRulePtr and AddonReleaseEntityRulesIpMatchRulePtrOutput values.
+// You can construct a concrete instance of `AddonReleaseEntityRulesIpMatchRulePtrInput` via:
+//
+//	        AddonReleaseEntityRulesIpMatchRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddonReleaseEntityRulesIpMatchRulePtrInput interface {
+	pulumi.Input
+
+	ToAddonReleaseEntityRulesIpMatchRulePtrOutput() AddonReleaseEntityRulesIpMatchRulePtrOutput
+	ToAddonReleaseEntityRulesIpMatchRulePtrOutputWithContext(context.Context) AddonReleaseEntityRulesIpMatchRulePtrOutput
+}
+
+type addonReleaseEntityRulesIpMatchRulePtrType AddonReleaseEntityRulesIpMatchRuleArgs
+
+func AddonReleaseEntityRulesIpMatchRulePtr(v *AddonReleaseEntityRulesIpMatchRuleArgs) AddonReleaseEntityRulesIpMatchRulePtrInput {
+	return (*addonReleaseEntityRulesIpMatchRulePtrType)(v)
+}
+
+func (*addonReleaseEntityRulesIpMatchRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonReleaseEntityRulesIpMatchRule)(nil)).Elem()
+}
+
+func (i *addonReleaseEntityRulesIpMatchRulePtrType) ToAddonReleaseEntityRulesIpMatchRulePtrOutput() AddonReleaseEntityRulesIpMatchRulePtrOutput {
+	return i.ToAddonReleaseEntityRulesIpMatchRulePtrOutputWithContext(context.Background())
+}
+
+func (i *addonReleaseEntityRulesIpMatchRulePtrType) ToAddonReleaseEntityRulesIpMatchRulePtrOutputWithContext(ctx context.Context) AddonReleaseEntityRulesIpMatchRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonReleaseEntityRulesIpMatchRulePtrOutput)
+}
+
+type AddonReleaseEntityRulesIpMatchRuleOutput struct{ *pulumi.OutputState }
+
+func (AddonReleaseEntityRulesIpMatchRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonReleaseEntityRulesIpMatchRule)(nil)).Elem()
+}
+
+func (o AddonReleaseEntityRulesIpMatchRuleOutput) ToAddonReleaseEntityRulesIpMatchRuleOutput() AddonReleaseEntityRulesIpMatchRuleOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesIpMatchRuleOutput) ToAddonReleaseEntityRulesIpMatchRuleOutputWithContext(ctx context.Context) AddonReleaseEntityRulesIpMatchRuleOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesIpMatchRuleOutput) ToAddonReleaseEntityRulesIpMatchRulePtrOutput() AddonReleaseEntityRulesIpMatchRulePtrOutput {
+	return o.ToAddonReleaseEntityRulesIpMatchRulePtrOutputWithContext(context.Background())
+}
+
+func (o AddonReleaseEntityRulesIpMatchRuleOutput) ToAddonReleaseEntityRulesIpMatchRulePtrOutputWithContext(ctx context.Context) AddonReleaseEntityRulesIpMatchRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonReleaseEntityRulesIpMatchRule) *AddonReleaseEntityRulesIpMatchRule {
+		return &v
+	}).(AddonReleaseEntityRulesIpMatchRulePtrOutput)
+}
+
+// The CIDR block to match against.
+func (o AddonReleaseEntityRulesIpMatchRuleOutput) IpCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRulesIpMatchRule) *string { return v.IpCidr }).(pulumi.StringPtrOutput)
+}
+
+// The key of the IP address field.
+func (o AddonReleaseEntityRulesIpMatchRuleOutput) IpFieldKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRulesIpMatchRule) *string { return v.IpFieldKey }).(pulumi.StringPtrOutput)
+}
+
+type AddonReleaseEntityRulesIpMatchRulePtrOutput struct{ *pulumi.OutputState }
+
+func (AddonReleaseEntityRulesIpMatchRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddonReleaseEntityRulesIpMatchRule)(nil)).Elem()
+}
+
+func (o AddonReleaseEntityRulesIpMatchRulePtrOutput) ToAddonReleaseEntityRulesIpMatchRulePtrOutput() AddonReleaseEntityRulesIpMatchRulePtrOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesIpMatchRulePtrOutput) ToAddonReleaseEntityRulesIpMatchRulePtrOutputWithContext(ctx context.Context) AddonReleaseEntityRulesIpMatchRulePtrOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesIpMatchRulePtrOutput) Elem() AddonReleaseEntityRulesIpMatchRuleOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRulesIpMatchRule) AddonReleaseEntityRulesIpMatchRule {
+		if v != nil {
+			return *v
+		}
+		var ret AddonReleaseEntityRulesIpMatchRule
+		return ret
+	}).(AddonReleaseEntityRulesIpMatchRuleOutput)
+}
+
+// The CIDR block to match against.
+func (o AddonReleaseEntityRulesIpMatchRulePtrOutput) IpCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRulesIpMatchRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpCidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// The key of the IP address field.
+func (o AddonReleaseEntityRulesIpMatchRulePtrOutput) IpFieldKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddonReleaseEntityRulesIpMatchRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFieldKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type AddonReleaseEntityRulesTag struct {
+	// The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+	Op *string `pulumi:"op"`
+	// The key of the tag.
+	TagKey *string `pulumi:"tagKey"`
+	// A collection of tag values.
+	TagValues []string `pulumi:"tagValues"`
+}
+
+// AddonReleaseEntityRulesTagInput is an input type that accepts AddonReleaseEntityRulesTagArgs and AddonReleaseEntityRulesTagOutput values.
+// You can construct a concrete instance of `AddonReleaseEntityRulesTagInput` via:
+//
+//	AddonReleaseEntityRulesTagArgs{...}
+type AddonReleaseEntityRulesTagInput interface {
+	pulumi.Input
+
+	ToAddonReleaseEntityRulesTagOutput() AddonReleaseEntityRulesTagOutput
+	ToAddonReleaseEntityRulesTagOutputWithContext(context.Context) AddonReleaseEntityRulesTagOutput
+}
+
+type AddonReleaseEntityRulesTagArgs struct {
+	// The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+	Op pulumi.StringPtrInput `pulumi:"op"`
+	// The key of the tag.
+	TagKey pulumi.StringPtrInput `pulumi:"tagKey"`
+	// A collection of tag values.
+	TagValues pulumi.StringArrayInput `pulumi:"tagValues"`
+}
+
+func (AddonReleaseEntityRulesTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonReleaseEntityRulesTag)(nil)).Elem()
+}
+
+func (i AddonReleaseEntityRulesTagArgs) ToAddonReleaseEntityRulesTagOutput() AddonReleaseEntityRulesTagOutput {
+	return i.ToAddonReleaseEntityRulesTagOutputWithContext(context.Background())
+}
+
+func (i AddonReleaseEntityRulesTagArgs) ToAddonReleaseEntityRulesTagOutputWithContext(ctx context.Context) AddonReleaseEntityRulesTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonReleaseEntityRulesTagOutput)
+}
+
+// AddonReleaseEntityRulesTagArrayInput is an input type that accepts AddonReleaseEntityRulesTagArray and AddonReleaseEntityRulesTagArrayOutput values.
+// You can construct a concrete instance of `AddonReleaseEntityRulesTagArrayInput` via:
+//
+//	AddonReleaseEntityRulesTagArray{ AddonReleaseEntityRulesTagArgs{...} }
+type AddonReleaseEntityRulesTagArrayInput interface {
+	pulumi.Input
+
+	ToAddonReleaseEntityRulesTagArrayOutput() AddonReleaseEntityRulesTagArrayOutput
+	ToAddonReleaseEntityRulesTagArrayOutputWithContext(context.Context) AddonReleaseEntityRulesTagArrayOutput
+}
+
+type AddonReleaseEntityRulesTagArray []AddonReleaseEntityRulesTagInput
+
+func (AddonReleaseEntityRulesTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddonReleaseEntityRulesTag)(nil)).Elem()
+}
+
+func (i AddonReleaseEntityRulesTagArray) ToAddonReleaseEntityRulesTagArrayOutput() AddonReleaseEntityRulesTagArrayOutput {
+	return i.ToAddonReleaseEntityRulesTagArrayOutputWithContext(context.Background())
+}
+
+func (i AddonReleaseEntityRulesTagArray) ToAddonReleaseEntityRulesTagArrayOutputWithContext(ctx context.Context) AddonReleaseEntityRulesTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddonReleaseEntityRulesTagArrayOutput)
+}
+
+type AddonReleaseEntityRulesTagOutput struct{ *pulumi.OutputState }
+
+func (AddonReleaseEntityRulesTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddonReleaseEntityRulesTag)(nil)).Elem()
+}
+
+func (o AddonReleaseEntityRulesTagOutput) ToAddonReleaseEntityRulesTagOutput() AddonReleaseEntityRulesTagOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesTagOutput) ToAddonReleaseEntityRulesTagOutputWithContext(ctx context.Context) AddonReleaseEntityRulesTagOutput {
+	return o
+}
+
+// The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+func (o AddonReleaseEntityRulesTagOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRulesTag) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+// The key of the tag.
+func (o AddonReleaseEntityRulesTagOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRulesTag) *string { return v.TagKey }).(pulumi.StringPtrOutput)
+}
+
+// A collection of tag values.
+func (o AddonReleaseEntityRulesTagOutput) TagValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddonReleaseEntityRulesTag) []string { return v.TagValues }).(pulumi.StringArrayOutput)
+}
+
+type AddonReleaseEntityRulesTagArrayOutput struct{ *pulumi.OutputState }
+
+func (AddonReleaseEntityRulesTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddonReleaseEntityRulesTag)(nil)).Elem()
+}
+
+func (o AddonReleaseEntityRulesTagArrayOutput) ToAddonReleaseEntityRulesTagArrayOutput() AddonReleaseEntityRulesTagArrayOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesTagArrayOutput) ToAddonReleaseEntityRulesTagArrayOutputWithContext(ctx context.Context) AddonReleaseEntityRulesTagArrayOutput {
+	return o
+}
+
+func (o AddonReleaseEntityRulesTagArrayOutput) Index(i pulumi.IntInput) AddonReleaseEntityRulesTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddonReleaseEntityRulesTag {
+		return vs[0].([]AddonReleaseEntityRulesTag)[vs[1].(int)]
+	}).(AddonReleaseEntityRulesTagOutput)
+}
+
 type AlarmCompositeExpression struct {
 	// The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
 	ExpressionListJoin *string `pulumi:"expressionListJoin"`
@@ -9292,6 +9929,7 @@ func (o GroupMetricRuleEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 
 type GroupMetricRuleTarget struct {
 	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	//
 	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	Arn *string `pulumi:"arn"`
 	// The ID of the resource for which alerts are triggered.
@@ -9315,6 +9953,7 @@ type GroupMetricRuleTargetInput interface {
 
 type GroupMetricRuleTargetArgs struct {
 	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	//
 	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	Arn pulumi.StringPtrInput `pulumi:"arn"`
 	// The ID of the resource for which alerts are triggered.
@@ -9377,6 +10016,7 @@ func (o GroupMetricRuleTargetOutput) ToGroupMetricRuleTargetOutputWithContext(ct
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the resource.
+//
 // > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 func (o GroupMetricRuleTargetOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupMetricRuleTarget) *string { return v.Arn }).(pulumi.StringPtrOutput)
@@ -10351,6 +10991,14 @@ type IntegrationPolicyEntityGroup struct {
 	ClusterEntityType *string `pulumi:"clusterEntityType"`
 	// The cluster ID.
 	ClusterId *string `pulumi:"clusterId"`
+	// The cluster Namespace.
+	//
+	// > **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+	ClusterNamespace *string `pulumi:"clusterNamespace"`
+	// Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+	DisablePolicyShare *bool `pulumi:"disablePolicyShare"`
+	// The ID of the user who owns the cluster.
+	EntityUserId *string `pulumi:"entityUserId"`
 }
 
 // IntegrationPolicyEntityGroupInput is an input type that accepts IntegrationPolicyEntityGroupArgs and IntegrationPolicyEntityGroupOutput values.
@@ -10369,6 +11017,14 @@ type IntegrationPolicyEntityGroupArgs struct {
 	ClusterEntityType pulumi.StringPtrInput `pulumi:"clusterEntityType"`
 	// The cluster ID.
 	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// The cluster Namespace.
+	//
+	// > **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+	ClusterNamespace pulumi.StringPtrInput `pulumi:"clusterNamespace"`
+	// Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+	DisablePolicyShare pulumi.BoolPtrInput `pulumi:"disablePolicyShare"`
+	// The ID of the user who owns the cluster.
+	EntityUserId pulumi.StringPtrInput `pulumi:"entityUserId"`
 }
 
 func (IntegrationPolicyEntityGroupArgs) ElementType() reflect.Type {
@@ -10458,6 +11114,23 @@ func (o IntegrationPolicyEntityGroupOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationPolicyEntityGroup) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
+// The cluster Namespace.
+//
+// > **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+func (o IntegrationPolicyEntityGroupOutput) ClusterNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationPolicyEntityGroup) *string { return v.ClusterNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+func (o IntegrationPolicyEntityGroupOutput) DisablePolicyShare() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntegrationPolicyEntityGroup) *bool { return v.DisablePolicyShare }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the user who owns the cluster.
+func (o IntegrationPolicyEntityGroupOutput) EntityUserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationPolicyEntityGroup) *string { return v.EntityUserId }).(pulumi.StringPtrOutput)
+}
+
 type IntegrationPolicyEntityGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (IntegrationPolicyEntityGroupPtrOutput) ElementType() reflect.Type {
@@ -10499,6 +11172,38 @@ func (o IntegrationPolicyEntityGroupPtrOutput) ClusterId() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cluster Namespace.
+//
+// > **NOTE:** If `disablePolicyShare` is set to `true`, you can create multiple policies for a container cluster, and `clusterNamespace` is required.
+func (o IntegrationPolicyEntityGroupPtrOutput) ClusterNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationPolicyEntityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+func (o IntegrationPolicyEntityGroupPtrOutput) DisablePolicyShare() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IntegrationPolicyEntityGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePolicyShare
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the user who owns the cluster.
+func (o IntegrationPolicyEntityGroupPtrOutput) EntityUserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationPolicyEntityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityUserId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10610,14 +11315,17 @@ func (o MetricRuleBlackListMetricArrayOutput) Index(i pulumi.IntInput) MetricRul
 
 type MetricRuleTemplateAlertTemplate struct {
 	// The abbreviation of the Alibaba Cloud service name.
+	//
 	// > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
 	Category string `pulumi:"category"`
 	// The information about the trigger condition based on the alert level. See `escalations` below.
 	Escalations *MetricRuleTemplateAlertTemplateEscalations `pulumi:"escalations"`
 	// The name of the metric.
+	//
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricName string `pulumi:"metricName"`
 	// The namespace of the cloud service.
+	//
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Namespace string `pulumi:"namespace"`
 	// The name of the alert rule.
@@ -10639,14 +11347,17 @@ type MetricRuleTemplateAlertTemplateInput interface {
 
 type MetricRuleTemplateAlertTemplateArgs struct {
 	// The abbreviation of the Alibaba Cloud service name.
+	//
 	// > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
 	Category pulumi.StringInput `pulumi:"category"`
 	// The information about the trigger condition based on the alert level. See `escalations` below.
 	Escalations MetricRuleTemplateAlertTemplateEscalationsPtrInput `pulumi:"escalations"`
 	// The name of the metric.
+	//
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricName pulumi.StringInput `pulumi:"metricName"`
 	// The namespace of the cloud service.
+	//
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// The name of the alert rule.
@@ -10707,6 +11418,7 @@ func (o MetricRuleTemplateAlertTemplateOutput) ToMetricRuleTemplateAlertTemplate
 }
 
 // The abbreviation of the Alibaba Cloud service name.
+//
 // > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
 func (o MetricRuleTemplateAlertTemplateOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.Category }).(pulumi.StringOutput)
@@ -10720,12 +11432,14 @@ func (o MetricRuleTemplateAlertTemplateOutput) Escalations() MetricRuleTemplateA
 }
 
 // The name of the metric.
+//
 // > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 func (o MetricRuleTemplateAlertTemplateOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 // The namespace of the cloud service.
+//
 // > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 func (o MetricRuleTemplateAlertTemplateOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.Namespace }).(pulumi.StringOutput)
@@ -13246,14 +13960,14 @@ type GetAlarmContactsContact struct {
 	// The status of the email address.
 	ChannelsStateMail string `pulumi:"channelsStateMail"`
 	// The status of the phone number.
-	// * `Lang` - The language type of the alarm.
 	ChannelsStatusSms string `pulumi:"channelsStatusSms"`
 	// The alert groups to which the alarm contact is added.
 	ContactGroups []string `pulumi:"contactGroups"`
 	// The description of the alarm contact.
 	Describe string `pulumi:"describe"`
 	// The ID of the alarm contact.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The language type of the alarm.
 	Lang string `pulumi:"lang"`
 }
 
@@ -13286,14 +14000,14 @@ type GetAlarmContactsContactArgs struct {
 	// The status of the email address.
 	ChannelsStateMail pulumi.StringInput `pulumi:"channelsStateMail"`
 	// The status of the phone number.
-	// * `Lang` - The language type of the alarm.
 	ChannelsStatusSms pulumi.StringInput `pulumi:"channelsStatusSms"`
 	// The alert groups to which the alarm contact is added.
 	ContactGroups pulumi.StringArrayInput `pulumi:"contactGroups"`
 	// The description of the alarm contact.
 	Describe pulumi.StringInput `pulumi:"describe"`
 	// The ID of the alarm contact.
-	Id   pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The language type of the alarm.
 	Lang pulumi.StringInput `pulumi:"lang"`
 }
 
@@ -13389,7 +14103,6 @@ func (o GetAlarmContactsContactOutput) ChannelsStateMail() pulumi.StringOutput {
 }
 
 // The status of the phone number.
-// * `Lang` - The language type of the alarm.
 func (o GetAlarmContactsContactOutput) ChannelsStatusSms() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsStatusSms }).(pulumi.StringOutput)
 }
@@ -13409,6 +14122,7 @@ func (o GetAlarmContactsContactOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The language type of the alarm.
 func (o GetAlarmContactsContactOutput) Lang() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.Lang }).(pulumi.StringOutput)
 }
@@ -19211,7 +19925,7 @@ type GetEventRulesRule struct {
 	Id string `pulumi:"id"`
 	// The mute period during which new alerts are not sent even if the trigger conditions are met.
 	SilenceTime int `pulumi:"silenceTime"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `DISABLED`, `ENABLED`.
 	Status string `pulumi:"status"`
 }
 
@@ -19241,7 +19955,7 @@ type GetEventRulesRuleArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The mute period during which new alerts are not sent even if the trigger conditions are met.
 	SilenceTime pulumi.IntInput `pulumi:"silenceTime"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `DISABLED`, `ENABLED`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -19331,7 +20045,7 @@ func (o GetEventRulesRuleOutput) SilenceTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEventRulesRule) int { return v.SilenceTime }).(pulumi.IntOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `DISABLED`, `ENABLED`.
 func (o GetEventRulesRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventRulesRule) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -19615,7 +20329,7 @@ type GetGroupMetricRulesRule struct {
 	EffectiveInterval string `pulumi:"effectiveInterval"`
 	// The subject of the alert notification email.
 	EmailSubject string `pulumi:"emailSubject"`
-	// Indicates whether the alert rule is enabled.
+	// EnableState.
 	EnableState bool `pulumi:"enableState"`
 	// Alarm level.
 	Escalations []GetGroupMetricRulesRuleEscalation `pulumi:"escalations"`
@@ -19641,7 +20355,7 @@ type GetGroupMetricRulesRule struct {
 	SilenceTime int `pulumi:"silenceTime"`
 	// The type of the alert rule. The value is fixed to METRIC, indicating an alert rule for time series metrics.
 	SourceType string `pulumi:"sourceType"`
-	// The status of Group Metric Rule..
+	// The status of Group Metric Rule.
 	Status string `pulumi:"status"`
 	// The callback URL.
 	Webhook string `pulumi:"webhook"`
@@ -19667,7 +20381,7 @@ type GetGroupMetricRulesRuleArgs struct {
 	EffectiveInterval pulumi.StringInput `pulumi:"effectiveInterval"`
 	// The subject of the alert notification email.
 	EmailSubject pulumi.StringInput `pulumi:"emailSubject"`
-	// Indicates whether the alert rule is enabled.
+	// EnableState.
 	EnableState pulumi.BoolInput `pulumi:"enableState"`
 	// Alarm level.
 	Escalations GetGroupMetricRulesRuleEscalationArrayInput `pulumi:"escalations"`
@@ -19693,7 +20407,7 @@ type GetGroupMetricRulesRuleArgs struct {
 	SilenceTime pulumi.IntInput `pulumi:"silenceTime"`
 	// The type of the alert rule. The value is fixed to METRIC, indicating an alert rule for time series metrics.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
-	// The status of Group Metric Rule..
+	// The status of Group Metric Rule.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The callback URL.
 	Webhook pulumi.StringInput `pulumi:"webhook"`
@@ -19770,7 +20484,7 @@ func (o GetGroupMetricRulesRuleOutput) EmailSubject() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.EmailSubject }).(pulumi.StringOutput)
 }
 
-// Indicates whether the alert rule is enabled.
+// EnableState.
 func (o GetGroupMetricRulesRuleOutput) EnableState() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRule) bool { return v.EnableState }).(pulumi.BoolOutput)
 }
@@ -19835,7 +20549,7 @@ func (o GetGroupMetricRulesRuleOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.SourceType }).(pulumi.StringOutput)
 }
 
-// The status of Group Metric Rule..
+// The status of Group Metric Rule.
 func (o GetGroupMetricRulesRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRule) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -19983,13 +20697,13 @@ func (o GetGroupMetricRulesRuleEscalationArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetGroupMetricRulesRuleEscalationCritical struct {
-	// The comparison operator of the threshold for critical-level alerts.
+	// The comparison operator of the threshold for warn-level alerts.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for critical-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics string `pulumi:"statistics"`
-	// The threshold for critical-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold string `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times int `pulumi:"times"`
 }
 
@@ -20005,13 +20719,13 @@ type GetGroupMetricRulesRuleEscalationCriticalInput interface {
 }
 
 type GetGroupMetricRulesRuleEscalationCriticalArgs struct {
-	// The comparison operator of the threshold for critical-level alerts.
+	// The comparison operator of the threshold for warn-level alerts.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for critical-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics pulumi.StringInput `pulumi:"statistics"`
-	// The threshold for critical-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold pulumi.StringInput `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times pulumi.IntInput `pulumi:"times"`
 }
 
@@ -20066,22 +20780,22 @@ func (o GetGroupMetricRulesRuleEscalationCriticalOutput) ToGetGroupMetricRulesRu
 	return o
 }
 
-// The comparison operator of the threshold for critical-level alerts.
+// The comparison operator of the threshold for warn-level alerts.
 func (o GetGroupMetricRulesRuleEscalationCriticalOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) string { return v.ComparisonOperator }).(pulumi.StringOutput)
 }
 
-// The statistical aggregation method for critical-level alerts.
+// The statistical aggregation method for warn-level alerts.
 func (o GetGroupMetricRulesRuleEscalationCriticalOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
-// The threshold for critical-level alerts.
+// The threshold for warn-level alerts.
 func (o GetGroupMetricRulesRuleEscalationCriticalOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o GetGroupMetricRulesRuleEscalationCriticalOutput) Times() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) int { return v.Times }).(pulumi.IntOutput)
 }
@@ -20107,13 +20821,13 @@ func (o GetGroupMetricRulesRuleEscalationCriticalArrayOutput) Index(i pulumi.Int
 }
 
 type GetGroupMetricRulesRuleEscalationInfo struct {
-	// The comparison operator of the threshold for info-level alerts.
+	// The comparison operator of the threshold for warn-level alerts.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for info-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics string `pulumi:"statistics"`
-	// The threshold for info-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold string `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a info-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times int `pulumi:"times"`
 }
 
@@ -20129,13 +20843,13 @@ type GetGroupMetricRulesRuleEscalationInfoInput interface {
 }
 
 type GetGroupMetricRulesRuleEscalationInfoArgs struct {
-	// The comparison operator of the threshold for info-level alerts.
+	// The comparison operator of the threshold for warn-level alerts.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for info-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics pulumi.StringInput `pulumi:"statistics"`
-	// The threshold for info-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold pulumi.StringInput `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a info-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times pulumi.IntInput `pulumi:"times"`
 }
 
@@ -20190,22 +20904,22 @@ func (o GetGroupMetricRulesRuleEscalationInfoOutput) ToGetGroupMetricRulesRuleEs
 	return o
 }
 
-// The comparison operator of the threshold for info-level alerts.
+// The comparison operator of the threshold for warn-level alerts.
 func (o GetGroupMetricRulesRuleEscalationInfoOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) string { return v.ComparisonOperator }).(pulumi.StringOutput)
 }
 
-// The statistical aggregation method for info-level alerts.
+// The statistical aggregation method for warn-level alerts.
 func (o GetGroupMetricRulesRuleEscalationInfoOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
-// The threshold for info-level alerts.
+// The threshold for warn-level alerts.
 func (o GetGroupMetricRulesRuleEscalationInfoOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before a info-level alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o GetGroupMetricRulesRuleEscalationInfoOutput) Times() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) int { return v.Times }).(pulumi.IntOutput)
 }
@@ -20578,7 +21292,7 @@ func (o GetHybridMonitorDatasDataLabelArrayOutput) Index(i pulumi.IntInput) GetH
 type GetHybridMonitorDatasDataValue struct {
 	// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
 	Ts string `pulumi:"ts"`
-	// The value of the monitoring indicator.
+	// Label value.
 	Value string `pulumi:"value"`
 }
 
@@ -20596,7 +21310,7 @@ type GetHybridMonitorDatasDataValueInput interface {
 type GetHybridMonitorDatasDataValueArgs struct {
 	// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
 	Ts pulumi.StringInput `pulumi:"ts"`
-	// The value of the monitoring indicator.
+	// Label value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -20656,7 +21370,7 @@ func (o GetHybridMonitorDatasDataValueOutput) Ts() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorDatasDataValue) string { return v.Ts }).(pulumi.StringOutput)
 }
 
-// The value of the monitoring indicator.
+// Label value.
 func (o GetHybridMonitorDatasDataValueOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorDatasDataValue) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -20688,7 +21402,7 @@ type GetHybridMonitorFcTasksTask struct {
 	HybridMonitorFcTaskId string `pulumi:"hybridMonitorFcTaskId"`
 	// The ID of the Hybrid Monitor Fc Task. The value formats as `<hybrid_monitor_fc_task_id>:<namespace>`.
 	Id string `pulumi:"id"`
-	// The index warehouse where the host belongs.
+	// The name of the namespace.
 	Namespace string `pulumi:"namespace"`
 	// The ID of the member account.
 	TargetUserId string `pulumi:"targetUserId"`
@@ -20714,7 +21428,7 @@ type GetHybridMonitorFcTasksTaskArgs struct {
 	HybridMonitorFcTaskId pulumi.StringInput `pulumi:"hybridMonitorFcTaskId"`
 	// The ID of the Hybrid Monitor Fc Task. The value formats as `<hybrid_monitor_fc_task_id>:<namespace>`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The index warehouse where the host belongs.
+	// The name of the namespace.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// The ID of the member account.
 	TargetUserId pulumi.StringInput `pulumi:"targetUserId"`
@@ -20788,7 +21502,7 @@ func (o GetHybridMonitorFcTasksTaskOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorFcTasksTask) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The index warehouse where the host belongs.
+// The name of the namespace.
 func (o GetHybridMonitorFcTasksTaskOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorFcTasksTask) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -20862,7 +21576,7 @@ type GetHybridMonitorSlsTasksTask struct {
 	MatchExpressRelation string `pulumi:"matchExpressRelation"`
 	// The matching condition of the instance in the application Group.
 	MatchExpresses []GetHybridMonitorSlsTasksTaskMatchExpress `pulumi:"matchExpresses"`
-	// The namespace to which the host belongs.
+	// The name of the namespace.
 	Namespace string `pulumi:"namespace"`
 	// The network type of the host.
 	NetworkType string `pulumi:"networkType"`
@@ -20876,7 +21590,8 @@ type GetHybridMonitorSlsTasksTask struct {
 	TaskType string `pulumi:"taskType"`
 	// The region where the host resides.
 	UploadRegion string `pulumi:"uploadRegion"`
-	YarmConfig   string `pulumi:"yarmConfig"`
+	// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+	YarmConfig string `pulumi:"yarmConfig"`
 }
 
 // GetHybridMonitorSlsTasksTaskInput is an input type that accepts GetHybridMonitorSlsTasksTaskArgs and GetHybridMonitorSlsTasksTaskOutput values.
@@ -20929,7 +21644,7 @@ type GetHybridMonitorSlsTasksTaskArgs struct {
 	MatchExpressRelation pulumi.StringInput `pulumi:"matchExpressRelation"`
 	// The matching condition of the instance in the application Group.
 	MatchExpresses GetHybridMonitorSlsTasksTaskMatchExpressArrayInput `pulumi:"matchExpresses"`
-	// The namespace to which the host belongs.
+	// The name of the namespace.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// The network type of the host.
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
@@ -20943,7 +21658,8 @@ type GetHybridMonitorSlsTasksTaskArgs struct {
 	TaskType pulumi.StringInput `pulumi:"taskType"`
 	// The region where the host resides.
 	UploadRegion pulumi.StringInput `pulumi:"uploadRegion"`
-	YarmConfig   pulumi.StringInput `pulumi:"yarmConfig"`
+	// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+	YarmConfig pulumi.StringInput `pulumi:"yarmConfig"`
 }
 
 func (GetHybridMonitorSlsTasksTaskArgs) ElementType() reflect.Type {
@@ -21094,7 +21810,7 @@ func (o GetHybridMonitorSlsTasksTaskOutput) MatchExpresses() GetHybridMonitorSls
 	}).(GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput)
 }
 
-// The namespace to which the host belongs.
+// The name of the namespace.
 func (o GetHybridMonitorSlsTasksTaskOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -21131,6 +21847,7 @@ func (o GetHybridMonitorSlsTasksTaskOutput) UploadRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.UploadRegion }).(pulumi.StringOutput)
 }
 
+// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
 func (o GetHybridMonitorSlsTasksTaskOutput) YarmConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTask) string { return v.YarmConfig }).(pulumi.StringOutput)
 }
@@ -21156,9 +21873,9 @@ func (o GetHybridMonitorSlsTasksTaskArrayOutput) Index(i pulumi.IntInput) GetHyb
 }
 
 type GetHybridMonitorSlsTasksTaskAttachLabel struct {
-	// The key of the tag.
+	// The name of the instance.
 	Name string `pulumi:"name"`
-	// The value of the tag.
+	// The value of the key that is used to filter logs imported from Log Service.
 	Value string `pulumi:"value"`
 }
 
@@ -21174,9 +21891,9 @@ type GetHybridMonitorSlsTasksTaskAttachLabelInput interface {
 }
 
 type GetHybridMonitorSlsTasksTaskAttachLabelArgs struct {
-	// The key of the tag.
+	// The name of the instance.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the tag.
+	// The value of the key that is used to filter logs imported from Log Service.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -21231,12 +21948,12 @@ func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) ToGetHybridMonitorSlsTask
 	return o
 }
 
-// The key of the tag.
+// The name of the instance.
 func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskAttachLabel) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the tag.
+// The value of the key that is used to filter logs imported from Log Service.
 func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskAttachLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -21262,11 +21979,11 @@ func (o GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetHybridMonitorSlsTasksTaskMatchExpress struct {
-	// The method that is used to match the instance name.
+	// The function that is used to aggregate log data within a statistical period.
 	Function string `pulumi:"function"`
 	// The name of the instance.
 	Name string `pulumi:"name"`
-	// The keyword that corresponds to the instance name.
+	// The value of the key that is used to filter logs imported from Log Service.
 	Value string `pulumi:"value"`
 }
 
@@ -21282,11 +21999,11 @@ type GetHybridMonitorSlsTasksTaskMatchExpressInput interface {
 }
 
 type GetHybridMonitorSlsTasksTaskMatchExpressArgs struct {
-	// The method that is used to match the instance name.
+	// The function that is used to aggregate log data within a statistical period.
 	Function pulumi.StringInput `pulumi:"function"`
 	// The name of the instance.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The keyword that corresponds to the instance name.
+	// The value of the key that is used to filter logs imported from Log Service.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -21341,7 +22058,7 @@ func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) ToGetHybridMonitorSlsTas
 	return o
 }
 
-// The method that is used to match the instance name.
+// The function that is used to aggregate log data within a statistical period.
 func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskMatchExpress) string { return v.Function }).(pulumi.StringOutput)
 }
@@ -21351,7 +22068,7 @@ func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) Name() pulumi.StringOutp
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskMatchExpress) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The keyword that corresponds to the instance name.
+// The value of the key that is used to filter logs imported from Log Service.
 func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskMatchExpress) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -21377,6 +22094,7 @@ func (o GetHybridMonitorSlsTasksTaskMatchExpressArrayOutput) Index(i pulumi.IntI
 }
 
 type GetHybridMonitorSlsTasksTaskSlsProcessConfig struct {
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
 	Expresses []GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress `pulumi:"expresses"`
 	// The conditions that are used to filter logs imported from Log Service.
 	Filters []GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter `pulumi:"filters"`
@@ -21398,6 +22116,7 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfigInput interface {
 }
 
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs struct {
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
 	Expresses GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayInput `pulumi:"expresses"`
 	// The conditions that are used to filter logs imported from Log Service.
 	Filters GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayInput `pulumi:"filters"`
@@ -21458,6 +22177,7 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) ToGetHybridMonitorSl
 	return o
 }
 
+// The extended field that specifies the result of basic operations that are performed on aggregation results.
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigOutput) Expresses() GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArrayOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfig) []GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
 		return v.Expresses
@@ -21506,7 +22226,9 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigArrayOutput) Index(i pulumi.
 }
 
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress struct {
-	Alias   string `pulumi:"alias"`
+	// The alias of the aggregation result.
+	Alias string `pulumi:"alias"`
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
 	Express string `pulumi:"express"`
 }
 
@@ -21522,7 +22244,9 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressInput interface {
 }
 
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs struct {
-	Alias   pulumi.StringInput `pulumi:"alias"`
+	// The alias of the aggregation result.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The extended field that specifies the result of basic operations that are performed on aggregation results.
 	Express pulumi.StringInput `pulumi:"express"`
 }
 
@@ -21577,10 +22301,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) ToGetHybridMo
 	return o
 }
 
+// The alias of the aggregation result.
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) Alias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress) string { return v.Alias }).(pulumi.StringOutput)
 }
 
+// The extended field that specifies the result of basic operations that are performed on aggregation results.
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressOutput) Express() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress) string { return v.Express }).(pulumi.StringOutput)
 }
@@ -21715,9 +22441,11 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArrayOutput) Index(i p
 
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter struct {
 	// The method that is used to filter logs imported from Log Service.
-	Operator   string `pulumi:"operator"`
+	Operator string `pulumi:"operator"`
+	// The name of the key that is used to aggregate logs imported from Log Service.
 	SlsKeyName string `pulumi:"slsKeyName"`
-	Value      string `pulumi:"value"`
+	// The value of the key that is used to filter logs imported from Log Service.
+	Value string `pulumi:"value"`
 }
 
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput values.
@@ -21733,9 +22461,11 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterInput interface {
 
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs struct {
 	// The method that is used to filter logs imported from Log Service.
-	Operator   pulumi.StringInput `pulumi:"operator"`
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The name of the key that is used to aggregate logs imported from Log Service.
 	SlsKeyName pulumi.StringInput `pulumi:"slsKeyName"`
-	Value      pulumi.StringInput `pulumi:"value"`
+	// The value of the key that is used to filter logs imported from Log Service.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs) ElementType() reflect.Type {
@@ -21794,10 +22524,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) Operator
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The name of the key that is used to aggregate logs imported from Log Service.
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) SlsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter) string { return v.SlsKeyName }).(pulumi.StringOutput)
 }
 
+// The value of the key that is used to filter logs imported from Log Service.
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -21823,7 +22555,9 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArrayOutput) Ind
 }
 
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy struct {
-	Alias      string `pulumi:"alias"`
+	// The alias of the aggregation result.
+	Alias string `pulumi:"alias"`
+	// The name of the key that is used to aggregate logs imported from Log Service.
 	SlsKeyName string `pulumi:"slsKeyName"`
 }
 
@@ -21839,7 +22573,9 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByInput interface {
 }
 
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs struct {
-	Alias      pulumi.StringInput `pulumi:"alias"`
+	// The alias of the aggregation result.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The name of the key that is used to aggregate logs imported from Log Service.
 	SlsKeyName pulumi.StringInput `pulumi:"slsKeyName"`
 }
 
@@ -21894,10 +22630,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) ToGetHybridMo
 	return o
 }
 
+// The alias of the aggregation result.
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) Alias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy) string { return v.Alias }).(pulumi.StringOutput)
 }
 
+// The name of the key that is used to aggregate logs imported from Log Service.
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByOutput) SlsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy) string { return v.SlsKeyName }).(pulumi.StringOutput)
 }
@@ -21923,13 +22661,16 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArrayOutput) Index(i 
 }
 
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic struct {
-	Alias    string `pulumi:"alias"`
+	// The alias of the aggregation result.
+	Alias string `pulumi:"alias"`
+	// The function that is used to aggregate log data within a statistical period.
 	Function string `pulumi:"function"`
 	// The value of the function that is used to aggregate logs imported from Log Service.
 	ParameterOne string `pulumi:"parameterOne"`
 	// The value of the function that is used to aggregate logs imported from Log Service.
 	ParameterTwo string `pulumi:"parameterTwo"`
-	SlsKeyName   string `pulumi:"slsKeyName"`
+	// The name of the key that is used to aggregate logs imported from Log Service.
+	SlsKeyName string `pulumi:"slsKeyName"`
 }
 
 // GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticInput is an input type that accepts GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs and GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput values.
@@ -21944,13 +22685,16 @@ type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticInput interface {
 }
 
 type GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs struct {
-	Alias    pulumi.StringInput `pulumi:"alias"`
+	// The alias of the aggregation result.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The function that is used to aggregate log data within a statistical period.
 	Function pulumi.StringInput `pulumi:"function"`
 	// The value of the function that is used to aggregate logs imported from Log Service.
 	ParameterOne pulumi.StringInput `pulumi:"parameterOne"`
 	// The value of the function that is used to aggregate logs imported from Log Service.
 	ParameterTwo pulumi.StringInput `pulumi:"parameterTwo"`
-	SlsKeyName   pulumi.StringInput `pulumi:"slsKeyName"`
+	// The name of the key that is used to aggregate logs imported from Log Service.
+	SlsKeyName pulumi.StringInput `pulumi:"slsKeyName"`
 }
 
 func (GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs) ElementType() reflect.Type {
@@ -22004,10 +22748,12 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ToGetHybrid
 	return o
 }
 
+// The alias of the aggregation result.
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) Alias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic) string { return v.Alias }).(pulumi.StringOutput)
 }
 
+// The function that is used to aggregate log data within a statistical period.
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic) string { return v.Function }).(pulumi.StringOutput)
 }
@@ -22022,6 +22768,7 @@ func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) ParameterTw
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic) string { return v.ParameterTwo }).(pulumi.StringOutput)
 }
 
+// The name of the key that is used to aggregate logs imported from Log Service.
 func (o GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticOutput) SlsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic) string { return v.SlsKeyName }).(pulumi.StringOutput)
 }
@@ -22057,7 +22804,8 @@ type GetMetricRuleBlackListsList struct {
 	EnableEndTime string `pulumi:"enableEndTime"`
 	// The end timestamp of the alert blacklist policy.Unit: milliseconds.
 	EnableStartTime string `pulumi:"enableStartTime"`
-	Id              string `pulumi:"id"`
+	// The ID of the Metric Rule Black List.
+	Id string `pulumi:"id"`
 	// The list of instances of cloud services specified in the alert blacklist policy.
 	Instances []string `pulumi:"instances"`
 	// The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
@@ -22098,7 +22846,8 @@ type GetMetricRuleBlackListsListArgs struct {
 	EnableEndTime pulumi.StringInput `pulumi:"enableEndTime"`
 	// The end timestamp of the alert blacklist policy.Unit: milliseconds.
 	EnableStartTime pulumi.StringInput `pulumi:"enableStartTime"`
-	Id              pulumi.StringInput `pulumi:"id"`
+	// The ID of the Metric Rule Black List.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The list of instances of cloud services specified in the alert blacklist policy.
 	Instances pulumi.StringArrayInput `pulumi:"instances"`
 	// The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
@@ -22193,6 +22942,7 @@ func (o GetMetricRuleBlackListsListOutput) EnableStartTime() pulumi.StringOutput
 	return o.ApplyT(func(v GetMetricRuleBlackListsList) string { return v.EnableStartTime }).(pulumi.StringOutput)
 }
 
+// The ID of the Metric Rule Black List.
 func (o GetMetricRuleBlackListsListOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleBlackListsList) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -22375,8 +23125,6 @@ type GetMetricRuleTemplatesTemplate struct {
 	// The name of the alert template.
 	MetricRuleTemplateName string `pulumi:"metricRuleTemplateName"`
 	// The version of the alert template.
-	//
-	// > **NOTE:** The version changes with the number of times that the alert template is modified.
 	RestVersion string `pulumi:"restVersion"`
 	// The ID of the alert template.
 	TemplateId string `pulumi:"templateId"`
@@ -22405,8 +23153,6 @@ type GetMetricRuleTemplatesTemplateArgs struct {
 	// The name of the alert template.
 	MetricRuleTemplateName pulumi.StringInput `pulumi:"metricRuleTemplateName"`
 	// The version of the alert template.
-	//
-	// > **NOTE:** The version changes with the number of times that the alert template is modified.
 	RestVersion pulumi.StringInput `pulumi:"restVersion"`
 	// The ID of the alert template.
 	TemplateId pulumi.StringInput `pulumi:"templateId"`
@@ -22491,8 +23237,6 @@ func (o GetMetricRuleTemplatesTemplateOutput) MetricRuleTemplateName() pulumi.St
 }
 
 // The version of the alert template.
-//
-// > **NOTE:** The version changes with the number of times that the alert template is modified.
 func (o GetMetricRuleTemplatesTemplateOutput) RestVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplate) string { return v.RestVersion }).(pulumi.StringOutput)
 }
@@ -22533,6 +23277,7 @@ type GetMetricRuleTemplatesTemplateAlertTemplate struct {
 	Namespace string `pulumi:"namespace"`
 	// The name of the alert rule.
 	RuleName string `pulumi:"ruleName"`
+	// The extended dimension options of the alert.
 	Selector string `pulumi:"selector"`
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook string `pulumi:"webhook"`
@@ -22560,6 +23305,7 @@ type GetMetricRuleTemplatesTemplateAlertTemplateArgs struct {
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// The name of the alert rule.
 	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The extended dimension options of the alert.
 	Selector pulumi.StringInput `pulumi:"selector"`
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook pulumi.StringInput `pulumi:"webhook"`
@@ -22643,6 +23389,7 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) RuleName() pulumi.Str
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.RuleName }).(pulumi.StringOutput)
 }
 
+// The extended dimension options of the alert.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Selector() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.Selector }).(pulumi.StringOutput)
 }
@@ -22794,14 +23541,13 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput) Index(
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical struct {
-	// The comparison operator of the threshold for critical-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for critical-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics string `pulumi:"statistics"`
-	// The threshold for critical-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold string `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a
-	// critical-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times string `pulumi:"times"`
 }
 
@@ -22817,14 +23563,13 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput interfac
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs struct {
-	// The comparison operator of the threshold for critical-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for critical-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics pulumi.StringInput `pulumi:"statistics"`
-	// The threshold for critical-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold pulumi.StringInput `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a
-	// critical-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times pulumi.StringInput `pulumi:"times"`
 }
 
@@ -22879,25 +23624,24 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ToG
 	return o
 }
 
-// The comparison operator of the threshold for critical-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string {
 		return v.ComparisonOperator
 	}).(pulumi.StringOutput)
 }
 
-// The statistical aggregation method for critical-level alerts.
+// The statistical aggregation method for warn-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
-// The threshold for critical-level alerts.
+// The threshold for warn-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before a
-// critical-level alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) Times() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string { return v.Times }).(pulumi.StringOutput)
 }
@@ -22923,14 +23667,13 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo struct {
-	// The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for info-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics string `pulumi:"statistics"`
-	// The threshold for info-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold string `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before an info-level
-	// alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times string `pulumi:"times"`
 }
 
@@ -22946,14 +23689,13 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput interface {
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs struct {
-	// The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for info-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics pulumi.StringInput `pulumi:"statistics"`
-	// The threshold for info-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold pulumi.StringInput `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before an info-level
-	// alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times pulumi.StringInput `pulumi:"times"`
 }
 
@@ -23008,23 +23750,22 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ToGetMe
 	return o
 }
 
-// The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.ComparisonOperator }).(pulumi.StringOutput)
 }
 
-// The statistical aggregation method for info-level alerts.
+// The statistical aggregation method for warn-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
-// The threshold for info-level alerts.
+// The threshold for warn-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before an info-level
-// alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) Times() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.Times }).(pulumi.StringOutput)
 }
@@ -23056,8 +23797,7 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn struct {
 	Statistics string `pulumi:"statistics"`
 	// The threshold for warn-level alerts.
 	Threshold string `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a warn-level
-	// alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times string `pulumi:"times"`
 }
 
@@ -23079,8 +23819,7 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs struct {
 	Statistics pulumi.StringInput `pulumi:"statistics"`
 	// The threshold for warn-level alerts.
 	Threshold pulumi.StringInput `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a warn-level
-	// alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times pulumi.StringInput `pulumi:"times"`
 }
 
@@ -23150,8 +23889,7 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) Thresho
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before a warn-level
-// alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) Times() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn) string { return v.Times }).(pulumi.StringOutput)
 }
@@ -23177,6 +23915,7 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput) In
 }
 
 type GetMonitorGroupInstancesInstance struct {
+	// Instance information added to the Cms Group.
 	Instances []GetMonitorGroupInstancesInstanceInstance `pulumi:"instances"`
 }
 
@@ -23192,6 +23931,7 @@ type GetMonitorGroupInstancesInstanceInput interface {
 }
 
 type GetMonitorGroupInstancesInstanceArgs struct {
+	// Instance information added to the Cms Group.
 	Instances GetMonitorGroupInstancesInstanceInstanceArrayInput `pulumi:"instances"`
 }
 
@@ -23246,6 +23986,7 @@ func (o GetMonitorGroupInstancesInstanceOutput) ToGetMonitorGroupInstancesInstan
 	return o
 }
 
+// Instance information added to the Cms Group.
 func (o GetMonitorGroupInstancesInstanceOutput) Instances() GetMonitorGroupInstancesInstanceInstanceArrayOutput {
 	return o.ApplyT(func(v GetMonitorGroupInstancesInstance) []GetMonitorGroupInstancesInstanceInstance {
 		return v.Instances
@@ -23273,10 +24014,14 @@ func (o GetMonitorGroupInstancesInstanceArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetMonitorGroupInstancesInstanceInstance struct {
-	Category     string `pulumi:"category"`
-	InstanceId   string `pulumi:"instanceId"`
+	// The category of instance.
+	Category string `pulumi:"category"`
+	// The id of instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The name of instance.
 	InstanceName string `pulumi:"instanceName"`
-	RegionId     string `pulumi:"regionId"`
+	// The region id of instance.
+	RegionId string `pulumi:"regionId"`
 }
 
 // GetMonitorGroupInstancesInstanceInstanceInput is an input type that accepts GetMonitorGroupInstancesInstanceInstanceArgs and GetMonitorGroupInstancesInstanceInstanceOutput values.
@@ -23291,10 +24036,14 @@ type GetMonitorGroupInstancesInstanceInstanceInput interface {
 }
 
 type GetMonitorGroupInstancesInstanceInstanceArgs struct {
-	Category     pulumi.StringInput `pulumi:"category"`
-	InstanceId   pulumi.StringInput `pulumi:"instanceId"`
+	// The category of instance.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The id of instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The name of instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
-	RegionId     pulumi.StringInput `pulumi:"regionId"`
+	// The region id of instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
 }
 
 func (GetMonitorGroupInstancesInstanceInstanceArgs) ElementType() reflect.Type {
@@ -23348,18 +24097,22 @@ func (o GetMonitorGroupInstancesInstanceInstanceOutput) ToGetMonitorGroupInstanc
 	return o
 }
 
+// The category of instance.
 func (o GetMonitorGroupInstancesInstanceInstanceOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// The id of instance.
 func (o GetMonitorGroupInstancesInstanceInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The name of instance.
 func (o GetMonitorGroupInstancesInstanceInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
+// The region id of instance.
 func (o GetMonitorGroupInstancesInstanceInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorGroupInstancesInstanceInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -23403,11 +24156,11 @@ type GetMonitorGroupsGroup struct {
 	MonitorGroupName string `pulumi:"monitorGroupName"`
 	// The ID of the Alibaba Cloud service.
 	ServiceId string `pulumi:"serviceId"`
-	// A map of tags assigned to the Cms Monitor Group.
+	// A mapping of tags to filter the Cms Monitor Group.
 	Tags map[string]string `pulumi:"tags"`
 	// The alert templates applied to the application group.
 	TemplateIds []string `pulumi:"templateIds"`
-	// The type of the application group.
+	// The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
 	Type string `pulumi:"type"`
 }
 
@@ -23441,11 +24194,11 @@ type GetMonitorGroupsGroupArgs struct {
 	MonitorGroupName pulumi.StringInput `pulumi:"monitorGroupName"`
 	// The ID of the Alibaba Cloud service.
 	ServiceId pulumi.StringInput `pulumi:"serviceId"`
-	// A map of tags assigned to the Cms Monitor Group.
+	// A mapping of tags to filter the Cms Monitor Group.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The alert templates applied to the application group.
 	TemplateIds pulumi.StringArrayInput `pulumi:"templateIds"`
-	// The type of the application group.
+	// The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -23545,7 +24298,7 @@ func (o GetMonitorGroupsGroupOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorGroupsGroup) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
-// A map of tags assigned to the Cms Monitor Group.
+// A mapping of tags to filter the Cms Monitor Group.
 func (o GetMonitorGroupsGroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetMonitorGroupsGroup) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -23555,7 +24308,7 @@ func (o GetMonitorGroupsGroupOutput) TemplateIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMonitorGroupsGroup) []string { return v.TemplateIds }).(pulumi.StringArrayOutput)
 }
 
-// The type of the application group.
+// The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
 func (o GetMonitorGroupsGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMonitorGroupsGroup) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -24131,6 +24884,14 @@ func (o GetSlsGroupsGroupSlsGroupConfigArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonReleaseEntityRulesInput)(nil)).Elem(), AddonReleaseEntityRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonReleaseEntityRulesPtrInput)(nil)).Elem(), AddonReleaseEntityRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonReleaseEntityRulesFieldRuleInput)(nil)).Elem(), AddonReleaseEntityRulesFieldRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonReleaseEntityRulesFieldRuleArrayInput)(nil)).Elem(), AddonReleaseEntityRulesFieldRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonReleaseEntityRulesIpMatchRuleInput)(nil)).Elem(), AddonReleaseEntityRulesIpMatchRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonReleaseEntityRulesIpMatchRulePtrInput)(nil)).Elem(), AddonReleaseEntityRulesIpMatchRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonReleaseEntityRulesTagInput)(nil)).Elem(), AddonReleaseEntityRulesTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddonReleaseEntityRulesTagArrayInput)(nil)).Elem(), AddonReleaseEntityRulesTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmCompositeExpressionInput)(nil)).Elem(), AlarmCompositeExpressionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmCompositeExpressionPtrInput)(nil)).Elem(), AlarmCompositeExpressionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmCompositeExpressionExpressionListInput)(nil)).Elem(), AlarmCompositeExpressionExpressionListArgs{})
@@ -24451,6 +25212,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupArrayInput)(nil)).Elem(), GetSlsGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupSlsGroupConfigInput)(nil)).Elem(), GetSlsGroupsGroupSlsGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupSlsGroupConfigArrayInput)(nil)).Elem(), GetSlsGroupsGroupSlsGroupConfigArray{})
+	pulumi.RegisterOutputType(AddonReleaseEntityRulesOutput{})
+	pulumi.RegisterOutputType(AddonReleaseEntityRulesPtrOutput{})
+	pulumi.RegisterOutputType(AddonReleaseEntityRulesFieldRuleOutput{})
+	pulumi.RegisterOutputType(AddonReleaseEntityRulesFieldRuleArrayOutput{})
+	pulumi.RegisterOutputType(AddonReleaseEntityRulesIpMatchRuleOutput{})
+	pulumi.RegisterOutputType(AddonReleaseEntityRulesIpMatchRulePtrOutput{})
+	pulumi.RegisterOutputType(AddonReleaseEntityRulesTagOutput{})
+	pulumi.RegisterOutputType(AddonReleaseEntityRulesTagArrayOutput{})
 	pulumi.RegisterOutputType(AlarmCompositeExpressionOutput{})
 	pulumi.RegisterOutputType(AlarmCompositeExpressionPtrOutput{})
 	pulumi.RegisterOutputType(AlarmCompositeExpressionExpressionListOutput{})

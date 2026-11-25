@@ -70,6 +70,9 @@ class GetCommandsResult:
     @_builtins.property
     @pulumi.getter
     def commands(self) -> Sequence['outputs.GetCommandsCommandResult']:
+        """
+        A list of Ecs Commands. Each element contains the following attributes:
+        """
         return pulumi.get(self, "commands")
 
     @_builtins.property
@@ -80,6 +83,9 @@ class GetCommandsResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
+        """
+        The description of command.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -98,6 +104,9 @@ class GetCommandsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the command
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -108,6 +117,9 @@ class GetCommandsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Command names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -118,6 +130,9 @@ class GetCommandsResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
+        """
+        The command type.
+        """
         return pulumi.get(self, "type")
 
 
@@ -152,7 +167,7 @@ def get_commands(command_provider: Optional[_builtins.str] = None,
     """
     This data source provides the Ecs Commands of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.116.0+.
+    > **NOTE:** Available since v1.116.0.
 
     ## Example Usage
 
@@ -213,7 +228,7 @@ def get_commands_output(command_provider: pulumi.Input[Optional[Optional[_builti
     """
     This data source provides the Ecs Commands of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.116.0+.
+    > **NOTE:** Available since v1.116.0.
 
     ## Example Usage
 

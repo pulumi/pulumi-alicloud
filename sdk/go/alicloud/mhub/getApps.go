@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Mhub Apps of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // ## Example Usage
 //
@@ -40,7 +40,7 @@ import (
 //			_, err := mhub.NewApp(ctx, "default", &mhub.AppArgs{
 //				AppName:     pulumi.String(name),
 //				ProductId:   pulumi.Any(defaultAlicloudMhubProduct.Id),
-//				PackageName: pulumi.String("com.test.android"),
+//				PackageName: pulumi.String("com.example.android"),
 //				Type:        pulumi.String("2"),
 //			})
 //			if err != nil {
@@ -91,16 +91,19 @@ type GetAppsArgs struct {
 
 // A collection of values returned by getApps.
 type GetAppsResult struct {
+	// A list of Mhub Apps. Each element contains the following attributes:
 	Apps          []GetAppsApp `pulumi:"apps"`
 	EnableDetails *bool        `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of App names.
 	Names      []string `pulumi:"names"`
 	OsType     *string  `pulumi:"osType"`
 	OutputFile *string  `pulumi:"outputFile"`
-	ProductId  string   `pulumi:"productId"`
+	// The ID of the Product.
+	ProductId string `pulumi:"productId"`
 }
 
 func GetAppsOutput(ctx *pulumi.Context, args GetAppsOutputArgs, opts ...pulumi.InvokeOption) GetAppsResultOutput {
@@ -143,6 +146,7 @@ func (o GetAppsResultOutput) ToGetAppsResultOutputWithContext(ctx context.Contex
 	return o
 }
 
+// A list of Mhub Apps. Each element contains the following attributes:
 func (o GetAppsResultOutput) Apps() GetAppsAppArrayOutput {
 	return o.ApplyT(func(v GetAppsResult) []GetAppsApp { return v.Apps }).(GetAppsAppArrayOutput)
 }
@@ -164,6 +168,7 @@ func (o GetAppsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of App names.
 func (o GetAppsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAppsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -176,6 +181,7 @@ func (o GetAppsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the Product.
 func (o GetAppsResultOutput) ProductId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsResult) string { return v.ProductId }).(pulumi.StringOutput)
 }

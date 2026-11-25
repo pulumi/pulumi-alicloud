@@ -59,7 +59,7 @@ public final class GetMonitorGroupsGroup {
      */
     private String serviceId;
     /**
-     * @return A map of tags assigned to the Cms Monitor Group.
+     * @return A mapping of tags to filter the Cms Monitor Group.
      * 
      */
     private Map<String,String> tags;
@@ -69,7 +69,7 @@ public final class GetMonitorGroupsGroup {
      */
     private List<String> templateIds;
     /**
-     * @return The type of the application group.
+     * @return The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
      * 
      */
     private String type;
@@ -139,7 +139,7 @@ public final class GetMonitorGroupsGroup {
         return this.serviceId;
     }
     /**
-     * @return A map of tags assigned to the Cms Monitor Group.
+     * @return A mapping of tags to filter the Cms Monitor Group.
      * 
      */
     public Map<String,String> tags() {
@@ -153,7 +153,7 @@ public final class GetMonitorGroupsGroup {
         return this.templateIds;
     }
     /**
-     * @return The type of the application group.
+     * @return The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
      * 
      */
     public String type() {

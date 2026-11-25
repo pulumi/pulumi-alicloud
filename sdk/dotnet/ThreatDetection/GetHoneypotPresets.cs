@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Honeypot Preset available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///         },
         ///         HoneypotImageName = "shiro",
         ///         NodeId = "example_value",
-        ///         PresetName = "apiapec_test",
+        ///         PresetName = "apiapec_example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Honeypot Preset available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///         },
         ///         HoneypotImageName = "shiro",
         ///         NodeId = "example_value",
-        ///         PresetName = "apiapec_test",
+        ///         PresetName = "apiapec_example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// This data source provides Threat Detection Honeypot Preset available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///         },
         ///         HoneypotImageName = "shiro",
         ///         NodeId = "example_value",
-        ///         PresetName = "apiapec_test",
+        ///         PresetName = "apiapec_example",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -123,6 +123,9 @@ namespace Pulumi.AliCloud.ThreatDetection
 
     public sealed class GetHoneypotPresetsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The current page number.
+        /// </summary>
         [Input("currentPage")]
         public int? CurrentPage { get; set; }
 
@@ -150,6 +153,9 @@ namespace Pulumi.AliCloud.ThreatDetection
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The language.
+        /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
 
@@ -159,6 +165,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("nodeId")]
         public string? NodeId { get; set; }
 
+        /// <summary>
+        /// The name of the management node.
+        /// </summary>
         [Input("nodeName")]
         public string? NodeName { get; set; }
 
@@ -188,6 +197,9 @@ namespace Pulumi.AliCloud.ThreatDetection
 
     public sealed class GetHoneypotPresetsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The current page number.
+        /// </summary>
         [Input("currentPage")]
         public Input<int>? CurrentPage { get; set; }
 
@@ -215,6 +227,9 @@ namespace Pulumi.AliCloud.ThreatDetection
             set => _ids = value;
         }
 
+        /// <summary>
+        /// The language.
+        /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
@@ -224,6 +239,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
+        /// <summary>
+        /// The name of the management node.
+        /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Storage Capacity Units of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.155.0+.
+// > **NOTE:** Available since v1.155.0.
 //
 // ## Example Usage
 //
@@ -73,13 +73,16 @@ type GetEcsStorageCapacityUnitsArgs struct {
 // A collection of values returned by getEcsStorageCapacityUnits.
 type GetEcsStorageCapacityUnitsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                           `pulumi:"id"`
-	Ids        []string                         `pulumi:"ids"`
-	NameRegex  *string                          `pulumi:"nameRegex"`
-	Names      []string                         `pulumi:"names"`
-	OutputFile *string                          `pulumi:"outputFile"`
-	Status     *string                          `pulumi:"status"`
-	Units      []GetEcsStorageCapacityUnitsUnit `pulumi:"units"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Storage Capacity Unit names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The status of Storage Capacity Unit.
+	Status *string `pulumi:"status"`
+	// A list of Ecs Storage Capacity Units. Each element contains the following attributes:
+	Units []GetEcsStorageCapacityUnitsUnit `pulumi:"units"`
 }
 
 func GetEcsStorageCapacityUnitsOutput(ctx *pulumi.Context, args GetEcsStorageCapacityUnitsOutputArgs, opts ...pulumi.InvokeOption) GetEcsStorageCapacityUnitsResultOutput {
@@ -131,6 +134,7 @@ func (o GetEcsStorageCapacityUnitsResultOutput) NameRegex() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetEcsStorageCapacityUnitsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Storage Capacity Unit names.
 func (o GetEcsStorageCapacityUnitsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsStorageCapacityUnitsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -139,10 +143,12 @@ func (o GetEcsStorageCapacityUnitsResultOutput) OutputFile() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetEcsStorageCapacityUnitsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of Storage Capacity Unit.
 func (o GetEcsStorageCapacityUnitsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsStorageCapacityUnitsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecs Storage Capacity Units. Each element contains the following attributes:
 func (o GetEcsStorageCapacityUnitsResultOutput) Units() GetEcsStorageCapacityUnitsUnitArrayOutput {
 	return o.ApplyT(func(v GetEcsStorageCapacityUnitsResult) []GetEcsStorageCapacityUnitsUnit { return v.Units }).(GetEcsStorageCapacityUnitsUnitArrayOutput)
 }

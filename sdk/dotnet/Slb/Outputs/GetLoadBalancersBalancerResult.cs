@@ -17,68 +17,124 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// Service address of the SLBs.
         /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// The address ip version. Valid values `Ipv4` and `Ipv6`.
+        /// </summary>
         public readonly string AddressIpVersion;
+        /// <summary>
+        /// The address type of the SLB. Valid values `Internet` and `Intranet`.
+        /// </summary>
         public readonly string AddressType;
+        /// <summary>
+        /// The auto release time.
+        /// </summary>
         public readonly int AutoReleaseTime;
+        /// <summary>
+        /// The backend servers of the SLB.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerBackendServerResult> BackendServers;
+        /// <summary>
+        /// The bandwidth of the SLB.
+        /// </summary>
         public readonly int Bandwidth;
+        /// <summary>
+        /// The creation time of the SLB, mapped from the API `CreateTime` field.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// The create time stamp of the SLB.
+        /// </summary>
         public readonly int CreateTimeStamp;
+        /// <summary>
+        /// Whether the SLB should delete protection.
+        /// </summary>
         public readonly string DeleteProtection;
+        /// <summary>
+        /// The end time of the SLB.
+        /// </summary>
         public readonly string EndTime;
+        /// <summary>
+        /// The end time stamp of the SLB.
+        /// </summary>
         public readonly int EndTimeStamp;
         /// <summary>
         /// ID of the SLB.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+        /// </summary>
         public readonly string InternetChargeType;
+        /// <summary>
+        /// The listener ports and protocol of the SLB.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerListenerPortsAndProtocalResult> ListenerPortsAndProtocals;
+        /// <summary>
+        /// The listener ports and protocol of the SLB.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerListenerPortsAndProtocolResult> ListenerPortsAndProtocols;
+        /// <summary>
+        /// Thd ID of the SLB.
+        /// </summary>
         public readonly string LoadBalancerId;
+        /// <summary>
+        /// The name of the SLB.
+        /// </summary>
         public readonly string LoadBalancerName;
+        /// <summary>
+        /// The specification of the SLB.
+        /// </summary>
         public readonly string LoadBalancerSpec;
+        /// <summary>
+        /// The master zone id of the SLB.
+        /// </summary>
         public readonly string MasterZoneId;
+        /// <summary>
+        /// The reason of modification protection.
+        /// </summary>
         public readonly string ModificationProtectionReason;
+        /// <summary>
+        /// The status of modification protection.
+        /// </summary>
         public readonly string ModificationProtectionStatus;
         /// <summary>
         /// Network type of the SLBs. Valid values: `Vpc` and `Classic`.
         /// </summary>
         public readonly string NetworkType;
+        /// <summary>
+        /// The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
+        /// </summary>
         public readonly string PaymentType;
+        /// <summary>
+        /// Region ID the SLB belongs to.
+        /// </summary>
         public readonly string RegionIdAlias;
+        /// <summary>
+        /// The renewal cyc unit of the SLB.
+        /// </summary>
         public readonly string RenewalCycUnit;
+        /// <summary>
+        /// The renewal duration of the SLB.
+        /// </summary>
         public readonly int RenewalDuration;
+        /// <summary>
+        /// The renewal status of the SLB.
+        /// </summary>
         public readonly string RenewalStatus;
         /// <summary>
         /// The Id of resource group which SLB belongs.
         /// </summary>
         public readonly string ResourceGroupId;
+        /// <summary>
+        /// The slave zone id of the SLB.
+        /// </summary>
         public readonly string SlaveZoneId;
         /// <summary>
-        /// SLB current status. Possible values: `Inactive`, `Active` and `Locked`.
+        /// The status of the SLB. Valid values: `Active`, `Inactive` and `Locked`.
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// A map of tags assigned to the SLB instances. The `Tags` can have a maximum of 5 tag. It must be in the format:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var taggedInstances = AliCloud.Slb.GetLoadBalancers.Invoke(new()
-        ///     {
-        ///         Tags = 
-        ///         {
-        ///             { "tagKey1", "tagValue1" },
-        ///             { "tagKey2", "tagValue2" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>

@@ -14,9 +14,12 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetTransitRouterVbrAttachmentsAttachmentResult
     {
         /// <summary>
-        /// ID of the region where the conflicted VBR is located.
+        /// Auto publish route enabled.
         /// </summary>
         public readonly bool AutoPublishRouteEnabled;
+        /// <summary>
+        /// The ID of the CEN Transit Router VBR Attachment.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Type of the resource.
@@ -26,9 +29,12 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The description of the transit router attachment.
+        /// </summary>
         public readonly string TransitRouterAttachmentDescription;
         /// <summary>
-        /// ID of the transit router VBR attachment.
+        /// ID of the transit router attachment.
         /// </summary>
         public readonly string TransitRouterAttachmentId;
         /// <summary>

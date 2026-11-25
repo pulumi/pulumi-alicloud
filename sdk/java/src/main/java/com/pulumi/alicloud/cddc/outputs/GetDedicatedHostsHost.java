@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetDedicatedHostsHost {
     /**
-     * @return Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     * @return Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      * 
      */
     private String allocationStatus;
@@ -37,7 +37,7 @@ public final class GetDedicatedHostsHost {
      */
     private String createTime;
     /**
-     * @return The ID of the dedicated cluster in which the host is created.
+     * @return The ID of the dedicated cluster.
      * 
      */
     private String dedicatedHostGroupId;
@@ -97,7 +97,7 @@ public final class GetDedicatedHostsHost {
      */
     private String hostStorage;
     /**
-     * @return The storage type of the host.
+     * @return The storage type of the host. Valid values: `dhgLocalSsd` or `dhgCloudSsd`. `dhgLocalSsd`: specifies that the host uses local SSDs. `dhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
      * 
      */
     private String hostType;
@@ -132,7 +132,8 @@ public final class GetDedicatedHostsHost {
      */
     private String openPermission;
     /**
-     * @return The state of the host.
+     * @return The state of the host. Valid values:
+     * * `0:` The host is being created.
      * 
      */
     private String status;
@@ -142,7 +143,7 @@ public final class GetDedicatedHostsHost {
      */
     private String storageUsed;
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
@@ -157,14 +158,14 @@ public final class GetDedicatedHostsHost {
      */
     private String vswitchId;
     /**
-     * @return The zone ID of the host.
+     * @return The ID of the zone.
      * 
      */
     private String zoneId;
 
     private GetDedicatedHostsHost() {}
     /**
-     * @return Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     * @return Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      * 
      */
     public String allocationStatus() {
@@ -199,7 +200,7 @@ public final class GetDedicatedHostsHost {
         return this.createTime;
     }
     /**
-     * @return The ID of the dedicated cluster in which the host is created.
+     * @return The ID of the dedicated cluster.
      * 
      */
     public String dedicatedHostGroupId() {
@@ -283,7 +284,7 @@ public final class GetDedicatedHostsHost {
         return this.hostStorage;
     }
     /**
-     * @return The storage type of the host.
+     * @return The storage type of the host. Valid values: `dhgLocalSsd` or `dhgCloudSsd`. `dhgLocalSsd`: specifies that the host uses local SSDs. `dhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
      * 
      */
     public String hostType() {
@@ -332,7 +333,8 @@ public final class GetDedicatedHostsHost {
         return this.openPermission;
     }
     /**
-     * @return The state of the host.
+     * @return The state of the host. Valid values:
+     * * `0:` The host is being created.
      * 
      */
     public String status() {
@@ -346,7 +348,7 @@ public final class GetDedicatedHostsHost {
         return this.storageUsed;
     }
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {
@@ -367,7 +369,7 @@ public final class GetDedicatedHostsHost {
         return this.vswitchId;
     }
     /**
-     * @return The zone ID of the host.
+     * @return The ID of the zone.
      * 
      */
     public String zoneId() {

@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The status of volume.
+        /// The status of volume. Valid values:
         /// </summary>
         public readonly int Status;
         /// <summary>
@@ -113,6 +113,9 @@ namespace Pulumi.AliCloud.CloudStorageGateway.Outputs
         /// The total amount of uploaded data. Unit: `B`.
         /// </summary>
         public readonly int TotalUpload;
+        /// <summary>
+        /// The state of volume.
+        /// </summary>
         public readonly int VolumeState;
 
         [OutputConstructor]

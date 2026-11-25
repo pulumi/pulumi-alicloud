@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.177.0+.
+        /// &gt; **NOTE:** Available since v1.177.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.177.0+.
+        /// &gt; **NOTE:** Available since v1.177.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.177.0+.
+        /// &gt; **NOTE:** Available since v1.177.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -210,6 +210,9 @@ namespace Pulumi.AliCloud.Cms
     [OutputType]
     public sealed class GetHybridMonitorDatasResult
     {
+        /// <summary>
+        /// A list of Cms Hybrid Monitor Datas. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHybridMonitorDatasDataResult> Datas;
         public readonly string End;
         /// <summary>

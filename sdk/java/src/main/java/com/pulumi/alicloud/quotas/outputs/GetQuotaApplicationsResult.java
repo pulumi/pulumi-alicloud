@@ -16,7 +16,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetQuotaApplicationsResult {
+    /**
+     * @return A list of Quotas Quota Applications. Each element contains the following attributes:
+     * 
+     */
     private List<GetQuotaApplicationsApplication> applications;
+    /**
+     * @return The quota dimensions. See `dimensions` below.
+     * 
+     */
     private @Nullable List<GetQuotaApplicationsDimension> dimensions;
     private @Nullable Boolean enableDetails;
     /**
@@ -27,15 +35,35 @@ public final class GetQuotaApplicationsResult {
     private List<String> ids;
     private @Nullable String keyWord;
     private @Nullable String outputFile;
+    /**
+     * @return The product code.
+     * 
+     */
     private String productCode;
+    /**
+     * @return The ID of quota action.
+     * 
+     */
     private @Nullable String quotaActionCode;
     private @Nullable String quotaCategory;
+    /**
+     * @return The status of the quota application.
+     * 
+     */
     private @Nullable String status;
 
     private GetQuotaApplicationsResult() {}
+    /**
+     * @return A list of Quotas Quota Applications. Each element contains the following attributes:
+     * 
+     */
     public List<GetQuotaApplicationsApplication> applications() {
         return this.applications;
     }
+    /**
+     * @return The quota dimensions. See `dimensions` below.
+     * 
+     */
     public List<GetQuotaApplicationsDimension> dimensions() {
         return this.dimensions == null ? List.of() : this.dimensions;
     }
@@ -58,15 +86,27 @@ public final class GetQuotaApplicationsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The product code.
+     * 
+     */
     public String productCode() {
         return this.productCode;
     }
+    /**
+     * @return The ID of quota action.
+     * 
+     */
     public Optional<String> quotaActionCode() {
         return Optional.ofNullable(this.quotaActionCode);
     }
     public Optional<String> quotaCategory() {
         return Optional.ofNullable(this.quotaCategory);
     }
+    /**
+     * @return The status of the quota application.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

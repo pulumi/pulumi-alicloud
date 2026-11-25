@@ -4,6 +4,10 @@
 package com.pulumi.alicloud.directmail;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.directmail.inputs.GetConfigSetsArgs;
+import com.pulumi.alicloud.directmail.inputs.GetConfigSetsPlainArgs;
+import com.pulumi.alicloud.directmail.inputs.GetDedicatedIpPoolsArgs;
+import com.pulumi.alicloud.directmail.inputs.GetDedicatedIpPoolsPlainArgs;
 import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
 import com.pulumi.alicloud.directmail.inputs.GetDomainsPlainArgs;
 import com.pulumi.alicloud.directmail.inputs.GetMailAddressesArgs;
@@ -12,6 +16,8 @@ import com.pulumi.alicloud.directmail.inputs.GetReceiversArgs;
 import com.pulumi.alicloud.directmail.inputs.GetReceiversPlainArgs;
 import com.pulumi.alicloud.directmail.inputs.GetTagsArgs;
 import com.pulumi.alicloud.directmail.inputs.GetTagsPlainArgs;
+import com.pulumi.alicloud.directmail.outputs.GetConfigSetsResult;
+import com.pulumi.alicloud.directmail.outputs.GetDedicatedIpPoolsResult;
 import com.pulumi.alicloud.directmail.outputs.GetDomainsResult;
 import com.pulumi.alicloud.directmail.outputs.GetMailAddressesResult;
 import com.pulumi.alicloud.directmail.outputs.GetReceiversResult;
@@ -24,6 +30,650 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DirectmailFunctions {
+    /**
+     * This data source provides Direct Mail Config Set available to the user. [What is Config Set](https://next.api.alibabacloud.com/document/Dm/2015-11-23/ConfigSetCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetConfigSetsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstConfigSetId", default_.sets()[0].id());
+     *         final var byName = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConfigSetsResult> getConfigSets() {
+        return getConfigSets(GetConfigSetsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Direct Mail Config Set available to the user. [What is Config Set](https://next.api.alibabacloud.com/document/Dm/2015-11-23/ConfigSetCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetConfigSetsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstConfigSetId", default_.sets()[0].id());
+     *         final var byName = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConfigSetsResult> getConfigSetsPlain() {
+        return getConfigSetsPlain(GetConfigSetsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Direct Mail Config Set available to the user. [What is Config Set](https://next.api.alibabacloud.com/document/Dm/2015-11-23/ConfigSetCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetConfigSetsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstConfigSetId", default_.sets()[0].id());
+     *         final var byName = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConfigSetsResult> getConfigSets(GetConfigSetsArgs args) {
+        return getConfigSets(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Direct Mail Config Set available to the user. [What is Config Set](https://next.api.alibabacloud.com/document/Dm/2015-11-23/ConfigSetCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetConfigSetsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstConfigSetId", default_.sets()[0].id());
+     *         final var byName = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConfigSetsResult> getConfigSetsPlain(GetConfigSetsPlainArgs args) {
+        return getConfigSetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Direct Mail Config Set available to the user. [What is Config Set](https://next.api.alibabacloud.com/document/Dm/2015-11-23/ConfigSetCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetConfigSetsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstConfigSetId", default_.sets()[0].id());
+     *         final var byName = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConfigSetsResult> getConfigSets(GetConfigSetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:directmail/getConfigSets:getConfigSets", TypeShape.of(GetConfigSetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Direct Mail Config Set available to the user. [What is Config Set](https://next.api.alibabacloud.com/document/Dm/2015-11-23/ConfigSetCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetConfigSetsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstConfigSetId", default_.sets()[0].id());
+     *         final var byName = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConfigSetsResult> getConfigSets(GetConfigSetsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:directmail/getConfigSets:getConfigSets", TypeShape.of(GetConfigSetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Direct Mail Config Set available to the user. [What is Config Set](https://next.api.alibabacloud.com/document/Dm/2015-11-23/ConfigSetCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetConfigSetsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstConfigSetId", default_.sets()[0].id());
+     *         final var byName = DirectmailFunctions.getConfigSets(GetConfigSetsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConfigSetsResult> getConfigSetsPlain(GetConfigSetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:directmail/getConfigSets:getConfigSets", TypeShape.of(GetConfigSetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Direct Mail Dedicated Ip Pool available to the user. [What is Dedicated Ip Pool](https://next.api.alibabacloud.com/document/Dm/2015-11-23/DedicatedIpPoolCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetDedicatedIpPoolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPoolId", default_.pools()[0].id());
+     *         final var byName = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedIpPoolsResult> getDedicatedIpPools() {
+        return getDedicatedIpPools(GetDedicatedIpPoolsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Direct Mail Dedicated Ip Pool available to the user. [What is Dedicated Ip Pool](https://next.api.alibabacloud.com/document/Dm/2015-11-23/DedicatedIpPoolCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetDedicatedIpPoolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPoolId", default_.pools()[0].id());
+     *         final var byName = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedIpPoolsResult> getDedicatedIpPoolsPlain() {
+        return getDedicatedIpPoolsPlain(GetDedicatedIpPoolsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Direct Mail Dedicated Ip Pool available to the user. [What is Dedicated Ip Pool](https://next.api.alibabacloud.com/document/Dm/2015-11-23/DedicatedIpPoolCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetDedicatedIpPoolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPoolId", default_.pools()[0].id());
+     *         final var byName = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedIpPoolsResult> getDedicatedIpPools(GetDedicatedIpPoolsArgs args) {
+        return getDedicatedIpPools(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Direct Mail Dedicated Ip Pool available to the user. [What is Dedicated Ip Pool](https://next.api.alibabacloud.com/document/Dm/2015-11-23/DedicatedIpPoolCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetDedicatedIpPoolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPoolId", default_.pools()[0].id());
+     *         final var byName = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedIpPoolsResult> getDedicatedIpPoolsPlain(GetDedicatedIpPoolsPlainArgs args) {
+        return getDedicatedIpPoolsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Direct Mail Dedicated Ip Pool available to the user. [What is Dedicated Ip Pool](https://next.api.alibabacloud.com/document/Dm/2015-11-23/DedicatedIpPoolCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetDedicatedIpPoolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPoolId", default_.pools()[0].id());
+     *         final var byName = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedIpPoolsResult> getDedicatedIpPools(GetDedicatedIpPoolsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:directmail/getDedicatedIpPools:getDedicatedIpPools", TypeShape.of(GetDedicatedIpPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Direct Mail Dedicated Ip Pool available to the user. [What is Dedicated Ip Pool](https://next.api.alibabacloud.com/document/Dm/2015-11-23/DedicatedIpPoolCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetDedicatedIpPoolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPoolId", default_.pools()[0].id());
+     *         final var byName = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedIpPoolsResult> getDedicatedIpPools(GetDedicatedIpPoolsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:directmail/getDedicatedIpPools:getDedicatedIpPools", TypeShape.of(GetDedicatedIpPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Direct Mail Dedicated Ip Pool available to the user. [What is Dedicated Ip Pool](https://next.api.alibabacloud.com/document/Dm/2015-11-23/DedicatedIpPoolCreate)
+     * 
+     * &gt; **NOTE:** Available since v2.2.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.DirectmailFunctions;
+     * import com.pulumi.alicloud.directmail.inputs.GetDedicatedIpPoolsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPoolId", default_.pools()[0].id());
+     *         final var byName = DirectmailFunctions.getDedicatedIpPools(GetDedicatedIpPoolsArgs.builder()
+     *             .keyword("terraform-example")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedIpPoolsResult> getDedicatedIpPoolsPlain(GetDedicatedIpPoolsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:directmail/getDedicatedIpPools:getDedicatedIpPools", TypeShape.of(GetDedicatedIpPoolsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
      * 
@@ -398,7 +1048,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -443,7 +1093,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -488,7 +1138,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -533,7 +1183,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -578,7 +1228,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -623,7 +1273,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -668,7 +1318,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -713,7 +1363,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.125.0+.
+     * &gt; **NOTE:** Available since v1.125.0.
      * 
      * ## Example Usage
      * 
@@ -759,7 +1409,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.125.0+.
+     * &gt; **NOTE:** Available since v1.125.0.
      * 
      * ## Example Usage
      * 
@@ -805,7 +1455,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.125.0+.
+     * &gt; **NOTE:** Available since v1.125.0.
      * 
      * ## Example Usage
      * 
@@ -851,7 +1501,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.125.0+.
+     * &gt; **NOTE:** Available since v1.125.0.
      * 
      * ## Example Usage
      * 
@@ -897,7 +1547,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.125.0+.
+     * &gt; **NOTE:** Available since v1.125.0.
      * 
      * ## Example Usage
      * 
@@ -943,7 +1593,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.125.0+.
+     * &gt; **NOTE:** Available since v1.125.0.
      * 
      * ## Example Usage
      * 
@@ -989,7 +1639,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Receiverses of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.125.0+.
+     * &gt; **NOTE:** Available since v1.125.0.
      * 
      * ## Example Usage
      * 
@@ -1035,7 +1685,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -1085,7 +1735,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -1135,7 +1785,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -1185,7 +1835,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -1235,7 +1885,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -1285,7 +1935,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 
@@ -1335,7 +1985,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.144.0+.
+     * &gt; **NOTE:** Available since v1.144.0.
      * 
      * ## Example Usage
      * 

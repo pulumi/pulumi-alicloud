@@ -23,8 +23,6 @@ import javax.annotation.Nullable;
  * environment in the cloud. An ADB cluster can contain multiple user-created
  * databases.
  * 
- * &gt; **NOTE:** Deprecated since v1.121.0.
- * 
  * &gt; **DEPRECATED:** This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
  * 
  * ## Example Usage
@@ -96,6 +94,10 @@ import javax.annotation.Nullable;
  * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
+ * ### Removing alicloud.adb.Cluster from your configuration
+ * 
+ * The alicloud.adb.Cluster resource allows you to manage your adb cluster, but Terraform cannot destroy it if your cluster type is pre paid(post paid type can destroy normally). Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster. You can resume managing the cluster via the adb Console.
+ * 
  * ## Import
  * 
  * ADB cluster can be imported using the id, e.g.
@@ -108,54 +110,64 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:adb/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
     public Output<Integer> autoRenewPeriod() {
         return this.autoRenewPeriod;
     }
+    /**
+     * The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+     * 
+     */
     @Export(name="computeResource", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> computeResource;
 
+    /**
+     * @return The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
+     * 
+     */
     public Output<Optional<String>> computeResource() {
         return Codegen.optional(this.computeResource);
     }
     /**
-     * (Available since v1.93.0) The connection string of the ADB cluster.
+     * The connection string of the cluster.
      * 
      */
     @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
-     * @return (Available since v1.93.0) The connection string of the ADB cluster.
+     * @return The connection string of the cluster.
      * 
      */
     public Output<String> connectionString() {
         return this.connectionString;
     }
     /**
-     * Cluster category. Value options: `Basic`, `Cluster`.
+     * The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
      * 
      */
     @Export(name="dbClusterCategory", refs={String.class}, tree="[0]")
     private Output<String> dbClusterCategory;
 
     /**
-     * @return Cluster category. Value options: `Basic`, `Cluster`.
+     * @return The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
      * 
      */
     public Output<String> dbClusterCategory() {
         return this.dbClusterCategory;
     }
     /**
+     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     * 
      * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      * 
      */
@@ -163,144 +175,226 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     @Export(name="dbClusterClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbClusterClass;
 
+    /**
+     * @return It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     * 
+     */
     public Output<Optional<String>> dbClusterClass() {
         return Codegen.optional(this.dbClusterClass);
     }
     /**
-     * Cluster version. Value options: `3.0`, Default to `3.0`.
+     * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      * 
      */
     @Export(name="dbClusterVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbClusterVersion;
 
     /**
-     * @return Cluster version. Value options: `3.0`, Default to `3.0`.
+     * @return The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      * 
      */
     public Output<Optional<String>> dbClusterVersion() {
         return Codegen.optional(this.dbClusterVersion);
     }
     /**
-     * The dbNodeClass of cluster node.
+     * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      * 
      */
     @Export(name="dbNodeClass", refs={String.class}, tree="[0]")
     private Output<String> dbNodeClass;
 
     /**
-     * @return The dbNodeClass of cluster node.
+     * @return The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      * 
      */
     public Output<String> dbNodeClass() {
         return this.dbNodeClass;
     }
     /**
-     * The dbNodeCount of cluster node.
+     * The db node count.
      * 
      */
     @Export(name="dbNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbNodeCount;
 
     /**
-     * @return The dbNodeCount of cluster node.
+     * @return The db node count.
      * 
      */
     public Output<Integer> dbNodeCount() {
         return this.dbNodeCount;
     }
     /**
-     * The dbNodeStorage of cluster node.
+     * The db node storage.
      * 
      */
     @Export(name="dbNodeStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbNodeStorage;
 
     /**
-     * @return The dbNodeStorage of cluster node.
+     * @return The db node storage.
      * 
      */
     public Output<Integer> dbNodeStorage() {
         return this.dbNodeStorage;
     }
     /**
-     * The description of cluster.
+     * The description of DBCluster.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The description of cluster.
+     * @return The description of DBCluster.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
+    /**
+     * Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
     @Export(name="diskEncryption", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> diskEncryption;
 
+    /**
+     * @return Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
     public Output<Optional<Boolean>> diskEncryption() {
         return Codegen.optional(this.diskEncryption);
     }
+    /**
+     * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     * 
+     */
     @Export(name="diskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output<String> diskPerformanceLevel;
 
+    /**
+     * @return The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     * 
+     */
     public Output<String> diskPerformanceLevel() {
         return this.diskPerformanceLevel;
     }
+    /**
+     * The elastic io resource.
+     * 
+     */
     @Export(name="elasticIoResource", refs={Integer.class}, tree="[0]")
     private Output<Integer> elasticIoResource;
 
+    /**
+     * @return The elastic io resource.
+     * 
+     */
     public Output<Integer> elasticIoResource() {
         return this.elasticIoResource;
     }
+    /**
+     * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+     * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+     * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+     * 
+     */
     @Export(name="elasticIoResourceSize", refs={String.class}, tree="[0]")
     private Output<String> elasticIoResourceSize;
 
+    /**
+     * @return The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+     * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
+     * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
+     * 
+     */
     public Output<String> elasticIoResourceSize() {
         return this.elasticIoResourceSize;
     }
+    /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
     @Export(name="enableSsl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableSsl;
 
+    /**
+     * @return Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
     public Output<Optional<Boolean>> enableSsl() {
         return Codegen.optional(this.enableSsl);
     }
+    /**
+     * The minor version to which you want to update.
+     * 
+     */
     @Export(name="kernelVersion", refs={String.class}, tree="[0]")
     private Output<String> kernelVersion;
 
+    /**
+     * @return The minor version to which you want to update.
+     * 
+     */
     public Output<String> kernelVersion() {
         return this.kernelVersion;
     }
+    /**
+     * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+     * 
+     */
     @Export(name="kmsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsId;
 
+    /**
+     * @return The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+     * 
+     */
     public Output<Optional<String>> kmsId() {
         return Codegen.optional(this.kmsId);
     }
     /**
-     * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+     * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      * 
      */
     @Export(name="maintainTime", refs={String.class}, tree="[0]")
     private Output<String> maintainTime;
 
     /**
-     * @return Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+     * @return The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      * 
      */
     public Output<String> maintainTime() {
         return this.maintainTime;
     }
+    /**
+     * The mode of the cluster. Valid values: `reserver`, `flexible`.
+     * 
+     */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
+    /**
+     * @return The mode of the cluster. Valid values: `reserver`, `flexible`.
+     * 
+     */
     public Output<String> mode() {
         return this.mode;
     }
+    /**
+     * The modify type.
+     * 
+     */
     @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
+    /**
+     * @return The modify type.
+     * 
+     */
     public Output<Optional<String>> modifyType() {
         return Codegen.optional(this.modifyType);
     }
@@ -322,28 +416,32 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.payType;
     }
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+     * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * 
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * @return The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * 
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      * 
      */
     public Output<Optional<Integer>> period() {
@@ -377,9 +475,17 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> renewalStatus() {
         return this.renewalStatus;
     }
+    /**
+     * The ID of the resource group.
+     * 
+     */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
@@ -397,15 +503,31 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<List<String>> securityIps() {
         return this.securityIps;
     }
+    /**
+     * The status of the resource.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
+    /**
+     * The time when to perform the update. Valid values:
+     * 
+     */
     @Export(name="switchMode", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> switchMode;
 
+    /**
+     * @return The time when to perform the update. Valid values:
+     * 
+     */
     public Output<Optional<Integer>> switchMode() {
         return Codegen.optional(this.switchMode);
     }
@@ -431,35 +553,43 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * The vpc ID of the resource.
+     * 
+     */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
+    /**
+     * @return The vpc ID of the resource.
+     * 
+     */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The vswitch id.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The virtual switch ID to launch DB instances in one VPC.
+     * @return The vswitch id.
      * 
      */
     public Output<Optional<String>> vswitchId() {
         return Codegen.optional(this.vswitchId);
     }
     /**
-     * The Zone to launch the DB cluster.
+     * The zone ID of the resource.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the DB cluster.
+     * @return The zone ID of the resource.
      * 
      */
     public Output<String> zoneId() {

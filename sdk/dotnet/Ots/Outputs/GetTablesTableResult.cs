@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ots.Outputs
     [OutputType]
     public sealed class GetTablesTableResult
     {
+        /// <summary>
+        /// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTablesTableDefinedColumnResult> DefinedColumns;
         /// <summary>
         /// ID of the table. The value is `&lt;instance_name&gt;:&lt;table_name&gt;`.
@@ -27,7 +30,7 @@ namespace Pulumi.AliCloud.Ots.Outputs
         /// </summary>
         public readonly int MaxVersion;
         /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table.
+        /// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTablesTablePrimaryKeyResult> PrimaryKeys;
         /// <summary>

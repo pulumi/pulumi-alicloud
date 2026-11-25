@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPolicyGroupsResult {
+    /**
+     * @return A list of Ecd Policy Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetPolicyGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,23 @@ public final class GetPolicyGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Policy Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of policy.
+     * 
+     */
     private @Nullable String status;
 
     private GetPolicyGroupsResult() {}
+    /**
+     * @return A list of Ecd Policy Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetPolicyGroupsGroup> groups() {
         return this.groups;
     }
@@ -43,12 +59,20 @@ public final class GetPolicyGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Policy Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of policy.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -44,6 +44,10 @@ class ApplicationInfoDimension(dict):
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+        :param _builtins.str value: The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -52,11 +56,17 @@ class ApplicationInfoDimension(dict):
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
+        """
+        The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
+        """
+        The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
+        """
         return pulumi.get(self, "value")
 
 
@@ -217,12 +227,13 @@ class TemplateApplicationsQuotaApplicationDetail(dict):
         :param _builtins.int notice_type: Whether to send notification of quota application result. Value:
                - 0 (default): No.
                - 3: Yes.
-        :param 'TemplateApplicationsQuotaApplicationDetailPeriodArgs' period: Quota calculation period.
+        :param 'TemplateApplicationsQuotaApplicationDetailPeriodArgs' period: Quota calculation period. See `period` below.
         :param _builtins.str quota_arn: Quota ARN.
         :param _builtins.str quota_description: The quota description.
         :param _builtins.str quota_name: The quota name.
         :param _builtins.str quota_unit: Quota unit.
         :param _builtins.str reason: Reason for quota application.
+               
                > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         :param _builtins.str status: The approval status of the quota promotion application. Value:
                - Disagree: reject.
@@ -323,7 +334,7 @@ class TemplateApplicationsQuotaApplicationDetail(dict):
     @pulumi.getter
     def period(self) -> Optional['outputs.TemplateApplicationsQuotaApplicationDetailPeriod']:
         """
-        Quota calculation period.
+        Quota calculation period. See `period` below.
         """
         return pulumi.get(self, "period")
 
@@ -364,6 +375,7 @@ class TemplateApplicationsQuotaApplicationDetail(dict):
     def reason(self) -> Optional[_builtins.str]:
         """
         Reason for quota application.
+
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         return pulumi.get(self, "reason")
@@ -481,6 +493,24 @@ class GetApplicationInfosApplicationResult(dict):
                  quota_unit: _builtins.str,
                  reason: _builtins.str,
                  status: _builtins.str):
+        """
+        :param _builtins.str application_id: The first ID of the resource.
+        :param _builtins.str approve_value: The approve value.
+        :param _builtins.str audit_reason: The audit reason.
+        :param _builtins.float desire_value: The desire value of the quota application.
+        :param Sequence['GetApplicationInfosApplicationDimensionArgs'] dimensions: The quota dimensions. See `dimensions` below.
+        :param _builtins.str effective_time: The effective time.
+        :param _builtins.str expire_time: The expire time.
+        :param _builtins.str id: The ID of the Application Info.
+        :param _builtins.int notice_type: The notice type.
+        :param _builtins.str product_code: The product code.
+        :param _builtins.str quota_action_code: The ID of quota action.
+        :param _builtins.str quota_description: The description of the quota.
+        :param _builtins.str quota_name: The name of the quota.
+        :param _builtins.str quota_unit: The quota unit.
+        :param _builtins.str reason: The reason of the quota application.
+        :param _builtins.str status: The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+        """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "approve_value", approve_value)
         pulumi.set(__self__, "audit_reason", audit_reason)
@@ -501,81 +531,129 @@ class GetApplicationInfosApplicationResult(dict):
     @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> _builtins.str:
+        """
+        The first ID of the resource.
+        """
         return pulumi.get(self, "application_id")
 
     @_builtins.property
     @pulumi.getter(name="approveValue")
     def approve_value(self) -> _builtins.str:
+        """
+        The approve value.
+        """
         return pulumi.get(self, "approve_value")
 
     @_builtins.property
     @pulumi.getter(name="auditReason")
     def audit_reason(self) -> _builtins.str:
+        """
+        The audit reason.
+        """
         return pulumi.get(self, "audit_reason")
 
     @_builtins.property
     @pulumi.getter(name="desireValue")
     def desire_value(self) -> _builtins.float:
+        """
+        The desire value of the quota application.
+        """
         return pulumi.get(self, "desire_value")
 
     @_builtins.property
     @pulumi.getter
     def dimensions(self) -> Sequence['outputs.GetApplicationInfosApplicationDimensionResult']:
+        """
+        The quota dimensions. See `dimensions` below.
+        """
         return pulumi.get(self, "dimensions")
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> _builtins.str:
+        """
+        The effective time.
+        """
         return pulumi.get(self, "effective_time")
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> _builtins.str:
+        """
+        The expire time.
+        """
         return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the Application Info.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="noticeType")
     def notice_type(self) -> _builtins.int:
+        """
+        The notice type.
+        """
         return pulumi.get(self, "notice_type")
 
     @_builtins.property
     @pulumi.getter(name="productCode")
     def product_code(self) -> _builtins.str:
+        """
+        The product code.
+        """
         return pulumi.get(self, "product_code")
 
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
     def quota_action_code(self) -> _builtins.str:
+        """
+        The ID of quota action.
+        """
         return pulumi.get(self, "quota_action_code")
 
     @_builtins.property
     @pulumi.getter(name="quotaDescription")
     def quota_description(self) -> _builtins.str:
+        """
+        The description of the quota.
+        """
         return pulumi.get(self, "quota_description")
 
     @_builtins.property
     @pulumi.getter(name="quotaName")
     def quota_name(self) -> _builtins.str:
+        """
+        The name of the quota.
+        """
         return pulumi.get(self, "quota_name")
 
     @_builtins.property
     @pulumi.getter(name="quotaUnit")
     def quota_unit(self) -> _builtins.str:
+        """
+        The quota unit.
+        """
         return pulumi.get(self, "quota_unit")
 
     @_builtins.property
     @pulumi.getter
     def reason(self) -> _builtins.str:
+        """
+        The reason of the quota application.
+        """
         return pulumi.get(self, "reason")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
+        """
+        The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+        """
         return pulumi.get(self, "status")
 
 
@@ -584,17 +662,27 @@ class GetApplicationInfosApplicationDimensionResult(dict):
     def __init__(__self__, *,
                  key: _builtins.str,
                  value: _builtins.str):
+        """
+        :param _builtins.str key: The key of dimensions.
+        :param _builtins.str value: The value of dimensions.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> _builtins.str:
+        """
+        The key of dimensions.
+        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
+        """
+        The value of dimensions.
+        """
         return pulumi.get(self, "value")
 
 
@@ -603,6 +691,10 @@ class GetApplicationInfosDimensionResult(dict):
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of dimensions.
+        :param _builtins.str value: The value of dimensions.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -611,11 +703,17 @@ class GetApplicationInfosDimensionResult(dict):
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
+        """
+        The key of dimensions.
+        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
+        """
+        The value of dimensions.
+        """
         return pulumi.get(self, "value")
 
 
@@ -637,7 +735,7 @@ class GetQuotaAlarmsAlarmResult(dict):
         :param _builtins.str product_code: The Product Code.
         :param _builtins.str quota_action_code: The Quota Action Code.
         :param _builtins.str quota_alarm_name: The name of Quota Alarm.
-        :param Sequence['GetQuotaAlarmsAlarmQuotaDimensionArgs'] quota_dimensions: The Quota Dimensions.
+        :param Sequence['GetQuotaAlarmsAlarmQuotaDimensionArgs'] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
         :param _builtins.float threshold: The threshold of Quota Alarm.
         :param _builtins.float threshold_percent: The threshold percent of Quota Alarm.
         :param _builtins.str web_hook: The WebHook of Quota Alarm.
@@ -696,7 +794,7 @@ class GetQuotaAlarmsAlarmResult(dict):
     @pulumi.getter(name="quotaDimensions")
     def quota_dimensions(self) -> Sequence['outputs.GetQuotaAlarmsAlarmQuotaDimensionResult']:
         """
-        The Quota Dimensions.
+        The Quota Dimensions. See `quota_dimensions` below.
         """
         return pulumi.get(self, "quota_dimensions")
 
@@ -759,6 +857,10 @@ class GetQuotaAlarmsQuotaDimensionResult(dict):
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of quota_dimensions.
+        :param _builtins.str value: The value of quota_dimensions.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -767,11 +869,17 @@ class GetQuotaAlarmsQuotaDimensionResult(dict):
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
+        """
+        The key of quota_dimensions.
+        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
+        """
+        The value of quota_dimensions.
+        """
         return pulumi.get(self, "value")
 
 
@@ -799,18 +907,18 @@ class GetQuotaApplicationsApplicationResult(dict):
         :param _builtins.str approve_value: The approve value.
         :param _builtins.str audit_reason: The audit reason.
         :param _builtins.float desire_value: The desire value of the quota application.
-        :param Sequence['GetQuotaApplicationsApplicationDimensionArgs'] dimensions: The quota dimensions.
+        :param Sequence['GetQuotaApplicationsApplicationDimensionArgs'] dimensions: The quota dimensions. See `dimensions` below.
         :param _builtins.str effective_time: The effective time.
         :param _builtins.str expire_time: The expire time.
         :param _builtins.str id: The ID of the Application Info.
         :param _builtins.int notice_type: The notice type.
         :param _builtins.str product_code: The product code.
-        :param _builtins.str quota_action_code: The ID of quota action..
+        :param _builtins.str quota_action_code: The ID of quota action.
         :param _builtins.str quota_description: The description of the quota.
         :param _builtins.str quota_name: The name of the quota.
         :param _builtins.str quota_unit: The quota unit.
         :param _builtins.str reason: The reason of the quota application.
-        :param _builtins.str status: The status of the quota application.
+        :param _builtins.str status: The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "approve_value", approve_value)
@@ -865,7 +973,7 @@ class GetQuotaApplicationsApplicationResult(dict):
     @pulumi.getter
     def dimensions(self) -> Sequence['outputs.GetQuotaApplicationsApplicationDimensionResult']:
         """
-        The quota dimensions.
+        The quota dimensions. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
@@ -913,7 +1021,7 @@ class GetQuotaApplicationsApplicationResult(dict):
     @pulumi.getter(name="quotaActionCode")
     def quota_action_code(self) -> _builtins.str:
         """
-        The ID of quota action..
+        The ID of quota action.
         """
         return pulumi.get(self, "quota_action_code")
 
@@ -953,7 +1061,7 @@ class GetQuotaApplicationsApplicationResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the quota application.
+        The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
         """
         return pulumi.get(self, "status")
 
@@ -992,6 +1100,10 @@ class GetQuotaApplicationsDimensionResult(dict):
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of dimensions.
+        :param _builtins.str value: The value of dimensions.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -1000,11 +1112,17 @@ class GetQuotaApplicationsDimensionResult(dict):
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
+        """
+        The key of dimensions.
+        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
+        """
+        The value of dimensions.
+        """
         return pulumi.get(self, "value")
 
 

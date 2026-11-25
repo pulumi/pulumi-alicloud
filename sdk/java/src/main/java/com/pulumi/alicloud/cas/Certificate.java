@@ -24,8 +24,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.35.0.
  * 
- * &gt; **NOTE:** Deprecated since v1.129.0.
- * 
  * &gt; **NOTE:** The Certificate name which you want to add must be already registered and had not added by another account. Every Certificate name can only exist in a unique group.
  * 
  * &gt; **NOTE:** The Cas Certificate region only support cn-hangzhou, me-east-1, eu-central-1, ap-northeast-1.
@@ -136,46 +134,84 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cas/certificate:Certificate")
 public class Certificate extends com.pulumi.resources.CustomResource {
     /**
-     * Cert of the Certificate in which the Certificate will add.
+     * The content of a non-SM certificate in PEM format.
      * 
      */
     @Export(name="cert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cert;
 
     /**
-     * @return Cert of the Certificate in which the Certificate will add.
+     * @return The content of a non-SM certificate in PEM format.
      * 
      */
     public Output<Optional<String>> cert() {
         return Codegen.optional(this.cert);
     }
+    /**
+     * (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+     * 
+     */
+    @Export(name="certIdentifier", refs={String.class}, tree="[0]")
+    private Output<String> certIdentifier;
+
+    /**
+     * @return (Available since v2.3.0) The global certificate identifier in the format of &#34;id+region&#34;, e.g. &#34;13781326-cn-hangzhou&#34;.
+     * 
+     */
+    public Output<String> certIdentifier() {
+        return this.certIdentifier;
+    }
+    /**
+     * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+     * 
+     */
     @Export(name="certificateName", refs={String.class}, tree="[0]")
     private Output<String> certificateName;
 
+    /**
+     * @return A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
+     * 
+     */
     public Output<String> certificateName() {
         return this.certificateName;
     }
+    /**
+     * The content of an SM encryption certificate in PEM format.
+     * 
+     */
     @Export(name="encryptCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptCert;
 
+    /**
+     * @return The content of an SM encryption certificate in PEM format.
+     * 
+     */
     public Output<Optional<String>> encryptCert() {
         return Codegen.optional(this.encryptCert);
     }
+    /**
+     * The private key of an SM encryption certificate in PEM format.
+     * 
+     */
     @Export(name="encryptPrivateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptPrivateKey;
 
+    /**
+     * @return The private key of an SM encryption certificate in PEM format.
+     * 
+     */
     public Output<Optional<String>> encryptPrivateKey() {
         return Codegen.optional(this.encryptPrivateKey);
     }
     /**
-     * Key of the Certificate in which the Certificate will add.
+     * The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      * 
      */
     @Export(name="key", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> key;
 
     /**
-     * @return Key of the Certificate in which the Certificate will add.
+     * @return The private key of a non-SM certificate in PEM format. It conflicts with `keyWo`.
      * 
      */
     public Output<Optional<String>> key() {
@@ -183,6 +219,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     }
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
      * 
      */
     @Export(name="keyWo", refs={String.class}, tree="[0]")
@@ -190,18 +227,29 @@ public class Certificate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `keyWoVersion`. It conflicts with `key`.
      * 
      */
     public Output<Optional<String>> keyWo() {
         return Codegen.optional(this.keyWo);
     }
+    /**
+     * The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     * 
+     */
     @Export(name="keyWoVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> keyWoVersion;
 
+    /**
+     * @return The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `keyWo` value.
+     * 
+     */
     public Output<Optional<Integer>> keyWoVersion() {
         return Codegen.optional(this.keyWoVersion);
     }
     /**
+     * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * 
      * @deprecated Field &#39;lang&#39; has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      * 
      */
@@ -209,11 +257,15 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
+    /**
+     * @return Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+     * 
+     */
     public Output<Optional<String>> lang() {
         return Codegen.optional(this.lang);
     }
     /**
-     * Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+     * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
      * 
@@ -223,33 +275,65 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Name of the Certificate. This name must contain only alphanumeric characters or &#34;-&#34;, and must not begin or end with &#34;-&#34;, and &#34;-&#34; must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+     * @return Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The ID of the resource group.
+     * 
+     */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
+    /**
+     * The content of an SM signing certificate in PEM format.
+     * 
+     */
     @Export(name="signCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> signCert;
 
+    /**
+     * @return The content of an SM signing certificate in PEM format.
+     * 
+     */
     public Output<Optional<String>> signCert() {
         return Codegen.optional(this.signCert);
     }
+    /**
+     * The private key of an SM signing certificate in PEM format.
+     * 
+     */
     @Export(name="signPrivateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> signPrivateKey;
 
+    /**
+     * @return The private key of an SM signing certificate in PEM format.
+     * 
+     */
     public Output<Optional<String>> signPrivateKey() {
         return Codegen.optional(this.signPrivateKey);
     }
+    /**
+     * The tag of the resource.
+     * 
+     */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }

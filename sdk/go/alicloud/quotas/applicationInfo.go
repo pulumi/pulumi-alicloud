@@ -12,27 +12,121 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Quotas Application Info resource. Details of Quota Application.
+//
+// > **NOTE:** Available since v1.117.0.
+//
+// This is an alias of `quotas.QuotaApplication`.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/quotas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := quotas.NewApplicationInfo(ctx, "default", &quotas.ApplicationInfoArgs{
+//				QuotaActionCode: pulumi.String("q_desktop-count"),
+//				ProductCode:     pulumi.String("gws"),
+//				QuotaCategory:   pulumi.String("CommonQuota"),
+//				NoticeType:      pulumi.Int(3),
+//				Dimensions: quotas.ApplicationInfoDimensionArray{
+//					&quotas.ApplicationInfoDimensionArgs{
+//						Key:   pulumi.String("regionId"),
+//						Value: pulumi.String("cn-hangzhou"),
+//					},
+//				},
+//				DesireValue: pulumi.Float64(1001),
+//				Reason:      pulumi.String("测试"),
+//				EnvLanguage: pulumi.String("zh"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Deleting `quotas.ApplicationInfo` or removing it from your configuration
+//
+// Terraform cannot destroy resource `quotas.ApplicationInfo`. Terraform will remove this resource from the state file, however resources may remain.
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
+// ## Import
+//
+// Quotas Application Info can be imported using the id, e.g.
+//
+// ```sh
+// $ pulumi import alicloud:quotas/applicationInfo:ApplicationInfo example <id>
+// ```
 type ApplicationInfo struct {
 	pulumi.CustomResourceState
 
-	ApproveValue     pulumi.StringOutput                 `pulumi:"approveValue"`
-	AuditMode        pulumi.StringOutput                 `pulumi:"auditMode"`
-	AuditReason      pulumi.StringOutput                 `pulumi:"auditReason"`
-	CreateTime       pulumi.StringOutput                 `pulumi:"createTime"`
-	DesireValue      pulumi.Float64Output                `pulumi:"desireValue"`
-	Dimensions       ApplicationInfoDimensionArrayOutput `pulumi:"dimensions"`
-	EffectiveTime    pulumi.StringPtrOutput              `pulumi:"effectiveTime"`
-	EnvLanguage      pulumi.StringPtrOutput              `pulumi:"envLanguage"`
-	ExpireTime       pulumi.StringPtrOutput              `pulumi:"expireTime"`
-	NoticeType       pulumi.IntOutput                    `pulumi:"noticeType"`
-	ProductCode      pulumi.StringOutput                 `pulumi:"productCode"`
-	QuotaActionCode  pulumi.StringOutput                 `pulumi:"quotaActionCode"`
-	QuotaCategory    pulumi.StringPtrOutput              `pulumi:"quotaCategory"`
-	QuotaDescription pulumi.StringOutput                 `pulumi:"quotaDescription"`
-	QuotaName        pulumi.StringOutput                 `pulumi:"quotaName"`
-	QuotaUnit        pulumi.StringOutput                 `pulumi:"quotaUnit"`
-	Reason           pulumi.StringOutput                 `pulumi:"reason"`
-	Status           pulumi.StringOutput                 `pulumi:"status"`
+	// The approve value of the quota application.
+	ApproveValue pulumi.StringOutput `pulumi:"approveValue"`
+	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+	// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+	AuditMode pulumi.StringOutput `pulumi:"auditMode"`
+	// The audit reason.
+	AuditReason pulumi.StringOutput `pulumi:"auditReason"`
+	// Resource attribute field representing creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The desire value of the quota application.
+	DesireValue pulumi.Float64Output `pulumi:"desireValue"`
+	// QuotaDimensions. See `dimensions` below.
+	Dimensions ApplicationInfoDimensionArrayOutput `pulumi:"dimensions"`
+	// The effective time of the quota application.
+	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
+	// The language of the quota alert notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage pulumi.StringPtrOutput `pulumi:"envLanguage"`
+	// The expired time of the quota application.
+	ExpireTime pulumi.StringPtrOutput `pulumi:"expireTime"`
+	// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+	NoticeType pulumi.IntOutput `pulumi:"noticeType"`
+	// The product code.
+	ProductCode pulumi.StringOutput `pulumi:"productCode"`
+	// The ID of quota action.
+	QuotaActionCode pulumi.StringOutput `pulumi:"quotaActionCode"`
+	// The quota type.
+	// - CommonQuota (default): Generic quota.
+	// - FlowControl:API rate quota.
+	// - WhiteListLabel: Equity quota.
+	QuotaCategory pulumi.StringPtrOutput `pulumi:"quotaCategory"`
+	// The description of the quota application.
+	QuotaDescription pulumi.StringOutput `pulumi:"quotaDescription"`
+	// The name of the quota application.
+	QuotaName pulumi.StringOutput `pulumi:"quotaName"`
+	// The unit of the quota application.
+	QuotaUnit pulumi.StringOutput `pulumi:"quotaUnit"`
+	// The reason of the quota application.
+	Reason pulumi.StringOutput `pulumi:"reason"`
+	// Application Status:
+	// - Disagree: reject.
+	// - Agree: Approved.
+	// - Process: under review.
+	// - Cancel: Closed.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewApplicationInfo registers a new resource with the given unique name, arguments, and options.
@@ -77,45 +171,103 @@ func GetApplicationInfo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationInfo resources.
 type applicationInfoState struct {
-	ApproveValue     *string                    `pulumi:"approveValue"`
-	AuditMode        *string                    `pulumi:"auditMode"`
-	AuditReason      *string                    `pulumi:"auditReason"`
-	CreateTime       *string                    `pulumi:"createTime"`
-	DesireValue      *float64                   `pulumi:"desireValue"`
-	Dimensions       []ApplicationInfoDimension `pulumi:"dimensions"`
-	EffectiveTime    *string                    `pulumi:"effectiveTime"`
-	EnvLanguage      *string                    `pulumi:"envLanguage"`
-	ExpireTime       *string                    `pulumi:"expireTime"`
-	NoticeType       *int                       `pulumi:"noticeType"`
-	ProductCode      *string                    `pulumi:"productCode"`
-	QuotaActionCode  *string                    `pulumi:"quotaActionCode"`
-	QuotaCategory    *string                    `pulumi:"quotaCategory"`
-	QuotaDescription *string                    `pulumi:"quotaDescription"`
-	QuotaName        *string                    `pulumi:"quotaName"`
-	QuotaUnit        *string                    `pulumi:"quotaUnit"`
-	Reason           *string                    `pulumi:"reason"`
-	Status           *string                    `pulumi:"status"`
+	// The approve value of the quota application.
+	ApproveValue *string `pulumi:"approveValue"`
+	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+	// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+	AuditMode *string `pulumi:"auditMode"`
+	// The audit reason.
+	AuditReason *string `pulumi:"auditReason"`
+	// Resource attribute field representing creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// The desire value of the quota application.
+	DesireValue *float64 `pulumi:"desireValue"`
+	// QuotaDimensions. See `dimensions` below.
+	Dimensions []ApplicationInfoDimension `pulumi:"dimensions"`
+	// The effective time of the quota application.
+	EffectiveTime *string `pulumi:"effectiveTime"`
+	// The language of the quota alert notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage *string `pulumi:"envLanguage"`
+	// The expired time of the quota application.
+	ExpireTime *string `pulumi:"expireTime"`
+	// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+	NoticeType *int `pulumi:"noticeType"`
+	// The product code.
+	ProductCode *string `pulumi:"productCode"`
+	// The ID of quota action.
+	QuotaActionCode *string `pulumi:"quotaActionCode"`
+	// The quota type.
+	// - CommonQuota (default): Generic quota.
+	// - FlowControl:API rate quota.
+	// - WhiteListLabel: Equity quota.
+	QuotaCategory *string `pulumi:"quotaCategory"`
+	// The description of the quota application.
+	QuotaDescription *string `pulumi:"quotaDescription"`
+	// The name of the quota application.
+	QuotaName *string `pulumi:"quotaName"`
+	// The unit of the quota application.
+	QuotaUnit *string `pulumi:"quotaUnit"`
+	// The reason of the quota application.
+	Reason *string `pulumi:"reason"`
+	// Application Status:
+	// - Disagree: reject.
+	// - Agree: Approved.
+	// - Process: under review.
+	// - Cancel: Closed.
+	Status *string `pulumi:"status"`
 }
 
 type ApplicationInfoState struct {
-	ApproveValue     pulumi.StringPtrInput
-	AuditMode        pulumi.StringPtrInput
-	AuditReason      pulumi.StringPtrInput
-	CreateTime       pulumi.StringPtrInput
-	DesireValue      pulumi.Float64PtrInput
-	Dimensions       ApplicationInfoDimensionArrayInput
-	EffectiveTime    pulumi.StringPtrInput
-	EnvLanguage      pulumi.StringPtrInput
-	ExpireTime       pulumi.StringPtrInput
-	NoticeType       pulumi.IntPtrInput
-	ProductCode      pulumi.StringPtrInput
-	QuotaActionCode  pulumi.StringPtrInput
-	QuotaCategory    pulumi.StringPtrInput
+	// The approve value of the quota application.
+	ApproveValue pulumi.StringPtrInput
+	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+	// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+	AuditMode pulumi.StringPtrInput
+	// The audit reason.
+	AuditReason pulumi.StringPtrInput
+	// Resource attribute field representing creation time.
+	CreateTime pulumi.StringPtrInput
+	// The desire value of the quota application.
+	DesireValue pulumi.Float64PtrInput
+	// QuotaDimensions. See `dimensions` below.
+	Dimensions ApplicationInfoDimensionArrayInput
+	// The effective time of the quota application.
+	EffectiveTime pulumi.StringPtrInput
+	// The language of the quota alert notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage pulumi.StringPtrInput
+	// The expired time of the quota application.
+	ExpireTime pulumi.StringPtrInput
+	// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+	NoticeType pulumi.IntPtrInput
+	// The product code.
+	ProductCode pulumi.StringPtrInput
+	// The ID of quota action.
+	QuotaActionCode pulumi.StringPtrInput
+	// The quota type.
+	// - CommonQuota (default): Generic quota.
+	// - FlowControl:API rate quota.
+	// - WhiteListLabel: Equity quota.
+	QuotaCategory pulumi.StringPtrInput
+	// The description of the quota application.
 	QuotaDescription pulumi.StringPtrInput
-	QuotaName        pulumi.StringPtrInput
-	QuotaUnit        pulumi.StringPtrInput
-	Reason           pulumi.StringPtrInput
-	Status           pulumi.StringPtrInput
+	// The name of the quota application.
+	QuotaName pulumi.StringPtrInput
+	// The unit of the quota application.
+	QuotaUnit pulumi.StringPtrInput
+	// The reason of the quota application.
+	Reason pulumi.StringPtrInput
+	// Application Status:
+	// - Disagree: reject.
+	// - Agree: Approved.
+	// - Process: under review.
+	// - Cancel: Closed.
+	Status pulumi.StringPtrInput
 }
 
 func (ApplicationInfoState) ElementType() reflect.Type {
@@ -129,32 +281,68 @@ func ApplicationInfoExists(ctx *pulumi.Context,
 }
 
 type applicationInfoArgs struct {
-	AuditMode       *string                    `pulumi:"auditMode"`
-	DesireValue     float64                    `pulumi:"desireValue"`
-	Dimensions      []ApplicationInfoDimension `pulumi:"dimensions"`
-	EffectiveTime   *string                    `pulumi:"effectiveTime"`
-	EnvLanguage     *string                    `pulumi:"envLanguage"`
-	ExpireTime      *string                    `pulumi:"expireTime"`
-	NoticeType      *int                       `pulumi:"noticeType"`
-	ProductCode     string                     `pulumi:"productCode"`
-	QuotaActionCode string                     `pulumi:"quotaActionCode"`
-	QuotaCategory   *string                    `pulumi:"quotaCategory"`
-	Reason          string                     `pulumi:"reason"`
+	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+	// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+	AuditMode *string `pulumi:"auditMode"`
+	// The desire value of the quota application.
+	DesireValue float64 `pulumi:"desireValue"`
+	// QuotaDimensions. See `dimensions` below.
+	Dimensions []ApplicationInfoDimension `pulumi:"dimensions"`
+	// The effective time of the quota application.
+	EffectiveTime *string `pulumi:"effectiveTime"`
+	// The language of the quota alert notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage *string `pulumi:"envLanguage"`
+	// The expired time of the quota application.
+	ExpireTime *string `pulumi:"expireTime"`
+	// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+	NoticeType *int `pulumi:"noticeType"`
+	// The product code.
+	ProductCode string `pulumi:"productCode"`
+	// The ID of quota action.
+	QuotaActionCode string `pulumi:"quotaActionCode"`
+	// The quota type.
+	// - CommonQuota (default): Generic quota.
+	// - FlowControl:API rate quota.
+	// - WhiteListLabel: Equity quota.
+	QuotaCategory *string `pulumi:"quotaCategory"`
+	// The reason of the quota application.
+	Reason string `pulumi:"reason"`
 }
 
 // The set of arguments for constructing a ApplicationInfo resource.
 type ApplicationInfoArgs struct {
-	AuditMode       pulumi.StringPtrInput
-	DesireValue     pulumi.Float64Input
-	Dimensions      ApplicationInfoDimensionArrayInput
-	EffectiveTime   pulumi.StringPtrInput
-	EnvLanguage     pulumi.StringPtrInput
-	ExpireTime      pulumi.StringPtrInput
-	NoticeType      pulumi.IntPtrInput
-	ProductCode     pulumi.StringInput
+	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+	// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
+	AuditMode pulumi.StringPtrInput
+	// The desire value of the quota application.
+	DesireValue pulumi.Float64Input
+	// QuotaDimensions. See `dimensions` below.
+	Dimensions ApplicationInfoDimensionArrayInput
+	// The effective time of the quota application.
+	EffectiveTime pulumi.StringPtrInput
+	// The language of the quota alert notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage pulumi.StringPtrInput
+	// The expired time of the quota application.
+	ExpireTime pulumi.StringPtrInput
+	// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+	NoticeType pulumi.IntPtrInput
+	// The product code.
+	ProductCode pulumi.StringInput
+	// The ID of quota action.
 	QuotaActionCode pulumi.StringInput
-	QuotaCategory   pulumi.StringPtrInput
-	Reason          pulumi.StringInput
+	// The quota type.
+	// - CommonQuota (default): Generic quota.
+	// - FlowControl:API rate quota.
+	// - WhiteListLabel: Equity quota.
+	QuotaCategory pulumi.StringPtrInput
+	// The reason of the quota application.
+	Reason pulumi.StringInput
 }
 
 func (ApplicationInfoArgs) ElementType() reflect.Type {
@@ -244,74 +432,103 @@ func (o ApplicationInfoOutput) ToApplicationInfoOutputWithContext(ctx context.Co
 	return o
 }
 
+// The approve value of the quota application.
 func (o ApplicationInfoOutput) ApproveValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.ApproveValue }).(pulumi.StringOutput)
 }
 
+// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
 func (o ApplicationInfoOutput) AuditMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.AuditMode }).(pulumi.StringOutput)
 }
 
+// The audit reason.
 func (o ApplicationInfoOutput) AuditReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.AuditReason }).(pulumi.StringOutput)
 }
 
+// Resource attribute field representing creation time.
 func (o ApplicationInfoOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The desire value of the quota application.
 func (o ApplicationInfoOutput) DesireValue() pulumi.Float64Output {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.Float64Output { return v.DesireValue }).(pulumi.Float64Output)
 }
 
+// QuotaDimensions. See `dimensions` below.
 func (o ApplicationInfoOutput) Dimensions() ApplicationInfoDimensionArrayOutput {
 	return o.ApplyT(func(v *ApplicationInfo) ApplicationInfoDimensionArrayOutput { return v.Dimensions }).(ApplicationInfoDimensionArrayOutput)
 }
 
+// The effective time of the quota application.
 func (o ApplicationInfoOutput) EffectiveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
 }
 
+// The language of the quota alert notification. Value:
+// - zh (default): Chinese.
+// - en: English.
 func (o ApplicationInfoOutput) EnvLanguage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringPtrOutput { return v.EnvLanguage }).(pulumi.StringPtrOutput)
 }
 
+// The expired time of the quota application.
 func (o ApplicationInfoOutput) ExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringPtrOutput { return v.ExpireTime }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
 func (o ApplicationInfoOutput) NoticeType() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.IntOutput { return v.NoticeType }).(pulumi.IntOutput)
 }
 
+// The product code.
 func (o ApplicationInfoOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.ProductCode }).(pulumi.StringOutput)
 }
 
+// The ID of quota action.
 func (o ApplicationInfoOutput) QuotaActionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.QuotaActionCode }).(pulumi.StringOutput)
 }
 
+// The quota type.
+// - CommonQuota (default): Generic quota.
+// - FlowControl:API rate quota.
+// - WhiteListLabel: Equity quota.
 func (o ApplicationInfoOutput) QuotaCategory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringPtrOutput { return v.QuotaCategory }).(pulumi.StringPtrOutput)
 }
 
+// The description of the quota application.
 func (o ApplicationInfoOutput) QuotaDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.QuotaDescription }).(pulumi.StringOutput)
 }
 
+// The name of the quota application.
 func (o ApplicationInfoOutput) QuotaName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.QuotaName }).(pulumi.StringOutput)
 }
 
+// The unit of the quota application.
 func (o ApplicationInfoOutput) QuotaUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.QuotaUnit }).(pulumi.StringOutput)
 }
 
+// The reason of the quota application.
 func (o ApplicationInfoOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.Reason }).(pulumi.StringOutput)
 }
 
+// Application Status:
+// - Disagree: reject.
+// - Agree: Approved.
+// - Process: under review.
+// - Cancel: Closed.
 func (o ApplicationInfoOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

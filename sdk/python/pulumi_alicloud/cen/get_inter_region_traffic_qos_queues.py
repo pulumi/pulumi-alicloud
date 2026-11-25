@@ -124,7 +124,7 @@ def get_inter_region_traffic_qos_queues(ids: Optional[Sequence[_builtins.str]] =
     """
     This data source provides Cen Inter Region Traffic Qos Queue available to the user.
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0+
 
     ## Example Usage
 
@@ -168,7 +168,7 @@ def get_inter_region_traffic_qos_queues_output(ids: pulumi.Input[Optional[Option
     """
     This data source provides Cen Inter Region Traffic Qos Queue available to the user.
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0+
 
     ## Example Usage
 

@@ -29,19 +29,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.NewLoadBalancer(ctx, "default", &slb.LoadBalancerArgs{
-//				Name: pulumi.String("sample_slb"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			slbsDs, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
+//			example, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
 //				NameRegex: pulumi.StringRef("sample_slb"),
+//				Tags: map[string]string{
+//					"tagKey1": "tagValue1",
+//					"tagKey2": "tagValue2",
+//				},
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstSlbId", slbsDs.Slbs[0].Id)
+//			ctx.Export("firstSlbId", example.Balancers[0].Id)
 //			return nil
 //		})
 //	}
@@ -60,55 +58,42 @@ func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...p
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersArgs struct {
 	// Service address of the SLBs.
-	Address          *string `pulumi:"address"`
+	Address *string `pulumi:"address"`
+	// The address ip version. Valid values `ipv4` and `ipv6`.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
-	AddressType      *string `pulumi:"addressType"`
-	EnableDetails    *bool   `pulumi:"enableDetails"`
+	// The address type of the SLB. Valid values `internet` and `intranet`.
+	AddressType *string `pulumi:"addressType"`
+	// Whether to enable details of the SLB. Default to `false`.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of SLBs IDs.
-	Ids                []string `pulumi:"ids"`
-	InternetChargeType *string  `pulumi:"internetChargeType"`
-	LoadBalancerName   *string  `pulumi:"loadBalancerName"`
-	MasterZoneId       *string  `pulumi:"masterZoneId"`
+	Ids []string `pulumi:"ids"`
+	// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+	InternetChargeType *string `pulumi:"internetChargeType"`
+	// The name of the SLB.
+	LoadBalancerName *string `pulumi:"loadBalancerName"`
+	// The master zone id of the SLB.
+	MasterZoneId *string `pulumi:"masterZoneId"`
 	// A regex string to filter results by SLB name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType *string `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  *string `pulumi:"outputFile"`
-	PageNumber  *int    `pulumi:"pageNumber"`
-	PageSize    *int    `pulumi:"pageSize"`
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
+	// The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The Id of resource group which SLB belongs.
-	ResourceGroupId       *string `pulumi:"resourceGroupId"`
-	ServerId              *string `pulumi:"serverId"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The server ID.
+	ServerId *string `pulumi:"serverId"`
+	// The server intranet address.
 	ServerIntranetAddress *string `pulumi:"serverIntranetAddress"`
-	SlaveZoneId           *string `pulumi:"slaveZoneId"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The slave zone id of the SLB.
+	SlaveZoneId *string `pulumi:"slaveZoneId"`
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]string{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags map[string]string `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId *string `pulumi:"vpcId"`
@@ -118,39 +103,49 @@ type GetLoadBalancersArgs struct {
 
 // A collection of values returned by getLoadBalancers.
 type GetLoadBalancersResult struct {
-	// Service address of the SLB.
-	Address          *string                    `pulumi:"address"`
-	AddressIpVersion *string                    `pulumi:"addressIpVersion"`
-	AddressType      *string                    `pulumi:"addressType"`
-	Balancers        []GetLoadBalancersBalancer `pulumi:"balancers"`
-	EnableDetails    *bool                      `pulumi:"enableDetails"`
+	// The IP address that the SLB instance uses to provide services.
+	Address *string `pulumi:"address"`
+	// The address ip version.
+	AddressIpVersion *string `pulumi:"addressIpVersion"`
+	// The address type.
+	AddressType *string `pulumi:"addressType"`
+	// A list of SLBs. Each element contains the following attributes:
+	Balancers     []GetLoadBalancersBalancer `pulumi:"balancers"`
+	EnableDetails *bool                      `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of slb IDs.
-	Ids                []string `pulumi:"ids"`
-	InternetChargeType *string  `pulumi:"internetChargeType"`
-	LoadBalancerName   *string  `pulumi:"loadBalancerName"`
-	MasterZoneId       *string  `pulumi:"masterZoneId"`
-	NameRegex          *string  `pulumi:"nameRegex"`
+	Ids []string `pulumi:"ids"`
+	// The billing method of the Internet-facing SLB instance.
+	InternetChargeType *string `pulumi:"internetChargeType"`
+	// The name of the SLB.
+	LoadBalancerName *string `pulumi:"loadBalancerName"`
+	// Master availability zone of the SLBs.
+	MasterZoneId *string `pulumi:"masterZoneId"`
+	NameRegex    *string `pulumi:"nameRegex"`
 	// A list of slb names.
 	Names []string `pulumi:"names"`
 	// Network type of the SLB. Possible values: `vpc` and `classic`.
-	NetworkType           *string `pulumi:"networkType"`
-	OutputFile            *string `pulumi:"outputFile"`
-	PageNumber            *int    `pulumi:"pageNumber"`
-	PageSize              *int    `pulumi:"pageSize"`
-	PaymentType           *string `pulumi:"paymentType"`
-	ResourceGroupId       *string `pulumi:"resourceGroupId"`
+	NetworkType *string `pulumi:"networkType"`
+	OutputFile  *string `pulumi:"outputFile"`
+	PageNumber  *int    `pulumi:"pageNumber"`
+	PageSize    *int    `pulumi:"pageSize"`
+	// The payment type of the SLB.
+	PaymentType *string `pulumi:"paymentType"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The ID of the Elastic Compute Service (ECS) instance that is specified as a backend server of the CLB instance.
 	ServerId              *string `pulumi:"serverId"`
 	ServerIntranetAddress *string `pulumi:"serverIntranetAddress"`
-	SlaveZoneId           *string `pulumi:"slaveZoneId"`
-	// A list of SLBs. Each element contains the following attributes:
+	// Slave availability zone of the SLBs.
+	SlaveZoneId *string `pulumi:"slaveZoneId"`
+	// **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
 	//
 	// Deprecated: Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.
 	Slbs []GetLoadBalancersSlb `pulumi:"slbs"`
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status *string `pulumi:"status"`
-	// A map of tags assigned to the SLB instance.
+	// The tags of the SLB.
 	Tags       map[string]string `pulumi:"tags"`
 	TotalCount int               `pulumi:"totalCount"`
 	// ID of the VPC the SLB belongs to.
@@ -167,55 +162,42 @@ func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersOutputArgs struct {
 	// Service address of the SLBs.
-	Address          pulumi.StringPtrInput `pulumi:"address"`
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The address ip version. Valid values `ipv4` and `ipv6`.
 	AddressIpVersion pulumi.StringPtrInput `pulumi:"addressIpVersion"`
-	AddressType      pulumi.StringPtrInput `pulumi:"addressType"`
-	EnableDetails    pulumi.BoolPtrInput   `pulumi:"enableDetails"`
+	// The address type of the SLB. Valid values `internet` and `intranet`.
+	AddressType pulumi.StringPtrInput `pulumi:"addressType"`
+	// Whether to enable details of the SLB. Default to `false`.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of SLBs IDs.
-	Ids                pulumi.StringArrayInput `pulumi:"ids"`
-	InternetChargeType pulumi.StringPtrInput   `pulumi:"internetChargeType"`
-	LoadBalancerName   pulumi.StringPtrInput   `pulumi:"loadBalancerName"`
-	MasterZoneId       pulumi.StringPtrInput   `pulumi:"masterZoneId"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
+	InternetChargeType pulumi.StringPtrInput `pulumi:"internetChargeType"`
+	// The name of the SLB.
+	LoadBalancerName pulumi.StringPtrInput `pulumi:"loadBalancerName"`
+	// The master zone id of the SLB.
+	MasterZoneId pulumi.StringPtrInput `pulumi:"masterZoneId"`
 	// A regex string to filter results by SLB name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
-	PageNumber  pulumi.IntPtrInput    `pulumi:"pageNumber"`
-	PageSize    pulumi.IntPtrInput    `pulumi:"pageSize"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
+	// The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 	// The Id of resource group which SLB belongs.
-	ResourceGroupId       pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	ServerId              pulumi.StringPtrInput `pulumi:"serverId"`
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
+	// The server ID.
+	ServerId pulumi.StringPtrInput `pulumi:"serverId"`
+	// The server intranet address.
 	ServerIntranetAddress pulumi.StringPtrInput `pulumi:"serverIntranetAddress"`
-	SlaveZoneId           pulumi.StringPtrInput `pulumi:"slaveZoneId"`
-	// SLB current status. Possible values: `inactive`, `active` and `locked`.
+	// The slave zone id of the SLB.
+	SlaveZoneId pulumi.StringPtrInput `pulumi:"slaveZoneId"`
+	// The status of the SLB. Valid values: `active`, `inactive` and `locked`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/slb"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]string{
-	// 				"tagKey1": "tagValue1",
-	// 				"tagKey2": "tagValue2",
-	// 			},
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
@@ -242,19 +224,22 @@ func (o GetLoadBalancersResultOutput) ToGetLoadBalancersResultOutputWithContext(
 	return o
 }
 
-// Service address of the SLB.
+// The IP address that the SLB instance uses to provide services.
 func (o GetLoadBalancersResultOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
+// The address ip version.
 func (o GetLoadBalancersResultOutput) AddressIpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.AddressIpVersion }).(pulumi.StringPtrOutput)
 }
 
+// The address type.
 func (o GetLoadBalancersResultOutput) AddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.AddressType }).(pulumi.StringPtrOutput)
 }
 
+// A list of SLBs. Each element contains the following attributes:
 func (o GetLoadBalancersResultOutput) Balancers() GetLoadBalancersBalancerArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []GetLoadBalancersBalancer { return v.Balancers }).(GetLoadBalancersBalancerArrayOutput)
 }
@@ -273,14 +258,17 @@ func (o GetLoadBalancersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The billing method of the Internet-facing SLB instance.
 func (o GetLoadBalancersResultOutput) InternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.InternetChargeType }).(pulumi.StringPtrOutput)
 }
 
+// The name of the SLB.
 func (o GetLoadBalancersResultOutput) LoadBalancerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.LoadBalancerName }).(pulumi.StringPtrOutput)
 }
 
+// Master availability zone of the SLBs.
 func (o GetLoadBalancersResultOutput) MasterZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.MasterZoneId }).(pulumi.StringPtrOutput)
 }
@@ -311,14 +299,17 @@ func (o GetLoadBalancersResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The payment type of the SLB.
 func (o GetLoadBalancersResultOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the resource group.
 func (o GetLoadBalancersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the Elastic Compute Service (ECS) instance that is specified as a backend server of the CLB instance.
 func (o GetLoadBalancersResultOutput) ServerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.ServerId }).(pulumi.StringPtrOutput)
 }
@@ -327,11 +318,12 @@ func (o GetLoadBalancersResultOutput) ServerIntranetAddress() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.ServerIntranetAddress }).(pulumi.StringPtrOutput)
 }
 
+// Slave availability zone of the SLBs.
 func (o GetLoadBalancersResultOutput) SlaveZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.SlaveZoneId }).(pulumi.StringPtrOutput)
 }
 
-// A list of SLBs. Each element contains the following attributes:
+// **Deprecated** It has been deprecated from v1.123.1 and replaced by `balancers`. Each element contains the following attributes:
 //
 // Deprecated: Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.
 func (o GetLoadBalancersResultOutput) Slbs() GetLoadBalancersSlbArrayOutput {
@@ -343,7 +335,7 @@ func (o GetLoadBalancersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// A map of tags assigned to the SLB instance.
+// The tags of the SLB.
 func (o GetLoadBalancersResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

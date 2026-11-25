@@ -84,7 +84,7 @@ type GetEcsDisksArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
 	Category *string `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
@@ -218,7 +218,7 @@ type GetEcsDisksOutputArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
+	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`, `cloudRegionalDiskAuto`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released.
 	DeleteAutoSnapshot pulumi.BoolPtrInput `pulumi:"deleteAutoSnapshot"`

@@ -262,7 +262,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -307,7 +307,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -352,7 +352,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -397,7 +397,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -442,7 +442,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -487,7 +487,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -532,7 +532,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Projects of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -885,7 +885,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Stores of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -931,7 +931,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Stores of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -977,7 +977,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Stores of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -1023,7 +1023,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Stores of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 
@@ -1069,7 +1069,7 @@ public final class LogFunctions {
     /**
      * This data source provides the Log Stores of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.126.0+.
+     * &gt; **NOTE:** Available since v1.126.0.
      * 
      * ## Example Usage
      * 

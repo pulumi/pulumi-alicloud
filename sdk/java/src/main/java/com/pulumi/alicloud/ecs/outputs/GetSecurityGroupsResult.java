@@ -48,7 +48,7 @@ public final class GetSecurityGroupsResult {
      */
     private @Nullable String resourceGroupId;
     /**
-     * @return A map of tags assigned to the ECS instance.
+     * @return (Optional) A map of tags assigned to the ECS instance.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -111,7 +111,7 @@ public final class GetSecurityGroupsResult {
         return Optional.ofNullable(this.resourceGroupId);
     }
     /**
-     * @return A map of tags assigned to the ECS instance.
+     * @return (Optional) A map of tags assigned to the ECS instance.
      * 
      */
     public Map<String,String> tags() {

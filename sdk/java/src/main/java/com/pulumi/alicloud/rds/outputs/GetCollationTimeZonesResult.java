@@ -14,16 +14,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCollationTimeZonesResult {
+    /**
+     * @return An array that consists of the character set collations and time zones that are available for
+     * use in ApsaraDB RDS.
+     * 
+     */
     private @Nullable List<GetCollationTimeZonesCollationTimeZone> collationTimeZones;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of time zones.
+     * 
+     */
     private List<String> ids;
     private @Nullable String outputFile;
 
     private GetCollationTimeZonesResult() {}
+    /**
+     * @return An array that consists of the character set collations and time zones that are available for
+     * use in ApsaraDB RDS.
+     * 
+     */
     public List<GetCollationTimeZonesCollationTimeZone> collationTimeZones() {
         return this.collationTimeZones == null ? List.of() : this.collationTimeZones;
     }
@@ -34,6 +48,10 @@ public final class GetCollationTimeZonesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of time zones.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }

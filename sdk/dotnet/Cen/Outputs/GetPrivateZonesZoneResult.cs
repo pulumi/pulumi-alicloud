@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string CenId;
         /// <summary>
-        /// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+        /// The service region is the target region of the PrivateZone service accessed through CEN.
         /// </summary>
         public readonly string HostRegionId;
         /// <summary>

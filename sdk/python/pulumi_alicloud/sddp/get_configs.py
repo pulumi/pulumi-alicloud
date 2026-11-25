@@ -116,6 +116,7 @@ def get_configs(ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] ids: A list of Config IDs.
+    :param _builtins.str lang: The Request and Receive the Language of the Message Type. Valid values: `zh`, `en`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -158,6 +159,7 @@ def get_configs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.st
 
 
     :param Sequence[_builtins.str] ids: A list of Config IDs.
+    :param _builtins.str lang: The Request and Receive the Language of the Message Type. Valid values: `zh`, `en`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()

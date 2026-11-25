@@ -16,14 +16,14 @@ public final class GetCollationTimeZonesCollationTimeZoneArgs extends com.pulumi
     public static final GetCollationTimeZonesCollationTimeZoneArgs Empty = new GetCollationTimeZonesCollationTimeZoneArgs();
 
     /**
-     * The code of the instance type.
+     * The description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The code of the instance type.
+     * @return The description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class GetCollationTimeZonesCollationTimeZoneArgs extends com.pulumi
     }
 
     /**
-     * The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+     * The offset of the UTC time.
      * 
      */
     @Import(name="standardTimeOffset")
     private @Nullable Output<String> standardTimeOffset;
 
     /**
-     * @return The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+     * @return The offset of the UTC time.
      * 
      */
     public Optional<Output<String>> standardTimeOffset() {
@@ -46,14 +46,14 @@ public final class GetCollationTimeZonesCollationTimeZoneArgs extends com.pulumi
     }
 
     /**
-     * The time zone that is available for use in ApsaraDB RDS.
+     * The time zone.
      * 
      */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
     /**
-     * @return The time zone that is available for use in ApsaraDB RDS.
+     * @return The time zone.
      * 
      */
     public Optional<Output<String>> timeZone() {
@@ -87,7 +87,7 @@ public final class GetCollationTimeZonesCollationTimeZoneArgs extends com.pulumi
         }
 
         /**
-         * @param description The code of the instance type.
+         * @param description The description.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GetCollationTimeZonesCollationTimeZoneArgs extends com.pulumi
         }
 
         /**
-         * @param description The code of the instance type.
+         * @param description The description.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class GetCollationTimeZonesCollationTimeZoneArgs extends com.pulumi
         }
 
         /**
-         * @param standardTimeOffset The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+         * @param standardTimeOffset The offset of the UTC time.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GetCollationTimeZonesCollationTimeZoneArgs extends com.pulumi
         }
 
         /**
-         * @param standardTimeOffset The offset of the UTC time. The offset is in the following format: (UTC+&lt;i&gt;HH:mm&lt;/i&gt;).
+         * @param standardTimeOffset The offset of the UTC time.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class GetCollationTimeZonesCollationTimeZoneArgs extends com.pulumi
         }
 
         /**
-         * @param timeZone The time zone that is available for use in ApsaraDB RDS.
+         * @param timeZone The time zone.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GetCollationTimeZonesCollationTimeZoneArgs extends com.pulumi
         }
 
         /**
-         * @param timeZone The time zone that is available for use in ApsaraDB RDS.
+         * @param timeZone The time zone.
          * 
          * @return builder
          * 

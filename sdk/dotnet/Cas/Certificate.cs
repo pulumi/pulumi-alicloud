@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.Cas
     /// 
     /// &gt; **NOTE:** Available since v1.35.0.
     /// 
-    /// &gt; **NOTE:** Deprecated since v1.129.0.
-    /// 
     /// &gt; **NOTE:** The Certificate name which you want to add must be already registered and had not added by another account. Every Certificate name can only exist in a unique group.
     /// 
     /// &gt; **NOTE:** The Cas Certificate region only support cn-hangzhou, me-east-1, eu-central-1, ap-northeast-1.
@@ -109,53 +107,87 @@ namespace Pulumi.AliCloud.Cas
     public partial class Certificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cert of the Certificate in which the Certificate will add.
+        /// The content of a non-SM certificate in PEM format.
         /// </summary>
         [Output("cert")]
         public Output<string?> Cert { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+        /// </summary>
+        [Output("certIdentifier")]
+        public Output<string> CertIdentifier { get; private set; } = null!;
+
+        /// <summary>
+        /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `CertificateName` can be modified.
+        /// </summary>
         [Output("certificateName")]
         public Output<string> CertificateName { get; private set; } = null!;
 
+        /// <summary>
+        /// The content of an SM encryption certificate in PEM format.
+        /// </summary>
         [Output("encryptCert")]
         public Output<string?> EncryptCert { get; private set; } = null!;
 
+        /// <summary>
+        /// The private key of an SM encryption certificate in PEM format.
+        /// </summary>
         [Output("encryptPrivateKey")]
         public Output<string?> EncryptPrivateKey { get; private set; } = null!;
 
         /// <summary>
-        /// Key of the Certificate in which the Certificate will add.
+        /// The private key of a non-SM certificate in PEM format. It conflicts with `KeyWo`.
         /// </summary>
         [Output("key")]
         public Output<string?> Key { get; private set; } = null!;
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `KeyWoVersion`. It conflicts with `Key`.
         /// </summary>
         [Output("keyWo")]
         public Output<string?> KeyWo { get; private set; } = null!;
 
+        /// <summary>
+        /// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `KeyWo` value.
+        /// </summary>
         [Output("keyWoVersion")]
         public Output<int?> KeyWoVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// Field `Lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        /// Field `Name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `CertificateName` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// The content of an SM signing certificate in PEM format.
+        /// </summary>
         [Output("signCert")]
         public Output<string?> SignCert { get; private set; } = null!;
 
+        /// <summary>
+        /// The private key of an SM signing certificate in PEM format.
+        /// </summary>
         [Output("signPrivateKey")]
         public Output<string?> SignPrivateKey { get; private set; } = null!;
 
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
@@ -213,19 +245,29 @@ namespace Pulumi.AliCloud.Cas
     public sealed class CertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cert of the Certificate in which the Certificate will add.
+        /// The content of a non-SM certificate in PEM format.
         /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
+        /// <summary>
+        /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `CertificateName` can be modified.
+        /// </summary>
         [Input("certificateName")]
         public Input<string>? CertificateName { get; set; }
 
+        /// <summary>
+        /// The content of an SM encryption certificate in PEM format.
+        /// </summary>
         [Input("encryptCert")]
         public Input<string>? EncryptCert { get; set; }
 
         [Input("encryptPrivateKey")]
         private Input<string>? _encryptPrivateKey;
+
+        /// <summary>
+        /// The private key of an SM encryption certificate in PEM format.
+        /// </summary>
         public Input<string>? EncryptPrivateKey
         {
             get => _encryptPrivateKey;
@@ -240,7 +282,7 @@ namespace Pulumi.AliCloud.Cas
         private Input<string>? _key;
 
         /// <summary>
-        /// Key of the Certificate in which the Certificate will add.
+        /// The private key of a non-SM certificate in PEM format. It conflicts with `KeyWo`.
         /// </summary>
         public Input<string>? Key
         {
@@ -257,6 +299,7 @@ namespace Pulumi.AliCloud.Cas
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `KeyWoVersion`. It conflicts with `Key`.
         /// </summary>
         public Input<string>? KeyWo
         {
@@ -268,26 +311,42 @@ namespace Pulumi.AliCloud.Cas
             }
         }
 
+        /// <summary>
+        /// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `KeyWo` value.
+        /// </summary>
         [Input("keyWoVersion")]
         public Input<int>? KeyWoVersion { get; set; }
 
+        /// <summary>
+        /// Field `Lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        /// Field `Name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `CertificateName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The content of an SM signing certificate in PEM format.
+        /// </summary>
         [Input("signCert")]
         public Input<string>? SignCert { get; set; }
 
         [Input("signPrivateKey")]
         private Input<string>? _signPrivateKey;
+
+        /// <summary>
+        /// The private key of an SM signing certificate in PEM format.
+        /// </summary>
         public Input<string>? SignPrivateKey
         {
             get => _signPrivateKey;
@@ -300,6 +359,10 @@ namespace Pulumi.AliCloud.Cas
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());
@@ -315,19 +378,35 @@ namespace Pulumi.AliCloud.Cas
     public sealed class CertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cert of the Certificate in which the Certificate will add.
+        /// The content of a non-SM certificate in PEM format.
         /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
+        /// <summary>
+        /// (Available since v2.3.0) The global certificate identifier in the format of "id+region", e.g. "13781326-cn-hangzhou".
+        /// </summary>
+        [Input("certIdentifier")]
+        public Input<string>? CertIdentifier { get; set; }
+
+        /// <summary>
+        /// A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `CertificateName` can be modified.
+        /// </summary>
         [Input("certificateName")]
         public Input<string>? CertificateName { get; set; }
 
+        /// <summary>
+        /// The content of an SM encryption certificate in PEM format.
+        /// </summary>
         [Input("encryptCert")]
         public Input<string>? EncryptCert { get; set; }
 
         [Input("encryptPrivateKey")]
         private Input<string>? _encryptPrivateKey;
+
+        /// <summary>
+        /// The private key of an SM encryption certificate in PEM format.
+        /// </summary>
         public Input<string>? EncryptPrivateKey
         {
             get => _encryptPrivateKey;
@@ -342,7 +421,7 @@ namespace Pulumi.AliCloud.Cas
         private Input<string>? _key;
 
         /// <summary>
-        /// Key of the Certificate in which the Certificate will add.
+        /// The private key of a non-SM certificate in PEM format. It conflicts with `KeyWo`.
         /// </summary>
         public Input<string>? Key
         {
@@ -359,6 +438,7 @@ namespace Pulumi.AliCloud.Cas
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The write-only private key of a non-SM certificate in PEM format. It is only sent to the server when the resource is created and is never stored in the state or plan. It requires Terraform v1.11.0 or later and must be used together with `KeyWoVersion`. It conflicts with `Key`.
         /// </summary>
         public Input<string>? KeyWo
         {
@@ -370,26 +450,42 @@ namespace Pulumi.AliCloud.Cas
             }
         }
 
+        /// <summary>
+        /// The version of the write-only private key. The write-only private key is re-sent to the server only when this argument changes, so changing it recreates the resource with the new `KeyWo` value.
+        /// </summary>
         [Input("keyWoVersion")]
         public Input<int>? KeyWoVersion { get; set; }
 
+        /// <summary>
+        /// Field `Lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
+        /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
+        /// Field `Name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `CertificateName` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// The content of an SM signing certificate in PEM format.
+        /// </summary>
         [Input("signCert")]
         public Input<string>? SignCert { get; set; }
 
         [Input("signPrivateKey")]
         private Input<string>? _signPrivateKey;
+
+        /// <summary>
+        /// The private key of an SM signing certificate in PEM format.
+        /// </summary>
         public Input<string>? SignPrivateKey
         {
             get => _signPrivateKey;
@@ -402,6 +498,10 @@ namespace Pulumi.AliCloud.Cas
 
         [Input("tags")]
         private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
         public InputMap<string> Tags
         {
             get => _tags ?? (_tags = new InputMap<string>());

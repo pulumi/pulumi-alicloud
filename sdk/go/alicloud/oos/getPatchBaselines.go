@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.146.0+.
+// > **NOTE:** Available since v1.146.0.
 func GetPatchBaselines(ctx *pulumi.Context, args *GetPatchBaselinesArgs, opts ...pulumi.InvokeOption) (*GetPatchBaselinesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPatchBaselinesResult
@@ -42,16 +42,20 @@ type GetPatchBaselinesArgs struct {
 
 // A collection of values returned by getPatchBaselines.
 type GetPatchBaselinesResult struct {
+	// A list of Oos Patch Baselines. Each element contains the following attributes:
 	Baselines     []GetPatchBaselinesBaseline `pulumi:"baselines"`
 	EnableDetails *bool                       `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string   `pulumi:"id"`
-	Ids             []string `pulumi:"ids"`
-	NameRegex       *string  `pulumi:"nameRegex"`
-	Names           []string `pulumi:"names"`
-	OperationSystem *string  `pulumi:"operationSystem"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	ShareType       *string  `pulumi:"shareType"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Patch Baseline names.
+	Names []string `pulumi:"names"`
+	// Operating system type.
+	OperationSystem *string `pulumi:"operationSystem"`
+	OutputFile      *string `pulumi:"outputFile"`
+	// Patch baseline sharing type.
+	ShareType *string `pulumi:"shareType"`
 }
 
 func GetPatchBaselinesOutput(ctx *pulumi.Context, args GetPatchBaselinesOutputArgs, opts ...pulumi.InvokeOption) GetPatchBaselinesResultOutput {
@@ -94,6 +98,7 @@ func (o GetPatchBaselinesResultOutput) ToGetPatchBaselinesResultOutputWithContex
 	return o
 }
 
+// A list of Oos Patch Baselines. Each element contains the following attributes:
 func (o GetPatchBaselinesResultOutput) Baselines() GetPatchBaselinesBaselineArrayOutput {
 	return o.ApplyT(func(v GetPatchBaselinesResult) []GetPatchBaselinesBaseline { return v.Baselines }).(GetPatchBaselinesBaselineArrayOutput)
 }
@@ -115,10 +120,12 @@ func (o GetPatchBaselinesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPatchBaselinesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Patch Baseline names.
 func (o GetPatchBaselinesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPatchBaselinesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// Operating system type.
 func (o GetPatchBaselinesResultOutput) OperationSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPatchBaselinesResult) *string { return v.OperationSystem }).(pulumi.StringPtrOutput)
 }
@@ -127,6 +134,7 @@ func (o GetPatchBaselinesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPatchBaselinesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Patch baseline sharing type.
 func (o GetPatchBaselinesResultOutput) ShareType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPatchBaselinesResult) *string { return v.ShareType }).(pulumi.StringPtrOutput)
 }

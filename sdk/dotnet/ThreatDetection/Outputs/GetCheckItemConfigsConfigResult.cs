@@ -39,37 +39,37 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         public readonly int EstimatedCount;
         /// <summary>
         /// The asset subtype of the cloud service. Valid values depend on `InstanceType`:
-        /// * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
-        /// * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
-        /// * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
-        /// * `WAF`: `DOMAIN`.
-        /// * Other values: `INSTANCE`.
+        /// - `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+        /// - `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+        /// - `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+        /// - `WAF`: `DOMAIN`.
+        /// - Other values: `INSTANCE`.
         /// </summary>
         public readonly string InstanceSubType;
         /// <summary>
         /// The asset type of the cloud service. Valid values:
-        /// * `ECS`: Elastic Compute Service.
-        /// * `SLB`: Server Load Balancer.
-        /// * `RDS`: ApsaraDB RDS.
-        /// * `MONGODB`: ApsaraDB for MongoDB.
-        /// * `KVSTORE`: ApsaraDB for Redis.
-        /// * `ACR`: Container Registry.
-        /// * `CSK`: Container Service for Kubernetes.
-        /// * `VPC`: Virtual Private Cloud.
-        /// * `ACTIONTRAIL`: ActionTrail.
-        /// * `CDN`: Alibaba Cloud CDN.
-        /// * `CAS`: Certificate Management Service.
-        /// * `RDC`: Apsara DevOps.
-        /// * `RAM`: Resource Access Management.
-        /// * `DDOS`: Anti-DDoS.
-        /// * `WAF`: Web Application Firewall.
-        /// * `OSS`: Object Storage Service.
-        /// * `POLARDB`: PolarDB.
-        /// * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
-        /// * `MSE`: Microservices Engine.
-        /// * `NAS`: File Storage NAS.
-        /// * `SDDP`: Sensitive Data Discovery and Protection.
-        /// * `EIP`: Elastic IP Address.
+        /// - `ECS`: Elastic Compute Service.
+        /// - `SLB`: Server Load Balancer.
+        /// - `RDS`: ApsaraDB RDS.
+        /// - `MONGODB`: ApsaraDB for MongoDB.
+        /// - `KVSTORE`: ApsaraDB for Redis.
+        /// - `ACR`: Container Registry.
+        /// - `CSK`: Container Service for Kubernetes.
+        /// - `VPC`: Virtual Private Cloud.
+        /// - `ACTIONTRAIL`: ActionTrail.
+        /// - `CDN`: Alibaba Cloud CDN.
+        /// - `CAS`: Certificate Management Service.
+        /// - `RDC`: Apsara DevOps.
+        /// - `RAM`: Resource Access Management.
+        /// - `DDOS`: Anti-DDoS.
+        /// - `WAF`: Web Application Firewall.
+        /// - `OSS`: Object Storage Service.
+        /// - `POLARDB`: PolarDB.
+        /// - `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+        /// - `MSE`: Microservices Engine.
+        /// - `NAS`: File Storage NAS.
+        /// - `SDDP`: Sensitive Data Discovery and Protection.
+        /// - `EIP`: Elastic IP Address.
         /// </summary>
         public readonly string InstanceType;
         /// <summary>

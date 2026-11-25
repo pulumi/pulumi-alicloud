@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.157.0+.
+        /// &gt; **NOTE:** Available since v1.157.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.157.0+.
+        /// &gt; **NOTE:** Available since v1.157.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Dts
         /// <summary>
         /// This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.157.0+.
+        /// &gt; **NOTE:** Available since v1.157.0.
         /// 
         /// ## Example Usage
         /// 
@@ -204,8 +204,14 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Dts Migration Jobs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMigrationJobsJobResult> Jobs;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Migration Job names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

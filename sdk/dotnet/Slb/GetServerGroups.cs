@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the VServer groups related to a server load balancer.
         /// 
+        /// &gt; **NOTE:** Available since v1.15.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -75,6 +77,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the VServer groups related to a server load balancer.
         /// 
+        /// &gt; **NOTE:** Available since v1.15.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -135,6 +139,8 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// This data source provides the VServer groups related to a server load balancer.
+        /// 
+        /// &gt; **NOTE:** Available since v1.15.0.
         /// 
         /// ## Example Usage
         /// 

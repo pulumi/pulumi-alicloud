@@ -47,7 +47,7 @@ public final class GetEcsStorageCapacityUnitsUnit {
      */
     private String startTime;
     /**
-     * @return The status of Storage Capacity Unit.
+     * @return The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
      * 
      */
     private String status;
@@ -113,7 +113,7 @@ public final class GetEcsStorageCapacityUnitsUnit {
         return this.startTime;
     }
     /**
-     * @return The status of Storage Capacity Unit.
+     * @return The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
      * 
      */
     public String status() {

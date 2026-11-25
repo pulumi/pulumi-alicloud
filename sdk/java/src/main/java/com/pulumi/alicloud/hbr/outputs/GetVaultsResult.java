@@ -21,10 +21,26 @@ public final class GetVaultsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of vault names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * 
+     */
     private @Nullable String vaultType;
+    /**
+     * @return A list of Hbr vaults. Each element contains the following attributes:
+     * 
+     */
     private List<GetVaultsVault> vaults;
 
     private GetVaultsResult() {}
@@ -41,18 +57,34 @@ public final class GetVaultsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of vault names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * 
+     */
     public Optional<String> vaultType() {
         return Optional.ofNullable(this.vaultType);
     }
+    /**
+     * @return A list of Hbr vaults. Each element contains the following attributes:
+     * 
+     */
     public List<GetVaultsVault> vaults() {
         return this.vaults;
     }

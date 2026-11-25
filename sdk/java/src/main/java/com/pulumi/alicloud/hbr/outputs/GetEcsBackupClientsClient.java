@@ -43,8 +43,8 @@ public final class GetEcsBackupClientsClient {
     private String dataNetworkType;
     /**
      * @return The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
-     * * `USE_CONTROL_PROXY` (Default, the same with control plane)
-     * * `CUSTOM` (Custom configuration items for the HTTP protocol).
+     * - `USE_CONTROL_PROXY` (Default, the same with control plane)
+     * - `CUSTOM` (Custom configuration items for the HTTP protocol).
      * 
      */
     private String dataProxySetting;
@@ -124,7 +124,7 @@ public final class GetEcsBackupClientsClient {
      */
     private String proxyUser;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
      * 
      */
     private String status;
@@ -189,8 +189,8 @@ public final class GetEcsBackupClientsClient {
     }
     /**
      * @return The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
-     * * `USE_CONTROL_PROXY` (Default, the same with control plane)
-     * * `CUSTOM` (Custom configuration items for the HTTP protocol).
+     * - `USE_CONTROL_PROXY` (Default, the same with control plane)
+     * - `CUSTOM` (Custom configuration items for the HTTP protocol).
      * 
      */
     public String dataProxySetting() {
@@ -302,7 +302,7 @@ public final class GetEcsBackupClientsClient {
         return this.proxyUser;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
      * 
      */
     public String status() {

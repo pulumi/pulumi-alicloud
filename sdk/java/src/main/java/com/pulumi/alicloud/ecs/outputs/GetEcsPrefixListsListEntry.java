@@ -10,19 +10,27 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEcsPrefixListsListEntry {
+    /**
+     * @return The CIDR block of the entry.
+     * 
+     */
     private String cidr;
     /**
-     * @return The description of the prefix list.
+     * @return The description of the entry.
      * 
      */
     private String description;
 
     private GetEcsPrefixListsListEntry() {}
+    /**
+     * @return The CIDR block of the entry.
+     * 
+     */
     public String cidr() {
         return this.cidr;
     }
     /**
-     * @return The description of the prefix list.
+     * @return The description of the entry.
      * 
      */
     public String description() {

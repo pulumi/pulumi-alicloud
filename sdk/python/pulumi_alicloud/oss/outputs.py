@@ -4155,7 +4155,8 @@ class GetBucketObjectsObjectResult(dict):
                  last_modification_time: _builtins.str,
                  server_side_encryption: _builtins.str,
                  sse_kms_key_id: _builtins.str,
-                 storage_class: _builtins.str):
+                 storage_class: _builtins.str,
+                 x_oss_hash_crc64ecma: _builtins.str):
         """
         :param _builtins.str acl: Object access control list. Possible values: `default`, `private`, `public-read` and `public-read-write`.
         :param _builtins.str cache_control: Caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
@@ -4171,6 +4172,7 @@ class GetBucketObjectsObjectResult(dict):
         :param _builtins.str server_side_encryption: Server-side encryption of the object in OSS. It can be empty or `AES256`.
         :param _builtins.str sse_kms_key_id: If present, specifies the ID of the Key Management Service(KMS) master encryption key that was used for the object.
         :param _builtins.str storage_class: Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
+        :param _builtins.str x_oss_hash_crc64ecma: The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
         """
         pulumi.set(__self__, "acl", acl)
         pulumi.set(__self__, "cache_control", cache_control)
@@ -4186,6 +4188,7 @@ class GetBucketObjectsObjectResult(dict):
         pulumi.set(__self__, "server_side_encryption", server_side_encryption)
         pulumi.set(__self__, "sse_kms_key_id", sse_kms_key_id)
         pulumi.set(__self__, "storage_class", storage_class)
+        pulumi.set(__self__, "x_oss_hash_crc64ecma", x_oss_hash_crc64ecma)
 
     @_builtins.property
     @pulumi.getter
@@ -4298,6 +4301,14 @@ class GetBucketObjectsObjectResult(dict):
         Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
         """
         return pulumi.get(self, "storage_class")
+
+    @_builtins.property
+    @pulumi.getter(name="xOssHashCrc64ecma")
+    def x_oss_hash_crc64ecma(self) -> _builtins.str:
+        """
+        The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+        """
+        return pulumi.get(self, "x_oss_hash_crc64ecma")
 
 
 @pulumi.output_type
@@ -5055,10 +5066,11 @@ class GetTablesTableResult(dict):
                  table_name: _builtins.str,
                  time_to_live: _builtins.int):
         """
+        :param Sequence['GetTablesTableDefinedColumnArgs'] defined_columns: The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
         :param _builtins.str id: ID of the table. The value is `<instance_name>:<table_name>`.
         :param _builtins.str instance_name: The name of OTS instance.
         :param _builtins.int max_version: The maximum number of versions stored in this table.
-        :param Sequence['GetTablesTablePrimaryKeyArgs'] primary_keys: The property of `TableMeta` which indicates the structure information of a table.
+        :param Sequence['GetTablesTablePrimaryKeyArgs'] primary_keys: The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
         :param _builtins.str table_name: The table name of the OTS which could not be changed.
         :param _builtins.int time_to_live: The retention time of data stored in this table.
         """
@@ -5073,6 +5085,9 @@ class GetTablesTableResult(dict):
     @_builtins.property
     @pulumi.getter(name="definedColumns")
     def defined_columns(self) -> Sequence['outputs.GetTablesTableDefinedColumnResult']:
+        """
+        The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
+        """
         return pulumi.get(self, "defined_columns")
 
     @_builtins.property
@@ -5103,7 +5118,7 @@ class GetTablesTableResult(dict):
     @pulumi.getter(name="primaryKeys")
     def primary_keys(self) -> Sequence['outputs.GetTablesTablePrimaryKeyResult']:
         """
-        The property of `TableMeta` which indicates the structure information of a table.
+        The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
         """
         return pulumi.get(self, "primary_keys")
 
@@ -5129,17 +5144,27 @@ class GetTablesTableDefinedColumnResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  type: _builtins.str):
+        """
+        :param _builtins.str name: Name for defined column.
+        :param _builtins.str type: Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Name for defined column.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
+        """
         return pulumi.get(self, "type")
 
 
@@ -5148,17 +5173,27 @@ class GetTablesTablePrimaryKeyResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  type: _builtins.str):
+        """
+        :param _builtins.str name: Name for defined column.
+        :param _builtins.str type: Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Name for defined column.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
+        """
         return pulumi.get(self, "type")
 
 

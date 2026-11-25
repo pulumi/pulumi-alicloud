@@ -143,7 +143,7 @@ public final class GetBackupPlansPlan {
      */
     private String sourceEndpointUserName;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
      * 
      */
     private String status;
@@ -332,7 +332,7 @@ public final class GetBackupPlansPlan {
         return this.sourceEndpointUserName;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
      * 
      */
     public String status() {

@@ -28,6 +28,10 @@ class DomainLogHeader(dict):
     def __init__(__self__, *,
                  key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of label.
+        :param _builtins.str value: The value of label.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -36,11 +40,17 @@ class DomainLogHeader(dict):
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[_builtins.str]:
+        """
+        The key of label.
+        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
+        """
+        The value of label.
+        """
         return pulumi.get(self, "value")
 
 
@@ -62,6 +72,8 @@ class GetCertificatesCertificateResult(dict):
         :param _builtins.str domain: WAF domain name.
         :param _builtins.str id: The ID of the Certificate.
         :param _builtins.str instance_id: WAF instance ID.
+        :param _builtins.bool is_using: Indicates whether the certificate is in use.
+        :param Sequence[_builtins.str] sans: The Subject Alternative Names (SAN) of the certificate.
         """
         pulumi.set(__self__, "certificate_id", certificate_id)
         pulumi.set(__self__, "certificate_name", certificate_name)
@@ -123,11 +135,17 @@ class GetCertificatesCertificateResult(dict):
     @_builtins.property
     @pulumi.getter(name="isUsing")
     def is_using(self) -> _builtins.bool:
+        """
+        Indicates whether the certificate is in use.
+        """
         return pulumi.get(self, "is_using")
 
     @_builtins.property
     @pulumi.getter
     def sans(self) -> Sequence[_builtins.str]:
+        """
+        The Subject Alternative Names (SAN) of the certificate.
+        """
         return pulumi.get(self, "sans")
 
 
@@ -394,6 +412,7 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str instance_id: The ID of WAF the instance.
         :param _builtins.int remain_day: The number of days before the trial period of the WAF instance expires.
         :param _builtins.int status: The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
+        :param _builtins.str subscription_type: The billing method of the WAF instance.
         :param _builtins.int trial: Indicates whether this is a trial instance.
         """
         pulumi.set(__self__, "end_date", end_date)
@@ -456,6 +475,9 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="subscriptionType")
     def subscription_type(self) -> _builtins.str:
+        """
+        The billing method of the WAF instance.
+        """
         return pulumi.get(self, "subscription_type")
 
     @_builtins.property

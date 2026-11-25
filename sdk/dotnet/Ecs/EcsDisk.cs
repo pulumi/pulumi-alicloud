@@ -58,12 +58,67 @@ namespace Pulumi.AliCloud.Ecs
     /// });
     /// ```
     /// 
+    /// ### Regional ESSD data disk
+    /// 
+    /// Regional ESSD (`CloudRegionalDiskAuto`) is region-scoped. Omit `ZoneId` and `PerformanceLevel` when creating it:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var regional = new AliCloud.Ecs.EcsDisk("regional", new()
+    ///     {
+    ///         Category = "cloud_regional_disk_auto",
+    ///         Size = 20,
+    ///         DiskName = "regional-essd-example",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Destroying a disk with `ForceDelete`
+    /// 
+    /// The following example creates a pay-as-you-go disk with `ForceDelete = true`; destroying the resource releases the disk:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var forceDelete = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///         AvailableDiskCategory = "cloud_essd",
+    ///     });
+    /// 
+    ///     var forceDeleteEcsDisk = new AliCloud.Ecs.EcsDisk("force_delete", new()
+    ///     {
+    ///         ZoneId = forceDelete.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         DiskName = "terraform-example",
+    ///         Category = "cloud_essd",
+    ///         Size = 40,
+    ///         ForceDelete = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Deleting `alicloud.ecs.EcsDisk` or removing it from your configuration
     /// 
-    /// The `alicloud.ecs.EcsDisk` resource allows you to manage `PaymentType = "Subscription"` and `DeleteWithInstance = true` disk,
-    /// but Terraform cannot destroy it. Deleting the subscription resource or removing it from your configuration will
-    /// remove it from your state file and management, but will not destroy it.
-    /// If you want to delete it, you can change it to `PayAsYouGo` and setting `DeleteWithInstance = true` and detach it from instance.
+    /// By default, destroying an `alicloud.ecs.EcsDisk` resource or removing it from your configuration only removes the disk from your state file and management, without releasing it, when the disk is PrePaid (`PaymentType = "Subscription"`) **and** ECS reports `DeleteWithInstance = true` for it, which is the case for a disk released together with its Subscription instance. This is the only state-only path. Every other case, including a PrePaid disk whose `DeleteWithInstance` is `False`, calls `DeleteDisk` during destroy; if ECS rejects the release, the destroy fails with the returned error and the disk is kept, rather than being silently removed from the state.
+    /// 
+    /// Set `ForceDelete = true` to release such a disk: during destroy, the provider converts the disk to pay-as-you-go, detaches it with `DeleteWithInstance=false` and releases it once it is available. **`ForceDelete` deletes the disk and all data on it, and the release cannot be undone.** `ForceDelete` takes priority over the legacy state-only behavior; when it is `False` or not set, the behavior above is unchanged.
+    /// 
+    /// Multi-attach disks (`MultiAttach = "Enabled"`) are not supported by `ForceDelete`: the destroy fails with an actionable error and the disk is kept. The PrePaid to pay-as-you-go conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes; the refund of the remaining subscription fee is handled by ECS according to your account settings.
+    /// 
+    /// If you want to delete a disk without `ForceDelete`, convert it to `PayAsYouGo` and detach it from its instance before deleting it.
     /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
@@ -97,7 +152,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> BurstingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories.
+        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `CloudRegionalDiskAuto`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `CloudEssd` to `CloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `Update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
@@ -157,9 +212,15 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool> Encrypted { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `PaymentType = "Subscription"` disk. Defaults to `False`. When set to `True`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `ForceDelete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `DeleteWithInstance = true` from the state. `ForceDelete` does not support multi-attach disks (`MultiAttach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<bool?> ForceDelete { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the instance to which the created subscription disk is automatically attached.
         /// * After you specify the instance ID, the specified `ResourceGroupId`, `Tags`, and `KmsKeyId` parameters are ignored.
-        /// * One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// * For `CloudRegionalDiskAuto`, `ZoneId` is not required. For other disk categories, specify exactly one of `ZoneId` or `InstanceId`.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -225,6 +286,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - If `Category` is set to `CloudSsd`. Valid values: `20` to `32768`.
         /// - If `Category` is set to `CloudAuto`. Valid values: `1` to `65536`.
         /// - If `Category` is set to `CloudEssdEntry`. Valid values: `10` to `32768`.
+        /// - If `Category` is set to `CloudRegionalDiskAuto`. Valid values: `10` to `65536`.
         /// - If `Category` is set to `ElasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
         /// - If `Category` is set to `ElasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
         /// - If `Category` is set to `CloudEssd`, the valid values are related to `PerformanceLevel`. Valid values:
@@ -273,7 +335,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the free zone to which the disk belongs. One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// ID of the free zone to which the disk belongs. For `CloudRegionalDiskAuto`, `ZoneId` is not required. For other disk categories, specify exactly one of `ZoneId` or `InstanceId`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -343,7 +405,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories.
+        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `CloudRegionalDiskAuto`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `CloudEssd` to `CloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `Update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -397,9 +459,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
+        /// Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `PaymentType = "Subscription"` disk. Defaults to `False`. When set to `True`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `ForceDelete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `DeleteWithInstance = true` from the state. `ForceDelete` does not support multi-attach disks (`MultiAttach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
         /// The ID of the instance to which the created subscription disk is automatically attached.
         /// * After you specify the instance ID, the specified `ResourceGroupId`, `Tags`, and `KmsKeyId` parameters are ignored.
-        /// * One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// * For `CloudRegionalDiskAuto`, `ZoneId` is not required. For other disk categories, specify exactly one of `ZoneId` or `InstanceId`.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -459,6 +527,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - If `Category` is set to `CloudSsd`. Valid values: `20` to `32768`.
         /// - If `Category` is set to `CloudAuto`. Valid values: `1` to `65536`.
         /// - If `Category` is set to `CloudEssdEntry`. Valid values: `10` to `32768`.
+        /// - If `Category` is set to `CloudRegionalDiskAuto`. Valid values: `10` to `65536`.
         /// - If `Category` is set to `ElasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
         /// - If `Category` is set to `ElasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
         /// - If `Category` is set to `CloudEssd`, the valid values are related to `PerformanceLevel`. Valid values:
@@ -507,7 +576,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// ID of the free zone to which the disk belongs. One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// ID of the free zone to which the disk belongs. For `CloudRegionalDiskAuto`, `ZoneId` is not required. For other disk categories, specify exactly one of `ZoneId` or `InstanceId`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -539,7 +608,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories.
+        /// The category of the data disk. Default value: `CloudEfficiency`. Valid Values: `Cloud`, `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `CloudAuto`, `CloudEssdEntry`, `CloudRegionalDiskAuto`, `ElasticEphemeralDiskStandard`, `ElasticEphemeralDiskPremium`. **NOTE:** When `Category` is `CloudAuto`, the `BurstingEnabled` and `ProvisionedIops` parameters become applicable; they are rejected by the API for other categories. **NOTE:** Category conversion (for example from `CloudEssd` to `CloudAuto`) is applied asynchronously by the API: the disk may report the transitional status `Modifying` while the conversion runs, and even after the status returns to `Available` the category may still report the previous value for some time. The provider therefore waits within a single `DescribeDisks` response until the status is `Available`/`In_use` and the category already equals the requested value before completing the update, and this wait is bounded by the `Update` timeout (default 30 mins). Conversion duration depends on the disk (throughput, capacity and the previous category) and has no completion guarantee; set `timeouts.update` explicitly for large disks whose conversion may take longer.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -599,9 +668,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
+        /// Specifies whether to release the disk during destroy even when the default behavior cannot release it, for example a `PaymentType = "Subscription"` disk. Defaults to `False`. When set to `True`, the provider converts the disk to `PayAsYouGo` (`ModifyDiskChargeType`), detaches it with `DeleteWithInstance=false`, waits until the disk is `Available` and then releases it (`DeleteDisk`). **NOTE:** `ForceDelete` deletes the disk and all data on it, and the release cannot be undone. It takes priority over the legacy behavior that only removes a PrePaid disk with `DeleteWithInstance = true` from the state. `ForceDelete` does not support multi-attach disks (`MultiAttach = "Enabled"`); the destroy fails with an actionable error and the disk is kept. The billing method conversion requires the disk to be attached to a Subscription instance and is limited to one successful call per disk every five minutes.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
         /// The ID of the instance to which the created subscription disk is automatically attached.
         /// * After you specify the instance ID, the specified `ResourceGroupId`, `Tags`, and `KmsKeyId` parameters are ignored.
-        /// * One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// * For `CloudRegionalDiskAuto`, `ZoneId` is not required. For other disk categories, specify exactly one of `ZoneId` or `InstanceId`.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -667,6 +742,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - If `Category` is set to `CloudSsd`. Valid values: `20` to `32768`.
         /// - If `Category` is set to `CloudAuto`. Valid values: `1` to `65536`.
         /// - If `Category` is set to `CloudEssdEntry`. Valid values: `10` to `32768`.
+        /// - If `Category` is set to `CloudRegionalDiskAuto`. Valid values: `10` to `65536`.
         /// - If `Category` is set to `ElasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
         /// - If `Category` is set to `ElasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
         /// - If `Category` is set to `CloudEssd`, the valid values are related to `PerformanceLevel`. Valid values:
@@ -721,7 +797,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// ID of the free zone to which the disk belongs. One of the `ZoneId` and `InstanceId` must be set but can not be set at the same time.
+        /// ID of the free zone to which the disk belongs. For `CloudRegionalDiskAuto`, `ZoneId` is not required. For other disk categories, specify exactly one of `ZoneId` or `InstanceId`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

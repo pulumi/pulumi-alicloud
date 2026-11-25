@@ -16,9 +16,17 @@ public final class GetRealTimeLogDeliveriesArgs extends com.pulumi.resources.Inv
 
     public static final GetRealTimeLogDeliveriesArgs Empty = new GetRealTimeLogDeliveriesArgs();
 
+    /**
+     * The domain name.
+     * 
+     */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
+    /**
+     * @return The domain name.
+     * 
+     */
     public Output<String> domain() {
         return this.domain;
     }
@@ -79,11 +87,23 @@ public final class GetRealTimeLogDeliveriesArgs extends com.pulumi.resources.Inv
             $ = new GetRealTimeLogDeliveriesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param domain The domain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain The domain name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }

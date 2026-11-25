@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.189.0+.
+// > **NOTE:** Available since v1.189.0.
 //
 // ## Example Usage
 //
@@ -86,15 +86,20 @@ type GetDbInstancePlansArgs struct {
 type GetDbInstancePlansResult struct {
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string                   `pulumi:"id"`
-	Ids              []string                 `pulumi:"ids"`
-	NameRegex        *string                  `pulumi:"nameRegex"`
-	Names            []string                 `pulumi:"names"`
-	OutputFile       *string                  `pulumi:"outputFile"`
-	PlanScheduleType *string                  `pulumi:"planScheduleType"`
-	PlanType         *string                  `pulumi:"planType"`
-	Plans            []GetDbInstancePlansPlan `pulumi:"plans"`
-	Status           *string                  `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of DB Instance Plan names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Plan scheduling type. Valid values: `Postpone`, `Regular`.
+	PlanScheduleType *string `pulumi:"planScheduleType"`
+	// The type of the Plan. Valid values: `PauseResume`, `Resize`.
+	PlanType *string `pulumi:"planType"`
+	// A list of Gpdb Db Instance Plans. Each element contains the following attributes:
+	Plans []GetDbInstancePlansPlan `pulumi:"plans"`
+	// The Status of the Plan.
+	Status *string `pulumi:"status"`
 }
 
 func GetDbInstancePlansOutput(ctx *pulumi.Context, args GetDbInstancePlansOutputArgs, opts ...pulumi.InvokeOption) GetDbInstancePlansResultOutput {
@@ -156,6 +161,7 @@ func (o GetDbInstancePlansResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancePlansResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of DB Instance Plan names.
 func (o GetDbInstancePlansResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDbInstancePlansResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -164,18 +170,22 @@ func (o GetDbInstancePlansResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancePlansResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Plan scheduling type. Valid values: `Postpone`, `Regular`.
 func (o GetDbInstancePlansResultOutput) PlanScheduleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancePlansResult) *string { return v.PlanScheduleType }).(pulumi.StringPtrOutput)
 }
 
+// The type of the Plan. Valid values: `PauseResume`, `Resize`.
 func (o GetDbInstancePlansResultOutput) PlanType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancePlansResult) *string { return v.PlanType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Gpdb Db Instance Plans. Each element contains the following attributes:
 func (o GetDbInstancePlansResultOutput) Plans() GetDbInstancePlansPlanArrayOutput {
 	return o.ApplyT(func(v GetDbInstancePlansResult) []GetDbInstancePlansPlan { return v.Plans }).(GetDbInstancePlansPlanArrayOutput)
 }
 
+// The Status of the Plan.
 func (o GetDbInstancePlansResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancePlansResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

@@ -13,7 +13,7 @@ import (
 
 // This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
 //
-// > **NOTE:** Available in 1.195.0+
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -60,7 +60,8 @@ type GetHoneypotImagesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Honeypot mirror nam.
 	NameRegex *string `pulumi:"nameRegex"`
-	NodeId    *string `pulumi:"nodeId"`
+	// The id of the honeypot management node.
+	NodeId *string `pulumi:"nodeId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
@@ -91,7 +92,8 @@ type GetHoneypotImagesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Honeypot mirror nam.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	NodeId    pulumi.StringPtrInput `pulumi:"nodeId"`
+	// The id of the honeypot management node.
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }

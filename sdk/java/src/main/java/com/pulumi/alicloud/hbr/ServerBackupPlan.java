@@ -25,8 +25,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.142.0.
  * 
- * &gt; **NOTE:** Deprecated since v1.249.0.
- * 
  * &gt; **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
  * 
  * ## Example Usage
@@ -184,14 +182,14 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.crossAccountUserId);
     }
     /**
-     * ECS server backup plan details.
+     * ECS server backup plan details. See `detail` below.
      * 
      */
     @Export(name="details", refs={List.class,ServerBackupPlanDetail.class}, tree="[0,1]")
     private Output<List<ServerBackupPlanDetail>> details;
 
     /**
-     * @return ECS server backup plan details.
+     * @return ECS server backup plan details. See `detail` below.
      * 
      */
     public Output<List<ServerBackupPlanDetail>> details() {

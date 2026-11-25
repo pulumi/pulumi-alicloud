@@ -178,6 +178,7 @@ type GetClustersCluster struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The name of the Cassandra cluster.
 	ClusterName string `pulumi:"clusterName"`
+	// The created time of the cluster.
 	CreatedTime string `pulumi:"createdTime"`
 	// The count of data centers
 	DataCenterCount int `pulumi:"dataCenterCount"`
@@ -215,6 +216,7 @@ type GetClustersClusterArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The name of the Cassandra cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The created time of the cluster.
 	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
 	// The count of data centers
 	DataCenterCount pulumi.IntInput `pulumi:"dataCenterCount"`
@@ -297,6 +299,7 @@ func (o GetClustersClusterOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
+// The created time of the cluster.
 func (o GetClustersClusterOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
@@ -371,7 +374,8 @@ type GetDataCentersCenter struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The commodity ID of the Cassandra dataCenter.
 	CommodityInstance string `pulumi:"commodityInstance"`
-	CreatedTime       string `pulumi:"createdTime"`
+	// The created time of the dataCenter.
+	CreatedTime string `pulumi:"createdTime"`
 	// The id of the Cassandra dataCenter.
 	DataCenterId string `pulumi:"dataCenterId"`
 	// The name of the Cassandra dataCenter.
@@ -416,7 +420,8 @@ type GetDataCentersCenterArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The commodity ID of the Cassandra dataCenter.
 	CommodityInstance pulumi.StringInput `pulumi:"commodityInstance"`
-	CreatedTime       pulumi.StringInput `pulumi:"createdTime"`
+	// The created time of the dataCenter.
+	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
 	// The id of the Cassandra dataCenter.
 	DataCenterId pulumi.StringInput `pulumi:"dataCenterId"`
 	// The name of the Cassandra dataCenter.
@@ -506,6 +511,7 @@ func (o GetDataCentersCenterOutput) CommodityInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataCentersCenter) string { return v.CommodityInstance }).(pulumi.StringOutput)
 }
 
+// The created time of the dataCenter.
 func (o GetDataCentersCenterOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataCentersCenter) string { return v.CreatedTime }).(pulumi.StringOutput)
 }

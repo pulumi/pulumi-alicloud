@@ -146,9 +146,9 @@ def get_transit_router_route_table_associations(ids: Optional[Sequence[_builtins
                                                 transit_router_route_table_id: Optional[_builtins.str] = None,
                                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitRouterRouteTableAssociationsResult:
     """
-    This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+    This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
 
-    > **NOTE:** Available in 1.126.0+
+    > **NOTE:** Available since v1.126.0+
 
     ## Example Usage
 
@@ -203,9 +203,9 @@ def get_transit_router_route_table_associations_output(ids: pulumi.Input[Optiona
                                                        transit_router_route_table_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterRouteTableAssociationsResult]:
     """
-    This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+    This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://www.alibabacloud.com/help/doc-detail/261243.html)
 
-    > **NOTE:** Available in 1.126.0+
+    > **NOTE:** Available since v1.126.0+
 
     ## Example Usage
 

@@ -125,7 +125,10 @@ import javax.annotation.Nullable;
  *             .dataCode("metering_log")
  *             .centralizeEnabled(true)
  *             .productCode("oss")
- *             .policyName("xc-example-oss-01")
+ *             .policyName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("xc-example-oss-%s")
+ *                 .args(default_.get("result"))
+ *                 .build()).result())
  *             .enabled(true)
  *             .dataConfig(CollectionPolicyDataConfigArgs.builder()
  *                 .dataRegion("cn-hangzhou")
@@ -137,8 +140,7 @@ import javax.annotation.Nullable;
  *                 .destLogstore(logstoreCreate01.logstoreName())
  *                 .build())
  *             .resourceDirectory(CollectionPolicyResourceDirectoryArgs.builder()
- *                 .accountGroupType("custom")
- *                 .members("1936728897040477")
+ *                 .accountGroupType("all")
  *                 .build())
  *             .build());
  * 
@@ -250,7 +252,10 @@ import javax.annotation.Nullable;
  *             .dataCode("access_log")
  *             .centralizeEnabled(false)
  *             .productCode("oss")
- *             .policyName("xc-example-oss-01")
+ *             .policyName(StdFunctions.format(FormatArgs.builder()
+ *                 .input("xc-example-oss-%s")
+ *                 .args(default_.get("result"))
+ *                 .build()).result())
  *             .enabled(true)
  *             .build());
  * 
@@ -291,14 +296,14 @@ public class CollectionPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="centralizeEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> centralizeEnabled;
+    private Output<Boolean> centralizeEnabled;
 
     /**
      * @return Specifies whether to enable centralized forwarding. Default value: false.
      * 
      */
-    public Output<Optional<Boolean>> centralizeEnabled() {
-        return Codegen.optional(this.centralizeEnabled);
+    public Output<Boolean> centralizeEnabled() {
+        return this.centralizeEnabled;
     }
     /**
      * Log type code.
@@ -393,16 +398,20 @@ public class CollectionPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      * 
+     * &gt; **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
+     * 
      */
     @Export(name="resourceDirectory", refs={CollectionPolicyResourceDirectory.class}, tree="[0]")
-    private Output<CollectionPolicyResourceDirectory> resourceDirectory;
+    private Output</* @Nullable */ CollectionPolicyResourceDirectory> resourceDirectory;
 
     /**
      * @return Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      * 
+     * &gt; **NOTE:** The SLS API does not support removing `resourceDirectory` from an existing policy. Removing the block from the configuration fails with an error, and subsequent plans keep showing the difference between the remote policy and the configuration until the block is added back or the policy is deleted and recreated.
+     * 
      */
-    public Output<CollectionPolicyResourceDirectory> resourceDirectory() {
-        return this.resourceDirectory;
+    public Output<Optional<CollectionPolicyResourceDirectory>> resourceDirectory() {
+        return Codegen.optional(this.resourceDirectory);
     }
 
     /**

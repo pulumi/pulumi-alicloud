@@ -130,7 +130,9 @@ class _RouterExpressConnectRouterState:
                  alibaba_side_asn: pulumi.Input[Optional[_builtins.int]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled_route_entries: pulumi.Input[Optional[Sequence[pulumi.Input['RouterExpressConnectRouterDisabledRouteEntryArgs']]]] = None,
                  ecr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 granted_instances: pulumi.Input[Optional[Sequence[pulumi.Input['RouterExpressConnectRouterGrantedInstanceArgs']]]] = None,
                  regions: pulumi.Input[Optional[Sequence[pulumi.Input['RouterExpressConnectRouterRegionArgs']]]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -141,7 +143,9 @@ class _RouterExpressConnectRouterState:
         :param pulumi.Input[_builtins.int] alibaba_side_asn: ASN representing resources.
         :param pulumi.Input[_builtins.str] create_time: Represents the creation time of the resource.
         :param pulumi.Input[_builtins.str] description: Represents the description of the leased line gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterExpressConnectRouterDisabledRouteEntryArgs']]] disabled_route_entries: (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabled_route_entries` below.
         :param pulumi.Input[_builtins.str] ecr_name: Name of the Gateway representing the leased line.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterExpressConnectRouterGrantedInstanceArgs']]] granted_instances: (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `granted_instances` below.
         :param pulumi.Input[Sequence[pulumi.Input['RouterExpressConnectRouterRegionArgs']]] regions: List of regions representing leased line gateways. See `regions` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the ECR instance belongs.
                - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
@@ -154,8 +158,12 @@ class _RouterExpressConnectRouterState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled_route_entries is not None:
+            pulumi.set(__self__, "disabled_route_entries", disabled_route_entries)
         if ecr_name is not None:
             pulumi.set(__self__, "ecr_name", ecr_name)
+        if granted_instances is not None:
+            pulumi.set(__self__, "granted_instances", granted_instances)
         if regions is not None:
             pulumi.set(__self__, "regions", regions)
         if resource_group_id is not None:
@@ -202,6 +210,18 @@ class _RouterExpressConnectRouterState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="disabledRouteEntries")
+    def disabled_route_entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterExpressConnectRouterDisabledRouteEntryArgs']]]]:
+        """
+        (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabled_route_entries` below.
+        """
+        return pulumi.get(self, "disabled_route_entries")
+
+    @disabled_route_entries.setter
+    def disabled_route_entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterExpressConnectRouterDisabledRouteEntryArgs']]]]):
+        pulumi.set(self, "disabled_route_entries", value)
+
+    @_builtins.property
     @pulumi.getter(name="ecrName")
     def ecr_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -212,6 +232,18 @@ class _RouterExpressConnectRouterState:
     @ecr_name.setter
     def ecr_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecr_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grantedInstances")
+    def granted_instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterExpressConnectRouterGrantedInstanceArgs']]]]:
+        """
+        (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `granted_instances` below.
+        """
+        return pulumi.get(self, "granted_instances")
+
+    @granted_instances.setter
+    def granted_instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterExpressConnectRouterGrantedInstanceArgs']]]]):
+        pulumi.set(self, "granted_instances", value)
 
     @_builtins.property
     @pulumi.getter
@@ -283,6 +315,8 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.224.0.
 
+        > **NOTE:** If you maintain a narrow custom RAM policy that predates v2.3.0, `refresh` and `plan` will surface a `403 NoPermission` error from whichever supplementary action your role lacks, rather than silently leaving the computed field empty. Grant the two actions listed in RAM Permissions below — at resource level (`acs:expressconnectrouter::<accountId>:expressconnectrouter/<EcrId>`) or service level (`*`) — so refresh and plan stay green.
+
         ## Example Usage
 
         Basic Usage
@@ -305,6 +339,15 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         You can resume managing the subscription instance via the AlibabaCloud Console.
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## RAM Permissions
+
+        The two read-only attributes `disabled_route_entries` and `granted_instances` (available since v2.3.0) are populated by the following supplementary Describe actions. Each is an independent RAM permission on the `expressconnectrouter` service and is queried on every `read`/`refresh`/`plan`:
+
+        * `expressconnectrouter:DescribeDisabledExpressConnectRouterRouteEntries` — lists the route entries currently disabled on the ECR.
+        * `expressconnectrouter:DescribeInstanceGrantedToExpressConnectRouter` — lists the network instances granted to the ECR.
+
+        These actions are in addition to the base resource actions (`expressconnectrouter:CreateExpressConnectRouter`, `expressconnectrouter:ModifyExpressConnectRouter`, `expressconnectrouter:DeleteExpressConnectRouter`, `expressconnectrouter:DescribeExpressConnectRouter`, etc.).
 
         ## Import
 
@@ -338,6 +381,8 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.224.0.
 
+        > **NOTE:** If you maintain a narrow custom RAM policy that predates v2.3.0, `refresh` and `plan` will surface a `403 NoPermission` error from whichever supplementary action your role lacks, rather than silently leaving the computed field empty. Grant the two actions listed in RAM Permissions below — at resource level (`acs:expressconnectrouter::<accountId>:expressconnectrouter/<EcrId>`) or service level (`*`) — so refresh and plan stay green.
+
         ## Example Usage
 
         Basic Usage
@@ -360,6 +405,15 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         You can resume managing the subscription instance via the AlibabaCloud Console.
 
         📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## RAM Permissions
+
+        The two read-only attributes `disabled_route_entries` and `granted_instances` (available since v2.3.0) are populated by the following supplementary Describe actions. Each is an independent RAM permission on the `expressconnectrouter` service and is queried on every `read`/`refresh`/`plan`:
+
+        * `expressconnectrouter:DescribeDisabledExpressConnectRouterRouteEntries` — lists the route entries currently disabled on the ECR.
+        * `expressconnectrouter:DescribeInstanceGrantedToExpressConnectRouter` — lists the network instances granted to the ECR.
+
+        These actions are in addition to the base resource actions (`expressconnectrouter:CreateExpressConnectRouter`, `expressconnectrouter:ModifyExpressConnectRouter`, `expressconnectrouter:DeleteExpressConnectRouter`, `expressconnectrouter:DescribeExpressConnectRouter`, etc.).
 
         ## Import
 
@@ -409,6 +463,8 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["disabled_route_entries"] = None
+            __props__.__dict__["granted_instances"] = None
             __props__.__dict__["status"] = None
         super(RouterExpressConnectRouter, __self__).__init__(
             'alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter',
@@ -423,7 +479,9 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
             alibaba_side_asn: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled_route_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterDisabledRouteEntryArgs', 'RouterExpressConnectRouterDisabledRouteEntryArgsDict', 'outputs.RouterExpressConnectRouterDisabledRouteEntry']]]]] = None,
             ecr_name: pulumi.Input[Optional[_builtins.str]] = None,
+            granted_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterGrantedInstanceArgs', 'RouterExpressConnectRouterGrantedInstanceArgsDict', 'outputs.RouterExpressConnectRouterGrantedInstance']]]]] = None,
             regions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict', 'outputs.RouterExpressConnectRouterRegion']]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -438,7 +496,9 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] alibaba_side_asn: ASN representing resources.
         :param pulumi.Input[_builtins.str] create_time: Represents the creation time of the resource.
         :param pulumi.Input[_builtins.str] description: Represents the description of the leased line gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterDisabledRouteEntryArgs', 'RouterExpressConnectRouterDisabledRouteEntryArgsDict', 'outputs.RouterExpressConnectRouterDisabledRouteEntry']]]] disabled_route_entries: (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabled_route_entries` below.
         :param pulumi.Input[_builtins.str] ecr_name: Name of the Gateway representing the leased line.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterGrantedInstanceArgs', 'RouterExpressConnectRouterGrantedInstanceArgsDict', 'outputs.RouterExpressConnectRouterGrantedInstance']]]] granted_instances: (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `granted_instances` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict', 'outputs.RouterExpressConnectRouterRegion']]]] regions: List of regions representing leased line gateways. See `regions` below.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the ECR instance belongs.
                - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
@@ -452,7 +512,9 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         __props__.__dict__["alibaba_side_asn"] = alibaba_side_asn
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["disabled_route_entries"] = disabled_route_entries
         __props__.__dict__["ecr_name"] = ecr_name
+        __props__.__dict__["granted_instances"] = granted_instances
         __props__.__dict__["regions"] = regions
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
@@ -465,7 +527,9 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
             alibaba_side_asn: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled_route_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterDisabledRouteEntryArgs', 'RouterExpressConnectRouterDisabledRouteEntryArgsDict', 'outputs.RouterExpressConnectRouterDisabledRouteEntry']]]]] = None,
             ecr_name: pulumi.Input[Optional[_builtins.str]] = None,
+            granted_instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterGrantedInstanceArgs', 'RouterExpressConnectRouterGrantedInstanceArgsDict', 'outputs.RouterExpressConnectRouterGrantedInstance']]]]] = None,
             regions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict', 'outputs.RouterExpressConnectRouterRegion']]]]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -474,7 +538,9 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         __props__["alibabaSideAsn"] = alibaba_side_asn
         __props__["createTime"] = create_time
         __props__["description"] = description
+        __props__["disabledRouteEntries"] = disabled_route_entries
         __props__["ecrName"] = ecr_name
+        __props__["grantedInstances"] = granted_instances
         __props__["regions"] = regions
         __props__["resourceGroupId"] = resource_group_id
         __props__["status"] = status
@@ -506,12 +572,28 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="disabledRouteEntries")
+    def disabled_route_entries(self) -> pulumi.Output[Sequence['outputs.RouterExpressConnectRouterDisabledRouteEntry']]:
+        """
+        (Computed, List, Available since v2.3.0) The route entries that are currently disabled on the Express Connect Router. See `disabled_route_entries` below.
+        """
+        return pulumi.get(self, "disabled_route_entries")
+
+    @_builtins.property
     @pulumi.getter(name="ecrName")
     def ecr_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Name of the Gateway representing the leased line.
         """
         return pulumi.get(self, "ecr_name")
+
+    @_builtins.property
+    @pulumi.getter(name="grantedInstances")
+    def granted_instances(self) -> pulumi.Output[Sequence['outputs.RouterExpressConnectRouterGrantedInstance']]:
+        """
+        (Computed, List, Available since v2.3.0) The network instances granted to the Express Connect Router. See `granted_instances` below.
+        """
+        return pulumi.get(self, "granted_instances")
 
     @_builtins.property
     @pulumi.getter

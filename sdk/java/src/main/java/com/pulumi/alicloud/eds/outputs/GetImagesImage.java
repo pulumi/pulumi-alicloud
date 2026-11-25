@@ -53,7 +53,7 @@ public final class GetImagesImage {
      */
     private String imageType;
     /**
-     * @return The os type of the image.
+     * @return The operating system type of the image. Valid values: `Windows` and `Linux`.
      * 
      */
     private String osType;
@@ -131,7 +131,7 @@ public final class GetImagesImage {
         return this.imageType;
     }
     /**
-     * @return The os type of the image.
+     * @return The operating system type of the image. Valid values: `Windows` and `Linux`.
      * 
      */
     public String osType() {

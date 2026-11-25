@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Applications of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// &gt; **NOTE:** Available since v1.161.0.
         /// 
         /// ## Example Usage
         /// 
@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Sae
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-testacc";
+        ///     var name = config.Get("name") ?? "tf-accapp";
         ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Sae
         /// 
         ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
         ///     {
-        ///         VpcName = "tf_testacc",
+        ///         VpcName = "tf_accapp",
         ///         CidrBlock = "172.16.0.0/12",
         ///     });
         /// 
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Sae
         ///     var defaultApplication = new AliCloud.Sae.Application("default", new()
         ///     {
         ///         AppDescription = "tf-testaccDescription",
-        ///         AppName = "tf-testaccAppName131",
+        ///         AppName = "tf-accappName131",
         ///         NamespaceId = defaultNamespace.Id,
         ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
         ///         PackageType = "Image",
@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Applications of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// &gt; **NOTE:** Available since v1.161.0.
         /// 
         /// ## Example Usage
         /// 
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Sae
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-testacc";
+        ///     var name = config.Get("name") ?? "tf-accapp";
         ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Sae
         /// 
         ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
         ///     {
-        ///         VpcName = "tf_testacc",
+        ///         VpcName = "tf_accapp",
         ///         CidrBlock = "172.16.0.0/12",
         ///     });
         /// 
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Sae
         ///     var defaultApplication = new AliCloud.Sae.Application("default", new()
         ///     {
         ///         AppDescription = "tf-testaccDescription",
-        ///         AppName = "tf-testaccAppName131",
+        ///         AppName = "tf-accappName131",
         ///         NamespaceId = defaultNamespace.Id,
         ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
         ///         PackageType = "Image",
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Applications of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// &gt; **NOTE:** Available since v1.161.0.
         /// 
         /// ## Example Usage
         /// 
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.Sae
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "tf-testacc";
+        ///     var name = config.Get("name") ?? "tf-accapp";
         ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Sae
         /// 
         ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
         ///     {
-        ///         VpcName = "tf_testacc",
+        ///         VpcName = "tf_accapp",
         ///         CidrBlock = "172.16.0.0/12",
         ///     });
         /// 
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Sae
         ///     var defaultApplication = new AliCloud.Sae.Application("default", new()
         ///     {
         ///         AppDescription = "tf-testaccDescription",
-        ///         AppName = "tf-testaccAppName131",
+        ///         AppName = "tf-accappName131",
         ///         NamespaceId = defaultNamespace.Id,
         ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
         ///         PackageType = "Image",
@@ -396,7 +396,13 @@ namespace Pulumi.AliCloud.Sae
     [OutputType]
     public sealed class GetApplicationsResult
     {
+        /// <summary>
+        /// Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
+        /// </summary>
         public readonly string? AppName;
+        /// <summary>
+        /// A list of Sae Applications. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationsApplicationResult> Applications;
         public readonly bool? EnableDetails;
         public readonly string? FieldType;
@@ -406,10 +412,16 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
+        /// </summary>
         public readonly string? NamespaceId;
         public readonly string? OrderBy;
         public readonly string? OutputFile;
         public readonly bool? Reverse;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

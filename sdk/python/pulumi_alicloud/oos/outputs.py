@@ -158,7 +158,7 @@ class GetApplicationsApplicationResult(dict):
         :param _builtins.str description: Application group description information.
         :param _builtins.str id: The ID of the Application. The value is formate as <application_name>.
         :param _builtins.str resource_group_id: The ID of the resource group.
-        :param Mapping[str, _builtins.str] tags: The tag of the resource.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         :param _builtins.str update_time: The Updated time of the application.
         """
         pulumi.set(__self__, "application_name", application_name)
@@ -213,7 +213,7 @@ class GetApplicationsApplicationResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        The tag of the resource.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -669,10 +669,10 @@ class GetPatchBaselinesBaselineResult(dict):
         :param _builtins.str description: Patches baseline description information.
         :param _builtins.str id: The ID of the Patch Baseline. Its value is same as `patch_baseline_name`.
         :param _builtins.bool is_default: Whether it is the default patch baseline.
-        :param _builtins.str operation_system: Operating system type.
+        :param _builtins.str operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         :param _builtins.str patch_baseline_id: Patch baseline ID.
         :param _builtins.str patch_baseline_name: The name of the patch baseline.
-        :param _builtins.str share_type: Patch baseline sharing type.
+        :param _builtins.str share_type: Patch baseline sharing type. Valid values: `Private`, `Public`.
         :param _builtins.str updated_by: The user who updated the patch baselines.
         :param _builtins.str updated_date: The update time of patch baselines.
         """
@@ -741,7 +741,7 @@ class GetPatchBaselinesBaselineResult(dict):
     @pulumi.getter(name="operationSystem")
     def operation_system(self) -> _builtins.str:
         """
-        Operating system type.
+        Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         """
         return pulumi.get(self, "operation_system")
 
@@ -765,7 +765,7 @@ class GetPatchBaselinesBaselineResult(dict):
     @pulumi.getter(name="shareType")
     def share_type(self) -> _builtins.str:
         """
-        Patch baseline sharing type.
+        Patch baseline sharing type. Valid values: `Private`, `Public`.
         """
         return pulumi.get(self, "share_type")
 

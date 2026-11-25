@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly bool IpAddressRemaining;
         /// <summary>
-        /// The Internet service provider.
+        /// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
         /// </summary>
         public readonly string Isp;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string PublicIpAddressPoolId;
         /// <summary>
-        /// The name of the Vpc Public Ip Address Pool.
+        /// The name of the VPC Public IP address pool.
         /// </summary>
         public readonly string PublicIpAddressPoolName;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// The status of the Vpc Public Ip Address Pool.
+        /// The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
         /// </summary>
         public readonly string Status;
         /// <summary>

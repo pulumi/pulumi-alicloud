@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetHybridMonitorSlsTasksTaskMatchExpressResult> MatchExpresses;
         /// <summary>
-        /// The namespace to which the host belongs.
+        /// The name of the namespace.
         /// </summary>
         public readonly string Namespace;
         /// <summary>
@@ -117,6 +117,9 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// The region where the host resides.
         /// </summary>
         public readonly string UploadRegion;
+        /// <summary>
+        /// The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+        /// </summary>
         public readonly string YarmConfig;
 
         [OutputConstructor]

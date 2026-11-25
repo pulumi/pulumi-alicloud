@@ -6,6 +6,7 @@ package com.pulumi.alicloud.kvstore;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.kvstore.InstanceArgs;
 import com.pulumi.alicloud.kvstore.inputs.InstanceState;
+import com.pulumi.alicloud.kvstore.outputs.InstanceAdditionalBandwidth;
 import com.pulumi.alicloud.kvstore.outputs.InstanceParameter;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -25,6 +26,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available since v1.14.0.
  * 
  * &gt; **NOTE:** Destroying a `PrePaid` instance fails with an error since v1.294.0. To destroy it, convert the instance to `PostPaid` by setting `paymentType = &#34;PostPaid&#34;` and re-applying, or unsubscribe it in the Alibaba Cloud console. To remove the instance from the state only, run `terraform state rm`.
+ * 
+ * &gt; **NOTE:** Refreshing a `Redis` type instance calls the `DescribeRoleZoneInfo` operation to read the additional bandwidth purchased for its data shards, so the RAM policy used by Terraform must allow `kvstore:DescribeRoleZoneInfo` in addition to the instance query permissions.
  * 
  * ## Example Usage
  * 
@@ -171,7 +174,7 @@ import javax.annotation.Nullable;
  *             .config(Map.ofEntries(
  *                 Map.entry("appendonly", "no"),
  *                 Map.entry("lazyfree-lazy-eviction", "no"),
- *                 Map.entry("EvictionPolicy", "volatile-lru")
+ *                 Map.entry("maxmemory-policy", "volatile-lru")
  *             ))
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
@@ -257,7 +260,7 @@ import javax.annotation.Nullable;
  *             .config(Map.ofEntries(
  *                 Map.entry("appendonly", "yes"),
  *                 Map.entry("lazyfree-lazy-eviction", "yes"),
- *                 Map.entry("EvictionPolicy", "volatile-lru")
+ *                 Map.entry("maxmemory-policy", "volatile-lru")
  *             ))
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
@@ -283,6 +286,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:kvstore/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
+    /**
+     * The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+     * 
+     */
+    @Export(name="additionalBandwidths", refs={List.class,InstanceAdditionalBandwidth.class}, tree="[0,1]")
+    private Output<List<InstanceAdditionalBandwidth>> additionalBandwidths;
+
+    /**
+     * @return The additional bandwidth to add to each data shard of the instance. Unit: MB/s. Setting this block adjusts the shard bandwidth to the specification default plus the configured value, which also changes the total `bandwidth` of the instance. See `additionalBandwidth` below. **NOTE:** The purchased bandwidth is read back from the `DescribeRoleZoneInfo` API as each data node&#39;s `CurrentBandWidth` minus its `DefaultBandWidth` (the specification default) for the shards managed by this resource, so bandwidth changed outside Terraform is detected on refresh. Removing a block does not release the purchased bandwidth of that shard; set its `bandwidth` to `0` explicitly to release it. **NOTE:** The additional bandwidth is purchased for a limited order duration (the API default is 1 day) and must be renewed with the `RenewAdditionalBandwidth` operation before it expires; this resource does not manage the renewal or the order duration. The additional bandwidth is charged on a pay-as-you-go basis.
+     * 
+     */
+    public Output<List<InstanceAdditionalBandwidth>> additionalBandwidths() {
+        return this.additionalBandwidths;
+    }
     /**
      * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      * 
@@ -399,6 +416,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.bandwidth;
     }
     /**
+     * Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+     * 
+     */
+    @Export(name="bandwidthBurst", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> bandwidthBurst;
+
+    /**
+     * @return Specifies whether to enable Elastic Burst for the instance. After it is enabled, the instance can temporarily burst beyond the default bandwidth limit during bandwidth auto scaling. **NOTE:** This attribute is only submitted through the `EnableAdditionalBandwidth` API and cannot be read back by instance query APIs; Terraform keeps the configured value in the state. The additional bandwidth is charged on a pay-as-you-go basis.
+     * 
+     */
+    public Output<Optional<Boolean>> bandwidthBurst() {
+        return Codegen.optional(this.bandwidthBurst);
+    }
+    /**
      * The ID of the event or the business information.
      * 
      */
@@ -411,6 +442,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> businessInfo() {
         return Codegen.optional(this.businessInfo);
+    }
+    /**
+     * The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     * 
+     */
+    @Export(name="caCertCommonName", refs={String.class}, tree="[0]")
+    private Output<String> caCertCommonName;
+
+    /**
+     * @return The common name of the CA certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     * 
+     */
+    public Output<String> caCertCommonName() {
+        return this.caCertCommonName;
+    }
+    /**
+     * The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+     * 
+     */
+    @Export(name="caCertDownloadUrl", refs={String.class}, tree="[0]")
+    private Output<String> caCertDownloadUrl;
+
+    /**
+     * @return The download URL of the CA certificate. This attribute is populated when `sslEnable` is set to `Enable`.
+     * 
+     */
+    public Output<String> caCertDownloadUrl() {
+        return this.caCertDownloadUrl;
     }
     /**
      * The storage capacity of the KVStore DBInstance. Unit: MB.
@@ -457,14 +516,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Indicates whether the address is a private endpoint.
      * 
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     * 
-     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     * 
-     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     * 
-     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
-     * 
      * @deprecated Field &#39;connection_string&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
      * 
      */
@@ -474,14 +525,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Indicates whether the address is a private endpoint.
-     * 
-     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
-     * 
-     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
-     * 
-     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
-     * 
-     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      * 
      */
     public Output<String> connectionString() {
@@ -710,6 +753,36 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.globalInstanceId);
     }
     /**
+     * The list of Global Security Group Ids.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     * 
+     */
+    @Export(name="globalSecurityGroupLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> globalSecurityGroupLists;
+
+    /**
+     * @return The list of Global Security Group Ids.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
+     * 
+     */
+    public Output<Optional<List<String>>> globalSecurityGroupLists() {
+        return Codegen.optional(this.globalSecurityGroupLists);
+    }
+    /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      * 
      * @deprecated Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
@@ -921,6 +994,36 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    @Export(name="passwordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the account. It is only sent to the server when the resource is created or the `passwordWoVersion` changes and is never stored in the state or plan.
+     * 
+     */
+    public Output<Optional<String>> passwordWo() {
+        return Codegen.optional(this.passwordWo);
+    }
+    /**
+     * The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     * 
+     */
+    @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> passwordWoVersion;
+
+    /**
+     * @return The version of the write-only password. The write-only password is re-sent to the server only when this argument changes, so it must be changed whenever `passwordWo` changes.
+     * 
+     */
+    public Output<Optional<Integer>> passwordWoVersion() {
+        return Codegen.optional(this.passwordWoVersion);
+    }
+    /**
      * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      * 
      */
@@ -1090,6 +1193,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     * 
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -1098,6 +1202,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
+     * 
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -1176,6 +1281,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * 
      * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      * 
      */
@@ -1184,6 +1290,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * 
      * &gt; **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      * 
      */
@@ -1192,6 +1299,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
      * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      * 
      */
@@ -1200,6 +1308,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
      * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
      * 
      */
@@ -1235,6 +1344,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> sslEnable() {
         return this.sslEnable;
+    }
+    /**
+     * The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     * 
+     */
+    @Export(name="sslExpiredTime", refs={String.class}, tree="[0]")
+    private Output<String> sslExpiredTime;
+
+    /**
+     * @return The expiration time of the SSL certificate. **NOTE:** This is a best-effort attribute and may be empty when the upstream API does not return it.
+     * 
+     */
+    public Output<String> sslExpiredTime() {
+        return this.sslExpiredTime;
     }
     /**
      * The status of KVStore DBInstance.
@@ -1365,7 +1488,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "password"
+                "password",
+                "passwordWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

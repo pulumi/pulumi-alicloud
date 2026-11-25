@@ -18,28 +18,14 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
     public static final LaunchTemplateDataDiskArgs Empty = new LaunchTemplateDataDiskArgs();
 
     /**
-     * The category of the disk:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
-     * 
-     * Default to `cloudEfficiency`.
+     * The category of the disk.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The category of the disk:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
-     * 
-     * Default to `cloudEfficiency`.
+     * @return The category of the disk.
      * 
      */
     public Optional<Output<String>> category() {
@@ -47,18 +33,14 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-     * 
-     * Default to true
+     * Delete this data disk when the instance is destroyed. Default to `true`.
      * 
      */
     @Import(name="deleteWithInstance")
     private @Nullable Output<Boolean> deleteWithInstance;
 
     /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-     * 
-     * Default to true
+     * @return Delete this data disk when the instance is destroyed. Default to `true`.
      * 
      */
     public Optional<Output<Boolean>> deleteWithInstance() {
@@ -80,35 +62,47 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The mount point of the data disk.
+     * 
+     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
+    /**
+     * @return The mount point of the data disk.
+     * 
+     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
 
     /**
-     * Encrypted the data in this disk.
-     * 
-     * Default to false
+     * Encrypted the data in this disk. Default to `false`.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
     /**
-     * @return Encrypted the data in this disk.
-     * 
-     * Default to false
+     * @return Encrypted the data in this disk. Default to `false`.
      * 
      */
     public Optional<Output<Boolean>> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
 
+    /**
+     * The ID of the KMS key used for the data disk.
+     * 
+     */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
+    /**
+     * @return The ID of the KMS key used for the data disk.
+     * 
+     */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
@@ -128,20 +122,23 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The performance level of the ESSD used as the data disk.
+     * 
+     */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
+    /**
+     * @return The performance level of the ESSD used as the data disk.
+     * 
+     */
     public Optional<Output<String>> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
 
     /**
      * The size of the data disk.
-     * - cloud：[5, 2000]
-     * - cloud_efficiency：[20, 32768]
-     * - cloud_ssd：[20, 32768]
-     * - cloud_essd：[20, 32768]
-     * - ephemeral_ssd: [5, 800]
      * 
      */
     @Import(name="size")
@@ -149,11 +146,6 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The size of the data disk.
-     * - cloud：[5, 2000]
-     * - cloud_efficiency：[20, 32768]
-     * - cloud_ssd：[20, 32768]
-     * - cloud_essd：[20, 32768]
-     * - ephemeral_ssd: [5, 800]
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -161,14 +153,14 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+     * The snapshot ID used to initialize the data disk.
      * 
      */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
     /**
-     * @return The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+     * @return The snapshot ID used to initialize the data disk.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -209,14 +201,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param category The category of the disk:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
-         * 
-         * Default to `cloudEfficiency`.
+         * @param category The category of the disk.
          * 
          * @return builder
          * 
@@ -227,14 +212,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param category The category of the disk:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
-         * 
-         * Default to `cloudEfficiency`.
+         * @param category The category of the disk.
          * 
          * @return builder
          * 
@@ -244,9 +222,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-         * 
-         * Default to true
+         * @param deleteWithInstance Delete this data disk when the instance is destroyed. Default to `true`.
          * 
          * @return builder
          * 
@@ -257,9 +233,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-         * 
-         * Default to true
+         * @param deleteWithInstance Delete this data disk when the instance is destroyed. Default to `true`.
          * 
          * @return builder
          * 
@@ -289,19 +263,29 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
             return description(Output.of(description));
         }
 
+        /**
+         * @param device The mount point of the data disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The mount point of the data disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }
 
         /**
-         * @param encrypted Encrypted the data in this disk.
-         * 
-         * Default to false
+         * @param encrypted Encrypted the data in this disk. Default to `false`.
          * 
          * @return builder
          * 
@@ -312,9 +296,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param encrypted Encrypted the data in this disk.
-         * 
-         * Default to false
+         * @param encrypted Encrypted the data in this disk. Default to `false`.
          * 
          * @return builder
          * 
@@ -323,11 +305,23 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
             return encrypted(Output.of(encrypted));
         }
 
+        /**
+         * @param kmsKeyId The ID of the KMS key used for the data disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
             $.kmsKeyId = kmsKeyId;
             return this;
         }
 
+        /**
+         * @param kmsKeyId The ID of the KMS key used for the data disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
         }
@@ -353,22 +347,29 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
             return name(Output.of(name));
         }
 
+        /**
+         * @param performanceLevel The performance level of the ESSD used as the data disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder performanceLevel(@Nullable Output<String> performanceLevel) {
             $.performanceLevel = performanceLevel;
             return this;
         }
 
+        /**
+         * @param performanceLevel The performance level of the ESSD used as the data disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder performanceLevel(String performanceLevel) {
             return performanceLevel(Output.of(performanceLevel));
         }
 
         /**
          * @param size The size of the data disk.
-         * - cloud：[5, 2000]
-         * - cloud_efficiency：[20, 32768]
-         * - cloud_ssd：[20, 32768]
-         * - cloud_essd：[20, 32768]
-         * - ephemeral_ssd: [5, 800]
          * 
          * @return builder
          * 
@@ -380,11 +381,6 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
 
         /**
          * @param size The size of the data disk.
-         * - cloud：[5, 2000]
-         * - cloud_efficiency：[20, 32768]
-         * - cloud_ssd：[20, 32768]
-         * - cloud_essd：[20, 32768]
-         * - ephemeral_ssd: [5, 800]
          * 
          * @return builder
          * 
@@ -394,7 +390,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param snapshotId The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+         * @param snapshotId The snapshot ID used to initialize the data disk.
          * 
          * @return builder
          * 
@@ -405,7 +401,7 @@ public final class LaunchTemplateDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param snapshotId The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
+         * @param snapshotId The snapshot ID used to initialize the data disk.
          * 
          * @return builder
          * 

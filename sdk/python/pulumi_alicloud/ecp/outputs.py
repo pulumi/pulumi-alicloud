@@ -34,6 +34,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
         :param _builtins.int cpu_core_count: The cpu core count of the current instance type.
         :param _builtins.str default_resolution: The default resolution of the current instance type.
         :param _builtins.str instance_type: The list of available instance type.
+        :param _builtins.str instance_type_family: The family of the current instance type.
         :param _builtins.str name: The name of the current instance type.
         :param _builtins.str name_en: The English name of the current instance type.
         """
@@ -71,6 +72,9 @@ class GetInstanceTypesInstanceTypeResult(dict):
     @_builtins.property
     @pulumi.getter(name="instanceTypeFamily")
     def instance_type_family(self) -> _builtins.str:
+        """
+        The family of the current instance type.
+        """
         return pulumi.get(self, "instance_type_family")
 
     @_builtins.property
@@ -112,15 +116,20 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str id: The ID of the Instance.
         :param _builtins.str image_id: The ID Of The Image.
         :param _builtins.str instance_id: InstanceId.
-        :param _builtins.str instance_name: Instance Name.
+        :param _builtins.str instance_name: The name of the instance. It must be 2 to 128 characters in length and must start with an
+               uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+               half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+               the instance.
         :param _builtins.str instance_type: Instance Type.
-        :param _builtins.str key_pair_name: The Key Name.
+        :param _builtins.str key_pair_name: The name of the key pair of the mobile phone instance.
         :param _builtins.str payment_type: The payment type.Valid values: `PayAsYouGo`,`Subscription`
-        :param _builtins.str resolution: Resolution.
+        :param _builtins.str resolution: The selected resolution for the cloud mobile phone instance.
         :param _builtins.str security_group_id: Security Group ID.
-        :param _builtins.str status: Instance Status.
+        :param _builtins.str status: Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+               .
         :param _builtins.str vnc_url: VNC login address.
         :param _builtins.str vswitch_id: The vswitch id.
+        :param _builtins.str zone_id: The zone ID of the ECP instance.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -173,7 +182,10 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> _builtins.str:
         """
-        Instance Name.
+        The name of the instance. It must be 2 to 128 characters in length and must start with an
+        uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+        half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+        the instance.
         """
         return pulumi.get(self, "instance_name")
 
@@ -189,7 +201,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> _builtins.str:
         """
-        The Key Name.
+        The name of the key pair of the mobile phone instance.
         """
         return pulumi.get(self, "key_pair_name")
 
@@ -205,7 +217,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def resolution(self) -> _builtins.str:
         """
-        Resolution.
+        The selected resolution for the cloud mobile phone instance.
         """
         return pulumi.get(self, "resolution")
 
@@ -221,7 +233,8 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Instance Status.
+        Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+        .
         """
         return pulumi.get(self, "status")
 
@@ -244,6 +257,9 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
+        """
+        The zone ID of the ECP instance.
+        """
         return pulumi.get(self, "zone_id")
 
 

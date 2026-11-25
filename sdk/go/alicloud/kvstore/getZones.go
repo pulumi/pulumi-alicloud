@@ -54,14 +54,14 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-	// * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
 	Engine *string `pulumi:"engine"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
 	Multi *bool `pulumi:"multi"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  *string `pulumi:"outputFile"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
 	ProductType *string `pulumi:"productType"`
 }
 
@@ -88,14 +88,14 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 // A collection of arguments for invoking getZones.
 type GetZonesOutputArgs struct {
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-	// * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
 	Multi pulumi.BoolPtrInput `pulumi:"multi"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
 	ProductType pulumi.StringPtrInput `pulumi:"productType"`
 }
 

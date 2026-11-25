@@ -6,6 +6,41 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.117.0.
+ *
+ * This is an alias of `alicloud.quotas.getQuotaApplications`.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultQuotaApplication = new alicloud.quotas.QuotaApplication("default", {
+ *     productCode: "vpc",
+ *     noticeType: 3,
+ *     effectiveTime: "2023-05-22T16:00:00Z",
+ *     expireTime: "2024-09-15T00:08:32Z",
+ *     desireValue: 1,
+ *     reason: "",
+ *     quotaActionCode: "vpc_whitelist/ha_vip_whitelist",
+ *     auditMode: "Sync",
+ *     envLanguage: "zh",
+ *     quotaCategory: "WhiteListLabel",
+ * });
+ * const _default = alicloud.quotas.getApplicationInfosOutput({
+ *     productCode: "vpc",
+ *     enableDetails: true,
+ *     quotaCategory: defaultQuotaApplication.quotaCategory,
+ *     ids: [defaultQuotaApplication.id],
+ * });
+ * ```
+ */
 export function getApplicationInfos(args: GetApplicationInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:quotas/getApplicationInfos:getApplicationInfos", {
@@ -25,14 +60,41 @@ export function getApplicationInfos(args: GetApplicationInfosArgs, opts?: pulumi
  * A collection of arguments for invoking getApplicationInfos.
  */
 export interface GetApplicationInfosArgs {
+    /**
+     * The quota dimensions. See `dimensions` below.
+     */
     dimensions?: inputs.quotas.GetApplicationInfosDimension[];
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
+    /**
+     * A list of Application Info IDs.
+     */
     ids?: string[];
+    /**
+     * The key word.
+     */
     keyWord?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
+    /**
+     * The product code.
+     */
     productCode: string;
+    /**
+     * The ID of quota action.
+     */
     quotaActionCode?: string;
+    /**
+     * The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+     */
     quotaCategory?: string;
+    /**
+     * The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+     */
     status?: string;
 }
 
@@ -40,7 +102,13 @@ export interface GetApplicationInfosArgs {
  * A collection of values returned by getApplicationInfos.
  */
 export interface GetApplicationInfosResult {
+    /**
+     * A list of Quotas Quota Applications. Each element contains the following attributes:
+     */
     readonly applications: outputs.quotas.GetApplicationInfosApplication[];
+    /**
+     * The quota dimensions. See `dimensions` below.
+     */
     readonly dimensions?: outputs.quotas.GetApplicationInfosDimension[];
     readonly enableDetails?: boolean;
     /**
@@ -50,11 +118,55 @@ export interface GetApplicationInfosResult {
     readonly ids: string[];
     readonly keyWord?: string;
     readonly outputFile?: string;
+    /**
+     * The product code.
+     */
     readonly productCode: string;
+    /**
+     * The ID of quota action.
+     */
     readonly quotaActionCode?: string;
     readonly quotaCategory?: string;
+    /**
+     * The status of the quota application.
+     */
     readonly status?: string;
 }
+/**
+ * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.117.0.
+ *
+ * This is an alias of `alicloud.quotas.getQuotaApplications`.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultQuotaApplication = new alicloud.quotas.QuotaApplication("default", {
+ *     productCode: "vpc",
+ *     noticeType: 3,
+ *     effectiveTime: "2023-05-22T16:00:00Z",
+ *     expireTime: "2024-09-15T00:08:32Z",
+ *     desireValue: 1,
+ *     reason: "",
+ *     quotaActionCode: "vpc_whitelist/ha_vip_whitelist",
+ *     auditMode: "Sync",
+ *     envLanguage: "zh",
+ *     quotaCategory: "WhiteListLabel",
+ * });
+ * const _default = alicloud.quotas.getApplicationInfosOutput({
+ *     productCode: "vpc",
+ *     enableDetails: true,
+ *     quotaCategory: defaultQuotaApplication.quotaCategory,
+ *     ids: [defaultQuotaApplication.id],
+ * });
+ * ```
+ */
 export function getApplicationInfosOutput(args: GetApplicationInfosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:quotas/getApplicationInfos:getApplicationInfos", {
@@ -74,13 +186,40 @@ export function getApplicationInfosOutput(args: GetApplicationInfosOutputArgs, o
  * A collection of arguments for invoking getApplicationInfos.
  */
 export interface GetApplicationInfosOutputArgs {
+    /**
+     * The quota dimensions. See `dimensions` below.
+     */
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetApplicationInfosDimensionArgs>[] | undefined>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
+    /**
+     * A list of Application Info IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The key word.
+     */
     keyWord?: pulumi.Input<string | undefined>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The product code.
+     */
     productCode: pulumi.Input<string>;
+    /**
+     * The ID of quota action.
+     */
     quotaActionCode?: pulumi.Input<string | undefined>;
+    /**
+     * The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
+     */
     quotaCategory?: pulumi.Input<string | undefined>;
+    /**
+     * The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
+     */
     status?: pulumi.Input<string | undefined>;
 }

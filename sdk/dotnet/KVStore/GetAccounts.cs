@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.102.0+.
+        /// &gt; **NOTE:** Available since v1.102.0.
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.102.0+.
+        /// &gt; **NOTE:** Available since v1.102.0.
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.102.0+.
+        /// &gt; **NOTE:** Available since v1.102.0.
         /// 
         /// ## Example Usage
         /// 
@@ -123,6 +123,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// A regex string to apply to the account name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
@@ -158,6 +161,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// A regex string to apply to the account name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
@@ -183,17 +189,35 @@ namespace Pulumi.AliCloud.KVStore
     [OutputType]
     public sealed class GetAccountsResult
     {
+        /// <summary>
+        /// The name of the account.
+        /// </summary>
         public readonly string? AccountName;
+        /// <summary>
+        /// A list of Kvstore Accounts. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountsAccountResult> Accounts;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Account IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The Id of instance in which account belongs.
+        /// </summary>
         public readonly string InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Account names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of account.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

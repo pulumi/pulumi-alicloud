@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.139.0+.
+// > **NOTE:** Available since v1.139.0.
 //
 // ## Example Usage
 //
@@ -62,9 +62,10 @@ type GetInstanceSpecificationsArgs struct {
 // A collection of values returned by getInstanceSpecifications.
 type GetInstanceSpecificationsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                                   `pulumi:"id"`
-	Ids            []string                                 `pulumi:"ids"`
-	OutputFile     *string                                  `pulumi:"outputFile"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Sae Instance Specifications. Each element contains the following attributes:
 	Specifications []GetInstanceSpecificationsSpecification `pulumi:"specifications"`
 }
 
@@ -113,6 +114,7 @@ func (o GetInstanceSpecificationsResultOutput) OutputFile() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetInstanceSpecificationsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Sae Instance Specifications. Each element contains the following attributes:
 func (o GetInstanceSpecificationsResultOutput) Specifications() GetInstanceSpecificationsSpecificationArrayOutput {
 	return o.ApplyT(func(v GetInstanceSpecificationsResult) []GetInstanceSpecificationsSpecification {
 		return v.Specifications

@@ -56,6 +56,9 @@ class GetEcsDeploymentSetsResult:
     @_builtins.property
     @pulumi.getter(name="deploymentSetName")
     def deployment_set_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the deployment set.
+        """
         return pulumi.get(self, "deployment_set_name")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetEcsDeploymentSetsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Deployment Set names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +95,17 @@ class GetEcsDeploymentSetsResult:
     @_builtins.property
     @pulumi.getter
     def sets(self) -> Sequence['outputs.GetEcsDeploymentSetsSetResult']:
+        """
+        A list of Ecs Deployment Sets. Each element contains the following attributes:
+        """
         return pulumi.get(self, "sets")
 
     @_builtins.property
     @pulumi.getter
     def strategy(self) -> Optional[_builtins.str]:
+        """
+        The deployment strategy.
+        """
         return pulumi.get(self, "strategy")
 
 
@@ -122,7 +134,7 @@ def get_ecs_deployment_sets(deployment_set_name: Optional[_builtins.str] = None,
     """
     This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 
@@ -172,7 +184,7 @@ def get_ecs_deployment_sets_output(deployment_set_name: pulumi.Input[Optional[Op
     """
     This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 

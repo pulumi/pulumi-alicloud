@@ -3585,7 +3585,7 @@ func (o ScalingConfigurationInstanceTypeOverrideArrayOutput) Index(i pulumi.IntI
 type ScalingConfigurationNetworkInterface struct {
 	// The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
 	InstanceType *string `pulumi:"instanceType"`
-	// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+	// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
 	// The communication mode of the ENI. Valid values: Standard, HighPerformance.
 	NetworkInterfaceTrafficMode *string `pulumi:"networkInterfaceTrafficMode"`
@@ -3607,7 +3607,7 @@ type ScalingConfigurationNetworkInterfaceInput interface {
 type ScalingConfigurationNetworkInterfaceArgs struct {
 	// The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
-	// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+	// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
 	Ipv6AddressCount pulumi.IntPtrInput `pulumi:"ipv6AddressCount"`
 	// The communication mode of the ENI. Valid values: Standard, HighPerformance.
 	NetworkInterfaceTrafficMode pulumi.StringPtrInput `pulumi:"networkInterfaceTrafficMode"`
@@ -3671,7 +3671,7 @@ func (o ScalingConfigurationNetworkInterfaceOutput) InstanceType() pulumi.String
 	return o.ApplyT(func(v ScalingConfigurationNetworkInterface) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
-// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N. Setting it to `0` or removing it from the configuration stops requesting IPv6 addresses: the parameter is left out of the request and the Auto Scaling service drops the previously requested count.
 func (o ScalingConfigurationNetworkInterfaceOutput) Ipv6AddressCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationNetworkInterface) *int { return v.Ipv6AddressCount }).(pulumi.IntPtrOutput)
 }

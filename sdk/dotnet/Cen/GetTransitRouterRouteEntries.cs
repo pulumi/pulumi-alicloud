@@ -12,25 +12,91 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouterRouteEntries
     {
         /// <summary>
-        /// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+        /// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var entry = AliCloud.Cen.GetTransitRouterRouteEntries.Invoke(new()
+        ///     {
+        ///         TransitRouterRouteTableId = "vtb-*********",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["transitRouterRouteEntryDestinationCidrBlock"] = transitRouterRouteEntries[0].TransitRouterRouteEntryDestinationCidrBlock,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTransitRouterRouteEntriesResult> InvokeAsync(GetTransitRouterRouteEntriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+        /// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var entry = AliCloud.Cen.GetTransitRouterRouteEntries.Invoke(new()
+        ///     {
+        ///         TransitRouterRouteTableId = "vtb-*********",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["transitRouterRouteEntryDestinationCidrBlock"] = transitRouterRouteEntries[0].TransitRouterRouteEntryDestinationCidrBlock,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTransitRouterRouteEntriesResult> Invoke(GetTransitRouterRouteEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)
+        /// This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://www.alibabacloud.com/help/doc-detail/260941.html)
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var entry = AliCloud.Cen.GetTransitRouterRouteEntries.Invoke(new()
+        ///     {
+        ///         TransitRouterRouteTableId = "vtb-*********",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["transitRouterRouteEntryDestinationCidrBlock"] = transitRouterRouteEntries[0].TransitRouterRouteEntryDestinationCidrBlock,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTransitRouterRouteEntriesResult> Invoke(GetTransitRouterRouteEntriesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteEntriesResult>("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", args ?? new GetTransitRouterRouteEntriesInvokeArgs(), options.WithDefaults());
@@ -51,6 +117,9 @@ namespace Pulumi.AliCloud.Cen
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by transit router route entry name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
@@ -60,6 +129,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
@@ -119,6 +191,9 @@ namespace Pulumi.AliCloud.Cen
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by transit router route entry name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
@@ -128,6 +203,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -195,12 +273,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        public readonly string? Status;
-        public readonly ImmutableArray<string> TransitRouterRouteEntryIds;
-        public readonly ImmutableArray<string> TransitRouterRouteEntryNames;
         /// <summary>
         /// The status of the route entry in CEN.
         /// </summary>
+        public readonly string? Status;
+        public readonly ImmutableArray<string> TransitRouterRouteEntryIds;
+        public readonly ImmutableArray<string> TransitRouterRouteEntryNames;
         public readonly string? TransitRouterRouteEntryStatus;
         public readonly string TransitRouterRouteTableId;
 

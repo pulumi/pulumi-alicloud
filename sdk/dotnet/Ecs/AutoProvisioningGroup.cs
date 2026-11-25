@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ecs
     /// <summary>
     /// Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and PayAsYouGo instances to rapidly deploy clusters.
     /// 
-    /// &gt; **NOTE:** Available in 1.79.0+
+    /// &gt; **NOTE:** Available since v1.79.0
     /// 
     /// ## Example Usage
     /// 
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> ExcessCapacityTerminationPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+        /// DataDisk mappings to attach to ecs instance. See `LaunchTemplateConfig` below for details.
         /// </summary>
         [Output("launchTemplateConfigs")]
         public Output<ImmutableArray<Outputs.AutoProvisioningGroupLaunchTemplateConfig>> LaunchTemplateConfigs { get; private set; } = null!;
@@ -301,7 +301,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.AutoProvisioningGroupLaunchTemplateConfigArgs>? _launchTemplateConfigs;
 
         /// <summary>
-        /// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+        /// DataDisk mappings to attach to ecs instance. See `LaunchTemplateConfig` below for details.
         /// </summary>
         public InputList<Inputs.AutoProvisioningGroupLaunchTemplateConfigArgs> LaunchTemplateConfigs
         {
@@ -435,7 +435,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.AutoProvisioningGroupLaunchTemplateConfigGetArgs>? _launchTemplateConfigs;
 
         /// <summary>
-        /// DataDisk mappings to attach to ecs instance. See `block-config` below for details.
+        /// DataDisk mappings to attach to ecs instance. See `LaunchTemplateConfig` below for details.
         /// </summary>
         public InputList<Inputs.AutoProvisioningGroupLaunchTemplateConfigGetArgs> LaunchTemplateConfigs
         {

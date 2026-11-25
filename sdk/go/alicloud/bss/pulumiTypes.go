@@ -16,7 +16,7 @@ var _ = internal.GetEnvOrDefault
 type GetOpenApiPricingModulesModule struct {
 	// Property Code.
 	Code string `pulumi:"code"`
-	// A list of Price Module IDs.
+	// The ID of the pricing module. The value is formulated as `<product_code>:<product_type>:<subscription_type>:<code>`.
 	Id string `pulumi:"id"`
 	// Attribute name.
 	PricingModuleName string `pulumi:"pricingModuleName"`
@@ -48,7 +48,7 @@ type GetOpenApiPricingModulesModuleInput interface {
 type GetOpenApiPricingModulesModuleArgs struct {
 	// Property Code.
 	Code pulumi.StringInput `pulumi:"code"`
-	// A list of Price Module IDs.
+	// The ID of the pricing module. The value is formulated as `<product_code>:<product_type>:<subscription_type>:<code>`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Attribute name.
 	PricingModuleName pulumi.StringInput `pulumi:"pricingModuleName"`
@@ -122,7 +122,7 @@ func (o GetOpenApiPricingModulesModuleOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.Code }).(pulumi.StringOutput)
 }
 
-// A list of Price Module IDs.
+// The ID of the pricing module. The value is formulated as `<product_code>:<product_type>:<subscription_type>:<code>`.
 func (o GetOpenApiPricingModulesModuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.Id }).(pulumi.StringOutput)
 }

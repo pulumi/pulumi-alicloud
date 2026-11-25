@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.141.0+.
+ * > **NOTE:** Available since v1.141.0.
  *
  * ## Example Usage
  *
@@ -74,14 +74,23 @@ export interface GetTrafficMirrorFilterIngressRulesResult {
     readonly id: string;
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Vpc Traffic Mirror Filter Egress Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.vpc.GetTrafficMirrorFilterIngressRulesRule[];
+    /**
+     * The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+     */
     readonly status?: string;
+    /**
+     * The ID of the filter associated with the inbound rule.
+     */
     readonly trafficMirrorFilterId: string;
 }
 /**
  * This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.141.0+.
+ * > **NOTE:** Available since v1.141.0.
  *
  * ## Example Usage
  *

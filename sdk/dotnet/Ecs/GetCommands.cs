@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Commands of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// &gt; **NOTE:** Available since v1.116.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Commands of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// &gt; **NOTE:** Available since v1.116.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Commands of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.116.0+.
+        /// &gt; **NOTE:** Available since v1.116.0.
         /// 
         /// ## Example Usage
         /// 
@@ -250,18 +250,33 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetCommandsResult
     {
         public readonly string? CommandProvider;
+        /// <summary>
+        /// A list of Ecs Commands. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCommandsCommandResult> Commands;
         public readonly string? ContentEncoding;
+        /// <summary>
+        /// The description of command.
+        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The name of the command
+        /// </summary>
         public readonly string? Name;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Command names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The command type.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

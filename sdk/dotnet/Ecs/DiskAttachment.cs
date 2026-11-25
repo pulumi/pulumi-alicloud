@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Ecs
     ///     // Create a new ECS disk-attachment and use it attach one disk to a new instance.
     ///     var ecsSg = new AliCloud.Ecs.SecurityGroup("ecs_sg", new()
     ///     {
-    ///         Name = "terraform-test-group",
+    ///         Name = "terraform-demo-group",
     ///         Description = "New security group",
     ///     });
     /// 
@@ -82,12 +82,21 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/diskAttachment:DiskAttachment")]
     public partial class DiskAttachment : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether the disk is bootable.
+        /// </summary>
         [Output("bootable")]
         public Output<bool?> Bootable { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to delete the disk with the instance.
+        /// </summary>
         [Output("deleteWithInstance")]
         public Output<bool?> DeleteWithInstance { get; private set; } = null!;
 
+        /// <summary>
+        /// The device name allocated to the disk.
+        /// </summary>
         [Output("device")]
         public Output<string> Device { get; private set; } = null!;
 
@@ -103,9 +112,15 @@ namespace Pulumi.AliCloud.Ecs
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the key pair.
+        /// </summary>
         [Output("keyPairName")]
         public Output<string?> KeyPairName { get; private set; } = null!;
 
+        /// <summary>
+        /// The password of the instance.
+        /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
@@ -155,9 +170,15 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class DiskAttachmentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the disk is bootable.
+        /// </summary>
         [Input("bootable")]
         public Input<bool>? Bootable { get; set; }
 
+        /// <summary>
+        /// Whether to delete the disk with the instance.
+        /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
 
@@ -173,9 +194,15 @@ namespace Pulumi.AliCloud.Ecs
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the key pair.
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
+        /// <summary>
+        /// The password of the instance.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
@@ -187,12 +214,21 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class DiskAttachmentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the disk is bootable.
+        /// </summary>
         [Input("bootable")]
         public Input<bool>? Bootable { get; set; }
 
+        /// <summary>
+        /// Whether to delete the disk with the instance.
+        /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
 
+        /// <summary>
+        /// The device name allocated to the disk.
+        /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 
@@ -208,9 +244,15 @@ namespace Pulumi.AliCloud.Ecs
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        /// <summary>
+        /// The name of the key pair.
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
+        /// <summary>
+        /// The password of the instance.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 

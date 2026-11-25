@@ -53,6 +53,9 @@ class GetFlowsResult:
     @_builtins.property
     @pulumi.getter
     def flows(self) -> Sequence['outputs.GetFlowsFlowResult']:
+        """
+        A list of Fnf Flows. Each element contains the following attributes:
+        """
         return pulumi.get(self, "flows")
 
     @_builtins.property
@@ -81,6 +84,9 @@ class GetFlowsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Flow names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -112,7 +118,7 @@ def get_flows(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Fnf Flows of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.105.0+.
+    > **NOTE:** Available since v1.105.0.
 
     ## Example Usage
 
@@ -157,7 +163,7 @@ def get_flows_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]
     """
     This data source provides the Fnf Flows of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.105.0+.
+    > **NOTE:** Available since v1.105.0.
 
     ## Example Usage
 

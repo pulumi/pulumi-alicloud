@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Invocations of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.168.0+.
+// > **NOTE:** Available since v1.168.0.
 //
 // ## Example Usage
 //
@@ -73,16 +73,19 @@ type GetEcsInvocationsArgs struct {
 
 // A collection of values returned by getEcsInvocations.
 type GetEcsInvocationsResult struct {
+	// The ID of the command.
 	CommandId       *string `pulumi:"commandId"`
 	ContentEncoding *string `pulumi:"contentEncoding"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                        `pulumi:"id"`
-	Ids          []string                      `pulumi:"ids"`
-	Invocations  []GetEcsInvocationsInvocation `pulumi:"invocations"`
-	InvokeStatus *string                       `pulumi:"invokeStatus"`
-	OutputFile   *string                       `pulumi:"outputFile"`
-	PageNumber   *int                          `pulumi:"pageNumber"`
-	PageSize     *int                          `pulumi:"pageSize"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// A list of Ecs Invocations. Each element contains the following attributes:
+	Invocations []GetEcsInvocationsInvocation `pulumi:"invocations"`
+	// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	InvokeStatus *string `pulumi:"invokeStatus"`
+	OutputFile   *string `pulumi:"outputFile"`
+	PageNumber   *int    `pulumi:"pageNumber"`
+	PageSize     *int    `pulumi:"pageSize"`
 }
 
 func GetEcsInvocationsOutput(ctx *pulumi.Context, args GetEcsInvocationsOutputArgs, opts ...pulumi.InvokeOption) GetEcsInvocationsResultOutput {
@@ -125,6 +128,7 @@ func (o GetEcsInvocationsResultOutput) ToGetEcsInvocationsResultOutputWithContex
 	return o
 }
 
+// The ID of the command.
 func (o GetEcsInvocationsResultOutput) CommandId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsInvocationsResult) *string { return v.CommandId }).(pulumi.StringPtrOutput)
 }
@@ -142,10 +146,12 @@ func (o GetEcsInvocationsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsInvocationsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// A list of Ecs Invocations. Each element contains the following attributes:
 func (o GetEcsInvocationsResultOutput) Invocations() GetEcsInvocationsInvocationArrayOutput {
 	return o.ApplyT(func(v GetEcsInvocationsResult) []GetEcsInvocationsInvocation { return v.Invocations }).(GetEcsInvocationsInvocationArrayOutput)
 }
 
+// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
 func (o GetEcsInvocationsResultOutput) InvokeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsInvocationsResult) *string { return v.InvokeStatus }).(pulumi.StringPtrOutput)
 }

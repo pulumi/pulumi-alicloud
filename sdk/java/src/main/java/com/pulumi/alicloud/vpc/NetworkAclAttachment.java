@@ -116,14 +116,14 @@ public class NetworkAclAttachment extends com.pulumi.resources.CustomResource {
         return this.networkAclId;
     }
     /**
-     * List of the resources associated with the network acl. The details see Block Resources.
+     * List of the resources associated with the network acl. See `resources` below.
      * 
      */
     @Export(name="resources", refs={List.class,NetworkAclAttachmentResource.class}, tree="[0,1]")
     private Output<List<NetworkAclAttachmentResource>> resources;
 
     /**
-     * @return List of the resources associated with the network acl. The details see Block Resources.
+     * @return List of the resources associated with the network acl. See `resources` below.
      * 
      */
     public Output<List<NetworkAclAttachmentResource>> resources() {

@@ -13,6 +13,8 @@ import (
 
 // This data source provides CEN Regional Route Entries available to the user.
 //
+// > **NOTE:** Available since v1.22.0+
+//
 // ## Example Usage
 //
 // ```go
@@ -53,7 +55,8 @@ func GetRegionRouteEntries(ctx *pulumi.Context, args *GetRegionRouteEntriesArgs,
 // A collection of arguments for invoking getRegionRouteEntries.
 type GetRegionRouteEntriesArgs struct {
 	// ID of the CEN instance.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// ID of the region.
 	RegionId string `pulumi:"regionId"`
@@ -78,7 +81,8 @@ func GetRegionRouteEntriesOutput(ctx *pulumi.Context, args GetRegionRouteEntries
 // A collection of arguments for invoking getRegionRouteEntries.
 type GetRegionRouteEntriesOutputArgs struct {
 	// ID of the CEN instance.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// ID of the region.
 	RegionId pulumi.StringInput `pulumi:"regionId"`

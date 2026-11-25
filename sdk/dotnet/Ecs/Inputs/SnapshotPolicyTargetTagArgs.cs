@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
     public sealed class SnapshotPolicyTargetTagArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The key of the tag.
+        /// </summary>
         [Input("tagKey")]
         public Input<string>? TagKey { get; set; }
 
+        /// <summary>
+        /// The value of the tag.
+        /// </summary>
         [Input("tagValue")]
         public Input<string>? TagValue { get; set; }
 

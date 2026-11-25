@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.166.0+.
+ * > **NOTE:** Available since v1.166.0.
  *
  * ## Example Usage
  *
@@ -71,18 +71,27 @@ export interface GetEcsNetworkInterfacePermissionsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The ID of the network interface.
+     */
     readonly networkInterfaceId: string;
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * A list of Ecs Network Interface Permissions. Each element contains the following attributes:
+     */
     readonly permissions: outputs.ecs.GetEcsNetworkInterfacePermissionsPermission[];
+    /**
+     * The Status of the Network Interface Permissions.
+     */
     readonly status?: string;
     readonly totalCount: number;
 }
 /**
  * This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.166.0+.
+ * > **NOTE:** Available since v1.166.0.
  *
  * ## Example Usage
  *

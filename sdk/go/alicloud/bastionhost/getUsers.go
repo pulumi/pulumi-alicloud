@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Bastionhost Users of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Example Usage
 //
@@ -91,20 +91,29 @@ type GetUsersArgs struct {
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
+	// Specify the New Created the User's Display Name. Supports up to 128 Characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string         `pulumi:"id"`
-	Ids          []string       `pulumi:"ids"`
-	InstanceId   string         `pulumi:"instanceId"`
-	Mobile       *string        `pulumi:"mobile"`
-	NameRegex    *string        `pulumi:"nameRegex"`
-	Names        []string       `pulumi:"names"`
-	OutputFile   *string        `pulumi:"outputFile"`
-	Source       *string        `pulumi:"source"`
-	SourceUserId *string        `pulumi:"sourceUserId"`
-	Status       *string        `pulumi:"status"`
-	UserName     *string        `pulumi:"userName"`
-	Users        []GetUsersUser `pulumi:"users"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// You Want to Query the User the Bastion Host ID of.
+	InstanceId string `pulumi:"instanceId"`
+	// Specify the New of the User That Created a Different Mobile Phone Number from Your.
+	Mobile    *string `pulumi:"mobile"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// A list of User names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+	Source *string `pulumi:"source"`
+	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
+	SourceUserId *string `pulumi:"sourceUserId"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
+	UserName *string `pulumi:"userName"`
+	// A list of Bastionhost Users. Each element contains the following attributes:
+	Users []GetUsersUser `pulumi:"users"`
 }
 
 func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
@@ -155,6 +164,7 @@ func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Specify the New Created the User's Display Name. Supports up to 128 Characters.
 func (o GetUsersResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -168,10 +178,12 @@ func (o GetUsersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// You Want to Query the User the Bastion Host ID of.
 func (o GetUsersResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// Specify the New of the User That Created a Different Mobile Phone Number from Your.
 func (o GetUsersResultOutput) Mobile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.Mobile }).(pulumi.StringPtrOutput)
 }
@@ -180,6 +192,7 @@ func (o GetUsersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of User names.
 func (o GetUsersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -188,22 +201,27 @@ func (o GetUsersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
 func (o GetUsersResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
 func (o GetUsersResultOutput) SourceUserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.SourceUserId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetUsersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
 func (o GetUsersResultOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
 
+// A list of Bastionhost Users. Each element contains the following attributes:
 func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
 }

@@ -122,6 +122,9 @@ class GetRulesResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
+        """
+        The name of rule.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -253,6 +256,7 @@ def get_rules(category: Optional[_builtins.int] = None,
     :param _builtins.int category: Sensitive Data Identification Rules for the Type of. Valid values:
     :param _builtins.str content_category: The Content Classification.
     :param _builtins.int custom_type: Sensitive Data Identification Rules of Type. Valid values:
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Rule IDs.
     :param _builtins.str name: The name of rule.
     :param _builtins.str name_regex: A regex string to filter results by Rule name.
@@ -338,6 +342,7 @@ def get_rules_output(category: pulumi.Input[Optional[Optional[_builtins.int]]] =
     :param _builtins.int category: Sensitive Data Identification Rules for the Type of. Valid values:
     :param _builtins.str content_category: The Content Classification.
     :param _builtins.int custom_type: Sensitive Data Identification Rules of Type. Valid values:
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Rule IDs.
     :param _builtins.str name: The name of rule.
     :param _builtins.str name_regex: A regex string to filter results by Rule name.

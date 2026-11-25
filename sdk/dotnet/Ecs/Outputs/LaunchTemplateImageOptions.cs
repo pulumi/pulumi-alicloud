@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class LaunchTemplateImageOptions
     {
+        /// <summary>
+        /// Whether the instance that uses the image supports logons of the ecs-user user.
+        /// </summary>
         public readonly bool? LoginAsNonRoot;
 
         [OutputConstructor]

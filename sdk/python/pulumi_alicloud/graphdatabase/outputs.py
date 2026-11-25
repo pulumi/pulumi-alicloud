@@ -129,7 +129,7 @@ class GetDbInstancesInstanceResult(dict):
         :param _builtins.str db_instance_cpu: For example, instances can be grouped according to Cpu core count.
         :param _builtins.str db_instance_description: According to the practical example or notes.
         :param _builtins.str db_instance_id: The ID of the instance.
-        :param Sequence['GetDbInstancesInstanceDbInstanceIpArrayArgs'] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list.
+        :param Sequence['GetDbInstancesInstanceDbInstanceIpArrayArgs'] db_instance_ip_arrays: IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         :param _builtins.str db_instance_memory: Instance memory, which is measured in MB.
         :param _builtins.str db_instance_network_type: The network type of the db instance.
         :param _builtins.str db_instance_storage_type: Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`.
@@ -151,7 +151,7 @@ class GetDbInstancesInstanceResult(dict):
         :param _builtins.str public_connection_string: The public connection string ID of the resource.
         :param _builtins.int public_port: The public port ID of the resource.
         :param Sequence[_builtins.str] read_only_db_instance_ids: The array of the readonly db instances.
-        :param _builtins.str status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+        :param _builtins.str status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
         :param _builtins.str vpc_id: The vpc id of the db instance.
         :param _builtins.str vswitch_id: The vswitch id.
         :param _builtins.str zone_id: The zone ID of the resource.
@@ -250,7 +250,7 @@ class GetDbInstancesInstanceResult(dict):
     @pulumi.getter(name="dbInstanceIpArrays")
     def db_instance_ip_arrays(self) -> Sequence['outputs.GetDbInstancesInstanceDbInstanceIpArrayResult']:
         """
-        IP ADDRESS whitelist for the instance group list.
+        IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         """
         return pulumi.get(self, "db_instance_ip_arrays")
 
@@ -426,7 +426,7 @@ class GetDbInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+        Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
         """
         return pulumi.get(self, "status")
 

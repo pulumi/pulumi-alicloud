@@ -48,14 +48,14 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of group names.
+     * A list of group IDs to filter results.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of group names.
+     * @return A list of group IDs to filter results.
      * 
      */
     public Optional<List<String>> ids() {
@@ -77,9 +77,17 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.instanceId;
     }
 
+    /**
+     * A regex string to filter results by the group name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
+    /**
+     * @return A regex string to filter results by the group name.
+     * 
+     */
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -167,7 +175,7 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of group names.
+         * @param ids A list of group IDs to filter results.
          * 
          * @return builder
          * 
@@ -178,7 +186,7 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of group names.
+         * @param ids A list of group IDs to filter results.
          * 
          * @return builder
          * 
@@ -198,6 +206,12 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by the group name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable String nameRegex) {
             $.nameRegex = nameRegex;
             return this;

@@ -110,7 +110,16 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly bool SsoEnabled;
         /// <summary>
-        /// The workspace status.
+        /// The workspace status. Valid values:
+        /// - `REGISTERING`: The workspace is being registered.
+        /// - `REGISTERED`: The workspace is registered.
+        /// - `DEREGISTERING`: The workspace is being deregistered.
+        /// - `DEREGISTERED`: The workspace is deregistered.
+        /// - `ERROR`: The configurations of the workspace are invalid.
+        /// - `NEEDCONFIGTRUST`: The trust relationship needs to be configured.
+        /// - `NEEDCONFIGUSER`: Users need to be configured.
+        /// - `CONFIGTRUSTING`: The trust relationship is being configured.
+        /// - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
         /// </summary>
         public readonly string Status;
         /// <summary>

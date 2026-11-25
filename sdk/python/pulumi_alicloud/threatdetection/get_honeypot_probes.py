@@ -145,7 +145,7 @@ def get_honeypot_probes(display_name: Optional[_builtins.str] = None,
     """
     This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -156,7 +156,7 @@ def get_honeypot_probes(display_name: Optional[_builtins.str] = None,
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "tf-testAccThreatDetectionHoneypotProbe"
+        name = "tf-exampleThreatDetectionHoneypotProbe"
     default_honeypot_probe = alicloud.threatdetection.HoneypotProbe("default",
         uuid="e52c7872-29d1-4aa1-9908-0299abd53606",
         probe_type="host_probe",
@@ -184,6 +184,7 @@ def get_honeypot_probes(display_name: Optional[_builtins.str] = None,
     :param Sequence[_builtins.str] ids: A list of Honeypot Probe IDs.
     :param _builtins.str name_regex: A regex string to filter results by display name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str probe_status: The status of the honeypot probe.
     :param _builtins.str probe_type: Probe type
     """
     __args__ = dict()
@@ -218,7 +219,7 @@ def get_honeypot_probes_output(display_name: pulumi.Input[Optional[Optional[_bui
     """
     This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -229,7 +230,7 @@ def get_honeypot_probes_output(display_name: pulumi.Input[Optional[Optional[_bui
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "tf-testAccThreatDetectionHoneypotProbe"
+        name = "tf-exampleThreatDetectionHoneypotProbe"
     default_honeypot_probe = alicloud.threatdetection.HoneypotProbe("default",
         uuid="e52c7872-29d1-4aa1-9908-0299abd53606",
         probe_type="host_probe",
@@ -257,6 +258,7 @@ def get_honeypot_probes_output(display_name: pulumi.Input[Optional[Optional[_bui
     :param Sequence[_builtins.str] ids: A list of Honeypot Probe IDs.
     :param _builtins.str name_regex: A regex string to filter results by display name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.str probe_status: The status of the honeypot probe.
     :param _builtins.str probe_type: Probe type
     """
     __args__ = dict()

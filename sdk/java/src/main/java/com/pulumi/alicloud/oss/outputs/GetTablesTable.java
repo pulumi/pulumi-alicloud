@@ -14,6 +14,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTablesTable {
+    /**
+     * @return The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
+     * 
+     */
     private List<GetTablesTableDefinedColumn> definedColumns;
     /**
      * @return ID of the table. The value is `&lt;instance_name&gt;:&lt;table_name&gt;`.
@@ -31,7 +35,7 @@ public final class GetTablesTable {
      */
     private Integer maxVersion;
     /**
-     * @return The property of `TableMeta` which indicates the structure information of a table.
+     * @return The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
      * 
      */
     private List<GetTablesTablePrimaryKey> primaryKeys;
@@ -47,6 +51,10 @@ public final class GetTablesTable {
     private Integer timeToLive;
 
     private GetTablesTable() {}
+    /**
+     * @return The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
+     * 
+     */
     public List<GetTablesTableDefinedColumn> definedColumns() {
         return this.definedColumns;
     }
@@ -72,7 +80,7 @@ public final class GetTablesTable {
         return this.maxVersion;
     }
     /**
-     * @return The property of `TableMeta` which indicates the structure information of a table.
+     * @return The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
      * 
      */
     public List<GetTablesTablePrimaryKey> primaryKeys() {

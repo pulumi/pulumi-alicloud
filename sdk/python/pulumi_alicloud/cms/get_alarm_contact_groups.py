@@ -50,6 +50,9 @@ class GetAlarmContactGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetAlarmContactGroupsGroupResult']:
+        """
+        A list of CMS groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -73,6 +76,9 @@ class GetAlarmContactGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of CMS Alarm Contact Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -102,7 +108,7 @@ def get_alarm_contact_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the CMS Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.101.0+.
+    > **NOTE:** Available since v1.101.0+.
 
     ## Example Usage
 
@@ -141,7 +147,7 @@ def get_alarm_contact_groups_output(ids: pulumi.Input[Optional[Optional[Sequence
     """
     This data source provides the CMS Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.101.0+.
+    > **NOTE:** Available since v1.101.0+.
 
     ## Example Usage
 

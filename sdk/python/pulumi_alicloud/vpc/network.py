@@ -82,6 +82,8 @@ class NetworkArgs:
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] system_route_table_name: The name of the route table.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+               
+               > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
@@ -386,6 +388,8 @@ class NetworkArgs:
         """
         The name of the route table.
         The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+
+        > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
         """
         return pulumi.get(self, "system_route_table_name")
 
@@ -523,6 +527,8 @@ class _NetworkState:
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] system_route_table_name: The name of the route table.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+               
+               > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
@@ -929,6 +935,8 @@ class _NetworkState:
         """
         The name of the route table.
         The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+
+        > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
         """
         return pulumi.get(self, "system_route_table_name")
 
@@ -1101,6 +1109,8 @@ class Network(pulumi.CustomResource):
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] system_route_table_name: The name of the route table.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+               
+               > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
@@ -1325,6 +1335,8 @@ class Network(pulumi.CustomResource):
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] system_route_table_name: The name of the route table.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+               
+               > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
@@ -1641,7 +1653,7 @@ class Network(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="systemRouteTableDescription")
-    def system_route_table_description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def system_route_table_description(self) -> pulumi.Output[_builtins.str]:
         """
         The description of the route table.
         The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -1650,10 +1662,12 @@ class Network(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="systemRouteTableName")
-    def system_route_table_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def system_route_table_name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the route table.
         The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+
+        > **NOTE:** Because these fields are `Computed`, removing them from your configuration does not clear the remote route table description or name. Terraform simply accepts the existing service value, preventing a persistent diff when the attribute is omitted from HCL.
         """
         return pulumi.get(self, "system_route_table_name")
 

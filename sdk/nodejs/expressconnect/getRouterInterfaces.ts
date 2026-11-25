@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
  *
- * > **NOTE:** Available in 1.199.0+
+ * > **NOTE:** Available since v1.199.0
  *
  * ## Example Usage
  *
@@ -42,6 +42,9 @@ export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulum
  * A collection of arguments for invoking getRouterInterfaces.
  */
 export interface GetRouterInterfacesArgs {
+    /**
+     * Custom filter block as described below. See `filter` below.
+     */
     filters?: inputs.expressconnect.GetRouterInterfacesFilter[];
     /**
      * A list of Router Interface IDs.
@@ -93,7 +96,7 @@ export interface GetRouterInterfacesResult {
 /**
  * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
  *
- * > **NOTE:** Available in 1.199.0+
+ * > **NOTE:** Available since v1.199.0
  *
  * ## Example Usage
  *
@@ -126,6 +129,9 @@ export function getRouterInterfacesOutput(args?: GetRouterInterfacesOutputArgs, 
  * A collection of arguments for invoking getRouterInterfaces.
  */
 export interface GetRouterInterfacesOutputArgs {
+    /**
+     * Custom filter block as described below. See `filter` below.
+     */
     filters?: pulumi.Input<pulumi.Input<inputs.expressconnect.GetRouterInterfacesFilterArgs>[] | undefined>;
     /**
      * A list of Router Interface IDs.

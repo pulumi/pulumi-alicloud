@@ -16,14 +16,14 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
     public static final DomainCertInfoArgs Empty = new DomainCertInfoArgs();
 
     /**
-     * If You Enable HTTPS Here Certificate Name.
+     * The certificate name when HTTPS is enabled.
      * 
      */
     @Import(name="certName")
     private @Nullable Output<String> certName;
 
     /**
-     * @return If You Enable HTTPS Here Certificate Name.
+     * @return The certificate name when HTTPS is enabled.
      * 
      */
     public Optional<Output<String>> certName() {
@@ -31,20 +31,14 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Certificate Type. Value Range:
-     * * upload: Certificate
-     * * cas: Certificate Authority Certificate.
-     * * free: Free Certificate.
+     * Certificate Type. Valid values:
      * 
      */
     @Import(name="certType")
     private @Nullable Output<String> certType;
 
     /**
-     * @return Certificate Type. Value Range:
-     * * upload: Certificate
-     * * cas: Certificate Authority Certificate.
-     * * free: Free Certificate.
+     * @return Certificate Type. Valid values:
      * 
      */
     public Optional<Output<String>> certType() {
@@ -52,14 +46,14 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+     * Private Key. Required when uploading a certificate.
      * 
      */
     @Import(name="sslPri")
     private @Nullable Output<String> sslPri;
 
     /**
-     * @return Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+     * @return Private Key. Required when uploading a certificate.
      * 
      */
     public Optional<Output<String>> sslPri() {
@@ -67,14 +61,14 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+     * Whether to enable SSL certificate. Valid values: `on`, `off`.
      * 
      */
     @Import(name="sslProtocol")
     private @Nullable Output<String> sslProtocol;
 
     /**
-     * @return Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+     * @return Whether to enable SSL certificate. Valid values: `on`, `off`.
      * 
      */
     public Optional<Output<String>> sslProtocol() {
@@ -82,14 +76,14 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * If You Enable HTTPS Here Key.
+     * The public key when HTTPS is enabled.
      * 
      */
     @Import(name="sslPub")
     private @Nullable Output<String> sslPub;
 
     /**
-     * @return If You Enable HTTPS Here Key.
+     * @return The public key when HTTPS is enabled.
      * 
      */
     public Optional<Output<String>> sslPub() {
@@ -125,7 +119,7 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param certName If You Enable HTTPS Here Certificate Name.
+         * @param certName The certificate name when HTTPS is enabled.
          * 
          * @return builder
          * 
@@ -136,7 +130,7 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param certName If You Enable HTTPS Here Certificate Name.
+         * @param certName The certificate name when HTTPS is enabled.
          * 
          * @return builder
          * 
@@ -146,10 +140,7 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param certType Certificate Type. Value Range:
-         * * upload: Certificate
-         * * cas: Certificate Authority Certificate.
-         * * free: Free Certificate.
+         * @param certType Certificate Type. Valid values:
          * 
          * @return builder
          * 
@@ -160,10 +151,7 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param certType Certificate Type. Value Range:
-         * * upload: Certificate
-         * * cas: Certificate Authority Certificate.
-         * * free: Free Certificate.
+         * @param certType Certificate Type. Valid values:
          * 
          * @return builder
          * 
@@ -173,7 +161,7 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sslPri Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+         * @param sslPri Private Key. Required when uploading a certificate.
          * 
          * @return builder
          * 
@@ -184,7 +172,7 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sslPri Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+         * @param sslPri Private Key. Required when uploading a certificate.
          * 
          * @return builder
          * 
@@ -194,7 +182,7 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sslProtocol Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+         * @param sslProtocol Whether to enable SSL certificate. Valid values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -205,7 +193,7 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sslProtocol Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+         * @param sslProtocol Whether to enable SSL certificate. Valid values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -215,7 +203,7 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sslPub If You Enable HTTPS Here Key.
+         * @param sslPub The public key when HTTPS is enabled.
          * 
          * @return builder
          * 
@@ -226,7 +214,7 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sslPub If You Enable HTTPS Here Key.
+         * @param sslPub The public key when HTTPS is enabled.
          * 
          * @return builder
          * 

@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Cen.Outputs
     [OutputType]
     public sealed class GetTransitRouterRouteTableAssociationsAssociationResult
     {
+        /// <summary>
+        /// The ID of the CEN Transit Router Route Table Association.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ID of the transit router route table association.

@@ -68,6 +68,9 @@ class GetTagsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Tag names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -78,6 +81,9 @@ class GetTagsResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetTagsTagResult']:
+        """
+        A list of Direct Mail Tags. Each element contains the following attributes:
+        """
         return pulumi.get(self, "tags")
 
 
@@ -102,7 +108,7 @@ def get_tags(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 
@@ -144,7 +150,7 @@ def get_tags_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]
     """
     This data source provides the Direct Mail Tags of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.144.0+.
+    > **NOTE:** Available since v1.144.0.
 
     ## Example Usage
 

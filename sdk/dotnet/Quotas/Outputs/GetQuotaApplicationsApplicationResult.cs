@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Quotas.Outputs
         /// </summary>
         public readonly double DesireValue;
         /// <summary>
-        /// The quota dimensions.
+        /// The quota dimensions. See `Dimensions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetQuotaApplicationsApplicationDimensionResult> Dimensions;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Quotas.Outputs
         /// </summary>
         public readonly string ProductCode;
         /// <summary>
-        /// The ID of quota action..
+        /// The ID of quota action.
         /// </summary>
         public readonly string QuotaActionCode;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Quotas.Outputs
         /// </summary>
         public readonly string Reason;
         /// <summary>
-        /// The status of the quota application.
+        /// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
         /// </summary>
         public readonly string Status;
 

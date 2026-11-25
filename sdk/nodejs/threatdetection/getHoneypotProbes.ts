@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccThreatDetectionHoneypotProbe";
+ * const name = config.get("name") || "tf-exampleThreatDetectionHoneypotProbe";
  * const defaultHoneypotProbe = new alicloud.threatdetection.HoneypotProbe("default", {
  *     uuid: "e52c7872-29d1-4aa1-9908-0299abd53606",
  *     probeType: "host_probe",
@@ -81,6 +81,9 @@ export interface GetHoneypotProbesArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The status of the honeypot probe.
+     */
     probeStatus?: string;
     /**
      * Probe type
@@ -120,7 +123,7 @@ export interface GetHoneypotProbesResult {
 /**
  * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -129,7 +132,7 @@ export interface GetHoneypotProbesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccThreatDetectionHoneypotProbe";
+ * const name = config.get("name") || "tf-exampleThreatDetectionHoneypotProbe";
  * const defaultHoneypotProbe = new alicloud.threatdetection.HoneypotProbe("default", {
  *     uuid: "e52c7872-29d1-4aa1-9908-0299abd53606",
  *     probeType: "host_probe",
@@ -192,6 +195,9 @@ export interface GetHoneypotProbesOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * The status of the honeypot probe.
+     */
     probeStatus?: pulumi.Input<string | undefined>;
     /**
      * Probe type

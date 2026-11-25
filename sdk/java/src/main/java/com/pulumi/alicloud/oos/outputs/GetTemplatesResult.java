@@ -16,10 +16,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTemplatesResult {
+    /**
+     * @return The category of the template.
+     * 
+     */
     private @Nullable String category;
+    /**
+     * @return The user who created the template.
+     * 
+     */
     private @Nullable String createdBy;
+    /**
+     * @return The time when the template was created.
+     * 
+     */
     private @Nullable String createdDate;
     private @Nullable String createdDateAfter;
+    /**
+     * @return Whether the template has a trigger.
+     * 
+     */
     private @Nullable Boolean hasTrigger;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -38,11 +54,27 @@ public final class GetTemplatesResult {
      */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The sharing type of the template.
+     * 
+     */
     private @Nullable String shareType;
     private @Nullable String sortField;
     private @Nullable String sortOrder;
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The format of the template.
+     * 
+     */
     private @Nullable String templateFormat;
+    /**
+     * @return The type of the OOS Template.
+     * 
+     */
     private @Nullable String templateType;
     /**
      * @return A list of OOS Templates. Each element contains the following attributes:
@@ -51,18 +83,34 @@ public final class GetTemplatesResult {
     private List<GetTemplatesTemplate> templates;
 
     private GetTemplatesResult() {}
+    /**
+     * @return The category of the template.
+     * 
+     */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return The user who created the template.
+     * 
+     */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
+    /**
+     * @return The time when the template was created.
+     * 
+     */
     public Optional<String> createdDate() {
         return Optional.ofNullable(this.createdDate);
     }
     public Optional<String> createdDateAfter() {
         return Optional.ofNullable(this.createdDateAfter);
     }
+    /**
+     * @return Whether the template has a trigger.
+     * 
+     */
     public Optional<Boolean> hasTrigger() {
         return Optional.ofNullable(this.hasTrigger);
     }
@@ -93,6 +141,10 @@ public final class GetTemplatesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The sharing type of the template.
+     * 
+     */
     public Optional<String> shareType() {
         return Optional.ofNullable(this.shareType);
     }
@@ -102,12 +154,24 @@ public final class GetTemplatesResult {
     public Optional<String> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
+    /**
+     * @return The tag of the resource.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The format of the template.
+     * 
+     */
     public Optional<String> templateFormat() {
         return Optional.ofNullable(this.templateFormat);
     }
+    /**
+     * @return The type of the OOS Template.
+     * 
+     */
     public Optional<String> templateType() {
         return Optional.ofNullable(this.templateType);
     }

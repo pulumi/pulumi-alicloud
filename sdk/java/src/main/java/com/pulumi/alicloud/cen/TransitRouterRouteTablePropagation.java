@@ -134,10 +134,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN transit router route table propagation can be imported using the id, e.g.
+ * CEN transit router route table propagation can be imported using the id, which consists of transitRouterAttachmentId and transit_router_route_table_id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation default tr-********:tr-attach-********
+ * $ pulumi import alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation default &lt;transit_router_attachment_id&gt;:&lt;transit_router_route_table_id&gt;
  * ```
  * 
  */

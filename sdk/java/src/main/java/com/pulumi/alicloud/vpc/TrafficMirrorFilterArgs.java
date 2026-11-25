@@ -40,14 +40,14 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Information about the outbound rule. See the following `Block EgressRules`.
+     * Information about the outbound rule. See `egressRules` below.
      * 
      */
     @Import(name="egressRules")
     private @Nullable Output<List<TrafficMirrorFilterEgressRuleArgs>> egressRules;
 
     /**
-     * @return Information about the outbound rule. See the following `Block EgressRules`.
+     * @return Information about the outbound rule. See `egressRules` below.
      * 
      */
     public Optional<Output<List<TrafficMirrorFilterEgressRuleArgs>>> egressRules() {
@@ -55,14 +55,14 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Inward direction rule information. See the following `Block IngressRules`.
+     * Inward direction rule information. See `ingressRules` below.
      * 
      */
     @Import(name="ingressRules")
     private @Nullable Output<List<TrafficMirrorFilterIngressRuleArgs>> ingressRules;
 
     /**
-     * @return Inward direction rule information. See the following `Block IngressRules`.
+     * @return Inward direction rule information. See `ingressRules` below.
      * 
      */
     public Optional<Output<List<TrafficMirrorFilterIngressRuleArgs>>> ingressRules() {
@@ -185,7 +185,7 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param egressRules Information about the outbound rule. See the following `Block EgressRules`.
+         * @param egressRules Information about the outbound rule. See `egressRules` below.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param egressRules Information about the outbound rule. See the following `Block EgressRules`.
+         * @param egressRules Information about the outbound rule. See `egressRules` below.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param egressRules Information about the outbound rule. See the following `Block EgressRules`.
+         * @param egressRules Information about the outbound rule. See `egressRules` below.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ingressRules Inward direction rule information. See the following `Block IngressRules`.
+         * @param ingressRules Inward direction rule information. See `ingressRules` below.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ingressRules Inward direction rule information. See the following `Block IngressRules`.
+         * @param ingressRules Inward direction rule information. See `ingressRules` below.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class TrafficMirrorFilterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ingressRules Inward direction rule information. See the following `Block IngressRules`.
+         * @param ingressRules Inward direction rule information. See `ingressRules` below.
          * 
          * @return builder
          * 

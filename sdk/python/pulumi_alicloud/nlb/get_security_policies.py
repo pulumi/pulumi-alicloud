@@ -80,6 +80,9 @@ class GetSecurityPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Security Policy names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -90,11 +93,17 @@ class GetSecurityPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetSecurityPoliciesPolicyResult']:
+        """
+        A list of Nlb Security Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
@@ -105,11 +114,17 @@ class GetSecurityPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -142,7 +157,7 @@ def get_security_policies(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 
@@ -165,6 +180,7 @@ def get_security_policies(ids: Optional[Sequence[_builtins.str]] = None,
     :param _builtins.str resource_group_id: The ID of the resource group.
     :param Sequence[_builtins.str] security_policy_names: The names of the TLS security policies.
     :param _builtins.str status: The status of the resource. Valid values: `Available`, `Configuring`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -199,7 +215,7 @@ def get_security_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[_b
     """
     This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.187.0+.
+    > **NOTE:** Available since v1.187.0.
 
     ## Example Usage
 
@@ -222,6 +238,7 @@ def get_security_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[_b
     :param _builtins.str resource_group_id: The ID of the resource group.
     :param Sequence[_builtins.str] security_policy_names: The names of the TLS security policies.
     :param _builtins.str status: The status of the resource. Valid values: `Available`, `Configuring`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids

@@ -13,7 +13,7 @@ import (
 
 // This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
 //
-// > **NOTE:** Available in 1.199.0+
+// > **NOTE:** Available since v1.199.0
 //
 // ## Example Usage
 //
@@ -56,6 +56,7 @@ func GetRouterInterfaces(ctx *pulumi.Context, args *GetRouterInterfacesArgs, opt
 
 // A collection of arguments for invoking getRouterInterfaces.
 type GetRouterInterfacesArgs struct {
+	// Custom filter block as described below. See `filter` below.
 	Filters []GetRouterInterfacesFilter `pulumi:"filters"`
 	// A list of Router Interface IDs.
 	Ids []string `pulumi:"ids"`
@@ -94,6 +95,7 @@ func GetRouterInterfacesOutput(ctx *pulumi.Context, args GetRouterInterfacesOutp
 
 // A collection of arguments for invoking getRouterInterfaces.
 type GetRouterInterfacesOutputArgs struct {
+	// Custom filter block as described below. See `filter` below.
 	Filters GetRouterInterfacesFilterArrayInput `pulumi:"filters"`
 	// A list of Router Interface IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

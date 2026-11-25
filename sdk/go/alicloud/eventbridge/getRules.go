@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.129.0+.
+// > **NOTE:** Available since v1.129.0.
 //
 // ## Example Usage
 //
@@ -75,16 +75,20 @@ type GetRulesArgs struct {
 
 // A collection of values returned by getRules.
 type GetRulesResult struct {
+	// The name of event bus.
 	EventBusName string `pulumi:"eventBusName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string         `pulumi:"id"`
-	Ids            []string       `pulumi:"ids"`
-	NameRegex      *string        `pulumi:"nameRegex"`
-	Names          []string       `pulumi:"names"`
-	OutputFile     *string        `pulumi:"outputFile"`
-	RuleNamePrefix *string        `pulumi:"ruleNamePrefix"`
-	Rules          []GetRulesRule `pulumi:"rules"`
-	Status         *string        `pulumi:"status"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Rule names.
+	Names          []string `pulumi:"names"`
+	OutputFile     *string  `pulumi:"outputFile"`
+	RuleNamePrefix *string  `pulumi:"ruleNamePrefix"`
+	// A list of Event Bridge Rules. Each element contains the following attributes:
+	Rules []GetRulesRule `pulumi:"rules"`
+	// Rule status, either Enable or Disable.
+	Status *string `pulumi:"status"`
 }
 
 func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi.InvokeOption) GetRulesResultOutput {
@@ -127,6 +131,7 @@ func (o GetRulesResultOutput) ToGetRulesResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The name of event bus.
 func (o GetRulesResultOutput) EventBusName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesResult) string { return v.EventBusName }).(pulumi.StringOutput)
 }
@@ -144,6 +149,7 @@ func (o GetRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Rule names.
 func (o GetRulesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -156,10 +162,12 @@ func (o GetRulesResultOutput) RuleNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.RuleNamePrefix }).(pulumi.StringPtrOutput)
 }
 
+// A list of Event Bridge Rules. Each element contains the following attributes:
 func (o GetRulesResultOutput) Rules() GetRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetRulesResult) []GetRulesRule { return v.Rules }).(GetRulesRuleArrayOutput)
 }
 
+// Rule status, either Enable or Disable.
 func (o GetRulesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

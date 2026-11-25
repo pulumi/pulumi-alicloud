@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0.
 //
 // ## Example Usage
 //
@@ -67,14 +67,17 @@ type GetControlPolicyAttachmentsArgs struct {
 
 // A collection of values returned by getControlPolicyAttachments.
 type GetControlPolicyAttachmentsResult struct {
+	// A list of Resource Manager Control Policy Attachments. Each element contains the following attributes:
 	Attachments []GetControlPolicyAttachmentsAttachment `pulumi:"attachments"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of Control Policy Attachment IDs.
 	Ids        []string `pulumi:"ids"`
 	Language   *string  `pulumi:"language"`
 	OutputFile *string  `pulumi:"outputFile"`
-	PolicyType *string  `pulumi:"policyType"`
-	TargetId   string   `pulumi:"targetId"`
+	// The type of policy.
+	PolicyType *string `pulumi:"policyType"`
+	TargetId   string  `pulumi:"targetId"`
 }
 
 func GetControlPolicyAttachmentsOutput(ctx *pulumi.Context, args GetControlPolicyAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetControlPolicyAttachmentsResultOutput {
@@ -113,6 +116,7 @@ func (o GetControlPolicyAttachmentsResultOutput) ToGetControlPolicyAttachmentsRe
 	return o
 }
 
+// A list of Resource Manager Control Policy Attachments. Each element contains the following attributes:
 func (o GetControlPolicyAttachmentsResultOutput) Attachments() GetControlPolicyAttachmentsAttachmentArrayOutput {
 	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) []GetControlPolicyAttachmentsAttachment {
 		return v.Attachments
@@ -124,6 +128,7 @@ func (o GetControlPolicyAttachmentsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Control Policy Attachment IDs.
 func (o GetControlPolicyAttachmentsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -136,6 +141,7 @@ func (o GetControlPolicyAttachmentsResultOutput) OutputFile() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The type of policy.
 func (o GetControlPolicyAttachmentsResultOutput) PolicyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetControlPolicyAttachmentsResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
 }

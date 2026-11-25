@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vod
     /// 
     /// For information about VOD Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/product/29932.html).
     /// 
-    /// &gt; **NOTE:** Available since v1.136.0+.
+    /// &gt; **NOTE:** Available since v1.136.0.
     /// 
     /// ## Example Usage
     /// 
@@ -72,13 +72,31 @@ namespace Pulumi.AliCloud.Vod
     public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+        /// The ID of the certificate.
+        /// </summary>
+        [Output("certId")]
+        public Output<string> CertId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the certificate.
         /// </summary>
         [Output("certName")]
         public Output<string> CertName { get; private set; } = null!;
 
         /// <summary>
-        /// The URL that is used for health checks.
+        /// The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+        /// </summary>
+        [Output("certRegion")]
+        public Output<string> CertRegion { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the certificate. Valid values:
+        /// </summary>
+        [Output("certType")]
+        public Output<string> CertType { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL for health checks.
         /// </summary>
         [Output("checkUrl")]
         public Output<string?> CheckUrl { get; private set; } = null!;
@@ -90,7 +108,7 @@ namespace Pulumi.AliCloud.Vod
         public Output<string> Cname { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the domain name for CDN.
+        /// The description of the ApsaraVideo VOD accelerated domain name.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -102,51 +120,63 @@ namespace Pulumi.AliCloud.Vod
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// Specifies whether the certificate is deployed in canary mode. Valid values: `Staging`, `Production`. `Staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `Production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+        /// </summary>
+        [Output("env")]
+        public Output<string?> Env { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
         /// </summary>
         [Output("gmtCreated")]
         public Output<string> GmtCreated { get; private set; } = null!;
 
         /// <summary>
-        /// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
         /// </summary>
         [Output("gmtModified")]
         public Output<string> GmtModified { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+        /// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `Domestic`. Valid values:
         /// </summary>
         [Output("scope")]
         public Output<string?> Scope { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        /// The list of origin addresses. See `Sources` below.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<Outputs.DomainSource>> Sources { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `On`,`Off`.
+        /// The content of the private key.
+        /// </summary>
+        [Output("sslPri")]
+        public Output<string?> SslPri { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the HTTPS certificate. Default value: `Off`. Valid values:
         /// </summary>
         [Output("sslProtocol")]
         public Output<string> SslProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+        /// The content of the security certificate.
         /// </summary>
         [Output("sslPub")]
         public Output<string> SslPub { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the domain name for CDN. Valid values:
+        /// The running status of the accelerated domain name.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
+        /// - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+        /// - `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -186,6 +216,10 @@ namespace Pulumi.AliCloud.Vod
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "sslPri",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -210,7 +244,31 @@ namespace Pulumi.AliCloud.Vod
     public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The URL that is used for health checks.
+        /// The ID of the certificate.
+        /// </summary>
+        [Input("certId")]
+        public Input<string>? CertId { get; set; }
+
+        /// <summary>
+        /// The name of the certificate.
+        /// </summary>
+        [Input("certName")]
+        public Input<string>? CertName { get; set; }
+
+        /// <summary>
+        /// The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+        /// </summary>
+        [Input("certRegion")]
+        public Input<string>? CertRegion { get; set; }
+
+        /// <summary>
+        /// The type of the certificate. Valid values:
+        /// </summary>
+        [Input("certType")]
+        public Input<string>? CertType { get; set; }
+
+        /// <summary>
+        /// The URL for health checks.
         /// </summary>
         [Input("checkUrl")]
         public Input<string>? CheckUrl { get; set; }
@@ -222,7 +280,13 @@ namespace Pulumi.AliCloud.Vod
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+        /// Specifies whether the certificate is deployed in canary mode. Valid values: `Staging`, `Production`. `Staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `Production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+        /// </summary>
+        [Input("env")]
+        public Input<string>? Env { get; set; }
+
+        /// <summary>
+        /// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `Domestic`. Valid values:
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -231,7 +295,7 @@ namespace Pulumi.AliCloud.Vod
         private InputList<Inputs.DomainSourceArgs>? _sources;
 
         /// <summary>
-        /// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        /// The list of origin addresses. See `Sources` below.
         /// </summary>
         public InputList<Inputs.DomainSourceArgs> Sources
         {
@@ -239,13 +303,41 @@ namespace Pulumi.AliCloud.Vod
             set => _sources = value;
         }
 
+        [Input("sslPri")]
+        private Input<string>? _sslPri;
+
+        /// <summary>
+        /// The content of the private key.
+        /// </summary>
+        public Input<string>? SslPri
+        {
+            get => _sslPri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslPri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Specifies whether to enable the HTTPS certificate. Default value: `Off`. Valid values:
+        /// </summary>
+        [Input("sslProtocol")]
+        public Input<string>? SslProtocol { get; set; }
+
+        /// <summary>
+        /// The content of the security certificate.
+        /// </summary>
+        [Input("sslPub")]
+        public Input<string>? SslPub { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
+        /// - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+        /// - `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -268,13 +360,31 @@ namespace Pulumi.AliCloud.Vod
     public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
+        /// The ID of the certificate.
+        /// </summary>
+        [Input("certId")]
+        public Input<string>? CertId { get; set; }
+
+        /// <summary>
+        /// The name of the certificate.
         /// </summary>
         [Input("certName")]
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// The URL that is used for health checks.
+        /// The region of the certificate. Valid values: `cn-hangzhou`, `ap-southeast-1`.
+        /// </summary>
+        [Input("certRegion")]
+        public Input<string>? CertRegion { get; set; }
+
+        /// <summary>
+        /// The type of the certificate. Valid values:
+        /// </summary>
+        [Input("certType")]
+        public Input<string>? CertType { get; set; }
+
+        /// <summary>
+        /// The URL for health checks.
         /// </summary>
         [Input("checkUrl")]
         public Input<string>? CheckUrl { get; set; }
@@ -286,7 +396,7 @@ namespace Pulumi.AliCloud.Vod
         public Input<string>? Cname { get; set; }
 
         /// <summary>
-        /// The description of the domain name for CDN.
+        /// The description of the ApsaraVideo VOD accelerated domain name.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -298,19 +408,25 @@ namespace Pulumi.AliCloud.Vod
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// Specifies whether the certificate is deployed in canary mode. Valid values: `Staging`, `Production`. `Staging` deploys the certificate in canary mode and requires canary deployment to be enabled for the domain; if you set `Production` or do not set this parameter, the certificate is deployed in production mode. This parameter is not returned by the query APIs.
+        /// </summary>
+        [Input("env")]
+        public Input<string>? Env { get; set; }
+
+        /// <summary>
+        /// The creation time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
         /// </summary>
         [Input("gmtCreated")]
         public Input<string>? GmtCreated { get; set; }
 
         /// <summary>
-        /// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// The last modification time. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
         /// </summary>
         [Input("gmtModified")]
         public Input<string>? GmtModified { get; set; }
 
         /// <summary>
-        /// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
+        /// This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Default value: `Domestic`. Valid values:
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -319,7 +435,7 @@ namespace Pulumi.AliCloud.Vod
         private InputList<Inputs.DomainSourceGetArgs>? _sources;
 
         /// <summary>
-        /// The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        /// The list of origin addresses. See `Sources` below.
         /// </summary>
         public InputList<Inputs.DomainSourceGetArgs> Sources
         {
@@ -327,20 +443,36 @@ namespace Pulumi.AliCloud.Vod
             set => _sources = value;
         }
 
+        [Input("sslPri")]
+        private Input<string>? _sslPri;
+
         /// <summary>
-        /// Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `On`,`Off`.
+        /// The content of the private key.
+        /// </summary>
+        public Input<string>? SslPri
+        {
+            get => _sslPri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslPri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Specifies whether to enable the HTTPS certificate. Default value: `Off`. Valid values:
         /// </summary>
         [Input("sslProtocol")]
         public Input<string>? SslProtocol { get; set; }
 
         /// <summary>
-        /// The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
+        /// The content of the security certificate.
         /// </summary>
         [Input("sslPub")]
         public Input<string>? SslPub { get; set; }
 
         /// <summary>
-        /// The status of the domain name for CDN. Valid values:
+        /// The running status of the accelerated domain name.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -350,8 +482,8 @@ namespace Pulumi.AliCloud.Vod
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
-        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
-        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
+        /// - `Key`: It can be up to 64 characters in length. It cannot be a null string.
+        /// - `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         public InputMap<string> Tags
         {

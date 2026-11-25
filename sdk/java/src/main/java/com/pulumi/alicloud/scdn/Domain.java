@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a SCDN Domain resource.
  * 
- * For information about SCDN Domain and how to use it, see [What is Domain](https://help.aliyun.com/document_detail/63672.html).
+ * For information about SCDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/doc-detail/63672.html).
  * 
  * &gt; **NOTE:** Available since v1.131.0.
  * 
@@ -102,14 +102,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bizName);
     }
     /**
-     * Certificate Information. See the following `Block certInfos`.
+     * Certificate Information. See `certInfos` below for details.
      * 
      */
     @Export(name="certInfos", refs={List.class,DomainCertInfo.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DomainCertInfo>> certInfos;
 
     /**
-     * @return Certificate Information. See the following `Block certInfos`.
+     * @return Certificate Information. See `certInfos` below for details.
      * 
      */
     public Output<Optional<List<DomainCertInfo>>> certInfos() {
@@ -172,14 +172,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * the Origin Server Information. See the following `Block sources`.
+     * The Origin Server Information. See `sources` below for details.
      * 
      */
     @Export(name="sources", refs={List.class,DomainSource.class}, tree="[0,1]")
     private Output<List<DomainSource>> sources;
 
     /**
-     * @return the Origin Server Information. See the following `Block sources`.
+     * @return The Origin Server Information. See `sources` below for details.
      * 
      */
     public Output<List<DomainSource>> sources() {

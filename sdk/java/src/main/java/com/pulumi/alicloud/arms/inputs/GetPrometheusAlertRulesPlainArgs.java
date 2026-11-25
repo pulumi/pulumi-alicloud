@@ -47,9 +47,17 @@ public final class GetPrometheusAlertRulesPlainArgs extends com.pulumi.resources
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Match expressions used to filter Prometheus alert rules.
+     * 
+     */
     @Import(name="matchExpressions")
     private @Nullable String matchExpressions;
 
+    /**
+     * @return Match expressions used to filter Prometheus alert rules.
+     * 
+     */
     public Optional<String> matchExpressions() {
         return Optional.ofNullable(this.matchExpressions);
     }
@@ -176,6 +184,12 @@ public final class GetPrometheusAlertRulesPlainArgs extends com.pulumi.resources
             return ids(List.of(ids));
         }
 
+        /**
+         * @param matchExpressions Match expressions used to filter Prometheus alert rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder matchExpressions(@Nullable String matchExpressions) {
             $.matchExpressions = matchExpressions;
             return this;

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.173.0+.
+// > **NOTE:** Available since v1.173.0+.
 //
 // ## Example Usage
 //
@@ -67,6 +67,7 @@ func GetTrafficMarkingPolicies(ctx *pulumi.Context, args *GetTrafficMarkingPolic
 
 // A collection of arguments for invoking getTrafficMarkingPolicies.
 type GetTrafficMarkingPoliciesArgs struct {
+	// The traffic marking policy description.
 	Description *string `pulumi:"description"`
 	// A list of Traffic Marking Policy IDs.
 	Ids []string `pulumi:"ids"`
@@ -82,16 +83,21 @@ type GetTrafficMarkingPoliciesArgs struct {
 
 // A collection of values returned by getTrafficMarkingPolicies.
 type GetTrafficMarkingPoliciesResult struct {
+	// The description of the Traffic Marking Policy.
 	Description *string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                            `pulumi:"id"`
-	Ids             []string                          `pulumi:"ids"`
-	NameRegex       *string                           `pulumi:"nameRegex"`
-	Names           []string                          `pulumi:"names"`
-	OutputFile      *string                           `pulumi:"outputFile"`
-	Policies        []GetTrafficMarkingPoliciesPolicy `pulumi:"policies"`
-	Status          *string                           `pulumi:"status"`
-	TransitRouterId string                            `pulumi:"transitRouterId"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Traffic Marking Policy names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Cen Traffic Marking Policies. Each element contains the following attributes:
+	Policies []GetTrafficMarkingPoliciesPolicy `pulumi:"policies"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// The ID of the transit router.
+	TransitRouterId string `pulumi:"transitRouterId"`
 }
 
 func GetTrafficMarkingPoliciesOutput(ctx *pulumi.Context, args GetTrafficMarkingPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMarkingPoliciesResultOutput {
@@ -101,6 +107,7 @@ func GetTrafficMarkingPoliciesOutput(ctx *pulumi.Context, args GetTrafficMarking
 
 // A collection of arguments for invoking getTrafficMarkingPolicies.
 type GetTrafficMarkingPoliciesOutputArgs struct {
+	// The traffic marking policy description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// A list of Traffic Marking Policy IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -133,6 +140,7 @@ func (o GetTrafficMarkingPoliciesResultOutput) ToGetTrafficMarkingPoliciesResult
 	return o
 }
 
+// The description of the Traffic Marking Policy.
 func (o GetTrafficMarkingPoliciesResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrafficMarkingPoliciesResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -150,6 +158,7 @@ func (o GetTrafficMarkingPoliciesResultOutput) NameRegex() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetTrafficMarkingPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Traffic Marking Policy names.
 func (o GetTrafficMarkingPoliciesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTrafficMarkingPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -158,14 +167,17 @@ func (o GetTrafficMarkingPoliciesResultOutput) OutputFile() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetTrafficMarkingPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cen Traffic Marking Policies. Each element contains the following attributes:
 func (o GetTrafficMarkingPoliciesResultOutput) Policies() GetTrafficMarkingPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetTrafficMarkingPoliciesResult) []GetTrafficMarkingPoliciesPolicy { return v.Policies }).(GetTrafficMarkingPoliciesPolicyArrayOutput)
 }
 
+// The status of the resource.
 func (o GetTrafficMarkingPoliciesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrafficMarkingPoliciesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the transit router.
 func (o GetTrafficMarkingPoliciesResultOutput) TransitRouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTrafficMarkingPoliciesResult) string { return v.TransitRouterId }).(pulumi.StringOutput)
 }

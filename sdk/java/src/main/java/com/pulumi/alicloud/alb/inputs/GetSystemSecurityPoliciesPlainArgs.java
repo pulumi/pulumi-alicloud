@@ -46,9 +46,17 @@ public final class GetSystemSecurityPoliciesPlainArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * A mapping of tags of the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Map<String,String> tags;
 
+    /**
+     * @return A mapping of tags of the resource.
+     * 
+     */
     public Optional<Map<String,String>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -111,6 +119,12 @@ public final class GetSystemSecurityPoliciesPlainArgs extends com.pulumi.resourc
             return this;
         }
 
+        /**
+         * @param tags A mapping of tags of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Map<String,String> tags) {
             $.tags = tags;
             return this;

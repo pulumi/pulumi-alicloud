@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the master slave server groups related to a server load balancer.
         /// 
-        /// &gt; **NOTE:** Available in 1.54.0+
+        /// &gt; **NOTE:** Available since v1.54.0.
         /// </summary>
         public static Task<GetMasterSlaveServerGroupsResult> InvokeAsync(GetMasterSlaveServerGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? new GetMasterSlaveServerGroupsArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the master slave server groups related to a server load balancer.
         /// 
-        /// &gt; **NOTE:** Available in 1.54.0+
+        /// &gt; **NOTE:** Available since v1.54.0.
         /// </summary>
         public static Output<GetMasterSlaveServerGroupsResult> Invoke(GetMasterSlaveServerGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? new GetMasterSlaveServerGroupsInvokeArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the master slave server groups related to a server load balancer.
         /// 
-        /// &gt; **NOTE:** Available in 1.54.0+
+        /// &gt; **NOTE:** Available since v1.54.0.
         /// </summary>
         public static Output<GetMasterSlaveServerGroupsResult> Invoke(GetMasterSlaveServerGroupsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? new GetMasterSlaveServerGroupsInvokeArgs(), options.WithDefaults());

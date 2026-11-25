@@ -75,6 +75,9 @@ export interface GetVpcEndpointConnectionsResult {
      * The ID of the Vpc Endpoint.
      */
     readonly endpointId?: string;
+    /**
+     * The owner ID of the endpoint.
+     */
     readonly endpointOwnerId?: number;
     /**
      * The provider-assigned unique ID for this managed resource.

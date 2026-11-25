@@ -104,12 +104,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
-    /// ## Attributes Reference0
-    /// 
-    ///  The following attributes are exported:
-    /// 
-    /// * `Id` - ID of the image.
-    /// 
     /// ## Import
     /// 
     /// image can be imported using the id, e.g.
@@ -121,6 +115,11 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/imageCopy:ImageCopy")]
     public partial class ImageCopy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Output("deleteAutoSnapshot")]
         public Output<bool?> DeleteAutoSnapshot { get; private set; } = null!;
 
@@ -156,6 +155,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
+        /// <summary>
+        /// Attribute 'name' has been deprecated, please use `ImageName` instead.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -223,6 +225,11 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class ImageCopyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
 
@@ -258,6 +265,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
+        /// <summary>
+        /// Attribute 'name' has been deprecated, please use `ImageName` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -293,6 +303,11 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class ImageCopyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
 
@@ -328,6 +343,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
+        /// <summary>
+        /// Attribute 'name' has been deprecated, please use `ImageName` instead.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

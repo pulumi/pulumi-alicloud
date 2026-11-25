@@ -71,6 +71,9 @@ class GetTrafficMirrorSessionsResult:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether traffic mirror sessions are enabled. default to `false`.
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -94,6 +97,9 @@ class GetTrafficMirrorSessionsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Traffic Mirror Session names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -104,26 +110,41 @@ class GetTrafficMirrorSessionsResult:
     @_builtins.property
     @pulumi.getter
     def priority(self) -> Optional[_builtins.int]:
+        """
+        The priority of the traffic mirror session. A smaller value indicates a higher priority.
+        """
         return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter
     def sessions(self) -> Sequence['outputs.GetTrafficMirrorSessionsSessionResult']:
+        """
+        A list of Vpc Traffic Mirror Sessions. Each element contains the following attributes:
+        """
         return pulumi.get(self, "sessions")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterId")
     def traffic_mirror_filter_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the filter.
+        """
         return pulumi.get(self, "traffic_mirror_filter_id")
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorSessionName")
     def traffic_mirror_session_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the traffic mirror session.
+        """
         return pulumi.get(self, "traffic_mirror_session_name")
 
     @_builtins.property
@@ -134,6 +155,9 @@ class GetTrafficMirrorSessionsResult:
     @_builtins.property
     @pulumi.getter(name="trafficMirrorTargetId")
     def traffic_mirror_target_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
+        """
         return pulumi.get(self, "traffic_mirror_target_id")
 
 
@@ -172,7 +196,7 @@ def get_traffic_mirror_sessions(enabled: Optional[_builtins.bool] = None,
     """
     This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.142.0+.
+    > **NOTE:** Available since v1.142.0.
 
     ## Example Usage
 
@@ -263,7 +287,7 @@ def get_traffic_mirror_sessions_output(enabled: pulumi.Input[Optional[Optional[_
     """
     This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.142.0+.
+    > **NOTE:** Available since v1.142.0.
 
     ## Example Usage
 

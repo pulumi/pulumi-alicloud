@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new Network("foo", NetworkArgs.builder()
- *             .vpcName("tf_test_foo12345")
+ *             .vpcName("tf_foo12345")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
@@ -61,8 +61,8 @@ import javax.annotation.Nullable;
  *             .routerId(foo.routerId())
  *             .role("InitiatingSide")
  *             .specification("Large.2")
- *             .name("test1")
- *             .description("test1")
+ *             .name("example1")
+ *             .description("example1")
  *             .build());
  * 
  *     }
@@ -273,6 +273,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     }
     /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
@@ -281,6 +282,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * 
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */

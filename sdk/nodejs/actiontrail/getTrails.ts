@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.95.0+
+ * > **NOTE:** Available since v1.95.0.
  *
  * ## Example Usage
  *
@@ -71,7 +71,7 @@ export interface GetTrailsArgs {
  */
 export interface GetTrailsResult {
     /**
-     * Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
+     * (Deprecated since v1.95.0) Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead. Each element contains the following attributes:
      *
      * @deprecated Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.
      */
@@ -104,7 +104,7 @@ export interface GetTrailsResult {
 /**
  * This data source provides a list of ActionTrail Trails in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.95.0+
+ * > **NOTE:** Available since v1.95.0.
  *
  * ## Example Usage
  *

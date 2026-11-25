@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.186.0+.
+ * > **NOTE:** Available since v1.186.0.
  *
  * ## Example Usage
  *
@@ -86,19 +86,34 @@ export interface GetPublicIpAddressPoolsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The Internet service provider.
+     */
     readonly isp?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Public Ip Address Pool names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Vpc Public Ip Address Pools. Each element contains the following attributes:
+     */
     readonly pools: outputs.vpc.GetPublicIpAddressPoolsPool[];
     readonly publicIpAddressPoolIds?: string[];
+    /**
+     * The name of the Vpc Public Ip Address Pool.
+     */
     readonly publicIpAddressPoolName?: string;
+    /**
+     * The status of the Vpc Public Ip Address Pool.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.186.0+.
+ * > **NOTE:** Available since v1.186.0.
  *
  * ## Example Usage
  *

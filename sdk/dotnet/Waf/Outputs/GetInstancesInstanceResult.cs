@@ -37,6 +37,9 @@ namespace Pulumi.AliCloud.Waf.Outputs
         /// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
         /// </summary>
         public readonly int Status;
+        /// <summary>
+        /// The billing method of the WAF instance.
+        /// </summary>
         public readonly string SubscriptionType;
         /// <summary>
         /// Indicates whether this is a trial instance.

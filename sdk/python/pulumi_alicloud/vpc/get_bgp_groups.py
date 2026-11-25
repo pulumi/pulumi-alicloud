@@ -56,6 +56,9 @@ class GetBgpGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetBgpGroupsGroupResult']:
+        """
+        A list of Vpc Bgp Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetBgpGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Bgp Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -89,11 +95,17 @@ class GetBgpGroupsResult:
     @_builtins.property
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the VBR.
+        """
         return pulumi.get(self, "router_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -122,7 +134,7 @@ def get_bgp_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.152.0+.
+    > **NOTE:** Available since v1.152.0.
 
     ## Example Usage
 
@@ -172,7 +184,7 @@ def get_bgp_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins
     """
     This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.152.0+.
+    > **NOTE:** Available since v1.152.0.
 
     ## Example Usage
 

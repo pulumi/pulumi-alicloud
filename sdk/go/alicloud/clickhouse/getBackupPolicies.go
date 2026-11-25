@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.147.0+.
+// > **NOTE:** Available since v1.147.0.
 //
 // ## Example Usage
 //
@@ -63,11 +63,13 @@ type GetBackupPoliciesArgs struct {
 
 // A collection of values returned by getBackupPolicies.
 type GetBackupPoliciesResult struct {
+	// The db cluster id.
 	DbClusterId string `pulumi:"dbClusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                    `pulumi:"id"`
-	OutputFile *string                   `pulumi:"outputFile"`
-	Policies   []GetBackupPoliciesPolicy `pulumi:"policies"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Click House Backup Policies. Each element contains the following attributes:
+	Policies []GetBackupPoliciesPolicy `pulumi:"policies"`
 }
 
 func GetBackupPoliciesOutput(ctx *pulumi.Context, args GetBackupPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetBackupPoliciesResultOutput {
@@ -102,6 +104,7 @@ func (o GetBackupPoliciesResultOutput) ToGetBackupPoliciesResultOutputWithContex
 	return o
 }
 
+// The db cluster id.
 func (o GetBackupPoliciesResultOutput) DbClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPoliciesResult) string { return v.DbClusterId }).(pulumi.StringOutput)
 }
@@ -115,6 +118,7 @@ func (o GetBackupPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Click House Backup Policies. Each element contains the following attributes:
 func (o GetBackupPoliciesResultOutput) Policies() GetBackupPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetBackupPoliciesResult) []GetBackupPoliciesPolicy { return v.Policies }).(GetBackupPoliciesPolicyArrayOutput)
 }

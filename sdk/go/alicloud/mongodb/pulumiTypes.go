@@ -125,6 +125,7 @@ type InstanceReplicaSet struct {
 	// The connection port of the node.
 	ConnectionPort *string `pulumi:"connectionPort"`
 	// The network type of the instance. Valid values: `VPC`.
+	//
 	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType *string `pulumi:"networkType"`
 	// The role of the node.
@@ -156,6 +157,7 @@ type InstanceReplicaSetArgs struct {
 	// The connection port of the node.
 	ConnectionPort pulumi.StringPtrInput `pulumi:"connectionPort"`
 	// The network type of the instance. Valid values: `VPC`.
+	//
 	// > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// The role of the node.
@@ -232,6 +234,7 @@ func (o InstanceReplicaSetOutput) ConnectionPort() pulumi.StringPtrOutput {
 }
 
 // The network type of the instance. Valid values: `VPC`.
+//
 // > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
 func (o InstanceReplicaSetOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
@@ -1923,13 +1926,13 @@ func (o ShardingNetworkPublicAddressNetworkAddressArrayOutput) Index(i pulumi.In
 type GetAccountsAccount struct {
 	// The description of the account.
 	AccountDescription string `pulumi:"accountDescription"`
-	// The name of the account.
+	// The name of the account. Valid values: `root`.
 	AccountName string `pulumi:"accountName"`
 	// The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
 	CharacterType string `pulumi:"characterType"`
 	// The ID of the Account. The value formats as `<instance_id>:<account_name>`.
 	Id string `pulumi:"id"`
-	// The id of the instance to which the account belongs.
+	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The status of the account. Valid values: `Unavailable`, `Available`.
 	Status string `pulumi:"status"`
@@ -1949,13 +1952,13 @@ type GetAccountsAccountInput interface {
 type GetAccountsAccountArgs struct {
 	// The description of the account.
 	AccountDescription pulumi.StringInput `pulumi:"accountDescription"`
-	// The name of the account.
+	// The name of the account. Valid values: `root`.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
 	CharacterType pulumi.StringInput `pulumi:"characterType"`
 	// The ID of the Account. The value formats as `<instance_id>:<account_name>`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The id of the instance to which the account belongs.
+	// The ID of the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The status of the account. Valid values: `Unavailable`, `Available`.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -2017,7 +2020,7 @@ func (o GetAccountsAccountOutput) AccountDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountDescription }).(pulumi.StringOutput)
 }
 
-// The name of the account.
+// The name of the account. Valid values: `root`.
 func (o GetAccountsAccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
 }
@@ -2032,7 +2035,7 @@ func (o GetAccountsAccountOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The id of the instance to which the account belongs.
+// The ID of the instance.
 func (o GetAccountsAccountOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -3064,7 +3067,7 @@ type GetServerlessInstancesInstance struct {
 	MaxConnections int `pulumi:"maxConnections"`
 	// The maximum IOPS of the instance.
 	MaxIops int `pulumi:"maxIops"`
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `Classic` or `VPC`.
 	NetworkType string `pulumi:"networkType"`
 	// The Payment type of the instance.
 	PaymentType string `pulumi:"paymentType"`
@@ -3074,11 +3077,11 @@ type GetServerlessInstancesInstance struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The security ip list.
 	SecurityIpGroups []GetServerlessInstancesInstanceSecurityIpGroup `pulumi:"securityIpGroups"`
-	// The status of the instance.
+	// The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
 	Status string `pulumi:"status"`
 	// The storage engine used by the instance.
 	StorageEngine string `pulumi:"storageEngine"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Intranet secret free access mode.
 	VpcAuthMode string `pulumi:"vpcAuthMode"`
@@ -3134,7 +3137,7 @@ type GetServerlessInstancesInstanceArgs struct {
 	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
 	// The maximum IOPS of the instance.
 	MaxIops pulumi.IntInput `pulumi:"maxIops"`
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `Classic` or `VPC`.
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// The Payment type of the instance.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
@@ -3144,11 +3147,11 @@ type GetServerlessInstancesInstanceArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The security ip list.
 	SecurityIpGroups GetServerlessInstancesInstanceSecurityIpGroupArrayInput `pulumi:"securityIpGroups"`
-	// The status of the instance.
+	// The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The storage engine used by the instance.
 	StorageEngine pulumi.StringInput `pulumi:"storageEngine"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// Intranet secret free access mode.
 	VpcAuthMode pulumi.StringInput `pulumi:"vpcAuthMode"`
@@ -3291,7 +3294,7 @@ func (o GetServerlessInstancesInstanceOutput) MaxIops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerlessInstancesInstance) int { return v.MaxIops }).(pulumi.IntOutput)
 }
 
-// The network type of the instance.
+// The network type of the instance. Valid values: `Classic` or `VPC`.
 func (o GetServerlessInstancesInstanceOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
 }
@@ -3318,7 +3321,7 @@ func (o GetServerlessInstancesInstanceOutput) SecurityIpGroups() GetServerlessIn
 	}).(GetServerlessInstancesInstanceSecurityIpGroupArrayOutput)
 }
 
-// The status of the instance.
+// The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
 func (o GetServerlessInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -3328,7 +3331,7 @@ func (o GetServerlessInstancesInstanceOutput) StorageEngine() pulumi.StringOutpu
 	return o.ApplyT(func(v GetServerlessInstancesInstance) string { return v.StorageEngine }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// A mapping of tags to assign to the resource.
 func (o GetServerlessInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServerlessInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -3674,7 +3677,7 @@ type GetShardingNetworkPrivateAddressesAddress struct {
 	NodeType string `pulumi:"nodeType"`
 	// The port number.
 	Port string `pulumi:"port"`
-	// The role of the node.
+	// The role of the node. Valid values: `Primary` or `Secondary`.
 	Role string `pulumi:"role"`
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
@@ -3710,7 +3713,7 @@ type GetShardingNetworkPrivateAddressesAddressArgs struct {
 	NodeType pulumi.StringInput `pulumi:"nodeType"`
 	// The port number.
 	Port pulumi.StringInput `pulumi:"port"`
-	// The role of the node.
+	// The role of the node. Valid values: `Primary` or `Secondary`.
 	Role pulumi.StringInput `pulumi:"role"`
 	// The ID of the VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -3809,7 +3812,7 @@ func (o GetShardingNetworkPrivateAddressesAddressOutput) Port() pulumi.StringOut
 	return o.ApplyT(func(v GetShardingNetworkPrivateAddressesAddress) string { return v.Port }).(pulumi.StringOutput)
 }
 
-// The role of the node.
+// The role of the node. Valid values: `Primary` or `Secondary`.
 func (o GetShardingNetworkPrivateAddressesAddressOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShardingNetworkPrivateAddressesAddress) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -3861,7 +3864,7 @@ type GetShardingNetworkPublicAddressesAddress struct {
 	NodeType string `pulumi:"nodeType"`
 	// The port number.
 	Port string `pulumi:"port"`
-	// The role of the node.
+	// The role of the node. Valid values: `Primary` or `Secondary`.
 	Role string `pulumi:"role"`
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
@@ -3897,7 +3900,7 @@ type GetShardingNetworkPublicAddressesAddressArgs struct {
 	NodeType pulumi.StringInput `pulumi:"nodeType"`
 	// The port number.
 	Port pulumi.StringInput `pulumi:"port"`
-	// The role of the node.
+	// The role of the node. Valid values: `Primary` or `Secondary`.
 	Role pulumi.StringInput `pulumi:"role"`
 	// The ID of the VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -3996,7 +3999,7 @@ func (o GetShardingNetworkPublicAddressesAddressOutput) Port() pulumi.StringOutp
 	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.Port }).(pulumi.StringOutput)
 }
 
-// The role of the node.
+// The role of the node. Valid values: `Primary` or `Secondary`.
 func (o GetShardingNetworkPublicAddressesAddressOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetShardingNetworkPublicAddressesAddress) string { return v.Role }).(pulumi.StringOutput)
 }

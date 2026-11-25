@@ -21,7 +21,7 @@ public final class SagFunctions {
     /**
      * This data source provides Sag Acls available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -36,10 +36,10 @@ public final class SagFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -53,13 +53,13 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
+     *             .name("terraform-example")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
-     *             .name("tf-testAccSagAclName")
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAcl.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -74,7 +74,7 @@ public final class SagFunctions {
     /**
      * This data source provides Sag Acls available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -89,10 +89,10 @@ public final class SagFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -106,13 +106,13 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
+     *             .name("terraform-example")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
-     *             .name("tf-testAccSagAclName")
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAcl.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -127,7 +127,7 @@ public final class SagFunctions {
     /**
      * This data source provides Sag Acls available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -142,10 +142,10 @@ public final class SagFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -159,13 +159,13 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
+     *             .name("terraform-example")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
-     *             .name("tf-testAccSagAclName")
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAcl.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -180,7 +180,7 @@ public final class SagFunctions {
     /**
      * This data source provides Sag Acls available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -195,10 +195,10 @@ public final class SagFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -212,13 +212,13 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
+     *             .name("terraform-example")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
-     *             .name("tf-testAccSagAclName")
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAcl.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -233,7 +233,7 @@ public final class SagFunctions {
     /**
      * This data source provides Sag Acls available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -248,10 +248,10 @@ public final class SagFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -265,13 +265,13 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
+     *             .name("terraform-example")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
-     *             .name("tf-testAccSagAclName")
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAcl.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -286,7 +286,7 @@ public final class SagFunctions {
     /**
      * This data source provides Sag Acls available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -301,10 +301,10 @@ public final class SagFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -318,13 +318,13 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
+     *             .name("terraform-example")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
-     *             .name("tf-testAccSagAclName")
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAcl.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -339,7 +339,7 @@ public final class SagFunctions {
     /**
      * This data source provides Sag Acls available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.60.0+
+     * &gt; **NOTE:** Available since v1.60.0+
      * 
      * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
      * 
@@ -354,10 +354,10 @@ public final class SagFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.sag.SagFunctions;
-     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
+     * import com.pulumi.alicloud.sag.SagFunctions;
+     * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -371,13 +371,13 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(defaultAlicloudSagAcls.get("id"))
-     *             .nameRegex("^tf-testAcc.*")
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
+     *             .name("terraform-example")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
-     *             .name("tf-testAccSagAclName")
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAcl.id())
+     *             .nameRegex("^terraform-example")
      *             .build());
      * 
      *     }
@@ -392,7 +392,7 @@ public final class SagFunctions {
     /**
      * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0+
      * 
      * ## Example Usage
      * 
@@ -442,7 +442,7 @@ public final class SagFunctions {
     /**
      * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0+
      * 
      * ## Example Usage
      * 
@@ -492,7 +492,7 @@ public final class SagFunctions {
     /**
      * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0+
      * 
      * ## Example Usage
      * 
@@ -542,7 +542,7 @@ public final class SagFunctions {
     /**
      * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0+
      * 
      * ## Example Usage
      * 
@@ -592,7 +592,7 @@ public final class SagFunctions {
     /**
      * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0+
      * 
      * ## Example Usage
      * 
@@ -642,7 +642,7 @@ public final class SagFunctions {
     /**
      * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0+
      * 
      * ## Example Usage
      * 
@@ -692,7 +692,7 @@ public final class SagFunctions {
     /**
      * This data source provides the Smartag Flow Logs of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.168.0+.
+     * &gt; **NOTE:** Available since v1.168.0+
      * 
      * ## Example Usage
      * 

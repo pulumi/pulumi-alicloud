@@ -170,9 +170,17 @@ public class Project extends com.pulumi.resources.CustomResource {
     public Output<String> owner() {
         return this.owner;
     }
+    /**
+     * The product type of the MaxCompute project.
+     * 
+     */
     @Export(name="productType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productType;
 
+    /**
+     * @return The product type of the MaxCompute project.
+     * 
+     */
     public Output<Optional<String>> productType() {
         return Codegen.optional(this.productType);
     }

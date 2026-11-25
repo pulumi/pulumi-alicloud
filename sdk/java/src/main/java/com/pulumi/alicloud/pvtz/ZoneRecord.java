@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Terraform will auto Create a Private Zone Record while it uses `alicloud.pvtz.ZoneRecord` to build a Private Zone Record resource.
  * 
+ * &gt; **NOTE:** Available since v1.13.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -49,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var zone = new Zone("zone", ZoneArgs.builder()
- *             .zoneName("foo.test.com")
+ *             .zoneName("terraform-example.com")
  *             .build());
  * 
  *         var foo = new ZoneRecord("foo", ZoneRecordArgs.builder()
@@ -57,6 +59,49 @@ import javax.annotation.Nullable;
  *             .rr("www")
  *             .type("CNAME")
  *             .value("bbb.test.com")
+ *             .ttl(60)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * AAAA (IPv6) Record
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.pvtz.Zone;
+ * import com.pulumi.alicloud.pvtz.ZoneArgs;
+ * import com.pulumi.alicloud.pvtz.ZoneRecord;
+ * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var zone = new Zone("zone", ZoneArgs.builder()
+ *             .zoneName("terraform-example-aaaa.com")
+ *             .build());
+ * 
+ *         var foo = new ZoneRecord("foo", ZoneRecordArgs.builder()
+ *             .zoneId(zone.id())
+ *             .rr("www")
+ *             .type("AAAA")
+ *             .value("2001:db8::1")
  *             .ttl(60)
  *             .build());
  * 
@@ -198,22 +243,30 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ttl);
     }
     /**
-     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+     * The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
+     * @return The type of the Private Zone Record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `PTR`, `SRV`, `TXT`.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
+    /**
+     * The user client ip of the Private Zone Record.
+     * 
+     */
     @Export(name="userClientIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userClientIp;
 
+    /**
+     * @return The user client ip of the Private Zone Record.
+     * 
+     */
     public Output<Optional<String>> userClientIp() {
         return Codegen.optional(this.userClientIp);
     }

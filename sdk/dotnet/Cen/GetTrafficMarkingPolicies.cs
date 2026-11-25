@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// &gt; **NOTE:** Available since v1.173.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// &gt; **NOTE:** Available since v1.173.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.173.0+.
+        /// &gt; **NOTE:** Available since v1.173.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -147,6 +147,9 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class GetTrafficMarkingPoliciesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The traffic marking policy description.
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
@@ -194,6 +197,9 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class GetTrafficMarkingPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The traffic marking policy description.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -243,6 +249,9 @@ namespace Pulumi.AliCloud.Cen
     [OutputType]
     public sealed class GetTrafficMarkingPoliciesResult
     {
+        /// <summary>
+        /// The description of the Traffic Marking Policy.
+        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -250,10 +259,22 @@ namespace Pulumi.AliCloud.Cen
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Traffic Marking Policy names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Cen Traffic Marking Policies. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTrafficMarkingPoliciesPolicyResult> Policies;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The ID of the transit router.
+        /// </summary>
         public readonly string TransitRouterId;
 
         [OutputConstructor]

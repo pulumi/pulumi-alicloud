@@ -50,14 +50,14 @@ public final class EcsPrefixListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Entry. The details see Block `entry`.
+     * The Entry. See `entry` below.
      * 
      */
     @Import(name="entries", required=true)
     private Output<List<EcsPrefixListEntryArgs>> entries;
 
     /**
-     * @return The Entry. The details see Block `entry`.
+     * @return The Entry. See `entry` below.
      * 
      */
     public Output<List<EcsPrefixListEntryArgs>> entries() {
@@ -165,7 +165,7 @@ public final class EcsPrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entries The Entry. The details see Block `entry`.
+         * @param entries The Entry. See `entry` below.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class EcsPrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entries The Entry. The details see Block `entry`.
+         * @param entries The Entry. See `entry` below.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class EcsPrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entries The Entry. The details see Block `entry`.
+         * @param entries The Entry. See `entry` below.
          * 
          * @return builder
          * 

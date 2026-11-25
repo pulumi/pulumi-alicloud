@@ -74,6 +74,9 @@ class GetHybridMonitorSlsTasksResult:
     @_builtins.property
     @pulumi.getter
     def namespace(self) -> Optional[_builtins.str]:
+        """
+        The namespace to which the host belongs.
+        """
         return pulumi.get(self, "namespace")
 
     @_builtins.property
@@ -94,6 +97,9 @@ class GetHybridMonitorSlsTasksResult:
     @_builtins.property
     @pulumi.getter
     def tasks(self) -> Sequence['outputs.GetHybridMonitorSlsTasksTaskResult']:
+        """
+        A list of Cms Hybrid Monitor Sls Tasks. Each element contains the following attributes:
+        """
         return pulumi.get(self, "tasks")
 
 
@@ -123,7 +129,7 @@ def get_hybrid_monitor_sls_tasks(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.179.0+.
+    > **NOTE:** Available since v1.179.0+.
 
     ## Example Usage
 
@@ -172,7 +178,7 @@ def get_hybrid_monitor_sls_tasks_output(ids: pulumi.Input[Optional[Optional[Sequ
     """
     This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.179.0+.
+    > **NOTE:** Available since v1.179.0+.
 
     ## Example Usage
 

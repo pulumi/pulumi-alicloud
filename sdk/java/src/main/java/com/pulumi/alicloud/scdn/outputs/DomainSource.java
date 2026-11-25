@@ -19,7 +19,7 @@ public final class DomainSource {
      */
     private String content;
     /**
-     * @return The source status. Valid values: online, offline.
+     * @return The source status. Valid values: `online`, `offline`.
      * 
      */
     private @Nullable String enabled;
@@ -34,10 +34,7 @@ public final class DomainSource {
      */
     private String priority;
     /**
-     * @return The Origin Server Type. Valid Values:
-     * * ipaddr: IP Source Station
-     * * domain: the Domain Name
-     * * oss: OSS Bucket as a Source Station.
+     * @return The Origin Server Type. Valid values:
      * 
      */
     private String type;
@@ -51,7 +48,7 @@ public final class DomainSource {
         return this.content;
     }
     /**
-     * @return The source status. Valid values: online, offline.
+     * @return The source status. Valid values: `online`, `offline`.
      * 
      */
     public Optional<String> enabled() {
@@ -72,10 +69,7 @@ public final class DomainSource {
         return this.priority;
     }
     /**
-     * @return The Origin Server Type. Valid Values:
-     * * ipaddr: IP Source Station
-     * * domain: the Domain Name
-     * * oss: OSS Bucket as a Source Station.
+     * @return The Origin Server Type. Valid values:
      * 
      */
     public String type() {

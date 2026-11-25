@@ -24,11 +24,11 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const default3iXhoa = new alicloud.resourcemanager.ResourceGroup("default3iXhoa", {
- *     displayName: "testname03",
+ *     displayName: "example03",
  *     resourceGroupName: name,
  * });
  * const defaultdNz2qk = new alicloud.resourcemanager.ResourceGroup("defaultdNz2qk", {
- *     displayName: "testname04",
+ *     displayName: "example04",
  *     resourceGroupName: `${name}1`,
  * });
  * const _default = new alicloud.vpc.TrafficMirrorFilter("default", {
@@ -112,11 +112,11 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
-     * Information about the outbound rule. See the following `Block EgressRules`.
+     * Information about the outbound rule. See `egressRules` below.
      */
     declare public readonly egressRules: pulumi.Output<outputs.vpc.TrafficMirrorFilterEgressRule[]>;
     /**
-     * Inward direction rule information. See the following `Block IngressRules`.
+     * Inward direction rule information. See `ingressRules` below.
      */
     declare public readonly ingressRules: pulumi.Output<outputs.vpc.TrafficMirrorFilterIngressRule[]>;
     /**
@@ -188,11 +188,11 @@ export interface TrafficMirrorFilterState {
      */
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
-     * Information about the outbound rule. See the following `Block EgressRules`.
+     * Information about the outbound rule. See `egressRules` below.
      */
     egressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterEgressRule>[] | undefined>;
     /**
-     * Inward direction rule information. See the following `Block IngressRules`.
+     * Inward direction rule information. See `ingressRules` below.
      */
     ingressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterIngressRule>[] | undefined>;
     /**
@@ -228,11 +228,11 @@ export interface TrafficMirrorFilterArgs {
      */
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
-     * Information about the outbound rule. See the following `Block EgressRules`.
+     * Information about the outbound rule. See `egressRules` below.
      */
     egressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterEgressRule>[] | undefined>;
     /**
-     * Inward direction rule information. See the following `Block IngressRules`.
+     * Inward direction rule information. See `ingressRules` below.
      */
     ingressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterIngressRule>[] | undefined>;
     /**

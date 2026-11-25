@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cdn blocked regions.
  *
- * > **NOTE:** Available in v1.173.0+.
+ * > **NOTE:** Available since v1.173.0.
  *
  * ## Example Usage
  *
@@ -50,12 +50,15 @@ export interface GetBlockedRegionsResult {
      */
     readonly id: string;
     readonly language: string;
+    /**
+     * A list of Cdn Blocked Regions. Each element contains the following attributes:
+     */
     readonly regions: outputs.cdn.GetBlockedRegionsRegion[];
 }
 /**
  * This data source provides the Cdn blocked regions.
  *
- * > **NOTE:** Available in v1.173.0+.
+ * > **NOTE:** Available since v1.173.0.
  *
  * ## Example Usage
  *

@@ -56,6 +56,9 @@ class GetBackendsResult:
     @_builtins.property
     @pulumi.getter
     def backends(self) -> Sequence['outputs.GetBackendsBackendResult']:
+        """
+        A list of Api Gateway Backends. Each element contains the following attributes:
+        """
         return pulumi.get(self, "backends")
 
     @_builtins.property
@@ -79,6 +82,9 @@ class GetBackendsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Backend names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -122,7 +128,7 @@ def get_backends(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.181.0+.
+    > **NOTE:** Available since v1.181.0.
 
     ## Example Usage
 
@@ -168,7 +174,7 @@ def get_backends_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.s
     """
     This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.181.0+.
+    > **NOTE:** Available since v1.181.0.
 
     ## Example Usage
 

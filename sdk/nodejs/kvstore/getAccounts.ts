@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.102.0+.
+ * > **NOTE:** Available since v1.102.0.
  *
  * ## Example Usage
  *
@@ -48,6 +48,9 @@ export interface GetAccountsArgs {
      * The Id of instance in which account belongs.
      */
     instanceId: string;
+    /**
+     * A regex string to apply to the account name.
+     */
     nameRegex?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -63,23 +66,41 @@ export interface GetAccountsArgs {
  * A collection of values returned by getAccounts.
  */
 export interface GetAccountsResult {
+    /**
+     * The name of the account.
+     */
     readonly accountName?: string;
+    /**
+     * A list of Kvstore Accounts. Each element contains the following attributes:
+     */
     readonly accounts: outputs.kvstore.GetAccountsAccount[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Account IDs.
+     */
     readonly ids: string[];
+    /**
+     * The Id of instance in which account belongs.
+     */
     readonly instanceId: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Account names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of account.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.102.0+.
+ * > **NOTE:** Available since v1.102.0.
  *
  * ## Example Usage
  *
@@ -118,6 +139,9 @@ export interface GetAccountsOutputArgs {
      * The Id of instance in which account belongs.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * A regex string to apply to the account name.
+     */
     nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

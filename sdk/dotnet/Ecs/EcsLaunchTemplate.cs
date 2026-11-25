@@ -34,11 +34,6 @@ namespace Pulumi.AliCloud.Ecs
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
-    ///     {
-    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
     ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_18.*64",
@@ -73,7 +68,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         HostName = "terraform-example",
     ///         InstanceChargeType = "PrePaid",
     ///         InstanceName = "terraform-example",
-    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InstanceType = "ecs.s6-c1m1.small",
     ///         InternetChargeType = "PayByBandwidth",
     ///         InternetMaxBandwidthIn = 5,
     ///         InternetMaxBandwidthOut = 5,

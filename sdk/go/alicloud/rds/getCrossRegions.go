@@ -13,7 +13,7 @@ import (
 
 // This data source provides an available area for remote disaster recovery for RDS.
 //
-// > **NOTE:** Available in v1.193.0+.
+// > **NOTE:** Available since v1.193.0+.
 //
 // ## Example Usage
 //
@@ -52,6 +52,7 @@ func GetCrossRegions(ctx *pulumi.Context, args *GetCrossRegionsArgs, opts ...pul
 
 // A collection of arguments for invoking getCrossRegions.
 type GetCrossRegionsArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -73,6 +74,7 @@ func GetCrossRegionsOutput(ctx *pulumi.Context, args GetCrossRegionsOutputArgs, 
 
 // A collection of arguments for invoking getCrossRegions.
 type GetCrossRegionsOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

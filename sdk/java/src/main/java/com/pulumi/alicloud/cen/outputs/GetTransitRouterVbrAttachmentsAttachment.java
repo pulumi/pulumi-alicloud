@@ -12,10 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class GetTransitRouterVbrAttachmentsAttachment {
     /**
-     * @return ID of the region where the conflicted VBR is located.
+     * @return Auto publish route enabled.
      * 
      */
     private Boolean autoPublishRouteEnabled;
+    /**
+     * @return The ID of the CEN Transit Router VBR Attachment.
+     * 
+     */
     private String id;
     /**
      * @return Type of the resource.
@@ -27,9 +31,13 @@ public final class GetTransitRouterVbrAttachmentsAttachment {
      * 
      */
     private String status;
+    /**
+     * @return The description of the transit router attachment.
+     * 
+     */
     private String transitRouterAttachmentDescription;
     /**
-     * @return ID of the transit router VBR attachment.
+     * @return ID of the transit router attachment.
      * 
      */
     private String transitRouterAttachmentId;
@@ -51,12 +59,16 @@ public final class GetTransitRouterVbrAttachmentsAttachment {
 
     private GetTransitRouterVbrAttachmentsAttachment() {}
     /**
-     * @return ID of the region where the conflicted VBR is located.
+     * @return Auto publish route enabled.
      * 
      */
     public Boolean autoPublishRouteEnabled() {
         return this.autoPublishRouteEnabled;
     }
+    /**
+     * @return The ID of the CEN Transit Router VBR Attachment.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -74,11 +86,15 @@ public final class GetTransitRouterVbrAttachmentsAttachment {
     public String status() {
         return this.status;
     }
+    /**
+     * @return The description of the transit router attachment.
+     * 
+     */
     public String transitRouterAttachmentDescription() {
         return this.transitRouterAttachmentDescription;
     }
     /**
-     * @return ID of the transit router VBR attachment.
+     * @return ID of the transit router attachment.
      * 
      */
     public String transitRouterAttachmentId() {

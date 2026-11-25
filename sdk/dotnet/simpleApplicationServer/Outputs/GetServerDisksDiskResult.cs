@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Alibaba Cloud simple application server instance ID.
+        /// The ID of the simple application server to which the disk is attached.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>

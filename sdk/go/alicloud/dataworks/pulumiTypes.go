@@ -3065,6 +3065,7 @@ func (o ProjectMemberRoleArrayOutput) Index(i pulumi.IntInput) ProjectMemberRole
 }
 
 type GetFoldersFolder struct {
+	// The ID of the Folder.
 	FolderId string `pulumi:"folderId"`
 	// Folder Path.
 	FolderPath string `pulumi:"folderPath"`
@@ -3086,6 +3087,7 @@ type GetFoldersFolderInput interface {
 }
 
 type GetFoldersFolderArgs struct {
+	// The ID of the Folder.
 	FolderId pulumi.StringInput `pulumi:"folderId"`
 	// Folder Path.
 	FolderPath pulumi.StringInput `pulumi:"folderPath"`
@@ -3146,6 +3148,7 @@ func (o GetFoldersFolderOutput) ToGetFoldersFolderOutputWithContext(ctx context.
 	return o
 }
 
+// The ID of the Folder.
 func (o GetFoldersFolderOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFoldersFolder) string { return v.FolderId }).(pulumi.StringOutput)
 }

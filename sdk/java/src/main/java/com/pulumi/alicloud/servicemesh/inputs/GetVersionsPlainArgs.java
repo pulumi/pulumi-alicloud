@@ -35,14 +35,14 @@ public final class GetVersionsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
+     * The ASM versions available for the ASM instance of the current edition. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
+     * @return The ASM versions available for the ASM instance of the current edition. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
      * 
      */
     public Optional<List<String>> ids() {
@@ -104,7 +104,7 @@ public final class GetVersionsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
+         * @param ids The ASM versions available for the ASM instance of the current edition. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GetVersionsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
+         * @param ids The ASM versions available for the ASM instance of the current edition. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
          * 
          * @return builder
          * 

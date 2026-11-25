@@ -16,7 +16,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGatewaysResult {
     private @Nullable Boolean enableDetails;
+    /**
+     * @return The name of the Gateway.
+     * 
+     */
     private @Nullable String gatewayName;
+    /**
+     * @return A list of Mse Gateways. Each element contains the following attributes:
+     * 
+     */
     private List<GetGatewaysGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,18 +33,38 @@ public final class GetGatewaysResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Gateway names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the gateway.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The ID of the vpc.
+     * 
+     */
     private @Nullable String vpcId;
 
     private GetGatewaysResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return The name of the Gateway.
+     * 
+     */
     public Optional<String> gatewayName() {
         return Optional.ofNullable(this.gatewayName);
     }
+    /**
+     * @return A list of Mse Gateways. Each element contains the following attributes:
+     * 
+     */
     public List<GetGatewaysGateway> gateways() {
         return this.gateways;
     }
@@ -53,15 +81,27 @@ public final class GetGatewaysResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Gateway names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the gateway.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The ID of the vpc.
+     * 
+     */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }

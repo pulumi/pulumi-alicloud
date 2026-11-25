@@ -154,15 +154,31 @@ namespace Pulumi.AliCloud.Vpn
     /// ```sh
     /// $ pulumi import alicloud:vpn/pbrRouteEntry:PbrRouteEntry example &lt;vpn_gateway_id&gt;:&lt;next_hop&gt;:&lt;route_source&gt;:&lt;route_dest&gt;
     /// ```
+    /// 
+    /// The four-part ID must match exactly one remote route entry. If primary/backup or other route entries share the same four-part key, the ID cannot disambiguate them and the import returns an error instead of selecting one.
     /// </summary>
     [AliCloudResourceType("alicloud:vpn/pbrRouteEntry:PbrRouteEntry")]
     public partial class PbrRouteEntry : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// The next hop of the policy-based route.
         /// </summary>
         [Output("nextHop")]
         public Output<string> NextHop { get; private set; } = null!;
+
+        /// <summary>
+        /// The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+        /// 
+        /// &gt; **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+        /// </summary>
+        [Output("priority")]
+        public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
         /// Whether to issue the destination route to the VPC.
@@ -247,10 +263,24 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class PbrRouteEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The next hop of the policy-based route.
         /// </summary>
         [Input("nextHop", required: true)]
         public Input<string> NextHop { get; set; } = null!;
+
+        /// <summary>
+        /// The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+        /// 
+        /// &gt; **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+        /// </summary>
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
 
         /// <summary>
         /// Whether to issue the destination route to the VPC.
@@ -291,10 +321,24 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class PbrRouteEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The description of the policy-based route. The description must be 1 to 100 characters in length. This field is only set when the route entry is created; changing it forces a new resource to be created. The Describe API does not return this field, so the imported state does not contain it and setting it after an import also creates a new resource.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The next hop of the policy-based route.
         /// </summary>
         [Input("nextHop")]
         public Input<string>? NextHop { get; set; }
+
+        /// <summary>
+        /// The policy priority of the policy-based route. Valid values: `1` to `100`. Defaults to `10` on the server when this argument is omitted. A smaller value indicates a higher priority.
+        /// 
+        /// &gt; **NOTE:** Policy priority is available only for VPN gateways that support it; gateways on earlier versions return the `VpnPbrRouteEntryPriority.NotSupport` error when this argument is set. For more information, see [policy route matching rules](https://www.alibabacloud.com/help/doc-detail/110777.html).
+        /// </summary>
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
 
         /// <summary>
         /// Whether to issue the destination route to the VPC.

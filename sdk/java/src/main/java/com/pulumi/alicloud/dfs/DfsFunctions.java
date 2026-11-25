@@ -30,7 +30,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -80,7 +80,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -130,7 +130,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -180,7 +180,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -230,7 +230,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -280,7 +280,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -330,7 +330,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.133.0+.
+     * &gt; **NOTE:** Available since v1.133.0.
      * 
      * ## Example Usage
      * 
@@ -380,7 +380,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -428,7 +428,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -476,7 +476,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -524,7 +524,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -572,7 +572,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs Access Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -620,7 +620,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -670,7 +670,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -720,7 +720,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -770,7 +770,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -820,7 +820,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -870,7 +870,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -920,7 +920,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs File Systems of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -970,7 +970,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1018,7 +1018,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1066,7 +1066,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1114,7 +1114,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1162,7 +1162,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the Dfs Mount Points of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1210,7 +1210,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1253,7 +1253,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1296,7 +1296,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1339,7 +1339,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1382,7 +1382,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1425,7 +1425,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -1468,7 +1468,7 @@ public final class DfsFunctions {
     /**
      * This data source provides the DFS Zones And Configurations of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 

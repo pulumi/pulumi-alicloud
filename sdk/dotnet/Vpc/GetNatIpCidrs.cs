@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -378,6 +378,9 @@ namespace Pulumi.AliCloud.Vpc
     [OutputType]
     public sealed class GetNatIpCidrsResult
     {
+        /// <summary>
+        /// A list of Vpc Nat Ip Cidrs. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNatIpCidrsCidrResult> Cidrs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -385,11 +388,23 @@ namespace Pulumi.AliCloud.Vpc
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Nat Ip Cidr names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// The ID of the VPC NAT gateway.
+        /// </summary>
         public readonly string NatGatewayId;
+        /// <summary>
+        /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        /// </summary>
         public readonly ImmutableArray<string> NatIpCidrNames;
         public readonly ImmutableArray<string> NatIpCidrs;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

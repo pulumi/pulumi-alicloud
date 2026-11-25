@@ -19,9 +19,17 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
 
     public static final NetworkInterfaceState Empty = new NetworkInterfaceState();
 
+    /**
+     * Whether to delete the ENI when it is released.
+     * 
+     */
     @Import(name="deleteOnRelease")
     private @Nullable Output<Boolean> deleteOnRelease;
 
+    /**
+     * @return Whether to delete the ENI when it is released.
+     * 
+     */
     public Optional<Output<Boolean>> deleteOnRelease() {
         return Optional.ofNullable(this.deleteOnRelease);
     }
@@ -41,50 +49,90 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The instance type of the ENI.
+     * 
+     */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
+    /**
+     * @return The instance type of the ENI.
+     * 
+     */
     public Optional<Output<String>> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
 
+    /**
+     * The number of IPv4 prefixes to assign to the ENI.
+     * 
+     */
     @Import(name="ipv4PrefixCount")
     private @Nullable Output<Integer> ipv4PrefixCount;
 
+    /**
+     * @return The number of IPv4 prefixes to assign to the ENI.
+     * 
+     */
     public Optional<Output<Integer>> ipv4PrefixCount() {
         return Optional.ofNullable(this.ipv4PrefixCount);
     }
 
+    /**
+     * A list of IPv4 prefixes to assign to the ENI.
+     * 
+     */
     @Import(name="ipv4Prefixes")
     private @Nullable Output<List<String>> ipv4Prefixes;
 
+    /**
+     * @return A list of IPv4 prefixes to assign to the ENI.
+     * 
+     */
     public Optional<Output<List<String>>> ipv4Prefixes() {
         return Optional.ofNullable(this.ipv4Prefixes);
     }
 
+    /**
+     * The number of IPv6 addresses to assign to the ENI.
+     * 
+     */
     @Import(name="ipv6AddressCount")
     private @Nullable Output<Integer> ipv6AddressCount;
 
+    /**
+     * @return The number of IPv6 addresses to assign to the ENI.
+     * 
+     */
     public Optional<Output<Integer>> ipv6AddressCount() {
         return Optional.ofNullable(this.ipv6AddressCount);
     }
 
+    /**
+     * A list of IPv6 addresses to assign to the ENI.
+     * 
+     */
     @Import(name="ipv6Addresses")
     private @Nullable Output<List<String>> ipv6Addresses;
 
+    /**
+     * @return A list of IPv6 addresses to assign to the ENI.
+     * 
+     */
     public Optional<Output<List<String>>> ipv6Addresses() {
         return Optional.ofNullable(this.ipv6Addresses);
     }
 
     /**
-     * (Available in 1.54.0+) The MAC address of an ENI.
+     * (Available since v1.54.0) The MAC address of an ENI.
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return (Available in 1.54.0+) The MAC address of an ENI.
+     * @return (Available since v1.54.0) The MAC address of an ENI.
      * 
      */
     public Optional<Output<String>> mac() {
@@ -92,7 +140,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;.&#34;, &#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     * Deprecated, use `networkInterfaceName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
@@ -102,7 +150,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;.&#34;, &#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+     * @return Deprecated, use `networkInterfaceName` instead.
      * 
      * @deprecated Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
@@ -112,29 +160,53 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Name of the ENI.
+     * 
+     */
     @Import(name="networkInterfaceName")
     private @Nullable Output<String> networkInterfaceName;
 
+    /**
+     * @return Name of the ENI.
+     * 
+     */
     public Optional<Output<String>> networkInterfaceName() {
         return Optional.ofNullable(this.networkInterfaceName);
     }
 
+    /**
+     * The traffic mode of the ENI.
+     * 
+     */
     @Import(name="networkInterfaceTrafficMode")
     private @Nullable Output<String> networkInterfaceTrafficMode;
 
+    /**
+     * @return The traffic mode of the ENI.
+     * 
+     */
     public Optional<Output<String>> networkInterfaceTrafficMode() {
         return Optional.ofNullable(this.networkInterfaceTrafficMode);
     }
 
+    /**
+     * The primary private IP of the ENI.
+     * 
+     */
     @Import(name="primaryIpAddress")
     private @Nullable Output<String> primaryIpAddress;
 
+    /**
+     * @return The primary private IP of the ENI.
+     * 
+     */
     public Optional<Output<String>> primaryIpAddress() {
         return Optional.ofNullable(this.primaryIpAddress);
     }
 
     /**
-     * The primary private IP of the ENI.
+     * Deprecated, use `primaryIpAddress` instead.
      * 
      * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
@@ -144,7 +216,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> privateIp;
 
     /**
-     * @return The primary private IP of the ENI.
+     * @return Deprecated, use `primaryIpAddress` instead.
      * 
      * @deprecated Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
@@ -154,15 +226,23 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.privateIp);
     }
 
+    /**
+     * List of secondary private IPs to assign to the ENI.
+     * 
+     */
     @Import(name="privateIpAddresses")
     private @Nullable Output<List<String>> privateIpAddresses;
 
+    /**
+     * @return List of secondary private IPs to assign to the ENI.
+     * 
+     */
     public Optional<Output<List<String>>> privateIpAddresses() {
         return Optional.ofNullable(this.privateIpAddresses);
     }
 
     /**
-     * List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+     * Deprecated, use `privateIpAddresses` instead.
      * 
      * @deprecated Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
      * 
@@ -172,7 +252,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<List<String>> privateIps;
 
     /**
-     * @return List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+     * @return Deprecated, use `privateIpAddresses` instead.
      * 
      * @deprecated Field &#39;private_ips&#39; has been deprecated from provider version 1.123.1. New field &#39;private_ip_addresses&#39; instead
      * 
@@ -183,7 +263,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+     * Deprecated, use `secondaryPrivateIpAddressCount` instead.
      * 
      * @deprecated Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
      * 
@@ -193,7 +273,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> privateIpsCount;
 
     /**
-     * @return Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+     * @return Deprecated, use `secondaryPrivateIpAddressCount` instead.
      * 
      * @deprecated Field &#39;private_ips_count&#39; has been deprecated from provider version 1.123.1. New field &#39;secondary_private_ip_address_count&#39; instead
      * 
@@ -203,9 +283,17 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.privateIpsCount);
     }
 
+    /**
+     * The queue number of the ENI.
+     * 
+     */
     @Import(name="queueNumber")
     private @Nullable Output<Integer> queueNumber;
 
+    /**
+     * @return The queue number of the ENI.
+     * 
+     */
     public Optional<Output<Integer>> queueNumber() {
         return Optional.ofNullable(this.queueNumber);
     }
@@ -225,22 +313,38 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * Number of secondary private IPs to assign to the ENI.
+     * 
+     */
     @Import(name="secondaryPrivateIpAddressCount")
     private @Nullable Output<Integer> secondaryPrivateIpAddressCount;
 
+    /**
+     * @return Number of secondary private IPs to assign to the ENI.
+     * 
+     */
     public Optional<Output<Integer>> secondaryPrivateIpAddressCount() {
         return Optional.ofNullable(this.secondaryPrivateIpAddressCount);
     }
 
+    /**
+     * A list of security group ids to associate with.
+     * 
+     */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
+    /**
+     * @return A list of security group ids to associate with.
+     * 
+     */
     public Optional<Output<List<String>>> securityGroupIds() {
         return Optional.ofNullable(this.securityGroupIds);
     }
 
     /**
-     * A list of security group ids to associate with.
+     * Deprecated, use `securityGroupIds` instead.
      * 
      * @deprecated Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
      * 
@@ -250,7 +354,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<List<String>> securityGroups;
 
     /**
-     * @return A list of security group ids to associate with.
+     * @return Deprecated, use `securityGroupIds` instead.
      * 
      * @deprecated Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
      * 
@@ -260,16 +364,32 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.securityGroups);
     }
 
+    /**
+     * Whether to enable SourceDestCheck of the ENI.
+     * 
+     */
     @Import(name="sourceDestCheck")
     private @Nullable Output<Boolean> sourceDestCheck;
 
+    /**
+     * @return Whether to enable SourceDestCheck of the ENI.
+     * 
+     */
     public Optional<Output<Boolean>> sourceDestCheck() {
         return Optional.ofNullable(this.sourceDestCheck);
     }
 
+    /**
+     * The status of the ENI.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of the ENI.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -352,11 +472,23 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
             $ = new NetworkInterfaceState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deleteOnRelease Whether to delete the ENI when it is released.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteOnRelease(@Nullable Output<Boolean> deleteOnRelease) {
             $.deleteOnRelease = deleteOnRelease;
             return this;
         }
 
+        /**
+         * @param deleteOnRelease Whether to delete the ENI when it is released.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteOnRelease(Boolean deleteOnRelease) {
             return deleteOnRelease(Output.of(deleteOnRelease));
         }
@@ -382,61 +514,133 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
             return description(Output.of(description));
         }
 
+        /**
+         * @param instanceType The instance type of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceType(@Nullable Output<String> instanceType) {
             $.instanceType = instanceType;
             return this;
         }
 
+        /**
+         * @param instanceType The instance type of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
         }
 
+        /**
+         * @param ipv4PrefixCount The number of IPv4 prefixes to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4PrefixCount(@Nullable Output<Integer> ipv4PrefixCount) {
             $.ipv4PrefixCount = ipv4PrefixCount;
             return this;
         }
 
+        /**
+         * @param ipv4PrefixCount The number of IPv4 prefixes to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4PrefixCount(Integer ipv4PrefixCount) {
             return ipv4PrefixCount(Output.of(ipv4PrefixCount));
         }
 
+        /**
+         * @param ipv4Prefixes A list of IPv4 prefixes to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4Prefixes(@Nullable Output<List<String>> ipv4Prefixes) {
             $.ipv4Prefixes = ipv4Prefixes;
             return this;
         }
 
+        /**
+         * @param ipv4Prefixes A list of IPv4 prefixes to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4Prefixes(List<String> ipv4Prefixes) {
             return ipv4Prefixes(Output.of(ipv4Prefixes));
         }
 
+        /**
+         * @param ipv4Prefixes A list of IPv4 prefixes to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv4Prefixes(String... ipv4Prefixes) {
             return ipv4Prefixes(List.of(ipv4Prefixes));
         }
 
+        /**
+         * @param ipv6AddressCount The number of IPv6 addresses to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6AddressCount(@Nullable Output<Integer> ipv6AddressCount) {
             $.ipv6AddressCount = ipv6AddressCount;
             return this;
         }
 
+        /**
+         * @param ipv6AddressCount The number of IPv6 addresses to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6AddressCount(Integer ipv6AddressCount) {
             return ipv6AddressCount(Output.of(ipv6AddressCount));
         }
 
+        /**
+         * @param ipv6Addresses A list of IPv6 addresses to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Addresses(@Nullable Output<List<String>> ipv6Addresses) {
             $.ipv6Addresses = ipv6Addresses;
             return this;
         }
 
+        /**
+         * @param ipv6Addresses A list of IPv6 addresses to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Addresses(List<String> ipv6Addresses) {
             return ipv6Addresses(Output.of(ipv6Addresses));
         }
 
+        /**
+         * @param ipv6Addresses A list of IPv6 addresses to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Addresses(String... ipv6Addresses) {
             return ipv6Addresses(List.of(ipv6Addresses));
         }
 
         /**
-         * @param mac (Available in 1.54.0+) The MAC address of an ENI.
+         * @param mac (Available since v1.54.0) The MAC address of an ENI.
          * 
          * @return builder
          * 
@@ -447,7 +651,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mac (Available in 1.54.0+) The MAC address of an ENI.
+         * @param mac (Available since v1.54.0) The MAC address of an ENI.
          * 
          * @return builder
          * 
@@ -457,7 +661,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;.&#34;, &#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+         * @param name Deprecated, use `networkInterfaceName` instead.
          * 
          * @return builder
          * 
@@ -471,7 +675,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;.&#34;, &#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
+         * @param name Deprecated, use `networkInterfaceName` instead.
          * 
          * @return builder
          * 
@@ -483,35 +687,71 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
             return name(Output.of(name));
         }
 
+        /**
+         * @param networkInterfaceName Name of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkInterfaceName(@Nullable Output<String> networkInterfaceName) {
             $.networkInterfaceName = networkInterfaceName;
             return this;
         }
 
+        /**
+         * @param networkInterfaceName Name of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkInterfaceName(String networkInterfaceName) {
             return networkInterfaceName(Output.of(networkInterfaceName));
         }
 
+        /**
+         * @param networkInterfaceTrafficMode The traffic mode of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkInterfaceTrafficMode(@Nullable Output<String> networkInterfaceTrafficMode) {
             $.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
             return this;
         }
 
+        /**
+         * @param networkInterfaceTrafficMode The traffic mode of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkInterfaceTrafficMode(String networkInterfaceTrafficMode) {
             return networkInterfaceTrafficMode(Output.of(networkInterfaceTrafficMode));
         }
 
+        /**
+         * @param primaryIpAddress The primary private IP of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder primaryIpAddress(@Nullable Output<String> primaryIpAddress) {
             $.primaryIpAddress = primaryIpAddress;
             return this;
         }
 
+        /**
+         * @param primaryIpAddress The primary private IP of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder primaryIpAddress(String primaryIpAddress) {
             return primaryIpAddress(Output.of(primaryIpAddress));
         }
 
         /**
-         * @param privateIp The primary private IP of the ENI.
+         * @param privateIp Deprecated, use `primaryIpAddress` instead.
          * 
          * @return builder
          * 
@@ -525,7 +765,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateIp The primary private IP of the ENI.
+         * @param privateIp Deprecated, use `primaryIpAddress` instead.
          * 
          * @return builder
          * 
@@ -537,21 +777,39 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
             return privateIp(Output.of(privateIp));
         }
 
+        /**
+         * @param privateIpAddresses List of secondary private IPs to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateIpAddresses(@Nullable Output<List<String>> privateIpAddresses) {
             $.privateIpAddresses = privateIpAddresses;
             return this;
         }
 
+        /**
+         * @param privateIpAddresses List of secondary private IPs to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateIpAddresses(List<String> privateIpAddresses) {
             return privateIpAddresses(Output.of(privateIpAddresses));
         }
 
+        /**
+         * @param privateIpAddresses List of secondary private IPs to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateIpAddresses(String... privateIpAddresses) {
             return privateIpAddresses(List.of(privateIpAddresses));
         }
 
         /**
-         * @param privateIps List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+         * @param privateIps Deprecated, use `privateIpAddresses` instead.
          * 
          * @return builder
          * 
@@ -565,7 +823,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateIps List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+         * @param privateIps Deprecated, use `privateIpAddresses` instead.
          * 
          * @return builder
          * 
@@ -578,7 +836,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateIps List of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+         * @param privateIps Deprecated, use `privateIpAddresses` instead.
          * 
          * @return builder
          * 
@@ -591,7 +849,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateIpsCount Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+         * @param privateIpsCount Deprecated, use `secondaryPrivateIpAddressCount` instead.
          * 
          * @return builder
          * 
@@ -605,7 +863,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateIpsCount Number of secondary private IPs to assign to the ENI. Don&#39;t use both privateIps and privateIpsCount in the same ENI resource block.
+         * @param privateIpsCount Deprecated, use `secondaryPrivateIpAddressCount` instead.
          * 
          * @return builder
          * 
@@ -617,11 +875,23 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
             return privateIpsCount(Output.of(privateIpsCount));
         }
 
+        /**
+         * @param queueNumber The queue number of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queueNumber(@Nullable Output<Integer> queueNumber) {
             $.queueNumber = queueNumber;
             return this;
         }
 
+        /**
+         * @param queueNumber The queue number of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queueNumber(Integer queueNumber) {
             return queueNumber(Output.of(queueNumber));
         }
@@ -647,30 +917,60 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param secondaryPrivateIpAddressCount Number of secondary private IPs to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondaryPrivateIpAddressCount(@Nullable Output<Integer> secondaryPrivateIpAddressCount) {
             $.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount;
             return this;
         }
 
+        /**
+         * @param secondaryPrivateIpAddressCount Number of secondary private IPs to assign to the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondaryPrivateIpAddressCount(Integer secondaryPrivateIpAddressCount) {
             return secondaryPrivateIpAddressCount(Output.of(secondaryPrivateIpAddressCount));
         }
 
+        /**
+         * @param securityGroupIds A list of security group ids to associate with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupIds(@Nullable Output<List<String>> securityGroupIds) {
             $.securityGroupIds = securityGroupIds;
             return this;
         }
 
+        /**
+         * @param securityGroupIds A list of security group ids to associate with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupIds(List<String> securityGroupIds) {
             return securityGroupIds(Output.of(securityGroupIds));
         }
 
+        /**
+         * @param securityGroupIds A list of security group ids to associate with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with.
+         * @param securityGroups Deprecated, use `securityGroupIds` instead.
          * 
          * @return builder
          * 
@@ -684,7 +984,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with.
+         * @param securityGroups Deprecated, use `securityGroupIds` instead.
          * 
          * @return builder
          * 
@@ -697,7 +997,7 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with.
+         * @param securityGroups Deprecated, use `securityGroupIds` instead.
          * 
          * @return builder
          * 
@@ -709,20 +1009,44 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
             return securityGroups(List.of(securityGroups));
         }
 
+        /**
+         * @param sourceDestCheck Whether to enable SourceDestCheck of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceDestCheck(@Nullable Output<Boolean> sourceDestCheck) {
             $.sourceDestCheck = sourceDestCheck;
             return this;
         }
 
+        /**
+         * @param sourceDestCheck Whether to enable SourceDestCheck of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceDestCheck(Boolean sourceDestCheck) {
             return sourceDestCheck(Output.of(sourceDestCheck));
         }
 
+        /**
+         * @param status The status of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the ENI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

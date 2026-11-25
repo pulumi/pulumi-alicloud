@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string Port;
         /// <summary>
-        /// The role of the node.
+        /// The role of the node. Valid values: `Primary` or `Secondary`.
         /// </summary>
         public readonly string Role;
         /// <summary>

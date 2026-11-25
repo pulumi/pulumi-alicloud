@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -216,6 +216,9 @@ namespace Pulumi.AliCloud.Pvtz
     [OutputType]
     public sealed class GetEndpointsResult
     {
+        /// <summary>
+        /// A list of Pvtz Endpoints. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEndpointsEndpointResult> Endpoints;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -223,8 +226,14 @@ namespace Pulumi.AliCloud.Pvtz
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Endpoint names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

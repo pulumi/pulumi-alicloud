@@ -21,6 +21,10 @@ public final class GetHostEcsLevelInfosResult {
      */
     private String id;
     private @Nullable String imageCategory;
+    /**
+     * @return A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+     * 
+     */
     private List<GetHostEcsLevelInfosInfo> infos;
     private @Nullable String outputFile;
     private String storageType;
@@ -40,6 +44,10 @@ public final class GetHostEcsLevelInfosResult {
     public Optional<String> imageCategory() {
         return Optional.ofNullable(this.imageCategory);
     }
+    /**
+     * @return A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+     * 
+     */
     public List<GetHostEcsLevelInfosInfo> infos() {
         return this.infos;
     }

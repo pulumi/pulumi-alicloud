@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.141.0+.
+        /// &gt; **NOTE:** Available since v1.141.0.
         /// 
         /// ## Example Usage
         /// 
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.141.0+.
+        /// &gt; **NOTE:** Available since v1.141.0.
         /// 
         /// ## Example Usage
         /// 
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.141.0+.
+        /// &gt; **NOTE:** Available since v1.141.0.
         /// 
         /// ## Example Usage
         /// 
@@ -240,8 +240,17 @@ namespace Pulumi.AliCloud.Vpc
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Vpc Traffic Mirror Filter Egress Rules. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTrafficMirrorFilterIngressRulesRuleResult> Rules;
+        /// <summary>
+        /// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The ID of the filter associated with the inbound rule.
+        /// </summary>
         public readonly string TrafficMirrorFilterId;
 
         [OutputConstructor]

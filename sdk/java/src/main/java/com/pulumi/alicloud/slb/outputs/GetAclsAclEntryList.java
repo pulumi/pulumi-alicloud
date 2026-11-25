@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAclsAclEntryList {
+    /**
+     * @return The comment of the entry.
+     * 
+     */
     private String comment;
+    /**
+     * @return An IP address or CIDR block.
+     * 
+     */
     private String entry;
 
     private GetAclsAclEntryList() {}
+    /**
+     * @return The comment of the entry.
+     * 
+     */
     public String comment() {
         return this.comment;
     }
+    /**
+     * @return An IP address or CIDR block.
+     * 
+     */
     public String entry() {
         return this.entry;
     }

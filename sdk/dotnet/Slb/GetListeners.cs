@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
         /// 
+        /// &gt; **NOTE:** Available since v1.15.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -26,7 +28,10 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var @default = new AliCloud.Slb.ApplicationLoadBalancer("default", new()
         ///     {
-        ///         LoadBalancerName = "tf-testAccSlbListenertcp",
+        ///         LoadBalancerName = "terraform-exampleSlbListenerAclDs",
+        ///         InternetChargeType = "PayByTraffic",
+        ///         AddressType = "internet",
+        ///         LoadBalancerSpec = "slb.s1.small",
         ///     });
         /// 
         ///     var tcp = new AliCloud.Slb.Listener("tcp", new()
@@ -50,12 +55,13 @@ namespace Pulumi.AliCloud.Slb
         /// 
         ///     var sampleDs = AliCloud.Slb.GetListeners.Invoke(new()
         ///     {
-        ///         LoadBalancerId = @default.Id,
+        ///         LoadBalancerId = tcp.LoadBalancerId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["firstSlbListenerProtocol"] = sampleDs.Apply(getListenersResult =&gt; getListenersResult.SlbListeners[0]?.Protocol),
+        ///         ["firstSlbListenerId"] = sampleDs.Apply(getListenersResult =&gt; getListenersResult.SlbListeners[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -66,6 +72,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
         /// 
+        /// &gt; **NOTE:** Available since v1.15.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -78,7 +86,10 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var @default = new AliCloud.Slb.ApplicationLoadBalancer("default", new()
         ///     {
-        ///         LoadBalancerName = "tf-testAccSlbListenertcp",
+        ///         LoadBalancerName = "terraform-exampleSlbListenerAclDs",
+        ///         InternetChargeType = "PayByTraffic",
+        ///         AddressType = "internet",
+        ///         LoadBalancerSpec = "slb.s1.small",
         ///     });
         /// 
         ///     var tcp = new AliCloud.Slb.Listener("tcp", new()
@@ -102,12 +113,13 @@ namespace Pulumi.AliCloud.Slb
         /// 
         ///     var sampleDs = AliCloud.Slb.GetListeners.Invoke(new()
         ///     {
-        ///         LoadBalancerId = @default.Id,
+        ///         LoadBalancerId = tcp.LoadBalancerId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["firstSlbListenerProtocol"] = sampleDs.Apply(getListenersResult =&gt; getListenersResult.SlbListeners[0]?.Protocol),
+        ///         ["firstSlbListenerId"] = sampleDs.Apply(getListenersResult =&gt; getListenersResult.SlbListeners[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -118,6 +130,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
         /// 
+        /// &gt; **NOTE:** Available since v1.15.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -130,7 +144,10 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var @default = new AliCloud.Slb.ApplicationLoadBalancer("default", new()
         ///     {
-        ///         LoadBalancerName = "tf-testAccSlbListenertcp",
+        ///         LoadBalancerName = "terraform-exampleSlbListenerAclDs",
+        ///         InternetChargeType = "PayByTraffic",
+        ///         AddressType = "internet",
+        ///         LoadBalancerSpec = "slb.s1.small",
         ///     });
         /// 
         ///     var tcp = new AliCloud.Slb.Listener("tcp", new()
@@ -154,12 +171,13 @@ namespace Pulumi.AliCloud.Slb
         /// 
         ///     var sampleDs = AliCloud.Slb.GetListeners.Invoke(new()
         ///     {
-        ///         LoadBalancerId = @default.Id,
+        ///         LoadBalancerId = tcp.LoadBalancerId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["firstSlbListenerProtocol"] = sampleDs.Apply(getListenersResult =&gt; getListenersResult.SlbListeners[0]?.Protocol),
+        ///         ["firstSlbListenerId"] = sampleDs.Apply(getListenersResult =&gt; getListenersResult.SlbListeners[0]?.Id),
         ///     };
         /// });
         /// ```

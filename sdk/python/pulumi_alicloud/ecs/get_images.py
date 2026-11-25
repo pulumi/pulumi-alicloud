@@ -140,6 +140,9 @@ class GetImagesResult:
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the image.
+        """
         return pulumi.get(self, "image_id")
 
     @_builtins.property
@@ -156,7 +159,7 @@ class GetImagesResult:
     @pulumi.getter
     def images(self) -> Sequence['outputs.GetImagesImageResult']:
         """
-        A `disk_device_mappings` block as defined below. A list of images.
+        A list of images. Each element contains the following attributes:
         """
         return pulumi.get(self, "images")
 
@@ -173,6 +176,9 @@ class GetImagesResult:
     @_builtins.property
     @pulumi.getter(name="isSupportIoOptimized")
     def is_support_io_optimized(self) -> Optional[_builtins.bool]:
+        """
+        Whether the image can be used on I/O optimized instances.
+        """
         return pulumi.get(self, "is_support_io_optimized")
 
     @_builtins.property
@@ -188,6 +194,9 @@ class GetImagesResult:
     @_builtins.property
     @pulumi.getter(name="osType")
     def os_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the operating system.
+        """
         return pulumi.get(self, "os_type")
 
     @_builtins.property
@@ -224,11 +233,17 @@ class GetImagesResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Optional) A map of tags assigned to the image.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def usage(self) -> Optional[_builtins.str]:
+        """
+        The usage of the image.
+        """
         return pulumi.get(self, "usage")
 
 
@@ -287,6 +302,8 @@ def get_images(action_type: Optional[_builtins.str] = None,
     """
     This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
     other public images and the ones available on the image market.
+
+    > **NOTE:** Available since v0.1.0
 
     ## Example Usage
 
@@ -401,6 +418,8 @@ def get_images_output(action_type: pulumi.Input[Optional[Optional[_builtins.str]
     """
     This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
     other public images and the ones available on the image market.
+
+    > **NOTE:** Available since v0.1.0
 
     ## Example Usage
 

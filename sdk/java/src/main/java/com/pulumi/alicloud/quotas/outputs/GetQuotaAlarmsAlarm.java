@@ -39,7 +39,7 @@ public final class GetQuotaAlarmsAlarm {
      */
     private String quotaAlarmName;
     /**
-     * @return The Quota Dimensions.
+     * @return The Quota Dimensions. See `quotaDimensions` below.
      * 
      */
     private List<GetQuotaAlarmsAlarmQuotaDimension> quotaDimensions;
@@ -96,7 +96,7 @@ public final class GetQuotaAlarmsAlarm {
         return this.quotaAlarmName;
     }
     /**
-     * @return The Quota Dimensions.
+     * @return The Quota Dimensions. See `quotaDimensions` below.
      * 
      */
     public List<GetQuotaAlarmsAlarmQuotaDimension> quotaDimensions() {

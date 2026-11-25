@@ -29,7 +29,7 @@ public final class EmrFunctions {
      * 
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -73,7 +73,7 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccClusters");
+     *         final var name = config.get("name").orElse("tf-acc-clusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status("OK")
      *             .build());
@@ -221,7 +221,7 @@ public final class EmrFunctions {
      * 
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -265,7 +265,7 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccClusters");
+     *         final var name = config.get("name").orElse("tf-acc-clusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status("OK")
      *             .build());
@@ -413,7 +413,7 @@ public final class EmrFunctions {
      * 
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -457,7 +457,7 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccClusters");
+     *         final var name = config.get("name").orElse("tf-acc-clusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status("OK")
      *             .build());
@@ -605,7 +605,7 @@ public final class EmrFunctions {
      * 
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -649,7 +649,7 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccClusters");
+     *         final var name = config.get("name").orElse("tf-acc-clusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status("OK")
      *             .build());
@@ -797,7 +797,7 @@ public final class EmrFunctions {
      * 
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -841,7 +841,7 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccClusters");
+     *         final var name = config.get("name").orElse("tf-acc-clusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status("OK")
      *             .build());
@@ -989,7 +989,7 @@ public final class EmrFunctions {
      * 
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -1033,7 +1033,7 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccClusters");
+     *         final var name = config.get("name").orElse("tf-acc-clusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status("OK")
      *             .build());
@@ -1181,7 +1181,7 @@ public final class EmrFunctions {
      * 
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
      * 
-     * &gt; **NOTE:** Available in v1.146.0+.
+     * &gt; **NOTE:** Available since v1.146.0.
      * 
      * ## Example Usage
      * 
@@ -1225,7 +1225,7 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) }{{@code
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf-testAccClusters");
+     *         final var name = config.get("name").orElse("tf-acc-clusters");
      *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status("OK")
      *             .build());

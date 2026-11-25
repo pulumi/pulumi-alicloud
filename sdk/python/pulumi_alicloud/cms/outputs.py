@@ -16,6 +16,10 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AddonReleaseEntityRules',
+    'AddonReleaseEntityRulesFieldRule',
+    'AddonReleaseEntityRulesIpMatchRule',
+    'AddonReleaseEntityRulesTag',
     'AlarmCompositeExpression',
     'AlarmCompositeExpressionExpressionList',
     'AlarmEscalationsCritical',
@@ -177,6 +181,298 @@ __all__ = [
     'GetSlsGroupsGroupResult',
     'GetSlsGroupsGroupSlsGroupConfigResult',
 ]
+
+@pulumi.output_type
+class AddonReleaseEntityRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityTypes":
+            suggest = "entity_types"
+        elif key == "fieldRules":
+            suggest = "field_rules"
+        elif key == "instanceIds":
+            suggest = "instance_ids"
+        elif key == "ipMatchRule":
+            suggest = "ip_match_rule"
+        elif key == "regionIds":
+            suggest = "region_ids"
+        elif key == "resourceGroupId":
+            suggest = "resource_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonReleaseEntityRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonReleaseEntityRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonReleaseEntityRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_types: Optional[Sequence[_builtins.str]] = None,
+                 field_rules: Optional[Sequence['outputs.AddonReleaseEntityRulesFieldRule']] = None,
+                 instance_ids: Optional[Sequence[_builtins.str]] = None,
+                 ip_match_rule: Optional['outputs.AddonReleaseEntityRulesIpMatchRule'] = None,
+                 region_ids: Optional[Sequence[_builtins.str]] = None,
+                 resource_group_id: Optional[_builtins.str] = None,
+                 tags: Optional[Sequence['outputs.AddonReleaseEntityRulesTag']] = None):
+        """
+        :param Sequence[_builtins.str] entity_types: A collection of entity types.
+        :param Sequence['AddonReleaseEntityRulesFieldRuleArgs'] field_rules: The property matching rules. See `field_rules` below.
+        :param Sequence[_builtins.str] instance_ids: A collection of instance IDs.
+        :param 'AddonReleaseEntityRulesIpMatchRuleArgs' ip_match_rule: A collection of IP address matching rules. See `ip_match_rule` below.
+        :param Sequence[_builtins.str] region_ids: A collection of region IDs.
+        :param _builtins.str resource_group_id: The resource group ID.
+        :param Sequence['AddonReleaseEntityRulesTagArgs'] tags: The tag-based service discovery rules. See `tags` below.
+        """
+        if entity_types is not None:
+            pulumi.set(__self__, "entity_types", entity_types)
+        if field_rules is not None:
+            pulumi.set(__self__, "field_rules", field_rules)
+        if instance_ids is not None:
+            pulumi.set(__self__, "instance_ids", instance_ids)
+        if ip_match_rule is not None:
+            pulumi.set(__self__, "ip_match_rule", ip_match_rule)
+        if region_ids is not None:
+            pulumi.set(__self__, "region_ids", region_ids)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="entityTypes")
+    def entity_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A collection of entity types.
+        """
+        return pulumi.get(self, "entity_types")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldRules")
+    def field_rules(self) -> Optional[Sequence['outputs.AddonReleaseEntityRulesFieldRule']]:
+        """
+        The property matching rules. See `field_rules` below.
+        """
+        return pulumi.get(self, "field_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A collection of instance IDs.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="ipMatchRule")
+    def ip_match_rule(self) -> Optional['outputs.AddonReleaseEntityRulesIpMatchRule']:
+        """
+        A collection of IP address matching rules. See `ip_match_rule` below.
+        """
+        return pulumi.get(self, "ip_match_rule")
+
+    @_builtins.property
+    @pulumi.getter(name="regionIds")
+    def region_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A collection of region IDs.
+        """
+        return pulumi.get(self, "region_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[_builtins.str]:
+        """
+        The resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence['outputs.AddonReleaseEntityRulesTag']]:
+        """
+        The tag-based service discovery rules. See `tags` below.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class AddonReleaseEntityRulesFieldRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldKey":
+            suggest = "field_key"
+        elif key == "fieldValues":
+            suggest = "field_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonReleaseEntityRulesFieldRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonReleaseEntityRulesFieldRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonReleaseEntityRulesFieldRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_key: Optional[_builtins.str] = None,
+                 field_values: Optional[Sequence[_builtins.str]] = None,
+                 op: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str field_key: The key of the property.
+        :param Sequence[_builtins.str] field_values: A collection of property values.
+        :param _builtins.str op: The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+        """
+        if field_key is not None:
+            pulumi.set(__self__, "field_key", field_key)
+        if field_values is not None:
+            pulumi.set(__self__, "field_values", field_values)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldKey")
+    def field_key(self) -> Optional[_builtins.str]:
+        """
+        The key of the property.
+        """
+        return pulumi.get(self, "field_key")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldValues")
+    def field_values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A collection of property values.
+        """
+        return pulumi.get(self, "field_values")
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> Optional[_builtins.str]:
+        """
+        The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+        """
+        return pulumi.get(self, "op")
+
+
+@pulumi.output_type
+class AddonReleaseEntityRulesIpMatchRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipCidr":
+            suggest = "ip_cidr"
+        elif key == "ipFieldKey":
+            suggest = "ip_field_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonReleaseEntityRulesIpMatchRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonReleaseEntityRulesIpMatchRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonReleaseEntityRulesIpMatchRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_cidr: Optional[_builtins.str] = None,
+                 ip_field_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ip_cidr: The CIDR block to match against.
+        :param _builtins.str ip_field_key: The key of the IP address field.
+        """
+        if ip_cidr is not None:
+            pulumi.set(__self__, "ip_cidr", ip_cidr)
+        if ip_field_key is not None:
+            pulumi.set(__self__, "ip_field_key", ip_field_key)
+
+    @_builtins.property
+    @pulumi.getter(name="ipCidr")
+    def ip_cidr(self) -> Optional[_builtins.str]:
+        """
+        The CIDR block to match against.
+        """
+        return pulumi.get(self, "ip_cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="ipFieldKey")
+    def ip_field_key(self) -> Optional[_builtins.str]:
+        """
+        The key of the IP address field.
+        """
+        return pulumi.get(self, "ip_field_key")
+
+
+@pulumi.output_type
+class AddonReleaseEntityRulesTag(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+        elif key == "tagValues":
+            suggest = "tag_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AddonReleaseEntityRulesTag. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AddonReleaseEntityRulesTag.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AddonReleaseEntityRulesTag.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 op: Optional[_builtins.str] = None,
+                 tag_key: Optional[_builtins.str] = None,
+                 tag_values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str op: The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+        :param _builtins.str tag_key: The key of the tag.
+        :param Sequence[_builtins.str] tag_values: A collection of tag values.
+        """
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_values is not None:
+            pulumi.set(__self__, "tag_values", tag_values)
+
+    @_builtins.property
+    @pulumi.getter
+    def op(self) -> Optional[_builtins.str]:
+        """
+        The operation. Valid values: `in`, `notIn`, `equals`, `startWith`, `endWith`, `inAll`, `notExist`.
+        """
+        return pulumi.get(self, "op")
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> Optional[_builtins.str]:
+        """
+        The key of the tag.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValues")
+    def tag_values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A collection of tag values.
+        """
+        return pulumi.get(self, "tag_values")
+
 
 @pulumi.output_type
 class AlarmCompositeExpression(dict):
@@ -4214,6 +4510,7 @@ class GroupMetricRuleTarget(dict):
                  level: Optional[_builtins.str] = None):
         """
         :param _builtins.str arn: The Alibaba Cloud Resource Name (ARN) of the resource.
+               
                > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         :param _builtins.str id: The ID of the resource for which alerts are triggered.
         :param _builtins.str json_params: The parameters of the alert callback. The parameters are in the JSON format.
@@ -4233,6 +4530,7 @@ class GroupMetricRuleTarget(dict):
     def arn(self) -> Optional[_builtins.str]:
         """
         The Alibaba Cloud Resource Name (ARN) of the resource.
+
         > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         """
         return pulumi.get(self, "arn")
@@ -4632,6 +4930,12 @@ class IntegrationPolicyEntityGroup(dict):
             suggest = "cluster_entity_type"
         elif key == "clusterId":
             suggest = "cluster_id"
+        elif key == "clusterNamespace":
+            suggest = "cluster_namespace"
+        elif key == "disablePolicyShare":
+            suggest = "disable_policy_share"
+        elif key == "entityUserId":
+            suggest = "entity_user_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in IntegrationPolicyEntityGroup. Access the value via the '{suggest}' property getter instead.")
@@ -4646,15 +4950,29 @@ class IntegrationPolicyEntityGroup(dict):
 
     def __init__(__self__, *,
                  cluster_entity_type: Optional[_builtins.str] = None,
-                 cluster_id: Optional[_builtins.str] = None):
+                 cluster_id: Optional[_builtins.str] = None,
+                 cluster_namespace: Optional[_builtins.str] = None,
+                 disable_policy_share: Optional[_builtins.bool] = None,
+                 entity_user_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str cluster_entity_type: The cluster entity type.
         :param _builtins.str cluster_id: The cluster ID.
+        :param _builtins.str cluster_namespace: The cluster Namespace.
+               
+               > **NOTE:** If `disable_policy_share` is set to `true`, you can create multiple policies for a container cluster, and `cluster_namespace` is required.
+        :param _builtins.bool disable_policy_share: Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+        :param _builtins.str entity_user_id: The ID of the user who owns the cluster.
         """
         if cluster_entity_type is not None:
             pulumi.set(__self__, "cluster_entity_type", cluster_entity_type)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if cluster_namespace is not None:
+            pulumi.set(__self__, "cluster_namespace", cluster_namespace)
+        if disable_policy_share is not None:
+            pulumi.set(__self__, "disable_policy_share", disable_policy_share)
+        if entity_user_id is not None:
+            pulumi.set(__self__, "entity_user_id", entity_user_id)
 
     @_builtins.property
     @pulumi.getter(name="clusterEntityType")
@@ -4671,6 +4989,32 @@ class IntegrationPolicyEntityGroup(dict):
         The cluster ID.
         """
         return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterNamespace")
+    def cluster_namespace(self) -> Optional[_builtins.str]:
+        """
+        The cluster Namespace.
+
+        > **NOTE:** If `disable_policy_share` is set to `true`, you can create multiple policies for a container cluster, and `cluster_namespace` is required.
+        """
+        return pulumi.get(self, "cluster_namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="disablePolicyShare")
+    def disable_policy_share(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to disable unique policy binding. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "disable_policy_share")
+
+    @_builtins.property
+    @pulumi.getter(name="entityUserId")
+    def entity_user_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the user who owns the cluster.
+        """
+        return pulumi.get(self, "entity_user_id")
 
 
 @pulumi.output_type
@@ -4750,10 +5094,13 @@ class MetricRuleTemplateAlertTemplate(dict):
                  webhook: Optional[_builtins.str] = None):
         """
         :param _builtins.str category: The abbreviation of the Alibaba Cloud service name.
+               
                > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
         :param _builtins.str metric_name: The name of the metric.
+               
                > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param _builtins.str namespace: The namespace of the cloud service.
+               
                > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param _builtins.str rule_name: The name of the alert rule.
         :param 'MetricRuleTemplateAlertTemplateEscalationsArgs' escalations: The information about the trigger condition based on the alert level. See `escalations` below.
@@ -4773,6 +5120,7 @@ class MetricRuleTemplateAlertTemplate(dict):
     def category(self) -> _builtins.str:
         """
         The abbreviation of the Alibaba Cloud service name.
+
         > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
         """
         return pulumi.get(self, "category")
@@ -4782,6 +5130,7 @@ class MetricRuleTemplateAlertTemplate(dict):
     def metric_name(self) -> _builtins.str:
         """
         The name of the metric.
+
         > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric_name")
@@ -4791,6 +5140,7 @@ class MetricRuleTemplateAlertTemplate(dict):
     def namespace(self) -> _builtins.str:
         """
         The namespace of the cloud service.
+
         > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "namespace")
@@ -6001,10 +6351,10 @@ class GetAlarmContactsContactResult(dict):
         :param _builtins.str channels_state_ding_web_hook: Indicates whether the DingTalk chatbot is normal.
         :param _builtins.str channels_state_mail: The status of the email address.
         :param _builtins.str channels_status_sms: The status of the phone number.
-               * `Lang` - The language type of the alarm.
         :param Sequence[_builtins.str] contact_groups: The alert groups to which the alarm contact is added.
         :param _builtins.str describe: The description of the alarm contact.
         :param _builtins.str id: The ID of the alarm contact.
+        :param _builtins.str lang: The language type of the alarm.
         """
         pulumi.set(__self__, "alarm_contact_name", alarm_contact_name)
         pulumi.set(__self__, "channels_aliim", channels_aliim)
@@ -6089,7 +6439,6 @@ class GetAlarmContactsContactResult(dict):
     def channels_status_sms(self) -> _builtins.str:
         """
         The status of the phone number.
-        * `Lang` - The language type of the alarm.
         """
         return pulumi.get(self, "channels_status_sms")
 
@@ -6120,6 +6469,9 @@ class GetAlarmContactsContactResult(dict):
     @_builtins.property
     @pulumi.getter
     def lang(self) -> _builtins.str:
+        """
+        The language type of the alarm.
+        """
         return pulumi.get(self, "lang")
 
 
@@ -8764,7 +9116,7 @@ class GetEventRulesRuleResult(dict):
         :param _builtins.str group_id: The ID of the application Group.
         :param _builtins.str id: The ID of the Event Rule. Its value is same as Event Rule Name.
         :param _builtins.int silence_time: The mute period during which new alerts are not sent even if the trigger conditions are met.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: `DISABLED`, `ENABLED`.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "event_patterns", event_patterns)
@@ -8835,7 +9187,7 @@ class GetEventRulesRuleResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `DISABLED`, `ENABLED`.
         """
         return pulumi.get(self, "status")
 
@@ -8969,7 +9321,7 @@ class GetGroupMetricRulesRuleResult(dict):
         :param _builtins.str dimensions: The dimensions that specify the resources to be associated with the alert rule.
         :param _builtins.str effective_interval: The time period during which the alert rule is effective.
         :param _builtins.str email_subject: The subject of the alert notification email.
-        :param _builtins.bool enable_state: Indicates whether the alert rule is enabled.
+        :param _builtins.bool enable_state: EnableState.
         :param Sequence['GetGroupMetricRulesRuleEscalationArgs'] escalations: Alarm level.
         :param _builtins.str group_id: The ID of the application group.
         :param _builtins.str group_metric_rule_name: The name of the alert rule.
@@ -8982,7 +9334,7 @@ class GetGroupMetricRulesRuleResult(dict):
         :param _builtins.str rule_id: The ID of the alert rule.
         :param _builtins.int silence_time: The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
         :param _builtins.str source_type: The type of the alert rule. The value is fixed to METRIC, indicating an alert rule for time series metrics.
-        :param _builtins.str status: The status of Group Metric Rule..
+        :param _builtins.str status: The status of Group Metric Rule.
         :param _builtins.str webhook: The callback URL.
         """
         pulumi.set(__self__, "contact_groups", contact_groups)
@@ -9041,7 +9393,7 @@ class GetGroupMetricRulesRuleResult(dict):
     @pulumi.getter(name="enableState")
     def enable_state(self) -> _builtins.bool:
         """
-        Indicates whether the alert rule is enabled.
+        EnableState.
         """
         return pulumi.get(self, "enable_state")
 
@@ -9145,7 +9497,7 @@ class GetGroupMetricRulesRuleResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of Group Metric Rule..
+        The status of Group Metric Rule.
         """
         return pulumi.get(self, "status")
 
@@ -9206,10 +9558,10 @@ class GetGroupMetricRulesRuleEscalationCriticalResult(dict):
                  threshold: _builtins.str,
                  times: _builtins.int):
         """
-        :param _builtins.str comparison_operator: The comparison operator of the threshold for critical-level alerts.
-        :param _builtins.str statistics: The statistical aggregation method for critical-level alerts.
-        :param _builtins.str threshold: The threshold for critical-level alerts.
-        :param _builtins.int times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        :param _builtins.str comparison_operator: The comparison operator of the threshold for warn-level alerts.
+        :param _builtins.str statistics: The statistical aggregation method for warn-level alerts.
+        :param _builtins.str threshold: The threshold for warn-level alerts.
+        :param _builtins.int times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         pulumi.set(__self__, "comparison_operator", comparison_operator)
         pulumi.set(__self__, "statistics", statistics)
@@ -9220,7 +9572,7 @@ class GetGroupMetricRulesRuleEscalationCriticalResult(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> _builtins.str:
         """
-        The comparison operator of the threshold for critical-level alerts.
+        The comparison operator of the threshold for warn-level alerts.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -9228,7 +9580,7 @@ class GetGroupMetricRulesRuleEscalationCriticalResult(dict):
     @pulumi.getter
     def statistics(self) -> _builtins.str:
         """
-        The statistical aggregation method for critical-level alerts.
+        The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -9236,7 +9588,7 @@ class GetGroupMetricRulesRuleEscalationCriticalResult(dict):
     @pulumi.getter
     def threshold(self) -> _builtins.str:
         """
-        The threshold for critical-level alerts.
+        The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -9244,7 +9596,7 @@ class GetGroupMetricRulesRuleEscalationCriticalResult(dict):
     @pulumi.getter
     def times(self) -> _builtins.int:
         """
-        The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -9257,10 +9609,10 @@ class GetGroupMetricRulesRuleEscalationInfoResult(dict):
                  threshold: _builtins.str,
                  times: _builtins.int):
         """
-        :param _builtins.str comparison_operator: The comparison operator of the threshold for info-level alerts.
-        :param _builtins.str statistics: The statistical aggregation method for info-level alerts.
-        :param _builtins.str threshold: The threshold for info-level alerts.
-        :param _builtins.int times: The consecutive number of times for which the metric value is measured before a info-level alert is triggered.
+        :param _builtins.str comparison_operator: The comparison operator of the threshold for warn-level alerts.
+        :param _builtins.str statistics: The statistical aggregation method for warn-level alerts.
+        :param _builtins.str threshold: The threshold for warn-level alerts.
+        :param _builtins.int times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         pulumi.set(__self__, "comparison_operator", comparison_operator)
         pulumi.set(__self__, "statistics", statistics)
@@ -9271,7 +9623,7 @@ class GetGroupMetricRulesRuleEscalationInfoResult(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> _builtins.str:
         """
-        The comparison operator of the threshold for info-level alerts.
+        The comparison operator of the threshold for warn-level alerts.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -9279,7 +9631,7 @@ class GetGroupMetricRulesRuleEscalationInfoResult(dict):
     @pulumi.getter
     def statistics(self) -> _builtins.str:
         """
-        The statistical aggregation method for info-level alerts.
+        The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -9287,7 +9639,7 @@ class GetGroupMetricRulesRuleEscalationInfoResult(dict):
     @pulumi.getter
     def threshold(self) -> _builtins.str:
         """
-        The threshold for info-level alerts.
+        The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -9295,7 +9647,7 @@ class GetGroupMetricRulesRuleEscalationInfoResult(dict):
     @pulumi.getter
     def times(self) -> _builtins.int:
         """
-        The consecutive number of times for which the metric value is measured before a info-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -9427,7 +9779,7 @@ class GetHybridMonitorDatasDataValueResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str ts: The timestamp that indicates the time when the metric value is collected. Unit: seconds.
-        :param _builtins.str value: The value of the monitoring indicator.
+        :param _builtins.str value: Label value.
         """
         pulumi.set(__self__, "ts", ts)
         pulumi.set(__self__, "value", value)
@@ -9444,7 +9796,7 @@ class GetHybridMonitorDatasDataValueResult(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        The value of the monitoring indicator.
+        Label value.
         """
         return pulumi.get(self, "value")
 
@@ -9462,7 +9814,7 @@ class GetHybridMonitorFcTasksTaskResult(dict):
         :param _builtins.str create_time: Create the timestamp of the monitoring task. Unit: milliseconds.
         :param _builtins.str hybrid_monitor_fc_task_id: The ID of the monitoring task.
         :param _builtins.str id: The ID of the Hybrid Monitor Fc Task. The value formats as `<hybrid_monitor_fc_task_id>:<namespace>`.
-        :param _builtins.str namespace: The index warehouse where the host belongs.
+        :param _builtins.str namespace: The name of the namespace.
         :param _builtins.str target_user_id: The ID of the member account.
         :param _builtins.str yarm_config: The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
         """
@@ -9501,7 +9853,7 @@ class GetHybridMonitorFcTasksTaskResult(dict):
     @pulumi.getter
     def namespace(self) -> _builtins.str:
         """
-        The index warehouse where the host belongs.
+        The name of the namespace.
         """
         return pulumi.get(self, "namespace")
 
@@ -9572,13 +9924,14 @@ class GetHybridMonitorSlsTasksTaskResult(dict):
         :param _builtins.str log_split: The local log data is divided according to different matching patterns.
         :param _builtins.str match_express_relation: The filter condition of the instance of the monitoring task.
         :param Sequence['GetHybridMonitorSlsTasksTaskMatchExpressArgs'] match_expresses: The matching condition of the instance in the application Group.
-        :param _builtins.str namespace: The namespace to which the host belongs.
+        :param _builtins.str namespace: The name of the namespace.
         :param _builtins.str network_type: The network type of the host.
         :param _builtins.str sls_process: The configurations of the logs that are imported from Log Service.
         :param Sequence['GetHybridMonitorSlsTasksTaskSlsProcessConfigArgs'] sls_process_configs: The configurations of the logs that are imported from Log Service.
         :param _builtins.str task_name: The name of the metric import task.
         :param _builtins.str task_type: Monitoring Task type.
         :param _builtins.str upload_region: The region where the host resides.
+        :param _builtins.str yarm_config: The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
         """
         pulumi.set(__self__, "attach_labels", attach_labels)
         pulumi.set(__self__, "collect_interval", collect_interval)
@@ -9764,7 +10117,7 @@ class GetHybridMonitorSlsTasksTaskResult(dict):
     @pulumi.getter
     def namespace(self) -> _builtins.str:
         """
-        The namespace to which the host belongs.
+        The name of the namespace.
         """
         return pulumi.get(self, "namespace")
 
@@ -9819,6 +10172,9 @@ class GetHybridMonitorSlsTasksTaskResult(dict):
     @_builtins.property
     @pulumi.getter(name="yarmConfig")
     def yarm_config(self) -> _builtins.str:
+        """
+        The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
+        """
         return pulumi.get(self, "yarm_config")
 
 
@@ -9828,8 +10184,8 @@ class GetHybridMonitorSlsTasksTaskAttachLabelResult(dict):
                  name: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str name: The key of the tag.
-        :param _builtins.str value: The value of the tag.
+        :param _builtins.str name: The name of the instance.
+        :param _builtins.str value: The value of the key that is used to filter logs imported from Log Service.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -9838,7 +10194,7 @@ class GetHybridMonitorSlsTasksTaskAttachLabelResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The key of the tag.
+        The name of the instance.
         """
         return pulumi.get(self, "name")
 
@@ -9846,7 +10202,7 @@ class GetHybridMonitorSlsTasksTaskAttachLabelResult(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        The value of the tag.
+        The value of the key that is used to filter logs imported from Log Service.
         """
         return pulumi.get(self, "value")
 
@@ -9858,9 +10214,9 @@ class GetHybridMonitorSlsTasksTaskMatchExpressResult(dict):
                  name: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str function: The method that is used to match the instance name.
+        :param _builtins.str function: The function that is used to aggregate log data within a statistical period.
         :param _builtins.str name: The name of the instance.
-        :param _builtins.str value: The keyword that corresponds to the instance name.
+        :param _builtins.str value: The value of the key that is used to filter logs imported from Log Service.
         """
         pulumi.set(__self__, "function", function)
         pulumi.set(__self__, "name", name)
@@ -9870,7 +10226,7 @@ class GetHybridMonitorSlsTasksTaskMatchExpressResult(dict):
     @pulumi.getter
     def function(self) -> _builtins.str:
         """
-        The method that is used to match the instance name.
+        The function that is used to aggregate log data within a statistical period.
         """
         return pulumi.get(self, "function")
 
@@ -9886,7 +10242,7 @@ class GetHybridMonitorSlsTasksTaskMatchExpressResult(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        The keyword that corresponds to the instance name.
+        The value of the key that is used to filter logs imported from Log Service.
         """
         return pulumi.get(self, "value")
 
@@ -9899,6 +10255,7 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigResult(dict):
                  group_bies: Sequence['outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByResult'],
                  statistics: Sequence['outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticResult']):
         """
+        :param Sequence['GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressArgs'] expresses: The extended field that specifies the result of basic operations that are performed on aggregation results.
         :param Sequence['GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterArgs'] filters: The conditions that are used to filter logs imported from Log Service.
         :param Sequence['GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs'] group_bies: The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
         :param Sequence['GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs'] statistics: The method that is used to aggregate logs imported from Log Service.
@@ -9911,6 +10268,9 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigResult(dict):
     @_builtins.property
     @pulumi.getter
     def expresses(self) -> Sequence['outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressResult']:
+        """
+        The extended field that specifies the result of basic operations that are performed on aggregation results.
+        """
         return pulumi.get(self, "expresses")
 
     @_builtins.property
@@ -9943,17 +10303,27 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressResult(dict):
     def __init__(__self__, *,
                  alias: _builtins.str,
                  express: _builtins.str):
+        """
+        :param _builtins.str alias: The alias of the aggregation result.
+        :param _builtins.str express: The extended field that specifies the result of basic operations that are performed on aggregation results.
+        """
         pulumi.set(__self__, "alias", alias)
         pulumi.set(__self__, "express", express)
 
     @_builtins.property
     @pulumi.getter
     def alias(self) -> _builtins.str:
+        """
+        The alias of the aggregation result.
+        """
         return pulumi.get(self, "alias")
 
     @_builtins.property
     @pulumi.getter
     def express(self) -> _builtins.str:
+        """
+        The extended field that specifies the result of basic operations that are performed on aggregation results.
+        """
         return pulumi.get(self, "express")
 
 
@@ -9994,6 +10364,8 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterResult(dict):
                  value: _builtins.str):
         """
         :param _builtins.str operator: The method that is used to filter logs imported from Log Service.
+        :param _builtins.str sls_key_name: The name of the key that is used to aggregate logs imported from Log Service.
+        :param _builtins.str value: The value of the key that is used to filter logs imported from Log Service.
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "sls_key_name", sls_key_name)
@@ -10010,11 +10382,17 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterResult(dict):
     @_builtins.property
     @pulumi.getter(name="slsKeyName")
     def sls_key_name(self) -> _builtins.str:
+        """
+        The name of the key that is used to aggregate logs imported from Log Service.
+        """
         return pulumi.get(self, "sls_key_name")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
+        """
+        The value of the key that is used to filter logs imported from Log Service.
+        """
         return pulumi.get(self, "value")
 
 
@@ -10023,17 +10401,27 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByResult(dict):
     def __init__(__self__, *,
                  alias: _builtins.str,
                  sls_key_name: _builtins.str):
+        """
+        :param _builtins.str alias: The alias of the aggregation result.
+        :param _builtins.str sls_key_name: The name of the key that is used to aggregate logs imported from Log Service.
+        """
         pulumi.set(__self__, "alias", alias)
         pulumi.set(__self__, "sls_key_name", sls_key_name)
 
     @_builtins.property
     @pulumi.getter
     def alias(self) -> _builtins.str:
+        """
+        The alias of the aggregation result.
+        """
         return pulumi.get(self, "alias")
 
     @_builtins.property
     @pulumi.getter(name="slsKeyName")
     def sls_key_name(self) -> _builtins.str:
+        """
+        The name of the key that is used to aggregate logs imported from Log Service.
+        """
         return pulumi.get(self, "sls_key_name")
 
 
@@ -10046,8 +10434,11 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticResult(dict):
                  parameter_two: _builtins.str,
                  sls_key_name: _builtins.str):
         """
+        :param _builtins.str alias: The alias of the aggregation result.
+        :param _builtins.str function: The function that is used to aggregate log data within a statistical period.
         :param _builtins.str parameter_one: The value of the function that is used to aggregate logs imported from Log Service.
         :param _builtins.str parameter_two: The value of the function that is used to aggregate logs imported from Log Service.
+        :param _builtins.str sls_key_name: The name of the key that is used to aggregate logs imported from Log Service.
         """
         pulumi.set(__self__, "alias", alias)
         pulumi.set(__self__, "function", function)
@@ -10058,11 +10449,17 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticResult(dict):
     @_builtins.property
     @pulumi.getter
     def alias(self) -> _builtins.str:
+        """
+        The alias of the aggregation result.
+        """
         return pulumi.get(self, "alias")
 
     @_builtins.property
     @pulumi.getter
     def function(self) -> _builtins.str:
+        """
+        The function that is used to aggregate log data within a statistical period.
+        """
         return pulumi.get(self, "function")
 
     @_builtins.property
@@ -10084,6 +10481,9 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticResult(dict):
     @_builtins.property
     @pulumi.getter(name="slsKeyName")
     def sls_key_name(self) -> _builtins.str:
+        """
+        The name of the key that is used to aggregate logs imported from Log Service.
+        """
         return pulumi.get(self, "sls_key_name")
 
 
@@ -10110,6 +10510,7 @@ class GetMetricRuleBlackListsListResult(dict):
         :param _builtins.str effective_time: The effective time range of the alert blacklist policy.
         :param _builtins.str enable_end_time: The start timestamp of the alert blacklist policy.Unit: milliseconds.
         :param _builtins.str enable_start_time: The end timestamp of the alert blacklist policy.Unit: milliseconds.
+        :param _builtins.str id: The ID of the Metric Rule Black List.
         :param Sequence[_builtins.str] instances: The list of instances of cloud services specified in the alert blacklist policy.
         :param _builtins.bool is_enable: The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
         :param _builtins.str metric_rule_black_list_id: The first ID of the resource
@@ -10177,6 +10578,9 @@ class GetMetricRuleBlackListsListResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the Metric Rule Black List.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -10290,8 +10694,6 @@ class GetMetricRuleTemplatesTemplateResult(dict):
         :param _builtins.str id: The ID of the Metric Rule Template.
         :param _builtins.str metric_rule_template_name: The name of the alert template.
         :param _builtins.str rest_version: The version of the alert template.
-               
-               > **NOTE:** The version changes with the number of times that the alert template is modified.
         :param _builtins.str template_id: The ID of the alert template.
         """
         pulumi.set(__self__, "alert_templates", alert_templates)
@@ -10347,8 +10749,6 @@ class GetMetricRuleTemplatesTemplateResult(dict):
     def rest_version(self) -> _builtins.str:
         """
         The version of the alert template.
-
-        > **NOTE:** The version changes with the number of times that the alert template is modified.
         """
         return pulumi.get(self, "rest_version")
 
@@ -10377,6 +10777,7 @@ class GetMetricRuleTemplatesTemplateAlertTemplateResult(dict):
         :param _builtins.str metric_name: The name of the metric.
         :param _builtins.str namespace: The namespace of the service.
         :param _builtins.str rule_name: The name of the alert rule.
+        :param _builtins.str selector: The extended dimension options of the alert.
         :param _builtins.str webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
         pulumi.set(__self__, "category", category)
@@ -10430,6 +10831,9 @@ class GetMetricRuleTemplatesTemplateAlertTemplateResult(dict):
     @_builtins.property
     @pulumi.getter
     def selector(self) -> _builtins.str:
+        """
+        The extended dimension options of the alert.
+        """
         return pulumi.get(self, "selector")
 
     @_builtins.property
@@ -10489,117 +10893,10 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalResult(dict):
                  threshold: _builtins.str,
                  times: _builtins.str):
         """
-        :param _builtins.str comparison_operator: The comparison operator of the threshold for critical-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        :param _builtins.str statistics: The statistical aggregation method for critical-level alerts.
-        :param _builtins.str threshold: The threshold for critical-level alerts.
-        :param _builtins.str times: The consecutive number of times for which the metric value is measured before a
-               critical-level alert is triggered.
-        """
-        pulumi.set(__self__, "comparison_operator", comparison_operator)
-        pulumi.set(__self__, "statistics", statistics)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "times", times)
-
-    @_builtins.property
-    @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> _builtins.str:
-        """
-        The comparison operator of the threshold for critical-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        """
-        return pulumi.get(self, "comparison_operator")
-
-    @_builtins.property
-    @pulumi.getter
-    def statistics(self) -> _builtins.str:
-        """
-        The statistical aggregation method for critical-level alerts.
-        """
-        return pulumi.get(self, "statistics")
-
-    @_builtins.property
-    @pulumi.getter
-    def threshold(self) -> _builtins.str:
-        """
-        The threshold for critical-level alerts.
-        """
-        return pulumi.get(self, "threshold")
-
-    @_builtins.property
-    @pulumi.getter
-    def times(self) -> _builtins.str:
-        """
-        The consecutive number of times for which the metric value is measured before a
-        critical-level alert is triggered.
-        """
-        return pulumi.get(self, "times")
-
-
-@pulumi.output_type
-class GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoResult(dict):
-    def __init__(__self__, *,
-                 comparison_operator: _builtins.str,
-                 statistics: _builtins.str,
-                 threshold: _builtins.str,
-                 times: _builtins.str):
-        """
-        :param _builtins.str comparison_operator: The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        :param _builtins.str statistics: The statistical aggregation method for info-level alerts.
-        :param _builtins.str threshold: The threshold for info-level alerts.
-        :param _builtins.str times: The consecutive number of times for which the metric value is measured before an info-level
-               alert is triggered.
-        """
-        pulumi.set(__self__, "comparison_operator", comparison_operator)
-        pulumi.set(__self__, "statistics", statistics)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "times", times)
-
-    @_builtins.property
-    @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> _builtins.str:
-        """
-        The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        """
-        return pulumi.get(self, "comparison_operator")
-
-    @_builtins.property
-    @pulumi.getter
-    def statistics(self) -> _builtins.str:
-        """
-        The statistical aggregation method for info-level alerts.
-        """
-        return pulumi.get(self, "statistics")
-
-    @_builtins.property
-    @pulumi.getter
-    def threshold(self) -> _builtins.str:
-        """
-        The threshold for info-level alerts.
-        """
-        return pulumi.get(self, "threshold")
-
-    @_builtins.property
-    @pulumi.getter
-    def times(self) -> _builtins.str:
-        """
-        The consecutive number of times for which the metric value is measured before an info-level
-        alert is triggered.
-        """
-        return pulumi.get(self, "times")
-
-
-@pulumi.output_type
-class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnResult(dict):
-    def __init__(__self__, *,
-                 comparison_operator: _builtins.str,
-                 statistics: _builtins.str,
-                 threshold: _builtins.str,
-                 times: _builtins.str):
-        """
         :param _builtins.str comparison_operator: The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         :param _builtins.str statistics: The statistical aggregation method for warn-level alerts.
         :param _builtins.str threshold: The threshold for warn-level alerts.
-        :param _builtins.str times: The consecutive number of times for which the metric value is measured before a warn-level
-               alert is triggered.
+        :param _builtins.str times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         pulumi.set(__self__, "comparison_operator", comparison_operator)
         pulumi.set(__self__, "statistics", statistics)
@@ -10634,8 +10931,109 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnResult(dict):
     @pulumi.getter
     def times(self) -> _builtins.str:
         """
-        The consecutive number of times for which the metric value is measured before a warn-level
-        alert is triggered.
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        """
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoResult(dict):
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 statistics: _builtins.str,
+                 threshold: _builtins.str,
+                 times: _builtins.str):
+        """
+        :param _builtins.str comparison_operator: The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        :param _builtins.str statistics: The statistical aggregation method for warn-level alerts.
+        :param _builtins.str threshold: The threshold for warn-level alerts.
+        :param _builtins.str times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "statistics", statistics)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> _builtins.str:
+        """
+        The statistical aggregation method for warn-level alerts.
+        """
+        return pulumi.get(self, "statistics")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> _builtins.str:
+        """
+        The threshold for warn-level alerts.
+        """
+        return pulumi.get(self, "threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> _builtins.str:
+        """
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        """
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnResult(dict):
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 statistics: _builtins.str,
+                 threshold: _builtins.str,
+                 times: _builtins.str):
+        """
+        :param _builtins.str comparison_operator: The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        :param _builtins.str statistics: The statistical aggregation method for warn-level alerts.
+        :param _builtins.str threshold: The threshold for warn-level alerts.
+        :param _builtins.str times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "statistics", statistics)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> _builtins.str:
+        """
+        The statistical aggregation method for warn-level alerts.
+        """
+        return pulumi.get(self, "statistics")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> _builtins.str:
+        """
+        The threshold for warn-level alerts.
+        """
+        return pulumi.get(self, "threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> _builtins.str:
+        """
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -10644,11 +11042,17 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnResult(dict):
 class GetMonitorGroupInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  instances: Sequence['outputs.GetMonitorGroupInstancesInstanceInstanceResult']):
+        """
+        :param Sequence['GetMonitorGroupInstancesInstanceInstanceArgs'] instances: Instance information added to the Cms Group.
+        """
         pulumi.set(__self__, "instances", instances)
 
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetMonitorGroupInstancesInstanceInstanceResult']:
+        """
+        Instance information added to the Cms Group.
+        """
         return pulumi.get(self, "instances")
 
 
@@ -10659,6 +11063,12 @@ class GetMonitorGroupInstancesInstanceInstanceResult(dict):
                  instance_id: _builtins.str,
                  instance_name: _builtins.str,
                  region_id: _builtins.str):
+        """
+        :param _builtins.str category: The category of instance.
+        :param _builtins.str instance_id: The id of instance.
+        :param _builtins.str instance_name: The name of instance.
+        :param _builtins.str region_id: The region id of instance.
+        """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "instance_name", instance_name)
@@ -10667,21 +11077,33 @@ class GetMonitorGroupInstancesInstanceInstanceResult(dict):
     @_builtins.property
     @pulumi.getter
     def category(self) -> _builtins.str:
+        """
+        The category of instance.
+        """
         return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
+        """
+        The id of instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> _builtins.str:
+        """
+        The name of instance.
+        """
         return pulumi.get(self, "instance_name")
 
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
+        """
+        The region id of instance.
+        """
         return pulumi.get(self, "region_id")
 
 
@@ -10710,9 +11132,9 @@ class GetMonitorGroupsGroupResult(dict):
         :param _builtins.str id: The ID of the Monitor Group.
         :param _builtins.str monitor_group_name: The name of the application group.
         :param _builtins.str service_id: The ID of the Alibaba Cloud service.
-        :param Mapping[str, _builtins.str] tags: A map of tags assigned to the Cms Monitor Group.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to filter the Cms Monitor Group.
         :param Sequence[_builtins.str] template_ids: The alert templates applied to the application group.
-        :param _builtins.str type: The type of the application group.
+        :param _builtins.str type: The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
         """
         pulumi.set(__self__, "bind_url", bind_url)
         pulumi.set(__self__, "contact_groups", contact_groups)
@@ -10803,7 +11225,7 @@ class GetMonitorGroupsGroupResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        A map of tags assigned to the Cms Monitor Group.
+        A mapping of tags to filter the Cms Monitor Group.
         """
         return pulumi.get(self, "tags")
 
@@ -10819,7 +11241,7 @@ class GetMonitorGroupsGroupResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of the application group.
+        The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
         """
         return pulumi.get(self, "type")
 

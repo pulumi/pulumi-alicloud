@@ -11466,6 +11466,8 @@ type GetBucketObjectsObject struct {
 	SseKmsKeyId string `pulumi:"sseKmsKeyId"`
 	// Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
 	StorageClass string `pulumi:"storageClass"`
+	// The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+	XOssHashCrc64ecma string `pulumi:"xOssHashCrc64ecma"`
 }
 
 // GetBucketObjectsObjectInput is an input type that accepts GetBucketObjectsObjectArgs and GetBucketObjectsObjectOutput values.
@@ -11508,6 +11510,8 @@ type GetBucketObjectsObjectArgs struct {
 	SseKmsKeyId pulumi.StringInput `pulumi:"sseKmsKeyId"`
 	// Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+	// The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+	XOssHashCrc64ecma pulumi.StringInput `pulumi:"xOssHashCrc64ecma"`
 }
 
 func (GetBucketObjectsObjectArgs) ElementType() reflect.Type {
@@ -11629,6 +11633,11 @@ func (o GetBucketObjectsObjectOutput) SseKmsKeyId() pulumi.StringOutput {
 // Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
 func (o GetBucketObjectsObjectOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// The CRC64-ECMA checksum of the object content, which is the value of the `x-oss-hash-crc64ecma` response header returned by OSS. Available since v2.1.0.
+func (o GetBucketObjectsObjectOutput) XOssHashCrc64ecma() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.XOssHashCrc64ecma }).(pulumi.StringOutput)
 }
 
 type GetBucketObjectsObjectArrayOutput struct{ *pulumi.OutputState }
@@ -12953,6 +12962,7 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetTablesTable struct {
+	// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 	DefinedColumns []GetTablesTableDefinedColumn `pulumi:"definedColumns"`
 	// ID of the table. The value is `<instance_name>:<table_name>`.
 	Id string `pulumi:"id"`
@@ -12960,7 +12970,7 @@ type GetTablesTable struct {
 	InstanceName string `pulumi:"instanceName"`
 	// The maximum number of versions stored in this table.
 	MaxVersion int `pulumi:"maxVersion"`
-	// The property of `TableMeta` which indicates the structure information of a table.
+	// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 	PrimaryKeys []GetTablesTablePrimaryKey `pulumi:"primaryKeys"`
 	// The table name of the OTS which could not be changed.
 	TableName string `pulumi:"tableName"`
@@ -12980,6 +12990,7 @@ type GetTablesTableInput interface {
 }
 
 type GetTablesTableArgs struct {
+	// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 	DefinedColumns GetTablesTableDefinedColumnArrayInput `pulumi:"definedColumns"`
 	// ID of the table. The value is `<instance_name>:<table_name>`.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -12987,7 +12998,7 @@ type GetTablesTableArgs struct {
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
 	// The maximum number of versions stored in this table.
 	MaxVersion pulumi.IntInput `pulumi:"maxVersion"`
-	// The property of `TableMeta` which indicates the structure information of a table.
+	// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 	PrimaryKeys GetTablesTablePrimaryKeyArrayInput `pulumi:"primaryKeys"`
 	// The table name of the OTS which could not be changed.
 	TableName pulumi.StringInput `pulumi:"tableName"`
@@ -13046,6 +13057,7 @@ func (o GetTablesTableOutput) ToGetTablesTableOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 func (o GetTablesTableOutput) DefinedColumns() GetTablesTableDefinedColumnArrayOutput {
 	return o.ApplyT(func(v GetTablesTable) []GetTablesTableDefinedColumn { return v.DefinedColumns }).(GetTablesTableDefinedColumnArrayOutput)
 }
@@ -13065,7 +13077,7 @@ func (o GetTablesTableOutput) MaxVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetTablesTable) int { return v.MaxVersion }).(pulumi.IntOutput)
 }
 
-// The property of `TableMeta` which indicates the structure information of a table.
+// The property of `TableMeta` which indicates the structure information of a table. Each element contains the following attributes:
 func (o GetTablesTableOutput) PrimaryKeys() GetTablesTablePrimaryKeyArrayOutput {
 	return o.ApplyT(func(v GetTablesTable) []GetTablesTablePrimaryKey { return v.PrimaryKeys }).(GetTablesTablePrimaryKeyArrayOutput)
 }
@@ -13101,7 +13113,9 @@ func (o GetTablesTableArrayOutput) Index(i pulumi.IntInput) GetTablesTableOutput
 }
 
 type GetTablesTableDefinedColumn struct {
+	// Name for defined column.
 	Name string `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 	Type string `pulumi:"type"`
 }
 
@@ -13117,7 +13131,9 @@ type GetTablesTableDefinedColumnInput interface {
 }
 
 type GetTablesTableDefinedColumnArgs struct {
+	// Name for defined column.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -13172,10 +13188,12 @@ func (o GetTablesTableDefinedColumnOutput) ToGetTablesTableDefinedColumnOutputWi
 	return o
 }
 
+// Name for defined column.
 func (o GetTablesTableDefinedColumnOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTableDefinedColumn) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 func (o GetTablesTableDefinedColumnOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTableDefinedColumn) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -13201,7 +13219,9 @@ func (o GetTablesTableDefinedColumnArrayOutput) Index(i pulumi.IntInput) GetTabl
 }
 
 type GetTablesTablePrimaryKey struct {
+	// Name for defined column.
 	Name string `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 	Type string `pulumi:"type"`
 }
 
@@ -13217,7 +13237,9 @@ type GetTablesTablePrimaryKeyInput interface {
 }
 
 type GetTablesTablePrimaryKeyArgs struct {
+	// Name for defined column.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -13272,10 +13294,12 @@ func (o GetTablesTablePrimaryKeyOutput) ToGetTablesTablePrimaryKeyOutputWithCont
 	return o
 }
 
+// Name for defined column.
 func (o GetTablesTablePrimaryKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTablePrimaryKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Type for defined column. `Integer`, `String`, `Binary`, `Double` or `Boolean` is allowed.
 func (o GetTablesTablePrimaryKeyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTablesTablePrimaryKey) string { return v.Type }).(pulumi.StringOutput)
 }

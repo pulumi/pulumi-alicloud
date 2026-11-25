@@ -13,7 +13,7 @@ import (
 
 // This data source provides the function of verifying whether an IP is a CDN node.
 //
-// > **NOTE:** Available in v1.153.0+.
+// > **NOTE:** Available since v1.153.0.
 //
 // ## Example Usage
 //
@@ -60,13 +60,18 @@ type GetIpInfoArgs struct {
 
 // A collection of values returned by getIpInfo.
 type GetIpInfoResult struct {
+	// Whether it belongs to an Alibaba Cloud CDN node.Valid values: `True`, `False`.
 	CdnIp string `pulumi:"cdnIp"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Ip          string `pulumi:"ip"`
-	Isp         string `pulumi:"isp"`
-	IspEname    string `pulumi:"ispEname"`
-	Region      string `pulumi:"region"`
+	Id string `pulumi:"id"`
+	Ip string `pulumi:"ip"`
+	// The operator's Chinese name, e.g. `电信`.
+	Isp string `pulumi:"isp"`
+	// The operator's English name, e.g. `telecom`.
+	IspEname string `pulumi:"ispEname"`
+	// Chinese name of the region, e.g. `中国-贵州省-贵阳市`.
+	Region string `pulumi:"region"`
+	// English name of the region, e.g. `China-Guizhou-guiyang`.
 	RegionEname string `pulumi:"regionEname"`
 }
 
@@ -100,6 +105,7 @@ func (o GetIpInfoResultOutput) ToGetIpInfoResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Whether it belongs to an Alibaba Cloud CDN node.Valid values: `True`, `False`.
 func (o GetIpInfoResultOutput) CdnIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpInfoResult) string { return v.CdnIp }).(pulumi.StringOutput)
 }
@@ -113,18 +119,22 @@ func (o GetIpInfoResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpInfoResult) string { return v.Ip }).(pulumi.StringOutput)
 }
 
+// The operator's Chinese name, e.g. `电信`.
 func (o GetIpInfoResultOutput) Isp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpInfoResult) string { return v.Isp }).(pulumi.StringOutput)
 }
 
+// The operator's English name, e.g. `telecom`.
 func (o GetIpInfoResultOutput) IspEname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpInfoResult) string { return v.IspEname }).(pulumi.StringOutput)
 }
 
+// Chinese name of the region, e.g. `中国-贵州省-贵阳市`.
 func (o GetIpInfoResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpInfoResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// English name of the region, e.g. `China-Guizhou-guiyang`.
 func (o GetIpInfoResultOutput) RegionEname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpInfoResult) string { return v.RegionEname }).(pulumi.StringOutput)
 }

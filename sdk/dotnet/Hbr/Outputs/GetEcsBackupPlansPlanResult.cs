@@ -17,11 +17,17 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// Backup type. Valid values: `COMPLETE`.
         /// </summary>
         public readonly string BackupType;
+        /// <summary>
+        /// The creation time of the backup plan. UNIX time in seconds.
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// The creation time of the backup plan. UNIX time in seconds.
         /// </summary>
         public readonly string CreatedTime;
+        /// <summary>
+        /// The detail of the backup plan.
+        /// </summary>
         public readonly string Detail;
         /// <summary>
         /// Whether to be suspended. Valid values: `True`, `False`.
@@ -48,7 +54,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Include;
         /// <summary>
-        /// The ID of ECS instance.
+        /// The ECS instance ID of the EcsBackupPlan used.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
@@ -65,7 +71,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string Retention;
         /// <summary>
         /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-        /// * `startTime` Backup start time, UNIX time seconds.
+        /// - `startTime` Backup start time, UNIX time seconds.
         /// </summary>
         public readonly string Schedule;
         /// <summary>
@@ -81,7 +87,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string UpdatedTime;
         /// <summary>
-        /// The ID of Backup vault.
+        /// The Vault ID of the EcsBackupPlan used.
         /// </summary>
         public readonly string VaultId;
 

@@ -58,11 +58,11 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string RouteLimit;
         /// <summary>
-        /// The ID of the VBR.
+        /// The ID of the virtual border router (VBR) that is associated with the BGP group.
         /// </summary>
         public readonly string RouterId;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
         /// </summary>
         public readonly string Status;
 

@@ -305,7 +305,7 @@ public final class AlicloudFunctions {
     /**
      * This data source provides the identity of the current user.
      * 
-     * &gt; **NOTE:** Available in 1.65.0+.
+     * &gt; **NOTE:** Available since v1.65.0.
      * 
      * ## Example Usage
      * 
@@ -345,7 +345,7 @@ public final class AlicloudFunctions {
     /**
      * This data source provides the identity of the current user.
      * 
-     * &gt; **NOTE:** Available in 1.65.0+.
+     * &gt; **NOTE:** Available since v1.65.0.
      * 
      * ## Example Usage
      * 
@@ -385,7 +385,7 @@ public final class AlicloudFunctions {
     /**
      * This data source provides the identity of the current user.
      * 
-     * &gt; **NOTE:** Available in 1.65.0+.
+     * &gt; **NOTE:** Available since v1.65.0.
      * 
      * ## Example Usage
      * 
@@ -425,7 +425,7 @@ public final class AlicloudFunctions {
     /**
      * This data source provides the identity of the current user.
      * 
-     * &gt; **NOTE:** Available in 1.65.0+.
+     * &gt; **NOTE:** Available since v1.65.0.
      * 
      * ## Example Usage
      * 
@@ -465,7 +465,7 @@ public final class AlicloudFunctions {
     /**
      * This data source provides the identity of the current user.
      * 
-     * &gt; **NOTE:** Available in 1.65.0+.
+     * &gt; **NOTE:** Available since v1.65.0.
      * 
      * ## Example Usage
      * 
@@ -505,7 +505,7 @@ public final class AlicloudFunctions {
     /**
      * This data source provides the identity of the current user.
      * 
-     * &gt; **NOTE:** Available in 1.65.0+.
+     * &gt; **NOTE:** Available since v1.65.0.
      * 
      * ## Example Usage
      * 
@@ -545,7 +545,7 @@ public final class AlicloudFunctions {
     /**
      * This data source provides the identity of the current user.
      * 
-     * &gt; **NOTE:** Available in 1.65.0+.
+     * &gt; **NOTE:** Available since v1.65.0.
      * 
      * ## Example Usage
      * 
@@ -2061,6 +2061,8 @@ public final class AlicloudFunctions {
     /**
      * This data source provides Alibaba Cloud regions.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2101,6 +2103,8 @@ public final class AlicloudFunctions {
     }
     /**
      * This data source provides Alibaba Cloud regions.
+     * 
+     * &gt; **NOTE:** Available since v0.1.0
      * 
      * ## Example Usage
      * 
@@ -2143,6 +2147,8 @@ public final class AlicloudFunctions {
     /**
      * This data source provides Alibaba Cloud regions.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2183,6 +2189,8 @@ public final class AlicloudFunctions {
     }
     /**
      * This data source provides Alibaba Cloud regions.
+     * 
+     * &gt; **NOTE:** Available since v0.1.0
      * 
      * ## Example Usage
      * 
@@ -2225,6 +2233,8 @@ public final class AlicloudFunctions {
     /**
      * This data source provides Alibaba Cloud regions.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2265,6 +2275,8 @@ public final class AlicloudFunctions {
     }
     /**
      * This data source provides Alibaba Cloud regions.
+     * 
+     * &gt; **NOTE:** Available since v0.1.0
      * 
      * ## Example Usage
      * 
@@ -2307,6 +2319,8 @@ public final class AlicloudFunctions {
     /**
      * This data source provides Alibaba Cloud regions.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2347,6 +2361,8 @@ public final class AlicloudFunctions {
     }
     /**
      * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available since v0.1.0
      * 
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
@@ -2392,6 +2408,8 @@ public final class AlicloudFunctions {
     /**
      * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
@@ -2435,6 +2453,8 @@ public final class AlicloudFunctions {
     }
     /**
      * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available since v0.1.0
      * 
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
@@ -2480,6 +2500,8 @@ public final class AlicloudFunctions {
     /**
      * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
@@ -2523,6 +2545,8 @@ public final class AlicloudFunctions {
     }
     /**
      * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available since v0.1.0
      * 
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
@@ -2568,6 +2592,8 @@ public final class AlicloudFunctions {
     /**
      * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
+     * &gt; **NOTE:** Available since v0.1.0
+     * 
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
@@ -2611,6 +2637,8 @@ public final class AlicloudFunctions {
     }
     /**
      * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * 
+     * &gt; **NOTE:** Available since v0.1.0
      * 
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 

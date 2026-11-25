@@ -30,55 +30,25 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// 
         /// The `main.tf`:
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// using Std = Pulumi.Std;
+        /// ```text
+        /// resource "alicloud_cs_managed_kubernetes" "k8s" {
+        /// # ... other configuration ...
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var k8s = new AliCloud.CS.ManagedKubernetes("k8s", new()
-        ///     {
-        ///         Addons = .Select(entry =&gt; 
-        ///         {
-        ///             return new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
-        ///             {
-        ///                 Name = Output.Create(Std.Lookup.Invoke(new()
-        ///                 {
-        ///                     Map = entry.Value,
-        ///                     Key = "name",
-        ///                     Default = clusterAddons,
-        ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
-        ///                 Config = Output.Create(Std.Lookup.Invoke(new()
-        ///                 {
-        ///                     Map = entry.Value,
-        ///                     Key = "config",
-        ///                     Default = clusterAddons,
-        ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
-        ///                 Version = Output.Create(Std.Lookup.Invoke(new()
-        ///                 {
-        ///                     Map = entry.Value,
-        ///                     Key = "version",
-        ///                     Default = clusterAddons,
-        ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
-        ///                 Disabled = Output.Create(Std.Lookup.Invoke(new()
-        ///                 {
-        ///                     Map = entry.Value,
-        ///                     Key = "disabled",
-        ///                     Default = clusterAddons,
-        ///                 }).Apply(invoke =&gt; invoke.Result)).Apply(x =&gt; x == "true"),
-        ///             };
-        ///         }).ToList(),
-        ///     });
-        /// 
-        /// });
+        /// dynamic "addons" {
+        /// for_each = var.cluster_addons
+        /// content {
+        /// name     = lookup(addons.value, "name", var.cluster_addons)
+        /// config   = lookup(addons.value, "config", var.cluster_addons)
+        /// version  = lookup(addons.value, "version", var.cluster_addons)
+        /// disabled = lookup(addons.value, "disabled", var.cluster_addons)
+        /// }
+        /// }
+        /// }
         /// ```
         /// 
         /// The `varibales.tf`:
         /// 
-        /// ```
+        /// ```text
         /// # Network-flannel is required, Conflicts With Network-terway
         /// variable "cluster_addons" {
         /// description = "Addon components in kubernetes cluster"

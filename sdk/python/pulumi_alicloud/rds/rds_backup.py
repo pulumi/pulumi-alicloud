@@ -174,6 +174,7 @@ class RdsBackupArgs:
 class _RdsBackupState:
     def __init__(__self__, *,
                  backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_method: pulumi.Input[Optional[_builtins.str]] = None,
                  backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  backup_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -187,6 +188,7 @@ class _RdsBackupState:
         Input properties used for looking up and filtering RdsBackup resources.
 
         :param pulumi.Input[_builtins.str] backup_id: The backup set ID.
+        :param pulumi.Input[_builtins.str] backup_job_id: (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
         :param pulumi.Input[_builtins.str] backup_method: The backup type. Valid values:
                * `Logical`: logical backup (supported only for MySQL)
                * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
@@ -216,6 +218,8 @@ class _RdsBackupState:
         """
         if backup_id is not None:
             pulumi.set(__self__, "backup_id", backup_id)
+        if backup_job_id is not None:
+            pulumi.set(__self__, "backup_job_id", backup_job_id)
         if backup_method is not None:
             pulumi.set(__self__, "backup_method", backup_method)
         if backup_retention_period is not None:
@@ -246,6 +250,18 @@ class _RdsBackupState:
     @backup_id.setter
     def backup_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupJobId")
+    def backup_job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+        """
+        return pulumi.get(self, "backup_job_id")
+
+    @backup_job_id.setter
+    def backup_job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backup_job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="backupMethod")
@@ -537,6 +553,7 @@ class RdsBackup(pulumi.CustomResource):
             __props__.__dict__["db_name"] = db_name
             __props__.__dict__["remove_from_state"] = remove_from_state
             __props__.__dict__["backup_id"] = None
+            __props__.__dict__["backup_job_id"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["store_status"] = None
         super(RdsBackup, __self__).__init__(
@@ -550,6 +567,7 @@ class RdsBackup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_job_id: pulumi.Input[Optional[_builtins.str]] = None,
             backup_method: pulumi.Input[Optional[_builtins.str]] = None,
             backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
             backup_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -567,6 +585,7 @@ class RdsBackup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_id: The backup set ID.
+        :param pulumi.Input[_builtins.str] backup_job_id: (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
         :param pulumi.Input[_builtins.str] backup_method: The backup type. Valid values:
                * `Logical`: logical backup (supported only for MySQL)
                * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
@@ -599,6 +618,7 @@ class RdsBackup(pulumi.CustomResource):
         __props__ = _RdsBackupState.__new__(_RdsBackupState)
 
         __props__.__dict__["backup_id"] = backup_id
+        __props__.__dict__["backup_job_id"] = backup_job_id
         __props__.__dict__["backup_method"] = backup_method
         __props__.__dict__["backup_retention_period"] = backup_retention_period
         __props__.__dict__["backup_strategy"] = backup_strategy
@@ -614,6 +634,7 @@ class RdsBackup(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_job_id: pulumi.Input[Optional[_builtins.str]] = None,
             backup_method: pulumi.Input[Optional[_builtins.str]] = None,
             backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
             backup_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -625,6 +646,7 @@ class RdsBackup(pulumi.CustomResource):
             store_status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["backupId"] = backup_id
+        __props__["backupJobId"] = backup_job_id
         __props__["backupMethod"] = backup_method
         __props__["backupRetentionPeriod"] = backup_retention_period
         __props__["backupStrategy"] = backup_strategy
@@ -643,6 +665,14 @@ class RdsBackup(pulumi.CustomResource):
         The backup set ID.
         """
         return pulumi.get(self, "backup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="backupJobId")
+    def backup_job_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+        """
+        return pulumi.get(self, "backup_job_id")
 
     @_builtins.property
     @pulumi.getter(name="backupMethod")

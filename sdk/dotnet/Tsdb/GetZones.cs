@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Tsdb
         /// <summary>
         /// This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// &gt; **NOTE:** Available since v1.112.0.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Tsdb
         /// <summary>
         /// This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// &gt; **NOTE:** Available since v1.112.0.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Tsdb
         /// <summary>
         /// This data source provides the available zones with the Time Series Database (TSDB) Instance of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.112.0+.
+        /// &gt; **NOTE:** Available since v1.112.0.
         /// 
         /// ## Example Usage
         /// 
@@ -136,8 +136,14 @@ namespace Pulumi.AliCloud.Tsdb
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of TSDB instance zone IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of TSDB Instance zones. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
 
         [OutputConstructor]

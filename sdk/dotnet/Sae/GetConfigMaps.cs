@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Config Maps of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Config Maps of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// This data source provides the Sae Config Maps of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -260,9 +260,18 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Sae Config Maps. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConfigMapsMapResult> Maps;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Config Map names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
+        /// <summary>
+        /// The NamespaceId of Config Maps.
+        /// </summary>
         public readonly string NamespaceId;
         public readonly string? OutputFile;
 

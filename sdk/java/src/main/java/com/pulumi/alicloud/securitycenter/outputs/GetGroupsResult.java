@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGroupsResult {
+    /**
+     * @return A list of Security Center Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,10 +26,18 @@ public final class GetGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetGroupsResult() {}
+    /**
+     * @return A list of Security Center Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetGroupsGroup> groups() {
         return this.groups;
     }
@@ -42,6 +54,10 @@ public final class GetGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

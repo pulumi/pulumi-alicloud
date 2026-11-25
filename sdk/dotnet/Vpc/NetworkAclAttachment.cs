@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> NetworkAclId { get; private set; } = null!;
 
         /// <summary>
-        /// List of the resources associated with the network acl. The details see Block Resources.
+        /// List of the resources associated with the network acl. See `Resources` below.
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<Outputs.NetworkAclAttachmentResource>> Resources { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclAttachmentResourceArgs>? _resources;
 
         /// <summary>
-        /// List of the resources associated with the network acl. The details see Block Resources.
+        /// List of the resources associated with the network acl. See `Resources` below.
         /// </summary>
         public InputList<Inputs.NetworkAclAttachmentResourceArgs> Resources
         {
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclAttachmentResourceGetArgs>? _resources;
 
         /// <summary>
-        /// List of the resources associated with the network acl. The details see Block Resources.
+        /// List of the resources associated with the network acl. See `Resources` below.
         /// </summary>
         public InputList<Inputs.NetworkAclAttachmentResourceGetArgs> Resources
         {

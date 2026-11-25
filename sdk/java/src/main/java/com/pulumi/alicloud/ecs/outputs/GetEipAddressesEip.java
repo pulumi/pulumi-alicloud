@@ -12,10 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class GetEipAddressesEip {
     /**
-     * @return The maximum bandwidth of the EIP. Unit: Mbit/s.
+     * @return The maximum bandwidth of the EIP.
      * 
      */
     private String bandwidth;
+    /**
+     * @return The time when the EIP was created.
+     * 
+     */
     private String creationTime;
     /**
      * @return Indicates whether deletion protection is enabled.
@@ -23,7 +27,7 @@ public final class GetEipAddressesEip {
      */
     private Boolean deletionProtection;
     /**
-     * @return The ID of the Address.
+     * @return The ID of the EIP.
      * 
      */
     private String id;
@@ -55,12 +59,16 @@ public final class GetEipAddressesEip {
 
     private GetEipAddressesEip() {}
     /**
-     * @return The maximum bandwidth of the EIP. Unit: Mbit/s.
+     * @return The maximum bandwidth of the EIP.
      * 
      */
     public String bandwidth() {
         return this.bandwidth;
     }
+    /**
+     * @return The time when the EIP was created.
+     * 
+     */
     public String creationTime() {
         return this.creationTime;
     }
@@ -72,7 +80,7 @@ public final class GetEipAddressesEip {
         return this.deletionProtection;
     }
     /**
-     * @return The ID of the Address.
+     * @return The ID of the EIP.
      * 
      */
     public String id() {

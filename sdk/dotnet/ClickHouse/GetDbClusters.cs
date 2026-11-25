@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House DBCluster of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House DBCluster of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House DBCluster of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -249,7 +249,13 @@ namespace Pulumi.AliCloud.ClickHouse
     [OutputType]
     public sealed class GetDbClustersResult
     {
+        /// <summary>
+        /// A list of Click House DBClusters. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDbClustersClusterResult> Clusters;
+        /// <summary>
+        /// The DBCluster description.
+        /// </summary>
         public readonly string? DbClusterDescription;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -258,6 +264,9 @@ namespace Pulumi.AliCloud.ClickHouse
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

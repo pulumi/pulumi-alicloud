@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.188.0+.
+// > **NOTE:** Available since v1.188.0+.
 //
 // ## Example Usage
 //
@@ -76,18 +76,24 @@ type GetTransitRouterPrefixListAssociationsArgs struct {
 
 // A collection of values returned by getTransitRouterPrefixListAssociations.
 type GetTransitRouterPrefixListAssociationsResult struct {
+	// A list of Cen Transit Router Prefix List Associations. Each element contains the following attributes:
 	Associations []GetTransitRouterPrefixListAssociationsAssociation `pulumi:"associations"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                   string   `pulumi:"id"`
-	Ids                  []string `pulumi:"ids"`
-	OutputFile           *string  `pulumi:"outputFile"`
-	OwnerUid             *int     `pulumi:"ownerUid"`
-	PageNumber           *int     `pulumi:"pageNumber"`
-	PageSize             *int     `pulumi:"pageSize"`
-	PrefixListId         *string  `pulumi:"prefixListId"`
-	Status               *string  `pulumi:"status"`
-	TransitRouterId      string   `pulumi:"transitRouterId"`
-	TransitRouterTableId string   `pulumi:"transitRouterTableId"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The ID of the Alibaba Cloud account to which the prefix list belongs.
+	OwnerUid   *int `pulumi:"ownerUid"`
+	PageNumber *int `pulumi:"pageNumber"`
+	PageSize   *int `pulumi:"pageSize"`
+	// The ID of the prefix list.
+	PrefixListId *string `pulumi:"prefixListId"`
+	// The status of the prefix list.
+	Status *string `pulumi:"status"`
+	// The ID of the transit router.
+	TransitRouterId string `pulumi:"transitRouterId"`
+	// The ID of the route table of the transit router.
+	TransitRouterTableId string `pulumi:"transitRouterTableId"`
 }
 
 func GetTransitRouterPrefixListAssociationsOutput(ctx *pulumi.Context, args GetTransitRouterPrefixListAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterPrefixListAssociationsResultOutput {
@@ -134,6 +140,7 @@ func (o GetTransitRouterPrefixListAssociationsResultOutput) ToGetTransitRouterPr
 	return o
 }
 
+// A list of Cen Transit Router Prefix List Associations. Each element contains the following attributes:
 func (o GetTransitRouterPrefixListAssociationsResultOutput) Associations() GetTransitRouterPrefixListAssociationsAssociationArrayOutput {
 	return o.ApplyT(func(v GetTransitRouterPrefixListAssociationsResult) []GetTransitRouterPrefixListAssociationsAssociation {
 		return v.Associations
@@ -153,6 +160,7 @@ func (o GetTransitRouterPrefixListAssociationsResultOutput) OutputFile() pulumi.
 	return o.ApplyT(func(v GetTransitRouterPrefixListAssociationsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the Alibaba Cloud account to which the prefix list belongs.
 func (o GetTransitRouterPrefixListAssociationsResultOutput) OwnerUid() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterPrefixListAssociationsResult) *int { return v.OwnerUid }).(pulumi.IntPtrOutput)
 }
@@ -165,18 +173,22 @@ func (o GetTransitRouterPrefixListAssociationsResultOutput) PageSize() pulumi.In
 	return o.ApplyT(func(v GetTransitRouterPrefixListAssociationsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The ID of the prefix list.
 func (o GetTransitRouterPrefixListAssociationsResultOutput) PrefixListId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterPrefixListAssociationsResult) *string { return v.PrefixListId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the prefix list.
 func (o GetTransitRouterPrefixListAssociationsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterPrefixListAssociationsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the transit router.
 func (o GetTransitRouterPrefixListAssociationsResultOutput) TransitRouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterPrefixListAssociationsResult) string { return v.TransitRouterId }).(pulumi.StringOutput)
 }
 
+// The ID of the route table of the transit router.
 func (o GetTransitRouterPrefixListAssociationsResultOutput) TransitRouterTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterPrefixListAssociationsResult) string { return v.TransitRouterTableId }).(pulumi.StringOutput)
 }

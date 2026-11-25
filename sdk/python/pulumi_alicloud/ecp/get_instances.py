@@ -95,26 +95,41 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[_builtins.str]:
+        """
+        The ID Of The Image.
+        """
         return pulumi.get(self, "image_id")
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[_builtins.str]:
+        """
+        Instance Name.
+        """
         return pulumi.get(self, "instance_name")
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[_builtins.str]:
+        """
+        Instance Type.
+        """
         return pulumi.get(self, "instance_type")
 
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        A list of Ecp Instances. Each element contains the following attributes:
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[_builtins.str]:
+        """
+        The Key Name.
+        """
         return pulumi.get(self, "key_pair_name")
 
     @_builtins.property
@@ -125,6 +140,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Instance names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -135,21 +153,33 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[_builtins.str]:
+        """
+        The payment type of the instance.
+        """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter
     def resolution(self) -> Optional[_builtins.str]:
+        """
+        Resolution.
+        """
         return pulumi.get(self, "resolution")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        Instance Status.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The zone ID of the instance.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -192,7 +222,7 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
     """
     This data source provides the Ecp Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.158.0+.
+    > **NOTE:** Available since v1.158.0.
 
     ## Example Usage
 
@@ -229,6 +259,7 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
     ```
 
 
+    :param _builtins.bool enable_details: Specifies whether to fetch the VNC login address of the instance. Default value: `false`.
     :param Sequence[_builtins.str] ids: A list of Ecp Instances IDs.
     :param _builtins.str image_id: The ID Of The Image.
     :param _builtins.str instance_name: The name of the instance. It must be 2 to 128 characters in length and must start with an
@@ -243,6 +274,7 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
     :param _builtins.str resolution: The selected resolution for the cloud mobile phone instance.
     :param _builtins.str status: Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
            .
+    :param _builtins.str zone_id: The zone ID of the ECP instance.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -292,7 +324,7 @@ def get_instances_output(enable_details: pulumi.Input[Optional[Optional[_builtin
     """
     This data source provides the Ecp Instances of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.158.0+.
+    > **NOTE:** Available since v1.158.0.
 
     ## Example Usage
 
@@ -329,6 +361,7 @@ def get_instances_output(enable_details: pulumi.Input[Optional[Optional[_builtin
     ```
 
 
+    :param _builtins.bool enable_details: Specifies whether to fetch the VNC login address of the instance. Default value: `false`.
     :param Sequence[_builtins.str] ids: A list of Ecp Instances IDs.
     :param _builtins.str image_id: The ID Of The Image.
     :param _builtins.str instance_name: The name of the instance. It must be 2 to 128 characters in length and must start with an
@@ -343,6 +376,7 @@ def get_instances_output(enable_details: pulumi.Input[Optional[Optional[_builtin
     :param _builtins.str resolution: The selected resolution for the cloud mobile phone instance.
     :param _builtins.str status: Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
            .
+    :param _builtins.str zone_id: The zone ID of the ECP instance.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

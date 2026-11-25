@@ -1312,7 +1312,7 @@ class GetAccountsAccountResult(dict):
         :param Sequence['GetAccountsAccountDatabasePrivilegeArgs'] database_privileges: A list of database permissions the account has.
         :param _builtins.str id: The ID of the Account.
         :param _builtins.str priv_exceeded: Whether the maximum number of databases managed by the account is exceeded.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: `Available`, `Unavailable`.
         """
         pulumi.set(__self__, "account_description", account_description)
         pulumi.set(__self__, "account_name", account_name)
@@ -1374,7 +1374,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `Available`, `Unavailable`.
         """
         return pulumi.get(self, "status")
 
@@ -1426,9 +1426,9 @@ class GetCollationTimeZonesCollationTimeZoneResult(dict):
                  standard_time_offset: Optional[_builtins.str] = None,
                  time_zone: Optional[_builtins.str] = None):
         """
-        :param _builtins.str description: The code of the instance type.
-        :param _builtins.str standard_time_offset: The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
-        :param _builtins.str time_zone: The time zone that is available for use in ApsaraDB RDS.
+        :param _builtins.str description: The description.
+        :param _builtins.str standard_time_offset: The offset of the UTC time.
+        :param _builtins.str time_zone: The time zone.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -1441,7 +1441,7 @@ class GetCollationTimeZonesCollationTimeZoneResult(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        The code of the instance type.
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -1449,7 +1449,7 @@ class GetCollationTimeZonesCollationTimeZoneResult(dict):
     @pulumi.getter(name="standardTimeOffset")
     def standard_time_offset(self) -> Optional[_builtins.str]:
         """
-        The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
+        The offset of the UTC time.
         """
         return pulumi.get(self, "standard_time_offset")
 
@@ -1457,7 +1457,7 @@ class GetCollationTimeZonesCollationTimeZoneResult(dict):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[_builtins.str]:
         """
-        The time zone that is available for use in ApsaraDB RDS.
+        The time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -1509,7 +1509,9 @@ class GetCrossRegionBackupsBackupResult(dict):
         :param _builtins.str consistent_time: The point in time that is indicated by the data in the cross-region data backup file.
         :param _builtins.str cross_backup_download_link: The external URL from which you can download the cross-region data backup file.
         :param _builtins.str cross_backup_id: The ID of the cross-region data backup file.
-        :param _builtins.str cross_backup_region: The ID of the destination region where the cross-region data backup file of the instance is stored.
+        :param _builtins.str cross_backup_region: The ID of the destination region where the cross-region data backup file is stored.
+               
+               > **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
         :param _builtins.str cross_backup_set_file: The name of the compressed package that contains the cross-region data backup file.
         :param _builtins.str cross_backup_set_location: The location where the cross-region data backup file is stored.
         :param _builtins.int cross_backup_set_size: The size of the cross-region data backup file. Unit: bytes.
@@ -1640,7 +1642,9 @@ class GetCrossRegionBackupsBackupResult(dict):
     @pulumi.getter(name="crossBackupRegion")
     def cross_backup_region(self) -> _builtins.str:
         """
-        The ID of the destination region where the cross-region data backup file of the instance is stored.
+        The ID of the destination region where the cross-region data backup file is stored.
+
+        > **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
         """
         return pulumi.get(self, "cross_backup_region")
 
@@ -3017,17 +3021,10 @@ class GetRdsBackupsBackupResult(dict):
                * **User**: manually initiated by the User.
         :param _builtins.str backup_intranet_download_url: The backup intranet download url.
         :param _builtins.str backup_method: BackupMethod.
-        :param _builtins.str backup_mode: BackupMode.
+        :param _builtins.str backup_mode: BackupMode. Valid values: `Automated` and `Manual`.
         :param _builtins.str backup_size: BackupSize.
         :param _builtins.str backup_start_time: BackupStartTime.
-        :param _builtins.str backup_status: Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-               * **NoStart**: Not started
-               * **Checking**: check the backup
-               * **Preparing**: Prepare a backup
-               * **Waiting**: Waiting for backup
-               * **Uploading**: Upload backup
-               * **Finished**: Complete backup
-               * **Failed**: backup Failed
+        :param _builtins.str backup_status: Backup task status. Valid values: `Automated` and `Manual`.
         :param _builtins.str backup_type: BackupType.
         :param _builtins.str consistent_time: The consistency point of the backup set. The return value is a timestamp. **NOTE:** only MySQL 5.6 returns this parameter, and other versions return 0.
         :param _builtins.str copy_only_backup: The backup mode is divided into the normal backup mode (full and incremental recovery is supported) and the replication-only mode (full recovery is supported only). **NOTE:** Only SQL Server returns this parameter. Valid values:
@@ -3125,7 +3122,7 @@ class GetRdsBackupsBackupResult(dict):
     @pulumi.getter(name="backupMode")
     def backup_mode(self) -> _builtins.str:
         """
-        BackupMode.
+        BackupMode. Valid values: `Automated` and `Manual`.
         """
         return pulumi.get(self, "backup_mode")
 
@@ -3149,14 +3146,7 @@ class GetRdsBackupsBackupResult(dict):
     @pulumi.getter(name="backupStatus")
     def backup_status(self) -> _builtins.str:
         """
-        Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-        * **NoStart**: Not started
-        * **Checking**: check the backup
-        * **Preparing**: Prepare a backup
-        * **Waiting**: Waiting for backup
-        * **Uploading**: Upload backup
-        * **Finished**: Complete backup
-        * **Failed**: backup Failed
+        Backup task status. Valid values: `Automated` and `Manual`.
         """
         return pulumi.get(self, "backup_status")
 
@@ -3271,6 +3261,21 @@ class GetRdsParameterGroupsGroupResult(dict):
                  parameter_group_id: _builtins.str,
                  parameter_group_name: _builtins.str,
                  parameter_group_type: _builtins.int):
+        """
+        :param _builtins.str engine: The database engine.
+        :param _builtins.str engine_version: The version of the database engine.
+        :param _builtins.int force_restart: Indicates whether applying the parameter template requires the instance to be restarted. Valid values: `0`: A restart is not required. `1`: A restart is required.
+        :param _builtins.str id: The ID of the Parameter Group.
+        :param _builtins.int param_counts: The number of parameters in the parameter template.
+        :param Sequence['GetRdsParameterGroupsGroupParamDetailArgs'] param_details: Parameter list.
+        :param _builtins.str parameter_group_desc: The description of the parameter template.
+        :param _builtins.str parameter_group_id: The ParameterGroupId of the Parameter Group.
+        :param _builtins.str parameter_group_name: The name of the parameter template.
+        :param _builtins.int parameter_group_type: The type of the parameter template. Valid values:
+               `0`: indicates a default parameter template.
+               `1`: indicates a custom parameter template.
+               `2`: an automatic backup parameter template. After you apply this type of template to an RDS instance, the system automatically backs up the parameter settings of that instance and saves the data backup as a template.
+        """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "engine_version", engine_version)
         pulumi.set(__self__, "force_restart", force_restart)
@@ -3285,51 +3290,84 @@ class GetRdsParameterGroupsGroupResult(dict):
     @_builtins.property
     @pulumi.getter
     def engine(self) -> _builtins.str:
+        """
+        The database engine.
+        """
         return pulumi.get(self, "engine")
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> _builtins.str:
+        """
+        The version of the database engine.
+        """
         return pulumi.get(self, "engine_version")
 
     @_builtins.property
     @pulumi.getter(name="forceRestart")
     def force_restart(self) -> _builtins.int:
+        """
+        Indicates whether applying the parameter template requires the instance to be restarted. Valid values: `0`: A restart is not required. `1`: A restart is required.
+        """
         return pulumi.get(self, "force_restart")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the Parameter Group.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="paramCounts")
     def param_counts(self) -> _builtins.int:
+        """
+        The number of parameters in the parameter template.
+        """
         return pulumi.get(self, "param_counts")
 
     @_builtins.property
     @pulumi.getter(name="paramDetails")
     def param_details(self) -> Sequence['outputs.GetRdsParameterGroupsGroupParamDetailResult']:
+        """
+        Parameter list.
+        """
         return pulumi.get(self, "param_details")
 
     @_builtins.property
     @pulumi.getter(name="parameterGroupDesc")
     def parameter_group_desc(self) -> _builtins.str:
+        """
+        The description of the parameter template.
+        """
         return pulumi.get(self, "parameter_group_desc")
 
     @_builtins.property
     @pulumi.getter(name="parameterGroupId")
     def parameter_group_id(self) -> _builtins.str:
+        """
+        The ParameterGroupId of the Parameter Group.
+        """
         return pulumi.get(self, "parameter_group_id")
 
     @_builtins.property
     @pulumi.getter(name="parameterGroupName")
     def parameter_group_name(self) -> _builtins.str:
+        """
+        The name of the parameter template.
+        """
         return pulumi.get(self, "parameter_group_name")
 
     @_builtins.property
     @pulumi.getter(name="parameterGroupType")
     def parameter_group_type(self) -> _builtins.int:
+        """
+        The type of the parameter template. Valid values:
+        `0`: indicates a default parameter template.
+        `1`: indicates a custom parameter template.
+        `2`: an automatic backup parameter template. After you apply this type of template to an RDS instance, the system automatically backs up the parameter settings of that instance and saves the data backup as a template.
+        """
         return pulumi.get(self, "parameter_group_type")
 
 
@@ -3338,17 +3376,27 @@ class GetRdsParameterGroupsGroupParamDetailResult(dict):
     def __init__(__self__, *,
                  param_name: _builtins.str,
                  param_value: _builtins.str):
+        """
+        :param _builtins.str param_name: The value of a parameter.
+        :param _builtins.str param_value: The name of a parameter.
+        """
         pulumi.set(__self__, "param_name", param_name)
         pulumi.set(__self__, "param_value", param_value)
 
     @_builtins.property
     @pulumi.getter(name="paramName")
     def param_name(self) -> _builtins.str:
+        """
+        The value of a parameter.
+        """
         return pulumi.get(self, "param_name")
 
     @_builtins.property
     @pulumi.getter(name="paramValue")
     def param_value(self) -> _builtins.str:
+        """
+        The name of a parameter.
+        """
         return pulumi.get(self, "param_value")
 
 

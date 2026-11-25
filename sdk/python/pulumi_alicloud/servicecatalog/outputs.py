@@ -862,27 +862,31 @@ class GetProvisionedProductsProductResult(dict):
                  stack_region_id: _builtins.str,
                  status: _builtins.str,
                  status_message: _builtins.str,
-                 tags: Optional[Mapping[str, _builtins.str]] = None):
+                 tags: Mapping[str, _builtins.str]):
         """
         :param _builtins.str create_time: The creation time of the product instance
+        :param _builtins.str id: The ID of the provisioned product.
         :param _builtins.str last_provisioning_task_id: The ID of the last instance operation task
         :param _builtins.str last_successful_provisioning_task_id: The ID of the last successful instance operation task
         :param _builtins.str last_task_id: The ID of the last task
+        :param Sequence['GetProvisionedProductsProductOutputArgs'] outputs: The output value of the template.
         :param _builtins.str owner_principal_id: The RAM entity ID of the owner
         :param _builtins.str owner_principal_type: The RAM entity type of the owner
-        :param _builtins.str portfolio_id: Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+        :param Sequence['GetProvisionedProductsProductParameterArgs'] parameters: The template parameters entered by the user.
+        :param _builtins.str portfolio_id: Product mix ID.
         :param _builtins.str product_id: Product ID.
         :param _builtins.str product_name: The name of the product
         :param _builtins.str product_version_id: Product version ID.
         :param _builtins.str product_version_name: The name of the product version
         :param _builtins.str provisioned_product_arn: The ARN of the product instance
         :param _builtins.str provisioned_product_id: The ID of the instance.
-        :param _builtins.str provisioned_product_name: The name of the instance.The length is 1~128 characters.
-        :param _builtins.str provisioned_product_type: Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+        :param _builtins.str provisioned_product_name: The name of the instance.
+        :param _builtins.str provisioned_product_type: Instance type.
         :param _builtins.str stack_id: The ID of the ROS stack
-        :param _builtins.str stack_region_id: The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+        :param _builtins.str stack_region_id: The ID of the region to which the resource stack belongs.
         :param _builtins.str status: Instance status
         :param _builtins.str status_message: The status message of the product instance
+        :param Mapping[str, _builtins.str] tags: A mapping of tags of the provisioned product.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "id", id)
@@ -906,8 +910,7 @@ class GetProvisionedProductsProductResult(dict):
         pulumi.set(__self__, "stack_region_id", stack_region_id)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "status_message", status_message)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -920,6 +923,9 @@ class GetProvisionedProductsProductResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the provisioned product.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -949,6 +955,9 @@ class GetProvisionedProductsProductResult(dict):
     @_builtins.property
     @pulumi.getter
     def outputs(self) -> Sequence['outputs.GetProvisionedProductsProductOutputResult']:
+        """
+        The output value of the template.
+        """
         return pulumi.get(self, "outputs")
 
     @_builtins.property
@@ -970,13 +979,16 @@ class GetProvisionedProductsProductResult(dict):
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> Sequence['outputs.GetProvisionedProductsProductParameterResult']:
+        """
+        The template parameters entered by the user.
+        """
         return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter(name="portfolioId")
     def portfolio_id(self) -> _builtins.str:
         """
-        Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+        Product mix ID.
         """
         return pulumi.get(self, "portfolio_id")
 
@@ -1032,7 +1044,7 @@ class GetProvisionedProductsProductResult(dict):
     @pulumi.getter(name="provisionedProductName")
     def provisioned_product_name(self) -> _builtins.str:
         """
-        The name of the instance.The length is 1~128 characters.
+        The name of the instance.
         """
         return pulumi.get(self, "provisioned_product_name")
 
@@ -1040,7 +1052,7 @@ class GetProvisionedProductsProductResult(dict):
     @pulumi.getter(name="provisionedProductType")
     def provisioned_product_type(self) -> _builtins.str:
         """
-        Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+        Instance type.
         """
         return pulumi.get(self, "provisioned_product_type")
 
@@ -1056,7 +1068,7 @@ class GetProvisionedProductsProductResult(dict):
     @pulumi.getter(name="stackRegionId")
     def stack_region_id(self) -> _builtins.str:
         """
-        The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+        The ID of the region to which the resource stack belongs.
         """
         return pulumi.get(self, "stack_region_id")
 
@@ -1078,7 +1090,10 @@ class GetProvisionedProductsProductResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags of the provisioned product.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -1088,6 +1103,11 @@ class GetProvisionedProductsProductOutputResult(dict):
                  description: _builtins.str,
                  output_key: _builtins.str,
                  output_value: _builtins.str):
+        """
+        :param _builtins.str description: Description of the output value defined in the template.
+        :param _builtins.str output_key: The name of the output value defined in the template.
+        :param _builtins.str output_value: The content of the output value defined in the template.
+        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "output_key", output_key)
         pulumi.set(__self__, "output_value", output_value)
@@ -1095,16 +1115,25 @@ class GetProvisionedProductsProductOutputResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Description of the output value defined in the template.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="outputKey")
     def output_key(self) -> _builtins.str:
+        """
+        The name of the output value defined in the template.
+        """
         return pulumi.get(self, "output_key")
 
     @_builtins.property
     @pulumi.getter(name="outputValue")
     def output_value(self) -> _builtins.str:
+        """
+        The content of the output value defined in the template.
+        """
         return pulumi.get(self, "output_value")
 
 
@@ -1113,17 +1142,27 @@ class GetProvisionedProductsProductParameterResult(dict):
     def __init__(__self__, *,
                  parameter_key: _builtins.str,
                  parameter_value: _builtins.str):
+        """
+        :param _builtins.str parameter_key: The name of the parameter defined in the template.
+        :param _builtins.str parameter_value: The Template parameter value entered by the user.
+        """
         pulumi.set(__self__, "parameter_key", parameter_key)
         pulumi.set(__self__, "parameter_value", parameter_value)
 
     @_builtins.property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> _builtins.str:
+        """
+        The name of the parameter defined in the template.
+        """
         return pulumi.get(self, "parameter_key")
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> _builtins.str:
+        """
+        The Template parameter value entered by the user.
+        """
         return pulumi.get(self, "parameter_value")
 
 
@@ -1152,27 +1191,31 @@ class GetProvisionedProductsProvisionedProductResult(dict):
                  stack_region_id: _builtins.str,
                  status: _builtins.str,
                  status_message: _builtins.str,
-                 tags: Optional[Mapping[str, _builtins.str]] = None):
+                 tags: Mapping[str, _builtins.str]):
         """
         :param _builtins.str create_time: The creation time of the product instance
+        :param _builtins.str id: The ID of the provisioned product.
         :param _builtins.str last_provisioning_task_id: The ID of the last instance operation task
         :param _builtins.str last_successful_provisioning_task_id: The ID of the last successful instance operation task
         :param _builtins.str last_task_id: The ID of the last task
+        :param Sequence['GetProvisionedProductsProvisionedProductOutputArgs'] outputs: The output value of the template.
         :param _builtins.str owner_principal_id: The RAM entity ID of the owner
         :param _builtins.str owner_principal_type: The RAM entity type of the owner
-        :param _builtins.str portfolio_id: Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+        :param Sequence['GetProvisionedProductsProvisionedProductParameterArgs'] parameters: The template parameters entered by the user.
+        :param _builtins.str portfolio_id: Product mix ID.
         :param _builtins.str product_id: Product ID.
         :param _builtins.str product_name: The name of the product
         :param _builtins.str product_version_id: Product version ID.
         :param _builtins.str product_version_name: The name of the product version
         :param _builtins.str provisioned_product_arn: The ARN of the product instance
         :param _builtins.str provisioned_product_id: The ID of the instance.
-        :param _builtins.str provisioned_product_name: The name of the instance.The length is 1~128 characters.
-        :param _builtins.str provisioned_product_type: Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+        :param _builtins.str provisioned_product_name: The name of the instance.
+        :param _builtins.str provisioned_product_type: Instance type.
         :param _builtins.str stack_id: The ID of the ROS stack
-        :param _builtins.str stack_region_id: The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+        :param _builtins.str stack_region_id: The ID of the region to which the resource stack belongs.
         :param _builtins.str status: Instance status
         :param _builtins.str status_message: The status message of the product instance
+        :param Mapping[str, _builtins.str] tags: A mapping of tags of the provisioned product.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "id", id)
@@ -1196,8 +1239,7 @@ class GetProvisionedProductsProvisionedProductResult(dict):
         pulumi.set(__self__, "stack_region_id", stack_region_id)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "status_message", status_message)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -1210,6 +1252,9 @@ class GetProvisionedProductsProvisionedProductResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the provisioned product.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -1239,6 +1284,9 @@ class GetProvisionedProductsProvisionedProductResult(dict):
     @_builtins.property
     @pulumi.getter
     def outputs(self) -> Sequence['outputs.GetProvisionedProductsProvisionedProductOutputResult']:
+        """
+        The output value of the template.
+        """
         return pulumi.get(self, "outputs")
 
     @_builtins.property
@@ -1260,13 +1308,16 @@ class GetProvisionedProductsProvisionedProductResult(dict):
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> Sequence['outputs.GetProvisionedProductsProvisionedProductParameterResult']:
+        """
+        The template parameters entered by the user.
+        """
         return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter(name="portfolioId")
     def portfolio_id(self) -> _builtins.str:
         """
-        Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+        Product mix ID.
         """
         return pulumi.get(self, "portfolio_id")
 
@@ -1322,7 +1373,7 @@ class GetProvisionedProductsProvisionedProductResult(dict):
     @pulumi.getter(name="provisionedProductName")
     def provisioned_product_name(self) -> _builtins.str:
         """
-        The name of the instance.The length is 1~128 characters.
+        The name of the instance.
         """
         return pulumi.get(self, "provisioned_product_name")
 
@@ -1330,7 +1381,7 @@ class GetProvisionedProductsProvisionedProductResult(dict):
     @pulumi.getter(name="provisionedProductType")
     def provisioned_product_type(self) -> _builtins.str:
         """
-        Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
+        Instance type.
         """
         return pulumi.get(self, "provisioned_product_type")
 
@@ -1346,7 +1397,7 @@ class GetProvisionedProductsProvisionedProductResult(dict):
     @pulumi.getter(name="stackRegionId")
     def stack_region_id(self) -> _builtins.str:
         """
-        The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
+        The ID of the region to which the resource stack belongs.
         """
         return pulumi.get(self, "stack_region_id")
 
@@ -1368,7 +1419,10 @@ class GetProvisionedProductsProvisionedProductResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags of the provisioned product.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -1378,6 +1432,11 @@ class GetProvisionedProductsProvisionedProductOutputResult(dict):
                  description: _builtins.str,
                  output_key: _builtins.str,
                  output_value: _builtins.str):
+        """
+        :param _builtins.str description: Description of the output value defined in the template.
+        :param _builtins.str output_key: The name of the output value defined in the template.
+        :param _builtins.str output_value: The content of the output value defined in the template.
+        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "output_key", output_key)
         pulumi.set(__self__, "output_value", output_value)
@@ -1385,16 +1444,25 @@ class GetProvisionedProductsProvisionedProductOutputResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        Description of the output value defined in the template.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="outputKey")
     def output_key(self) -> _builtins.str:
+        """
+        The name of the output value defined in the template.
+        """
         return pulumi.get(self, "output_key")
 
     @_builtins.property
     @pulumi.getter(name="outputValue")
     def output_value(self) -> _builtins.str:
+        """
+        The content of the output value defined in the template.
+        """
         return pulumi.get(self, "output_value")
 
 
@@ -1403,17 +1471,27 @@ class GetProvisionedProductsProvisionedProductParameterResult(dict):
     def __init__(__self__, *,
                  parameter_key: _builtins.str,
                  parameter_value: _builtins.str):
+        """
+        :param _builtins.str parameter_key: The name of the parameter defined in the template.
+        :param _builtins.str parameter_value: The Template parameter value entered by the user.
+        """
         pulumi.set(__self__, "parameter_key", parameter_key)
         pulumi.set(__self__, "parameter_value", parameter_value)
 
     @_builtins.property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> _builtins.str:
+        """
+        The name of the parameter defined in the template.
+        """
         return pulumi.get(self, "parameter_key")
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> _builtins.str:
+        """
+        The Template parameter value entered by the user.
+        """
         return pulumi.get(self, "parameter_value")
 
 

@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string PubIp;
         /// <summary>
-        /// Status.
+        /// The cluster status.
         /// </summary>
         public readonly string Status;
         /// <summary>

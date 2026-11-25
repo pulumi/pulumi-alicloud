@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         /// <summary>
         /// This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.143.0+.
+        /// &gt; **NOTE:** Available since v1.143.0.
         /// 
         /// ## Example Usage
         /// 
@@ -300,6 +300,9 @@ namespace Pulumi.AliCloud.simpleApplicationServer
     [OutputType]
     public sealed class GetServerSnapshotsResult
     {
+        /// <summary>
+        /// The ID of the source disk. This parameter has a value even after the source disk is released.
+        /// </summary>
         public readonly string? DiskId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -308,9 +311,18 @@ namespace Pulumi.AliCloud.simpleApplicationServer
         public readonly ImmutableArray<string> Ids;
         public readonly string? InstanceId;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Snapshot names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Simple Application Server Snapshots. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServerSnapshotsSnapshotResult> Snapshots;
+        /// <summary>
+        /// The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

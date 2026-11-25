@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
  * 
- * &gt; **NOTE:** Available in 1.42.0+.
+ * &gt; **NOTE:** Available since v1.42.0.
  * 
  * ## Example Usage
  * 
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sp = new SnapshotPolicy("sp", SnapshotPolicyArgs.builder()
- *             .name("tf-testAcc-sp")
+ *             .name("tf-demoAcc-sp")
  *             .repeatWeekdays(            
  *                 "1",
  *                 "2",
@@ -84,44 +84,92 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/snapshotPolicy:SnapshotPolicy")
 public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * The association type of the automatic snapshot policy.
+     * 
+     */
     @Export(name="associationType", refs={String.class}, tree="[0]")
     private Output<String> associationType;
 
+    /**
+     * @return The association type of the automatic snapshot policy.
+     * 
+     */
     public Output<String> associationType() {
         return this.associationType;
     }
+    /**
+     * The name of the snapshot policy.
+     * 
+     */
     @Export(name="autoSnapshotPolicyName", refs={String.class}, tree="[0]")
     private Output<String> autoSnapshotPolicyName;
 
+    /**
+     * @return The name of the snapshot policy.
+     * 
+     */
     public Output<String> autoSnapshotPolicyName() {
         return this.autoSnapshotPolicyName;
     }
+    /**
+     * The retention period of cross-region copied snapshots. Unit: days.
+     * 
+     */
     @Export(name="copiedSnapshotsRetentionDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> copiedSnapshotsRetentionDays;
 
+    /**
+     * @return The retention period of cross-region copied snapshots. Unit: days.
+     * 
+     */
     public Output<Integer> copiedSnapshotsRetentionDays() {
         return this.copiedSnapshotsRetentionDays;
     }
+    /**
+     * The encryption configuration for cross-region copy. See `copyEncryptionConfiguration` below.
+     * 
+     */
     @Export(name="copyEncryptionConfiguration", refs={SnapshotPolicyCopyEncryptionConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ SnapshotPolicyCopyEncryptionConfiguration> copyEncryptionConfiguration;
 
+    /**
+     * @return The encryption configuration for cross-region copy. See `copyEncryptionConfiguration` below.
+     * 
+     */
     public Output<Optional<SnapshotPolicyCopyEncryptionConfiguration>> copyEncryptionConfiguration() {
         return Codegen.optional(this.copyEncryptionConfiguration);
     }
+    /**
+     * The creation time of the snapshot policy.
+     * 
+     */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
+    /**
+     * @return The creation time of the snapshot policy.
+     * 
+     */
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * Specifies whether to enable cross-region copy.
+     * 
+     */
     @Export(name="enableCrossRegionCopy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableCrossRegionCopy;
 
+    /**
+     * @return Specifies whether to enable cross-region copy.
+     * 
+     */
     public Output<Optional<Boolean>> enableCrossRegionCopy() {
         return Codegen.optional(this.enableCrossRegionCopy);
     }
     /**
-     * The snapshot policy name.
+     * The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `autoSnapshotPolicyName` instead.
      * 
      * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      * 
@@ -131,15 +179,23 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The snapshot policy name.
+     * @return The snapshot policy name. It has been deprecated from provider version 1.236.0, and use field `autoSnapshotPolicyName` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The region ID of the snapshot policy.
+     * 
+     */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
+    /**
+     * @return The region ID of the snapshot policy.
+     * 
+     */
     public Output<String> regionId() {
         return this.regionId;
     }
@@ -161,9 +217,17 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
     public Output<List<String>> repeatWeekdays() {
         return this.repeatWeekdays;
     }
+    /**
+     * The ID of the resource group to which the snapshot policy belongs.
+     * 
+     */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
+    /**
+     * @return The ID of the resource group to which the snapshot policy belongs.
+     * 
+     */
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
@@ -189,27 +253,59 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
     public Output<Integer> retentionDays() {
         return this.retentionDays;
     }
+    /**
+     * The status of the snapshot policy.
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return The status of the snapshot policy.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * The target regions for cross-region copy.
+     * 
+     */
     @Export(name="targetCopyRegions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targetCopyRegions;
 
+    /**
+     * @return The target regions for cross-region copy.
+     * 
+     */
     public Output<Optional<List<String>>> targetCopyRegions() {
         return Codegen.optional(this.targetCopyRegions);
     }
+    /**
+     * The tags to be added to the snapshot. See `targetTags` below.
+     * 
+     */
     @Export(name="targetTags", refs={List.class,SnapshotPolicyTargetTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SnapshotPolicyTargetTag>> targetTags;
 
+    /**
+     * @return The tags to be added to the snapshot. See `targetTags` below.
+     * 
+     */
     public Output<Optional<List<SnapshotPolicyTargetTag>>> targetTags() {
         return Codegen.optional(this.targetTags);
     }

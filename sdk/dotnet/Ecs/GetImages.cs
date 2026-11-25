@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
         /// other public images and the ones available on the image market.
         /// 
+        /// &gt; **NOTE:** Available since v0.1.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -45,6 +47,8 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
         /// other public images and the ones available on the image market.
         /// 
+        /// &gt; **NOTE:** Available since v0.1.0
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -74,6 +78,8 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
         /// other public images and the ones available on the image market.
+        /// 
+        /// &gt; **NOTE:** Available since v0.1.0
         /// 
         /// ## Example Usage
         /// 
@@ -406,18 +412,27 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? ImageFamily;
+        /// <summary>
+        /// The ID of the image.
+        /// </summary>
         public readonly string? ImageId;
         public readonly string? ImageName;
         public readonly string? ImageOwnerId;
         /// <summary>
-        /// A `DiskDeviceMappings` block as defined below. A list of images.
+        /// A list of images. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;
         public readonly string? InstanceType;
         public readonly bool? IsSupportCloudInit;
+        /// <summary>
+        /// Whether the image can be used on I/O optimized instances.
+        /// </summary>
         public readonly bool? IsSupportIoOptimized;
         public readonly bool? MostRecent;
         public readonly string? NameRegex;
+        /// <summary>
+        /// The type of the operating system.
+        /// </summary>
         public readonly string? OsType;
         public readonly string? OutputFile;
         public readonly string? Owners;
@@ -430,7 +445,13 @@ namespace Pulumi.AliCloud.Ecs
         /// The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// (Optional) A map of tags assigned to the image.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The usage of the image.
+        /// </summary>
         public readonly string? Usage;
 
         [OutputConstructor]

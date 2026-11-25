@@ -60,6 +60,10 @@ public final class GetDbClustersCluster {
      * 
      */
     private String dbClusterDescription;
+    /**
+     * @return The ID of the DBCluster.
+     * 
+     */
     private String dbClusterId;
     /**
      * @return The DBCluster network type.
@@ -112,7 +116,7 @@ public final class GetDbClustersCluster {
      */
     private String expireTime;
     /**
-     * @return The ID of the DBCluster.
+     * @return The DBCluster id.
      * 
      */
     private String id;
@@ -162,7 +166,7 @@ public final class GetDbClustersCluster {
      */
     private List<GetDbClustersClusterScaleOutStatus> scaleOutStatuses;
     /**
-     * @return The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+     * @return The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
      * 
      */
     private String status;
@@ -271,6 +275,10 @@ public final class GetDbClustersCluster {
     public String dbClusterDescription() {
         return this.dbClusterDescription;
     }
+    /**
+     * @return The ID of the DBCluster.
+     * 
+     */
     public String dbClusterId() {
         return this.dbClusterId;
     }
@@ -345,7 +353,7 @@ public final class GetDbClustersCluster {
         return this.expireTime;
     }
     /**
-     * @return The ID of the DBCluster.
+     * @return The DBCluster id.
      * 
      */
     public String id() {
@@ -415,7 +423,7 @@ public final class GetDbClustersCluster {
         return this.scaleOutStatuses;
     }
     /**
-     * @return The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+     * @return The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
      * 
      */
     public String status() {

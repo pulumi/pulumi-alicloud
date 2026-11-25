@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
  *
  * ## Example Usage
  *
@@ -45,6 +45,9 @@ export function getHistoryDeliveryJobs(args?: GetHistoryDeliveryJobsArgs, opts?:
  * A collection of arguments for invoking getHistoryDeliveryJobs.
  */
 export interface GetHistoryDeliveryJobsArgs {
+    /**
+     * Whether to enable details for the jobs. Default value: `false`.
+     */
     enableDetails?: boolean;
     /**
      * A list of History Delivery Job IDs.
@@ -70,14 +73,20 @@ export interface GetHistoryDeliveryJobsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Actiontrail History Delivery Jobs. Each element contains the following attributes:
+     */
     readonly jobs: outputs.actiontrail.GetHistoryDeliveryJobsJob[];
     readonly outputFile?: string;
+    /**
+     * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+     */
     readonly status?: number;
 }
 /**
  * This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.139.0+.
+ * > **NOTE:** Available since v1.139.0.
  *
  * ## Example Usage
  *
@@ -113,6 +122,9 @@ export function getHistoryDeliveryJobsOutput(args?: GetHistoryDeliveryJobsOutput
  * A collection of arguments for invoking getHistoryDeliveryJobs.
  */
 export interface GetHistoryDeliveryJobsOutputArgs {
+    /**
+     * Whether to enable details for the jobs. Default value: `false`.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of History Delivery Job IDs.

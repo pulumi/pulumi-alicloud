@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// <summary>
         /// This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// <summary>
         /// This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.EventBridge
         /// <summary>
         /// This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.130.0+.
+        /// &gt; **NOTE:** Available since v1.130.0.
         /// 
         /// ## Example Usage
         /// 
@@ -195,8 +195,14 @@ namespace Pulumi.AliCloud.EventBridge
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Event Source names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Event Bridge Event Sources. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEventSourcesSourceResult> Sources;
 
         [OutputConstructor]

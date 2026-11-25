@@ -73,6 +73,8 @@ type RdsBackup struct {
 
 	// The backup set ID.
 	BackupId pulumi.StringOutput `pulumi:"backupId"`
+	// (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+	BackupJobId pulumi.StringOutput `pulumi:"backupJobId"`
 	// The backup type. Valid values:
 	// * `Logical`: logical backup (supported only for MySQL)
 	// * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
@@ -145,6 +147,8 @@ func GetRdsBackup(ctx *pulumi.Context,
 type rdsBackupState struct {
 	// The backup set ID.
 	BackupId *string `pulumi:"backupId"`
+	// (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+	BackupJobId *string `pulumi:"backupJobId"`
 	// The backup type. Valid values:
 	// * `Logical`: logical backup (supported only for MySQL)
 	// * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
@@ -185,6 +189,8 @@ type rdsBackupState struct {
 type RdsBackupState struct {
 	// The backup set ID.
 	BackupId pulumi.StringPtrInput
+	// (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+	BackupJobId pulumi.StringPtrInput
 	// The backup type. Valid values:
 	// * `Logical`: logical backup (supported only for MySQL)
 	// * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
@@ -391,6 +397,11 @@ func (o RdsBackupOutput) ToRdsBackupOutputWithContext(ctx context.Context) RdsBa
 // The backup set ID.
 func (o RdsBackupOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsBackup) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
+}
+
+// (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+func (o RdsBackupOutput) BackupJobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsBackup) pulumi.StringOutput { return v.BackupJobId }).(pulumi.StringOutput)
 }
 
 // The backup type. Valid values:

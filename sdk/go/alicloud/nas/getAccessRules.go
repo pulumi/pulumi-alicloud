@@ -13,7 +13,7 @@ import (
 
 // This data source provides AccessRule available to the user.
 //
-// > **NOTE**: Available in 1.35.0+
+// > **NOTE:** Available since v1.35.0+
 //
 // ## Example Usage
 //
@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			foo, err := nas.GetAccessRules(ctx, &nas.GetAccessRulesArgs{
-//				AccessGroupName: "tf-testAccAccessGroupsdatasource",
+//				AccessGroupName: "tf-example",
 //				SourceCidrIp:    pulumi.StringRef("168.1.1.0/16"),
 //				RwAccess:        pulumi.StringRef("RDWR"),
 //				UserAccess:      pulumi.StringRef("no_squash"),

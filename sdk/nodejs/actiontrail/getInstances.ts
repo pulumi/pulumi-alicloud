@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.59.0+
+ * > **NOTE:** Available since v1.59.0.
  *
  * ## Example Usage
  *
@@ -59,6 +59,9 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
     /**
      * A list of instance IDs to filter results.
@@ -88,7 +91,7 @@ export interface GetInstancesResult {
      */
     readonly ids: string[];
     /**
-     * A list of instances. Each element contains the following attributes:
+     * A list of instances. Each element contains the following attributes. See `instances` for the optional argument block.
      */
     readonly instances: outputs.actiontrail.GetInstancesInstance[];
     readonly nameRegex?: string;
@@ -101,7 +104,7 @@ export interface GetInstancesResult {
 /**
  * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.59.0+
+ * > **NOTE:** Available since v1.59.0.
  *
  * ## Example Usage
  *
@@ -151,6 +154,9 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of instance IDs to filter results.

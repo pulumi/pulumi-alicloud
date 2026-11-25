@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Scdn.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainSourceResult> Sources;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: "CheckFailed", "checking", "ConfigureFailed", "configuring", "offline", "online".
         /// </summary>
         public readonly string Status;
 

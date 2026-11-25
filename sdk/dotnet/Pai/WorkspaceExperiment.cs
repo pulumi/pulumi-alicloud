@@ -90,6 +90,12 @@ namespace Pulumi.AliCloud.Pai
         public Output<string> ExperimentName { get; private set; } = null!;
 
         /// <summary>
+        /// Labels are tags of the experiment. See `Labels` below.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableArray<Outputs.WorkspaceExperimentLabel>> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// WorkspaceId is the workspace id which contains the experiment
         /// </summary>
         [Output("workspaceId")]
@@ -159,6 +165,18 @@ namespace Pulumi.AliCloud.Pai
         [Input("experimentName", required: true)]
         public Input<string> ExperimentName { get; set; } = null!;
 
+        [Input("labels")]
+        private InputList<Inputs.WorkspaceExperimentLabelArgs>? _labels;
+
+        /// <summary>
+        /// Labels are tags of the experiment. See `Labels` below.
+        /// </summary>
+        public InputList<Inputs.WorkspaceExperimentLabelArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.WorkspaceExperimentLabelArgs>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// WorkspaceId is the workspace id which contains the experiment
         /// </summary>
@@ -196,6 +214,18 @@ namespace Pulumi.AliCloud.Pai
         /// </summary>
         [Input("experimentName")]
         public Input<string>? ExperimentName { get; set; }
+
+        [Input("labels")]
+        private InputList<Inputs.WorkspaceExperimentLabelGetArgs>? _labels;
+
+        /// <summary>
+        /// Labels are tags of the experiment. See `Labels` below.
+        /// </summary>
+        public InputList<Inputs.WorkspaceExperimentLabelGetArgs> Labels
+        {
+            get => _labels ?? (_labels = new InputList<Inputs.WorkspaceExperimentLabelGetArgs>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// WorkspaceId is the workspace id which contains the experiment

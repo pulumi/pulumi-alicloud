@@ -19,6 +19,8 @@ import (
 //
 // > **NOTE:** Available since v1.9.2.
 //
+// > **NOTE:** A table can have at most one primary key with `autoIncrement` enabled, the primary key with `autoIncrement` enabled cannot be the first primary key (the partition key) of the table, and `enableLocalTxn` cannot be enabled together with a primary key that enables `autoIncrement`.
+//
 // ## Example Usage
 //
 // ```go
@@ -104,6 +106,130 @@ import (
 //
 // ```
 //
+// ### Auto-Increment Primary Key
+//
+// The following example creates a table whose second primary key column is an auto-increment column. The first primary key column is the partition key and cannot be auto-incremented.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ots"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ots.NewInstance(ctx, "default", &ots.InstanceArgs{
+//				Name:        pulumi.Sprintf("%v-%v", name, _default.Result),
+//				Description: pulumi.String(name),
+//				AccessedBy:  pulumi.String("Any"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ots.NewTable(ctx, "default", &ots.TableArgs{
+//				InstanceName: defaultInstance.Name,
+//				TableName:    pulumi.String("terraform_example_auto_increment"),
+//				TimeToLive:   pulumi.Int(-1),
+//				MaxVersion:   pulumi.Int(1),
+//				PrimaryKeys: ots.TablePrimaryKeyArray{
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk1"),
+//						Type: pulumi.String("Integer"),
+//					},
+//					&ots.TablePrimaryKeyArgs{
+//						Name:          pulumi.String("pk2"),
+//						Type:          pulumi.String("Integer"),
+//						AutoIncrement: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Local Transaction
+//
+// The following example creates a table with local transactions enabled.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v4/go/alicloud/ots"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ots.NewInstance(ctx, "default", &ots.InstanceArgs{
+//				Name:        pulumi.Sprintf("%v-%v", name, _default.Result),
+//				Description: pulumi.String(name),
+//				AccessedBy:  pulumi.String("Any"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ots.NewTable(ctx, "default", &ots.TableArgs{
+//				InstanceName:   defaultInstance.Name,
+//				TableName:      pulumi.String("terraform_example_local_txn"),
+//				TimeToLive:     pulumi.Int(-1),
+//				MaxVersion:     pulumi.Int(1),
+//				EnableLocalTxn: pulumi.Bool(true),
+//				PrimaryKeys: ots.TablePrimaryKeyArray{
+//					&ots.TablePrimaryKeyArgs{
+//						Name: pulumi.String("pk1"),
+//						Type: pulumi.String("Integer"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
@@ -122,7 +248,9 @@ type Table struct {
 	DefinedColumns TableDefinedColumnArrayOutput `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrOutput `pulumi:"deviationCellVersionInSec"`
-	// Whether enable OTS server side encryption. Default value is false.
+	// Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+	EnableLocalTxn pulumi.BoolPtrOutput `pulumi:"enableLocalTxn"`
+	// Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
 	EnableSse pulumi.BoolPtrOutput `pulumi:"enableSse"`
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
@@ -130,11 +258,11 @@ type Table struct {
 	MaxVersion pulumi.IntOutput `pulumi:"maxVersion"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys TablePrimaryKeyArrayOutput `pulumi:"primaryKeys"`
-	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 	SseKeyId pulumi.StringPtrOutput `pulumi:"sseKeyId"`
-	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
 	SseKeyType pulumi.StringPtrOutput `pulumi:"sseKeyType"`
-	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 	SseRoleArn pulumi.StringPtrOutput `pulumi:"sseRoleArn"`
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName pulumi.StringOutput `pulumi:"tableName"`
@@ -193,7 +321,9 @@ type tableState struct {
 	DefinedColumns []TableDefinedColumn `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec *string `pulumi:"deviationCellVersionInSec"`
-	// Whether enable OTS server side encryption. Default value is false.
+	// Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+	EnableLocalTxn *bool `pulumi:"enableLocalTxn"`
+	// Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
 	EnableSse *bool `pulumi:"enableSse"`
 	// The name of the OTS instance in which table will located.
 	InstanceName *string `pulumi:"instanceName"`
@@ -201,11 +331,11 @@ type tableState struct {
 	MaxVersion *int `pulumi:"maxVersion"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys []TablePrimaryKey `pulumi:"primaryKeys"`
-	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 	SseKeyId *string `pulumi:"sseKeyId"`
-	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
 	SseKeyType *string `pulumi:"sseKeyType"`
-	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 	SseRoleArn *string `pulumi:"sseRoleArn"`
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName *string `pulumi:"tableName"`
@@ -220,7 +350,9 @@ type TableState struct {
 	DefinedColumns TableDefinedColumnArrayInput
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrInput
-	// Whether enable OTS server side encryption. Default value is false.
+	// Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+	EnableLocalTxn pulumi.BoolPtrInput
+	// Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
 	EnableSse pulumi.BoolPtrInput
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringPtrInput
@@ -228,11 +360,11 @@ type TableState struct {
 	MaxVersion pulumi.IntPtrInput
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys TablePrimaryKeyArrayInput
-	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 	SseKeyId pulumi.StringPtrInput
-	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
 	SseKeyType pulumi.StringPtrInput
-	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 	SseRoleArn pulumi.StringPtrInput
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName pulumi.StringPtrInput
@@ -257,7 +389,9 @@ type tableArgs struct {
 	DefinedColumns []TableDefinedColumn `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec *string `pulumi:"deviationCellVersionInSec"`
-	// Whether enable OTS server side encryption. Default value is false.
+	// Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+	EnableLocalTxn *bool `pulumi:"enableLocalTxn"`
+	// Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
 	EnableSse *bool `pulumi:"enableSse"`
 	// The name of the OTS instance in which table will located.
 	InstanceName string `pulumi:"instanceName"`
@@ -265,11 +399,11 @@ type tableArgs struct {
 	MaxVersion int `pulumi:"maxVersion"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys []TablePrimaryKey `pulumi:"primaryKeys"`
-	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 	SseKeyId *string `pulumi:"sseKeyId"`
-	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
 	SseKeyType *string `pulumi:"sseKeyType"`
-	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 	SseRoleArn *string `pulumi:"sseRoleArn"`
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName string `pulumi:"tableName"`
@@ -285,7 +419,9 @@ type TableArgs struct {
 	DefinedColumns TableDefinedColumnArrayInput
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
 	DeviationCellVersionInSec pulumi.StringPtrInput
-	// Whether enable OTS server side encryption. Default value is false.
+	// Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+	EnableLocalTxn pulumi.BoolPtrInput
+	// Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
 	EnableSse pulumi.BoolPtrInput
 	// The name of the OTS instance in which table will located.
 	InstanceName pulumi.StringInput
@@ -293,11 +429,11 @@ type TableArgs struct {
 	MaxVersion pulumi.IntInput
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys TablePrimaryKeyArrayInput
-	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 	SseKeyId pulumi.StringPtrInput
-	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
 	SseKeyType pulumi.StringPtrInput
-	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 	SseRoleArn pulumi.StringPtrInput
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName pulumi.StringInput
@@ -407,7 +543,12 @@ func (o TableOutput) DeviationCellVersionInSec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.DeviationCellVersionInSec }).(pulumi.StringPtrOutput)
 }
 
-// Whether enable OTS server side encryption. Default value is false.
+// Specifies whether to enable local transactions for the table. Defaults to `false`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `false` in state and declaring `true` for an imported table forces a new resource.
+func (o TableOutput) EnableLocalTxn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.EnableLocalTxn }).(pulumi.BoolPtrOutput)
+}
+
+// Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
 func (o TableOutput) EnableSse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.EnableSse }).(pulumi.BoolPtrOutput)
 }
@@ -427,17 +568,17 @@ func (o TableOutput) PrimaryKeys() TablePrimaryKeyArrayOutput {
 	return o.ApplyT(func(v *Table) TablePrimaryKeyArrayOutput { return v.PrimaryKeys }).(TablePrimaryKeyArrayOutput)
 }
 
-// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 func (o TableOutput) SseKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.SseKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
 func (o TableOutput) SseKeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.SseKeyType }).(pulumi.StringPtrOutput)
 }
 
-// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
 func (o TableOutput) SseRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.SseRoleArn }).(pulumi.StringPtrOutput)
 }

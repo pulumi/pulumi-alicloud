@@ -42,12 +42,14 @@ public final class GetEcsImageComponentsComponent {
      */
     private String imageComponentId;
     /**
-     * @return The name of the image component.
+     * @return The name of the component.
      * 
      */
     private String imageComponentName;
     /**
-     * @return The type of the image component.
+     * @return Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+     * - SELF: The custom image component you created.
+     * - ALIYUN: System components provided by Alibaba Cloud.
      * 
      */
     private String owner;
@@ -62,7 +64,7 @@ public final class GetEcsImageComponentsComponent {
      */
     private String systemType;
     /**
-     * @return List of label key-value pairs.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
@@ -111,14 +113,16 @@ public final class GetEcsImageComponentsComponent {
         return this.imageComponentId;
     }
     /**
-     * @return The name of the image component.
+     * @return The name of the component.
      * 
      */
     public String imageComponentName() {
         return this.imageComponentName;
     }
     /**
-     * @return The type of the image component.
+     * @return Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+     * - SELF: The custom image component you created.
+     * - ALIYUN: System components provided by Alibaba Cloud.
      * 
      */
     public String owner() {
@@ -139,7 +143,7 @@ public final class GetEcsImageComponentsComponent {
         return this.systemType;
     }
     /**
-     * @return List of label key-value pairs.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {

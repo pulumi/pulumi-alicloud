@@ -70,9 +70,53 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// });
     /// ```
+    /// 
+    /// ### Advanced backup policies
+    /// 
+    /// The following example manages a custom advanced data backup rule. Use a separate cluster from a Normal backup policy example: changing `BackupPolicyLevel` from `Normal` to `Advanced` is irreversible. The cluster must support advanced backup policies (`AdvancedPolicyOption` must not be `notSupport`).
+    /// 
+    /// For a same-region rule such as this example, the provider fills omitted `SrcRegion` and `DestRegion` with its configured region because the API requires both values. For a cross-region rule (`SrcType` or `DestType` is `level2Cross`), set both regions explicitly.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var advanced = new AliCloud.PolarDB.BackupPolicy("advanced", new()
+    ///     {
+    ///         DbClusterId = @default.Id,
+    ///         BackupPolicyLevel = "Advanced",
+    ///         BackupRetentionPolicyOnClusterDeletion = "NONE",
+    ///         AdvancedDataPolicies = new[]
+    ///         {
+    ///             new AliCloud.PolarDB.Inputs.BackupPolicyAdvancedDataPolicyArgs
+    ///             {
+    ///                 RetentionType = "delay",
+    ///                 RetentionValue = "7",
+    ///                 FilterType = "crontab",
+    ///                 FilterKey = "dayOfWeek",
+    ///                 FilterValue = "1,2,3,4,5,6,7",
+    ///                 SrcType = "db",
+    ///                 DestType = "level1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// `PolicyId` is assigned by the service after creation. To manage an existing custom rule after importing the cluster policy, specify that rule's `PolicyId` in the `AdvancedDataPolicies` block. Rules generated automatically by the service are exposed through `AutoCreatedAdvancedDataPolicies` and are never modified or deleted by this resource.
+    /// 
+    /// Optional advanced-rule fields returned by the service retain their current values if removed from Terraform configuration. Removing an attribute is not a way to clear it; the API does not document clearing semantics for omitted fields. To remove a custom rule entirely, remove its `AdvancedDataPolicies` block.
+    /// 
+    /// In Advanced mode, the legacy data-backup and log-backup arguments cannot be changed through this resource; configure data backup behavior with `AdvancedDataPolicies` instead. Removing this Terraform resource deletes only its managed custom advanced rules. It does not delete the cluster backup policy or restore the `Normal` level.
+    /// 
     /// ### Removing alicloud.polardb.Cluster from your configuration
     /// 
-    /// The alicloud.polardb.BackupPolicy resource allows you to manage your polardb cluster policy, but Terraform cannot destroy it. Removing this resource from your configuration will remove it from your statefile and management, but will not destroy the cluster policy. You can resume managing the cluster via the polardb Console.
+    /// The `alicloud.polardb.BackupPolicy` resource manages a cluster policy, but Terraform cannot destroy the policy itself. Removing a Normal policy resource only removes it from Terraform state. Removing an Advanced policy resource deletes its managed custom advanced rules but leaves the cluster policy, its Advanced level, and service-generated rules in place.
     /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
@@ -88,10 +132,34 @@ namespace Pulumi.AliCloud.PolarDB
     public partial class BackupPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Custom advanced data backup policy blocks. Available only when `BackupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `AdvancedDataPolicies` below.
+        /// </summary>
+        [Output("advancedDataPolicies")]
+        public Output<ImmutableArray<Outputs.BackupPolicyAdvancedDataPolicy>> AdvancedDataPolicies { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether advanced policies are supported or enabled by the cluster.
+        /// </summary>
+        [Output("advancedPolicyOption")]
+        public Output<string> AdvancedPolicyOption { get; private set; } = null!;
+
+        /// <summary>
+        /// Service-generated advanced backup rules. Fields have the same names as `AdvancedDataPolicies`, but are read-only.
+        /// </summary>
+        [Output("autoCreatedAdvancedDataPolicies")]
+        public Output<ImmutableArray<Outputs.BackupPolicyAutoCreatedAdvancedDataPolicy>> AutoCreatedAdvancedDataPolicies { get; private set; } = null!;
+
+        /// <summary>
         /// The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         /// </summary>
         [Output("backupFrequency")]
         public Output<string> BackupFrequency { get; private set; } = null!;
+
+        /// <summary>
+        /// Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+        /// </summary>
+        [Output("backupPolicyLevel")]
+        public Output<string> BackupPolicyLevel { get; private set; } = null!;
 
         /// <summary>
         /// Cluster backup retention days, Fixed for 7 days, not modified.
@@ -113,6 +181,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         [Output("dataLevel1BackupPeriods")]
@@ -144,6 +213,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         [Output("dataLevel2BackupPeriods")]
@@ -175,6 +245,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+        /// 
         /// &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         /// </summary>
         [Output("logBackupAnotherRegionRetentionPeriod")]
@@ -244,11 +315,29 @@ namespace Pulumi.AliCloud.PolarDB
 
     public sealed class BackupPolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("advancedDataPolicies")]
+        private InputList<Inputs.BackupPolicyAdvancedDataPolicyArgs>? _advancedDataPolicies;
+
+        /// <summary>
+        /// Custom advanced data backup policy blocks. Available only when `BackupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `AdvancedDataPolicies` below.
+        /// </summary>
+        public InputList<Inputs.BackupPolicyAdvancedDataPolicyArgs> AdvancedDataPolicies
+        {
+            get => _advancedDataPolicies ?? (_advancedDataPolicies = new InputList<Inputs.BackupPolicyAdvancedDataPolicyArgs>());
+            set => _advancedDataPolicies = value;
+        }
+
         /// <summary>
         /// The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         /// </summary>
         [Input("backupFrequency")]
         public Input<string>? BackupFrequency { get; set; }
+
+        /// <summary>
+        /// Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+        /// </summary>
+        [Input("backupPolicyLevel")]
+        public Input<string>? BackupPolicyLevel { get; set; }
 
         /// <summary>
         /// Cluster backup retention days, Fixed for 7 days, not modified.
@@ -273,6 +362,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         public InputList<string> DataLevel1BackupPeriods
@@ -310,6 +400,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         public InputList<string> DataLevel2BackupPeriods
@@ -338,6 +429,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+        /// 
         /// &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         /// </summary>
         [Input("logBackupAnotherRegionRetentionPeriod")]
@@ -375,11 +467,47 @@ namespace Pulumi.AliCloud.PolarDB
 
     public sealed class BackupPolicyState : global::Pulumi.ResourceArgs
     {
+        [Input("advancedDataPolicies")]
+        private InputList<Inputs.BackupPolicyAdvancedDataPolicyGetArgs>? _advancedDataPolicies;
+
+        /// <summary>
+        /// Custom advanced data backup policy blocks. Available only when `BackupPolicyLevel` is `Advanced`. The provider creates, updates, or deletes these rules to match the configuration; service-generated rules are not managed. See `AdvancedDataPolicies` below.
+        /// </summary>
+        public InputList<Inputs.BackupPolicyAdvancedDataPolicyGetArgs> AdvancedDataPolicies
+        {
+            get => _advancedDataPolicies ?? (_advancedDataPolicies = new InputList<Inputs.BackupPolicyAdvancedDataPolicyGetArgs>());
+            set => _advancedDataPolicies = value;
+        }
+
+        /// <summary>
+        /// Whether advanced policies are supported or enabled by the cluster.
+        /// </summary>
+        [Input("advancedPolicyOption")]
+        public Input<string>? AdvancedPolicyOption { get; set; }
+
+        [Input("autoCreatedAdvancedDataPolicies")]
+        private InputList<Inputs.BackupPolicyAutoCreatedAdvancedDataPolicyGetArgs>? _autoCreatedAdvancedDataPolicies;
+
+        /// <summary>
+        /// Service-generated advanced backup rules. Fields have the same names as `AdvancedDataPolicies`, but are read-only.
+        /// </summary>
+        public InputList<Inputs.BackupPolicyAutoCreatedAdvancedDataPolicyGetArgs> AutoCreatedAdvancedDataPolicies
+        {
+            get => _autoCreatedAdvancedDataPolicies ?? (_autoCreatedAdvancedDataPolicies = new InputList<Inputs.BackupPolicyAutoCreatedAdvancedDataPolicyGetArgs>());
+            set => _autoCreatedAdvancedDataPolicies = value;
+        }
+
         /// <summary>
         /// The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         /// </summary>
         [Input("backupFrequency")]
         public Input<string>? BackupFrequency { get; set; }
+
+        /// <summary>
+        /// Backup policy level, `Normal` or `Advanced`. Transitioning from `Normal` to `Advanced` cannot be reversed.
+        /// </summary>
+        [Input("backupPolicyLevel")]
+        public Input<string>? BackupPolicyLevel { get; set; }
 
         /// <summary>
         /// Cluster backup retention days, Fixed for 7 days, not modified.
@@ -404,6 +532,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         public InputList<string> DataLevel1BackupPeriods
@@ -441,6 +570,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// 
         /// &gt; **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
         /// </summary>
         public InputList<string> DataLevel2BackupPeriods
@@ -475,6 +605,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
+        /// 
         /// &gt; **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
         /// </summary>
         [Input("logBackupAnotherRegionRetentionPeriod")]

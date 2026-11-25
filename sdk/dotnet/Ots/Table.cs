@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// &gt; **NOTE:** Available since v1.9.2.
     /// 
+    /// &gt; **NOTE:** A table can have at most one primary key with `AutoIncrement` enabled, the primary key with `AutoIncrement` enabled cannot be the first primary key (the partition key) of the table, and `EnableLocalTxn` cannot be enabled together with a primary key that enables `AutoIncrement`.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -97,6 +99,107 @@ namespace Pulumi.AliCloud.Ots
     /// });
     /// ```
     /// 
+    /// ### Auto-Increment Primary Key
+    /// 
+    /// The following example creates a table whose second primary key column is an auto-increment column. The first primary key column is the partition key and cannot be auto-incremented.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new Random.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ots.Instance("default", new()
+    ///     {
+    ///         Name = $"{name}-{@default.Result}",
+    ///         Description = name,
+    ///         AccessedBy = "Any",
+    ///     });
+    /// 
+    ///     var defaultTable = new AliCloud.Ots.Table("default", new()
+    ///     {
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = "terraform_example_auto_increment",
+    ///         TimeToLive = -1,
+    ///         MaxVersion = 1,
+    ///         PrimaryKeys = new[]
+    ///         {
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk1",
+    ///                 Type = "Integer",
+    ///             },
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk2",
+    ///                 Type = "Integer",
+    ///                 AutoIncrement = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Local Transaction
+    /// 
+    /// The following example creates a table with local transactions enabled.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new Random.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ots.Instance("default", new()
+    ///     {
+    ///         Name = $"{name}-{@default.Result}",
+    ///         Description = name,
+    ///         AccessedBy = "Any",
+    ///     });
+    /// 
+    ///     var defaultTable = new AliCloud.Ots.Table("default", new()
+    ///     {
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = "terraform_example_local_txn",
+    ///         TimeToLive = -1,
+    ///         MaxVersion = 1,
+    ///         EnableLocalTxn = true,
+    ///         PrimaryKeys = new[]
+    ///         {
+    ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
+    ///             {
+    ///                 Name = "pk1",
+    ///                 Type = "Integer",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
@@ -129,7 +232,13 @@ namespace Pulumi.AliCloud.Ots
         public Output<string?> DeviationCellVersionInSec { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable OTS server side encryption. Default value is false.
+        /// Specifies whether to enable local transactions for the table. Defaults to `False`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `False` in state and declaring `True` for an imported table forces a new resource.
+        /// </summary>
+        [Output("enableLocalTxn")]
+        public Output<bool?> EnableLocalTxn { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Output("enableSse")]
         public Output<bool?> EnableSse { get; private set; } = null!;
@@ -153,19 +262,19 @@ namespace Pulumi.AliCloud.Ots
         public Output<ImmutableArray<Outputs.TablePrimaryKey>> PrimaryKeys { get; private set; } = null!;
 
         /// <summary>
-        /// . The key ID of secret. `SseKeyId` is valid only when `SseKeyType` is set to `SSE_BYOK`.
+        /// . The key ID of secret. `SseKeyId` is valid only when `SseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Output("sseKeyId")]
         public Output<string?> SseKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+        /// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Output("sseKeyType")]
         public Output<string?> SseKeyType { get; private set; } = null!;
 
         /// <summary>
-        /// The arn of role that can access kms service. `SseRoleArn` is valid only when `SseKeyType` is set to `SSE_BYOK`.
+        /// The arn of role that can access kms service. `SseRoleArn` is valid only when `SseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Output("sseRoleArn")]
         public Output<string?> SseRoleArn { get; private set; } = null!;
@@ -253,7 +362,13 @@ namespace Pulumi.AliCloud.Ots
         public Input<string>? DeviationCellVersionInSec { get; set; }
 
         /// <summary>
-        /// Whether enable OTS server side encryption. Default value is false.
+        /// Specifies whether to enable local transactions for the table. Defaults to `False`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `False` in state and declaring `True` for an imported table forces a new resource.
+        /// </summary>
+        [Input("enableLocalTxn")]
+        public Input<bool>? EnableLocalTxn { get; set; }
+
+        /// <summary>
+        /// Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Input("enableSse")]
         public Input<bool>? EnableSse { get; set; }
@@ -283,19 +398,19 @@ namespace Pulumi.AliCloud.Ots
         }
 
         /// <summary>
-        /// . The key ID of secret. `SseKeyId` is valid only when `SseKeyType` is set to `SSE_BYOK`.
+        /// . The key ID of secret. `SseKeyId` is valid only when `SseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Input("sseKeyId")]
         public Input<string>? SseKeyId { get; set; }
 
         /// <summary>
-        /// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+        /// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Input("sseKeyType")]
         public Input<string>? SseKeyType { get; set; }
 
         /// <summary>
-        /// The arn of role that can access kms service. `SseRoleArn` is valid only when `SseKeyType` is set to `SSE_BYOK`.
+        /// The arn of role that can access kms service. `SseRoleArn` is valid only when `SseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Input("sseRoleArn")]
         public Input<string>? SseRoleArn { get; set; }
@@ -345,7 +460,13 @@ namespace Pulumi.AliCloud.Ots
         public Input<string>? DeviationCellVersionInSec { get; set; }
 
         /// <summary>
-        /// Whether enable OTS server side encryption. Default value is false.
+        /// Specifies whether to enable local transactions for the table. Defaults to `False`. This field can only be set when the table is created; it cannot be enabled for an existing table through Terraform, and changing it forces a new resource. The value is not returned by the table describe API, so after `pulumi import` it is `False` in state and declaring `True` for an imported table forces a new resource.
+        /// </summary>
+        [Input("enableLocalTxn")]
+        public Input<bool>? EnableLocalTxn { get; set; }
+
+        /// <summary>
+        /// Whether enable OTS server side encryption. Default value is false. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Input("enableSse")]
         public Input<bool>? EnableSse { get; set; }
@@ -375,19 +496,19 @@ namespace Pulumi.AliCloud.Ots
         }
 
         /// <summary>
-        /// . The key ID of secret. `SseKeyId` is valid only when `SseKeyType` is set to `SSE_BYOK`.
+        /// . The key ID of secret. `SseKeyId` is valid only when `SseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Input("sseKeyId")]
         public Input<string>? SseKeyId { get; set; }
 
         /// <summary>
-        /// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+        /// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Input("sseKeyType")]
         public Input<string>? SseKeyType { get; set; }
 
         /// <summary>
-        /// The arn of role that can access kms service. `SseRoleArn` is valid only when `SseKeyType` is set to `SSE_BYOK`.
+        /// The arn of role that can access kms service. `SseRoleArn` is valid only when `SseKeyType` is set to `SSE_BYOK`. **Note: The parameter is immutable after resource creation.
         /// </summary>
         [Input("sseRoleArn")]
         public Input<string>? SseRoleArn { get; set; }

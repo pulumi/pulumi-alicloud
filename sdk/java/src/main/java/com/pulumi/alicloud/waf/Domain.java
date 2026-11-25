@@ -275,18 +275,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.loadBalancing);
     }
     /**
-     * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-     * * key: The key of label
-     * * value: The value of label
+     * The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
      * 
      */
     @Export(name="logHeaders", refs={List.class,DomainLogHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DomainLogHeader>> logHeaders;
 
     /**
-     * @return The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
-     * * key: The key of label
-     * * value: The value of label
+     * @return The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field. See `logHeaders` below.
      * 
      */
     public Output<Optional<List<DomainLogHeader>>> logHeaders() {

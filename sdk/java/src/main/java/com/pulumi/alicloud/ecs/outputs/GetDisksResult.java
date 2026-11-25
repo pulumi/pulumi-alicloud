@@ -19,6 +19,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDisksResult {
     private @Nullable List<String> additionalAttributes;
+    /**
+     * @return The ID of the automatic snapshot policy.
+     * 
+     */
     private @Nullable String autoSnapshotPolicyId;
     /**
      * @return Availability zone of the disk.
@@ -33,9 +37,25 @@ public final class GetDisksResult {
      * 
      */
     private @Nullable String category;
+    /**
+     * @return Whether to delete the automatic snapshot.
+     * 
+     */
     private @Nullable Boolean deleteAutoSnapshot;
+    /**
+     * @return Whether to delete the disk with the instance.
+     * 
+     */
     private @Nullable Boolean deleteWithInstance;
+    /**
+     * @return The name of the disk.
+     * 
+     */
     private @Nullable String diskName;
+    /**
+     * @return The disk type.
+     * 
+     */
     private @Nullable String diskType;
     /**
      * @return A list of disks. Each element contains the following attributes:
@@ -43,7 +63,15 @@ public final class GetDisksResult {
      */
     private List<GetDisksDisk> disks;
     private @Nullable Boolean dryRun;
+    /**
+     * @return Whether to enable the automatic snapshot.
+     * 
+     */
     private @Nullable Boolean enableAutoSnapshot;
+    /**
+     * @return Whether to enable the automated snapshot policy.
+     * 
+     */
     private @Nullable Boolean enableAutomatedSnapshotPolicy;
     private @Nullable Boolean enableShared;
     /**
@@ -58,18 +86,38 @@ public final class GetDisksResult {
     private String id;
     private List<String> ids;
     /**
-     * @return ID of the related instance. It is `null` unless the `status` is `In_use`.
+     * @return The ID of the instance.
      * 
      */
     private @Nullable String instanceId;
+    /**
+     * @return The KMS key ID.
+     * 
+     */
     private @Nullable String kmsKeyId;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of disk names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return Operation locks.
+     * 
+     */
     private @Nullable List<GetDisksOperationLock> operationLocks;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The payment type.
+     * 
+     */
     private @Nullable String paymentType;
+    /**
+     * @return Whether the disk is portable.
+     * 
+     */
     private @Nullable Boolean portable;
     /**
      * @return The Id of resource group.
@@ -100,12 +148,20 @@ public final class GetDisksResult {
      */
     @Deprecated
     private @Nullable String type;
+    /**
+     * @return The zone ID.
+     * 
+     */
     private @Nullable String zoneId;
 
     private GetDisksResult() {}
     public List<String> additionalAttributes() {
         return this.additionalAttributes == null ? List.of() : this.additionalAttributes;
     }
+    /**
+     * @return The ID of the automatic snapshot policy.
+     * 
+     */
     public Optional<String> autoSnapshotPolicyId() {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
@@ -126,15 +182,31 @@ public final class GetDisksResult {
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return Whether to delete the automatic snapshot.
+     * 
+     */
     public Optional<Boolean> deleteAutoSnapshot() {
         return Optional.ofNullable(this.deleteAutoSnapshot);
     }
+    /**
+     * @return Whether to delete the disk with the instance.
+     * 
+     */
     public Optional<Boolean> deleteWithInstance() {
         return Optional.ofNullable(this.deleteWithInstance);
     }
+    /**
+     * @return The name of the disk.
+     * 
+     */
     public Optional<String> diskName() {
         return Optional.ofNullable(this.diskName);
     }
+    /**
+     * @return The disk type.
+     * 
+     */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
@@ -148,9 +220,17 @@ public final class GetDisksResult {
     public Optional<Boolean> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
+    /**
+     * @return Whether to enable the automatic snapshot.
+     * 
+     */
     public Optional<Boolean> enableAutoSnapshot() {
         return Optional.ofNullable(this.enableAutoSnapshot);
     }
+    /**
+     * @return Whether to enable the automated snapshot policy.
+     * 
+     */
     public Optional<Boolean> enableAutomatedSnapshotPolicy() {
         return Optional.ofNullable(this.enableAutomatedSnapshotPolicy);
     }
@@ -175,21 +255,33 @@ public final class GetDisksResult {
         return this.ids;
     }
     /**
-     * @return ID of the related instance. It is `null` unless the `status` is `In_use`.
+     * @return The ID of the instance.
      * 
      */
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
+    /**
+     * @return The KMS key ID.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of disk names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return Operation locks.
+     * 
+     */
     public List<GetDisksOperationLock> operationLocks() {
         return this.operationLocks == null ? List.of() : this.operationLocks;
     }
@@ -202,9 +294,17 @@ public final class GetDisksResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The payment type.
+     * 
+     */
     public Optional<String> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
+    /**
+     * @return Whether the disk is portable.
+     * 
+     */
     public Optional<Boolean> portable() {
         return Optional.ofNullable(this.portable);
     }
@@ -249,6 +349,10 @@ public final class GetDisksResult {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return The zone ID.
+     * 
+     */
     public Optional<String> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }

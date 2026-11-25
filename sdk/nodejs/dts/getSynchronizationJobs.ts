@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -39,6 +39,9 @@ export function getSynchronizationJobs(args?: GetSynchronizationJobsArgs, opts?:
  * A collection of arguments for invoking getSynchronizationJobs.
  */
 export interface GetSynchronizationJobsArgs {
+    /**
+     * Default to `false`. Set it to `true` to fetch detailed attributes for each synchronization job, including `sourceEndpointOwnerId` and `sourceEndpointRole`.
+     */
     enableDetails?: boolean;
     /**
      * A list of Synchronization Job IDs.
@@ -68,15 +71,21 @@ export interface GetSynchronizationJobsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Dts Synchronization Jobs. Each element contains the following attributes:
+     */
     readonly jobs: outputs.dts.GetSynchronizationJobsJob[];
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Dts Synchronization Jobs of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -106,6 +115,9 @@ export function getSynchronizationJobsOutput(args?: GetSynchronizationJobsOutput
  * A collection of arguments for invoking getSynchronizationJobs.
  */
 export interface GetSynchronizationJobsOutputArgs {
+    /**
+     * Default to `false`. Set it to `true` to fetch detailed attributes for each synchronization job, including `sourceEndpointOwnerId` and `sourceEndpointRole`.
+     */
     enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Synchronization Job IDs.

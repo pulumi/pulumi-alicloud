@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.147.0+.
+// > **NOTE:** Available since v1.147.0.
 //
 // ## Example Usage
 //
@@ -132,19 +132,26 @@ type GetDedicatedHostsArgs struct {
 
 // A collection of values returned by getDedicatedHosts.
 type GetDedicatedHostsResult struct {
-	AllocationStatus     *string                 `pulumi:"allocationStatus"`
-	DedicatedHostGroupId string                  `pulumi:"dedicatedHostGroupId"`
-	EnableDetails        *bool                   `pulumi:"enableDetails"`
-	HostType             *string                 `pulumi:"hostType"`
-	Hosts                []GetDedicatedHostsHost `pulumi:"hosts"`
+	// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+	AllocationStatus *string `pulumi:"allocationStatus"`
+	// The ID of the dedicated cluster in which the host is created.
+	DedicatedHostGroupId string `pulumi:"dedicatedHostGroupId"`
+	EnableDetails        *bool  `pulumi:"enableDetails"`
+	// The storage type of the host.
+	HostType *string `pulumi:"hostType"`
+	// A list of Cddc Dedicated Hosts. Each element contains the following attributes:
+	Hosts []GetDedicatedHostsHost `pulumi:"hosts"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string            `pulumi:"id"`
-	Ids        []string          `pulumi:"ids"`
-	OrderId    *string           `pulumi:"orderId"`
-	OutputFile *string           `pulumi:"outputFile"`
-	Status     *string           `pulumi:"status"`
-	Tags       map[string]string `pulumi:"tags"`
-	ZoneId     *string           `pulumi:"zoneId"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OrderId    *string  `pulumi:"orderId"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The state of the host.
+	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The zone ID of the host.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 func GetDedicatedHostsOutput(ctx *pulumi.Context, args GetDedicatedHostsOutputArgs, opts ...pulumi.InvokeOption) GetDedicatedHostsResultOutput {
@@ -196,10 +203,12 @@ func (o GetDedicatedHostsResultOutput) ToGetDedicatedHostsResultOutputWithContex
 	return o
 }
 
+// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
 func (o GetDedicatedHostsResultOutput) AllocationStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) *string { return v.AllocationStatus }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the dedicated cluster in which the host is created.
 func (o GetDedicatedHostsResultOutput) DedicatedHostGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) string { return v.DedicatedHostGroupId }).(pulumi.StringOutput)
 }
@@ -208,10 +217,12 @@ func (o GetDedicatedHostsResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
+// The storage type of the host.
 func (o GetDedicatedHostsResultOutput) HostType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) *string { return v.HostType }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cddc Dedicated Hosts. Each element contains the following attributes:
 func (o GetDedicatedHostsResultOutput) Hosts() GetDedicatedHostsHostArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) []GetDedicatedHostsHost { return v.Hosts }).(GetDedicatedHostsHostArrayOutput)
 }
@@ -233,14 +244,17 @@ func (o GetDedicatedHostsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The state of the host.
 func (o GetDedicatedHostsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tag of the resource.
 func (o GetDedicatedHostsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The zone ID of the host.
 func (o GetDedicatedHostsResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDedicatedHostsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

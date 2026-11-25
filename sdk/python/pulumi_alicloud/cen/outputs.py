@@ -532,6 +532,7 @@ class GetBandwidthPackagesPackageResult(dict):
         :param _builtins.str cen_bandwidth_package_name: The name of the bandwidth package.
         :param Sequence[_builtins.str] cen_ids: The list of CEN instances that are associated with the bandwidth package.
         :param _builtins.str description: Description of the CEN Bandwidth Package.
+        :param _builtins.str expired_time: The expiration time of the CEN Bandwidth Package.
         :param _builtins.str geographic_region_a_id: Region ID of the interconnected regions.
         :param _builtins.str geographic_region_b_id: Region ID of the interconnected regions.
         :param _builtins.str geographic_span_id: The area ID of the cross-area connection.
@@ -629,6 +630,9 @@ class GetBandwidthPackagesPackageResult(dict):
     @_builtins.property
     @pulumi.getter(name="expiredTime")
     def expired_time(self) -> _builtins.str:
+        """
+        The expiration time of the CEN Bandwidth Package.
+        """
         return pulumi.get(self, "expired_time")
 
     @_builtins.property
@@ -1331,6 +1335,7 @@ class GetInterRegionTrafficQosQueuesQueueResult(dict):
                  traffic_qos_policy_id: _builtins.str):
         """
         :param Sequence[_builtins.str] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
+        :param _builtins.str id: The ID of the Inter Region Traffic Qos Queue.
         :param _builtins.str inter_region_traffic_qos_queue_description: The description information of the traffic scheduling policy.
         :param _builtins.str inter_region_traffic_qos_queue_id: The ID of the resource.
         :param _builtins.str inter_region_traffic_qos_queue_name: The name of the traffic scheduling policy.
@@ -1358,6 +1363,9 @@ class GetInterRegionTrafficQosQueuesQueueResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the Inter Region Traffic Qos Queue.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -1422,7 +1430,7 @@ class GetPrivateZonesZoneResult(dict):
         """
         :param _builtins.str access_region_id: The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
         :param _builtins.str cen_id: The ID of the CEN instance.
-        :param _builtins.str host_region_id: The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+        :param _builtins.str host_region_id: The service region is the target region of the PrivateZone service accessed through CEN.
         :param _builtins.str host_vpc_id: The VPC that belongs to the service region.
         :param _builtins.str id: The ID of the private zone. It formats as `<cen_id>:<access_region_id>`.
         :param _builtins.str private_zone_dns_servers: The DNS IP addresses of the PrivateZone service.
@@ -1456,7 +1464,7 @@ class GetPrivateZonesZoneResult(dict):
     @pulumi.getter(name="hostRegionId")
     def host_region_id(self) -> _builtins.str:
         """
-        The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+        The service region is the target region of the PrivateZone service accessed through CEN.
         """
         return pulumi.get(self, "host_region_id")
 
@@ -2178,11 +2186,11 @@ class GetTrafficMarkingPoliciesPolicyResult(dict):
                  traffic_marking_policy_name: _builtins.str,
                  transit_router_id: _builtins.str):
         """
-        :param _builtins.str description: The description of the Traffic Marking Policy.
+        :param _builtins.str description: The traffic marking policy description.
         :param _builtins.str id: The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
         :param _builtins.int marking_dscp: The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
         :param _builtins.int priority: The Priority of the Traffic Marking Policy.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
         :param _builtins.str traffic_marking_policy_id: The ID of the Traffic Marking Policy.
         :param _builtins.str traffic_marking_policy_name: The name of the Traffic Marking Policy.
         :param _builtins.str transit_router_id: The ID of the transit router.
@@ -2200,7 +2208,7 @@ class GetTrafficMarkingPoliciesPolicyResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the Traffic Marking Policy.
+        The traffic marking policy description.
         """
         return pulumi.get(self, "description")
 
@@ -2232,7 +2240,7 @@ class GetTrafficMarkingPoliciesPolicyResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
         """
         return pulumi.get(self, "status")
 
@@ -3058,7 +3066,7 @@ class GetTransitRouterPrefixListAssociationsAssociationResult(dict):
         :param _builtins.str next_hop_type: The type of the next hop.
         :param _builtins.int owner_uid: The ID of the Alibaba Cloud account to which the prefix list belongs.
         :param _builtins.str prefix_list_id: The ID of the prefix list.
-        :param _builtins.str status: The status of the prefix list.
+        :param _builtins.str status: The status of the prefix list. Valid Value: `Active`, `Updating`.
         :param _builtins.str transit_router_id: The ID of the transit router.
         :param _builtins.str transit_router_table_id: The ID of the route table of the transit router.
         """
@@ -3124,7 +3132,7 @@ class GetTransitRouterPrefixListAssociationsAssociationResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the prefix list.
+        The status of the prefix list. Valid Value: `Active`, `Updating`.
         """
         return pulumi.get(self, "status")
 
@@ -3158,7 +3166,12 @@ class GetTransitRouterRouteEntriesEntryResult(dict):
                  transit_router_route_entry_next_hop_type: _builtins.str,
                  transit_router_route_entry_type: _builtins.str):
         """
-        :param _builtins.str transit_router_route_entry_destination_cidr_block: The target network segment of the route entry.
+        :param _builtins.str id: The ID of the CEN Transit Router Route Entry.
+        :param _builtins.str status: The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+        :param _builtins.str transit_router_route_entry_description: The description of the transit router route entry.
+        :param _builtins.str transit_router_route_entry_destination_cidr_block: The destination CIDR block of the route entry.
+        :param _builtins.str transit_router_route_entry_id: The ID of the route entry.
+        :param _builtins.str transit_router_route_entry_name: The name of the transit router route entry.
         :param _builtins.str transit_router_route_entry_next_hop_id: ID of the next hop.
         :param _builtins.str transit_router_route_entry_next_hop_type: Type of the next hop.
         :param _builtins.str transit_router_route_entry_type: Type of the route entry.
@@ -3176,34 +3189,49 @@ class GetTransitRouterRouteEntriesEntryResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the CEN Transit Router Route Entry.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
+        """
+        The status of the transit router route entry. Valid values: `Active`, `Creating`, `Deleting` and `Updating`.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryDescription")
     def transit_router_route_entry_description(self) -> _builtins.str:
+        """
+        The description of the transit router route entry.
+        """
         return pulumi.get(self, "transit_router_route_entry_description")
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryDestinationCidrBlock")
     def transit_router_route_entry_destination_cidr_block(self) -> _builtins.str:
         """
-        The target network segment of the route entry.
+        The destination CIDR block of the route entry.
         """
         return pulumi.get(self, "transit_router_route_entry_destination_cidr_block")
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryId")
     def transit_router_route_entry_id(self) -> _builtins.str:
+        """
+        The ID of the route entry.
+        """
         return pulumi.get(self, "transit_router_route_entry_id")
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryName")
     def transit_router_route_entry_name(self) -> _builtins.str:
+        """
+        The name of the transit router route entry.
+        """
         return pulumi.get(self, "transit_router_route_entry_name")
 
     @_builtins.property
@@ -3241,6 +3269,7 @@ class GetTransitRouterRouteTableAssociationsAssociationResult(dict):
                  transit_router_attachment_id: _builtins.str,
                  transit_router_route_table_id: _builtins.str):
         """
+        :param _builtins.str id: The ID of the CEN Transit Router Route Table Association.
         :param _builtins.str resource_id: ID of the transit router route table association.
         :param _builtins.str resource_type: Type of the resource.
         :param _builtins.str status: The status of the route table, including `Active`, `Associating`, `Dissociating`.
@@ -3257,6 +3286,9 @@ class GetTransitRouterRouteTableAssociationsAssociationResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the CEN Transit Router Route Table Association.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -3459,10 +3491,12 @@ class GetTransitRouterVbrAttachmentsAttachmentResult(dict):
                  vbr_id: _builtins.str,
                  vbr_owner_id: _builtins.str):
         """
-        :param _builtins.bool auto_publish_route_enabled: ID of the region where the conflicted VBR is located.
+        :param _builtins.bool auto_publish_route_enabled: Auto publish route enabled.
+        :param _builtins.str id: The ID of the CEN Transit Router VBR Attachment.
         :param _builtins.str resource_type: Type of the resource.
         :param _builtins.str status: The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
-        :param _builtins.str transit_router_attachment_id: ID of the transit router VBR attachment.
+        :param _builtins.str transit_router_attachment_description: The description of the transit router attachment.
+        :param _builtins.str transit_router_attachment_id: ID of the transit router attachment.
         :param _builtins.str transit_router_attachment_name: Name of the transit router attachment.
         :param _builtins.str vbr_id: ID of the VBR.
         :param _builtins.str vbr_owner_id: The Owner ID of the VBR.
@@ -3481,13 +3515,16 @@ class GetTransitRouterVbrAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="autoPublishRouteEnabled")
     def auto_publish_route_enabled(self) -> _builtins.bool:
         """
-        ID of the region where the conflicted VBR is located.
+        Auto publish route enabled.
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the CEN Transit Router VBR Attachment.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -3509,13 +3546,16 @@ class GetTransitRouterVbrAttachmentsAttachmentResult(dict):
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentDescription")
     def transit_router_attachment_description(self) -> _builtins.str:
+        """
+        The description of the transit router attachment.
+        """
         return pulumi.get(self, "transit_router_attachment_description")
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> _builtins.str:
         """
-        ID of the transit router VBR attachment.
+        ID of the transit router attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 

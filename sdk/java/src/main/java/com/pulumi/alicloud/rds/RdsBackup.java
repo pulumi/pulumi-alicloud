@@ -99,6 +99,20 @@ public class RdsBackup extends com.pulumi.resources.CustomResource {
         return this.backupId;
     }
     /**
+     * (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+     * 
+     */
+    @Export(name="backupJobId", refs={String.class}, tree="[0]")
+    private Output<String> backupJobId;
+
+    /**
+     * @return (String, Available since v2.2.0) The backup job ID. This is a create-only attribute returned by the CreateBackup API. It cannot be recovered via Read or Import because DescribeBackups does not return this field.
+     * 
+     */
+    public Output<String> backupJobId() {
+        return this.backupJobId;
+    }
+    /**
      * The backup type. Valid values:
      * * `Logical`: logical backup (supported only for MySQL)
      * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)

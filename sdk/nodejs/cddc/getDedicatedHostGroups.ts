@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *
@@ -62,7 +62,13 @@ export interface GetDedicatedHostGroupsArgs {
  * A collection of values returned by getDedicatedHostGroups.
  */
 export interface GetDedicatedHostGroupsResult {
+    /**
+     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     */
     readonly engine?: string;
+    /**
+     * A list of Cddc Dedicated Host Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.cddc.GetDedicatedHostGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -70,13 +76,16 @@ export interface GetDedicatedHostGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Dedicated Host Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
  * This data source provides the Cddc Dedicated Host Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.132.0+.
+ * > **NOTE:** Available since v1.132.0.
  *
  * ## Example Usage
  *

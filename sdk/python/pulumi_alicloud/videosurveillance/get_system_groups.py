@@ -59,6 +59,9 @@ class GetSystemGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetSystemGroupsGroupResult']:
+        """
+        A list of Video Surveillance System Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -77,6 +80,9 @@ class GetSystemGroupsResult:
     @_builtins.property
     @pulumi.getter(name="inProtocol")
     def in_protocol(self) -> Optional[_builtins.str]:
+        """
+        The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+        """
         return pulumi.get(self, "in_protocol")
 
     @_builtins.property
@@ -92,6 +98,9 @@ class GetSystemGroupsResult:
     @_builtins.property
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
+        """
+        A list of Group names.
+        """
         return pulumi.get(self, "names")
 
     @_builtins.property
@@ -132,7 +141,7 @@ def get_system_groups(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 
@@ -190,7 +199,7 @@ def get_system_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     """
     This data source provides the Video Surveillance System Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.135.0+.
+    > **NOTE:** Available since v1.135.0.
 
     ## Example Usage
 

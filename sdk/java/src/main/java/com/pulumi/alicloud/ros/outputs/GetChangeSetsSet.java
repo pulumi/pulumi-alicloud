@@ -50,7 +50,7 @@ public final class GetChangeSetsSet {
      */
     private String id;
     /**
-     * @return Parameters.
+     * @return Parameters. See `parameters` below.
      * 
      */
     private List<GetChangeSetsSetParameter> parameters;
@@ -65,7 +65,7 @@ public final class GetChangeSetsSet {
      */
     private String stackName;
     /**
-     * @return The status of the change set.
+     * @return The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
      * 
      */
     private String status;
@@ -131,7 +131,7 @@ public final class GetChangeSetsSet {
         return this.id;
     }
     /**
-     * @return Parameters.
+     * @return Parameters. See `parameters` below.
      * 
      */
     public List<GetChangeSetsSetParameter> parameters() {
@@ -152,7 +152,7 @@ public final class GetChangeSetsSet {
         return this.stackName;
     }
     /**
-     * @return The status of the change set.
+     * @return The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
      * 
      */
     public String status() {

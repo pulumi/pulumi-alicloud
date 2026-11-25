@@ -62,6 +62,9 @@ class GetTransitRouterPeerAttachmentsResult:
     @_builtins.property
     @pulumi.getter
     def attachments(self) -> Sequence['outputs.GetTransitRouterPeerAttachmentsAttachmentResult']:
+        """
+        A list of CEN Transit Router peer Attachments. Each element contains the following attributes:
+        """
         return pulumi.get(self, "attachments")
 
     @_builtins.property
@@ -157,7 +160,7 @@ def get_transit_router_peer_attachments(cen_id: Optional[_builtins.str] = None,
     """
     This data source provides CEN Transit Router peer attachments available to the user.
 
-    > **NOTE:** Available in 1.128.0+
+    > **NOTE:** Available since v1.128.0+
 
     ## Example Usage
 
@@ -211,7 +214,7 @@ def get_transit_router_peer_attachments_output(cen_id: pulumi.Input[Optional[_bu
     """
     This data source provides CEN Transit Router peer attachments available to the user.
 
-    > **NOTE:** Available in 1.128.0+
+    > **NOTE:** Available since v1.128.0+
 
     ## Example Usage
 

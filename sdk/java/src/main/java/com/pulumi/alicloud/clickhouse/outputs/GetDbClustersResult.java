@@ -15,7 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbClustersResult {
+    /**
+     * @return A list of Click House DBClusters. Each element contains the following attributes:
+     * 
+     */
     private List<GetDbClustersCluster> clusters;
+    /**
+     * @return The DBCluster description.
+     * 
+     */
     private @Nullable String dbClusterDescription;
     private @Nullable Boolean enableDetails;
     /**
@@ -25,12 +33,24 @@ public final class GetDbClustersResult {
     private String id;
     private List<String> ids;
     private @Nullable String outputFile;
+    /**
+     * @return The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+     * 
+     */
     private @Nullable String status;
 
     private GetDbClustersResult() {}
+    /**
+     * @return A list of Click House DBClusters. Each element contains the following attributes:
+     * 
+     */
     public List<GetDbClustersCluster> clusters() {
         return this.clusters;
     }
+    /**
+     * @return The DBCluster description.
+     * 
+     */
     public Optional<String> dbClusterDescription() {
         return Optional.ofNullable(this.dbClusterDescription);
     }
@@ -50,6 +70,10 @@ public final class GetDbClustersResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

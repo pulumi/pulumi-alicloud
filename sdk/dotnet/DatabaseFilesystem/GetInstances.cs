@@ -12,11 +12,11 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public static class GetInstances
     {
         /// <summary>
-        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
         /// 
         /// This data source provides the DBFS Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -55,11 +55,11 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:databasefilesystem/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
         /// 
         /// This data source provides the DBFS Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -98,11 +98,11 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:databasefilesystem/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://www.alibabacloud.com/help/en/dbfs/).
         /// 
         /// This data source provides the DBFS Instances of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.136.0+.
+        /// &gt; **NOTE:** Available since v1.136.0.
         /// 
         /// ## Example Usage
         /// 
@@ -227,10 +227,19 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of DBFS Instances. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Instance names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the Database file system.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

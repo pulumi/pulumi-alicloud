@@ -75,7 +75,7 @@ class GetBackupPlansPlanResult(dict):
         :param _builtins.str source_endpoint_region: The region of the database.
         :param _builtins.str source_endpoint_sid: The Oracle SID name.
         :param _builtins.str source_endpoint_user_name: The source endpoint username.
-        :param _builtins.str status: The status of the resource.
+        :param _builtins.str status: The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
         """
         pulumi.set(__self__, "backup_gateway_id", backup_gateway_id)
         pulumi.set(__self__, "backup_method", backup_method)
@@ -317,7 +317,7 @@ class GetBackupPlansPlanResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
         """
         return pulumi.get(self, "status")
 
